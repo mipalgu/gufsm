@@ -59,6 +59,7 @@
 		F16CC32B142C2AD9001F788B /* FSMTest.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = FSMTest.mm; sourceTree = "<group>"; };
 		F16CC32D142C2AD9001F788B /* FSMTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FSMTest-Prefix.pch"; sourceTree = "<group>"; };
 		F16CC334142C3433001F788B /* FSMAction.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMAction.cc; sourceTree = "<group>"; };
+		F19C2B96142C7B37007CFC83 /* FSMTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMTransition.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +114,7 @@
 				F16CC311142C10B3001F788B /* FSMActivity.h */,
 				F16CC30F142C0F86001F788B /* FSMState.cc */,
 				F16CC30E142C0F62001F788B /* FSMState.h */,
+				F19C2B96142C7B37007CFC83 /* FSMTransition.h */,
 			);
 			path = gufsm;
 			sourceTree = "<group>";
@@ -390,6 +392,7 @@
 				F16CC306142C0C01001F788B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F16CC32E142C2AD9001F788B /* Build configuration list for PBXNativeTarget "FSMTest" */ = {
 			isa = XCConfigurationList;
@@ -398,6 +401,7 @@
 				F16CC330142C2AD9001F788B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
