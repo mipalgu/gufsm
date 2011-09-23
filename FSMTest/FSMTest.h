@@ -68,19 +68,17 @@ namespace FSM
         class Predicate;
 }
 
-using namespace FSM;
-
 @interface FSMTest: SenTestCase
 {
-        Machine *fsm;
-        State *firstState;
-        State *secondState;
-        Action *onEntry, *onExit, *internal;
-        SleepAction *sleepAction;
-        Transition *falseTransition;
-        Transition *trueTransition;
-        Transition *backTransition;
-        Predicate *falseExpression;
-        Predicate *trueExpression;
+        FSM::Machine *fsm;
+        FSM::State *firstState;
+        FSM::State *secondState;
+        FSM::Action *onEntry, *onExit, *internal;
+        FSM::SleepAction *sleepAction;
+        FSM::Transition *falseTransition;
+        FSM::Transition *trueTransition;
+        FSM::Transition *backTransition;
+        FSM::Predicate *falseExpression;
+        FSM::Predicate *trueExpression;
 }
 @end
