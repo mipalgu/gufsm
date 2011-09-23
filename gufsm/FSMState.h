@@ -61,11 +61,16 @@
 #include <string>
 #include "FSMActivity.h"
 
+class FSMTransition;
+
 class FSMState
 {
         FSMActivity _activity;  /// the activity represented by this state
         int _stateID;           /// state number within machine
         std::string _name;      /// name of the state
+
+        /** list of transitions away from this state */
+        std::vector<FSMTransition *> _transitions;
 
 public:
         FSMState(int stateID = 0, const std::string name = ""):
@@ -85,6 +90,12 @@ public:
 
         /** get the state's activity */
         FSMActivity &activity() { return _activity; }
+
+        /** get that state's transitions */
+        std::vector<FSMTransition *> &transitions() { return _transitions; }
+
+        /** add a transition */
+        void addTransition(FSMTransition *t) { _transitions.push_back(t); }
 };
 
 #endif
