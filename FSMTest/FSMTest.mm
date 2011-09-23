@@ -93,6 +93,8 @@
         STAssertNotNil((id) onExit, @"Could not construct OnExit Action");
         internal = new FSMPrintingAction<int>(3);
         STAssertNotNil((id) internal, @"Could not construct internal Action");
+        sleepAction = new FSMSleepAction(1001);
+        STAssertNotNil((id) internal, @"Could not construct sleep Action");
 
         firstState->activity().addOnEntryAction(onEntry);
         STAssertEquals((int) firstState->activity().onEntryActions().size(), 1,
@@ -101,7 +103,8 @@
         STAssertEquals((int) firstState->activity().onExitActions().size(), 1,
                        @"Unexpected length of onExit actions list");
         firstState->activity().addInternalAction(internal);
-        STAssertEquals((int) firstState->activity().internalActions().size(), 1,
+        firstState->activity().addInternalAction(sleepAction);
+        STAssertEquals((int) firstState->activity().internalActions().size(), 2,
                        @"Unexpected length of internal actions list");
         fsm->addState(firstState);
         STAssertEquals((int) fsm->states().size(), 1, @"Expected one state");
@@ -164,8 +167,22 @@
         FSMPrintingAction<int> *a = (FSMPrintingAction<int> *) internal;
         STAssertTrue(a->content() == 3,
                      @"unexpected internal printing action content");
-        for (FSMAction *action: firstState->activity().onEntryActions())
+        for (FSMAction *action: firstState->activity().internalActions())
                 action->perform(firstState->stateID(), STAGE_INTERNAL, 0);
+}
+
+
+- (void) testSleep
+{
+        STAssertEquals(sleepAction,
+                       (FSMSleepAction *) firstState->activity().internalActions()[1],
+                       @"Unexpected sleep action address");
+        STAssertEquals(sleepAction->content(), 1001,
+                     @"unexpected internal sleep action content");
+        time_t t1 = time(NULL);
+        sleepAction->perform(firstState->stateID(), STAGE_INTERNAL, 0);
+        time_t t2 = time(NULL);
+        STAssertEquals(t1 + 1, t2, @"unexpected sleep time");
 }
 
 @end

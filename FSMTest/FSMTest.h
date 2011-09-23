@@ -60,11 +60,13 @@
 class FSM;
 class FSMState;
 class FSMAction;
+class FSMSleepAction;
 
 @interface FSMTest: SenTestCase
 {
         FSM *fsm;
         FSMState *firstState;
         FSMAction *onEntry, *onExit, *internal;
+        FSMSleepAction *sleepAction;
 }
 @end

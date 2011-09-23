@@ -127,8 +127,20 @@ public:
 };
 
 /**
- * Printing action for strints
+ * Printing action for strings
  */
 typedef FSMPrintingAction<std::string> FSMPrintStringAction;
 
+/**
+ * Delay action: specify sleep time in milliseconds
+ */
+class FSMSleepAction: public FSMContentAction<int>
+{
+public:
+        /** sleep action default constructor */
+        FSMSleepAction(int val = 1000): FSMContentAction<int>(val) {}
+
+        /** sleep for the given amount of milliseconds */
+        virtual void performv(int state, ActionStage stage, int ac, va_list al);
+};
 #endif

@@ -55,4 +55,20 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#include <time.h>
+#include <errno.h>
 #include "FSMAction.h"
+
+void FSMSleepAction::performv(int state, ActionStage stage, int ac, va_list al)
+{
+        struct timespec ts = { _content / 1000, (_content % 1000 ) * 1000000L };
+
+        while (nanosleep(&ts, &ts) < 0)
+        {
+                if (errno != EINTR)
+                {
+                        perror("FSMSleepAction nanosleep");
+                        break;
+                }
+        }
+}
