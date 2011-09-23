@@ -1,5 +1,5 @@
 /*
- *  FSMAction.h
+ *  FSMAction.cc
  *
  *  Created by René Hexel on 23/09/11.
  *  Copyright (c) 2011 Rene Hexel.
@@ -55,64 +55,13 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef gufsm_FSMAction_h
-#define gufsm_FSMAction_h
+#include "FSMAction.h"
 
-#include <cstdarg>
-#include <string>
-#include <sstream>
+#include <iostream>
 
-enum ActionStage { STAGE_ON_ENTRY, STAGE_ON_EXIT, STAGE_INTERNAL,
-        NUM_ACTION_STAGES };
-/**
- * Abstract class for FSM actions
- */
-class FSMAction
+using namespace std;
+
+void FSMPrintingAction::performv(int state, ActionStage stage, int ac, va_list av)
 {
-public:
-        /** virtual destructor */
-        virtual ~FSMAction() {}
-
-        /** perform the given action with a vector of parameters */
-        virtual void performv(int state, ActionStage stage, int ac, va_list al) = 0;
-
-        /** perform the given action */
-        virtual void perform(int state, ActionStage stage, int ac = 0, ...)
-        {
-                va_list ap;
-                va_start(ap, ac);
-                performv(state, stage, ac, ap);
-                va_end(ap);
-        }
-};
-
-
-/**
- * Printing action
- */
-class FSMPrintingAction: public FSMAction
-{
-        std::string _content;
-public:
-        /** printing action default constructor */
-        FSMPrintingAction(std::string content = ""): _content(content) {}
-
-        /** template factory method to create printing action from any streamable type */
-        template <class T> static FSMPrintingAction* create(T val)
-        {
-                std::ostringstream s;
-                s << val;
-                return new FSMPrintingAction(s.str());
-        };
-
-        /** getter method */
-        virtual const std::string &content() { return _content; }
-        
-        /** setter method */
-        virtual void setContent(const std::string &s) { _content = s; }
-
-        /** print the content of this action */
-        virtual void performv(int state, ActionStage stage, int ac, va_list al);
-};
-
-#endif
+        cout << _content << endl;
+}

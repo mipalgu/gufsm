@@ -62,6 +62,9 @@
 
 #import "FSMTest.h"
 
+#define NAME_FIRST_STATE        "First State"
+#define ID_FIRST_STATE          1
+
 @implementation FSMTest
 
 - (void) setUp
@@ -76,37 +79,32 @@
         firstState = new FSMState();
         STAssertNotNil((id) firstState, @"Could not construct first State");
         STAssertEquals((int) firstState->activity().onEntryActions().size(), 0,
-                       @"Expected 0 onEntry actions, got %d",
-                       firstState->activity().onEntryActions().size());
+                       @"Expected empty onEntry actions list");
         STAssertEquals((int) firstState->activity().onExitActions().size(), 0,
-                       @"Expected 0 onExit actions, got %d",
-                       firstState->activity().onExitActions().size());
+                       @"Expected empty onExit actions list");
         STAssertEquals((int) firstState->activity().internalActions().size(), 0,
-                       @"Expected 0 internal actions, got %d",
-                       firstState->activity().internalActions().size());
+                       @"Expected empty internal actions list");
+        firstState->setName(NAME_FIRST_STATE);
+        firstState->setStateID(ID_FIRST_STATE);
 
-        onEntry = new FSMAction();
+        onEntry = new FSMPrintingAction("OnEntry");
         STAssertNotNil((id) onEntry, @"Could not construct OnEntry Action");
-        onExit = new FSMAction();
+        onExit = FSMPrintingAction::create("OnExit");
         STAssertNotNil((id) onExit, @"Could not construct OnExit Action");
-        internal = new FSMAction();
+        internal = FSMPrintingAction::create(3);
         STAssertNotNil((id) internal, @"Could not construct internal Action");
 
         firstState->activity().addOnEntryAction(onEntry);
         STAssertEquals((int) firstState->activity().onEntryActions().size(), 1,
-                       @"Expected 1 onEntry action, got %d",
-                       firstState->activity().onEntryActions().size());
+                       @"Unexpected length of onEntry actions list");
         firstState->activity().addOnExitAction(onExit);
         STAssertEquals((int) firstState->activity().onExitActions().size(), 1,
-                       @"Expected 1 onExit action, got %d",
-                       firstState->activity().onExitActions().size());
+                       @"Unexpected length of onExit actions list");
         firstState->activity().addInternalAction(internal);
         STAssertEquals((int) firstState->activity().internalActions().size(), 1,
-                       @"Expected 1 internal action, got %d",
-                       firstState->activity().internalActions().size());
+                       @"Unexpected length of internal actions list");
         fsm->addState(firstState);
-        STAssertEquals((int) fsm->states().size(), 1, @"Expected 1 state, got %d",
-                       fsm->states().size());
+        STAssertEquals((int) fsm->states().size(), 1, @"Expected one state");
 }
 
 - (void) tearDown
@@ -121,9 +119,52 @@
 
 - (void) testFSM
 {
+}
+
+- (void) testFirstState
+{
         STAssertEquals(firstState, fsm->states()[0],
-                       @"Unexpected first state %p, expected %p",
-                       fsm->states()[0], firstState);
+                       @"Unexpected first state address");
+        STAssertEquals(firstState->stateID(), ID_FIRST_STATE,
+                       @"Unexpected first state id");
+}
+
+
+- (void) testOnEntry
+{
+        STAssertEquals(onEntry, firstState->activity().onEntryActions()[0],
+                       @"Unexpected onEntry action address");
+        FSMPrintingAction *a = (FSMPrintingAction *) onEntry;
+        STAssertTrue(a->content() == "OnEntry",
+                       @"unexpected OnEntry printing action content");
+        for (FSMAction *action: firstState->activity().onEntryActions())
+                action->perform(firstState->stateID(), STAGE_ON_ENTRY, 0);
+}
+
+
+
+- (void) testOnExit
+{
+        STAssertEquals(onExit, firstState->activity().onExitActions()[0],
+                       @"Unexpected onExit action address");
+        FSMPrintingAction *a = (FSMPrintingAction *) onExit;
+        STAssertTrue(a->content() == "OnExit",
+                     @"unexpected OnExit printing action content");
+        for (FSMAction *action: firstState->activity().onExitActions())
+                action->perform(firstState->stateID(), STAGE_ON_EXIT, 0);
+}
+
+
+
+- (void) testInternal
+{
+        STAssertEquals(internal, firstState->activity().internalActions()[0],
+                       @"Unexpected internal action address");
+        FSMPrintingAction *a = (FSMPrintingAction *) internal;
+        STAssertTrue(a->content() == "3",
+                     @"unexpected internal printing action content");
+        for (FSMAction *action: firstState->activity().onEntryActions())
+                action->perform(firstState->stateID(), STAGE_INTERNAL, 0);
 }
 
 @end
