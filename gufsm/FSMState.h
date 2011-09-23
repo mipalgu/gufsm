@@ -63,6 +63,9 @@
 
 class FSMTransition;
 
+typedef std::vector<FSMTransition *> FSMTransitionVector;
+typedef FSMTransitionVector::iterator FSMTransitionIterator;
+
 class FSMState
 {
         FSMActivity _activity;  /// the activity represented by this state
@@ -70,7 +73,7 @@ class FSMState
         std::string _name;      /// name of the state
 
         /** list of transitions away from this state */
-        std::vector<FSMTransition *> _transitions;
+        FSMTransitionVector _transitions;
 
 public:
         FSMState(int stateID = 0, const std::string name = ""):
@@ -92,7 +95,7 @@ public:
         FSMActivity &activity() { return _activity; }
 
         /** get that state's transitions */
-        std::vector<FSMTransition *> &transitions() { return _transitions; }
+        FSMTransitionVector &transitions() { return _transitions; }
 
         /** add a transition */
         void addTransition(FSMTransition *t) { _transitions.push_back(t); }
