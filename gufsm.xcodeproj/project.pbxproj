@@ -1,0 +1,229 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F16CC2FF142C0C01001F788B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F16CC2FE142C0C01001F788B /* main.cpp */; };
+		F16CC301142C0C01001F788B /* gufsm.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = F16CC300142C0C01001F788B /* gufsm.1 */; };
+		F16CC30C142C0CDE001F788B /* FSM.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30B142C0CDE001F788B /* FSM.cc */; };
+		F16CC310142C0F86001F788B /* FSMState.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30F142C0F86001F788B /* FSMState.cc */; };
+		F16CC313142C1247001F788B /* FSMActivity.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC312142C1247001F788B /* FSMActivity.cc */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F16CC2F8142C0C01001F788B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				F16CC301142C0C01001F788B /* gufsm.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		F16CC2FA142C0C01001F788B /* gufsm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = gufsm; sourceTree = BUILT_PRODUCTS_DIR; };
+		F16CC2FE142C0C01001F788B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		F16CC300142C0C01001F788B /* gufsm.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = gufsm.1; sourceTree = "<group>"; };
+		F16CC30B142C0CDE001F788B /* FSM.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSM.cc; sourceTree = "<group>"; };
+		F16CC30D142C0CE6001F788B /* FSM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSM.h; sourceTree = "<group>"; };
+		F16CC30E142C0F62001F788B /* FSMState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMState.h; sourceTree = "<group>"; };
+		F16CC30F142C0F86001F788B /* FSMState.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMState.cc; sourceTree = "<group>"; };
+		F16CC311142C10B3001F788B /* FSMActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMActivity.h; sourceTree = "<group>"; };
+		F16CC312142C1247001F788B /* FSMActivity.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMActivity.cc; sourceTree = "<group>"; };
+		F16CC314142C146B001F788B /* FSMAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMAction.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F16CC2F7142C0C01001F788B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F16CC2EF142C0C01001F788B = {
+			isa = PBXGroup;
+			children = (
+				F16CC2FD142C0C01001F788B /* gufsm */,
+				F16CC2FB142C0C01001F788B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F16CC2FB142C0C01001F788B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F16CC2FA142C0C01001F788B /* gufsm */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F16CC2FD142C0C01001F788B /* gufsm */ = {
+			isa = PBXGroup;
+			children = (
+				F16CC2FE142C0C01001F788B /* main.cpp */,
+				F16CC300142C0C01001F788B /* gufsm.1 */,
+				F16CC30B142C0CDE001F788B /* FSM.cc */,
+				F16CC30D142C0CE6001F788B /* FSM.h */,
+				F16CC314142C146B001F788B /* FSMAction.h */,
+				F16CC312142C1247001F788B /* FSMActivity.cc */,
+				F16CC311142C10B3001F788B /* FSMActivity.h */,
+				F16CC30F142C0F86001F788B /* FSMState.cc */,
+				F16CC30E142C0F62001F788B /* FSMState.h */,
+			);
+			path = gufsm;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F16CC2F9142C0C01001F788B /* gufsm */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F16CC304142C0C01001F788B /* Build configuration list for PBXNativeTarget "gufsm" */;
+			buildPhases = (
+				F16CC2F6142C0C01001F788B /* Sources */,
+				F16CC2F7142C0C01001F788B /* Frameworks */,
+				F16CC2F8142C0C01001F788B /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = gufsm;
+			productName = gufsm;
+			productReference = F16CC2FA142C0C01001F788B /* gufsm */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F16CC2F1142C0C01001F788B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = ICT;
+			};
+			buildConfigurationList = F16CC2F4142C0C01001F788B /* Build configuration list for PBXProject "gufsm" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F16CC2EF142C0C01001F788B;
+			productRefGroup = F16CC2FB142C0C01001F788B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F16CC2F9142C0C01001F788B /* gufsm */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F16CC2F6142C0C01001F788B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F16CC2FF142C0C01001F788B /* main.cpp in Sources */,
+				F16CC30C142C0CDE001F788B /* FSM.cc in Sources */,
+				F16CC310142C0F86001F788B /* FSMState.cc in Sources */,
+				F16CC313142C1247001F788B /* FSMActivity.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		F16CC302142C0C01001F788B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		F16CC303142C0C01001F788B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		F16CC305142C0C01001F788B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F16CC306142C0C01001F788B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F16CC2F4142C0C01001F788B /* Build configuration list for PBXProject "gufsm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F16CC302142C0C01001F788B /* Debug */,
+				F16CC303142C0C01001F788B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F16CC304142C0C01001F788B /* Build configuration list for PBXNativeTarget "gufsm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F16CC305142C0C01001F788B /* Debug */,
+				F16CC306142C0C01001F788B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F16CC2F1142C0C01001F788B /* Project object */;
+}
