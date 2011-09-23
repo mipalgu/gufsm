@@ -60,24 +60,27 @@
 
 #include <vector>
 
-class FSMState;
-
-typedef std::vector<FSMState *> StateVector;
-typedef StateVector::iterator StateIterator;
-
-class FSM
+namespace FSM
 {
-        StateVector _states;        /// machine states
-
-public:
-        /** states getter method */
-        StateVector &states() { return _states; }
-
-        /** states setter method */
-        void setStates(const StateVector &sv) { _states = sv; }
-
-        /** add a state */
-        void addState(FSMState *s) { _states.push_back(s); }
-};
+        class State;
+        
+        typedef std::vector<State *> StateVector;
+        typedef StateVector::iterator StateIterator;
+        
+        class Machine
+        {
+                StateVector _states;        /// machine states
+                
+        public:
+                /** states getter method */
+                StateVector &states() { return _states; }
+                
+                /** states setter method */
+                void setStates(const StateVector &sv) { _states = sv; }
+                
+                /** add a state */
+                void addState(State *s) { _states.push_back(s); }
+        };
+}
 
 #endif

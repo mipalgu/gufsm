@@ -61,66 +61,69 @@
 #include <vector>
 #include "FSMAction.h"
 
-typedef std::vector<FSMAction *> ActionVector;
-typedef ActionVector::iterator ActionIterator;
-
-/**
- * An activity is a set of actions for onEntry, onExit, and internal stages
- */
-class FSMActivity
+namespace FSM
 {
-        ActionVector _onEntryActions;   /// on entry actions
-        ActionVector _internalActions;  /// internal actions
-        ActionVector _onExitActions;    /// on exit actions
+        typedef std::vector<Action *> ActionVector;
+        typedef ActionVector::iterator ActionIterator;
         
-        /** perform actions */
-        void perform(int state, ActionStage stage,
-                     const std::vector <FSMAction *> &actions)
+        /**
+         * An activity is a set of actions for onEntry, onExit, and internal stages
+         */
+        class Activity
         {
-                for (FSMAction *a: actions)
-                        a->perform(state, stage);
-        }
-        
-public:
-        /** return the std::vector of actions that happen on entry */
-        ActionVector &onEntryActions() { return _onEntryActions; }
-
-        /** set the on entry actions */
-        void setOnEntryActions(const ActionVector &av) { _onEntryActions = av; }
-
-        /** add an on entry action */
-        void addOnEntryAction(FSMAction *a) { _onEntryActions.push_back(a); }
-
-        /** return the std::vector of actions that happen internally */
-        ActionVector &internalActions() { return _internalActions; }
-        
-        /** set the on entry actions */
-        void setInternalActions(const ActionVector &av) { _internalActions = av; }
-
-        /** add an internal action */
-        void addInternalAction(FSMAction *a) { _internalActions.push_back(a); }
-        
-        /** return the std::vector of actions that happen on exit */
-        ActionVector &onExitActions() { return _onExitActions; }
-
-        /** set the on exit actions */
-        void setOnExitActions(const ActionVector &av) { _onExitActions = av; }
-
-        /** add an on exit action */
-        void addOnExitAction(FSMAction *a) { _onExitActions.push_back(a); }
-
-        /** perform actions for state and stage */
-        void perform(int state, ActionStage stage = STAGE_INTERNAL);
-        
-        /** perform actions for state and stage */
-        void performOnEntry(int state) { perform(state, STAGE_ON_ENTRY, _onEntryActions); }
-
-        /** perform actions for state and stage */
-        void performInternal(int state) { perform(state, STAGE_INTERNAL, _internalActions); }
-
-        /** perform actions for state and stage */
-        void performOnExit(int state) { perform(state, STAGE_ON_EXIT, _onExitActions); }
-};
-
+                ActionVector _onEntryActions;   /// on entry actions
+                ActionVector _internalActions;  /// internal actions
+                ActionVector _onExitActions;    /// on exit actions
+                
+                /** perform actions */
+                void perform(int state, ActionStage stage,
+                             const std::vector <Action *> &actions)
+                {
+                        for (Action *a: actions)
+                                a->perform(state, stage);
+                }
+                
+        public:
+                /** return the std::vector of actions that happen on entry */
+                ActionVector &onEntryActions() { return _onEntryActions; }
+                
+                /** set the on entry actions */
+                void setOnEntryActions(const ActionVector &av) { _onEntryActions = av; }
+                
+                /** add an on entry action */
+                void addOnEntryAction(Action *a) { _onEntryActions.push_back(a); }
+                
+                /** return the std::vector of actions that happen internally */
+                ActionVector &internalActions() { return _internalActions; }
+                
+                /** set the on entry actions */
+                void setInternalActions(const ActionVector &av) { _internalActions = av; }
+                
+                /** add an internal action */
+                void addInternalAction(Action *a) { _internalActions.push_back(a); }
+                
+                /** return the std::vector of actions that happen on exit */
+                ActionVector &onExitActions() { return _onExitActions; }
+                
+                /** set the on exit actions */
+                void setOnExitActions(const ActionVector &av) { _onExitActions = av; }
+                
+                /** add an on exit action */
+                void addOnExitAction(Action *a) { _onExitActions.push_back(a); }
+                
+                /** perform actions for state and stage */
+                void perform(int state, ActionStage stage = STAGE_INTERNAL);
+                
+                /** perform actions for state and stage */
+                void performOnEntry(int state) { perform(state, STAGE_ON_ENTRY,
+                                                         _onEntryActions); }
+                /** perform actions for state and stage */
+                void performInternal(int state) { perform(state, STAGE_INTERNAL,
+                                                          _internalActions); }
+                /** perform actions for state and stage */
+                void performOnExit(int state) { perform(state, STAGE_ON_EXIT,
+                                                        _onExitActions); }
+        };
+}
 
 #endif

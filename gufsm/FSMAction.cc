@@ -59,7 +59,9 @@
 #include <errno.h>
 #include "FSMAction.h"
 
-void FSMSleepAction::performv(int state, ActionStage stage, int ac, va_list al)
+using namespace FSM;
+
+void SleepAction::performv(int state, ActionStage stage, int ac, va_list al)
 {
         struct timespec ts = { _content / 1000, (_content % 1000 ) * 1000000L };
 
@@ -67,7 +69,7 @@ void FSMSleepAction::performv(int state, ActionStage stage, int ac, va_list al)
         {
                 if (errno != EINTR)
                 {
-                        perror("FSMSleepAction nanosleep");
+                        perror("FSM::SleepAction nanosleep");
                         break;
                 }
         }

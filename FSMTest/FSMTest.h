@@ -57,25 +57,30 @@
  */
 #import <SenTestingKit/SenTestingKit.h>
 
-class FSM;
-class FSMState;
-class FSMAction;
-class FSMSleepAction;
-class FSMTransition;
-class FSMExpression;
-class FSMPredicate;
+namespace FSM
+{
+        class Machine;
+        class State;
+        class Action;
+        class SleepAction;
+        class Transition;
+        class Expression;
+        class Predicate;
+}
+
+using namespace FSM;
 
 @interface FSMTest: SenTestCase
 {
-        FSM *fsm;
-        FSMState *firstState;
-        FSMState *secondState;
-        FSMAction *onEntry, *onExit, *internal;
-        FSMSleepAction *sleepAction;
-        FSMTransition *falseTransition;
-        FSMTransition *trueTransition;
-        FSMTransition *backTransition;
-        FSMPredicate *falseExpression;
-        FSMPredicate *trueExpression;
+        Machine *fsm;
+        State *firstState;
+        State *secondState;
+        Action *onEntry, *onExit, *internal;
+        SleepAction *sleepAction;
+        Transition *falseTransition;
+        Transition *trueTransition;
+        Transition *backTransition;
+        Predicate *falseExpression;
+        Predicate *trueExpression;
 }
 @end

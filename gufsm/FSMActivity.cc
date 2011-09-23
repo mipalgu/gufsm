@@ -60,7 +60,9 @@
 
 #include "FSMActivity.h"
 
-void FSMActivity::perform(int state, ActionStage stage)
+using namespace FSM;
+
+void Activity::perform(int state, ActionStage stage)
 {
         switch (stage)
         {

@@ -60,51 +60,54 @@
 
 #include <string>
 
-/**
- * Abstract expression class
- */
-class FSMExpression
+namespace FSM
 {
-public:
-        /** evaluation needs to be performed by sublcasses */
-        virtual bool evaluate() = 0;
-};
-
-/**
- * Simple boolean predicate representation
- * This still needs to be subclassed to do anything useful
- * such as querying a Whiteboard
- */
-class FSMPredicate: public FSMExpression
-{
-        std::string _name;              /// name of the predicate
-        bool _value;                    /// value of the predicate
-        bool _negation;                 /// is this a negation?
-
-public:
-        /** default constructor */
-        FSMPredicate(const std::string &p = "TRUE", bool v = true, bool neg = false):
-                        _name(p), _value(v), _negation(neg) {}
-
-        /** return the predicate name */
-        const std::string &name() { return _name; }
-
-        /** set the predicate name */
-        void setName(const std::string &n) { _name = n; }
-
-        /** return the predicate value */
-        bool value() { return _value; }
-
-        /** set the predicate value */
-        void setValue(bool v) { _value = ( v != false ); }
-
-        /** return the predicate value */
-        bool isNegation() { return _negation; }
+        /**
+         * Abstract expression class
+         */
+        class Expression
+        {
+        public:
+                /** evaluation needs to be performed by sublcasses */
+                virtual bool evaluate() = 0;
+        };
         
-        /** set the predicate value */
-        void setNegation(bool n) { _negation = ( n != false ); }
-        
-        /** return the value, negated if necessary */
-        virtual bool evaluate() { return _value ^ _negation; }
-};
+        /**
+         * Simple boolean predicate representation
+         * This still needs to be subclassed to do anything useful
+         * such as querying a Whiteboard
+         */
+        class Predicate: public Expression
+        {
+                std::string _name;              /// name of the predicate
+                bool _value;                    /// value of the predicate
+                bool _negation;                 /// is this a negation?
+                
+        public:
+                /** default constructor */
+                Predicate(const std::string &p = "TRUE", bool v = true, bool neg = false):
+                                _name(p), _value(v), _negation(neg) {}
+                /** return the predicate name */
+                const std::string &name() { return _name; }
+                
+                /** set the predicate name */
+                void setName(const std::string &n) { _name = n; }
+                
+                /** return the predicate value */
+                bool value() { return _value; }
+                
+                /** set the predicate value */
+                void setValue(bool v) { _value = ( v != false ); }
+                
+                /** return the predicate value */
+                bool isNegation() { return _negation; }
+                
+                /** set the predicate value */
+                void setNegation(bool n) { _negation = ( n != false ); }
+                
+                /** return the value, negated if necessary */
+                virtual bool evaluate() { return _value ^ _negation; }
+        };
+
+}
 #endif

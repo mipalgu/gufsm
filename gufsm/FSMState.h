@@ -61,44 +61,46 @@
 #include <string>
 #include "FSMActivity.h"
 
-class FSMTransition;
-
-typedef std::vector<FSMTransition *> FSMTransitionVector;
-typedef FSMTransitionVector::iterator FSMTransitionIterator;
-
-class FSMState
+namespace FSM
 {
-        FSMActivity _activity;  /// the activity represented by this state
-        int _stateID;           /// state number within machine
-        std::string _name;      /// name of the state
-
-        /** list of transitions away from this state */
-        FSMTransitionVector _transitions;
-
-public:
-        FSMState(int stateID = 0, const std::string name = ""):
+        class Transition;
+        
+        typedef std::vector<Transition *> TransitionVector;
+        typedef TransitionVector::iterator TransitionIterator;
+        
+        class State
+        {
+                Activity _activity;  /// the activity represented by this state
+                int _stateID;           /// state number within machine
+                std::string _name;      /// name of the state
+                
+                /** list of transitions away from this state */
+                TransitionVector _transitions;
+                
+        public:
+                State(int stateID = 0, const std::string name = ""):
                 _activity(), _stateID(stateID), _name(name) {}
-
-        /** get the numerical state ID */
-        int stateID() { return _stateID; }
-
-        /** set the numerical state ID */
-        void setStateID(int i) { _stateID = i; }
-
-        /** get the state's name */
-        const std::string &name() { return _name; }
-
-        /** set the state's name */
-        void setName(const std::string &name) { _name = name; }
-
-        /** get the state's activity */
-        FSMActivity &activity() { return _activity; }
-
-        /** get that state's transitions */
-        FSMTransitionVector &transitions() { return _transitions; }
-
-        /** add a transition */
-        void addTransition(FSMTransition *t) { _transitions.push_back(t); }
-};
-
+                
+                /** get the numerical state ID */
+                int stateID() { return _stateID; }
+                
+                /** set the numerical state ID */
+                void setStateID(int i) { _stateID = i; }
+                
+                /** get the state's name */
+                const std::string &name() { return _name; }
+                
+                /** set the state's name */
+                void setName(const std::string &name) { _name = name; }
+                
+                /** get the state's activity */
+                Activity &activity() { return _activity; }
+                
+                /** get that state's transitions */
+                TransitionVector &transitions() { return _transitions; }
+                
+                /** add a transition */
+                void addTransition(Transition *t) { _transitions.push_back(t); }
+        };
+}
 #endif

@@ -69,18 +69,20 @@
 #define ID_FIRST_STATE          1
 #define ID_SECOND_STATE         2
 
+using namespace FSM;
+
 @implementation FSMTest
 
 - (void) setUp
 {
         [super setUp];
 
-        fsm = new FSM();
+        fsm = new Machine();
         STAssertNotNil((id) fsm, @"Could not construct FSM");
         STAssertEquals((int) fsm->states().size(), 0, @"Expected 0 states, got %d",
                        fsm->states().size());
 
-        firstState = new FSMState();
+        firstState = new State();
         STAssertNotNil((id) firstState, @"Could not construct first State");
         STAssertEquals((int) firstState->activity().onEntryActions().size(), 0,
                        @"Expected empty onEntry actions list");
@@ -91,13 +93,13 @@
         firstState->setName(NAME_FIRST_STATE);
         firstState->setStateID(ID_FIRST_STATE);
 
-        onEntry = new FSMPrintStringAction("OnEntry");
+        onEntry = new PrintStringAction("OnEntry");
         STAssertNotNil((id) onEntry, @"Could not construct OnEntry Action");
-        onExit = new FSMPrintingAction<const char *>("OnExit");
+        onExit = new PrintingAction<const char *>("OnExit");
         STAssertNotNil((id) onExit, @"Could not construct OnExit Action");
-        internal = new FSMPrintingAction<int>(3);
+        internal = new PrintingAction<int>(3);
         STAssertNotNil((id) internal, @"Could not construct internal Action");
-        sleepAction = new FSMSleepAction(1001);
+        sleepAction = new SleepAction(1001);
         STAssertNotNil((id) internal, @"Could not construct sleep Action");
 
         firstState->activity().addOnEntryAction(onEntry);
@@ -114,7 +116,7 @@
         fsm->addState(firstState);
         STAssertEquals((int) fsm->states().size(), 1, @"Expected one state");
 
-        secondState = new FSMState();
+        secondState = new State();
         STAssertNotNil((id) secondState, @"Could not construct second State");
         STAssertEquals((int) secondState->activity().onEntryActions().size(), 0,
                        @"Expected empty onEntry actions list");
@@ -128,17 +130,17 @@
         fsm->addState(secondState);
         STAssertEquals((int) fsm->states().size(), 2, @"Expected two states");
 
-        falseExpression = new FSMPredicate("FALSE", true, true);
-        falseTransition = new FSMTransition(firstState, firstState, falseExpression);
-        trueExpression  = new FSMPredicate();
-        trueTransition  = new FSMTransition(firstState, secondState, trueExpression);
+        falseExpression = new Predicate("FALSE", true, true);
+        falseTransition = new Transition(firstState, firstState, falseExpression);
+        trueExpression  = new Predicate();
+        trueTransition  = new Transition(firstState, secondState, trueExpression);
 
         firstState->addTransition(falseTransition);
         firstState->addTransition(trueTransition);
         STAssertEquals((int) firstState->transitions().size(), 2, @"Expected two transitions");
 
-        backTransition = new FSMTransition(secondState, firstState,
-                                           new FSMPredicate("YES", false, true));
+        backTransition = new Transition(secondState, firstState,
+                                           new Predicate("YES", false, true));
         secondState->addTransition(backTransition);
         STAssertEquals((int) secondState->transitions().size(), 1, @"Expected one transitions");
 }
@@ -178,10 +180,10 @@
 {
         STAssertEquals(onEntry, firstState->activity().onEntryActions()[0],
                        @"Unexpected onEntry action address");
-        FSMPrintStringAction *a = (FSMPrintStringAction *) onEntry;
+        PrintStringAction *a = (PrintStringAction *) onEntry;
         STAssertTrue(a->content() == "OnEntry",
                        @"unexpected OnEntry printing action content");
-        for (FSMAction *action: firstState->activity().onEntryActions())
+        for (Action *action: firstState->activity().onEntryActions())
                 action->perform(firstState->stateID(), STAGE_ON_ENTRY, 0);
 }
 
@@ -191,11 +193,11 @@
 {
         STAssertEquals(onExit, firstState->activity().onExitActions()[0],
                        @"Unexpected onExit action address");
-        FSMPrintingAction<const char *> *a = (FSMPrintingAction<const char *> *) onExit;
+        PrintingAction<const char *> *a = (PrintingAction<const char *> *) onExit;
         STAssertTrue(strcmp(a->content(), "OnExit") == 0,
                      @"unexpected OnExit printing action content: %s",
                      a->content());
-        for (FSMAction *action: firstState->activity().onExitActions())
+        for (Action *action: firstState->activity().onExitActions())
                 action->perform(firstState->stateID(), STAGE_ON_EXIT, 0);
 }
 
@@ -205,10 +207,10 @@
 {
         STAssertEquals(internal, firstState->activity().internalActions()[0],
                        @"Unexpected internal action address");
-        FSMPrintingAction<int> *a = (FSMPrintingAction<int> *) internal;
+        PrintingAction<int> *a = (PrintingAction<int> *) internal;
         STAssertTrue(a->content() == 3,
                      @"unexpected internal printing action content");
-        for (FSMAction *action: firstState->activity().internalActions())
+        for (Action *action: firstState->activity().internalActions())
                 action->perform(firstState->stateID(), STAGE_INTERNAL, 0);
 }
 
@@ -216,7 +218,7 @@
 - (void) testSleep
 {
         STAssertEquals(sleepAction,
-                       (FSMSleepAction *) firstState->activity().internalActions()[1],
+                       (SleepAction *) firstState->activity().internalActions()[1],
                        @"Unexpected sleep action address");
         STAssertEquals(sleepAction->content(), 1001,
                      @"unexpected internal sleep action content");
@@ -238,11 +240,10 @@
                       falseExpression->name().c_str());
         STAssertTrue(backTransition->expression()->evaluate(),
                      @"Expression %s should be true",
-                     ((FSMPredicate *) backTransition->expression())->name().c_str());
-        STAssertTrue(((FSMPredicate *) backTransition->expression())->isNegation(),
+                     ((Predicate *) backTransition->expression())->name().c_str());
+        STAssertTrue(((Predicate *) backTransition->expression())->isNegation(),
                      @"Expression %s should be a negation",
-                     ((FSMPredicate *) backTransition->expression())->name().c_str());
+                     ((Predicate *) backTransition->expression())->name().c_str());
 }
 
 @end
-#include "FSMAction.h"

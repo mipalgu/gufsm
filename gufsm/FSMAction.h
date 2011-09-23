@@ -1,5 +1,5 @@
 /*
- *  FSMAction.h
+ *  Action.h
  *
  *  Created by René Hexel on 23/09/11.
  *  Copyright (c) 2011 Rene Hexel.
@@ -63,84 +63,88 @@
 #include <sstream>
 #include <iostream>
 
-enum ActionStage { STAGE_ON_ENTRY, STAGE_ON_EXIT, STAGE_INTERNAL,
-        NUM_ACTION_STAGES };
-/**
- * Abstract class for FSM actions
- */
-class FSMAction
+namespace FSM
 {
-public:
-        /** virtual destructor */
-        virtual ~FSMAction() {}
-
-        /** perform the given action with a vector of parameters */
-        virtual void performv(int state, ActionStage stage, int ac, va_list al) = 0;
-
-        /** perform the given action */
-        virtual void perform(int state, ActionStage stage, int ac = 0, ...)
+        enum ActionStage { STAGE_ON_ENTRY, STAGE_ON_EXIT, STAGE_INTERNAL,
+                NUM_ACTION_STAGES };
+        /**
+         * Abstract class for FSM actions
+         */
+        class Action
         {
-                va_list ap;
-                va_start(ap, ac);
-                performv(state, stage, ac, ap);
-                va_end(ap);
-        }
-};
+        public:
+                /** virtual destructor */
+                virtual ~Action() {}
 
-
-/**
- * Abstract template class for FSMs actions with simple content
- */
-template <typename T> class FSMContentAction: public FSMAction
-{
-protected:
-        T _content;             /// content relevant for this action
-public:
-        /** default constructor */
-        FSMContentAction() {}
-
-        /** designated constructor */
-        FSMContentAction(const T &content): _content(content) {}
-
-        /** getter method */
-        virtual const T &content() { return _content; }
-
-        /** setter method */
-        virtual void setContent(const T &c) { _content = c; }
-};
-
-
-/**
- * Printing action
- */
-template <typename T> class FSMPrintingAction: public FSMContentAction<T>
-{
-public:
-        /** printing action default constructor */
-        FSMPrintingAction(T val): FSMContentAction<T>(val) {}
-
-        /** print the content of this action */
-        virtual void performv(int state, ActionStage stage, int ac, va_list al)
+                /** perform the given action with a vector of parameters */
+                virtual void performv(int state, ActionStage stage, int ac, va_list al) = 0;
+                
+                /** perform the given action */
+                virtual void perform(int state, ActionStage stage, int ac = 0, ...)
+                {
+                        va_list ap;
+                        va_start(ap, ac);
+                        performv(state, stage, ac, ap);
+                        va_end(ap);
+                }
+        };
+        
+        
+        /**
+         * Abstract template class for FSMs actions with simple content
+         */
+        template <typename T> class ContentAction: public Action
         {
-                std::cout << this->_content << std::endl;
-        }
-};
+        protected:
+                T _content;             /// content relevant for this action
+        public:
+                /** default constructor */
+                ContentAction() {}
 
-/**
- * Printing action for strings
- */
-typedef FSMPrintingAction<std::string> FSMPrintStringAction;
+                /** designated constructor */
+                ContentAction(const T &content): _content(content) {}
+                
+                /** getter method */
+                virtual const T &content() { return _content; }
+                
+                /** setter method */
+                virtual void setContent(const T &c) { _content = c; }
+        };
+        
+        
+        /**
+         * Printing action
+         */
+        template <typename T> class PrintingAction: public ContentAction<T>
+        {
+        public:
+                /** printing action default constructor */
+                PrintingAction(T val): ContentAction<T>(val) {}
+                
+                /** print the content of this action */
+                virtual void performv(int state, ActionStage stage, int ac, va_list al)
+                {
+                        std::cout << this->_content << std::endl;
+                }
+        };
+        
+        /**
+         * Printing action for strings
+         */
+        typedef PrintingAction<std::string> PrintStringAction;
+        
+        /**
+         * Delay action: specify sleep time in milliseconds
+         */
+        class SleepAction: public ContentAction<int>
+        {
+        public:
+                /** sleep action default constructor */
+                SleepAction(int val = 1000): ContentAction<int>(val) {}
+                
+                /** sleep for the given amount of milliseconds */
+                virtual void performv(int state, ActionStage stage, int ac, va_list al);
+        };
+}
 
-/**
- * Delay action: specify sleep time in milliseconds
- */
-class FSMSleepAction: public FSMContentAction<int>
-{
-public:
-        /** sleep action default constructor */
-        FSMSleepAction(int val = 1000): FSMContentAction<int>(val) {}
-
-        /** sleep for the given amount of milliseconds */
-        virtual void performv(int state, ActionStage stage, int ac, va_list al);
-};
 #endif

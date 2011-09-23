@@ -58,37 +58,38 @@
 #ifndef gufsm_FSMTransition_h
 #define gufsm_FSMTransition_h
 
-class FSMExpression;
-class FSMState;
-
-class FSMTransition
+namespace FSM
 {
-        FSMState *_source;              /// source state
-        FSMState *_target;              /// destination state
-        FSMExpression *_expression;     /// expression to evaluate
+        class Expression;
+        class State;
+        
+        class Transition
+        {
+                State *_source;              /// source state
+                State *_target;              /// destination state
+                Expression *_expression;     /// expression to evaluate
+                
+        public:
+                /** default constructor */
+                Transition(State *s = NULL, State *t = NULL, Expression *e = NULL):
+                                _source(s), _target(t), _expression(e) {}
+                /** source state getter */
+                State *source() { return _source; }
 
-public:
-        /** default constructor */
-        FSMTransition(FSMState *s = NULL, FSMState *t = NULL,
-                      FSMExpression *e = NULL):
-                        _source(s), _target(t), _expression(e) {}
-        /** source state getter */
-        FSMState *source() { return _source; }
+                /** source state setter */
+                void setSource(State *s) { _source = s; }
 
-        /** source state setter */
-        void setSource(FSMState *s) { _source = s; }
+                /** target state getter */
+                State *target() { return _target; }
 
-        /** target state getter */
-        FSMState *target() { return _target; }
+                /** target state setter */
+                void setTarget(State *t) { _target = t; }
 
-        /** target state setter */
-        void setTarget(FSMState *t) { _target = t; }
+                /** get the current expression */
+                Expression *expression() { return _expression; }
 
-        /** get the current expression */
-        FSMExpression *expression() { return _expression; }
-
-        /** set the current expression */
-        void setExpression(FSMExpression *e) { _expression = e; }
-};
-
+                /** set the current expression */
+                void setExpression(Expression *e) { _expression = e; }
+        };
+}
 #endif
