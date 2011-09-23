@@ -62,14 +62,18 @@
 
 void FSMActivity::perform(int state, ActionStage stage)
 {
-        std::vector<FSMAction *> actions[NUM_ACTION_STAGES] =
+        switch (stage)
         {
-                _onEntryActions,
-                _onExitActions,
-                _internalActions
-        };
-
-        assert(stage >= 0 && stage < NUM_ACTION_STAGES);
-
-        perform(state, stage, actions[stage]);
+                case STAGE_ON_ENTRY:
+                        perform(state, stage, _onEntryActions);
+                        break;
+                case STAGE_ON_EXIT:
+                        perform(state, stage, _onExitActions);
+                        break;
+                case STAGE_INTERNAL:
+                        perform(state, stage, _internalActions);
+                        break;
+                default:
+                        assert(false);
+        }
 }

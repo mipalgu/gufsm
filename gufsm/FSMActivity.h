@@ -107,7 +107,7 @@ public:
         void addOnExitAction(FSMAction *a) { _onExitActions.push_back(a); }
 
         /** perform actions for state and stage */
-        void perform(int state, ActionStage stage);
+        void perform(int state, ActionStage stage = STAGE_INTERNAL);
         
         /** perform actions for state and stage */
         void performOnEntry(int state) { perform(state, STAGE_ON_ENTRY, _onEntryActions); }
