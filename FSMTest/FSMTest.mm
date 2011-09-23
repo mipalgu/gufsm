@@ -87,11 +87,11 @@
         firstState->setName(NAME_FIRST_STATE);
         firstState->setStateID(ID_FIRST_STATE);
 
-        onEntry = new FSMPrintingAction("OnEntry");
+        onEntry = new FSMPrintStringAction("OnEntry");
         STAssertNotNil((id) onEntry, @"Could not construct OnEntry Action");
-        onExit = FSMPrintingAction::create("OnExit");
+        onExit = new FSMPrintingAction<const char *>("OnExit");
         STAssertNotNil((id) onExit, @"Could not construct OnExit Action");
-        internal = FSMPrintingAction::create(3);
+        internal = new FSMPrintingAction<int>(3);
         STAssertNotNil((id) internal, @"Could not construct internal Action");
 
         firstState->activity().addOnEntryAction(onEntry);
@@ -134,7 +134,7 @@
 {
         STAssertEquals(onEntry, firstState->activity().onEntryActions()[0],
                        @"Unexpected onEntry action address");
-        FSMPrintingAction *a = (FSMPrintingAction *) onEntry;
+        FSMPrintStringAction *a = (FSMPrintStringAction *) onEntry;
         STAssertTrue(a->content() == "OnEntry",
                        @"unexpected OnEntry printing action content");
         for (FSMAction *action: firstState->activity().onEntryActions())
@@ -147,9 +147,10 @@
 {
         STAssertEquals(onExit, firstState->activity().onExitActions()[0],
                        @"Unexpected onExit action address");
-        FSMPrintingAction *a = (FSMPrintingAction *) onExit;
-        STAssertTrue(a->content() == "OnExit",
-                     @"unexpected OnExit printing action content");
+        FSMPrintingAction<const char *> *a = (FSMPrintingAction<const char *> *) onExit;
+        STAssertTrue(strcmp(a->content(), "OnExit") == 0,
+                     @"unexpected OnExit printing action content: %s",
+                     a->content());
         for (FSMAction *action: firstState->activity().onExitActions())
                 action->perform(firstState->stateID(), STAGE_ON_EXIT, 0);
 }
@@ -160,8 +161,8 @@
 {
         STAssertEquals(internal, firstState->activity().internalActions()[0],
                        @"Unexpected internal action address");
-        FSMPrintingAction *a = (FSMPrintingAction *) internal;
-        STAssertTrue(a->content() == "3",
+        FSMPrintingAction<int> *a = (FSMPrintingAction<int> *) internal;
+        STAssertTrue(a->content() == 3,
                      @"unexpected internal printing action content");
         for (FSMAction *action: firstState->activity().onEntryActions())
                 action->perform(firstState->stateID(), STAGE_INTERNAL, 0);

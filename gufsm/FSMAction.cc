@@ -56,12 +56,3 @@
  *
  */
 #include "FSMAction.h"
-
-#include <iostream>
-
-using namespace std;
-
-void FSMPrintingAction::performv(int state, ActionStage stage, int ac, va_list av)
-{
-        cout << _content << endl;
-}

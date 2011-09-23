@@ -61,6 +61,7 @@
 #include <cstdarg>
 #include <string>
 #include <sstream>
+#include <iostream>
 
 enum ActionStage { STAGE_ON_ENTRY, STAGE_ON_EXIT, STAGE_INTERNAL,
         NUM_ACTION_STAGES };
@@ -88,31 +89,46 @@ public:
 
 
 /**
- * Printing action
+ * Abstract template class for FSMs actions with simple content
  */
-class FSMPrintingAction: public FSMAction
+template <typename T> class FSMContentAction: public FSMAction
 {
-        std::string _content;
+protected:
+        T _content;             /// content relevant for this action
 public:
-        /** printing action default constructor */
-        FSMPrintingAction(std::string content = ""): _content(content) {}
+        /** default constructor */
+        FSMContentAction() {}
 
-        /** template factory method to create printing action from any streamable type */
-        template <class T> static FSMPrintingAction* create(T val)
-        {
-                std::ostringstream s;
-                s << val;
-                return new FSMPrintingAction(s.str());
-        };
+        /** designated constructor */
+        FSMContentAction(const T &content): _content(content) {}
 
         /** getter method */
-        virtual const std::string &content() { return _content; }
-        
+        virtual const T &content() { return _content; }
+
         /** setter method */
-        virtual void setContent(const std::string &s) { _content = s; }
+        virtual void setContent(const T &c) { _content = c; }
+};
+
+
+/**
+ * Printing action
+ */
+template <typename T> class FSMPrintingAction: public FSMContentAction<T>
+{
+public:
+        /** printing action default constructor */
+        FSMPrintingAction(T val): FSMContentAction<T>(val) {}
 
         /** print the content of this action */
-        virtual void performv(int state, ActionStage stage, int ac, va_list al);
+        virtual void performv(int state, ActionStage stage, int ac, va_list al)
+        {
+                std::cout << this->_content << std::endl;
+        }
 };
+
+/**
+ * Printing action for strints
+ */
+typedef FSMPrintingAction<std::string> FSMPrintStringAction;
 
 #endif
