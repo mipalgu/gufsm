@@ -75,7 +75,7 @@ public:
  * This still needs to be subclassed to do anything useful
  * such as querying a Whiteboard
  */
-class FSMPredicate: FSMExpression
+class FSMPredicate: public FSMExpression
 {
         std::string _name;              /// name of the predicate
         bool _value;                    /// value of the predicate
@@ -99,12 +99,12 @@ public:
         void setValue(bool v) { _value = ( v != false ); }
 
         /** return the predicate value */
-        bool negation() { return _negation; }
+        bool isNegation() { return _negation; }
         
         /** set the predicate value */
         void setNegation(bool n) { _negation = ( n != false ); }
         
         /** return the value, negated if necessary */
-        virtual void evaluate() { return _value ^ _negation; }
+        virtual bool evaluate() { return _value ^ _negation; }
 };
 #endif

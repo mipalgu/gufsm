@@ -59,11 +59,15 @@
 #include "FSMAction.h"
 #include "FSMActivity.h"
 #include "FSMState.h"
+#include "FSMTransition.h"
+#include "FSMExpression.h"
 
 #import "FSMTest.h"
 
 #define NAME_FIRST_STATE        "First State"
+#define NAME_SECOND_STATE       "Second State"
 #define ID_FIRST_STATE          1
+#define ID_SECOND_STATE         2
 
 @implementation FSMTest
 
@@ -106,16 +110,53 @@
         firstState->activity().addInternalAction(sleepAction);
         STAssertEquals((int) firstState->activity().internalActions().size(), 2,
                        @"Unexpected length of internal actions list");
+
         fsm->addState(firstState);
         STAssertEquals((int) fsm->states().size(), 1, @"Expected one state");
+
+        secondState = new FSMState();
+        STAssertNotNil((id) secondState, @"Could not construct second State");
+        STAssertEquals((int) secondState->activity().onEntryActions().size(), 0,
+                       @"Expected empty onEntry actions list");
+        STAssertEquals((int) secondState->activity().onExitActions().size(), 0,
+                       @"Expected empty onExit actions list");
+        STAssertEquals((int) secondState->activity().internalActions().size(), 0,
+                       @"Expected empty internal actions list");
+        secondState->setName(NAME_SECOND_STATE);
+        secondState->setStateID(ID_SECOND_STATE);
+        
+        fsm->addState(secondState);
+        STAssertEquals((int) fsm->states().size(), 2, @"Expected two states");
+
+        falseExpression = new FSMPredicate("FALSE", true, true);
+        falseTransition = new FSMTransition(firstState, firstState, falseExpression);
+        trueExpression  = new FSMPredicate();
+        trueTransition  = new FSMTransition(firstState, secondState, trueExpression);
+
+        firstState->addTransition(falseTransition);
+        firstState->addTransition(trueTransition);
+        STAssertEquals((int) firstState->transitions().size(), 2, @"Expected two transitions");
+
+        backTransition = new FSMTransition(secondState, firstState,
+                                           new FSMPredicate("YES", false, true));
+        secondState->addTransition(backTransition);
+        STAssertEquals((int) secondState->transitions().size(), 1, @"Expected one transitions");
 }
 
 - (void) tearDown
 {
         delete fsm;
         delete firstState;
+        delete secondState;
         delete onEntry;
         delete onExit;
+        delete internal;
+
+        delete sleepAction;
+        delete falseTransition;
+        delete trueTransition;
+        delete falseExpression;
+        delete trueExpression;
 
         [super tearDown];
 }
@@ -183,6 +224,24 @@
         sleepAction->perform(firstState->stateID(), STAGE_INTERNAL, 0);
         time_t t2 = time(NULL);
         STAssertEquals(t1 + 1, t2, @"unexpected sleep time");
+}
+
+- (void) testExpressions
+{
+        STAssertTrue(trueExpression->evaluate(), @"Expression %s should be true",
+                      trueExpression->name().c_str());
+        STAssertFalse(trueExpression->isNegation(), @"Expression %s should not be a negation",
+                     trueExpression->name().c_str());
+        STAssertFalse(falseExpression->evaluate(), @"Expression %s should be false",
+                      falseExpression->name().c_str());
+        STAssertTrue(falseExpression->isNegation(), @"Expression %s should be a negation",
+                      falseExpression->name().c_str());
+        STAssertTrue(backTransition->expression()->evaluate(),
+                     @"Expression %s should be true",
+                     ((FSMPredicate *) backTransition->expression())->name().c_str());
+        STAssertTrue(((FSMPredicate *) backTransition->expression())->isNegation(),
+                     @"Expression %s should be a negation",
+                     ((FSMPredicate *) backTransition->expression())->name().c_str());
 }
 
 @end

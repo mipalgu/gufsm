@@ -61,12 +61,21 @@ class FSM;
 class FSMState;
 class FSMAction;
 class FSMSleepAction;
+class FSMTransition;
+class FSMExpression;
+class FSMPredicate;
 
 @interface FSMTest: SenTestCase
 {
         FSM *fsm;
         FSMState *firstState;
+        FSMState *secondState;
         FSMAction *onEntry, *onExit, *internal;
         FSMSleepAction *sleepAction;
+        FSMTransition *falseTransition;
+        FSMTransition *trueTransition;
+        FSMTransition *backTransition;
+        FSMPredicate *falseExpression;
+        FSMPredicate *trueExpression;
 }
 @end

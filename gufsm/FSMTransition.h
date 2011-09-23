@@ -68,6 +68,10 @@ class FSMTransition
         FSMExpression *_expression;     /// expression to evaluate
 
 public:
+        /** default constructor */
+        FSMTransition(FSMState *s = NULL, FSMState *t = NULL,
+                      FSMExpression *e = NULL):
+                        _source(s), _target(t), _expression(e) {}
         /** source state getter */
         FSMState *source() { return _source; }
 
