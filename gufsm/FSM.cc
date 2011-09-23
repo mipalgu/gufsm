@@ -56,4 +56,12 @@
  *
  */
 #include "FSM.h"
+#include "FSMState.h"
 
+using namespace FSM;
+
+bool Machine::executeOnce()
+{
+        
+        return _currentState->transitions().size() != 0;
+}

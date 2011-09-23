@@ -66,12 +66,23 @@ namespace FSM
         
         typedef std::vector<State *> StateVector;
         typedef StateVector::iterator StateIterator;
-        
+
+        /**
+         * State machine class
+         */
         class Machine
         {
-                StateVector _states;        /// machine states
-                
+                StateVector _states;    /// machine states
+                State *_currentState;   /// current state of the machine
+                State *_previousState;  /// previous state
+
         public:
+                /** constructor */
+                Machine(State *initial = NULL): _currentState(initial), _previousState(NULL), _states()
+                {
+                        addState(initial);
+                }
+
                 /** states getter method */
                 StateVector &states() { return _states; }
                 
@@ -80,6 +91,24 @@ namespace FSM
                 
                 /** add a state */
                 void addState(State *s) { _states.push_back(s); }
+
+                /** put the state machine into its initial state */
+                virtual void initialise()
+                {
+                        _currentState = _states[0];
+                        _previousState = NULL;
+                }
+
+                /**
+                 * execute one iteration of the current state
+                 * @return true if the state machine should continue
+                 */
+                virtual bool executeOnce();
+
+                /**
+                 * execute until accepting state is encountered
+                 */
+                virtual void execute() { while (executeOnce()) ; }
         };
 }
 
