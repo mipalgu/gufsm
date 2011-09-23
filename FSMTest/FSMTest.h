@@ -1,6 +1,6 @@
 /*
- *  FSMActivity.h
- *
+ *  FSMTest.h
+ *  
  *  Created by René Hexel on 23/09/11.
  *  Copyright (c) 2011 Rene Hexel.
  *  All rights reserved.
@@ -55,69 +55,16 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef gufsm_FSMActivity_h
-#define gufsm_FSMActivity_h
+#import <SenTestingKit/SenTestingKit.h>
 
-#include <vector>
-#include "FSMAction.h"
+class FSM;
+class FSMState;
+class FSMAction;
 
-/**
- * An activity is a set of actions for onEntry, onExit, and internal stages
- */
-class FSMActivity
+@interface FSMTest: SenTestCase
 {
-        std::vector <FSMAction *> _onEntryActions;   /// on entry actions
-        std::vector <FSMAction *> _internalActions;  /// internal actions
-        std::vector <FSMAction *> _onExitActions;    /// on exit actions
-        
-        /** perform actions */
-        void perform(int state, ActionStage stage,
-                     const std::vector <FSMAction *> &actions)
-        {
-                for (FSMAction *a: actions)
-                        a->perform(state, stage);
-        }
-        
-public:
-        /** return the std::vector of actions that happen on entry */
-        std::vector <FSMAction *> &onEntryActions() { return _onEntryActions; }
-
-        /** set the on entry actions */
-        void setOnEntryActions(const std::vector <FSMAction *> &av) { _onEntryActions = av; }
-
-        /** add an on entry action */
-        void addOnEntryAction(FSMAction *a) { _onEntryActions.push_back(a); }
-
-        /** return the std::vector of actions that happen internally */
-        std::vector <FSMAction *> &internalActions() { return _internalActions; }
-        
-        /** set the on entry actions */
-        void setInternalActions(const std::vector <FSMAction *> &av) { _internalActions = av; }
-
-        /** add an internal action */
-        void addInternalAction(FSMAction *a) { _internalActions.push_back(a); }
-        
-        /** return the std::vector of actions that happen on exit */
-        std::vector <FSMAction *> &onExitActions() { return _onExitActions; }
-
-        /** set the on exit actions */
-        void setOnExitActions(const std::vector <FSMAction *> &av) { _onExitActions = av; }
-
-        /** add an on exit action */
-        void addOnExitAction(FSMAction *a) { _onExitActions.push_back(a); }
-
-        /** perform actions for state and stage */
-        void perform(int state, ActionStage stage);
-        
-        /** perform actions for state and stage */
-        void performOnEntry(int state) { perform(state, STAGE_ON_ENTRY, _onEntryActions); }
-
-        /** perform actions for state and stage */
-        void performInternal(int state) { perform(state, STAGE_INTERNAL, _internalActions); }
-
-        /** perform actions for state and stage */
-        void performOnExit(int state) { perform(state, STAGE_ON_EXIT, _onExitActions); }
-};
-
-
-#endif
+        FSM *fsm;
+        FSMState *firstState;
+        FSMAction *onEntry, *onExit, *internal;
+}
+@end

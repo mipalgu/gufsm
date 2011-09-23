@@ -12,6 +12,13 @@
 		F16CC30C142C0CDE001F788B /* FSM.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30B142C0CDE001F788B /* FSM.cc */; };
 		F16CC310142C0F86001F788B /* FSMState.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30F142C0F86001F788B /* FSMState.cc */; };
 		F16CC313142C1247001F788B /* FSMActivity.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC312142C1247001F788B /* FSMActivity.cc */; };
+		F16CC31D142C2AD9001F788B /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F16CC31C142C2AD9001F788B /* SenTestingKit.framework */; };
+		F16CC31F142C2AD9001F788B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F16CC31E142C2AD9001F788B /* Cocoa.framework */; };
+		F16CC329142C2AD9001F788B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F16CC327142C2AD9001F788B /* InfoPlist.strings */; };
+		F16CC32C142C2AD9001F788B /* FSMTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = F16CC32B142C2AD9001F788B /* FSMTest.mm */; };
+		F16CC331142C2B88001F788B /* FSM.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30B142C0CDE001F788B /* FSM.cc */; };
+		F16CC332142C2B88001F788B /* FSMActivity.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC312142C1247001F788B /* FSMActivity.cc */; };
+		F16CC333142C2B88001F788B /* FSMState.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30F142C0F86001F788B /* FSMState.cc */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,6 +45,17 @@
 		F16CC311142C10B3001F788B /* FSMActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMActivity.h; sourceTree = "<group>"; };
 		F16CC312142C1247001F788B /* FSMActivity.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMActivity.cc; sourceTree = "<group>"; };
 		F16CC314142C146B001F788B /* FSMAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMAction.h; sourceTree = "<group>"; };
+		F16CC31A142C2AD9001F788B /* FSMTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FSMTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F16CC31C142C2AD9001F788B /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		F16CC31E142C2AD9001F788B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		F16CC321142C2AD9001F788B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		F16CC322142C2AD9001F788B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F16CC323142C2AD9001F788B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F16CC326142C2AD9001F788B /* FSMTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FSMTest-Info.plist"; sourceTree = "<group>"; };
+		F16CC328142C2AD9001F788B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F16CC32A142C2AD9001F788B /* FSMTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMTest.h; sourceTree = "<group>"; };
+		F16CC32B142C2AD9001F788B /* FSMTest.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = FSMTest.mm; sourceTree = "<group>"; };
+		F16CC32D142C2AD9001F788B /* FSMTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FSMTest-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +66,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F16CC316142C2AD9001F788B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F16CC31D142C2AD9001F788B /* SenTestingKit.framework in Frameworks */,
+				F16CC31F142C2AD9001F788B /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -55,6 +82,8 @@
 			isa = PBXGroup;
 			children = (
 				F16CC2FD142C0C01001F788B /* gufsm */,
+				F16CC324142C2AD9001F788B /* FSMTest */,
+				F16CC31B142C2AD9001F788B /* Frameworks */,
 				F16CC2FB142C0C01001F788B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -63,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				F16CC2FA142C0C01001F788B /* gufsm */,
+				F16CC31A142C2AD9001F788B /* FSMTest.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -81,6 +111,46 @@
 				F16CC30E142C0F62001F788B /* FSMState.h */,
 			);
 			path = gufsm;
+			sourceTree = "<group>";
+		};
+		F16CC31B142C2AD9001F788B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F16CC31C142C2AD9001F788B /* SenTestingKit.framework */,
+				F16CC31E142C2AD9001F788B /* Cocoa.framework */,
+				F16CC320142C2AD9001F788B /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F16CC320142C2AD9001F788B /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F16CC321142C2AD9001F788B /* AppKit.framework */,
+				F16CC322142C2AD9001F788B /* CoreData.framework */,
+				F16CC323142C2AD9001F788B /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		F16CC324142C2AD9001F788B /* FSMTest */ = {
+			isa = PBXGroup;
+			children = (
+				F16CC32A142C2AD9001F788B /* FSMTest.h */,
+				F16CC32B142C2AD9001F788B /* FSMTest.mm */,
+				F16CC325142C2AD9001F788B /* Supporting Files */,
+			);
+			path = FSMTest;
+			sourceTree = "<group>";
+		};
+		F16CC325142C2AD9001F788B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F16CC326142C2AD9001F788B /* FSMTest-Info.plist */,
+				F16CC327142C2AD9001F788B /* InfoPlist.strings */,
+				F16CC32D142C2AD9001F788B /* FSMTest-Prefix.pch */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -102,6 +172,24 @@
 			productName = gufsm;
 			productReference = F16CC2FA142C0C01001F788B /* gufsm */;
 			productType = "com.apple.product-type.tool";
+		};
+		F16CC319142C2AD9001F788B /* FSMTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F16CC32E142C2AD9001F788B /* Build configuration list for PBXNativeTarget "FSMTest" */;
+			buildPhases = (
+				F16CC315142C2AD9001F788B /* Sources */,
+				F16CC316142C2AD9001F788B /* Frameworks */,
+				F16CC317142C2AD9001F788B /* Resources */,
+				F16CC318142C2AD9001F788B /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FSMTest;
+			productName = FSMTest;
+			productReference = F16CC31A142C2AD9001F788B /* FSMTest.octest */;
+			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -125,9 +213,37 @@
 			projectRoot = "";
 			targets = (
 				F16CC2F9142C0C01001F788B /* gufsm */,
+				F16CC319142C2AD9001F788B /* FSMTest */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F16CC317142C2AD9001F788B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F16CC329142C2AD9001F788B /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F16CC318142C2AD9001F788B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F16CC2F6142C0C01001F788B /* Sources */ = {
@@ -141,7 +257,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F16CC315142C2AD9001F788B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F16CC32C142C2AD9001F788B /* FSMTest.mm in Sources */,
+				F16CC331142C2B88001F788B /* FSM.cc in Sources */,
+				F16CC332142C2B88001F788B /* FSMActivity.cc in Sources */,
+				F16CC333142C2B88001F788B /* FSMState.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F16CC327142C2AD9001F788B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F16CC328142C2AD9001F788B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F16CC302142C0C01001F788B /* Debug */ = {
@@ -203,6 +341,30 @@
 			};
 			name = Release;
 		};
+		F16CC32F142C2AD9001F788B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FSMTest/FSMTest-Prefix.pch";
+				INFOPLIST_FILE = "FSMTest/FSMTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		F16CC330142C2AD9001F788B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FSMTest/FSMTest-Prefix.pch";
+				INFOPLIST_FILE = "FSMTest/FSMTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -220,6 +382,14 @@
 			buildConfigurations = (
 				F16CC305142C0C01001F788B /* Debug */,
 				F16CC306142C0C01001F788B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F16CC32E142C2AD9001F788B /* Build configuration list for PBXNativeTarget "FSMTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F16CC32F142C2AD9001F788B /* Debug */,
+				F16CC330142C2AD9001F788B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

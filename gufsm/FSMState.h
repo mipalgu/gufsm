@@ -84,7 +84,7 @@ public:
         void setName(const std::string &name) { _name = name; }
 
         /** get the state's activity */
-        const FSMActivity &activity() { return _activity; }
+        FSMActivity &activity() { return _activity; }
 };
 
 #endif

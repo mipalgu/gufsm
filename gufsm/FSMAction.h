@@ -72,7 +72,7 @@ public:
         virtual ~FSMAction() {}
 
         /** perform the given action with a vector of parameters */
-        virtual void performv(int state, ActionStage stage, int ac, va_list al) = 0;
+        virtual void performv(int state, ActionStage stage, int ac, va_list al) {};
 
         /** perform the given action */
         virtual void perform(int state, ActionStage stage, int ac = 0, ...)
