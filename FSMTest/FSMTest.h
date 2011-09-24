@@ -59,7 +59,7 @@
 
 namespace FSM
 {
-        class Machine;
+        class SuspensibleMachine;
         class State;
         class Action;
         class SleepAction;
@@ -70,7 +70,7 @@ namespace FSM
 
 @interface FSMTest: SenTestCase
 {
-        FSM::Machine *fsm;
+        FSM::SuspensibleMachine *fsm;
         FSM::State *firstState;
         FSM::State *secondState;
         FSM::State *exitState;

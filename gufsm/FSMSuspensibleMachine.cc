@@ -1,7 +1,7 @@
 /*
- *  FSM.h
+ *  FSMSuspensibleMachine.cc
  *  
- *  Created by René Hexel on 23/09/11.
+ *  Created by René Hexel on 24/09/11.
  *  Copyright (c) 2011 Rene Hexel.
  *  All rights reserved.
  *
@@ -55,15 +55,57 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef gufsm_FSM_h
-#define gufsm_FSM_h
-
-#include "FSMAction.h"
-#include "FSMActivity.h"
-#include "FSMExpression.h"
-#include "FSMachine.h"
-#include "FSMState.h"
 #include "FSMSuspensibleMachine.h"
-#include "FSMTransition.h"
+#include "FSMState.h"
 
-#endif
+using namespace FSM;
+
+SuspensibleMachine::~SuspensibleMachine()
+{
+        if (_deleteSuspendState && _suspendState)
+                delete _suspendState;
+}
+
+
+void SuspensibleMachine::setSuspendState(State *s, bool del)
+{
+        if (_deleteSuspendState && _suspendState)
+                delete _suspendState;
+
+        _suspendState = s;        
+        _deleteSuspendState = del;
+}
+
+
+void SuspensibleMachine::suspend()
+{
+        if (!_suspendState)
+        {
+                _suspendState = new State(-1, "Suspended");
+                if (!_suspendState)
+                        throw "Unable to create dynamic suspend state";
+                _deleteSuspendState = true;
+        }
+
+        setPreviousState(currentState());
+        setCurrentState(_suspendState);
+}
+
+
+void SuspensibleMachine::resume()
+{
+        State *curr = currentState();
+
+        /*
+         * only do anything if suspended
+         */
+        if (curr != _suspendState)
+                return;
+
+        State *prev = previousState();
+        if (!prev) prev = states()[0];
+
+        setPreviousState(currentState());
+        setCurrentState(prev);
+}
+

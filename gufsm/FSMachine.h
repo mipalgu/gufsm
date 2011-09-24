@@ -91,7 +91,11 @@ namespace FSM
                         _context(ctx), _currentState(initial),
                         _previousState(NULL), _states()
                 {
-                        if (initial) addState(initial);
+                        if (initial)
+                        {
+                                addState(initial);
+                                initialise();
+                        }
                 }
 
                 /** states getter method */
@@ -106,9 +110,15 @@ namespace FSM
                 /** get the current state */
                 State *currentState() { return _currentState; }
 
+                /** set the current state */
+                void setCurrentState(State *s) { _currentState = s; }
+
                 /** get the preceding state */
                 State *previousState() { return _previousState; }
-                
+
+                /** set the preceding state */
+                void setPreviousState(State *s) { _previousState = s; }
+
                 /** get the current state's start time */
                 timeval &stateTime() { return _state_time; }
 
@@ -144,6 +154,13 @@ namespace FSM
                  * execute until accepting state is encountered
                  */
                 virtual void execute() { while (executeOnce()) ; }
+
+                /**
+                 * restart the current state machine from initial state
+                 * @param initialState state to start from (default: first state)
+                 * @return previous state the machine was in
+                 */
+                virtual State *restart(State *initialState = NULL);
         };
 }
 

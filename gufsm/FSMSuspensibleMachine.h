@@ -1,7 +1,7 @@
 /*
- *  FSM.cc
+ *  FSMSuspensibleMachine.h
  *  
- *  Created by René Hexel on 23/09/11.
+ *  Created by René Hexel on 24/09/11.
  *  Copyright (c) 2011 Rene Hexel.
  *  All rights reserved.
  *
@@ -55,59 +55,44 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#include <cassert>
-#include "FSM.h"
-#include "FSMState.h"
-#include "FSMTransition.h"
-#include "FSMExpression.h"
+#ifndef gufsm_FSMSuspensibleMachine_h
+#define gufsm_FSMSuspensibleMachine_h
 
-using namespace FSM;
+#include "FSMachine.h"
 
-bool Machine::executeOnce()
+namespace FSM
 {
-        assert(_currentState);                  // need a valid state
+        class State;
 
-        /*
-         * perform onEntry activities if this is a new state
-         */
-        if (_currentState != _previousState)    // entering a new state?
+        class SuspensibleMachine: public Machine
         {
-                gettimeofday(&_state_time, NULL);
-                _activities_count = 0;
-                _currentState->activity().performOnEntry(this);
-                gettimeofday(&_actty_time, NULL);
-        }
-        /*
-         * check all transitions to see if state change is required
-         */
-        Transition *firingTransition = NULL;
-        for (Transition *t: _currentState->transitions())       // foreach t
-                if (t->expression()->evaluate())                // does t fire?
-                {
-                        firingTransition = t;                   // yes, then
-                        break;                                  // we are done
-                }
+                State *_suspendState;           /// the suspend state
+                bool _deleteSuspendState;       /// should delete in destructor?
+        public:
+                /** constructor */
+                SuspensibleMachine(State *initialState = NULL, Context *ctx = NULL,
+                                   State *s = NULL, bool del = false):
+                                Machine(initialState, ctx), _suspendState(s),
+                                _deleteSuspendState(del) {}
+                /** destructor */
+                virtual ~SuspensibleMachine();
 
-        _previousState = _currentState;
+                /** suspend state getter method */
+                State *suspendState() { return _suspendState; }
 
-        /*
-         * switch state and perform onExit activities if a transition fired
-         */
-        if (firingTransition)                   // new state required?
-        {
-                _currentState = firingTransition->target();     // target state
-                _previousState->activity().performOnExit(this); // onExit act
-                return true;
-        }
+                /** suspend state setter */
+                void setSuspendState(State *s, bool del = false);
 
-        /*
-         * no transition fired, so we perform internal activities
-         */
-        _currentState->activity().performInternal(this);
-        _activities_count++;
+                /** tell whether this machine is suspended */
+                bool isSuspended() { return currentState() == _suspendState; }
 
-        /*
-         * return and indicate whether the machine should keep going
-         */
-        return _previousState->transitions().size() != 0;
+                /** suspend this state machine */
+                virtual void suspend();
+
+                /** resume this state machine where it left off */
+                virtual void resume();
+        };
 }
+
+
+#endif

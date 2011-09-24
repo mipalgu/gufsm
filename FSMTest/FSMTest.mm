@@ -56,11 +56,6 @@
  *
  */
 #include "FSM.h"
-#include "FSMAction.h"
-#include "FSMActivity.h"
-#include "FSMState.h"
-#include "FSMTransition.h"
-#include "FSMExpression.h"
 
 #import "FSMTest.h"
 
@@ -79,8 +74,9 @@ using namespace FSM;
 {
         [super setUp];
 
-        fsm = new Machine(NULL, (Context *) self);
+        fsm = new SuspensibleMachine(NULL, (Context *) self);
         STAssertNotNil((id) fsm, @"Could not construct FSM");
+        STAssertNil((id) fsm->suspendState(), @"should not have a suspend state");
         STAssertEquals((int) fsm->states().size(), 0, @"Expected 0 states, got %d",
                        fsm->states().size());
 
@@ -187,6 +183,7 @@ using namespace FSM;
          * run once
          */
         fsm->initialise();
+        STAssertFalse(fsm->isSuspended(), @"should not be suspended");
         STAssertTrue(fsm->previousState() == NULL, @"Unexpected previous state");
         STAssertEquals(fsm->currentState(), firstState, @"Unexpected initial state");
         bool cont = fsm->executeOnce();
@@ -197,12 +194,40 @@ using namespace FSM;
         STAssertTrue(cont, @"State machine should not be done yet");
         STAssertEquals(fsm->currentState(), exitState, @"Unexpected current state");
         STAssertEquals(fsm->previousState(), secondState, @"Unexpected previous state");
+        /*
+         * suspend
+         */
+        fsm->suspend();
+        STAssertTrue(fsm->isSuspended(), @"should now be suspended");
+        STAssertNotNil((id) fsm->suspendState(), @"should now have a suspend state");
+        STAssertEquals(fsm->currentState(), fsm->suspendState(), @"Unexpected suspend state");
+        STAssertEquals(fsm->previousState(), exitState, @"Unexpected previous state");
+        /*
+         * resume
+         */
+        fsm->resume();
+        STAssertFalse(fsm->isSuspended(), @"should not be suspended");
+        STAssertNotNil((id) fsm->suspendState(), @"should still have a suspend state");
+        STAssertEquals(fsm->previousState(), fsm->suspendState(), @"Unexpected previous state");
+        STAssertEquals(fsm->currentState(), exitState, @"Unexpected state (should be exit state)");
         cont = fsm->executeOnce();
         STAssertFalse(cont, @"State machine should be done by now");
         /*
-         * run again
+         * run again (just once), this time from second state
          */
-        fsm->initialise();
+        State *last = fsm->restart(secondState);
+        STAssertFalse(fsm->isSuspended(), @"should not be suspended");
+        STAssertEquals(last, exitState, @"Unexpected state prior to restart");
+        STAssertTrue(fsm->previousState() == NULL, @"Unexpected previous state");
+        STAssertEquals(fsm->currentState(), secondState, @"Unexpected initial state");
+        fsm->executeOnce();
+        STAssertEquals(fsm->currentState(), exitState, @"Unexpected state");
+        /*
+         * run fully, from first state
+         */
+        last = fsm->restart();
+        STAssertFalse(fsm->isSuspended(), @"should not be suspended");
+        STAssertEquals(last, exitState, @"Unexpected state prior to restart");
         STAssertTrue(fsm->previousState() == NULL, @"Unexpected previous state");
         STAssertEquals(fsm->currentState(), firstState, @"Unexpected initial state");
         fsm->execute();

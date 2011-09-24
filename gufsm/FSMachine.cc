@@ -111,3 +111,13 @@ bool Machine::executeOnce()
          */
         return _previousState->transitions().size() != 0;
 }
+
+State *Machine::restart(State *initialState)
+{
+        State *oldState = _currentState;
+
+        initialise();
+        if (initialState) _currentState = initialState;
+
+        return oldState;
+}
