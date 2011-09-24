@@ -64,6 +64,7 @@
 namespace FSM
 {
         class State;
+        class Context;
         
         typedef std::vector<State *> StateVector;
         typedef StateVector::iterator StateIterator;
@@ -73,6 +74,8 @@ namespace FSM
          */
         class Machine
         {
+                Context *_context;      /// context used by behaviour
+
                 StateVector _states;    /// machine states
                 State *_currentState;   /// current state of the machine
                 State *_previousState;  /// previous state
@@ -84,7 +87,9 @@ namespace FSM
 
         public:
                 /** constructor */
-                Machine(State *initial = NULL): _currentState(initial), _previousState(NULL), _states()
+                Machine(State *initial = NULL, Context *ctx = NULL):
+                        _context(ctx), _currentState(initial),
+                        _previousState(NULL), _states()
                 {
                         if (initial) addState(initial);
                 }
@@ -112,6 +117,12 @@ namespace FSM
 
                 /** set the internal activities counter */
                 void setActivitiesCount(long n = 0) { _activities_count = n; }
+
+                /** context getter */
+                Context *context() { return _context; }
+
+                /** context setter */
+                void setContext(Context *ctx = NULL) { _context = ctx; }
 
                 /** put the state machine into its initial state */
                 virtual void initialise()

@@ -77,7 +77,7 @@ using namespace FSM;
 {
         [super setUp];
 
-        fsm = new Machine();
+        fsm = new Machine(NULL, (Context *) self);
         STAssertNotNil((id) fsm, @"Could not construct FSM");
         STAssertEquals((int) fsm->states().size(), 0, @"Expected 0 states, got %d",
                        fsm->states().size());
@@ -165,6 +165,7 @@ using namespace FSM;
 
 - (void) testFSM
 {
+        STAssertEquals(fsm->context(), (Context *) self, @"Unexpected context");
 }
 
 - (void) testFirstState
