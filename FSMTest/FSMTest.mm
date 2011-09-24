@@ -66,8 +66,10 @@
 
 #define NAME_FIRST_STATE        "First State"
 #define NAME_SECOND_STATE       "Second State"
+#define NAME_EXIT_STATE       "Exit State"
 #define ID_FIRST_STATE          1
 #define ID_SECOND_STATE         2
+#define ID_EXIT_STATE           3
 
 using namespace FSM;
 
@@ -130,6 +132,20 @@ using namespace FSM;
         fsm->addState(secondState);
         STAssertEquals((int) fsm->states().size(), 2, @"Expected two states");
 
+        exitState = new State();
+        STAssertNotNil((id) exitState, @"Could not construct exit State");
+        STAssertEquals((int) exitState->activity().onEntryActions().size(), 0,
+                       @"Expected empty onEntry actions list");
+        STAssertEquals((int) exitState->activity().onExitActions().size(), 0,
+                       @"Expected empty onExit actions list");
+        STAssertEquals((int) exitState->activity().internalActions().size(), 0,
+                       @"Expected empty internal actions list");
+        exitState->setName(NAME_EXIT_STATE);
+        exitState->setStateID(ID_EXIT_STATE);
+        
+        fsm->addState(exitState);
+        STAssertEquals((int) fsm->states().size(), 3, @"Expected three states");
+        
         falseExpression = new Predicate("FALSE", true, true);
         falseTransition = new Transition(firstState, firstState, falseExpression);
         trueExpression  = new Predicate();
@@ -139,10 +155,11 @@ using namespace FSM;
         firstState->addTransition(trueTransition);
         STAssertEquals((int) firstState->transitions().size(), 2, @"Expected two transitions");
 
-        backTransition = new Transition(secondState, firstState,
+        finalTransition = new Transition(secondState, exitState,
                                            new Predicate("YES", false, true));
-        secondState->addTransition(backTransition);
+        secondState->addTransition(finalTransition);
         STAssertEquals((int) secondState->transitions().size(), 1, @"Expected one transitions");
+        STAssertEquals((int) exitState->transitions().size(), 0, @"Expected no transitions");
 }
 
 - (void) tearDown
@@ -166,14 +183,56 @@ using namespace FSM;
 - (void) testFSM
 {
         STAssertEquals(fsm->context(), (Context *) self, @"Unexpected context");
+        /*
+         * run once
+         */
+        fsm->initialise();
+        STAssertTrue(fsm->previousState() == NULL, @"Unexpected previous state");
+        STAssertEquals(fsm->currentState(), firstState, @"Unexpected initial state");
+        bool cont = fsm->executeOnce();
+        STAssertTrue(cont, @"State machine should not be done yet");
+        STAssertEquals(fsm->currentState(), secondState, @"Unexpected second state");
+        STAssertEquals(fsm->previousState(), firstState, @"Unexpected previous state");
+        cont = fsm->executeOnce();
+        STAssertTrue(cont, @"State machine should not be done yet");
+        STAssertEquals(fsm->currentState(), exitState, @"Unexpected current state");
+        STAssertEquals(fsm->previousState(), secondState, @"Unexpected previous state");
+        cont = fsm->executeOnce();
+        STAssertFalse(cont, @"State machine should be done by now");
+        /*
+         * run again
+         */
+        fsm->initialise();
+        STAssertTrue(fsm->previousState() == NULL, @"Unexpected previous state");
+        STAssertEquals(fsm->currentState(), firstState, @"Unexpected initial state");
+        fsm->execute();
+        STAssertEquals(fsm->currentState(), exitState, @"Unexpected exit state");
 }
 
 - (void) testFirstState
 {
-        STAssertEquals(firstState, fsm->states()[0],
+        STAssertEquals(fsm->states()[0], firstState,
                        @"Unexpected first state address");
         STAssertEquals(firstState->stateID(), ID_FIRST_STATE,
                        @"Unexpected first state id");
+}
+
+
+- (void) testSecondState
+{
+        STAssertEquals(fsm->states()[1], secondState,
+                       @"Unexpected second state address");
+        STAssertEquals(secondState->stateID(), ID_SECOND_STATE,
+                       @"Unexpected second state id");
+}
+
+
+- (void) testFinalState
+{
+        STAssertEquals(fsm->states()[2], exitState,
+                       @"Unexpected exit state address");
+        STAssertEquals(exitState->stateID(), ID_EXIT_STATE,
+                       @"Unexpected exit state id");
 }
 
 
@@ -239,12 +298,12 @@ using namespace FSM;
                       falseExpression->name().c_str());
         STAssertTrue(falseExpression->isNegation(), @"Expression %s should be a negation",
                       falseExpression->name().c_str());
-        STAssertTrue(backTransition->expression()->evaluate(),
+        STAssertTrue(finalTransition->expression()->evaluate(),
                      @"Expression %s should be true",
-                     ((Predicate *) backTransition->expression())->name().c_str());
-        STAssertTrue(((Predicate *) backTransition->expression())->isNegation(),
+                     ((Predicate *) finalTransition->expression())->name().c_str());
+        STAssertTrue(((Predicate *) finalTransition->expression())->isNegation(),
                      @"Expression %s should be a negation",
-                     ((Predicate *) backTransition->expression())->name().c_str());
+                     ((Predicate *) finalTransition->expression())->name().c_str());
 }
 
 @end

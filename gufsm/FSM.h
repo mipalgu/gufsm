@@ -106,6 +106,9 @@ namespace FSM
                 /** get the current state */
                 State *currentState() { return _currentState; }
 
+                /** get the preceding state */
+                State *previousState() { return _previousState; }
+                
                 /** get the current state's start time */
                 timeval &stateTime() { return _state_time; }
 

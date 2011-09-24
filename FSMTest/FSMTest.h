@@ -73,11 +73,12 @@ namespace FSM
         FSM::Machine *fsm;
         FSM::State *firstState;
         FSM::State *secondState;
+        FSM::State *exitState;
         FSM::Action *onEntry, *onExit, *internal;
         FSM::SleepAction *sleepAction;
         FSM::Transition *falseTransition;
         FSM::Transition *trueTransition;
-        FSM::Transition *backTransition;
+        FSM::Transition *finalTransition;
         FSM::Predicate *falseExpression;
         FSM::Predicate *trueExpression;
 }
