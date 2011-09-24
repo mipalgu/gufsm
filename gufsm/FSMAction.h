@@ -65,6 +65,8 @@
 
 namespace FSM
 {
+        class Machine;
+
         enum ActionStage { STAGE_ON_ENTRY, STAGE_ON_EXIT, STAGE_INTERNAL,
                 NUM_ACTION_STAGES };
         /**
@@ -77,14 +79,14 @@ namespace FSM
                 virtual ~Action() {}
 
                 /** perform the given action with a vector of parameters */
-                virtual void performv(int state, ActionStage stage, int ac, va_list al) = 0;
+                virtual void performv(Machine *, ActionStage, int, va_list) = 0;
                 
                 /** perform the given action */
-                virtual void perform(int state, ActionStage stage, int ac = 0, ...)
+                virtual void perform(Machine *m, ActionStage stage, int ac = 0, ...)
                 {
                         va_list ap;
                         va_start(ap, ac);
-                        performv(state, stage, ac, ap);
+                        performv(m, stage, ac, ap);
                         va_end(ap);
                 }
         };
@@ -122,7 +124,7 @@ namespace FSM
                 PrintingAction(T val): ContentAction<T>(val) {}
                 
                 /** print the content of this action */
-                virtual void performv(int state, ActionStage stage, int ac, va_list al)
+                virtual void performv(Machine *, ActionStage, int, va_list)
                 {
                         std::cout << this->_content << std::endl;
                 }
@@ -143,7 +145,7 @@ namespace FSM
                 SleepAction(int val = 1000): ContentAction<int>(val) {}
                 
                 /** sleep for the given amount of milliseconds */
-                virtual void performv(int state, ActionStage stage, int ac, va_list al);
+                virtual void performv(Machine *, ActionStage, int, va_list);
         };
 }
 

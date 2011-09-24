@@ -62,18 +62,18 @@
 
 using namespace FSM;
 
-void Activity::perform(int state, ActionStage stage)
+void Activity::perform(Machine *m, ActionStage stage)
 {
         switch (stage)
         {
                 case STAGE_ON_ENTRY:
-                        perform(state, stage, _onEntryActions);
+                        perform(m, stage, _onEntryActions);
                         break;
                 case STAGE_ON_EXIT:
-                        perform(state, stage, _onExitActions);
+                        perform(m, stage, _onExitActions);
                         break;
                 case STAGE_INTERNAL:
-                        perform(state, stage, _internalActions);
+                        perform(m, stage, _internalActions);
                         break;
                 default:
                         assert(false);

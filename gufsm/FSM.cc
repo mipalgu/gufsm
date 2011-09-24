@@ -55,13 +55,59 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#include <cassert>
 #include "FSM.h"
 #include "FSMState.h"
+#include "FSMTransition.h"
+#include "FSMExpression.h"
 
 using namespace FSM;
 
 bool Machine::executeOnce()
 {
-        
-        return _currentState->transitions().size() != 0;
+        assert(_currentState);                  // need a valid state
+
+        /*
+         * perform onEntry activities if this is a new state
+         */
+        if (_currentState != _previousState)    // entering a new state?
+        {
+                gettimeofday(&_state_time, NULL);
+                _activities_count = 0;
+                _currentState->activity().performOnEntry(this);
+                gettimeofday(&_actty_time, NULL);
+        }
+        /*
+         * check all transitions to see if state change is required
+         */
+        Transition *firingTransition = NULL;
+        for (Transition *t: _currentState->transitions())       // foreach t
+                if (t->expression()->evaluate())                // does t fire?
+                {
+                        firingTransition = t;                   // yes, then
+                        break;                                  // we are done
+                }
+
+        _previousState = _currentState;
+
+        /*
+         * switch state and perform onExit activities if a transition fired
+         */
+        if (firingTransition)                   // new state required?
+        {
+                _currentState = firingTransition->target();     // target state
+                _previousState->activity().performOnExit(this); // onExit act
+                return true;
+        }
+
+        /*
+         * no transition fired, so we perform internal activities
+         */
+        _currentState->activity().performInternal(this);
+        _activities_count++;
+
+        /*
+         * return and indicate whether the machine should keep going
+         */
+        return _previousState->transitions().size() != 0;
 }

@@ -61,7 +61,7 @@
 
 using namespace FSM;
 
-void SleepAction::performv(int state, ActionStage stage, int ac, va_list al)
+void SleepAction::performv(Machine *, ActionStage, int, va_list)
 {
         struct timespec ts = { _content / 1000, (_content % 1000 ) * 1000000L };
 

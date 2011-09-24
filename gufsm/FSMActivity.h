@@ -63,6 +63,8 @@
 
 namespace FSM
 {
+        class Machine;
+
         typedef std::vector<Action *> ActionVector;
         typedef ActionVector::iterator ActionIterator;
         
@@ -76,11 +78,11 @@ namespace FSM
                 ActionVector _onExitActions;    /// on exit actions
                 
                 /** perform actions */
-                void perform(int state, ActionStage stage,
-                             const std::vector <Action *> &actions)
+                void perform(Machine *m, ActionStage stage,
+                             const ActionVector &actions)
                 {
                         for (Action *a: actions)
-                                a->perform(state, stage);
+                                a->perform(m, stage);
                 }
                 
         public:
@@ -112,16 +114,16 @@ namespace FSM
                 void addOnExitAction(Action *a) { _onExitActions.push_back(a); }
                 
                 /** perform actions for state and stage */
-                void perform(int state, ActionStage stage = STAGE_INTERNAL);
+                void perform(Machine *m, ActionStage stage = STAGE_INTERNAL);
                 
                 /** perform actions for state and stage */
-                void performOnEntry(int state) { perform(state, STAGE_ON_ENTRY,
+                void performOnEntry(Machine *m) { perform(m, STAGE_ON_ENTRY,
                                                          _onEntryActions); }
                 /** perform actions for state and stage */
-                void performInternal(int state) { perform(state, STAGE_INTERNAL,
+                void performInternal(Machine *m) { perform(m, STAGE_INTERNAL,
                                                           _internalActions); }
                 /** perform actions for state and stage */
-                void performOnExit(int state) { perform(state, STAGE_ON_EXIT,
+                void performOnExit(Machine *m) { perform(m, STAGE_ON_EXIT,
                                                         _onExitActions); }
         };
 }

@@ -184,7 +184,7 @@ using namespace FSM;
         STAssertTrue(a->content() == "OnEntry",
                        @"unexpected OnEntry printing action content");
         for (Action *action: firstState->activity().onEntryActions())
-                action->perform(firstState->stateID(), STAGE_ON_ENTRY, 0);
+                action->perform(fsm, STAGE_ON_ENTRY, 0);
 }
 
 
@@ -198,7 +198,7 @@ using namespace FSM;
                      @"unexpected OnExit printing action content: %s",
                      a->content());
         for (Action *action: firstState->activity().onExitActions())
-                action->perform(firstState->stateID(), STAGE_ON_EXIT, 0);
+                action->perform(fsm, STAGE_ON_EXIT, 0);
 }
 
 
@@ -211,7 +211,7 @@ using namespace FSM;
         STAssertTrue(a->content() == 3,
                      @"unexpected internal printing action content");
         for (Action *action: firstState->activity().internalActions())
-                action->perform(firstState->stateID(), STAGE_INTERNAL, 0);
+                action->perform(fsm, STAGE_INTERNAL, 0);
 }
 
 
@@ -223,7 +223,7 @@ using namespace FSM;
         STAssertEquals(sleepAction->content(), 1001,
                      @"unexpected internal sleep action content");
         time_t t1 = time(NULL);
-        sleepAction->perform(firstState->stateID(), STAGE_INTERNAL, 0);
+        sleepAction->perform(fsm, STAGE_INTERNAL, 0);
         time_t t2 = time(NULL);
         STAssertEquals(t1 + 1, t2, @"unexpected sleep time");
 }

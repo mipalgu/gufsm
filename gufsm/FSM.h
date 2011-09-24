@@ -59,6 +59,7 @@
 #define gufsm_FSM_h
 
 #include <vector>
+#include <sys/time.h>
 
 namespace FSM
 {
@@ -76,11 +77,16 @@ namespace FSM
                 State *_currentState;   /// current state of the machine
                 State *_previousState;  /// previous state
 
+                timeval _state_time;    /// state start time
+                timeval _actty_time;    /// internal activity start time
+
+                long _activities_count; /// how many times have activities run?
+
         public:
                 /** constructor */
                 Machine(State *initial = NULL): _currentState(initial), _previousState(NULL), _states()
                 {
-                        addState(initial);
+                        if (initial) addState(initial);
                 }
 
                 /** states getter method */
@@ -91,6 +97,21 @@ namespace FSM
                 
                 /** add a state */
                 void addState(State *s) { _states.push_back(s); }
+
+                /** get the current state */
+                State *currentState() { return _currentState; }
+
+                /** get the current state's start time */
+                timeval &stateTime() { return _state_time; }
+
+                /** get the current activity's start time */
+                timeval &activityTime() { return _actty_time; }
+
+                /** get the internal activities counter */
+                long activitiesCount() { return _activities_count; }
+
+                /** set the internal activities counter */
+                void setActivitiesCount(long n = 0) { _activities_count = n; }
 
                 /** put the state machine into its initial state */
                 virtual void initialise()
