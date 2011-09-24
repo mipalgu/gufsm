@@ -19,8 +19,8 @@
 		F16CC333142C2B88001F788B /* FSMState.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30F142C0F86001F788B /* FSMState.cc */; };
 		F16CC335142C3433001F788B /* FSMAction.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC334142C3433001F788B /* FSMAction.cc */; };
 		F16CC336142C390D001F788B /* FSMAction.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC334142C3433001F788B /* FSMAction.cc */; };
-		F1A3DF6D142D3BFE0060F293 /* FSM.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30B142C0CDE001F788B /* FSM.cc */; };
-		F1A3DF6E142D3BFF0060F293 /* FSM.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30B142C0CDE001F788B /* FSM.cc */; };
+		F1A3DF6D142D3BFE0060F293 /* FSMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30B142C0CDE001F788B /* FSMachine.cc */; };
+		F1A3DF6E142D3BFF0060F293 /* FSMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30B142C0CDE001F788B /* FSMachine.cc */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,7 +40,7 @@
 		F16CC2FA142C0C01001F788B /* gufsm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = gufsm; sourceTree = BUILT_PRODUCTS_DIR; };
 		F16CC2FE142C0C01001F788B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		F16CC300142C0C01001F788B /* gufsm.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = gufsm.1; sourceTree = "<group>"; };
-		F16CC30B142C0CDE001F788B /* FSM.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSM.cc; sourceTree = "<group>"; };
+		F16CC30B142C0CDE001F788B /* FSMachine.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMachine.cc; sourceTree = "<group>"; };
 		F16CC30D142C0CE6001F788B /* FSM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSM.h; sourceTree = "<group>"; };
 		F16CC30E142C0F62001F788B /* FSMState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMState.h; sourceTree = "<group>"; };
 		F16CC30F142C0F86001F788B /* FSMState.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMState.cc; sourceTree = "<group>"; };
@@ -59,6 +59,7 @@
 		F16CC32B142C2AD9001F788B /* FSMTest.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = FSMTest.mm; sourceTree = "<group>"; };
 		F16CC32D142C2AD9001F788B /* FSMTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FSMTest-Prefix.pch"; sourceTree = "<group>"; };
 		F16CC334142C3433001F788B /* FSMAction.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMAction.cc; sourceTree = "<group>"; };
+		F191E602142D99150014AF84 /* FSMachine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMachine.h; sourceTree = "<group>"; };
 		F19C2B96142C7B37007CFC83 /* FSMTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMTransition.h; sourceTree = "<group>"; };
 		F19C2B98142C7D5A007CFC83 /* FSMExpression.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMExpression.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,13 +108,14 @@
 			children = (
 				F16CC2FE142C0C01001F788B /* main.cpp */,
 				F16CC300142C0C01001F788B /* gufsm.1 */,
-				F16CC30B142C0CDE001F788B /* FSM.cc */,
 				F16CC30D142C0CE6001F788B /* FSM.h */,
 				F16CC314142C146B001F788B /* FSMAction.h */,
 				F16CC334142C3433001F788B /* FSMAction.cc */,
 				F16CC312142C1247001F788B /* FSMActivity.cc */,
 				F16CC311142C10B3001F788B /* FSMActivity.h */,
 				F19C2B98142C7D5A007CFC83 /* FSMExpression.h */,
+				F16CC30B142C0CDE001F788B /* FSMachine.cc */,
+				F191E602142D99150014AF84 /* FSMachine.h */,
 				F16CC30F142C0F86001F788B /* FSMState.cc */,
 				F16CC30E142C0F62001F788B /* FSMState.h */,
 				F19C2B96142C7B37007CFC83 /* FSMTransition.h */,
@@ -262,7 +264,7 @@
 				F16CC310142C0F86001F788B /* FSMState.cc in Sources */,
 				F16CC313142C1247001F788B /* FSMActivity.cc in Sources */,
 				F16CC335142C3433001F788B /* FSMAction.cc in Sources */,
-				F1A3DF6E142D3BFF0060F293 /* FSM.cc in Sources */,
+				F1A3DF6E142D3BFF0060F293 /* FSMachine.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,7 +276,7 @@
 				F16CC332142C2B88001F788B /* FSMActivity.cc in Sources */,
 				F16CC333142C2B88001F788B /* FSMState.cc in Sources */,
 				F16CC336142C390D001F788B /* FSMAction.cc in Sources */,
-				F1A3DF6D142D3BFE0060F293 /* FSM.cc in Sources */,
+				F1A3DF6D142D3BFE0060F293 /* FSMachine.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
