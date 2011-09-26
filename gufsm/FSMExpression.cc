@@ -1,7 +1,7 @@
 /*
- *  FSM.cc
+ *  FSMExpression.cc
  *  
- *  Created by René Hexel on 23/09/11.
+ *  Created by René Hexel on 26/09/11.
  *  Copyright (c) 2011 Rene Hexel.
  *  All rights reserved.
  *
@@ -55,69 +55,23 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#include <cassert>
-#include "FSMachine.h"
-#include "FSMState.h"
-#include "FSMTransition.h"
+#include <sys/time.h>
 #include "FSMExpression.h"
+#include "FSMachine.h"
 
 using namespace FSM;
 
-bool Machine::executeOnce()
+bool TimeoutPredicate::evaluate(Machine *machine)
 {
-        assert(_currentState);                  // need a valid state
+        if (!machine) return false;
 
-        /*
-         * perform onEntry activities if this is a new state
-         */
-        if (_currentState != _previousState)    // entering a new state?
-        {
-                gettimeofday(&_state_time, NULL);
-                _activities_count = 0;
-                _currentState->activity().performOnEntry(this);
-                gettimeofday(&_actty_time, NULL);
-        }
-        /*
-         * check all transitions to see if state change is required
-         */
-        Transition *firingTransition = NULL;
-        for (Transition *t: _currentState->transitions())       // foreach t
-                if (t->expression()->evaluate(this))            // does t fire?
-                {
-                        firingTransition = t;                   // yes, then
-                        break;                                  // we are done
-                }
+        struct timeval now;
+        const struct timeval &then = machine->stateTime();
 
-        _previousState = _currentState;
+        gettimeofday(&now, NULL);
 
-        /*
-         * switch state and perform onExit activities if a transition fired
-         */
-        if (firingTransition)                   // new state required?
-        {
-                _currentState = firingTransition->target();     // target state
-                _previousState->activity().performOnExit(this); // onExit act
-                return true;
-        }
+        long long t = then.tv_usec + 1000LL * then.tv_sec;
+        long long x =  now.tv_usec + 1000LL *  now.tv_sec;
 
-        /*
-         * no transition fired, so we perform internal activities
-         */
-        _currentState->activity().performInternal(this);
-        _activities_count++;
-
-        /*
-         * return and indicate whether the machine should keep going
-         */
-        return _previousState->transitions().size() != 0;
-}
-
-State *Machine::restart(State *initialState)
-{
-        State *oldState = _currentState;
-
-        initialise();
-        if (initialState) _currentState = initialState;
-
-        return oldState;
+        return t + _timeout < x;
 }

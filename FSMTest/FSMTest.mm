@@ -55,6 +55,7 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#include <dispatch/dispatch.h>
 #include "FSM.h"
 
 #import "FSMTest.h"
@@ -146,6 +147,7 @@ using namespace FSM;
         falseTransition = new Transition(firstState, firstState, falseExpression);
         trueExpression  = new Predicate();
         trueTransition  = new Transition(firstState, secondState, trueExpression);
+        timeoutPredicate = new TimeoutPredicate(500);
 
         firstState->addTransition(falseTransition);
         firstState->addTransition(trueTransition);
@@ -202,6 +204,10 @@ using namespace FSM;
         STAssertNotNil((id) fsm->suspendState(), @"should now have a suspend state");
         STAssertEquals(fsm->currentState(), fsm->suspendState(), @"Unexpected suspend state");
         STAssertEquals(fsm->previousState(), exitState, @"Unexpected previous state");
+        STAssertFalse(timeoutPredicate->evaluate(fsm), @"suspend state should not have timed out yet");
+        usleep(500);
+        STAssertTrue(timeoutPredicate->evaluate(fsm), @"suspend state should have timed out by now");
+        
         /*
          * resume
          */
@@ -310,8 +316,25 @@ using namespace FSM;
         time_t t1 = time(NULL);
         sleepAction->perform(fsm, STAGE_INTERNAL, 0);
         time_t t2 = time(NULL);
-        STAssertEquals(t1 + 1, t2, @"unexpected sleep time");
+        STAssertEquals(t1 + 1, t2, @"unexpected sleep time of %ld s", t2-t1);
 }
+
+/* does not work, because signal activates debugger on Xcode test
+- (void) testInterruptedSleep
+{
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 50 * NSEC_PER_USEC);
+        dispatch_after(popTime, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0),
+        ^{
+                kill(getpid(), SIGUSR1);
+                usleep(1);
+                kill(getpid(), SIGUSR1);
+        });
+        time_t t1 = time(NULL);
+        sleepAction->perform(fsm, STAGE_INTERNAL, 0);
+        time_t t2 = time(NULL);
+        STAssertEquals(t1 + 1, t2, @"unexpected interrupted sleep of %ld s", t2-t1);
+}
+*/
 
 - (void) testExpressions
 {
@@ -329,6 +352,8 @@ using namespace FSM;
         STAssertTrue(((Predicate *) finalTransition->expression())->isNegation(),
                      @"Expression %s should be a negation",
                      ((Predicate *) finalTransition->expression())->name().c_str());
+        STAssertFalse(timeoutPredicate->evaluate(), @"NULL machine should never time out");
 }
+
 
 @end

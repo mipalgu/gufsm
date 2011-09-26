@@ -62,6 +62,8 @@
 
 namespace FSM
 {
+        class Machine;
+
         /**
          * Abstract expression class
          */
@@ -69,7 +71,7 @@ namespace FSM
         {
         public:
                 /** evaluation needs to be performed by sublcasses */
-                virtual bool evaluate() = 0;
+                virtual bool evaluate(Machine *m = NULL) = 0;
         };
         
         /**
@@ -82,7 +84,6 @@ namespace FSM
                 std::string _name;              /// name of the predicate
                 bool _value;                    /// value of the predicate
                 bool _negation;                 /// is this a negation?
-                
         public:
                 /** default constructor */
                 Predicate(const std::string &p = "TRUE", bool v = true, bool neg = false):
@@ -106,8 +107,24 @@ namespace FSM
                 void setNegation(bool n) { _negation = ( n != false ); }
                 
                 /** return the value, negated if necessary */
-                virtual bool evaluate() { return _value ^ _negation; }
+                virtual bool evaluate(Machine *m = NULL) { return _value ^ _negation; }
         };
 
+        class TimeoutPredicate: public Expression
+        {
+                long _timeout;                  /// microseconds to time out
+        public:
+                /** default constructor */
+                TimeoutPredicate(long t = 1000): _timeout(t) {}
+
+                /** getter */
+                long timeout() { return _timeout; }
+
+                /** setter */
+                void setTimeout(long t=1000) { _timeout = t; }
+
+                /** return true if state timeout has been reached */
+                virtual bool evaluate(Machine *m = NULL);
+        };
 }
 #endif

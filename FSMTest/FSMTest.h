@@ -66,6 +66,7 @@ namespace FSM
         class Transition;
         class Expression;
         class Predicate;
+        class TimeoutPredicate;
 }
 
 @interface FSMTest: SenTestCase
@@ -81,5 +82,6 @@ namespace FSM
         FSM::Transition *finalTransition;
         FSM::Predicate *falseExpression;
         FSM::Predicate *trueExpression;
+        FSM::TimeoutPredicate *timeoutPredicate;
 }
 @end
