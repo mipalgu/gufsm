@@ -77,6 +77,7 @@ bool Machine::executeOnce()
                 _currentState->activity().performOnEntry(this);
                 gettimeofday(&_actty_time, NULL);
         }
+
         /*
          * check all transitions to see if state change is required
          */
@@ -109,7 +110,7 @@ bool Machine::executeOnce()
         /*
          * return and indicate whether the machine should keep going
          */
-        return _previousState->transitions().size() != 0;
+        return _currentState->transitions().size() != 0;
 }
 
 State *Machine::restart(State *initialState)
