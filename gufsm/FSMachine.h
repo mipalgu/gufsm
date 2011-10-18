@@ -64,7 +64,7 @@
 namespace FSM
 {
         class State;
-        class Context;
+        class Context {};
         
         typedef std::vector<State *> StateVector;
         typedef StateVector::iterator StateIterator;

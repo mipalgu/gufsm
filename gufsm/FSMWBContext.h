@@ -1,7 +1,7 @@
 /*
- *  FSMExpression.h
+ *  FSMWBMachine.h
  *  
- *  Created by René Hexel on 23/09/11.
+ *  Created by René Hexel on 18/10/11.
  *  Copyright (c) 2011 Rene Hexel.
  *  All rights reserved.
  *
@@ -55,76 +55,35 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef gufsm_FSMExpression_h
-#define gufsm_FSMExpression_h
+#ifndef gufsm_FSMWBMachine_h
+#define gufsm_FSMWBMachine_h
 
-#include <string>
+#include "FSMachine.h"
+
+namespace guWhiteboard
+{
+        class Whiteboard;
+}
 
 namespace FSM
 {
-        class Machine;
-
-        /**
-         * Abstract expression class
-         */
-        class Expression
+        class WBContext: public Context
         {
-        public:
-                /** evaluation needs to be performed by sublcasses */
-                virtual bool evaluate(Machine *m = NULL) = 0;
-        };
-        
-        /**
-         * Simple boolean predicate representation
-         * This still needs to be subclassed to do anything useful
-         * such as querying a Whiteboard
-         */
-        class Predicate: public Expression
-        {
-                std::string _name;              /// name of the predicate
-                bool _value;                    /// value of the predicate
-                bool _negation;                 /// is this a negation?
+                guWhiteboard::Whiteboard *_wb;  /** whiteboard pointer */
+                bool _deletewb;                 /** delete on destruction */
         public:
                 /** default constructor */
-                Predicate(const std::string &p = "TRUE", bool v = true, bool neg = false):
-                                _name(p), _value(v), _negation(neg) {}
-                /** return the predicate name */
-                const std::string &name() { return _name; }
-                
-                /** set the predicate name */
-                void setName(const std::string &n) { _name = n; }
-                
-                /** return the predicate value */
-                bool value() { return _value; }
-                
-                /** set the predicate value */
-                void setValue(bool v) { _value = ( v != false ); }
+                WBContext(guWhiteboard::Whiteboard *wb = NULL, bool deletewb = false);
 
-                /** return the predicate value */
-                bool isNegation() { return _negation; }
+                /** destructor */
+                virtual ~WBContext() { if (_deletewb) delete _wb; }
 
-                /** set the predicate value */
-                void setNegation(bool n = true) { _negation = ( n != false ); }
+                /** whiteboard getter */
+                guWhiteboard::Whiteboard *whiteboard() { return _wb; }
 
-                /** return the value, negated if necessary */
-                virtual bool evaluate(Machine *m = NULL) { return _value ^ _negation; }
-        };
-
-        class TimeoutPredicate: public Expression
-        {
-                long _timeout;                  /// microseconds to time out
-        public:
-                /** default constructor */
-                TimeoutPredicate(long t = 1000): _timeout(t) {}
-
-                /** getter */
-                long timeout() { return _timeout; }
-
-                /** setter */
-                void setTimeout(long t=1000) { _timeout = t; }
-
-                /** return true if state timeout has been reached */
-                virtual bool evaluate(Machine *m = NULL);
+                /** whiteboard setter */
+                void setWhiteboard(guWhiteboard::Whiteboard *wb = NULL, bool deletewb = false) { if (_deletewb) delete _wb; _wb = wb; _deletewb = deletewb && wb; }
         };
 }
+
 #endif

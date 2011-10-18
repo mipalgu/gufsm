@@ -49,6 +49,10 @@
 		F192CC41144D255A00FF8526 /* WhiteboardConstants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F192CC27144D255A00FF8526 /* WhiteboardConstants.cpp */; };
 		F192CCD9144D27CD00FF8526 /* gu_util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F192CCC4144D27C200FF8526 /* gu_util.cpp */; };
 		F192CCDA144D27CE00FF8526 /* gu_util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F192CCC4144D27C200FF8526 /* gu_util.cpp */; };
+		F192CCE0144D291F00FF8526 /* FSMWBExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F192CCDF144D291F00FF8526 /* FSMWBExpression.cc */; };
+		F192CCE1144D291F00FF8526 /* FSMWBExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F192CCDF144D291F00FF8526 /* FSMWBExpression.cc */; };
+		F192CCE6144D356300FF8526 /* FSMWBContext.cc in Sources */ = {isa = PBXBuildFile; fileRef = F192CCE5144D356300FF8526 /* FSMWBContext.cc */; };
+		F192CCE7144D356300FF8526 /* FSMWBContext.cc in Sources */ = {isa = PBXBuildFile; fileRef = F192CCE5144D356300FF8526 /* FSMWBContext.cc */; };
 		F1A3DF6D142D3BFE0060F293 /* FSMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30B142C0CDE001F788B /* FSMachine.cc */; };
 		F1A3DF6E142D3BFF0060F293 /* FSMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30B142C0CDE001F788B /* FSMachine.cc */; };
 /* End PBXBuildFile section */
@@ -1320,6 +1324,10 @@
 		F192CCD6144D27C200FF8526 /* Trig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Trig.h; sourceTree = "<group>"; };
 		F192CCD7144D27C200FF8526 /* Useful.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Useful.h; sourceTree = "<group>"; };
 		F192CCD8144D27C200FF8526 /* warning.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = warning.h; sourceTree = "<group>"; };
+		F192CCDF144D291F00FF8526 /* FSMWBExpression.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMWBExpression.cc; sourceTree = "<group>"; };
+		F192CCE3144D2A6500FF8526 /* FSMWBExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMWBExpression.h; sourceTree = "<group>"; };
+		F192CCE4144D354100FF8526 /* FSMWBContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMWBContext.h; sourceTree = "<group>"; };
+		F192CCE5144D356300FF8526 /* FSMWBContext.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMWBContext.cc; sourceTree = "<group>"; };
 		F19C2B96142C7B37007CFC83 /* FSMTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMTransition.h; sourceTree = "<group>"; };
 		F19C2B98142C7D5A007CFC83 /* FSMExpression.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMExpression.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1377,6 +1385,10 @@
 				F16CC311142C10B3001F788B /* FSMActivity.h */,
 				F1199D5F14302767003853BF /* FSMExpression.cc */,
 				F19C2B98142C7D5A007CFC83 /* FSMExpression.h */,
+				F192CCDF144D291F00FF8526 /* FSMWBExpression.cc */,
+				F192CCE3144D2A6500FF8526 /* FSMWBExpression.h */,
+				F192CCE5144D356300FF8526 /* FSMWBContext.cc */,
+				F192CCE4144D354100FF8526 /* FSMWBContext.h */,
 				F16CC30B142C0CDE001F788B /* FSMachine.cc */,
 				F191E602142D99150014AF84 /* FSMachine.h */,
 				F16CC30F142C0F86001F788B /* FSMState.cc */,
@@ -3630,6 +3642,8 @@
 				F192CC3E144D255A00FF8526 /* Whiteboard.cpp in Sources */,
 				F192CC40144D255A00FF8526 /* WhiteboardConstants.cpp in Sources */,
 				F192CCD9144D27CD00FF8526 /* gu_util.cpp in Sources */,
+				F192CCE0144D291F00FF8526 /* FSMWBExpression.cc in Sources */,
+				F192CCE6144D356300FF8526 /* FSMWBContext.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3655,6 +3669,8 @@
 				F192CC3F144D255A00FF8526 /* Whiteboard.cpp in Sources */,
 				F192CC41144D255A00FF8526 /* WhiteboardConstants.cpp in Sources */,
 				F192CCDA144D27CE00FF8526 /* gu_util.cpp in Sources */,
+				F192CCE1144D291F00FF8526 /* FSMWBExpression.cc in Sources */,
+				F192CCE7144D356300FF8526 /* FSMWBContext.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

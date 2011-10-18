@@ -1,7 +1,7 @@
 /*
- *  FSMExpression.h
+ *  FSMWBExpression.cpp
  *  
- *  Created by René Hexel on 23/09/11.
+ *  Created by Rene Hexel on 18/10/11.
  *  Copyright (c) 2011 Rene Hexel.
  *  All rights reserved.
  *
@@ -55,76 +55,41 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef gufsm_FSMExpression_h
-#define gufsm_FSMExpression_h
+#include "Whiteboard.h"
+#include "FSMWBExpression.h"
+#include "FSMWBContext.h"
 
-#include <string>
+using namespace FSM;
+using namespace guWhiteboard;
 
-namespace FSM
+bool WBPredicate::evaluate(Machine *m)
 {
-        class Machine;
+        if (!m) return false;
 
-        /**
-         * Abstract expression class
-         */
-        class Expression
+        WBContext *context = (WBContext *) m->context();
+
+        if (!context) return false;
+
+        Whiteboard *wb = context->whiteboard();
+
+        if (!wb) return false;
+
+        WBMsg msg = wb->getMessage(name());
+
+        switch ((int) msg.getType())
         {
-        public:
-                /** evaluation needs to be performed by sublcasses */
-                virtual bool evaluate(Machine *m = NULL) = 0;
-        };
-        
-        /**
-         * Simple boolean predicate representation
-         * This still needs to be subclassed to do anything useful
-         * such as querying a Whiteboard
-         */
-        class Predicate: public Expression
-        {
-                std::string _name;              /// name of the predicate
-                bool _value;                    /// value of the predicate
-                bool _negation;                 /// is this a negation?
-        public:
-                /** default constructor */
-                Predicate(const std::string &p = "TRUE", bool v = true, bool neg = false):
-                                _name(p), _value(v), _negation(neg) {}
-                /** return the predicate name */
-                const std::string &name() { return _name; }
-                
-                /** set the predicate name */
-                void setName(const std::string &n) { _name = n; }
-                
-                /** return the predicate value */
-                bool value() { return _value; }
-                
-                /** set the predicate value */
-                void setValue(bool v) { _value = ( v != false ); }
+                case WBMsg::TypeBool:
+                        return msg.getBoolValue();
 
-                /** return the predicate value */
-                bool isNegation() { return _negation; }
+                case WBMsg::TypeInt:
+                        return msg.getIntValue() != 0;
 
-                /** set the predicate value */
-                void setNegation(bool n = true) { _negation = ( n != false ); }
+                case WBMsg::TypeFloat:
+                        return msg.getFloatValue() != 0.0f;
 
-                /** return the value, negated if necessary */
-                virtual bool evaluate(Machine *m = NULL) { return _value ^ _negation; }
-        };
-
-        class TimeoutPredicate: public Expression
-        {
-                long _timeout;                  /// microseconds to time out
-        public:
-                /** default constructor */
-                TimeoutPredicate(long t = 1000): _timeout(t) {}
-
-                /** getter */
-                long timeout() { return _timeout; }
-
-                /** setter */
-                void setTimeout(long t=1000) { _timeout = t; }
-
-                /** return true if state timeout has been reached */
-                virtual bool evaluate(Machine *m = NULL);
-        };
+                case WBMsg::TypeString:
+                        char c = *msg.getStringValue().c_str();
+                        return c != 0 && c != 'n' && c != 'N' && c != 'f' && c != 'F' && c != '-' && c != '0';
+        }
+        return false;
 }
-#endif
