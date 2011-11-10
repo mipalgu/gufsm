@@ -1,7 +1,7 @@
 /*
- *  FSMWBMachine.h
+ *  FSMWBPredicate.cpp
  *  
- *  Created by René Hexel on 18/10/11.
+ *  Created by Rene Hexel on 18/10/11.
  *  Copyright (c) 2011 Rene Hexel.
  *  All rights reserved.
  *
@@ -55,39 +55,53 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef gufsm_FSMWBMachine_h
-#define gufsm_FSMWBMachine_h
+#include <Whiteboard.h>
+#include "FSMWBPredicate.h"
+#include "FSMWBContext.h"
 
-#include "FSMachine.h"
+using namespace std;
+using namespace FSM;
+using namespace guWhiteboard;
 
-namespace guWhiteboard
+bool WBPredicate::evaluate(WBMsg &msg)
 {
-        class Whiteboard;
-}
-
-namespace FSM
-{
-        class WBContext: public Context
+        switch ((int) msg.getType())
         {
-                guWhiteboard::Whiteboard *_wb;  /** whiteboard pointer */
-                bool _deletewb;                 /** delete on destruction */
-        public:
-                /**
-                 * default constructor
-                 * @param wb pointer to an already opened whiteboard
-                 * @param deletewb delete wb pointer when destructed (only relevant if wb is non-NULL, otherwise the whiteboard will always be deleted in the destructor
-                 */
-                WBContext(guWhiteboard::Whiteboard *wb = NULL, bool deletewb = false);
-
-                /** destructor */
-                virtual ~WBContext() { if (_deletewb) delete _wb; }
-
-                /** whiteboard getter */
-                guWhiteboard::Whiteboard *whiteboard() { return _wb; }
-
-                /** whiteboard setter */
-                void setWhiteboard(guWhiteboard::Whiteboard *wb = NULL, bool deletewb = false) { if (_deletewb) delete _wb; _wb = wb; _deletewb = deletewb && wb; }
-        };
+                case WBMsg::TypeBool:
+                        return msg.getBoolValue();
+                        
+                case WBMsg::TypeInt:
+                        return msg.getIntValue() != 0;
+                        
+                case WBMsg::TypeFloat:
+                        return msg.getFloatValue() != 0.0f;
+                        
+                case WBMsg::TypeString:
+                        char c = *msg.getStringValue().c_str();
+                        return c != 0 && c != 'n' && c != 'N' && c != 'f' && c != 'F' && c != '-' && c != '0';
+        }
+        return false;
 }
 
-#endif
+
+bool WBPredicate::evaluate(Machine *m)
+{
+        Whiteboard *wb = _wb;
+
+        if (!wb)
+        {
+                if (!m) return false;
+
+                WBContext *context = (WBContext *) m->context();
+
+                if (!context) return false;
+
+                wb = context->whiteboard();
+
+                if (!wb) return false;
+        }
+
+        WBMsg msg = wb->getMessage(name());
+
+        return evaluate(msg);
+}

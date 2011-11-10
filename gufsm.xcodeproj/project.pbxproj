@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		F1199D6014302767003853BF /* FSMExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1199D5F14302767003853BF /* FSMExpression.cc */; };
 		F1199D6114302767003853BF /* FSMExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1199D5F14302767003853BF /* FSMExpression.cc */; };
+		F132711C1452812500E5786D /* FSMWBQueryPredicate.cc in Sources */ = {isa = PBXBuildFile; fileRef = F132711B1452812500E5786D /* FSMWBQueryPredicate.cc */; };
+		F132711D1452812500E5786D /* FSMWBQueryPredicate.cc in Sources */ = {isa = PBXBuildFile; fileRef = F132711B1452812500E5786D /* FSMWBQueryPredicate.cc */; };
 		F16CC2FF142C0C01001F788B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F16CC2FE142C0C01001F788B /* main.cpp */; };
 		F16CC301142C0C01001F788B /* gufsm.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = F16CC300142C0C01001F788B /* gufsm.1 */; };
 		F16CC310142C0F86001F788B /* FSMState.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30F142C0F86001F788B /* FSMState.cc */; };
@@ -49,8 +51,8 @@
 		F192CC41144D255A00FF8526 /* WhiteboardConstants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F192CC27144D255A00FF8526 /* WhiteboardConstants.cpp */; };
 		F192CCD9144D27CD00FF8526 /* gu_util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F192CCC4144D27C200FF8526 /* gu_util.cpp */; };
 		F192CCDA144D27CE00FF8526 /* gu_util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F192CCC4144D27C200FF8526 /* gu_util.cpp */; };
-		F192CCE0144D291F00FF8526 /* FSMWBExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F192CCDF144D291F00FF8526 /* FSMWBExpression.cc */; };
-		F192CCE1144D291F00FF8526 /* FSMWBExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F192CCDF144D291F00FF8526 /* FSMWBExpression.cc */; };
+		F192CCE0144D291F00FF8526 /* FSMWBPredicate.cc in Sources */ = {isa = PBXBuildFile; fileRef = F192CCDF144D291F00FF8526 /* FSMWBPredicate.cc */; };
+		F192CCE1144D291F00FF8526 /* FSMWBPredicate.cc in Sources */ = {isa = PBXBuildFile; fileRef = F192CCDF144D291F00FF8526 /* FSMWBPredicate.cc */; };
 		F192CCE6144D356300FF8526 /* FSMWBContext.cc in Sources */ = {isa = PBXBuildFile; fileRef = F192CCE5144D356300FF8526 /* FSMWBContext.cc */; };
 		F192CCE7144D356300FF8526 /* FSMWBContext.cc in Sources */ = {isa = PBXBuildFile; fileRef = F192CCE5144D356300FF8526 /* FSMWBContext.cc */; };
 		F1A3DF6D142D3BFE0060F293 /* FSMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30B142C0CDE001F788B /* FSMachine.cc */; };
@@ -72,6 +74,8 @@
 
 /* Begin PBXFileReference section */
 		F1199D5F14302767003853BF /* FSMExpression.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMExpression.cc; sourceTree = "<group>"; };
+		F132711B1452812500E5786D /* FSMWBQueryPredicate.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMWBQueryPredicate.cc; sourceTree = "<group>"; };
+		F132711E1452814300E5786D /* FSMWBQueryPredicate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMWBQueryPredicate.h; sourceTree = "<group>"; };
 		F16CC2FA142C0C01001F788B /* gufsm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = gufsm; sourceTree = BUILT_PRODUCTS_DIR; };
 		F16CC2FE142C0C01001F788B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		F16CC300142C0C01001F788B /* gufsm.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = gufsm.1; sourceTree = "<group>"; };
@@ -1324,8 +1328,8 @@
 		F192CCD6144D27C200FF8526 /* Trig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Trig.h; sourceTree = "<group>"; };
 		F192CCD7144D27C200FF8526 /* Useful.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Useful.h; sourceTree = "<group>"; };
 		F192CCD8144D27C200FF8526 /* warning.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = warning.h; sourceTree = "<group>"; };
-		F192CCDF144D291F00FF8526 /* FSMWBExpression.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMWBExpression.cc; sourceTree = "<group>"; };
-		F192CCE3144D2A6500FF8526 /* FSMWBExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMWBExpression.h; sourceTree = "<group>"; };
+		F192CCDF144D291F00FF8526 /* FSMWBPredicate.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMWBPredicate.cc; sourceTree = "<group>"; };
+		F192CCE3144D2A6500FF8526 /* FSMWBPredicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMWBPredicate.h; sourceTree = "<group>"; };
 		F192CCE4144D354100FF8526 /* FSMWBContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMWBContext.h; sourceTree = "<group>"; };
 		F192CCE5144D356300FF8526 /* FSMWBContext.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMWBContext.cc; sourceTree = "<group>"; };
 		F19C2B96142C7B37007CFC83 /* FSMTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMTransition.h; sourceTree = "<group>"; };
@@ -1385,8 +1389,10 @@
 				F16CC311142C10B3001F788B /* FSMActivity.h */,
 				F1199D5F14302767003853BF /* FSMExpression.cc */,
 				F19C2B98142C7D5A007CFC83 /* FSMExpression.h */,
-				F192CCDF144D291F00FF8526 /* FSMWBExpression.cc */,
-				F192CCE3144D2A6500FF8526 /* FSMWBExpression.h */,
+				F192CCDF144D291F00FF8526 /* FSMWBPredicate.cc */,
+				F192CCE3144D2A6500FF8526 /* FSMWBPredicate.h */,
+				F132711B1452812500E5786D /* FSMWBQueryPredicate.cc */,
+				F132711E1452814300E5786D /* FSMWBQueryPredicate.h */,
 				F192CCE5144D356300FF8526 /* FSMWBContext.cc */,
 				F192CCE4144D354100FF8526 /* FSMWBContext.h */,
 				F16CC30B142C0CDE001F788B /* FSMachine.cc */,
@@ -3642,8 +3648,9 @@
 				F192CC3E144D255A00FF8526 /* Whiteboard.cpp in Sources */,
 				F192CC40144D255A00FF8526 /* WhiteboardConstants.cpp in Sources */,
 				F192CCD9144D27CD00FF8526 /* gu_util.cpp in Sources */,
-				F192CCE0144D291F00FF8526 /* FSMWBExpression.cc in Sources */,
+				F192CCE0144D291F00FF8526 /* FSMWBPredicate.cc in Sources */,
 				F192CCE6144D356300FF8526 /* FSMWBContext.cc in Sources */,
+				F132711C1452812500E5786D /* FSMWBQueryPredicate.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3669,8 +3676,9 @@
 				F192CC3F144D255A00FF8526 /* Whiteboard.cpp in Sources */,
 				F192CC41144D255A00FF8526 /* WhiteboardConstants.cpp in Sources */,
 				F192CCDA144D27CE00FF8526 /* gu_util.cpp in Sources */,
-				F192CCE1144D291F00FF8526 /* FSMWBExpression.cc in Sources */,
+				F192CCE1144D291F00FF8526 /* FSMWBPredicate.cc in Sources */,
 				F192CCE7144D356300FF8526 /* FSMWBContext.cc in Sources */,
+				F132711D1452812500E5786D /* FSMWBQueryPredicate.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3693,6 +3701,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -3724,6 +3733,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;

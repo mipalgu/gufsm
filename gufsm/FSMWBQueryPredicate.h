@@ -1,7 +1,7 @@
 /*
- *  FSMWBExpression.cpp
+ *  FSMWBQueryPredicate.h
  *  
- *  Created by Rene Hexel on 18/10/11.
+ *  Created by René Hexel on 22/10/11.
  *  Copyright (c) 2011 Rene Hexel.
  *  All rights reserved.
  *
@@ -55,41 +55,51 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#include "Whiteboard.h"
-#include "FSMWBExpression.h"
+#ifndef gufsm_FSMWBQueryPredicate_h
+#define gufsm_FSMWBQueryPredicate_h
+
+#include "FSMWBPredicate.h"
 #include "FSMWBContext.h"
 
-using namespace FSM;
-using namespace guWhiteboard;
-
-bool WBPredicate::evaluate(Machine *m)
+namespace guWhiteboard
 {
-        if (!m) return false;
-
-        WBContext *context = (WBContext *) m->context();
-
-        if (!context) return false;
-
-        Whiteboard *wb = context->whiteboard();
-
-        if (!wb) return false;
-
-        WBMsg msg = wb->getMessage(name());
-
-        switch ((int) msg.getType())
-        {
-                case WBMsg::TypeBool:
-                        return msg.getBoolValue();
-
-                case WBMsg::TypeInt:
-                        return msg.getIntValue() != 0;
-
-                case WBMsg::TypeFloat:
-                        return msg.getFloatValue() != 0.0f;
-
-                case WBMsg::TypeString:
-                        char c = *msg.getStringValue().c_str();
-                        return c != 0 && c != 'n' && c != 'N' && c != 'f' && c != 'F' && c != '-' && c != '0';
-        }
-        return false;
+        class Whiteboard;
 }
+
+namespace FSM
+{
+        class Machine;
+
+        /**
+         * Complex whiteboard predicate that asks an expert first and waits
+         * for a response
+         */
+        class WBQueryPredicate: public WBPredicate
+        {
+                void callback(std::string dataName, WBMsg *msg);
+        public:
+                /**
+                 * Whiteboard constructor
+                 * @param p whiteboard message name to get
+                 * @param neg is this a negation?
+                 * @param wb the whiteboard to use (null to use machine context)
+                 */
+                WBQueryPredicate(const std::string &p, bool neg, guWhiteboard::Whiteboard *wb = NULL): WBPredicate(p, neg) { setWhiteboard(wb); }
+
+                /**
+                 * Whiteboard context constructor
+                 * @param p whiteboard message name to get
+                 * @param neg is this a negation?
+                 * @param wc the whiteboard context to use (may not be null)
+                 */
+                WBQueryPredicate(const std::string &p, bool neg, WBContext *wc): WBQueryPredicate(p, neg, wc->whiteboard()) {}
+
+                /** whiteboard setter (subscribes to message responses) */
+                void setWhiteboard(guWhiteboard::Whiteboard *wb);
+
+                /** return the value, negated if necessary */
+                virtual bool evaluate(Machine *m = NULL);
+        };
+}
+
+#endif

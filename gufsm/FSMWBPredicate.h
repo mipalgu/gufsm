@@ -1,5 +1,5 @@
 /*
- *  FSMWBMachine.h
+ *  FSMWBPredicate.h
  *  
  *  Created by René Hexel on 18/10/11.
  *  Copyright (c) 2011 Rene Hexel.
@@ -55,10 +55,13 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef gufsm_FSMWBMachine_h
-#define gufsm_FSMWBMachine_h
+#ifndef gufsm_FSMWBPredicate_h
+#define gufsm_FSMWBPredicate_h
 
-#include "FSMachine.h"
+#include "FSMExpression.h"
+#include "FSMWBContext.h"
+
+class WBMsg;
 
 namespace guWhiteboard
 {
@@ -67,26 +70,43 @@ namespace guWhiteboard
 
 namespace FSM
 {
-        class WBContext: public Context
+        class Machine;
+        
+        /**
+         * Simple whiteboard boolean predicate representation
+         * This just uses GetMsg() to query boolean values on the Whiteboard
+         */
+        class WBPredicate: public Predicate
         {
-                guWhiteboard::Whiteboard *_wb;  /** whiteboard pointer */
-                bool _deletewb;                 /** delete on destruction */
+                guWhiteboard::Whiteboard *_wb;  /** whiteboard to use */
         public:
                 /**
-                 * default constructor
-                 * @param wb pointer to an already opened whiteboard
-                 * @param deletewb delete wb pointer when destructed (only relevant if wb is non-NULL, otherwise the whiteboard will always be deleted in the destructor
+                 * Whiteboard constructor
+                 * @param expr whiteboard message name to get
+                 * @param neg is this a negation?
+                 * @param wb the whiteboard to use (null to use machine context)
                  */
-                WBContext(guWhiteboard::Whiteboard *wb = NULL, bool deletewb = false);
+                WBPredicate(const std::string &expr, bool neg, guWhiteboard::Whiteboard *wb = NULL): Predicate(expr, false, neg), _wb(wb) {}
 
-                /** destructor */
-                virtual ~WBContext() { if (_deletewb) delete _wb; }
+                /**
+                 * Whiteboard context constructor
+                 * @param expr whiteboard message name to get
+                 * @param neg is this a negation?
+                 * @param wc the whiteboard context to use (may not be null)
+                 */
+                WBPredicate(const std::string &expr, bool neg, WBContext *wc): Predicate(expr, false, neg), _wb(wc->whiteboard()) {}
 
                 /** whiteboard getter */
                 guWhiteboard::Whiteboard *whiteboard() { return _wb; }
 
                 /** whiteboard setter */
-                void setWhiteboard(guWhiteboard::Whiteboard *wb = NULL, bool deletewb = false) { if (_deletewb) delete _wb; _wb = wb; _deletewb = deletewb && wb; }
+                void setWhiteboard(guWhiteboard::Whiteboard *wb) { _wb = wb; }
+
+                /** return the value, negated if necessary */
+                virtual bool evaluate(Machine *m = NULL);
+                
+                /** return the value, negated if necessary */
+                virtual bool evaluate(WBMsg &msg);
         };
 }
 

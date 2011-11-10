@@ -1,7 +1,7 @@
 /*
- *  FSMWBExpression.h
+ *  FSMWBQueryPredicate.cpp
  *  
- *  Created by René Hexel on 18/10/11.
+ *  Created by Rene Hexel on 22/10/11.
  *  Copyright (c) 2011 Rene Hexel.
  *  All rights reserved.
  *
@@ -55,36 +55,61 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef gufsm_FSMWBExpression_h
-#define gufsm_FSMWBExpression_h
+#include <cassert>
+#include <Whiteboard.h>
+#include <WhiteboardConstants.h>
+#include "FSMWBQueryPredicate.h"
+#include "FSMWBContext.h"
 
-#include "FSMExpression.h"
+using namespace std;
+using namespace FSM;
+using namespace guWhiteboard;
 
-namespace FSM
+void WBQueryPredicate::setWhiteboard(guWhiteboard::Whiteboard *wb)
 {
-        class Machine;
-        
-        /**
-         * Simple whiteboard boolean predicate representation
-         * This just uses GetMsg() to query boolean values on the Whiteboard
-         */
-        class WBPredicate: public Predicate
-        {
-        public:
-                /** return the value, negated if necessary */
-                virtual bool evaluate(Machine *m = NULL);
-        };
+        Whiteboard::WBResult result = Whiteboard::WBResult::METHOD_OK;
+        if (whiteboard()) whiteboard()->unsubscribeToMessage(name(), result);
 
-        /**
-         * Complex whiteboard predicate that asks an expert first and waits
-         * for a response
-         */
-        class WBQueryPredicate: public WBPredicate
-        {
-        public:
-                /** return the value, negated if necessary */
-                virtual bool evaluate(Machine *m = NULL);
-        };
+        WBPredicate::setWhiteboard(wb);
+        if (wb) wb->subscribeToMessage(name(), WB_BIND(WBQueryPredicate::callback), result);
+
+        assert(result == Whiteboard::WBResult::METHOD_OK);
 }
 
-#endif
+
+bool WBQueryPredicate::evaluate(Machine *m)
+{
+        Whiteboard *wb = whiteboard();
+
+        if (!wb)
+        {
+                if (!m) return false;
+                
+                WBContext *context = (WBContext *) m->context();
+                
+                if (!context) return false;
+                
+                wb = context->whiteboard();
+                
+                if (!wb) return false;
+        }
+        
+        /*
+         * post a message to update proof for output
+         */
+        wb->addMessage(kUpdateProof, WBMsg(name()));
+
+        /*
+         * wait for response
+         */
+
+        return Predicate::evaluate();
+}
+
+
+void WBQueryPredicate::callback(std::string dataName, WBMsg *msg)
+{
+        assert(dataName == name());
+
+        
+}
