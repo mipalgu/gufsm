@@ -107,6 +107,9 @@ namespace FSM
                 
                 /** return the value, negated if necessary */
                 virtual bool evaluate(WBMsg &msg);
+
+                /** set the predicate value both locally and on the wb */
+                void setValue(bool v);
         };
 }
 

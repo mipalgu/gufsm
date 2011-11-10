@@ -96,7 +96,7 @@ namespace FSM
                 
                 /** return the predicate value */
                 bool value() { return _value; }
-                
+
                 /** set the predicate value */
                 void setValue(bool v) { _value = ( v != false ); }
 

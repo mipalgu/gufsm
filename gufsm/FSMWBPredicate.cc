@@ -105,3 +105,10 @@ bool WBPredicate::evaluate(Machine *m)
 
         return evaluate(msg);
 }
+
+
+void WBPredicate::setValue(bool v)
+{
+        Predicate::setValue(v);
+        _wb->addMessage(name(), WBMsg(v));
+}
