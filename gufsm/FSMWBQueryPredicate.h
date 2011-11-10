@@ -58,6 +58,7 @@
 #ifndef gufsm_FSMWBQueryPredicate_h
 #define gufsm_FSMWBQueryPredicate_h
 
+#include <pthread.h>
 #include "FSMWBPredicate.h"
 #include "FSMWBContext.h"
 
@@ -76,6 +77,10 @@ namespace FSM
          */
         class WBQueryPredicate: public WBPredicate
         {
+                bool _waiting;                  /// waiting for a callback?
+                pthread_mutex_t _lock;          /// condition lock
+                pthread_cond_t _receivedProof;  /// proof received condition
+
                 void callback(std::string dataName, WBMsg *msg);
         public:
                 /**
@@ -84,7 +89,7 @@ namespace FSM
                  * @param neg is this a negation?
                  * @param wb the whiteboard to use (null to use machine context)
                  */
-                WBQueryPredicate(const std::string &p, bool neg, guWhiteboard::Whiteboard *wb = NULL): WBPredicate(p, neg) { setWhiteboard(wb); }
+                WBQueryPredicate(const std::string &p, bool neg, guWhiteboard::Whiteboard *wb = NULL): WBPredicate(p, neg) { pthread_mutex_init(&_lock, NULL); pthread_cond_init(&_receivedProof, NULL); setWhiteboard(wb); }
 
                 /**
                  * Whiteboard context constructor

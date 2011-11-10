@@ -97,13 +97,18 @@ bool WBQueryPredicate::evaluate(Machine *m)
         /*
          * post a message to update proof for output
          */
+        pthread_mutex_lock(&_lock);
+        _waiting = true;
         wb->addMessage(kUpdateProof, WBMsg(name()));
 
         /*
          * wait for response
          */
+        pthread_cond_wait(&_receivedProof, &_lock);
+        bool value = Predicate::evaluate();
+        pthread_mutex_unlock(&_lock);
 
-        return Predicate::evaluate();
+        return value;
 }
 
 
