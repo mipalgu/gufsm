@@ -65,6 +65,20 @@ using namespace std;
 using namespace FSM;
 using namespace guWhiteboard;
 
+WBQueryPredicate::WBQueryPredicate(const std::string &p, bool neg, Whiteboard *wb): WBPredicate(p, neg)
+{
+        pthread_mutexattr_t mattr;
+
+        pthread_mutexattr_init(&mattr);
+        pthread_mutexattr_settype(&mattr, PTHREAD_MUTEX_RECURSIVE);
+        pthread_mutex_init(&_lock, NULL);
+        pthread_mutexattr_destroy(&mattr);
+
+        pthread_cond_init(&_receivedProof, NULL);
+
+        setWhiteboard(wb);
+}
+
 void WBQueryPredicate::setWhiteboard(guWhiteboard::Whiteboard *wb)
 {
         Whiteboard::WBResult result = Whiteboard::WBResult::METHOD_OK;
@@ -116,5 +130,11 @@ void WBQueryPredicate::callback(std::string dataName, WBMsg *msg)
 {
         assert(dataName == name());
 
-        
+        pthread_mutex_lock(&_lock);
+        if (_waiting)
+        {
+                Predicate::setValue(WBPredicate::evaluate(*msg));
+                pthread_cond_signal(&_receivedProof);
+        }
+        pthread_mutex_unlock(&_lock);
 }

@@ -89,7 +89,7 @@ namespace FSM
                  * @param neg is this a negation?
                  * @param wb the whiteboard to use (null to use machine context)
                  */
-                WBQueryPredicate(const std::string &p, bool neg, guWhiteboard::Whiteboard *wb = NULL): WBPredicate(p, neg) { pthread_mutex_init(&_lock, NULL); pthread_cond_init(&_receivedProof, NULL); setWhiteboard(wb); }
+                WBQueryPredicate(const std::string &p, bool neg, guWhiteboard::Whiteboard *wb = NULL);
 
                 /**
                  * Whiteboard context constructor
