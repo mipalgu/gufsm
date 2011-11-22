@@ -74,3 +74,16 @@ WBContext::WBContext(guWhiteboard::Whiteboard *wb, bool deletewb)
                 _deletewb = _wb != NULL;
         }
 }
+
+WBContext::~WBContext()
+{
+        if (_deletewb) delete _wb;
+}
+
+
+void WBContext::setWhiteboard(guWhiteboard::Whiteboard *wb, bool deletewb)
+{
+        if (_deletewb) delete _wb;
+        _wb = wb;
+        _deletewb = deletewb && wb;
+}

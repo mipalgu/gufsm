@@ -70,8 +70,8 @@ bool TimeoutPredicate::evaluate(Machine *machine)
 
         gettimeofday(&now, NULL);
 
-        long long t = then.tv_usec + 1000LL * then.tv_sec;
-        long long x =  now.tv_usec + 1000LL *  now.tv_sec;
+        long long t = then.tv_usec + 1000000LL * then.tv_sec;
+        long long x =  now.tv_usec + 1000000LL *  now.tv_sec;
 
         return t + _timeout < x;
 }

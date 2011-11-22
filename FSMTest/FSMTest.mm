@@ -56,18 +56,80 @@
  *
  */
 #include <dispatch/dispatch.h>
-#include "FSM.h"
+#include "FSMWB.h"
+#include "Whiteboard.h"
 
 #import "FSMTest.h"
 
-#define NAME_FIRST_STATE        "First State"
-#define NAME_SECOND_STATE       "Second State"
-#define NAME_EXIT_STATE       "Exit State"
+static const char *state_names[5] =
+{
+        "First State",
+        "Second State",
+        "Third State (WB)",
+        "Fourth State (WBq)",
+        "Exit State"
+};
+
+#define NAME_FIRST_STATE        (state_names[0])
+#define NAME_SECOND_STATE       (state_names[1])
+#define NAME_THIRD_STATE        (state_names[2])
+#define NAME_FOURTH_STATE       (state_names[3])
+#define NAME_EXIT_STATE         (state_names[4])
 #define ID_FIRST_STATE          1
 #define ID_SECOND_STATE         2
-#define ID_EXIT_STATE           3
+#define ID_THIRD_STATE          3
+#define ID_FOURTH_STATE         4
+#define ID_EXIT_STATE           5
 
+#define falseTransition         (transition[0])
+#define trueTransition          (transition[1])
+#define wbTransition            (transition[2])
+#define wbqTransition           (transition[3])
+#define finalTransition         (transition[4])
+
+#define WBMSGTXT                "WBTest"
+
+#define UTIMEOUT                5000
+
+using namespace std;
 using namespace FSM;
+using namespace guWhiteboard;
+
+class WBCallbackTest
+{
+        Whiteboard *wb;
+        FSMTest *self;
+
+public:
+        WBCallbackTest(Whiteboard *w, FSMTest *t): wb(w), self(t)
+        {
+                Whiteboard::WBResult result = Whiteboard::WBResult::METHOD_OK;
+                
+                wb->subscribeToMessage(kUpdateProof, WB_BIND(WBCallbackTest::wb_callback), result);
+
+                STAssertEquals(result, Whiteboard::WBResult::METHOD_OK, @"Callback subscription unexpectedly failed");
+                
+        }
+
+        virtual ~WBCallbackTest()
+        {
+                Whiteboard::WBResult result = Whiteboard::WBResult::METHOD_OK;
+
+                wb->unsubscribeToMessage(kUpdateProof, result);
+
+                STAssertEquals(result, Whiteboard::WBResult::METHOD_OK, @"Unsubscription unexpectedly failed");
+        }
+
+        void wb_callback(string dataName, WBMsg *msg)
+        {
+                STAssertTrue(strcmp(dataName.c_str(), kUpdateProof) == 0, @"Expected %s on callback", kUpdateProof);
+                STAssertEquals(msg->getType(), WBMsg::TypeString, @"Expected string message, but got %d", msg->getType());
+                string content = msg->getStringValue();
+                STAssertTrue(strcmp(content.c_str(), WBMSGTXT) == 0, @"Expected '%s', but got '%s'", WBMSGTXT, content.c_str());
+                wb->addMessage(content, WBMsg(false));
+        }
+};
+
 
 @implementation FSMTest
 
@@ -75,22 +137,42 @@ using namespace FSM;
 {
         [super setUp];
 
-        fsm = new SuspensibleMachine(NULL, (Context *) self);
+        /*
+         * Whiteboard
+         */
+        context = new WBContext();
+        STAssertNotNil((id) context, @"Could not construct FSM WB Context");
+
+        Whiteboard *wb = context->whiteboard();
+        STAssertNotNil((id) wb, @"Whiteboard should not be nil");
+
+        callbackTest = new WBCallbackTest(wb, self);
+
+        /*
+         * Suspensible State Machine
+         */
+        fsm = new SuspensibleMachine(NULL, context);
         STAssertNotNil((id) fsm, @"Could not construct FSM");
         STAssertNil((id) fsm->suspendState(), @"should not have a suspend state");
         STAssertEquals((int) fsm->states().size(), 0, @"Expected 0 states, got %d",
                        fsm->states().size());
 
-        firstState = new State();
-        STAssertNotNil((id) firstState, @"Could not construct first State");
-        STAssertEquals((int) firstState->activity().onEntryActions().size(), 0,
-                       @"Expected empty onEntry actions list");
-        STAssertEquals((int) firstState->activity().onExitActions().size(), 0,
-                       @"Expected empty onExit actions list");
-        STAssertEquals((int) firstState->activity().internalActions().size(), 0,
-                       @"Expected empty internal actions list");
-        firstState->setName(NAME_FIRST_STATE);
-        firstState->setStateID(ID_FIRST_STATE);
+        for (int i = 0; i < sizeof(state)/sizeof(state[0]); i++)
+        {
+                state[i] = new State();
+                STAssertNotNil((id) state[i], @"Could not construct State %d", i);
+                STAssertEquals((int) state[i]->activity().onEntryActions().size(), 0,
+                               @"Expected empty onEntry actions list");
+                STAssertEquals((int) state[i]->activity().onExitActions().size(), 0,
+                               @"Expected empty onExit actions list");
+                STAssertEquals((int) state[i]->activity().internalActions().size(), 0,
+                               @"Expected empty internal actions list");
+                state[i]->setName(state_names[i]);
+                state[i]->setStateID(i+1);
+                fsm->addState(state[i]);
+                STAssertEquals((int) fsm->states().size(), i+1, @"Expected %d states", i);
+                
+        }
 
         onEntry = new PrintStringAction("OnEntry");
         STAssertNotNil((id) onEntry, @"Could not construct OnEntry Action");
@@ -101,70 +183,51 @@ using namespace FSM;
         sleepAction = new SleepAction(1001);
         STAssertNotNil((id) internal, @"Could not construct sleep Action");
 
-        firstState->activity().addOnEntryAction(onEntry);
-        STAssertEquals((int) firstState->activity().onEntryActions().size(), 1,
+        state[0]->activity().addOnEntryAction(onEntry);
+        STAssertEquals((int) state[0]->activity().onEntryActions().size(), 1,
                        @"Unexpected length of onEntry actions list");
-        firstState->activity().addOnExitAction(onExit);
-        STAssertEquals((int) firstState->activity().onExitActions().size(), 1,
+        state[0]->activity().addOnExitAction(onExit);
+        STAssertEquals((int) state[0]->activity().onExitActions().size(), 1,
                        @"Unexpected length of onExit actions list");
-        firstState->activity().addInternalAction(internal);
-        firstState->activity().addInternalAction(sleepAction);
-        STAssertEquals((int) firstState->activity().internalActions().size(), 2,
+        state[0]->activity().addInternalAction(internal);
+        state[0]->activity().addInternalAction(sleepAction);
+        STAssertEquals((int) state[0]->activity().internalActions().size(), 2,
                        @"Unexpected length of internal actions list");
 
-        fsm->addState(firstState);
-        STAssertEquals((int) fsm->states().size(), 1, @"Expected one state");
-
-        secondState = new State();
-        STAssertNotNil((id) secondState, @"Could not construct second State");
-        STAssertEquals((int) secondState->activity().onEntryActions().size(), 0,
-                       @"Expected empty onEntry actions list");
-        STAssertEquals((int) secondState->activity().onExitActions().size(), 0,
-                       @"Expected empty onExit actions list");
-        STAssertEquals((int) secondState->activity().internalActions().size(), 0,
-                       @"Expected empty internal actions list");
-        secondState->setName(NAME_SECOND_STATE);
-        secondState->setStateID(ID_SECOND_STATE);
-        
-        fsm->addState(secondState);
-        STAssertEquals((int) fsm->states().size(), 2, @"Expected two states");
-
-        exitState = new State();
-        STAssertNotNil((id) exitState, @"Could not construct exit State");
-        STAssertEquals((int) exitState->activity().onEntryActions().size(), 0,
-                       @"Expected empty onEntry actions list");
-        STAssertEquals((int) exitState->activity().onExitActions().size(), 0,
-                       @"Expected empty onExit actions list");
-        STAssertEquals((int) exitState->activity().internalActions().size(), 0,
-                       @"Expected empty internal actions list");
-        exitState->setName(NAME_EXIT_STATE);
-        exitState->setStateID(ID_EXIT_STATE);
-        
-        fsm->addState(exitState);
-        STAssertEquals((int) fsm->states().size(), 3, @"Expected three states");
-        
         falseExpression = new Predicate("FALSE", true, true);
-        falseTransition = new Transition(firstState, firstState, falseExpression);
+        falseTransition = new Transition(state[0], state[3], falseExpression);
         trueExpression  = new Predicate();
-        trueTransition  = new Transition(firstState, secondState, trueExpression);
-        timeoutPredicate = new TimeoutPredicate(500);
+        trueTransition  = new Transition(state[0], state[1], trueExpression);
+        timeoutPredicate = new TimeoutPredicate(UTIMEOUT);
 
-        firstState->addTransition(falseTransition);
-        firstState->addTransition(trueTransition);
-        STAssertEquals((int) firstState->transitions().size(), 2, @"Expected two transitions");
+        state[0]->addTransition(falseTransition);
+        state[0]->addTransition(trueTransition);
+        STAssertEquals((int) state[0]->transitions().size(), 2, @"Expected two transitions");
 
-        finalTransition = new Transition(secondState, exitState,
+        wbPredicate = new WBPredicate("WBTest", false, context);
+        wbPredicate->setValue(false);   // clear any old WB content
+        wbTransition = new Transition(state[1], state[2], wbPredicate);
+
+        state[1]->addTransition(wbTransition);
+
+        wbQueryPredicate = new WBQueryPredicate("WBTest", true, context);
+        wbqTransition = new Transition(state[2], state[3], wbQueryPredicate);
+
+        state[2]->addTransition(wbqTransition);
+
+        finalTransition = new Transition(state[3], state[4],
                                            new Predicate("YES", false, true));
-        secondState->addTransition(finalTransition);
-        STAssertEquals((int) secondState->transitions().size(), 1, @"Expected one transitions");
-        STAssertEquals((int) exitState->transitions().size(), 0, @"Expected no transitions");
+        state[3]->addTransition(finalTransition);
+        STAssertEquals((int) state[1]->transitions().size(), 1, @"Expected one transition");
+        STAssertEquals((int) state[4]->transitions().size(), 0, @"Expected no transitions out of final state");
 }
 
 - (void) tearDown
 {
         delete fsm;
-        delete firstState;
-        delete secondState;
+        delete context;
+        delete state[0];
+        delete state[1];
         delete onEntry;
         delete onExit;
         delete internal;
@@ -175,27 +238,34 @@ using namespace FSM;
         delete falseExpression;
         delete trueExpression;
 
+        delete callbackTest;
+
         [super tearDown];
 }
 
 - (void) testFSM
 {
-        STAssertEquals(fsm->context(), (Context *) self, @"Unexpected context");
+        STAssertEquals(fsm->context(), (Context *) context, @"Unexpected context");
         /*
          * run once
          */
         fsm->initialise();
         STAssertFalse(fsm->isSuspended(), @"should not be suspended");
         STAssertTrue(fsm->previousState() == NULL, @"Unexpected previous state");
-        STAssertEquals(fsm->currentState(), firstState, @"Unexpected initial state");
+        STAssertEquals(fsm->currentState(), state[0], @"Unexpected initial state");
         bool cont = fsm->executeOnce();
         STAssertTrue(cont, @"State machine should not be done yet");
-        STAssertEquals(fsm->currentState(), secondState, @"Unexpected second state");
-        STAssertEquals(fsm->previousState(), firstState, @"Unexpected previous state");
+        STAssertEquals(fsm->currentState(), state[1], @"Unexpected second state");
+        STAssertEquals(fsm->previousState(), state[0], @"Unexpected previous state");
         cont = fsm->executeOnce();
         STAssertTrue(cont, @"State machine should not be done yet");
-        STAssertEquals(fsm->currentState(), exitState, @"Unexpected current state");
-        STAssertEquals(fsm->previousState(), secondState, @"Unexpected previous state");
+        STAssertEquals(fsm->currentState(), state[1], @"Unexpected second state");
+        STAssertEquals(fsm->previousState(), state[1], @"Unexpected previous state");
+        static_cast<WBPredicate *>(wbTransition->expression())->setValue(true);
+        cont = fsm->executeOnce();
+        STAssertTrue(cont, @"State machine should not be done yet");
+        STAssertEquals(fsm->currentState(), state[2], @"Unexpected current state");
+        STAssertEquals(fsm->previousState(), state[1], @"Unexpected previous state");
         /*
          * suspend
          */
@@ -203,9 +273,9 @@ using namespace FSM;
         STAssertTrue(fsm->isSuspended(), @"should now be suspended");
         STAssertNotNil((id) fsm->suspendState(), @"should now have a suspend state");
         STAssertEquals(fsm->currentState(), fsm->suspendState(), @"Unexpected suspend state");
-        STAssertEquals(fsm->previousState(), exitState, @"Unexpected previous state");
+        STAssertEquals(fsm->previousState(), state[2], @"Unexpected previous state");
         STAssertFalse(timeoutPredicate->evaluate(fsm), @"suspend state should not have timed out yet");
-        usleep(500);
+        usleep(UTIMEOUT);
         STAssertTrue(timeoutPredicate->evaluate(fsm), @"suspend state should have timed out by now");
         
         /*
@@ -215,66 +285,86 @@ using namespace FSM;
         STAssertFalse(fsm->isSuspended(), @"should not be suspended");
         STAssertNotNil((id) fsm->suspendState(), @"should still have a suspend state");
         STAssertEquals(fsm->previousState(), fsm->suspendState(), @"Unexpected previous state");
-        STAssertEquals(fsm->currentState(), exitState, @"Unexpected state (should be exit state)");
+        STAssertEquals(fsm->currentState(), state[2], @"Unexpected state (should be state 2)");
+
+        /*
+         * query the whiteboard and wait for response
+         */
+        STAssertTrue(wbPredicate->evaluate(), @"WB Predicate should be true now");
+        cont = fsm->executeOnce();
+        STAssertTrue(cont, @"State machine should not be done yet");
+        STAssertEquals(fsm->currentState(), state[3], @"Unexpected current state");
+        STAssertEquals(fsm->previousState(), state[2], @"Unexpected previous state");
+        STAssertFalse(wbPredicate->evaluate(), @"WB Predicate should be false now");
+
+        cont = fsm->executeOnce();
+        STAssertTrue(cont, @"State machine should not be done yet");
+        STAssertEquals(fsm->currentState(), state[4], @"Unexpected current state");
+        STAssertEquals(fsm->previousState(), state[3], @"Unexpected previous state");
+        STAssertFalse(wbPredicate->evaluate(), @"WB Predicate should still be false now");
+        
         cont = fsm->executeOnce();
         STAssertFalse(cont, @"State machine should be done by now");
         /*
          * run again (just once), this time from second state
          */
-        State *last = fsm->restart(secondState);
+        State *last = fsm->restart(state[1]);
         STAssertFalse(fsm->isSuspended(), @"should not be suspended");
-        STAssertEquals(last, exitState, @"Unexpected state prior to restart");
+        STAssertEquals(last, state[4], @"Unexpected state prior to restart");
         STAssertTrue(fsm->previousState() == NULL, @"Unexpected previous state");
-        STAssertEquals(fsm->currentState(), secondState, @"Unexpected initial state");
+        STAssertEquals(fsm->currentState(), state[1], @"Unexpected initial state");
         fsm->executeOnce();
-        STAssertEquals(fsm->currentState(), exitState, @"Unexpected state");
+        STAssertEquals(fsm->currentState(), state[1], @"Should have stayed in 1 due to WB false");
         /*
          * run fully, from first state
          */
         last = fsm->restart();
         STAssertFalse(fsm->isSuspended(), @"should not be suspended");
-        STAssertEquals(last, exitState, @"Unexpected state prior to restart");
+        STAssertEquals(last, state[1], @"Unexpected state prior to restart");
         STAssertTrue(fsm->previousState() == NULL, @"Unexpected previous state");
-        STAssertEquals(fsm->currentState(), firstState, @"Unexpected initial state");
+        STAssertEquals(fsm->currentState(), state[0], @"Unexpected initial state");
+        STAssertFalse(wbPredicate->evaluate(), @"WB Predicate should be false now");
+        [self setWBAfterOneSecondTo: true];
         fsm->execute();
-        STAssertEquals(fsm->currentState(), exitState, @"Unexpected exit state");
+        STAssertEquals(fsm->currentState(), state[4], @"Unexpected exit state");
+        STAssertFalse(wbPredicate->evaluate(), @"WB Predicate should again be false now");
 }
 
 - (void) testFirstState
 {
-        STAssertEquals(fsm->states()[0], firstState,
+        STAssertEquals(fsm->states()[0], state[0],
                        @"Unexpected first state address");
-        STAssertEquals(firstState->stateID(), ID_FIRST_STATE,
+        STAssertEquals(state[0]->stateID(), ID_FIRST_STATE,
                        @"Unexpected first state id");
 }
 
 
 - (void) testSecondState
 {
-        STAssertEquals(fsm->states()[1], secondState,
+        STAssertEquals(fsm->states()[1], state[1],
                        @"Unexpected second state address");
-        STAssertEquals(secondState->stateID(), ID_SECOND_STATE,
+        STAssertEquals(state[1]->stateID(), ID_SECOND_STATE,
                        @"Unexpected second state id");
 }
 
 
 - (void) testFinalState
 {
-        STAssertEquals(fsm->states()[2], exitState,
+        STAssertEquals(fsm->states()[4], state[4],
                        @"Unexpected exit state address");
-        STAssertEquals(exitState->stateID(), ID_EXIT_STATE,
+        STAssertEquals(state[4]->stateID(), ID_EXIT_STATE,
                        @"Unexpected exit state id");
 }
 
 
 - (void) testOnEntry
 {
-        STAssertEquals(onEntry, firstState->activity().onEntryActions()[0],
+        STAssertEquals(onEntry, state[0]->activity().onEntryActions()[0],
                        @"Unexpected onEntry action address");
         PrintStringAction *a = (PrintStringAction *) onEntry;
         STAssertTrue(a->content() == "OnEntry",
                        @"unexpected OnEntry printing action content");
-        for (Action *action: firstState->activity().onEntryActions())
+        for (Action *action: state[0]->activity().onEntryActions())
                 action->perform(fsm, STAGE_ON_ENTRY, 0);
 }
 
@@ -282,13 +372,13 @@ using namespace FSM;
 
 - (void) testOnExit
 {
-        STAssertEquals(onExit, firstState->activity().onExitActions()[0],
+        STAssertEquals(onExit, state[0]->activity().onExitActions()[0],
                        @"Unexpected onExit action address");
         PrintingAction<const char *> *a = (PrintingAction<const char *> *) onExit;
         STAssertTrue(strcmp(a->content(), "OnExit") == 0,
                      @"unexpected OnExit printing action content: %s",
                      a->content());
-        for (Action *action: firstState->activity().onExitActions())
+        for (Action *action: state[0]->activity().onExitActions())
                 action->perform(fsm, STAGE_ON_EXIT, 0);
 }
 
@@ -296,12 +386,12 @@ using namespace FSM;
 
 - (void) testInternal
 {
-        STAssertEquals(internal, firstState->activity().internalActions()[0],
+        STAssertEquals(internal, state[0]->activity().internalActions()[0],
                        @"Unexpected internal action address");
         PrintingAction<int> *a = (PrintingAction<int> *) internal;
         STAssertTrue(a->content() == 3,
                      @"unexpected internal printing action content");
-        for (Action *action: firstState->activity().internalActions())
+        for (Action *action: state[0]->activity().internalActions())
                 action->perform(fsm, STAGE_INTERNAL, 0);
 }
 
@@ -309,7 +399,7 @@ using namespace FSM;
 - (void) testSleep
 {
         STAssertEquals(sleepAction,
-                       (SleepAction *) firstState->activity().internalActions()[1],
+                       (SleepAction *) state[0]->activity().internalActions()[1],
                        @"Unexpected sleep action address");
         STAssertEquals(sleepAction->content(), 1001,
                      @"unexpected internal sleep action content");
@@ -319,7 +409,11 @@ using namespace FSM;
         STAssertEquals(t1 + 1, t2, @"unexpected sleep time of %ld s", t2-t1);
 }
 
-/* does not work, because signal activates debugger on Xcode test
+/*
+ * The following test as well as the Whiteboard tests require
+ * handle SIGUSR1 nostop pass
+ * in your ~/.gdbinit file!
+ */
 - (void) testInterruptedSleep
 {
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 50 * NSEC_PER_USEC);
@@ -334,7 +428,6 @@ using namespace FSM;
         time_t t2 = time(NULL);
         STAssertEquals(t1 + 1, t2, @"unexpected interrupted sleep of %ld s", t2-t1);
 }
-*/
 
 - (void) testExpressions
 {
@@ -354,6 +447,17 @@ using namespace FSM;
                      ((Predicate *) finalTransition->expression())->name().c_str());
         STAssertFalse(timeoutPredicate->evaluate(), @"NULL machine should never time out");
 }
+
+
+- (void) setWBAfterOneSecondTo: (bool) trueOrFalse
+{
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0),
+                       ^{
+                               static_cast<WBPredicate *>(wbTransition->expression())->setValue(trueOrFalse);
+                       });
+}
+
 
 
 @end

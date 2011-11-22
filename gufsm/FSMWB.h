@@ -1,7 +1,7 @@
 /*
- *  FSMTest.h
+ *  FSMWB.h
  *  
- *  Created by René Hexel on 23/09/11.
+ *  Created by René Hexel on 11/11/11.
  *  Copyright (c) 2011 Rene Hexel.
  *  All rights reserved.
  *
@@ -55,44 +55,11 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#import <SenTestingKit/SenTestingKit.h>
+#ifndef gufsm_FSMWB_h
+#define gufsm_FSMWB_h
 
-namespace FSM
-{
-        class SuspensibleMachine;
-        class State;
-        class Action;
-        class SleepAction;
-        class Transition;
-        class Expression;
-        class Predicate;
-        class TimeoutPredicate;
-        class WBPredicate;
-        class WBQueryPredicate;
-        class WBContext;
-}
+#include "FSM.h"
+#include "FSMWBContext.h"
+#include "FSMWBQueryPredicate.h"
 
-class WBCallbackTest;
-
-@interface FSMTest: SenTestCase
-{
-        FSM::WBContext *context;
-        FSM::SuspensibleMachine *fsm;
-        FSM::State *state[5];
-        FSM::Transition *transition[5];
-        FSM::Action *onEntry, *onExit, *internal;
-        FSM::SleepAction *sleepAction;
-        FSM::Transition *falseTransition;
-        FSM::Transition *trueTransition;
-        FSM::Transition *finalTransition;
-        FSM::Predicate *falseExpression;
-        FSM::Predicate *trueExpression;
-        FSM::TimeoutPredicate *timeoutPredicate;
-        FSM::WBPredicate *wbPredicate;
-        FSM::WBQueryPredicate *wbQueryPredicate;
-        WBCallbackTest *callbackTest;
-}
-
-- (void) setWBAfterOneSecondTo: (bool) trueOrFalse;
-
-@end
+#endif

@@ -1334,6 +1334,7 @@
 		F192CCE5144D356300FF8526 /* FSMWBContext.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMWBContext.cc; sourceTree = "<group>"; };
 		F19C2B96142C7B37007CFC83 /* FSMTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMTransition.h; sourceTree = "<group>"; };
 		F19C2B98142C7D5A007CFC83 /* FSMExpression.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMExpression.h; sourceTree = "<group>"; };
+		F1AA79AF146C9C39005FE2B1 /* FSMWB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMWB.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1383,6 +1384,7 @@
 				F16CC2FE142C0C01001F788B /* main.cpp */,
 				F16CC300142C0C01001F788B /* gufsm.1 */,
 				F16CC30D142C0CE6001F788B /* FSM.h */,
+				F1AA79AF146C9C39005FE2B1 /* FSMWB.h */,
 				F16CC334142C3433001F788B /* FSMAction.cc */,
 				F16CC314142C146B001F788B /* FSMAction.h */,
 				F16CC312142C1247001F788B /* FSMActivity.cc */,

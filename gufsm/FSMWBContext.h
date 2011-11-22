@@ -80,13 +80,13 @@ namespace FSM
                 WBContext(guWhiteboard::Whiteboard *wb = NULL, bool deletewb = false);
 
                 /** destructor */
-                virtual ~WBContext() { if (_deletewb) delete _wb; }
+                virtual ~WBContext();
 
                 /** whiteboard getter */
                 guWhiteboard::Whiteboard *whiteboard() { return _wb; }
 
                 /** whiteboard setter */
-                void setWhiteboard(guWhiteboard::Whiteboard *wb = NULL, bool deletewb = false) { if (_deletewb) delete _wb; _wb = wb; _deletewb = deletewb && wb; }
+                void setWhiteboard(guWhiteboard::Whiteboard *wb = NULL, bool deletewb = false);
         };
 }
 
