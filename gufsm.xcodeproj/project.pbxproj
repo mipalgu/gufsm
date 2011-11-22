@@ -59,6 +59,8 @@
 		F1A3DF6E142D3BFF0060F293 /* FSMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30B142C0CDE001F788B /* FSMachine.cc */; };
 		F1AFCD29147B56FA00C975DC /* FSMachineVector.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1AFCD28147B56FA00C975DC /* FSMachineVector.cc */; };
 		F1AFCD2A147B56FA00C975DC /* FSMachineVector.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1AFCD28147B56FA00C975DC /* FSMachineVector.cc */; };
+		F1AFCD2F147B8F7800C975DC /* FSMWBSubMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1AFCD2E147B8F7800C975DC /* FSMWBSubMachine.cc */; };
+		F1AFCD30147B8F7800C975DC /* FSMWBSubMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1AFCD2E147B8F7800C975DC /* FSMWBSubMachine.cc */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1339,6 +1341,8 @@
 		F1AA79AF146C9C39005FE2B1 /* FSMWB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMWB.h; sourceTree = "<group>"; };
 		F1AFCD28147B56FA00C975DC /* FSMachineVector.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMachineVector.cc; sourceTree = "<group>"; };
 		F1AFCD2C147B573700C975DC /* FSMachineVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMachineVector.h; sourceTree = "<group>"; };
+		F1AFCD2D147B8F4200C975DC /* FSMWBSubMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMWBSubMachine.h; sourceTree = "<group>"; };
+		F1AFCD2E147B8F7800C975DC /* FSMWBSubMachine.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMWBSubMachine.cc; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1409,6 +1413,8 @@
 				F16CC30E142C0F62001F788B /* FSMState.h */,
 				F191E604142D9B970014AF84 /* FSMSuspensibleMachine.cc */,
 				F191E603142D9A2D0014AF84 /* FSMSuspensibleMachine.h */,
+				F1AFCD2E147B8F7800C975DC /* FSMWBSubMachine.cc */,
+				F1AFCD2D147B8F4200C975DC /* FSMWBSubMachine.h */,
 				F19C2B96142C7B37007CFC83 /* FSMTransition.h */,
 			);
 			path = gufsm;
@@ -3660,6 +3666,7 @@
 				F192CCE6144D356300FF8526 /* FSMWBContext.cc in Sources */,
 				F132711C1452812500E5786D /* FSMWBQueryPredicate.cc in Sources */,
 				F1AFCD29147B56FA00C975DC /* FSMachineVector.cc in Sources */,
+				F1AFCD2F147B8F7800C975DC /* FSMWBSubMachine.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3689,6 +3696,7 @@
 				F192CCE7144D356300FF8526 /* FSMWBContext.cc in Sources */,
 				F132711D1452812500E5786D /* FSMWBQueryPredicate.cc in Sources */,
 				F1AFCD2A147B56FA00C975DC /* FSMachineVector.cc in Sources */,
+				F1AFCD30147B8F7800C975DC /* FSMWBSubMachine.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
