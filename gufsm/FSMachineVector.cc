@@ -80,7 +80,7 @@ bool StateMachineVector::executeOnce()
 
         setAccepting(true);
 
-        for (SuspensibleMachine *m: machines())
+        for (SuspensibleMachine *m: machines()) if (!m->isSuspended())
         {
                 bool a = m->executeOnce();
                 setAccepting(a && accepting());
