@@ -57,6 +57,8 @@
 		F192CCE7144D356300FF8526 /* FSMWBContext.cc in Sources */ = {isa = PBXBuildFile; fileRef = F192CCE5144D356300FF8526 /* FSMWBContext.cc */; };
 		F1A3DF6D142D3BFE0060F293 /* FSMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30B142C0CDE001F788B /* FSMachine.cc */; };
 		F1A3DF6E142D3BFF0060F293 /* FSMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30B142C0CDE001F788B /* FSMachine.cc */; };
+		F1AFCD29147B56FA00C975DC /* FSMachineVector.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1AFCD28147B56FA00C975DC /* FSMachineVector.cc */; };
+		F1AFCD2A147B56FA00C975DC /* FSMachineVector.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1AFCD28147B56FA00C975DC /* FSMachineVector.cc */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1335,6 +1337,8 @@
 		F19C2B96142C7B37007CFC83 /* FSMTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMTransition.h; sourceTree = "<group>"; };
 		F19C2B98142C7D5A007CFC83 /* FSMExpression.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMExpression.h; sourceTree = "<group>"; };
 		F1AA79AF146C9C39005FE2B1 /* FSMWB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMWB.h; sourceTree = "<group>"; };
+		F1AFCD28147B56FA00C975DC /* FSMachineVector.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMachineVector.cc; sourceTree = "<group>"; };
+		F1AFCD2C147B573700C975DC /* FSMachineVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMachineVector.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1399,6 +1403,8 @@
 				F192CCE4144D354100FF8526 /* FSMWBContext.h */,
 				F16CC30B142C0CDE001F788B /* FSMachine.cc */,
 				F191E602142D99150014AF84 /* FSMachine.h */,
+				F1AFCD28147B56FA00C975DC /* FSMachineVector.cc */,
+				F1AFCD2C147B573700C975DC /* FSMachineVector.h */,
 				F16CC30F142C0F86001F788B /* FSMState.cc */,
 				F16CC30E142C0F62001F788B /* FSMState.h */,
 				F191E604142D9B970014AF84 /* FSMSuspensibleMachine.cc */,
@@ -3653,6 +3659,7 @@
 				F192CCE0144D291F00FF8526 /* FSMWBPredicate.cc in Sources */,
 				F192CCE6144D356300FF8526 /* FSMWBContext.cc in Sources */,
 				F132711C1452812500E5786D /* FSMWBQueryPredicate.cc in Sources */,
+				F1AFCD29147B56FA00C975DC /* FSMachineVector.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3681,6 +3688,7 @@
 				F192CCE1144D291F00FF8526 /* FSMWBPredicate.cc in Sources */,
 				F192CCE7144D356300FF8526 /* FSMWBContext.cc in Sources */,
 				F132711D1452812500E5786D /* FSMWBQueryPredicate.cc in Sources */,
+				F1AFCD2A147B56FA00C975DC /* FSMachineVector.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
