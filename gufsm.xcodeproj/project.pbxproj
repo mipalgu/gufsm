@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		F1199D6014302767003853BF /* FSMExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1199D5F14302767003853BF /* FSMExpression.cc */; };
 		F1199D6114302767003853BF /* FSMExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1199D5F14302767003853BF /* FSMExpression.cc */; };
+		F12B4237147DBD0200FF4A6B /* parser_walk.c in Sources */ = {isa = PBXBuildFile; fileRef = F12B4235147DBD0200FF4A6B /* parser_walk.c */; };
+		F12B4238147DBD0200FF4A6B /* parser_walk.c in Sources */ = {isa = PBXBuildFile; fileRef = F12B4235147DBD0200FF4A6B /* parser_walk.c */; };
+		F12B423E147DC38B00FF4A6B /* ActionsParser.g in Resources */ = {isa = PBXBuildFile; fileRef = F12B423A147DC38B00FF4A6B /* ActionsParser.g */; };
+		F12B423F147DC38B00FF4A6B /* SMCommon.g in Resources */ = {isa = PBXBuildFile; fileRef = F12B423B147DC38B00FF4A6B /* SMCommon.g */; };
+		F12B4240147DC38B00FF4A6B /* SMLexer.g in Resources */ = {isa = PBXBuildFile; fileRef = F12B423C147DC38B00FF4A6B /* SMLexer.g */; };
+		F12B4241147DC38B00FF4A6B /* TransitionsParser.g in Resources */ = {isa = PBXBuildFile; fileRef = F12B423D147DC38B00FF4A6B /* TransitionsParser.g */; };
 		F132711C1452812500E5786D /* FSMWBQueryPredicate.cc in Sources */ = {isa = PBXBuildFile; fileRef = F132711B1452812500E5786D /* FSMWBQueryPredicate.cc */; };
 		F132711D1452812500E5786D /* FSMWBQueryPredicate.cc in Sources */ = {isa = PBXBuildFile; fileRef = F132711B1452812500E5786D /* FSMWBQueryPredicate.cc */; };
 		F16CC2FF142C0C01001F788B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F16CC2FE142C0C01001F788B /* main.cpp */; };
@@ -63,6 +69,23 @@
 		F1AFCD30147B8F7800C975DC /* FSMWBSubMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1AFCD2E147B8F7800C975DC /* FSMWBSubMachine.cc */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		F12B422F147DBC7D00FF4A6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F12B41CD147DBC7D00FF4A6B /* gubehaviourinterpreter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F1069A001335BB710016B49E;
+			remoteInfo = gubehaviourinterpreter;
+		};
+		F12B4231147DBC7D00FF4A6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F12B41CD147DBC7D00FF4A6B /* gubehaviourinterpreter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F109AC2D1410B410004D90F0;
+			remoteInfo = parser;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		F16CC2F8142C0C01001F788B /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -78,6 +101,99 @@
 
 /* Begin PBXFileReference section */
 		F1199D5F14302767003853BF /* FSMExpression.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMExpression.cc; sourceTree = "<group>"; };
+		F12B41CD147DBC7D00FF4A6B /* gubehaviourinterpreter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = gubehaviourinterpreter.xcodeproj; sourceTree = "<group>"; };
+		F12B41CE147DBC7D00FF4A6B /* MainStart.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MainStart.cpp; sourceTree = "<group>"; };
+		F12B41CF147DBC7D00FF4A6B /* Activity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Activity.cpp; sourceTree = "<group>"; };
+		F12B41D0147DBC7D00FF4A6B /* Activity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Activity.h; sourceTree = "<group>"; };
+		F12B41D1147DBC7D00FF4A6B /* Expression.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Expression.h; sourceTree = "<group>"; };
+		F12B41D2147DBC7D00FF4A6B /* FSMCodeType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMCodeType.h; sourceTree = "<group>"; };
+		F12B41D3147DBC7D00FF4A6B /* Machine.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Machine.cpp; sourceTree = "<group>"; };
+		F12B41D4147DBC7D00FF4A6B /* Machine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Machine.h; sourceTree = "<group>"; };
+		F12B41D5147DBC7D00FF4A6B /* SubMachine.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SubMachine.cpp; sourceTree = "<group>"; };
+		F12B41D6147DBC7D00FF4A6B /* SubMachine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubMachine.h; sourceTree = "<group>"; };
+		F12B41D7147DBC7D00FF4A6B /* OnePost.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OnePost.h; sourceTree = "<group>"; };
+		F12B41D8147DBC7D00FF4A6B /* Posts.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Posts.cpp; sourceTree = "<group>"; };
+		F12B41D9147DBC7D00FF4A6B /* Posts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Posts.h; sourceTree = "<group>"; };
+		F12B41DA147DBC7D00FF4A6B /* State.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = State.cpp; sourceTree = "<group>"; };
+		F12B41DB147DBC7D00FF4A6B /* State.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = State.h; sourceTree = "<group>"; };
+		F12B41DC147DBC7D00FF4A6B /* Transition.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Transition.cpp; sourceTree = "<group>"; };
+		F12B41DD147DBC7D00FF4A6B /* Transition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Transition.h; sourceTree = "<group>"; };
+		F12B41DE147DBC7D00FF4A6B /* ReadTransitionc.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ReadTransitionc.cpp; sourceTree = "<group>"; };
+		F12B41DF147DBC7D00FF4A6B /* Atest.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Atest.txt; sourceTree = "<group>"; };
+		F12B41E4147DBC7D00FF4A6B /* GNUmakefile */ = {isa = PBXFileReference; lastKnownFileType = text; path = GNUmakefile; sourceTree = "<group>"; };
+		F12B41E6147DBC7D00FF4A6B /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		F12B41E7147DBC7D00FF4A6B /* Ttest.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Ttest.txt; sourceTree = "<group>"; };
+		F12B41EA147DBC7D00FF4A6B /* AGameController.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = AGameController.txt; sourceTree = "<group>"; };
+		F12B41EB147DBC7D00FF4A6B /* borrowedCodeGameController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = borrowedCodeGameController.cpp; sourceTree = "<group>"; };
+		F12B41EC147DBC7D00FF4A6B /* borrowedCodeGameController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = borrowedCodeGameController.h; sourceTree = "<group>"; };
+		F12B41ED147DBC7D00FF4A6B /* GameController.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = GameController.d; sourceTree = "<group>"; };
+		F12B41EE147DBC7D00FF4A6B /* GameController.fsm */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GameController.fsm; sourceTree = "<group>"; };
+		F12B41EF147DBC7D00FF4A6B /* GameController.sdump */ = {isa = PBXFileReference; lastKnownFileType = text; path = GameController.sdump; sourceTree = "<group>"; };
+		F12B41F0147DBC7D00FF4A6B /* GameControllerFSM.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = GameControllerFSM.jpg; sourceTree = "<group>"; };
+		F12B41F1147DBC7D00FF4A6B /* GameControllerFSM.uxf */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GameControllerFSM.uxf; sourceTree = "<group>"; };
+		F12B41F2147DBC7D00FF4A6B /* GNUmakefile */ = {isa = PBXFileReference; lastKnownFileType = text; path = GNUmakefile; sourceTree = "<group>"; };
+		F12B41F3147DBC7D00FF4A6B /* guGameController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = guGameController.cpp; sourceTree = "<group>"; };
+		F12B41F4147DBC7D00FF4A6B /* gurobocupplayerparsing.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = gurobocupplayerparsing.cpp; sourceTree = "<group>"; };
+		F12B41F5147DBC7D00FF4A6B /* gurobocupplayerparsing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gurobocupplayerparsing.h; sourceTree = "<group>"; };
+		F12B41F6147DBC7D00FF4A6B /* guGameController.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = guGameController.xcodeproj; sourceTree = "<group>"; };
+		F12B41F7147DBC7D00FF4A6B /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		F12B41F8147DBC7D00FF4A6B /* TGameController.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = TGameController.txt; sourceTree = "<group>"; };
+		F12B41FB147DBC7D00FF4A6B /* Placer.fsm */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Placer.fsm; sourceTree = "<group>"; };
+		F12B41FC147DBC7D00FF4A6B /* APlacer.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = APlacer.txt; sourceTree = "<group>"; };
+		F12B41FD147DBC7D00FF4A6B /* TPlacer.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = TPlacer.txt; sourceTree = "<group>"; };
+		F12B41FE147DBC7D00FF4A6B /* Placer.sdump */ = {isa = PBXFileReference; lastKnownFileType = text; path = Placer.sdump; sourceTree = "<group>"; };
+		F12B41FF147DBC7D00FF4A6B /* borrowedCodePlacer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = borrowedCodePlacer.cpp; sourceTree = "<group>"; };
+		F12B4200147DBC7D00FF4A6B /* borrowedCodePlacer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = borrowedCodePlacer.h; sourceTree = "<group>"; };
+		F12B4201147DBC7D00FF4A6B /* GNUmakefile */ = {isa = PBXFileReference; lastKnownFileType = text; path = GNUmakefile; sourceTree = "<group>"; };
+		F12B4202147DBC7D00FF4A6B /* guPlacer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = guPlacer.cpp; sourceTree = "<group>"; };
+		F12B4203147DBC7D00FF4A6B /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		F12B4204147DBC7D00FF4A6B /* rules.dlc */ = {isa = PBXFileReference; lastKnownFileType = text; path = rules.dlc; sourceTree = "<group>"; };
+		F12B4205147DBC7D00FF4A6B /* GNUmakefile */ = {isa = PBXFileReference; lastKnownFileType = text; path = GNUmakefile; sourceTree = "<group>"; };
+		F12B4206147DBC7D00FF4A6B /* gumicrowavetimer.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = gumicrowavetimer.cc; sourceTree = "<group>"; };
+		F12B4207147DBC7D00FF4A6B /* gumicrowavetimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gumicrowavetimer.h; sourceTree = "<group>"; };
+		F12B4208147DBC7D00FF4A6B /* gumicrowavetimermain.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = gumicrowavetimermain.cc; sourceTree = "<group>"; };
+		F12B4209147DBC7D00FF4A6B /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		F12B420A147DBC7D00FF4A6B /* AGameController.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = AGameController.txt; sourceTree = "<group>"; };
+		F12B420B147DBC7D00FF4A6B /* AMicrowaveBell.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = AMicrowaveBell.txt; sourceTree = "<group>"; };
+		F12B420C147DBC7D00FF4A6B /* AMicrowaveButton.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = AMicrowaveButton.txt; sourceTree = "<group>"; };
+		F12B420D147DBC7D00FF4A6B /* AMicrowaveCook.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = AMicrowaveCook.txt; sourceTree = "<group>"; };
+		F12B420E147DBC7D00FF4A6B /* AMicrowaveLight.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = AMicrowaveLight.txt; sourceTree = "<group>"; };
+		F12B420F147DBC7D00FF4A6B /* Atest.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Atest.txt; sourceTree = "<group>"; };
+		F12B4210147DBC7D00FF4A6B /* Atimer.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Atimer.txt; sourceTree = "<group>"; };
+		F12B4211147DBC7D00FF4A6B /* Bell.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = Bell.sh; sourceTree = "<group>"; };
+		F12B4212147DBC7D00FF4A6B /* Button.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = Button.sh; sourceTree = "<group>"; };
+		F12B4213147DBC7D00FF4A6B /* CodeTimer.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CodeTimer.cc; sourceTree = "<group>"; };
+		F12B4214147DBC7D00FF4A6B /* CodeTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CodeTimer.h; sourceTree = "<group>"; };
+		F12B4215147DBC7D00FF4A6B /* Cooking.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = Cooking.sh; sourceTree = "<group>"; };
+		F12B4216147DBC7D00FF4A6B /* GameController.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = GameController.d; sourceTree = "<group>"; };
+		F12B4217147DBC7D00FF4A6B /* GameController.sdump */ = {isa = PBXFileReference; lastKnownFileType = file; path = GameController.sdump; sourceTree = "<group>"; };
+		F12B4218147DBC7D00FF4A6B /* Kill.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = Kill.sh; sourceTree = "<group>"; };
+		F12B4219147DBC7D00FF4A6B /* Lights.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = Lights.sh; sourceTree = "<group>"; };
+		F12B421A147DBC7D00FF4A6B /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		F12B421B147DBC7D00FF4A6B /* MicrowaveBell.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = MicrowaveBell.d; sourceTree = "<group>"; };
+		F12B421C147DBC7D00FF4A6B /* MicrowaveButton.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = MicrowaveButton.d; sourceTree = "<group>"; };
+		F12B421D147DBC7D00FF4A6B /* MicrowaveCook.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = MicrowaveCook.d; sourceTree = "<group>"; };
+		F12B421E147DBC7D00FF4A6B /* MicrowaveLight.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = MicrowaveLight.d; sourceTree = "<group>"; };
+		F12B421F147DBC7D00FF4A6B /* Start.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = Start.sh; sourceTree = "<group>"; };
+		F12B4220147DBC7D00FF4A6B /* TGameController.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = TGameController.txt; sourceTree = "<group>"; };
+		F12B4221147DBC7D00FF4A6B /* Timer.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cc; sourceTree = "<group>"; };
+		F12B4222147DBC7D00FF4A6B /* Timer.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = Timer.sh; sourceTree = "<group>"; };
+		F12B4223147DBC7D00FF4A6B /* TMicrowaveBell.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = TMicrowaveBell.txt; sourceTree = "<group>"; };
+		F12B4224147DBC7D00FF4A6B /* TMicrowaveButton.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = TMicrowaveButton.txt; sourceTree = "<group>"; };
+		F12B4225147DBC7D00FF4A6B /* TMicrowaveCook.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = TMicrowaveCook.txt; sourceTree = "<group>"; };
+		F12B4226147DBC7D00FF4A6B /* TMicrowaveLight.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = TMicrowaveLight.txt; sourceTree = "<group>"; };
+		F12B4227147DBC7D00FF4A6B /* Ttest.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Ttest.txt; sourceTree = "<group>"; };
+		F12B4228147DBC7D00FF4A6B /* Ttimer.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Ttimer.txt; sourceTree = "<group>"; };
+		F12B4229147DBC7D00FF4A6B /* actions.syntrax */ = {isa = PBXFileReference; lastKnownFileType = text; path = actions.syntrax; sourceTree = "<group>"; };
+		F12B422A147DBC7D00FF4A6B /* grammar_doc.tex */ = {isa = PBXFileReference; lastKnownFileType = text; path = grammar_doc.tex; sourceTree = "<group>"; };
+		F12B422B147DBC7D00FF4A6B /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		F12B422C147DBC7D00FF4A6B /* transitions.syntrax */ = {isa = PBXFileReference; lastKnownFileType = text; path = transitions.syntrax; sourceTree = "<group>"; };
+		F12B4235147DBD0200FF4A6B /* parser_walk.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = parser_walk.c; sourceTree = "<group>"; };
+		F12B4236147DBD0200FF4A6B /* parser_walk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parser_walk.h; sourceTree = "<group>"; };
+		F12B423A147DC38B00FF4A6B /* ActionsParser.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ActionsParser.g; sourceTree = "<group>"; };
+		F12B423B147DC38B00FF4A6B /* SMCommon.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SMCommon.g; sourceTree = "<group>"; };
+		F12B423C147DC38B00FF4A6B /* SMLexer.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SMLexer.g; sourceTree = "<group>"; };
+		F12B423D147DC38B00FF4A6B /* TransitionsParser.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TransitionsParser.g; sourceTree = "<group>"; };
 		F132711B1452812500E5786D /* FSMWBQueryPredicate.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMWBQueryPredicate.cc; sourceTree = "<group>"; };
 		F132711E1452814300E5786D /* FSMWBQueryPredicate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMWBQueryPredicate.h; sourceTree = "<group>"; };
 		F16CC2FA142C0C01001F788B /* gufsm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = gufsm; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1365,12 +1481,171 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F12B41CC147DBC7D00FF4A6B /* gubehaviourinterpreter */ = {
+			isa = PBXGroup;
+			children = (
+				F12B41CD147DBC7D00FF4A6B /* gubehaviourinterpreter.xcodeproj */,
+				F12B41CE147DBC7D00FF4A6B /* MainStart.cpp */,
+				F12B41CF147DBC7D00FF4A6B /* Activity.cpp */,
+				F12B41D0147DBC7D00FF4A6B /* Activity.h */,
+				F12B41D1147DBC7D00FF4A6B /* Expression.h */,
+				F12B41D2147DBC7D00FF4A6B /* FSMCodeType.h */,
+				F12B41D3147DBC7D00FF4A6B /* Machine.cpp */,
+				F12B41D4147DBC7D00FF4A6B /* Machine.h */,
+				F12B41D5147DBC7D00FF4A6B /* SubMachine.cpp */,
+				F12B41D6147DBC7D00FF4A6B /* SubMachine.h */,
+				F12B41D7147DBC7D00FF4A6B /* OnePost.h */,
+				F12B41D8147DBC7D00FF4A6B /* Posts.cpp */,
+				F12B41D9147DBC7D00FF4A6B /* Posts.h */,
+				F12B41DA147DBC7D00FF4A6B /* State.cpp */,
+				F12B41DB147DBC7D00FF4A6B /* State.h */,
+				F12B41DC147DBC7D00FF4A6B /* Transition.cpp */,
+				F12B41DD147DBC7D00FF4A6B /* Transition.h */,
+				F12B41DE147DBC7D00FF4A6B /* ReadTransitionc.cpp */,
+				F12B4235147DBD0200FF4A6B /* parser_walk.c */,
+				F12B4236147DBD0200FF4A6B /* parser_walk.h */,
+				F12B41DF147DBC7D00FF4A6B /* Atest.txt */,
+				F12B41E0147DBC7D00FF4A6B /* guGameController */,
+				F12B41E1147DBC7D00FF4A6B /* Placer */,
+				F12B41E2147DBC7D00FF4A6B /* code */,
+				F12B41E3147DBC7D00FF4A6B /* examples */,
+				F12B41E4147DBC7D00FF4A6B /* GNUmakefile */,
+				F12B41E5147DBC7D00FF4A6B /* LANGUAGE */,
+				F12B41E6147DBC7D00FF4A6B /* Makefile */,
+				F12B41E7147DBC7D00FF4A6B /* Ttest.txt */,
+			);
+			name = gubehaviourinterpreter;
+			path = ../gubehaviourinterpreter;
+			sourceTree = "<group>";
+		};
+		F12B41E0147DBC7D00FF4A6B /* guGameController */ = {
+			isa = PBXGroup;
+			children = (
+				F12B41EA147DBC7D00FF4A6B /* AGameController.txt */,
+				F12B41EB147DBC7D00FF4A6B /* borrowedCodeGameController.cpp */,
+				F12B41EC147DBC7D00FF4A6B /* borrowedCodeGameController.h */,
+				F12B41ED147DBC7D00FF4A6B /* GameController.d */,
+				F12B41EE147DBC7D00FF4A6B /* GameController.fsm */,
+				F12B41EF147DBC7D00FF4A6B /* GameController.sdump */,
+				F12B41F0147DBC7D00FF4A6B /* GameControllerFSM.jpg */,
+				F12B41F1147DBC7D00FF4A6B /* GameControllerFSM.uxf */,
+				F12B41F2147DBC7D00FF4A6B /* GNUmakefile */,
+				F12B41F3147DBC7D00FF4A6B /* guGameController.cpp */,
+				F12B41F4147DBC7D00FF4A6B /* gurobocupplayerparsing.cpp */,
+				F12B41F5147DBC7D00FF4A6B /* gurobocupplayerparsing.h */,
+				F12B41F6147DBC7D00FF4A6B /* guGameController.xcodeproj */,
+				F12B41F7147DBC7D00FF4A6B /* Makefile */,
+				F12B41F8147DBC7D00FF4A6B /* TGameController.txt */,
+			);
+			path = guGameController;
+			sourceTree = "<group>";
+		};
+		F12B41E1147DBC7D00FF4A6B /* Placer */ = {
+			isa = PBXGroup;
+			children = (
+				F12B41FB147DBC7D00FF4A6B /* Placer.fsm */,
+				F12B41FC147DBC7D00FF4A6B /* APlacer.txt */,
+				F12B41FD147DBC7D00FF4A6B /* TPlacer.txt */,
+				F12B41FE147DBC7D00FF4A6B /* Placer.sdump */,
+				F12B41FF147DBC7D00FF4A6B /* borrowedCodePlacer.cpp */,
+				F12B4200147DBC7D00FF4A6B /* borrowedCodePlacer.h */,
+				F12B4201147DBC7D00FF4A6B /* GNUmakefile */,
+				F12B4202147DBC7D00FF4A6B /* guPlacer.cpp */,
+				F12B4203147DBC7D00FF4A6B /* Makefile */,
+				F12B4204147DBC7D00FF4A6B /* rules.dlc */,
+			);
+			name = Placer;
+			path = guSeeker;
+			sourceTree = "<group>";
+		};
+		F12B41E2147DBC7D00FF4A6B /* code */ = {
+			isa = PBXGroup;
+			children = (
+				F12B4205147DBC7D00FF4A6B /* GNUmakefile */,
+				F12B4206147DBC7D00FF4A6B /* gumicrowavetimer.cc */,
+				F12B4207147DBC7D00FF4A6B /* gumicrowavetimer.h */,
+				F12B4208147DBC7D00FF4A6B /* gumicrowavetimermain.cc */,
+				F12B4209147DBC7D00FF4A6B /* Makefile */,
+			);
+			path = code;
+			sourceTree = "<group>";
+		};
+		F12B41E3147DBC7D00FF4A6B /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				F12B420A147DBC7D00FF4A6B /* AGameController.txt */,
+				F12B420B147DBC7D00FF4A6B /* AMicrowaveBell.txt */,
+				F12B420C147DBC7D00FF4A6B /* AMicrowaveButton.txt */,
+				F12B420D147DBC7D00FF4A6B /* AMicrowaveCook.txt */,
+				F12B420E147DBC7D00FF4A6B /* AMicrowaveLight.txt */,
+				F12B420F147DBC7D00FF4A6B /* Atest.txt */,
+				F12B4210147DBC7D00FF4A6B /* Atimer.txt */,
+				F12B4211147DBC7D00FF4A6B /* Bell.sh */,
+				F12B4212147DBC7D00FF4A6B /* Button.sh */,
+				F12B4213147DBC7D00FF4A6B /* CodeTimer.cc */,
+				F12B4214147DBC7D00FF4A6B /* CodeTimer.h */,
+				F12B4215147DBC7D00FF4A6B /* Cooking.sh */,
+				F12B4216147DBC7D00FF4A6B /* GameController.d */,
+				F12B4217147DBC7D00FF4A6B /* GameController.sdump */,
+				F12B4218147DBC7D00FF4A6B /* Kill.sh */,
+				F12B4219147DBC7D00FF4A6B /* Lights.sh */,
+				F12B421A147DBC7D00FF4A6B /* Makefile */,
+				F12B421B147DBC7D00FF4A6B /* MicrowaveBell.d */,
+				F12B421C147DBC7D00FF4A6B /* MicrowaveButton.d */,
+				F12B421D147DBC7D00FF4A6B /* MicrowaveCook.d */,
+				F12B421E147DBC7D00FF4A6B /* MicrowaveLight.d */,
+				F12B421F147DBC7D00FF4A6B /* Start.sh */,
+				F12B4220147DBC7D00FF4A6B /* TGameController.txt */,
+				F12B4221147DBC7D00FF4A6B /* Timer.cc */,
+				F12B4222147DBC7D00FF4A6B /* Timer.sh */,
+				F12B4223147DBC7D00FF4A6B /* TMicrowaveBell.txt */,
+				F12B4224147DBC7D00FF4A6B /* TMicrowaveButton.txt */,
+				F12B4225147DBC7D00FF4A6B /* TMicrowaveCook.txt */,
+				F12B4226147DBC7D00FF4A6B /* TMicrowaveLight.txt */,
+				F12B4227147DBC7D00FF4A6B /* Ttest.txt */,
+				F12B4228147DBC7D00FF4A6B /* Ttimer.txt */,
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+		F12B41E5147DBC7D00FF4A6B /* LANGUAGE */ = {
+			isa = PBXGroup;
+			children = (
+				F12B4229147DBC7D00FF4A6B /* actions.syntrax */,
+				F12B422A147DBC7D00FF4A6B /* grammar_doc.tex */,
+				F12B422B147DBC7D00FF4A6B /* Makefile */,
+				F12B422C147DBC7D00FF4A6B /* transitions.syntrax */,
+				F12B423A147DC38B00FF4A6B /* ActionsParser.g */,
+				F12B423B147DC38B00FF4A6B /* SMCommon.g */,
+				F12B423C147DC38B00FF4A6B /* SMLexer.g */,
+				F12B423D147DC38B00FF4A6B /* TransitionsParser.g */,
+			);
+			path = LANGUAGE;
+			sourceTree = "<group>";
+		};
+		F12B41E8147DBC7D00FF4A6B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F12B4230147DBC7D00FF4A6B /* gubehaviourinterpreter */,
+				F12B4232147DBC7D00FF4A6B /* libparser.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F12B41F9147DBC7D00FF4A6B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		F16CC2EF142C0C01001F788B = {
 			isa = PBXGroup;
 			children = (
 				F16CC2FD142C0C01001F788B /* gufsm */,
 				F16CC324142C2AD9001F788B /* FSMTest */,
 				F192C73E144D255900FF8526 /* guboostwhiteboard */,
+				F12B41CC147DBC7D00FF4A6B /* gubehaviourinterpreter */,
 				F192CC8F144D27C200FF8526 /* Common */,
 				F16CC31B142C2AD9001F788B /* Frameworks */,
 				F16CC2FB142C0C01001F788B /* Products */,
@@ -3550,6 +3825,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F16CC304142C0C01001F788B /* Build configuration list for PBXNativeTarget "gufsm" */;
 			buildPhases = (
+				F12B4239147DC25100FF4A6B /* ShellScript */,
 				F16CC2F6142C0C01001F788B /* Sources */,
 				F16CC2F7142C0C01001F788B /* Frameworks */,
 				F16CC2F8142C0C01001F788B /* CopyFiles */,
@@ -3600,6 +3876,16 @@
 			mainGroup = F16CC2EF142C0C01001F788B;
 			productRefGroup = F16CC2FB142C0C01001F788B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = F12B41E8147DBC7D00FF4A6B /* Products */;
+					ProjectRef = F12B41CD147DBC7D00FF4A6B /* gubehaviourinterpreter.xcodeproj */;
+				},
+				{
+					ProductGroup = F12B41F9147DBC7D00FF4A6B /* Products */;
+					ProjectRef = F12B41F6147DBC7D00FF4A6B /* guGameController.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				F16CC2F9142C0C01001F788B /* gufsm */,
@@ -3607,6 +3893,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		F12B4230147DBC7D00FF4A6B /* gubehaviourinterpreter */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = gubehaviourinterpreter;
+			remoteRef = F12B422F147DBC7D00FF4A6B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F12B4232147DBC7D00FF4A6B /* libparser.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libparser.a;
+			remoteRef = F12B4231147DBC7D00FF4A6B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		F16CC317142C2AD9001F788B /* Resources */ = {
@@ -3618,12 +3921,33 @@
 				F192CC2B144D255A00FF8526 /* Jamroot in Resources */,
 				F192CC2C144D255A00FF8526 /* Jamfile.v2 in Resources */,
 				F192CC2D144D255A00FF8526 /* date_time.doc in Resources */,
+				F12B423E147DC38B00FF4A6B /* ActionsParser.g in Resources */,
+				F12B423F147DC38B00FF4A6B /* SMCommon.g in Resources */,
+				F12B4240147DC38B00FF4A6B /* SMLexer.g in Resources */,
+				F12B4241147DC38B00FF4A6B /* TransitionsParser.g in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		F12B4239147DC25100FF4A6B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/SMLexer.g",
+				"$(SRCROOT)/SMCommon.g",
+				"$(SRCROOT)/TransitionsParser.g",
+				"$(SRCROOT)/ActionsParser.g",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "cd ${SRCROOT}\nout=\"${SRCROOT}/build.host\"\nmkdir -p \"$out\"\nfor ((i=0; i < SCRIPT_INPUT_FILE_COUNT ; i++)); do\ninputFile=`eval echo '$SCRIPT_INPUT_FILE_'$i`\noutputFile=\"$out\"/`basename \"$inputFile\" | sed 's/.g$/.tokens/'`\n\nif [ ! $outputFile -nt $inputFile ]; then\njava -classpath /usr/local/share/java/antlr-3.4-complete.jar org.antlr.Tool -language C -o \"$out\" \"$inputFile\" 2>&1 | sed 's/warning\\([^:]*\\): \\([^ ]*\\): \\(.*\\)$/\\2: warning: \\3 \\1/' 1>&2\nfi\ndone\n";
+		};
 		F16CC318142C2AD9001F788B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3667,6 +3991,7 @@
 				F132711C1452812500E5786D /* FSMWBQueryPredicate.cc in Sources */,
 				F1AFCD29147B56FA00C975DC /* FSMachineVector.cc in Sources */,
 				F1AFCD2F147B8F7800C975DC /* FSMWBSubMachine.cc in Sources */,
+				F12B4237147DBD0200FF4A6B /* parser_walk.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3697,6 +4022,7 @@
 				F132711D1452812500E5786D /* FSMWBQueryPredicate.cc in Sources */,
 				F1AFCD2A147B56FA00C975DC /* FSMachineVector.cc in Sources */,
 				F1AFCD30147B8F7800C975DC /* FSMWBSubMachine.cc in Sources */,
+				F12B4238147DBD0200FF4A6B /* parser_walk.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
