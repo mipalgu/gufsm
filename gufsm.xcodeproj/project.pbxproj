@@ -63,6 +63,16 @@
 		F192CCE7144D356300FF8526 /* FSMWBContext.cc in Sources */ = {isa = PBXBuildFile; fileRef = F192CCE5144D356300FF8526 /* FSMWBContext.cc */; };
 		F1A3DF6D142D3BFE0060F293 /* FSMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30B142C0CDE001F788B /* FSMachine.cc */; };
 		F1A3DF6E142D3BFF0060F293 /* FSMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30B142C0CDE001F788B /* FSMachine.cc */; };
+		F1A9E7D2147F76C200C852FC /* ActivityFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CC147F76C200C852FC /* ActivityFactory.cpp */; };
+		F1A9E7D3147F76C200C852FC /* ActivityFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CC147F76C200C852FC /* ActivityFactory.cpp */; };
+		F1A9E7D4147F76C200C852FC /* parser_walk.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CE147F76C200C852FC /* parser_walk.c */; };
+		F1A9E7D5147F76C200C852FC /* parser_walk.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CE147F76C200C852FC /* parser_walk.c */; };
+		F1A9E7D6147F76C200C852FC /* TransitionFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7D0147F76C200C852FC /* TransitionFactory.cpp */; };
+		F1A9E7D7147F76C200C852FC /* TransitionFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7D0147F76C200C852FC /* TransitionFactory.cpp */; };
+		F1A9E7DA147F79E400C852FC /* FSMVectorFactory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7D9147F79E300C852FC /* FSMVectorFactory.cc */; };
+		F1A9E7DB147F79E400C852FC /* FSMVectorFactory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7D9147F79E300C852FC /* FSMVectorFactory.cc */; };
+		F1A9E7DE147F7C4600C852FC /* FSMWBSubMachineFactory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7DD147F7C4600C852FC /* FSMWBSubMachineFactory.cc */; };
+		F1A9E7DF147F7C4600C852FC /* FSMWBSubMachineFactory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7DD147F7C4600C852FC /* FSMWBSubMachineFactory.cc */; };
 		F1AFCD29147B56FA00C975DC /* FSMachineVector.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1AFCD28147B56FA00C975DC /* FSMachineVector.cc */; };
 		F1AFCD2A147B56FA00C975DC /* FSMachineVector.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1AFCD28147B56FA00C975DC /* FSMachineVector.cc */; };
 		F1AFCD2F147B8F7800C975DC /* FSMWBSubMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1AFCD2E147B8F7800C975DC /* FSMWBSubMachine.cc */; };
@@ -1454,6 +1464,16 @@
 		F192CCE5144D356300FF8526 /* FSMWBContext.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMWBContext.cc; sourceTree = "<group>"; };
 		F19C2B96142C7B37007CFC83 /* FSMTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMTransition.h; sourceTree = "<group>"; };
 		F19C2B98142C7D5A007CFC83 /* FSMExpression.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMExpression.h; sourceTree = "<group>"; };
+		F1A9E7CC147F76C200C852FC /* ActivityFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ActivityFactory.cpp; sourceTree = "<group>"; };
+		F1A9E7CD147F76C200C852FC /* ActivityFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityFactory.h; sourceTree = "<group>"; };
+		F1A9E7CE147F76C200C852FC /* parser_walk.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = parser_walk.c; sourceTree = "<group>"; };
+		F1A9E7CF147F76C200C852FC /* parser_walk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parser_walk.h; sourceTree = "<group>"; };
+		F1A9E7D0147F76C200C852FC /* TransitionFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TransitionFactory.cpp; sourceTree = "<group>"; };
+		F1A9E7D1147F76C200C852FC /* TransitionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionFactory.h; sourceTree = "<group>"; };
+		F1A9E7D8147F789500C852FC /* FSMVectorFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMVectorFactory.h; sourceTree = "<group>"; };
+		F1A9E7D9147F79E300C852FC /* FSMVectorFactory.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMVectorFactory.cc; sourceTree = "<group>"; };
+		F1A9E7DC147F7B8600C852FC /* FSMWBSubMachineFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMWBSubMachineFactory.h; sourceTree = "<group>"; };
+		F1A9E7DD147F7C4600C852FC /* FSMWBSubMachineFactory.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMWBSubMachineFactory.cc; sourceTree = "<group>"; };
 		F1AA79AF146C9C39005FE2B1 /* FSMWB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMWB.h; sourceTree = "<group>"; };
 		F1AFCD28147B56FA00C975DC /* FSMachineVector.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMachineVector.cc; sourceTree = "<group>"; };
 		F1AFCD2C147B573700C975DC /* FSMachineVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMachineVector.h; sourceTree = "<group>"; };
@@ -1691,6 +1711,16 @@
 				F1AFCD2E147B8F7800C975DC /* FSMWBSubMachine.cc */,
 				F1AFCD2D147B8F4200C975DC /* FSMWBSubMachine.h */,
 				F19C2B96142C7B37007CFC83 /* FSMTransition.h */,
+				F1A9E7DC147F7B8600C852FC /* FSMWBSubMachineFactory.h */,
+				F1A9E7DD147F7C4600C852FC /* FSMWBSubMachineFactory.cc */,
+				F1A9E7D8147F789500C852FC /* FSMVectorFactory.h */,
+				F1A9E7D9147F79E300C852FC /* FSMVectorFactory.cc */,
+				F1A9E7CC147F76C200C852FC /* ActivityFactory.cpp */,
+				F1A9E7CD147F76C200C852FC /* ActivityFactory.h */,
+				F1A9E7CE147F76C200C852FC /* parser_walk.c */,
+				F1A9E7CF147F76C200C852FC /* parser_walk.h */,
+				F1A9E7D0147F76C200C852FC /* TransitionFactory.cpp */,
+				F1A9E7D1147F76C200C852FC /* TransitionFactory.h */,
 			);
 			path = gufsm;
 			sourceTree = "<group>";
@@ -3992,6 +4022,11 @@
 				F1AFCD29147B56FA00C975DC /* FSMachineVector.cc in Sources */,
 				F1AFCD2F147B8F7800C975DC /* FSMWBSubMachine.cc in Sources */,
 				F12B4237147DBD0200FF4A6B /* parser_walk.c in Sources */,
+				F1A9E7D2147F76C200C852FC /* ActivityFactory.cpp in Sources */,
+				F1A9E7D4147F76C200C852FC /* parser_walk.c in Sources */,
+				F1A9E7D6147F76C200C852FC /* TransitionFactory.cpp in Sources */,
+				F1A9E7DA147F79E400C852FC /* FSMVectorFactory.cc in Sources */,
+				F1A9E7DE147F7C4600C852FC /* FSMWBSubMachineFactory.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4023,6 +4058,11 @@
 				F1AFCD2A147B56FA00C975DC /* FSMachineVector.cc in Sources */,
 				F1AFCD30147B8F7800C975DC /* FSMWBSubMachine.cc in Sources */,
 				F12B4238147DBD0200FF4A6B /* parser_walk.c in Sources */,
+				F1A9E7D3147F76C200C852FC /* ActivityFactory.cpp in Sources */,
+				F1A9E7D5147F76C200C852FC /* parser_walk.c in Sources */,
+				F1A9E7D7147F76C200C852FC /* TransitionFactory.cpp in Sources */,
+				F1A9E7DB147F79E400C852FC /* FSMVectorFactory.cc in Sources */,
+				F1A9E7DF147F7C4600C852FC /* FSMWBSubMachineFactory.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
