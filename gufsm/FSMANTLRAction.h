@@ -69,7 +69,8 @@ namespace FSM
         public:
                 ANTLRAction(pANTLR3_BASE_TREE block, pANTLR3_RECOGNIZER_SHARED_STATE context): _state(context) { _content = block; }
                 virtual void performv(Machine *, ActionStage, int x, va_list);
-
+                /** ANTLR context getter */
+                pANTLR3_RECOGNIZER_SHARED_STATE antlr_state() { return _state; }
         };
 }
 

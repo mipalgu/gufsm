@@ -82,6 +82,16 @@ namespace FSM
                 {
                         internal_variables()[name] = val;
                 }
+                /** get internal variable value */
+                int value(std::string name)
+                {
+                        return internal_variables()[name];
+                }
+                /** find variable */
+                bool exists(std::string name)
+                {
+                        return internal_variables().count(name) != 0;
+                }
         };
 }
 
