@@ -59,9 +59,11 @@
 #include <ctype.h>
 #include <sys/param.h>
 #include <gu_util.h>
-#include "Machine.h"
-#include "Activity.h"
+#include "FSMachine.h"
+#include "FSMState.h"
+#include "FSMActivity.h"
 #include "ActivityFactory.h"
+#include "FSMANTLRAction.h"
 
 extern "C"
 {
@@ -72,70 +74,16 @@ using namespace FSM;
 using namespace std;
 
 static int
-wb_pop(void *context, const char *terminal, const char *content,
-       pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
-{
-        ActivityFactory *self = (ActivityFactory *) context;
-        p_onePost newPost = new onePost();
-        
-        newPost->setMessageType(self->wb_name());
-        newPost->setDoing(self->wb_content());
-        
-        self->activity()->addOnePostToPossiblePostsByStage(self->stage(),
-                                                               newPost);
-        return 1;
-}
-
-static int
-wb_callback(void *context, const char *terminal, const char *content,
+block_callback(void *context, const char *terminal, const char *content,
             pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
 {
         ActivityFactory *self = (ActivityFactory *) context;
-        
+
         DBG(cout << __FUNCTION__ << "(" << terminal << ", " << content << ")" <<
             endl);
 
-        assert(terminal);       /* must not be nil */
-
-        /*
-         * whiteboard message content
-         * XXX: this is ugly: for the lexer to be unique knowledge about
-         * SEP_CONTENT starting with a colon and possible whitespaces needs
-         * to be passed into here rather than handled directly by the parser.
-         */
-        if (string("WHITEBOARD_SEP_CONTENT") == terminal)
-        {
-                assert(':' == content[0]);      /* must start with ':' */
-
-                const char *s = content + 1;    /* skip ':' */
-                while (isspace(*s)) s++;        /* skip whitespace */
-                self->set_wb_content(s);
-                
-                wb_pop(context, terminal, s, state, tree);
-
-                return 0;                       /* no children */
-        }
-
-        cerr << "Ignoring unexpected whiteboard token '" << terminal
-             << "' with content '" << content << "'" << endl;
-
-        return 1;
-}
-
-
-
-
-static int
-cpp_callback(void *context, const char *terminal, const char *content,
-            pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
-{
-        ActivityFactory *self = (ActivityFactory *) context;
-        
-        DBG(cout << __FUNCTION__ << "(" << terminal << ", " << content << ")" <<
-            endl);
-        
-        assert(terminal);       /* must not be nil */
-
+        //assert(terminal);       /* must not be nil */
+#if 0
         if (string("ID") == terminal)           /* C+++ ID */
         {
                 self->set_wb_name(content);     /* store as name */
@@ -161,7 +109,7 @@ cpp_callback(void *context, const char *terminal, const char *content,
 
                 return 0;                       /* no children */
         }
-
+#endif
         cerr << "Ignoring unexpected C++ token '" << terminal
              << "' with content '" << content << "'" << endl;
         
@@ -169,17 +117,31 @@ cpp_callback(void *context, const char *terminal, const char *content,
 }
 
 static int
-cpp_pop(void *context, const char *terminal, const char *content,
+block_pop(void *context, const char *terminal, const char *content,
         pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
 {
         ActivityFactory *self = (ActivityFactory *) context;
+        Activity &activity = self->state()->activity();
 
-        if (!self->named_functions()) return 1;
-
-        fsm_callback_f func = (*self->named_functions())[self->wb_name()];
-
-        self->activity()->set_activity(self->stage(), func,
-                                           self->cpp_content());
+        switch (self->stage())
+        {
+                case STAGE_ON_ENTRY:
+                        activity.addOnEntryAction(self->action());
+                        break;
+                        
+                case STAGE_ON_EXIT:
+                        activity.addOnExitAction(self->action());
+                        break;
+                        
+                case STAGE_INTERNAL:
+                        activity.addInternalAction(self->action());
+                        break;
+                        
+                default:
+                        cerr << "Unknown stage '" << self->stage() << "'" << endl;
+                        return -1;
+        }
+        
         return 1;
 }
 
@@ -196,25 +158,13 @@ action_callback(void *context, const char *terminal, const char *content,
 
         assert(terminal);                       /* must not be nil */
 
-        if (string("ID") == terminal)           /* whiteboard message? */
+        if (string("BLOCK") == terminal)        /* block in curly brackets? */
         {
-                self->set_wb_name(content);
-                if (walk_parse_children(state, tree, wb_callback,
-                                          NULL, wb_pop, context) == -1)
-                        return -1;
-                return 0;
+                self->set_action(new ANTLRAction(tree));
+                if (walk_parse_children(state, tree, block_callback,
+                                        NULL, block_pop, context) == -1)
+                        return 0;
         }
-        if (string("CPLUSPLUS") == terminal)    /* C++ activity? */
-        {
-                if (walk_parse_children(state, tree, cpp_callback,
-                                          NULL, cpp_pop, context) == -1)
-                        return -1;
-                return 0;
-        }
-        if (string("SEMICOLON") == terminal)    /* end? */
-                return 0;
-        if (string("SLASH") == terminal)        /* onEntry/Exit termination? */
-                return 0;
 
         DBG(cerr << "Ignoring unexpected state name token '" << terminal <<
             "' with content '" << content << "'" << endl);
@@ -233,7 +183,7 @@ statename_callback(void *context, const char *terminal, const char *content,
 
         if (content && string("ID") == terminal)/* state name (ID) */
         {
-                self->set_state_name(content);
+                self->state()->setName(content);
 
                 return -2;              /* skip subsequent state names */
         }
@@ -301,22 +251,20 @@ activity_push(void *context, const char *terminal, const char *content,
 
         if (string("INT") == terminal)  /* state ID? */
         {
-                self->set_state_id(atoi(content));
-                if (self->fsm()->exists_already(self->state_id()))
+                int sid = atoi(content);
+                if (self->fsm()->stateForID(sid))
                 {
                         cerr << "BAD ACTIVITY FILE: duplicate state "
-                             << self->state_id() << endl;
+                             << sid << endl;
                         return -1;
                 }
-                Activity *a = new Activity();
-                if (!a)
+                self->set_state(new State(sid));
+
+                if (!self->state())
                 {
-                        cerr << "CANNOT CREATE ACTIVITY for state "
-                             << self->state_id() << endl;
+                        cerr << "OUT OF MEMORY adding state " << sid << endl;
                         return -1;
                 }
-                self->set_activity(a);
-                self->set_state_name("NONAME");
 
                 if (walk_parse_children(state, tree, NULL,
                                           state_push, NULL, context) == -1)
@@ -335,31 +283,15 @@ activity_pop(void *context, const char *terminal, const char *content,
              pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
 {
         ActivityFactory *self = (ActivityFactory *) context;
-        fmsActivity *activity = self->activity();
-        
-        if (activity)
-        {
-                fsmState *newState = new fsmState(self->state_id(),
-                                                  self->state_name(),
-                                                  activity);
-                if (newState)
-                        self->fsm()->addState(newState);
-                else
-                {
-                        cerr << "OUT OF MEMORY adding state "
-                             << self->state_id() << " '"
-                             << self->state_name() << "'" << endl;
-                        return -1;
-                }
-                self->set_activity(NULL);
-        }
+        self->fsm()->addState(self->state());
+
         return 1;
 }
 
 ActivityFactory::ActivityFactory(FSM::Machine *machine, const char *filename,
                                  map<std::string, Action *> *func):
-        _fsm(machine), _file(filename), _currentActivity(NULL), _error(false),
-        _named_functions(func), _state_id(-1), _state_name("unknown")
+        _fsm(machine), _file(filename), _error(false),
+        _named_actions(func)
 {
         if (parse_actions(filename, NULL, activity_push, activity_pop, this) == -1)
                 set_error(true);

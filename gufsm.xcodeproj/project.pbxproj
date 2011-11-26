@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		F1199D6014302767003853BF /* FSMExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1199D5F14302767003853BF /* FSMExpression.cc */; };
 		F1199D6114302767003853BF /* FSMExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1199D5F14302767003853BF /* FSMExpression.cc */; };
-		F12B4237147DBD0200FF4A6B /* parser_walk.c in Sources */ = {isa = PBXBuildFile; fileRef = F12B4235147DBD0200FF4A6B /* parser_walk.c */; };
-		F12B4238147DBD0200FF4A6B /* parser_walk.c in Sources */ = {isa = PBXBuildFile; fileRef = F12B4235147DBD0200FF4A6B /* parser_walk.c */; };
 		F12B423E147DC38B00FF4A6B /* ActionsParser.g in Resources */ = {isa = PBXBuildFile; fileRef = F12B423A147DC38B00FF4A6B /* ActionsParser.g */; };
 		F12B423F147DC38B00FF4A6B /* SMCommon.g in Resources */ = {isa = PBXBuildFile; fileRef = F12B423B147DC38B00FF4A6B /* SMCommon.g */; };
 		F12B4240147DC38B00FF4A6B /* SMLexer.g in Resources */ = {isa = PBXBuildFile; fileRef = F12B423C147DC38B00FF4A6B /* SMLexer.g */; };
@@ -67,34 +65,39 @@
 		F1A9E7D3147F76C200C852FC /* ActivityFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CC147F76C200C852FC /* ActivityFactory.cpp */; };
 		F1A9E7D4147F76C200C852FC /* parser_walk.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CE147F76C200C852FC /* parser_walk.c */; };
 		F1A9E7D5147F76C200C852FC /* parser_walk.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CE147F76C200C852FC /* parser_walk.c */; };
-		F1A9E7D6147F76C200C852FC /* TransitionFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7D0147F76C200C852FC /* TransitionFactory.cpp */; };
-		F1A9E7D7147F76C200C852FC /* TransitionFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7D0147F76C200C852FC /* TransitionFactory.cpp */; };
 		F1A9E7DA147F79E400C852FC /* FSMVectorFactory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7D9147F79E300C852FC /* FSMVectorFactory.cc */; };
 		F1A9E7DB147F79E400C852FC /* FSMVectorFactory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7D9147F79E300C852FC /* FSMVectorFactory.cc */; };
 		F1A9E7DE147F7C4600C852FC /* FSMWBSubMachineFactory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7DD147F7C4600C852FC /* FSMWBSubMachineFactory.cc */; };
 		F1A9E7DF147F7C4600C852FC /* FSMWBSubMachineFactory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7DD147F7C4600C852FC /* FSMWBSubMachineFactory.cc */; };
+		F1A9E8471480B10700C852FC /* FSMANTLAction.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E8461480B10700C852FC /* FSMANTLAction.cc */; };
+		F1A9E8481480B10700C852FC /* FSMANTLAction.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E8461480B10700C852FC /* FSMANTLAction.cc */; };
+		F1A9E8631480B28500C852FC /* ActionsContainer_SimpleCLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E84B1480B28500C852FC /* ActionsContainer_SimpleCLexer.c */; };
+		F1A9E8641480B28500C852FC /* ActionsContainer_SimpleCLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E84B1480B28500C852FC /* ActionsContainer_SimpleCLexer.c */; };
+		F1A9E8651480B28500C852FC /* ActionsContainer_SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E84D1480B28500C852FC /* ActionsContainer_SimpleCParser.c */; };
+		F1A9E8661480B28500C852FC /* ActionsContainer_SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E84D1480B28500C852FC /* ActionsContainer_SimpleCParser.c */; };
+		F1A9E8671480B28500C852FC /* ActionsContainerLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E84F1480B28500C852FC /* ActionsContainerLexer.c */; };
+		F1A9E8681480B28500C852FC /* ActionsContainerLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E84F1480B28500C852FC /* ActionsContainerLexer.c */; };
+		F1A9E8691480B28500C852FC /* ActionsContainerParser.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E8511480B28500C852FC /* ActionsContainerParser.c */; };
+		F1A9E86A1480B28500C852FC /* ActionsContainerParser.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E8511480B28500C852FC /* ActionsContainerParser.c */; };
+		F1A9E86B1480B28500C852FC /* SimpleCLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E8531480B28500C852FC /* SimpleCLexer.c */; };
+		F1A9E86C1480B28500C852FC /* SimpleCLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E8531480B28500C852FC /* SimpleCLexer.c */; };
+		F1A9E86E1480B28500C852FC /* SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E8561480B28500C852FC /* SimpleCParser.c */; };
+		F1A9E86F1480B28500C852FC /* SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E8561480B28500C852FC /* SimpleCParser.c */; };
+		F1A9E8721480B28500C852FC /* TransitionContainer_SimpleCLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E85A1480B28500C852FC /* TransitionContainer_SimpleCLexer.c */; };
+		F1A9E8731480B28500C852FC /* TransitionContainer_SimpleCLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E85A1480B28500C852FC /* TransitionContainer_SimpleCLexer.c */; };
+		F1A9E8741480B28500C852FC /* TransitionContainer_SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E85C1480B28500C852FC /* TransitionContainer_SimpleCParser.c */; };
+		F1A9E8751480B28500C852FC /* TransitionContainer_SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E85C1480B28500C852FC /* TransitionContainer_SimpleCParser.c */; };
+		F1A9E8761480B28500C852FC /* TransitionContainerLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E85E1480B28500C852FC /* TransitionContainerLexer.c */; };
+		F1A9E8771480B28500C852FC /* TransitionContainerLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E85E1480B28500C852FC /* TransitionContainerLexer.c */; };
+		F1A9E8781480B28500C852FC /* TransitionContainerParser.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E8601480B28500C852FC /* TransitionContainerParser.c */; };
+		F1A9E8791480B28500C852FC /* TransitionContainerParser.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E8601480B28500C852FC /* TransitionContainerParser.c */; };
+		F1A9E8CA1480B36100C852FC /* libantlr3c.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A9E8C91480B36100C852FC /* libantlr3c.a */; };
+		F1A9E8CB1480B36100C852FC /* libantlr3c.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A9E8C91480B36100C852FC /* libantlr3c.a */; };
 		F1AFCD29147B56FA00C975DC /* FSMachineVector.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1AFCD28147B56FA00C975DC /* FSMachineVector.cc */; };
 		F1AFCD2A147B56FA00C975DC /* FSMachineVector.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1AFCD28147B56FA00C975DC /* FSMachineVector.cc */; };
 		F1AFCD2F147B8F7800C975DC /* FSMWBSubMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1AFCD2E147B8F7800C975DC /* FSMWBSubMachine.cc */; };
 		F1AFCD30147B8F7800C975DC /* FSMWBSubMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1AFCD2E147B8F7800C975DC /* FSMWBSubMachine.cc */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		F12B422F147DBC7D00FF4A6B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F12B41CD147DBC7D00FF4A6B /* gubehaviourinterpreter.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F1069A001335BB710016B49E;
-			remoteInfo = gubehaviourinterpreter;
-		};
-		F12B4231147DBC7D00FF4A6B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F12B41CD147DBC7D00FF4A6B /* gubehaviourinterpreter.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F109AC2D1410B410004D90F0;
-			remoteInfo = parser;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		F16CC2F8142C0C01001F788B /* CopyFiles */ = {
@@ -111,7 +114,6 @@
 
 /* Begin PBXFileReference section */
 		F1199D5F14302767003853BF /* FSMExpression.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMExpression.cc; sourceTree = "<group>"; };
-		F12B41CD147DBC7D00FF4A6B /* gubehaviourinterpreter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = gubehaviourinterpreter.xcodeproj; sourceTree = "<group>"; };
 		F12B41CE147DBC7D00FF4A6B /* MainStart.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MainStart.cpp; sourceTree = "<group>"; };
 		F12B41CF147DBC7D00FF4A6B /* Activity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Activity.cpp; sourceTree = "<group>"; };
 		F12B41D0147DBC7D00FF4A6B /* Activity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Activity.h; sourceTree = "<group>"; };
@@ -1474,6 +1476,33 @@
 		F1A9E7D9147F79E300C852FC /* FSMVectorFactory.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMVectorFactory.cc; sourceTree = "<group>"; };
 		F1A9E7DC147F7B8600C852FC /* FSMWBSubMachineFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMWBSubMachineFactory.h; sourceTree = "<group>"; };
 		F1A9E7DD147F7C4600C852FC /* FSMWBSubMachineFactory.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMWBSubMachineFactory.cc; sourceTree = "<group>"; };
+		F1A9E8341480A2A200C852FC /* FSMANTLRAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMANTLRAction.h; sourceTree = "<group>"; };
+		F1A9E8461480B10700C852FC /* FSMANTLAction.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLAction.cc; sourceTree = "<group>"; };
+		F1A9E84A1480B28500C852FC /* ActionsContainer.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ActionsContainer.tokens; sourceTree = "<group>"; };
+		F1A9E84B1480B28500C852FC /* ActionsContainer_SimpleCLexer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ActionsContainer_SimpleCLexer.c; sourceTree = "<group>"; };
+		F1A9E84C1480B28500C852FC /* ActionsContainer_SimpleCLexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionsContainer_SimpleCLexer.h; sourceTree = "<group>"; };
+		F1A9E84D1480B28500C852FC /* ActionsContainer_SimpleCParser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ActionsContainer_SimpleCParser.c; sourceTree = "<group>"; };
+		F1A9E84E1480B28500C852FC /* ActionsContainer_SimpleCParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionsContainer_SimpleCParser.h; sourceTree = "<group>"; };
+		F1A9E84F1480B28500C852FC /* ActionsContainerLexer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ActionsContainerLexer.c; sourceTree = "<group>"; };
+		F1A9E8501480B28500C852FC /* ActionsContainerLexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionsContainerLexer.h; sourceTree = "<group>"; };
+		F1A9E8511480B28500C852FC /* ActionsContainerParser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ActionsContainerParser.c; sourceTree = "<group>"; };
+		F1A9E8521480B28500C852FC /* ActionsContainerParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionsContainerParser.h; sourceTree = "<group>"; };
+		F1A9E8531480B28500C852FC /* SimpleCLexer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SimpleCLexer.c; sourceTree = "<group>"; };
+		F1A9E8541480B28500C852FC /* SimpleCLexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleCLexer.h; sourceTree = "<group>"; };
+		F1A9E8551480B28500C852FC /* SimpleCLexer.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleCLexer.tokens; sourceTree = "<group>"; };
+		F1A9E8561480B28500C852FC /* SimpleCParser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SimpleCParser.c; sourceTree = "<group>"; };
+		F1A9E8571480B28500C852FC /* SimpleCParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleCParser.h; sourceTree = "<group>"; };
+		F1A9E8581480B28500C852FC /* SimpleCParser.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleCParser.tokens; sourceTree = "<group>"; };
+		F1A9E8591480B28500C852FC /* TransitionContainer.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TransitionContainer.tokens; sourceTree = "<group>"; };
+		F1A9E85A1480B28500C852FC /* TransitionContainer_SimpleCLexer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TransitionContainer_SimpleCLexer.c; sourceTree = "<group>"; };
+		F1A9E85B1480B28500C852FC /* TransitionContainer_SimpleCLexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionContainer_SimpleCLexer.h; sourceTree = "<group>"; };
+		F1A9E85C1480B28500C852FC /* TransitionContainer_SimpleCParser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TransitionContainer_SimpleCParser.c; sourceTree = "<group>"; };
+		F1A9E85D1480B28500C852FC /* TransitionContainer_SimpleCParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionContainer_SimpleCParser.h; sourceTree = "<group>"; };
+		F1A9E85E1480B28500C852FC /* TransitionContainerLexer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TransitionContainerLexer.c; sourceTree = "<group>"; };
+		F1A9E85F1480B28500C852FC /* TransitionContainerLexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionContainerLexer.h; sourceTree = "<group>"; };
+		F1A9E8601480B28500C852FC /* TransitionContainerParser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TransitionContainerParser.c; sourceTree = "<group>"; };
+		F1A9E8611480B28500C852FC /* TransitionContainerParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionContainerParser.h; sourceTree = "<group>"; };
+		F1A9E8C91480B36100C852FC /* libantlr3c.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libantlr3c.a; path = /Users/rh/Devel/src/MiPal/GUNao/posix/gubehaviourinterpreter/../../../../../../../../../../usr/local/lib/libantlr3c.a; sourceTree = "<absolute>"; };
 		F1AA79AF146C9C39005FE2B1 /* FSMWB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMWB.h; sourceTree = "<group>"; };
 		F1AFCD28147B56FA00C975DC /* FSMachineVector.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMachineVector.cc; sourceTree = "<group>"; };
 		F1AFCD2C147B573700C975DC /* FSMachineVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMachineVector.h; sourceTree = "<group>"; };
@@ -1486,6 +1515,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1A9E8CA1480B36100C852FC /* libantlr3c.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1495,6 +1525,7 @@
 			files = (
 				F16CC31D142C2AD9001F788B /* SenTestingKit.framework in Frameworks */,
 				F16CC31F142C2AD9001F788B /* Cocoa.framework in Frameworks */,
+				F1A9E8CB1480B36100C852FC /* libantlr3c.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1504,7 +1535,6 @@
 		F12B41CC147DBC7D00FF4A6B /* gubehaviourinterpreter */ = {
 			isa = PBXGroup;
 			children = (
-				F12B41CD147DBC7D00FF4A6B /* gubehaviourinterpreter.xcodeproj */,
 				F12B41CE147DBC7D00FF4A6B /* MainStart.cpp */,
 				F12B41CF147DBC7D00FF4A6B /* Activity.cpp */,
 				F12B41D0147DBC7D00FF4A6B /* Activity.h */,
@@ -1643,15 +1673,6 @@
 			path = LANGUAGE;
 			sourceTree = "<group>";
 		};
-		F12B41E8147DBC7D00FF4A6B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				F12B4230147DBC7D00FF4A6B /* gubehaviourinterpreter */,
-				F12B4232147DBC7D00FF4A6B /* libparser.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		F12B41F9147DBC7D00FF4A6B /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1662,7 +1683,9 @@
 		F16CC2EF142C0C01001F788B = {
 			isa = PBXGroup;
 			children = (
+				F1A9E8C91480B36100C852FC /* libantlr3c.a */,
 				F16CC2FD142C0C01001F788B /* gufsm */,
+				F1A9E8491480B28400C852FC /* build.host */,
 				F16CC324142C2AD9001F788B /* FSMTest */,
 				F192C73E144D255900FF8526 /* guboostwhiteboard */,
 				F12B41CC147DBC7D00FF4A6B /* gubehaviourinterpreter */,
@@ -1690,6 +1713,8 @@
 				F1AA79AF146C9C39005FE2B1 /* FSMWB.h */,
 				F16CC334142C3433001F788B /* FSMAction.cc */,
 				F16CC314142C146B001F788B /* FSMAction.h */,
+				F1A9E8341480A2A200C852FC /* FSMANTLRAction.h */,
+				F1A9E8461480B10700C852FC /* FSMANTLAction.cc */,
 				F16CC312142C1247001F788B /* FSMActivity.cc */,
 				F16CC311142C10B3001F788B /* FSMActivity.h */,
 				F1199D5F14302767003853BF /* FSMExpression.cc */,
@@ -3848,6 +3873,37 @@
 			path = LocalOnly;
 			sourceTree = "<group>";
 		};
+		F1A9E8491480B28400C852FC /* build.host */ = {
+			isa = PBXGroup;
+			children = (
+				F1A9E84A1480B28500C852FC /* ActionsContainer.tokens */,
+				F1A9E84B1480B28500C852FC /* ActionsContainer_SimpleCLexer.c */,
+				F1A9E84C1480B28500C852FC /* ActionsContainer_SimpleCLexer.h */,
+				F1A9E84D1480B28500C852FC /* ActionsContainer_SimpleCParser.c */,
+				F1A9E84E1480B28500C852FC /* ActionsContainer_SimpleCParser.h */,
+				F1A9E84F1480B28500C852FC /* ActionsContainerLexer.c */,
+				F1A9E8501480B28500C852FC /* ActionsContainerLexer.h */,
+				F1A9E8511480B28500C852FC /* ActionsContainerParser.c */,
+				F1A9E8521480B28500C852FC /* ActionsContainerParser.h */,
+				F1A9E8531480B28500C852FC /* SimpleCLexer.c */,
+				F1A9E8541480B28500C852FC /* SimpleCLexer.h */,
+				F1A9E8551480B28500C852FC /* SimpleCLexer.tokens */,
+				F1A9E8561480B28500C852FC /* SimpleCParser.c */,
+				F1A9E8571480B28500C852FC /* SimpleCParser.h */,
+				F1A9E8581480B28500C852FC /* SimpleCParser.tokens */,
+				F1A9E8591480B28500C852FC /* TransitionContainer.tokens */,
+				F1A9E85A1480B28500C852FC /* TransitionContainer_SimpleCLexer.c */,
+				F1A9E85B1480B28500C852FC /* TransitionContainer_SimpleCLexer.h */,
+				F1A9E85C1480B28500C852FC /* TransitionContainer_SimpleCParser.c */,
+				F1A9E85D1480B28500C852FC /* TransitionContainer_SimpleCParser.h */,
+				F1A9E85E1480B28500C852FC /* TransitionContainerLexer.c */,
+				F1A9E85F1480B28500C852FC /* TransitionContainerLexer.h */,
+				F1A9E8601480B28500C852FC /* TransitionContainerParser.c */,
+				F1A9E8611480B28500C852FC /* TransitionContainerParser.h */,
+			);
+			path = build.host;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3908,10 +3964,6 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = F12B41E8147DBC7D00FF4A6B /* Products */;
-					ProjectRef = F12B41CD147DBC7D00FF4A6B /* gubehaviourinterpreter.xcodeproj */;
-				},
-				{
 					ProductGroup = F12B41F9147DBC7D00FF4A6B /* Products */;
 					ProjectRef = F12B41F6147DBC7D00FF4A6B /* guGameController.xcodeproj */;
 				},
@@ -3923,23 +3975,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		F12B4230147DBC7D00FF4A6B /* gubehaviourinterpreter */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = gubehaviourinterpreter;
-			remoteRef = F12B422F147DBC7D00FF4A6B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		F12B4232147DBC7D00FF4A6B /* libparser.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libparser.a;
-			remoteRef = F12B4231147DBC7D00FF4A6B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		F16CC317142C2AD9001F788B /* Resources */ = {
@@ -3967,10 +4002,10 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/SMLexer.g",
-				"$(SRCROOT)/SMCommon.g",
-				"$(SRCROOT)/TransitionsParser.g",
-				"$(SRCROOT)/ActionsParser.g",
+				"$(SRCROOT)/SimpleCLexer.g",
+				"$(SRCROOT)/SimpleCParser.g",
+				"$(SRCROOT)/TransitionContainer.g",
+				"$(SRCROOT)/ActionsContainer.g",
 			);
 			outputPaths = (
 			);
@@ -4021,12 +4056,21 @@
 				F132711C1452812500E5786D /* FSMWBQueryPredicate.cc in Sources */,
 				F1AFCD29147B56FA00C975DC /* FSMachineVector.cc in Sources */,
 				F1AFCD2F147B8F7800C975DC /* FSMWBSubMachine.cc in Sources */,
-				F12B4237147DBD0200FF4A6B /* parser_walk.c in Sources */,
 				F1A9E7D2147F76C200C852FC /* ActivityFactory.cpp in Sources */,
 				F1A9E7D4147F76C200C852FC /* parser_walk.c in Sources */,
-				F1A9E7D6147F76C200C852FC /* TransitionFactory.cpp in Sources */,
 				F1A9E7DA147F79E400C852FC /* FSMVectorFactory.cc in Sources */,
 				F1A9E7DE147F7C4600C852FC /* FSMWBSubMachineFactory.cc in Sources */,
+				F1A9E8471480B10700C852FC /* FSMANTLAction.cc in Sources */,
+				F1A9E8631480B28500C852FC /* ActionsContainer_SimpleCLexer.c in Sources */,
+				F1A9E8651480B28500C852FC /* ActionsContainer_SimpleCParser.c in Sources */,
+				F1A9E8671480B28500C852FC /* ActionsContainerLexer.c in Sources */,
+				F1A9E8691480B28500C852FC /* ActionsContainerParser.c in Sources */,
+				F1A9E86B1480B28500C852FC /* SimpleCLexer.c in Sources */,
+				F1A9E86E1480B28500C852FC /* SimpleCParser.c in Sources */,
+				F1A9E8721480B28500C852FC /* TransitionContainer_SimpleCLexer.c in Sources */,
+				F1A9E8741480B28500C852FC /* TransitionContainer_SimpleCParser.c in Sources */,
+				F1A9E8761480B28500C852FC /* TransitionContainerLexer.c in Sources */,
+				F1A9E8781480B28500C852FC /* TransitionContainerParser.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4057,12 +4101,21 @@
 				F132711D1452812500E5786D /* FSMWBQueryPredicate.cc in Sources */,
 				F1AFCD2A147B56FA00C975DC /* FSMachineVector.cc in Sources */,
 				F1AFCD30147B8F7800C975DC /* FSMWBSubMachine.cc in Sources */,
-				F12B4238147DBD0200FF4A6B /* parser_walk.c in Sources */,
 				F1A9E7D3147F76C200C852FC /* ActivityFactory.cpp in Sources */,
 				F1A9E7D5147F76C200C852FC /* parser_walk.c in Sources */,
-				F1A9E7D7147F76C200C852FC /* TransitionFactory.cpp in Sources */,
 				F1A9E7DB147F79E400C852FC /* FSMVectorFactory.cc in Sources */,
 				F1A9E7DF147F7C4600C852FC /* FSMWBSubMachineFactory.cc in Sources */,
+				F1A9E8481480B10700C852FC /* FSMANTLAction.cc in Sources */,
+				F1A9E8641480B28500C852FC /* ActionsContainer_SimpleCLexer.c in Sources */,
+				F1A9E8661480B28500C852FC /* ActionsContainer_SimpleCParser.c in Sources */,
+				F1A9E8681480B28500C852FC /* ActionsContainerLexer.c in Sources */,
+				F1A9E86A1480B28500C852FC /* ActionsContainerParser.c in Sources */,
+				F1A9E86C1480B28500C852FC /* SimpleCLexer.c in Sources */,
+				F1A9E86F1480B28500C852FC /* SimpleCParser.c in Sources */,
+				F1A9E8731480B28500C852FC /* TransitionContainer_SimpleCLexer.c in Sources */,
+				F1A9E8751480B28500C852FC /* TransitionContainer_SimpleCParser.c in Sources */,
+				F1A9E8771480B28500C852FC /* TransitionContainerLexer.c in Sources */,
+				F1A9E8791480B28500C852FC /* TransitionContainerParser.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4104,7 +4157,10 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../guboostwhiteboard\"",
 					"\"$(SRCROOT)/../guboostwhiteboard/GUBoost\"",
+					"\"$(SRCROOT)/build.host\"",
 					"\"$(SRCROOT)/../../Common\"",
+					/usr/local/include,
+					/opt/local/include,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
@@ -4130,7 +4186,10 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../guboostwhiteboard\"",
 					"\"$(SRCROOT)/../guboostwhiteboard/GUBoost\"",
+					"\"$(SRCROOT)/build.host\"",
 					"\"$(SRCROOT)/../../Common\"",
+					/usr/local/include,
+					/opt/local/include,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SDKROOT = macosx;
@@ -4140,6 +4199,10 @@
 		F16CC305142C0C01001F788B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -4147,6 +4210,10 @@
 		F16CC306142C0C01001F788B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -4158,6 +4225,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FSMTest/FSMTest-Prefix.pch";
 				INFOPLIST_FILE = "FSMTest/FSMTest-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -4170,6 +4241,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FSMTest/FSMTest-Prefix.pch";
 				INFOPLIST_FILE = "FSMTest/FSMTest-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};

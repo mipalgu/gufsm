@@ -161,6 +161,13 @@ namespace FSM
                  * @return previous state the machine was in
                  */
                 virtual State *restart(State *initialState = NULL);
+                
+                /**
+                 * restart the current state machine from initial state
+                 * @param initialState state to start from (default: first state)
+                 * @return previous state the machine was in
+                 */
+                virtual State *stateForID(int state_id);
         };
 }
 

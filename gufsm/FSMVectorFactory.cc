@@ -56,18 +56,20 @@
  *
  */
 #include "FSMVectorFactory.h"
-#include "FSMWBSubMachine.h"
+#include "FSMWBContext.h"
+#include "FSMWBSubMachineFactory.h"
 
 using namespace FSM;
 using namespace std;
 
-StateMachineVectorFactory::StateMachineVectorFactory(Context *context,
-                                                     const std::vector<std::string> &names_of_machines_to_build):
-        _fsms(context)
+StateMachineVectorFactory::StateMachineVectorFactory(WBContext *context,
+                                                     const std::vector<std::string> &names_of_machines_to_build)
 {
-        for (string file: names_of_machines_to_build)
+        _fsms = new StateMachineVector(context);
+
+        if (_fsms) for (string file: names_of_machines_to_build)
         {
-                WBSubMachineFactory machine_factory(file);
+                WBSubMachineFactory machine_factory(context, file);
 
                 fsms()->addMachine(machine_factory.machine());
         }

@@ -61,7 +61,7 @@
 using namespace FSM;
 using namespace std;
 
-WBSubMachineFactory(Context *context, const string &machine_name)
+WBSubMachineFactory::WBSubMachineFactory(WBContext *context, const string &machine_name)
 {
         setMachine(new WBSubMachine(NULL, context));
 
@@ -69,5 +69,5 @@ WBSubMachineFactory(Context *context, const string &machine_name)
         string a_file_name = string("A") + machine_txt;
         string t_file_name = string("T") + machine_txt;
 
-        ActivityFactory factory(machine(), a_file_name.c_str(), 
+        ActivityFactory factory(machine(), a_file_name.c_str(), NULL);
 }

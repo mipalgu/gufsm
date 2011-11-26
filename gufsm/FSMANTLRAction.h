@@ -1,8 +1,9 @@
 /*
- *  ActivityFactory.h
- *  
- *  Created by René Hexel on 28/08/11.
- *  Copyright (c) 2011 Rene Hexel. All rights reserved.
+ *  Action.h
+ *
+ *  Created by René Hexel on 23/09/11.
+ *  Copyright (c) 2011 Rene Hexel.
+ *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -28,8 +29,8 @@
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER
+ * OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
  * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
@@ -54,48 +55,21 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef gubehaviourinterpreter_ActivityFactory_h
-#define gubehaviourinterpreter_ActivityFactory_h
+#ifndef gufsm_FSMANTLRAction_h
+#define gufsm_FSMANTLRAction_h
 
-#include <map>
-#include <string>
+#include <antlr3.h>
 #include "FSMAction.h"
 
 namespace FSM
 {
-        class Machine;
-        class State;
-        class Activity;
-        class ANTLRAction;
+        class ANTLRAction: public ContentAction<pANTLR3_BASE_TREE>
+        {
+        public:
+                ANTLRAction(pANTLR3_BASE_TREE block) { _content = block; }
+                virtual void performv(Machine *, ActionStage, int x, va_list);
+
+        };
 }
-
-class ActivityFactory
-{
-        FSM::Machine *_fsm;
-        std::map<std::string, FSM::Action *> *_named_actions;
-        const char *_file;
-
-        FSM::State *_currentState;
-
-        FSM::ActionStage _currentStage; /* onEntry, onExit, internal */
-        FSM::ANTLRAction *_currentAction;
-
-        bool _error;
-        
-public:
-        ActivityFactory(FSM::Machine *machine, const char *filename,
-                        std::map<std::string, FSM::Action *> *func);
-        FSM::Machine *fsm() { return _fsm; }
-        bool error() { return _error; }
-        void set_error(bool e) { _error = e; }
-        FSM::State *state() { return _currentState; }
-        void set_state(FSM::State *s) { _currentState = s; }
-        FSM::ANTLRAction *action() { return _currentAction; }
-        void set_action(FSM::ANTLRAction *a) { _currentAction = a; }
-        std::map<std::string, FSM::Action *> *named_actions()
-        { return _named_actions; }
-        FSM::ActionStage stage() { return _currentStage; }
-        void set_stage(FSM::ActionStage stage) { _currentStage = stage; }
-};
 
 #endif

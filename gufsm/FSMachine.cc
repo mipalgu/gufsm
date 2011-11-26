@@ -122,3 +122,14 @@ State *Machine::restart(State *initialState)
 
         return oldState;
 }
+
+State *Machine::stateForID(int state_id)
+{
+        for (State *s: states())
+        {
+                if (s->stateID() == state_id)
+                        return s;
+        }
+
+        return NULL;
+}

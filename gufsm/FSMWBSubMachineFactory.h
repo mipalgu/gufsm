@@ -59,22 +59,25 @@
 #define gufsm_FSMWBSubMachineFactory_h
 
 #include <string>
+#include "FSMWBSubMachine.h"
 
 namespace FSM
 {
+        class Context;
+
         class WBSubMachineFactory
         {
                 WBSubMachine *_machine; /// built state machine
         public:
                 /** constructor that builds vector of machines */
-                WBSubMachineFactory(Context *context, const std::string &machine_name);
+                WBSubMachineFactory(WBContext *context, const std::string &machine_name);
 
                 /** getter */
                 WBSubMachine *machine() { return _machine; }
 
                 /** setter */
-                void setMachine(WBSubMachine *m) { _machine = 
-        }
+                void setMachine(WBSubMachine *m) { _machine = m; }
+        };
 }
 
 
