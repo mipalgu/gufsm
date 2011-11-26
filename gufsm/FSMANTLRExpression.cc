@@ -1,7 +1,7 @@
 /*
- *  FSMState.h
+ *  FSMExpression.cc
  *  
- *  Created by René Hexel on 23/09/11.
+ *  Created by René Hexel on 26/09/11.
  *  Copyright (c) 2011 Rene Hexel.
  *  All rights reserved.
  *
@@ -55,24 +55,13 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#include "FSMVectorFactory.h"
-#include "FSMANTLRContext.h"
-#include "FSMWBSubMachineFactory.h"
+#include <sys/time.h>
+#include "FSMANTLRExpression.h"
+#include "FSMachine.h"
 
 using namespace FSM;
-using namespace std;
 
-StateMachineVectorFactory::StateMachineVectorFactory(WBContext *context,
-                                                     const std::vector<std::string> &names_of_machines_to_build)
+bool ANTLRExpression::evaluate(Machine *m)
 {
-        _fsms = new StateMachineVector(context);
-
-        if (_fsms) for (string file: names_of_machines_to_build)
-        {
-                ANTLRContext *c = new ANTLRContext(context->whiteboard());
-                WBSubMachineFactory machine_factory(c, file);
-
-                fsms()->addMachine(machine_factory.machine());
-        }
+        
 }
-

@@ -1,6 +1,6 @@
 /*
- *  FSMState.h
- *  
+ *  Action.h
+ *
  *  Created by René Hexel on 23/09/11.
  *  Copyright (c) 2011 Rene Hexel.
  *  All rights reserved.
@@ -55,24 +55,22 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#include "FSMVectorFactory.h"
-#include "FSMANTLRContext.h"
-#include "FSMWBSubMachineFactory.h"
+#ifndef gufsm_FSMANTLRExpression_h
+#define gufsm_FSMANTLRExpression_h
 
-using namespace FSM;
-using namespace std;
+#include <antlr3.h>
+#include "FSMExpression.h"
 
-StateMachineVectorFactory::StateMachineVectorFactory(WBContext *context,
-                                                     const std::vector<std::string> &names_of_machines_to_build)
+namespace FSM
 {
-        _fsms = new StateMachineVector(context);
-
-        if (_fsms) for (string file: names_of_machines_to_build)
+        class ANTLRExpression: public Expression
         {
-                ANTLRContext *c = new ANTLRContext(context->whiteboard());
-                WBSubMachineFactory machine_factory(c, file);
-
-                fsms()->addMachine(machine_factory.machine());
-        }
+                pANTLR3_BASE_TREE _expression;
+        public:
+                ANTLRExpression(pANTLR3_BASE_TREE e): _expression(e) {}
+                virtual bool evaluate(Machine *m = NULL);
+                void setExpression(pANTLR3_BASE_TREE e) { _expression = e; }
+        };
 }
 
+#endif

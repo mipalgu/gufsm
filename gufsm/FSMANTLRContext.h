@@ -1,7 +1,7 @@
 /*
- *  FSMState.h
+ *  FSMWBMachine.h
  *  
- *  Created by René Hexel on 23/09/11.
+ *  Created by René Hexel on 18/10/11.
  *  Copyright (c) 2011 Rene Hexel.
  *  All rights reserved.
  *
@@ -55,24 +55,34 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#include "FSMVectorFactory.h"
-#include "FSMANTLRContext.h"
-#include "FSMWBSubMachineFactory.h"
+#ifndef gufsm_FSANTLRContext_h
+#define gufsm_FSANTLRContext_h
 
-using namespace FSM;
-using namespace std;
+#include <map>
+#include <string>
+#include <antlr3.h>
+#include "FSMWBContext.h"
 
-StateMachineVectorFactory::StateMachineVectorFactory(WBContext *context,
-                                                     const std::vector<std::string> &names_of_machines_to_build)
+namespace FSM
 {
-        _fsms = new StateMachineVector(context);
-
-        if (_fsms) for (string file: names_of_machines_to_build)
+        class ANTLRContext: public WBContext
         {
-                ANTLRContext *c = new ANTLRContext(context->whiteboard());
-                WBSubMachineFactory machine_factory(c, file);
-
-                fsms()->addMachine(machine_factory.machine());
-        }
+                std::map<std::string, int> _internal_variables; /// our own state-machine internal variables
+        public:
+                /**
+                 * default constructor
+                 * @param wb pointer to an already opened whiteboard
+                 * @param deletewb delete wb pointer when destructed (only relevant if wb is non-NULL, otherwise the whiteboard will always be deleted in the destructor
+                 */
+                ANTLRContext(guWhiteboard::Whiteboard *wb = NULL, bool deletewb = false): _internal_variables(), WBContext(wb, deletewb) {}
+                /** variable getter */
+                std::map<std::string, int> &internal_variables() { return _internal_variables; }
+                /** set internal variable */
+                void set_internal_variable(std::string name, int val = 0)
+                {
+                        internal_variables()[name] = val;
+                }
+        };
 }
 
+#endif

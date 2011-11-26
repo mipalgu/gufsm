@@ -64,6 +64,7 @@
 #include "FSMActivity.h"
 #include "ActivityFactory.h"
 #include "FSMANTLRAction.h"
+#include "FSMANTLRContext.h"
 
 extern "C"
 {
@@ -74,6 +75,39 @@ using namespace FSM;
 using namespace std;
 
 static int
+vardef_callback(void *context, const char *terminal, const char *content,
+             pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
+{
+        ActivityFactory *self = (ActivityFactory *) context;
+        Machine *fsm = self->fsm();
+        ANTLRContext *antlr_context = (ANTLRContext *) fsm->context();
+
+        fsm->addState(self->state());
+
+        if (string("K_ID") == terminal)         /* variable name */
+        {
+                antlr_context->set_internal_variable(content);
+                return 0;                       /* no children */
+        }
+
+        /* XXX: we don't worry about types at the moment */
+
+        return 1;
+}
+
+
+static int
+vardef_pop(void *context, const char *terminal, const char *content,
+           pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
+{
+        ActivityFactory *self = (ActivityFactory *) context;
+        self->fsm()->addState(self->state());
+        
+        return 1;
+}
+
+
+static int
 block_callback(void *context, const char *terminal, const char *content,
             pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
 {
@@ -82,34 +116,20 @@ block_callback(void *context, const char *terminal, const char *content,
         DBG(cout << __FUNCTION__ << "(" << terminal << ", " << content << ")" <<
             endl);
 
-        //assert(terminal);       /* must not be nil */
-#if 0
-        if (string("ID") == terminal)           /* C+++ ID */
+        assert(terminal);       /* must not be nil */
+
+        if (string("VAR_DEF") == terminal)      /* internal variable */
         {
-                self->set_wb_name(content);     /* store as name */
-
-                return 1;                       /* parse children */
+                if (walk_parse_children(state, tree, vardef_callback,
+                                        NULL, vardef_pop, context) == -1)
+                        return 0;
         }
-        if (string("INT") == terminal)          /* integer parameter */
+        if (string("STATEMENT_LIST") == terminal)       /* actions */
         {
-                char *guts = (char *) atol(content);
-                self->set_cpp_content(guts);    /* store as name */
-
-                return 0;                       /* no children */
+                self->set_action(new ANTLRAction(tree, state));
+                        return 0;
         }
-        if (string("STRING_LITERAL") == terminal) /* string parameter */
-        {                                       /* strip quotes */
-                int len = strlen(content);
-                assert('"' == content[0]);      /* must start with " */
-                assert(len >= 2);               /* at least two chars */
 
-                char *guts = gu_strdup(content + 1);    // XXX: needs to be freed in destructor!
-                guts[len-2] = '\0';             /* delete closing " */
-                self->set_cpp_content(guts);    /* store as name */
-
-                return 0;                       /* no children */
-        }
-#endif
         cerr << "Ignoring unexpected C++ token '" << terminal
              << "' with content '" << content << "'" << endl;
         
@@ -151,7 +171,7 @@ static int
 action_callback(void *context, const char *terminal, const char *content,
                 pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
 {
-        ActivityFactory *self = (ActivityFactory *) context;
+        //ActivityFactory *self = (ActivityFactory *) context;
 
         DBG(cout << __FUNCTION__ << "(" << terminal << ", " << content << ")" <<
             endl);
@@ -160,7 +180,6 @@ action_callback(void *context, const char *terminal, const char *content,
 
         if (string("BLOCK") == terminal)        /* block in curly brackets? */
         {
-                self->set_action(new ANTLRAction(tree));
                 if (walk_parse_children(state, tree, block_callback,
                                         NULL, block_pop, context) == -1)
                         return 0;
