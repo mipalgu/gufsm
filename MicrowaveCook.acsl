@@ -1,0 +1,9 @@
+1	COOKING
+OnEntry { motor=1;}
+OnExit {  }
+{}
+
+2	NOTCOOKING
+OnEntry {motor=0;}
+OnExit {  }
+{}
