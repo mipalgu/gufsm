@@ -81,7 +81,7 @@ exp_callback(void *context, const char *terminal, const char *content,
         
         assert(terminal);                       /* must not be nil */
 
-        if (string("INT") == terminal && self->dest_id() == -1) // dest state?
+        if (string("K_INT") == terminal && self->dest_id() == -1) // dest state?
         {
                 self->set_dest_id(atoi(content));
                 if (!self->fsm()->stateForID(self->dest_id()))
@@ -110,10 +110,10 @@ transition_push(void *context, const char *terminal, const char *content,
 
         if (!terminal) return 1;        /* ignore root push */
 
-        if (string("INT") == terminal)  /* state ID? */
+        if (string("K_INT") == terminal)  /* state ID? */
         {
                 self->set_state_id(atoi(content));
-                self->set_state_id(-1);                 // no destination yet
+                self->set_dest_id(-1);                 // no destination yet
                 if (!self->fsm()->stateForID(self->state_id()))
                 {
                         cerr << "BAD TRANSITIONS FILE: state "

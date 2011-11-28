@@ -73,24 +73,16 @@
 		F1A9E7DF147F7C4600C852FC /* FSMWBSubMachineFactory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7DD147F7C4600C852FC /* FSMWBSubMachineFactory.cc */; };
 		F1A9E8471480B10700C852FC /* FSMANTLRAction.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E8461480B10700C852FC /* FSMANTLRAction.cc */; };
 		F1A9E8481480B10700C852FC /* FSMANTLRAction.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E8461480B10700C852FC /* FSMANTLRAction.cc */; };
-		F1A9E8631480B28500C852FC /* ActionsContainer_SimpleCLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E84B1480B28500C852FC /* ActionsContainer_SimpleCLexer.c */; };
-		F1A9E8641480B28500C852FC /* ActionsContainer_SimpleCLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E84B1480B28500C852FC /* ActionsContainer_SimpleCLexer.c */; };
 		F1A9E8651480B28500C852FC /* ActionsContainer_SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E84D1480B28500C852FC /* ActionsContainer_SimpleCParser.c */; };
 		F1A9E8661480B28500C852FC /* ActionsContainer_SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E84D1480B28500C852FC /* ActionsContainer_SimpleCParser.c */; };
-		F1A9E8671480B28500C852FC /* ActionsContainerLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E84F1480B28500C852FC /* ActionsContainerLexer.c */; };
-		F1A9E8681480B28500C852FC /* ActionsContainerLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E84F1480B28500C852FC /* ActionsContainerLexer.c */; };
 		F1A9E8691480B28500C852FC /* ActionsContainerParser.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E8511480B28500C852FC /* ActionsContainerParser.c */; };
 		F1A9E86A1480B28500C852FC /* ActionsContainerParser.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E8511480B28500C852FC /* ActionsContainerParser.c */; };
 		F1A9E86B1480B28500C852FC /* SimpleCLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E8531480B28500C852FC /* SimpleCLexer.c */; };
 		F1A9E86C1480B28500C852FC /* SimpleCLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E8531480B28500C852FC /* SimpleCLexer.c */; };
 		F1A9E86E1480B28500C852FC /* SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E8561480B28500C852FC /* SimpleCParser.c */; };
 		F1A9E86F1480B28500C852FC /* SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E8561480B28500C852FC /* SimpleCParser.c */; };
-		F1A9E8721480B28500C852FC /* TransitionContainer_SimpleCLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E85A1480B28500C852FC /* TransitionContainer_SimpleCLexer.c */; };
-		F1A9E8731480B28500C852FC /* TransitionContainer_SimpleCLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E85A1480B28500C852FC /* TransitionContainer_SimpleCLexer.c */; };
 		F1A9E8741480B28500C852FC /* TransitionContainer_SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E85C1480B28500C852FC /* TransitionContainer_SimpleCParser.c */; };
 		F1A9E8751480B28500C852FC /* TransitionContainer_SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E85C1480B28500C852FC /* TransitionContainer_SimpleCParser.c */; };
-		F1A9E8761480B28500C852FC /* TransitionContainerLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E85E1480B28500C852FC /* TransitionContainerLexer.c */; };
-		F1A9E8771480B28500C852FC /* TransitionContainerLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E85E1480B28500C852FC /* TransitionContainerLexer.c */; };
 		F1A9E8781480B28500C852FC /* TransitionContainerParser.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E8601480B28500C852FC /* TransitionContainerParser.c */; };
 		F1A9E8791480B28500C852FC /* TransitionContainerParser.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E8601480B28500C852FC /* TransitionContainerParser.c */; };
 		F1A9E8CA1480B36100C852FC /* libantlr3c.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A9E8C91480B36100C852FC /* libantlr3c.a */; };
@@ -1483,12 +1475,8 @@
 		F1A9E8341480A2A200C852FC /* FSMANTLRAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMANTLRAction.h; sourceTree = "<group>"; };
 		F1A9E8461480B10700C852FC /* FSMANTLRAction.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRAction.cc; sourceTree = "<group>"; };
 		F1A9E84A1480B28500C852FC /* ActionsContainer.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ActionsContainer.tokens; sourceTree = "<group>"; };
-		F1A9E84B1480B28500C852FC /* ActionsContainer_SimpleCLexer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ActionsContainer_SimpleCLexer.c; sourceTree = "<group>"; };
-		F1A9E84C1480B28500C852FC /* ActionsContainer_SimpleCLexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionsContainer_SimpleCLexer.h; sourceTree = "<group>"; };
 		F1A9E84D1480B28500C852FC /* ActionsContainer_SimpleCParser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ActionsContainer_SimpleCParser.c; sourceTree = "<group>"; };
 		F1A9E84E1480B28500C852FC /* ActionsContainer_SimpleCParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionsContainer_SimpleCParser.h; sourceTree = "<group>"; };
-		F1A9E84F1480B28500C852FC /* ActionsContainerLexer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ActionsContainerLexer.c; sourceTree = "<group>"; };
-		F1A9E8501480B28500C852FC /* ActionsContainerLexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionsContainerLexer.h; sourceTree = "<group>"; };
 		F1A9E8511480B28500C852FC /* ActionsContainerParser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ActionsContainerParser.c; sourceTree = "<group>"; };
 		F1A9E8521480B28500C852FC /* ActionsContainerParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionsContainerParser.h; sourceTree = "<group>"; };
 		F1A9E8531480B28500C852FC /* SimpleCLexer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SimpleCLexer.c; sourceTree = "<group>"; };
@@ -1498,12 +1486,8 @@
 		F1A9E8571480B28500C852FC /* SimpleCParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleCParser.h; sourceTree = "<group>"; };
 		F1A9E8581480B28500C852FC /* SimpleCParser.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleCParser.tokens; sourceTree = "<group>"; };
 		F1A9E8591480B28500C852FC /* TransitionContainer.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TransitionContainer.tokens; sourceTree = "<group>"; };
-		F1A9E85A1480B28500C852FC /* TransitionContainer_SimpleCLexer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TransitionContainer_SimpleCLexer.c; sourceTree = "<group>"; };
-		F1A9E85B1480B28500C852FC /* TransitionContainer_SimpleCLexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionContainer_SimpleCLexer.h; sourceTree = "<group>"; };
 		F1A9E85C1480B28500C852FC /* TransitionContainer_SimpleCParser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TransitionContainer_SimpleCParser.c; sourceTree = "<group>"; };
 		F1A9E85D1480B28500C852FC /* TransitionContainer_SimpleCParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionContainer_SimpleCParser.h; sourceTree = "<group>"; };
-		F1A9E85E1480B28500C852FC /* TransitionContainerLexer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TransitionContainerLexer.c; sourceTree = "<group>"; };
-		F1A9E85F1480B28500C852FC /* TransitionContainerLexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionContainerLexer.h; sourceTree = "<group>"; };
 		F1A9E8601480B28500C852FC /* TransitionContainerParser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TransitionContainerParser.c; sourceTree = "<group>"; };
 		F1A9E8611480B28500C852FC /* TransitionContainerParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionContainerParser.h; sourceTree = "<group>"; };
 		F1A9E8C91480B36100C852FC /* libantlr3c.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libantlr3c.a; path = /Users/rh/Devel/src/MiPal/GUNao/posix/gubehaviourinterpreter/../../../../../../../../../../usr/local/lib/libantlr3c.a; sourceTree = "<absolute>"; };
@@ -3887,12 +3871,8 @@
 			isa = PBXGroup;
 			children = (
 				F1A9E84A1480B28500C852FC /* ActionsContainer.tokens */,
-				F1A9E84B1480B28500C852FC /* ActionsContainer_SimpleCLexer.c */,
-				F1A9E84C1480B28500C852FC /* ActionsContainer_SimpleCLexer.h */,
 				F1A9E84D1480B28500C852FC /* ActionsContainer_SimpleCParser.c */,
 				F1A9E84E1480B28500C852FC /* ActionsContainer_SimpleCParser.h */,
-				F1A9E84F1480B28500C852FC /* ActionsContainerLexer.c */,
-				F1A9E8501480B28500C852FC /* ActionsContainerLexer.h */,
 				F1A9E8511480B28500C852FC /* ActionsContainerParser.c */,
 				F1A9E8521480B28500C852FC /* ActionsContainerParser.h */,
 				F1A9E8531480B28500C852FC /* SimpleCLexer.c */,
@@ -3902,12 +3882,8 @@
 				F1A9E8571480B28500C852FC /* SimpleCParser.h */,
 				F1A9E8581480B28500C852FC /* SimpleCParser.tokens */,
 				F1A9E8591480B28500C852FC /* TransitionContainer.tokens */,
-				F1A9E85A1480B28500C852FC /* TransitionContainer_SimpleCLexer.c */,
-				F1A9E85B1480B28500C852FC /* TransitionContainer_SimpleCLexer.h */,
 				F1A9E85C1480B28500C852FC /* TransitionContainer_SimpleCParser.c */,
 				F1A9E85D1480B28500C852FC /* TransitionContainer_SimpleCParser.h */,
-				F1A9E85E1480B28500C852FC /* TransitionContainerLexer.c */,
-				F1A9E85F1480B28500C852FC /* TransitionContainerLexer.h */,
 				F1A9E8601480B28500C852FC /* TransitionContainerParser.c */,
 				F1A9E8611480B28500C852FC /* TransitionContainerParser.h */,
 			);
@@ -4021,7 +3997,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "cd ${SRCROOT}\nout=\"${SRCROOT}/build.host\"\nmkdir -p \"$out\"\nfor ((i=0; i < SCRIPT_INPUT_FILE_COUNT ; i++)); do\ninputFile=`eval echo '$SCRIPT_INPUT_FILE_'$i`\noutputFile=\"$out\"/`basename \"$inputFile\" | sed 's/.g$/.tokens/'`\n\nif [ ! $outputFile -nt $inputFile ]; then\njava -classpath /usr/local/share/java/antlr-3.4-complete.jar org.antlr.Tool -language C -o \"$out\" \"$inputFile\" 2>&1 | sed 's/warning\\([^:]*\\): \\([^ ]*\\): \\(.*\\)$/\\2: warning: \\3 \\1/' 1>&2\nfi\ndone\n";
+			shellScript = "cd ${SRCROOT}\nout=\"${SRCROOT}/build.host\"\nmkdir -p \"$out\"\nfor ((i=0; i < SCRIPT_INPUT_FILE_COUNT ; i++)); do\ninputFile=`eval echo '$SCRIPT_INPUT_FILE_'$i`\noutputFile=\"$out\"/`basename \"$inputFile\" | sed 's/.g$/.tokens/'`\n\njava -classpath /usr/local/share/java/antlr-3.4-complete.jar org.antlr.Tool -language C -o \"$out\" \"$inputFile\" 2>&1 | sed 's/warning\\([^:]*\\): \\([^ ]*\\): \\(.*\\)$/\\2: warning: \\3 \\1/' 1>&2\ndone\n";
 		};
 		F16CC318142C2AD9001F788B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -4071,15 +4047,11 @@
 				F1A9E7DA147F79E400C852FC /* FSMVectorFactory.cc in Sources */,
 				F1A9E7DE147F7C4600C852FC /* FSMWBSubMachineFactory.cc in Sources */,
 				F1A9E8471480B10700C852FC /* FSMANTLRAction.cc in Sources */,
-				F1A9E8631480B28500C852FC /* ActionsContainer_SimpleCLexer.c in Sources */,
 				F1A9E8651480B28500C852FC /* ActionsContainer_SimpleCParser.c in Sources */,
-				F1A9E8671480B28500C852FC /* ActionsContainerLexer.c in Sources */,
 				F1A9E8691480B28500C852FC /* ActionsContainerParser.c in Sources */,
 				F1A9E86B1480B28500C852FC /* SimpleCLexer.c in Sources */,
 				F1A9E86E1480B28500C852FC /* SimpleCParser.c in Sources */,
-				F1A9E8721480B28500C852FC /* TransitionContainer_SimpleCLexer.c in Sources */,
 				F1A9E8741480B28500C852FC /* TransitionContainer_SimpleCParser.c in Sources */,
-				F1A9E8761480B28500C852FC /* TransitionContainerLexer.c in Sources */,
 				F1A9E8781480B28500C852FC /* TransitionContainerParser.c in Sources */,
 				F1F8EAC71480B732008AB889 /* FSMANTLRExpression.cc in Sources */,
 				F12DCCE414830A9D00461AD6 /* TransitionFactory.cpp in Sources */,
@@ -4118,15 +4090,11 @@
 				F1A9E7DB147F79E400C852FC /* FSMVectorFactory.cc in Sources */,
 				F1A9E7DF147F7C4600C852FC /* FSMWBSubMachineFactory.cc in Sources */,
 				F1A9E8481480B10700C852FC /* FSMANTLRAction.cc in Sources */,
-				F1A9E8641480B28500C852FC /* ActionsContainer_SimpleCLexer.c in Sources */,
 				F1A9E8661480B28500C852FC /* ActionsContainer_SimpleCParser.c in Sources */,
-				F1A9E8681480B28500C852FC /* ActionsContainerLexer.c in Sources */,
 				F1A9E86A1480B28500C852FC /* ActionsContainerParser.c in Sources */,
 				F1A9E86C1480B28500C852FC /* SimpleCLexer.c in Sources */,
 				F1A9E86F1480B28500C852FC /* SimpleCParser.c in Sources */,
-				F1A9E8731480B28500C852FC /* TransitionContainer_SimpleCLexer.c in Sources */,
 				F1A9E8751480B28500C852FC /* TransitionContainer_SimpleCParser.c in Sources */,
-				F1A9E8771480B28500C852FC /* TransitionContainerLexer.c in Sources */,
 				F1A9E8791480B28500C852FC /* TransitionContainerParser.c in Sources */,
 				F1F8EAC81480B732008AB889 /* FSMANTLRExpression.cc in Sources */,
 				F12DCCE714830A9E00461AD6 /* TransitionFactory.cpp in Sources */,

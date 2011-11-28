@@ -61,9 +61,7 @@
 
 #include "parser_walk.h"
 #include "TransitionContainerParser.h"
-#include "TransitionContainerLexer.h"
 #include "ActionsContainerParser.h"
-#include "ActionsContainerLexer.h"
 #include "SimpleCLexer.h"
 #include "SimpleCParser.h"
 

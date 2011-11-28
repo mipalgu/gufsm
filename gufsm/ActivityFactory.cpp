@@ -182,8 +182,11 @@ action_callback(void *context, const char *terminal, const char *content,
         {
                 if (walk_parse_children(state, tree, block_callback,
                                         NULL, block_pop, context) == -1)
-                        return 0;
+                        return -1;
+                return 0;
         }
+        if (string("EOL") == terminal)        /* ignore EOL */
+                return 0;
 
         DBG(cerr << "Ignoring unexpected action block token '" << terminal <<
             "' with content '" << content << "'" << endl);
@@ -200,7 +203,7 @@ statename_callback(void *context, const char *terminal, const char *content,
 
         assert(terminal);                       /* must not be nil */
 
-        if (content && string("ID") == terminal)/* state name (ID) */
+        if (content && string("K_ID") == terminal)/* state name (ID) */
         {
                 self->state()->setName(content);
 
@@ -268,7 +271,7 @@ activity_push(void *context, const char *terminal, const char *content,
 
         if (!terminal) return 1;        /* ignore root push */
 
-        if (string("INT") == terminal)  /* state ID? */
+        if (string("K_INT") == terminal)  /* state ID? */
         {
                 int sid = atoi(content);
                 if (self->fsm()->stateForID(sid))

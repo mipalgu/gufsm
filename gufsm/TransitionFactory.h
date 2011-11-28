@@ -91,7 +91,7 @@ public:
         void set_state_id(int i) { _state_id = i; }
         int dest_id() { return _destination_id; }
         void set_dest_id(int i) { _destination_id = i; }
-        void *expr_tree() { return expr_tree(); }
+        void *expr_tree() { return _expr_tree; }
         void set_expr_tree(void *e) { _expr_tree = e; }
 };
 
