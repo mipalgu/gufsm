@@ -61,6 +61,7 @@
 #include "FSMachine.h"
 #include "FSMANTLRContext.h"
 #include "FSMANTLRAction.h"
+#include "FSMANTLRExpression.h"
 
 extern "C" {
 #include "parser_walk.h"
@@ -68,143 +69,6 @@ extern "C" {
 
 using namespace FSM;
 using namespace std;
-
-static inline ANTLR3_UINT32 getType(pANTLR3_BASE_TREE tree)
-{
-	if  (tree->isNilNode(tree) == ANTLR3_TRUE)
-                return 0;
-        
-	return	((pANTLR3_COMMON_TREE)(tree->super))->token->getType(((pANTLR3_COMMON_TREE)(tree->super))->token);
-}
-
-
-static inline const char *getTString(pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
-{
-        return (const char *) state->tokenNames[getType(tree)];
-}
-
-static inline const char *getContent(pANTLR3_BASE_TREE tree)
-{
-        pANTLR3_STRING s = tree->toString(tree);
-        if (!s) return NULL;
-        return (const char *) s->chars;
-}
-
-static
-int evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
-                      pANTLR3_BASE_TREE tree,
-                      ANTLRContext *context)
-{
-        ANTLR3_UINT32 n = tree->children->size(tree->children);
-        const char *terminal = getTString(state, tree);
-        const char *content  = getContent(tree);
-
-        if (string("K_PLUS") == terminal)
-        {
-                int result = 0;
-                for (ANTLR3_UINT32 i = 0; i < n; i++)
-                        
-                {
-                        pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
-                        tree->children->get(tree->children, i);
-                        result += evaluate_node(state, t, context);
-                }
-                return result;
-        }
-        if (string("K_AND_AND") == terminal)
-        {
-                int result = 1;
-                for (ANTLR3_UINT32 i = 0; i < n; i++)
-                        
-                {
-                        pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
-                        tree->children->get(tree->children, i);
-                        result = result && evaluate_node(state, t, context);
-                }
-                return result;
-        }
-        if (string("K_NOT") == terminal)
-                
-        {
-                assert(n == 1);
-                pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
-                        tree->children->get(tree->children, 0);
-                return !evaluate_node(state, t, context);
-        }
-        if (string("K_EQEQ") == terminal)
-                
-        {
-                assert(n == 2);
-                pANTLR3_BASE_TREE t1 = (pANTLR3_BASE_TREE)
-                        tree->children->get(tree->children, 0);
-                pANTLR3_BASE_TREE t2 = (pANTLR3_BASE_TREE)
-                        tree->children->get(tree->children, 1);
-                return evaluate_node(state, t1, context) == evaluate_node(state, t2, context);
-        }
-        if (string("K_LT") == terminal)
-                
-        {
-                assert(n == 2);
-                pANTLR3_BASE_TREE t1 = (pANTLR3_BASE_TREE)
-                tree->children->get(tree->children, 0);
-                pANTLR3_BASE_TREE t2 = (pANTLR3_BASE_TREE)
-                tree->children->get(tree->children, 1);
-                return evaluate_node(state, t1, context) < evaluate_node(state, t2, context);
-        }
-        if (string("K_OROR") == terminal)
-                
-        {
-                assert(n == 2);
-                pANTLR3_BASE_TREE t1 = (pANTLR3_BASE_TREE)
-                        tree->children->get(tree->children, 0);
-                pANTLR3_BASE_TREE t2 = (pANTLR3_BASE_TREE)
-                        tree->children->get(tree->children, 1);
-                return evaluate_node(state, t1, context) || evaluate_node(state, t2, context);
-        }
-        /*
-         * leaf node
-         */
-        if (string("K_INT") == terminal)
-                return atoi(content);
-
-        if (string("K_ID") != terminal)
-        {
-                DBG(cerr << "Ignoring unexpected token '" << terminal <<
-                    "' with content '" << content << "'" << endl);
-                return 0;
-        }
-        /*
-         * ID
-         */
-        if (context->exists(content))
-                return context->value(content);
-        /*
-         * external
-         */
-                /* TODO: get from whiteboard */
-        return 0;
-}
-
-
-static
-int evaluate_children(pANTLR3_RECOGNIZER_SHARED_STATE state,
-                        pANTLR3_BASE_TREE tree,
-                        ANTLRContext *context)
-{
-        ANTLR3_UINT32 n = tree->children->size(tree->children);
-
-        int result = 0;
-        for (ANTLR3_UINT32 i = 0; i < n; i++)
-        {
-                pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
-                tree->children->get(tree->children, i);
-
-                result = evaluate_node(state, t, context);
-        }
-        
-        return result;
-}
-
 
 
 static int
@@ -217,7 +81,7 @@ assignment_callback(void *context, const char *terminal, const char *content,
         
         if (string("K_ID") == terminal)         /* variable name */
         {
-                int result = evaluate_children(state, tree, c);
+                int result = ANTLRExpression::evaluate_children(state, tree, c);
                 if (c->exists(content))
                 {
                         c->set_internal_variable(content, result);

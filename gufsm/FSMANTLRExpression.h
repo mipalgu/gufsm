@@ -63,6 +63,8 @@
 
 namespace FSM
 {
+        class ANTLRContext;
+
         class ANTLRExpression: public Expression
         {
                 pANTLR3_RECOGNIZER_SHARED_STATE _state; /// ANTLR context
@@ -71,6 +73,15 @@ namespace FSM
                 ANTLRExpression(pANTLR3_RECOGNIZER_SHARED_STATE s, pANTLR3_BASE_TREE e = NULL): _state(s), _expression(e) {}
                 virtual bool evaluate(Machine *m = NULL);
                 void setExpression(pANTLR3_BASE_TREE e) { _expression = e; }
+                pANTLR3_BASE_TREE expression() { return _expression; }
+                pANTLR3_RECOGNIZER_SHARED_STATE antlrState() { return  _state; }
+
+                static int evaluate(pANTLR3_RECOGNIZER_SHARED_STATE state,
+                                                     pANTLR3_BASE_TREE tree,
+                                                     ANTLRContext *context);
+                static int evaluate_children(pANTLR3_RECOGNIZER_SHARED_STATE state,
+                                    pANTLR3_BASE_TREE tree,
+                                    ANTLRContext *context);
         };
 }
 
