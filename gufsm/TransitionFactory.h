@@ -60,43 +60,39 @@
 #include <map>
 #include <string>
 #include "FSMCodeType.h"
-#include "Transition.h"
+#include "FSMTransition.h"
 
-class fsmMachine;
+namespace FSM
+{
+        class Machine;
+        class State;
+        class Activity;
+        class ANTLRAction;
+}
+
 
 class TransitionFactory
 {
-        fsmMachine *fsm;
-        const char *file;
+        FSM::Machine *_fsm;
+        const char *_file;
 
-        int state_id;           /* transition from this state */
-        int destination_id;     /* to this state */
-        long value;             /* function parameter value */
+        int _state_id;          /// transition from this state
+        int _destination_id;    /// to this state
 
-        std::string wb_name;    /* whiteboard message name (type) */
-
-        bool negation;          /* is this a negation? */
-        bool function;          /* is this a function? */
-
-        bool error;
+        void *_expr_tree;       /// ANTLR expression subtree
+        bool _error;
         
 public:
-        TransitionFactory(fsmMachine *machine, const char *filename);
-        fsmMachine *get_fsm() { return fsm; }
-        bool got_error() { return error; }
-        void set_error(bool e) { error = e; }
-        int get_state_id() { return state_id; }
-        void set_state_id(int i) { state_id = i; }
-        int get_dest_id() { return destination_id; }
-        void set_dest_id(int i) { destination_id = i; }
-        long get_value() { return value; }
-        void set_value(long v) { value = v; }
-        const std::string &get_wb_name() { return wb_name; }
-        void set_wb_name(const char *name) { wb_name = name; }
-        bool is_negation() { return negation; }
-        void set_negation(bool n) { negation = n; }
-        bool is_function() { return function; }
-        void set_function(bool n) { function = n; }
+        TransitionFactory(FSM::Machine *machine, const char *filename);
+        FSM::Machine *fsm() { return _fsm; }
+        bool error() { return _error; }
+        void set_error(bool e) { _error = e; }
+        int state_id() { return _state_id; }
+        void set_state_id(int i) { _state_id = i; }
+        int dest_id() { return _destination_id; }
+        void set_dest_id(int i) { _destination_id = i; }
+        void *expr_tree() { return expr_tree(); }
+        void set_expr_tree(void *e) { _expr_tree = e; }
 };
 
 #endif

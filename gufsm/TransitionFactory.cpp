@@ -59,65 +59,19 @@
 #include <ctype.h>
 #include <sys/param.h>
 #include <gu_util.h>
-#include "Machine.h"
-#include "Transition.h"
+#include "FSMachine.h"
+#include "FSMState.h"
+#include "FSMTransition.h"
+#include "FSMANTLRExpression.h"
 #include "TransitionFactory.h"
-#include "Expression.h"
 
 extern "C"
 {
 #include "parser_walk.h"        
 }
 
+using namespace FSM;
 using namespace std;
-
-static int
-func_callback(void *context, const char *terminal, const char *content,
-                   pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
-{
-        TransitionFactory *self = (TransitionFactory *) context;
-
-        assert(terminal);                       /* must not be nil */
-
-        if (string("INT") == terminal)          /* integer parameter? */
-        {
-                self->set_value(atol(content));
-
-                return 1;
-        }
-
-        DBG(cerr << "Ignoring unexpected state name token '" << terminal <<
-            "' with content '" << content << "'" << endl);
-        
-        return 1;
-}
-
-
-static int
-exp_push(void *context, const char *terminal, const char *content,
-         pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
-{
-        TransitionFactory *self = (TransitionFactory *) context;
-        
-        assert(terminal);                       /* must not be nil */
-        
-        if (string("ID") == terminal)           /* function name? */
-        {
-                self->set_function(true);
-                self->set_wb_name(content);
-                if (walk_parse_children(state, tree, func_callback, NULL, NULL,
-                                        context) == -1)
-                        return -1;
-
-                return 0;
-        }
-
-        DBG(cerr << "Ignoring unexpected expression token '" << terminal <<
-            "' with content '" << content << "'" << endl);
-        
-        return 1;
-}
-
 
 static int
 exp_callback(void *context, const char *terminal, const char *content,
@@ -126,34 +80,25 @@ exp_callback(void *context, const char *terminal, const char *content,
         TransitionFactory *self = (TransitionFactory *) context;
         
         assert(terminal);                       /* must not be nil */
-        
-        if (string("NEGATION") == terminal)     /* negation? */
-        {
-                self->set_negation(true);
-                return 1;
-        }
-        if (string("ID") == terminal)           /* whiteboard predicate? */
-        {
-                self->set_wb_name(content);
-                return 1;
-        }
-        if (string("INT") == terminal)          /* state ID? */
+
+        if (string("INT") == terminal && self->dest_id() == -1) // dest state?
         {
                 self->set_dest_id(atoi(content));
-                if (!self->get_fsm()->exists_already(self->get_dest_id()))
+                if (!self->fsm()->stateForID(self->dest_id()))
                 {
                         cerr << "BAD TRANSITIONS FILE: target state "
-                             << self->get_state_id() << " does not exist!"
+                             << self->state_id() << " does not exist!"
                              << endl;
                         return -1;
                 }
                 return 1;
         }
-        
-        DBG(cerr << "Ignoring unexpected expression token '" << terminal <<
-            "' with content '" << content << "'" << endl);
-        
-        return 1;
+        if (string("EOL") == terminal)          // EOL?
+                return 1;                       // -> ignore
+
+        self->set_expr_tree(tree);              // ANTLR expression tree to use
+
+        return 0;                               // don't bother parsing children
 }
 
 
@@ -168,25 +113,25 @@ transition_push(void *context, const char *terminal, const char *content,
         if (string("INT") == terminal)  /* state ID? */
         {
                 self->set_state_id(atoi(content));
-                if (!self->get_fsm()->exists_already(self->get_state_id()))
+                self->set_state_id(-1);                 // no destination yet
+                if (!self->fsm()->stateForID(self->state_id()))
                 {
                         cerr << "BAD TRANSITIONS FILE: state "
-                             << self->get_state_id() << " does not exist!"
+                             << self->state_id() << " does not exist!"
                              << endl;
                         return -1;
                 }
 
-                self->set_negation(false);
-                self->set_function(false);
-                if (walk_parse_children(state, tree, exp_callback, exp_push, NULL,
+                if (walk_parse_children(state, tree, exp_callback, NULL, NULL,
                                         context) == -1)
                         return -1;
                 return 0;
         }
 
-        DBG(cerr << "Ignoring unexpected transition token '" << terminal <<
-            "' with content '" << content << "'" << endl);
-
+        if (string("EOL") != terminal)  /* not EOL? */
+                DBG(cerr << "Ignoring unexpected transition token '"
+                    << terminal << "' with content '" << content << "'"
+                    << endl);
         return 1;
 }
 
@@ -195,27 +140,23 @@ transition_pop(void *context, const char *terminal, const char *content,
              pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
 {
         TransitionFactory *self = (TransitionFactory *) context;
-        int s = self->get_state_id();
+        int s = self->state_id();
 
-        if (s == -1) return 1;              // skip
+        if (s == -1) return 1;                  // skip
 
         self->set_state_id(-1);                 // don't pop twice
         
-        fsmState *source = self->get_fsm()->find(s);
-        fsmState *target = self->get_fsm()->find(self->get_dest_id());
+        State *source = self->fsm()->stateForID(s);
+        State *target = self->fsm()->stateForID(self->dest_id());
 
         if (source && target)
         {
-                fsmExpression *e = new fsmExpression(self->get_wb_name(),
-                                                     self->is_negation(),
-                                                     self->is_function(),
-                                                     self->get_value());
-                fsmTransition *t = new fsmTransition(source, target, e);
+                ANTLRExpression *e = new ANTLRExpression(state, (pANTLR3_BASE_TREE) self->expr_tree());
+                Transition *t = new Transition(source, target, e);
                 if (!t)
                 {
                         cerr << "CANNOT CREATE TRANSITION for state "
-                             << s << ": " << e->getWhatToEvaluate()
-                             << " -> " << self->get_dest_id() << endl;
+                             << s << " -> " << self->dest_id() << endl;
                         return -1;
                 }
 
@@ -224,16 +165,15 @@ transition_pop(void *context, const char *terminal, const char *content,
         else
         {
                 cerr << "INVALID state transition "
-                     << s << ": " << self->get_wb_name() << " -> "
-                     << self->get_dest_id() << endl;
+                     << s << " -> " << self->dest_id() << endl;
                 return -1;
         }
         return 1;
 }
 
-TransitionFactory::TransitionFactory(fsmMachine *machine, const char *filename):
-        fsm(machine), file(filename), error(false),
-        state_id(-1), destination_id(-1), negation(false), function(false)
+TransitionFactory::TransitionFactory(FSM::Machine *machine, const char *filename):
+        _fsm(machine), _file(filename), _error(false),
+        _state_id(-1), _destination_id(-1)
 {
         if (parse_transitions(filename, NULL, transition_push, transition_pop, this) == -1)
                 set_error(true);

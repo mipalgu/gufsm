@@ -65,9 +65,10 @@ namespace FSM
 {
         class ANTLRExpression: public Expression
         {
-                pANTLR3_BASE_TREE _expression;
+                pANTLR3_RECOGNIZER_SHARED_STATE _state; /// ANTLR context
+                pANTLR3_BASE_TREE _expression;          /// ANTLR expression tree
         public:
-                ANTLRExpression(pANTLR3_BASE_TREE e): _expression(e) {}
+                ANTLRExpression(pANTLR3_RECOGNIZER_SHARED_STATE s, pANTLR3_BASE_TREE e = NULL): _state(s), _expression(e) {}
                 virtual bool evaluate(Machine *m = NULL);
                 void setExpression(pANTLR3_BASE_TREE e) { _expression = e; }
         };

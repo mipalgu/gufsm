@@ -13,6 +13,8 @@
 		F12B423F147DC38B00FF4A6B /* SMCommon.g in Resources */ = {isa = PBXBuildFile; fileRef = F12B423B147DC38B00FF4A6B /* SMCommon.g */; };
 		F12B4240147DC38B00FF4A6B /* SMLexer.g in Resources */ = {isa = PBXBuildFile; fileRef = F12B423C147DC38B00FF4A6B /* SMLexer.g */; };
 		F12B4241147DC38B00FF4A6B /* TransitionsParser.g in Resources */ = {isa = PBXBuildFile; fileRef = F12B423D147DC38B00FF4A6B /* TransitionsParser.g */; };
+		F12DCCE414830A9D00461AD6 /* TransitionFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7D0147F76C200C852FC /* TransitionFactory.cpp */; };
+		F12DCCE714830A9E00461AD6 /* TransitionFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7D0147F76C200C852FC /* TransitionFactory.cpp */; };
 		F132711C1452812500E5786D /* FSMWBQueryPredicate.cc in Sources */ = {isa = PBXBuildFile; fileRef = F132711B1452812500E5786D /* FSMWBQueryPredicate.cc */; };
 		F132711D1452812500E5786D /* FSMWBQueryPredicate.cc in Sources */ = {isa = PBXBuildFile; fileRef = F132711B1452812500E5786D /* FSMWBQueryPredicate.cc */; };
 		F16CC2FF142C0C01001F788B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F16CC2FE142C0C01001F788B /* main.cpp */; };
@@ -4080,6 +4082,7 @@
 				F1A9E8761480B28500C852FC /* TransitionContainerLexer.c in Sources */,
 				F1A9E8781480B28500C852FC /* TransitionContainerParser.c in Sources */,
 				F1F8EAC71480B732008AB889 /* FSMANTLRExpression.cc in Sources */,
+				F12DCCE414830A9D00461AD6 /* TransitionFactory.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4126,6 +4129,7 @@
 				F1A9E8771480B28500C852FC /* TransitionContainerLexer.c in Sources */,
 				F1A9E8791480B28500C852FC /* TransitionContainerParser.c in Sources */,
 				F1F8EAC81480B732008AB889 /* FSMANTLRExpression.cc in Sources */,
+				F12DCCE714830A9E00461AD6 /* TransitionFactory.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
