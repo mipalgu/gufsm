@@ -57,6 +57,7 @@
  */
 #include "FSMWBSubMachineFactory.h"
 #include "ActivityFactory.h"
+#include "TransitionFactory.h"
 
 using namespace FSM;
 using namespace std;
@@ -65,9 +66,9 @@ WBSubMachineFactory::WBSubMachineFactory(WBContext *context, const string &machi
 {
         setMachine(new WBSubMachine(NULL, context));
 
-        string machine_txt = machine_name + ".txt";
-        string a_file_name = string("A") + machine_txt;
-        string t_file_name = string("T") + machine_txt;
+        string a_file_name = machine_name + string(".acsl");
+        string t_file_name = machine_name + string(".tcsl");
 
-        ActivityFactory factory(machine(), a_file_name.c_str(), NULL);
+        ActivityFactory afactory(machine(), a_file_name.c_str(), NULL);
+        TransitionFactory tfactory(machine(), t_file_name.c_str());
 }

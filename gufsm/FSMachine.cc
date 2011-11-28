@@ -55,6 +55,7 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#include <sstream>
 #include <cassert>
 #include "FSMachine.h"
 #include "FSMState.h"
@@ -132,4 +133,16 @@ State *Machine::stateForID(int state_id)
         }
 
         return NULL;
+}
+
+using namespace std;
+
+string Machine::description()
+{
+        stringstream ss;
+        int i = 0;
+        for (State *s: states())
+                ss << "State " << i++ << ": " << s->description() << endl;
+
+        return ss.str();
 }

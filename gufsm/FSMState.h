@@ -101,6 +101,11 @@ namespace FSM
                 
                 /** add a transition */
                 void addTransition(Transition *t) { _transitions.push_back(t); }
+                /**
+                 * printable state  description
+                 */
+                virtual std::string description();
+                
         };
 }
 #endif

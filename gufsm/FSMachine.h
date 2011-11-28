@@ -156,6 +156,11 @@ namespace FSM
                 virtual void execute() { while (executeOnce()) ; }
 
                 /**
+                 * printable state machine description
+                 */
+                virtual std::string description();
+                
+                /**
                  * restart the current state machine from initial state
                  * @param initialState state to start from (default: first state)
                  * @return previous state the machine was in

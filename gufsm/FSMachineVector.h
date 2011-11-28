@@ -126,6 +126,11 @@ namespace FSM
                  * restart all state machines from their initial state
                  */
                 virtual void restart();
+
+                /**
+                 * printable state machine vector description
+                 */
+                virtual std::string description();
        };
 }
 

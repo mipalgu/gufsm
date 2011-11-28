@@ -55,6 +55,7 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#include <sstream>
 #include "FSMachineVector.h"
 
 using namespace FSM;
@@ -114,4 +115,17 @@ void StateMachineVector::restart()
 {
         for (SuspensibleMachine *m: machines())
                 m->restart();
+}
+
+using namespace std;
+
+string StateMachineVector::description()
+{
+        stringstream ss;
+        int i = 0;
+        for (Machine *m: machines())
+                ss << "\nVector Machine " << i++ << ":\n" <<
+                m->description() << endl;
+
+        return ss.str();
 }

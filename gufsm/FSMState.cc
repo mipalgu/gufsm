@@ -55,4 +55,18 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#include <sstream>
 #include "FSMState.h"
+
+using namespace FSM;
+using namespace std;
+
+string State::description()
+{
+        stringstream ss;
+
+        ss << stateID() << ": '" << name() << "'" << endl;
+
+        return ss.str();
+}
+
