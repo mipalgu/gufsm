@@ -130,7 +130,7 @@ block_callback(void *context, const char *terminal, const char *content,
                         return 0;
         }
 
-        cerr << "Ignoring unexpected C++ token '" << terminal
+        cerr << "Ignoring unexpected block token '" << terminal
              << "' with content '" << content << "'" << endl;
         
         return 1;
@@ -185,7 +185,7 @@ action_callback(void *context, const char *terminal, const char *content,
                         return 0;
         }
 
-        DBG(cerr << "Ignoring unexpected state name token '" << terminal <<
+        DBG(cerr << "Ignoring unexpected action block token '" << terminal <<
             "' with content '" << content << "'" << endl);
         
         return 1;
