@@ -57,6 +57,7 @@
  */
 #include <cassert>
 #include <iostream>
+#include <sstream>
 
 #include "FSMActivity.h"
 
@@ -78,4 +79,48 @@ void Activity::perform(Machine *m, ActionStage stage)
                 default:
                         assert(false);
         }
+}
+
+using namespace std;
+
+string Activity::description()
+{
+        return description(STAGE_ON_ENTRY) + description(STAGE_ON_EXIT) +
+                description(STAGE_INTERNAL);
+}
+
+
+string Activity::description(ActionStage stage)
+{
+        stringstream ss;
+        switch (stage)
+        {
+                case STAGE_ON_ENTRY:
+                        ss << "On Entry:\n" << description(_onEntryActions)
+                                << endl;
+                        break;
+                case STAGE_ON_EXIT:
+                        ss << "On Exit:\n" << description(_onExitActions)
+                        << endl;
+                        break;
+                case STAGE_INTERNAL:
+                        ss << "Internal:\n" << description(_internalActions)
+                        << endl;
+                        break;
+                default:
+                        ss << "<invalid stage " << (int) stage << ">"
+                           << endl;
+        }
+
+        return ss.str();
+}
+
+
+string Activity::description(const ActionVector &actions)
+{
+        string s;
+        for (Action *action: actions)
+                s += action->description();
+
+        return s;
 }

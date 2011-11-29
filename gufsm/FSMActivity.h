@@ -125,7 +125,16 @@ namespace FSM
                 /** perform actions for state and stage */
                 void performOnExit(Machine *m) { perform(m, STAGE_ON_EXIT,
                                                         _onExitActions); }
-        };
+
+                /** activity description */
+                std::string description();
+
+                /** action stage description */
+                std::string description(ActionStage stage);
+
+                /** action vector description */
+                std::string description(const ActionVector &actions);
+};
 }
 
 #endif

@@ -58,6 +58,7 @@
 #ifndef gufsm_FSMANTLRAction_h
 #define gufsm_FSMANTLRAction_h
 
+#include <string>
 #include <antlr3.h>
 #include "FSMAction.h"
 
@@ -71,6 +72,8 @@ namespace FSM
                 virtual void performv(Machine *, ActionStage, int x, va_list);
                 /** ANTLR context getter */
                 pANTLR3_RECOGNIZER_SHARED_STATE antlr_state() { return _state; }
+                /** ANTLR action description */
+                std::string description();
         };
 }
 

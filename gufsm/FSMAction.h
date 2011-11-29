@@ -89,6 +89,9 @@ namespace FSM
                         performv(m, stage, ac, ap);
                         va_end(ap);
                 }
+
+                /** action description */
+                virtual std::string description();
         };
         
         
@@ -111,6 +114,14 @@ namespace FSM
                 
                 /** setter method */
                 virtual void setContent(const T &c) { _content = c; }
+                
+                /** action description */
+                virtual std::string description()
+                {
+                        std::stringstream ss;
+                        ss << "Content Action " << content() << std::endl;
+                        return ss.str();
+                }
         };
         
         
@@ -127,6 +138,15 @@ namespace FSM
                 virtual void performv(Machine *, ActionStage, int, va_list)
                 {
                         std::cout << this->_content << std::endl;
+                }
+                
+                /** action description */
+                virtual std::string description()
+                {
+                        std::stringstream ss;
+                        ss << "Printing Action " << ContentAction<T>::content()
+                           << std::endl;
+                        return ss.str();
                 }
         };
         
@@ -146,6 +166,9 @@ namespace FSM
                 
                 /** sleep for the given amount of milliseconds */
                 virtual void performv(Machine *, ActionStage, int, va_list);
+                
+                /** action description */
+                virtual std::string description();
         };
 }
 

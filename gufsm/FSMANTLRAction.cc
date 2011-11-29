@@ -56,6 +56,7 @@
  *
  */
 #include <iostream>
+#include <sstream>
 #include <cassert>
 #include <gu_util.h>
 #include "FSMachine.h"
@@ -132,3 +133,84 @@ void ANTLRAction::performv(Machine *m, ActionStage, int x, va_list)
 
         walk_parse_children(antlr_state(), content(), statement_callback, NULL, NULL, m->context());
 };
+
+
+static int
+statement_print_pop_callback(void *context, const char *terminal, const char *content,
+                             pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
+{
+        stringstream &ss = *(stringstream *)context;
+        assert(terminal);                       /* must not be nil */
+        
+        if (string("BLOCK") == terminal)        /* block in curly brackets? */
+        {
+                ss << "}\n" << endl;
+                return 1;                       /* parse children */
+        }
+        if (string("K_EQ") == terminal)         /* assignment */
+        {
+                ss << " ) " << endl;
+                return 1;
+        }
+        ss << content;
+        return 1;
+}
+
+
+static int
+assignment_print_callback(void *context, const char *terminal, const char *content,
+                    pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
+{
+        stringstream &ss = *(stringstream *)context;
+        assert(terminal);                       /* must not be nil */
+        
+        if (string("K_ID") == terminal)         /* variable name */
+        {
+                ss << content << ", ";
+                return 0;
+        }
+        if (string("K_EQ") == terminal)         /* assignment */
+        {
+                ss << " =( " ;
+                walk_parse_children(state, tree, assignment_print_callback, NULL, statement_print_pop_callback, context);
+                return 0;
+        }
+        ss << content << ", ";
+        return 1;
+}
+
+
+
+static int
+statement_print_callback(void *context, const char *terminal, const char *content,
+                   pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
+{
+        stringstream &ss = *(stringstream *)context;
+        assert(terminal);                       /* must not be nil */
+        
+        if (string("BLOCK") == terminal)        /* block in curly brackets? */
+        {
+                ss << "{\n" << endl;
+                return 1;                       /* parse children */
+        }
+        if (string("K_EQ") == terminal)         /* assignment */
+        {
+                ss << " =( " ;
+                walk_parse_children(state, tree, assignment_print_callback, NULL, NULL, context);
+                return 0;
+        }
+        ss << content << ", ";
+        return 1;
+}
+
+
+string ANTLRAction::description()
+{
+        stringstream ss;
+
+        walk_parse_children(antlr_state(), content(), statement_print_callback, NULL, statement_print_pop_callback, &ss);
+
+        return ss.str();
+};
+
+

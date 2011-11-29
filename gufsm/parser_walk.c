@@ -161,7 +161,9 @@ int walk_parse_children(pANTLR3_RECOGNIZER_SHARED_STATE state,
         {
                 pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
                 tree->children->get(tree->children, i);
-                
+
+                if (!t) continue;
+
                 int rv = walk_parse_tree(state, t, callback,
                                            down, up, context);
                 if (rv == -1) return rv;
@@ -259,10 +261,10 @@ int parse_actions(const char *filename, pa_callback_f callback,
         rv = walk_parse_tree(parser->pParser->rec->state, actionsAST.tree,
                                callback, down, up, context);
 
-err4:   parser->free(parser);
-err3:   tstream->free(tstream);
-err2:   if (lexer) lexer->free(lexer);
-        if (input) input->free(input);
+err4:   // parser->free(parser);
+err3:   // tstream->free(tstream);
+err2:   // if (lexer) lexer->free(lexer);
+        // if (input) input->free(input);
 
         return rv;
 }
@@ -313,10 +315,10 @@ int parse_transitions(const char *filename, pa_callback_f callback,
         rv = walk_parse_tree(parser->pParser->rec->state, transitionsAST.tree,
                                    callback, down, up, context);
         
-err4:   parser->free(parser);
-err3:   tstream->free(tstream);
-err2:   lexer->free(lexer);
-        input->free(input);
+err4:   // parser->free(parser);
+err3:   // tstream->free(tstream);
+err2:   // lexer->free(lexer);
+        // input->free(input);
         
         return rv;
 }

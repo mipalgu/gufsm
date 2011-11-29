@@ -142,7 +142,7 @@ string Machine::description()
         stringstream ss;
         int i = 0;
         for (State *s: states())
-                ss << "State " << i++ << ": " << s->description() << endl;
+                ss << "State " << i++ << " (" << (long) s <<  "): " << s->description() << endl;
 
         return ss.str();
 }

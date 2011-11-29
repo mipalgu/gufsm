@@ -65,7 +65,8 @@ string State::description()
 {
         stringstream ss;
 
-        ss << stateID() << ": '" << name() << "'" << endl;
+        ss << stateID() << ": '" << name() << "'\n" << activity().description()
+           << endl;
 
         return ss.str();
 }

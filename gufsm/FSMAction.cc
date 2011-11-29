@@ -60,6 +60,25 @@
 #include "FSMAction.h"
 
 using namespace FSM;
+using namespace std;
+
+string Action::description()
+{
+        stringstream ss;
+        ss << "Abstract Action " << (long) this << endl;
+
+        return ss.str();
+}
+
+
+string SleepAction::description()
+{
+        stringstream ss;
+        ss << "Sleep Action for " << content() << " ms" << endl;
+        
+        return ss.str();
+}
+
 
 void SleepAction::performv(Machine *, ActionStage, int, va_list)
 {

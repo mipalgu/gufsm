@@ -82,7 +82,7 @@ vardef_callback(void *context, const char *terminal, const char *content,
         Machine *fsm = self->fsm();
         ANTLRContext *antlr_context = (ANTLRContext *) fsm->context();
 
-        fsm->addState(self->state());
+        //fsm->addState(self->state());
 
         if (string("K_ID") == terminal)         /* variable name */
         {
@@ -101,7 +101,7 @@ vardef_pop(void *context, const char *terminal, const char *content,
            pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
 {
         ActivityFactory *self = (ActivityFactory *) context;
-        self->fsm()->addState(self->state());
+        //self->fsm()->addState(self->state());
         
         return 1;
 }
@@ -305,7 +305,9 @@ activity_pop(void *context, const char *terminal, const char *content,
              pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
 {
         ActivityFactory *self = (ActivityFactory *) context;
-        self->fsm()->addState(self->state());
+        cout << "activity pop (" << terminal << ") content: " << content << endl;
+        if (string("K_INT") == terminal)  /* popping a state id? */
+                self->fsm()->addState(self->state());
 
         return 1;
 }

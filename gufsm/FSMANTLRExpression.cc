@@ -103,7 +103,7 @@ int evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
                         
                 {
                         pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
-                        tree->children->get(tree->children, i);
+                                tree->children->get(tree->children, i);
                         result += evaluate_node(state, t, context);
                 }
                 return result;
@@ -115,7 +115,7 @@ int evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
                         
                 {
                         pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
-                        tree->children->get(tree->children, i);
+                                tree->children->get(tree->children, i);
                         result = result && evaluate_node(state, t, context);
                 }
                 return result;
@@ -125,7 +125,7 @@ int evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
         {
                 assert(n == 1);
                 pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
-                tree->children->get(tree->children, 0);
+                        tree->children->get(tree->children, 0);
                 return !evaluate_node(state, t, context);
         }
         if (string("K_EQEQ") == terminal)
