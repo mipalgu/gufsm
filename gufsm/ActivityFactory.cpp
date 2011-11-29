@@ -123,11 +123,13 @@ block_callback(void *context, const char *terminal, const char *content,
                 if (walk_parse_children(state, tree, vardef_callback,
                                         NULL, vardef_pop, context) == -1)
                         return 0;
+                return 0;
         }
         if (string("STATEMENT_LIST") == terminal)       /* actions */
         {
                 self->set_action(new ANTLRAction(tree, state));
-                        return 0;
+                cout << "* ANTLRAction " << (long) self->action() << endl;
+                return 0;
         }
 
         cerr << "Ignoring unexpected block token '" << terminal

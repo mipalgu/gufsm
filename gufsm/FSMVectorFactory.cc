@@ -55,6 +55,7 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#include <iostream>
 #include "FSMVectorFactory.h"
 #include "FSMANTLRContext.h"
 #include "FSMWBSubMachineFactory.h"
@@ -70,6 +71,9 @@ StateMachineVectorFactory::StateMachineVectorFactory(WBContext *context,
         if (_fsms) for (string file: names_of_machines_to_build)
         {
                 ANTLRContext *c = new ANTLRContext(context->whiteboard());
+                cout << " New antlr context at " << (long) c
+                     << endl;
+
                 WBSubMachineFactory machine_factory(c, file);
 
                 fsms()->addMachine(machine_factory.machine());

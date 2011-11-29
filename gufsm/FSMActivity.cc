@@ -120,7 +120,7 @@ string Activity::description(const ActionVector &actions)
 {
         string s;
         for (Action *action: actions)
-                s += action->description();
+                if (action) s += action->description();
 
         return s;
 }
