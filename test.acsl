@@ -1,0 +1,9 @@
+1	INC
+OnEntry { iint x; x=0;}
+OnExit { x=0;  }
+{x=x+1;}
+
+2	INCAGAIN
+OnEntry {}
+OnExit { }
+{x=x+1;}
