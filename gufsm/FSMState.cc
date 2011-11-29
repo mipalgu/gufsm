@@ -57,6 +57,7 @@
  */
 #include <sstream>
 #include "FSMState.h"
+#include "FSMTransition.h"
 
 using namespace FSM;
 using namespace std;
@@ -66,7 +67,12 @@ string State::description()
         stringstream ss;
 
         ss << stateID() << ": '" << name() << "'\n" << activity().description()
-           << endl;
+           << "\nTransitions:\n";
+
+        for (Transition *t: transitions())
+                ss << t->description();
+        
+        ss << endl;
 
         return ss.str();
 }

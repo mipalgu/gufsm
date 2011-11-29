@@ -60,6 +60,23 @@
 #include "FSMachine.h"
 
 using namespace FSM;
+using namespace std;
+
+string Predicate::description()
+{
+        stringstream ss;
+        ss << (isNegation() ? "!" : "") << name() << "=" << value();
+        return ss.str();
+}
+
+
+string TimeoutPredicate::description()
+{
+        stringstream ss;
+        ss << "timeout(" << timeout() << " ms)";
+        return ss.str();
+}
+
 
 bool TimeoutPredicate::evaluate(Machine *machine)
 {

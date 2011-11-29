@@ -1,7 +1,7 @@
 /*
  *  FSMTransition.cc
  *  
- *  Created by René Hexel on 23/09/11.
+ *  Created by René Hexel on 29/11/11.
  *  Copyright (c) 2011 Rene Hexel.
  *  All rights reserved.
  *
@@ -55,46 +55,19 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef gufsm_FSMTransition_h
-#define gufsm_FSMTransition_h
+#include <sstream>
+#include "FSMTransition.h"
+#include "FSMExpression.h"
+#include "FSMState.h"
 
-#include <string>
+using namespace FSM;
+using namespace std;
 
-namespace FSM
+string Transition::description()
 {
-        class Expression;
-        class State;
-        
-        class Transition
-        {
-                State *_source;              /// source state
-                State *_target;              /// destination state
-                Expression *_expression;     /// expression to evaluate
-                
-        public:
-                /** default constructor */
-                Transition(State *s = NULL, State *t = NULL, Expression *e = NULL):
-                                _source(s), _target(t), _expression(e) {}
-                /** source state getter */
-                State *source() { return _source; }
+        stringstream ss;
+        ss << source()->stateID() << " -> " << target()->stateID() << " if "
+           << expression()->description() << endl;
 
-                /** source state setter */
-                void setSource(State *s) { _source = s; }
-
-                /** target state getter */
-                State *target() { return _target; }
-
-                /** target state setter */
-                void setTarget(State *t) { _target = t; }
-
-                /** get the current expression */
-                Expression *expression() { return _expression; }
-
-                /** set the current expression */
-                void setExpression(Expression *e) { _expression = e; }
-
-                /** print the current transition */
-                std::string description();
-        };
+        return ss.str();
 }
-#endif

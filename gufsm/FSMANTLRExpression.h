@@ -58,6 +58,7 @@
 #ifndef gufsm_FSMANTLRExpression_h
 #define gufsm_FSMANTLRExpression_h
 
+#include <sstream>
 #include <antlr3.h>
 #include "FSMExpression.h"
 
@@ -76,6 +77,13 @@ namespace FSM
                 pANTLR3_BASE_TREE expression() { return _expression; }
                 pANTLR3_RECOGNIZER_SHARED_STATE antlrState() { return  _state; }
 
+                /** print abstract expression */
+                virtual std::string description();
+
+                /** print abstract expression for a given state */
+                virtual std::string description(pANTLR3_RECOGNIZER_SHARED_STATE state,
+                                                pANTLR3_BASE_TREE tree);
+                
                 static int evaluate(pANTLR3_RECOGNIZER_SHARED_STATE state,
                                                      pANTLR3_BASE_TREE tree,
                                                      ANTLRContext *context);

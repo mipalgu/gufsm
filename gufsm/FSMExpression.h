@@ -59,6 +59,7 @@
 #define gufsm_FSMExpression_h
 
 #include <string>
+#include <sstream>
 
 namespace FSM
 {
@@ -72,6 +73,14 @@ namespace FSM
         public:
                 /** evaluation needs to be performed by sublcasses */
                 virtual bool evaluate(Machine *m = NULL) = 0;
+
+                /** print abstract expression */
+                virtual std::string description()
+                {
+                        std::stringstream ss;
+                        ss << "Abstract Expression " << (long) this;
+                        return ss.str();
+                }
         };
         
         /**
@@ -108,6 +117,10 @@ namespace FSM
 
                 /** return the value, negated if necessary */
                 virtual bool evaluate(Machine *m = NULL) { return _value ^ _negation; }
+
+                /** print abstract expression */
+                virtual std::string description();
+
         };
 
         class TimeoutPredicate: public Expression
@@ -125,6 +138,9 @@ namespace FSM
 
                 /** return true if state timeout has been reached */
                 virtual bool evaluate(Machine *m = NULL);
+
+                /** print abstract expression */
+                virtual std::string description();
         };
 }
 #endif

@@ -92,7 +92,7 @@ int evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
                   pANTLR3_BASE_TREE tree,
                   ANTLRContext *context)
 {
-        ANTLR3_UINT32 n = tree->children->size(tree->children);
+        ANTLR3_UINT32 n = tree->children ? tree->children->size(tree->children) : 0;
         const char *terminal = getTString(state, tree);
         const char *content  = getContent(tree);
         
@@ -108,7 +108,7 @@ int evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
                 }
                 return result;
         }
-        if (string("K_AND_AND") == terminal)
+        if (string("K_ANDAND") == terminal)
         {
                 int result = 1;
                 for (ANTLR3_UINT32 i = 0; i < n; i++)
@@ -223,4 +223,152 @@ bool ANTLRExpression::evaluate(Machine *m)
 {
         return evaluate(antlrState(), expression(),
                         (ANTLRContext *) m->context());
+}
+
+
+static
+void print_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
+                  pANTLR3_BASE_TREE tree,
+                  stringstream &ss)
+{
+        ANTLR3_UINT32 n = tree->children ? tree->children->size(tree->children) : 0;
+        const char *terminal = getTString(state, tree);
+        const char *content  = getContent(tree);
+        
+        if (string("K_PLUS") == terminal)
+        {
+                for (ANTLR3_UINT32 i = 0; i < n; i++)
+                        
+                {
+                        ss << "+( ";
+                        pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
+                                tree->children->get(tree->children, i);
+                        print_node(state, t, ss);
+                        if (i < n-1) ss << ", ";
+                }
+                ss << ") ";
+                return;
+        }
+        if (string("K_ANDAND") == terminal)
+        {
+                ss << "&&( ";
+                for (ANTLR3_UINT32 i = 0; i < n; i++)
+                        
+                {
+                        pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
+                                tree->children->get(tree->children, i);
+                        print_node(state, t, ss);
+                        if (i < n-1) ss << ", ";
+                }
+                ss << " ) ";
+                return;
+        }
+        if (string("K_NOT") == terminal)
+                
+        {
+                assert(n == 1);
+                ss << "!";
+                pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
+                        tree->children->get(tree->children, 0);
+                print_node(state, t, ss);
+                return;
+        }
+        if (string("K_EQEQ") == terminal)
+                
+        {
+                ss << "( ";
+                assert(n == 2);
+                pANTLR3_BASE_TREE t1 = (pANTLR3_BASE_TREE)
+                        tree->children->get(tree->children, 0);
+                print_node(state, t1, ss);
+                ss << " == ";
+                pANTLR3_BASE_TREE t2 = (pANTLR3_BASE_TREE)
+                        tree->children->get(tree->children, 1);
+                print_node(state, t2, ss);
+                ss << " ) ";
+                return;
+        }
+        if (string("K_LT") == terminal)
+                
+        {
+                ss << "( ";
+                assert(n == 2);
+                pANTLR3_BASE_TREE t1 = (pANTLR3_BASE_TREE)
+                        tree->children->get(tree->children, 0);
+                print_node(state, t1, ss);
+                ss << " << ";
+                pANTLR3_BASE_TREE t2 = (pANTLR3_BASE_TREE)
+                        tree->children->get(tree->children, 1);
+                print_node(state, t2, ss);
+                ss << " ) ";
+                return;
+        }
+        if (string("K_OROR") == terminal)
+                
+        {
+                ss << "( ";
+                assert(n == 2);
+                pANTLR3_BASE_TREE t1 = (pANTLR3_BASE_TREE)
+                tree->children->get(tree->children, 0);
+                print_node(state, t1, ss);
+                ss << " || ";
+                pANTLR3_BASE_TREE t2 = (pANTLR3_BASE_TREE)
+                tree->children->get(tree->children, 1);
+                print_node(state, t2, ss);
+                ss << " ) ";
+                return;
+        }
+        /*
+         * leaf node
+         */
+        if (string("K_INT") == terminal)
+        {
+                ss << content;
+                return;
+        }
+        
+        if (string("K_ID") != terminal)
+        {
+                DBG(cerr << "Ignoring unexpected token '" << terminal <<
+                    "' with content '" << content << "'" << endl);
+                return;
+        }
+        /*
+         * ID
+         */
+        ss << content;
+
+        return;
+}
+
+
+static
+void print_children(pANTLR3_RECOGNIZER_SHARED_STATE state,
+                      pANTLR3_BASE_TREE tree,
+                      stringstream &ss)
+{
+        ANTLR3_UINT32 n = tree->children->size(tree->children);
+        
+        for (ANTLR3_UINT32 i = 0; i < n; i++)
+        {
+                pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
+                        tree->children->get(tree->children, i);
+                
+                print_node(state, t, ss);
+        }
+}
+
+
+
+string ANTLRExpression::description(pANTLR3_RECOGNIZER_SHARED_STATE state,
+                                    pANTLR3_BASE_TREE tree)
+{
+        stringstream ss;
+        print_node(state, tree, ss);
+        return ss.str();
+}
+
+string ANTLRExpression::description()
+{
+        return description(antlrState(), expression());
 }
