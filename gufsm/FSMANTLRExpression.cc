@@ -207,7 +207,7 @@ int ANTLRExpression::evaluate_children(pANTLR3_RECOGNIZER_SHARED_STATE state,
                               pANTLR3_BASE_TREE tree,
                               ANTLRContext *context)
 {
-        return evaluate_children(state, tree, context);
+        return ::evaluate_children(state, tree, context);
 }
 
 

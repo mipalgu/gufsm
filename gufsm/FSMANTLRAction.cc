@@ -60,6 +60,7 @@
 #include <cassert>
 #include <gu_util.h>
 #include "FSMachine.h"
+#include "FSMState.h"
 #include "FSMANTLRContext.h"
 #include "FSMANTLRAction.h"
 #include "FSMANTLRExpression.h"
@@ -71,34 +72,25 @@ extern "C" {
 using namespace FSM;
 using namespace std;
 
-
-static int
-assignment_callback(void *context, const char *terminal, const char *content,
-                   pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
+static inline ANTLR3_UINT32 getType(pANTLR3_BASE_TREE tree)
 {
-        ANTLRContext *c = (ANTLRContext *) c;
-        
-        assert(terminal);                       /* must not be nil */
-        
-        if (string("K_ID") == terminal)         /* variable name */
-        {
-                int result = ANTLRExpression::evaluate_children(state, tree, c);
-                if (c->exists(content))
-                {
-                        c->set_internal_variable(content, result);
-                        return 0;                       /* parse children */
-                }
-                else
-                {
-                        /* TODO: get from whiteboard */
-                }
-        }
-        if (string("K_EQ") == terminal)         /* assignment */
-        {
-                walk_parse_children(state, tree, assignment_callback, NULL, NULL, context);
+	if  (tree->isNilNode(tree) == ANTLR3_TRUE)
                 return 0;
-        }
-        return 1;
+        
+	return	((pANTLR3_COMMON_TREE)(tree->super))->token->getType(((pANTLR3_COMMON_TREE)(tree->super))->token);
+}
+
+
+static inline const char *getTString(pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
+{
+        return (const char *) state->tokenNames[getType(tree)];
+}
+
+static inline const char *getContent(pANTLR3_BASE_TREE tree)
+{
+        pANTLR3_STRING s = tree->toString(tree);
+        if (!s) return NULL;
+        return (const char *) s->chars;
 }
 
 
@@ -106,7 +98,8 @@ static int
 statement_callback(void *context, const char *terminal, const char *content,
              pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
 {
-        ANTLRContext *c = (ANTLRContext *) c;
+        ANTLRContext *c = (ANTLRContext *) context;
+        ANTLR3_UINT32 n = tree->children ? tree->children->size(tree->children) : 0;
 
         assert(terminal);                       /* must not be nil */
         
@@ -120,16 +113,38 @@ statement_callback(void *context, const char *terminal, const char *content,
         }
         if (string("K_EQ") == terminal)         /* assignment */
         {
-                walk_parse_children(state, tree, assignment_callback, NULL, NULL, context);
-                return 0;
+                assert(n == 2);
+                pANTLR3_BASE_TREE t1 = (pANTLR3_BASE_TREE)
+                        tree->children->get(tree->children, 0);
+                const char *t1t = getTString(state, t1);
+                const char *t1c = getContent(t1);
+                assert(string("K_ID") == t1t);
+                
+                pANTLR3_BASE_TREE t2 = (pANTLR3_BASE_TREE)
+                tree->children->get(tree->children, 1);
+                int result = ANTLRExpression::evaluate(state, t2, c);
+                
+                if (c->exists(t1c))
+                {
+                        c->set_internal_variable(t1c, result);
+                        return 0;                       /* parse children */
+                }
+                else
+                {
+                        /* TODO: get from whiteboard */
+                        return 0;
+                }
         }
         return 1;
 }
 
 
-void ANTLRAction::performv(Machine *m, ActionStage, int x, va_list)
+void ANTLRAction::performv(Machine *m, ActionStage stage, int x, va_list)
 {
-        cout << "ANTLRAction perform: " << x << endl;
+        State *s = stage == STAGE_ON_EXIT ? m->previousState() : m->currentState();
+        cout << "ANTLRAction perform stage " << stage << " for state "
+             << s->name() << "(" << s->stateID()
+             << "): " << x << endl;
 
         walk_parse_children(antlr_state(), content(), statement_callback, NULL, NULL, m->context());
 };

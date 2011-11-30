@@ -75,8 +75,9 @@ StateMachineVectorFactory::StateMachineVectorFactory(WBContext *context,
                      << endl;
 
                 WBSubMachineFactory machine_factory(c, file);
-
-                fsms()->addMachine(machine_factory.machine());
+                SuspensibleMachine *machine = machine_factory.machine();
+                machine->initialise();
+                fsms()->addMachine(machine);
         }
 }
 

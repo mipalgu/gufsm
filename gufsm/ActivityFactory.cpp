@@ -144,19 +144,22 @@ block_pop(void *context, const char *terminal, const char *content,
 {
         ActivityFactory *self = (ActivityFactory *) context;
         Activity &activity = self->state()->activity();
+        FSM::ANTLRAction *action = self->action();
+
+        if (!action) return 1;
 
         switch (self->stage())
         {
                 case STAGE_ON_ENTRY:
-                        activity.addOnEntryAction(self->action());
+                        activity.addOnEntryAction(action);
                         break;
                         
                 case STAGE_ON_EXIT:
-                        activity.addOnExitAction(self->action());
+                        activity.addOnExitAction(action);
                         break;
                         
                 case STAGE_INTERNAL:
-                        activity.addInternalAction(self->action());
+                        activity.addInternalAction(action);
                         break;
                         
                 default:

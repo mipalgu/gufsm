@@ -84,7 +84,7 @@ namespace FSM
                 void setSuspendState(State *s, bool del = false);
 
                 /** tell whether this machine is suspended */
-                bool isSuspended() { return currentState() == _suspendState; }
+                bool isSuspended() { return _suspendState && currentState() == _suspendState; }
 
                 /** suspend this state machine */
                 virtual void suspend();

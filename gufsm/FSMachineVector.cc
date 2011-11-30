@@ -83,7 +83,7 @@ bool StateMachineVector::executeOnce()
 
         for (SuspensibleMachine *m: machines()) if (!m->isSuspended())
         {
-                bool a = m->executeOnce();
+                bool a = !m->executeOnce();
                 setAccepting(a && accepting());
 
                 if (m->previousState() != m->currentState()) fired = true;

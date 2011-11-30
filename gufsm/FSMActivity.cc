@@ -121,6 +121,7 @@ string Activity::description(const ActionVector &actions)
         string s;
         for (Action *action: actions)
                 if (action) s += action->description();
+                else cerr << "nil action pointer" << endl;
 
         return s;
 }
