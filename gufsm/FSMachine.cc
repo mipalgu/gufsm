@@ -62,6 +62,8 @@
 #include "FSMTransition.h"
 #include "FSMExpression.h"
 
+#include "stringConstants.h"
+
 using namespace FSM;
 
 bool Machine::executeOnce()
@@ -153,6 +155,35 @@ string Machine::kipkeInSVMformat()
         int i = 0;
         for (State *s: states())
                 ss << "State " << i++ << " (" << (long) s <<  "): " << s->description() << endl;
+        
+        return ss.str();
+}
+
+string Machine::kipkePCvaluesGivedID(int id, bool haveExternalVariables )
+{
+        stringstream ss;
+        
+        
+        for (State *s: states())
+        {
+                 ss << "\t" << "M"<<id << pcBefore << s->name() << ",";
+                 ss <<  "M"<<id<<  pcAfterOnEntry << s->name() << "," << std::endl;
+                /* we neeed information on transitions labels here */
+                
+                int transitionNumber=1;
+                
+                for (Transition *tr: s->transitions() )
+                {
+                        ss <<  "\t\t"<< "M"<<id << pcAfterEvaluate << pcBoolean << transitionNumber << pcTrue << s->name() <<  ",";
+                        if (haveExternalVariables)
+                                { ss<<  pcBeforeEvaluate << pcBoolean << transitionNumber << s->name() <<","  ;
+                                }
+                        ss<<  "M"<<id << pcAfterEvaluate << pcBoolean << transitionNumber << pcFalse << s->name()  ;
+                        
+                       transitionNumber++;    
+                } // each transiiton
+        
+        }
         
         return ss.str();
 }

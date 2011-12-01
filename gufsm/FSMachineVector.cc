@@ -58,6 +58,9 @@
 #include <sstream>
 #include "FSMachineVector.h"
 #include "FSMANTLRContext.h"
+#include "stringConstants.h"
+#include "Valuation.h"
+
 
 const bool  NO_SELF =true;
 
@@ -129,11 +132,20 @@ using namespace std;
 static std::string variableNRange(string varName)
 {
         stringstream ss;
-        ss << varName << " : " ;
+        ss << varName<< " : " ;
         ss << "{" << LOW_RANGE<< ",";
         for (int i= LOW_RANGE+1;  i<HIGH_RANGE-1; i++)
                 ss << i << "," ;
         ss<<  HIGH_RANGE << "};" << std::endl;
+        
+        return ss.str();
+        
+}
+
+static std::string variableWithMachineID(string varName, int machineID)
+{
+        stringstream ss;
+        ss << varName<< "M"<<machineID ;
         
         return ss.str();
         
@@ -180,6 +192,9 @@ string StateMachineVector::kipkeInSVMformat()
         ss <<"     -- variables used in the example FSM have a simple range" << endl;
         
                 /* the internal variables first */
+                
+                KripkeContext *theInternalVariables;
+                
         i = 0;
         for (Machine *m: machines())
                 {
@@ -187,18 +202,54 @@ string StateMachineVector::kipkeInSVMformat()
                 if (!( antlr_context->isEmpty()) )
                     /* print internal variables of this machine in svn fromat*/
                     /* ALL BOOLEAN, TODO, make integer values */
-                { ss << variableNRange( antlr_context->firstName() );
-                            
+                { 
+                  string globalName= variableWithMachineID ( antlr_context->firstName(),i );
+                  ss << variableNRange( globalName);
+                        Valuation *defaultPair= new Valuation(globalName,0);
+                        
+                        if (0==i) //very first internal varibale in first FSM*/
+                        {
+                                KripkeContext theInternalVariables =  KripkeContext(defaultPair);   
+                        }
+                        else
+                                theInternalVariables->addPair(defaultPair);
+                        
+                        
                   string aName =antlr_context->nextName();
                   while (aName.compare(""))
-                            {ss   << variableNRange( aName);                                  
+                            {globalName= variableWithMachineID ( aName,i);
+                                    ss   << variableNRange( globalName); 
+                                    Valuation *defaultPair= new Valuation(globalName,0);
+                                    theInternalVariables->addPair(defaultPair);
+                                    aName =antlr_context->nextName();
+                                    
                             }
                             
                 }
-                
-                //m->kipkeInSVMformat() << endl;
+                        i++; // increment the Machine coutner
                 }
+        }// have externala nd internal variables
+                
+        /* Write the range of the pc variable using the states */
+                ss <<"     -- for each state of each FSM, we have a PC that can be" << std::endl;
+                ss <<"     -- a) "  << pcBefore << "arrival to the state (which is After the OnExit of the state)"  << std::endl;
+                ss <<"     -- b) "  << pcAfterOnEntry << " (activities of OnEntry section are executed )"  << std::endl;
+                ss <<"     -- c) "  << pcBefore << " (a Boolean expression " << pcBeforeEvaluate << " labeling a transition by external variables ) " << std::endl;
+                ss <<"     -- d) "  << pcAfterEvaluate << " (a Boolean expression " << pcBoolean << " labeling a transition is evaluted ) and results in " << pcTrue  << std::endl;
+                ss <<"     -- e) "  << pcAfterEvaluate << " (a Boolean expression " << pcBoolean << " labeling a transition is evaluted ) and results in " << pcFalse  << std::endl;
+                        
+                ss << "pc : {"  << std::endl;
+                //m->kipkeInSVMformat() << endl;
+                
+        i = 0;
+        for (Machine *m: machines())
+        {
+                ss << m->kipkePCvaluesGivedID(i,haveExternalVariables);
+        
+                        
+           i++; // increment the Machine coutner
         }
+
         return ss.str();
         
 }

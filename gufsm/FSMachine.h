@@ -161,9 +161,14 @@ namespace FSM
                 virtual std::string description();
                 
                 /**
-                 * printable state machine description
+                 *maybe the Kripke structure of a FSM
                  */
                 virtual std::string kipkeInSVMformat();
+                
+                /**
+                 * PC values in the Kripke structure of this machine
+                 */
+                virtual std::string kipkePCvaluesGivedID(int id, bool areThereExternals);
                 
                 /**
                  * restart the current state machine from initial state

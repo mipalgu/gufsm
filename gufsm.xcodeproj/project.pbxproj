@@ -94,6 +94,7 @@
 		F1AFCD30147B8F7800C975DC /* FSMWBSubMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1AFCD2E147B8F7800C975DC /* FSMWBSubMachine.cc */; };
 		F1F8EAC71480B732008AB889 /* FSMANTLRExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1F8EAC61480B732008AB889 /* FSMANTLRExpression.cc */; };
 		F1F8EAC81480B732008AB889 /* FSMANTLRExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1F8EAC61480B732008AB889 /* FSMANTLRExpression.cc */; };
+		F5EE57F81487441C001F6C9C /* stringConstants.c in Sources */ = {isa = PBXBuildFile; fileRef = F5EE57F61487441C001F6C9C /* stringConstants.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1501,6 +1502,9 @@
 		F1F8EAC31480B6BE008AB889 /* FSMANTLRExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMANTLRExpression.h; sourceTree = "<group>"; };
 		F1F8EAC61480B732008AB889 /* FSMANTLRExpression.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRExpression.cc; sourceTree = "<group>"; };
 		F1F8EAC91480B98E008AB889 /* FSMANTLRContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMANTLRContext.h; sourceTree = "<group>"; };
+		F521913F14873D0600FC9541 /* Valuation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Valuation.h; sourceTree = "<group>"; };
+		F5EE57F61487441C001F6C9C /* stringConstants.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stringConstants.c; sourceTree = "<group>"; };
+		F5EE57F71487441C001F6C9C /* stringConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stringConstants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1724,6 +1728,9 @@
 				F16CC30B142C0CDE001F788B /* FSMachine.cc */,
 				F191E602142D99150014AF84 /* FSMachine.h */,
 				F1AFCD28147B56FA00C975DC /* FSMachineVector.cc */,
+				F5EE57F61487441C001F6C9C /* stringConstants.c */,
+				F5EE57F71487441C001F6C9C /* stringConstants.h */,
+				F521913F14873D0600FC9541 /* Valuation.h */,
 				F1AFCD2C147B573700C975DC /* FSMachineVector.h */,
 				F16CC30F142C0F86001F788B /* FSMState.cc */,
 				F16CC30E142C0F62001F788B /* FSMState.h */,
@@ -4059,6 +4066,7 @@
 				F1F8EAC71480B732008AB889 /* FSMANTLRExpression.cc in Sources */,
 				F12DCCE414830A9D00461AD6 /* TransitionFactory.cpp in Sources */,
 				F12DCDD81484BAD100461AD6 /* FSMTransition.cc in Sources */,
+				F5EE57F81487441C001F6C9C /* stringConstants.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
