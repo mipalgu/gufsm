@@ -1,5 +1,5 @@
 1	COOKING
-OnEntry { int motor; motor=light+1;}
+OnEntry { int motor; motor=1;}
 OnExit {  }
 {}
 

@@ -237,19 +237,84 @@ string StateMachineVector::kipkeInSVMformat()
                 ss <<"     -- c) "  << pcBefore << " (a Boolean expression " << pcBeforeEvaluate << " labeling a transition by external variables ) " << std::endl;
                 ss <<"     -- d) "  << pcAfterEvaluate << " (a Boolean expression " << pcBoolean << " labeling a transition is evaluted ) and results in " << pcTrue  << std::endl;
                 ss <<"     -- e) "  << pcAfterEvaluate << " (a Boolean expression " << pcBoolean << " labeling a transition is evaluted ) and results in " << pcFalse  << std::endl;
-                        
+          
+        /* TODO: THIS IS WRONG, the pc of the Kripke structure shoud
+                be the Cartesian product of the individual machines PCs
+         */
                 ss << "pc : {"  << std::endl;
                 //m->kipkeInSVMformat() << endl;
-                
-        i = 0;
-        for (Machine *m: machines())
-        {
-                ss << m->kipkePCvaluesGivedID(i,haveExternalVariables);
+            
+        // For each machine we need the possible (individual) Kripke states
+        //
         
+        i = 0;
+        std:vector<int>  indexesPerFSM;
+        for (Machine *m: machines())
+        {  
+                
+                 m->findInternalKripkeStateNames(i,haveExternalVariables,i== machines().size() - 1);
+                //indexesPerFSM[i]=m->sizeInternalKripkeStateNames();
                         
            i++; // increment the Machine coutner
         }
+        
 
+        ss << std::endl;
+        ss << std::endl;
+        
+        
+        /* Write the initial states section */
+        //fsmState* initialState=iniFile->theFirstState();
+        
+        // A state is an initial Kripke state if
+        // it is the combiantion of all initial states of the idnepndent FSM
+        // and any combiantion that results in a valuation of the external
+        // variables
+        
+        //The intiailVlaue of the pc for the Kripke structure is
+        // detailed first
+        
+        ss << "INIT"  << std::endl;
+        std:: cout << "pc=";
+        i = 0;
+        
+        for (Machine *m: machines())
+        { 
+                ss << m->initialStateGivedID(i);
+                i++; // increment the Machine coutner
+        }
+        
+        /* Write the TRANS states section */
+        ss << "TRANS"  << std::endl;
+        ss << " case"  << std::endl;
+        ss << "\t\t-- each state has a loop transition, Kripke structures are total"  << std::endl;
+        
+        /* all combinations of valuations of variables (internal and extrenal */
+        /* generate a context  */
+        /* initial Kripke states will be palced in a queue              */
+        
+        
+        /* construc the first valuation as a the context */
+        
+        /*
+        std::string aVarName = iniFile->theFirst();
+        Valuation* val1 = new Valuation (aVarName,LOW_RANGE);
+        
+        Context* aContext = new Context (val1);
+        
+        aVarName=iniFile->nextVariable();
+        while (aVarName.length() > 0)
+        {
+                val1 = new Valuation (aVarName,LOW_RANGE);
+                aContext->addPair(val1);
+                aVarName=iniFile->nextVariable();
+        }
+        */
+        /* write first context and the pc in Initial State(s) */
+        /*
+        KripkeState* anInitial = new KripkeState(aContext,pcBefore,initialState,0);
+         */
+        
         return ss.str();
         
 }

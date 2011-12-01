@@ -159,31 +159,59 @@ string Machine::kipkeInSVMformat()
         return ss.str();
 }
 
-string Machine::kipkePCvaluesGivedID(int id, bool haveExternalVariables )
+bool Machine::findInternalKripkeStateNames(int id, bool haveExternalVariables, bool lastMachine )
 {
-        stringstream ss;
         
         
+        int count=0;
         for (State *s: states())
-        {
-                 ss << "\t" << "M"<<id << pcBefore << s->name() << ",";
-                 ss <<  "M"<<id<<  pcAfterOnEntry << s->name() << "," << std::endl;
+        {       stringstream sBefore;
+                 sBefore << "M"<<id << pcBefore << s->name() ;
+                _internalKripkeStateNames.push_back(sBefore.str() ) ;
+                  
+                 stringstream sAfter;                                   
+                sAfter <<  "M"<<id<<  pcAfterOnEntry << s->name() ;
+                _internalKripkeStateNames.push_back(sAfter.str() ) ;
+                                                    
                 /* we neeed information on transitions labels here */
                 
                 int transitionNumber=1;
                 
                 for (Transition *tr: s->transitions() )
-                {
-                        ss <<  "\t\t"<< "M"<<id << pcAfterEvaluate << pcBoolean << transitionNumber << pcTrue << s->name() <<  ",";
+                {       stringstream sAfterEvaluateT;
+                        sAfterEvaluateT <<  "M"<<id << pcAfterEvaluate << pcBoolean << transitionNumber << pcTrue << s->name();
+                        _internalKripkeStateNames.push_back(sAfterEvaluateT.str() ) ;
+                        stringstream sAfterEvaluateF;
+                        sAfterEvaluateF <<  "M"<<id << pcAfterEvaluate << pcBoolean << transitionNumber << pcTrue << s->name();
+                        _internalKripkeStateNames.push_back(sAfterEvaluateF.str() ) ;
+                        
                         if (haveExternalVariables)
-                                { ss<<  pcBeforeEvaluate << pcBoolean << transitionNumber << s->name() <<","  ;
+                                { stringstream sExternal;
+                                       sExternal<<  pcBeforeEvaluate << pcBoolean << transitionNumber << s->name() ;
+                                        _internalKripkeStateNames.push_back(sExternal.str() ) ;
+
                                 }
-                        ss<<  "M"<<id << pcAfterEvaluate << pcBoolean << transitionNumber << pcFalse << s->name()  ;
                         
                        transitionNumber++;    
                 } // each transiiton
-        
+                
+                //place a "," unless this is the last state of the last machine
+                //if (lastMachine && states().size()-1 == count)
+                //        ss << "}"<< endl;
+                //else
+                //        ss << "," << endl;
+                
+                count++;
         }
         
+        return true;
+}
+
+string Machine::initialStateGivedID(int id)
+{
+        stringstream ss;
+        
+                ss << "\t" << "M"<<id << pcBefore << (states()[0])->name() << ",";
+ 
         return ss.str();
 }

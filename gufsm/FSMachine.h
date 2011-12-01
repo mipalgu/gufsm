@@ -59,6 +59,7 @@
 #define gufsm_FSMachine_h
 
 #include <vector>
+#include <string>
 #include <sys/time.h>
 
 namespace FSM
@@ -68,6 +69,7 @@ namespace FSM
         
         typedef std::vector<State *> StateVector;
         typedef StateVector::iterator StateIterator;
+        typedef std::vector<std::string> InternalKripkeStateNames;
 
         /**
          * State machine class
@@ -84,12 +86,15 @@ namespace FSM
                 timeval _actty_time;    /// internal activity start time
 
                 long _activities_count; /// how many times have activities run?
+                
+                InternalKripkeStateNames _internalKripkeStateNames;
+                
 
         public:
                 /** constructor */
                 Machine(State *initial = NULL, Context *ctx = NULL):
                         _context(ctx), _currentState(initial),
-                        _previousState(NULL), _states()
+                        _previousState(NULL), _states(), _internalKripkeStateNames()
                 {
                         if (initial)
                         {
@@ -167,8 +172,22 @@ namespace FSM
                 
                 /**
                  * PC values in the Kripke structure of this machine
+                 * return false if failure
                  */
-                virtual std::string kipkePCvaluesGivedID(int id, bool areThereExternals);
+     
+                bool findInternalKripkeStateNames(int id, bool areThereExternals, bool lastState);
+                
+                int sizeInternalKripkeStateNames()
+                {_internalKripkeStateNames.size();
+                }
+                
+                
+                /**
+                 * PC values in the Kripke structure of intial state of this machine
+                 */
+                virtual std::string initialStateGivedID(int id);
+                
+              
                 
                 /**
                  * restart the current state machine from initial state
