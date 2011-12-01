@@ -178,9 +178,11 @@ namespace FSM
                 bool findInternalKripkeStateNames(int id, bool areThereExternals, bool lastState);
                 
                 int sizeInternalKripkeStateNames()
-                {_internalKripkeStateNames.size();
+                { return _internalKripkeStateNames.size();
                 }
                 
+                /** Kripke PC states getter method */
+                InternalKripkeStateNames &internalKripkeStateNames() { return _internalKripkeStateNames; }
                 
                 /**
                  * PC values in the Kripke structure of intial state of this machine

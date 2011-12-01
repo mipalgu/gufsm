@@ -248,17 +248,47 @@ string StateMachineVector::kipkeInSVMformat()
         //
         
         i = 0;
-        std:vector<int>  indexesPerFSM;
+        std:vector<int>  indexesPerFSM(machines().size() );
+        vector<int>  maxIndexesPerFSM(machines().size() );
         for (Machine *m: machines())
         {  
                 
                  m->findInternalKripkeStateNames(i,haveExternalVariables,i== machines().size() - 1);
-                //indexesPerFSM[i]=m->sizeInternalKripkeStateNames();
+                maxIndexesPerFSM[i]=m->sizeInternalKripkeStateNames();
+                indexesPerFSM[i]=0;
                         
            i++; // increment the Machine coutner
         }
         
 
+        /* We generate all combinatios of states as pc positions for the
+           global Kripke structure, in fact we expect many of this never
+           to happen
+         */
+        
+        bool all_at_max=false;
+        
+        while (! all_at_max)
+         {   bool carryOn=false;
+             i = 0;
+             for (Machine *m: machines())
+             { ss << m->internalKripkeStateNames() [indexesPerFSM[i]];
+             }
+                 
+                 if(indexesPerFSM[0]<maxIndexesPerFSM[0])
+                         indexesPerFSM[0]++;
+                 else{
+                                 indexesPerFSM[0]=0;
+                         carryOn=true;
+                 }
+                 all_at_max=true;
+         }// while
+                 
+         
+                 
+
+         
+        
         ss << std::endl;
         ss << std::endl;
         
