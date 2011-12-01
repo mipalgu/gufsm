@@ -100,7 +100,7 @@ static int
 vardef_pop(void *context, const char *terminal, const char *content,
            pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
 {
-        ActivityFactory *self = (ActivityFactory *) context;
+        //ActivityFactory *self = (ActivityFactory *) context;
         //self->fsm()->addState(self->state());
         
         return 1;

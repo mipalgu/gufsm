@@ -75,7 +75,10 @@ int main (int argc, const char * argv[])
         string descr = factory.fsms()->description();
         cout << descr << endl;
 
-        factory.fsms()->execute();
+
+        string kripke = factory.fsms()->kipkeInSVMformat();
+        cout << kripke << endl;
+        //factory.fsms()->execute();
 
         return 0;
 }

@@ -161,6 +161,11 @@ namespace FSM
                 virtual std::string description();
                 
                 /**
+                 * printable state machine description
+                 */
+                virtual std::string kipkeInSVMformat();
+                
+                /**
                  * restart the current state machine from initial state
                  * @param initialState state to start from (default: first state)
                  * @return previous state the machine was in

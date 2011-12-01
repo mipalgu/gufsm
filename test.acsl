@@ -1,5 +1,5 @@
 1	INC
-OnEntry { int x; x=0;}
+OnEntry { y=1;; x=0;}
 OnExit { x=0;  }
 {x=x+1;}
 

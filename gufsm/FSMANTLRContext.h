@@ -60,6 +60,7 @@
 
 #include <map>
 #include <string>
+#include <sstream>
 #include <antlr3.h>
 #include "FSMWBContext.h"
 
@@ -68,6 +69,7 @@ namespace FSM
         class ANTLRContext: public WBContext
         {
                 std::map<std::string, int> _internal_variables; /// our own state-machine internal variables
+                std::map<std::string, int>::iterator it; // the iterator in the map
         public:
                 /**
                  * default constructor
@@ -91,6 +93,44 @@ namespace FSM
                 bool exists(std::string name)
                 {
                         return internal_variables().count(name) != 0;
+                }
+                
+                /** all names of internal variables */
+                std::string allNames ()
+                {
+                        std::stringstream ss;
+                        
+                        for ( it=_internal_variables.begin() ; it != _internal_variables.end(); it++ )
+                                ss << (*it).first << " " ;
+                        return ss.str();
+                }
+                
+                /** do we have internal variables */
+                bool isEmpty()
+                {
+                        return internal_variables().empty();
+                }
+                
+                /** give me the first internal variable */
+                std::string firstName()
+                {
+                        std::string s;
+                        
+                        it=_internal_variables.begin();
+                        if (it != _internal_variables.end())
+                                return(*it).first;
+                        else return s;
+                        
+                }
+                
+                /** give me the next internal variable (or NULL if not any more */
+                std::string nextName()
+                {       std::string s;
+                        it++;
+                        if (it != _internal_variables.end())
+                                return(*it).first;
+                        else return s;
+                        
                 }
         };
 }

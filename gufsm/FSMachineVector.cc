@@ -57,6 +57,13 @@
  */
 #include <sstream>
 #include "FSMachineVector.h"
+#include "FSMANTLRContext.h"
+
+const bool  NO_SELF =true;
+
+const int LOW_RANGE =0;
+const int HIGH_RANGE =1;
+
 
 using namespace FSM;
 
@@ -119,6 +126,19 @@ void StateMachineVector::restart()
 
 using namespace std;
 
+static std::string variableNRange(string varName)
+{
+        stringstream ss;
+        ss << varName << " : " ;
+        ss << "{" << LOW_RANGE<< ",";
+        for (int i= LOW_RANGE+1;  i<HIGH_RANGE-1; i++)
+                ss << i << "," ;
+        ss<<  HIGH_RANGE << "};" << std::endl;
+        
+        return ss.str();
+        
+}
+
 string StateMachineVector::description()
 {
         stringstream ss;
@@ -128,4 +148,57 @@ string StateMachineVector::description()
                 m->description() << endl;
 
         return ss.str();
+}
+
+string StateMachineVector::kipkeInSVMformat()
+{
+        stringstream ss;
+        
+        /* Write the preamble */
+        
+        bool haveExternalVariables = false;
+        bool haveInternalVariables = false;
+        
+        ss << "MODULE main" << endl;
+        ss << endl;
+        /* We need to find all the variables */
+        
+        /* Do we have internal variables */
+        
+        int i = 0;
+        for (Machine *m: machines())
+        {       /* Accumulate wheather ther are  variables declared in each FSM */
+                ANTLRContext *antlr_context = (ANTLRContext *) m->context();
+                haveInternalVariables = haveInternalVariables || (!antlr_context->isEmpty());
+        }
+        
+        /* Do we have external variables */
+         
+        if (haveExternalVariables || haveInternalVariables)
+        {
+        ss <<"VAR" << endl;
+        ss <<"     -- variables used in the example FSM have a simple range" << endl;
+        
+                /* the internal variables first */
+        i = 0;
+        for (Machine *m: machines())
+                {
+                ANTLRContext *antlr_context = (ANTLRContext *) m->context();
+                if (!( antlr_context->isEmpty()) )
+                    /* print internal variables of this machine in svn fromat*/
+                    /* ALL BOOLEAN, TODO, make integer values */
+                { ss << variableNRange( antlr_context->firstName() );
+                            
+                  string aName =antlr_context->nextName();
+                  while (aName.compare(""))
+                            {ss   << variableNRange( aName);                                  
+                            }
+                            
+                }
+                
+                //m->kipkeInSVMformat() << endl;
+                }
+        }
+        return ss.str();
+        
 }

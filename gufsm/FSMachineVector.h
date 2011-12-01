@@ -121,6 +121,11 @@ namespace FSM
                  * execute until accepting state is encountered
                  */
                 virtual void execute();
+                
+                /**
+                 * print the Kripke structure in svm format 
+                 */
+                virtual std::string kipkeInSVMformat();
 
                 /**
                  * restart all state machines from their initial state
