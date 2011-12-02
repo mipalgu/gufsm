@@ -60,6 +60,9 @@
 
 #include <unistd.h>
 #include <vector>
+#include <string>
+#include <list>
+#include <utility>
 #include "FSMSuspensibleMachine.h"
 
 namespace FSM
@@ -67,6 +70,8 @@ namespace FSM
         typedef std::vector<SuspensibleMachine *> MachineVector;
         typedef MachineVector::iterator MachineIterator;
         typedef void (*idle_f)(useconds_t timeout);
+        typedef std::pair<unsigned long long, std::string *> KripkeState;
+        
 
         /**
          * State machine vector class
@@ -78,6 +83,9 @@ namespace FSM
                 useconds_t      _idle_timeout;  /// idle timeout in usec
                 idle_f          _no_transition_fired; /// idle function
                 bool            _accepting;     /// all machines are in an accepting state
+
+                std::string generate_from(KripkeState &, std::list<KripkeState> &);
+                void add_if_not_seen(KripkeState &, std::list<KripkeState> &);
         public:
                 /** constructor */
                 StateMachineVector(Context *ctx = NULL, useconds_t timeout = 10000L, idle_f default_idle_function = NULL);

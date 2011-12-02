@@ -57,6 +57,7 @@
  */
 #include <iostream>
 #include <sstream>
+#include <cassert>
 #include "FSMachineVector.h"
 #include "FSMANTLRContext.h"
 #include "stringConstants.h"
@@ -69,6 +70,7 @@ const int HIGH_RANGE =1;
 
 
 using namespace FSM;
+using namespace std;
 
 static void default_idle_sleep(useconds_t t)
 {
@@ -162,6 +164,25 @@ string StateMachineVector::description()
         return ss.str();
 }
 
+string StateMachineVector::generate_from(const KripkeState &s, list<KripkeState> &kstates)
+{
+        
+        bool found = false;
+        for (auto t: kstates)
+                if (x == t) { found = true; break; }
+        if (!found) kstates.push_back(x);
+}
+
+void StateMachineVector:: add_if_not_seen(KripkeState &, std::list<KripkeState> &)
+{
+        
+        bool found = false;
+        for (auto t: kstates)
+                if (x == t) { found = true; break; }
+        if (!found) kstates.push_back(x);
+}
+
+
 string StateMachineVector::kripkeInSVMformat()
 {
         stringstream ss;
@@ -219,7 +240,7 @@ string StateMachineVector::kripkeInSVMformat()
            global Kripke structure, in fact we expect many of this never
            to happen
          */
-        
+        vector<string> kripkePCValues;
         bool all_at_max=false;
         bool first=true;
         while (! all_at_max)
@@ -227,12 +248,13 @@ string StateMachineVector::kripkeInSVMformat()
                  i = 0;
                  if (!first) ss<<",\n";
                  first = false;
+                 stringstream pcKripkeValue;
                  for (Machine *m: machines())
                  {
-                         ss << m->localKripkeStateNames() [indexesPerFSM[i]];
+                         pcKripkeValue << m->localKripkeStateNames() [indexesPerFSM[i]];
                          i++;
                  }
-                 cout <<ss.str() << endl;
+                 cout <<pcKripkeValue.str() << endl;
                 
                  
                  int column =0;
@@ -250,7 +272,8 @@ string StateMachineVector::kripkeInSVMformat()
                          }
                          column++;
                  }
-            
+                 ss << pcKripkeValue.str();
+                 kripkePCValues.push_back(pcKripkeValue.str());
          }// while
                  
 
@@ -272,11 +295,8 @@ string StateMachineVector::kripkeInSVMformat()
         // detailed first
         
         ss << "INIT"  << std::endl;
-        ss << "pc=";
-        
-        for (Machine *m: machines())
-                ss << m->initialStateName();
-        
+        ss << "pc=" << kripkePCValues[0];
+
         /* Write the TRANS states section */
         ss << "TRANS"  << std::endl;
         ss << " case"  << std::endl;
@@ -286,7 +306,23 @@ string StateMachineVector::kripkeInSVMformat()
         /* generate a context  */
         /* initial Kripke states will be palced in a queue              */
         
-        
+        size_t n = antlr_context->variables().size();
+        string *names[n];
+        i = 0;
+        for (auto p: antlr_context->variables())
+                names[i++] = (string *) &p.first;
+
+        assert(i == n);
+        assert(n < 64);
+
+        list<KripkeState> kstates;
+        unsigned long long combinations = (1ULL << n);
+        for (unsigned long long k = 0; k < combinations; k++)
+                kstates.push_back(KripkeState(k, &kripkePCValues[0]));
+
+        for (auto s: kstates)
+                ss << generate_from(s, kstates);
+
         /* construc the first valuation as a the context */
         
         /*
