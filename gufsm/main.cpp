@@ -56,7 +56,7 @@
  *
  */
 #include <iostream>
-#include "FSMWBContext.h"
+#include "FSMANTLRContext.h"
 #include "FSMVectorFactory.h"
 
 using namespace std;
@@ -69,14 +69,14 @@ int main (int argc, const char * argv[])
         while (--argc > 0)
                 machine_names.push_back(*++argv);
 
-        WBContext wb_context;                   // create whiteboard
-        StateMachineVectorFactory factory(&wb_context, machine_names);
+        ANTLRContext antlr_context;             // create whiteboard
+        StateMachineVectorFactory factory(&antlr_context, machine_names);
 
         string descr = factory.fsms()->description();
         cout << descr << endl;
 
 
-        string kripke = factory.fsms()->kipkeInSVMformat();
+        string kripke = factory.fsms()->kripkeInSVMformat();
         cout << kripke << endl;
         //factory.fsms()->execute();
 

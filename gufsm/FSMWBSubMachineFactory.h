@@ -70,7 +70,7 @@ namespace FSM
                 WBSubMachine *_machine; /// built state machine
         public:
                 /** constructor that builds vector of machines */
-                WBSubMachineFactory(WBContext *context, const std::string &machine_name);
+                WBSubMachineFactory(WBContext *context, const std::string &machine_name, int mid=0);
 
                 /** getter */
                 WBSubMachine *machine() { return _machine; }

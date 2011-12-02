@@ -69,7 +69,7 @@ namespace FSM
                 bool _deleteContext;    /// does the machine own its WB context?
         public:
                 /** constructor */
-                WBSubMachine(State *initialState = NULL, WBContext *ctx = NULL,
+                WBSubMachine(State *initialState = NULL, WBContext *ctx = NULL, int mid=0,
                              State *s = NULL, bool del = false);
 
                 /** destructor */

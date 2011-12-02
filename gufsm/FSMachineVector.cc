@@ -162,82 +162,37 @@ string StateMachineVector::description()
         return ss.str();
 }
 
-string StateMachineVector::kipkeInSVMformat()
+string StateMachineVector::kripkeInSVMformat()
 {
         stringstream ss;
-        
+        ANTLRContext *antlr_context = (ANTLRContext *) context();
+
         /* Write the preamble */
-        
-        bool haveExternalVariables = false;
-        bool haveInternalVariables = false;
         
         ss << "MODULE main" << endl;
         ss << endl;
         /* We need to find all the variables */
         
-        /* Do we have internal variables */
-        
-        int i = 0;
-        for (Machine *m: machines())
-        {       /* Accumulate wheather ther are  variables declared in each FSM */
-                ANTLRContext *antlr_context = (ANTLRContext *) m->context();
-                haveInternalVariables = haveInternalVariables || (!antlr_context->isEmpty());
-        }
-        
-        /* Do we have external variables */
-         
-        if (haveExternalVariables || haveInternalVariables)
+        /* Do we have variables? */
+        if (!antlr_context->isEmpty())
         {
-        ss <<"VAR" << endl;
-        ss <<"     -- variables used in the example FSM have a simple range" << endl;
+                ss <<"VAR" << endl;
+                ss <<"     -- variables used in the example FSM have a simple range" << endl;
         
-                /* the internal variables first */
-                
-                KripkeContext *theInternalVariables;
-                
-        i = 0;
-        for (Machine *m: machines())
-                {
-                ANTLRContext *antlr_context = (ANTLRContext *) m->context();
-                if (!( antlr_context->isEmpty()) )
-                    /* print internal variables of this machine in svn fromat*/
-                    /* ALL BOOLEAN, TODO, make integer values */
-                { 
-                  string globalName= variableWithMachineID ( antlr_context->firstName(),i );
-                  ss << variableNRange( globalName);
-                        Valuation *defaultPair= new Valuation(globalName,0);
-                        
-                        if (0==i) //very first internal varibale in first FSM*/
-                        {
-                                KripkeContext theInternalVariables =  KripkeContext(defaultPair);   
-                        }
-                        else
-                                theInternalVariables->addPair(defaultPair);
-                        
-                        
-                  string aName =antlr_context->nextName();
-                  while (aName.compare(""))
-                            {globalName= variableWithMachineID ( aName,i);
-                                    ss   << variableNRange( globalName); 
-                                    Valuation *defaultPair= new Valuation(globalName,0);
-                                    theInternalVariables->addPair(defaultPair);
-                                    aName =antlr_context->nextName();
-                                    
-                            }
-                            
-                }
-                        i++; // increment the Machine coutner
-                }
-        }// have externala nd internal variables
-                
+                /* print variables of this machine in smv fromat*/
+                /* ALL BOOLEAN, TODO, make integer values */
+                for (auto p: antlr_context->internal_variables())
+                        ss << variableNRange(p.first);
+        }
+
         /* Write the range of the pc variable using the states */
-                ss <<"     -- for each state of each FSM, we have a PC that can be" << std::endl;
-                ss <<"     -- a) "  << pcBefore << "arrival to the state (which is After the OnExit of the state)"  << std::endl;
-                ss <<"     -- b) "  << pcAfterOnEntry << " (activities of OnEntry section are executed )"  << std::endl;
-                ss <<"     -- c) "  << pcBefore << " (a Boolean expression " << pcBeforeEvaluate << " labeling a transition by external variables ) " << std::endl;
-                ss <<"     -- d) "  << pcAfterEvaluate << " (a Boolean expression " << pcBoolean << " labeling a transition is evaluted ) and results in " << pcTrue  << std::endl;
-                ss <<"     -- e) "  << pcAfterEvaluate << " (a Boolean expression " << pcBoolean << " labeling a transition is evaluted ) and results in " << pcFalse  << std::endl;
-          
+        ss <<"     -- for each state of each FSM, we have a PC that can be" << std::endl;
+        ss <<"     -- a) "  << pcBefore << "arrival to the state (which is After the OnExit of the state)"  << std::endl;
+        ss <<"     -- b) "  << pcAfterOnEntry << " (activities of OnEntry section are executed )"  << std::endl;
+        ss <<"     -- c) "  << pcBefore << " (a Boolean expression " << pcBeforeEvaluate << " labeling a transition by external variables ) " << std::endl;
+        ss <<"     -- d) "  << pcAfterEvaluate << " (a Boolean expression " << pcBoolean << " labeling a transition is evaluted ) and results in " << pcTrue  << std::endl;
+        ss <<"     -- e) "  << pcAfterEvaluate << " (a Boolean expression " << pcBoolean << " labeling a transition is evaluted ) and results in " << pcFalse  << std::endl;
+
         /* TODO: THIS IS WRONG, the pc of the Kripke structure shoud
                 be the Cartesian product of the individual machines PCs
          */
@@ -246,15 +201,14 @@ string StateMachineVector::kipkeInSVMformat()
             
         // For each machine we need the possible (individual) Kripke states
         //
-        
-        i = 0;
+        int i = 0;
         std:vector<int>  indexesPerFSM(machines().size() );
         vector<int>  maxIndexesPerFSM(machines().size() );
         for (Machine *m: machines())
         {  
                 
-                 m->findInternalKripkeStateNames(i,haveExternalVariables,i== machines().size() - 1);
-                maxIndexesPerFSM[i]=m->sizeInternalKripkeStateNames();
+                m->localKripkeStateNames(i, true);
+                maxIndexesPerFSM[i]=(int)m->sizeLocalKripkeStateNames();
                 indexesPerFSM[i]=0;
                         
            i++; // increment the Machine coutner
@@ -272,7 +226,7 @@ string StateMachineVector::kipkeInSVMformat()
          {   bool carryOn=false;
              i = 0;
              for (Machine *m: machines())
-             { ss << m->internalKripkeStateNames() [indexesPerFSM[i]];
+             { ss << m->localKripkeStateNames() [indexesPerFSM[i]];
              }
                  
                  if(indexesPerFSM[0]<maxIndexesPerFSM[0])
@@ -306,13 +260,9 @@ string StateMachineVector::kipkeInSVMformat()
         
         ss << "INIT"  << std::endl;
         std:: cout << "pc=";
-        i = 0;
         
         for (Machine *m: machines())
-        { 
-                ss << m->initialStateGivedID(i);
-                i++; // increment the Machine coutner
-        }
+                ss << m->initialStateName();
         
         /* Write the TRANS states section */
         ss << "TRANS"  << std::endl;

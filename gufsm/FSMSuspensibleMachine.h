@@ -70,9 +70,9 @@ namespace FSM
                 bool _deleteSuspendState;       /// should delete in destructor?
         public:
                 /** constructor */
-                SuspensibleMachine(State *initialState = NULL, Context *ctx = NULL,
+                SuspensibleMachine(State *initialState = NULL, Context *ctx = NULL, int mid=0,
                                    State *s = NULL, bool del = false):
-                                Machine(initialState, ctx), _suspendState(s),
+                                Machine(initialState, ctx, mid), _suspendState(s),
                                 _deleteSuspendState(del) {}
                 /** destructor */
                 virtual ~SuspensibleMachine();

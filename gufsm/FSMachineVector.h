@@ -92,6 +92,7 @@ namespace FSM
                 SuspensibleMachine *addMachine(SuspensibleMachine *m = NULL)
                 {
                         if (!m) m = new SuspensibleMachine(NULL, _context);
+                        if (!m->id()) m->setID((int)machines().size());
                         _machines.push_back(m);
                         return m;
                 }
@@ -125,7 +126,7 @@ namespace FSM
                 /**
                  * print the Kripke structure in svm format 
                  */
-                virtual std::string kipkeInSVMformat();
+                virtual std::string kripkeInSVMformat();
 
                 /**
                  * restart all state machines from their initial state

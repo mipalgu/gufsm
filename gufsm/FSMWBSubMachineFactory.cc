@@ -62,9 +62,9 @@
 using namespace FSM;
 using namespace std;
 
-WBSubMachineFactory::WBSubMachineFactory(WBContext *context, const string &machine_name)
+WBSubMachineFactory::WBSubMachineFactory(WBContext *context, const string &machine_name, int mid)
 {
-        setMachine(new WBSubMachine(NULL, context));
+        setMachine(new WBSubMachine(NULL, context, mid));
 
         string a_file_name = machine_name + string(".acsl");
         string t_file_name = machine_name + string(".tcsl");

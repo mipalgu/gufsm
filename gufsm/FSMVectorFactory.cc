@@ -63,18 +63,15 @@
 using namespace FSM;
 using namespace std;
 
-StateMachineVectorFactory::StateMachineVectorFactory(WBContext *context,
+StateMachineVectorFactory::StateMachineVectorFactory(ANTLRContext *context,
                                                      const std::vector<std::string> &names_of_machines_to_build)
 {
         _fsms = new StateMachineVector(context);
 
+        int mid=0;
         if (_fsms) for (string file: names_of_machines_to_build)
         {
-                ANTLRContext *c = new ANTLRContext(context->whiteboard());
-                cout << " New antlr context at " << (long) c
-                     << endl;
-
-                WBSubMachineFactory machine_factory(c, file);
+                WBSubMachineFactory machine_factory(context, file, mid++);
                 SuspensibleMachine *machine = machine_factory.machine();
                 machine->initialise();
                 fsms()->addMachine(machine);

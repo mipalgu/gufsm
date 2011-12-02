@@ -69,7 +69,7 @@ namespace FSM
         
         typedef std::vector<State *> StateVector;
         typedef StateVector::iterator StateIterator;
-        typedef std::vector<std::string> InternalKripkeStateNames;
+        typedef std::vector<std::string> LocalKripkeStateNames;
 
         /**
          * State machine class
@@ -77,6 +77,7 @@ namespace FSM
         class Machine
         {
                 Context *_context;      /// context used by behaviour
+                int _id;                /// unique id of machine
 
                 StateVector _states;    /// machine states
                 State *_currentState;   /// current state of the machine
@@ -87,14 +88,14 @@ namespace FSM
 
                 long _activities_count; /// how many times have activities run?
                 
-                InternalKripkeStateNames _internalKripkeStateNames;
+                LocalKripkeStateNames _localKripkeStateNames;
                 
 
         public:
                 /** constructor */
-                Machine(State *initial = NULL, Context *ctx = NULL):
+                Machine(State *initial = NULL, Context *ctx = NULL, int mid=0): _id(mid),
                         _context(ctx), _currentState(initial),
-                        _previousState(NULL), _states(), _internalKripkeStateNames()
+                        _previousState(NULL), _states(), _localKripkeStateNames()
                 {
                         if (initial)
                         {
@@ -102,6 +103,12 @@ namespace FSM
                                 initialise();
                         }
                 }
+
+                /** ID setter */
+                void setID(int i) { _id = i; }
+
+                /** ID getter */
+                int id() { return _id; }
 
                 /** states getter method */
                 StateVector &states() { return _states; }
@@ -168,26 +175,22 @@ namespace FSM
                 /**
                  *maybe the Kripke structure of a FSM
                  */
-                virtual std::string kipkeInSVMformat();
+                virtual std::string kripkeInSVMformat();
                 
                 /**
                  * PC values in the Kripke structure of this machine
                  * return false if failure
                  */
+                const LocalKripkeStateNames &localKripkeStateNames(int id=-1, bool      snapshotPerTransition=false);
      
-                bool findInternalKripkeStateNames(int id, bool areThereExternals, bool lastState);
-                
-                int sizeInternalKripkeStateNames()
-                { return _internalKripkeStateNames.size();
+                size_t sizeLocalKripkeStateNames()
+                { return _localKripkeStateNames.size();
                 }
-                
-                /** Kripke PC states getter method */
-                InternalKripkeStateNames &internalKripkeStateNames() { return _internalKripkeStateNames; }
                 
                 /**
                  * PC values in the Kripke structure of intial state of this machine
                  */
-                virtual std::string initialStateGivedID(int id);
+                virtual std::string initialStateName();
                 
               
                 

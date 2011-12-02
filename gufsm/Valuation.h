@@ -58,6 +58,7 @@
 
 
 #include <string>
+#include <utility>
 #include <iostream>
 #include <gu_util.h>
 using namespace std;
@@ -67,23 +68,16 @@ using namespace std;
  * This Class just has a variable and its value. Maybe can be eliminated by using the C++ reference map
  * 
 */
-class Valuation {
-
-	private :
-		std::string variableName;
-		int variableValue;
-
+class Valuation: public std::pair<std::string, int>
+{
 	public :
-		Valuation (std::string name, int value)
-		{    variableName=name;
-			variableValue=value;
-		}
+        Valuation (std::string name, int value): std::pair<std::string, int>(name, value) {}
 
-		std::string getName() { return variableName;}
-		int getValue() { return variableValue;}
+		const std::string &getName() { return first;}
+		int getValue() { return  second;}
 
-		void setName (std::string name)  { variableName = name;}
-		void setValue(int value)  { variableValue=value;}
+		void setName (const std::string &name)  { first = name;}
+		void setValue(int value)  { second=value;}
 
 		void debugPrint()  { 
                         DBG(std::cerr  << "(" << getName() << "," << getValue() <<")" );

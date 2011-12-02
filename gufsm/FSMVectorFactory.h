@@ -63,14 +63,14 @@
 
 namespace FSM
 {
-        class WBContext;
+        class ANTLRContext;
 
         class StateMachineVectorFactory
         {
                 StateMachineVector *_fsms;      /// delivered FSMs
         public:
                 /** constructor that builds vector of machines */
-                StateMachineVectorFactory(WBContext *context, const std::vector<std::string> &names_of_machines_to_build);
+                StateMachineVectorFactory(ANTLRContext *context, const std::vector<std::string> &names_of_machines_to_build);
 
                 /** getter */
                 StateMachineVector *fsms() { return _fsms; }

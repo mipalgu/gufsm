@@ -69,7 +69,6 @@ namespace FSM
         class ANTLRContext: public WBContext
         {
                 std::map<std::string, int> _internal_variables; /// our own state-machine internal variables
-                std::map<std::string, int>::iterator it; // the iterator in the map
         public:
                 /**
                  * default constructor
@@ -77,6 +76,8 @@ namespace FSM
                  * @param deletewb delete wb pointer when destructed (only relevant if wb is non-NULL, otherwise the whiteboard will always be deleted in the destructor
                  */
                 ANTLRContext(guWhiteboard::Whiteboard *wb = NULL, bool deletewb = false): _internal_variables(), WBContext(wb, deletewb) {}
+                ANTLRContext(const ANTLRContext &orig): _internal_variables(((ANTLRContext &)orig).internal_variables()) {}
+
                 /** variable getter */
                 std::map<std::string, int> &internal_variables() { return _internal_variables; }
                 /** set internal variable */
@@ -99,38 +100,26 @@ namespace FSM
                 std::string allNames ()
                 {
                         std::stringstream ss;
-                        
-                        for ( it=_internal_variables.begin() ; it != _internal_variables.end(); it++ )
-                                ss << (*it).first << " " ;
+                        for (auto p: internal_variables())
+                                ss << p.first << " ";
+
                         return ss.str();
                 }
-                
+
+                /** description of the context's internal variables */
+                std::string description()
+                {
+                        std::stringstream ss;
+                        ss << "Context with WB: " << (long) whiteboard() << std::endl;
+                        for (auto p: internal_variables())
+                                ss << p.first << " -> " << p.second << std::endl;
+                        return ss.str();
+                }
+
                 /** do we have internal variables */
                 bool isEmpty()
                 {
                         return internal_variables().empty();
-                }
-                
-                /** give me the first internal variable */
-                std::string firstName()
-                {
-                        std::string s;
-                        
-                        it=_internal_variables.begin();
-                        if (it != _internal_variables.end())
-                                return(*it).first;
-                        else return s;
-                        
-                }
-                
-                /** give me the next internal variable (or NULL if not any more */
-                std::string nextName()
-                {       std::string s;
-                        it++;
-                        if (it != _internal_variables.end())
-                                return(*it).first;
-                        else return s;
-                        
                 }
         };
 }

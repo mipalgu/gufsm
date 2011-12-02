@@ -149,7 +149,7 @@ string Machine::description()
         return ss.str();
 }
 
-string Machine::kipkeInSVMformat()
+string Machine::kripkeInSVMformat()
 {
         stringstream ss;
         int i = 0;
@@ -159,19 +159,22 @@ string Machine::kipkeInSVMformat()
         return ss.str();
 }
 
-bool Machine::findInternalKripkeStateNames(int id, bool haveExternalVariables, bool lastMachine )
+const LocalKripkeStateNames &Machine::localKripkeStateNames(int mid, bool snapshotPerTransition)
 {
-        
+        // caching
+        if (id() != -1 && id() == mid)
+                return _localKripkeStateNames;
         
         int count=0;
         for (State *s: states())
-        {       stringstream sBefore;
-                 sBefore << "M"<<id << pcBefore << s->name() ;
-                _internalKripkeStateNames.push_back(sBefore.str() ) ;
+        {
+                stringstream sBefore;
+                sBefore << "M"<<mid << "::" << pcBefore << s->name() ;
+                _localKripkeStateNames.push_back(sBefore.str() ) ;
                   
                  stringstream sAfter;                                   
-                sAfter <<  "M"<<id<<  pcAfterOnEntry << s->name() ;
-                _internalKripkeStateNames.push_back(sAfter.str() ) ;
+                sAfter <<  "M"<<mid<< "::" << pcAfterOnEntry << s->name() ;
+                _localKripkeStateNames.push_back(sAfter.str() ) ;
                                                     
                 /* we neeed information on transitions labels here */
                 
@@ -179,39 +182,33 @@ bool Machine::findInternalKripkeStateNames(int id, bool haveExternalVariables, b
                 
                 for (Transition *tr: s->transitions() )
                 {       stringstream sAfterEvaluateT;
-                        sAfterEvaluateT <<  "M"<<id << pcAfterEvaluate << pcBoolean << transitionNumber << pcTrue << s->name();
-                        _internalKripkeStateNames.push_back(sAfterEvaluateT.str() ) ;
+                        sAfterEvaluateT <<  "M"<<mid << "::" << pcAfterEvaluate << pcBoolean << transitionNumber << pcTrue << s->name();
+                        _localKripkeStateNames.push_back(sAfterEvaluateT.str() ) ;
                         stringstream sAfterEvaluateF;
-                        sAfterEvaluateF <<  "M"<<id << pcAfterEvaluate << pcBoolean << transitionNumber << pcTrue << s->name();
-                        _internalKripkeStateNames.push_back(sAfterEvaluateF.str() ) ;
+                        sAfterEvaluateF <<  "M"<<mid << "::" << pcAfterEvaluate << pcBoolean << transitionNumber << pcTrue << s->name();
+                        _localKripkeStateNames.push_back(sAfterEvaluateF.str() ) ;
                         
-                        if (haveExternalVariables)
+                        if (snapshotPerTransition)	
                                 { stringstream sExternal;
-                                       sExternal<<  pcBeforeEvaluate << pcBoolean << transitionNumber << s->name() ;
-                                        _internalKripkeStateNames.push_back(sExternal.str() ) ;
+                                       sExternal<< "M" << mid << "::" << pcBeforeEvaluate << pcBoolean << transitionNumber << s->name() ;
+                                        _localKripkeStateNames.push_back(sExternal.str() ) ;
 
                                 }
                         
                        transitionNumber++;    
                 } // each transiiton
                 
-                //place a "," unless this is the last state of the last machine
-                //if (lastMachine && states().size()-1 == count)
-                //        ss << "}"<< endl;
-                //else
-                //        ss << "," << endl;
-                
                 count++;
         }
         
-        return true;
+        return _localKripkeStateNames;
 }
 
-string Machine::initialStateGivedID(int id)
+string Machine::initialStateName()
 {
         stringstream ss;
         
-                ss << "\t" << "M"<<id << pcBefore << (states()[0])->name() << ",";
+                ss << "M"<< id() << "::" << pcBefore << (states()[0])->name();
  
         return ss.str();
 }

@@ -60,8 +60,8 @@
 
 using namespace FSM;
 
-WBSubMachine::WBSubMachine(State *initialState, WBContext *ctx, State *s, bool del):
-        SuspensibleMachine(initialState, ctx, s, del), _deleteContext(false)
+WBSubMachine::WBSubMachine(State *initialState, WBContext *ctx, int mid, State *s, bool del):
+        SuspensibleMachine(initialState, ctx, mid, s, del), _deleteContext(false)
 {
         if (!ctx)
         {
