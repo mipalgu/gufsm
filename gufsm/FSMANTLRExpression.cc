@@ -372,3 +372,42 @@ string ANTLRExpression::description()
 {
         return description(antlrState(), expression());
 }
+
+static
+void expression_extract_callback(void *context, const char *terminal, const char *content,
+                                pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
+{
+        Machine *m = (Machine *) context;
+        ANTLRContext *antlr_context = (ANTLRContext *) m->context();
+        ANTLR3_UINT32 n = tree->children ? tree->children->size(tree->children) : 0;
+
+        if (string("K_ID") == terminal)
+        {
+                if (!antlr_context->internal_variable_exists(m->id(), content))
+                        antlr_context->set_variable(content);
+                return;
+        }
+
+        for (ANTLR3_UINT32 i = 0; i < n; i++)
+        {
+                pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
+                        tree->children->get(tree->children, i);
+                const char *terminal = getTString(state, t);
+                const char *content  = getContent(t);
+
+                expression_extract_callback(context, terminal, content, state, t);
+        }
+}
+
+
+
+
+void ANTLRExpression::set_external_variables(Machine *fsm)
+{
+        const char *terminal = getTString(antlrState(), expression());
+        const char *content  = getContent(expression());
+
+        expression_extract_callback(fsm, terminal, content, antlrState(), expression());
+}
+
+

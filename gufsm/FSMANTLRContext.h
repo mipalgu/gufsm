@@ -86,7 +86,7 @@ namespace FSM
                         variables()[name] = val;
                 }
                 /** return the qualfied name for an internal variable for a given machine */
-                std::string internal_variable_name(const std::string name, int mid)
+                std::string internal_variable_name(const std::string &name, int mid)
                 {
                         std::stringstream ss;
                         ss << "M" << mid << "::" << name;
@@ -98,12 +98,12 @@ namespace FSM
                         variables()[internal_variable_name(name, mid)] = val;
                 }
                 /** get internal variable value */
-                int value(std::string name)
+                int value(const std::string &name)
                 {
                         return variables()[name];
                 }
                 /** find variable */
-                bool exists(std::string name)
+                bool exists(const std::string &name)
                 {
                         return variables().count(name) != 0;
                 }

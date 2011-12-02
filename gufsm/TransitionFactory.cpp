@@ -152,6 +152,7 @@ transition_pop(void *context, const char *terminal, const char *content,
         if (source && target)
         {
                 ANTLRExpression *e = new ANTLRExpression(state, (pANTLR3_BASE_TREE) self->expr_tree());
+                e->set_external_variables(self->fsm());
                 Transition *t = new Transition(source, target, e);
                 if (!t)
                 {
