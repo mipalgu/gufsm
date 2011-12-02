@@ -208,7 +208,7 @@ string StateMachineVector::kripkeInSVMformat()
         {  
                 
                 m->localKripkeStateNames(true);
-                maxIndexesPerFSM[i]=(int)m->sizeLocalKripkeStateNames();
+                maxIndexesPerFSM[i]=(int)m->sizeLocalKripkeStateNames()-1;
                 indexesPerFSM[i]=0;
                         
            i++; // increment the Machine coutner
@@ -221,29 +221,42 @@ string StateMachineVector::kripkeInSVMformat()
          */
         
         bool all_at_max=false;
-        
+        bool first=true;
         while (! all_at_max)
-         {   bool carryOn=false;
-             i = 0;
-             for (Machine *m: machines())
-             { ss << m->localKripkeStateNames() [indexesPerFSM[i]];
-             }
-                 
-                 if(indexesPerFSM[0]<maxIndexesPerFSM[0])
-                         indexesPerFSM[0]++;
-                 else{
-                                 indexesPerFSM[0]=0;
-                         carryOn=true;
+         {   //bool carryOn=false;
+                 i = 0;
+                 if (!first) ss<<",\n";
+                 first = false;
+                 for (Machine *m: machines())
+                 {
+                         ss << m->localKripkeStateNames() [indexesPerFSM[i]];
+                         i++;
                  }
-                 all_at_max=true;
-         }// while
+                 cout <<ss.str() << endl;
+                
                  
-         
+                 int column =0;
+                 for (Machine *m: machines())
+                 {
+                         if(indexesPerFSM[column]<maxIndexesPerFSM[column])
+                         { indexesPerFSM[column]++;
+                                 all_at_max=false;
+                                 break;}
+                         else{
+                        indexesPerFSM[column]=0;
+                                 if(0==column) all_at_max=true;
+                               
+                         //carryOn=true;
+                         }
+                         column++;
+                 }
+            
+         }// while
                  
 
          
         
-        ss << std::endl;
+        ss << "}" << std::endl;
         ss << std::endl;
         
         

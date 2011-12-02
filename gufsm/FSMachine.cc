@@ -182,7 +182,7 @@ const LocalKripkeStateNames &Machine::localKripkeStateNames(bool snapshotPerTran
                 
                 for (Transition *tr: s->transitions() )
                 {       stringstream sAfterEvaluateT;
-                        sAfterEvaluateT <<  "M"<<id() << "::" << pcAfterEvaluate << pcBoolean << transitionNumber << pcTrue << s->name();
+                        sAfterEvaluateT <<  "M"<<id() << "::" << pcAfterEvaluate << pcBoolean << transitionNumber << pcFalse << s->name();
                         _localKripkeStateNames.push_back(sAfterEvaluateT.str() ) ;
                         stringstream sAfterEvaluateF;
                         sAfterEvaluateF <<  "M"<<id() << "::" << pcAfterEvaluate << pcBoolean << transitionNumber << pcTrue << s->name();
