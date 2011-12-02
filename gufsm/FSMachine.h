@@ -89,13 +89,14 @@ namespace FSM
                 long _activities_count; /// how many times have activities run?
                 
                 LocalKripkeStateNames _localKripkeStateNames;
-                
+                bool _have_kripke_states;        /// built already?
 
         public:
                 /** constructor */
                 Machine(State *initial = NULL, Context *ctx = NULL, int mid=0): _id(mid),
                         _context(ctx), _currentState(initial),
-                        _previousState(NULL), _states(), _localKripkeStateNames()
+                        _previousState(NULL), _states(), _localKripkeStateNames(),
+                        _have_kripke_states(false)
                 {
                         if (initial)
                         {
@@ -181,7 +182,7 @@ namespace FSM
                  * PC values in the Kripke structure of this machine
                  * return false if failure
                  */
-                const LocalKripkeStateNames &localKripkeStateNames(int id=-1, bool      snapshotPerTransition=false);
+                const LocalKripkeStateNames &localKripkeStateNames(bool      snapshotPerTransition=false);
      
                 size_t sizeLocalKripkeStateNames()
                 { return _localKripkeStateNames.size();

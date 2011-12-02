@@ -55,11 +55,11 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#include <iostream>
 #include <sstream>
 #include "FSMachineVector.h"
 #include "FSMANTLRContext.h"
 #include "stringConstants.h"
-#include "Valuation.h"
 
 
 const bool  NO_SELF =true;
@@ -207,7 +207,7 @@ string StateMachineVector::kripkeInSVMformat()
         for (Machine *m: machines())
         {  
                 
-                m->localKripkeStateNames(i, true);
+                m->localKripkeStateNames(true);
                 maxIndexesPerFSM[i]=(int)m->sizeLocalKripkeStateNames();
                 indexesPerFSM[i]=0;
                         
@@ -259,7 +259,7 @@ string StateMachineVector::kripkeInSVMformat()
         // detailed first
         
         ss << "INIT"  << std::endl;
-        std:: cout << "pc=";
+        ss << "pc=";
         
         for (Machine *m: machines())
                 ss << m->initialStateName();
