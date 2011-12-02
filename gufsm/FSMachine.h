@@ -70,6 +70,16 @@ namespace FSM
         typedef std::vector<State *> StateVector;
         typedef StateVector::iterator StateIterator;
         typedef std::vector<std::string> LocalKripkeStateNames;
+        
+        struct KripkeFrezzePointOfMachine
+        {
+                Machine* machine;
+                int stateID;
+                int transition_or_pc;
+                bool isTransition;
+        };
+        typedef std::vector<KripkeFrezzePointOfMachine> KripkeFrezzePointVector;
+
 
         /**
          * State machine class

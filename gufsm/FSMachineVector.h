@@ -70,8 +70,10 @@ namespace FSM
         typedef std::vector<SuspensibleMachine *> MachineVector;
         typedef MachineVector::iterator MachineIterator;
         typedef void (*idle_f)(useconds_t timeout);
-        typedef std::pair<unsigned long long, std::string *> KripkeState;
         
+
+        typedef std::pair<unsigned long long, KripkeFrezzePointVector*> KripkeState;
+
 
         /**
          * State machine vector class
@@ -84,7 +86,9 @@ namespace FSM
                 idle_f          _no_transition_fired; /// idle function
                 bool            _accepting;     /// all machines are in an accepting state
 
-                std::string generate_from(KripkeState &, std::list<KripkeState> &);
+                std::string generate_from(KripkeState &, std::list<KripkeState> &, size_t n, std::string **names);
+                std::string  kripkeToString(KripkeState &s, size_t n, std::string **names);
+
                 void add_if_not_seen(KripkeState &, std::list<KripkeState> &);
         public:
                 /** constructor */

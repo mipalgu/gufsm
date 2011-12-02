@@ -164,7 +164,20 @@ string StateMachineVector::description()
         return ss.str();
 }
 
-string StateMachineVector::generate_from(const KripkeState &s, list<KripkeState> &kstates)
+string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kstates, size_t n, std::string **names)
+{
+        stringstream ss;
+        
+        if(!NO_SELF)
+        {ss << kripkeToString(s, n, names) << ":\n";
+                
+        }
+        
+        return ss.str();
+        ;
+}
+
+void StateMachineVector:: add_if_not_seen(KripkeState &x, std::list<KripkeState> &kstates )
 {
         
         bool found = false;
@@ -173,15 +186,20 @@ string StateMachineVector::generate_from(const KripkeState &s, list<KripkeState>
         if (!found) kstates.push_back(x);
 }
 
-void StateMachineVector:: add_if_not_seen(KripkeState &, std::list<KripkeState> &)
+string StateMachineVector:: kripkeToString(KripkeState &s, size_t n, string **names)
 {
+        stringstream ss;
         
-        bool found = false;
-        for (auto t: kstates)
-                if (x == t) { found = true; break; }
-        if (!found) kstates.push_back(x);
+        for (int i = 0; i < n; i++)
+        {
+                unsigned long long j = (1ULL << i);
+                ss << *names[i] << "=" << ((s.first & j) ? 1 : 0) << "&";
+        }
+        ss << "pc="<< *s.second;
+        
+        
+        return ss.str();
 }
-
 
 string StateMachineVector::kripkeInSVMformat()
 {
@@ -248,9 +266,13 @@ string StateMachineVector::kripkeInSVMformat()
                  i = 0;
                  if (!first) ss<<",\n";
                  first = false;
+                 KripkeFrezzePointVector *currentVector = new KripkeFrezzePointVector;
+                 
                  stringstream pcKripkeValue;
                  for (Machine *m: machines())
-                 {
+                 {      KripkeFrezzePointOfMachine freezePoint;
+                         freezePoint.machine=m;
+                         
                          pcKripkeValue << m->localKripkeStateNames() [indexesPerFSM[i]];
                          i++;
                  }
@@ -321,7 +343,11 @@ string StateMachineVector::kripkeInSVMformat()
                 kstates.push_back(KripkeState(k, &kripkePCValues[0]));
 
         for (auto s: kstates)
+        {       /* printing a Kiprke state  */
+                /* as source */
+                ss << kripkeToString(s, n, names) << ":\n";
                 ss << generate_from(s, kstates);
+        }
 
         /* construc the first valuation as a the context */
         
