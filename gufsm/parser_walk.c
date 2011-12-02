@@ -155,8 +155,8 @@ int walk_parse_children(pANTLR3_RECOGNIZER_SHARED_STATE state,
                           pa_callback_f up,
                           void *context)
 {
-        ANTLR3_UINT32 n = tree->children->size(tree->children);
-        
+        ANTLR3_UINT32 n = tree->children ? tree->children->size(tree->children) : 0;
+
         for (ANTLR3_UINT32 i = 0; i < n; i++)
         {
                 pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)

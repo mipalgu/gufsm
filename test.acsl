@@ -1,9 +1,9 @@
 1	INC
-OnEntry { y=1;; x=0;}
+OnEntry { int x; int y; y=1; x=0;}
 OnExit { x=0;  }
 {x=x+1;}
 
 2	INCAGAIN
-OnEntry {}
+OnEntry { z=1; }
 OnExit { }
 {x=x+1;}

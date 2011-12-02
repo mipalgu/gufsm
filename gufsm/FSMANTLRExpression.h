@@ -86,10 +86,10 @@ namespace FSM
                 
                 static int evaluate(pANTLR3_RECOGNIZER_SHARED_STATE state,
                                                      pANTLR3_BASE_TREE tree,
-                                                     ANTLRContext *context);
+                                                     Machine *m);
                 static int evaluate_children(pANTLR3_RECOGNIZER_SHARED_STATE state,
                                     pANTLR3_BASE_TREE tree,
-                                    ANTLRContext *context);
+                                    Machine *m);
         };
 }
 

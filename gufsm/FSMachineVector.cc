@@ -181,7 +181,7 @@ string StateMachineVector::kripkeInSVMformat()
         
                 /* print variables of this machine in smv fromat*/
                 /* ALL BOOLEAN, TODO, make integer values */
-                for (auto p: antlr_context->internal_variables())
+                for (auto p: antlr_context->variables())
                         ss << variableNRange(p.first);
         }
 

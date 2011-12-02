@@ -64,6 +64,8 @@
 
 namespace FSM
 {
+        class Machine;
+
         class ANTLRAction: public ContentAction<pANTLR3_BASE_TREE>
         {
                 pANTLR3_RECOGNIZER_SHARED_STATE _state; /// antlr context
@@ -74,6 +76,8 @@ namespace FSM
                 pANTLR3_RECOGNIZER_SHARED_STATE antlr_state() { return _state; }
                 /** ANTLR action description */
                 std::string description();
+                /** put external variables into ANTLR context */
+                void set_external_variables(Machine *fsm);
         };
 }
 

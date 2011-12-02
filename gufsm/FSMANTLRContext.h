@@ -68,39 +68,63 @@ namespace FSM
 {
         class ANTLRContext: public WBContext
         {
-                std::map<std::string, int> _internal_variables; /// our own state-machine internal variables
+                std::map<std::string, int> _variables; /// our own state-machine internal variables
         public:
                 /**
                  * default constructor
                  * @param wb pointer to an already opened whiteboard
                  * @param deletewb delete wb pointer when destructed (only relevant if wb is non-NULL, otherwise the whiteboard will always be deleted in the destructor
                  */
-                ANTLRContext(guWhiteboard::Whiteboard *wb = NULL, bool deletewb = false): _internal_variables(), WBContext(wb, deletewb) {}
-                ANTLRContext(const ANTLRContext &orig): _internal_variables(((ANTLRContext &)orig).internal_variables()) {}
+                ANTLRContext(guWhiteboard::Whiteboard *wb = NULL, bool deletewb = false): _variables(), WBContext(wb, deletewb) {}
+                ANTLRContext(const ANTLRContext &orig): _variables(((ANTLRContext &)orig).variables()) {}
 
                 /** variable getter */
-                std::map<std::string, int> &internal_variables() { return _internal_variables; }
+                std::map<std::string, int> &variables() { return _variables; }
                 /** set internal variable */
-                void set_internal_variable(std::string name, int val = 0)
+                void set_variable(std::string name, int val = 0)
                 {
-                        internal_variables()[name] = val;
+                        variables()[name] = val;
+                }
+                /** return the qualfied name for an internal variable for a given machine */
+                std::string internal_variable_name(const std::string name, int mid)
+                {
+                        std::stringstream ss;
+                        ss << "M" << mid << "::" << name;
+                        return ss.str();
+                }
+               /** set internal variable */
+                void set_internal_variable(const std::string &name, int mid, int val = 0)
+                {
+                        variables()[internal_variable_name(name, mid)] = val;
                 }
                 /** get internal variable value */
                 int value(std::string name)
                 {
-                        return internal_variables()[name];
+                        return variables()[name];
                 }
                 /** find variable */
                 bool exists(std::string name)
                 {
-                        return internal_variables().count(name) != 0;
+                        return variables().count(name) != 0;
+                }
+                
+                /** find internal variable for given machine ID */
+                bool internal_variable_exists(int mid, const std::string &name)
+                {
+                        return exists(internal_variable_name(name, mid));
+                }
+
+                /** find internal variable for given machine ID */
+                int internal_variable_value(int mid, const std::string &name)
+                {
+                        return value(internal_variable_name(name, mid));
                 }
                 
                 /** all names of internal variables */
                 std::string allNames ()
                 {
                         std::stringstream ss;
-                        for (auto p: internal_variables())
+                        for (auto p: variables())
                                 ss << p.first << " ";
 
                         return ss.str();
@@ -111,7 +135,7 @@ namespace FSM
                 {
                         std::stringstream ss;
                         ss << "Context with WB: " << (long) whiteboard() << std::endl;
-                        for (auto p: internal_variables())
+                        for (auto p: variables())
                                 ss << p.first << " -> " << p.second << std::endl;
                         return ss.str();
                 }
@@ -119,7 +143,7 @@ namespace FSM
                 /** do we have internal variables */
                 bool isEmpty()
                 {
-                        return internal_variables().empty();
+                        return variables().empty();
                 }
         };
 }

@@ -56,6 +56,7 @@
  *
  */
 #include <iostream>
+#include <gu_util.h>
 #include "FSMVectorFactory.h"
 #include "FSMANTLRContext.h"
 #include "FSMWBSubMachineFactory.h"
@@ -75,6 +76,7 @@ StateMachineVectorFactory::StateMachineVectorFactory(ANTLRContext *context,
                 SuspensibleMachine *machine = machine_factory.machine();
                 machine->initialise();
                 fsms()->addMachine(machine);
+                DBG(cout << context->description() << endl);
         }
 }
 

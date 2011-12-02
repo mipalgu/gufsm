@@ -98,7 +98,8 @@ static int
 statement_callback(void *context, const char *terminal, const char *content,
              pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
 {
-        ANTLRContext *c = (ANTLRContext *) context;
+        Machine *m = (Machine *) context;
+        ANTLRContext *c = (ANTLRContext *) m->context();
         ANTLR3_UINT32 n = tree->children ? tree->children->size(tree->children) : 0;
 
         assert(terminal);                       /* must not be nil */
@@ -122,11 +123,11 @@ statement_callback(void *context, const char *terminal, const char *content,
                 
                 pANTLR3_BASE_TREE t2 = (pANTLR3_BASE_TREE)
                 tree->children->get(tree->children, 1);
-                int result = ANTLRExpression::evaluate(state, t2, c);
+                int result = ANTLRExpression::evaluate(state, t2, m);
                 
                 if (c->exists(t1c))
                 {
-                        c->set_internal_variable(t1c, result);
+                        c->set_variable(t1c, result);
                         return 0;                       /* parse children */
                 }
                 else
@@ -146,7 +147,7 @@ void ANTLRAction::performv(Machine *m, ActionStage stage, int x, va_list)
              << s->name() << "(" << s->stateID()
              << "): " << x << endl;
 
-        walk_parse_children(antlr_state(), content(), statement_callback, NULL, NULL, m->context());
+        walk_parse_children(antlr_state(), content(), statement_callback, NULL, NULL, m);
 };
 
 
@@ -227,5 +228,54 @@ string ANTLRAction::description()
 
         return ss.str();
 };
+
+
+static int
+assignment_extract_callback(void *context, const char *terminal, const char *content,
+                          pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
+{
+        Machine *fsm = (Machine *) context;
+        ANTLRContext *antlr_context = (ANTLRContext *) fsm->context();
+        assert(terminal);                       /* must not be nil */
+        
+        if (string("K_ID") == terminal)         /* variable name */
+        {
+                if (!antlr_context->internal_variable_exists(fsm->id(), content))
+                        antlr_context->set_variable(content);
+                return 0;
+        }
+        if (string("K_EQ") == terminal)         /* assignment */
+        {
+                walk_parse_children(state, tree, assignment_extract_callback, NULL, NULL, context);
+                return 0;
+        }
+        return 1;
+}
+
+
+
+static int
+statement_extract_callback(void *context, const char *terminal, const char *content,
+                         pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
+{
+        assert(terminal);                       /* must not be nil */
+        
+        if (string("BLOCK") == terminal)        /* block in curly brackets? */
+        {
+                return 1;                       /* parse children */
+        }
+        if (string("K_EQ") == terminal)         /* assignment */
+        {
+                walk_parse_children(state, tree, assignment_extract_callback, NULL, NULL, context);
+                return 0;
+        }
+        return 1;
+}
+
+
+void ANTLRAction::set_external_variables(Machine *fsm)
+{
+        walk_parse_children(antlr_state(), content(), statement_extract_callback, NULL, NULL, fsm);
+}
 
 

@@ -86,7 +86,7 @@ vardef_callback(void *context, const char *terminal, const char *content,
 
         if (string("K_ID") == terminal)         /* variable name */
         {
-                antlr_context->set_internal_variable(content);
+                antlr_context->set_internal_variable(content, fsm->id());
                 return 0;                       /* no children */
         }
 
@@ -128,6 +128,7 @@ block_callback(void *context, const char *terminal, const char *content,
         if (string("STATEMENT_LIST") == terminal)       /* actions */
         {
                 self->set_action(new ANTLRAction(tree, state));
+                self->action()->set_external_variables(self->fsm());
                 cout << "* ANTLRAction " << (long) self->action() << endl;
                 return 0;
         }
@@ -166,7 +167,9 @@ block_pop(void *context, const char *terminal, const char *content,
                         cerr << "Unknown stage '" << self->stage() << "'" << endl;
                         return -1;
         }
-        
+
+        self->set_action(NULL);
+
         return 1;
 }
 
@@ -320,7 +323,8 @@ activity_pop(void *context, const char *terminal, const char *content,
 ActivityFactory::ActivityFactory(FSM::Machine *machine, const char *filename,
                                  map<std::string, Action *> *func):
         _fsm(machine), _file(filename), _error(false),
-        _named_actions(func)
+        _named_actions(func), _currentAction(NULL), _currentStage(STAGE_ON_ENTRY),
+        _currentState(NULL)
 {
         if (parse_actions(filename, NULL, activity_push, activity_pop, this) == -1)
                 set_error(true);

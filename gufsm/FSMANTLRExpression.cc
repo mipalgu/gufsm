@@ -90,8 +90,9 @@ static inline const char *getContent(pANTLR3_BASE_TREE tree)
 static
 int evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
                   pANTLR3_BASE_TREE tree,
-                  ANTLRContext *context)
+                  Machine *m)
 {
+        ANTLRContext *context = (ANTLRContext *) m->context();
         ANTLR3_UINT32 n = tree->children ? tree->children->size(tree->children) : 0;
         const char *terminal = getTString(state, tree);
         const char *content  = getContent(tree);
@@ -104,7 +105,7 @@ int evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
                 {
                         pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
                                 tree->children->get(tree->children, i);
-                        result += evaluate_node(state, t, context);
+                        result += evaluate_node(state, t, m);
                 }
                 return result;
         }
@@ -116,7 +117,7 @@ int evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
                 {
                         pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
                                 tree->children->get(tree->children, i);
-                        result = result && evaluate_node(state, t, context);
+                        result = result && evaluate_node(state, t, m);
                 }
                 return result;
         }
@@ -126,7 +127,7 @@ int evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
                 assert(n == 1);
                 pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
                         tree->children->get(tree->children, 0);
-                return !evaluate_node(state, t, context);
+                return !evaluate_node(state, t, m);
         }
         if (string("K_EQEQ") == terminal)
                 
@@ -136,7 +137,7 @@ int evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
                 tree->children->get(tree->children, 0);
                 pANTLR3_BASE_TREE t2 = (pANTLR3_BASE_TREE)
                 tree->children->get(tree->children, 1);
-                return evaluate_node(state, t1, context) == evaluate_node(state, t2, context);
+                return evaluate_node(state, t1, m) == evaluate_node(state, t2, m);
         }
         if (string("K_LT") == terminal)
                 
@@ -146,7 +147,7 @@ int evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
                 tree->children->get(tree->children, 0);
                 pANTLR3_BASE_TREE t2 = (pANTLR3_BASE_TREE)
                 tree->children->get(tree->children, 1);
-                return evaluate_node(state, t1, context) < evaluate_node(state, t2, context);
+                return evaluate_node(state, t1, m) < evaluate_node(state, t2, m);
         }
         if (string("K_OROR") == terminal)
                 
@@ -156,7 +157,7 @@ int evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
                 tree->children->get(tree->children, 0);
                 pANTLR3_BASE_TREE t2 = (pANTLR3_BASE_TREE)
                 tree->children->get(tree->children, 1);
-                return evaluate_node(state, t1, context) || evaluate_node(state, t2, context);
+                return evaluate_node(state, t1, m) || evaluate_node(state, t2, m);
         }
         /*
          * leaf node
@@ -173,8 +174,8 @@ int evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
         /*
          * ID
          */
-        if (context->exists(content))
-                return context->value(content);
+        if (context->internal_variable_exists(m->id(), content))
+                return context->internal_variable_value(m->id(), content);
         /*
          * external
          */
@@ -186,7 +187,7 @@ int evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
 static
 int evaluate_children(pANTLR3_RECOGNIZER_SHARED_STATE state,
                       pANTLR3_BASE_TREE tree,
-                      ANTLRContext *context)
+                      Machine *m)
 {
         ANTLR3_UINT32 n = tree->children->size(tree->children);
         
@@ -196,7 +197,7 @@ int evaluate_children(pANTLR3_RECOGNIZER_SHARED_STATE state,
                 pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
                 tree->children->get(tree->children, i);
                 
-                result = evaluate_node(state, t, context);
+                result = evaluate_node(state, t, m);
         }
         
         return result;
@@ -205,24 +206,23 @@ int evaluate_children(pANTLR3_RECOGNIZER_SHARED_STATE state,
 
 int ANTLRExpression::evaluate_children(pANTLR3_RECOGNIZER_SHARED_STATE state,
                               pANTLR3_BASE_TREE tree,
-                              ANTLRContext *context)
+                              Machine *m)
 {
-        return ::evaluate_children(state, tree, context);
+        return ::evaluate_children(state, tree, m);
 }
 
 
 int ANTLRExpression::evaluate(pANTLR3_RECOGNIZER_SHARED_STATE state,
                               pANTLR3_BASE_TREE tree,
-                              ANTLRContext *context)
+                              Machine *m)
 {
-        return evaluate_node(state, tree, context);
+        return evaluate_node(state, tree, m);
 }
 
 
 bool ANTLRExpression::evaluate(Machine *m)
 {
-        return evaluate(antlrState(), expression(),
-                        (ANTLRContext *) m->context());
+        return evaluate(antlrState(), expression(), m);
 }
 
 
