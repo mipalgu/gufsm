@@ -60,6 +60,8 @@
 #include <cassert>
 #include "FSMachineVector.h"
 #include "FSMANTLRContext.h"
+#include "FSMState.h"
+
 #include "stringConstants.h"
 
 
@@ -173,6 +175,52 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                 
         }
         
+        /* RULE 1 :  Advance the Machien whose turn is it (its pc must be
+         (OnEntry, or AfterOnEntry). The new machine in turn is
+         incremented by one module the number of machine.
+         */
+        
+        /* It is OnEntry, when we arrived here after a transition fired */
+        KripkeState next = s;
+        KripkeFreezePointVector *freeze = new KripkeFreezePointVector(*next.freeze_point);
+        next.freeze_point = freeze;
+        int machineToRunOnce= s.whose_turn;
+        int stateToRun = (*s.freeze_point)[machineToRunOnce].stateID;
+        
+        Machine * m = machines()[machineToRunOnce];
+
+        if ((*s.freeze_point)[machineToRunOnce].ringletStage == Epcbefore )
+        { /*evaluate the expresion */
+                kripkeToANTLRContext (s,n,names);
+                m->setPreviousState(NULL);
+                m->setCurrentState(m->stateForID(stateToRun));
+                m->currentState()->activity().performOnEntry(m);
+                /* place values in next*/
+                next.variable_combination=ANTLRContextToVariableCombination(n, names);
+                (*next.freeze_point)[machineToRunOnce].ringletStage=EpcAfterOnEntry;
+                
+                /* output a derived state */
+                ss << "\t" << kripkeToString(next, n, names) ;
+                ss << "\t-- machine << "<< machineToRunOnce << "executes OnEntry \n";
+                /* check next is not in the list, and if so, push it and output to the SMV output
+                 */
+                if (! inList(kstates,next))
+                {
+                        kstates.push_back(next);
+                }
+
+
+                
+        }
+        
+        
+        
+        
+        /* It is AfterOnEntry, if we just eprformed the internal activity
+         as no transition fired */
+        
+
+        
         return ss.str();
         ;
 }
@@ -193,12 +241,38 @@ string StateMachineVector:: kripkeToString(KripkeState &s, size_t n, string **na
         for (int i = 0; i < n; i++)
         {
                 unsigned long long j = (1ULL << i);
-                ss << *names[i] << "=" << ((s.first & j) ? 1 : 0) << "&";
+                ss << *names[i] << "=" << ((s.variable_combination & j) ? 1 : 0) << " & ";
         }
-        ss << "pc="<< descriptionSMVformat (*s.second);
+        ss << "pc="<< descriptionSMVformat (*s.freeze_point);
         
         
         return ss.str();
+}
+
+void StateMachineVector:: kripkeToANTLRContext (KripkeState &s, size_t n, string **names)
+{
+        ANTLRContext* antrlContext = (ANTLRContext *) context();
+        
+        for (int i = 0; i < n; i++)
+        {
+                unsigned long long j = (1ULL << i);
+                antrlContext->set_variable(*names[i],((s.variable_combination & j) ? 1 : 0) );                
+        }
+        //ss << "pc="<< descriptionSMVformat (*s.freeze_point);
+        
+}
+
+unsigned long long StateMachineVector:: ANTLRContextToVariableCombination(size_t n, string **names)
+{
+        ANTLRContext* antrlContext = (ANTLRContext *) context();
+
+        unsigned long long j = 0;
+        for (int i = 0; i < n; i++)
+        {
+                if (antrlContext->value(*names[i]))
+                        j |= (1ULL << i);
+        }
+        return j;
 }
 
 string StateMachineVector::kripkeInSVMformat()
@@ -258,7 +332,7 @@ string StateMachineVector::kripkeInSVMformat()
            global Kripke structure, in fact we expect many of this never
            to happen
          */
-        vector<KripkeFrezzePointVector> kripkePCValues;
+        vector<KripkeFreezePointVector> kripkePCValues;
         bool all_at_max=false;
         bool first=true;
         while (! all_at_max)
@@ -267,10 +341,10 @@ string StateMachineVector::kripkeInSVMformat()
                  if (!first) ss<<",\n";
                  first = false;
                  
-                 KripkeFrezzePointVector pcKripkeValue;
+                 KripkeFreezePointVector pcKripkeValue;
                  
                  for (Machine *m: machines())
-                 {      KripkeFrezzePointOfMachine freezePoint;
+                 {      KripkeFreezePointOfMachine freezePoint;
                          freezePoint.machine=m;
                          
                          pcKripkeValue.push_back(m->localKripkeStateNames() [indexesPerFSM[i]]);
@@ -332,7 +406,7 @@ string StateMachineVector::kripkeInSVMformat()
         size_t n = antlr_context->variables().size();
         string *names[n];
         i = 0;
-        for (auto p: antlr_context->variables())
+        for (auto &p: antlr_context->variables())
                 names[i++] = (string *) &p.first;
 
         assert(i == n);
@@ -350,32 +424,13 @@ string StateMachineVector::kripkeInSVMformat()
                 ss << generate_from(s, kstates,n,names);
         }
 
-        /* construc the first valuation as a the context */
-        
-        /*
-        std::string aVarName = iniFile->theFirst();
-        Valuation* val1 = new Valuation (aVarName,LOW_RANGE);
-        
-        Context* aContext = new Context (val1);
-        
-        aVarName=iniFile->nextVariable();
-        while (aVarName.length() > 0)
-        {
-                val1 = new Valuation (aVarName,LOW_RANGE);
-                aContext->addPair(val1);
-                aVarName=iniFile->nextVariable();
-        }
-        */
-        /* write first context and the pc in Initial State(s) */
-        /*
-        KripkeState* anInitial = new KripkeState(aContext,pcBefore,initialState,0);
-         */
+
         
         return ss.str();
         
 }
 
-std:: string StateMachineVector ::descriptionSMVformat(KripkeFrezzePointVector &data)
+std:: string StateMachineVector ::descriptionSMVformat(KripkeFreezePointVector &data)
 {       stringstream ss;
         for (auto machineRingletState: data)
         {       
@@ -388,4 +443,11 @@ std:: string StateMachineVector ::descriptionSMVformat(KripkeFrezzePointVector &
         return ss.str();
 }
 
+bool StateMachineVector :: inList( const std::list<KripkeState>  & list , const KripkeState &theCandidate) {
+        
+        for (auto &kp : list)
+                if ( theCandidate == kp) return true;
+        
+        return false;
+}
 

@@ -164,7 +164,7 @@ const LocalKripkeFrezzePointVector &Machine::localKripkeStateNames(bool snapshot
         // caching
         if (_have_kripke_states)
                 return _localKripkeStateNames;
-        KripkeFrezzePointOfMachine rigletCurrentStage;
+        KripkeFreezePointOfMachine rigletCurrentStage;
         rigletCurrentStage.machine =this;
         
         int count=0;

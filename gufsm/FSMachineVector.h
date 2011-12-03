@@ -71,9 +71,26 @@ namespace FSM
         typedef MachineVector::iterator MachineIterator;
         typedef void (*idle_f)(useconds_t timeout);
         
-        typedef std::vector<KripkeFrezzePointOfMachine> KripkeFrezzePointVector; // single freeze point across all machines
+        typedef std::vector<KripkeFreezePointOfMachine> KripkeFreezePointVector; // single freeze point across all machines
 
-        typedef std::pair<unsigned long long, KripkeFrezzePointVector*> KripkeState;
+        struct KripkeState
+        {
+                unsigned long long variable_combination;
+                int whose_turn;         // current machine's turn (id)
+                KripkeFreezePointVector *freeze_point;
+                KripkeState(unsigned long long v, KripkeFreezePointVector *f, int w=0): variable_combination(v), freeze_point(f), whose_turn(w) {}
+                bool operator==(const struct KripkeState &other) const
+                {       
+                        if (variable_combination != other.variable_combination ||
+                        whose_turn != other.whose_turn)
+                                return false;
+                        auto it = (*other.freeze_point).begin();
+                        for (auto &fpEntry: *freeze_point)
+                                if (fpEntry != *it++)
+                                        return false;
+                        return true;
+                }
+        };
 
 
         /**
@@ -91,6 +108,10 @@ namespace FSM
                 std::string  kripkeToString(KripkeState &s, size_t n, std::string **names);
 
                 void add_if_not_seen(KripkeState &, std::list<KripkeState> &);
+                void  kripkeToANTLRContext (KripkeState &s, size_t n, std:: string **names);
+                unsigned long long  ANTLRContextToVariableCombination(size_t n, std:: string **names);
+                bool inList( const std::list<KripkeState>  & , const KripkeState &);
+
         public:
                 /** constructor */
                 StateMachineVector(Context *ctx = NULL, useconds_t timeout = 10000L, idle_f default_idle_function = NULL);
@@ -154,7 +175,7 @@ namespace FSM
                 /** 
                  * To serialize a Kirpke Gobal vector in smv format
                  */
-                std:: string descriptionSMVformat(KripkeFrezzePointVector &);
+                std:: string descriptionSMVformat(KripkeFreezePointVector &);
        };
 }
 

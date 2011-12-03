@@ -125,9 +125,9 @@ statement_callback(void *context, const char *terminal, const char *content,
                 tree->children->get(tree->children, 1);
                 int result = ANTLRExpression::evaluate(state, t2, m);
                 
-                if (c->exists(t1c))
+                if (c->internal_variable_exists(m->id(), t1c))
                 {
-                        c->set_variable(t1c, result);
+                        c->set_internal_variable(t1c, m->id(), result);
                         return 0;                       /* parse children */
                 }
                 else

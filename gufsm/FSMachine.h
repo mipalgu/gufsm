@@ -73,7 +73,7 @@ namespace FSM
         
         enum RingletStage{Epcbefore,EpcAfterOnEntry,EBeforeTransition,EtransitionFalse,EtransitionTrue,ETOTAL_NUM_VALUES};
         
-        struct KripkeFrezzePointOfMachine
+        struct KripkeFreezePointOfMachine
         {
                 Machine* machine;  /* machine that is frozen */
                 int stateID;    /* state where it is frozen */
@@ -82,9 +82,20 @@ namespace FSM
                                  On Entry * transiitons evaluation (or Onexit)
                                   */
                 int transition_id; /* id of transition frozen if above */
+                bool operator==(const KripkeFreezePointOfMachine &other) const
+                {
+                        return machine == other.machine &&
+                                stateID == other.stateID &&
+                                ringletStage == other.ringletStage &&
+                        transition_id == other.transition_id;
+                }
+                bool operator!=(const KripkeFreezePointOfMachine &other) const
+                {
+                        return !(*this == other);
+                }
                
         };
-        typedef std::vector<KripkeFrezzePointOfMachine> LocalKripkeFrezzePointVector;   // states per machine
+        typedef std::vector<KripkeFreezePointOfMachine> LocalKripkeFrezzePointVector;   // states per machine
 
 
         /**
