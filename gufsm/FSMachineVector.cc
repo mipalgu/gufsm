@@ -195,7 +195,7 @@ string StateMachineVector:: kripkeToString(KripkeState &s, size_t n, string **na
                 unsigned long long j = (1ULL << i);
                 ss << *names[i] << "=" << ((s.first & j) ? 1 : 0) << "&";
         }
-        ss << "pc="<< *s.second;
+        ss << "pc="<< descriptionSMVformat (*s.second);
         
         
         return ss.str();
@@ -258,7 +258,7 @@ string StateMachineVector::kripkeInSVMformat()
            global Kripke structure, in fact we expect many of this never
            to happen
          */
-        vector<string> kripkePCValues;
+        vector<KripkeFrezzePointVector> kripkePCValues;
         bool all_at_max=false;
         bool first=true;
         while (! all_at_max)
@@ -266,17 +266,18 @@ string StateMachineVector::kripkeInSVMformat()
                  i = 0;
                  if (!first) ss<<",\n";
                  first = false;
-                 KripkeFrezzePointVector *currentVector = new KripkeFrezzePointVector;
                  
-                 stringstream pcKripkeValue;
+                 KripkeFrezzePointVector pcKripkeValue;
+                 
                  for (Machine *m: machines())
                  {      KripkeFrezzePointOfMachine freezePoint;
                          freezePoint.machine=m;
                          
-                         pcKripkeValue << m->localKripkeStateNames() [indexesPerFSM[i]];
+                         pcKripkeValue.push_back(m->localKripkeStateNames() [indexesPerFSM[i]]);
                          i++;
                  }
-                 cout <<pcKripkeValue.str() << endl;
+                 /* DEBUGGING */
+                 cout <<descriptionSMVformat(pcKripkeValue) << endl;
                 
                  
                  int column =0;
@@ -294,8 +295,8 @@ string StateMachineVector::kripkeInSVMformat()
                          }
                          column++;
                  }
-                 ss << pcKripkeValue.str();
-                 kripkePCValues.push_back(pcKripkeValue.str());
+                 ss << descriptionSMVformat ( pcKripkeValue) ;
+                 kripkePCValues.push_back( pcKripkeValue );
          }// while
                  
 
@@ -317,7 +318,7 @@ string StateMachineVector::kripkeInSVMformat()
         // detailed first
         
         ss << "INIT"  << std::endl;
-        ss << "pc=" << kripkePCValues[0];
+        ss << "pc=" << descriptionSMVformat (kripkePCValues[0]);
 
         /* Write the TRANS states section */
         ss << "TRANS"  << std::endl;
@@ -346,7 +347,7 @@ string StateMachineVector::kripkeInSVMformat()
         {       /* printing a Kiprke state  */
                 /* as source */
                 ss << kripkeToString(s, n, names) << ":\n";
-                ss << generate_from(s, kstates);
+                ss << generate_from(s, kstates,n,names);
         }
 
         /* construc the first valuation as a the context */
@@ -373,3 +374,18 @@ string StateMachineVector::kripkeInSVMformat()
         return ss.str();
         
 }
+
+std:: string StateMachineVector ::descriptionSMVformat(KripkeFrezzePointVector &data)
+{       stringstream ss;
+        for (auto machineRingletState: data)
+        {       
+                ss << "M"<< machineRingletState.machine->id();
+                ss << "S"<< machineRingletState.stateID;
+                ss << "R" << machineRingletState.ringletStage;
+                if (EpcAfterOnEntry < machineRingletState.ringletStage)
+                        ss << "T" << machineRingletState.transition_id;
+        }
+        return ss.str();
+}
+
+

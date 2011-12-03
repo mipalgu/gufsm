@@ -65,20 +65,26 @@
 namespace FSM
 {
         class State;
+        class Machine;
         class Context {};
         
         typedef std::vector<State *> StateVector;
         typedef StateVector::iterator StateIterator;
-        typedef std::vector<std::string> LocalKripkeStateNames;
+        
+        enum RingletStage{Epcbefore,EpcAfterOnEntry,EBeforeTransition,EtransitionFalse,EtransitionTrue,ETOTAL_NUM_VALUES};
         
         struct KripkeFrezzePointOfMachine
         {
-                Machine* machine;
-                int stateID;
-                int transition_or_pc;
-                bool isTransition;
+                Machine* machine;  /* machine that is frozen */
+                int stateID;    /* state where it is frozen */
+                enum RingletStage ringletStage ;
+                 /* a state in a machien goes thorugh
+                                 On Entry * transiitons evaluation (or Onexit)
+                                  */
+                int transition_id; /* id of transition frozen if above */
+               
         };
-        typedef std::vector<KripkeFrezzePointOfMachine> KripkeFrezzePointVector;
+        typedef std::vector<KripkeFrezzePointOfMachine> LocalKripkeFrezzePointVector;   // states per machine
 
 
         /**
@@ -98,7 +104,7 @@ namespace FSM
 
                 long _activities_count; /// how many times have activities run?
                 
-                LocalKripkeStateNames _localKripkeStateNames;
+                LocalKripkeFrezzePointVector _localKripkeStateNames;
                 bool _have_kripke_states;        /// built already?
 
         public:
@@ -192,7 +198,7 @@ namespace FSM
                  * PC values in the Kripke structure of this machine
                  * return false if failure
                  */
-                const LocalKripkeStateNames &localKripkeStateNames(bool      snapshotPerTransition=false);
+                const LocalKripkeFrezzePointVector &localKripkeStateNames(bool      snapshotPerTransition=false);
      
                 size_t sizeLocalKripkeStateNames()
                 { return _localKripkeStateNames.size();

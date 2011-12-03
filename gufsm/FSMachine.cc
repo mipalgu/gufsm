@@ -159,41 +159,43 @@ string Machine::kripkeInSVMformat()
         return ss.str();
 }
 
-const LocalKripkeStateNames &Machine::localKripkeStateNames(bool snapshotPerTransition)
+const LocalKripkeFrezzePointVector &Machine::localKripkeStateNames(bool snapshotPerTransition)
 {
         // caching
         if (_have_kripke_states)
                 return _localKripkeStateNames;
+        KripkeFrezzePointOfMachine rigletCurrentStage;
+        rigletCurrentStage.machine =this;
         
         int count=0;
         for (State *s: states())
-        {
-                stringstream sBefore;
-                sBefore << "M"<<id() << "::" << pcBefore << s->name() ;
-                _localKripkeStateNames.push_back(sBefore.str() ) ;
-                  
-                 stringstream sAfter;                                   
-                sAfter <<  "M"<<id()<< "::" << pcAfterOnEntry << s->name() ;
-                _localKripkeStateNames.push_back(sAfter.str() ) ;
-                                                    
+        {      
+                rigletCurrentStage.stateID=s->stateID();
+                rigletCurrentStage.ringletStage=Epcbefore;
+                _localKripkeStateNames.push_back(rigletCurrentStage ) ;
+                
+                rigletCurrentStage.ringletStage=EpcAfterOnEntry;
+                _localKripkeStateNames.push_back(rigletCurrentStage );
+                                                                      
                 /* we neeed information on transitions labels here */
                 
                 int transitionNumber=1;
                 
                 for (Transition *tr: s->transitions() )
-                {       stringstream sAfterEvaluateT;
-                        sAfterEvaluateT <<  "M"<<id() << "::" << pcAfterEvaluate << pcBoolean << transitionNumber << pcFalse << s->name();
-                        _localKripkeStateNames.push_back(sAfterEvaluateT.str() ) ;
-                        stringstream sAfterEvaluateF;
-                        sAfterEvaluateF <<  "M"<<id() << "::" << pcAfterEvaluate << pcBoolean << transitionNumber << pcTrue << s->name();
-                        _localKripkeStateNames.push_back(sAfterEvaluateF.str() ) ;
+                {      rigletCurrentStage.transition_id=transitionNumber;
                         
                         if (snapshotPerTransition)	
-                                { stringstream sExternal;
-                                       sExternal<< "M" << id() << "::" << pcBeforeEvaluate << pcBoolean << transitionNumber << s->name() ;
-                                        _localKripkeStateNames.push_back(sExternal.str() ) ;
+                        {  rigletCurrentStage.ringletStage=EBeforeTransition;
+                                _localKripkeStateNames.push_back(rigletCurrentStage );
+                        }
+                        
+                        rigletCurrentStage.ringletStage=EtransitionFalse;
+                        _localKripkeStateNames.push_back(rigletCurrentStage );
+                        
+                        rigletCurrentStage.ringletStage=EtransitionTrue;
+                        _localKripkeStateNames.push_back(rigletCurrentStage );
+                        
 
-                                }
                        transitionNumber++;    
                 } // each transiiton
                 

@@ -71,6 +71,7 @@ namespace FSM
         typedef MachineVector::iterator MachineIterator;
         typedef void (*idle_f)(useconds_t timeout);
         
+        typedef std::vector<KripkeFrezzePointOfMachine> KripkeFrezzePointVector; // single freeze point across all machines
 
         typedef std::pair<unsigned long long, KripkeFrezzePointVector*> KripkeState;
 
@@ -149,6 +150,11 @@ namespace FSM
                  * printable state machine vector description
                  */
                 virtual std::string description();
+                
+                /** 
+                 * To serialize a Kirpke Gobal vector in smv format
+                 */
+                std:: string descriptionSMVformat(KripkeFrezzePointVector &);
        };
 }
 
