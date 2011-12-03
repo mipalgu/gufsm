@@ -66,6 +66,12 @@
 
 using namespace FSM;
 
+int Machine::currentStateID()
+{
+        return _currentState->stateID();
+}
+
+
 void Machine::executeOnEntry()
 {
         _currentState->activity().performOnEntry(this);

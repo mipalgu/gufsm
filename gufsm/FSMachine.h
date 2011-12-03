@@ -154,6 +154,9 @@ namespace FSM
                 /** set the current state */
                 void setCurrentState(State *s) { _currentState = s; }
 
+                /** get the current state ID */
+                int currentStateID();
+
                 /** get the preceding state */
                 State *previousState() { return _previousState; }
 
@@ -266,7 +269,7 @@ namespace FSM
                 /**
                  * return the number of transitions in the current state
                  */
-                virtual int numberOfTransitionsInCurrentState();
+                virtual size_t numberOfTransitionsInCurrentState();
 
                 /**
                  * execute the OnExit phase for a given firing transition --

@@ -247,7 +247,7 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                 int tid = (*next.freeze_point)[machineToRunOnce].transition_id + 1;
                 if (tid < m->numberOfTransitionsInCurrentState())
                 {
-                        bool result = m->evaluateTransition(++tid);
+                        bool result = m->evaluateTransitionWithIndex(++tid);
                         ///* place values in next*/
                         //next.variable_combination=ANTLRContextToVariableCombination(n, names);
                         (*next.freeze_point)[machineToRunOnce].ringletStage=result ? EtransitionTrue : EtransitionFalse;
@@ -280,7 +280,7 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                 /* place values in next*/
                 next.variable_combination=ANTLRContextToVariableCombination(n, names);
                 (*next.freeze_point)[machineToRunOnce].ringletStage=Epcbefore;
-                (*next.freeze_point)[machineToRunOnce].stateID = m->currentState()->id();
+                (*next.freeze_point)[machineToRunOnce].stateID = m->currentStateID();
                 next.whose_turn = (next.whose_turn + 1) % machines().size();
 
                 /* output a derived state */
