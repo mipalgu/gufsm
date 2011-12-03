@@ -215,7 +215,7 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                 m->setCurrentState(m->stateForID(stateToRun));
                 if (m->numberOfTransitionsInCurrentState())
                 {
-                        bool result = m->evaluateTransition(0);
+                        bool result = m->evaluateTransitionWithIndex(0);
                         ///* place values in next*/
                         //next.variable_combination=ANTLRContextToVariableCombination(n, names);
                         (*next.freeze_point)[machineToRunOnce].ringletStage=result ? EtransitionTrue : EtransitionFalse;
