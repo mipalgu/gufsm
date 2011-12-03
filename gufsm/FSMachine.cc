@@ -66,6 +66,27 @@
 
 using namespace FSM;
 
+void Machine::executeOnEntry()
+{
+        _currentState->activity().performOnEntry(this);
+}
+
+void Machine::executeInternal()
+{
+        _currentState->activity().performInternal(this);
+}
+
+void Machine::executeOnExitForTransition(Transition *firingTransition)
+{
+        _currentState = firingTransition->target();     // target state
+        _previousState->activity().performOnExit(this); // onExit act
+}
+
+bool Machine::evaluateTransition(Transition *t)
+{
+        return t->expression()->evaluate(this) != 0;
+}
+
 bool Machine::executeOnce()
 {
         assert(_currentState);                  // need a valid state
@@ -77,7 +98,7 @@ bool Machine::executeOnce()
         {
                 gettimeofday(&_state_time, NULL);
                 _activities_count = 0;
-                _currentState->activity().performOnEntry(this);
+                executeOnEntry();
                 gettimeofday(&_actty_time, NULL);
         }
 
@@ -86,7 +107,7 @@ bool Machine::executeOnce()
          */
         Transition *firingTransition = NULL;
         for (Transition *t: _currentState->transitions())       // foreach t
-                if (t->expression()->evaluate(this))            // does t fire?
+                if (evaluateTransition(t))                      // does t fire?
                 {
                         firingTransition = t;                   // yes, then
                         break;                                  // we are done
@@ -99,15 +120,14 @@ bool Machine::executeOnce()
          */
         if (firingTransition)                   // new state required?
         {
-                _currentState = firingTransition->target();     // target state
-                _previousState->activity().performOnExit(this); // onExit act
+                executeOnExitForTransition(firingTransition);
                 return true;
         }
 
         /*
          * no transition fired, so we perform internal activities
          */
-        _currentState->activity().performInternal(this);
+        executeInternal();
         _activities_count++;
 
         /*
@@ -179,7 +199,7 @@ const LocalKripkeFrezzePointVector &Machine::localKripkeStateNames(bool snapshot
                                                                       
                 /* we neeed information on transitions labels here */
                 
-                int transitionNumber=1;
+                int transitionNumber=0;
                 
                 for (Transition *tr: s->transitions() )
                 {      rigletCurrentStage.transition_id=transitionNumber;
@@ -214,3 +234,21 @@ string Machine::initialStateName()
  
         return ss.str();
 }
+
+bool Machine::evaluateTransitionWithIndex(int i)
+{
+        return evaluateTransition(_currentState->transitions()[i]);
+}
+
+
+void Machine::executeOnExitForTransitionWithIndex(int i)
+{
+        executeOnExitForTransition(_currentState->transitions()[i]);
+}
+
+
+size_t Machine::numberOfTransitionsInCurrentState()
+{
+        return _currentState->transitions().size();
+}
+

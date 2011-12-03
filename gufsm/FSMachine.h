@@ -65,6 +65,7 @@
 namespace FSM
 {
         class State;
+        class Transition;
         class Machine;
         class Context {};
         
@@ -235,6 +236,43 @@ namespace FSM
                  * @return previous state the machine was in
                  */
                 virtual State *stateForID(int state_id);
+
+                /**
+                 * execute the OnEntry stage
+                 */
+                virtual void executeOnEntry();
+                
+                /**
+                 * execute the internal stage
+                 */
+                virtual void executeInternal();
+                
+                /**
+                 * execute the OnExit phase for a given firing transition --
+                 * this changes to the firing transition's target state
+                 */
+                virtual void executeOnExitForTransition(Transition *firingTransition);
+
+                /**
+                 * evaluate a transition
+                 */
+                virtual bool evaluateTransition(Transition *t);
+
+                /**
+                 * evaluate a transition with a given index
+                 */
+                virtual bool evaluateTransitionWithIndex(int i);
+
+                /**
+                 * return the number of transitions in the current state
+                 */
+                virtual int numberOfTransitionsInCurrentState();
+
+                /**
+                 * execute the OnExit phase for a given firing transition --
+                 * this changes to the firing transition's target state
+                 */
+                virtual void executeOnExitForTransitionWithIndex(int i);
         };
 }
 

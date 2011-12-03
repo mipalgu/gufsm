@@ -60,7 +60,6 @@
 #include <cassert>
 #include "FSMachineVector.h"
 #include "FSMANTLRContext.h"
-#include "FSMState.h"
 
 #include "stringConstants.h"
 
@@ -194,7 +193,7 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                 kripkeToANTLRContext (s,n,names);
                 m->setPreviousState(NULL);
                 m->setCurrentState(m->stateForID(stateToRun));
-                m->currentState()->activity().performOnEntry(m);
+                m->executeOnEntry();
                 /* place values in next*/
                 next.variable_combination=ANTLRContextToVariableCombination(n, names);
                 (*next.freeze_point)[machineToRunOnce].ringletStage=EpcAfterOnEntry;
@@ -208,21 +207,94 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                 {
                         kstates.push_back(next);
                 }
-
-
-                
         }
-        
-        
-        
-        
-        /* It is AfterOnEntry, if we just eprformed the internal activity
-         as no transition fired */
-        
+        else if ((*s.freeze_point)[machineToRunOnce].ringletStage == EpcAfterOnEntry )
+        { /*evaluate the expresion */
+                kripkeToANTLRContext (s,n,names);
+                m->setPreviousState(NULL);
+                m->setCurrentState(m->stateForID(stateToRun));
+                if (m->numberOfTransitionsInCurrentState())
+                {
+                        bool result = m->evaluateTransition(0);
+                        ///* place values in next*/
+                        //next.variable_combination=ANTLRContextToVariableCombination(n, names);
+                        (*next.freeze_point)[machineToRunOnce].ringletStage=result ? EtransitionTrue : EtransitionFalse;
+                        (*next.freeze_point)[machineToRunOnce].transition_id=0;
+                }
+                else
+                {
+                        m->executeInternal();
+                        /* place values in next*/
+                        next.variable_combination=ANTLRContextToVariableCombination(n, names);
+                        (*next.freeze_point)[machineToRunOnce].ringletStage=EpcAfterOnEntry;
+                }
+                
+                /* output a derived state */
+                ss << "\t" << kripkeToString(next, n, names) ;
+                ss << "\t-- machine << "<< machineToRunOnce << "executes OnEntry \n";
+                /* check next is not in the list, and if so, push it and output to the SMV output
+                 */
+                if (! inList(kstates,next))
+                {
+                        kstates.push_back(next);
+                }
+        }
+        else if ((*s.freeze_point)[machineToRunOnce].ringletStage == EtransitionFalse )
+        { /*evaluate the expresion */
+                kripkeToANTLRContext (s,n,names);
+                m->setPreviousState(NULL);
+                m->setCurrentState(m->stateForID(stateToRun));
+                int tid = (*next.freeze_point)[machineToRunOnce].transition_id + 1;
+                if (tid < m->numberOfTransitionsInCurrentState())
+                {
+                        bool result = m->evaluateTransition(++tid);
+                        ///* place values in next*/
+                        //next.variable_combination=ANTLRContextToVariableCombination(n, names);
+                        (*next.freeze_point)[machineToRunOnce].ringletStage=result ? EtransitionTrue : EtransitionFalse;
+                        (*next.freeze_point)[machineToRunOnce].transition_id=tid;
+                }
+                else
+                {
+                        m->executeInternal();
+                        /* place values in next*/
+                        next.variable_combination=ANTLRContextToVariableCombination(n, names);
+                        (*next.freeze_point)[machineToRunOnce].ringletStage=EpcAfterOnEntry;
+                }
+                
+                /* output a derived state */
+                ss << "\t" << kripkeToString(next, n, names) ;
+                ss << "\t-- machine << "<< machineToRunOnce << "executes OnEntry \n";
+                /* check next is not in the list, and if so, push it and output to the SMV output
+                 */
+                if (! inList(kstates,next))
+                {
+                        kstates.push_back(next);
+                }
+        }
+        else if ((*s.freeze_point)[machineToRunOnce].ringletStage == EtransitionTrue )
+        { /*evaluate the expresion */
+                kripkeToANTLRContext (s,n,names);
+                m->setPreviousState(NULL);
+                m->setCurrentState(m->stateForID(stateToRun));
+                m->executeOnExitForTransitionWithIndex((*next.freeze_point)[machineToRunOnce].transition_id);
+                /* place values in next*/
+                next.variable_combination=ANTLRContextToVariableCombination(n, names);
+                (*next.freeze_point)[machineToRunOnce].ringletStage=Epcbefore;
+                (*next.freeze_point)[machineToRunOnce].stateID = m->currentState()->id();
+                next.whose_turn = (next.whose_turn + 1) % machines().size();
 
-        
+                /* output a derived state */
+                ss << "\t" << kripkeToString(next, n, names) ;
+                ss << "\t-- machine << "<< machineToRunOnce << "executes OnEntry \n";
+                /* check next is not in the list, and if so, push it and output to the SMV output
+                 */
+                if (! inList(kstates,next))
+                {
+                        kstates.push_back(next);
+                }
+        }
+
         return ss.str();
-        ;
 }
 
 void StateMachineVector:: add_if_not_seen(KripkeState &x, std::list<KripkeState> &kstates )
