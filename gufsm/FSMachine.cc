@@ -84,7 +84,9 @@ void Machine::executeInternal()
 
 void Machine::executeOnExitForTransition(Transition *firingTransition)
 {
+        _previousState =_currentState;
         _currentState = firingTransition->target();     // target state
+        //if (previousState()->activity())
         _previousState->activity().performOnExit(this); // onExit act
 }
 

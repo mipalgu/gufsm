@@ -200,7 +200,7 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                 
                 /* output a derived state */
                 ss << "\t" << kripkeToString(next, n, names) ;
-                ss << "\t-- machine << "<< machineToRunOnce << "executes OnEntry \n";
+                ss << "\t-- machine : "<< machineToRunOnce << "executes OnEntry \n";
                 /* check next is not in the list, and if so, push it and output to the SMV output
                  */
                 if (! inList(kstates,next))
@@ -231,7 +231,7 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                 
                 /* output a derived state */
                 ss << "\t" << kripkeToString(next, n, names) ;
-                ss << "\t-- machine << "<< machineToRunOnce << "executes OnEntry \n";
+                ss << "\t-- machine : "<< machineToRunOnce << "executes OnEntry \n";
                 /* check next is not in the list, and if so, push it and output to the SMV output
                  */
                 if (! inList(kstates,next))
@@ -263,7 +263,7 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                 
                 /* output a derived state */
                 ss << "\t" << kripkeToString(next, n, names) ;
-                ss << "\t-- machine << "<< machineToRunOnce << "executes OnEntry \n";
+                ss << "\t-- machine : "<< machineToRunOnce << "executes OnEntry \n";
                 /* check next is not in the list, and if so, push it and output to the SMV output
                  */
                 if (! inList(kstates,next))
@@ -285,7 +285,7 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
 
                 /* output a derived state */
                 ss << "\t" << kripkeToString(next, n, names) ;
-                ss << "\t-- machine << "<< machineToRunOnce << "executes OnEntry \n";
+                ss << "\t-- machine : "<< machineToRunOnce << " executes OnEntry \n";
                 /* check next is not in the list, and if so, push it and output to the SMV output
                  */
                 if (! inList(kstates,next))
@@ -309,6 +309,7 @@ void StateMachineVector:: add_if_not_seen(KripkeState &x, std::list<KripkeState>
 string StateMachineVector:: kripkeToString(KripkeState &s, size_t n, string **names)
 {
         stringstream ss;
+        ss << "turn = " << s.whose_turn << " & ";
         
         for (int i = 0; i < n; i++)
         {
@@ -464,7 +465,8 @@ string StateMachineVector::kripkeInSVMformat()
         // detailed first
         
         ss << "INIT"  << std::endl;
-        ss << "pc=" << descriptionSMVformat (kripkePCValues[0]);
+        int firstMachine=0;
+        ss  << "turn = " << firstMachine << "& " << "pc=" << descriptionSMVformat (kripkePCValues[firstMachine]);
 
         /* Write the TRANS states section */
         ss << "TRANS"  << std::endl;
