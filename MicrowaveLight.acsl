@@ -1,9 +1,9 @@
-1	SHINELIGHT
-OnEntry { int light; light=1;}
+2	NOTSHINELIGHT
+OnEntry {int light; light=0;}
 OnExit {  }
 {}
 
-2	NOTSHINELIGHT
-OnEntry {light=0;}
+1	SHINELIGHT
+OnEntry { light=1;}
 OnExit {  }
 {}

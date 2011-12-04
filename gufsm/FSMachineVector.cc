@@ -466,7 +466,7 @@ string StateMachineVector::kripkeInSVMformat()
         
         ss << "INIT"  << std::endl;
         int firstMachine=0;
-        ss  << "turn = " << firstMachine << "& " << "pc=" << descriptionSMVformat (kripkePCValues[firstMachine]);
+        ss  << "turn = " << firstMachine << " & " << "pc=" << descriptionSMVformat (kripkePCValues[firstMachine]);
 
         /* Write the TRANS states section */
         ss << "TRANS"  << std::endl;

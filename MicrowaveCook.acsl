@@ -1,9 +1,9 @@
-1	COOKING
-OnEntry { int motor; motor=1;}
+2	NOTCOOKING
+OnEntry { int motor; motor=0;}
 OnExit {  }
 {}
 
-2	NOTCOOKING
-OnEntry {motor=0;}
+1	COOKING
+OnEntry { motor=1;}
 OnExit {  }
 {}
