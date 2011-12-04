@@ -1,0 +1,9 @@
+2	DISABLED
+OnEntry {int disabled; disabled=1;}
+OnExit {  }
+{}
+
+1	ENABLED
+OnEntry { enabled=1;}
+OnExit {  }
+{}

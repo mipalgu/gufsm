@@ -1,0 +1,7 @@
+2 1 1
+1 3 buttonPushed && ! doorOpen
+3 1 !(buttonPushed && ! doorOpen)
+1 4 !doorOpen && timeLeft
+4 1 1
+1 5 currentTime<=0
+5 1 1

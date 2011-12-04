@@ -1,0 +1,14 @@
+2	OFF
+OnEntry {int sound; sound=0;}
+OnExit {  }
+{}
+
+1	ARMED
+OnEntry { }
+OnExit {  }
+{}
+
+1	RINGING
+OnEntry { sound=1; }
+OnExit {  }
+{}
