@@ -8,7 +8,7 @@ OnEntry { }
 OnExit {  }
 {}
 
-1	RINGING
+3	RINGING
 OnEntry { sound=1; }
 OnExit {  }
-{}
+{ sleeps(1);}

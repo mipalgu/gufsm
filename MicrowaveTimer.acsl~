@@ -3,7 +3,7 @@ OnEntry {int currentTiem; currentTime=0;}
 OnExit {  }
 {}
 
-1	Test
+1	TEST
 OnEntry { }
 OnExit {  }
 {sleep(1);}
@@ -19,6 +19,6 @@ OnExit {  }
 { }
 
 5 	CLEAR	
-OnEntry { itimeLeft=0; ;  }
+OnEntry { timeLeft=0; ;  }
 OnExit {  }
 { }

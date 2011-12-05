@@ -10,5 +10,5 @@ OnExit {  }
 
 3	RINGING
 OnEntry { sound=1; }
-OnExit {  }
-{ sleeps(1);}
+OnExit {sleep(1);  }
+{ }
