@@ -200,7 +200,7 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                 
                 /* output a derived state */
                 ss << "\t" << kripkeToString(next, n, names) ;
-                ss << "\t-- machine : "<< machineToRunOnce << "executes OnEntry \n";
+                ss << "\t-- machine :"<< machineToRunOnce << " executes OnEntry \n";
                 /* check next is not in the list, and if so, push it and output to the SMV output
                  */
                 if (! inList(kstates,next))
@@ -220,6 +220,9 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                         //next.variable_combination=ANTLRContextToVariableCombination(n, names);
                         (*next.freeze_point)[machineToRunOnce].ringletStage=result ? EtransitionTrue : EtransitionFalse;
                         (*next.freeze_point)[machineToRunOnce].transition_id=0;
+                        /* output a derived state */
+                        ss << "\t" << kripkeToString(next, n, names) ;
+                        ss << "\t-- machine :"<< machineToRunOnce << " evaluates Transition 0 with result " << result << " \n";
                 }
                 else
                 {
@@ -227,11 +230,14 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                         /* place values in next*/
                         next.variable_combination=ANTLRContextToVariableCombination(n, names);
                         (*next.freeze_point)[machineToRunOnce].ringletStage=EpcAfterOnEntry;
+                        /* sequential scheduler pauses this FSM here and moves to next */
+                        next.whose_turn = (next.whose_turn + 1) % machines().size();
+                        /* output a derived state */
+                        ss << "\t" << kripkeToString(next, n, names) ;
+                        ss << "\t-- machine :"<< machineToRunOnce << " execute internal \n";
                 }
                 
-                /* output a derived state */
-                ss << "\t" << kripkeToString(next, n, names) ;
-                ss << "\t-- machine : "<< machineToRunOnce << "executes OnEntry \n";
+
                 /* check next is not in the list, and if so, push it and output to the SMV output
                  */
                 if (! inList(kstates,next))
@@ -252,6 +258,8 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                         //next.variable_combination=ANTLRContextToVariableCombination(n, names);
                         (*next.freeze_point)[machineToRunOnce].ringletStage=result ? EtransitionTrue : EtransitionFalse;
                         (*next.freeze_point)[machineToRunOnce].transition_id=tid;
+                        ss << "\t" << kripkeToString(next, n, names) ;
+                        ss << "\t-- machine : "<< machineToRunOnce << "evaluates Transition " << tid <<" with result " << result << " \n";
                 }
                 else
                 {
@@ -259,11 +267,15 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                         /* place values in next*/
                         next.variable_combination=ANTLRContextToVariableCombination(n, names);
                         (*next.freeze_point)[machineToRunOnce].ringletStage=EpcAfterOnEntry;
+                        /* sequential scheduler pauses this FSM here and moves to next */
+                        next.whose_turn = (next.whose_turn + 1) % machines().size();
+
+                        /* output a derived state */
+                        ss << "\t" << kripkeToString(next, n, names) ;
+                        ss << "\t-- machine : "<< machineToRunOnce << "execute internal \n";
                 }
                 
-                /* output a derived state */
-                ss << "\t" << kripkeToString(next, n, names) ;
-                ss << "\t-- machine : "<< machineToRunOnce << "executes OnEntry \n";
+
                 /* check next is not in the list, and if so, push it and output to the SMV output
                  */
                 if (! inList(kstates,next))
@@ -285,7 +297,7 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
 
                 /* output a derived state */
                 ss << "\t" << kripkeToString(next, n, names) ;
-                ss << "\t-- machine : "<< machineToRunOnce << " executes OnEntry \n";
+                ss << "\t-- machine : "<< machineToRunOnce << " executes OnExit \n";
                 /* check next is not in the list, and if so, push it and output to the SMV output
                  */
                 if (! inList(kstates,next))
