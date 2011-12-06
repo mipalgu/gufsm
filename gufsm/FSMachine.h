@@ -72,6 +72,9 @@ namespace FSM
         typedef std::vector<State *> StateVector;
         typedef StateVector::iterator StateIterator;
         
+        
+        //      Epcbefore == 0   EpcAfterOnEntry == 1  EBeforeTransition  ==2
+        //  EtransitionFalse == 3  EtransitionTrue == 4
         enum RingletStage{Epcbefore,EpcAfterOnEntry,EBeforeTransition,EtransitionFalse,EtransitionTrue,ETOTAL_NUM_VALUES};
         
         struct KripkeFreezePointOfMachine
