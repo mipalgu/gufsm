@@ -243,7 +243,8 @@ assignment_extract_callback(void *context, const char *terminal, const char *con
         
         if (string("K_ID") == terminal)         /* variable name */
         {
-                if (!antlr_context->internal_variable_exists(fsm->id(), content))
+                ANTLR3_UINT32 n = tree->children ? tree->children->size(tree->children) : 0;
+                if (!n && !antlr_context->internal_variable_exists(fsm->id(), content))
                         antlr_context->set_variable(content);
                 return 0;
         }

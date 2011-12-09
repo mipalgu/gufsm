@@ -418,7 +418,7 @@ void expression_extract_callback(void *context, const char *terminal, const char
 
         if (string("K_ID") == terminal)
         {
-                if (!antlr_context->internal_variable_exists(m->id(), content))
+                if (!n && !antlr_context->internal_variable_exists(m->id(), content))
                         antlr_context->set_variable(content);
                 return;
         }
