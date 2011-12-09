@@ -57,11 +57,39 @@
  */
 #include <iostream>
 #include <unistd.h>
+#include <gu_util.h>
+#include "FSMExpression.h"
+#include "FSMAction.h"
+#include "FSMState.h"
 #include "FSMANTLRContext.h"
 #include "FSMVectorFactory.h"
 
 using namespace std;
 using namespace FSM;
+
+class SleepFunction: public TimeoutPredicate
+{
+public:
+        virtual int evaluate(Machine *m = NULL)
+        {
+                protected_usleep(1000000LL * timeout());
+                return 0;
+        }
+};
+
+
+class PrintStatenameFunction: public Expression, public PrintingAction<string>
+{
+        public:
+        PrintStatenameFunction(): Expression(), PrintingAction<string>("") {}
+        virtual int evaluate(Machine *m = NULL)
+        {
+                setContent(m->currentState()->name());
+                perform(m, NUM_ACTION_STAGES);
+                return 0;
+        }
+};
+
 
 static void usage(const char *cmd)
 {
@@ -98,6 +126,16 @@ int main (int argc, char * const argv[])
                 machine_names.push_back(*argv++);
 
         ANTLRContext antlr_context;             // create whiteboard
+
+        TimeoutPredicate timeoutFunction;
+        antlr_context.set_function("timeout", &timeoutFunction);
+        
+        SleepFunction sleepFunction;
+        antlr_context.set_function("sleep", &sleepFunction);
+
+        PrintStatenameFunction printStatenameFunction;
+        antlr_context.set_function("print_state_name", &printStatenameFunction);
+
         StateMachineVectorFactory factory(&antlr_context, machine_names);
 
         if (verbose)

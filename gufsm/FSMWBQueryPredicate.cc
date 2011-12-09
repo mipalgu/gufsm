@@ -91,7 +91,7 @@ void WBQueryPredicate::setWhiteboard(guWhiteboard::Whiteboard *wb)
 }
 
 
-bool WBQueryPredicate::evaluate(Machine *m)
+int WBQueryPredicate::evaluate(Machine *m)
 {
         Whiteboard *wb = whiteboard();
 

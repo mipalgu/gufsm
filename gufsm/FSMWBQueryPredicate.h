@@ -103,7 +103,7 @@ namespace FSM
                 void setWhiteboard(guWhiteboard::Whiteboard *wb);
 
                 /** return the value, negated if necessary */
-                virtual bool evaluate(Machine *m = NULL);
+                virtual int evaluate(Machine *m = NULL);
         };
 }
 

@@ -72,7 +72,7 @@ namespace FSM
                 pANTLR3_BASE_TREE _expression;          /// ANTLR expression tree
         public:
                 ANTLRExpression(pANTLR3_RECOGNIZER_SHARED_STATE s, pANTLR3_BASE_TREE e = NULL): _state(s), _expression(e) {}
-                virtual bool evaluate(Machine *m = NULL);
+                virtual int evaluate(Machine *m = NULL);
                 void setExpression(pANTLR3_BASE_TREE e) { _expression = e; }
                 pANTLR3_BASE_TREE expression() { return _expression; }
                 pANTLR3_RECOGNIZER_SHARED_STATE antlrState() { return  _state; }

@@ -78,7 +78,7 @@ string TimeoutPredicate::description()
 }
 
 
-bool TimeoutPredicate::evaluate(Machine *machine)
+int TimeoutPredicate::evaluate(Machine *machine)
 {
         if (!machine) return false;
 

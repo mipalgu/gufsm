@@ -103,13 +103,13 @@ namespace FSM
                 void setWhiteboard(guWhiteboard::Whiteboard *wb) { _wb = wb; }
 
                 /** return the value, negated if necessary */
-                virtual bool evaluate(Machine *m = NULL);
+                virtual int evaluate(Machine *m = NULL);
                 
                 /** return the value, negated if necessary */
-                virtual bool evaluate(WBMsg &msg);
+                virtual int evaluate(WBMsg &msg);
 
                 /** set the predicate value both locally and on the wb */
-                void setValue(bool v);
+                void setValue(int v);
         };
 }
 

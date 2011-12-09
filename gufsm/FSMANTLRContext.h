@@ -66,9 +66,11 @@
 
 namespace FSM
 {
+        class Expression;
         class ANTLRContext: public WBContext
         {
                 std::map<std::string, int> _variables; /// our own state-machine internal variables
+                std::map<std::string, Expression *> _functions; /// well known functions
         public:
                 /**
                  * default constructor
@@ -134,6 +136,30 @@ namespace FSM
 
                 /** take a current snapshot from the whiteboard */
                 virtual void take_snapshot();
+
+                /*
+                 * functions
+                 */
+                /** variable getter */
+                std::map<std::string, Expression *> &functions() { return _functions; }
+                /** set internal variable */
+                void set_function(std::string name, Expression *e)
+                {
+                        functions()[name] = e;
+                }
+
+                /** get internal variable value */
+                Expression *expression_for_function(const std::string &name)
+                {
+                        return functions()[name];
+                }
+                /** find function */
+                bool function_exists(const std::string &name)
+                {
+                        return functions().count(name) != 0;
+                }
+                
+        
         };
 }
 

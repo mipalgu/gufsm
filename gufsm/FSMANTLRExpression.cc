@@ -172,14 +172,36 @@ int evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
                 return 0;
         }
         /*
-         * ID
+         * ID (which means variable (no children) or function (children = parameter list)
          */
-        if (context->internal_variable_exists(m->id(), content))
-                return context->internal_variable_value(m->id(), content);
-        else
-                return context->value(content); // external variable cached from WB
+        if (n == 0)             // variable
+        {
+                if (context->internal_variable_exists(m->id(), content))
+                        return context->internal_variable_value(m->id(), content);
+                else
+                        return context->value(content); // external variable cached from WB
+        }
 
-        return 0;
+        /*
+         * function call
+         */
+        if (!context->function_exists(content)) // error function does not exist
+        {
+                cerr << " * unknown function " << content << "(...)" << endl;
+                return 0;
+        }
+
+        Expression *func_expr = context->expression_for_function(content);
+        int result = 0;
+        for (ANTLR3_UINT32 i = 0; i < n; i++)
+        {
+                pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
+                   tree->children->get(tree->children, i);
+                
+                result = evaluate_node(state, t, m);
+                func_expr->add_parameter(i, result);
+        }
+        return func_expr->evaluate(m);
 }
 
 
@@ -219,7 +241,7 @@ int ANTLRExpression::evaluate(pANTLR3_RECOGNIZER_SHARED_STATE state,
 }
 
 
-bool ANTLRExpression::evaluate(Machine *m)
+int ANTLRExpression::evaluate(Machine *m)
 {
         return evaluate(antlrState(), expression(), m);
 }

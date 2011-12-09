@@ -72,7 +72,7 @@ namespace FSM
         {
         public:
                 /** evaluation needs to be performed by sublcasses */
-                virtual bool evaluate(Machine *m = NULL) = 0;
+                virtual int evaluate(Machine *m = NULL) = 0;
 
                 /** print abstract expression */
                 virtual std::string description()
@@ -81,6 +81,8 @@ namespace FSM
                         ss << "Abstract Expression " << (long) this;
                         return ss.str();
                 }
+                /** add a parameter (abstract method, does nothing) */
+                virtual void add_parameter(int index, int value) {};
         };
         
         /**
@@ -91,7 +93,7 @@ namespace FSM
         class Predicate: public Expression
         {
                 std::string _name;              /// name of the predicate
-                bool _value;                    /// value of the predicate
+                int _value;                    /// value of the predicate
                 bool _negation;                 /// is this a negation?
         public:
                 /** default constructor */
@@ -107,7 +109,7 @@ namespace FSM
                 bool value() { return _value; }
 
                 /** set the predicate value */
-                void setValue(bool v) { _value = ( v != false ); }
+                void setValue(int v) { _value = ( v != false ); }
 
                 /** return the predicate value */
                 bool isNegation() { return _negation; }
@@ -116,7 +118,7 @@ namespace FSM
                 void setNegation(bool n = true) { _negation = ( n != false ); }
 
                 /** return the value, negated if necessary */
-                virtual bool evaluate(Machine *m = NULL) { return _value ^ _negation; }
+                virtual int evaluate(Machine *m = NULL) { return _value ^ _negation; }
 
                 /** print abstract expression */
                 virtual std::string description();
@@ -137,10 +139,17 @@ namespace FSM
                 void setTimeout(long t=1000) { _timeout = t; }
 
                 /** return true if state timeout has been reached */
-                virtual bool evaluate(Machine *m = NULL);
+                virtual int evaluate(Machine *m = NULL);
 
                 /** print abstract expression */
                 virtual std::string description();
+
+                /** add a parameter (sets the time for the last parameter) */
+                virtual void add_parameter(int index, int value)
+                {
+                        setTimeout(value);
+                };
+
         };
 }
 #endif

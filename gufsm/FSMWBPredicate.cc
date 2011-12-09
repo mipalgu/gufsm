@@ -63,7 +63,7 @@ using namespace std;
 using namespace FSM;
 using namespace guWhiteboard;
 
-bool WBPredicate::evaluate(WBMsg &msg)
+int WBPredicate::evaluate(WBMsg &msg)
 {
         switch ((int) msg.getType())
         {
@@ -84,7 +84,7 @@ bool WBPredicate::evaluate(WBMsg &msg)
 }
 
 
-bool WBPredicate::evaluate(Machine *m)
+int WBPredicate::evaluate(Machine *m)
 {
         Whiteboard *wb = _wb;
 
@@ -107,7 +107,7 @@ bool WBPredicate::evaluate(Machine *m)
 }
 
 
-void WBPredicate::setValue(bool v)
+void WBPredicate::setValue(int v)
 {
         Predicate::setValue(v);
         _wb->addMessage(name(), WBMsg(v));
