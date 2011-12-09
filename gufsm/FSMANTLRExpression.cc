@@ -176,15 +176,9 @@ int evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
          */
         if (context->internal_variable_exists(m->id(), content))
                 return context->internal_variable_value(m->id(), content);
-        /*
-         * external
-         */
-        else 
-        {        if (context->exists( content))
-                return context->value( content);
-        }
-        
-        /* TODO: get from whiteboard */
+        else
+                return context->value(content); // external variable cached from WB
+
         return 0;
 }
 
