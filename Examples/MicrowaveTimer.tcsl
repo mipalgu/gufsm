@@ -1,7 +1,7 @@
 1 2 1
 2 3 buttonPushed && ! doorOpen
 3 2 !buttonPushed 
-2 4 !doorOpen && timeLeft && timeout(1000)
+2 4 !doorOpen && timeLeft && timeout(1000000)
 4 2 1
 2 5 currentTime<1
 5 2 1
