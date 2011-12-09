@@ -56,6 +56,7 @@
  *
  */
 #include <iostream>
+#include <sstream>
 #include <unistd.h>
 #include <gu_util.h>
 #include "FSMExpression.h"
@@ -67,6 +68,7 @@
 using namespace std;
 using namespace FSM;
 
+#ifdef REALLY_NEED_SLEEP
 class SleepFunction: public TimeoutPredicate
 {
 public:
@@ -76,7 +78,7 @@ public:
                 return 0;
         }
 };
-
+#endif
 
 class PrintStatenameFunction: public Expression, public PrintingAction<string>
 {
@@ -84,7 +86,9 @@ class PrintStatenameFunction: public Expression, public PrintingAction<string>
         PrintStatenameFunction(): Expression(), PrintingAction<string>("") {}
         virtual int evaluate(Machine *m = NULL)
         {
-                setContent(m->currentState()->name());
+                stringstream ss;
+                ss << "Machine " << m->id() << " state " << m->currentState()->name();
+                setContent(ss.str());
                 perform(m, NUM_ACTION_STAGES);
                 return 0;
         }
@@ -130,9 +134,10 @@ int main (int argc, char * const argv[])
         TimeoutPredicate timeoutFunction;
         antlr_context.set_function("timeout", &timeoutFunction);
         
+#ifdef REALLY_NEED_SLEEP
         SleepFunction sleepFunction;
         antlr_context.set_function("sleep", &sleepFunction);
-
+#endif
         PrintStatenameFunction printStatenameFunction;
         antlr_context.set_function("print_state_name", &printStatenameFunction);
 
