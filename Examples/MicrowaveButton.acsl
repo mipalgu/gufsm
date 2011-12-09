@@ -1,9 +1,9 @@
-1	ENABLED
-OnEntry { timerDisabled=0;}
+1	WAIT
+OnEntry { }
 OnExit {  }
 {}
 
-2	DISABLED
-OnEntry { timerDisabled=1;}
+2	CB_ADD
+OnEntry { }
 OnExit {  }
 {}
