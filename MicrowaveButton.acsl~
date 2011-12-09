@@ -1,9 +1,0 @@
-2	DISABLED
-OnEntry {int disabled; disabled=1;}
-OnExit {  }
-{}
-
-1	ENABLED
-OnEntry { disabled=0;}
-OnExit {  }
-{}

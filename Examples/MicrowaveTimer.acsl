@@ -1,5 +1,5 @@
 2	INIT
-OnEntry {int currentTiem; currentTime=0;}
+OnEntry {int currentTime; currentTime=0;}
 OnExit {  }
 {}
 
@@ -9,7 +9,7 @@ OnExit {  }
 {sleep(1);}
 
 3	ADD_60
-OnEntry { currentTime=60+currentTime; disable=1; }
+OnEntry { currentTime=60+currentTime; timerDisabled=1; }
 OnExit {  }
 { }
 
@@ -19,6 +19,6 @@ OnExit {  }
 { }
 
 5 	CLEAR	
-OnEntry { timeLeft=0; ;  }
+OnEntry { timeLeft=0;  }
 OnExit {  }
 { }

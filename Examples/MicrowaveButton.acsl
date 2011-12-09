@@ -1,9 +1,9 @@
 1	ENABLED
-OnEntry { disabled=0;}
+OnEntry { timerDisabled=0;}
 OnExit {  }
 {}
 
 2	DISABLED
-OnEntry {int disabled; disabled=1;}
+OnEntry { timerDisabled=1;}
 OnExit {  }
 {}
