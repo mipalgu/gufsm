@@ -216,7 +216,8 @@ const LocalKripkeFrezzePointVector &Machine::localKripkeStateNames(bool snapshot
                 int transitionNumber=0;
                 
                 for (Transition *tr: s->transitions() )
-                {      rigletCurrentStage.transition_id=transitionNumber;
+                {       (void) tr;
+                        rigletCurrentStage.transition_id=transitionNumber;
                         
                         if (snapshotPerTransition)	
                         {  rigletCurrentStage.ringletStage=EBeforeTransition;
