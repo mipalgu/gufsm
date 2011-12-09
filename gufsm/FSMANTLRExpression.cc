@@ -109,6 +109,20 @@ int evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
                 }
                 return result;
         }
+        if (string("K_MINUS") == terminal)
+        {
+                assert(n > 1);
+                pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
+                        tree->children->get(tree->children, 0);
+                int result = evaluate_node(state, t, m);
+                for (ANTLR3_UINT32 i = 1; i < n; i++)
+                        
+                {
+                        t = (pANTLR3_BASE_TREE) tree->children->get(tree->children, i);
+                        result -= evaluate_node(state, t, m);
+                }
+                return result;
+        }
         if (string("K_ANDAND") == terminal)
         {
                 int result = 1;
