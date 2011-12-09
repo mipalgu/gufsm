@@ -67,8 +67,13 @@ namespace FSM
         class State;
         class Transition;
         class Machine;
-        class Context {};
-        
+
+        class Context
+        {
+        public:
+                virtual void take_snapshot() {} /// take a snapshot of current context
+        };
+
         typedef std::vector<State *> StateVector;
         typedef StateVector::iterator StateIterator;
         

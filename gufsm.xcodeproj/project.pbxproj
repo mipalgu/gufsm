@@ -18,6 +18,8 @@
 		F12DCDD81484BAD100461AD6 /* FSMTransition.cc in Sources */ = {isa = PBXBuildFile; fileRef = F12DCDD71484BAD100461AD6 /* FSMTransition.cc */; };
 		F132711C1452812500E5786D /* FSMWBQueryPredicate.cc in Sources */ = {isa = PBXBuildFile; fileRef = F132711B1452812500E5786D /* FSMWBQueryPredicate.cc */; };
 		F132711D1452812500E5786D /* FSMWBQueryPredicate.cc in Sources */ = {isa = PBXBuildFile; fileRef = F132711B1452812500E5786D /* FSMWBQueryPredicate.cc */; };
+		F14EB9C01491B86600ED85D7 /* FSMANTLRContext.cc in Sources */ = {isa = PBXBuildFile; fileRef = F14EB9BF1491B86600ED85D7 /* FSMANTLRContext.cc */; };
+		F14EB9C11491B86600ED85D7 /* FSMANTLRContext.cc in Sources */ = {isa = PBXBuildFile; fileRef = F14EB9BF1491B86600ED85D7 /* FSMANTLRContext.cc */; };
 		F16CC2FF142C0C01001F788B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F16CC2FE142C0C01001F788B /* main.cpp */; };
 		F16CC301142C0C01001F788B /* gufsm.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = F16CC300142C0C01001F788B /* gufsm.1 */; };
 		F16CC310142C0F86001F788B /* FSMState.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30F142C0F86001F788B /* FSMState.cc */; };
@@ -207,6 +209,7 @@
 		F12DCDD71484BAD100461AD6 /* FSMTransition.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMTransition.cc; sourceTree = "<group>"; };
 		F132711B1452812500E5786D /* FSMWBQueryPredicate.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMWBQueryPredicate.cc; sourceTree = "<group>"; };
 		F132711E1452814300E5786D /* FSMWBQueryPredicate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMWBQueryPredicate.h; sourceTree = "<group>"; };
+		F14EB9BF1491B86600ED85D7 /* FSMANTLRContext.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRContext.cc; sourceTree = "<group>"; };
 		F16CC2FA142C0C01001F788B /* gufsm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = gufsm; sourceTree = BUILT_PRODUCTS_DIR; };
 		F16CC2FE142C0C01001F788B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		F16CC300142C0C01001F788B /* gufsm.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = gufsm.1; sourceTree = "<group>"; };
@@ -1723,6 +1726,7 @@
 				F132711E1452814300E5786D /* FSMWBQueryPredicate.h */,
 				F192CCE5144D356300FF8526 /* FSMWBContext.cc */,
 				F192CCE4144D354100FF8526 /* FSMWBContext.h */,
+				F14EB9BF1491B86600ED85D7 /* FSMANTLRContext.cc */,
 				F1F8EAC91480B98E008AB889 /* FSMANTLRContext.h */,
 				F16CC30B142C0CDE001F788B /* FSMachine.cc */,
 				F191E602142D99150014AF84 /* FSMachine.h */,
@@ -4065,6 +4069,7 @@
 				F12DCCE414830A9D00461AD6 /* TransitionFactory.cpp in Sources */,
 				F12DCDD81484BAD100461AD6 /* FSMTransition.cc in Sources */,
 				F5EE57F81487441C001F6C9C /* stringConstants.c in Sources */,
+				F14EB9C01491B86600ED85D7 /* FSMANTLRContext.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4108,6 +4113,7 @@
 				F1A9E8791480B28500C852FC /* TransitionContainerParser.c in Sources */,
 				F1F8EAC81480B732008AB889 /* FSMANTLRExpression.cc in Sources */,
 				F12DCCE714830A9E00461AD6 /* TransitionFactory.cpp in Sources */,
+				F14EB9C11491B86600ED85D7 /* FSMANTLRContext.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
