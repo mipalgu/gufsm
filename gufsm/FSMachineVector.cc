@@ -199,7 +199,7 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                 (*next.freeze_point)[machineToRunOnce].ringletStage=EpcAfterOnEntry;
                 
                 /* output a derived state */
-                ss << "\t" << kripkeToString(next, n, names) ;
+                ss << "\t" << kripkeToString(next, n, names, true) ;
                 ss << "\t-- machine :"<< machineToRunOnce << " executes OnEntry \n";
                 /* check next is not in the list, and if so, push it and output to the SMV output
                  */
@@ -229,7 +229,7 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                                 (*next.freeze_point)[machineToRunOnce].ringletStage=result ? EtransitionTrue : EtransitionFalse;
                                 (*next.freeze_point)[machineToRunOnce].transition_id=0;
                                 /* output a derived state */
-                                ss << "\t" << kripkeToString(next, n, names) ;
+                                ss << "\t" << kripkeToString(next, n, names,true) ;
                                 ss << "\t-- machine :"<< machineToRunOnce << " evaluates Transition 0 with result " << result << " \n";
                         }
                         else
@@ -241,7 +241,7 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                                 /* sequential scheduler pauses this FSM here and moves to next */
                                 next.whose_turn = (next.whose_turn + 1) % machines().size();
                                 /* output a derived state */
-                                ss << "\t" << kripkeToString(next, n, names) ;
+                                ss << "\t" << kripkeToString(next, n, names, true) ;
                                 ss << "\t-- machine :"<< machineToRunOnce << " execute internal \n";
                         }
                         
@@ -281,7 +281,7 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                         next.whose_turn = (next.whose_turn + 1) % machines().size();
 
                         /* output a derived state */
-                        ss << "\t" << kripkeToString(next, n, names) ;
+                        ss << "\t" << kripkeToString(next, n, names,true) ;
                         ss << "\t-- machine : "<< machineToRunOnce << "execute internal \n";
                 }
                 
@@ -306,7 +306,7 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                 next.whose_turn = (next.whose_turn + 1) % machines().size();
 
                 /* output a derived state */
-                ss << "\t" << kripkeToString(next, n, names) ;
+                ss << "\t" << kripkeToString(next, n, names,true) ;
                 ss << "\t-- machine : "<< machineToRunOnce << " executes OnExit \n";
                 /* check next is not in the list, and if so, push it and output to the SMV output
                  */
@@ -328,17 +328,19 @@ void StateMachineVector:: add_if_not_seen(KripkeState &x, std::list<KripkeState>
         if (!found) kstates.push_back(x);
 }
 
-string StateMachineVector:: kripkeToString(KripkeState &s, size_t n, string **names)
+string StateMachineVector:: kripkeToString(KripkeState &s, size_t n, string **names, bool derived)
 {
         stringstream ss;
-        ss << "turn = " << s.whose_turn << " & ";
+        static const char * next ="next(";
+        
+        ss << (derived? next : "") << "turn " << (derived? ")" : "" )<< " = " << s.whose_turn << " & ";
         
         for (int i = 0; i < n; i++)
         {
                 unsigned long long j = (1ULL << i);
-                ss << *names[i] << "=" << ((s.variable_combination & j) ? 1 : 0) << " & ";
+                ss << (derived? next : "") << *names[i] << (derived? ")" : "" ) <<"=" << ((s.variable_combination & j) ? 1 : 0) << " & ";
         }
-        ss << "pc="<< descriptionSMVformat (*s.freeze_point);
+        ss << (derived? next : "") << "pc" << (derived? ")" : "" ) << "="<< descriptionSMVformat (*s.freeze_point);
         
         
         return ss.str();
@@ -502,7 +504,7 @@ string StateMachineVector::kripkeInSVMformat()
 
          
         
-        ss << "}" << std::endl;
+        ss << "};" << std::endl;
         ss << std::endl;
         
         
@@ -522,7 +524,7 @@ string StateMachineVector::kripkeInSVMformat()
         ss  << "turn = " << firstMachine << " & " << "pc=" << descriptionSMVformat (kripkePCValues[firstMachine]);
 
         /* Write the TRANS states section */
-        ss << "TRANS"  << std::endl;
+        ss << "\nTRANS"  << std::endl;
         ss << " case"  << std::endl;
         ss << "\t\t-- each state has a loop transition, Kripke structures are total"  << std::endl;
         
