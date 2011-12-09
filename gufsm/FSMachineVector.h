@@ -79,6 +79,13 @@ namespace FSM
                 int whose_turn;         // current machine's turn (id)
                 KripkeFreezePointVector *freeze_point;
                 KripkeState(unsigned long long v, KripkeFreezePointVector *f, int w=0): variable_combination(v), freeze_point(f), whose_turn(w) {}
+                KripkeState &operator=(const KripkeState &other)
+                {
+                        variable_combination = other.variable_combination;
+                        whose_turn = other.whose_turn;
+                        freeze_point = other.freeze_point;
+                        return *this;
+                }
                 bool operator==(const struct KripkeState &other) const
                 {       
                         if (variable_combination != other.variable_combination ||
