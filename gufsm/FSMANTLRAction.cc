@@ -59,6 +59,7 @@
 #include <sstream>
 #include <cassert>
 #include <gu_util.h>
+#include <Whiteboard.h>
 #include "FSMachine.h"
 #include "FSMState.h"
 #include "FSMANTLRContext.h"
@@ -132,7 +133,9 @@ statement_callback(void *context, const char *terminal, const char *content,
                 }
                 else
                 {
-                        /* TODO: get from whiteboard */
+                        c->set_variable(t1c, result);   /* cache ext variable */
+                        if (c->whiteboard())
+                                c->whiteboard()->addMessage(t1c, WBMsg(result));
                         return 0;
                 }
         }

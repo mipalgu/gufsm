@@ -1,5 +1,5 @@
 /*
- *  FSM.cc
+ *  FSMachine.cc
  *  
  *  Created by René Hexel on 23/09/11.
  *  Copyright (c) 2011 Rene Hexel.
@@ -111,6 +111,11 @@ bool Machine::executeOnce()
         }
 
         /*
+         * take a snapshot of the context (e.g. get Whiteboard content)
+         */
+        if (context()) context()->take_snapshot();
+
+        /*
          * check all transitions to see if state change is required
          */
         Transition *firingTransition = NULL;
@@ -211,7 +216,8 @@ const LocalKripkeFrezzePointVector &Machine::localKripkeStateNames(bool snapshot
                 int transitionNumber=0;
                 
                 for (Transition *tr: s->transitions() )
-                {      rigletCurrentStage.transition_id=transitionNumber;
+                {       (void) tr;
+                        rigletCurrentStage.transition_id=transitionNumber;
                         
                         if (snapshotPerTransition)	
                         {  rigletCurrentStage.ringletStage=EBeforeTransition;

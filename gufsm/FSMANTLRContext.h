@@ -1,5 +1,5 @@
 /*
- *  FSMWBMachine.h
+ *  FSMANTLRContext.h
  *  
  *  Created by René Hexel on 18/10/11.
  *  Copyright (c) 2011 Rene Hexel.
@@ -121,30 +121,19 @@ namespace FSM
                 }
                 
                 /** all names of internal variables */
-                std::string allNames ()
-                {
-                        std::stringstream ss;
-                        for (auto p: variables())
-                                ss << p.first << " ";
-
-                        return ss.str();
-                }
+                std::string allNames();
 
                 /** description of the context's internal variables */
-                std::string description()
-                {
-                        std::stringstream ss;
-                        ss << "Context with WB: " << (long) whiteboard() << std::endl;
-                        for (auto p: variables())
-                                ss << p.first << " -> " << p.second << std::endl;
-                        return ss.str();
-                }
+                std::string description();
 
                 /** do we have internal variables */
                 bool isEmpty()
                 {
                         return variables().empty();
                 }
+
+                /** take a current snapshot from the whiteboard */
+                virtual void take_snapshot();
         };
 }
 
