@@ -56,30 +56,63 @@
  *
  */
 #include <iostream>
+#include <unistd.h>
 #include "FSMANTLRContext.h"
 #include "FSMVectorFactory.h"
 
 using namespace std;
 using namespace FSM;
 
-int main (int argc, const char * argv[])
+static void usage(const char *cmd)
 {
+        cerr << "Usage: " << cmd << " [-k][-v] [fsm [...]]" << endl;
+        exit(EXIT_FAILURE);
+}
+
+
+int main (int argc, char * const argv[])
+{
+        bool kripke_flag = false, verbose = false;
+        int ch;
+        while ((ch = getopt(argc, argv, "k")) != -1)
+        {
+                switch (ch)
+                {
+                        case 'k':
+                                kripke_flag = true;
+                                break;
+                        case 'v':
+                                verbose = true;
+                                break;
+                        case '?':
+                        default:
+                                usage(argv[0]);
+                }
+        }
+        argc -= optind;
+        argv += optind;
+
         vector<string> machine_names;
 
-        while (--argc > 0)
-                machine_names.push_back(*++argv);
+        while (argc-- > 0)
+                machine_names.push_back(*argv++);
 
         ANTLRContext antlr_context;             // create whiteboard
         StateMachineVectorFactory factory(&antlr_context, machine_names);
 
-        string descr = factory.fsms()->description();
-        cout << descr << endl;
+        if (verbose)
+        {
+                string descr = factory.fsms()->description();
+                cout << descr << endl;
+        }
+        if (kripke_flag)
+        {
+                string kripke = factory.fsms()->kripkeInSVMformat();
+                cout << kripke << endl;
+                return EXIT_SUCCESS;
+        }
+        factory.fsms()->execute();
 
-
-        string kripke = factory.fsms()->kripkeInSVMformat();
-        cout << kripke << endl;
-        //factory.fsms()->execute();
-
-        return 0;
+        return EXIT_SUCCESS;
 }
 
