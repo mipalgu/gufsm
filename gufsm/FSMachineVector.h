@@ -110,6 +110,8 @@ namespace FSM
                 void add_if_not_seen(KripkeState &, std::list<KripkeState> &);
                 void  kripkeToANTLRContext (KripkeState &s, size_t n, std:: string **names);
                 unsigned long long  ANTLRContextToVariableCombination(size_t n, std:: string **names);
+                unsigned long long  AllToExtVariableCombination(unsigned long long v, size_t n, std:: string **names, std::vector<int> &posOfExternals);
+                unsigned long long extVarToKripke(unsigned long long all_vars, unsigned long long ext, const std::vector<int> &ext_offsets);
                 bool inList( const std::list<KripkeState>  & , const KripkeState &);
 
         public:

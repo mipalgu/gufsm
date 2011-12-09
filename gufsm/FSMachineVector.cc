@@ -210,39 +210,47 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
         }
         else if ((*s.freeze_point)[machineToRunOnce].ringletStage == EpcAfterOnEntry )
         { /*evaluate the expresion */
-                kripkeToANTLRContext (s,n,names);
-                m->setPreviousState(NULL);
-                m->setCurrentState(m->stateForID(stateToRun));
-                if (m->numberOfTransitionsInCurrentState())
+                vector<int> ext_offs;
+                unsigned long long vars=next.variable_combination;
+                unsigned long long ext_comb = AllToExtVariableCombination(vars, n, names, ext_offs);
+                size_t n = ext_offs.size();
+                unsigned long long n_comb = (1ULL << n);
+                for (ext_comb = 0; ext_comb < n_comb; ext_comb++)
                 {
-                        bool result = m->evaluateTransitionWithIndex(0);
-                        ///* place values in next*/
-                        //next.variable_combination=ANTLRContextToVariableCombination(n, names);
-                        (*next.freeze_point)[machineToRunOnce].ringletStage=result ? EtransitionTrue : EtransitionFalse;
-                        (*next.freeze_point)[machineToRunOnce].transition_id=0;
-                        /* output a derived state */
-                        ss << "\t" << kripkeToString(next, n, names) ;
-                        ss << "\t-- machine :"<< machineToRunOnce << " evaluates Transition 0 with result " << result << " \n";
-                }
-                else
-                {
-                        m->executeInternal();
-                        /* place values in next*/
-                        next.variable_combination=ANTLRContextToVariableCombination(n, names);
-                        (*next.freeze_point)[machineToRunOnce].ringletStage=EpcAfterOnEntry;
-                        /* sequential scheduler pauses this FSM here and moves to next */
-                        next.whose_turn = (next.whose_turn + 1) % machines().size();
-                        /* output a derived state */
-                        ss << "\t" << kripkeToString(next, n, names) ;
-                        ss << "\t-- machine :"<< machineToRunOnce << " execute internal \n";
-                }
-                
-
-                /* check next is not in the list, and if so, push it and output to the SMV output
-                 */
-                if (! inList(kstates,next))
-                {
-                        kstates.push_back(next);
+                        next.variable_combination = extVarToKripke(vars, ext_comb, ext_offs);
+                        kripkeToANTLRContext (s,n,names);
+                        m->setPreviousState(NULL);
+                        m->setCurrentState(m->stateForID(stateToRun));
+                        if (m->numberOfTransitionsInCurrentState())
+                        {
+                                bool result = m->evaluateTransitionWithIndex(0);
+                                ///* place values in next*/
+                                (*next.freeze_point)[machineToRunOnce].ringletStage=result ? EtransitionTrue : EtransitionFalse;
+                                (*next.freeze_point)[machineToRunOnce].transition_id=0;
+                                /* output a derived state */
+                                ss << "\t" << kripkeToString(next, n, names) ;
+                                ss << "\t-- machine :"<< machineToRunOnce << " evaluates Transition 0 with result " << result << " \n";
+                        }
+                        else
+                        {
+                                m->executeInternal();
+                                /* place values in next*/
+                                next.variable_combination=ANTLRContextToVariableCombination(n, names);
+                                (*next.freeze_point)[machineToRunOnce].ringletStage=EpcAfterOnEntry;
+                                /* sequential scheduler pauses this FSM here and moves to next */
+                                next.whose_turn = (next.whose_turn + 1) % machines().size();
+                                /* output a derived state */
+                                ss << "\t" << kripkeToString(next, n, names) ;
+                                ss << "\t-- machine :"<< machineToRunOnce << " execute internal \n";
+                        }
+                        
+                        
+                        /* check next is not in the list, and if so, push it and output to the SMV output
+                         */
+                        if (! inList(kstates,next))
+                        {
+                                kstates.push_back(next);
+                        }
                 }
         }
         else if ((*s.freeze_point)[machineToRunOnce].ringletStage == EtransitionFalse )
@@ -359,6 +367,37 @@ unsigned long long StateMachineVector:: ANTLRContextToVariableCombination(size_t
         }
         return j;
 }
+
+
+unsigned long long StateMachineVector::AllToExtVariableCombination(unsigned long long all_vars, size_t n, string **names, vector<int> &posOfExternals)
+{
+        unsigned long long j = 0;
+        int k = 0;                                      // ext var offset
+        for (int i = 0; i < n; i++)
+        {
+                const string &name = *names[i];
+                if (name.find(':') != string::npos)     // is there a colon?
+                        continue;                       // skip internal variable
+                posOfExternals.push_back(i);            // this ext is at index i
+                if (all_vars & (1ULL << i))             // external var TRUE?
+                        j |= (1ULL << k);               // set bit if ext var is true
+                k++;
+        }
+        return j;
+}
+
+
+unsigned long long StateMachineVector::extVarToKripke(unsigned long long all_vars, unsigned long long ext, const vector<int> &ext_offsets)
+{
+        size_t n = ext_offsets.size();
+        for (int i = 0; i < n; i++)
+                if (ext & (1ULL << i))
+                        all_vars |= (1ULL << ext_offsets[i]);
+                else
+                        all_vars &= ~(1ULL << ext_offsets[i]);
+        return all_vars;
+}
+
 
 string StateMachineVector::kripkeInSVMformat()
 {
