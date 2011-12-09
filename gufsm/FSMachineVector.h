@@ -62,6 +62,7 @@
 #include <vector>
 #include <string>
 #include <list>
+#include <iostream>
 #include <utility>
 #include "FSMSuspensibleMachine.h"
 
@@ -84,6 +85,7 @@ namespace FSM
                         variable_combination = other.variable_combination;
                         whose_turn = other.whose_turn;
                         freeze_point = other.freeze_point;
+                        std::cout << "Freeze point " << (unsigned long) freeze_point << std::endl;
                         return *this;
                 }
                 bool operator==(const struct KripkeState &other) const

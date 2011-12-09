@@ -194,6 +194,7 @@ const LocalKripkeFrezzePointVector &Machine::localKripkeStateNames(bool snapshot
                 return _localKripkeStateNames;
         KripkeFreezePointOfMachine rigletCurrentStage;
         rigletCurrentStage.machine =this;
+        rigletCurrentStage.transition_id = 0;
         
         int count=0;
         for (State *s: states())

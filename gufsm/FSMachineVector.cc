@@ -207,6 +207,7 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                 {
                         kstates.push_back(next);
                 }
+                else delete next.freeze_point;
         }
         else if ((*s.freeze_point)[machineToRunOnce].ringletStage == EpcAfterOnEntry )
         { /*evaluate the expresion */
@@ -218,9 +219,11 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                 ss << "\t -- machine: "<< machineToRunOnce << " finished on Entry, generating * " << n_comb << " * combinations of external variables --\n";
                 for (ext_comb = 0; ext_comb < n_comb; ext_comb++)
                 {
-                        s.variable_combination = extVarToKripke(vars, ext_comb, ext_offs);
-                        next = s;
-                        kripkeToANTLRContext (s,n,names);
+                        KripkeState current = s;
+                        current.variable_combination = extVarToKripke(vars, ext_comb, ext_offs);
+                        kripkeToANTLRContext (current,n,names);
+                        next = current;
+                        next.freeze_point = freeze;
                         m->setPreviousState(NULL);
                         m->setCurrentState(m->stateForID(stateToRun));
                         if (m->numberOfTransitionsInCurrentState())
@@ -252,6 +255,13 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                         if (! inList(kstates,next))
                         {
                                 kstates.push_back(next);
+                        }
+                        else delete next.freeze_point;
+
+                        if (ext_comb < n_comb - 1)
+                        {
+                                freeze = new KripkeFreezePointVector(*s.freeze_point);
+                                next.freeze_point = freeze;
                         }
                 }
                 ss << "\t -- machine: "<< machineToRunOnce << " DONE WITH * " << n_comb << " * combinations of external variables --\n";
@@ -293,6 +303,7 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                 {
                         kstates.push_back(next);
                 }
+                else delete next.freeze_point;
         }
         else if ((*s.freeze_point)[machineToRunOnce].ringletStage == EtransitionTrue )
         { /*evaluate the expresion */
@@ -315,6 +326,7 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                 {
                         kstates.push_back(next);
                 }
+                else delete next.freeze_point;
         }
 
         return ss.str();
