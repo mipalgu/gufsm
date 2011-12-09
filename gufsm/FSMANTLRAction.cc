@@ -146,9 +146,9 @@ statement_callback(void *context, const char *terminal, const char *content,
 void ANTLRAction::performv(Machine *m, ActionStage stage, int x, va_list)
 {
         State *s = stage == STAGE_ON_EXIT ? m->previousState() : m->currentState();
-        cout << "ANTLRAction perform stage " << stage << " for state "
+        DBG(cout << "ANTLRAction perform stage " << stage << " for state "
              << s->name() << "(" << s->stateID()
-             << "): " << x << endl;
+             << "): " << x << endl);
 
         walk_parse_children(antlr_state(), content(), statement_callback, NULL, NULL, m);
 };

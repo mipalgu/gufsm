@@ -68,7 +68,6 @@
 using namespace std;
 using namespace FSM;
 
-#ifdef REALLY_NEED_SLEEP
 class SleepFunction: public TimeoutPredicate
 {
 public:
@@ -78,7 +77,6 @@ public:
                 return 0;
         }
 };
-#endif
 
 class PrintStatenameFunction: public Expression, public PrintingAction<string>
 {
@@ -134,10 +132,9 @@ int main (int argc, char * const argv[])
         TimeoutPredicate timeoutFunction;
         antlr_context.set_function("timeout", &timeoutFunction);
         
-#ifdef REALLY_NEED_SLEEP
         SleepFunction sleepFunction;
         antlr_context.set_function("sleep", &sleepFunction);
-#endif
+
         PrintStatenameFunction printStatenameFunction;
         antlr_context.set_function("print_state_name", &printStatenameFunction);
 
