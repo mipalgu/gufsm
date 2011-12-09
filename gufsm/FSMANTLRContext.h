@@ -121,14 +121,7 @@ namespace FSM
                 }
                 
                 /** all names of internal variables */
-                std::string allNames()
-                {
-                        std::stringstream ss;
-                        for (auto p: variables())
-                                ss << p.first << " ";
-
-                        return ss.str();
-                }
+                std::string allNames();
 
                 /** description of the context's internal variables */
                 std::string description();

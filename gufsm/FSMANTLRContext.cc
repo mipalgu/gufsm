@@ -72,6 +72,17 @@ std::string ANTLRContext::description()
         return ss.str();
 }
 
+
+std::string ANTLRContext::allNames()
+{
+        std::stringstream ss;
+        for (auto p: variables())
+                ss << p.first << " ";
+        
+        return ss.str();
+}
+
+
 static int wbIntValue(Whiteboard *wb, const string &name)
 {
         WBMsg msg = wb->getMessage(name);
