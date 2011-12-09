@@ -461,7 +461,7 @@ string StateMachineVector::kripkeInSVMformat()
 
          
         
-        ss << "}" << std::endl;
+        ss << "};" << std::endl;
         ss << std::endl;
         
         
