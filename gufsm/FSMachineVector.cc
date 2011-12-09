@@ -211,14 +211,15 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
         else if ((*s.freeze_point)[machineToRunOnce].ringletStage == EpcAfterOnEntry )
         { /*evaluate the expresion */
                 vector<int> ext_offs;
-                unsigned long long vars=next.variable_combination;
+                unsigned long long vars=s.variable_combination;
                 unsigned long long ext_comb = AllToExtVariableCombination(vars, n, names, ext_offs);
                 size_t num_ext = ext_offs.size();
                 unsigned long long n_comb = (1ULL << num_ext);
                 ss << "\t -- machine: "<< machineToRunOnce << " finished on Entry, generating * " << n_comb << " * combinations of external variables --\n";
                 for (ext_comb = 0; ext_comb < n_comb; ext_comb++)
                 {
-                        next.variable_combination = extVarToKripke(vars, ext_comb, ext_offs);
+                        s.variable_combination = extVarToKripke(vars, ext_comb, ext_offs);
+                        next = s;
                         kripkeToANTLRContext (s,n,names);
                         m->setPreviousState(NULL);
                         m->setCurrentState(m->stateForID(stateToRun));
