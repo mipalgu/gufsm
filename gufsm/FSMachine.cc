@@ -238,7 +238,7 @@ string Machine::initialStateName()
 {
         stringstream ss;
         
-                ss << "M"<< id() << "::" << pcBefore << (states()[0])->name();
+                ss << "M"<< id() << "$$" << pcBefore << (states()[0])->name();
  
         return ss.str();
 }

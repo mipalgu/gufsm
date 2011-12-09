@@ -215,6 +215,7 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                 unsigned long long ext_comb = AllToExtVariableCombination(vars, n, names, ext_offs);
                 size_t n = ext_offs.size();
                 unsigned long long n_comb = (1ULL << n);
+                ss << "\t -- machine: "<< machineToRunOnce << " finished on Entry, generating * " << ext_comb << " * combinations of external variables --\n";
                 for (ext_comb = 0; ext_comb < n_comb; ext_comb++)
                 {
                         next.variable_combination = extVarToKripke(vars, ext_comb, ext_offs);
@@ -252,6 +253,7 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                                 kstates.push_back(next);
                         }
                 }
+                ss << "\t -- machine: "<< machineToRunOnce << " DONE WITH * " << ext_comb << " * combinations of external variables --\n";
         }
         else if ((*s.freeze_point)[machineToRunOnce].ringletStage == EtransitionFalse )
         { /*evaluate the expresion */
@@ -376,7 +378,7 @@ unsigned long long StateMachineVector::AllToExtVariableCombination(unsigned long
         for (int i = 0; i < n; i++)
         {
                 const string &name = *names[i];
-                if (name.find(':') != string::npos)     // is there a colon?
+                if (name.find('$') != string::npos)     // is there a dollar?
                         continue;                       // skip internal variable
                 posOfExternals.push_back(i);            // this ext is at index i
                 if (all_vars & (1ULL << i))             // external var TRUE?

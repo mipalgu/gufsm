@@ -89,7 +89,7 @@ namespace FSM
                 std::string internal_variable_name(const std::string &name, int mid)
                 {
                         std::stringstream ss;
-                        ss << "M" << mid << "::" << name;
+                        ss << "M" << mid << "$$" << name;
                         return ss.str();
                 }
                /** set internal variable */
