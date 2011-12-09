@@ -105,7 +105,7 @@ namespace FSM
                 bool            _accepting;     /// all machines are in an accepting state
 
                 std::string generate_from(KripkeState &, std::list<KripkeState> &, size_t n, std::string **names);
-                std::string  kripkeToString(KripkeState &s, size_t n, std::string **names);
+                std::string  kripkeToString(KripkeState &s, size_t n, std::string **names, bool derived=false);
 
                 void add_if_not_seen(KripkeState &, std::list<KripkeState> &);
                 void  kripkeToANTLRContext (KripkeState &s, size_t n, std:: string **names);
