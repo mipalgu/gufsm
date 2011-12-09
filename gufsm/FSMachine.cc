@@ -1,5 +1,5 @@
 /*
- *  FSM.cc
+ *  FSMachine.cc
  *  
  *  Created by René Hexel on 23/09/11.
  *  Copyright (c) 2011 Rene Hexel.
@@ -109,6 +109,11 @@ bool Machine::executeOnce()
                 executeOnEntry();
                 gettimeofday(&_actty_time, NULL);
         }
+
+        /*
+         * take a snapshot of the context (e.g. get Whiteboard content)
+         */
+        if (context()) context()->take_snapshot();
 
         /*
          * check all transitions to see if state change is required
