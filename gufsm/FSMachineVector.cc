@@ -199,7 +199,7 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                 (*next.freeze_point)[machineToRunOnce].ringletStage=EpcAfterOnEntry;
                 
                 /* output a derived state */
-                ss << "\t" << kripkeToString(next, n, names, true) ;
+                ss << "\t" << kripkeToString(next, n, names, true) << ";";
                 ss << "\t-- machine :"<< machineToRunOnce << " executes OnEntry \n";
                 /* check next is not in the list, and if so, push it and output to the SMV output
                  */
@@ -233,7 +233,7 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                                 (*next.freeze_point)[machineToRunOnce].ringletStage=result ? EtransitionTrue : EtransitionFalse;
                                 (*next.freeze_point)[machineToRunOnce].transition_id=0;
                                 /* output a derived state */
-                                ss << "\t" << kripkeToString(next, n, names,true) ;
+                                ss << "\t" << kripkeToString(next, n, names,true) << ( (ext_comb < n_comb-1 )? "|" : ";" );
                                 ss << "\t-- machine :"<< machineToRunOnce << " evaluates Transition 0 with result " << result << " \n";
                         }
                         else
@@ -245,7 +245,7 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                                 /* sequential scheduler pauses this FSM here and moves to next */
                                 next.whose_turn = (next.whose_turn + 1) % machines().size();
                                 /* output a derived state */
-                                ss << "\t" << kripkeToString(next, n, names, true) ;
+                                ss << "\t" << kripkeToString(next, n, names, true) <<( (ext_comb < n_comb-1 )? "|" : ";" );
                                 ss << "\t-- machine :"<< machineToRunOnce << " execute internal \n";
                         }
                         
@@ -292,7 +292,7 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                         next.whose_turn = (next.whose_turn + 1) % machines().size();
 
                         /* output a derived state */
-                        ss << "\t" << kripkeToString(next, n, names,true) ;
+                        ss << "\t" << kripkeToString(next, n, names,true)<<";" ;
                         ss << "\t-- machine : "<< machineToRunOnce << "execute internal \n";
                 }
                 
@@ -318,7 +318,7 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                 next.whose_turn = (next.whose_turn + 1) % machines().size();
 
                 /* output a derived state */
-                ss << "\t" << kripkeToString(next, n, names,true) ;
+                ss << "\t" << kripkeToString(next, n, names,true) <<";";
                 ss << "\t-- machine : "<< machineToRunOnce << " executes OnExit \n";
                 /* check next is not in the list, and if so, push it and output to the SMV output
                  */
@@ -438,7 +438,14 @@ string StateMachineVector::kripkeInSVMformat()
                 for (auto p: antlr_context->variables())
                         ss << variableNRange(p.first);
         }
-
+        // range of the variable turn */
+        ss << "turn : {" ;
+        
+        for (int i=0; i < machines().size() -1; i++)
+        {  ss << i <<"," ;
+        }
+        ss << machines().size() -1 << "};\n" << std::endl;
+        
         /* Write the range of the pc variable using the states */
         ss <<"     -- for each state of each FSM, we have a PC that can be" << std::endl;
         ss <<"     -- a) "  << pcBefore << "arrival to the state (which is After the OnExit of the state)"  << std::endl;
@@ -567,7 +574,10 @@ string StateMachineVector::kripkeInSVMformat()
         }
 
 
-        
+        /* Write the exhaustive condition  */
+         ss << "TRUE:"  << kripkeToString(kstates.front(), n, names, true) << ";"<< std::endl;
+        /* Write the closing ESAC  */
+        ss << "esac"  << std::endl;
         return ss.str();
         
 }
