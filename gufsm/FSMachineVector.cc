@@ -213,8 +213,8 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                 vector<int> ext_offs;
                 unsigned long long vars=next.variable_combination;
                 unsigned long long ext_comb = AllToExtVariableCombination(vars, n, names, ext_offs);
-                size_t n = ext_offs.size();
-                unsigned long long n_comb = (1ULL << n);
+                size_t num_ext = ext_offs.size();
+                unsigned long long n_comb = (1ULL << num_ext);
                 ss << "\t -- machine: "<< machineToRunOnce << " finished on Entry, generating * " << n_comb << " * combinations of external variables --\n";
                 for (ext_comb = 0; ext_comb < n_comb; ext_comb++)
                 {
