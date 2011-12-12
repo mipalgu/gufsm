@@ -1,0 +1,490 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F1084F7D1411DFA8004806EA /* syntax_check.c in Sources */ = {isa = PBXBuildFile; fileRef = F1084F7C1411DFA8004806EA /* syntax_check.c */; };
+		F1084FAA1411E9CB004806EA /* ActionsParser_SMCommon.c in Sources */ = {isa = PBXBuildFile; fileRef = F1084F9A1411E9CB004806EA /* ActionsParser_SMCommon.c */; };
+		F1084FAB1411E9CB004806EA /* ActionsParser.c in Sources */ = {isa = PBXBuildFile; fileRef = F1084F9C1411E9CB004806EA /* ActionsParser.c */; };
+		F1084FAC1411E9CB004806EA /* SMCommon.c in Sources */ = {isa = PBXBuildFile; fileRef = F1084F9F1411E9CB004806EA /* SMCommon.c */; };
+		F1084FAD1411E9CB004806EA /* SMLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = F1084FA21411E9CB004806EA /* SMLexer.c */; };
+		F1084FAE1411E9CB004806EA /* TransitionsParser_SMCommon.c in Sources */ = {isa = PBXBuildFile; fileRef = F1084FA51411E9CB004806EA /* TransitionsParser_SMCommon.c */; };
+		F1084FAF1411E9CB004806EA /* TransitionsParser.c in Sources */ = {isa = PBXBuildFile; fileRef = F1084FA71411E9CB004806EA /* TransitionsParser.c */; };
+		F1084FB11411EA08004806EA /* libantlr3c.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1084FB01411EA08004806EA /* libantlr3c.a */; };
+		F1AE8BB21332ADF800E8F7AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1AE8BB11332ADF800E8F7AB /* Foundation.framework */; };
+		F1AE8BB51332ADF800E8F7AB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AE8BB41332ADF800E8F7AB /* main.m */; };
+		F1AE8BD61332B1D000E8F7AB /* QFSMParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AE8BD51332B1D000E8F7AB /* QFSMParser.m */; };
+		F1AE8BDB1332B82000E8F7AB /* NSString+MixedCase.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AE8BDA1332B82000E8F7AB /* NSString+MixedCase.m */; };
+		F1AE8BDE1332BD2A00E8F7AB /* NSMutableArray+Stack.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AE8BDD1332BD2A00E8F7AB /* NSMutableArray+Stack.m */; };
+		F1AE8BED1332DCDC00E8F7AB /* QFSMElement.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AE8BEC1332DCDB00E8F7AB /* QFSMElement.m */; };
+		F1AE8BF31332E96700E8F7AB /* QFSMExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AE8BF21332E96600E8F7AB /* QFSMExporter.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F1084F961411E94C004806EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F1AE8BA41332ADF800E8F7AB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F1084F8C1411E83B004806EA;
+			remoteInfo = syntax_checker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F1AE8BAB1332ADF800E8F7AB /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		F1084F7C1411DFA8004806EA /* syntax_check.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = syntax_check.c; sourceTree = "<group>"; };
+		F1084F831411E482004806EA /* syntax_check.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = syntax_check.h; sourceTree = "<group>"; };
+		F1084F851411E7EF004806EA /* ActionsParser.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ActionsParser.g; sourceTree = "<group>"; };
+		F1084F861411E7EF004806EA /* SMCommon.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SMCommon.g; sourceTree = "<group>"; };
+		F1084F871411E7EF004806EA /* SMLexer.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SMLexer.g; sourceTree = "<group>"; };
+		F1084F881411E7EF004806EA /* TransitionsParser.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TransitionsParser.g; sourceTree = "<group>"; };
+		F1084F8D1411E83B004806EA /* libsyntax_checker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsyntax_checker.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1084F9A1411E9CB004806EA /* ActionsParser_SMCommon.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ActionsParser_SMCommon.c; sourceTree = "<group>"; };
+		F1084F9B1411E9CB004806EA /* ActionsParser_SMCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionsParser_SMCommon.h; sourceTree = "<group>"; };
+		F1084F9C1411E9CB004806EA /* ActionsParser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ActionsParser.c; sourceTree = "<group>"; };
+		F1084F9D1411E9CB004806EA /* ActionsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionsParser.h; sourceTree = "<group>"; };
+		F1084F9E1411E9CB004806EA /* ActionsParser.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ActionsParser.tokens; sourceTree = "<group>"; };
+		F1084F9F1411E9CB004806EA /* SMCommon.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SMCommon.c; sourceTree = "<group>"; };
+		F1084FA01411E9CB004806EA /* SMCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCommon.h; sourceTree = "<group>"; };
+		F1084FA11411E9CB004806EA /* SMCommon.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SMCommon.tokens; sourceTree = "<group>"; };
+		F1084FA21411E9CB004806EA /* SMLexer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SMLexer.c; sourceTree = "<group>"; };
+		F1084FA31411E9CB004806EA /* SMLexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMLexer.h; sourceTree = "<group>"; };
+		F1084FA41411E9CB004806EA /* SMLexer.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SMLexer.tokens; sourceTree = "<group>"; };
+		F1084FA51411E9CB004806EA /* TransitionsParser_SMCommon.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TransitionsParser_SMCommon.c; sourceTree = "<group>"; };
+		F1084FA61411E9CB004806EA /* TransitionsParser_SMCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionsParser_SMCommon.h; sourceTree = "<group>"; };
+		F1084FA71411E9CB004806EA /* TransitionsParser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TransitionsParser.c; sourceTree = "<group>"; };
+		F1084FA81411E9CB004806EA /* TransitionsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionsParser.h; sourceTree = "<group>"; };
+		F1084FA91411E9CB004806EA /* TransitionsParser.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TransitionsParser.tokens; sourceTree = "<group>"; };
+		F1084FB01411EA08004806EA /* libantlr3c.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libantlr3c.a; path = ../../../../../../../../../../../usr/local/lib/libantlr3c.a; sourceTree = "<group>"; };
+		F1AE8BAD1332ADF800E8F7AB /* qfsm2gu */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = qfsm2gu; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1AE8BB11332ADF800E8F7AB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F1AE8BB41332ADF800E8F7AB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F1AE8BB71332ADF800E8F7AB /* qfsm2gu-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "qfsm2gu-Prefix.pch"; sourceTree = "<group>"; };
+		F1AE8BB81332ADF800E8F7AB /* qfsm2gu.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = qfsm2gu.1; sourceTree = "<group>"; };
+		F1AE8BD41332B1D000E8F7AB /* QFSMParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QFSMParser.h; sourceTree = "<group>"; };
+		F1AE8BD51332B1D000E8F7AB /* QFSMParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QFSMParser.m; sourceTree = "<group>"; };
+		F1AE8BD91332B82000E8F7AB /* NSString+MixedCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MixedCase.h"; sourceTree = "<group>"; };
+		F1AE8BDA1332B82000E8F7AB /* NSString+MixedCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MixedCase.m"; sourceTree = "<group>"; };
+		F1AE8BDC1332BD2A00E8F7AB /* NSMutableArray+Stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Stack.h"; sourceTree = "<group>"; };
+		F1AE8BDD1332BD2A00E8F7AB /* NSMutableArray+Stack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Stack.m"; sourceTree = "<group>"; };
+		F1AE8BEB1332DCDB00E8F7AB /* QFSMElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QFSMElement.h; sourceTree = "<group>"; };
+		F1AE8BEC1332DCDB00E8F7AB /* QFSMElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QFSMElement.m; sourceTree = "<group>"; };
+		F1AE8BF11332E96600E8F7AB /* QFSMExporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QFSMExporter.h; sourceTree = "<group>"; };
+		F1AE8BF21332E96600E8F7AB /* QFSMExporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QFSMExporter.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F1084F8A1411E83B004806EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1AE8BAA1332ADF800E8F7AB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1AE8BB21332ADF800E8F7AB /* Foundation.framework in Frameworks */,
+				F1084FB11411EA08004806EA /* libantlr3c.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F1084F841411E7A8004806EA /* LANGUAGE */ = {
+			isa = PBXGroup;
+			children = (
+				F1084F851411E7EF004806EA /* ActionsParser.g */,
+				F1084F861411E7EF004806EA /* SMCommon.g */,
+				F1084F871411E7EF004806EA /* SMLexer.g */,
+				F1084F881411E7EF004806EA /* TransitionsParser.g */,
+				F1084F991411E985004806EA /* build.host */,
+			);
+			name = LANGUAGE;
+			path = ../LANGUAGE;
+			sourceTree = "<group>";
+		};
+		F1084F991411E985004806EA /* build.host */ = {
+			isa = PBXGroup;
+			children = (
+				F1084F9A1411E9CB004806EA /* ActionsParser_SMCommon.c */,
+				F1084F9B1411E9CB004806EA /* ActionsParser_SMCommon.h */,
+				F1084F9C1411E9CB004806EA /* ActionsParser.c */,
+				F1084F9D1411E9CB004806EA /* ActionsParser.h */,
+				F1084F9E1411E9CB004806EA /* ActionsParser.tokens */,
+				F1084F9F1411E9CB004806EA /* SMCommon.c */,
+				F1084FA01411E9CB004806EA /* SMCommon.h */,
+				F1084FA11411E9CB004806EA /* SMCommon.tokens */,
+				F1084FA21411E9CB004806EA /* SMLexer.c */,
+				F1084FA31411E9CB004806EA /* SMLexer.h */,
+				F1084FA41411E9CB004806EA /* SMLexer.tokens */,
+				F1084FA51411E9CB004806EA /* TransitionsParser_SMCommon.c */,
+				F1084FA61411E9CB004806EA /* TransitionsParser_SMCommon.h */,
+				F1084FA71411E9CB004806EA /* TransitionsParser.c */,
+				F1084FA81411E9CB004806EA /* TransitionsParser.h */,
+				F1084FA91411E9CB004806EA /* TransitionsParser.tokens */,
+			);
+			path = build.host;
+			sourceTree = SOURCE_ROOT;
+		};
+		F1AE8BA21332ADF800E8F7AB = {
+			isa = PBXGroup;
+			children = (
+				F1084FB01411EA08004806EA /* libantlr3c.a */,
+				F1AE8BB31332ADF800E8F7AB /* qfsm2gu */,
+				F1AE8BB01332ADF800E8F7AB /* Frameworks */,
+				F1AE8BAE1332ADF800E8F7AB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F1AE8BAE1332ADF800E8F7AB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F1AE8BAD1332ADF800E8F7AB /* qfsm2gu */,
+				F1084F8D1411E83B004806EA /* libsyntax_checker.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F1AE8BB01332ADF800E8F7AB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F1AE8BB11332ADF800E8F7AB /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F1AE8BB31332ADF800E8F7AB /* qfsm2gu */ = {
+			isa = PBXGroup;
+			children = (
+				F1AE8BB41332ADF800E8F7AB /* main.m */,
+				F1AE8BF11332E96600E8F7AB /* QFSMExporter.h */,
+				F1AE8BF21332E96600E8F7AB /* QFSMExporter.m */,
+				F1AE8BD41332B1D000E8F7AB /* QFSMParser.h */,
+				F1AE8BD51332B1D000E8F7AB /* QFSMParser.m */,
+				F1AE8BEB1332DCDB00E8F7AB /* QFSMElement.h */,
+				F1AE8BEC1332DCDB00E8F7AB /* QFSMElement.m */,
+				F1AE8BB81332ADF800E8F7AB /* qfsm2gu.1 */,
+				F1084F7C1411DFA8004806EA /* syntax_check.c */,
+				F1084F831411E482004806EA /* syntax_check.h */,
+				F1084F841411E7A8004806EA /* LANGUAGE */,
+				F1AE8BD81332B7E000E8F7AB /* Supporting Classes */,
+				F1AE8BB61332ADF800E8F7AB /* Supporting Files */,
+			);
+			name = qfsm2gu;
+			sourceTree = "<group>";
+		};
+		F1AE8BB61332ADF800E8F7AB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F1AE8BB71332ADF800E8F7AB /* qfsm2gu-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F1AE8BD81332B7E000E8F7AB /* Supporting Classes */ = {
+			isa = PBXGroup;
+			children = (
+				F1AE8BD91332B82000E8F7AB /* NSString+MixedCase.h */,
+				F1AE8BDA1332B82000E8F7AB /* NSString+MixedCase.m */,
+				F1AE8BDC1332BD2A00E8F7AB /* NSMutableArray+Stack.h */,
+				F1AE8BDD1332BD2A00E8F7AB /* NSMutableArray+Stack.m */,
+			);
+			name = "Supporting Classes";
+			path = ../../guwhiteboard/objc/Classes;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		F1084F8B1411E83B004806EA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		F1084F8C1411E83B004806EA /* syntax_checker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F1084F8E1411E83B004806EA /* Build configuration list for PBXNativeTarget "syntax_checker" */;
+			buildPhases = (
+				F1084F891411E83B004806EA /* Sources */,
+				F1084F8A1411E83B004806EA /* Frameworks */,
+				F1084F8B1411E83B004806EA /* Headers */,
+				F1084F911411E84F004806EA /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = syntax_checker;
+			productName = syntax_checker;
+			productReference = F1084F8D1411E83B004806EA /* libsyntax_checker.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		F1AE8BAC1332ADF800E8F7AB /* qfsm2gu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F1AE8BBB1332ADF800E8F7AB /* Build configuration list for PBXNativeTarget "qfsm2gu" */;
+			buildPhases = (
+				F1AE8BA91332ADF800E8F7AB /* Sources */,
+				F1AE8BAA1332ADF800E8F7AB /* Frameworks */,
+				F1AE8BAB1332ADF800E8F7AB /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F1084F971411E94C004806EA /* PBXTargetDependency */,
+			);
+			name = qfsm2gu;
+			productName = qfsm2gu;
+			productReference = F1AE8BAD1332ADF800E8F7AB /* qfsm2gu */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F1AE8BA41332ADF800E8F7AB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = ICT;
+			};
+			buildConfigurationList = F1AE8BA71332ADF800E8F7AB /* Build configuration list for PBXProject "qfsm2gu" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F1AE8BA21332ADF800E8F7AB;
+			productRefGroup = F1AE8BAE1332ADF800E8F7AB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F1AE8BAC1332ADF800E8F7AB /* qfsm2gu */,
+				F1084F8C1411E83B004806EA /* syntax_checker */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F1084F911411E84F004806EA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/../LANGUAGE/SMLexer.g",
+				"$(SRCROOT)/../LANGUAGE/SMCommon.g",
+				"$(SRCROOT)/../LANGUAGE/TransitionsParser.g",
+				"$(SRCROOT)/../LANGUAGE/ActionsParser.g",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "cd ${SRCROOT}\nout=\"${SRCROOT}/build.host\"\nmkdir -p \"$out\"\nfor ((i=0; i < SCRIPT_INPUT_FILE_COUNT ; i++)); do\n    inputFile=`eval echo '$SCRIPT_INPUT_FILE_'$i`\n    outputFile=\"$out\"/`basename \"$inputFile\" | sed 's/.g$/.tokens/'`\n\n    if [ ! $outputFile -nt $inputFile ]; then\n        java -classpath /usr/local/share/java/antlr-3.4-complete.jar org.antlr.Tool -language C -o \"$out\" \"$inputFile\" 2>&1 | sed 's/warning\\([^:]*\\): \\([^ ]*\\): \\(.*\\)$/\\2: warning: \\3 \\1/' 1>&2\n    fi\ndone\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F1084F891411E83B004806EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1AE8BA91332ADF800E8F7AB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1AE8BB51332ADF800E8F7AB /* main.m in Sources */,
+				F1AE8BD61332B1D000E8F7AB /* QFSMParser.m in Sources */,
+				F1AE8BDB1332B82000E8F7AB /* NSString+MixedCase.m in Sources */,
+				F1AE8BDE1332BD2A00E8F7AB /* NSMutableArray+Stack.m in Sources */,
+				F1AE8BED1332DCDC00E8F7AB /* QFSMElement.m in Sources */,
+				F1AE8BF31332E96700E8F7AB /* QFSMExporter.m in Sources */,
+				F1084F7D1411DFA8004806EA /* syntax_check.c in Sources */,
+				F1084FAA1411E9CB004806EA /* ActionsParser_SMCommon.c in Sources */,
+				F1084FAB1411E9CB004806EA /* ActionsParser.c in Sources */,
+				F1084FAC1411E9CB004806EA /* SMCommon.c in Sources */,
+				F1084FAD1411E9CB004806EA /* SMLexer.c in Sources */,
+				F1084FAE1411E9CB004806EA /* TransitionsParser_SMCommon.c in Sources */,
+				F1084FAF1411E9CB004806EA /* TransitionsParser.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F1084F971411E94C004806EA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F1084F8C1411E83B004806EA /* syntax_checker */;
+			targetProxy = F1084F961411E94C004806EA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		F1084F8F1411E83B004806EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				EXECUTABLE_PREFIX = lib;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F1084F901411E83B004806EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F1AE8BB91332ADF800E8F7AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"/usr/local/include\"",
+					"\"$(SRCROOT)/..\"",
+					"\"$(SRCROOT)/../../guwhiteboard/objc/Classes\"",
+					"\"$(SRCROOT)/../../../../guwhiteboard/objc/Classes\"",
+					"\"$(SRCROOT)/build.host\"",
+					"\"/opt/local/include\"",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		F1AE8BBA1332ADF800E8F7AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"/usr/local/include\"",
+					"\"$(SRCROOT)/..\"",
+					"\"$(SRCROOT)/../../guwhiteboard/objc/Classes\"",
+					"\"$(SRCROOT)/../../../../guwhiteboard/objc/Classes\"",
+					"\"$(SRCROOT)/build.host\"",
+					"\"/opt/local/include\"",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		F1AE8BBC1332ADF800E8F7AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "qfsm2gu-Prefix.pch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F1AE8BBD1332ADF800E8F7AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "qfsm2gu-Prefix.pch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F1084F8E1411E83B004806EA /* Build configuration list for PBXNativeTarget "syntax_checker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1084F8F1411E83B004806EA /* Debug */,
+				F1084F901411E83B004806EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F1AE8BA71332ADF800E8F7AB /* Build configuration list for PBXProject "qfsm2gu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1AE8BB91332ADF800E8F7AB /* Debug */,
+				F1AE8BBA1332ADF800E8F7AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F1AE8BBB1332ADF800E8F7AB /* Build configuration list for PBXNativeTarget "qfsm2gu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1AE8BBC1332ADF800E8F7AB /* Debug */,
+				F1AE8BBD1332ADF800E8F7AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F1AE8BA41332ADF800E8F7AB /* Project object */;
+}

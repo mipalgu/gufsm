@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'qfsm2gu' target in the 'qfsm2gu' project
+//
+
+#ifdef __OBJC__
+        #import <Foundation/Foundation.h>
+#endif

@@ -1,0 +1,17 @@
+include $(GNUSTEP_MAKEFILES)/common.make
+
+TOOL_NAME = qfsm2gu
+
+UTIL_SRCS=NSString+MixedCase.m NSMutableArray+Stack.m
+qfsm2gu_OBJC_FILES      = QFSMElement.m QFSMExporter.m QFSMParser.m main.m ${UTIL_SRCS}
+qfsm2gu_HEADER_FILES    = QFSMElement.h QFSMExporter.h QFSMParser.h
+ADDITIONAL_CPPFLAGS  = -std=c99 -Wall -Wno-import
+ADDITIONAL_CPPFLAGS += -D_BSD_SOURCE -D__USE_BSD -D_POSIX_SOURCE
+ADDITIONAL_OBJCFLAGS+= OBJCINC -Wno-idiomatic-parentheses
+ADDITIONAL_LDFLAGS  += BSDLIB
+
+DOCUMENT_NAME= Documentation
+
+Documentation_AGSDOC_FILES = AI2Document.h AI2Document.m
+
+include $(GNUSTEP_MAKEFILES)/tool.make
