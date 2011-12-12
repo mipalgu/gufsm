@@ -1,0 +1,46 @@
+3	Follow|OnEntry SMPlayerHeadBallTracker: On; C++: msleep(200);/ C++: msleep(100); OnExit SMPlayerHeadBallTracker: Off; C++: msleep(200);/
+2	SeekLow|OnEntry NaoHeadMoveTo: 40 15 .3; Holding_Stiffness: 1; C++: msleep(200);   NaoWalk: walk 0 2 0;  C++: msleep(200); / C++: msleep(200); OnExit NaoWalk: kill 0 0 0;  C++: msleep(200);/
+0	Rotate|OnEntry Holding_Stiffness: 1;  Speech: Start Rotation;   C++: msleep(200);  NaoMotion_rotateToHeadPosition: now;/ C++: msleep(200); OnExit Speech: End Rotation;/
+4	Chase|OnEntry C++: msleep(200); NaoWalk: walk 1 0 0;/ C++: msleep(100); OnExit NaoWalk: walk 0 0 0;/
+5	LostBall|OnEntry Speech: Lost Ball;/ C++: msleep(200);
+8	HeadSeek|OnEntry NaoHeadMoveTo: -50 -20 .3; / C++: msleep(100);
+11	SweepHeadLeft|OnEntry NaoHeadPositionChange: 15 0 0.3; C++: msleep(100);/ C++: msleep(100);
+9	Evaluate|C++: msleep(200);
+10	ReachedMax|C++: msleep(100);
+13	SmallWalkForward|OnEntry NaoWalkToDist: walk .04 0 0; C++: msleep(100);/ C++: msleep(100);
+15	CheckChase|
+16	Rotate|OnEntry Holding_Stiffness: 1;  Speech: Start Final Rotation;   C++: msleep(300);  NaoMotion_rotateToHeadPosition: now;/ C++: msleep(200); OnExit SMPlayerHeadBallTracker: On; Speech: End Final Rotation;/
+12	LowerHead|OnEntry NaoHeadMoveTo: 0 15 .3; msleep(200); NaoWalk: walk 1 0 0;/ C++: msleep(100); OnExit NaoWalk: walk 0 0 0;/
+20	CenterBall|OnEntry SMPlayerHeadBallTracker: On; C++: msleep(200);/  OnExit SMPlayerHeadBallTracker: Off; C++: msleep(200);/
+17	LowerHeadSeek|OnEntry NaoHeadMoveTo: -40 20 .3; C++: msleep(200); / C++: msleep(100);
+18	Sweep|OnEntry NaoHeadPositionChange: 20 0 0.3; C++: msleep(200);/ C++: msleep(100);
+19	Evaluate|C++: msleep(200);
+6	CheckMax|
+21	GotBall|OnEntry guvision_selectCamera: 0; SMPlayerHeadBallTracker: Off; msleep(300); NaoHeadMoveTo: 0 0 .3; C++: msleep(300);/ C++: msleep(100);
+22	Shoot|OnEntry NaoHeadMoveTo: 0 15 .3; msleep(200); / C++: msleep(100);
+1	CheckForBall|
+24	CheckForBall|
+25	LeftKick|OnEntry NaoMotionPlayer: play left_kick; C++: msleep(200); / C++: msleep(100);
+14	RightKick|OnEntry NaoMotionPlayer: play right_kick; C++: msleep(200); / C++: msleep(100);
+23	SeekHigh|OnEntry NaoHeadMoveTo: 50 -20 .3; Holding_Stiffness: 1; C++: msleep(200);   NaoWalk: walk 0 2 0;  C++: msleep(200); / C++: msleep(200); OnExit NaoWalk: kill 0 0 0;  C++: msleep(200);/
+26	PassBall|C++: msleep(100);
+27	LeftPass|OnEntry NaoMotionPlayer: play pass_ball_left; C++: msleep(200); / C++: msleep(100);
+28	RightPass|OnEntry NaoMotionPlayer: play pass_ball_right; C++: msleep(200); / C++: msleep(100);
+29	WalkSeek|OnEntry guvision_selectCamera: 1; NaoWalkToDist: walk 1 0 0; / C++: msleep(200);
+30	HeadSeek|OnEntry NaoHeadMoveTo: -50 -20 .3; / C++: msleep(100);
+31	SweepHeadLeft|OnEntry NaoHeadPositionChange: 15 0 0.3; C++: msleep(100);/ C++: msleep(100);
+32	ReachedMax|C++: msleep(100);
+33	Evaluate|C++: msleep(200);
+35	SeenBallEndWalk|OnEntry NaoMotionEmergencyStop: stop; / C++: msleep(200);
+34	Timeout|
+36	MoveLeft|OnEntry NaoWalkToDist: walk 0 0.04 0; C++: msleep(100);/ C++: msleep(100);
+37	FindAGoal|OnEntry NaoHeadMoveTo: -90 0 .3;  guvision_selectCamera: 0; C++: msleep(300);/ C++: msleep(100);
+39	SweepHeadLeft|OnEntry NaoHeadPositionChange: 15 0 0.3; C++: msleep(100);/ C++: msleep(100);
+40	Evaluate|C++: msleep(350);
+41	ReachedMax|C++: msleep(100);
+42	GotAGoal|OnEntry Holding_Stiffness: 1;  Speech: Start Goal Rotation;   C++: msleep(200);  NaoMotion_rotateToHeadPosition: now;/ C++: msleep(200); OnExit Speech: End Goal Rotation;/
+43	CheckOurGoal|
+44	CheckOurs|
+45	CheckOponent|
+46	RotateOtherWay|OnEntry Holding_Stiffness: 1;  Speech: Opps Going Into My Goal;   C++: msleep(200);  NaoWalkToDist: walk 0 0 155;/ C++: msleep(200);
+7	PLACING|OnEntry Holding_Stiffness: 1; guvision_selectCamera: 1; C++: msleep(200);  guvision_runVisionPipeline: on;/ C++: msleep(200);

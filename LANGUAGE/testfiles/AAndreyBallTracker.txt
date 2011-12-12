@@ -1,0 +1,12 @@
+9	MoveHeadUp|OnEntry     NaoHeadPositionChange: 0 -3 0.1;     C++: msleep(100); /
+0	MoveHeadDown|OnEntry     NaoHeadPositionChange: 0 3 0.1;     C++: msleep(100); /
+2	MoveHeadLeft|OnEntry     NaoHeadPositionChange: 3 0 0.1;     C++: msleep(100); /
+3	MoveHeadRight|OnEntry     NaoHeadPositionChange: -3 0 0.1;     C++: msleep(100); /
+6	Idle|OnEntry     C++: msleep(1); /
+10	FindBallPosition|OnEntry     C++: msleep(1); /
+8	FindBallPosition|OnEntry     C++: msleep(1); /
+5	Wait|OnEntry     C++: msleep(1); /
+11	Wait|OnEntry     C++: msleep(1); /
+12	Wait|OnEntry     C++: msleep(1); /
+13	Wait|OnEntry     C++: msleep(1); /
+7	PLACING|OnEntry     guvision_runVisionPipeline: On;     guvision_selectCamera: 0;     C++: msleep(100); /

@@ -1,0 +1,17 @@
+transitions ::= $transition$ "EOL" {$transition$ "EOL"};
+
+purpose =" A Transition file starts with {\tt T} and contains
+one transition for each line. This constitutes the transition table
+of the finite state machine.".
+
+transition ::= $state_id$ $whiteboard_predicate$ $state_id$;
+
+purpose =" A {\tt transition} is indicted by identifying the
+source state, the predicate that labels the transition and
+the target state.".
+
+state_id ::= $numerical_state_id$;
+
+purpose="A {\tt state\_id} is currently only an integer.
+In a future implementation, it should optionally also be a name.".
+

@@ -1,0 +1,20 @@
+4	KickLeftBall|OnEntry NaoMotionPlayer: play left_kick;  Speech: Kick Left;/
+2	CheckDistance|OnEntry Speech: Aiming For Goal; VladBallChaser: On;/ OnExit VladBallChaser: Off; NaoWalk: walk 0 0 0;/
+1	HeadTrackerOn|OnEntry  ALBallInfo: On; ALBallTracker: Head On; /
+0	WOW|OnEntry guvision_selectCamera: 1; NaoHeadMoveTo: 0 10 0.5; Speech: WOW; C++: sleep(1);/
+3	KickRighttBall|OnEntry NaoMotionPlayer: play right_kick;  Speech: Kick Right;/
+5	IsItAhead|
+6	NoBall|OnEntry  ALBallTracker: Head On; VladBallFinder: On; /OnExit VladBallFinder: Off;/
+8	NeckStraight|OnEntry  ALBallTracker: Off; /OnExit NaoHeadMoveTo: 0 10 0.5; Speech: Lost; /
+9	CheckGoal|OnEntry NaoHeadMoveTo: 0 10 0.5;guvision_selectCamera: 0; C++: sleep(3); /
+10	PassLeftBall|OnEntry NaoMotionPlayer: play pass_ball_left; Speech: Pass;/
+11	MiniLeftStep|OnEntry  NaoMotion_stepLeft: 0.04 0 0;/
+12	CheckGoal|OnEntry NaoHeadMoveTo: 0 10 0.5;guvision_selectCamera: 0; C++: sleep(3); /
+13	PassRightBall|OnEntry NaoMotionPlayer: play pass_ball_right; Speech: Pass;/
+14	MiniRightStep|OnEntry  NaoMotion_stepRight: 0.04 0 0;/
+16	MiniRightStep|OnEntry  NaoMotion_stepRight: 0.04 0 0;/
+17	MiniLeftStep|OnEntry  NaoMotion_stepLeft: 0.04 0 0;/
+18	WhichSide|OnEntry ALBallTracker: Off;/
+20	MiniLeftStep|OnEntry  NaoMotion_stepLeft: 0.04 0 0;/
+19	MiniRightStep|OnEntry  NaoMotion_stepRight: 0.04 0 0;/
+7	INITIALIZE|OnEntry NaoMotionPlayer: play get_up_anywhere; guvision_runVisionPipeline: On; guvision_selectCamera: 1; C++: sleep(2);/

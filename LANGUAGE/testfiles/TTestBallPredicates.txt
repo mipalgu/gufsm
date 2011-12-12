@@ -1,0 +1,16 @@
+0	TRUE	6
+1	shortChestButtonPressed	5
+1	leftFootBumpPressed	5
+1	rightFootBumpPressed	5
+2	TRUE	1
+3	TRUE	1
+4	TRUE	1
+5	BallIsVisible	7
+6	BallIsDown	2
+6	BallIsUp	3
+6	BallIsUDCenter	4
+7	BallIsRight	9
+7	BallIsLeft	8
+7	BallIsLRCenter	0
+8	TRUE	6
+9	TRUE	6

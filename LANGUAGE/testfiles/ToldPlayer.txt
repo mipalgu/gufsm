@@ -1,0 +1,13 @@
+0	TRUE	10
+2	~MineIsVisible	5
+3	~right_kickIsRunning	0
+4	~left_kickIsRunning	0
+5	headIsRight	3
+5	headIsCentered	3
+5	headIsLeft	4
+6	~IsWalking	2
+7	~get_up_from_kneelIsRunning	10
+8	~ALBallFollowerTopCamIsRunning	12
+10	BallIsVisible	8
+12	~BallIsFurtherXV	2
+12	~ALBallFollowerBottomCamIsRunning	6

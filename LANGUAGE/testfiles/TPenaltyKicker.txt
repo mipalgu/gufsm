@@ -1,0 +1,12 @@
+1	IsBallRight	2
+1	IsBallLeft	3
+2	~right_kickIsRunning	7
+3	~left_kickIsRunning	7
+4	~TopCamALBallFollowerIsRunning	5
+5	IsCloseEnough	1
+5	~IsCloseEnough	6
+5	~BallIsVisiable	7
+6	IsCloseEnough	1
+6	~BottomCamALBallFollowerIsRunning	7
+7	StartTracker	11
+11	BallIsVisible	4

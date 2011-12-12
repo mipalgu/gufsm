@@ -1,0 +1,17 @@
+1	BallIsVisible	7
+2	BallIsVisible	7
+2	~BallIsVisible	5
+3	BallIsVisible	7
+3	~BallIsVisible	5
+5	BallIsVisible	7
+5	~BallIsVisible	1
+6	BallIsUDCenter	7
+6	BallIsDown	2
+6	BallIsUp	3
+6	~BallIsVisible	5
+7	BallIsRight	9
+7	BallIsLeft	8
+7	~BallIsVisible	1
+7	BallIsLRCenter	6
+8	TRUE	6
+9	TRUE	6

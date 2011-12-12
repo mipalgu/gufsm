@@ -1,0 +1,6 @@
+1	PLACED|OnEntry /
+13	HeadMoveLeft|OnEntry NaoHeadPositionChange: 40 0 0.15;/
+3	Judge|OnEntry C++: msleep(1000); /
+5	HeadMoveRight|OnEntry NaoHeadPositionChange: -40 0 0.15;/
+6	Judge|OnEntry C++: msleep(1000); /
+7	PLACING|OnEntry /
