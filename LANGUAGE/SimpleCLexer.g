@@ -13,6 +13,12 @@ tokens
     STATEMENT_LIST;
 }
 
+EscapeSequence:   '\\' ('b'|'t'|'n'|'f'|'r'|';'|'\"'|'\''|'\\') ;
+
+STRING_LITERAL:  '"' STRING_GUTS '"';
+
+fragment
+STRING_GUTS:	( EscapeSequence | ~('\\'|'"') )* ;
 
 EOL	:	'\n';
 
