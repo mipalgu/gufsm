@@ -98,6 +98,30 @@ class PrintStatenameFunction: public PrintingAction<string>
 typedef WBPostAction<const char *> PostStringFunction;
 typedef WBPostAction<int> PostIntFunction;
 
+class WBSuspendFunction: public PostStringFunction
+{
+public:
+        WBSuspendFunction(std::string name = "suspend"): PostStringFunction(name, "") {}
+
+        virtual void add_parameter(int index, long long value)
+        {
+                PostStringFunction::add_parameter(1, value);
+        }
+};
+
+
+class WBResumeFunction: public WBSuspendFunction
+{
+        WBResumeFunction(): WBSuspendFunction("resume") {}
+};
+
+
+class WBRestartFunction: public WBSuspendFunction
+{
+        WBRestartFunction(): WBSuspendFunction("restart") {}
+};
+
+
 static void usage(const char *cmd)
 {
         cerr << "Usage: " << cmd << " [-k][-v] [fsm [...]]" << endl;
@@ -155,6 +179,15 @@ int main (int argc, char * const argv[])
 
         PostIntFunction postInt;
         antlr_context.set_function("post_int", &postInt);
+
+        WBSuspendFunction suspendFunction;
+        antlr_context.set_function("suspend", &suspendFunction);
+
+        WBSuspendFunction resumeFunction;
+        antlr_context.set_function("resume", &resumeFunction);
+
+        WBSuspendFunction restartFunction;
+        antlr_context.set_function("restart", &restartFunction);
 
         StateMachineVectorFactory factory(&antlr_context, machine_names);
 
