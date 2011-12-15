@@ -133,14 +133,13 @@ namespace FSM
                 /** machines setter method */
                 void setMachines(const MachineVector &mv) { _machines = mv; }
                 
-                /** add a machine */
-                SuspensibleMachine *addMachine(SuspensibleMachine *m = NULL)
-                {
-                        if (!m) m = new SuspensibleMachine(NULL, _context);
-                        if (!m->id()) m->setID((int)machines().size());
-                        _machines.push_back(m);
-                        return m;
-                }
+                /**
+                 * add a machine at a given index (-1 = end)
+                 * @param m             state machine to add (NULL to create a new one)
+                 * @param index         index if replacing an existing state machine (-1 to add at end)
+                 * @param resume        true if new state machine should resume from state where old machine left off
+                 */
+                SuspensibleMachine *addMachine(SuspensibleMachine *m = NULL, int index=-1, bool resume=false);
 
                 /** context getter */
                 Context *context() { return _context; }

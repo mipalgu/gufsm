@@ -59,21 +59,51 @@
 #define gufsm_FSMVectorFactory_h
 
 #include <string>
+#include <Whiteboard.h>
 #include "FSMachineVector.h"
 
 namespace FSM
 {
         class ANTLRContext;
+        class SuspensibleMachine;
 
         class StateMachineVectorFactory
         {
                 StateMachineVector *_fsms;      /// delivered FSMs
+                ANTLRContext *_context;         /// factory context
         public:
                 /** constructor that builds vector of machines */
                 StateMachineVectorFactory(ANTLRContext *context, const std::vector<std::string> &names_of_machines_to_build);
 
+                /** destructore (unsubscribes from whiteboard) */
+                virtual ~StateMachineVectorFactory();
+
                 /** getter */
                 StateMachineVector *fsms() { return _fsms; }
+
+                /** create a new machine with a given name and index */
+                SuspensibleMachine *addMachine(std::string name, int index=-1, bool resume=false);
+
+                /** get the index of a machine with a given name (-1 if not found) */
+                int index_of_machine_named(std::string machine_name);
+
+                /** reload given state machine and restart from initial state */
+                void reloadMachine(std::string name);
+                
+                /** reread given state machine and resume from current state */
+                void rereadMachine(std::string name);
+
+                /** reload callback on Whiteboard */
+                void wb_reload(std::string, WBMsg *machinemsg);
+
+                /** reread callback on Whiteboard (work like reload, but tries to resume from current state */
+                void wb_reread(std::string, WBMsg *machinemsg);
+
+                /** reload_MACHINE callback on Whiteboard */
+                void wb_reload_specific(std::string, WBMsg *machinemsg);
+                
+                /** reread_MACHINE callback on Whiteboard (work like reload, but tries to resume from current state */
+                void wb_reread_specific(std::string, WBMsg *machinemsg);
         };
 }
 #endif
