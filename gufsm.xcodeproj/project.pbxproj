@@ -232,6 +232,7 @@
 		F16CC32B142C2AD9001F788B /* FSMTest.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = FSMTest.mm; sourceTree = "<group>"; };
 		F16CC32D142C2AD9001F788B /* FSMTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FSMTest-Prefix.pch"; sourceTree = "<group>"; };
 		F16CC334142C3433001F788B /* FSMAction.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMAction.cc; sourceTree = "<group>"; };
+		F177D0FA1499753A0003748C /* FSMWBPostAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMWBPostAction.h; sourceTree = "<group>"; };
 		F191E602142D99150014AF84 /* FSMachine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMachine.h; sourceTree = "<group>"; };
 		F191E603142D9A2D0014AF84 /* FSMSuspensibleMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMSuspensibleMachine.h; sourceTree = "<group>"; };
 		F191E604142D9B970014AF84 /* FSMSuspensibleMachine.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMSuspensibleMachine.cc; sourceTree = "<group>"; };
@@ -1712,6 +1713,7 @@
 				F1AA79AF146C9C39005FE2B1 /* FSMWB.h */,
 				F16CC334142C3433001F788B /* FSMAction.cc */,
 				F16CC314142C146B001F788B /* FSMAction.h */,
+				F177D0FA1499753A0003748C /* FSMWBPostAction.h */,
 				F1A9E8341480A2A200C852FC /* FSMANTLRAction.h */,
 				F1A9E8461480B10700C852FC /* FSMANTLRAction.cc */,
 				F16CC312142C1247001F788B /* FSMActivity.cc */,

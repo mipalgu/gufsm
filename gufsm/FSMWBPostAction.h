@@ -1,7 +1,7 @@
 /*
- *  FSMWBPredicate.cpp
- *  
- *  Created by Rene Hexel on 18/10/11.
+ *  FSMWBPostAction.h
+ *
+ *  Created by René Hexel on 15/12/11.
  *  Copyright (c) 2011 Rene Hexel.
  *  All rights reserved.
  *
@@ -55,60 +55,46 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#ifndef gufsm_FSMWBPostAction_h
+#define gufsm_FSMWBPostAction_h
+
 #include <Whiteboard.h>
-#include "FSMWBPredicate.h"
+#include "FSMachine.h"
+#include "FSMAction.h"
 #include "FSMWBContext.h"
 
-using namespace std;
-using namespace FSM;
-using namespace guWhiteboard;
-
-int WBPredicate::evaluate(WBMsg &msg)
+namespace FSM
 {
-        switch ((int) msg.getType())
+        class Machine;
+
+        /**
+         * FSM Whiteboard posting actions
+         */
+        template <typename C> class WBPostAction: public ContentAction<C>
         {
-                case WBMsg::TypeBool:
-                        return msg.getBoolValue();
-                        
-                case WBMsg::TypeInt:
-                        return msg.getIntValue() != 0;
-                        
-                case WBMsg::TypeFloat:
-                        return msg.getFloatValue() != 0.0f;
-                        
-                case WBMsg::TypeString:
-                        char c = *msg.getStringValue().c_str();
-                        return c != 0 && c != 'n' && c != 'N' && c != 'f' && c != 'F' && c != '-' && c != '0';
-        }
-        return false;
+        protected:
+                std::string _type;              /// whiteboard message type
+        public:
+                /** default constructor */
+                WBPostAction(): ContentAction<C>() {}
+                
+                /** designated constructor */
+                WBPostAction(std::string type, const C &content): _type(type), ContentAction<C>(content) {}
+
+                /** setting any parameter sets the context */
+                virtual void add_parameter(int index, long long value)
+                {
+                        if (index) ContentAction<C>::setContent((C) value);
+                        else _type = (const char *) value;
+                }
+
+                /** post to the whiteboard */
+                virtual void performv(Machine *m, ActionStage, int, va_list)
+                {
+                        WBContext *c = (WBContext *) m->context();
+                        c->whiteboard()->addMessage(_type, WBMsg(ContentAction<C>::content()));
+                }
+        };
 }
 
-
-int WBPredicate::evaluate(Machine *m)
-{
-        Whiteboard *wb = whiteboard();
-
-        if (!wb)
-        {
-                if (!m) return false;
-
-                WBContext *context = (WBContext *) m->context();
-
-                if (!context) return false;
-
-                wb = context->whiteboard();
-
-                if (!wb) return false;
-        }
-
-        WBMsg msg = wb->getMessage(name());
-
-        return evaluate(msg);
-}
-
-
-void WBPredicate::setValue(int v)
-{
-        Predicate::setValue(v);
-        postInt(name(), v);
-}
+#endif

@@ -66,6 +66,19 @@
 using namespace FSM;
 using namespace std;
 
+static const char *string_guts(const char *content)
+{
+        static string s;
+        size_t len = content ? strlen(content) : 0;
+
+        if (len < 2)
+                s = "";
+        else
+                s = string(content).substr(1, len-2);
+
+        return s.c_str();
+}
+
 static inline ANTLR3_UINT32 getType(pANTLR3_BASE_TREE tree)
 {
 	if  (tree->isNilNode(tree) == ANTLR3_TRUE)
@@ -88,7 +101,7 @@ static inline const char *getContent(pANTLR3_BASE_TREE tree)
 }
 
 static
-int evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
+long long evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
                   pANTLR3_BASE_TREE tree,
                   Machine *m)
 {
@@ -176,9 +189,12 @@ int evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
         /*
          * leaf node
          */
+        if (string("STRING_LITERAL") == terminal)
+                return (long long) string_guts(content);
+
         if (string("K_INT") == terminal)
                 return atoi(content);
-        
+
         if (string("K_ID") != terminal)
         {
                 DBG(cerr << "Ignoring unexpected token '" << terminal <<
@@ -206,7 +222,7 @@ int evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
         }
 
         Expression *func_expr = context->expression_for_function(content);
-        int result = 0;
+        long long result = 0LL;
         for (ANTLR3_UINT32 i = 0; i < n; i++)
         {
                 pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
@@ -232,7 +248,7 @@ int evaluate_children(pANTLR3_RECOGNIZER_SHARED_STATE state,
                 pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
                 tree->children->get(tree->children, i);
                 
-                result = evaluate_node(state, t, m);
+                result = (int) evaluate_node(state, t, m);
         }
         
         return result;
@@ -251,7 +267,7 @@ int ANTLRExpression::evaluate(pANTLR3_RECOGNIZER_SHARED_STATE state,
                               pANTLR3_BASE_TREE tree,
                               Machine *m)
 {
-        return evaluate_node(state, tree, m);
+        return (int) evaluate_node(state, tree, m);
 }
 
 
@@ -356,6 +372,9 @@ void print_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
         /*
          * leaf node
          */
+        if (string("STRING_LITERAL") == terminal)
+                ss << "``" << string_guts(content) << "''";
+
         if (string("K_INT") == terminal)
         {
                 ss << content;

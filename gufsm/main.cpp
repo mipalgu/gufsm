@@ -59,15 +59,17 @@
 #include <sstream>
 #include <unistd.h>
 #include <gu_util.h>
-#include "FSMExpression.h"
-#include "FSMAction.h"
+
 #include "FSMState.h"
+#include "FSMExpression.h"
+#include "FSMWBPostAction.h"
 #include "FSMANTLRContext.h"
 #include "FSMVectorFactory.h"
 
 using namespace std;
 using namespace FSM;
 
+#ifdef NEED_SLEEP
 class SleepFunction: public TimeoutPredicate
 {
 public:
@@ -77,21 +79,24 @@ public:
                 return 0;
         }
 };
+#endif
 
-class PrintStatenameFunction: public Expression, public PrintingAction<string>
+class PrintStatenameFunction: public PrintingAction<string>
 {
         public:
-        PrintStatenameFunction(): Expression(), PrintingAction<string>("") {}
+        PrintStatenameFunction(): PrintingAction<string>("") {}
         virtual int evaluate(Machine *m = NULL)
         {
                 stringstream ss;
                 ss << "Machine " << m->id() << " state " << m->currentState()->name();
                 setContent(ss.str());
-                perform(m, NUM_ACTION_STAGES);
+                perform(m);
                 return 0;
         }
 };
 
+typedef WBPostAction<const char *> PostStringFunction;
+typedef WBPostAction<int> PostIntFunction;
 
 static void usage(const char *cmd)
 {
@@ -132,11 +137,18 @@ int main (int argc, char * const argv[])
         TimeoutPredicate timeoutFunction;
         antlr_context.set_function("timeout", &timeoutFunction);
         
+#ifdef NEED_SLEEP
         SleepFunction sleepFunction;
         antlr_context.set_function("sleep", &sleepFunction);
-
+#endif
         PrintStatenameFunction printStatenameFunction;
         antlr_context.set_function("print_state_name", &printStatenameFunction);
+
+        PostStringFunction postString;
+        antlr_context.set_function("post", &postString);
+
+        PostIntFunction postInt;
+        antlr_context.set_function("post_int", &postInt);
 
         StateMachineVectorFactory factory(&antlr_context, machine_names);
 
