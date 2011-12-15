@@ -73,8 +73,6 @@ WBSubMachine::WBSubMachine(State *initialState, WBContext *ctx, int mid, State *
                 _deleteContext = context() != NULL;
         }
 
-        initialise();
-
         /*
          * subscribe to suspend/resume/restart type messages
          */
@@ -168,7 +166,9 @@ void WBSubMachine::initialise()
         string wb_name = name() + "IsSuspended";
         
         wb->addMessage(wb_name, WBMsg(false));
-        
+
+        SuspensibleMachine::initialise();
+
         wb_name = name() + "IsRunning";
         
         wb->addMessage(wb_name, WBMsg(true));

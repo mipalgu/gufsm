@@ -71,4 +71,5 @@ WBSubMachineFactory::WBSubMachineFactory(WBContext *context, const string &machi
 
         ActivityFactory afactory(machine(), a_file_name.c_str(), NULL);
         TransitionFactory tfactory(machine(), t_file_name.c_str());
+        machine()->initialise();
 }
