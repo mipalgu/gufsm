@@ -159,7 +159,23 @@ namespace FSM
          * Printing action for strings
          */
         typedef PrintingAction<std::string> PrintStringAction;
-        
+
+        /**
+         * Printing action for ints
+         */
+        class PrintIntAction: public PrintingAction<int>
+        {
+        public:
+                /** default constructor */
+                PrintIntAction(int val = 0): PrintingAction<int>(val) {}
+
+                /** setting any parameter sets the context */
+                virtual void add_parameter(int index, long long value)
+                {
+                        setContent(value);
+                }
+        };
+
         /**
          * Delay action: specify sleep time in milliseconds
          */

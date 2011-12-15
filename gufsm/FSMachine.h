@@ -194,6 +194,7 @@ namespace FSM
                 {
                         _currentState = _states[0];
                         _previousState = NULL;
+                        if (context()) context()->take_snapshot();
                 }
 
                 /**

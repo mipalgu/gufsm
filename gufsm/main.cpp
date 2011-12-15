@@ -144,6 +144,9 @@ int main (int argc, char * const argv[])
         PrintStatenameFunction printStatenameFunction;
         antlr_context.set_function("print_state_name", &printStatenameFunction);
 
+        PrintIntAction printIntFunction;
+        antlr_context.set_function("print_int", &printIntFunction);
+
         PostStringFunction postString;
         antlr_context.set_function("post", &postString);
 
