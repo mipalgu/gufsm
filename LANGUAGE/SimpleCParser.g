@@ -71,7 +71,7 @@ assignStat
     :   K_ID K_EQ expr -> ^(K_EQ K_ID expr)
     ;
 
-expr:   condExpr
+expr:   STRING_LITERAL | condExpr
     ;
 
 condExpr
