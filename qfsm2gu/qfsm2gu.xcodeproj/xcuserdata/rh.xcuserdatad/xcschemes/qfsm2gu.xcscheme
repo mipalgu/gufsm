@@ -35,7 +35,8 @@
       displayScaleIsEnabled = "NO"
       displayScale = "1.00"
       launchStyle = "0"
-      useCustomWorkingDirectory = "NO"
+      useCustomWorkingDirectory = "YES"
+      customWorkingDirectory = "$(SRCROOT)/../Examples/"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
@@ -50,12 +51,20 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "/Users/rh/src/MiPal/2011/GUNao/posix/gubehaviourinterpreter/examples/GameController.fsm"
+            argument = "PingPong.fsm"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "/Users/rh/src/MiPal/2011/GUNao/posix/gubehaviourinterpreter/examples/Faulty.fsm"
+            argument = "WhiteboardPost.fsm"
             isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "/Users/rh/src/MiPal/2011/GUNao/posix/gubehaviourinterpreter/examples/GameController.fsm"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "/Users/rh/src/MiPal/2011/GUNao/posix/gubehaviourinterpreter/examples/Faulty.fsm"
+            isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
       <AdditionalOptions>

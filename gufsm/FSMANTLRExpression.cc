@@ -202,9 +202,9 @@ long long evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
                 return 0;
         }
         /*
-         * ID (which means variable (no children) or function (children = parameter list)
+         * ID (which means variable or function (children = parameter list)
          */
-        if (n == 0)             // variable
+        if (!context->function_exists(content))   // !function ( = variable )
         {
                 if (context->internal_variable_exists(m->id(), content))
                         return context->internal_variable_value(m->id(), content);
@@ -215,12 +215,6 @@ long long evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
         /*
          * function call
          */
-        if (!context->function_exists(content)) // error function does not exist
-        {
-                cerr << " * unknown function " << content << "(...)" << endl;
-                return 0;
-        }
-
         Expression *func_expr = context->expression_for_function(content);
         long long result = 0LL;
         for (ANTLR3_UINT32 i = 0; i < n; i++)

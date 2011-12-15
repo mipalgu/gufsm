@@ -335,7 +335,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd ${SRCROOT}\nout=\"${SRCROOT}/build.host\"\nmkdir -p \"$out\"\nUTIL_DIR=${GUNAO_DIR}/posix/guwhiteboard/objc/Classes\nfor ((i=0; i < SCRIPT_INPUT_FILE_COUNT ; i++)); do\n    inputFile=`eval echo '$SCRIPT_INPUT_FILE_'$i`\n    ln -s ${UTIL_DIR}/${inputFile} \"$out\"\ndone\n";
+			shellScript = "cd ${SRCROOT}\nout=\"${SRCROOT}/build.host\"\nmkdir -p \"$out\"\nUTIL_DIR=${GUNAO_DIR}/posix/guwhiteboard/objc/Classes\nfor ((i=0; i < SCRIPT_INPUT_FILE_COUNT ; i++)); do\n    inputFile=`eval echo '$SCRIPT_INPUT_FILE_'$i`\n    ln -s ${UTIL_DIR}/${inputFile} \"$out\" >/dev/null 2>&1 || true\ndone\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

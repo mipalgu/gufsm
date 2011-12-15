@@ -139,6 +139,9 @@ statement_callback(void *context, const char *terminal, const char *content,
                         return 0;
                 }
         }
+        if (string("K_ID") == terminal)         /* function call? */
+                ANTLRExpression::evaluate(state, tree, m);
+
         return 1;
 }
 
