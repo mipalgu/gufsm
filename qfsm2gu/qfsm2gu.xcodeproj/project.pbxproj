@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E17009871495DE1900700118 /* ActionsContainer_SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E17009771495DE1900700118 /* ActionsContainer_SimpleCParser.c */; };
+		E17009881495DE1900700118 /* ActionsContainerParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E170097A1495DE1900700118 /* ActionsContainerParser.c */; };
+		E17009891495DE1900700118 /* SimpleCLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = E170097C1495DE1900700118 /* SimpleCLexer.c */; };
+		E170098A1495DE1900700118 /* SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E170097F1495DE1900700118 /* SimpleCParser.c */; };
+		E170098B1495DE1900700118 /* TransitionContainer_SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E17009821495DE1900700118 /* TransitionContainer_SimpleCParser.c */; };
+		E170098C1495DE1900700118 /* TransitionContainerParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E17009851495DE1900700118 /* TransitionContainerParser.c */; };
 		F1084F7D1411DFA8004806EA /* syntax_check.c in Sources */ = {isa = PBXBuildFile; fileRef = F1084F7C1411DFA8004806EA /* syntax_check.c */; };
-		F1084FAA1411E9CB004806EA /* ActionsParser_SMCommon.c in Sources */ = {isa = PBXBuildFile; fileRef = F1084F9A1411E9CB004806EA /* ActionsParser_SMCommon.c */; };
-		F1084FAB1411E9CB004806EA /* ActionsParser.c in Sources */ = {isa = PBXBuildFile; fileRef = F1084F9C1411E9CB004806EA /* ActionsParser.c */; };
-		F1084FAC1411E9CB004806EA /* SMCommon.c in Sources */ = {isa = PBXBuildFile; fileRef = F1084F9F1411E9CB004806EA /* SMCommon.c */; };
-		F1084FAD1411E9CB004806EA /* SMLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = F1084FA21411E9CB004806EA /* SMLexer.c */; };
-		F1084FAE1411E9CB004806EA /* TransitionsParser_SMCommon.c in Sources */ = {isa = PBXBuildFile; fileRef = F1084FA51411E9CB004806EA /* TransitionsParser_SMCommon.c */; };
-		F1084FAF1411E9CB004806EA /* TransitionsParser.c in Sources */ = {isa = PBXBuildFile; fileRef = F1084FA71411E9CB004806EA /* TransitionsParser.c */; };
 		F1084FB11411EA08004806EA /* libantlr3c.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1084FB01411EA08004806EA /* libantlr3c.a */; };
 		F1AE8BB21332ADF800E8F7AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1AE8BB11332ADF800E8F7AB /* Foundation.framework */; };
 		F1AE8BB51332ADF800E8F7AB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AE8BB41332ADF800E8F7AB /* main.m */; };
@@ -47,29 +47,29 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E17009721495DDB900700118 /* SimpleCLexer.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleCLexer.g; sourceTree = "<group>"; };
+		E17009731495DDB900700118 /* SimpleCParser.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleCParser.g; sourceTree = "<group>"; };
+		E17009741495DDCE00700118 /* ActionsContainer.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ActionsContainer.g; sourceTree = "<group>"; };
+		E17009751495DDCE00700118 /* TransitionContainer.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TransitionContainer.g; sourceTree = "<group>"; };
+		E17009771495DE1900700118 /* ActionsContainer_SimpleCParser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ActionsContainer_SimpleCParser.c; path = build.host/ActionsContainer_SimpleCParser.c; sourceTree = SOURCE_ROOT; };
+		E17009781495DE1900700118 /* ActionsContainer_SimpleCParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionsContainer_SimpleCParser.h; path = build.host/ActionsContainer_SimpleCParser.h; sourceTree = SOURCE_ROOT; };
+		E17009791495DE1900700118 /* ActionsContainer.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ActionsContainer.tokens; path = build.host/ActionsContainer.tokens; sourceTree = SOURCE_ROOT; };
+		E170097A1495DE1900700118 /* ActionsContainerParser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ActionsContainerParser.c; path = build.host/ActionsContainerParser.c; sourceTree = SOURCE_ROOT; };
+		E170097B1495DE1900700118 /* ActionsContainerParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionsContainerParser.h; path = build.host/ActionsContainerParser.h; sourceTree = SOURCE_ROOT; };
+		E170097C1495DE1900700118 /* SimpleCLexer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = SimpleCLexer.c; path = build.host/SimpleCLexer.c; sourceTree = SOURCE_ROOT; };
+		E170097D1495DE1900700118 /* SimpleCLexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleCLexer.h; path = build.host/SimpleCLexer.h; sourceTree = SOURCE_ROOT; };
+		E170097E1495DE1900700118 /* SimpleCLexer.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SimpleCLexer.tokens; path = build.host/SimpleCLexer.tokens; sourceTree = SOURCE_ROOT; };
+		E170097F1495DE1900700118 /* SimpleCParser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = SimpleCParser.c; path = build.host/SimpleCParser.c; sourceTree = SOURCE_ROOT; };
+		E17009801495DE1900700118 /* SimpleCParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleCParser.h; path = build.host/SimpleCParser.h; sourceTree = SOURCE_ROOT; };
+		E17009811495DE1900700118 /* SimpleCParser.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SimpleCParser.tokens; path = build.host/SimpleCParser.tokens; sourceTree = SOURCE_ROOT; };
+		E17009821495DE1900700118 /* TransitionContainer_SimpleCParser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = TransitionContainer_SimpleCParser.c; path = build.host/TransitionContainer_SimpleCParser.c; sourceTree = SOURCE_ROOT; };
+		E17009831495DE1900700118 /* TransitionContainer_SimpleCParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransitionContainer_SimpleCParser.h; path = build.host/TransitionContainer_SimpleCParser.h; sourceTree = SOURCE_ROOT; };
+		E17009841495DE1900700118 /* TransitionContainer.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TransitionContainer.tokens; path = build.host/TransitionContainer.tokens; sourceTree = SOURCE_ROOT; };
+		E17009851495DE1900700118 /* TransitionContainerParser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = TransitionContainerParser.c; path = build.host/TransitionContainerParser.c; sourceTree = SOURCE_ROOT; };
+		E17009861495DE1900700118 /* TransitionContainerParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransitionContainerParser.h; path = build.host/TransitionContainerParser.h; sourceTree = SOURCE_ROOT; };
 		F1084F7C1411DFA8004806EA /* syntax_check.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = syntax_check.c; sourceTree = "<group>"; };
 		F1084F831411E482004806EA /* syntax_check.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = syntax_check.h; sourceTree = "<group>"; };
-		F1084F851411E7EF004806EA /* ActionsParser.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ActionsParser.g; sourceTree = "<group>"; };
-		F1084F861411E7EF004806EA /* SMCommon.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SMCommon.g; sourceTree = "<group>"; };
-		F1084F871411E7EF004806EA /* SMLexer.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SMLexer.g; sourceTree = "<group>"; };
-		F1084F881411E7EF004806EA /* TransitionsParser.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TransitionsParser.g; sourceTree = "<group>"; };
 		F1084F8D1411E83B004806EA /* libsyntax_checker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsyntax_checker.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		F1084F9A1411E9CB004806EA /* ActionsParser_SMCommon.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ActionsParser_SMCommon.c; sourceTree = "<group>"; };
-		F1084F9B1411E9CB004806EA /* ActionsParser_SMCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionsParser_SMCommon.h; sourceTree = "<group>"; };
-		F1084F9C1411E9CB004806EA /* ActionsParser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ActionsParser.c; sourceTree = "<group>"; };
-		F1084F9D1411E9CB004806EA /* ActionsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionsParser.h; sourceTree = "<group>"; };
-		F1084F9E1411E9CB004806EA /* ActionsParser.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ActionsParser.tokens; sourceTree = "<group>"; };
-		F1084F9F1411E9CB004806EA /* SMCommon.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SMCommon.c; sourceTree = "<group>"; };
-		F1084FA01411E9CB004806EA /* SMCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCommon.h; sourceTree = "<group>"; };
-		F1084FA11411E9CB004806EA /* SMCommon.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SMCommon.tokens; sourceTree = "<group>"; };
-		F1084FA21411E9CB004806EA /* SMLexer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SMLexer.c; sourceTree = "<group>"; };
-		F1084FA31411E9CB004806EA /* SMLexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMLexer.h; sourceTree = "<group>"; };
-		F1084FA41411E9CB004806EA /* SMLexer.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SMLexer.tokens; sourceTree = "<group>"; };
-		F1084FA51411E9CB004806EA /* TransitionsParser_SMCommon.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TransitionsParser_SMCommon.c; sourceTree = "<group>"; };
-		F1084FA61411E9CB004806EA /* TransitionsParser_SMCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionsParser_SMCommon.h; sourceTree = "<group>"; };
-		F1084FA71411E9CB004806EA /* TransitionsParser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TransitionsParser.c; sourceTree = "<group>"; };
-		F1084FA81411E9CB004806EA /* TransitionsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionsParser.h; sourceTree = "<group>"; };
-		F1084FA91411E9CB004806EA /* TransitionsParser.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TransitionsParser.tokens; sourceTree = "<group>"; };
 		F1084FB01411EA08004806EA /* libantlr3c.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libantlr3c.a; path = ../../../../../../../../../../../usr/local/lib/libantlr3c.a; sourceTree = "<group>"; };
 		F1AE8BAD1332ADF800E8F7AB /* qfsm2gu */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = qfsm2gu; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1AE8BB11332ADF800E8F7AB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -108,41 +108,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E17009761495DDEC00700118 /* build.host */ = {
+			isa = PBXGroup;
+			children = (
+				E17009771495DE1900700118 /* ActionsContainer_SimpleCParser.c */,
+				E17009781495DE1900700118 /* ActionsContainer_SimpleCParser.h */,
+				E17009791495DE1900700118 /* ActionsContainer.tokens */,
+				E170097A1495DE1900700118 /* ActionsContainerParser.c */,
+				E170097B1495DE1900700118 /* ActionsContainerParser.h */,
+				E170097C1495DE1900700118 /* SimpleCLexer.c */,
+				E170097D1495DE1900700118 /* SimpleCLexer.h */,
+				E170097E1495DE1900700118 /* SimpleCLexer.tokens */,
+				E170097F1495DE1900700118 /* SimpleCParser.c */,
+				E17009801495DE1900700118 /* SimpleCParser.h */,
+				E17009811495DE1900700118 /* SimpleCParser.tokens */,
+				E17009821495DE1900700118 /* TransitionContainer_SimpleCParser.c */,
+				E17009831495DE1900700118 /* TransitionContainer_SimpleCParser.h */,
+				E17009841495DE1900700118 /* TransitionContainer.tokens */,
+				E17009851495DE1900700118 /* TransitionContainerParser.c */,
+				E17009861495DE1900700118 /* TransitionContainerParser.h */,
+			);
+			name = build.host;
+			sourceTree = "<group>";
+		};
 		F1084F841411E7A8004806EA /* LANGUAGE */ = {
 			isa = PBXGroup;
 			children = (
-				F1084F851411E7EF004806EA /* ActionsParser.g */,
-				F1084F861411E7EF004806EA /* SMCommon.g */,
-				F1084F871411E7EF004806EA /* SMLexer.g */,
-				F1084F881411E7EF004806EA /* TransitionsParser.g */,
-				F1084F991411E985004806EA /* build.host */,
+				E17009731495DDB900700118 /* SimpleCParser.g */,
+				E17009741495DDCE00700118 /* ActionsContainer.g */,
+				E17009751495DDCE00700118 /* TransitionContainer.g */,
+				E17009721495DDB900700118 /* SimpleCLexer.g */,
+				E17009761495DDEC00700118 /* build.host */,
 			);
 			name = LANGUAGE;
 			path = ../LANGUAGE;
 			sourceTree = "<group>";
-		};
-		F1084F991411E985004806EA /* build.host */ = {
-			isa = PBXGroup;
-			children = (
-				F1084F9A1411E9CB004806EA /* ActionsParser_SMCommon.c */,
-				F1084F9B1411E9CB004806EA /* ActionsParser_SMCommon.h */,
-				F1084F9C1411E9CB004806EA /* ActionsParser.c */,
-				F1084F9D1411E9CB004806EA /* ActionsParser.h */,
-				F1084F9E1411E9CB004806EA /* ActionsParser.tokens */,
-				F1084F9F1411E9CB004806EA /* SMCommon.c */,
-				F1084FA01411E9CB004806EA /* SMCommon.h */,
-				F1084FA11411E9CB004806EA /* SMCommon.tokens */,
-				F1084FA21411E9CB004806EA /* SMLexer.c */,
-				F1084FA31411E9CB004806EA /* SMLexer.h */,
-				F1084FA41411E9CB004806EA /* SMLexer.tokens */,
-				F1084FA51411E9CB004806EA /* TransitionsParser_SMCommon.c */,
-				F1084FA61411E9CB004806EA /* TransitionsParser_SMCommon.h */,
-				F1084FA71411E9CB004806EA /* TransitionsParser.c */,
-				F1084FA81411E9CB004806EA /* TransitionsParser.h */,
-				F1084FA91411E9CB004806EA /* TransitionsParser.tokens */,
-			);
-			path = build.host;
-			sourceTree = SOURCE_ROOT;
 		};
 		F1AE8BA21332ADF800E8F7AB = {
 			isa = PBXGroup;
@@ -249,6 +249,7 @@
 				F1AE8BA91332ADF800E8F7AB /* Sources */,
 				F1AE8BAA1332ADF800E8F7AB /* Frameworks */,
 				F1AE8BAB1332ADF800E8F7AB /* CopyFiles */,
+				E11AED561498505C0071C950 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -288,16 +289,30 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		E11AED561498505C0071C950 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				/Users/Robert/src/MiPal/GUNao/posix/gufsm/Examples/PingPong.fsm,
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
 		F1084F911411E84F004806EA /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/../LANGUAGE/SMLexer.g",
-				"$(SRCROOT)/../LANGUAGE/SMCommon.g",
-				"$(SRCROOT)/../LANGUAGE/TransitionsParser.g",
-				"$(SRCROOT)/../LANGUAGE/ActionsParser.g",
+				"$(SRCROOT)/../LANGUAGE/SimpleCLexer.g",
+				"$(SRCROOT)/../LANGUAGE/SimpleCParser.g",
+				"$(SRCROOT)/../LANGUAGE/TransitionContainer.g",
+				"$(SRCROOT)/../LANGUAGE/ActionsContainer.g",
 			);
 			outputPaths = (
 			);
@@ -323,15 +338,15 @@
 				F1AE8BD61332B1D000E8F7AB /* QFSMParser.m in Sources */,
 				F1AE8BDB1332B82000E8F7AB /* NSString+MixedCase.m in Sources */,
 				F1AE8BDE1332BD2A00E8F7AB /* NSMutableArray+Stack.m in Sources */,
+				E17009891495DE1900700118 /* SimpleCLexer.c in Sources */,
+				E17009871495DE1900700118 /* ActionsContainer_SimpleCParser.c in Sources */,
 				F1AE8BED1332DCDC00E8F7AB /* QFSMElement.m in Sources */,
+				E170098B1495DE1900700118 /* TransitionContainer_SimpleCParser.c in Sources */,
+				E17009881495DE1900700118 /* ActionsContainerParser.c in Sources */,
 				F1AE8BF31332E96700E8F7AB /* QFSMExporter.m in Sources */,
+				E170098C1495DE1900700118 /* TransitionContainerParser.c in Sources */,
 				F1084F7D1411DFA8004806EA /* syntax_check.c in Sources */,
-				F1084FAA1411E9CB004806EA /* ActionsParser_SMCommon.c in Sources */,
-				F1084FAB1411E9CB004806EA /* ActionsParser.c in Sources */,
-				F1084FAC1411E9CB004806EA /* SMCommon.c in Sources */,
-				F1084FAD1411E9CB004806EA /* SMLexer.c in Sources */,
-				F1084FAE1411E9CB004806EA /* TransitionsParser_SMCommon.c in Sources */,
-				F1084FAF1411E9CB004806EA /* TransitionsParser.c in Sources */,
+				E170098A1495DE1900700118 /* SimpleCParser.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

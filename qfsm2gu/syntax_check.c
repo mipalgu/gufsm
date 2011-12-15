@@ -61,14 +61,14 @@
 
 #include <antlr3.h>
 #include "syntax_check.h"
-#include "TransitionsParser.h"
-#include "ActionsParser.h"
-#include "SMCommon.h"
-#include "SMLexer.h"
+#include "TransitionContainerParser.h"
+#include "ActionsContainerParser.h"
+#include "SimpleCParser.h"
+#include "SimpleCLexer.h"
 
 static pANTLR3_COMMON_TOKEN_STREAM
 open_string_stream(const char *string, const char *n,
-                   pANTLR3_INPUT_STREAM *inputRef, pSMLexer *lexerRef)
+                   pANTLR3_INPUT_STREAM *inputRef, pSimpleCLexer *lexerRef)
 {
         pANTLR3_UINT8 data = (pANTLR3_UINT8) string;
         pANTLR3_UINT8 name = (pANTLR3_UINT8) n;
@@ -81,7 +81,7 @@ open_string_stream(const char *string, const char *n,
                 return NULL;
         }
         
-        pSMLexer lexer = SMLexerNew(input);
+        pSimpleCLexer lexer = SimpleCLexerNew(input);
         
         if (!lexer)
         {
@@ -118,12 +118,12 @@ int check_action(const char *string, const char *name)
         if (!name) name = "unknown";
 
         pANTLR3_INPUT_STREAM input = NULL;
-        pSMLexer lexer = NULL;
+        pSimpleCLexer lexer = NULL;
         pANTLR3_COMMON_TOKEN_STREAM tstream = open_string_stream(string, name,
                                                                  &input, &lexer);
         if (!tstream) goto err2;
 
-        pActionsParser parser = ActionsParserNew(tstream);
+        pActionsContainerParser parser = ActionsContainerParserNew(tstream);
         
         if (!parser)
         {
@@ -168,12 +168,12 @@ int check_transition(const char *string, const char *name)
         if (!name) name = "unknown";
 
         pANTLR3_INPUT_STREAM input = NULL;
-        pSMLexer lexer = NULL;
+        pSimpleCLexer lexer = NULL;
         pANTLR3_COMMON_TOKEN_STREAM tstream = open_string_stream(string, name,
                                                                  &input, &lexer);
         if (!tstream) goto err2;
         
-        pTransitionsParser parser = TransitionsParserNew(tstream);
+        pTransitionContainerParser parser = TransitionContainerParserNew(tstream);
         
         if (!parser)
         {

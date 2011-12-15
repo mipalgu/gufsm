@@ -89,10 +89,10 @@
                 return nil;
 
         self.inputFileName = [fileName lastPathComponent];
-        self.outputAFile = [NSString stringWithFormat: @"A%@.txt",
+        self.outputAFile = [NSString stringWithFormat: @"%@.acsl",
                             [inputFileName
                              stringByDeletingPathExtension]];
-        self.outputTFile = [NSString stringWithFormat: @"T%@.txt",
+        self.outputTFile = [NSString stringWithFormat: @"%@.tcsl",
                             [inputFileName
                              stringByDeletingPathExtension]];
         parser = [[QFSMParser alloc] initWithContentsOfURL: 
@@ -123,13 +123,13 @@
                                trimmedSingleLineString];
         NSString *description = [[currentElement.attributes
                                   objectForKey: @"description"]
-                                 trimmedSingleLineString];
+                                 trimmedString];
         NSMutableString *aString = [NSMutableString stringWithFormat: @"%@\t",
                                     stateID];
         if ([stateName length])
-                [aString appendFormat: @"%@|", stateName];
+                [aString appendFormat: @"%@\n", stateName];
         if ([description length])
-                [aString appendString: description];
+            [aString appendFormat: @"%@\n", description];
 
         if ([stateID isEqualToString: initialStateID])
                 initialStateIndex = [states count];
@@ -159,7 +159,7 @@
         if (![p length]) p = @"TRUE";
 
         NSMutableString *tString = [NSMutableString stringWithFormat:
-                                    @"%@\t%@\t%@", from, p, to];
+                                    @"%@ %@ %@", from, to, p];
 
         NSString *orderKey = [NSString stringWithFormat: @"%05u %@ %05u %@ %05u %@",
                               [from intValue], from, [o intValue], o,
