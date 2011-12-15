@@ -192,7 +192,7 @@ namespace FSM
                 /** put the state machine into its initial state */
                 virtual void initialise()
                 {
-                        _currentState = _states[0];
+                        if (_states.size()) _currentState = _states[0];
                         _previousState = NULL;
                         if (context()) context()->take_snapshot();
                 }
