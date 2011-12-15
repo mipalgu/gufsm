@@ -1,0 +1,24 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Robert Coleman" description="" version="1" name="WhiteboardPost" arrowtype="1" numbits="1" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="54" endx="112" xpos="52" endy="54"/>
+    <state pencolor="0" radius="40" description="OnEntry { print_state_name(); post(&quot;TestModule&quot;, &quot;Hello&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="54" code="0" xpos="152" linewidth="1">SayHello</state>
+    <state pencolor="0" radius="40" description="OnEntry { print_state_name(); }&#xa;OnExit { post(&quot;TestModule&quot;, &quot;Goodbye!&quot;); }&#xa;{ }" finalstate="0" moore_outputs="" ypos="66" code="1" xpos="388" linewidth="1">SayGoodbye</state>
+    <transition c1x="243.9710326971017" c2y="61.91549739842881" c1y="58.9733857528127" description="" straight="1" type="2" ypos="56.03127410719659" endx="348.0163165415722" xpos="191.9483907748664" endy="64.85760904404492" c2x="295.993674619337">
+      <from>0</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">timeout(200000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="297.0216296922363" c2y="77.91935259743265" c1y="81.10663655113156" description="" straight="1" type="2" ypos="84.29392050483045" endx="186.2079132621607" xpos="352.4284879072741" endy="74.73206864373375" c2x="241.6147714771985">
+      <from>1</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">timeout(200000)</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>
