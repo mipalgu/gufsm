@@ -63,6 +63,8 @@
 #include <sstream>
 #include <iostream>
 
+#include "FSMExpression.h"
+
 namespace FSM
 {
         class Machine;
@@ -72,7 +74,7 @@ namespace FSM
         /**
          * Abstract class for FSM actions
          */
-        class Action
+        class Action: public Expression
         {
         public:
                 /** virtual destructor */
@@ -82,7 +84,7 @@ namespace FSM
                 virtual void performv(Machine *, ActionStage, int, va_list) = 0;
                 
                 /** perform the given action */
-                virtual void perform(Machine *m, ActionStage stage, int ac = 0, ...)
+                virtual void perform(Machine *m, ActionStage stage = NUM_ACTION_STAGES, int ac = 0, ...)
                 {
                         va_list ap;
                         va_start(ap, ac);
@@ -92,6 +94,9 @@ namespace FSM
 
                 /** action description */
                 virtual std::string description();
+
+                /** evaluation by default just performs, then returns 1 */
+                virtual int evaluate(Machine *m = NULL) { perform(m); return true; }
         };
         
         
@@ -114,7 +119,7 @@ namespace FSM
                 
                 /** setter method */
                 virtual void setContent(const T &c) { _content = c; }
-                
+
                 /** action description */
                 virtual std::string description()
                 {
@@ -133,7 +138,7 @@ namespace FSM
         public:
                 /** printing action default constructor */
                 PrintingAction(T val): ContentAction<T>(val) {}
-                
+
                 /** print the content of this action */
                 virtual void performv(Machine *, ActionStage, int, va_list)
                 {

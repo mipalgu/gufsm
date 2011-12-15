@@ -82,7 +82,7 @@ namespace FSM
                         return ss.str();
                 }
                 /** add a parameter (abstract method, does nothing) */
-                virtual void add_parameter(int index, int value) {};
+                virtual void add_parameter(int index, long long value) {};
         };
         
         /**
@@ -145,7 +145,7 @@ namespace FSM
                 virtual std::string description();
 
                 /** add a parameter (sets the time for the last parameter) */
-                virtual void add_parameter(int index, int value)
+                virtual void add_parameter(int index, long long value)
                 {
                         setTimeout(value);
                 };

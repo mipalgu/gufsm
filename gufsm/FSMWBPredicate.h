@@ -71,12 +71,8 @@ namespace guWhiteboard
 namespace FSM
 {
         class Machine;
-        
-        /**
-         * Simple whiteboard boolean predicate representation
-         * This just uses GetMsg() to query boolean values on the Whiteboard
-         */
-        class WBPredicate: public Predicate
+
+        class WBExpression: public Expression
         {
                 guWhiteboard::Whiteboard *_wb;  /** whiteboard to use */
         public:
@@ -86,7 +82,7 @@ namespace FSM
                  * @param neg is this a negation?
                  * @param wb the whiteboard to use (null to use machine context)
                  */
-                WBPredicate(const std::string &expr, bool neg, guWhiteboard::Whiteboard *wb = NULL): Predicate(expr, false, neg), _wb(wb) {}
+                WBExpression(guWhiteboard::Whiteboard *wb = NULL): _wb(wb) {}
 
                 /**
                  * Whiteboard context constructor
@@ -94,13 +90,49 @@ namespace FSM
                  * @param neg is this a negation?
                  * @param wc the whiteboard context to use (may not be null)
                  */
-                WBPredicate(const std::string &expr, bool neg, WBContext *wc): Predicate(expr, false, neg), _wb(wc->whiteboard()) {}
+                WBExpression(WBContext *wc): _wb(wc->whiteboard()) {}
 
                 /** whiteboard getter */
                 guWhiteboard::Whiteboard *whiteboard() { return _wb; }
-
+                
                 /** whiteboard setter */
                 void setWhiteboard(guWhiteboard::Whiteboard *wb) { _wb = wb; }
+
+                /** post to the Whiteboard */
+                void post(std::string type, const WBMsg &msg) { _wb->addMessage(type, msg); }
+
+                /** post a string to the whiteboard */
+                void postString(std::string type, std::string content) { post(type, WBMsg(content)); }
+
+                /** post an int to the whiteboard */
+                void postInt(std::string type, int content) { post(type, WBMsg(content)); }
+                
+                /** post a bool to the whiteboard */
+                void postBool(std::string type, bool content) { post(type, WBMsg(content)); }
+        };
+
+        /**
+         * Simple whiteboard boolean predicate representation
+         * This just uses GetMsg() to query boolean values on the Whiteboard
+         */
+        class WBPredicate: public Predicate, public WBExpression
+        {
+        public:
+                /**
+                 * Whiteboard constructor
+                 * @param expr whiteboard message name to get
+                 * @param neg is this a negation?
+                 * @param wb the whiteboard to use (null to use machine context)
+                 */
+                WBPredicate(const std::string &expr, bool neg, guWhiteboard::Whiteboard *wb = NULL): Predicate(expr, false, neg), WBExpression(wb) {}
+
+                /**
+                 * Whiteboard context constructor
+                 * @param expr whiteboard message name to get
+                 * @param neg is this a negation?
+                 * @param wc the whiteboard context to use (may not be null)
+                 */
+                WBPredicate(const std::string &expr, bool neg, WBContext *wc): Predicate(expr, false, neg), WBExpression(wc) {}
 
                 /** return the value, negated if necessary */
                 virtual int evaluate(Machine *m = NULL);
