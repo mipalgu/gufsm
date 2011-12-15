@@ -58,6 +58,7 @@
 #ifndef gufsm_FSMWBSubMachine_h
 #define gufsm_FSMWBSubMachine_h
 
+#include <Whiteboard.h>
 #include "FSMSuspensibleMachine.h"
 
 namespace FSM
@@ -66,6 +67,7 @@ namespace FSM
 
         class WBSubMachine: public SuspensibleMachine
         {
+                std::string _name;      /// name for the machine on the Whiteboard
                 bool _deleteContext;    /// does the machine own its WB context?
         public:
                 /** constructor */
@@ -75,11 +77,44 @@ namespace FSM
                 /** destructor */
                 virtual ~WBSubMachine();
 
+                /** put the state machine into its initial state */
+                virtual void initialise();
+                
+                /** name getter */
+                const std::string &name() { return _name; }
+
+                /** name setter */
+                void setName(const std::string &name) { _name = name; }
+
+                /** suspend this state machine */
+                virtual void suspend();
+
+                /** resume this state machine where it left off */
+                virtual void resume();
+
                 /** return whether the context will be deleted by the destructor */
                 bool willDeleteContext() { return _deleteContext; }
 
                 /** should the context be deleted in the destructor? */
                 void setDeleteContext(bool del = true) { _deleteContext = del; }
+
+                /** suspend from the whiteboard, requires a string with the machine's name */
+                void wb_suspend(std::string, WBMsg *msg) { if (name() == msg->getStringValue()) suspend(); }
+
+                /** specific suspend from the whiteboard (wb message name must be suspend_MACHINENAME */
+                void wb_suspend_me(std::string, WBMsg *) { suspend(); }
+
+                /** resume from the whiteboard, requires a string with the machine's name */
+                void wb_resume(std::string, WBMsg *msg) { if (name() == msg->getStringValue()) resume(); }
+
+                /** specific resume from the whiteboard (wb message name must be suspend_MACHINENAME */
+                void wb_resume_me(std::string, WBMsg *) { resume(); }
+
+                /** resume from the whiteboard, requires a string with the machine's name */
+                void wb_restart(std::string s, WBMsg *msg) { if (name() == msg->getStringValue()) wb_restart_me(s, msg); }
+
+                /** specific resume from the whiteboard (wb message name must be suspend_MACHINENAME */
+                void wb_restart_me(std::string, WBMsg *) { restart(); }
         };
 }
 #endif
