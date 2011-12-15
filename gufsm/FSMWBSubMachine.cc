@@ -73,6 +73,11 @@ WBSubMachine::WBSubMachine(State *initialState, WBContext *ctx, int mid, State *
                 _deleteContext = context() != NULL;
         }
 
+        initialise();
+
+        /*
+         * subscribe to suspend/resume/restart type messages
+         */
         string wb_name = "suspend";
         Whiteboard *wb = ctx->whiteboard();
         Whiteboard::WBResult r;
@@ -86,7 +91,30 @@ WBSubMachine::WBSubMachine(State *initialState, WBContext *ctx, int mid, State *
         wb->subscribeToMessage(wb_name, WB_BIND(WBSubMachine::wb_suspend_me), r);
 	if (r != Whiteboard::METHOD_OK)
                 cerr << "Failed to subscribe to '" << wb_name << "'" << endl;
+
+        wb_name = "resume";
+        wb->subscribeToMessage(wb_name, WB_BIND(WBSubMachine::wb_resume), r);
+	if (r != Whiteboard::METHOD_OK)
+                cerr << "Failed to subscribe to '" << wb_name << "'" << endl;
         
+        wb_name += "_";
+        wb_name += name();
+        
+        wb->subscribeToMessage(wb_name, WB_BIND(WBSubMachine::wb_resume_me), r);
+	if (r != Whiteboard::METHOD_OK)
+                cerr << "Failed to subscribe to '" << wb_name << "'" << endl;
+        
+        wb_name = "restart";
+        wb->subscribeToMessage(wb_name, WB_BIND(WBSubMachine::wb_restart), r);
+	if (r != Whiteboard::METHOD_OK)
+                cerr << "Failed to subscribe to '" << wb_name << "'" << endl;
+        
+        wb_name += "_";
+        wb_name += name();
+        
+        wb->subscribeToMessage(wb_name, WB_BIND(WBSubMachine::wb_restart_me), r);
+	if (r != Whiteboard::METHOD_OK)
+                cerr << "Failed to subscribe to '" << wb_name << "'" << endl;
 }
 
 
@@ -106,11 +134,72 @@ WBSubMachine::~WBSubMachine()
 	if (r != Whiteboard::METHOD_OK)
                 cerr << "Failed to un-subscribe from '" << wb_name << "'" << endl;
 
+        wb_name = "resume";
+        wb->unsubscribeToMessage(wb_name, r);
+	if (r != Whiteboard::METHOD_OK)
+                cerr << "Failed to un-subscribe from '" << wb_name << "'" << endl;
+        
+        wb_name += "_";
+        wb_name += name();
+        
+        wb->unsubscribeToMessage(wb_name, r);
+	if (r != Whiteboard::METHOD_OK)
+                cerr << "Failed to un-subscribe from '" << wb_name << "'" << endl;
+        
+        wb_name = "restart";
+        wb->unsubscribeToMessage(wb_name, r);
+	if (r != Whiteboard::METHOD_OK)
+                cerr << "Failed to un-subscribe from '" << wb_name << "'" << endl;
+        
+        wb_name += "_";
+        wb_name += name();
+        
+        wb->unsubscribeToMessage(wb_name, r);
+	if (r != Whiteboard::METHOD_OK)
+                cerr << "Failed to un-subscribe from '" << wb_name << "'" << endl;
+        
         if (_deleteContext && context()) delete (WBContext *) context();
 }
 
 
-void WBSubMachine::wb_suspend(string name, WBMsg *msg)
+void WBSubMachine::initialise()
 {
+        Whiteboard *wb = ((WBContext *)context())->whiteboard();
+        string wb_name = name() + "IsSuspended";
         
+        wb->addMessage(wb_name, WBMsg(false));
+        
+        wb_name = name() + "IsRunning";
+        
+        wb->addMessage(wb_name, WBMsg(true));
+}
+
+
+void WBSubMachine::suspend()
+{
+        Whiteboard *wb = ((WBContext *)context())->whiteboard();
+        string wb_name = name() + "IsRunning";
+
+        wb->addMessage(wb_name, WBMsg(false));
+
+        SuspensibleMachine::suspend();
+
+        wb_name = name() + "IsSuspended";
+
+        wb->addMessage(wb_name, WBMsg(true));
+}
+
+
+void WBSubMachine::resume()
+{
+        Whiteboard *wb = ((WBContext *)context())->whiteboard();
+        string wb_name = name() + "IsSuspended";
+
+        wb->addMessage(wb_name, WBMsg(false));
+
+        SuspensibleMachine::resume();
+
+        wb_name = name() + "IsRunning";
+
+        wb->addMessage(wb_name, WBMsg(true));
 }
