@@ -232,6 +232,7 @@
 				F1084F8A1411E83B004806EA /* Frameworks */,
 				F1084F8B1411E83B004806EA /* Headers */,
 				F1084F911411E84F004806EA /* ShellScript */,
+				F16CE5BA1499A96B00721D53 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -318,6 +319,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
 			shellScript = "cd ${SRCROOT}\nout=\"${SRCROOT}/build.host\"\nmkdir -p \"$out\"\nfor ((i=0; i < SCRIPT_INPUT_FILE_COUNT ; i++)); do\n    inputFile=`eval echo '$SCRIPT_INPUT_FILE_'$i`\n    outputFile=\"$out\"/`basename \"$inputFile\" | sed 's/.g$/.tokens/'`\n\n    if [ ! $outputFile -nt $inputFile ]; then\n        java -classpath /usr/local/share/java/antlr-3.4-complete.jar org.antlr.Tool -language C -o \"$out\" \"$inputFile\" 2>&1 | sed 's/warning\\([^:]*\\): \\([^ ]*\\): \\(.*\\)$/\\2: warning: \\3 \\1/' 1>&2\n    fi\ndone\n";
+		};
+		F16CE5BA1499A96B00721D53 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"NSString+MixedCase.h",
+				"NSString+MixedCase.m",
+				"NSMutableArray+Stack.h",
+				"NSMutableArray+Stack.m",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd ${SRCROOT}\nout=\"${SRCROOT}/build.host\"\nmkdir -p \"$out\"\nUTIL_DIR=${GUNAO_DIR}/posix/guwhiteboard/objc/Classes\nfor ((i=0; i < SCRIPT_INPUT_FILE_COUNT ; i++)); do\n    inputFile=`eval echo '$SCRIPT_INPUT_FILE_'$i`\n    ln -s ${UTIL_DIR}/${inputFile} \"$out\"\ndone\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
