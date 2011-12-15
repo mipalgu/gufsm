@@ -158,7 +158,17 @@ namespace FSM
         /**
          * Printing action for strings
          */
-        typedef PrintingAction<std::string> PrintStringAction;
+        class PrintStringAction: public PrintingAction<std::string>
+        {
+        public:
+                PrintStringAction(std::string s = ""): PrintingAction<std::string>(s) {}
+                
+                /** setting any parameter sets the context */
+                virtual void add_parameter(int index, long long value)
+                {
+                        setContent((const char *)value);
+                }
+        };
 
         /**
          * Printing action for ints

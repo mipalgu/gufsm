@@ -109,7 +109,7 @@ int main (int argc, char * const argv[])
 {
         bool kripke_flag = false, verbose = false;
         int ch;
-        while ((ch = getopt(argc, argv, "k")) != -1)
+        while ((ch = getopt(argc, argv, "kv")) != -1)
         {
                 switch (ch)
                 {
@@ -143,6 +143,9 @@ int main (int argc, char * const argv[])
 #endif
         PrintStatenameFunction printStatenameFunction;
         antlr_context.set_function("print_state_name", &printStatenameFunction);
+
+        PrintStringAction printStringFunction;
+        antlr_context.set_function("print", &printStringFunction);
 
         PrintIntAction printIntFunction;
         antlr_context.set_function("print_int", &printIntFunction);
