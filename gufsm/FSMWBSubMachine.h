@@ -66,6 +66,7 @@ namespace FSM
 
         class WBSubMachine: public SuspensibleMachine
         {
+                std::string _name;      /// name for the machine on the Whiteboard
                 bool _deleteContext;    /// does the machine own its WB context?
         public:
                 /** constructor */
@@ -75,11 +76,23 @@ namespace FSM
                 /** destructor */
                 virtual ~WBSubMachine();
 
+                /** name getter */
+                const std::string &name() { return _name; }
+
+                /** name setter */
+                void setName(const std::string &name) { _name = name; }
+
                 /** return whether the context will be deleted by the destructor */
                 bool willDeleteContext() { return _deleteContext; }
 
                 /** should the context be deleted in the destructor? */
                 void setDeleteContext(bool del = true) { _deleteContext = del; }
+
+                /** suspend from the whiteboard, requires a string with the machine's name */
+                void wb_suspend(std::string, WBMsg *msg);
+
+                /** specific suspend from the whiteboard (wb message name must be suspend_MACHINENAME */
+                void wb_suspend_me(std::string, WBMsg *msg);
         };
 }
 #endif

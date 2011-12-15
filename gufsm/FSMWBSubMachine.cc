@@ -55,10 +55,14 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#include <iostream>
+#include <Whiteboard.h>
 #include "FSMWBSubMachine.h"
 #include "FSMWBContext.h"
 
 using namespace FSM;
+using namespace std;
+using namespace guWhiteboard;
 
 WBSubMachine::WBSubMachine(State *initialState, WBContext *ctx, int mid, State *s, bool del):
         SuspensibleMachine(initialState, ctx, mid, s, del), _deleteContext(false)
@@ -69,13 +73,44 @@ WBSubMachine::WBSubMachine(State *initialState, WBContext *ctx, int mid, State *
                 _deleteContext = context() != NULL;
         }
 
-        /* XXX: TODO: subscribe to callbacks, post on suspend/resume */
+        string wb_name = "suspend";
+        Whiteboard *wb = ctx->whiteboard();
+        Whiteboard::WBResult r;
+        wb->subscribeToMessage(wb_name, WB_BIND(WBSubMachine::wb_suspend), r);
+	if (r != Whiteboard::METHOD_OK)
+                cerr << "Failed to subscribe to '" << wb_name << "'" << endl;
+
+        wb_name += "_";
+        wb_name += name();
+
+        wb->subscribeToMessage(wb_name, WB_BIND(WBSubMachine::wb_suspend_me), r);
+	if (r != Whiteboard::METHOD_OK)
+                cerr << "Failed to subscribe to '" << wb_name << "'" << endl;
+        
 }
 
 
 WBSubMachine::~WBSubMachine()
 {
-        /* XXX: TODO: unsubscribe from callbacks */
+        string wb_name = "suspend";
+        Whiteboard *wb = ((WBContext *)context())->whiteboard();
+        Whiteboard::WBResult r;
+        wb->unsubscribeToMessage(wb_name, r);
+	if (r != Whiteboard::METHOD_OK)
+                cerr << "Failed to un-subscribe from '" << wb_name << "'" << endl;
+        
+        wb_name += "_";
+        wb_name += name();
+        
+        wb->unsubscribeToMessage(wb_name, r);
+	if (r != Whiteboard::METHOD_OK)
+                cerr << "Failed to un-subscribe from '" << wb_name << "'" << endl;
 
         if (_deleteContext && context()) delete (WBContext *) context();
+}
+
+
+void WBSubMachine::wb_suspend(string name, WBMsg *msg)
+{
+        
 }
