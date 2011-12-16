@@ -60,6 +60,7 @@
 #include <cassert>
 #include "FSMachineVector.h"
 #include "FSMANTLRContext.h"
+#include "FSMState.h"
 
 #include "stringConstants.h"
 
@@ -85,6 +86,45 @@ StateMachineVector::StateMachineVector(Context *ctx, useconds_t timeout,
 {
         if (!default_idle_function) default_idle_function = default_idle_sleep;
         _no_transition_fired = default_idle_function;
+}
+
+
+SuspensibleMachine *StateMachineVector::addMachine(SuspensibleMachine *m, int index, bool resume)
+{
+        int size = (int) machines().size();
+        int mid = index;
+        if (mid < 0|| mid > size) mid = size;
+
+        if (!m) m = new SuspensibleMachine(NULL, _context);
+        if (!m->id()) m->setID(mid);
+        if (index < 0 || index >= size )
+                _machines.push_back(m);
+        else
+        {
+                SuspensibleMachine *old = _machines[index];
+                _machines[index] = m;
+                if (old)
+                {
+                        if (resume)
+                        {
+                                int sid = -1;
+                                State *s = old->currentState();
+                                if (s)
+                                {
+                                        sid = s->stateID();
+                                        m->setCurrentState(m->stateForID(sid));
+                                        s = old->previousState();
+                                        if (s)
+                                        {
+                                                sid = s->stateID();
+                                                m->setPreviousState(m->stateForID(sid));
+                                        }
+                                }
+                        }
+                        delete old;
+                }
+        }
+        return m;
 }
 
 
