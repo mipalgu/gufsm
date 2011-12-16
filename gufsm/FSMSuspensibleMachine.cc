@@ -87,7 +87,8 @@ void SuspensibleMachine::suspend()
                 _deleteSuspendState = true;
         }
 
-        setPreviousState(currentState());
+        _resumeState = currentState();
+        setPreviousState(_resumeState);
         setCurrentState(_suspendState);
 }
 
@@ -102,8 +103,8 @@ void SuspensibleMachine::resume()
         if (curr != _suspendState)
                 return;
 
-        State *prev = previousState();
-        if (!prev) prev = states()[0];
+        State *prev = _resumeState;
+        if (!prev || prev == _suspendState) prev = states()[0];
 
         setPreviousState(currentState());
         setCurrentState(prev);

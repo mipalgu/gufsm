@@ -67,12 +67,14 @@ namespace FSM
         class SuspensibleMachine: public Machine
         {
                 State *_suspendState;           /// the suspend state
+                State *_resumeState;            /// state to resume to
                 bool _deleteSuspendState;       /// should delete in destructor?
         public:
                 /** constructor */
                 SuspensibleMachine(State *initialState = NULL, Context *ctx = NULL, int mid=0,
                                    State *s = NULL, bool del = false):
                                 Machine(initialState, ctx, mid), _suspendState(s),
+                                _resumeState(NULL),
                                 _deleteSuspendState(del) {}
                 /** destructor */
                 virtual ~SuspensibleMachine();
@@ -91,6 +93,9 @@ namespace FSM
 
                 /** resume this state machine where it left off */
                 virtual void resume();
+
+                /** is this machine scheduled for resumption? */
+                virtual bool scheduledForResume() { return false; }
         };
 }
 

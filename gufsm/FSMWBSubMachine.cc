@@ -65,7 +65,8 @@ using namespace std;
 using namespace guWhiteboard;
 
 WBSubMachine::WBSubMachine(State *initialState, WBContext *ctx, int mid, State *s, bool del):
-        SuspensibleMachine(initialState, ctx, mid, s, del), _deleteContext(false)
+        SuspensibleMachine(initialState, ctx, mid, s, del), _deleteContext(false),
+        _scheduleSuspend(false), _scheduleResume(false), _scheduleRestart(false)
 {
         if (!ctx)
         {
@@ -160,6 +161,23 @@ WBSubMachine::~WBSubMachine()
 }
 
 
+bool WBSubMachine::executeOnce()
+{
+        if (_scheduleSuspend) suspend();
+        else if (_scheduleRestart) restart();
+        else if (_scheduleResume) resume();
+
+        return SuspensibleMachine::executeOnce();
+}
+
+
+void WBSubMachine::restart()
+{
+        SuspensibleMachine::restart();
+        _scheduleRestart = false;
+}
+
+
 void WBSubMachine::initialise()
 {
         Whiteboard *wb = ((WBContext *)context())->whiteboard();
@@ -187,6 +205,8 @@ void WBSubMachine::suspend()
         wb_name = name() + "IsSuspended";
 
         wb->addMessage(wb_name, WBMsg(true));
+
+        _scheduleSuspend = false;
 }
 
 
@@ -202,4 +222,6 @@ void WBSubMachine::resume()
         wb_name = name() + "IsRunning";
 
         wb->addMessage(wb_name, WBMsg(true));
+
+        _scheduleResume = false;
 }
