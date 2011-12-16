@@ -202,7 +202,9 @@ int main (int argc, char * const argv[])
                 cout << kripke << endl;
                 return EXIT_SUCCESS;
         }
-        factory.fsms()->execute();
+        factory.fsms()->scheduleExecuteOnQueue();
+
+        dispatch_main();
 
         return EXIT_SUCCESS;
 }

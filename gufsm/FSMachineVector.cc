@@ -84,6 +84,11 @@ StateMachineVector::StateMachineVector(Context *ctx, useconds_t timeout,
                                        idle_f default_idle_function):
         _context(ctx), _machines(), _idle_timeout(timeout), _accepting(false)
 {
+        string q_name("dispatch_queue_");
+        q_name += (long long) this;
+
+        _queue = dispatch_queue_create(q_name.c_str(), NULL);
+
         if (!default_idle_function) default_idle_function = default_idle_sleep;
         _no_transition_fired = default_idle_function;
 }
@@ -146,6 +151,30 @@ bool StateMachineVector::executeOnce()
 }
 
 
+bool StateMachineVector::executeOnceOnQueue(dispatch_queue_t queue)
+{
+        bool fired = false;
+
+        if (!queue) queue = dispatch_get_main_queue();
+
+        setAccepting(true);
+        
+        for (SuspensibleMachine *m: machines()) if (m->isSuspended() && !m->scheduledForResume())
+                setAccepting(false);    // a suspended machine is never accepting
+        else
+        {
+                __block bool a = false;
+                dispatch_sync(queue, ^{ a = !m->executeOnce(); });
+
+                setAccepting(a && accepting());
+                
+                if (m->previousState() != m->currentState()) fired = true;
+        }
+        
+        return fired;
+}
+
+
 void StateMachineVector::execute()
 {
         do
@@ -156,6 +185,22 @@ void StateMachineVector::execute()
         while (!accepting());
 }
 
+
+void StateMachineVector::scheduleExecuteOnQueue(dispatch_queue_t queue)
+{
+        if (!queue) queue = dispatch_get_main_queue();
+        dispatch_async(_queue,
+        ^{
+                do
+                {
+                        if (!executeOnceOnQueue(queue) && _no_transition_fired)
+                                _no_transition_fired(_idle_timeout);
+                }
+                while (!accepting());
+
+                exit(EXIT_SUCCESS);
+        });
+}
 
 void StateMachineVector::initialise()
 {

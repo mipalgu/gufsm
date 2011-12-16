@@ -59,6 +59,7 @@
 #define gufsm_FSMachineVector_h
 
 #include <unistd.h>
+#include <dispatch/dispatch.h>
 #include <vector>
 #include <string>
 #include <list>
@@ -116,6 +117,8 @@ namespace FSM
                 std::string generate_from(KripkeState &, std::list<KripkeState> &, size_t n, std::string **names);
                 std::string  kripkeToString(KripkeState &s, size_t n, std::string **names, bool derived=false);
 
+                dispatch_queue_t _queue;        /// dispatch run queue
+
                 void add_if_not_seen(KripkeState &, std::list<KripkeState> &);
                 void  kripkeToANTLRContext (KripkeState &s, size_t n, std:: string **names);
                 unsigned long long  ANTLRContextToVariableCombination(size_t n, std:: string **names);
@@ -163,9 +166,20 @@ namespace FSM
                 virtual bool executeOnce();
 
                 /**
+                 * synchronously execute once on a specific dispatch queue
+                 */
+                virtual bool executeOnceOnQueue(dispatch_queue_t queue = NULL);
+                
+                /**
                  * execute until accepting state is encountered
                  */
                 virtual void execute();
+                
+                /**
+                 * asynchronously schedule execute on a specific dispatch queue until
+                 * accepting state is encountered
+                 */
+                virtual void scheduleExecuteOnQueue(dispatch_queue_t queue = NULL);
                 
                 /**
                  * print the Kripke structure in svm format 
