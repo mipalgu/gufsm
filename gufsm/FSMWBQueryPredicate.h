@@ -81,6 +81,7 @@ namespace FSM
                 pthread_mutex_t _lock;          /// condition lock
                 pthread_cond_t _receivedProof;  /// proof received condition
 
+                void init(guWhiteboard::Whiteboard *wb);
                 void callback(std::string dataName, WBMsg *msg);
         public:
                 /**
@@ -97,7 +98,7 @@ namespace FSM
                  * @param neg is this a negation?
                  * @param wc the whiteboard context to use (may not be null)
                  */
-                WBQueryPredicate(const std::string &p, bool neg, WBContext *wc): WBQueryPredicate(p, neg, wc->whiteboard()) {}
+                WBQueryPredicate(const std::string &p, bool neg, WBContext *wc);
 
                 /** whiteboard setter (subscribes to message responses) */
                 void setWhiteboard(guWhiteboard::Whiteboard *wb);

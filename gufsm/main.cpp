@@ -55,6 +55,8 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#include "FSMANTLRContext.h"
+
 #include <iostream>
 #include <sstream>
 #include <unistd.h>
@@ -63,7 +65,6 @@
 #include "FSMState.h"
 #include "FSMExpression.h"
 #include "FSMWBPostAction.h"
-#include "FSMANTLRContext.h"
 #include "FSMVectorFactory.h"
 
 using namespace std;

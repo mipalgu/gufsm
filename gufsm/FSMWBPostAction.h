@@ -58,10 +58,10 @@
 #ifndef gufsm_FSMWBPostAction_h
 #define gufsm_FSMWBPostAction_h
 
-#include <Whiteboard.h>
 #include "FSMachine.h"
 #include "FSMAction.h"
 #include "FSMWBContext.h"
+#include <Whiteboard.h>
 
 namespace FSM
 {

@@ -55,11 +55,12 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#include "FSMANTLRContext.h"
+
 #include <iostream>
 #include <sstream>
 #include <cassert>
 #include "FSMachineVector.h"
-#include "FSMANTLRContext.h"
 #include "FSMState.h"
 
 #include "stringConstants.h"
@@ -139,8 +140,10 @@ bool StateMachineVector::executeOnce()
 
         setAccepting(true);
 
-        for (SuspensibleMachine *m: machines()) if (!m->isSuspended())
+        for (MachineVector::iterator it = machines().begin();
+             it != machines().end(); it++)
         {
+                SuspensibleMachine *m = *it;
                 bool a = !m->executeOnce();
                 setAccepting(a && accepting());
 
@@ -150,6 +153,19 @@ bool StateMachineVector::executeOnce()
         return fired;
 }
 
+#ifndef __BLOCKS__
+struct spawn_context
+{
+        SuspensibleMachine *m;
+        bool &a;
+};
+
+static void spawn_execute_once(void *p)
+{
+        spawn_context *c = (spawn_context *) p;
+        c->a = !c->m->executeOnce();
+}
+#endif
 
 bool StateMachineVector::executeOnceOnQueue(dispatch_queue_t queue)
 {
@@ -158,19 +174,28 @@ bool StateMachineVector::executeOnceOnQueue(dispatch_queue_t queue)
         if (!queue) queue = dispatch_get_main_queue();
 
         setAccepting(true);
-        
-        for (SuspensibleMachine *m: machines()) if (m->isSuspended() && !m->scheduledForResume())
-                setAccepting(false);    // a suspended machine is never accepting
-        else
-        {
-                __block bool a = false;
-                dispatch_sync(queue, ^{ a = !m->executeOnce(); });
 
-                setAccepting(a && accepting());
-                
-                if (m->previousState() != m->currentState()) fired = true;
-        }
-        
+        for (MachineVector::iterator it = machines().begin();
+             it != machines().end(); it++)
+        {
+                SuspensibleMachine *m = *it;
+                if (m->isSuspended() && !m->scheduledForResume())
+                        setAccepting(false);    // a suspended machine is never accepting
+                else
+                {
+#ifdef __BLOCKS__
+                        __block bool a = false;
+                        dispatch_sync(queue, ^{ a = !m->executeOnce(); });
+#else // no __BLOCKS__
+                        bool a = false;
+                        spawn_context c = { m, a };
+                        dispatch_sync_f(queue, &c, spawn_execute_once);
+#endif
+                        setAccepting(a && accepting());
+                        
+                        if (m->previousState() != m->currentState()) fired = true;
+                }
+        }        
         return fired;
 }
 
@@ -186,9 +211,37 @@ void StateMachineVector::execute()
 }
 
 
+#ifndef __BLOCKS__
+struct spawn_queue_param
+{
+        StateMachineVector *self;
+        dispatch_queue_t queue;
+};
+
+void StateMachineVector::do_spawn_once_on_queue(dispatch_queue_t queue)
+{
+        do
+        {
+                if (!executeOnceOnQueue(queue) && _no_transition_fired)
+                        _no_transition_fired(_idle_timeout);
+        }
+        while (!accepting());
+
+        exit(EXIT_SUCCESS);
+}
+
+static void spawn_execute_once_on_queue(void *p)
+{
+        spawn_queue_param *par = (spawn_queue_param *) p;
+        par->self->do_spawn_once_on_queue(par->queue);
+}
+#endif
+
+
 void StateMachineVector::scheduleExecuteOnQueue(dispatch_queue_t queue)
 {
         if (!queue) queue = dispatch_get_main_queue();
+#ifdef __BLOCKS__
         dispatch_async(_queue,
         ^{
                 do
@@ -200,19 +253,31 @@ void StateMachineVector::scheduleExecuteOnQueue(dispatch_queue_t queue)
 
                 exit(EXIT_SUCCESS);
         });
+#else // no __BLOCKS__
+        spawn_queue_param p = { this, queue };
+        dispatch_async_f(_queue, &p, spawn_execute_once_on_queue);
+#endif
 }
 
 void StateMachineVector::initialise()
 {
-        for (SuspensibleMachine *m: machines())
+        for (MachineVector::iterator it = machines().begin();
+             it != machines().end(); it++)
+        {
+                SuspensibleMachine *m = *it;
                 m->initialise();
+        }
 }
 
 
 void StateMachineVector::restart()
 {
-        for (SuspensibleMachine *m: machines())
+        for (MachineVector::iterator it = machines().begin();
+             it != machines().end(); it++)
+        {
+                SuspensibleMachine *m = *it;
                 m->restart();
+        }
 }
 
 using namespace std;
@@ -243,10 +308,13 @@ string StateMachineVector::description()
 {
         stringstream ss;
         int i = 0;
-        for (Machine *m: machines())
+        for (MachineVector::iterator it = machines().begin();
+             it != machines().end(); it++)
+        {
+                SuspensibleMachine *m = *it;
                 ss << "\nVector Machine " << i++ << ":\n" <<
                 m->description() << endl;
-
+        }
         return ss.str();
 }
 
@@ -419,10 +487,13 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
 
 void StateMachineVector:: add_if_not_seen(KripkeState &x, std::list<KripkeState> &kstates )
 {
-        
         bool found = false;
-        for (auto t: kstates)
+        for (std::list<KripkeState>::iterator it = kstates.begin();
+             it != kstates.end(); it++)
+        {
+                const KripkeState &t = *it;
                 if (x == t) { found = true; break; }
+        }
         if (!found) kstates.push_back(x);
 }
 
@@ -520,8 +591,12 @@ string StateMachineVector::kripkeInSVMformat()
         
                 /* print variables of this machine in smv fromat*/
                 /* ALL BOOLEAN, TODO, make integer values */
-                for (auto p: antlr_context->variables())
+                for (map<string, int>::iterator it = antlr_context->variables().begin(); 
+                     it != antlr_context->variables().end(); it++)
+                {
+                        const pair<string, int> &p = *it;
                         ss << variableNRange(p.first);
+                }
         }
         // range of the variable turn */
         ss << "turn : {" ;
@@ -550,9 +625,10 @@ string StateMachineVector::kripkeInSVMformat()
         int i = 0;
         std:vector<int>  indexesPerFSM(machines().size() );
         vector<int>  maxIndexesPerFSM(machines().size() );
-        for (Machine *m: machines())
-        {  
-                
+        for (MachineVector::iterator it = machines().begin();
+             it != machines().end(); it++)
+        {
+                SuspensibleMachine *m = *it;
                 m->localKripkeStateNames(true);
                 maxIndexesPerFSM[i]=(int)m->sizeLocalKripkeStateNames()-1;
                 indexesPerFSM[i]=0;
@@ -576,10 +652,13 @@ string StateMachineVector::kripkeInSVMformat()
                  
                  KripkeFreezePointVector pcKripkeValue;
                  
-                 for (Machine *m: machines())
-                 {      KripkeFreezePointOfMachine freezePoint;
+                 for (MachineVector::iterator it = machines().begin();
+                      it != machines().end(); it++)
+                 {
+                         SuspensibleMachine *m = *it;
+                         KripkeFreezePointOfMachine freezePoint;
                          freezePoint.machine=m;
-                         
+
                          pcKripkeValue.push_back(m->localKripkeStateNames() [indexesPerFSM[i]]);
                          i++;
                  }
@@ -588,7 +667,8 @@ string StateMachineVector::kripkeInSVMformat()
                 
                  
                  int column =0;
-                 for (Machine *m: machines())
+                 for (MachineVector::iterator it = machines().begin();
+                      it != machines().end(); it++)
                  {
                          if(indexesPerFSM[column]<maxIndexesPerFSM[column])
                          { indexesPerFSM[column]++;
@@ -640,9 +720,12 @@ string StateMachineVector::kripkeInSVMformat()
         size_t n = antlr_context->variables().size();
         string *names[n];
         i = 0;
-        for (auto &p: antlr_context->variables())
+        for (map<string, int>::iterator it = antlr_context->variables().begin(); 
+             it != antlr_context->variables().end(); it++)
+        {
+                const pair<string, int> &p = *it;
                 names[i++] = (string *) &p.first;
-
+        }
         assert(i == n);
         assert(n < 64);
 
@@ -651,13 +734,14 @@ string StateMachineVector::kripkeInSVMformat()
         for (unsigned long long k = 0; k < combinations; k++)
                 kstates.push_back(KripkeState(k, &kripkePCValues[0]));
 
-        for (auto s: kstates)
+        for (std::list<KripkeState>::iterator it = kstates.begin();
+             it != kstates.end(); it++)
         {       /* printing a Kiprke state  */
                 /* as source */
+                KripkeState &s = *it;
                 ss << kripkeToString(s, n, names) << ":\n";
                 ss << generate_from(s, kstates,n,names);
         }
-
 
         /* Write the exhaustive condition  */
          ss << "TRUE:"  << kripkeToString(kstates.front(), n, names, true) << ";"<< std::endl;
@@ -668,9 +752,13 @@ string StateMachineVector::kripkeInSVMformat()
 }
 
 std:: string StateMachineVector ::descriptionSMVformat(KripkeFreezePointVector &data)
-{       stringstream ss;
-        for (auto machineRingletState: data)
-        {       
+{
+        stringstream ss;
+        for (KripkeFreezePointVector::const_iterator it = data.begin(); 
+             it != data.end(); it++)
+        {
+                const KripkeFreezePointOfMachine &machineRingletState = *it;
+
                 ss << "M"<< machineRingletState.machine->id();
                 ss << "S"<< machineRingletState.stateID;
                 ss << "R" << machineRingletState.ringletStage;
@@ -680,11 +768,15 @@ std:: string StateMachineVector ::descriptionSMVformat(KripkeFreezePointVector &
         return ss.str();
 }
 
-bool StateMachineVector :: inList( const std::list<KripkeState>  & list , const KripkeState &theCandidate) {
-        
-        for (auto &kp : list)
+bool StateMachineVector :: inList( const std::list<KripkeState>  & list , const KripkeState &theCandidate)
+{
+        for (std::list<KripkeState>::const_iterator it = list.begin();
+             it != list.end(); it++)
+        {
+                const KripkeState &kp = *it;
+
                 if ( theCandidate == kp) return true;
-        
+        }
         return false;
 }
 

@@ -94,10 +94,15 @@ namespace FSM
                         if (variable_combination != other.variable_combination ||
                         whose_turn != other.whose_turn)
                                 return false;
-                        auto it = (*other.freeze_point).begin();
-                        for (auto &fpEntry: *freeze_point)
-                                if (fpEntry != *it++)
+                        KripkeFreezePointVector::iterator it = (*other.freeze_point).begin();
+                        KripkeFreezePointVector::iterator it2 = freeze_point->begin();
+                        while (it2 != freeze_point->end())
+                        {
+                                if (it == (*other.freeze_point).end())
                                         return false;
+                                if (*it2++ != *it++)
+                                        return false;
+                        }
                         return true;
                 }
         };
@@ -118,7 +123,6 @@ namespace FSM
                 std::string  kripkeToString(KripkeState &s, size_t n, std::string **names, bool derived=false);
 
                 dispatch_queue_t _queue;        /// dispatch run queue
-
                 void add_if_not_seen(KripkeState &, std::list<KripkeState> &);
                 void  kripkeToANTLRContext (KripkeState &s, size_t n, std:: string **names);
                 unsigned long long  ANTLRContextToVariableCombination(size_t n, std:: string **names);
@@ -200,7 +204,11 @@ namespace FSM
                  * To serialize a Kirpke Gobal vector in smv format
                  */
                 std:: string descriptionSMVformat(KripkeFreezePointVector &);
-       };
+#ifndef __BLOCKS__
+                /** not really public */
+                void do_spawn_once_on_queue(dispatch_queue_t queue);
+#endif
+        };
 }
 
 #endif

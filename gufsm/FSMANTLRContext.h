@@ -58,10 +58,15 @@
 #ifndef gufsm_FSANTLRContext_h
 #define gufsm_FSANTLRContext_h
 
+extern "C"
+{
+#include <antlr3.h>
+#undef false
+#undef true
+}
 #include <map>
 #include <string>
 #include <sstream>
-#include <antlr3.h>
 #include "FSMWBContext.h"
 
 namespace FSM

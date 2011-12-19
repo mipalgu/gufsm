@@ -55,10 +55,12 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#include "FSMANTLRContext.h"
+
 #include <iostream>
 #include <gu_util.h>
+
 #include "FSMVectorFactory.h"
-#include "FSMANTLRContext.h"
 #include "FSMWBSubMachine.h"
 #include "FSMWBSubMachineFactory.h"
 
@@ -67,7 +69,7 @@ using namespace std;
 using namespace guWhiteboard;
 
 StateMachineVectorFactory::StateMachineVectorFactory(ANTLRContext *context,
-                                                     const std::vector<std::string> &names_of_machines_to_build)
+                                                     const vector<string> &names_of_machines_to_build)
 {
         _context = context;
         _fsms = new StateMachineVector(context);
@@ -77,8 +79,9 @@ StateMachineVectorFactory::StateMachineVectorFactory(ANTLRContext *context,
         string wb_name;
 
         int mid=0;
-        if (_fsms) for (string file: names_of_machines_to_build)
+        if (_fsms) for (vector<string>::const_iterator it = names_of_machines_to_build.begin(); it != names_of_machines_to_build.end(); it++)
         {
+                const string &file = *it;
                 addMachine(file, mid++);
 
                 wb_name = "reload_" + file;
@@ -119,9 +122,10 @@ StateMachineVectorFactory::~StateMachineVectorFactory()
 	if (r != Whiteboard::METHOD_OK)
                 cerr << "Failed to un-subscribe from '" << wb_name << "'" << endl;
 
-        for (auto m: fsms()->machines())
+        for (MachineVector::iterator i = fsms()->machines().begin();
+             i != fsms()->machines().end(); i++ )
         {
-                WBSubMachine *wbm = (WBSubMachine *) m;
+                WBSubMachine *wbm = (WBSubMachine *) *i;
                 wb_name = "reload_" + wbm->name();
                 wb->unsubscribeToMessage(wb_name, r);
                 if (r != Whiteboard::METHOD_OK)
@@ -154,9 +158,10 @@ SuspensibleMachine *StateMachineVectorFactory::addMachine(std::string name, int 
 int StateMachineVectorFactory::index_of_machine_named(string machine_name)
 {
         int i = 0;
-        for (auto m: fsms()->machines())
+        for (MachineVector::iterator it = fsms()->machines().begin();
+             it != fsms()->machines().end(); it++ )
         {
-                WBSubMachine *wbm = (WBSubMachine *) m;
+                WBSubMachine *wbm = (WBSubMachine *) *it;
                 if (wbm->name() == machine_name)
                         break;
                 i++;
