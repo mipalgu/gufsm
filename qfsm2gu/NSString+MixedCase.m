@@ -1,1 +1,0 @@
-/Users/rh/Devel/src/MiPal/GUNao/posix/guwhiteboard/objc/Classes/NSString+MixedCase.m
