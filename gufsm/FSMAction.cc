@@ -56,6 +56,7 @@
  *
  */
 #include <time.h>
+#include <cstdio>
 #include <errno.h>
 #include "FSMAction.h"
 
