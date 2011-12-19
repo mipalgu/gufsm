@@ -49,8 +49,10 @@ ANTLR_COMBINED=TransitionContainer.g ActionsContainer.g
 ANTLR_INCLUDES=SimpleCParser.g
 ANTLR_GRAMMARS=SimpleCLexer.g
 
-CLANG_CXXFLAGS=-std=c++0x
+#CLANG_CXXFLAGS=-std=c++0x
+#TARGET_USE_CLANG=YES
 
+.include "../../../mk/boost.mk"		# required for boost
 .include "../../../mk/antlr.mk"		# required for grammar parsing
 .include "../../../mk/whiteboard.mk"	# required for the whiteboard
 .include "../../../mk/util.mk"		# required for gu_util

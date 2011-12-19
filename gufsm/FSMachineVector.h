@@ -94,10 +94,15 @@ namespace FSM
                         if (variable_combination != other.variable_combination ||
                         whose_turn != other.whose_turn)
                                 return false;
-                        auto it = (*other.freeze_point).begin();
-                        for (auto &fpEntry: *freeze_point)
-                                if (fpEntry != *it++)
+                        KripkeFreezePointVector::iterator it = (*other.freeze_point).begin();
+                        KripkeFreezePointVector::iterator it2 = freeze_point->begin();
+                        while (it2 != freeze_point->end())
+                        {
+                                if (it == (*other.freeze_point).end())
                                         return false;
+                                if (*it2++ != *it++)
+                                        return false;
+                        }
                         return true;
                 }
         };

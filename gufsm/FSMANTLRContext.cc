@@ -67,8 +67,12 @@ std::string ANTLRContext::description()
 {
         std::stringstream ss;
         ss << "Context with WB: " << (long) whiteboard() << std::endl;
-        for (auto p: variables())
+        for (std::map<std::string, int>::iterator i = variables().begin();
+             i != variables().end(); i++ )
+        {
+                const std::pair<std::string, int> &p = *i;
                 ss << p.first << " -> " << p.second << std::endl;
+        }
         return ss.str();
 }
 
@@ -76,9 +80,12 @@ std::string ANTLRContext::description()
 std::string ANTLRContext::allNames()
 {
         std::stringstream ss;
-        for (auto p: variables())
+        for (std::map<std::string, int>::iterator i = variables().begin();
+             i != variables().end(); i++ )
+        {
+                const std::pair<std::string, int> &p = *i;
                 ss << p.first << " ";
-        
+        }
         return ss.str();
 }
 
@@ -113,8 +120,10 @@ static int wbIntValue(Whiteboard *wb, const string &name)
 
 void ANTLRContext::take_snapshot()
 {
-        for (auto p: variables())
+        for (std::map<std::string, int>::iterator i = variables().begin();
+             i != variables().end(); i++ )
         {
+                const std::pair<std::string, int> &p = *i;
                 if (p.first.find('$') != std::string::npos)
                         continue;       // ignore internal vars
                 set_variable(p.first, wbIntValue(whiteboard(), p.first));

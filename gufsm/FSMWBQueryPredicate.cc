@@ -67,6 +67,18 @@ using namespace guWhiteboard;
 
 WBQueryPredicate::WBQueryPredicate(const std::string &p, bool neg, Whiteboard *wb): WBPredicate(p, neg)
 {
+        init(wb);
+}
+
+
+WBQueryPredicate::WBQueryPredicate(const std::string &p, bool neg, WBContext *wc): WBPredicate(p, neg)
+{
+        init(wc->whiteboard());
+}
+
+
+void WBQueryPredicate::init(Whiteboard *wb)
+{
         pthread_mutexattr_t mattr;
 
         pthread_mutexattr_init(&mattr);
@@ -81,13 +93,13 @@ WBQueryPredicate::WBQueryPredicate(const std::string &p, bool neg, Whiteboard *w
 
 void WBQueryPredicate::setWhiteboard(guWhiteboard::Whiteboard *wb)
 {
-        Whiteboard::WBResult result = Whiteboard::WBResult::METHOD_OK;
+        Whiteboard::WBResult result = Whiteboard::METHOD_OK;
         if (whiteboard()) whiteboard()->unsubscribeToMessage(name(), result);
 
         WBPredicate::setWhiteboard(wb);
         if (wb) wb->subscribeToMessage(name(), WB_BIND(WBQueryPredicate::callback), result);
 
-        assert(result == Whiteboard::WBResult::METHOD_OK);
+        assert(result == Whiteboard::METHOD_OK);
 }
 
 

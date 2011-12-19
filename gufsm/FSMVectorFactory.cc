@@ -119,9 +119,10 @@ StateMachineVectorFactory::~StateMachineVectorFactory()
 	if (r != Whiteboard::METHOD_OK)
                 cerr << "Failed to un-subscribe from '" << wb_name << "'" << endl;
 
-        for (auto m: fsms()->machines())
+        for (MachineVector::iterator i = fsms()->machines().begin();
+             i != fsms()->machines().end(); i++ )
         {
-                WBSubMachine *wbm = (WBSubMachine *) m;
+                WBSubMachine *wbm = (WBSubMachine *) *i;
                 wb_name = "reload_" + wbm->name();
                 wb->unsubscribeToMessage(wb_name, r);
                 if (r != Whiteboard::METHOD_OK)
@@ -154,9 +155,10 @@ SuspensibleMachine *StateMachineVectorFactory::addMachine(std::string name, int 
 int StateMachineVectorFactory::index_of_machine_named(string machine_name)
 {
         int i = 0;
-        for (auto m: fsms()->machines())
+        for (MachineVector::iterator it = fsms()->machines().begin();
+             it != fsms()->machines().end(); it++ )
         {
-                WBSubMachine *wbm = (WBSubMachine *) m;
+                WBSubMachine *wbm = (WBSubMachine *) *it;
                 if (wbm->name() == machine_name)
                         break;
                 i++;
