@@ -1,0 +1,24 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vladimir Estivill-Castro" description="" version="1" name="MicrowaveEngine" arrowtype="1" numbits="2" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="2">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="120" endx="145" xpos="85" endy="120"/>
+    <state pencolor="0" radius="40" description="OnEntry{ }&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="120" code="2" xpos="185" linewidth="1">WAIT</state>
+    <state pencolor="0" radius="40" description="OnEntry {}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="119" code="0" xpos="441" linewidth="1">CB_ADD</state>
+    <transition c1x="278.0023959767341" c2y="98.36390275022691" c1y="95.61634932045213" description="" straight="1" type="2" ypos="92.86879589067736" endx="405.2229123600034" xpos="214.3921377850995" endy="101.1114561800017" c2x="341.6126541683687">
+      <from>2</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">buttonPushed&amp;&amp;!doorOpen</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="343.2339317934772" c2y="144.955808027096" c1y="142.9614617467648" description="" straight="1" type="2" ypos="140.9671154664335" endx="214.5582337565332" xpos="407.5717808119491" endy="146.9501543074273" c2x="278.8960827750052">
+      <from>0</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">!buttonPushed</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>
