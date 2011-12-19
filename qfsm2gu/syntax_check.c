@@ -63,7 +63,6 @@
 #include "syntax_check.h"
 #include "TransitionContainerParser.h"
 #include "ActionsContainerParser.h"
-#include "SimpleCParser.h"
 #include "SimpleCLexer.h"
 
 static pANTLR3_COMMON_TOKEN_STREAM

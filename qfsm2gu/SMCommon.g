@@ -1,1 +1,0 @@
-../LANGUAGE/SMCommon.g

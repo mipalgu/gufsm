@@ -21,9 +21,9 @@ UTIL_HDRS=${UTIL_SRCS:.m=.h}
 OBJC_SRCS=QFSMElement.m QFSMExporter.m QFSMParser.m main.m ${UTIL_SRCS}
 HDRS=syntax_check.h QFSMElement.h QFSMExporter.h QFSMParser.h
 
-ANTLR_SRCS=TransitionsParser.g ActionsParser.g
-ANTLR_INCLUDES=SMCommon.g
-ANTLR_GRAMMARS=SMLexer.g
+ANTLR_COMBINED=TransitionContainer.g ActionsContainer.g
+ANTLR_INCLUDES=SimpleCParser.g
+ANTLR_GRAMMARS=SimpleCLexer.g
 #ANTLR_LANGUAGES=ObjC	# ObjC is broken in antlr-3.4, use plain C
 
 .include "../../../mk/prefs.mk"
