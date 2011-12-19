@@ -63,7 +63,6 @@
 #include "TransitionContainerParser.h"
 #include "ActionsContainerParser.h"
 #include "SimpleCLexer.h"
-#include "SimpleCParser.h"
 
 static inline ANTLR3_UINT32 getType(pANTLR3_BASE_TREE tree)
 {
