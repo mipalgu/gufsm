@@ -10,7 +10,7 @@
 
 @class QFSMElement;
 
-#ifdef GNUSTEP_BASE_VERSION
+#ifdef OLD_GNUSTEP_BASE_VERSION
 @protocol NSXMLParserDelegate <NSObject>
 @optional
 - (void) parserDidStartDocument: (NSXMLParser *) parser;
