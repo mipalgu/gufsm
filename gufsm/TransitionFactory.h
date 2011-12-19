@@ -59,7 +59,6 @@
 
 #include <map>
 #include <string>
-#include "FSMCodeType.h"
 #include "FSMTransition.h"
 
 namespace FSM
