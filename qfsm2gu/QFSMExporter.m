@@ -237,7 +237,7 @@
                         NSString *initialState = [[states objectAtIndex:
                                                    initialStateIndex] retain];
                         [states removeObjectAtIndex: initialStateIndex];
-                        [states addObject: initialState];
+                        [states insertObject: initialState atIndex: 0];
                         [initialState release];
 
                         NSString *content = [[states componentsJoinedByString:@"\n"]
