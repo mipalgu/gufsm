@@ -54,12 +54,10 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-extern "C"
-{
 #include <antlr3.h>
 #undef false
 #undef true
-}
+
 #include <stdio.h>
 #include <string.h>
 #include <libgen.h>
