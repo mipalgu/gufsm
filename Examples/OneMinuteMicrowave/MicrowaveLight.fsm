@@ -6,9 +6,9 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="120" endx="145" xpos="85" endy="120"/>
-    <state pencolor="0" radius="40" description="OnEntry{ int light; light=0;}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="120" code="2" xpos="185" linewidth="1">NOTSHINELIGHT</state>
-    <state pencolor="0" radius="40" description="OnEntry {light=1;}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="119" code="0" xpos="456" linewidth="1">SHINELIGHT</state>
-    <transition c1x="283.0023959767341" c2y="98.36390275022691" c1y="95.61634932045214" description="" straight="1" type="2" ypos="92.86879589067738" endx="420.2229123600034" xpos="214.3921377850995" endy="101.1114561800017" c2x="351.6126541683687">
+    <state pencolor="0" radius="40" description="OnEntry{ int light; light=0; post(&quot;LEDS&quot;,&quot;Face Off&quot;);}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="120" code="2" xpos="185" linewidth="1">NOTSHINELIGHT</state>
+    <state pencolor="0" radius="40" description="OnEntry {light=1; post (&quot;LEDS&quot;,&quot;Face Blue&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="119" code="0" xpos="456" linewidth="1">SHINELIGHT</state>
+    <transition c1x="283.0023959767341" c2y="98.3639027502269" c1y="95.61634932045214" description="" straight="1" type="2" ypos="92.86879589067736" endx="420.2229123600034" xpos="214.3921377850995" endy="101.1114561800017" c2x="351.6126541683687">
       <from>2</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">doorOpen||timeLeft</inputs>

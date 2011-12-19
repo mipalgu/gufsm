@@ -663,7 +663,7 @@ string StateMachineVector::kripkeInSVMformat()
                          i++;
                  }
                  /* DEBUGGING */
-                 cout <<descriptionSMVformat(pcKripkeValue) << endl;
+                 DBG(cout <<descriptionSMVformat(pcKripkeValue) << endl);
                 
                  
                  int column =0;

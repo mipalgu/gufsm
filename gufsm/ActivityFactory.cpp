@@ -129,7 +129,7 @@ block_callback(void *context, const char *terminal, const char *content,
         {
                 self->set_action(new ANTLRAction(tree, state));
                 self->action()->set_external_variables(self->fsm());
-                cout << "* ANTLRAction " << (long) self->action() << endl;
+                DBG( cout << "* ANTLRAction " << (long) self->action() << endl);
                 return 0;
         }
 
@@ -313,7 +313,7 @@ activity_pop(void *context, const char *terminal, const char *content,
              pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
 {
         ActivityFactory *self = (ActivityFactory *) context;
-        cout << "activity pop (" << terminal << ") content: " << content << endl;
+        DBG(cout << "activity pop (" << terminal << ") content: " << content << endl);
         if (string("K_INT") == terminal)  /* popping a state id? */
                 self->fsm()->addState(self->state());
 
