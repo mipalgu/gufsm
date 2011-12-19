@@ -14,7 +14,7 @@
       <inputs default="0" any="0" invert="0">buttonPushed</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="298.3549630255696" c2y="79.25268593076599" c1y="83.77330321779822" description="" straight="1" type="2" ypos="88.29392050483044" endx="186.2079132621607" xpos="354.4284879072741" endy="74.73206864373377" c2x="242.2814381438652">
+    <transition c1x="298.3549630255696" c2y="79.25268593076599" c1y="83.77330321779822" description="" straight="1" type="2" ypos="88.29392050483042" endx="186.2079132621607" xpos="354.4284879072741" endy="74.73206864373378" c2x="242.2814381438652">
       <from>1</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">!buttonPushed</inputs>
