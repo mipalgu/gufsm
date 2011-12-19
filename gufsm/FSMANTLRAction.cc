@@ -55,16 +55,18 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#include "FSMANTLRContext.h"
+#include "FSMANTLRAction.h"
+#include "FSMANTLRExpression.h"
+
 #include <iostream>
 #include <sstream>
 #include <cassert>
 #include <gu_util.h>
 #include <Whiteboard.h>
+
 #include "FSMachine.h"
 #include "FSMState.h"
-#include "FSMANTLRContext.h"
-#include "FSMANTLRAction.h"
-#include "FSMANTLRExpression.h"
 
 extern "C" {
 #include "parser_walk.h"

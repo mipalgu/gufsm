@@ -119,13 +119,16 @@ bool Machine::executeOnce()
          * check all transitions to see if state change is required
          */
         Transition *firingTransition = NULL;
-        for (Transition *t: _currentState->transitions())       // foreach t
+        for (TransitionVector::iterator it = _currentState->transitions().begin();
+             it != _currentState->transitions().end(); it++)
+        {
+                Transition *t = *it;
                 if (evaluateTransition(t))                      // does t fire?
                 {
                         firingTransition = t;                   // yes, then
                         break;                                  // we are done
                 }
-
+        }
         _previousState = _currentState;
 
         /*
@@ -161,8 +164,10 @@ State *Machine::restart(State *initialState)
 
 State *Machine::stateForID(int state_id)
 {
-        for (State *s: states())
+        for (StateVector::const_iterator it = states().begin();
+             it != states().end(); it++)
         {
+                State *s = *it;
                 if (s->stateID() == state_id)
                         return s;
         }
@@ -176,9 +181,12 @@ string Machine::description()
 {
         stringstream ss;
         int i = 0;
-        for (State *s: states())
+        for (StateVector::const_iterator it = states().begin();
+             it != states().end(); it++)
+        {
+                State *s = *it;
                 ss << "State " << i++ << " (" << (long) s <<  "): " << s->description() << endl;
-
+        }
         return ss.str();
 }
 
@@ -186,8 +194,12 @@ string Machine::kripkeInSVMformat()
 {
         stringstream ss;
         int i = 0;
-        for (State *s: states())
+        for (StateVector::const_iterator it = states().begin();
+             it != states().end(); it++)
+        {
+                State *s = *it;
                 ss << "State " << i++ << " (" << (long) s <<  "): " << s->description() << endl;
+        }
         
         return ss.str();
 }
@@ -202,8 +214,10 @@ const LocalKripkeFrezzePointVector &Machine::localKripkeStateNames(bool snapshot
         rigletCurrentStage.transition_id = 0;
         
         int count=0;
-        for (State *s: states())
-        {      
+        for (StateVector::const_iterator it = states().begin();
+             it != states().end(); it++)
+        {
+                State *s = *it;
                 rigletCurrentStage.stateID=s->stateID();
                 rigletCurrentStage.ringletStage=Epcbefore;
                 _localKripkeStateNames.push_back(rigletCurrentStage ) ;
@@ -214,9 +228,10 @@ const LocalKripkeFrezzePointVector &Machine::localKripkeStateNames(bool snapshot
                 /* we neeed information on transitions labels here */
                 
                 int transitionNumber=0;
-                
-                for (Transition *tr: s->transitions() )
-                {       (void) tr;
+
+                for (TransitionVector::iterator it = _currentState->transitions().begin();
+                     it != _currentState->transitions().end(); it++)
+                {
                         rigletCurrentStage.transition_id=transitionNumber;
                         
                         if (snapshotPerTransition)	

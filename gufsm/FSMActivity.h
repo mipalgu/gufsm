@@ -81,8 +81,9 @@ namespace FSM
                 void perform(Machine *m, ActionStage stage,
                              const ActionVector &actions)
                 {
-                        for (Action *a: actions)
-                                a->perform(m, stage);
+                        for (ActionVector::const_iterator it = actions.begin();
+                             it != actions.end(); it++)
+                                (*it)->perform(m, stage);
                 }
                 
         public:

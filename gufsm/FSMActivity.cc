@@ -119,9 +119,13 @@ string Activity::description(ActionStage stage)
 string Activity::description(const ActionVector &actions)
 {
         string s;
-        for (Action *action: actions)
+        for (ActionVector::const_iterator it = actions.begin();
+             it != actions.end(); it++)
+        {
+                Action *action = *it;
                 if (action) s += action->description();
                 else cerr << "nil action pointer" << endl;
+        }
 
         return s;
 }

@@ -55,9 +55,10 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#include "FSMANTLRContext.h"
+
 #include <iostream>
 #include <Whiteboard.h>
-#include "FSMANTLRContext.h"
 
 using namespace guWhiteboard;
 using namespace FSM;

@@ -123,7 +123,6 @@ namespace FSM
                 std::string  kripkeToString(KripkeState &s, size_t n, std::string **names, bool derived=false);
 
                 dispatch_queue_t _queue;        /// dispatch run queue
-
                 void add_if_not_seen(KripkeState &, std::list<KripkeState> &);
                 void  kripkeToANTLRContext (KripkeState &s, size_t n, std:: string **names);
                 unsigned long long  ANTLRContextToVariableCombination(size_t n, std:: string **names);
@@ -205,7 +204,11 @@ namespace FSM
                  * To serialize a Kirpke Gobal vector in smv format
                  */
                 std:: string descriptionSMVformat(KripkeFreezePointVector &);
-       };
+#ifndef __BLOCKS__
+                /** not really public */
+                void do_spawn_once_on_queue(dispatch_queue_t queue);
+#endif
+        };
 }
 
 #endif

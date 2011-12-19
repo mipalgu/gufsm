@@ -69,9 +69,11 @@ string State::description()
         ss << stateID() << ": '" << name() << "'\n" << activity().description()
            << "\nTransitions:\n";
 
-        for (Transition *t: transitions())
-                ss << t->description();
-        
+        for (TransitionVector::const_iterator it = transitions().begin();
+             it != transitions().end(); it++)
+        {
+                ss << (*it)->description();
+        }
         ss << endl;
 
         return ss.str();

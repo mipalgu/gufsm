@@ -55,10 +55,12 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#include "FSMANTLRContext.h"
+
 #include <iostream>
 #include <gu_util.h>
+
 #include "FSMVectorFactory.h"
-#include "FSMANTLRContext.h"
 #include "FSMWBSubMachine.h"
 #include "FSMWBSubMachineFactory.h"
 
@@ -67,7 +69,7 @@ using namespace std;
 using namespace guWhiteboard;
 
 StateMachineVectorFactory::StateMachineVectorFactory(ANTLRContext *context,
-                                                     const std::vector<std::string> &names_of_machines_to_build)
+                                                     const vector<string> &names_of_machines_to_build)
 {
         _context = context;
         _fsms = new StateMachineVector(context);
@@ -77,8 +79,9 @@ StateMachineVectorFactory::StateMachineVectorFactory(ANTLRContext *context,
         string wb_name;
 
         int mid=0;
-        if (_fsms) for (string file: names_of_machines_to_build)
+        if (_fsms) for (vector<string>::const_iterator it = names_of_machines_to_build.begin(); it != names_of_machines_to_build.end(); it++)
         {
+                const string &file = *it;
                 addMachine(file, mid++);
 
                 wb_name = "reload_" + file;
