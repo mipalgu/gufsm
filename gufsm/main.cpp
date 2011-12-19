@@ -125,19 +125,22 @@ class WBRestartFunction: public WBSuspendFunction
 
 static void usage(const char *cmd)
 {
-        cerr << "Usage: " << cmd << " [-k][-v] [fsm [...]]" << endl;
+        cerr << "Usage: " << cmd << " [-b][-k][-v] [fsm [...]]" << endl;
         exit(EXIT_FAILURE);
 }
 
 
 int main (int argc, char * const argv[])
 {
-        bool kripke_flag = false, verbose = false;
+        bool kripke_flag = false, verbose = false, blocks_flag = false;
         int ch;
-        while ((ch = getopt(argc, argv, "kv")) != -1)
+        while ((ch = getopt(argc, argv, "bkv")) != -1)
         {
                 switch (ch)
                 {
+                        case 'b':       // use blocks (dispatch queue)
+                                blocks_flag = true;
+                                break;
                         case 'k':
                                 kripke_flag = true;
                                 break;
@@ -203,9 +206,13 @@ int main (int argc, char * const argv[])
                 cout << kripke << endl;
                 return EXIT_SUCCESS;
         }
-        factory.fsms()->scheduleExecuteOnQueue();
+        if (blocks_flag)                        // execute on dispatch queue
+        {
+                factory.fsms()->scheduleExecuteOnQueue();
 
-        dispatch_main();
+                dispatch_main();                // never returns
+        }
+        else factory.fsms()->execute();         // execute synchronously
 
         return EXIT_SUCCESS;
 }
