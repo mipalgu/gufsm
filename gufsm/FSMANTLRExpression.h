@@ -58,8 +58,13 @@
 #ifndef gufsm_FSMANTLRExpression_h
 #define gufsm_FSMANTLRExpression_h
 
-#include <sstream>
+extern "C"
+{
 #include <antlr3.h>
+#undef false
+#undef true
+}
+#include <sstream>
 #include "FSMExpression.h"
 
 namespace FSM

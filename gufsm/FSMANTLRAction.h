@@ -58,8 +58,13 @@
 #ifndef gufsm_FSMANTLRAction_h
 #define gufsm_FSMANTLRAction_h
 
-#include <string>
+extern "C"
+{
 #include <antlr3.h>
+#undef false
+#undef true
+}
+#include <string>
 #include "FSMAction.h"
 
 namespace FSM

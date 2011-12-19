@@ -55,11 +55,12 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#include "FSMANTLRContext.h"
+
 #include <iostream>
 #include <sstream>
 #include <cassert>
 #include "FSMachineVector.h"
-#include "FSMANTLRContext.h"
 #include "FSMState.h"
 
 #include "stringConstants.h"
@@ -152,6 +153,19 @@ bool StateMachineVector::executeOnce()
         return fired;
 }
 
+#ifndef __BLOCKS__
+struct spawn_context
+{
+        SuspensibleMachine *m;
+        bool &a;
+};
+
+static void spawn_execute_once(void *p)
+{
+        spawn_context *c = (spawn_context *) p;
+        c->a = !c->m->executeOnce();
+}
+#endif
 
 bool StateMachineVector::executeOnceOnQueue(dispatch_queue_t queue)
 {
@@ -169,9 +183,14 @@ bool StateMachineVector::executeOnceOnQueue(dispatch_queue_t queue)
                         setAccepting(false);    // a suspended machine is never accepting
                 else
                 {
+#ifdef __BLOCKS__
                         __block bool a = false;
                         dispatch_sync(queue, ^{ a = !m->executeOnce(); });
-                        
+#else // no __BLOCKS__
+                        bool a = false;
+                        spawn_context c = { m, a };
+                        dispatch_sync_f(queue, &c, spawn_execute_once);
+#endif
                         setAccepting(a && accepting());
                         
                         if (m->previousState() != m->currentState()) fired = true;
@@ -192,9 +211,37 @@ void StateMachineVector::execute()
 }
 
 
+#ifndef __BLOCKS__
+struct spawn_queue_param
+{
+        StateMachineVector *self;
+        dispatch_queue_t queue;
+};
+
+void StateMachineVector::do_spawn_once_on_queue(dispatch_queue_t queue)
+{
+        do
+        {
+                if (!executeOnceOnQueue(queue) && _no_transition_fired)
+                        _no_transition_fired(_idle_timeout);
+        }
+        while (!accepting());
+
+        exit(EXIT_SUCCESS);
+}
+
+static void spawn_execute_once_on_queue(void *p)
+{
+        spawn_queue_param *par = (spawn_queue_param *) p;
+        par->self->do_spawn_once_on_queue(par->queue);
+}
+#endif
+
+
 void StateMachineVector::scheduleExecuteOnQueue(dispatch_queue_t queue)
 {
         if (!queue) queue = dispatch_get_main_queue();
+#ifdef __BLOCKS__
         dispatch_async(_queue,
         ^{
                 do
@@ -206,6 +253,10 @@ void StateMachineVector::scheduleExecuteOnQueue(dispatch_queue_t queue)
 
                 exit(EXIT_SUCCESS);
         });
+#else // no __BLOCKS__
+        spawn_queue_param p = { this, queue };
+        dispatch_async_f(_queue, &p, spawn_execute_once_on_queue);
+#endif
 }
 
 void StateMachineVector::initialise()
