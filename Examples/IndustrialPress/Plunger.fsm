@@ -1,0 +1,70 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vlad Estivill-Castro" description="" version="1" name="FSM" arrowtype="1" numbits="3" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="165" endx="129" xpos="69" endy="165"/>
+    <state pencolor="0" radius="40" description="OnEntry {print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="165" code="0" xpos="169" linewidth="1">PlungerAtBottom</state>
+    <state pencolor="0" radius="40" description="OnEntry { print_state_name();}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="159" code="1" xpos="423" linewidth="1">PlungerRisingBelowPONR</state>
+    <state pencolor="0" radius="40" description="OnEntry{print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="159" code="2" xpos="686" linewidth="1">PlungerFallingFast</state>
+    <state pencolor="0" radius="40" description="OnEntry{print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="319" code="3" xpos="578" linewidth="1">PlungerFallingSlow</state>
+    <state pencolor="0" radius="40" description="OnEntry{print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="305" code="4" xpos="297" linewidth="1">PlungerRisingAbovePONR</state>
+    <state pencolor="0" radius="40" description="OnEntry{print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="469" code="5" xpos="441" linewidth="1">PlungerAtTop</state>
+    <transition c1x="261.3446864049716" c2y="138.361163708815" c1y="137.8077481130901" description="" straight="1" type="2" ypos="137.2543325173652" endx="388.4084421355964" xpos="197.8128085396592" endy="138.9145793045399" c2x="324.8765642702841">
+      <from>0</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">motorOn&amp;&amp;sensorAtBottomActive</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="520.2261475345341" c2y="142.3419007535152" c1y="139.4539874733673" description="" straight="1" type="2" ypos="136.5660741932194" endx="648.4449473645357" xpos="456.1167476195333" endy="145.2298140336631" c2x="584.3355474495348">
+      <from>1</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">!motorOn</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="370.9617842725253" c2y="241.8563596294109" c1y="218.3879858462558" description="" straight="1" type="2" ypos="194.9196120631007" endx="302.0865726394146" xpos="405.3993900890807" endy="265.324733412566" c2x="336.5241784559699">
+      <from>1</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">!low</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="542.6704131546998" c2y="61.68938526249092" c1y="64.34956811481014" description="" straight="0" type="2" ypos="120.0243521722152" endx="170.0806864539166" xpos="677.0056197320497" endy="125.0146012050859" c2x="297.4158930312665">
+      <from>2</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">sensorAtBottomActive</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="618.2773506560428" c2y="221.1743259594356" c1y="252.5328790738836" description="" straight="1" type="2" ypos="283.8914321883316" endx="660.497291438631" xpos="597.1673802647487" endy="189.8157728449876" c2x="639.3873210473369">
+      <from>3</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">low</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="470.8021840178945" c2y="314.6639296775289" c1y="314.148127383872" description="" straight="1" type="2" ypos="313.6323250902151" endx="335.6829814905059" xpos="538.3617852815888" endy="315.1797319711857" c2x="403.2425827542002">
+      <from>3</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">motorOn</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="353.8960250384681" c2y="406.9558092570422" c1y="369.739736288707" description="" straight="1" type="2" ypos="332.5236633203717" endx="409.6381670215296" xpos="326.0249540469374" endy="444.1718822253775" c2x="381.7670960299989">
+      <from>4</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">sensorAtTopActive</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="408.198897154792" c2y="280.8566456638466" c1y="280.994267505032" description="" straight="1" type="2" ypos="281.1318893462176" endx="566.3997041886852" xpos="329.0984936378453" endy="280.719023822661" c2x="487.2993006717385">
+      <from>4</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">!motorOn</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="497.0339466738358" c2y="378.4049720701414" c1y="410.5919001655916" description="" straight="1" type="2" ypos="442.7788282610419" endx="548.688260334948" xpos="471.2067898432797" endy="346.2180439746911" c2x="522.861103504392">
+      <from>5</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">!motorOn</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>
