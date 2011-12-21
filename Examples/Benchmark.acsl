@@ -1,0 +1,34 @@
+1	Initial
+OnEntry { int d; int r; int x; int t; int to; x=1; z=1; t=1; to=1000000; d=0; r=0; }
+OnExit { print("Number of seconds, benchmark will be running:"); print_int(t+t); }
+{ }
+
+2	Local
+OnEntry { }
+OnExit { x=x+1; }
+{ }
+
+3	LocalCalc
+OnEntry { }
+OnExit { r=r+1; d=d+t; }
+{ }
+
+4	LocalStats
+OnEntry { print("Local iterations per second: "); print_int(r); }
+OnExit { d=0; r=0; }
+{ }
+
+5	Whiteboard
+OnEntry { }
+OnExit { z=z+1; }
+{ }
+
+6	WhiteboardCalc
+OnEntry { }
+OnExit { r=r+1; d=d+t; }
+{ }
+
+7	WhiteboardStats
+OnEntry { print("Whiteboard iterations per second: "); print_int(r); z=0; }
+OnExit { }
+{ }
