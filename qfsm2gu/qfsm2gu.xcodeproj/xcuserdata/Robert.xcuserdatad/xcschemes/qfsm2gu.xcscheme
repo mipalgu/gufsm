@@ -42,7 +42,7 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.GDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.GDB"
       launchStyle = "0"
-      useCustomWorkingDirectory = "YES"
+      useCustomWorkingDirectory = "NO"
       customWorkingDirectory = "/Users/Robert/src/MiPal/GUNao/posix/gubehaviourinterpreter/guSeeker"
       buildConfiguration = "Debug"
       debugDocumentVersioning = "YES"
@@ -59,7 +59,7 @@
       <CommandLineArguments>
          <CommandLineArgument
             argument = "SMPlayer2.fsm"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
       <AdditionalOptions>

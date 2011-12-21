@@ -113,12 +113,14 @@ public:
 
 class WBResumeFunction: public WBSuspendFunction
 {
+public:
         WBResumeFunction(): WBSuspendFunction("resume") {}
 };
 
 
 class WBRestartFunction: public WBSuspendFunction
 {
+public:
         WBRestartFunction(): WBSuspendFunction("restart") {}
 };
 
@@ -187,10 +189,10 @@ int main (int argc, char * const argv[])
         WBSuspendFunction suspendFunction;
         antlr_context.set_function("suspend", &suspendFunction);
 
-        WBSuspendFunction resumeFunction;
+        WBResumeFunction resumeFunction;
         antlr_context.set_function("resume", &resumeFunction);
 
-        WBSuspendFunction restartFunction;
+        WBRestartFunction restartFunction;
         antlr_context.set_function("restart", &restartFunction);
 
         StateMachineVectorFactory factory(&antlr_context, machine_names);
