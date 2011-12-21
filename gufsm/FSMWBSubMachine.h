@@ -90,7 +90,7 @@ namespace FSM
                 void setName(const std::string &name) { _name = name; }
 
                 /** execute once */
-                virtual bool executeOnce();
+                virtual bool executeOnce(bool *fired=NULL);
 
                 /** suspend this state machine */
                 virtual void suspend();

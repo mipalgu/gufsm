@@ -95,7 +95,7 @@ bool Machine::evaluateTransition(Transition *t)
         return t->expression()->evaluate(this) != 0;
 }
 
-bool Machine::executeOnce()
+bool Machine::executeOnce(bool *fired)
 {
         assert(_currentState);                  // need a valid state
 
@@ -136,9 +136,11 @@ bool Machine::executeOnce()
          */
         if (firingTransition)                   // new state required?
         {
+                if (fired) *fired = true;
                 executeOnExitForTransition(firingTransition);
                 return true;
         }
+        else if (fired) *fired = false;
 
         /*
          * no transition fired, so we perform internal activities

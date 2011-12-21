@@ -161,13 +161,13 @@ WBSubMachine::~WBSubMachine()
 }
 
 
-bool WBSubMachine::executeOnce()
+bool WBSubMachine::executeOnce(bool *fired)
 {
         if (_scheduleSuspend) suspend();
         else if (_scheduleRestart) restart();
         else if (_scheduleResume) resume();
 
-        return SuspensibleMachine::executeOnce();
+        return SuspensibleMachine::executeOnce(fired);
 }
 
 

@@ -144,10 +144,11 @@ bool StateMachineVector::executeOnce()
              it != machines().end(); it++)
         {
                 SuspensibleMachine *m = *it;
-                bool a = !m->executeOnce();
+                bool mfire = false;
+                bool a = !m->executeOnce(&mfire);
                 setAccepting(a && accepting());
 
-                if (m->previousState() != m->currentState()) fired = true;
+                if (mfire) fired = true;
         }
 
         return fired;

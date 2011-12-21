@@ -199,9 +199,10 @@ namespace FSM
 
                 /**
                  * execute one iteration of the current state
+                 * @param fired pointer to a boolean capturing fired condition
                  * @return true if the state machine should continue
                  */
-                virtual bool executeOnce();
+                virtual bool executeOnce(bool *fired=NULL);
 
                 /**
                  * execute until accepting state is encountered

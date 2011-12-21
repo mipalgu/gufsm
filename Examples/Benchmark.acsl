@@ -1,5 +1,5 @@
 1	Initial
-OnEntry { int d; int r; int x; int t; int to; x=1; z=1; t=1; to=1000000; d=0; r=0; }
+OnEntry { int d; int r; int x; int t; int to; x=1; z=1; t=10; to=10000000; d=0; r=0; }
 OnExit { print("Number of seconds, benchmark will be running:"); print_int(t+t); }
 { }
 
