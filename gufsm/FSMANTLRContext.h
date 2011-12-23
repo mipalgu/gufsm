@@ -162,7 +162,7 @@ namespace FSM
                 /** find function */
                 bool function_exists(const std::string &name)
                 {
-                    std::cout << functions().count(name) << std::endl;
+                    //std::cout << functions().count(name) << std::endl;
                         return functions().count(name) != 0;
                 }
                 
