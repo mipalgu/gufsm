@@ -1,0 +1,125 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="A Game Controller developed with QFSM.&#xa;This graphically replicates revision 1190 of&#xa;AGameController.txt and&#xa;TGameController.txt&#xa;from the repository" version="1" name="GameController" arrowtype="1" numbits="4" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="2" numout="0" initialstate="7">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="204" endx="22.71608486571817" xpos="32.16666666666666" endy="323.527140916879"/>
+    <state pencolor="959488" radius="40" description="OnEntry { post(&quot;Holding_Stiffness&quot;, &quot;1&quot;);&#xa;               post(&quot;guvision_runVisionPipeline&quot;, &quot;running&quot;);&#xa;               msleep(100);&#xa;               post(&quot;guvision_selectCamera&quot;, &quot;1&quot;); }&#xa;OnExit {  post(&quot;NaoHeadMoveTo&quot;, &quot;0 -25 .15&quot;); }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="340" code="7" xpos="59.16666666666666" linewidth="1">PLACING</state>
+    <state pencolor="0" radius="40" description="OnEntry { suspend(&quot;SMHeadBallTracker&quot;); }&#xa;OnExit { }&#xa;{ msleep(100); }&#xa;" finalstate="0" moore_outputs="" ypos="350" code="2" xpos="459" linewidth="1">FindDirectionOfBall</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;Holding_Stiffnes&quot;, &quot; .7&quot;); &#xa;               msleep(100); &#xa;               post(&quot;NaoMotionPlayer&quot;, &quot;play left_goalie_block&quot;); &#xa;               msleep(100); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="292" code="3" xpos="800" linewidth="1">LeftBock</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;Holding_Stiffnes&quot;, &quot; .7&quot;);&#xa;               msleep(100); &#xa;               post(&quot;NaoMotionPlayer&quot;, &quot;play right_goalie_block&quot;);&#xa;               msleep(100); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="452" code="4" xpos="802.1666666666666" linewidth="1">RightBlock</state>
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ msleep(100); }&#xa;" finalstate="0" moore_outputs="" ypos="310" code="6" xpos="601" linewidth="1">BallIsToTheLeft</state>
+    <state pencolor="0" radius="40" description="OnEntry {  }&#xa;OnExit { }&#xa;{ msleep(100); }&#xa;" finalstate="0" moore_outputs="" ypos="427" code="8" xpos="607.1666666666666" linewidth="1">BallIsToTheRight</state>
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ msleep(100); }&#xa;" finalstate="0" moore_outputs="" ypos="339" code="5" xpos="254" linewidth="1">WaitForBall</state>
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="119" code="0" xpos="404" linewidth="1">WaitForBall</state>
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="564" code="1" xpos="354" linewidth="1">WaitForBall</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;NaoMotionPlayer&quot;, &quot;play finish_right_goalie_block&quot;);&#xa;               msleep(100); }&#xa;OnExit {  post(&quot;NaoHeadMoveTo&quot;, &quot;0 -25 .15&quot;); &#xa;              restart(&quot;SMHeadBallTracker&quot;); }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="490" code="9" xpos="237" linewidth="1">Stand</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;NaoMotionPlayer&quot;, &quot;play finish_left_goalie_block&quot;);&#xa;               msleep(100); }&#xa;OnExit {  post(&quot;NaoHeadMoveTo&quot;, &quot;0 -25 .15&quot;); &#xa;              restart(&quot;SMHeadBallTracker&quot;); }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="166" code="10" xpos="261" linewidth="1">Stand</state>
+    <state pencolor="0" radius="40" description="OnEntry { suspend(&quot;SMHeadBallTracker&quot;); &#xa;               restart(&quot;SMBallHeadSeeker&quot;);&#xa;               msleep(100); }&#xa;OnExit {   suspend(&quot;SMBallHeadSeeker&quot;); &#xa;               restart(&quot;SMHeadBallTracker&quot;); }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="498" code="11" xpos="61" linewidth="1">Seek</state>
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ msleep(400); }&#xa;" finalstate="0" moore_outputs="" ypos="621" code="12" xpos="90" linewidth="1">Delay</state>
+    <transition c1x="137.4395148452404" c2y="339.0769704769157" c1y="339.153940953831" description="" straight="1" type="2" ypos="339.2309114307463" endx="214" xpos="99.15927226786053" endy="339.0000000000004" c2x="175.7197574226202">
+      <from>7</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">TRUE</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="516.063358898302" c2y="309.8408118603603" c1y="319.3830487221739" description="" straight="1" type="2" ypos="328.9252855839875" endx="562.1942999941867" xpos="492.9978883503596" endy="300.2985749985467" c2x="539.1288294462444">
+      <from>2</from>
+      <to>6</to>
+      <inputs default="0" any="0" invert="0">headIsLeft</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="516.621851136974" c2y="409.1756226356672" c1y="391.3512452713344" description="" straight="1" type="2" ypos="373.5268679070016" endx="567.1666666666666" xpos="491.3494433721277" endy="427" c2x="541.8942589018203">
+      <from>2</from>
+      <to>8</to>
+      <inputs default="0" any="0" invert="0">headIsRight</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="378.6637519309962" c2y="365.5438836534835" c1y="368.2538903400284" description="" straight="1" type="2" ypos="370.9638970265734" endx="286.1239211293521" xpos="424.9336673318182" endy="362.8338769669386" c2x="332.3938365301742">
+      <from>2</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">timeout(1000)</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="637.3262857877073" c2y="-19.67071570621891" c1y="118.1893880954719" description="" straight="0" type="2" ypos="253.5390420943671" endx="419.949044456578" xpos="789.0111548841048" endy="82.3171977498706" c2x="475.5835706761167">
+      <from>3</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">~left_goalie_blockIsRunning</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="485.9878718891253" c2y="678.8288055470877" c1y="470.4570666246476" description="" straight="0" type="2" ypos="491.6911150685467" endx="393.8618303297952" xpos="807.1280560502349" endy="567.3218191941497" c2x="520.1845442498482">
+      <from>4</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">~right_goalie_blockIsRunning</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="680.3892140152252" c2y="299.9183648486245" c1y="307.836729697249" description="" straight="1" type="2" ypos="315.7550945458736" endx="760" xpos="640.5838210228378" endy="292" c2x="720.1946070076126">
+      <from>6</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">TRUE</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="685.6797678315569" c2y="447.7458683080789" c1y="436.5403232597957" description="" straight="1" type="2" ypos="425.3347782115127" endx="762.7753243139491" xpos="647.1319895903607" endy="458.9514133563619" c2x="724.2275460727529">
+      <from>8</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">TRUE</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="335.0898225390717" c2y="347.8586505319995" c1y="347.6199070406172" description="" straight="1" type="2" ypos="347.3811635492349" endx="419.0452744910225" xpos="293.1120965630964" endy="348.0973940233818" c2x="377.0675485150471">
+      <from>5</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">BallIsCloserLXX</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="171.213918972018" c2y="426.6164271779292" c1y="392.2199782948469" description="" straight="1" type="2" ypos="357.8235294117647" endx="76.22999221017183" xpos="218.7058823529412" endy="461.0128760610114" c2x="123.7219555910949">
+      <from>5</from>
+      <to>11</to>
+      <inputs default="0" any="0" invert="0">~BallIsVisible</inputs>
+      <outputs>2</outputs>
+    </transition>
+    <transition c1x="355.3413807353986" c2y="152.2776098970759" c1y="152.9143829665067" description="" straight="1" type="2" ypos="153.5511560359374" endx="298.3338242481224" xpos="383.8451589790366" endy="151.6408368276452" c2x="326.8376024917604">
+      <from>0</from>
+      <to>10</to>
+      <inputs default="0" any="0" invert="0">timeout(1000)</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="318.4032306688637" c2y="520.1523123265429" c1y="522.6284101236611" description="" straight="1" type="2" ypos="525.1045079207793" endx="265.8795282046169" xpos="344.6650819009871" endy="517.6762145294247" c2x="292.1413794367403">
+      <from>1</from>
+      <to>9</to>
+      <inputs default="0" any="0" invert="0">timeout(1000)</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="247.0945912162408" c2y="399.083373770959" c1y="424.6155915059808" description="" straight="1" type="2" ypos="450.1478092410024" endx="274.1548410209634" xpos="233.5644663138795" endy="373.5511560359374" c2x="260.6247161186021">
+      <from>9</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">~finish_right_goalie_blockIsRunning</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="247.4899852816881" c2y="267.6846923783737" c1y="235.7241811607437" description="" straight="1" type="2" ypos="203.7636699431136" endx="246.8445824720007" xpos="247.8126866865318" endy="299.6452035960037" c2x="247.1672838768444">
+      <from>10</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">~finish_left_goalie_blockIsRunning</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="143.627847978814" c2y="410.1375835743391" c1y="443.2262543907277" description="" straight="1" type="2" ypos="476.3149252071163" endx="241.6598120785025" xpos="94.61186592896978" endy="377.0489127579505" c2x="192.6438300286583">
+      <from>11</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">BallIsVisible</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="154.6863317290965" c2y="612.3094113395173" c1y="524.4048056899104" description="" straight="0" type="2" ypos="529.5002000403034" endx="127.7543342546407" xpos="85.65233046632444" endy="634.2140169891243" c2x="189.7203329918686">
+      <from>11</from>
+      <to>12</to>
+      <inputs default="0" any="0" invert="0">~BallIsVisible</inputs>
+      <outputs>2</outputs>
+    </transition>
+    <transition c1x="70.38255168181395" c2y="551.5645237413903" c1y="566.8159960739346" description="" straight="1" type="2" ypos="582.0674684064788" endx="49.50608457734617" xpos="80.82078523404783" endy="536.313051408846" c2x="59.94431812958005">
+      <from>12</from>
+      <to>11</to>
+      <inputs default="0" any="0" invert="0">TRUE</inputs>
+      <outputs>2</outputs>
+    </transition>
+  </machine>
+</qfsmproject>
