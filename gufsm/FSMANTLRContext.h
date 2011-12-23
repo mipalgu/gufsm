@@ -67,6 +67,7 @@ extern "C"
 #include <map>
 #include <string>
 #include <sstream>
+#include<iostream>
 #include "FSMWBContext.h"
 
 namespace FSM
@@ -161,6 +162,7 @@ namespace FSM
                 /** find function */
                 bool function_exists(const std::string &name)
                 {
+                    std::cout << functions().count(name) << std::endl;
                         return functions().count(name) != 0;
                 }
                 
