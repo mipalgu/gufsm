@@ -1,0 +1,67 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="A Game Controller developed with QFSM.&#xa;This graphically replicates revision 1190 of&#xa;AGameController.txt and&#xa;TGameController.txt&#xa;from the repository" version="1" name="GameController" arrowtype="1" numbits="4" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="2" numout="0" initialstate="7">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="24" endx="123.5494181990515" xpos="133" endy="143.527140916879"/>
+    <state pencolor="959488" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="160" code="7" xpos="160" linewidth="1">SEARCHING</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;Speech&quot;, &quot;Left&quot;); &#xa;               post(&quot;NaoWalk&quot;, &quot;walk 0 2 0&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="236" code="8" xpos="340" linewidth="1">SpinLeft</state>
+    <state pencolor="0" radius="40" description="OnEntry  { msleep(1500); &#xa;                post(&quot;OnExit NaoWalk&quot;, &quot;walk 0 0 0&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="239" code="5" xpos="883" linewidth="1">DurationTrackerOff</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;Speech&quot;, &quot;Back&quot;); &#xa;               post(&quot;NaoWalk&quot;, &quot;walk -1 0 0&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="130" code="6" xpos="350" linewidth="1">StepBack</state>
+    <state pencolor="0" radius="40" description="OnEntry  { msleep(2000); }&#xa;OnExit { }&#xa;{ }&#xa; " finalstate="0" moore_outputs="" ypos="133" code="10" xpos="531" linewidth="1">Duration</state>
+    <state pencolor="0" radius="40" description="OnEntry  { msleep(2000); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="337" code="11" xpos="539" linewidth="1">Duration</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;Speech&quot;, &quot;Right&quot;); &#xa;               post(&quot;NaoWalk&quot;, &quot;walk 0 -2 0&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="486" code="1" xpos="522" linewidth="1">SpinRight</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;Speech&quot;, &quot;Back&quot;); &#xa;               post(&quot;NaoWalk&quot;, &quot;walk -1 0 0&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="336" code="0" xpos="343" linewidth="1">StepBack</state>
+    <state pencolor="0" radius="40" description="OnEntry  { msleep(1500); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="235" code="3" xpos="530" linewidth="1">Duration</state>
+    <transition c1x="236.9294018408561" c2y="145.007754738059" c1y="151.9777437272649" description="" straight="1" type="2" ypos="158.9477327164707" endx="310.8158919743404" xpos="199.9861567741139" endy="138.0377657488532" c2x="273.8726469075982">
+      <from>7</from>
+      <to>6</to>
+      <inputs default="0" any="0" invert="0">TRUE</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="416.5615034291912" c2y="231.8388032618925" c1y="231.8257059405854" description="" straight="1" type="2" ypos="231.8126086192783" endx="490.1240740538612" xpos="379.7802181168562" endy="231.8519005831996" c2x="453.3427887415262">
+      <from>8</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">TRUE</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="422.5142675868044" c2y="134.7860992823288" c1y="138.2374203531448" description="" straight="1" type="2" ypos="141.6887414239608" endx="491.0346770763059" xpos="388.2540628420535" endy="131.3347782115127" c2x="456.7744723315551">
+      <from>6</from>
+      <to>10</to>
+      <inputs default="0" any="0" invert="0">TRUE</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="465.129803926362" c2y="189.4232478232238" c1y="180.5849012324928" description="" straight="1" type="2" ypos="171.7465546417618" endx="353.2594398005024" xpos="521.0649859892918" endy="198.2615944139547" c2x="409.1946218634322">
+      <from>10</from>
+      <to>8</to>
+      <inputs default="0" any="0" invert="0">TRUE</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="515.7124949449367" c2y="421.2543734912664" c1y="395.6928550081925" description="" straight="1" type="2" ypos="370.1313365251185" endx="513.9622342511468" xpos="516.5876252918316" endy="446.8158919743404" c2x="514.8373645980417">
+      <from>11</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">TRUE</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="654.7958836879087" c2y="340.6027702652997" c1y="422.050699509636" description="" straight="1" type="2" ypos="503.4986287539723" endx="848.4488439640627" xpos="557.9694035498318" endy="259.1548410209634" c2x="751.6223638259858">
+      <from>1</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">TRUE</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="421.6316710260424" c2y="337.3495300263087" c1y="337.6990600526175" description="" straight="1" type="2" ypos="338.0485900789263" endx="499" xpos="382.9475065390636" endy="337" c2x="460.3158355130212">
+      <from>0</from>
+      <to>11</to>
+      <inputs default="0" any="0" invert="0">TRUE</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="455.7746591375808" c2y="291.7093523077118" c1y="275.2024851634063" description="" straight="1" type="2" ypos="258.6956180191007" endx="371.7760584246964" xpos="497.773959494023" endy="308.2162194520173" c2x="413.7753587811386">
+      <from>3</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">TRUE</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>

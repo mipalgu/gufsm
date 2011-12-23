@@ -1,0 +1,94 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="A Game Controller developed with QFSM.&#xa;This graphically replicates revision 1190 of&#xa;AGameController.txt and&#xa;TGameController.txt&#xa;from the repository" version="1" name="GameController" arrowtype="1" numbits="4" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="2" numout="0" initialstate="7">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="170.8333333333333" endx="172.3663182479421" xpos="148.3333333333333" endy="220.9428682645002"/>
+    <state pencolor="14615040" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="143.3333333333333" code="1" xpos="284.1666666666667" linewidth="1">PLACED</state>
+    <state pencolor="959488" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="260" code="7" xpos="181" linewidth="1">PLACING</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;NaoHeadPositionChange&quot;, &quot;40 0 0.15&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="420" code="13" xpos="259" linewidth="1">HeadMoveLeft</state>
+    <state pencolor="0" radius="40" description="OnEntry { msleep(1000); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="280" code="3" xpos="440" linewidth="1">Judge</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;NaoHeadPositionChange&quot;, &quot;-40 0 0.15&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="289.1666666666667" code="5" xpos="646.6666666666666" linewidth="1">HeadMoveRight</state>
+    <state pencolor="0" radius="40" description="OnEntry { msleep(1000); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="200" code="6" xpos="853" linewidth="1">Judge</state>
+    <transition c1x="211.9827134594575" c2y="354.074572992398" c1y="325.7041986202602" description="" straight="1" type="2" ypos="297.3338242481224" endx="245.229814033663" xpos="195.3591631723548" endy="382.4449473645357" c2x="228.6062637465603">
+      <from>7</from>
+      <to>13</to>
+      <inputs default="0" any="0" invert="0">~BallIsVisible</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="261.6431330923888" c2y="224.5342766873861" c1y="183.1917456277893" description="" straight="0" type="2" ypos="226.5833167102424" endx="265.5368093533618" xpos="202.9846600590511" endy="178.7300622286126" c2x="209.8660458700307">
+      <from>7</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">BallIsVisible</inputs>
+      <outputs>2</outputs>
+    </transition>
+    <transition c1x="289.7417420422452" c2y="268.379479202846" c1y="305.9250231091646" description="" straight="0" type="2" ypos="390.3235348098909" endx="400.185999457788" xpos="285.8199070434676" endy="283.8529677944076" c2x="318.8495764988107">
+      <from>13</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">TRUE</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="274.9091272857934" c2y="249.4300651104998" c1y="315.5267968876664" description="" straight="1" type="2" ypos="381.623528664833" endx="284.1666684057971" xpos="270.2803567257915" endy="183.3333333333333" c2x="279.5378978457952">
+      <from>13</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">BallIsVisible</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="460.8256651756017" c2y="401.4451481191272" c1y="405.8233853172025" description="" straight="0" type="2" ypos="319.1704167802841" endx="297.1170312005305" xpos="448.1042241614381" endy="407.8718537089221" c2x="450.8547799591976">
+      <from>3</from>
+      <to>13</to>
+      <inputs default="0" any="0" invert="0">~headIsTooFarLeft</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="523.0886884578523" c2y="333.2863269922081" c1y="428.5588041197733" description="" straight="0" type="2" ypos="310.9582919681328" endx="646.6666690196078" xpos="465.3295116102905" endy="329.1666666666666" c2x="603.500093162439">
+      <from>3</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">headIsTooFarLeft</inputs>
+      <outputs>2</outputs>
+    </transition>
+    <transition c1x="379.485864276757" c2y="199.9277202821892" c1y="224.2104693166767" description="" straight="1" type="2" ypos="248.4932183511642" endx="307.7454294690436" xpos="415.3560816806137" endy="175.6449712477017" c2x="343.6156468729003">
+      <from>3</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">BallIsVisible</inputs>
+      <outputs>2</outputs>
+    </transition>
+    <transition c1x="753.7345925883553" c2y="262.1372188110639" c1y="336.4073832109688" description="" straight="0" type="2" ypos="299.2051530180157" endx="832.0361029734266" xpos="685.3865425932987" endy="234.0663326681818" c2x="799.4537106649378">
+      <from>5</from>
+      <to>6</to>
+      <inputs default="0" any="0" invert="0">TRUE</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="562.1623579458956" c2y="289.5219708421697" c1y="286.4433253828497" description="" straight="0" type="2" ypos="286.0988067112772" endx="476.5127300757969" xpos="606.7844872466034" endy="296.3346424023301" c2x="553.8079129755918">
+      <from>5</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">headIsTooFarRight</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="522.7770642109289" c2y="196.2318561794892" c1y="225.6035111186434" description="" straight="1" type="2" ypos="254.9751660577975" endx="316.5161100387943" xpos="625.9075412969961" endy="166.8602012403351" c2x="419.6465871248615">
+      <from>5</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">BallIsVisible</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="650.1233299564906" c2y="167.0035212690268" c1y="179.1797937820665" description="" straight="1" type="2" ypos="191.3560662951061" endx="322.4797180755127" xpos="813.9451358969795" endy="154.8272487559872" c2x="486.3015240160017">
+      <from>6</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">BallIsVisible</inputs>
+      <outputs>2</outputs>
+    </transition>
+    <transition c1x="813.3552343199791" c2y="498.6799096813436" c1y="331.1931411772441" description="" straight="0" type="2" ypos="239.9704469852526" endx="298.9836834584278" xpos="854.5373248840482" endy="418.8576090440449" c2x="481.6559473998042">
+      <from>6</from>
+      <to>13</to>
+      <inputs default="0" any="0" invert="0">headIsTooFarRight</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="771.8685482857518" c2y="246.928712049954" c1y="236.1909574735446" description="" straight="1" type="2" ypos="225.4532028971353" endx="671.3189971329911" xpos="822.1433238621321" endy="257.6664666263633" c2x="721.5937727093714">
+      <from>6</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">~headIsTooFarRight</inputs>
+      <outputs>2</outputs>
+    </transition>
+  </machine>
+</qfsmproject>
