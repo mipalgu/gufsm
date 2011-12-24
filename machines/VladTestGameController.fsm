@@ -5,18 +5,18 @@
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
-    <itransition ypos="229" endx="267.2229123600034" xpos="194" endy="261.1114561800017"/>
+    <itransition ypos="266" endx="260.2229123600034" xpos="187" endy="298.1114561800017"/>
     <state pencolor="2420992" radius="40" description="OnEntry { print_state_name();&#xa;               post(&quot;Say&quot;, &quot;go&quot;); &#xa;              }&#xa;OnExit {   }&#xa;{               }&#xa;" finalstate="0" moore_outputs="" ypos="620" code="2" xpos="1025.833333333333" linewidth="1">PLAYING</state>
-    <state pencolor="16711680" radius="40" description="OnEntry { print_sate_name();&#xa;               post(&quot;Say&quot;, &quot;penalised&quot;); &#xa;          }&#xa;OnExit {  }&#xa;{              }&#xa;" finalstate="0" moore_outputs="" ypos="592" code="3" xpos="440" linewidth="1">PENALIZED</state>
+    <state pencolor="16711680" radius="40" description="OnEntry { print_sate_name();&#xa;               post(&quot;Say&quot;, &quot;penalised&quot;); &#xa;          }&#xa;OnExit {  }&#xa;{              }&#xa;" finalstate="0" moore_outputs="" ypos="636" code="3" xpos="442" linewidth="1">PENALIZED</state>
     <state pencolor="0" radius="40" description="OnEntry { print_state_name();&#xa;               post(&quot;QSay&quot;, &quot;set&quot;); &#xa;       }&#xa;OnExit {    }&#xa;{               }" finalstate="0" moore_outputs="" ypos="290" code="4" xpos="970" linewidth="1">SET</state>
     <state pencolor="0" radius="45" description="OnEntry { print_state_name(); post(&quot;QSay&quot;, &quot;change side&quot;); &#xa;               swapTeamI_AmPlaying(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="333" code="6" xpos="90" linewidth="1">CHANGE_TEAM</state>
-    <state pencolor="0" radius="40" description="OnEntry { print_state_name(); post(&quot;QSay&quot;, &quot;change kick off&quot;);   &#xa;               swapKickOff(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="478" code="8" xpos="211" linewidth="1">CHANGE_KICK_OFF</state>
-    <state pencolor="32832" radius="40" description="OnEntry  {print_state_name();  post(&quot;QSay&quot;,&quot;I'm in initial&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="279" code="7" xpos="303" linewidth="1">INITIAL</state>
+    <state pencolor="0" radius="40" description="OnEntry { print_state_name(); post(&quot;QSay&quot;, &quot;change kick off&quot;);   &#xa;               swapKickOff(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="513" code="8" xpos="215" linewidth="1">CHANGE_KICK_OFF</state>
+    <state pencolor="32832" radius="40" description="OnEntry  {print_state_name();  post(&quot;QSay&quot;,&quot;I'm in initial&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="316" code="7" xpos="296" linewidth="1">INITIAL</state>
     <state pencolor="0" radius="40" description="OnEntry { print_state_name(); post(&quot;QSay&quot;, &quot;Reds kick&quot;); redKick=1; blueKick=0; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="130" code="10" xpos="330" linewidth="1">ForcedToRedKickOff</state>
     <state pencolor="0" radius="40" description="OnEntry { print_state_name(); post(&quot;QSay&quot;, &quot;Blues kick&quot;); redKick=0; blueKick=1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="93" code="9" xpos="567" linewidth="1">ForcedToBlueKickOff</state>
-    <state pencolor="0" radius="40" description="OnEntry { &#xa;               post(&quot;QSay&quot;, &quot;GOOOOO OO OO AL MYY PAAAL&quot;); &#xa;               }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="430" code="11" xpos="590" linewidth="1">WeScore</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;               post(&quot;QSay&quot;, &quot;GOOOOO OO OO AL MYY PAAAL&quot;); &#xa;               }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="448" code="11" xpos="574" linewidth="1">WeScore</state>
     <state pencolor="0" radius="40" description="OnEntry { &#xa;               post(&quot;QSay&quot;, &quot;ooh&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="338" code="12" xpos="849" linewidth="1">TheyScore</state>
-    <state pencolor="0" radius="40" description="OnEntry { msleep(800); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="498" code="0" xpos="83" linewidth="1">Pause</state>
+    <state pencolor="0" radius="40" description="OnEntry { msleep(800); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="514" code="0" xpos="65" linewidth="1">Pause</state>
     <state pencolor="0" radius="40" description="OnEntry {print_state_name(); post(&quot;QSay&quot;,&quot;Ready&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="287" code="1" xpos="500" linewidth="1">NEWREADY</state>
     <state pencolor="0" radius="40" description="OnEntry{print_name_state(); post(&quot;QSay&quot;,&quot;Game over&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="689" code="13" xpos="312" linewidth="1">FINISHED</state>
     <transition c1x="838.3541685397512" c2y="408.2726342424111" c1y="503.0423131967011" description="ready received from game controller" straight="1" type="2" ypos="597.811992150991" endx="529.9598624996153" xpos="992.5513215598191" endy="313.5029552881211" c2x="684.1570155196832">
@@ -25,13 +25,13 @@
       <inputs default="0" any="0" invert="0">readyReceived</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="819.8870610633513" c2y="627.3251287720029" c1y="647.8047000097324" description="manually penalised" straight="0" type="2" ypos="648.2842712474619" endx="474.7297256849783" xpos="997.5490620858711" endy="611.8455575342734" c2x="645.3917267074983">
+    <transition c1x="819.8870610633513" c2y="671.3251287720029" c1y="647.8047000097324" description="manually penalised" straight="0" type="2" ypos="648.2842712474619" endx="476.7297256849783" xpos="997.5490620858711" endy="655.8455575342734" c2x="647.3917267074983">
       <from>2</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">shortChestButtonPressed</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="809.5160759385524" c2y="519.5479313332764" c1y="600.3955796950546" description="" straight="0" type="2" ypos="604.2432280568327" endx="460.5798302171012" xpos="989.0675321326109" endy="557.7002829714983" c2x="503.1312864111601">
+    <transition c1x="809.5160759385524" c2y="563.5479313332764" c1y="600.3955796950546" description="" straight="0" type="2" ypos="604.2432280568327" endx="462.5798302171012" xpos="989.0675321326109" endy="601.7002829714983" c2x="505.1312864111601">
       <from>2</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">penaltyReceived</inputs>
@@ -40,49 +40,37 @@
     <transition c1x="959.9439149204057" c2y="429.3613376640163" c1y="525.2015228479415" description="" straight="0" type="2" ypos="589.0417080318667" endx="875.9907679817974" xpos="1000.503821723043" endy="367.521152480091" c2x="930.5506747844349">
       <from>2</from>
       <to>12</to>
-      <inputs default="0" any="0" invert="0">ReadyTheirGoal</inputs>
+      <inputs default="0" any="0" invert="0">UDPTheirGoalPushed</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="869.1288319814662" c2y="498.8213352016646" c1y="549.754126583331" description="" straight="1" type="2" ypos="600.6869179649973" endx="625.7770876399966" xpos="990.804704152201" endy="447.8885438199983" c2x="747.4529598107314">
-      <from>2</from>
-      <to>11</to>
-      <inputs default="0" any="0" invert="0">ReadyOurGoal</inputs>
-      <outputs></outputs>
-    </transition>
-    <transition c1x="795.6964687111382" c2y="682.9386011511705" c1y="671.0574426825476" description="" straight="1" type="2" ypos="659.1762842139249" endx="351.5743654145941" xpos="1017.75752035941" endy="694.8197596197932" c2x="573.6354170628662">
+    <transition c1x="820.6964687111382" c2y="767.9386011511705" c1y="737.0574426825476" description="" straight="0" type="2" ypos="659.1762842139249" endx="351.5743654145941" xpos="1017.75752035941" endy="694.8197596197932" c2x="574.6354170628662">
       <from>2</from>
       <to>13</to>
       <inputs default="0" any="0" invert="0">finishedReceived</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="645.6729101194506" c2y="604.5824446987164" c1y="589.1648893974326" description="playing received from game controller" straight="1" type="2" ypos="573.747334096149" endx="985.833333333333" xpos="475.5926985125095" endy="620" c2x="815.7531217263918">
+    <transition c1x="647.006243452784" c2y="619.249111365383" c1y="618.498222730766" description="playing received from game controller" straight="1" type="2" ypos="617.747334096149" endx="985.833333333333" xpos="477.5926985125095" endy="620" c2x="816.4197883930584">
       <from>3</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">playingReceived</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="653.3772297259936" c2y="650.7164571576076" c1y="599.3790460667433" description="" straight="0" type="2" ypos="597.0865726394146" endx="988.3801662305711" xpos="479.675266587434" endy="634.0449376635355" c2x="979.4593590951248">
+    <transition c1x="655.3772297259936" c2y="650.7164571576076" c1y="643.3790460667433" description="" straight="0" type="2" ypos="641.0865726394146" endx="988.3801662305711" xpos="481.675266587434" endy="634.0449376635355" c2x="979.4593590951248">
       <from>3</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">shortChestButtonPressed</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="432.246219928148" c2y="493.878993868882" c1y="530.2925138815356" description="" straight="0" type="2" ypos="552.208742455558" endx="559.1842271550124" xpos="435.9188453800572" endy="455.502708561369" c2x="522.7578216312512">
+    <transition c1x="434.246219928148" c2y="511.878993868882" c1y="574.2925138815356" description="" straight="0" type="2" ypos="596.208742455558" endx="543.1842271550124" xpos="437.9188453800572" endy="473.502708561369" c2x="506.7578216312512">
       <from>3</from>
       <to>11</to>
-      <inputs default="0" any="0" invert="0">ReadyOurGoal</inputs>
+      <inputs default="0" any="0" invert="0">UDPOurGoalPushed</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="425.7508539813923" c2y="416.8259150214616" c1y="521.5815323697608" description="" straight="0" type="2" ypos="556.0074357121521" endx="495.4581363535708" xpos="422.5490597392252" endy="326.7413069062562" c2x="498.5501088708259">
+    <transition c1x="427.7508539813923" c2y="416.8259150214616" c1y="565.5815323697608" description="" straight="0" type="2" ypos="600.0074357121521" endx="495.4581363535708" xpos="424.5490597392252" endy="326.7413069062562" c2x="498.5501088708259">
       <from>3</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">readyReceived</inputs>
-      <outputs></outputs>
-    </transition>
-    <transition c1x="441.5756355489719" c2y="429.2764412532745" c1y="525.7683723776819" description="" straight="0" type="2" ypos="552.1025083376949" endx="819.8460771162405" xpos="442.8618453934988" endy="365.3870184665619" c2x="688.1966003025235">
-      <from>3</from>
-      <to>12</to>
-      <inputs default="0" any="0" invert="0">ReadyTheirGoal</inputs>
       <outputs></outputs>
     </transition>
     <transition c1x="994.8743190067856" c2y="490.9306850184381" c1y="412.8430172026914" description="" straight="0" type="2" ypos="329.7553493869448" endx="1024.621768267702" xpos="974.4172610429939" endy="580.0183528341847" c2x="1025.16471030391">
@@ -91,37 +79,37 @@
       <inputs default="0" any="0" invert="0">playingReceived</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="82.80111560245609" c2y="431.2282794764155" c1y="404.3982498839312" description="back to initial after change team" straight="1" type="2" ypos="377.568220291447" endx="80.8409896794" xpos="83.78117856398414" endy="458.0583090688997" c2x="81.82105264092804">
+    <transition c1x="76.80111560245609" c2y="441.8949461430822" c1y="409.7315832172645" description="back to initial after change team" straight="1" type="2" ypos="377.568220291447" endx="62.8409896794" xpos="83.78117856398414" endy="474.0583090688997" c2x="69.82105264092804">
       <from>6</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">TRUE</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="156.5709229238291" c2y="498.7343323715126" c1y="495.2812733623035" description="back to initial after change kick off" straight="1" type="2" ypos="491.8282143530943" endx="122.7802181168562" xpos="173.4662753273156" endy="502.1873913807217" c2x="139.6755705203427">
+    <transition c1x="153.2375895904958" c2y="521.0676657048459" c1y="523.9479400289702" description="back to initial after change kick off" straight="1" type="2" ypos="526.8282143530944" endx="104.7802181168562" xpos="177.4662753273156" endy="518.1873913807217" c2x="129.008903853676">
       <from>8</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">TRUE</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="382.552848582946" c2y="291.9325404822123" c1y="285.4662702411061" description="go to ready state when received from Game Controller" straight="1" type="2" ypos="279" endx="461.6585457488379" xpos="343" endy="298.3988107233185" c2x="422.1056971658919">
+    <transition c1x="377.8861819162793" c2y="304.2658738155457" c1y="310.1329369077728" description="go to ready state when received from Game Controller" straight="1" type="2" ypos="316" endx="461.6585457488379" xpos="336" endy="298.3988107233185" c2x="419.7723638325586">
       <from>7</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">readyReceived</inputs>
       <outputs>4</outputs>
     </transition>
-    <transition c1x="220.3316833600609" c2y="309.3908079689124" c1y="298.422059835007" description="change team on left foot bumper press" straight="1" type="2" ypos="287.4533117011015" endx="133.1881833153722" xpos="263.9034333824053" endy="320.3595561028179" c2x="176.7599333377166">
+    <transition c1x="215.6650166933943" c2y="321.7241413022458" c1y="323.0887265016736" description="change team on left foot bumper press" straight="1" type="2" ypos="324.4533117011015" endx="133.1881833153722" xpos="256.9034333824053" endy="320.3595561028179" c2x="174.4266000043832">
       <from>7</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">leftFootBumpPressed</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="272.4152410665512" c2y="394.9100392480377" c1y="361.5666331378373" description="" straight="0" type="2" ypos="318.2232270276368" endx="220.9350140107082" xpos="295.1553545944727" endy="439.2534453582382" c2x="225.6751275386297">
+    <transition c1x="265.4152410665512" c2y="429.9100392480377" c1y="398.5666331378373" description="" straight="0" type="2" ypos="355.2232270276368" endx="224.9350140107082" xpos="288.1553545944727" endy="474.2534453582382" c2x="229.6751275386297">
       <from>7</from>
       <to>8</to>
       <inputs default="0" any="0" invert="0">rightFootBumpPressed</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="278.5353910428138" c2y="518.1482123503089" c1y="358.0137385208595" description="" straight="0" type="2" ypos="318.0474824073581" endx="417.2906817678536" xpos="311.6772183127463" endy="559.0714885633878" c2x="392.34693439157">
+    <transition c1x="271.5353910428138" c2y="562.1482123503089" c1y="395.0137385208595" description="" straight="0" type="2" ypos="355.0474824073581" endx="419.2906817678536" xpos="304.6772183127463" endy="603.0714885633878" c2x="394.34693439157">
       <from>7</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">shortChestButtonPressed</inputs>
@@ -130,28 +118,28 @@
     <transition c1x="361.8458696821199" c2y="240.8503258930203" c1y="209.8612396302069" description="back to initial after change team" straight="0" type="2" ypos="166.7142814384057" endx="461.2534453582382" xpos="345.8764460274186" endy="277.0649859892918" c2x="387.269274265209">
       <from>10</from>
       <to>1</to>
-      <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
+      <inputs default="0" any="0" invert="0">!UDPRedKickOffPushed||imeout(1000000)</inputs>
       <outputs></outputs>
     </transition>
     <transition c1x="583.355232623712" c2y="201.5345848816178" c1y="166.5437367589079" description="back to initial after change team" straight="0" type="2" ypos="128.7770876399966" endx="508.0377657488533" xpos="584.8885438199983" endy="247.8158919743404" c2x="537.3022902755283">
       <from>9</from>
       <to>1</to>
-      <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
+      <inputs default="0" any="0" invert="0">!UDPBlueKickOffPushed||timeout(1000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="577.0903258264983" c2y="346.8407836740527" c1y="367.9769590477192" description="" straight="0" type="2" ypos="391.0825379712176" endx="517.4986287539723" xpos="580.7571027681641" endy="322.9694035498318" c2x="534.9221776388048">
+    <transition c1x="561.0903258264983" c2y="346.8407836740527" c1y="385.9769590477192" description="" straight="0" type="2" ypos="409.0825379712176" endx="517.4986287539723" xpos="564.7571027681641" endy="322.9694035498318" c2x="534.9221776388048">
       <from>11</from>
       <to>1</to>
-      <inputs default="0" any="0" invert="0">TRUE</inputs>
+      <inputs default="0" any="0" invert="0">!UDPOurGoalPushed||timeout(1000000)</inputs>
       <outputs></outputs>
     </transition>
     <transition c1x="719.9093041313929" c2y="294.187772893011" c1y="310.7995468108821" description="" straight="1" type="2" ypos="327.4113207287532" endx="538.8740042275482" xpos="810.4269540833153" endy="277.5759989751398" c2x="629.3916541794706">
       <from>12</from>
       <to>1</to>
-      <inputs default="0" any="0" invert="0">TRUE</inputs>
+      <inputs default="0" any="0" invert="0">!UDPTheirGoalPushed||timeout(1000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="164.836592709427" c2y="362.8601110369662" c1y="414.7202220739324" description="" straight="1" type="2" ypos="466.5803331108986" endx="279" xpos="107.7548890641405" endy="311" c2x="221.9182963547135">
+    <transition c1x="150.5032593760937" c2y="392.8601110369662" c1y="437.7202220739324" description="" straight="1" type="2" ypos="482.5803331108986" endx="272" xpos="89.7548890641405" endy="348" c2x="211.2516296880468">
       <from>0</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">TRUE</inputs>
@@ -166,16 +154,16 @@
     <transition c1x="445.2228422287852" c2y="177.6411016224903" c1y="226.3056126653188" description="" straight="0" type="2" ypos="256.9534040620049" endx="365.7770876399966" xpos="473.5954156908529" endy="147.8885438199984" c2x="411.010782798587">
       <from>1</from>
       <to>10</to>
-      <inputs default="0" any="0" invert="0">UDPsaysRedKickOff</inputs>
+      <inputs default="0" any="0" invert="0">UDPRedKickOffPushed</inputs>
       <outputs></outputs>
     </transition>
     <transition c1x="476.290929802671" c2y="119.2360345087331" c1y="210.2734821188189" description="" straight="0" type="2" ypos="249.6379266059566" endx="528.5861509298551" xpos="485.7145013493363" endy="104.1524077945583" c2x="483.6755645322195">
       <from>1</from>
       <to>9</to>
-      <inputs default="0" any="0" invert="0">UDPsaysBlueKickOff</inputs>
+      <inputs default="0" any="0" invert="0">UDPBlueKickOffPushed</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="306.2804930123811" c2y="428.6593572863958" c1y="538.8344954628883" description="" straight="1" type="2" ypos="649.0096336393807" endx="296.5971536578535" xpos="311.1221626896449" endy="318.4842191099034" c2x="301.4388233351173">
+    <transition c1x="303.9471596790478" c2y="453.3260239530625" c1y="551.1678287962217" description="" straight="1" type="2" ypos="649.0096336393807" endx="289.5971536578535" xpos="311.1221626896449" endy="355.4842191099034" c2x="296.7721566684506">
       <from>13</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">initialReceived</inputs>
