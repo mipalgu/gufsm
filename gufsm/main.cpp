@@ -55,6 +55,8 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#define COMPLEX_CONTENT_ACTION
+
 #include "FSMANTLRContext.h"
 
 #include <iostream>
@@ -98,6 +100,28 @@ class PrintStatenameFunction: public PrintingAction<string>
 
 typedef WBPostAction<const char *> PostStringFunction;
 typedef WBPostAction<int> PostIntFunction;
+
+
+class WBPostIntVecAction: public WBPostAction<std::vector<int> >
+{
+public:
+        /** default constructor */
+        WBPostIntVecAction(): WBPostAction<std::vector<int> >() {}
+        
+        /** set parameters */
+        virtual void add_parameter(int index, long long value)
+        {
+                if (index--)
+                {
+                        if (index >= _content.size())
+                                _content.push_back(value);
+                        else
+                                _content[index] = value;
+                }
+                else _type = (const char *) value;
+        }
+        
+};
 
 class WBSuspendFunction: public PostStringFunction
 {
@@ -186,6 +210,9 @@ int main (int argc, char * const argv[])
         PostIntFunction postInt;
         antlr_context.set_function("post_int", &postInt);
 
+        WBPostIntVecAction postVInt;
+        antlr_context.set_function("postv", &postVInt);
+        
         WBSuspendFunction suspendFunction;
         antlr_context.set_function("suspend", &suspendFunction);
 
