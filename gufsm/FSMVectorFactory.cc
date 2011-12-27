@@ -1,5 +1,5 @@
 /*
- *  FSMState.h
+ *  FSMVectorFactory.cc
  *  
  *  Created by René Hexel on 23/09/11.
  *  Copyright (c) 2011 Rene Hexel.
@@ -175,7 +175,7 @@ int StateMachineVectorFactory::index_of_machine_named(string machine_name)
 void StateMachineVectorFactory::reloadMachine(string name)
 {
         int i = index_of_machine_named(name);
-        
+
         addMachine(name, i);
 }
 
@@ -187,16 +187,39 @@ void StateMachineVectorFactory::rereadMachine(string name)
         addMachine(name, i, true);
 }
 
+struct dispatch_param
+{
+        StateMachineVectorFactory *self;
+        string name;
+
+        dispatch_param(StateMachineVectorFactory *f, const string &s): self(f), name(s) {}
+};
+
+static void do_reload(void *p)
+{
+        dispatch_param *param = (dispatch_param *) p;
+        param->self->reloadMachine(param->name);
+        delete param;
+}
+
+static void do_reread(void *p)
+{
+        dispatch_param *param = (dispatch_param *) p;
+        param->self->rereadMachine(param->name);
+        delete param;
+}
 
 void StateMachineVectorFactory::wb_reload(string, WBMsg *machinemsg)
 {
-        reloadMachine(machinemsg->getStringValue());
+        dispatch_param *p = new dispatch_param(this, machinemsg->getStringValue());
+        dispatch_async_f(dispatch_get_main_queue(), p, do_reload);
 }
 
 
 void StateMachineVectorFactory::wb_reread(string, WBMsg *machinemsg)
 {
-        rereadMachine(machinemsg->getStringValue());
+        dispatch_param *p = new dispatch_param(this, machinemsg->getStringValue());
+        dispatch_async_f(dispatch_get_main_queue(), p, do_reread);
 }
 
 

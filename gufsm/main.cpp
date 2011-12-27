@@ -172,14 +172,14 @@ static void usage(const char *cmd)
 
 int main (int argc, char * const argv[])
 {
-        bool kripke_flag = false, verbose = false, blocks_flag = false;
+        bool kripke_flag = false, verbose = false, blocking_flag = false;
         int ch;
         while ((ch = getopt(argc, argv, "bkv")) != -1)
         {
                 switch (ch)
                 {
-                        case 'b':       // use blocks (dispatch queue)
-                                blocks_flag = true;
+                        case 'b':       // don't use blocks (dispatch queues)
+                                blocking_flag = true;
                                 break;
                         case 'k':
                                 kripke_flag = true;
@@ -252,7 +252,7 @@ int main (int argc, char * const argv[])
                 cout << kripke << endl;
                 return EXIT_SUCCESS;
         }
-        if (blocks_flag)                        // execute on dispatch queue
+        if (!blocking_flag)                     // execute on dispatch queue
         {
                 factory.fsms()->scheduleExecuteOnQueue();
 
