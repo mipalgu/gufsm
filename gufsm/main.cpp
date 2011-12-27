@@ -73,9 +73,8 @@ using namespace std;
 using namespace FSM;
 
 #ifdef NEED_SLEEP
-class SleepFunction: public TimeoutPredicate
+struct SleepFunction: public TimeoutPredicate
 {
-public:
         virtual int evaluate(Machine *m = NULL)
         {
                 protected_usleep(1000000LL * timeout());
@@ -84,9 +83,8 @@ public:
 };
 #endif
 
-class PrintStatenameFunction: public PrintingAction<string>
+struct PrintStatenameFunction: public PrintingAction<string>
 {
-        public:
         PrintStatenameFunction(): PrintingAction<string>("") {}
         virtual int evaluate(Machine *m = NULL)
         {
@@ -98,9 +96,25 @@ class PrintStatenameFunction: public PrintingAction<string>
         }
 };
 
+struct SystemFunction: public ContentAction<string>
+{
+        virtual void performv(Machine *m, ActionStage, int, va_list)
+        {
+                evaluate(m);
+        }
+        virtual int evaluate(Machine *m = NULL)
+        {
+                return system(_content.c_str());
+        }
+        /** setting any parameter sets the content */
+        virtual void add_parameter(int index, long long value)
+        {
+                setContent((const char *)value);
+        }
+};
+
 typedef WBPostAction<const char *> PostStringFunction;
 typedef WBPostAction<int> PostIntFunction;
-
 
 class WBPostIntVecAction: public WBPostAction<std::vector<int> >
 {
@@ -190,7 +204,10 @@ int main (int argc, char * const argv[])
 
         TimeoutPredicate timeoutFunction;
         antlr_context.set_function("timeout", &timeoutFunction);
-        
+
+        SystemFunction systemFunction;
+        antlr_context.set_function("system", &systemFunction);
+
 #ifdef NEED_SLEEP
         SleepFunction sleepFunction;
         antlr_context.set_function("sleep", &sleepFunction);
