@@ -206,6 +206,7 @@ long long evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
          */
         if (!context->function_exists(content))   // !function ( = variable )
         {
+                if (n) cerr << " *** WARNING: Variable '" << content << "' is not a function, but called with " << n << "parameters!" << endl;
                 if (context->internal_variable_exists(m->id(), content))
                         return context->internal_variable_value(m->id(), content);
                 else
