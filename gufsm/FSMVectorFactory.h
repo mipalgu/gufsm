@@ -59,6 +59,7 @@
 #define gufsm_FSMVectorFactory_h
 
 #include <string>
+#include <queue>
 #include <Whiteboard.h>
 #include "FSMachineVector.h"
 
@@ -71,6 +72,10 @@ namespace FSM
         {
                 StateMachineVector *_fsms;      /// delivered FSMs
                 ANTLRContext *_context;         /// factory context
+
+                std::queue<std::string> _reload_queue; /// queue for reloading machines
+                std::queue<std::string> _reread_queue; /// queue for rereading machines
+                dispatch_semaphore_t _queue_semaphore; /// queue protector
         public:
                 /** constructor that builds vector of machines */
                 StateMachineVectorFactory(ANTLRContext *context, const std::vector<std::string> &names_of_machines_to_build);
@@ -83,6 +88,9 @@ namespace FSM
 
                 /** create a new machine with a given name and index */
                 SuspensibleMachine *addMachine(std::string name, int index=-1, bool resume=false);
+
+                /** execute state machines */
+                void execute(void);
 
                 /** get the index of a machine with a given name (-1 if not found) */
                 int index_of_machine_named(std::string machine_name);

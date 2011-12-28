@@ -57,6 +57,7 @@
  */
 #include "FSMANTLRContext.h"
 
+#include <dispatch/dispatch.h>
 #include <iostream>
 #include <gu_util.h>
 
@@ -73,6 +74,7 @@ StateMachineVectorFactory::StateMachineVectorFactory(ANTLRContext *context,
 {
         _context = context;
         _fsms = new StateMachineVector(context);
+        _queue_semaphore = dispatch_semaphore_create(1);
 
         Whiteboard *wb = context->whiteboard();
         Whiteboard::WBResult r;
@@ -187,39 +189,29 @@ void StateMachineVectorFactory::rereadMachine(string name)
         addMachine(name, i, true);
 }
 
-struct dispatch_param
-{
-        StateMachineVectorFactory *self;
-        string name;
-
-        dispatch_param(StateMachineVectorFactory *f, const string &s): self(f), name(s) {}
-};
-
-static void do_reload(void *p)
-{
-        dispatch_param *param = (dispatch_param *) p;
-        param->self->reloadMachine(param->name);
-        delete param;
-}
-
-static void do_reread(void *p)
-{
-        dispatch_param *param = (dispatch_param *) p;
-        param->self->rereadMachine(param->name);
-        delete param;
-}
-
 void StateMachineVectorFactory::wb_reload(string, WBMsg *machinemsg)
 {
-        dispatch_param *p = new dispatch_param(this, machinemsg->getStringValue());
-        dispatch_async_f(dispatch_get_main_queue(), p, do_reload);
+#ifdef __APPLE__
+        string *s = new string(machinemsg->getStringValue());
+        dispatch_async(dispatch_get_main_queue(), ^{ reloadMachine(*s); delete s; });
+#else
+        dispatch_semaphore_wait(_queue_semaphore, DISPATCH_TIME_FOREVER);
+        _reload_queue.push(machinemsg->getStringValue());
+        dispatch_semaphore_signal(_queue_semaphore);
+#endif
 }
 
 
 void StateMachineVectorFactory::wb_reread(string, WBMsg *machinemsg)
 {
-        dispatch_param *p = new dispatch_param(this, machinemsg->getStringValue());
-        dispatch_async_f(dispatch_get_main_queue(), p, do_reread);
+#ifdef __APPLE__
+        string *s = new string(machinemsg->getStringValue());
+        dispatch_async(dispatch_get_main_queue(), ^{ rereadMachine(*s); delete s; });
+#else
+        dispatch_semaphore_wait(_queue_semaphore, DISPATCH_TIME_FOREVER);
+        _reload_queue.push(machinemsg->getStringValue());
+        dispatch_semaphore_signal(_queue_semaphore);
+#endif
 }
 
 
@@ -238,4 +230,28 @@ void StateMachineVectorFactory::wb_reread_specific(string, WBMsg *machinemsg)
         size_t pos = msg.find('_');
         if (pos != string::npos && pos < msg.length() - 1)
                 rereadMachine(msg.substr(pos+1));
+}
+
+
+void StateMachineVectorFactory::execute(void)
+{
+        do
+        {
+                dispatch_semaphore_wait(_queue_semaphore, DISPATCH_TIME_FOREVER);
+                while (!_reload_queue.empty())
+                {
+                        reloadMachine(_reload_queue.front());
+                        _reload_queue.pop();
+                }
+                while (!_reread_queue.empty())
+                {
+                        reloadMachine(_reread_queue.front());
+                        _reread_queue.pop();
+                }
+                dispatch_semaphore_signal(_queue_semaphore);
+
+                if (!fsms()->executeOnce())
+                        fsms()->noTransitionFired();
+        }
+        while (!fsms()->accepting());
 }
