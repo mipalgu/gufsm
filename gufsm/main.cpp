@@ -55,8 +55,7 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#define COMPLEX_CONTENT_ACTION
-
+#include "FSMANTLRMaths.h"
 #include "FSMANTLRContext.h"
 
 #include <iostream>
@@ -68,6 +67,11 @@
 #include "FSMExpression.h"
 #include "FSMWBPostAction.h"
 #include "FSMVectorFactory.h"
+
+#define ANTLRFunc(x,n)  x func ## x; \
+                        antlr_context.set_function((n), &func ## x);
+#define ANTLRMaths(x)   ANTLRMaths ## x func ## x; \
+                        antlr_context.set_function(func ## x.name(), &func ## x);
 
 using namespace std;
 using namespace FSM;
@@ -210,43 +214,45 @@ int main (int argc, char * const argv[])
 
         ANTLRContext antlr_context;             // create whiteboard
 
-        TimeoutPredicate timeoutFunction;
-        antlr_context.set_function("timeout", &timeoutFunction);
-
-        SystemFunction systemFunction;
-        antlr_context.set_function("system", &systemFunction);
-
+        ANTLRFunc(TimeoutPredicate,     "timeout");
+        ANTLRFunc(SystemFunction,       "system");
 #ifdef NEED_SLEEP
-        SleepFunction sleepFunction;
-        antlr_context.set_function("sleep", &sleepFunction);
+        ANTLRFunc(SleepFunction,        "sleep");
 #endif
-        PrintStatenameFunction printStatenameFunction;
-        antlr_context.set_function("print_state_name", &printStatenameFunction);
+        ANTLRFunc(PrintStatenameFunction, "print_state_name");
+        ANTLRFunc(PrintStringAction,    "print");
+        ANTLRFunc(PrintIntAction,       "print_int");
+        ANTLRFunc(PostStringFunction,   "post");
+        ANTLRFunc(PostIntFunction,      "post_int");
+        ANTLRFunc(WBPostIntVecAction,   "postv");
+        ANTLRFunc(WBSuspendFunction,    "suspend");
+        ANTLRFunc(WBResumeFunction,     "resume");
+        ANTLRFunc(WBRestartFunction,    "restart");
 
-        PrintStringAction printStringFunction;
-        antlr_context.set_function("print", &printStringFunction);
+        /*
+         * maths functions
+         */
+        ANTLRMaths(Abs);
+        ANTLRMaths(Sign);
+        ANTLRMaths(Random);
+        ANTLRMaths(SRandom);
+        ANTLRMaths(Sin);
+        ANTLRMaths(Cos);
+        ANTLRMaths(Tan);
+        ANTLRMaths(Cot);
+        ANTLRMaths(ATan);
+        ANTLRMaths(ASin);
+        ANTLRMaths(ACos);
+        ANTLRMaths(Log);
+        ANTLRMaths(Ld);
+        ANTLRMaths(Lg);
 
-        PrintIntAction printIntFunction;
-        antlr_context.set_function("print_int", &printIntFunction);
-
-        PostStringFunction postString;
-        antlr_context.set_function("post", &postString);
-
-        PostIntFunction postInt;
-        antlr_context.set_function("post_int", &postInt);
-
-        WBPostIntVecAction postVInt;
-        antlr_context.set_function("postv", &postVInt);
+        ANTLRMaths(Min);
+        ANTLRMaths(Max);
+        ANTLRMaths(Avg);
+        ANTLRMaths(FTA);
+        ANTLRMaths(GAvg);
         
-        WBSuspendFunction suspendFunction;
-        antlr_context.set_function("suspend", &suspendFunction);
-
-        WBResumeFunction resumeFunction;
-        antlr_context.set_function("resume", &resumeFunction);
-
-        WBRestartFunction restartFunction;
-        antlr_context.set_function("restart", &restartFunction);
-
         StateMachineVectorFactory factory(&antlr_context, machine_names);
 
         if (verbose)
