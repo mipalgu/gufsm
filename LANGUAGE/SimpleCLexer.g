@@ -40,12 +40,16 @@ K_INT :	'0' | ('1'..'9') ('0'..'9')*
 K_LCURVE : '(';
 K_RCURVE : ')';
 K_PLUS : '+' ;
-K_MINUS	:	'-';
+K_MINUS	: '-';
+K_TIMES : '*' ;
+K_DIV	: '/';
 K_COMMA : ',';
 K_SEMICOLON : ';';
 K_LT   : '<' ;
-K_EQ   : '=' ;
+K_GT   : '>' ;
 K_EQEQ : '==' ;
+K_NEQ  : '!=' ;
+K_EQ   : '=' ;
 K_ANDAND:	'&&';
 K_OROR	:	'||';
 K_NOT	:	'!'|'~';
