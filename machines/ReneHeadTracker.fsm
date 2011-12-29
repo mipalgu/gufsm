@@ -1,0 +1,30 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="" version="1" name="FSMReneHeadTracker" arrowtype="1" numbits="1" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="102" endx="112" xpos="52" endy="102"/>
+    <state pencolor="0" radius="40" description="OnEntry {&#x9;int period; int dx; int dy;&#xa;&#x9;period=500000;  dx=5;  dy=5; }&#xa;OnExit { }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="102" code="0" xpos="152" linewidth="1">Init</state>
+    <state pencolor="0" radius="40" description="OnEntry { postv(&quot;NaoHeadRel&quot;, -guvision_opencv_ballInfo1_x, guvision_opencv_balInfo1_y, guvision_opencv_ballInfo1_x+guvision_opencv_ballInfo1_y);&#xa; guvision_opencv_ballInfo1_y=0;  guvision_opencv_ballInfo1_x=0; post(&quot;Speech&quot;, &quot;Correcting&quot;); }&#xa;OnExit { }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="120" code="1" xpos="620" linewidth="1">Correct</state>
+    <transition c1x="321.2811519292827" c2y="66.0416000478276" c1y="68.93882714981932" description="" straight="0" type="2" ypos="102.8360542518111" endx="582.8609323645896" xpos="191.9912617116293" endy="105.1443729458359" c2x="468.5710421469362">
+      <from>0</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">abs(guvision_opencv_ballInfo1_x)>4</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="321.8368712239432" c2y="107.1634528676632" c1y="105.5269057353263" description="" straight="1" type="2" ypos="103.8903586029895" endx="581.6" xpos="191.9553068359148" endy="108.8" c2x="451.7184356119716">
+      <from>0</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">abs(guvision_opencv_ballInfo1_y)>4</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="447.2846698451688" c2y="167.8289360260302" c1y="143.9964408871096" description="" straight="0" type="2" ypos="119.1639457481889" endx="178.836532958765" xpos="580.0087382883706" endy="131.6614311649508" c2x="233.5606014019669">
+      <from>1</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">timeout(period)</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>
