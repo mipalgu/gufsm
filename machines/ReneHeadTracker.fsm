@@ -6,7 +6,7 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="100" endx="110" xpos="50" endy="100"/>
-    <state pencolor="0" radius="40" description="OnEntry {&#x9;int period; int fx; int fy; int fs;&#xa;&#x9;period=300000;  fx=8;  fy=4;  fs=1; }&#xa;OnExit { }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="100" code="0" xpos="150" linewidth="1">Init</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#x9;int period; int fx; int fy; int fs;&#xa;&#x9;period=100000;  fx=8;  fy=4;  fs=3; }&#xa;OnExit { }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="100" code="0" xpos="150" linewidth="1">Init</state>
     <state pencolor="0" radius="40" description="OnEntry { postv(&quot;NaoHeadRel&quot;, -guvision_opencv_ballInfo1_x/fx, guvision_opencv_ballInfo1_y/fy, 1+fs*((abs(guvision_opencv_ballInfo1_x)+abs(guvision_opencv_ballInfo1_y)))/10);&#xa; guvision_opencv_ballInfo1_y=0;  guvision_opencv_ballInfo1_x=0; post(&quot;Speech&quot;, &quot;Correcting&quot;); }&#xa;OnExit { }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="120" code="1" xpos="620" linewidth="1">Correct</state>
     <transition c1x="319.2811519292827" c2y="66.0416000478276" c1y="66.93882714981932" description="" straight="0" type="2" ypos="100.8360542518111" endx="582.8609323645896" xpos="189.9912617116293" endy="105.1443729458359" c2x="468.5710421469362">
       <from>0</from>
