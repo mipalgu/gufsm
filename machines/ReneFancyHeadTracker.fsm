@@ -1,0 +1,90 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="" version="1" name="FSMReneHeadTracker" arrowtype="1" numbits="4" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="180" endx="116" xpos="56" endy="180"/>
+    <state pencolor="0" radius="40" description="OnEntry {&#x9;int period; int fx; int fy; int fs;&#xa;&#x9;period=100000;  fx=8;  fy=4;  fs=15;  post(&quot;guvision_runVisionPipeline&quot;, &quot;&quot;); }&#xa;OnExit { }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="180" code="0" xpos="156" linewidth="1">Init</state>
+    <state pencolor="0" radius="40" description="OnEntry { postv(&quot;NaoHeadRel&quot;, -guvision_opencv_ballInfo1_x/fx, guvision_opencv_ballInfo1_y/fy, 1+fs*((abs(guvision_opencv_ballInfo1_x)+abs(guvision_opencv_ballInfo1_y)))/100);&#xa; }&#xa;OnExit { guvision_opencv_ballInfo1_y=0; guvision_opencv_ballInfo1_x=0; }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="313" code="1" xpos="695" linewidth="1">Correct</state>
+    <state pencolor="0" radius="40" description="OnEntry { Head_Stiffness=0; }&#xa;OnExit {}&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="469" code="3" xpos="166" linewidth="1">Loosen_Head</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;guvision_stopVisionPipeline&quot;, &quot;&quot;);  post(&quot;Speech&quot;, &quot;Lower Camera&quot;); }&#xa;OnExit { guvision_selectCamera=1; }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="595" code="5" xpos="413" linewidth="1">Lower_Camera</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;guvision_stopVisionPipeline&quot;, &quot;&quot;); post(&quot;Speech&quot;, &quot;Upper Camera&quot;);  }&#xa;OnExit { guvision_selectCamera=0; }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="450" code="4" xpos="397" linewidth="1">Upper_Camera</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;guvision_runVisionPipeline&quot;, &quot;&quot;); }&#xa;OnExit {  guvision_opencv_ballInfo1_y=0; guvision_opencv_ballInfo1_x=0; }&#xa;{}" finalstate="0" moore_outputs="" ypos="433" code="6" xpos="605" linewidth="1">Nullify</state>
+    <state pencolor="0" radius="40" description="OnEntry {}&#xa;OnExit {}&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="313" code="7" xpos="290" linewidth="1">Wait</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;Speech&quot;, &quot;Life's good, I'm happy!&quot;); }&#xa;OnExit { guvision_opencv_ballInfo1_radius=0; }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="110" code="8" xpos="450" linewidth="1">LowerCamCentred</state>
+    <transition c1x="193.8599802330323" c2y="269.1461505795673" c1y="236.816640374459" description="" straight="0" type="2" ypos="213.6118659289698" endx="253.9779345454169" xpos="177.6850747928837" endy="295.610037366753" c2x="219.6039439194745">
+      <from>0</from>
+      <to>7</to>
+      <inputs default="0" any="0" invert="0">timeout(1000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="534.0162622012934" c2y="377.2432111836794" c1y="375.8613155135013" description="" straight="0" type="2" ypos="329.1456082630517" endx="326.3625929157714" xpos="658.4032879370827" endy="329.6661884197285" c2x="477.9918293812755">
+      <from>1</from>
+      <to>7</to>
+      <inputs default="0" any="0" invert="0">timeout(200000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="256.2907829542306" c2y="457.041572091186" c1y="461.5880127361646" description="" straight="1" type="2" ypos="466.1344533811434" endx="357.0778968606845" xpos="205.8972260010036" endy="452.4951314462072" c2x="306.6843399074575">
+      <from>3</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">guvision_selectCamera</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="258.3198883980648" c2y="549.5137757547074" c1y="520.3897876731311" description="" straight="1" type="2" ypos="491.2657995915548" endx="376.4996270194019" xpos="199.2300190873962" endy="578.6377638362836" c2x="317.4097577087334">
+      <from>3</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">!guvision_selectCamera</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="488.281115727457" c2y="497.8674515188138" c1y="533.5534148720242" description="" straight="1" type="2" ypos="569.2393782252346" endx="577.6423548447468" xpos="443.6004961688121" endy="462.1814881656034" c2x="532.961735286102">
+      <from>5</from>
+      <to>6</to>
+      <inputs default="0" any="0" invert="0">timeout(200000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="479.5586377439579" c2y="438.4392486614232" c1y="442.3411724387983" description="" straight="1" type="2" ypos="446.2430962161733" endx="565.0295530147474" xpos="436.8231801085632" endy="434.5373248840482" c2x="522.2940953793527">
+      <from>4</from>
+      <to>6</to>
+      <inputs default="0" any="0" invert="0">timeout(200000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="440.7960063205463" c2y="401.6255414381885" c1y="403.7735998543936" description="" straight="0" type="2" ypos="420.7015301388451" endx="303.1408249976509" xpos="566.9375823275207" endy="350.7798718682463" c2x="322.7952553112229">
+      <from>6</from>
+      <to>7</to>
+      <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="456.5808689577845" c2y="259.0416000478276" c1y="260.3589969327182" description="" straight="0" type="2" ypos="292.4201697828989" endx="657.8609323645896" xpos="324.2997170285018" endy="298.1443729458359" c2x="543.5710421469362">
+      <from>7</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">abs(guvision_opencv_ballInfo1_x)>4</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="396.5460030641394" c2y="315.4980015901329" c1y="301.1814164141356" description="" straight="0" type="2" ypos="305.3991237373656" endx="655.1461340383299" xpos="329.2711940236113" endy="309.5839543461425" c2x="572.4425535966901">
+      <from>7</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">abs(guvision_opencv_ballInfo1_y)>4</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="264.6965741389068" c2y="392.4741901921942" c1y="380.725468024385" description="" straight="0" type="2" ypos="348.7770876399966" endx="166.0000016" xpos="272.1114561800017" endy="429" c2x="159.2925605794526">
+      <from>7</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">timeout(5000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="368.5037375957699" c2y="198.8483707802948" c1y="268.1179692686455" description="" straight="0" type="2" ypos="288.012198097823" endx="460.3989389379149" xpos="321.2347523777212" endy="148.6246303408268" c2x="495.1716617517334">
+      <from>7</from>
+      <to>8</to>
+      <inputs default="0" any="0" invert="0">guvision_selectCamera&amp;&amp;guvision_opencv_ballInfo1_radius>7</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="361.377455443451" c2y="214.6108573550581" c1y="128.2977154059666" description="" straight="0" type="2" ypos="128.9845734568752" endx="298.5478751522173" xpos="414.7922455890679" endy="273.9239993041496" c2x="272.9626652978342">
+      <from>8</from>
+      <to>7</to>
+      <inputs default="0" any="0" invert="0">timeout(10000)</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>
