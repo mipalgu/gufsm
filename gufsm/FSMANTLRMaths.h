@@ -301,6 +301,16 @@ namespace FSM
                 }
         };
 
+#pragma mark - printing fixed-point values
+        class PrintFixedAction: public PrintIntAction
+        {
+                /** print the content of this action */
+                virtual void performv(Machine *, ActionStage, int, va_list)
+                {
+                        double value = (double) content() / (double) FIXED_FACTOR;
+                        std::cout << value << std::endl;
+                }
+        };
 #pragma mark - functions with multiple parameters
         /**
          * FSM ANTLR math class for functions with any number of arguments

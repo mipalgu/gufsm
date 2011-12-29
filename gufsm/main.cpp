@@ -222,6 +222,7 @@ int main (int argc, char * const argv[])
         ANTLRFunc(PrintStatenameFunction, "print_state_name");
         ANTLRFunc(PrintStringAction,    "print");
         ANTLRFunc(PrintIntAction,       "print_int");
+        ANTLRFunc(PrintFixedAction,     "print_fixed");
         ANTLRFunc(PostStringFunction,   "post");
         ANTLRFunc(PostIntFunction,      "post_int");
         ANTLRFunc(WBPostIntVecAction,   "postv");
