@@ -13,7 +13,7 @@
     <state pencolor="51995" radius="40" description="OnEntry { post(&quot;guvision_stopVisionPipeline&quot;, &quot;&quot;); post(&quot;Speech&quot;, &quot;Upper Camera&quot;);  }&#xa;OnExit { guvision_selectCamera=0; }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="450" code="4" xpos="397" linewidth="1">Upper_Camera</state>
     <state pencolor="51995" radius="40" description="OnEntry { post(&quot;guvision_runVisionPipeline&quot;, &quot;&quot;); }&#xa;OnExit {  guvision_opencv_ballInfo1_y=0; guvision_opencv_ballInfo1_x=0; }&#xa;{}" finalstate="0" moore_outputs="" ypos="433" code="6" xpos="605" linewidth="1">Nullify</state>
     <state pencolor="16711710" radius="40" description="OnEntry {  post(&quot;LEDS&quot;, &quot;Face Blue&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="310" code="7" xpos="290" linewidth="1">Wait</state>
-    <state pencolor="16711710" radius="40" description="OnEntry { post(&quot;Speech&quot;, &quot;Life's good, I'm happy!&quot;); }&#xa;OnExit { guvision_opencv_ballInfo1_radius=1; }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="91" code="8" xpos="353" linewidth="1">LowerCamCentred</state>
+    <state pencolor="16711710" radius="40" description="OnEntry { post(&quot;Speech&quot;, &quot;Life's good, I'm happy!&quot;); }&#xa;OnExit { guvision_opencv_ballInfo1_radius=1; }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="297" code="8" xpos="68" linewidth="1">LowerCamCentred</state>
     <state pencolor="511" radius="40" description="OnEntry {}&#xa;OnExit {}&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="346" code="2" xpos="671" linewidth="1">Wait_For_Motion_To_Finish</state>
     <state pencolor="511" radius="40" description="OnEntry { }&#xa;OnExit {  &#x9;dx=guvision_opencv_ballInfo1_x;&#xa; &#x9;dy=guvision_opencv_ballInfo1_y;&#xa; &#x9;mx=guvision_opencv_ballInfo1_radius*dx/fx;&#xa;&#x9;my=dy/fy; }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="110" code="9" xpos="530" linewidth="1">Calculate</state>
     <transition c1x="197.8599802330323" c2y="266.1461505795673" c1y="236.816640374459" description="" straight="0" type="2" ypos="213.6118659289698" endx="253.9779345454169" xpos="181.6850747928837" endy="292.610037366753" c2x="219.6039439194745">
@@ -76,19 +76,19 @@
       <inputs default="0" any="0" invert="0">abs(guvision_opencv_ballInfo1_y)>4</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="264.6965741389068" c2y="392.4741901921942" c1y="377.725468024385" description="" straight="0" type="2" ypos="345.7770876399966" endx="166.0000016" xpos="272.1114561800017" endy="429" c2x="159.2925605794526">
-      <from>7</from>
-      <to>3</to>
-      <inputs default="0" any="0" invert="0">timeout(5000000)</inputs>
-      <outputs></outputs>
-    </transition>
-    <transition c1x="368.5037375957699" c2y="179.8483707802948" c1y="265.1179692686455" description="" straight="0" type="2" ypos="285.012198097823" endx="363.3989389379149" xpos="321.2347523777212" endy="129.6246303408268" c2x="398.1716617517334">
+    <transition c1x="210.8388393208031" c2y="382.7008007812954" c1y="363.0765470633233" description="" straight="0" type="2" ypos="329.9585777946778" endx="78.23570241265131" xpos="255.3351017250332" endy="335.6682091144605" c2x="89.65451276137614">
       <from>7</from>
       <to>8</to>
       <inputs default="0" any="0" invert="0">guvision_selectCamera&amp;&amp;guvision_opencv_ballInfo1_radius>7</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="272.377455443451" c2y="211.6108573550581" c1y="164.2977154059666" description="" straight="0" type="2" ypos="109.9845734568752" endx="298.5478751522173" xpos="317.7922455890679" endy="270.9239993041496" c2x="272.9626652978342">
+    <transition c1x="287.7772605928234" c2y="392.4741901921942" c1y="382.7108668192992" description="" straight="0" type="2" ypos="349.9853987949141" endx="166.0000016" xpos="291.0806864539166" endy="429" c2x="159.2925605794526">
+      <from>7</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">timeout(5000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="129.0471319072445" c2y="282.5585900715288" c1y="276.8442595260404" description="" straight="0" type="2" ypos="283.5465441200737" endx="250.0138432258861" xpos="105.6696764637935" endy="308.9477327164707" c2x="202.9765085237203">
       <from>8</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">timeout(10000)</inputs>
