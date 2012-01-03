@@ -124,7 +124,11 @@ namespace FSM
                 virtual std::string description()
                 {
                         std::stringstream ss;
+#ifdef COMPLEX_CONTENT_ACTION
+                        ss << "Content Action " << &content() << std::endl;
+#else
                         ss << "Content Action " << content() << std::endl;
+#endif
                         return ss.str();
                 }
         };

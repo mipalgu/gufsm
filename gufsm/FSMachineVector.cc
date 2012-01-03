@@ -158,13 +158,13 @@ bool StateMachineVector::executeOnce()
 struct spawn_context
 {
         SuspensibleMachine *m;
-        bool &a;
+        bool &a, &f;
 };
 
 static void spawn_execute_once(void *p)
 {
         spawn_context *c = (spawn_context *) p;
-        c->a = !c->m->executeOnce();
+        c->a = !c->m->executeOnce(&c->f);
 }
 #endif
 
@@ -185,16 +185,16 @@ bool StateMachineVector::executeOnceOnQueue(dispatch_queue_t queue)
                 else
                 {
 #ifdef __BLOCKS__
-                        __block bool a = false;
-                        dispatch_sync(queue, ^{ a = !m->executeOnce(); });
+                        __block bool a = false, f = false;
+                        dispatch_sync(queue, ^{ a = !m->executeOnce(&f); });
 #else // no __BLOCKS__
-                        bool a = false;
-                        spawn_context c = { m, a };
+                        bool a = false, f = false;
+                        spawn_context c = { m, a, f };
                         dispatch_sync_f(queue, &c, spawn_execute_once);
 #endif
                         setAccepting(a && accepting());
-                        
-                        if (m->previousState() != m->currentState()) fired = true;
+
+                        if (f) fired = true;
                 }
         }        
         return fired;

@@ -75,14 +75,26 @@ expr:   STRING_LITERAL | condExpr
     ;
 
 condExpr
-    :   aexpr ( (K_EQEQ^ | K_LT^ | K_OROR^ ) aexpr )?
+    :   orexpr ( (K_EQEQ^ | K_NEQ^ | K_LT^ | K_GT^ ) orexpr )?
+    ;
+
+orexpr
+    :   andexpr ( (K_OROR^ ) andexpr )*
+    ;
+
+andexpr
+    :   aexpr ( (K_ANDAND^ ) aexpr )*
     ;
 
 aexpr
-    :   literal ( (K_PLUS^ | K_ANDAND^ | K_MINUS^) literal )*
+    :   term ( (K_PLUS^ | K_MINUS^) term )*
     ;
 
-literal	:	(K_NOT^)? atom;
+term
+    :   literal ( (K_TIMES^ | K_DIV^) literal )*
+    ;
+
+literal	:	(K_NOT^ | K_MINUS^)? atom;
 
 atom
     : functionCallOrVariable

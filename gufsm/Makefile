@@ -25,6 +25,7 @@ HDRS+=FSM.h
 HDRS+=FSMANTLRAction.h
 HDRS+=FSMANTLRContext.h
 HDRS+=FSMANTLRExpression.h
+HDRS+=FSMANTLRMaths.h
 HDRS+=FSMAction.h
 HDRS+=FSMActivity.h
 HDRS+=FSMExpression.h

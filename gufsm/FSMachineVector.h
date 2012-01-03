@@ -185,7 +185,13 @@ namespace FSM
                  * accepting state is encountered
                  */
                 virtual void scheduleExecuteOnQueue(dispatch_queue_t queue = NULL);
-                
+ 
+                /**
+                 * execute dedicated function if no transition fired --
+                 * sleeps for _idle_timeout by default
+                 */
+                virtual void noTransitionFired(void) { if (_no_transition_fired) _no_transition_fired(_idle_timeout); }
+
                 /**
                  * print the Kripke structure in svm format 
                  */

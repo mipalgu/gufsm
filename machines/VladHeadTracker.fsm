@@ -1,0 +1,76 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vladimir Estivill-Castro" description="" version="1" name="FSMVladHeadTracker" arrowtype="1" numbits="3" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="110" endx="201" xpos="141" endy="110"/>
+    <state pencolor="0" radius="40" description="OnEntry{int period; int dx; int dy; period=1000;  dx=5;  dy=5; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="110" code="0" xpos="241" linewidth="1">Centered</state>
+    <state pencolor="0" radius="40" description="OnEntry{postv(&quot;NaoHeadRel&quot;,0,dy,5);&#xa; guvision_opencv_ballInfo1_y=0;&#xa; post(&quot;Speech&quot;,&quot;Down&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="110" code="1" xpos="719" linewidth="1">BitDown</state>
+    <state pencolor="0" radius="40" description="OnEntry{postv(&quot;NaoHeadRel&quot;,0,-dy,5);&#xa; guvision_opencv_ballInfo1_y=0;&#xa; post(&quot;Speech&quot;,&quot;up&quot;);&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="40" code="2" xpos="529" linewidth="1">BitUp</state>
+    <state pencolor="0" radius="40" description="OnEntry{postv(&quot;NaoHeadRel&quot;,dx,0,5);&#xa; guvision_opencv_ballInfo1_x=0;&#xa; post(&quot;Speech&quot;,&quot;Left&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="394" code="3" xpos="790" linewidth="1">BitLeft</state>
+    <state pencolor="0" radius="40" description="OnEntry{postv(&quot;NaoHeadRel&quot;,-dx,0,5);&#xa; guvision_opencv_ballInfo1_x=0; &#xa; post(&quot;Speech&quot;,&quot;Right&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="548" code="4" xpos="725" linewidth="1">BitRight</state>
+    <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="229" code="5" xpos="799" linewidth="1">Centered</state>
+    <transition c1x="327.5249187297193" c2y="54.22631930584313" c1y="36.2047222763014" description="" straight="0" type="2" ypos="94.18312524675972" endx="489.0947868630807" xpos="277.7399846630386" endy="37.24791633538487" c2x="398.3098527964">
+      <from>0</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">guvision_opencv_ballInfo1_y&lt;-4</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="397.084027449764" c2y="110.3012390522202" c1y="81.98067988930774" description="" straight="0" type="2" ypos="113.6214298417007" endx="682.2341987992777" xpos="280.8357282587082" endy="94.24322805683329" c2x="594.7412489951668">
+      <from>0</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">4&lt;guvision_opencv_ballInfo1_y</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="438.6212025335416" c2y="203.8657466239488" c1y="165.355099441067" description="" straight="1" type="2" ypos="126.8444522581852" endx="761.3028901807502" xpos="277.2803587099373" endy="242.3763938068306" c2x="599.9620463571459">
+      <from>0</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">timeout(period)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="763.3758071069022" c2y="171.9784148721431" c1y="154.5548094907329" description="" straight="1" type="2" ypos="137.1312041093226" endx="793.3431457505076" xpos="748.3921377850995" endy="189.4020202535534" c2x="778.3594764287049">
+      <from>1</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">timeout(period)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="632.5569682149586" c2y="161.3846568611047" c1y="101.2049804464034" description="" straight="1" type="2" ypos="41.02530403170203" endx="759.6971901721173" xpos="568.9868572363793" endy="221.564333275806" c2x="696.127079193538">
+      <from>2</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">timeout(period)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="592.3638753523003" c2y="216.9066394906914" c1y="298.3105704200138" description="" straight="1" type="2" ypos="379.7145013493363" endx="271.8157728449876" xpos="752.6379266059566" endy="135.502708561369" c2x="432.0898240986439">
+      <from>3</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">timeout(period)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="585.0957811881956" c2y="233.3305516193624" c1y="456.2857131248459" description="" straight="0" type="2" ypos="527.2408746303295" endx="259.6703447823249" xpos="690.8084993911308" endy="145.3753901138788" c2x="336.3830629852603">
+      <from>4</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">timeout(period)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="786.7936573946606" c2y="333.0438521561715" c1y="301.0219260780856" description="" straight="1" type="2" ypos="269" endx="762.3809701327" xpos="799.000001025641" endy="365.0657782342571" c2x="774.5873137636804">
+      <from>5</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">guvision_opencv_ballInfo1_x&lt;-4</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="749.6832220107982" c2y="428.5412134832089" c1y="343.5903457703241" description="" straight="1" type="2" ypos="258.6394780574393" endx="704.7712200115031" xpos="772.1392230104457" endy="513.4920811960937" c2x="727.2272210111506">
+      <from>5</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">4&lt;guvision_opencv_ballInfo1_y</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="599.3764550013659" c2y="155.2001122228017" c1y="192.1000561114008" description="" straight="1" type="2" ypos="229" endx="280.1293650040976" xpos="759" endy="118.3001683342025" c2x="439.7529100027318">
+      <from>5</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">timeout(period)</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>

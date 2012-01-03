@@ -124,15 +124,40 @@ long long evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
         }
         if (string("K_MINUS") == terminal)
         {
-                assert(n > 1);
+                assert(n > 0);
                 pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
                         tree->children->get(tree->children, 0);
                 int result = evaluate_node(state, t, m);
-                for (ANTLR3_UINT32 i = 1; i < n; i++)
-                        
+                if (n>1) for (ANTLR3_UINT32 i = 1; i < n; i++)
                 {
                         t = (pANTLR3_BASE_TREE) tree->children->get(tree->children, i);
                         result -= evaluate_node(state, t, m);
+                }
+                else result = -result;
+                return result;
+        }
+        if (string("K_TIMES") == terminal)
+        {
+                int result = 1;
+                for (ANTLR3_UINT32 i = 0; i < n; i++)
+                {
+                        pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
+                        tree->children->get(tree->children, i);
+                        result *= evaluate_node(state, t, m);
+                }
+                return result;
+        }
+        if (string("K_DIV") == terminal)
+        {
+                assert(n > 0);
+                pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE) tree->children->get(tree->children, 0);
+                int result = evaluate_node(state, t, m);
+                for (ANTLR3_UINT32 i = 1; i < n; i++)
+                {
+                        t = (pANTLR3_BASE_TREE) tree->children->get(tree->children, i);
+                        int d = evaluate_node(state, t, m);
+                        if (d) result /= d;
+                        else result = INT_MAX;
                 }
                 return result;
         }
@@ -140,7 +165,6 @@ long long evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
         {
                 int result = 1;
                 for (ANTLR3_UINT32 i = 0; i < n; i++)
-                        
                 {
                         pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
                                 tree->children->get(tree->children, i);
@@ -148,8 +172,18 @@ long long evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
                 }
                 return result;
         }
+        if (string("K_OROR") == terminal)
+        {
+                int result = 0;
+                for (ANTLR3_UINT32 i = 0; i < n; i++)
+                {
+                        pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
+                        tree->children->get(tree->children, i);
+                        result = result || evaluate_node(state, t, m);
+                }
+                return result;
+        }
         if (string("K_NOT") == terminal)
-                
         {
                 assert(n == 1);
                 pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
@@ -157,7 +191,6 @@ long long evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
                 return !evaluate_node(state, t, m);
         }
         if (string("K_EQEQ") == terminal)
-                
         {
                 assert(n == 2);
                 pANTLR3_BASE_TREE t1 = (pANTLR3_BASE_TREE)
@@ -166,8 +199,16 @@ long long evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
                 tree->children->get(tree->children, 1);
                 return evaluate_node(state, t1, m) == evaluate_node(state, t2, m);
         }
+        if (string("K_NEQ") == terminal)
+        {
+                assert(n == 2);
+                pANTLR3_BASE_TREE t1 = (pANTLR3_BASE_TREE)
+                tree->children->get(tree->children, 0);
+                pANTLR3_BASE_TREE t2 = (pANTLR3_BASE_TREE)
+                tree->children->get(tree->children, 1);
+                return evaluate_node(state, t1, m) != evaluate_node(state, t2, m);
+        }
         if (string("K_LT") == terminal)
-                
         {
                 assert(n == 2);
                 pANTLR3_BASE_TREE t1 = (pANTLR3_BASE_TREE)
@@ -176,15 +217,14 @@ long long evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
                 tree->children->get(tree->children, 1);
                 return evaluate_node(state, t1, m) < evaluate_node(state, t2, m);
         }
-        if (string("K_OROR") == terminal)
-                
+        if (string("K_GT") == terminal)
         {
                 assert(n == 2);
                 pANTLR3_BASE_TREE t1 = (pANTLR3_BASE_TREE)
                 tree->children->get(tree->children, 0);
                 pANTLR3_BASE_TREE t2 = (pANTLR3_BASE_TREE)
                 tree->children->get(tree->children, 1);
-                return evaluate_node(state, t1, m) || evaluate_node(state, t2, m);
+                return evaluate_node(state, t1, m) > evaluate_node(state, t2, m);
         }
         /*
          * leaf node
@@ -206,6 +246,7 @@ long long evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
          */
         if (!context->function_exists(content))   // !function ( = variable )
         {
+                if (n) cerr << " *** WARNING: Variable '" << content << "' is not a function, but called with " << n << "parameters!" << endl;
                 if (context->internal_variable_exists(m->id(), content))
                         return context->internal_variable_value(m->id(), content);
                 else

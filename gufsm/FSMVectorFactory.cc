@@ -1,5 +1,5 @@
 /*
- *  FSMState.h
+ *  FSMVectorFactory.cc
  *  
  *  Created by René Hexel on 23/09/11.
  *  Copyright (c) 2011 Rene Hexel.
@@ -57,6 +57,7 @@
  */
 #include "FSMANTLRContext.h"
 
+#include <dispatch/dispatch.h>
 #include <iostream>
 #include <gu_util.h>
 
@@ -73,6 +74,7 @@ StateMachineVectorFactory::StateMachineVectorFactory(ANTLRContext *context,
 {
         _context = context;
         _fsms = new StateMachineVector(context);
+        _queue_semaphore = dispatch_semaphore_create(1);
 
         Whiteboard *wb = context->whiteboard();
         Whiteboard::WBResult r;
@@ -175,7 +177,7 @@ int StateMachineVectorFactory::index_of_machine_named(string machine_name)
 void StateMachineVectorFactory::reloadMachine(string name)
 {
         int i = index_of_machine_named(name);
-        
+
         addMachine(name, i);
 }
 
@@ -187,16 +189,29 @@ void StateMachineVectorFactory::rereadMachine(string name)
         addMachine(name, i, true);
 }
 
-
 void StateMachineVectorFactory::wb_reload(string, WBMsg *machinemsg)
 {
-        reloadMachine(machinemsg->getStringValue());
+#ifdef __APPLE__
+        string *s = new string(machinemsg->getStringValue());
+        dispatch_async(dispatch_get_main_queue(), ^{ reloadMachine(*s); delete s; });
+#else
+        dispatch_semaphore_wait(_queue_semaphore, DISPATCH_TIME_FOREVER);
+        _reload_queue.push(machinemsg->getStringValue());
+        dispatch_semaphore_signal(_queue_semaphore);
+#endif
 }
 
 
 void StateMachineVectorFactory::wb_reread(string, WBMsg *machinemsg)
 {
-        rereadMachine(machinemsg->getStringValue());
+#ifdef __APPLE__
+        string *s = new string(machinemsg->getStringValue());
+        dispatch_async(dispatch_get_main_queue(), ^{ rereadMachine(*s); delete s; });
+#else
+        dispatch_semaphore_wait(_queue_semaphore, DISPATCH_TIME_FOREVER);
+        _reload_queue.push(machinemsg->getStringValue());
+        dispatch_semaphore_signal(_queue_semaphore);
+#endif
 }
 
 
@@ -215,4 +230,28 @@ void StateMachineVectorFactory::wb_reread_specific(string, WBMsg *machinemsg)
         size_t pos = msg.find('_');
         if (pos != string::npos && pos < msg.length() - 1)
                 rereadMachine(msg.substr(pos+1));
+}
+
+
+void StateMachineVectorFactory::execute(void)
+{
+        do
+        {
+                dispatch_semaphore_wait(_queue_semaphore, DISPATCH_TIME_FOREVER);
+                while (!_reload_queue.empty())
+                {
+                        reloadMachine(_reload_queue.front());
+                        _reload_queue.pop();
+                }
+                while (!_reread_queue.empty())
+                {
+                        reloadMachine(_reread_queue.front());
+                        _reread_queue.pop();
+                }
+                dispatch_semaphore_signal(_queue_semaphore);
+
+                if (!fsms()->executeOnce())
+                        fsms()->noTransitionFired();
+        }
+        while (!fsms()->accepting());
 }

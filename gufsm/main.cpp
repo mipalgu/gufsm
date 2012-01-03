@@ -55,6 +55,7 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#include "FSMANTLRMaths.h"
 #include "FSMANTLRContext.h"
 
 #include <iostream>
@@ -67,13 +68,17 @@
 #include "FSMWBPostAction.h"
 #include "FSMVectorFactory.h"
 
+#define ANTLRFunc(x,n)  x func ## x; \
+                        antlr_context.set_function((n), &func ## x);
+#define ANTLRMaths(x)   ANTLRMaths ## x func ## x; \
+                        antlr_context.set_function(func ## x.name(), &func ## x);
+
 using namespace std;
 using namespace FSM;
 
 #ifdef NEED_SLEEP
-class SleepFunction: public TimeoutPredicate
+struct SleepFunction: public TimeoutPredicate
 {
-public:
         virtual int evaluate(Machine *m = NULL)
         {
                 protected_usleep(1000000LL * timeout());
@@ -82,9 +87,8 @@ public:
 };
 #endif
 
-class PrintStatenameFunction: public PrintingAction<string>
+struct PrintStatenameFunction: public PrintingAction<string>
 {
-        public:
         PrintStatenameFunction(): PrintingAction<string>("") {}
         virtual int evaluate(Machine *m = NULL)
         {
@@ -96,8 +100,46 @@ class PrintStatenameFunction: public PrintingAction<string>
         }
 };
 
+struct SystemFunction: public ContentAction<string>
+{
+        virtual void performv(Machine *m, ActionStage, int, va_list)
+        {
+                evaluate(m);
+        }
+        virtual int evaluate(Machine *m = NULL)
+        {
+                return system(_content.c_str());
+        }
+        /** setting any parameter sets the content */
+        virtual void add_parameter(int index, long long value)
+        {
+                setContent((const char *)value);
+        }
+};
+
 typedef WBPostAction<const char *> PostStringFunction;
 typedef WBPostAction<int> PostIntFunction;
+
+class WBPostIntVecAction: public WBPostAction<std::vector<int> >
+{
+public:
+        /** default constructor */
+        WBPostIntVecAction(): WBPostAction<std::vector<int> >() {}
+        
+        /** set parameters */
+        virtual void add_parameter(int index, long long value)
+        {
+                if (index--)
+                {
+                        if (index >= _content.size())
+                                _content.push_back(value);
+                        else
+                                _content[index] = value;
+                }
+                else _type = (const char *) value;
+        }
+        
+};
 
 class WBSuspendFunction: public PostStringFunction
 {
@@ -134,13 +176,21 @@ static void usage(const char *cmd)
 
 int main (int argc, char * const argv[])
 {
-        bool kripke_flag = false, verbose = false, blocks_flag = false;
+        bool kripke_flag = false, verbose = false, 
+#ifdef __APPLE__
+        blocks_flag = true;
+#else
+        blocks_flag = false;
+#endif
         int ch;
-        while ((ch = getopt(argc, argv, "bkv")) != -1)
+        while ((ch = getopt(argc, argv, "Bbkv")) != -1)
         {
                 switch (ch)
                 {
-                        case 'b':       // use blocks (dispatch queue)
+                        case 'B':       // don't use blocks (dispatch queues)
+                                blocks_flag = false;
+                                break;
+                        case 'b':       // use blocks (dispatch queues)
                                 blocks_flag = true;
                                 break;
                         case 'k':
@@ -164,37 +214,46 @@ int main (int argc, char * const argv[])
 
         ANTLRContext antlr_context;             // create whiteboard
 
-        TimeoutPredicate timeoutFunction;
-        antlr_context.set_function("timeout", &timeoutFunction);
-        
+        ANTLRFunc(TimeoutPredicate,     "timeout");
+        ANTLRFunc(SystemFunction,       "system");
 #ifdef NEED_SLEEP
-        SleepFunction sleepFunction;
-        antlr_context.set_function("sleep", &sleepFunction);
+        ANTLRFunc(SleepFunction,        "sleep");
 #endif
-        PrintStatenameFunction printStatenameFunction;
-        antlr_context.set_function("print_state_name", &printStatenameFunction);
+        ANTLRFunc(PrintStatenameFunction, "print_state_name");
+        ANTLRFunc(PrintStringAction,    "print");
+        ANTLRFunc(PrintIntAction,       "print_int");
+        ANTLRFunc(PrintFixedAction,     "print_fixed");
+        ANTLRFunc(PostStringFunction,   "post");
+        ANTLRFunc(PostIntFunction,      "post_int");
+        ANTLRFunc(WBPostIntVecAction,   "postv");
+        ANTLRFunc(WBSuspendFunction,    "suspend");
+        ANTLRFunc(WBResumeFunction,     "resume");
+        ANTLRFunc(WBRestartFunction,    "restart");
 
-        PrintStringAction printStringFunction;
-        antlr_context.set_function("print", &printStringFunction);
+        /*
+         * maths functions
+         */
+        ANTLRMaths(Abs);
+        ANTLRMaths(Sign);
+        ANTLRMaths(Random);
+        ANTLRMaths(SRandom);
+        ANTLRMaths(Sin);
+        ANTLRMaths(Cos);
+        ANTLRMaths(Tan);
+        ANTLRMaths(Cot);
+        ANTLRMaths(ATan);
+        ANTLRMaths(ASin);
+        ANTLRMaths(ACos);
+        ANTLRMaths(Log);
+        ANTLRMaths(Ld);
+        ANTLRMaths(Lg);
 
-        PrintIntAction printIntFunction;
-        antlr_context.set_function("print_int", &printIntFunction);
-
-        PostStringFunction postString;
-        antlr_context.set_function("post", &postString);
-
-        PostIntFunction postInt;
-        antlr_context.set_function("post_int", &postInt);
-
-        WBSuspendFunction suspendFunction;
-        antlr_context.set_function("suspend", &suspendFunction);
-
-        WBResumeFunction resumeFunction;
-        antlr_context.set_function("resume", &resumeFunction);
-
-        WBRestartFunction restartFunction;
-        antlr_context.set_function("restart", &restartFunction);
-
+        ANTLRMaths(Min);
+        ANTLRMaths(Max);
+        ANTLRMaths(Avg);
+        ANTLRMaths(FTA);
+        ANTLRMaths(GAvg);
+        
         StateMachineVectorFactory factory(&antlr_context, machine_names);
 
         if (verbose)
@@ -214,7 +273,7 @@ int main (int argc, char * const argv[])
 
                 dispatch_main();                // never returns
         }
-        else factory.fsms()->execute();         // execute synchronously
+        else factory.execute();                 // execute synchronously
 
         return EXIT_SUCCESS;
 }
