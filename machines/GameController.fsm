@@ -57,7 +57,7 @@
       <inputs default="0" any="0" invert="0">penaltyReceived</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="959.9439149204057" c2y="454.3613376640163" c1y="525.2015228479415" description="" straight="0" type="2" ypos="589.0417080318667" endx="1059.990767981797" xpos="1000.503821723043" endy="392.5211524800911" c2x="1114.550674784435">
+    <transition c1x="959.9439149204057" c2y="454.3613376640163" c1y="525.2015228479415" description="" straight="0" type="2" ypos="589.0417080318667" endx="1059.990767981797" xpos="1000.503821723043" endy="392.5211524800912" c2x="1114.550674784435">
       <from>2</from>
       <to>12</to>
       <inputs default="0" any="0" invert="0">ReadyTheirGoal</inputs>
@@ -105,7 +105,7 @@
       <inputs default="0" any="0" invert="0">readyReceived</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="510.7423022156385" c2y="454.2764412532745" c1y="506.2683723776819" description="" straight="0" type="2" ypos="532.6025083376949" endx="1003.846077116241" xpos="512.0285120601653" endy="390.3870184665622" c2x="872.1966003025235">
+    <transition c1x="510.7423022156385" c2y="454.2764412532745" c1y="506.2683723776819" description="" straight="0" type="2" ypos="532.6025083376949" endx="1003.846077116241" xpos="512.0285120601653" endy="390.3870184665623" c2x="872.1966003025235">
       <from>3</from>
       <to>12</to>
       <inputs default="0" any="0" invert="0">ReadyTheirGoal</inputs>
@@ -165,7 +165,7 @@
       <inputs default="0" any="0" invert="0">TRUE</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="386.356341691" c2y="283.1007460812941" c1y="281.5503730406471" description="go to ready state when received from Game Controller" straight="1" type="2" ypos="280" endx="479.0690250730001" xpos="340" endy="284.6511191219412" c2x="432.7126833820001">
+    <transition c1x="386.3563416910001" c2y="283.1007460812941" c1y="281.5503730406471" description="go to ready state when received from Game Controller" straight="1" type="2" ypos="280" endx="479.0690250730001" xpos="340" endy="284.6511191219412" c2x="432.7126833820001">
       <from>7</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">readyReceived</inputs>
