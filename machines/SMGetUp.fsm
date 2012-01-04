@@ -1,0 +1,56 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="A Game Controller developed with QFSM.&#xa;This graphically replicates revision 1190 of&#xa;AGameController.txt and&#xa;TGameController.txt&#xa;from the repository" version="1" name="GameController" arrowtype="1" numbits="3" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="2" numout="0" initialstate="7">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="110" endx="185.5494181990515" xpos="113" endy="143.527140916879"/>
+    <state pencolor="959488" radius="40" description="OnEntry { suspend(&quot;SMBallFinder&quot;); &#xa;               post(&quot;NaoMotionPlayer&quot;, &quot;stop now&quot;); &#xa;               post(&quot;Say&quot;, &quot;about to get up&quot;); &#xa;               msleep(1000); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="160" code="7" xpos="222" linewidth="1">Up</state>
+    <state pencolor="0" radius="40" description="OnEntry { suspend(&quot;SMBallFinder&quot;); &#xa;               post(&quot;Speech&quot;, &quot;getting up from back&quot;); &#xa;               post(&quot;NaoMotionPlayer&quot;, &quot;play get_up_from_back_lie_down&quot;); &#xa;               msleep(1000); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="151" code="0" xpos="659" linewidth="1">BackGetUp</state>
+    <state pencolor="0" radius="40" description="OnEntry { suspend(&quot;SMBallFinder&quot;); &#xa;               post(&quot;Speech&quot;, &quot;getting up from front&quot;); &#xa;               post(&quot;NaoMotionPlayer&quot;, &quot;play get_up_from_front_lie_down&quot;); &#xa;               msleep(1000); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="302" code="1" xpos="723" linewidth="1">FrontGetUp</state>
+    <state pencolor="0" radius="40" description="OnEntry { suspend(&quot;SMBallFinder&quot;); &#xa;               post(&quot;Speech&quot;, &quot;Lying down now&quot;); &#xa;               post(&quot;NaoMotionPlayer&quot;, &quot;play side_to_lie_down&quot;); &#xa;               msleep(200); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="480" code="2" xpos="158" linewidth="1">SideToLieDown</state>
+    <transition c1x="274.4600371262535" c2y="59.10617736517349" c1y="-58.97960742161005" description="" straight="0" type="2" ypos="120.1985123916004" endx="698.087054556912" xpos="225.98014876084" endy="142.5028142267583" c2x="887.4802190870482">
+      <from>7</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">robotFallenBack</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="-12.87159393425489" c2y="429.2526294158704" c1y="168.0642603358633" description="" straight="0" type="2" ypos="163.7336283477223" endx="122.4898187420428" xpos="182.1746309576285" endy="461.5873134218" c2x="78.96670629610112">
+      <from>7</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">robotFallenLeft</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="272.7076739663348" c2y="356.3059708792158" c1y="290.5160912989268" description="" straight="0" type="2" ypos="198.0683447104221" endx="687.2229123600034" xpos="234.2801111969103" endy="319.8885438199983" c2x="557.741898862751">
+      <from>7</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">robotFallenForward</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="121.4146338732434" c2y="352.947245646514" c1y="258.9500468485813" description="" straight="0" type="2" ypos="197.5917369395375" endx="158.0000133333333" xpos="208.3302774765318" endy="440.0000000000022" c2x="132.4156569366217">
+      <from>7</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">robotFallenRight</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="499.975060644048" c2y="155.1767493274371" c1y="154.0871270025964" description="" straight="1" type="2" ypos="152.9975046777557" endx="261.8253690423715" xpos="619.0499064448862" endy="156.2663716522777" c2x="380.9002148432097">
+      <from>0</from>
+      <to>7</to>
+      <inputs default="0" any="0" invert="0">~get_up_from_back_lie_downIsRunning</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="584.8554136913231" c2y="177.1196220561283" c1y="201.9592719723988" description="" straight="0" type="2" ypos="273.2967723348673" endx="259.2801868616518" xpos="695.1409849132536" endy="174.4978504461979" c2x="412.8500293310443">
+      <from>1</from>
+      <to>7</to>
+      <inputs default="0" any="0" invert="0">~get_up_from_front_lie_downIsRunning</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="213.7798733145198" c2y="323.1274982175936" c1y="378.6747913413523" description="" straight="0" type="2" ypos="440.7767729723632" endx="222.2633687766367" xpos="165.8446454055274" endy="199.9991329516965" c2x="227.5340255557045">
+      <from>2</from>
+      <to>7</to>
+      <inputs default="0" any="0" invert="0">~side_to_lie_downIsRunning</inputs>
+      <outputs>1</outputs>
+    </transition>
+  </machine>
+</qfsmproject>

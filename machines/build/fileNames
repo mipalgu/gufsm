@@ -1,1 +1,0 @@
- ls | grep "acsl" | sed 's/\..*//g' | awk '{ printf "%s ", $0 }'
