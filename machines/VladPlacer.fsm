@@ -39,7 +39,7 @@
       <inputs default="0" any="0" invert="0">shortChestButtonPressed</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="461.8965371838099" c2y="205.2348198776991" c1y="208.7664120902655" description="" straight="1" type="2" ypos="212.2980043028319" endx="560.1409849132536" xpos="412.7743133190879" endy="201.7032276651327" c2x="511.0187610485318">
+    <transition c1x="461.8965371838098" c2y="205.2348198776991" c1y="208.7664120902655" description="" straight="1" type="2" ypos="212.2980043028319" endx="560.1409849132536" xpos="412.7743133190879" endy="201.7032276651327" c2x="511.0187610485318">
       <from>5</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">!yellowIsVisible</inputs>
@@ -63,7 +63,7 @@
       <inputs default="0" any="0" invert="0">!NaoMotionPlayerIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="279.0345090761755" c2y="259.181322015426" c1y="297.3503535808588" description="" straight="1" type="2" ypos="335.5193851462915" endx="358.4126433763204" xpos="239.345441926103" endy="221.0122904499933" c2x="318.7235762262479">
+    <transition c1x="279.0345090761755" c2y="259.181322015426" c1y="297.3503535808587" description="" straight="1" type="2" ypos="335.5193851462915" endx="358.4126433763204" xpos="239.345441926103" endy="221.0122904499933" c2x="318.7235762262479">
       <from>0</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">yellowIsVisible</inputs>
