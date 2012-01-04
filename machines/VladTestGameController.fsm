@@ -6,7 +6,7 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="127.806257290664" endx="253.6144376821501" xpos="180.3915253221467" endy="159.9177134706657"/>
-    <state pencolor="2420992" radius="40" description="OnEntry { print_state_name();&#xa; shortChestButtonPressed=0;&#xa; post(&quot;LEDS&quot;,&quot;ChestBoard Green&quot;);&#xa;               post(&quot;Say&quot;, &quot;go&quot;); &#xa;              }&#xa;OnExit { playingReceived=0;  }&#xa;{               }&#xa;" finalstate="0" moore_outputs="" ypos="620" code="2" xpos="1025.833333333333" linewidth="1">PLAYING</state>
+    <state pencolor="2420992" radius="40" description="OnEntry { print_state_name();&#xa;               restart(&quot;SMGetUp&quot;);&#xa;               shortChestButtonPressed=0;&#xa;               post(&quot;LEDS&quot;,&quot;ChestBoard Green&quot;);&#xa;               post(&quot;Say&quot;, &quot;go&quot;); }&#xa;OnExit {  playingReceived=0;&#xa;               suspend(&quot;SMGetUp&quot;); }&#xa;{               }&#xa;" finalstate="0" moore_outputs="" ypos="620" code="2" xpos="1025.833333333333" linewidth="1">PLAYING</state>
     <state pencolor="16711680" radius="40" description="OnEntry { print_state_name();&#xa;  suspend(&quot;SMVladLeftFootControl&quot;);&#xa; shortChestButtonPressed=0;&#xa; post(&quot;LEDS&quot;,&quot;ChestBoard Red&quot;);&#xa; post(&quot;LEDS&quot;,&quot;RFoot Off&quot;);&#xa; post(&quot;LEDS&quot;,&quot;Ears Off&quot;);&#xa; post(&quot;LEDS&quot;,&quot;Face Yellow&quot;);&#xa;               post(&quot;Say&quot;, &quot;penalised&quot;); &#xa;          }&#xa;OnExit {penaltyReceived=0;  resume(&quot;SMVladLeftFootControl&quot;);}&#xa;{              }&#xa;" finalstate="0" moore_outputs="" ypos="550" code="3" xpos="520" linewidth="1">PENALIZED</state>
     <state pencolor="0" radius="40" description="OnEntry { print_state_name();&#xa; post(&quot;LEDS&quot;,&quot;ChestBoard Yellow&quot;);&#xa;               post(&quot;QSay&quot;, &quot;set&quot;); &#xa;       }&#xa;OnExit {  setReceived=0;  }&#xa;{               }" finalstate="0" moore_outputs="" ypos="229" code="4" xpos="1020" linewidth="1">SET</state>
     <state pencolor="0" radius="45" description="OnEntry { print_state_name(); post(&quot;QSay&quot;, &quot;change side&quot;); &#xa; ourTeam=!ourTeam;&#xa; kickOffTeam=!kickOffTeam; &#xa; leftFootBumpPressed=0;               }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="270" code="6" xpos="180" linewidth="1">CHANGE_TEAM</state>
@@ -16,7 +16,7 @@
     <state pencolor="0" radius="40" description="OnEntry { print_state_name(); post(&quot;QSay&quot;, &quot;Blues kick&quot;); kickOffTeam=0; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="67" code="9" xpos="660" linewidth="1">ForcedToBlueKickOff</state>
     <state pencolor="0" radius="40" description="OnEntry { &#xa;               post(&quot;QSay&quot;, &quot;GO OOH OOH OHH OOH OOH AH AH al MY PAL.  MY PAL WOW! WOW! WOW! YEAH! YEAH!&quot;); &#xa;kickOffTeam=!ourTeam;&#xa;               }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="402" code="11" xpos="700" linewidth="1">WeScore</state>
     <state pencolor="0" radius="40" description="OnEntry { &#xa;               post(&quot;QSay&quot;, &quot;Oh, we don't like that&quot;); &#xa;kickOffTeam=ourTeam;}&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="326" code="12" xpos="868" linewidth="1">TheyScore</state>
-    <state pencolor="0" radius="40" description="OnEntry {print_state_name();&#xa; post(&quot;LEDS&quot;,&quot;ChestBoard Blue&quot;);&#xa; post(&quot;QSay&quot;,&quot;Ready&quot;);}&#xa;OnExit{readyReceived=0;}&#xa;{}" finalstate="0" moore_outputs="" ypos="238" code="1" xpos="653" linewidth="1">NEWREADY</state>
+    <state pencolor="0" radius="40" description="OnEntry {print_state_name();&#xa;              restart(&quot;SMGetUp&quot;);&#xa;              post(&quot;LEDS&quot;,&quot;ChestBoard Blue&quot;);&#xa;              post(&quot;QSay&quot;,&quot;Ready&quot;);}&#xa;OnExit{   readyReceived=0;&#xa;              suspend(&quot;SMGetUp&quot;); }&#xa;{}" finalstate="0" moore_outputs="" ypos="238" code="1" xpos="653" linewidth="1">NEWREADY</state>
     <state pencolor="0" radius="40" description="OnEntry{print_name_state();&#xa; suspend(&quot;SMVladLeftFootControl&quot;);&#xa; post(&quot;LEDS&quot;,&quot;ChestBoard Off&quot;);&#xa; post(&quot;LEDS&quot;,&quot;Feet Off&quot;);&#xa; post(&quot;LEDS&quot;,&quot;Ears OFF&quot;);&#xa; post(&quot;LEDS&quot;,&quot;Face Green&quot;);&#xa; post(&quot;QSay&quot;,&quot;Game over&quot;);}&#xa;OnExit{resume(&quot;SMVladLeftFootControl&quot;);&#xa; finishedReceived=0;}&#xa;{}" finalstate="0" moore_outputs="" ypos="650" code="13" xpos="410" linewidth="1">FINISHED</state>
     <state pencolor="0" radius="45" description="OnEntry {kickOffTeam=0; &#xa;              ourTeam=0;&#xa;              post(&quot;LEDS&quot;,&quot;Face Off&quot;);}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="130" code="0" xpos="220" linewidth="1">DUMMY_INITIAL</state>
     <transition c1x="889.3541685397512" c2y="375.6059675757444" c1y="486.7089798633677" description="ready received from game controller" straight="1" type="2" ypos="597.811992150991" endx="682.9598624996153" xpos="992.5513215598191" endy="264.5029552881211" c2x="786.1570155196832">
@@ -169,13 +169,13 @@
       <inputs default="0" any="0" invert="0">UDPBlueKickOffPushed</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="413.7053439489389" c2y="405.2138289936599" c1y="507.6117313165203" description="" straight="1" type="2" ypos="610.0096336393807" endx="422.8717064675269" xpos="409.1221626896449" endy="302.8159266707995" c2x="418.2885252082329">
+    <transition c1x="413.7053439489389" c2y="405.2138289936598" c1y="507.6117313165203" description="" straight="1" type="2" ypos="610.0096336393807" endx="422.8717064675269" xpos="409.1221626896449" endy="302.8159266707995" c2x="418.2885252082329">
       <from>13</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">initialReceived</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="293.2334342787777" c2y="215.0005391375366" c1y="186.8376112338381" description="" straight="1" type="2" ypos="158.6746833301397" endx="370.3385688350492" xpos="254.6808670006419" endy="243.163467041235" c2x="331.7860015569134">
+    <transition c1x="293.2334342787776" c2y="215.0005391375365" c1y="186.8376112338381" description="" straight="1" type="2" ypos="158.6746833301397" endx="370.3385688350492" xpos="254.6808670006419" endy="243.163467041235" c2x="331.7860015569134">
       <from>0</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">1</inputs>
