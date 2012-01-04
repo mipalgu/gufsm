@@ -1,0 +1,73 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="A Game Controller developed with QFSM.&#xa;This graphically replicates revision 1190 of&#xa;AGameController.txt and&#xa;TGameController.txt&#xa;from the repository" version="1" name="GameController" arrowtype="1" numbits="4" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="2" numout="0" initialstate="7">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="100" endx="123.5494181990515" xpos="51" endy="133.527140916879"/>
+    <state pencolor="14615040" radius="40" description="OnEntry { post (&quot;NaoMotionPlayer&quot;,&quot;sit_from_kneel_or_stand&quot;);&#xa; post(&quot;Speech&quot;, &quot;Placed&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="533" code="1" xpos="199" linewidth="1">PLACED</state>
+    <state pencolor="959488" radius="40" description="OnEntry { print_state_name(); post(&quot;NaoMotionPlayer&quot;,&quot;get_up_anywhere&quot;);   &#xa; post(&quot;guvision_runVisionPipeline&quot;,&quot;now&quot;);            }&#xa;OnExit { }&#xa;{ }&#xa;&#xa;" finalstate="0" moore_outputs="" ypos="150" code="7" xpos="160" linewidth="1">GET_UP</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;Speech&quot;, &quot;Spin&quot;); &#xa;               post(&quot;NaoWalk&quot;, &quot;walk 0 2 0&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="331" code="4" xpos="702" linewidth="1">Spin</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;Say&quot;, &quot;LOST&quot;);  }&#xa;OnExit {  }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="173" code="6" xpos="588" linewidth="1">NOTVISIBLE</state>
+    <state pencolor="959488" radius="40" description="OnEntry { print_state_name();     post(&quot;Say&quot;, &quot;Yellow&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;&#xa;" finalstate="0" moore_outputs="" ypos="188" code="5" xpos="381" linewidth="1">YELLOWGOAL</state>
+    <state pencolor="14615040" radius="40" description="OnEntry { post (&quot;Holding_Stiffness&quot;,&quot;0&quot;);&#xa; post(&quot;Head_Stiffness&quot;,&quot;0&quot;);&#xa; post(&quot;Speech&quot;, &quot;RELAX&quot;);&#xa; post(&quot;guvision_stopVisionPipeline&quot;,&quot;now&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="550" code="8" xpos="630" linewidth="1">RELAX</state>
+    <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="317" code="9" xpos="86" linewidth="1">WAIT</state>
+    <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="623" code="3" xpos="405" linewidth="1">WAIT</state>
+    <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="368" code="0" xpos="216" linewidth="1">WAIT</state>
+    <transition c1x="284.7747813575105" c2y="610.0075343558232" c1y="567.7033290465944" description="" straight="1" type="2" ypos="525.3991237373656" endx="377.7819560253089" xpos="238.2711940236113" endy="652.311739665052" c2x="331.2783686914097">
+      <from>1</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">NaoMotionPlayerIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="141.96621215092" c2y="258.7691589106524" c1y="218.7909837251558" description="" straight="1" type="2" ypos="178.8128085396592" endx="50.40730148749054" xpos="187.7456674826348" endy="298.747334096149" c2x="96.18675681920529">
+      <from>7</from>
+      <to>9</to>
+      <inputs default="0" any="0" invert="0">NaoMotionPlayerIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="505.812269255058" c2y="182.8933063716196" c1y="175.7380226643128" description="" straight="1" type="2" ypos="168.5827389570061" endx="420.9475065390635" xpos="548.2446506130552" endy="190.0485900789263" c2x="463.3798878970608">
+      <from>6</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">yellowIsVisible</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="591.0259391670407" c2y="495.6701363934434" c1y="268.9329554810976" description="" straight="0" type="2" ypos="212.6581718217018" endx="234.2941176470588" xpos="582.7818194971445" endy="514.1764705882352" c2x="347.897251872857">
+      <from>6</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">shortChestButtonPressed</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="461.8965371838099" c2y="205.2348198776991" c1y="208.7664120902655" description="" straight="1" type="2" ypos="212.2980043028319" endx="560.1409849132536" xpos="412.7743133190879" endy="201.7032276651327" c2x="511.0187610485318">
+      <from>5</from>
+      <to>6</to>
+      <inputs default="0" any="0" invert="0">!yellowIsVisible</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="387.2441196698962" c2y="467.4936658052082" c1y="265.2747836593958" description="" straight="0" type="2" ypos="227.675266587434" endx="231.2561998342282" xpos="386.0865726394146" endy="509.3454534548993" c2x="204.6031342257982">
+      <from>5</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">shortChestButtonPressed</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="110.2897493548764" c2y="369.4854954372574" c1y="362.7305716325211" description="" straight="1" type="2" ypos="355.9756478277848" endx="176.8580086005301" xpos="77.00561973204964" endy="376.2404192419937" c2x="143.5738789777033">
+      <from>9</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">!NaoMotionPlayerIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="482.3425567561376" c2y="571.0583801126396" c1y="614.3047680742885" description="" straight="1" type="2" ypos="657.5511560359373" endx="596.7179882264862" xpos="425.1548410209634" endy="527.8119921509908" c2x="539.530272491312">
+      <from>3</from>
+      <to>8</to>
+      <inputs default="0" any="0" invert="0">!NaoMotionPlayerIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="279.0345090761755" c2y="259.181322015426" c1y="297.3503535808588" description="" straight="1" type="2" ypos="335.5193851462915" endx="358.4126433763204" xpos="239.345441926103" endy="221.0122904499933" c2x="318.7235762262479">
+      <from>0</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">yellowIsVisible</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>
