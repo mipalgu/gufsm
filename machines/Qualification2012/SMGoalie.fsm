@@ -6,13 +6,13 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="180" endx="120" xpos="60" endy="180"/>
-    <state pencolor="12124415" radius="40" description="OnEntry {&#x9;int br; int new_br; int loop; &#xa;  &#x9; }&#xa;OnExit { post(&quot;guvision_runVisionPipeline&quot;, &quot;&quot;); }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="180" code="0" xpos="160" linewidth="1">Init</state>
-    <state pencolor="16711710" radius="40" description="OnEntry {  &#xa;&#x9;print_state_name();&#xa;}&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="310" code="7" xpos="290" linewidth="1">Wait</state>
+    <state pencolor="12124415" radius="40" description="OnEntry {&#x9;&#xa;&#x9;int updated; int ball_x; int ball_y; int ball_d; int br; int new_br; int loop; &#xa;  }&#xa;OnExit { post(&quot;guvision_runVisionPipeline&quot;, &quot;&quot;); }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="180" code="0" xpos="160" linewidth="1">Init</state>
+    <state pencolor="16711710" radius="40" description="OnEntry {  &#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="310" code="7" xpos="290" linewidth="1">Wait</state>
     <state pencolor="16711710" radius="40" description="OnEntry { &#xa;&#x9;loop = 0;&#xa;&#x9;br = guvision_opencv_ballInfo1_radius;&#xa;&#x9;guvision_opencv_ballInfo1_radius=0;&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit {  }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="130" code="8" xpos="1143" linewidth="1">GoodBallView</state>
     <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit { guvision_opencv_ballInfo1_radius=1; }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="90" code="10" xpos="295" linewidth="1">Done</state>
     <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;post(&quot;Speech&quot;, &quot;Save&quot;); &#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit {  }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="70" code="2" xpos="496" linewidth="1">MakeSave</state>
     <state pencolor="0" radius="40" description="OnEntry { &#xa; }&#xa;OnExit { &#xa;&#x9;loop = loop + 1;&#xa;&#x9;new_br = guvision_opencv_ballInfo1_radius;&#xa;&#x9;guvision_opencv_ballInfo1_radius=0;&#xa;&#x9;print_state_name();&#xa; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="62" code="12" xpos="789" linewidth="1">CheckbrIsNearer</state>
-    <state pencolor="0" radius="40" description="OnEntry { &#xa; }&#xa;OnExit { &#xa; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="462" code="13" xpos="873" linewidth="1">WaitForBall</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;ball_x = Ballfiltered_x;&#xa;&#x9;ball_y = Ballfiltered_y;&#xa;&#x9;ball_d = BallDistance;&#xa; }&#xa;OnExit { &#xa; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="462" code="13" xpos="873" linewidth="1">WaitForBall</state>
     <transition c1x="197.8599802330323" c2y="266.1461505795673" c1y="236.816640374459" description="" straight="0" type="2" ypos="213.6118659289698" endx="253.9779345454169" xpos="181.6850747928837" endy="292.610037366753" c2x="219.6039439194745">
       <from>0</from>
       <to>7</to>
@@ -22,7 +22,7 @@
     <transition c1x="518.5014874838384" c2y="457.7327572774284" c1y="283.4543596707521" description="" straight="0" type="2" ypos="311.1759620640757" endx="834.5390420943671" xpos="329.9827101785741" endy="451.0111548841049" c2x="646.0202647891027">
       <from>7</from>
       <to>13</to>
-      <inputs default="0" any="0" invert="0">(abs(guvision_opencv_ballInfo1_x)>0)&amp;&amp;(abs(guvision_opencv_ballInfo1_y)>0)&amp;&amp;(abs(guvision_opencv_ballInfo1_radius)>0)</inputs>
+      <inputs default="0" any="0" invert="0">updated!=filtered</inputs>
       <outputs></outputs>
     </transition>
     <transition c1x="843.3398166712786" c2y="236.4870495518933" c1y="189.6458934825795" description="" straight="1" type="2" ypos="142.8047374132658" endx="319.809652541004" xpos="1105.104898736416" endy="283.328205621207" c2x="581.5747346061413">
@@ -76,7 +76,7 @@
     <transition c1x="1027.326866160259" c2y="208.3934126589186" c1y="379.5524444174446" description="" straight="0" type="2" ypos="422.706457343101" endx="1149.951413356362" xpos="880.4844843155998" endy="169.3913423527175" c2x="1111.823287145468">
       <from>13</from>
       <to>8</to>
-      <inputs default="0" any="0" invert="0">(abs(guvision_opencv_ballInfo1_x)&lt;30)&amp;&amp;(abs(guvision_opencv_ballInfo1_y)&lt;30)&amp;&amp;(abs(guvision_opencv_ballInfo1_radius)>7)</inputs>
+      <inputs default="0" any="0" invert="0">(abs(ball_x)&lt;30)&amp;&amp;(abs(ball_y)&lt;30)&amp;&amp;(abs(ball_d)&lt;300)</inputs>
       <outputs></outputs>
     </transition>
   </machine>
