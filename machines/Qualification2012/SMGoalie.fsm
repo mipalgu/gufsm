@@ -21,13 +21,13 @@
       <inputs default="0" any="0" invert="0">timeout(1000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="427.5014874838384" c2y="583.7327572774284" c1y="499.4543596707521" description="" straight="0" type="2" ypos="415.1759620640757" endx="730.5390420943671" xpos="344.9827101785741" endy="577.0111548841048" c2x="542.0202647891027">
+    <transition c1x="398.8730288858459" c2y="583.7327572774284" c1y="541.769247148125" description="" straight="0" type="2" ypos="453.3148874773728" endx="730.5390420943671" xpos="312.3715414020074" endy="577.0111548841048" c2x="542.0202647891027">
       <from>7</from>
       <to>13</to>
       <inputs default="0" any="0" invert="0">updated!=filtered</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="898.8087110618386" c2y="434.8275919808889" c1y="470.3161646970774" description="" straight="1" type="2" ypos="505.8047374132659" endx="342.2163357126836" xpos="1177.104898736416" endy="399.3390192647004" c2x="620.5125233872611">
+    <transition c1x="898.9338448041233" c2y="453.7147274867341" c1y="479.75973245" description="" straight="1" type="2" ypos="505.8047374132659" endx="342.5917369395375" xpos="1177.104898736416" endy="427.6697225234682" c2x="620.7627908718304">
       <from>8</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">timeout(100000)</inputs>
@@ -60,7 +60,7 @@
     <transition c1x="760.0755542173246" c2y="378.9490392015335" c1y="370.0156632858456" description="" straight="1" type="2" ypos="361.0822873701576" endx="335.2963984640231" xpos="972.4651320939753" endy="387.8824151172215" c2x="547.6859763406738">
       <from>12</from>
       <to>7</to>
-      <inputs default="0" any="0" invert="0">(loop>5)</inputs>
+      <inputs default="0" any="0" invert="0">loop>5</inputs>
       <outputs></outputs>
     </transition>
     <transition c1x="959.620408817158" c2y="571.3934126589186" c1y="538.0679601018447" description="" straight="0" type="2" ypos="580.5155156844002" endx="1221.951413356362" xpos="808.293542656899" endy="532.3913423527174" c2x="1183.823287145468">
