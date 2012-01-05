@@ -6,12 +6,12 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="254" endx="278.5494181990515" xpos="206" endy="287.527140916879"/>
-    <state pencolor="959488" radius="40" description="OnEntry { suspend(&quot;SMBallFinder&quot;); &#xa;               post(&quot;NaoMotionPlayer&quot;, &quot;stop now&quot;); &#xa;               post(&quot;Say&quot;, &quot;about to get up&quot;); &#xa;               msleep(1000); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="304" code="7" xpos="315" linewidth="1">Up</state>
-    <state pencolor="0" radius="40" description="OnEntry { suspend(&quot;SMBallFinder&quot;); &#xa;               post(&quot;Speech&quot;, &quot;getting up from back&quot;); &#xa;               post(&quot;NaoMotionPlayer&quot;, &quot;get_up_from_back_lie_down&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="66" code="0" xpos="215" linewidth="1">BackGetUp</state>
-    <state pencolor="0" radius="40" description="OnEntry { suspend(&quot;SMBallFinder&quot;); &#xa;               post(&quot;Speech&quot;, &quot;getting up from front&quot;); &#xa;               post(&quot;NaoMotionPlayer&quot;, &quot;get_up_from_front_lie_down&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="342" code="1" xpos="634" linewidth="1">FrontGetUp</state>
+    <state pencolor="959488" radius="40" description="OnEntry { suspend(&quot;SMBallFinder&quot;); &#xa;               post(&quot;NaoMotionPlayer&quot;, &quot;stop now&quot;); &#xa;               post(&quot;Say&quot;, &quot;about to get up&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="304" code="7" xpos="315" linewidth="1">Up</state>
+    <state pencolor="0" radius="40" description="OnEntry { suspend(&quot;SMBallFinder&quot;); &#xa;               post(&quot;Speech&quot;, &quot;getting up from back&quot;); &#xa;               post(&quot;NaoMotionPlayer&quot;, &quot;get_up_from_back_lie_down&quot;); &#xa;               post(&quot;Say&quot;, &quot;Getting up from back&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="66" code="0" xpos="215" linewidth="1">BackGetUp</state>
+    <state pencolor="0" radius="40" description="OnEntry { suspend(&quot;SMBallFinder&quot;); &#xa;               post(&quot;Speech&quot;, &quot;getting up from front&quot;); &#xa;               post(&quot;NaoMotionPlayer&quot;, &quot;get_up_from_front_lie_down&quot;); &#xa;               post(&quot;Say&quot;, &quot;Getting up from front&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="342" code="1" xpos="634" linewidth="1">FrontGetUp</state>
     <state pencolor="0" radius="40" description="OnEntry { suspend(&quot;SMBallFinder&quot;); &#xa;               post(&quot;Speech&quot;, &quot;Lying down now&quot;); &#xa;               post(&quot;NaoMotionPlayer&quot;, &quot;side_to_lie_down&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="550" code="2" xpos="281" linewidth="1">SideToLieDown</state>
-    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="72" code="3" xpos="459" linewidth="1">WAIT</state>
-    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="480" code="4" xpos="678" linewidth="1">WAIT</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;Say&quot;, &quot;starting wait&quot;); }&#xa;OnExit { post(&quot;Say&quot;, &quot;finished waiting&quot;); }&#xa;{ }" finalstate="0" moore_outputs="" ypos="72" code="3" xpos="459" linewidth="1">WAIT</state>
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { post(&quot;Say&quot;, &quot;finished waiting&quot;); }&#xa;{ }" finalstate="0" moore_outputs="" ypos="480" code="4" xpos="678" linewidth="1">WAIT</state>
     <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="476" code="5" xpos="64" linewidth="1">WAIT</state>
     <transition c1x="316.4600371262535" c2y="167.6889244017213" c1y="238.02039257839" description="" straight="0" type="2" ypos="264.1985123916004" endx="213.4012784660451" xpos="318.98014876084" endy="105.9680383488716" c2x="232.441976174287">
       <from>7</from>
@@ -37,7 +37,7 @@
       <inputs default="0" any="0" invert="0">robotFallenLeft</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="309.5717474108991" c2y="69.05196218567104" c1y="69.6196767831964" description="" straight="1" type="2" ypos="70.18739138072169" endx="419.1548059989848" xpos="254.7802181168563" endy="68.48424758814571" c2x="364.3632767049421">
+    <transition c1x="309.5717474108991" c2y="69.05196218567103" c1y="69.61967678319637" description="" straight="1" type="2" ypos="70.18739138072169" endx="419.1548059989848" xpos="254.7802181168562" endy="68.48424758814571" c2x="364.3632767049419">
       <from>0</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">NaoMotionPlayerIsRunning</inputs>
@@ -49,13 +49,13 @@
       <inputs default="0" any="0" invert="0">NaoMotionPlayerIsRunning</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="203.8262322608498" c2y="545.7397665501483" c1y="557.8690835149941" description="" straight="0" type="2" ypos="557.99840047984" endx="98.86302148498197" xpos="241.8078376487838" endy="495.6104495853024" c2x="126.8446268729159">
+    <transition c1x="203.8262322608498" c2y="545.7397665501483" c1y="557.8690835149941" description="" straight="0" type="2" ypos="557.99840047984" endx="98.86302148498197" xpos="241.8078376487837" endy="495.6104495853024" c2x="126.8446268729159">
       <from>2</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">NaoMotionPlayerIsRunning</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="376.4777200575186" c2y="299.2043318402895" c1y="133.9537423470521" description="" straight="0" type="2" ypos="98.81145031875079" endx="354.8253690423715" xpos="429.3158942899545" endy="300.2663716522777" c2x="465.4935974049678">
+    <transition c1x="376.4777200575186" c2y="299.2043318402895" c1y="133.9537423470521" description="" straight="0" type="2" ypos="98.81145031875081" endx="354.8253690423715" xpos="429.3158942899545" endy="300.2663716522777" c2x="465.4935974049678">
       <from>3</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">!NaoMotionPlayerIsRunning</inputs>
@@ -67,7 +67,7 @@
       <inputs default="0" any="0" invert="0">!NaoMotionPlayerIsRunning</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="104.7155352400601" c2y="383.7929023716424" c1y="398.4309637223212" description="" straight="0" type="2" ypos="436.0690250730001" endx="280.4488439640627" xpos="66.34888087805882" endy="324.1548410209634" c2x="215.0821896020614">
+    <transition c1x="104.7155352400601" c2y="383.7929023716424" c1y="398.4309637223212" description="" straight="0" type="2" ypos="436.0690250730001" endx="280.4488439640626" xpos="66.34888087805882" endy="324.1548410209634" c2x="215.0821896020614">
       <from>5</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">!NaoMotionPlayerIsRunning</inputs>

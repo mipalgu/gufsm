@@ -175,7 +175,7 @@
       <inputs default="0" any="0" invert="0">initialReceived</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="293.2334342787776" c2y="215.0005391375365" c1y="186.8376112338381" description="" straight="1" type="2" ypos="158.6746833301397" endx="370.3385688350492" xpos="254.6808670006419" endy="243.163467041235" c2x="331.7860015569134">
+    <transition c1x="293.2334342787777" c2y="215.0005391375365" c1y="186.8376112338381" description="" straight="1" type="2" ypos="158.6746833301397" endx="370.3385688350492" xpos="254.6808670006419" endy="243.163467041235" c2x="331.7860015569134">
       <from>0</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">1</inputs>
