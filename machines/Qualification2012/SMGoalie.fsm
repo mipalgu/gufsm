@@ -7,11 +7,10 @@
     <outputnames></outputnames>
     <itransition ypos="180" endx="120" xpos="60" endy="180"/>
     <state pencolor="12124415" radius="40" description="OnEntry {&#x9;&#xa;&#x9;int updated; int ball_x; int ball_y; int ball_d; int br; int new_br; int loop; &#xa;  }&#xa;OnExit { post(&quot;guvision_runVisionPipeline&quot;, &quot;&quot;); }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="180" code="0" xpos="160" linewidth="1">Init</state>
-    <state pencolor="16711710" radius="40" description="OnEntry {  &#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="310" code="7" xpos="290" linewidth="1">Wait</state>
-    <state pencolor="16711710" radius="40" description="OnEntry { &#xa;&#x9;loop = 0;&#xa;&#x9;br = guvision_opencv_ballInfo1_radius;&#xa;&#x9;guvision_opencv_ballInfo1_radius=0;&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit {  }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="130" code="8" xpos="1143" linewidth="1">GoodBallView</state>
-    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit { guvision_opencv_ballInfo1_radius=1; }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="90" code="10" xpos="295" linewidth="1">Done</state>
+    <state pencolor="16711710" radius="40" description="OnEntry {  &#xa;&#x9;updated = filtered;&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="310" code="7" xpos="290" linewidth="1">Wait</state>
+    <state pencolor="16711710" radius="40" description="OnEntry { &#xa;&#x9;loop = 0;&#xa;&#x9;br = ball_d;&#xa;&#x9;updated = filtered;&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit {  }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="130" code="8" xpos="1143" linewidth="1">GoodBallView</state>
     <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;post(&quot;Speech&quot;, &quot;Save&quot;); &#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit {  }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="70" code="2" xpos="496" linewidth="1">MakeSave</state>
-    <state pencolor="0" radius="40" description="OnEntry { &#xa; }&#xa;OnExit { &#xa;&#x9;loop = loop + 1;&#xa;&#x9;new_br = guvision_opencv_ballInfo1_radius;&#xa;&#x9;guvision_opencv_ballInfo1_radius=0;&#xa;&#x9;print_state_name();&#xa; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="62" code="12" xpos="789" linewidth="1">CheckbrIsNearer</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa; }&#xa;OnExit { &#xa;&#x9;loop = loop + 1;&#xa;&#x9;new_br = BallDistance;&#xa;&#x9;updated = filtered;&#xa;&#x9;print_state_name();&#xa; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="62" code="12" xpos="789" linewidth="1">CheckbrIsNearer</state>
     <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;ball_x = Ballfiltered_x;&#xa;&#x9;ball_y = Ballfiltered_y;&#xa;&#x9;ball_d = BallDistance;&#xa; }&#xa;OnExit { &#xa; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="462" code="13" xpos="873" linewidth="1">WaitForBall</state>
     <transition c1x="197.8599802330323" c2y="266.1461505795673" c1y="236.816640374459" description="" straight="0" type="2" ypos="213.6118659289698" endx="253.9779345454169" xpos="181.6850747928837" endy="292.610037366753" c2x="219.6039439194745">
       <from>0</from>
@@ -25,28 +24,16 @@
       <inputs default="0" any="0" invert="0">updated!=filtered</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="843.3398166712786" c2y="236.4870495518933" c1y="189.6458934825795" description="" straight="1" type="2" ypos="142.8047374132658" endx="319.809652541004" xpos="1105.104898736416" endy="283.328205621207" c2x="581.5747346061413">
+    <transition c1x="843.3398166712784" c2y="236.4870495518933" c1y="189.6458934825796" description="" straight="1" type="2" ypos="142.8047374132659" endx="319.809652541004" xpos="1105.104898736416" endy="283.328205621207" c2x="581.5747346061412">
       <from>8</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">timeout(100000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1011.420279445225" c2y="89.48762460219226" c1y="109.1306037988571" description="" straight="1" type="2" ypos="128.773582995522" endx="828.2232270276368" xpos="1103.018805654019" endy="69.84464540552739" c2x="919.8217532364308">
+    <transition c1x="1011.420279445225" c2y="89.48762460219226" c1y="109.1306037988571" description="" straight="1" type="2" ypos="128.773582995522" endx="828.2232270276368" xpos="1103.018805654019" endy="69.84464540552739" c2x="919.8217532364307">
       <from>8</from>
       <to>12</to>
-      <inputs default="0" any="0" invert="0">guvision_opencv_ballInfo1_radius>0</inputs>
-      <outputs></outputs>
-    </transition>
-    <transition c1x="199.7312058788673" c2y="211.6108573550581" c1y="77.17653683532609" description="" straight="0" type="2" ypos="72.11145618000168" endx="298.5478751522173" xpos="259.2229123600034" endy="270.9239993041496" c2x="272.9626652978342">
-      <from>10</from>
-      <to>7</to>
-      <inputs default="0" any="0" invert="0">timeout(10000)</inputs>
-      <outputs></outputs>
-    </transition>
-    <transition c1x="415.543711914802" c2y="79.67032804605032" c1y="76.49607362009995" description="" straight="1" type="2" ypos="73.3218191941496" endx="334.3547964039963" xpos="456.1381696702048" endy="82.84458247200067" c2x="374.9492541593991">
-      <from>2</from>
-      <to>10</to>
-      <inputs default="0" any="0" invert="0">timeout(10000)</inputs>
+      <inputs default="0" any="0" invert="0">updated!=filtered</inputs>
       <outputs></outputs>
     </transition>
     <transition c1x="413.4153526958638" c2y="214.3389315266526" c1y="157.4835630591185" description="" straight="1" type="2" ypos="100.6281945915844" endx="299.7014250014533" xpos="470.2723165430691" endy="271.1942999941867" c2x="356.5583888486586">
@@ -61,10 +48,10 @@
       <inputs default="0" any="0" invert="0">(new_br*100)>(br*120)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="783.1291034806464" c2y="97.47643065948547" c1y="181.8562996844932" description="" straight="1" type="2" ypos="100.0842651593343" endx="755.15068639641" xpos="776.7693521318976" endy="83.31253078744561" c2x="674.363954762637">
+    <transition c1x="783.1291034806464" c2y="97.47643065948543" c1y="181.8562996844931" description="" straight="1" type="2" ypos="100.0842651593343" endx="755.15068639641" xpos="776.7693521318976" endy="83.31253078744557" c2x="674.363954762637">
       <from>12</from>
       <to>12</to>
-      <inputs default="0" any="0" invert="0">guvision_opencv_ballInfo1_radius>0</inputs>
+      <inputs default="0" any="0" invert="0">updated!=filtered</inputs>
       <outputs></outputs>
     </transition>
     <transition c1x="604.1302188913414" c2y="207.7623058822386" c1y="137.9222966261981" description="" straight="1" type="2" ypos="68.08228737015764" endx="313.4603924860737" xpos="749.4651320939753" endy="277.6023151382792" c2x="458.7953056887076">
@@ -73,7 +60,7 @@
       <inputs default="0" any="0" invert="0">(loop>5)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1027.326866160259" c2y="208.3934126589186" c1y="379.5524444174446" description="" straight="0" type="2" ypos="422.706457343101" endx="1149.951413356362" xpos="880.4844843155998" endy="169.3913423527175" c2x="1111.823287145468">
+    <transition c1x="1027.326866160259" c2y="208.3934126589186" c1y="379.5524444174446" description="" straight="0" type="2" ypos="422.706457343101" endx="1149.951413356362" xpos="880.4844843155998" endy="169.3913423527174" c2x="1111.823287145468">
       <from>13</from>
       <to>8</to>
       <inputs default="0" any="0" invert="0">(abs(ball_x)&lt;30)&amp;&amp;(abs(ball_y)&lt;30)&amp;&amp;(abs(ball_d)&lt;300)</inputs>
