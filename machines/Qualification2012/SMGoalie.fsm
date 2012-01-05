@@ -5,95 +5,120 @@
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
-    <itransition ypos="180" endx="120" xpos="60" endy="180"/>
-    <state pencolor="12124415" radius="40" description="OnEntry {&#x9;&#xa;&#x9;int updated; int ball_x; int ball_y; int ball_d; int br; int new_br; int loop; &#xa;  }&#xa;OnExit { post(&quot;guvision_runVisionPipeline&quot;, &quot;&quot;); }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="180" code="0" xpos="160" linewidth="1">Init</state>
-    <state pencolor="16711710" radius="40" description="OnEntry {  &#xa;&#x9;updated = filtered;&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="310" code="7" xpos="290" linewidth="1">Wait</state>
-    <state pencolor="16711710" radius="40" description="OnEntry { &#xa;&#x9;loop = 0;&#xa;&#x9;br = ball_d;&#xa;&#x9;updated = filtered;&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit {  }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="389" code="8" xpos="1200" linewidth="1">GoodBallView</state>
-    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;post_int(&quot;Speech&quot;, br); &#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit {  }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="89" code="2" xpos="502" linewidth="1">MakeSave</state>
-    <state pencolor="0" radius="40" description="OnEntry { &#xa; }&#xa;OnExit { &#xa;&#x9;loop = loop + 1;&#xa;&#x9;new_br = BallDistance;&#xa;&#x9;updated = filtered;&#xa;&#x9;print_state_name();&#xa; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="251" code="12" xpos="997" linewidth="1">CheckbrZone50</state>
-    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;ball_x = Ballfiltered_x;&#xa;&#x9;ball_y = Ballfiltered_y;&#xa;&#x9;ball_d = BallDistance;&#xa; }&#xa;OnExit { &#xa; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="578" code="13" xpos="776" linewidth="1">WaitForBall</state>
-    <state pencolor="0" radius="40" description="OnEntry { &#xa; }&#xa;OnExit { &#xa; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="177" code="1" xpos="1225" linewidth="1">CheckDist</state>
-    <state pencolor="0" radius="40" description="OnEntry { &#xa; }&#xa;OnExit { &#xa;&#x9;loop = loop + 1;&#xa;&#x9;new_br = BallDistance;&#xa;&#x9;updated = filtered;&#xa;&#x9;print_state_name();&#xa; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="101" code="3" xpos="993" linewidth="1">CheckbrZone100</state>
-    <transition c1x="197.8599802330323" c2y="266.1461505795673" c1y="236.816640374459" description="" straight="0" type="2" ypos="213.6118659289698" endx="253.9779345454169" xpos="181.6850747928837" endy="292.610037366753" c2x="219.6039439194745">
+    <itransition ypos="284" endx="135" xpos="75" endy="284"/>
+    <state pencolor="12124415" radius="40" description="OnEntry {&#x9;&#xa;&#x9;int updated; int ball_x; int ball_y; int ball_d; int br; int new_br; int loop; &#xa;  }&#xa;OnExit { post(&quot;guvision_runVisionPipeline&quot;, &quot;&quot;); }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="284" code="0" xpos="175" linewidth="1">Init</state>
+    <state pencolor="16711710" radius="40" description="OnEntry {  &#xa;&#x9;updated = filtered;&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="414" code="7" xpos="305" linewidth="1">Wait</state>
+    <state pencolor="16711710" radius="40" description="OnEntry { &#xa;&#x9;loop = 0;&#xa;&#x9;br = ball_d;&#xa;&#x9;updated = filtered;&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit {  }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="493" code="8" xpos="1215" linewidth="1">GoodBallView</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;post_int(&quot;Speech&quot;, br); &#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit {  }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="193" code="2" xpos="517" linewidth="1">MakeSave</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa; }&#xa;OnExit { &#xa;&#x9;loop = loop + 1;&#xa;&#x9;new_br = BallDistance;&#xa;&#x9;updated = filtered;&#xa;&#x9;print_state_name();&#xa; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="355" code="12" xpos="1012" linewidth="1">CheckbrZone50</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;ball_x = Ballfiltered_x;&#xa;&#x9;ball_y = Ballfiltered_y;&#xa;&#x9;ball_d = BallDistance;&#xa; }&#xa;OnExit { &#xa; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="588" code="13" xpos="769" linewidth="1">WaitForBall</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa; }&#xa;OnExit { &#xa; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="281" code="1" xpos="1240" linewidth="1">CheckDist</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa; }&#xa;OnExit { &#xa;&#x9;loop = loop + 1;&#xa;&#x9;new_br = BallDistance;&#xa;&#x9;updated = filtered;&#xa;&#x9;print_state_name();&#xa; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="205" code="3" xpos="1008" linewidth="1">CheckbrZone100</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa; }&#xa;OnExit { &#xa;&#x9;loop = loop + 1;&#xa;&#x9;new_br = BallDistance;&#xa;&#x9;updated = filtered;&#xa;&#x9;print_state_name();&#xa; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="58" code="4" xpos="995" linewidth="1">CheckbrLastZone</state>
+    <transition c1x="212.8599802330323" c2y="370.1461505795673" c1y="340.816640374459" description="" straight="0" type="2" ypos="317.6118659289698" endx="268.9779345454169" xpos="196.6850747928837" endy="396.610037366753" c2x="234.6039439194745">
       <from>0</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">timeout(1000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="518.5014874838384" c2y="573.7327572774284" c1y="283.4543596707521" description="" straight="0" type="2" ypos="311.1759620640757" endx="737.5390420943671" xpos="329.9827101785741" endy="567.0111548841048" c2x="549.0202647891027">
+    <transition c1x="427.5014874838384" c2y="583.7327572774284" c1y="499.4543596707521" description="" straight="0" type="2" ypos="415.1759620640757" endx="730.5390420943671" xpos="344.9827101785741" endy="577.0111548841048" c2x="542.0202647891027">
       <from>7</from>
       <to>13</to>
       <inputs default="0" any="0" invert="0">updated!=filtered</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="881.3398166712784" c2y="322.8203828852266" c1y="362.3125601492463" description="" straight="1" type="2" ypos="401.8047374132659" endx="319.809652541004" xpos="1162.104898736416" endy="283.328205621207" c2x="600.5747346061412">
+    <transition c1x="898.8087110618386" c2y="434.8275919808889" c1y="470.3161646970774" description="" straight="1" type="2" ypos="505.8047374132659" endx="342.2163357126836" xpos="1177.104898736416" endy="399.3390192647004" c2x="620.5125233872611">
       <from>8</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">timeout(100000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1210.987095871017" c2y="261.0737648553466" c1y="305.1822067869991" description="" straight="1" type="2" ypos="349.2906487186517" endx="1223.334778211513" xpos="1204.813254700769" endy="216.9653229236941" c2x="1217.160937041265">
+    <transition c1x="1225.987095871017" c2y="365.0737648553466" c1y="409.1822067869992" description="" straight="1" type="2" ypos="453.2906487186517" endx="1238.334778211513" xpos="1219.813254700769" endy="320.9653229236941" c2x="1232.160937041265">
       <from>8</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">updated!=filtered</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="417.4153526958638" c2y="220.672264859986" c1y="170.1502297257852" description="" straight="1" type="2" ypos="119.6281945915844" endx="299.7014250014533" xpos="476.2723165430691" endy="271.1942999941867" c2x="358.5583888486586">
+    <transition c1x="427.295926278882" c2y="324.1440783662304" c1y="273.8861364789074" description="" straight="1" type="2" ypos="223.6281945915844" endx="299.3431457505076" xpos="491.2723165430691" endy="374.4020202535534" c2x="363.3195360146948">
       <from>2</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">timeout(10000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="817.4952742694459" c2y="154.1426364987247" c1y="202.8706859042975" description="" straight="1" type="2" ypos="251.5987353098702" endx="538.4768602070043" xpos="957.0044813006667" endy="105.4145870931519" c2x="677.9860672382251">
+    <transition c1x="832.4952742694459" c2y="258.1426364987246" c1y="306.8706859042974" description="" straight="1" type="2" ypos="355.5987353098702" endx="553.4768602070043" xpos="972.0044813006667" endy="209.4145870931519" c2x="692.9860672382251">
       <from>12</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">(new_br*100)>(br*120)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="991.1291034806464" c2y="286.4764306594855" c1y="370.8562996844931" description="" straight="1" type="2" ypos="289.0842651593342" endx="963.15068639641" xpos="984.7693521318976" endy="272.3125307874456" c2x="882.363954762637">
+    <transition c1x="1006.129103480646" c2y="390.4764306594853" c1y="474.8562996844932" description="" straight="1" type="2" ypos="393.0842651593342" endx="978.15068639641" xpos="999.7693521318976" endy="376.3125307874456" c2x="897.363954762637">
       <from>12</from>
       <to>12</to>
       <inputs default="0" any="0" invert="0">updated!=filtered</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="742.7968855580079" c2y="270.7623058822386" c1y="263.9222966261981" description="" straight="1" type="2" ypos="257.0822873701576" endx="313.4603924860737" xpos="957.4651320939753" endy="277.6023151382792" c2x="528.1286390220408">
+    <transition c1x="760.0755542173246" c2y="378.9490392015335" c1y="370.0156632858456" description="" straight="1" type="2" ypos="361.0822873701576" endx="335.2963984640231" xpos="972.4651320939753" endy="387.8824151172215" c2x="547.6859763406738">
       <from>12</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">(loop>5)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="930.326866160259" c2y="467.3934126589186" c1y="495.5524444174446" description="" straight="0" type="2" ypos="538.706457343101" endx="1206.951413356362" xpos="783.4844843155998" endy="428.3913423527174" c2x="1168.823287145468">
+    <transition c1x="959.620408817158" c2y="571.3934126589186" c1y="538.0679601018447" description="" straight="0" type="2" ypos="580.5155156844002" endx="1221.951413356362" xpos="808.293542656899" endy="532.3913423527174" c2x="1183.823287145468">
       <from>13</from>
       <to>8</to>
       <inputs default="0" any="0" invert="0">(abs(ball_x)&lt;30)&amp;&amp;(abs(ball_y)&lt;30)&amp;&amp;(abs(ball_d)&lt;300)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1135.535380587495" c2y="222.3716404099004" c1y="199.4001350692932" description="" straight="1" type="2" ypos="176.428629728686" endx="1036.597979746447" xpos="1185.00408100802" endy="245.3431457505076" c2x="1086.066680166971">
+    <transition c1x="1149.54025443765" c2y="319.4031801958016" c1y="299.9159049622438" description="" straight="1" type="2" ypos="280.428629728686" endx="1048.612601296911" xpos="1200.00408100802" endy="338.8904554293593" c2x="1099.07642786728">
       <from>1</from>
       <to>12</to>
       <inputs default="0" any="0" invert="0">BallDistance&lt;50</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1135.184143489408" c2y="135.2947677733946" c1y="146.5222076428429" description="" straight="1" type="2" ypos="157.7496475122913" endx="1025.67871453059" xpos="1189.936857968816" endy="124.0673279039462" c2x="1080.431429009999">
+    <transition c1x="1152.614720974295" c2y="224.9414324267959" c1y="243.3455399695436" description="" straight="1" type="2" ypos="261.7496475122913" endx="1047.970446985252" xpos="1204.936857968816" endy="206.5373248840482" c2x="1100.292583979774">
       <from>1</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">BallDistance&lt;100</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1024.058290048845" c2y="169.8291762937487" c1y="216.9110979123303" description="" straight="1" type="2" ypos="141" endx="967.2884968381401" xpos="993.0000016" endy="131.641778753161" c2x="894.7017574382733">
+    <transition c1x="1148.645706761635" c2y="136.4491732013743" c1y="197.0098025827503" description="" straight="1" type="2" ypos="257.5704319641263" endx="1030.777087639997" xpos="1207.580016322454" endy="75.88854381999832" c2x="1089.711397200816">
+      <from>1</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">BallDistance&lt;300</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="1039.058290048845" c2y="273.8291762937488" c1y="320.9110979123303" description="" straight="1" type="2" ypos="245" endx="982.2884968381401" xpos="1008.0000016" endy="235.641778753161" c2x="909.7017574382733">
       <from>3</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">updated!=filtered</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="815.9057292082859" c2y="96.89760613276128" c1y="96.55479302352886" description="" straight="1" type="2" ypos="96.21197991429645" endx="541.1419913994699" xpos="953.287598112694" endy="97.24041924199369" c2x="678.5238603038779">
+    <transition c1x="830.9057292082859" c2y="200.8976061327613" c1y="200.5547930235289" description="" straight="1" type="2" ypos="200.2119799142964" endx="556.1419913994699" xpos="968.287598112694" endy="201.2404192419937" c2x="693.5238603038779">
       <from>3</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">(new_br*100)>(br*150)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="702.0032955828755" c2y="230.1721868410886" c1y="121.3641099291617" description="" straight="0" type="2" ypos="116.5560330172349" endx="322.7122567720307" xpos="956.1488149882979" endy="286.9802637530154" c2x="533.857776177453">
+    <transition c1x="717.0032955828755" c2y="323.5072885661219" c1y="225.3641099291617" description="" straight="0" type="2" ypos="220.5560330172349" endx="324.9585777946778" xpos="971.1488149882979" endy="379.3351017250333" c2x="534.8163539721309">
       <from>3</from>
+      <to>7</to>
+      <inputs default="0" any="0" invert="0">loop>5</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="1049.655613433021" c2y="145.8976726590102" c1y="164.8305383317905" description="" straight="1" type="2" ypos="97.11209656309637" endx="976.2795727040608" xpos="1003.381163549235" endy="93.34891231505507" c2x="913.3054521945957">
+      <from>4</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">updated!=filtered</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="822.465587589333" c2y="145.0456394883459" c1y="104.9359243822191" description="" straight="1" type="2" ypos="64.82620927609236" endx="556.2232270276368" xpos="955.5867678701811" endy="185.1553545944726" c2x="689.3444073084848">
+      <from>4</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">(new_br*100)>(br*200)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="774.9834153188688" c2y="291.5838428575612" c1y="135.3096771145924" description="" straight="0" type="2" ypos="74.03551137162353" endx="313.2404192419937" xpos="958.3549133573063" endy="374.8580086005301" c2x="530.6119172804313">
+      <from>4</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">loop>5</inputs>
       <outputs></outputs>
