@@ -1,0 +1,24 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene, Carl" description="" version="1" name="SMHeadBallTracker" arrowtype="1" numbits="3" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="180" endx="120" xpos="60" endy="180"/>
+    <state pencolor="12124415" radius="40" description="OnEntry {&#x9;postv(&quot;NaoHeadAbs&quot;, 0,8,10 ); }&#xa;OnExit {  }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="180" code="0" xpos="160" linewidth="1">HEADSTABLE</state>
+    <state pencolor="16711710" radius="40" description="OnEntry {  &#xa;&#x9;postv(&quot;NaoHeadAbs&quot;, 0,25,10 );&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="181" code="7" xpos="500" linewidth="1">HEADDOWN</state>
+    <transition c1x="212.067893495193" c2y="137.1461505795673" c1y="182.0845717307252" description="" straight="0" type="2" ypos="159.2679313562662" endx="463.9779345454169" xpos="194.2079132621607" endy="163.6100373667529" c2x="429.6039439194745">
+      <from>0</from>
+      <to>7</to>
+      <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="388.6965741389068" c2y="253.3811019520467" c1y="235.725468024385" description="" straight="0" type="2" ypos="216.7770876399966" endx="189.5976029358378" xpos="482.1114561800017" endy="206.9069117598525" c2x="272.8901635152903">
+      <from>7</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>
