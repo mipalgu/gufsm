@@ -45,11 +45,7 @@
       <inputs default="0" any="0" invert="0">shortChestButtonPressed</inputs>
       <outputs>1</outputs>
     </transition>
-<<<<<<< HEAD
-    <transition c1x="461.8965371838098" c2y="205.2348198776991" c1y="208.7664120902655" description="" straight="1" type="2" ypos="212.2980043028319" endx="560.1409849132536" xpos="412.7743133190879" endy="201.7032276651327" c2x="511.0187610485318">
-=======
     <transition c1x="660.2298705171431" c2y="180.5681532110324" c1y="181.4330787569322" description="" straight="1" type="2" ypos="182.2980043028319" endx="797.1409849132536" xpos="591.7743133190879" endy="179.7032276651327" c2x="728.6854277151984">
->>>>>>> aa1d1081b30d6ed5c52d8d2e276ca766e055c6e1
       <from>5</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">!yellowIsVisible</inputs>
@@ -73,11 +69,7 @@
       <inputs default="0" any="0" invert="0">!NaoMotionPlayerIsRunning</inputs>
       <outputs></outputs>
     </transition>
-<<<<<<< HEAD
-    <transition c1x="279.0345090761755" c2y="259.181322015426" c1y="297.3503535808587" description="" straight="1" type="2" ypos="335.5193851462915" endx="358.4126433763204" xpos="239.345441926103" endy="221.0122904499933" c2x="318.7235762262479">
-=======
     <transition c1x="242.9436517968831" c2y="237.6701363934434" c1y="252.3980875750729" description="" straight="0" type="2" ypos="308.4651320939753" endx="308" xpos="230.9177126298424" endy="187" c2x="274.897251872857">
->>>>>>> aa1d1081b30d6ed5c52d8d2e276ca766e055c6e1
       <from>0</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">shortChestButtonPressed</inputs>
