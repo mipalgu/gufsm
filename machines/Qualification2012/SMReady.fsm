@@ -5,24 +5,32 @@
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
-    <itransition ypos="89" endx="73.5494181990515" xpos="1" endy="122.527140916879"/>
-    <state pencolor="959488" radius="40" description="OnEntry { print_state_name();  goaliePlacing=0; forwardPlacing=0;    }&#xa;OnExit { }&#xa;{ }&#xa;&#xa;" finalstate="0" moore_outputs="" ypos="139" code="7" xpos="110" linewidth="1">START</state>
-    <state pencolor="14615040" radius="40" description="OnEntry { print_state_name(); &#xa; post(&quot;suspend&quot;,&quot;VladGoliePlacer&quot;); &#xa; post(&quot;suspend&quot;,&quot;VladForwardPlacer&quot;);}&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="88" code="8" xpos="1084" linewidth="1">READYEND</state>
+    <itransition ypos="90" endx="72.5494181990515" xpos="0" endy="123.527140916879"/>
+    <state pencolor="959488" radius="40" description="OnEntry { print_state_name();  goaliePlacing=0; forwardPlacing=0;  defenderPlacing=0;  }&#xa;OnExit { }&#xa;{ }&#xa;&#xa;" finalstate="0" moore_outputs="" ypos="140" code="7" xpos="109" linewidth="1">START</state>
+    <state pencolor="14615040" radius="40" description="OnEntry { print_state_name(); &#xa; post(&quot;suspend&quot;,&quot;VladGoliePlacer&quot;); &#xa; post(&quot;suspend&quot;,&quot;VladForwardPlacer&quot;);&#xa; post(&quot;suspend&quot;,&quot;VladDefenderPlacer&quot;);&#xa;}&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="88" code="8" xpos="1084" linewidth="1">READYEND</state>
     <state pencolor="0" radius="40" description="OnEntry { print_state_name();  post(&quot;restart&quot;,&quot;VladGoliePlacer&quot;); }&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="93" code="9" xpos="543" linewidth="1">STARTGOLIE</state>
-    <state pencolor="0" radius="40" description="OnEntry{print_state_name(); &#xa; goaliePlacing=0; forwardPlacing=0;   }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="90" code="15" xpos="853" linewidth="1">ONSET</state>
-    <state pencolor="0" radius="40" description="OnEntry{ print_state_name();  post(&quot;restart&quot;,&quot;VladForwardPlacer&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="270" code="1" xpos="540" linewidth="1">STARTATTACKER</state>
-    <state pencolor="0" radius="40" description="OnEntry{forwardPlacing=1; post(&quot;QSay&quot;,&quot;I'm&quot;); post_int(&quot;QSay&quot;, playerNumber); post(&quot;QSay&quot;, &quot;Player&quot;); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="248" code="0" xpos="324" linewidth="1">INDICATEFORWARD</state>
+    <state pencolor="0" radius="40" description="OnEntry{print_state_name(); &#xa; goaliePlacing=0; forwardPlacing=0;  defenderPlacing=0; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="90" code="15" xpos="853" linewidth="1">ONSET</state>
+    <state pencolor="0" radius="40" description="OnEntry{ print_state_name();  post(&quot;restart&quot;,&quot;VladForwardPlacer&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="209" code="1" xpos="551" linewidth="1">STARTATTACKER</state>
+    <state pencolor="0" radius="40" description="OnEntry{forwardPlacing=1; post(&quot;QSay&quot;,&quot;I'm&quot;); post_int(&quot;QSay&quot;, playerNumber); post(&quot;QSay&quot;, &quot;Player&quot;); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="196" code="0" xpos="360" linewidth="1">INDICATEFORWARD</state>
     <state pencolor="0" radius="40" description="OnEntry{goaliePlacing=1; post(&quot;QSay&quot;,&quot;I'm ONE; Golie&quot;); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="84" code="2" xpos="340" linewidth="1">INDICATEGOLIE</state>
-    <transition c1x="177.6391647533837" c2y="216.4148910465821" c1y="196.5185235171249" description="" straight="1" type="2" ypos="176.6221559876678" endx="285.7459371579465" xpos="123.5857785511023" endy="236.3112585760392" c2x="231.6925509556651">
+    <state pencolor="0" radius="40" description="OnEntry{defenderPlacing=1; post(&quot;QSay&quot;,&quot;I'm&quot;); post_int(&quot;QSay&quot;, playerNumber); post(&quot;QSay&quot;, &quot;Defender&quot;); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="391" code="3" xpos="362" linewidth="1">INDICATEDEFENDER</state>
+    <state pencolor="0" radius="40" description="OnEntry{ print_state_name();  post(&quot;restart&quot;,&quot;VladForwardDefender&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="398" code="4" xpos="545" linewidth="1">STARTATTACKER</state>
+    <transition c1x="188.9724980867171" c2y="182.0815577132487" c1y="179.8518568504583" description="" straight="1" type="2" ypos="177.6221559876678" endx="321.7459371579465" xpos="122.5857785511023" endy="184.3112585760392" c2x="255.3592176223318">
       <from>7</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">playerNumber==2</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="199.0174562436071" c2y="94.05311319720349" c1y="110.6821858866213" description="" straight="1" type="2" ypos="127.3112585760392" endx="300.5442430467143" xpos="148.2540628420535" endy="77.42404050778565" c2x="249.7808496451607">
+    <transition c1x="198.3507895769404" c2y="94.38644653053682" c1y="111.348852553288" description="" straight="1" type="2" ypos="128.3112585760392" endx="300.5442430467143" xpos="147.2540628420535" endy="77.42404050778565" c2x="249.4475163118273">
       <from>7</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">playerNumber==1</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="180.9713112107183" c2y="315.9501861449752" c1y="247.9669348017015" description="" straight="1" type="2" ypos="179.9836834584278" endx="322.6291517202446" xpos="110.1423909559551" endy="383.933437488249" c2x="251.8002314654814">
+      <from>7</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">playerNumber==4</inputs>
       <outputs></outputs>
     </transition>
     <transition c1x="659.3287823908553" c2y="90.41068014192109" c1y="95.23862132683605" description="set received from Game Controller" straight="1" type="2" ypos="100.066562511751" endx="813.2446506130552" xpos="582.3708482797554" endy="85.58273895700614" c2x="736.2867165019553">
@@ -31,19 +39,19 @@
       <inputs default="0" any="0" invert="0">setReceived</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="930.5500661144051" c2y="77.00029056070645" c1y="103.059244206305" description="" straight="1" type="2" ypos="129.1181978519036" endx="1068.944918121762" xpos="861.3526401107267" endy="50.94133691510785" c2x="999.7474921180835">
+    <transition c1x="930.5500661144051" c2y="77.00029056070645" c1y="103.059244206305" description="" straight="1" type="2" ypos="129.1181978519036" endx="1068.944918121762" xpos="861.3526401107267" endy="50.94133691510786" c2x="999.7474921180835">
       <from>15</from>
       <to>8</to>
       <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="661.0724074580468" c2y="167.801200420054" c1y="218.900600210027" description="set received from Game Controller" straight="1" type="2" ypos="270" endx="823.2172223741404" xpos="580" endy="116.7018006300811" c2x="742.1448149160937">
+    <transition c1x="668.4057407913801" c2y="147.4678670867207" c1y="178.2339335433604" description="set received from Game Controller" straight="1" type="2" ypos="209" endx="823.2172223741404" xpos="591" endy="116.7018006300811" c2x="745.8114815827603">
       <from>1</from>
       <to>15</to>
       <inputs default="0" any="0" invert="0">setReceived</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="408.6374267321294" c2y="268.2222869027539" c1y="262.8231439638071" description="" straight="1" type="2" ypos="257.4240010248602" endx="500.1642717412918" xpos="362.8740042275482" endy="273.6214298417007" c2x="454.4008492367106">
+    <transition c1x="436.3040933987961" c2y="210.2222869027539" c1y="207.823143963807" description="" straight="1" type="2" ypos="205.4240010248602" endx="511.1642717412918" xpos="398.8740042275482" endy="212.6214298417007" c2x="473.734182570044">
       <from>0</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
@@ -54,6 +62,18 @@
       <to>9</to>
       <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
       <outputs></outputs>
+    </transition>
+    <transition c1x="436.1941716962947" c2y="397.0270515399809" c1y="396.0541030799619" description="" straight="1" type="2" ypos="395.0811546199428" endx="505" xpos="401.7912575444421" endy="398" c2x="470.5970858481473">
+      <from>3</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="668.0710123599586" c2y="215.5305899690525" c1y="305.6857898242262" description="set received from Game Controller" straight="1" type="2" ypos="395.8409896794" endx="834.3296552176751" xpos="584.9416909311003" endy="125.3753901138788" c2x="751.2003337888168">
+      <from>4</from>
+      <to>15</to>
+      <inputs default="0" any="0" invert="0">setReceived</inputs>
+      <outputs>2</outputs>
     </transition>
   </machine>
 </qfsmproject>
