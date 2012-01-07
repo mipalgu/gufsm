@@ -56,6 +56,8 @@
  *
  */
 #include "FSMWBSubMachineFactory.h"
+#include "FSMTransition.h"
+#include "FSMState.h"
 #include "ActivityFactory.h"
 #include "TransitionFactory.h"
 
@@ -71,6 +73,43 @@ WBSubMachineFactory::WBSubMachineFactory(WBContext *context, const string &machi
 
         ActivityFactory afactory(machine(), a_file_name.c_str(), NULL);
         TransitionFactory tfactory(machine(), t_file_name.c_str());
+        if (!determineSuspendState())
+                determineSuspendState(NULL);
         machine()->setName(machine_name);
         machine()->initialise();
+}
+
+
+bool WBSubMachineFactory::determineSuspendState(const char *name)
+{
+        if (machine()->suspendState()) return true;
+
+        for (StateVector::const_iterator i = machine()->states().begin(); i != machine()->states().begin(); i++)
+        {
+                if ((*i)->transitions().size()) // nonempty, cannot be suspend
+                        continue;
+                if (name && (*i)->name() != name)
+                        continue;               // non-matching name
+                bool transitionsFound = false;
+                StateVector::const_iterator j = machine()->states().begin();
+                for (; j != machine()->states().begin(); j++)
+                {
+                        if (j == i) continue;   // ignore the tested state
+                        for (TransitionVector::const_iterator k = (*j)->transitions().begin(); k != (*j)->transitions().end(); k++)
+                        {
+                                if ((*k)->target() == *i)
+                                {
+                                        transitionsFound = true;
+                                        break;
+                                }
+                        }
+                        if (transitionsFound) break;
+                }
+                if (!transitionsFound)          // found my suspend state
+                {
+                        machine()->setSuspendState(*i);
+                        return true;
+                }
+        }
+        return false;                           // no suspend state foujnd
 }
