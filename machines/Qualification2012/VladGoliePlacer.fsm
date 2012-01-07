@@ -5,9 +5,8 @@
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
-    <itransition ypos="90" endx="73.5494181990515" xpos="1" endy="123.527140916879"/>
-    <state pencolor="959488" radius="40" description="OnEntry { int repeat; print_state_name(); post(&quot;NaoMotionPlayer&quot;,&quot;get_up_anywhere&quot;);   &#xa; post(&quot;guvision_runVisionPipeline&quot;,&quot;now&quot;);      &#xa; post(&quot;suspend&quot;,&quot;SMHeadUpDown&quot;);      }&#xa;OnExit { }&#xa;{ }&#xa;&#xa;" finalstate="0" moore_outputs="" ypos="140" code="7" xpos="110" linewidth="1">GET_UP</state>
-    <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="295" code="9" xpos="142" linewidth="1">WAIT</state>
+    <itransition ypos="89" endx="73.5494181990515" xpos="1" endy="122.527140916879"/>
+    <state pencolor="959488" radius="40" description="OnEntry { int repeat; repeat=0; print_state_name();     &#xa;     }&#xa;OnExit { }&#xa;{ }&#xa;&#xa;" finalstate="0" moore_outputs="" ypos="139" code="7" xpos="110" linewidth="1">DUMMY</state>
     <state pencolor="0" radius="40" description="OnEntry { print_state_name(); post(&quot;Speech&quot;, &quot;Spin&quot;); &#xa;               post(&quot;NaoWalk&quot;, &quot;0 0 -90&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="481" code="2" xpos="1253" linewidth="1">FACEFORWARDS</state>
     <state pencolor="0" radius="40" description="OnEntry { print_state_name(); post(&quot;Speech&quot;, &quot;Back&quot;); &#xa;               post(&quot;NaoWalk&quot;, &quot;-50 0 0&quot;); &#xa; post(&quot;suspend&quot;,&quot;SMHeadUpDown&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="500" code="10" xpos="519" linewidth="1">BACKINTOGOAL</state>
     <state pencolor="0" radius="40" description="OnEntry {print_state_name(); post(&quot;Speech&quot;, &quot;Forward&quot;); &#xa;               post(&quot;NaoWalk&quot;, &quot;50 0 0&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="86" code="11" xpos="1149" linewidth="1">FORWARDHALFFIELD</state>
@@ -21,22 +20,10 @@
     <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="259" code="18" xpos="1302" linewidth="1">WAIT</state>
     <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="498" code="5" xpos="960" linewidth="1">WAIT</state>
     <state pencolor="0" radius="40" description="OnEntry{print_state_name(); post(&quot;resume&quot;,&quot;SMHeadUpDown&quot;); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="141" code="0" xpos="264" linewidth="1">LOOKAROUND</state>
-    <transition c1x="128.7188816906337" c2y="231.7872932027877" c1y="202.3210459148598" description="" straight="1" type="2" ypos="172.8547986269318" endx="120.5249803122736" xpos="132.8158323798138" endy="261.2535404907157" c2x="124.6219310014537">
+    <transition c1x="174.673036284895" c2y="139.5601437543271" c1y="139.4099392690926" description="" straight="1" type="2" ypos="139.259734783858" endx="224.020795426412" xpos="149.9991567141365" endy="139.7103482395617" c2x="199.3469158556535">
       <from>7</from>
-      <to>9</to>
-      <inputs default="0" any="0" invert="0">NaoMotionPlayerIsRunning</inputs>
-      <outputs></outputs>
-    </transition>
-    <transition c1x="200.0596395500049" c2y="210.3545675373344" c1y="250.5276469090653" description="" straight="1" type="2" ypos="290.7007262807963" endx="236.6423548447468" xpos="181.768281902634" endy="170.1814881656034" c2x="218.3509971973759">
-      <from>9</from>
       <to>0</to>
-      <inputs default="0" any="0" invert="0">!NaoMotionPlayerIsRunning</inputs>
-      <outputs></outputs>
-    </transition>
-    <transition c1x="278.6349834562135" c2y="437.923832235376" c1y="374.7052735147969" description="" straight="1" type="2" ypos="311.4867147942178" endx="479.0163165415722" xpos="178.4443169135342" endy="501.1423909559551" c2x="378.8256499988929">
-      <from>9</from>
-      <to>10</to>
-      <inputs default="0" any="0" invert="0">~goaliePlacing</inputs>
+      <inputs default="0" any="0" invert="0">1</inputs>
       <outputs></outputs>
     </transition>
     <transition c1x="1157.935808803473" c2y="481.4332141860452" c1y="501.0847858104452" description="" straight="1" type="2" ypos="520.7363574348452" endx="976.9773550492288" xpos="1248.415035680595" endy="461.7816425616452" c2x="1067.456581926351">
@@ -87,7 +74,7 @@
       <inputs default="0" any="0" invert="0">NaoWalkIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="335.1075832256599" c2y="208.3688490258262" c1y="237.9992924656072" description="" straight="1" type="2" ypos="267.6297359053881" endx="277.2594398005024" xpos="364.0316549382387" endy="178.7384055860453" c2x="306.1835115130812">
+    <transition c1x="335.1075832256599" c2y="208.3688490258262" c1y="237.9992924656071" description="" straight="1" type="2" ypos="267.6297359053881" endx="277.2594398005024" xpos="364.0316549382387" endy="178.7384055860453" c2x="306.1835115130812">
       <from>15</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">~NaoWalkIsRunning</inputs>

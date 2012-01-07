@@ -8,15 +8,15 @@
     <itransition ypos="89" endx="73.5494181990515" xpos="1" endy="122.527140916879"/>
     <state pencolor="959488" radius="40" description="OnEntry { print_state_name();  goaliePlacing=0; forwardPlacing=0;    }&#xa;OnExit { }&#xa;{ }&#xa;&#xa;" finalstate="0" moore_outputs="" ypos="139" code="7" xpos="110" linewidth="1">START</state>
     <state pencolor="14615040" radius="40" description="OnEntry { print_state_name(); &#xa; post(&quot;suspend&quot;,&quot;VladGoliePlacer&quot;); &#xa; post(&quot;suspend&quot;,&quot;VladForwardPlacer&quot;);}&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="88" code="8" xpos="1084" linewidth="1">READYEND</state>
-    <state pencolor="0" radius="40" description="OnEntry { print_state_name();  post(&quot;resume&quot;,&quot;VladGoliePlacer&quot;); }&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="93" code="9" xpos="543" linewidth="1">STARTGOLIE</state>
+    <state pencolor="0" radius="40" description="OnEntry { print_state_name();  post(&quot;restart&quot;,&quot;VladGoliePlacer&quot;); }&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="93" code="9" xpos="543" linewidth="1">STARTGOLIE</state>
     <state pencolor="0" radius="40" description="OnEntry{print_state_name(); &#xa; goaliePlacing=0; forwardPlacing=0;   }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="90" code="15" xpos="853" linewidth="1">ONSET</state>
-    <state pencolor="0" radius="40" description="OnEntry{ print_state_name();  post(&quot;resume&quot;,&quot;VladForwardPlacer&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="270" code="1" xpos="540" linewidth="1">STARTATTACKER</state>
-    <state pencolor="0" radius="40" description="OnEntry{forwardPlacing=1; post(&quot;QSay&quot;,&quot;I'm FOUR; Forward&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="248" code="0" xpos="324" linewidth="1">INDICATEFORWARD</state>
+    <state pencolor="0" radius="40" description="OnEntry{ print_state_name();  post(&quot;restart&quot;,&quot;VladForwardPlacer&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="270" code="1" xpos="540" linewidth="1">STARTATTACKER</state>
+    <state pencolor="0" radius="40" description="OnEntry{forwardPlacing=1; post(&quot;QSay&quot;,&quot;I'm&quot;); post_int(&quot;QSay&quot;, playerNumber); post(&quot;QSay&quot;, &quot;Player&quot;); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="248" code="0" xpos="324" linewidth="1">INDICATEFORWARD</state>
     <state pencolor="0" radius="40" description="OnEntry{goaliePlacing=1; post(&quot;QSay&quot;,&quot;I'm ONE; Golie&quot;); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="84" code="2" xpos="340" linewidth="1">INDICATEGOLIE</state>
     <transition c1x="177.6391647533837" c2y="216.4148910465821" c1y="196.5185235171249" description="" straight="1" type="2" ypos="176.6221559876678" endx="285.7459371579465" xpos="123.5857785511023" endy="236.3112585760392" c2x="231.6925509556651">
       <from>7</from>
       <to>0</to>
-      <inputs default="0" any="0" invert="0">playerNumber==4</inputs>
+      <inputs default="0" any="0" invert="0">playerNumber==2</inputs>
       <outputs></outputs>
     </transition>
     <transition c1x="199.0174562436071" c2y="94.05311319720349" c1y="110.6821858866213" description="" straight="1" type="2" ypos="127.3112585760392" endx="300.5442430467143" xpos="148.2540628420535" endy="77.42404050778565" c2x="249.7808496451607">
@@ -49,7 +49,7 @@
       <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="420.6202488137853" c2y="93.73774463709663" c1y="92.31647895359325" description="" straight="1" type="2" ypos="90.89521327008987" endx="503.0583090688997" xpos="379.4012186862282" endy="95.1590103206" c2x="461.8392789413425">
+    <transition c1x="420.6202488137854" c2y="93.73774463709663" c1y="92.31647895359325" description="" straight="1" type="2" ypos="90.89521327008987" endx="503.0583090688997" xpos="379.4012186862282" endy="95.1590103206" c2x="461.8392789413425">
       <from>2</from>
       <to>9</to>
       <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
