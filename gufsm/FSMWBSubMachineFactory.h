@@ -77,6 +77,9 @@ namespace FSM
 
                 /** setter */
                 void setMachine(WBSubMachine *m) { _machine = m; }
+
+                /** search for a suspend state */
+                bool determineSuspendState(const char *name = "Suspend");
         };
 }
 
