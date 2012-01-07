@@ -60,6 +60,7 @@
 #include "FSMState.h"
 #include "ActivityFactory.h"
 #include "TransitionFactory.h"
+#include "gu_util.h"
 
 using namespace FSM;
 using namespace std;
@@ -108,6 +109,7 @@ bool WBSubMachineFactory::determineSuspendState(const char *name)
                 if (!transitionsFound)          // found my suspend state
                 {
                         machine()->setSuspendState(*i);
+                DBG(cout << "Found syspend state " << (*i)->name() << endl);
                         return true;
                 }
         }
