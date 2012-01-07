@@ -1,0 +1,121 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="A Game Controller developed with QFSM.&#xa;This graphically replicates revision 1190 of&#xa;AGameController.txt and&#xa;TGameController.txt&#xa;from the repository" version="1" name="GameController" arrowtype="1" numbits="5" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="2" numout="0" initialstate="7">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="89" endx="73.5494181990515" xpos="1" endy="122.527140916879"/>
+    <state pencolor="959488" radius="40" description="OnEntry { int repeat; repeat=0; print_state_name();     &#xa;     }&#xa;OnExit { }&#xa;{ }&#xa;&#xa;" finalstate="0" moore_outputs="" ypos="139" code="7" xpos="110" linewidth="1">DUMMY</state>
+    <state pencolor="0" radius="40" description="OnEntry { print_state_name(); post(&quot;Speech&quot;, &quot;Spin&quot;); &#xa;               post(&quot;NaoWalk&quot;, &quot;0 0 -90&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="481" code="2" xpos="1253" linewidth="1">FACEFORWARDS</state>
+    <state pencolor="0" radius="40" description="OnEntry { print_state_name(); post(&quot;Speech&quot;, &quot;Back&quot;); &#xa;               post(&quot;NaoWalk&quot;, &quot;-20 0 0&quot;); &#xa; post(&quot;suspend&quot;,&quot;SMHeadUpDown&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="500" code="10" xpos="606" linewidth="1">BACKAGAINSTLINE</state>
+    <state pencolor="0" radius="40" description="OnEntry {print_state_name(); post(&quot;Speech&quot;, &quot;Forward&quot;); &#xa;               post(&quot;NaoWalk&quot;, &quot;10 0 0&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="86" code="11" xpos="1149" linewidth="1">FORWARDHALFFIELD</state>
+    <state pencolor="0" radius="40" description="OnEntry {print_state_name(); post(&quot;Speech&quot;, &quot;Forward&quot;); &#xa;               post(&quot;NaoWalk&quot;, &quot;10 0 0&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="80" code="12" xpos="860" linewidth="1">FORWARDHALFFIELD</state>
+    <state pencolor="0" radius="40" description="OnEntry { print_state_name(); post(&quot;Speech&quot;, &quot;Spin&quot;); &#xa;               post(&quot;NaoWalk&quot;, &quot;0 0 -10&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="150" code="14" xpos="579" linewidth="1">CORERCTLEFT</state>
+    <state pencolor="0" radius="40" description="OnEntry{print_state_name(); post(&quot;resume&quot;,&quot;SMHeadUpDown&quot;); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="140" code="13" xpos="432" linewidth="1">TESTING</state>
+    <state pencolor="0" radius="40" description="OnEntry { print_state_name(); post(&quot;Speech&quot;, &quot;Spin&quot;); &#xa;               post(&quot;NaoWalk&quot;, &quot;0 0 10&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="50" code="4" xpos="600" linewidth="1">CORERCTRIGHT</state>
+    <state pencolor="0" radius="40" description="OnEntry{print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="298" code="15" xpos="338" linewidth="1">WAIT</state>
+    <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="230" code="16" xpos="732" linewidth="1">WAIT</state>
+    <state pencolor="0" radius="40" description="OnEntry{repeat=repeat+1;}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="274" code="17" xpos="972" linewidth="1">INCREMENT</state>
+    <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="259" code="18" xpos="1302" linewidth="1">WAIT</state>
+    <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="498" code="5" xpos="960" linewidth="1">WAIT</state>
+    <state pencolor="0" radius="40" description="OnEntry{print_state_name(); post(&quot;resume&quot;,&quot;SMHeadUpDown&quot;); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="140" code="0" xpos="259" linewidth="1">LOOKAROUND</state>
+    <state pencolor="0" radius="40" description="OnEntry { print_state_name(); &#xa; post(&quot;suspend&quot;,&quot;SMHeadUpDown&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="508" code="1" xpos="406" linewidth="1">Suspend</state>
+    <transition c1x="173.0063696182283" c2y="138.8934770876605" c1y="139.0766059357592" description="" straight="1" type="2" ypos="139.259734783858" endx="219.020795426412" xpos="149.9991567141365" endy="138.7103482395617" c2x="196.0135825223202">
+      <from>7</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="1157.935808803473" c2y="481.4332141860452" c1y="501.0847858104452" description="" straight="1" type="2" ypos="520.7363574348452" endx="976.9773550492288" xpos="1248.415035680595" endy="461.7816425616452" c2x="1067.456581926351">
+      <from>2</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">NaoWalkIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="1198.678729381954" c2y="194.5718124208821" c1y="159.4193838190182" description="" straight="1" type="2" ypos="124.2669552171543" endx="1274.743258883246" xpos="1160.646464631308" endy="229.724241022746" c2x="1236.7109941326">
+      <from>11</from>
+      <to>18</to>
+      <inputs default="0" any="0" invert="0">NaoWalkIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="916.516772000055" c2y="188.2228704012049" c1y="135.7277525759236" description="" straight="1" type="2" ypos="83.23263475064219" endx="949.8119921509908" xpos="899.869161924587" endy="240.7179882264863" c2x="933.1643820755229">
+      <from>12</from>
+      <to>17</to>
+      <inputs default="0" any="0" invert="0">NaoWalkIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="644.4908025007403" c2y="190.7663154771298" c1y="178.6148921870948" description="" straight="1" type="2" ypos="166.4634688970599" endx="702.5627595295268" xpos="615.454823986347" endy="202.9177387671647" c2x="673.5267810151336">
+      <from>14</from>
+      <to>16</to>
+      <inputs default="0" any="0" invert="0">NaoWalkIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="500.6187102604941" c2y="75.36703288596865" c1y="103.0160573934778" description="" straight="1" type="2" ypos="130.665081900987" endx="560.065146623041" xpos="470.8954920792207" endy="47.71800837845948" c2x="530.3419284417675">
+      <from>13</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">Ballfiltered_x&lt;-20</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="499.1702033919424" c2y="125.3947983200752" c1y="131.6986468211597" description="" straight="1" type="2" ypos="138.0024953222443" endx="553.6104230655994" xpos="471.9500935551138" endy="119.0909498189906" c2x="526.3903132287709">
+      <from>13</from>
+      <to>14</to>
+      <inputs default="0" any="0" invert="0">Ballfiltered_x>20</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="537.6198454176246" c2y="239.5872390682017" c1y="209.2269715973398" description="" straight="1" type="2" ypos="178.8667041264779" endx="729.9514099210737" xpos="441.4540631659" endy="269.9475065390635" c2x="633.7856276693492">
+      <from>13</from>
+      <to>16</to>
+      <inputs default="0" any="0" invert="0">(Ballfiltered_x&lt;21)&amp;&amp;(Ballfiltered_x>-21)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="665.0127723290485" c2y="144.6910725774309" c1y="95.72921891339436" description="" straight="1" type="2" ypos="46.76736524935781" endx="715.2999931379716" xpos="639.869161924587" endy="193.6529262414675" c2x="690.1563827335101">
+      <from>4</from>
+      <to>16</to>
+      <inputs default="0" any="0" invert="0">NaoWalkIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="333.4409165589933" c2y="207.7021823591596" c1y="237.6659591322738" description="" straight="1" type="2" ypos="267.6297359053881" endx="272.2594398005024" xpos="364.0316549382387" endy="177.7384055860453" c2x="302.8501781797478">
+      <from>15</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">~NaoWalkIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="788.0048670683619" c2y="129.2795423640556" c1y="179.6397711820278" description="" straight="1" type="2" ypos="230" endx="820.0146012050859" xpos="772" endy="78.9193135460834" c2x="804.009734136724">
+      <from>16</from>
+      <to>12</to>
+      <inputs default="0" any="0" invert="0">~NaoWalkIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="1045.127730491274" c2y="131.1471762808266" c1y="196.8741827787541" description="" straight="1" type="2" ypos="262.6011892766816" endx="1114.700282971498" xpos="1010.341454251162" endy="65.42016978289911" c2x="1079.914006731386">
+      <from>17</from>
+      <to>11</to>
+      <inputs default="0" any="0" invert="0">~NaoWalkIsRunning&amp;&amp;(repeat>1)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="747.5772286116454" c2y="299.7846147367739" c1y="291.3894975023622" description="" straight="1" type="2" ypos="282.9943802679504" endx="376.6829814905059" xpos="933.0243521722152" endy="308.1797319711857" c2x="562.1301050510756">
+      <from>17</from>
+      <to>15</to>
+      <inputs default="0" any="0" invert="0">~NaoWalkIsRunning&amp;&amp;(repeat&lt;2)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="1281.27010828774" c2y="409.7238864467719" c1y="349.6477728935437" description="" straight="1" type="2" ypos="289.5716593403156" endx="1291.4" xpos="1276.205162431609" endy="469.8" c2x="1286.33505414387">
+      <from>18</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">~NaoWalkIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="834.2708466548353" c2y="500.4800081053867" c1y="486.1043891566093" description="" straight="1" type="2" ypos="471.7287702078319" endx="643.1390676354104" xpos="929.8367361645478" endy="514.8556270541641" c2x="738.7049571451229">
+      <from>5</from>
+      <to>10</to>
+      <inputs default="0" any="0" invert="0">~NaoWalkIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="330.0199515420146" c2y="141.3914831233174" c1y="140.564165461734" description="" straight="1" type="2" ypos="139.7368478001505" endx="392.0615858717835" xpos="298.9991343771301" endy="142.2188007849009" c2x="361.040768706899">
+      <from>0</from>
+      <to>13</to>
+      <inputs default="0" any="0" invert="0">timeout(4000000)</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>
