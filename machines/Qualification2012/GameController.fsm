@@ -112,7 +112,7 @@
       <inputs default="0" any="0" invert="0">readyReceived&amp;&amp;timeout(1000000)</inputs>
       <outputs>4</outputs>
     </transition>
-    <transition c1x="329.6650166933943" c2y="301.0574746355791" c1y="289.7553931683403" description="change team on left foot bumper press" straight="1" type="2" ypos="278.4533117011015" endx="267.1881833153722" xpos="360.9034333824053" endy="312.3595561028179" c2x="298.4266000043832">
+    <transition c1x="329.6650166933943" c2y="301.0574746355791" c1y="289.7553931683403" description="change team on left foot bumper press" straight="1" type="2" ypos="278.4533117011015" endx="267.1881833153722" xpos="360.9034333824053" endy="312.3595561028179" c2x="298.4266000043833">
       <from>7</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">leftFootBumpPressed</inputs>
@@ -133,7 +133,7 @@
     <transition c1x="442.8458696821199" c2y="191.8503258930203" c1y="158.8612396302069" description="back to initial after change team" straight="0" type="2" ypos="115.7142814384057" endx="614.2534453582382" xpos="426.8764460274186" endy="228.0649859892918" c2x="540.269274265209">
       <from>10</from>
       <to>1</to>
-      <inputs default="0" any="0" invert="0">!UDPRedKickOffPushed||imeout(1000000)</inputs>
+      <inputs default="0" any="0" invert="0">!UDPRedKickOffPushed||timeout(1000000)</inputs>
       <outputs></outputs>
     </transition>
     <transition c1x="676.355232623712" c2y="152.5345848816178" c1y="140.5437367589079" description="back to initial after change team" straight="0" type="2" ypos="102.7770876399967" endx="661.0377657488533" xpos="677.8885438199983" endy="198.8158919743404" c2x="690.3022902755283">
