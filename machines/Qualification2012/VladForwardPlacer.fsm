@@ -8,7 +8,7 @@
     <itransition ypos="90" endx="73.5494181990515" xpos="1" endy="123.527140916879"/>
     <state pencolor="959488" radius="40" description="OnEntry { int repeat; repeat=0; print_state_name();    }&#xa;OnExit { }&#xa;{ }&#xa;&#xa;" finalstate="0" moore_outputs="" ypos="140" code="7" xpos="110" linewidth="1">DUMMY</state>
     <state pencolor="0" radius="40" description="OnEntry { print_state_name(); post(&quot;Speech&quot;, &quot;Spin&quot;); &#xa;               post(&quot;NaoWalk&quot;, &quot;0 0 -90&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="503" code="2" xpos="1231" linewidth="1">FACEFORWARDS</state>
-    <state pencolor="0" radius="40" description="OnEntry { print_state_name(); post(&quot;Speech&quot;, &quot;Back&quot;); &#xa;               post(&quot;NaoWalk&quot;, &quot;20 0 0&quot;); &#xa;&#x9;post(&quot;suspend&quot;,&quot;SMHeadUpDown&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="504" code="10" xpos="704" linewidth="1">NEARBALL</state>
+    <state pencolor="0" radius="40" description="OnEntry { print_state_name(); post(&quot;Speech&quot;, &quot;Back&quot;); &#xa;               post(&quot;NaoWalk&quot;, &quot;5 0 0&quot;); &#xa;&#x9;post(&quot;suspend&quot;,&quot;SMHeadUpDown&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="504" code="10" xpos="704" linewidth="1">NEARBALL</state>
     <state pencolor="0" radius="40" description="OnEntry {print_state_name(); post(&quot;Speech&quot;, &quot;Forward&quot;); &#xa;               post(&quot;NaoWalk&quot;, &quot;40 0 0&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="86" code="11" xpos="1149" linewidth="1">FORWARDHALFFIELD</state>
     <state pencolor="0" radius="40" description="OnEntry {print_state_name(); post(&quot;Speech&quot;, &quot;Forward&quot;); &#xa;               post(&quot;NaoWalk&quot;, &quot;45 0 0&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="80" code="12" xpos="859" linewidth="1">FORWARDHALFFIELD</state>
     <state pencolor="0" radius="40" description="OnEntry { print_state_name(); post(&quot;Speech&quot;, &quot;Spin&quot;); &#xa;               post(&quot;NaoWalk&quot;, &quot;0 0 -10&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="142" code="14" xpos="630" linewidth="1">CORERCTLEFT</state>
@@ -81,7 +81,7 @@
       <inputs default="0" any="0" invert="0">~NaoWalkIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="602.015686752664" c2y="430.2325166892887" c1y="393.7988576266999" description="" straight="1" type="2" ypos="357.3651985641111" endx="689.6408368276452" xpos="558.2031117151733" endy="466.6661757518776" c2x="645.8282617901546">
+    <transition c1x="602.015686752664" c2y="430.2325166892888" c1y="393.7988576266999" description="" straight="1" type="2" ypos="357.3651985641111" endx="689.6408368276452" xpos="558.2031117151733" endy="466.6661757518776" c2x="645.8282617901546">
       <from>15</from>
       <to>10</to>
       <inputs default="0" any="0" invert="0">~forwardPlacing</inputs>
