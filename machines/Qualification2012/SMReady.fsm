@@ -6,7 +6,7 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="90" endx="72.5494181990515" xpos="0" endy="123.527140916879"/>
-    <state pencolor="959488" radius="40" description="OnEntry { print_state_name();  goaliePlacing=0; forwardPlacing=0;  defenderPlacing=0;  interiorPlacing=0;}&#xa;OnExit { }&#xa;{ }&#xa;&#xa;" finalstate="0" moore_outputs="" ypos="140" code="7" xpos="109" linewidth="1">START</state>
+    <state pencolor="959488" radius="40" description="OnEntry { print_state_name();  goaliePlacing=0; forwardPlacing=0;  defenderPlacing=0;  interiorPlacing=0;&#xa; post(&quot;guvision_runVisionPipeline&quot;,&quot;now&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;&#xa;" finalstate="0" moore_outputs="" ypos="140" code="7" xpos="109" linewidth="1">START</state>
     <state pencolor="14615040" radius="40" description="OnEntry { print_state_name(); &#xa; post(&quot;suspend&quot;,&quot;VladGoliePlacer&quot;); &#xa; post(&quot;suspend&quot;,&quot;VladForwardPlacer&quot;);&#xa; post(&quot;suspend&quot;,&quot;VladDefenderPlacer&quot;);&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="90" code="8" xpos="1079" linewidth="1">READYEND</state>
     <state pencolor="0" radius="40" description="OnEntry { print_state_name();  post(&quot;restart&quot;,&quot;VladGoliePlacer&quot;); }&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="93" code="9" xpos="543" linewidth="1">STARTGOLIE</state>
     <state pencolor="0" radius="40" description="OnEntry{print_state_name(); &#xa; goaliePlacing=0; forwardPlacing=0;  defenderPlacing=0; interiorPlacing=0; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="86" code="15" xpos="891" linewidth="1">ONSET</state>
@@ -23,7 +23,7 @@
       <inputs default="0" any="0" invert="0">playerNumber==1</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="180.3046445440516" c2y="381.2835194783087" c1y="280.6336014683682" description="" straight="1" type="2" ypos="179.9836834584278" endx="320.6291517202446" xpos="110.1423909559551" endy="481.933437488249" c2x="250.4668981321481">
+    <transition c1x="180.3046445440516" c2y="381.2835194783086" c1y="280.6336014683682" description="" straight="1" type="2" ypos="179.9836834584278" endx="320.6291517202446" xpos="110.1423909559551" endy="481.933437488249" c2x="250.4668981321481">
       <from>7</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">playerNumber==4</inputs>
@@ -47,7 +47,7 @@
       <inputs default="0" any="0" invert="0">setReceived</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="954.2167327810719" c2y="77.00029056070643" c1y="101.059244206305" description="" straight="1" type="2" ypos="125.1181978519036" endx="1063.944918121762" xpos="899.3526401107267" endy="52.94133691510786" c2x="1009.080825451417">
+    <transition c1x="954.2167327810718" c2y="77.00029056070645" c1y="101.059244206305" description="" straight="1" type="2" ypos="125.1181978519036" endx="1063.944918121762" xpos="899.3526401107267" endy="52.94133691510786" c2x="1009.080825451417">
       <from>15</from>
       <to>8</to>
       <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
@@ -89,7 +89,7 @@
       <inputs default="0" any="0" invert="0">setReceived</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="449.6997976250995" c2y="362.0832563842369" c1y="360.7132010673723" description="" straight="1" type="2" ypos="359.3431457505076" endx="557.9034333824053" xpos="395.5979797464466" endy="363.4533117011015" c2x="503.8016155037524">
+    <transition c1x="449.6997976250995" c2y="362.0832563842368" c1y="360.7132010673722" description="" straight="1" type="2" ypos="359.3431457505076" endx="557.9034333824053" xpos="395.5979797464466" endy="363.4533117011015" c2x="503.8016155037524">
       <from>6</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
