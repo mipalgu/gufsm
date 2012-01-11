@@ -13,6 +13,40 @@
 		E11AED6D149977E60071C950 /* SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E11AED62149977E60071C950 /* SimpleCParser.c */; };
 		E11AED6E149977E60071C950 /* TransitionContainer_SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E11AED65149977E60071C950 /* TransitionContainer_SimpleCParser.c */; };
 		E11AED6F149977E60071C950 /* TransitionContainerParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E11AED68149977E60071C950 /* TransitionContainerParser.c */; };
+		E11CABDD14BD243900A1019A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E11CABDC14BD243900A1019A /* main.cpp */; };
+		E11CABDF14BD243900A1019A /* fsmWbDependencyDump.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = E11CABDE14BD243900A1019A /* fsmWbDependencyDump.1 */; };
+		E11FB97C14BD4741009C778E /* libantlr3c.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A9E8C91480B36100C852FC /* libantlr3c.a */; };
+		E11FB99C14BD4793009C778E /* FSMState.cc in Sources */ = {isa = PBXBuildFile; fileRef = E11FB97D14BD4793009C778E /* FSMState.cc */; };
+		E11FB99D14BD4793009C778E /* FSMActivity.cc in Sources */ = {isa = PBXBuildFile; fileRef = E11FB97E14BD4793009C778E /* FSMActivity.cc */; };
+		E11FB99E14BD4793009C778E /* FSMAction.cc in Sources */ = {isa = PBXBuildFile; fileRef = E11FB97F14BD4793009C778E /* FSMAction.cc */; };
+		E11FB99F14BD4793009C778E /* FSMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = E11FB98014BD4793009C778E /* FSMachine.cc */; };
+		E11FB9A014BD4793009C778E /* FSMSuspensibleMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = E11FB98114BD4793009C778E /* FSMSuspensibleMachine.cc */; };
+		E11FB9A114BD4793009C778E /* FSMExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = E11FB98214BD4793009C778E /* FSMExpression.cc */; };
+		E11FB9A214BD4793009C778E /* gu_util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E11FB98314BD4793009C778E /* gu_util.cpp */; };
+		E11FB9A314BD4793009C778E /* FSMWBPredicate.cc in Sources */ = {isa = PBXBuildFile; fileRef = E11FB98414BD4793009C778E /* FSMWBPredicate.cc */; };
+		E11FB9A414BD4793009C778E /* FSMWBContext.cc in Sources */ = {isa = PBXBuildFile; fileRef = E11FB98514BD4793009C778E /* FSMWBContext.cc */; };
+		E11FB9A514BD4793009C778E /* FSMWBQueryPredicate.cc in Sources */ = {isa = PBXBuildFile; fileRef = E11FB98614BD4793009C778E /* FSMWBQueryPredicate.cc */; };
+		E11FB9A614BD4793009C778E /* FSMachineVector.cc in Sources */ = {isa = PBXBuildFile; fileRef = E11FB98714BD4793009C778E /* FSMachineVector.cc */; };
+		E11FB9A714BD4793009C778E /* FSMWBSubMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = E11FB98814BD4793009C778E /* FSMWBSubMachine.cc */; };
+		E11FB9A814BD4793009C778E /* ActivityFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E11FB98914BD4793009C778E /* ActivityFactory.cpp */; };
+		E11FB9A914BD4793009C778E /* parser_walk.c in Sources */ = {isa = PBXBuildFile; fileRef = E11FB98A14BD4793009C778E /* parser_walk.c */; };
+		E11FB9AA14BD4793009C778E /* FSMVectorFactory.cc in Sources */ = {isa = PBXBuildFile; fileRef = E11FB98B14BD4793009C778E /* FSMVectorFactory.cc */; };
+		E11FB9AB14BD4793009C778E /* FSMWBSubMachineFactory.cc in Sources */ = {isa = PBXBuildFile; fileRef = E11FB98C14BD4793009C778E /* FSMWBSubMachineFactory.cc */; };
+		E11FB9AC14BD4793009C778E /* FSMANTLRAction.cc in Sources */ = {isa = PBXBuildFile; fileRef = E11FB98D14BD4793009C778E /* FSMANTLRAction.cc */; };
+		E11FB9AD14BD4793009C778E /* FSMANTLRExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = E11FB98E14BD4793009C778E /* FSMANTLRExpression.cc */; };
+		E11FB9AE14BD4793009C778E /* TransitionFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E11FB98F14BD4793009C778E /* TransitionFactory.cpp */; };
+		E11FB9AF14BD4793009C778E /* FSMTransition.cc in Sources */ = {isa = PBXBuildFile; fileRef = E11FB99014BD4793009C778E /* FSMTransition.cc */; };
+		E11FB9B014BD4793009C778E /* stringConstants.c in Sources */ = {isa = PBXBuildFile; fileRef = E11FB99114BD4793009C778E /* stringConstants.c */; };
+		E11FB9B114BD4793009C778E /* FSMANTLRContext.cc in Sources */ = {isa = PBXBuildFile; fileRef = E11FB99214BD4793009C778E /* FSMANTLRContext.cc */; };
+		E11FB9B214BD4793009C778E /* ActionsContainer_SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E11FB99314BD4793009C778E /* ActionsContainer_SimpleCParser.c */; };
+		E11FB9B314BD4793009C778E /* ActionsContainerParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E11FB99414BD4793009C778E /* ActionsContainerParser.c */; };
+		E11FB9B414BD4793009C778E /* SimpleCLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = E11FB99514BD4793009C778E /* SimpleCLexer.c */; };
+		E11FB9B514BD4793009C778E /* SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E11FB99614BD4793009C778E /* SimpleCParser.c */; };
+		E11FB9B614BD4793009C778E /* TransitionContainer_SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E11FB99714BD4793009C778E /* TransitionContainer_SimpleCParser.c */; };
+		E11FB9B714BD4793009C778E /* TransitionContainerParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E11FB99814BD4793009C778E /* TransitionContainerParser.c */; };
+		E11FB9B814BD4793009C778E /* gusimplewhiteboard.c in Sources */ = {isa = PBXBuildFile; fileRef = E11FB99914BD4793009C778E /* gusimplewhiteboard.c */; };
+		E11FB9B914BD4793009C778E /* Whiteboard.cc in Sources */ = {isa = PBXBuildFile; fileRef = E11FB99A14BD4793009C778E /* Whiteboard.cc */; };
+		E11FB9BA14BD4793009C778E /* WhiteboardConstants.cc in Sources */ = {isa = PBXBuildFile; fileRef = E11FB99B14BD4793009C778E /* WhiteboardConstants.cc */; };
 		F1199D6014302767003853BF /* FSMExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1199D5F14302767003853BF /* FSMExpression.cc */; };
 		F1199D6114302767003853BF /* FSMExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1199D5F14302767003853BF /* FSMExpression.cc */; };
 		F1284D1214A6CAA800C0247E /* gusimplewhiteboard.c in Sources */ = {isa = PBXBuildFile; fileRef = F1284D0014A6CAA800C0247E /* gusimplewhiteboard.c */; };
@@ -95,6 +129,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		E11CABD714BD243900A1019A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				E11CABDF14BD243900A1019A /* fsmWbDependencyDump.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		F16CC2F8142C0C01001F788B /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -124,6 +168,40 @@
 		E11AED67149977E60071C950 /* TransitionContainer.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TransitionContainer.tokens; sourceTree = "<group>"; };
 		E11AED68149977E60071C950 /* TransitionContainerParser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TransitionContainerParser.c; sourceTree = "<group>"; };
 		E11AED69149977E60071C950 /* TransitionContainerParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionContainerParser.h; sourceTree = "<group>"; };
+		E11CABD914BD243900A1019A /* fsmWbDependencyDump */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = fsmWbDependencyDump; sourceTree = BUILT_PRODUCTS_DIR; };
+		E11CABDC14BD243900A1019A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		E11CABDE14BD243900A1019A /* fsmWbDependencyDump.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = fsmWbDependencyDump.1; sourceTree = "<group>"; };
+		E11FB97D14BD4793009C778E /* FSMState.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMState.cc; path = ../gufsm/FSMState.cc; sourceTree = "<group>"; };
+		E11FB97E14BD4793009C778E /* FSMActivity.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMActivity.cc; path = ../gufsm/FSMActivity.cc; sourceTree = "<group>"; };
+		E11FB97F14BD4793009C778E /* FSMAction.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMAction.cc; path = ../gufsm/FSMAction.cc; sourceTree = "<group>"; };
+		E11FB98014BD4793009C778E /* FSMachine.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMachine.cc; path = ../gufsm/FSMachine.cc; sourceTree = "<group>"; };
+		E11FB98114BD4793009C778E /* FSMSuspensibleMachine.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMSuspensibleMachine.cc; path = ../gufsm/FSMSuspensibleMachine.cc; sourceTree = "<group>"; };
+		E11FB98214BD4793009C778E /* FSMExpression.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMExpression.cc; path = ../gufsm/FSMExpression.cc; sourceTree = "<group>"; };
+		E11FB98314BD4793009C778E /* gu_util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gu_util.cpp; path = ../../../Common/gu_util.cpp; sourceTree = "<group>"; };
+		E11FB98414BD4793009C778E /* FSMWBPredicate.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMWBPredicate.cc; path = ../gufsm/FSMWBPredicate.cc; sourceTree = "<group>"; };
+		E11FB98514BD4793009C778E /* FSMWBContext.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMWBContext.cc; path = ../gufsm/FSMWBContext.cc; sourceTree = "<group>"; };
+		E11FB98614BD4793009C778E /* FSMWBQueryPredicate.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMWBQueryPredicate.cc; path = ../gufsm/FSMWBQueryPredicate.cc; sourceTree = "<group>"; };
+		E11FB98714BD4793009C778E /* FSMachineVector.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMachineVector.cc; path = ../gufsm/FSMachineVector.cc; sourceTree = "<group>"; };
+		E11FB98814BD4793009C778E /* FSMWBSubMachine.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMWBSubMachine.cc; path = ../gufsm/FSMWBSubMachine.cc; sourceTree = "<group>"; };
+		E11FB98914BD4793009C778E /* ActivityFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ActivityFactory.cpp; path = ../gufsm/ActivityFactory.cpp; sourceTree = "<group>"; };
+		E11FB98A14BD4793009C778E /* parser_walk.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = parser_walk.c; path = ../gufsm/parser_walk.c; sourceTree = "<group>"; };
+		E11FB98B14BD4793009C778E /* FSMVectorFactory.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMVectorFactory.cc; path = ../gufsm/FSMVectorFactory.cc; sourceTree = "<group>"; };
+		E11FB98C14BD4793009C778E /* FSMWBSubMachineFactory.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMWBSubMachineFactory.cc; path = ../gufsm/FSMWBSubMachineFactory.cc; sourceTree = "<group>"; };
+		E11FB98D14BD4793009C778E /* FSMANTLRAction.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMANTLRAction.cc; path = ../gufsm/FSMANTLRAction.cc; sourceTree = "<group>"; };
+		E11FB98E14BD4793009C778E /* FSMANTLRExpression.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMANTLRExpression.cc; path = ../gufsm/FSMANTLRExpression.cc; sourceTree = "<group>"; };
+		E11FB98F14BD4793009C778E /* TransitionFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TransitionFactory.cpp; path = ../gufsm/TransitionFactory.cpp; sourceTree = "<group>"; };
+		E11FB99014BD4793009C778E /* FSMTransition.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMTransition.cc; path = ../gufsm/FSMTransition.cc; sourceTree = "<group>"; };
+		E11FB99114BD4793009C778E /* stringConstants.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = stringConstants.c; path = ../gufsm/stringConstants.c; sourceTree = "<group>"; };
+		E11FB99214BD4793009C778E /* FSMANTLRContext.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMANTLRContext.cc; path = ../gufsm/FSMANTLRContext.cc; sourceTree = "<group>"; };
+		E11FB99314BD4793009C778E /* ActionsContainer_SimpleCParser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ActionsContainer_SimpleCParser.c; path = ../build.host/ActionsContainer_SimpleCParser.c; sourceTree = "<group>"; };
+		E11FB99414BD4793009C778E /* ActionsContainerParser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ActionsContainerParser.c; path = ../build.host/ActionsContainerParser.c; sourceTree = "<group>"; };
+		E11FB99514BD4793009C778E /* SimpleCLexer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = SimpleCLexer.c; path = ../build.host/SimpleCLexer.c; sourceTree = "<group>"; };
+		E11FB99614BD4793009C778E /* SimpleCParser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = SimpleCParser.c; path = ../build.host/SimpleCParser.c; sourceTree = "<group>"; };
+		E11FB99714BD4793009C778E /* TransitionContainer_SimpleCParser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = TransitionContainer_SimpleCParser.c; path = ../build.host/TransitionContainer_SimpleCParser.c; sourceTree = "<group>"; };
+		E11FB99814BD4793009C778E /* TransitionContainerParser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = TransitionContainerParser.c; path = ../build.host/TransitionContainerParser.c; sourceTree = "<group>"; };
+		E11FB99914BD4793009C778E /* gusimplewhiteboard.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gusimplewhiteboard.c; path = ../../gusimplewhiteboard/gusimplewhiteboard.c; sourceTree = "<group>"; };
+		E11FB99A14BD4793009C778E /* Whiteboard.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Whiteboard.cc; path = ../../gusimplewhiteboard/Whiteboard.cc; sourceTree = "<group>"; };
+		E11FB99B14BD4793009C778E /* WhiteboardConstants.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WhiteboardConstants.cc; path = ../../gusimplewhiteboard/WhiteboardConstants.cc; sourceTree = "<group>"; };
 		F1199D5F14302767003853BF /* FSMExpression.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMExpression.cc; sourceTree = "<group>"; };
 		F1284D0014A6CAA800C0247E /* gusimplewhiteboard.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gusimplewhiteboard.c; sourceTree = "<group>"; };
 		F1284D0114A6CAA800C0247E /* gusimplewhiteboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gusimplewhiteboard.h; sourceTree = "<group>"; };
@@ -357,6 +435,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E11CABD614BD243900A1019A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E11FB97C14BD4741009C778E /* libantlr3c.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F16CC2F7142C0C01001F788B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -378,6 +464,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E11CABDB14BD243900A1019A /* fsmWbDependencyDump */ = {
+			isa = PBXGroup;
+			children = (
+				E11FB97D14BD4793009C778E /* FSMState.cc */,
+				E11FB97E14BD4793009C778E /* FSMActivity.cc */,
+				E11FB97F14BD4793009C778E /* FSMAction.cc */,
+				E11FB98014BD4793009C778E /* FSMachine.cc */,
+				E11FB98114BD4793009C778E /* FSMSuspensibleMachine.cc */,
+				E11FB98214BD4793009C778E /* FSMExpression.cc */,
+				E11FB98314BD4793009C778E /* gu_util.cpp */,
+				E11FB98414BD4793009C778E /* FSMWBPredicate.cc */,
+				E11FB98514BD4793009C778E /* FSMWBContext.cc */,
+				E11FB98614BD4793009C778E /* FSMWBQueryPredicate.cc */,
+				E11FB98714BD4793009C778E /* FSMachineVector.cc */,
+				E11FB98814BD4793009C778E /* FSMWBSubMachine.cc */,
+				E11FB98914BD4793009C778E /* ActivityFactory.cpp */,
+				E11FB98A14BD4793009C778E /* parser_walk.c */,
+				E11FB98B14BD4793009C778E /* FSMVectorFactory.cc */,
+				E11FB98C14BD4793009C778E /* FSMWBSubMachineFactory.cc */,
+				E11FB98D14BD4793009C778E /* FSMANTLRAction.cc */,
+				E11FB98E14BD4793009C778E /* FSMANTLRExpression.cc */,
+				E11FB98F14BD4793009C778E /* TransitionFactory.cpp */,
+				E11FB99014BD4793009C778E /* FSMTransition.cc */,
+				E11FB99114BD4793009C778E /* stringConstants.c */,
+				E11FB99214BD4793009C778E /* FSMANTLRContext.cc */,
+				E11FB99314BD4793009C778E /* ActionsContainer_SimpleCParser.c */,
+				E11FB99414BD4793009C778E /* ActionsContainerParser.c */,
+				E11FB99514BD4793009C778E /* SimpleCLexer.c */,
+				E11FB99614BD4793009C778E /* SimpleCParser.c */,
+				E11FB99714BD4793009C778E /* TransitionContainer_SimpleCParser.c */,
+				E11FB99814BD4793009C778E /* TransitionContainerParser.c */,
+				E11FB99914BD4793009C778E /* gusimplewhiteboard.c */,
+				E11FB99A14BD4793009C778E /* Whiteboard.cc */,
+				E11FB99B14BD4793009C778E /* WhiteboardConstants.cc */,
+				E11CABDC14BD243900A1019A /* main.cpp */,
+				E11CABDE14BD243900A1019A /* fsmWbDependencyDump.1 */,
+			);
+			path = fsmWbDependencyDump;
+			sourceTree = "<group>";
+		};
 		F1284CFF14A6CAA800C0247E /* gusimplewhiteboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -575,6 +701,7 @@
 				F16CC324142C2AD9001F788B /* FSMTest */,
 				F12B41CC147DBC7D00FF4A6B /* gubehaviourinterpreter */,
 				F192CC8F144D27C200FF8526 /* Common */,
+				E11CABDB14BD243900A1019A /* fsmWbDependencyDump */,
 				F16CC31B142C2AD9001F788B /* Frameworks */,
 				F16CC2FB142C0C01001F788B /* Products */,
 			);
@@ -585,6 +712,7 @@
 			children = (
 				F16CC2FA142C0C01001F788B /* gufsm */,
 				F16CC31A142C2AD9001F788B /* FSMTest.octest */,
+				E11CABD914BD243900A1019A /* fsmWbDependencyDump */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -853,6 +981,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		E11CABD814BD243900A1019A /* fsmWbDependencyDump */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E11CABE014BD243900A1019A /* Build configuration list for PBXNativeTarget "fsmWbDependencyDump" */;
+			buildPhases = (
+				E11CABD514BD243900A1019A /* Sources */,
+				E11CABD614BD243900A1019A /* Frameworks */,
+				E11CABD714BD243900A1019A /* CopyFiles */,
+				E11FB9BC14BD4806009C778E /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = fsmWbDependencyDump;
+			productName = fsmWbDependencyDump;
+			productReference = E11CABD914BD243900A1019A /* fsmWbDependencyDump */;
+			productType = "com.apple.product-type.tool";
+		};
 		F16CC2F9142C0C01001F788B /* gufsm */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F16CC304142C0C01001F788B /* Build configuration list for PBXNativeTarget "gufsm" */;
@@ -922,6 +1068,7 @@
 			targets = (
 				F16CC2F9142C0C01001F788B /* gufsm */,
 				F16CC319142C2AD9001F788B /* FSMTest */,
+				E11CABD814BD243900A1019A /* fsmWbDependencyDump */,
 			);
 		};
 /* End PBXProject section */
@@ -961,6 +1108,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		E11FB9BC14BD4806009C778E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/SimpleCLexer.g",
+				"$(SRCROOT)/SimpleCParser.g",
+				"$(SRCROOT)/TransitionContainer.g",
+				"$(SRCROOT)/ActionsContainer.g",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "cd ${SRCROOT}\nout=\"${SRCROOT}/build.host\"\nmkdir -p \"$out\"\nfor ((i=0; i < SCRIPT_INPUT_FILE_COUNT ; i++)); do\ninputFile=`eval echo '$SCRIPT_INPUT_FILE_'$i`\noutputFile=\"$out\"/`basename \"$inputFile\" | sed 's/.g$/.tokens/'`\n\njava -classpath /usr/local/share/java/antlr-3.4-complete.jar org.antlr.Tool -language C -o \"$out\" \"$inputFile\" 2>&1 | sed 's/warning\\([^:]*\\): \\([^ ]*\\): \\(.*\\)$/\\2: warning: \\3 \\1/' 1>&2\ndone";
+		};
 		F12B4239147DC25100FF4A6B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -994,6 +1158,45 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E11CABD514BD243900A1019A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E11CABDD14BD243900A1019A /* main.cpp in Sources */,
+				E11FB99C14BD4793009C778E /* FSMState.cc in Sources */,
+				E11FB99D14BD4793009C778E /* FSMActivity.cc in Sources */,
+				E11FB99E14BD4793009C778E /* FSMAction.cc in Sources */,
+				E11FB99F14BD4793009C778E /* FSMachine.cc in Sources */,
+				E11FB9A014BD4793009C778E /* FSMSuspensibleMachine.cc in Sources */,
+				E11FB9A114BD4793009C778E /* FSMExpression.cc in Sources */,
+				E11FB9A214BD4793009C778E /* gu_util.cpp in Sources */,
+				E11FB9A314BD4793009C778E /* FSMWBPredicate.cc in Sources */,
+				E11FB9A414BD4793009C778E /* FSMWBContext.cc in Sources */,
+				E11FB9A514BD4793009C778E /* FSMWBQueryPredicate.cc in Sources */,
+				E11FB9A614BD4793009C778E /* FSMachineVector.cc in Sources */,
+				E11FB9A714BD4793009C778E /* FSMWBSubMachine.cc in Sources */,
+				E11FB9A814BD4793009C778E /* ActivityFactory.cpp in Sources */,
+				E11FB9A914BD4793009C778E /* parser_walk.c in Sources */,
+				E11FB9AA14BD4793009C778E /* FSMVectorFactory.cc in Sources */,
+				E11FB9AB14BD4793009C778E /* FSMWBSubMachineFactory.cc in Sources */,
+				E11FB9AC14BD4793009C778E /* FSMANTLRAction.cc in Sources */,
+				E11FB9AD14BD4793009C778E /* FSMANTLRExpression.cc in Sources */,
+				E11FB9AE14BD4793009C778E /* TransitionFactory.cpp in Sources */,
+				E11FB9AF14BD4793009C778E /* FSMTransition.cc in Sources */,
+				E11FB9B014BD4793009C778E /* stringConstants.c in Sources */,
+				E11FB9B114BD4793009C778E /* FSMANTLRContext.cc in Sources */,
+				E11FB9B214BD4793009C778E /* ActionsContainer_SimpleCParser.c in Sources */,
+				E11FB9B314BD4793009C778E /* ActionsContainerParser.c in Sources */,
+				E11FB9B414BD4793009C778E /* SimpleCLexer.c in Sources */,
+				E11FB9B514BD4793009C778E /* SimpleCParser.c in Sources */,
+				E11FB9B614BD4793009C778E /* TransitionContainer_SimpleCParser.c in Sources */,
+				E11FB9B714BD4793009C778E /* TransitionContainerParser.c in Sources */,
+				E11FB9B814BD4793009C778E /* gusimplewhiteboard.c in Sources */,
+				E11FB9B914BD4793009C778E /* Whiteboard.cc in Sources */,
+				E11FB9BA14BD4793009C778E /* WhiteboardConstants.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F16CC2F6142C0C01001F788B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1086,6 +1289,28 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E11CABE114BD243900A1019A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E11CABE214BD243900A1019A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		F16CC302142C0C01001F788B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1204,6 +1429,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E11CABE014BD243900A1019A /* Build configuration list for PBXNativeTarget "fsmWbDependencyDump" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E11CABE114BD243900A1019A /* Debug */,
+				E11CABE214BD243900A1019A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F16CC2F4142C0C01001F788B /* Build configuration list for PBXProject "gufsm" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
