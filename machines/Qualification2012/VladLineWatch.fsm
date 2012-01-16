@@ -1,0 +1,120 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="A Game Controller developed with QFSM.&#xa;This graphically replicates revision 1190 of&#xa;AGameController.txt and&#xa;TGameController.txt&#xa;from the repository" version="1" name="GameController" arrowtype="1" numbits="5" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="2" numout="0" initialstate="7">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="88" endx="73.5494181990515" xpos="1" endy="121.527140916879"/>
+    <state pencolor="959488" radius="40" description="OnEntry { int repeat; repeat=0; print_state_name();     &#xa;&#x9;post(&quot;NaoMotionPlayer&quot;,&quot;get_up_anywhere&quot;);&#xa;     }&#xa;OnExit { }&#xa;{ }&#xa;&#xa;" finalstate="0" moore_outputs="" ypos="138" code="7" xpos="110" linewidth="1">DUMMY</state>
+    <state pencolor="0" radius="40" description="OnEntry {print_state_name(); post(&quot;Speech&quot;, &quot;Step&quot;); &#xa; post(&quot;guvision_stopVisionPipeline&quot;,&quot;now&quot;);&#xa;&#x9;repeat=0;&#xa;               post(&quot;NaoWalk&quot;, &quot;10 0 0&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="63" code="12" xpos="877" linewidth="1">STEP</state>
+    <state pencolor="0" radius="40" description="OnEntry{print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="107" code="15" xpos="1046" linewidth="1">WAIT</state>
+    <state pencolor="0" radius="40" description="OnEntry{print_state_name();  }&#xa;OnExit{post(&quot;guvision_stopVisionPipeline&quot;,&quot;now&quot;);}&#xa;{}" finalstate="0" moore_outputs="" ypos="318" code="0" xpos="665" linewidth="1">LOOKAROUND</state>
+    <state pencolor="0" radius="40" description="OnEntry { print_state_name(); &#xa; post(&quot;suspend&quot;,&quot;SMHeadUpDown&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="487" code="1" xpos="156" linewidth="1">Suspend</state>
+    <state pencolor="0" radius="40" description="OnEntry{print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="356" code="19" xpos="178" linewidth="1">WAIT</state>
+    <state pencolor="0" radius="40" description="OnEntry { print_state_name(); &#xa; &#x9;post(&quot;guvision_stopVisionPipeline&quot;,&quot;now&quot;);&#xa;               post(&quot;QSay&quot;,&quot;Near&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="639" code="10" xpos="920" linewidth="1">NEARENOUGHSOPVISION</state>
+    <state pencolor="14615040" radius="40" description="OnEntry { print_state_name(); post (&quot;Holding_Stiffness&quot;,&quot;0&quot;);&#xa; post(&quot;Head_Stiffness&quot;,&quot;0&quot;);&#xa; post(&quot;Speech&quot;, &quot;RELAX&quot;);&#xa; post(&quot;suspend&quot;,&quot;SMHeadUpDown&quot;); &#xa; post(&quot;guvision_stopVisionPipeline&quot;,&quot;now&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="696" code="4" xpos="124" linewidth="1">RELAX</state>
+    <state pencolor="0" radius="40" description="OnEntry{print_name_state();&#xa; post(&quot;guvision_stopVisionPipeline&quot;,&quot;now&quot;);&#xa; post(&quot;guvision_activateVisionPipeline&quot;,&quot;soccer&quot;);&#xa; post(&quot;LEDS&quot;,&quot;ChestBoard Off&quot;);&#xa; post(&quot;LEDS&quot;,&quot;Feet Off&quot;);&#xa; post(&quot;LEDS&quot;,&quot;Ears OFF&quot;);&#xa; post(&quot;LEDS&quot;,&quot;Face Green&quot;);&#xa; post(&quot;QSay&quot;,&quot;Game over&quot;);&#xa; post(&quot;NaoMotionPlayer&quot;,&quot;sit_from_kneel_or_stand&quot;); }&#xa;OnExit{resume(&quot;SMVladLeftFootControl&quot;);&#xa; finishedReceived=0;}&#xa;{}" finalstate="0" moore_outputs="" ypos="700" code="3" xpos="539" linewidth="1">FINISHED</state>
+    <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="679" code="11" xpos="289" linewidth="1">WAIT</state>
+    <state pencolor="959488" radius="40" description="OnEntry { int repeat; repeat=0; print_state_name();   &#xa;   post(&quot;guvision_selectCamera&quot;,&quot;1&quot;);  &#xa;   post(&quot;guvision_activateVisionPipeline&quot;,&quot;opencvlines&quot;);&#xa;   post(&quot;guvision_runVisionPipeline&quot;,&quot;now&quot;);&#xa;     }&#xa;OnExit { }&#xa;{ }&#xa;&#xa;" finalstate="0" moore_outputs="" ypos="88" code="5" xpos="343" linewidth="1">STARTLINEDETECTION</state>
+    <state pencolor="0" radius="40" description="OnEntry {print_state_name(); post(&quot;Speech&quot;, &quot;Down&quot;); &#xa;               postv(&quot;NaoHeadAbs&quot;, 0 ,15, 10); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="147" code="6" xpos="562" linewidth="1">HEADDOWN</state>
+    <state pencolor="0" radius="40" description="OnEntry {print_state_name(); post(&quot;Speech&quot;, &quot;Up&quot;); &#xa;&#x9;repeat=repeat+1;&#xa;&#x9;post(&quot;guvision_runVisionPipeline&quot;,&quot;now&quot;);&#xa;               postv(&quot;NaoHeadRel&quot;, 0, 0-5 ,10); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="249" code="2" xpos="948" linewidth="1">HEADUP</state>
+    <state pencolor="0" radius="40" description="OnEntry{print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="51" code="8" xpos="655" linewidth="1">WAIT</state>
+    <transition c1x="125.1867923557088" c2y="273.6271237955177" c1y="225.8054036269727" description="" straight="1" type="2" ypos="177.9836834584278" endx="157.8451589790366" xpos="108.8576090440449" endy="321.4488439640626" c2x="141.5159756673727">
+      <from>7</from>
+      <to>19</to>
+      <inputs default="0" any="0" invert="0">NaoMotionPlayerIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="789.7279754188233" c2y="61.52486697079969" c1y="56.58066689157237" description="" straight="1" type="2" ypos="51.63646681234506" endx="691.8877752731412" xpos="838.6480754916645" endy="66.46906705002699" c2x="740.8078753459823">
+      <from>12</from>
+      <to>8</to>
+      <inputs default="0" any="0" invert="0">NaoWalkIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="899.9442983494528" c2y="227.4844254535135" c1y="170.551657193113" description="" straight="1" type="2" ypos="113.6188889327125" endx="686.730051126291" xpos="1006.551421961034" endy="284.4171937139139" c2x="793.3371747378719">
+      <from>15</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">repeat&lt;3</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="976.1090426269604" c2y="73.06332163875965" c1y="90.61112759311908" description="" straight="1" type="2" ypos="108.1589335474785" endx="916.293542656899" xpos="1006.016792611991" endy="55.51551568440022" c2x="946.2012926419297">
+      <from>15</from>
+      <to>12</to>
+      <inputs default="0" any="0" invert="0">repeat>2</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="764.8742928801272" c2y="519.4653860785003" c1y="418.6011169393254" description="" straight="1" type="2" ypos="317.7368478001505" endx="884.6246098861212" xpos="704.9991343771302" endy="620.3296552176751" c2x="824.7494513831242">
+      <from>0</from>
+      <to>10</to>
+      <inputs default="0" any="0" invert="0">guvision_opencv_bottomLineIsVisible</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="777.4718835608109" c2y="290.0858588951808" c1y="293.9655089371087" description="" straight="1" type="2" ypos="297.8451589790366" endx="933.313338610558" xpos="699.5511560359373" endy="286.2062088532529" c2x="855.3926110856845">
+      <from>0</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">~guvision_opencv_bottomLineIsVisible</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="242.1789328749944" c2y="189.9170103264808" c1y="256.7181977363861" description="" straight="1" type="2" ypos="323.5193851462915" endx="323.8459147727771" xpos="201.345441926103" endy="123.1158229165754" c2x="283.0124238238857">
+      <from>19</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">~NaoMotionPlayerIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="887.584253892283" c2y="208.9313005272504" c1y="712.6159576562037" description="" straight="0" type="2" ypos="665.8607769895543" endx="357.4397641023085" xpos="890.3605219425607" endy="125.3027239309636" c2x="466.0407589186054">
+      <from>10</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">shortChestButtonPressed</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="441.0231185722188" c2y="699.064377764618" c1y="701.2402117092377" description="" straight="1" type="2" ypos="703.4160456538574" endx="324.7770876399966" xpos="499.1461340383299" endy="696.8885438199983" c2x="382.9001031061077">
+      <from>3</from>
+      <to>11</to>
+      <inputs default="0" any="0" invert="0">NaoMotionPlayerIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="207.2311192724976" c2y="661.79133069943" c1y="667.5672382249688" description="" straight="1" type="2" ypos="673.3431457505076" endx="122.8893173103859" xpos="249.4020202535534" endy="656.0154231738912" c2x="165.0602182914417">
+      <from>11</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">~NaoMotionPlayerIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="343.3413168325007" c2y="626.9882962518061" c1y="716.4587822026264" description="" straight="0" type="2" ypos="648.703601535977" endx="516.1841676201863" xpos="315.1175848827785" endy="667.1452013730682" c2x="491.7814386950581">
+      <from>11</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">shortChestButtonPressed</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="424.3401348289278" c2y="124.308926969617" c1y="119.0940124487104" description="" straight="1" type="2" ypos="113.8790979278039" endx="526.0196736569601" xpos="373.5003654149116" endy="129.5238414905235" c2x="475.1799042429439">
+      <from>5</from>
+      <to>6</to>
+      <inputs default="0" any="0" invert="0">timeout(1000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="597.3484247081615" c2y="249.5932295340392" c1y="218.051874073601" description="" straight="1" type="2" ypos="186.5105186131628" endx="680.5222800023253" xpos="555.7614970610796" endy="281.1345849944774" c2x="638.9353523552434">
+      <from>6</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="901.9718337626908" c2y="146.2956250101268" c1y="190.2531224766906" description="" straight="1" type="2" ypos="234.2106199432544" endx="884.2464971790773" xpos="910.8345020544976" endy="102.3381275435629" c2x="893.1091654708841">
+      <from>2</from>
+      <to>12</to>
+      <inputs default="0" any="0" invert="0">CurrentHeadY&lt;0</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="1011.639105630169" c2y="146.1205527807623" c1y="182.5803451405735" description="" straight="1" type="2" ypos="219.0401375003848" endx="1085.911406314264" xpos="974.5029552881211" endy="109.660760420951" c2x="1048.775255972217">
+      <from>2</from>
+      <to>15</to>
+      <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="537.1289652294361" c2y="65.83812911264376" c1y="56.32536886596102" description="" straight="1" type="2" ypos="46.81260861927828" endx="380.9473319220206" xpos="615.2197818831438" endy="75.35088935932649" c2x="459.0381485757283">
+      <from>8</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">~NaoWalkIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>
