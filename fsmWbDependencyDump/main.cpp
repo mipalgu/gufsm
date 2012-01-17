@@ -74,6 +74,8 @@ int main (int argc, char * const argv[])
     // Load the machines by name into gufsm.
     StateMachineVectorFactory factory(&antlr_context, machine_names);
     
+    cout << factory.fsms()->description() << endl;
+    
     return 0;
 }
 
