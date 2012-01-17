@@ -24,6 +24,8 @@
 #define ANTLRMaths(x)   ANTLRMaths ## x func ## x; \
                         antlr_context.set_function(func ## x.name(), &func ## x);
 
+#define VERBOSE_OUTPUT
+
 using namespace std;
 using namespace FSM;
 
@@ -33,8 +35,11 @@ int main (int argc, char * const argv[])
     ANTLRContext antlr_context;
     // Machine names passed as parameters.
     vector<string> machine_names;
-    // Load the machines by name into gufsm.
-    StateMachineVectorFactory factory(&antlr_context, machine_names);
+    // Verbose?
+    bool verbose = FALSE;
+#ifdef VERBOSE_OUTPUT
+    verbose = TRUE;
+#endif
     
     int ch;
     if ((ch = getopt(argc, argv, "cv")) != -1)
@@ -42,9 +47,13 @@ int main (int argc, char * const argv[])
         switch (ch) {
             case 'c':
                 // Conditions.
+                if (verbose)
+                    cout << "Start dumping conditions." << endl;
                 break;
             case 'v':
                 // Values.
+                if (verbose)
+                    cout << "Start dumping values." << endl;
                 break;
             default:
                 break;
@@ -53,6 +62,18 @@ int main (int argc, char * const argv[])
         // No options.
         cout << "Use option 'c' for conditions or option 'v' for vales" << endl;
     }
+    
+    if (argc <= 1) {
+        cout << "fsmWbDependencyDump error: no arguments." << endl;
+        return 0;
+    }
+    // Get the parameters.
+    while (argc-- > 0) {
+        machine_names.push_back(*argv++);
+    }
+    // Load the machines by name into gufsm.
+    StateMachineVectorFactory factory(&antlr_context, machine_names);
+    
     return 0;
 }
 
