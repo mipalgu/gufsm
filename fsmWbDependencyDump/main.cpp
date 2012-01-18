@@ -8,6 +8,7 @@
 
 #include "../gufsm/FSMANTLRMaths.h"
 #include "../gufsm/FSMANTLRContext.h"
+#include "../gufsm/FSMANTLRAction.h"
 
 #include <iostream>
 #include <sstream>
@@ -38,8 +39,11 @@ int tokenize(string &input, vector<string> &output);
 /* Test tokenize function. */
 void test_tokenize();
 
-/* Print values. */
+/* Print conditions. */
 int printConditions(StateMachineVectorFactory &factory, ANTLRContext &antlr_context);
+
+/* Print values. */
+int printValues(StateMachineVectorFactory &factory, ANTLRContext &antlr_context);
 
 /* Silence all output. */
 void silenceAllOutput();
@@ -47,14 +51,36 @@ void silenceAllOutput();
 /* Unsilence stdout. */
 void unsilenceOutput();
 
-int saved_streams[3]; // Saved stream file descriptors.
+int saved_streams[3];        // Saved stream file descriptors.
+vector<string> machine_name; // Machine name passed as a parameter.
+vector<string> values;       // The first parameter in any function.
+
+/* Callback function class. */
+class PostFunctionCallback: public WBPostAction<const char *> {
+public:
+    // Default constructor.
+    PostFunctionCallback() : WBPostAction<const char *>() {}
+    
+    // Use this to record the first parameter.
+    void add_parameter(int index, long long value) {
+        if (index == 0) {
+            string parameter = (const char *) value;
+            values.push_back(parameter);
+        }
+    }
+    
+    void performv(Machine *m, ActionStage, int, va_list) {
+       // We don't want to do anything here as it is pointless.
+        string type = _type;
+    }
+
+};
 
 int main (int argc, char * const argv[])
 {
     // Create Whiteboard.
     ANTLRContext antlr_context;
-    // Machine names passed as parameters.
-    vector<string> machine_names;
+    // Possibly silence this process by redirecting output to dev/null.
     #ifdef SILENCE
         silenceAllOutput();
     #endif
@@ -63,7 +89,7 @@ int main (int argc, char * const argv[])
     bool v = FALSE;
     
     int ch;
-    while ((ch = getopt(argc, argv, "cv")) != -1)
+    while ((ch = getopt(argc, argv, "c:v:")) != -1)
     {
         switch (ch) {
             case 'c':
@@ -74,7 +100,8 @@ int main (int argc, char * const argv[])
                     cerr << "Two or more arguments do not make sense. Will now exit." << endl;
                     return 0;
                 }
-                
+                // Save the name of the machine we are going to load.
+                machine_name.push_back(optarg);
                 break;
             case 'v':
                 // Values.
@@ -84,9 +111,11 @@ int main (int argc, char * const argv[])
                     cerr << "Two or more arguments do not make sense. Will now exit." << endl;
                     return 0;
                 }
-                
+                // Save the name of the machine we are going to load.
+                machine_name.push_back(optarg);
                 break;
             default:
+                cerr << "Argument required." << endl;
                 break;
         }
     }
@@ -94,32 +123,28 @@ int main (int argc, char * const argv[])
         // No options.
         cout << "Use option 'c' for conditions or option 'v' for vales" << endl;
     }
-    
+
     if (argc <= 1) {
         cout << "fsmWbDependencyDump error: no arguments." << endl;
         return 0;
     }
     argc -= optind;
     argv += optind;
-    // Get the parameters.
-    while (argc-- > 0) {
-        machine_names.push_back(*argv++);
-    }
+
     // Load the machines by name into gufsm.
-    StateMachineVectorFactory factory(&antlr_context, machine_names);
+    StateMachineVectorFactory factory(&antlr_context, machine_name);
     
-    // Unsilence the program and print the values or conditions.
-    #ifdef SILENCE
-        unsilenceOutput();
-    #endif
     if (c) {
         if (!printConditions(factory, antlr_context)) {
-            cout << "An error occurred within fsmWbDependencyDump." << endl;
+            cout << "An error occurred within fsmWbDependencyDump, conditions." << endl;
             return 1;
         }
     } else if (v) {
-        
-    }    
+        if (!printValues(factory, antlr_context)) {
+            cout << "An error occurred within fsmWbDependencyDump, values." << endl;
+            return 1;
+        }
+    }
     return 0;
 }
 
@@ -167,28 +192,73 @@ int printConditions(StateMachineVectorFactory &factory, ANTLRContext &antlr_cont
     // Get a list of all the variable names
     string allNames = antlr_context.allNames();
     tokenize(allNames, variable_names);
-    
+    unsilenceOutput();
+    // Print all variables which are global. We use the double dollar signs to
+    //  decide this.
     vector<string>::iterator it;
     for (it = variable_names.begin(); it != variable_names.end(); it++) {
-        cout << *it << endl;
+        string temp = *it;
+        if (temp.find("$$") == string::npos)
+            cout << temp << endl;
+    }   
+    
+    return 1;
+}
+
+int printValues(StateMachineVectorFactory &factory, ANTLRContext &antlr_context) {
+    // Get the index of this machine.
+    int thisMachineIndex = factory.index_of_machine_named(machine_name[0]);
+    // Get a list of all the machines in the factory.
+    StateMachineVector * allStateMachines = factory.fsms();
+    MachineVector allStateMachines_v = allStateMachines->machines();
+    // Use the index to get a reference to this machine.
+    SuspensibleMachine * thisMachine = allStateMachines_v[thisMachineIndex];
+    StateVector states = thisMachine->states();
+    
+    // Set up out callback function that merely records all of the post parameters.
+    ANTLRFunc(PostFunctionCallback,    "post");
+    antlr_context.set_function("post_int", &funcPostFunctionCallback);
+    antlr_context.set_function("postv", &funcPostFunctionCallback);
+    antlr_context.set_function("suspend", &funcPostFunctionCallback);
+    antlr_context.set_function("resume", &funcPostFunctionCallback);
+    antlr_context.set_function("restart", &funcPostFunctionCallback);
+    
+    // We want to call 'evaluate' on each command in each state.
+    StateVector::iterator it;
+    for (it = states.begin(); it != states.end(); it++) {
+        thisMachine->setCurrentState(*it);
+        thisMachine->executeOnEntry();
+        // Never mind what transition it takes, just as so it is not null.
+        thisMachine->executeOnExitForTransitionWithIndex(0);
+        thisMachine->executeInternal();
+    }
+    unsilenceOutput();
+    // Print all the values retrieved to standard output.
+    vector<string>::iterator it_s;
+    for (it_s = values.begin(); it_s != values.end(); it_s++) {
+        cout << *it_s << endl;
     }
     
     return 1;
 }
 
 void silenceAllOutput() {
+#ifdef SILENCE
     // Save descriptors.
     saved_streams[1] = dup(1);
     saved_streams[2] = dup(2);
     // Silence all streams.
     freopen("/dev/null", "w", stdout);
     freopen("/dev/null", "w", stderr);
+#endif
 }
 
 void unsilenceOutput() {
+#ifdef SILENCE
     // Create descriptor to stdout again.
     char stdout_path[20];
     sprintf(stdout_path, "/dev/fd/%d", saved_streams[1]);
     // Re-open stdout.
     freopen(stdout_path, "w", stdout);
+#endif
 }

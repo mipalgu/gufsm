@@ -4,7 +4,12 @@ OnExit {  }
 {}
 
 1	ARMED
-OnEntry { wbvariable = 1; }
+OnEntry { int wbvariable; 
+          post("Speech", "yes"); 
+          post_int("AWBMessage", 10);
+          postv("Motion", "start");
+          wbvariable = 1;
+          suspend("SMGetUp"); }
 OnExit {  }
 {}
 
