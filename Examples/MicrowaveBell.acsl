@@ -4,7 +4,7 @@ OnExit {  }
 {}
 
 1	ARMED
-OnEntry { }
+OnEntry { wbvariable = 1; }
 OnExit {  }
 {}
 

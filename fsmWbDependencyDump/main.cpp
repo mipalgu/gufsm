@@ -119,8 +119,7 @@ int main (int argc, char * const argv[])
         }
     } else if (v) {
         
-    }
-    
+    }    
     return 0;
 }
 
@@ -134,7 +133,7 @@ int tokenize(string &input, vector<string> &output) {
         if (c == ' ') {
             if (first != last) {
                 // Push what we have decided to substring so far.
-                string sub = input.substr(first, last);
+                string sub = input.substr(first, last-first);
                 output.push_back(sub);
             }
             first = ++last;
@@ -152,7 +151,7 @@ int tokenize(string &input, vector<string> &output) {
 }
 
 void test_tokenize() {
-    string input = "hello world";
+    string input = "hello 1 world";
     vector<string> output;
     tokenize(input, output);
     cout << "TOKENIZED" << endl;
