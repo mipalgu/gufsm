@@ -12,6 +12,7 @@
 #include <iostream>
 #include <sstream>
 #include <unistd.h>
+#include <cstdio>
 #include <gu_util.h>
 
 #include "../gufsm/FSMState.h"
@@ -24,7 +25,8 @@
 #define ANTLRMaths(x)   ANTLRMaths ## x func ## x; \
                         antlr_context.set_function(func ## x.name(), &func ## x);
 
-#define VERBOSE_OUTPUT
+#define SILENCE // Silence output. This is desired as any output is going to be
+                // used in a script this program was designed for.
 
 using namespace std;
 using namespace FSM;
@@ -37,9 +39,15 @@ int tokenize(string &input, vector<string> &output);
 void test_tokenize();
 
 /* Print values. */
-int printValues(StateMachineVectorFactory &factory, ANTLRContext &antlr_context);
+int printConditions(StateMachineVectorFactory &factory, ANTLRContext &antlr_context);
 
-bool verbose;
+/* Silence all output. */
+void silenceAllOutput();
+
+/* Unsilence stdout. */
+void unsilenceOutput();
+
+int saved_streams[3]; // Saved stream file descriptors.
 
 int main (int argc, char * const argv[])
 {
@@ -47,13 +55,12 @@ int main (int argc, char * const argv[])
     ANTLRContext antlr_context;
     // Machine names passed as parameters.
     vector<string> machine_names;
-    
+    #ifdef SILENCE
+        silenceAllOutput();
+    #endif
+
     bool c = FALSE;
     bool v = FALSE;
-    verbose = FALSE;
-#ifdef VERBOSE_OUTPUT
-    verbose = TRUE;
-#endif
     
     int ch;
     while ((ch = getopt(argc, argv, "cv")) != -1)
@@ -61,8 +68,6 @@ int main (int argc, char * const argv[])
         switch (ch) {
             case 'c':
                 // Conditions.
-                if (verbose)
-                    cout << "Start dumping conditions." << endl;
                 
                 if (!c && !v) { c = TRUE; }
                 else {
@@ -73,8 +78,6 @@ int main (int argc, char * const argv[])
                 break;
             case 'v':
                 // Values.
-                if (verbose)
-                    cout << "Start dumping values." << endl;
                 
                 if (!c && !v) { v = TRUE; }
                 else {
@@ -105,11 +108,17 @@ int main (int argc, char * const argv[])
     // Load the machines by name into gufsm.
     StateMachineVectorFactory factory(&antlr_context, machine_names);
     
-    if (v) {
-        if (printValues(factory, antlr_context))
-            return 0;
-        else
+    // Unsilence the program and print the values or conditions.
+    #ifdef SILENCE
+        unsilenceOutput();
+    #endif
+    if (c) {
+        if (!printConditions(factory, antlr_context)) {
+            cout << "An error occurred within fsmWbDependencyDump." << endl;
             return 1;
+        }
+    } else if (v) {
+        
     }
     
     return 0;
@@ -153,14 +162,13 @@ void test_tokenize() {
     }
 }
 
-int printValues(StateMachineVectorFactory &factory, ANTLRContext &antlr_context) {
+int printConditions(StateMachineVectorFactory &factory, ANTLRContext &antlr_context) {
     // Tokenized internal variable names.
     vector<string> variable_names;
     // Get a list of all the variable names
     string allNames = antlr_context.allNames();
     tokenize(allNames, variable_names);
     
-    if (verbose) { cout << "ALL NAMES" << endl; }
     vector<string>::iterator it;
     for (it = variable_names.begin(); it != variable_names.end(); it++) {
         cout << *it << endl;
@@ -169,3 +177,19 @@ int printValues(StateMachineVectorFactory &factory, ANTLRContext &antlr_context)
     return 1;
 }
 
+void silenceAllOutput() {
+    // Save descriptors.
+    saved_streams[1] = dup(1);
+    saved_streams[2] = dup(2);
+    // Silence all streams.
+    freopen("/dev/null", "w", stdout);
+    freopen("/dev/null", "w", stderr);
+}
+
+void unsilenceOutput() {
+    // Create descriptor to stdout again.
+    char stdout_path[20];
+    sprintf(stdout_path, "/dev/fd/%d", saved_streams[1]);
+    // Re-open stdout.
+    freopen(stdout_path, "w", stdout);
+}
