@@ -78,7 +78,24 @@
 using namespace std;
 using namespace FSM;
 
-static volatile cdlbridge *gucdlbridge;
+static cdlbridge *gucdlbridge;
+
+/*
+ * System functions
+ */
+struct StringFunction: public ContentAction<string>
+{
+        virtual void performv(Machine *m, ActionStage, int, va_list)
+        {
+                evaluate(m);
+        }
+        /** setting any parameter sets the content */
+        virtual void add_parameter(int index, long long value)
+        {
+                setContent((const char *)value);
+        }
+};
+
 
 #ifdef NEED_SLEEP
 struct SleepFunction: public TimeoutPredicate
@@ -121,6 +138,9 @@ struct SystemFunction: public ContentAction<string>
         }
 };
 
+/*
+ * Whiteboard functions
+ */
 typedef WBPostAction<const char *> PostStringFunction;
 typedef WBPostAction<int> PostIntFunction;
 
@@ -169,6 +189,29 @@ class WBRestartFunction: public WBSuspendFunction
 public:
         WBRestartFunction(): WBSuspendFunction("restart") {}
 };
+
+/*
+ * CDL functions
+ */
+struct ProofFunction: public StringFunction
+{
+        virtual int evaluate(Machine *m = NULL)
+        {
+                if (!gucdlbridge) return -3;
+                return gucdlbridge->load_theory_file(_content);
+        }
+};
+
+
+struct LoadTheoryFunction: public StringFunction
+{
+        virtual int evaluate(Machine *m = NULL)
+        {
+                if (!gucdlbridge) return -3;
+                return gucdlbridge->update_proofs("", _content);
+        }
+};
+
 
 
 static void usage(const char *cmd)
@@ -236,6 +279,9 @@ int main (int argc, char * const argv[])
         ANTLRFunc(WBSuspendFunction,    "suspend");
         ANTLRFunc(WBResumeFunction,     "resume");
         ANTLRFunc(WBRestartFunction,    "restart");
+
+        ANTLRFunc(LoadTheoryFunction,   "load_theory");
+        ANTLRFunc(ProofFunction,        "prove");
 
         /*
          * maths functions
