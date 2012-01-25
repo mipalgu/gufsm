@@ -63,6 +63,8 @@
 #include <unistd.h>
 #include <gu_util.h>
 
+#include "cdlbridge.h"
+
 #include "FSMState.h"
 #include "FSMExpression.h"
 #include "FSMWBPostAction.h"
@@ -75,6 +77,8 @@
 
 using namespace std;
 using namespace FSM;
+
+static volatile cdlbridge *gucdlbridge;
 
 #ifdef NEED_SLEEP
 struct SleepFunction: public TimeoutPredicate
@@ -176,14 +180,14 @@ static void usage(const char *cmd)
 
 int main (int argc, char * const argv[])
 {
-        bool kripke_flag = false, verbose = false, 
+        bool kripke_flag = false, verbose = false, want_cdl = true,
 #ifdef __APPLE__
         blocks_flag = true;
 #else
         blocks_flag = false;
 #endif
         int ch;
-        while ((ch = getopt(argc, argv, "Bbkv")) != -1)
+        while ((ch = getopt(argc, argv, "BbCkv")) != -1)
         {
                 switch (ch)
                 {
@@ -192,6 +196,9 @@ int main (int argc, char * const argv[])
                                 break;
                         case 'b':       // use blocks (dispatch queues)
                                 blocks_flag = true;
+                                break;
+                        case 'C':       // disable CDL bridge
+                                want_cdl = false;
                                 break;
                         case 'k':
                                 kripke_flag = true;

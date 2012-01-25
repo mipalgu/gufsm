@@ -88,6 +88,12 @@
 		F15A2D0914CF843800D88624 /* theory_io_serialisation.cc in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C4714CF81F400D88624 /* theory_io_serialisation.cc */; };
 		F15A2D0A14CF84AC00D88624 /* offline.c in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C1F14CF81F400D88624 /* offline.c */; };
 		F15A2D0B14CF84AC00D88624 /* offline.c in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C1F14CF81F400D88624 /* offline.c */; };
+		F15A2D0C14CF85D800D88624 /* cdlbridge.cc in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C4E14CF81F400D88624 /* cdlbridge.cc */; };
+		F15A2D0D14CF85D800D88624 /* cdlbridge_wbmsg.cc in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C5014CF81F400D88624 /* cdlbridge_wbmsg.cc */; };
+		F15A2D0E14CF85D800D88624 /* cdlengine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C5214CF81F400D88624 /* cdlengine.cc */; };
+		F15A2D0F14CF85D900D88624 /* cdlbridge.cc in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C4E14CF81F400D88624 /* cdlbridge.cc */; };
+		F15A2D1014CF85D900D88624 /* cdlbridge_wbmsg.cc in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C5014CF81F400D88624 /* cdlbridge_wbmsg.cc */; };
+		F15A2D1114CF85D900D88624 /* cdlengine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C5214CF81F400D88624 /* cdlengine.cc */; };
 		F16CC2FF142C0C01001F788B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F16CC2FE142C0C01001F788B /* main.cpp */; };
 		F16CC301142C0C01001F788B /* gufsm.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = F16CC300142C0C01001F788B /* gufsm.1 */; };
 		F16CC310142C0F86001F788B /* FSMState.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30F142C0F86001F788B /* FSMState.cc */; };
@@ -1952,6 +1958,9 @@
 				F15A2CFF14CF843700D88624 /* theory_io_factory.cc in Sources */,
 				F15A2D0014CF843700D88624 /* theory_io_serialisation.cc in Sources */,
 				F15A2D0A14CF84AC00D88624 /* offline.c in Sources */,
+				F15A2D0C14CF85D800D88624 /* cdlbridge.cc in Sources */,
+				F15A2D0D14CF85D800D88624 /* cdlbridge_wbmsg.cc in Sources */,
+				F15A2D0E14CF85D800D88624 /* cdlengine.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1993,6 +2002,9 @@
 				F15A2D0814CF843800D88624 /* theory_io_factory.cc in Sources */,
 				F15A2D0914CF843800D88624 /* theory_io_serialisation.cc in Sources */,
 				F15A2D0B14CF84AC00D88624 /* offline.c in Sources */,
+				F15A2D0F14CF85D900D88624 /* cdlbridge.cc in Sources */,
+				F15A2D1014CF85D900D88624 /* cdlbridge_wbmsg.cc in Sources */,
+				F15A2D1114CF85D900D88624 /* cdlengine.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
