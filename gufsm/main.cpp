@@ -198,7 +198,7 @@ struct ProofFunction: public StringFunction
         virtual int evaluate(Machine *m = NULL)
         {
                 if (!gucdlbridge) return -3;
-                return gucdlbridge->load_theory_file(_content);
+                return gucdlbridge->update_proofs("", _content);
         }
 };
 
@@ -208,7 +208,7 @@ struct LoadTheoryFunction: public StringFunction
         virtual int evaluate(Machine *m = NULL)
         {
                 if (!gucdlbridge) return -3;
-                return gucdlbridge->update_proofs("", _content);
+                return gucdlbridge->load_theory_file(_content);
         }
 };
 
