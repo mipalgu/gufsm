@@ -68,6 +68,26 @@
 		F132711D1452812500E5786D /* FSMWBQueryPredicate.cc in Sources */ = {isa = PBXBuildFile; fileRef = F132711B1452812500E5786D /* FSMWBQueryPredicate.cc */; };
 		F14EB9C01491B86600ED85D7 /* FSMANTLRContext.cc in Sources */ = {isa = PBXBuildFile; fileRef = F14EB9BF1491B86600ED85D7 /* FSMANTLRContext.cc */; };
 		F14EB9C11491B86600ED85D7 /* FSMANTLRContext.cc in Sources */ = {isa = PBXBuildFile; fileRef = F14EB9BF1491B86600ED85D7 /* FSMANTLRContext.cc */; };
+		F15A2CF814CF843700D88624 /* claus.c in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C0014CF81F400D88624 /* claus.c */; };
+		F15A2CF914CF843700D88624 /* defeas.c in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C0F14CF81F400D88624 /* defeas.c */; };
+		F15A2CFA14CF843700D88624 /* oset.c in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C2114CF81F400D88624 /* oset.c */; };
+		F15A2CFB14CF843700D88624 /* plaus.c in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C2614CF81F400D88624 /* plaus.c */; };
+		F15A2CFC14CF843700D88624 /* stack.c in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C3214CF81F400D88624 /* stack.c */; };
+		F15A2CFD14CF843700D88624 /* stlist.c in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C3614CF81F400D88624 /* stlist.c */; };
+		F15A2CFE14CF843700D88624 /* theory_io.cc in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C4114CF81F400D88624 /* theory_io.cc */; };
+		F15A2CFF14CF843700D88624 /* theory_io_factory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C4414CF81F400D88624 /* theory_io_factory.cc */; };
+		F15A2D0014CF843700D88624 /* theory_io_serialisation.cc in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C4714CF81F400D88624 /* theory_io_serialisation.cc */; };
+		F15A2D0114CF843800D88624 /* claus.c in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C0014CF81F400D88624 /* claus.c */; };
+		F15A2D0214CF843800D88624 /* defeas.c in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C0F14CF81F400D88624 /* defeas.c */; };
+		F15A2D0314CF843800D88624 /* oset.c in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C2114CF81F400D88624 /* oset.c */; };
+		F15A2D0414CF843800D88624 /* plaus.c in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C2614CF81F400D88624 /* plaus.c */; };
+		F15A2D0514CF843800D88624 /* stack.c in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C3214CF81F400D88624 /* stack.c */; };
+		F15A2D0614CF843800D88624 /* stlist.c in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C3614CF81F400D88624 /* stlist.c */; };
+		F15A2D0714CF843800D88624 /* theory_io.cc in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C4114CF81F400D88624 /* theory_io.cc */; };
+		F15A2D0814CF843800D88624 /* theory_io_factory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C4414CF81F400D88624 /* theory_io_factory.cc */; };
+		F15A2D0914CF843800D88624 /* theory_io_serialisation.cc in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C4714CF81F400D88624 /* theory_io_serialisation.cc */; };
+		F15A2D0A14CF84AC00D88624 /* offline.c in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C1F14CF81F400D88624 /* offline.c */; };
+		F15A2D0B14CF84AC00D88624 /* offline.c in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C1F14CF81F400D88624 /* offline.c */; };
 		F16CC2FF142C0C01001F788B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F16CC2FE142C0C01001F788B /* main.cpp */; };
 		F16CC301142C0C01001F788B /* gufsm.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = F16CC300142C0C01001F788B /* gufsm.1 */; };
 		F16CC310142C0F86001F788B /* FSMState.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30F142C0F86001F788B /* FSMState.cc */; };
@@ -125,6 +145,69 @@
 			proxyType = 2;
 			remoteGlobalIDString = F1D925F014A13BAA00BDAEED;
 			remoteInfo = SimpleWhiteboardTest;
+		};
+		F15A2CE214CF81F500D88624 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F15A2C1614CF81F400D88624 /* Engine.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F14D4D71087D3EB600ABB43A;
+			remoteInfo = plaus;
+		};
+		F15A2CE414CF81F500D88624 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F15A2C1614CF81F400D88624 /* Engine.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F14D4D88087D3FE100ABB43A;
+			remoteInfo = ptest;
+		};
+		F15A2CE614CF81F500D88624 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F15A2C1614CF81F400D88624 /* Engine.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F106F6D309D38B1B00A61080;
+			remoteInfo = testct;
+		};
+		F15A2CE814CF81F500D88624 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F15A2C1614CF81F400D88624 /* Engine.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F141AF4D0C67F78D006E023A;
+			remoteInfo = ctest;
+		};
+		F15A2CEA14CF81F500D88624 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F15A2C1614CF81F400D88624 /* Engine.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F10AD2B30F97D33100D4651C;
+			remoteInfo = plausio;
+		};
+		F15A2CEC14CF81F500D88624 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F15A2C1614CF81F400D88624 /* Engine.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F1684A8A0F9D799700B809AB;
+			remoteInfo = theoriser;
+		};
+		F15A2CEE14CF81F500D88624 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F15A2C1614CF81F400D88624 /* Engine.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F15EBB550FAA4AD5006514FA;
+			remoteInfo = dtest;
+		};
+		F15A2CF214CF81F500D88624 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F15A2C5714CF81F400D88624 /* gucdlmodule.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F1731F6E118237E0000A9314;
+			remoteInfo = libgucdl;
+		};
+		F15A2CF614CF81F500D88624 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F15A2CBE14CF81F400D88624 /* testcdlmodule.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F1731F6E118237E0000A9314;
+			remoteInfo = testcdl;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -313,6 +396,193 @@
 		F132711B1452812500E5786D /* FSMWBQueryPredicate.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMWBQueryPredicate.cc; sourceTree = "<group>"; };
 		F132711E1452814300E5786D /* FSMWBQueryPredicate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMWBQueryPredicate.h; sourceTree = "<group>"; };
 		F14EB9BF1491B86600ED85D7 /* FSMANTLRContext.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRContext.cc; sourceTree = "<group>"; };
+		F15A2BF614CF81F400D88624 /* COOL.correct */ = {isa = PBXFileReference; lastKnownFileType = text; path = COOL.correct; sourceTree = "<group>"; };
+		F15A2BF714CF81F400D88624 /* COOL_theory.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = COOL_theory.c; sourceTree = "<group>"; };
+		F15A2BF814CF81F400D88624 /* COOL_theory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = COOL_theory.h; sourceTree = "<group>"; };
+		F15A2BF914CF81F400D88624 /* GNUmakefile */ = {isa = PBXFileReference; lastKnownFileType = text; path = GNUmakefile; sourceTree = "<group>"; };
+		F15A2BFA14CF81F400D88624 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		F15A2C0014CF81F400D88624 /* claus.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = claus.c; sourceTree = "<group>"; };
+		F15A2C0114CF81F400D88624 /* claus.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = claus.cc; sourceTree = "<group>"; };
+		F15A2C0214CF81F400D88624 /* claus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = claus.h; sourceTree = "<group>"; };
+		F15A2C0414CF81F400D88624 /* COOL_theory.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = COOL_theory.c; sourceTree = "<group>"; };
+		F15A2C0514CF81F400D88624 /* COOL_theory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = COOL_theory.h; sourceTree = "<group>"; };
+		F15A2C0614CF81F400D88624 /* cooler.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = cooler.d; sourceTree = "<group>"; };
+		F15A2C0714CF81F400D88624 /* cooler.output */ = {isa = PBXFileReference; lastKnownFileType = text; path = cooler.output; sourceTree = "<group>"; };
+		F15A2C0814CF81F400D88624 /* cooler0.output */ = {isa = PBXFileReference; lastKnownFileType = text; path = cooler0.output; sourceTree = "<group>"; };
+		F15A2C0914CF81F400D88624 /* COOLER_theory.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = COOLER_theory.c; sourceTree = "<group>"; };
+		F15A2C0A14CF81F400D88624 /* COOLER_theory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = COOLER_theory.h; sourceTree = "<group>"; };
+		F15A2C0C14CF81F400D88624 /* ctest.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ctest.c; sourceTree = "<group>"; };
+		F15A2C0D14CF81F400D88624 /* ctest.correct */ = {isa = PBXFileReference; lastKnownFileType = text; path = ctest.correct; sourceTree = "<group>"; };
+		F15A2C0E14CF81F400D88624 /* defeas */ = {isa = PBXFileReference; lastKnownFileType = folder; path = defeas; sourceTree = "<group>"; };
+		F15A2C0F14CF81F400D88624 /* defeas.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = defeas.c; sourceTree = "<group>"; };
+		F15A2C1014CF81F400D88624 /* defeas.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = defeas.cc; sourceTree = "<group>"; };
+		F15A2C1114CF81F400D88624 /* defeas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = defeas.h; sourceTree = "<group>"; };
+		F15A2C1314CF81F400D88624 /* defeas_private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = defeas_private.h; sourceTree = "<group>"; };
+		F15A2C1414CF81F400D88624 /* dtest.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = dtest.c; sourceTree = "<group>"; };
+		F15A2C1514CF81F400D88624 /* empty_theory.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = empty_theory.c; sourceTree = "<group>"; };
+		F15A2C1614CF81F400D88624 /* Engine.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Engine.xcodeproj; sourceTree = "<group>"; };
+		F15A2C1714CF81F400D88624 /* GNUmakefile */ = {isa = PBXFileReference; lastKnownFileType = text; path = GNUmakefile; sourceTree = "<group>"; };
+		F15A2C1814CF81F400D88624 /* looping.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = looping.d; sourceTree = "<group>"; };
+		F15A2C1914CF81F400D88624 /* LOOPING_theory.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = LOOPING_theory.c; sourceTree = "<group>"; };
+		F15A2C1A14CF81F400D88624 /* LOOPING_theory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LOOPING_theory.h; sourceTree = "<group>"; };
+		F15A2C1B14CF81F400D88624 /* makedump.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = makedump.sh; sourceTree = "<group>"; };
+		F15A2C1C14CF81F400D88624 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		F15A2C1D14CF81F400D88624 /* Makefile.nolibtool */ = {isa = PBXFileReference; lastKnownFileType = text; path = Makefile.nolibtool; sourceTree = "<group>"; };
+		F15A2C1E14CF81F400D88624 /* Makefile.static */ = {isa = PBXFileReference; lastKnownFileType = text; path = Makefile.static; sourceTree = "<group>"; };
+		F15A2C1F14CF81F400D88624 /* offline.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = offline.c; sourceTree = "<group>"; };
+		F15A2C2114CF81F400D88624 /* oset.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = oset.c; sourceTree = "<group>"; };
+		F15A2C2214CF81F400D88624 /* oset.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = oset.cc; sourceTree = "<group>"; };
+		F15A2C2314CF81F400D88624 /* oset.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = oset.h; sourceTree = "<group>"; };
+		F15A2C2514CF81F400D88624 /* parser.awk */ = {isa = PBXFileReference; lastKnownFileType = text; path = parser.awk; sourceTree = "<group>"; };
+		F15A2C2614CF81F400D88624 /* plaus.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = plaus.c; sourceTree = "<group>"; };
+		F15A2C2714CF81F400D88624 /* plaus.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = plaus.cc; sourceTree = "<group>"; };
+		F15A2C2814CF81F400D88624 /* plaus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = plaus.h; sourceTree = "<group>"; };
+		F15A2C2A14CF81F400D88624 /* ptest.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ptest.c; sourceTree = "<group>"; };
+		F15A2C2B14CF81F400D88624 /* ptest.correct */ = {isa = PBXFileReference; lastKnownFileType = text; path = ptest.correct; sourceTree = "<group>"; };
+		F15A2C2C14CF81F400D88624 /* selecttheory.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = selecttheory.sh; sourceTree = "<group>"; };
+		F15A2C2D14CF81F400D88624 /* serialise_theory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = serialise_theory.cc; sourceTree = "<group>"; };
+		F15A2C2E14CF81F400D88624 /* serialise_theory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = serialise_theory.h; sourceTree = "<group>"; };
+		F15A2C3214CF81F400D88624 /* stack.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = stack.c; sourceTree = "<group>"; };
+		F15A2C3314CF81F400D88624 /* stack.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = stack.cc; sourceTree = "<group>"; };
+		F15A2C3414CF81F400D88624 /* stack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stack.h; sourceTree = "<group>"; };
+		F15A2C3614CF81F400D88624 /* stlist.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = stlist.c; sourceTree = "<group>"; };
+		F15A2C3714CF81F400D88624 /* stlist.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = stlist.cc; sourceTree = "<group>"; };
+		F15A2C3814CF81F400D88624 /* stlist.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stlist.h; sourceTree = "<group>"; };
+		F15A2C3A14CF81F400D88624 /* testct.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = testct.c; sourceTree = "<group>"; };
+		F15A2C3C14CF81F400D88624 /* theoriser.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = theoriser.cc; sourceTree = "<group>"; };
+		F15A2C4114CF81F400D88624 /* theory_io.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = theory_io.cc; sourceTree = "<group>"; };
+		F15A2C4214CF81F400D88624 /* theory_io.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = theory_io.h; sourceTree = "<group>"; };
+		F15A2C4414CF81F400D88624 /* theory_io_factory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = theory_io_factory.cc; sourceTree = "<group>"; };
+		F15A2C4714CF81F400D88624 /* theory_io_serialisation.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = theory_io_serialisation.cc; sourceTree = "<group>"; };
+		F15A2C4914CF81F400D88624 /* unprefix.awk */ = {isa = PBXFileReference; lastKnownFileType = text; path = unprefix.awk; sourceTree = "<group>"; };
+		F15A2C4E14CF81F400D88624 /* cdlbridge.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cdlbridge.cc; sourceTree = "<group>"; };
+		F15A2C4F14CF81F400D88624 /* cdlbridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cdlbridge.h; sourceTree = "<group>"; };
+		F15A2C5014CF81F400D88624 /* cdlbridge_wbmsg.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cdlbridge_wbmsg.cc; sourceTree = "<group>"; };
+		F15A2C5114CF81F400D88624 /* cdlbridge_wbmsg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cdlbridge_wbmsg.h; sourceTree = "<group>"; };
+		F15A2C5214CF81F400D88624 /* cdlengine.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cdlengine.cc; sourceTree = "<group>"; };
+		F15A2C5314CF81F400D88624 /* cdlengine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cdlengine.h; sourceTree = "<group>"; };
+		F15A2C5414CF81F400D88624 /* GNUmakefile */ = {isa = PBXFileReference; lastKnownFileType = text; path = GNUmakefile; sourceTree = "<group>"; };
+		F15A2C5514CF81F400D88624 /* gucdlmain.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = gucdlmain.cc; sourceTree = "<group>"; };
+		F15A2C5614CF81F400D88624 /* gucdlmain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gucdlmain.h; sourceTree = "<group>"; };
+		F15A2C5714CF81F400D88624 /* gucdlmodule.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = gucdlmodule.xcodeproj; sourceTree = "<group>"; };
+		F15A2C5814CF81F400D88624 /* headerdoc.conf */ = {isa = PBXFileReference; lastKnownFileType = text; path = headerdoc.conf; sourceTree = "<group>"; };
+		F15A2C5914CF81F400D88624 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		F15A2C6014CF81F400D88624 /* build-state.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = "build-state.dat"; path = "../../gucdl.build/build-state.dat"; sourceTree = "<group>"; };
+		F15A2C6114CF81F400D88624 /* build-state~.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = "build-state~.dat"; path = "../../gucdl.build/build-state~.dat"; sourceTree = "<group>"; };
+		F15A2C6214CF81F400D88624 /* gucdl.dep */ = {isa = PBXFileReference; lastKnownFileType = file; name = gucdl.dep; path = ../../gucdl.build/gucdl.dep; sourceTree = "<group>"; };
+		F15A2C6314CF81F400D88624 /* gucdl~.dep */ = {isa = PBXFileReference; lastKnownFileType = file; name = "gucdl~.dep"; path = "../../gucdl.build/gucdl~.dep"; sourceTree = "<group>"; };
+		F15A2C6414CF81F400D88624 /* build-state.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = "build-state.dat"; path = "../../gucdlmodule.build/build-state.dat"; sourceTree = "<group>"; };
+		F15A2C6514CF81F400D88624 /* build-state~.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = "build-state~.dat"; path = "../../gucdlmodule.build/build-state~.dat"; sourceTree = "<group>"; };
+		F15A2C6614CF81F400D88624 /* gucdl.dep */ = {isa = PBXFileReference; lastKnownFileType = file; name = gucdl.dep; path = ../../gucdlmodule.build/gucdl.dep; sourceTree = "<group>"; };
+		F15A2C6714CF81F400D88624 /* gucdlmodule.dep */ = {isa = PBXFileReference; lastKnownFileType = file; name = gucdlmodule.dep; path = ../../gucdlmodule.build/gucdlmodule.dep; sourceTree = "<group>"; };
+		F15A2C6814CF81F400D88624 /* gucdlmodule~.dep */ = {isa = PBXFileReference; lastKnownFileType = file; name = "gucdlmodule~.dep"; path = "../../gucdlmodule.build/gucdlmodule~.dep"; sourceTree = "<group>"; };
+		F15A2C6914CF81F400D88624 /* build-state.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = "build-state.dat"; path = "../../libgucdl.build/build-state.dat"; sourceTree = "<group>"; };
+		F15A2C6A14CF81F400D88624 /* build-state~.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = "build-state~.dat"; path = "../../libgucdl.build/build-state~.dat"; sourceTree = "<group>"; };
+		F15A2C6B14CF81F400D88624 /* libgucdl-all-target-headers.hmap */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libgucdl-all-target-headers.hmap"; path = "../../libgucdl.build/libgucdl-all-target-headers.hmap"; sourceTree = "<group>"; };
+		F15A2C6C14CF81F400D88624 /* libgucdl-generated-files.hmap */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libgucdl-generated-files.hmap"; path = "../../libgucdl.build/libgucdl-generated-files.hmap"; sourceTree = "<group>"; };
+		F15A2C6D14CF81F400D88624 /* libgucdl-own-target-headers.hmap */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libgucdl-own-target-headers.hmap"; path = "../../libgucdl.build/libgucdl-own-target-headers.hmap"; sourceTree = "<group>"; };
+		F15A2C6E14CF81F400D88624 /* libgucdl-project-headers.hmap */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libgucdl-project-headers.hmap"; path = "../../libgucdl.build/libgucdl-project-headers.hmap"; sourceTree = "<group>"; };
+		F15A2C6F14CF81F400D88624 /* libgucdl.dep */ = {isa = PBXFileReference; lastKnownFileType = file; name = libgucdl.dep; path = ../../libgucdl.build/libgucdl.dep; sourceTree = "<group>"; };
+		F15A2C7014CF81F400D88624 /* libgucdl.hmap */ = {isa = PBXFileReference; lastKnownFileType = file; name = libgucdl.hmap; path = ../../libgucdl.build/libgucdl.hmap; sourceTree = "<group>"; };
+		F15A2C7114CF81F400D88624 /* libgucdl~.dep */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libgucdl~.dep"; path = "../../libgucdl.build/libgucdl~.dep"; sourceTree = "<group>"; };
+		F15A2C7414CF81F400D88624 /* cdlbridge.o~> */ = {isa = PBXFileReference; lastKnownFileType = file; name = "cdlbridge.o~>"; path = "../../i386/cdlbridge.o~>"; sourceTree = "<group>"; };
+		F15A2C7514CF81F400D88624 /* cdlbridge.o~? */ = {isa = PBXFileReference; lastKnownFileType = file; name = "cdlbridge.o~?"; path = "../../i386/cdlbridge.o~?"; sourceTree = "<group>"; };
+		F15A2C7614CF81F400D88624 /* cdlbridge_defs.o~$ */ = {isa = PBXFileReference; lastKnownFileType = file; name = "cdlbridge_defs.o~$"; path = "../../i386/cdlbridge_defs.o~$"; sourceTree = "<group>"; };
+		F15A2C7714CF81F400D88624 /* cdlbridge_defs.o~> */ = {isa = PBXFileReference; lastKnownFileType = file; name = "cdlbridge_defs.o~>"; path = "../../i386/cdlbridge_defs.o~>"; sourceTree = "<group>"; };
+		F15A2C7814CF81F400D88624 /* cdlbridge_defs.o~? */ = {isa = PBXFileReference; lastKnownFileType = file; name = "cdlbridge_defs.o~?"; path = "../../i386/cdlbridge_defs.o~?"; sourceTree = "<group>"; };
+		F15A2C7914CF81F400D88624 /* cdlbridge_wbmsg.o~$ */ = {isa = PBXFileReference; lastKnownFileType = file; name = "cdlbridge_wbmsg.o~$"; path = "../../i386/cdlbridge_wbmsg.o~$"; sourceTree = "<group>"; };
+		F15A2C7A14CF81F400D88624 /* cdlbridge_wbmsg.o~> */ = {isa = PBXFileReference; lastKnownFileType = file; name = "cdlbridge_wbmsg.o~>"; path = "../../i386/cdlbridge_wbmsg.o~>"; sourceTree = "<group>"; };
+		F15A2C7B14CF81F400D88624 /* cdlbridge_wbmsg.o~? */ = {isa = PBXFileReference; lastKnownFileType = file; name = "cdlbridge_wbmsg.o~?"; path = "../../i386/cdlbridge_wbmsg.o~?"; sourceTree = "<group>"; };
+		F15A2C7C14CF81F400D88624 /* cdlengine.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = cdlengine.o; path = ../../i386/cdlengine.o; sourceTree = "<group>"; };
+		F15A2C7D14CF81F400D88624 /* cdlengine.o~> */ = {isa = PBXFileReference; lastKnownFileType = file; name = "cdlengine.o~>"; path = "../../i386/cdlengine.o~>"; sourceTree = "<group>"; };
+		F15A2C7E14CF81F400D88624 /* claus-56C7C218178ACD1F.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = "claus-56C7C218178ACD1F.o"; path = "../../i386/claus-56C7C218178ACD1F.o"; sourceTree = "<group>"; };
+		F15A2C7F14CF81F400D88624 /* claus-DE4662EDE612BD1E.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = "claus-DE4662EDE612BD1E.o"; path = "../../i386/claus-DE4662EDE612BD1E.o"; sourceTree = "<group>"; };
+		F15A2C8014CF81F400D88624 /* defeas-47CA806C7A7AED21.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = "defeas-47CA806C7A7AED21.o"; path = "../../i386/defeas-47CA806C7A7AED21.o"; sourceTree = "<group>"; };
+		F15A2C8114CF81F400D88624 /* defeas-C04BDF96ABF2FD22.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = "defeas-C04BDF96ABF2FD22.o"; path = "../../i386/defeas-C04BDF96ABF2FD22.o"; sourceTree = "<group>"; };
+		F15A2C8214CF81F400D88624 /* empty_theory.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = empty_theory.o; path = ../../i386/empty_theory.o; sourceTree = "<group>"; };
+		F15A2C8314CF81F400D88624 /* gu_util.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = gu_util.o; path = ../../i386/gu_util.o; sourceTree = "<group>"; };
+		F15A2C8414CF81F400D88624 /* gu_util.o~$ */ = {isa = PBXFileReference; lastKnownFileType = file; name = "gu_util.o~$"; path = "../../i386/gu_util.o~$"; sourceTree = "<group>"; };
+		F15A2C8514CF81F400D88624 /* gu_util.o~> */ = {isa = PBXFileReference; lastKnownFileType = file; name = "gu_util.o~>"; path = "../../i386/gu_util.o~>"; sourceTree = "<group>"; };
+		F15A2C8614CF81F400D88624 /* libgucdl.LinkFileList */ = {isa = PBXFileReference; lastKnownFileType = file; name = libgucdl.LinkFileList; path = ../../i386/libgucdl.LinkFileList; sourceTree = "<group>"; };
+		F15A2C8714CF81F400D88624 /* offline.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = offline.o; path = ../../i386/offline.o; sourceTree = "<group>"; };
+		F15A2C8814CF81F400D88624 /* oset-665C5590FD93BD2E.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = "oset-665C5590FD93BD2E.o"; path = "../../i386/oset-665C5590FD93BD2E.o"; sourceTree = "<group>"; };
+		F15A2C8914CF81F400D88624 /* oset-A2515C3F71D33D26.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = "oset-A2515C3F71D33D26.o"; path = "../../i386/oset-A2515C3F71D33D26.o"; sourceTree = "<group>"; };
+		F15A2C8A14CF81F400D88624 /* plaus-575F13E56083DD30.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = "plaus-575F13E56083DD30.o"; path = "../../i386/plaus-575F13E56083DD30.o"; sourceTree = "<group>"; };
+		F15A2C8B14CF81F400D88624 /* plaus-DEDDB4BB2F0BCD2F.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = "plaus-DEDDB4BB2F0BCD2F.o"; path = "../../i386/plaus-DEDDB4BB2F0BCD2F.o"; sourceTree = "<group>"; };
+		F15A2C8C14CF81F400D88624 /* stack-5FA58D1F5E22BE1E.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = "stack-5FA58D1F5E22BE1E.o"; path = "../../i386/stack-5FA58D1F5E22BE1E.o"; sourceTree = "<group>"; };
+		F15A2C8D14CF81F400D88624 /* stack-C0E33163F4EC0D33.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = "stack-C0E33163F4EC0D33.o"; path = "../../i386/stack-C0E33163F4EC0D33.o"; sourceTree = "<group>"; };
+		F15A2C8E14CF81F400D88624 /* stlist-50A84B73C112DE20.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = "stlist-50A84B73C112DE20.o"; path = "../../i386/stlist-50A84B73C112DE20.o"; sourceTree = "<group>"; };
+		F15A2C8F14CF81F400D88624 /* stlist-D826EC498F9ACE1F.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = "stlist-D826EC498F9ACE1F.o"; path = "../../i386/stlist-D826EC498F9ACE1F.o"; sourceTree = "<group>"; };
+		F15A2C9014CF81F400D88624 /* theory_io.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = theory_io.o; path = ../../i386/theory_io.o; sourceTree = "<group>"; };
+		F15A2C9114CF81F400D88624 /* theory_io_factory.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = theory_io_factory.o; path = ../../i386/theory_io_factory.o; sourceTree = "<group>"; };
+		F15A2C9214CF81F400D88624 /* theory_io_serialisation.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = theory_io_serialisation.o; path = ../../i386/theory_io_serialisation.o; sourceTree = "<group>"; };
+		F15A2C9314CF81F400D88624 /* WhiteboardConstants.o~$ */ = {isa = PBXFileReference; lastKnownFileType = file; name = "WhiteboardConstants.o~$"; path = "../../i386/WhiteboardConstants.o~$"; sourceTree = "<group>"; };
+		F15A2C9414CF81F400D88624 /* WhiteboardConstants.o~> */ = {isa = PBXFileReference; lastKnownFileType = file; name = "WhiteboardConstants.o~>"; path = "../../i386/WhiteboardConstants.o~>"; sourceTree = "<group>"; };
+		F15A2C9514CF81F400D88624 /* WhiteboardConstants.o~? */ = {isa = PBXFileReference; lastKnownFileType = file; name = "WhiteboardConstants.o~?"; path = "../../i386/WhiteboardConstants.o~?"; sourceTree = "<group>"; };
+		F15A2C9614CF81F400D88624 /* categories.pbxbtree */ = {isa = PBXFileReference; lastKnownFileType = file; name = categories.pbxbtree; path = ../../gucdlmodule.pbxindex/categories.pbxbtree; sourceTree = "<group>"; };
+		F15A2C9714CF81F400D88624 /* cdecls.pbxbtree */ = {isa = PBXFileReference; lastKnownFileType = file; name = cdecls.pbxbtree; path = ../../gucdlmodule.pbxindex/cdecls.pbxbtree; sourceTree = "<group>"; };
+		F15A2C9814CF81F400D88624 /* decls.pbxbtree */ = {isa = PBXFileReference; lastKnownFileType = file; name = decls.pbxbtree; path = ../../gucdlmodule.pbxindex/decls.pbxbtree; sourceTree = "<group>"; };
+		F15A2C9914CF81F400D88624 /* files.pbxbtree */ = {isa = PBXFileReference; lastKnownFileType = file; name = files.pbxbtree; path = ../../gucdlmodule.pbxindex/files.pbxbtree; sourceTree = "<group>"; };
+		F15A2C9A14CF81F400D88624 /* imports.pbxbtree */ = {isa = PBXFileReference; lastKnownFileType = file; name = imports.pbxbtree; path = ../../gucdlmodule.pbxindex/imports.pbxbtree; sourceTree = "<group>"; };
+		F15A2C9B14CF81F400D88624 /* pbxindex.header */ = {isa = PBXFileReference; lastKnownFileType = file; name = pbxindex.header; path = ../../gucdlmodule.pbxindex/pbxindex.header; sourceTree = "<group>"; };
+		F15A2C9C14CF81F400D88624 /* protocols.pbxbtree */ = {isa = PBXFileReference; lastKnownFileType = file; name = protocols.pbxbtree; path = ../../gucdlmodule.pbxindex/protocols.pbxbtree; sourceTree = "<group>"; };
+		F15A2C9D14CF81F400D88624 /* refs.pbxbtree */ = {isa = PBXFileReference; lastKnownFileType = file; name = refs.pbxbtree; path = ../../gucdlmodule.pbxindex/refs.pbxbtree; sourceTree = "<group>"; };
+		F15A2C9F14CF81F400D88624 /* subclasses.pbxbtree */ = {isa = PBXFileReference; lastKnownFileType = file; name = subclasses.pbxbtree; path = ../../gucdlmodule.pbxindex/subclasses.pbxbtree; sourceTree = "<group>"; };
+		F15A2CA014CF81F400D88624 /* symbols0.pbxsymbols */ = {isa = PBXFileReference; lastKnownFileType = file; name = symbols0.pbxsymbols; path = ../../gucdlmodule.pbxindex/symbols0.pbxsymbols; sourceTree = "<group>"; };
+		F15A2CA114CF81F400D88624 /* control */ = {isa = PBXFileReference; lastKnownFileType = text; name = control; path = ../../strings.pbxstrings/control; sourceTree = "<group>"; };
+		F15A2CA214CF81F400D88624 /* strings */ = {isa = PBXFileReference; lastKnownFileType = text; name = strings; path = ../../strings.pbxstrings/strings; sourceTree = "<group>"; };
+		F15A2CA314CF81F400D88624 /* cdlbridge.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = cdlbridge.o; path = ../cdl/gucdl/build.host/cdlbridge.o; sourceTree = "<group>"; };
+		F15A2CA414CF81F400D88624 /* cdlbridge_wbmsg.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = cdlbridge_wbmsg.o; path = ../cdl/gucdl/build.host/cdlbridge_wbmsg.o; sourceTree = "<group>"; };
+		F15A2CA514CF81F400D88624 /* cdlengine.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = cdlengine.o; path = ../cdl/gucdl/build.host/cdlengine.o; sourceTree = "<group>"; };
+		F15A2CA614CF81F400D88624 /* claus.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = claus.o; path = ../cdl/gucdl/build.host/claus.o; sourceTree = "<group>"; };
+		F15A2CA714CF81F400D88624 /* defeas */ = {isa = PBXFileReference; lastKnownFileType = text; name = defeas; path = ../cdl/gucdl/build.host/defeas; sourceTree = "<group>"; };
+		F15A2CA814CF81F400D88624 /* defeas.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = defeas.o; path = ../cdl/gucdl/build.host/defeas.o; sourceTree = "<group>"; };
+		F15A2CA914CF81F400D88624 /* gu_util.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = gu_util.o; path = ../cdl/gucdl/build.host/gu_util.o; sourceTree = "<group>"; };
+		F15A2CAA14CF81F400D88624 /* gucdl */ = {isa = PBXFileReference; lastKnownFileType = text; name = gucdl; path = ../cdl/gucdl/build.host/gucdl; sourceTree = "<group>"; };
+		F15A2CAB14CF81F400D88624 /* gucdlmain.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = gucdlmain.o; path = ../cdl/gucdl/build.host/gucdlmain.o; sourceTree = "<group>"; };
+		F15A2CAC14CF81F400D88624 /* offline.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = offline.o; path = ../cdl/gucdl/build.host/offline.o; sourceTree = "<group>"; };
+		F15A2CAD14CF81F400D88624 /* oset.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = oset.o; path = ../cdl/gucdl/build.host/oset.o; sourceTree = "<group>"; };
+		F15A2CAE14CF81F400D88624 /* plaus.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = plaus.o; path = ../cdl/gucdl/build.host/plaus.o; sourceTree = "<group>"; };
+		F15A2CAF14CF81F400D88624 /* stack.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = stack.o; path = ../cdl/gucdl/build.host/stack.o; sourceTree = "<group>"; };
+		F15A2CB014CF81F400D88624 /* stlist.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = stlist.o; path = ../cdl/gucdl/build.host/stlist.o; sourceTree = "<group>"; };
+		F15A2CB114CF81F400D88624 /* theory_io.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = theory_io.o; path = ../cdl/gucdl/build.host/theory_io.o; sourceTree = "<group>"; };
+		F15A2CB214CF81F400D88624 /* theory_io_factory.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = theory_io_factory.o; path = ../cdl/gucdl/build.host/theory_io_factory.o; sourceTree = "<group>"; };
+		F15A2CB314CF81F400D88624 /* WBMsg.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = WBMsg.o; path = ../cdl/gucdl/build.host/WBMsg.o; sourceTree = "<group>"; };
+		F15A2CB414CF81F400D88624 /* Whiteboard.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = Whiteboard.o; path = ../cdl/gucdl/build.host/Whiteboard.o; sourceTree = "<group>"; };
+		F15A2CB514CF81F400D88624 /* WhiteboardConstants.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = WhiteboardConstants.o; path = ../cdl/gucdl/build.host/WhiteboardConstants.o; sourceTree = "<group>"; };
+		F15A2CB814CF81F400D88624 /* cooler.dump */ = {isa = PBXFileReference; lastKnownFileType = text; path = cooler.dump; sourceTree = "<group>"; };
+		F15A2CB914CF81F400D88624 /* GNUmakefile */ = {isa = PBXFileReference; lastKnownFileType = text; path = GNUmakefile; sourceTree = "<group>"; };
+		F15A2CBA14CF81F400D88624 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		F15A2CBB14CF81F400D88624 /* testcdl.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = testcdl.cc; sourceTree = "<group>"; };
+		F15A2CBC14CF81F400D88624 /* testcdl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = testcdl.h; sourceTree = "<group>"; };
+		F15A2CBD14CF81F400D88624 /* testcdlmain.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = testcdlmain.cc; sourceTree = "<group>"; };
+		F15A2CBE14CF81F400D88624 /* testcdlmodule.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = testcdlmodule.xcodeproj; sourceTree = "<group>"; };
+		F15A2CBF14CF81F400D88624 /* theories */ = {isa = PBXFileReference; lastKnownFileType = folder; path = theories; sourceTree = "<group>"; };
+		F15A2CC214CF81F400D88624 /* Beats.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = Beats.d; sourceTree = "<group>"; };
+		F15A2CC314CF81F400D88624 /* Beats.dump */ = {isa = PBXFileReference; lastKnownFileType = text; path = Beats.dump; sourceTree = "<group>"; };
+		F15A2CC414CF81F400D88624 /* Beats2.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = Beats2.d; sourceTree = "<group>"; };
+		F15A2CC514CF81F400D88624 /* BeatsInput.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = BeatsInput.d; sourceTree = "<group>"; };
+		F15A2CC614CF81F400D88624 /* BeatsInput.dump */ = {isa = PBXFileReference; lastKnownFileType = text; path = BeatsInput.dump; sourceTree = "<group>"; };
+		F15A2CC714CF81F400D88624 /* BetterDomino.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = BetterDomino.d; sourceTree = "<group>"; };
+		F15A2CC814CF81F400D88624 /* Bluffer.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = Bluffer.d; sourceTree = "<group>"; };
+		F15A2CC914CF81F400D88624 /* cooler.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = cooler.d; sourceTree = "<group>"; };
+		F15A2CCA14CF81F400D88624 /* cooler.dump */ = {isa = PBXFileReference; lastKnownFileType = text; path = cooler.dump; sourceTree = "<group>"; };
+		F15A2CCB14CF81F400D88624 /* cooler.sdump */ = {isa = PBXFileReference; lastKnownFileType = text; path = cooler.sdump; sourceTree = "<group>"; };
+		F15A2CCC14CF81F400D88624 /* dominoconsistency.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = dominoconsistency.d; sourceTree = "<group>"; };
+		F15A2CCD14CF81F400D88624 /* dominoconsistency.dump */ = {isa = PBXFileReference; lastKnownFileType = text; path = dominoconsistency.dump; sourceTree = "<group>"; };
+		F15A2CCE14CF81F400D88624 /* dominoconsistency.sdump */ = {isa = PBXFileReference; lastKnownFileType = text; path = dominoconsistency.sdump; sourceTree = "<group>"; };
+		F15A2CCF14CF81F400D88624 /* grandma4.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = grandma4.d; sourceTree = "<group>"; };
+		F15A2CD014CF81F400D88624 /* grandma4.dump */ = {isa = PBXFileReference; lastKnownFileType = text; path = grandma4.dump; sourceTree = "<group>"; };
+		F15A2CD114CF81F400D88624 /* grandma4.sdump */ = {isa = PBXFileReference; lastKnownFileType = text; path = grandma4.sdump; sourceTree = "<group>"; };
+		F15A2CD214CF81F400D88624 /* Hands.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = Hands.d; sourceTree = "<group>"; };
+		F15A2CD314CF81F400D88624 /* LegalDominoMove.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = LegalDominoMove.d; sourceTree = "<group>"; };
+		F15A2CD414CF81F400D88624 /* looping.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = looping.d; sourceTree = "<group>"; };
+		F15A2CD514CF81F400D88624 /* Opponent.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = Opponent.d; sourceTree = "<group>"; };
+		F15A2CD614CF81F400D88624 /* Personality_Decision.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = Personality_Decision.d; sourceTree = "<group>"; };
+		F15A2CD714CF81F400D88624 /* selecttheory.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = selecttheory.sh; sourceTree = "<group>"; };
+		F15A2CD814CF81F400D88624 /* SmartDominoPlayer.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = SmartDominoPlayer.d; sourceTree = "<group>"; };
+		F15A2CD914CF81F400D88624 /* Super_Tight_Aggressive.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = Super_Tight_Aggressive.d; sourceTree = "<group>"; };
+		F15A2CDA14CF81F400D88624 /* Tight_Agrressive.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = Tight_Agrressive.d; sourceTree = "<group>"; };
 		F16CC2FA142C0C01001F788B /* gufsm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = gufsm; sourceTree = BUILT_PRODUCTS_DIR; };
 		F16CC2FE142C0C01001F788B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		F16CC300142C0C01001F788B /* gufsm.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = gufsm.1; sourceTree = "<group>"; };
@@ -691,6 +961,369 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		F15A2BF014CF81F400D88624 /* cdl */ = {
+			isa = PBXGroup;
+			children = (
+				F15A2BF114CF81F400D88624 /* ctest */,
+				F15A2BF214CF81F400D88624 /* Engine */,
+				F15A2BF314CF81F400D88624 /* gucdlmodule */,
+				F15A2BF414CF81F400D88624 /* testcdlmodule */,
+				F15A2BF514CF81F400D88624 /* theories */,
+			);
+			name = cdl;
+			path = ../cdl;
+			sourceTree = "<group>";
+		};
+		F15A2BF114CF81F400D88624 /* ctest */ = {
+			isa = PBXGroup;
+			children = (
+				F15A2BF614CF81F400D88624 /* COOL.correct */,
+				F15A2BF714CF81F400D88624 /* COOL_theory.c */,
+				F15A2BF814CF81F400D88624 /* COOL_theory.h */,
+				F15A2BF914CF81F400D88624 /* GNUmakefile */,
+				F15A2BFA14CF81F400D88624 /* Makefile */,
+			);
+			path = ctest;
+			sourceTree = "<group>";
+		};
+		F15A2BF214CF81F400D88624 /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				F15A2C0014CF81F400D88624 /* claus.c */,
+				F15A2C0114CF81F400D88624 /* claus.cc */,
+				F15A2C0214CF81F400D88624 /* claus.h */,
+				F15A2C0414CF81F400D88624 /* COOL_theory.c */,
+				F15A2C0514CF81F400D88624 /* COOL_theory.h */,
+				F15A2C0614CF81F400D88624 /* cooler.d */,
+				F15A2C0714CF81F400D88624 /* cooler.output */,
+				F15A2C0814CF81F400D88624 /* cooler0.output */,
+				F15A2C0914CF81F400D88624 /* COOLER_theory.c */,
+				F15A2C0A14CF81F400D88624 /* COOLER_theory.h */,
+				F15A2C0C14CF81F400D88624 /* ctest.c */,
+				F15A2C0D14CF81F400D88624 /* ctest.correct */,
+				F15A2C0E14CF81F400D88624 /* defeas */,
+				F15A2C0F14CF81F400D88624 /* defeas.c */,
+				F15A2C1014CF81F400D88624 /* defeas.cc */,
+				F15A2C1114CF81F400D88624 /* defeas.h */,
+				F15A2C1314CF81F400D88624 /* defeas_private.h */,
+				F15A2C1414CF81F400D88624 /* dtest.c */,
+				F15A2C1514CF81F400D88624 /* empty_theory.c */,
+				F15A2C1614CF81F400D88624 /* Engine.xcodeproj */,
+				F15A2C1714CF81F400D88624 /* GNUmakefile */,
+				F15A2C1814CF81F400D88624 /* looping.d */,
+				F15A2C1914CF81F400D88624 /* LOOPING_theory.c */,
+				F15A2C1A14CF81F400D88624 /* LOOPING_theory.h */,
+				F15A2C1B14CF81F400D88624 /* makedump.sh */,
+				F15A2C1C14CF81F400D88624 /* Makefile */,
+				F15A2C1D14CF81F400D88624 /* Makefile.nolibtool */,
+				F15A2C1E14CF81F400D88624 /* Makefile.static */,
+				F15A2C1F14CF81F400D88624 /* offline.c */,
+				F15A2C2114CF81F400D88624 /* oset.c */,
+				F15A2C2214CF81F400D88624 /* oset.cc */,
+				F15A2C2314CF81F400D88624 /* oset.h */,
+				F15A2C2514CF81F400D88624 /* parser.awk */,
+				F15A2C2614CF81F400D88624 /* plaus.c */,
+				F15A2C2714CF81F400D88624 /* plaus.cc */,
+				F15A2C2814CF81F400D88624 /* plaus.h */,
+				F15A2C2A14CF81F400D88624 /* ptest.c */,
+				F15A2C2B14CF81F400D88624 /* ptest.correct */,
+				F15A2C2C14CF81F400D88624 /* selecttheory.sh */,
+				F15A2C2D14CF81F400D88624 /* serialise_theory.cc */,
+				F15A2C2E14CF81F400D88624 /* serialise_theory.h */,
+				F15A2C3214CF81F400D88624 /* stack.c */,
+				F15A2C3314CF81F400D88624 /* stack.cc */,
+				F15A2C3414CF81F400D88624 /* stack.h */,
+				F15A2C3614CF81F400D88624 /* stlist.c */,
+				F15A2C3714CF81F400D88624 /* stlist.cc */,
+				F15A2C3814CF81F400D88624 /* stlist.h */,
+				F15A2C3A14CF81F400D88624 /* testct.c */,
+				F15A2C3C14CF81F400D88624 /* theoriser.cc */,
+				F15A2C4114CF81F400D88624 /* theory_io.cc */,
+				F15A2C4214CF81F400D88624 /* theory_io.h */,
+				F15A2C4414CF81F400D88624 /* theory_io_factory.cc */,
+				F15A2C4714CF81F400D88624 /* theory_io_serialisation.cc */,
+				F15A2C4914CF81F400D88624 /* unprefix.awk */,
+			);
+			path = Engine;
+			sourceTree = "<group>";
+		};
+		F15A2BF314CF81F400D88624 /* gucdlmodule */ = {
+			isa = PBXGroup;
+			children = (
+				F15A2C4C14CF81F400D88624 /* build */,
+				F15A2C4D14CF81F400D88624 /* build.host */,
+				F15A2C4E14CF81F400D88624 /* cdlbridge.cc */,
+				F15A2C4F14CF81F400D88624 /* cdlbridge.h */,
+				F15A2C5014CF81F400D88624 /* cdlbridge_wbmsg.cc */,
+				F15A2C5114CF81F400D88624 /* cdlbridge_wbmsg.h */,
+				F15A2C5214CF81F400D88624 /* cdlengine.cc */,
+				F15A2C5314CF81F400D88624 /* cdlengine.h */,
+				F15A2C5414CF81F400D88624 /* GNUmakefile */,
+				F15A2C5514CF81F400D88624 /* gucdlmain.cc */,
+				F15A2C5614CF81F400D88624 /* gucdlmain.h */,
+				F15A2C5714CF81F400D88624 /* gucdlmodule.xcodeproj */,
+				F15A2C5814CF81F400D88624 /* headerdoc.conf */,
+				F15A2C5914CF81F400D88624 /* Makefile */,
+			);
+			name = gucdlmodule;
+			path = gucdl;
+			sourceTree = "<group>";
+		};
+		F15A2BF414CF81F400D88624 /* testcdlmodule */ = {
+			isa = PBXGroup;
+			children = (
+				F15A2CB814CF81F400D88624 /* cooler.dump */,
+				F15A2CB914CF81F400D88624 /* GNUmakefile */,
+				F15A2CBA14CF81F400D88624 /* Makefile */,
+				F15A2CBB14CF81F400D88624 /* testcdl.cc */,
+				F15A2CBC14CF81F400D88624 /* testcdl.h */,
+				F15A2CBD14CF81F400D88624 /* testcdlmain.cc */,
+				F15A2CBE14CF81F400D88624 /* testcdlmodule.xcodeproj */,
+				F15A2CBF14CF81F400D88624 /* theories */,
+			);
+			path = testcdlmodule;
+			sourceTree = "<group>";
+		};
+		F15A2BF514CF81F400D88624 /* theories */ = {
+			isa = PBXGroup;
+			children = (
+				F15A2CC214CF81F400D88624 /* Beats.d */,
+				F15A2CC314CF81F400D88624 /* Beats.dump */,
+				F15A2CC414CF81F400D88624 /* Beats2.d */,
+				F15A2CC514CF81F400D88624 /* BeatsInput.d */,
+				F15A2CC614CF81F400D88624 /* BeatsInput.dump */,
+				F15A2CC714CF81F400D88624 /* BetterDomino.d */,
+				F15A2CC814CF81F400D88624 /* Bluffer.d */,
+				F15A2CC914CF81F400D88624 /* cooler.d */,
+				F15A2CCA14CF81F400D88624 /* cooler.dump */,
+				F15A2CCB14CF81F400D88624 /* cooler.sdump */,
+				F15A2CCC14CF81F400D88624 /* dominoconsistency.d */,
+				F15A2CCD14CF81F400D88624 /* dominoconsistency.dump */,
+				F15A2CCE14CF81F400D88624 /* dominoconsistency.sdump */,
+				F15A2CCF14CF81F400D88624 /* grandma4.d */,
+				F15A2CD014CF81F400D88624 /* grandma4.dump */,
+				F15A2CD114CF81F400D88624 /* grandma4.sdump */,
+				F15A2CD214CF81F400D88624 /* Hands.d */,
+				F15A2CD314CF81F400D88624 /* LegalDominoMove.d */,
+				F15A2CD414CF81F400D88624 /* looping.d */,
+				F15A2CD514CF81F400D88624 /* Opponent.d */,
+				F15A2CD614CF81F400D88624 /* Personality_Decision.d */,
+				F15A2CD714CF81F400D88624 /* selecttheory.sh */,
+				F15A2CD814CF81F400D88624 /* SmartDominoPlayer.d */,
+				F15A2CD914CF81F400D88624 /* Super_Tight_Aggressive.d */,
+				F15A2CDA14CF81F400D88624 /* Tight_Agrressive.d */,
+			);
+			path = theories;
+			sourceTree = "<group>";
+		};
+		F15A2C4A14CF81F400D88624 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F15A2CE314CF81F500D88624 /* libplaus.a */,
+				F15A2CE514CF81F500D88624 /* ptest */,
+				F15A2CE714CF81F500D88624 /* testct */,
+				F15A2CE914CF81F500D88624 /* ctest */,
+				F15A2CEB14CF81F500D88624 /* libplausio.a */,
+				F15A2CED14CF81F500D88624 /* theoriser */,
+				F15A2CEF14CF81F500D88624 /* dtest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F15A2C4C14CF81F400D88624 /* build */ = {
+			isa = PBXGroup;
+			children = (
+				F15A2C5A14CF81F400D88624 /* gucdlmodule.build */,
+			);
+			path = build;
+			sourceTree = "<group>";
+		};
+		F15A2C4D14CF81F400D88624 /* build.host */ = {
+			isa = PBXGroup;
+			children = (
+				F15A2CA314CF81F400D88624 /* cdlbridge.o */,
+				F15A2CA414CF81F400D88624 /* cdlbridge_wbmsg.o */,
+				F15A2CA514CF81F400D88624 /* cdlengine.o */,
+				F15A2CA614CF81F400D88624 /* claus.o */,
+				F15A2CA714CF81F400D88624 /* defeas */,
+				F15A2CA814CF81F400D88624 /* defeas.o */,
+				F15A2CA914CF81F400D88624 /* gu_util.o */,
+				F15A2CAA14CF81F400D88624 /* gucdl */,
+				F15A2CAB14CF81F400D88624 /* gucdlmain.o */,
+				F15A2CAC14CF81F400D88624 /* offline.o */,
+				F15A2CAD14CF81F400D88624 /* oset.o */,
+				F15A2CAE14CF81F400D88624 /* plaus.o */,
+				F15A2CAF14CF81F400D88624 /* stack.o */,
+				F15A2CB014CF81F400D88624 /* stlist.o */,
+				F15A2CB114CF81F400D88624 /* theory_io.o */,
+				F15A2CB214CF81F400D88624 /* theory_io_factory.o */,
+				F15A2CB314CF81F400D88624 /* WBMsg.o */,
+				F15A2CB414CF81F400D88624 /* Whiteboard.o */,
+				F15A2CB514CF81F400D88624 /* WhiteboardConstants.o */,
+			);
+			path = build.host;
+			sourceTree = "<group>";
+		};
+		F15A2C5A14CF81F400D88624 /* gucdlmodule.build */ = {
+			isa = PBXGroup;
+			children = (
+				F15A2C5B14CF81F400D88624 /* Debug */,
+				F15A2C5C14CF81F400D88624 /* gucdlmodule.pbxindex */,
+			);
+			name = gucdlmodule.build;
+			path = ../cdl/gucdl/build/gucdlmodule.build;
+			sourceTree = "<group>";
+		};
+		F15A2C5B14CF81F400D88624 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				F15A2C5D14CF81F400D88624 /* gucdl.build */,
+				F15A2C5E14CF81F400D88624 /* gucdlmodule.build */,
+				F15A2C5F14CF81F400D88624 /* libgucdl.build */,
+			);
+			name = Debug;
+			path = ../../gucdlmodule.build/Debug;
+			sourceTree = "<group>";
+		};
+		F15A2C5C14CF81F400D88624 /* gucdlmodule.pbxindex */ = {
+			isa = PBXGroup;
+			children = (
+				F15A2C9614CF81F400D88624 /* categories.pbxbtree */,
+				F15A2C9714CF81F400D88624 /* cdecls.pbxbtree */,
+				F15A2C9814CF81F400D88624 /* decls.pbxbtree */,
+				F15A2C9914CF81F400D88624 /* files.pbxbtree */,
+				F15A2C9A14CF81F400D88624 /* imports.pbxbtree */,
+				F15A2C9B14CF81F400D88624 /* pbxindex.header */,
+				F15A2C9C14CF81F400D88624 /* protocols.pbxbtree */,
+				F15A2C9D14CF81F400D88624 /* refs.pbxbtree */,
+				F15A2C9E14CF81F400D88624 /* strings.pbxstrings */,
+				F15A2C9F14CF81F400D88624 /* subclasses.pbxbtree */,
+				F15A2CA014CF81F400D88624 /* symbols0.pbxsymbols */,
+			);
+			name = gucdlmodule.pbxindex;
+			path = ../../gucdlmodule.build/gucdlmodule.pbxindex;
+			sourceTree = "<group>";
+		};
+		F15A2C5D14CF81F400D88624 /* gucdl.build */ = {
+			isa = PBXGroup;
+			children = (
+				F15A2C6014CF81F400D88624 /* build-state.dat */,
+				F15A2C6114CF81F400D88624 /* build-state~.dat */,
+				F15A2C6214CF81F400D88624 /* gucdl.dep */,
+				F15A2C6314CF81F400D88624 /* gucdl~.dep */,
+			);
+			name = gucdl.build;
+			path = ../../Debug/gucdl.build;
+			sourceTree = "<group>";
+		};
+		F15A2C5E14CF81F400D88624 /* gucdlmodule.build */ = {
+			isa = PBXGroup;
+			children = (
+				F15A2C6414CF81F400D88624 /* build-state.dat */,
+				F15A2C6514CF81F400D88624 /* build-state~.dat */,
+				F15A2C6614CF81F400D88624 /* gucdl.dep */,
+				F15A2C6714CF81F400D88624 /* gucdlmodule.dep */,
+				F15A2C6814CF81F400D88624 /* gucdlmodule~.dep */,
+			);
+			name = gucdlmodule.build;
+			path = ../../Debug/gucdlmodule.build;
+			sourceTree = "<group>";
+		};
+		F15A2C5F14CF81F400D88624 /* libgucdl.build */ = {
+			isa = PBXGroup;
+			children = (
+				F15A2C6914CF81F400D88624 /* build-state.dat */,
+				F15A2C6A14CF81F400D88624 /* build-state~.dat */,
+				F15A2C6B14CF81F400D88624 /* libgucdl-all-target-headers.hmap */,
+				F15A2C6C14CF81F400D88624 /* libgucdl-generated-files.hmap */,
+				F15A2C6D14CF81F400D88624 /* libgucdl-own-target-headers.hmap */,
+				F15A2C6E14CF81F400D88624 /* libgucdl-project-headers.hmap */,
+				F15A2C6F14CF81F400D88624 /* libgucdl.dep */,
+				F15A2C7014CF81F400D88624 /* libgucdl.hmap */,
+				F15A2C7114CF81F400D88624 /* libgucdl~.dep */,
+				F15A2C7214CF81F400D88624 /* Objects-normal */,
+			);
+			name = libgucdl.build;
+			path = ../../Debug/libgucdl.build;
+			sourceTree = "<group>";
+		};
+		F15A2C7214CF81F400D88624 /* Objects-normal */ = {
+			isa = PBXGroup;
+			children = (
+				F15A2C7314CF81F400D88624 /* i386 */,
+			);
+			name = "Objects-normal";
+			path = "../../libgucdl.build/Objects-normal";
+			sourceTree = "<group>";
+		};
+		F15A2C7314CF81F400D88624 /* i386 */ = {
+			isa = PBXGroup;
+			children = (
+				F15A2C7414CF81F400D88624 /* cdlbridge.o~> */,
+				F15A2C7514CF81F400D88624 /* cdlbridge.o~? */,
+				F15A2C7614CF81F400D88624 /* cdlbridge_defs.o~$ */,
+				F15A2C7714CF81F400D88624 /* cdlbridge_defs.o~> */,
+				F15A2C7814CF81F400D88624 /* cdlbridge_defs.o~? */,
+				F15A2C7914CF81F400D88624 /* cdlbridge_wbmsg.o~$ */,
+				F15A2C7A14CF81F400D88624 /* cdlbridge_wbmsg.o~> */,
+				F15A2C7B14CF81F400D88624 /* cdlbridge_wbmsg.o~? */,
+				F15A2C7C14CF81F400D88624 /* cdlengine.o */,
+				F15A2C7D14CF81F400D88624 /* cdlengine.o~> */,
+				F15A2C7E14CF81F400D88624 /* claus-56C7C218178ACD1F.o */,
+				F15A2C7F14CF81F400D88624 /* claus-DE4662EDE612BD1E.o */,
+				F15A2C8014CF81F400D88624 /* defeas-47CA806C7A7AED21.o */,
+				F15A2C8114CF81F400D88624 /* defeas-C04BDF96ABF2FD22.o */,
+				F15A2C8214CF81F400D88624 /* empty_theory.o */,
+				F15A2C8314CF81F400D88624 /* gu_util.o */,
+				F15A2C8414CF81F400D88624 /* gu_util.o~$ */,
+				F15A2C8514CF81F400D88624 /* gu_util.o~> */,
+				F15A2C8614CF81F400D88624 /* libgucdl.LinkFileList */,
+				F15A2C8714CF81F400D88624 /* offline.o */,
+				F15A2C8814CF81F400D88624 /* oset-665C5590FD93BD2E.o */,
+				F15A2C8914CF81F400D88624 /* oset-A2515C3F71D33D26.o */,
+				F15A2C8A14CF81F400D88624 /* plaus-575F13E56083DD30.o */,
+				F15A2C8B14CF81F400D88624 /* plaus-DEDDB4BB2F0BCD2F.o */,
+				F15A2C8C14CF81F400D88624 /* stack-5FA58D1F5E22BE1E.o */,
+				F15A2C8D14CF81F400D88624 /* stack-C0E33163F4EC0D33.o */,
+				F15A2C8E14CF81F400D88624 /* stlist-50A84B73C112DE20.o */,
+				F15A2C8F14CF81F400D88624 /* stlist-D826EC498F9ACE1F.o */,
+				F15A2C9014CF81F400D88624 /* theory_io.o */,
+				F15A2C9114CF81F400D88624 /* theory_io_factory.o */,
+				F15A2C9214CF81F400D88624 /* theory_io_serialisation.o */,
+				F15A2C9314CF81F400D88624 /* WhiteboardConstants.o~$ */,
+				F15A2C9414CF81F400D88624 /* WhiteboardConstants.o~> */,
+				F15A2C9514CF81F400D88624 /* WhiteboardConstants.o~? */,
+			);
+			name = i386;
+			path = "../../Objects-normal/i386";
+			sourceTree = "<group>";
+		};
+		F15A2C9E14CF81F400D88624 /* strings.pbxstrings */ = {
+			isa = PBXGroup;
+			children = (
+				F15A2CA114CF81F400D88624 /* control */,
+				F15A2CA214CF81F400D88624 /* strings */,
+			);
+			name = strings.pbxstrings;
+			path = ../../gucdlmodule.pbxindex/strings.pbxstrings;
+			sourceTree = "<group>";
+		};
+		F15A2CB614CF81F400D88624 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F15A2CF314CF81F500D88624 /* liblibgucdl.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F15A2CC014CF81F400D88624 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F15A2CF714CF81F500D88624 /* libtestcdl.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		F16CC2EF142C0C01001F788B = {
 			isa = PBXGroup;
 			children = (
@@ -704,6 +1337,7 @@
 				E11CABDB14BD243900A1019A /* fsmWbDependencyDump */,
 				F16CC31B142C2AD9001F788B /* Frameworks */,
 				F16CC2FB142C0C01001F788B /* Products */,
+				F15A2BF014CF81F400D88624 /* cdl */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1056,12 +1690,24 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = F15A2C4A14CF81F400D88624 /* Products */;
+					ProjectRef = F15A2C1614CF81F400D88624 /* Engine.xcodeproj */;
+				},
+				{
+					ProductGroup = F15A2CB614CF81F400D88624 /* Products */;
+					ProjectRef = F15A2C5714CF81F400D88624 /* gucdlmodule.xcodeproj */;
+				},
+				{
 					ProductGroup = F12B41F9147DBC7D00FF4A6B /* Products */;
 					ProjectRef = F12B41F6147DBC7D00FF4A6B /* guGameController.xcodeproj */;
 				},
 				{
 					ProductGroup = F1284D0314A6CAA800C0247E /* Products */;
 					ProjectRef = F1284D0214A6CAA800C0247E /* gusimplewhiteboard.xcodeproj */;
+				},
+				{
+					ProductGroup = F15A2CC014CF81F400D88624 /* Products */;
+					ProjectRef = F15A2CBE14CF81F400D88624 /* testcdlmodule.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1086,6 +1732,69 @@
 			fileType = wrapper.cfbundle;
 			path = SimpleWhiteboardTest.octest;
 			remoteRef = F1284D2014A6CAA800C0247E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F15A2CE314CF81F500D88624 /* libplaus.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libplaus.a;
+			remoteRef = F15A2CE214CF81F500D88624 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F15A2CE514CF81F500D88624 /* ptest */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = ptest;
+			remoteRef = F15A2CE414CF81F500D88624 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F15A2CE714CF81F500D88624 /* testct */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = testct;
+			remoteRef = F15A2CE614CF81F500D88624 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F15A2CE914CF81F500D88624 /* ctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = ctest;
+			remoteRef = F15A2CE814CF81F500D88624 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F15A2CEB14CF81F500D88624 /* libplausio.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libplausio.a;
+			remoteRef = F15A2CEA14CF81F500D88624 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F15A2CED14CF81F500D88624 /* theoriser */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = theoriser;
+			remoteRef = F15A2CEC14CF81F500D88624 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F15A2CEF14CF81F500D88624 /* dtest */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = dtest;
+			remoteRef = F15A2CEE14CF81F500D88624 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F15A2CF314CF81F500D88624 /* liblibgucdl.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = liblibgucdl.a;
+			remoteRef = F15A2CF214CF81F500D88624 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F15A2CF714CF81F500D88624 /* libtestcdl.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libtestcdl.a;
+			remoteRef = F15A2CF614CF81F500D88624 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1233,6 +1942,16 @@
 				F1284D1214A6CAA800C0247E /* gusimplewhiteboard.c in Sources */,
 				F1284D1814A6CAA800C0247E /* Whiteboard.cc in Sources */,
 				F1284D1A14A6CAA800C0247E /* WhiteboardConstants.cc in Sources */,
+				F15A2CF814CF843700D88624 /* claus.c in Sources */,
+				F15A2CF914CF843700D88624 /* defeas.c in Sources */,
+				F15A2CFA14CF843700D88624 /* oset.c in Sources */,
+				F15A2CFB14CF843700D88624 /* plaus.c in Sources */,
+				F15A2CFC14CF843700D88624 /* stack.c in Sources */,
+				F15A2CFD14CF843700D88624 /* stlist.c in Sources */,
+				F15A2CFE14CF843700D88624 /* theory_io.cc in Sources */,
+				F15A2CFF14CF843700D88624 /* theory_io_factory.cc in Sources */,
+				F15A2D0014CF843700D88624 /* theory_io_serialisation.cc in Sources */,
+				F15A2D0A14CF84AC00D88624 /* offline.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1264,6 +1983,16 @@
 				F1284D1314A6CAA800C0247E /* gusimplewhiteboard.c in Sources */,
 				F1284D1914A6CAA800C0247E /* Whiteboard.cc in Sources */,
 				F1284D1B14A6CAA800C0247E /* WhiteboardConstants.cc in Sources */,
+				F15A2D0114CF843800D88624 /* claus.c in Sources */,
+				F15A2D0214CF843800D88624 /* defeas.c in Sources */,
+				F15A2D0314CF843800D88624 /* oset.c in Sources */,
+				F15A2D0414CF843800D88624 /* plaus.c in Sources */,
+				F15A2D0514CF843800D88624 /* stack.c in Sources */,
+				F15A2D0614CF843800D88624 /* stlist.c in Sources */,
+				F15A2D0714CF843800D88624 /* theory_io.cc in Sources */,
+				F15A2D0814CF843800D88624 /* theory_io_factory.cc in Sources */,
+				F15A2D0914CF843800D88624 /* theory_io_serialisation.cc in Sources */,
+				F15A2D0B14CF84AC00D88624 /* offline.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1335,6 +2064,8 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../gusimplewhiteboard\"",
 					"\"$(SRCROOT)/build.host\"",
+					"\"$(SRCROOT)/../cdl/gucdlmodule\"",
+					"\"$(SRCROOT)/../cdl/Engine\"",
 					"\"$(SRCROOT)/../../Common\"",
 					/usr/local/include,
 					/opt/local/include,
@@ -1363,6 +2094,8 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../gusimplewhiteboard\"",
 					"\"$(SRCROOT)/build.host\"",
+					"\"$(SRCROOT)/../cdl/gucdlmodule\"",
+					"\"$(SRCROOT)/../cdl/Engine\"",
 					"\"$(SRCROOT)/../../Common\"",
 					/usr/local/include,
 					/opt/local/include,
