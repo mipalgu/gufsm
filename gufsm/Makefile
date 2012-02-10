@@ -1,6 +1,8 @@
 #
 #	$Id$
 #
+USE_CDL_BRIDGE=yes
+
 CPP_SRCS=main.cpp ActivityFactory.cpp TransitionFactory.cpp
 CC_SRCS= FSMANTLRAction.cc
 CC_SRCS+=FSMANTLRContext.cc
@@ -56,5 +58,10 @@ ANTLR_GRAMMARS=SimpleCLexer.g
 #.include "../../../mk/boost.mk"		# required for boost
 .include "../../../mk/antlr.mk"		# required for grammar parsing
 .include "../../../mk/whiteboard.mk"	# required for the whiteboard
+.include "../../../mk/cdlengine.mk"	# required for the whiteboard
 .include "../../../mk/util.mk"		# required for gu_util
+
+     # for CDL includes
+SPECIFIC_CPPFLAGS+=${CDL_CPPFLAGS} 
+
 .include "../../../mk/mipal.mk"
