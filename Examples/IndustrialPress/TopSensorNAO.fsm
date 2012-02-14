@@ -6,36 +6,29 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="125" endx="156" xpos="96" endy="125"/>
-    <state pencolor="0" radius="40" description="OnEntry {sensorAtTopActive=0;print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="125" code="0" xpos="196" linewidth="1">FALSEINIT</state>
-    <state pencolor="0" radius="40" description="OnEntry {sensorAtTopActive=1; print_state_name();}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="110" code="1" xpos="669" linewidth="1">IndicatingPressAtTop</state>
-    <state pencolor="0" radius="40" description="OnEntry {sensorAtTopActive=0;print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="403" code="2" xpos="411" linewidth="1">IndicatingPressAwayFromTop</state>
-    <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="413" code="4" xpos="670" linewidth="1">WAIT</state>
-    <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="106" code="3" xpos="410" linewidth="1">WAIT</state>
-    <transition c1x="260.2882859039378" c2y="309.7917358239408" c1y="237.1633018649828" description="" straight="1" type="2" ypos="164.5348679060247" endx="376.7002829714982" xpos="202.0822873701576" endy="382.4201697828989" c2x="318.494284437718">
+    <state pencolor="0" radius="40" description="OnEntry {sensorAtTopActive=0;print_state_name();&#xa; post(&quot;QSay&quot;,&quot;Leaving top&quot;); &#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="125" code="0" xpos="196" linewidth="1">IndicatingPressAwayFromTop</state>
+    <state pencolor="0" radius="40" description="OnEntry {sensorAtTopActive=1; print_state_name();&#xa;  post(&quot;QSay&quot;,&quot;At Top&quot;);&#xa; }&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="109" code="1" xpos="745" linewidth="1">IndicatingPressAtTop</state>
+    <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="386" code="4" xpos="524" linewidth="1">WAIT</state>
+    <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="63" code="3" xpos="491" linewidth="1">WAIT</state>
+    <transition c1x="318.5859863859917" c2y="104.7898698630961" c1y="106.5797397261921" description="" straight="1" type="2" ypos="108.3696095892882" endx="491.0000011111111" xpos="232.378979023432" endy="103" c2x="404.7929937485514">
       <from>0</from>
-      <to>2</to>
-      <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">LShoulderPitch&lt;-80</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="670.0168697248384" c2y="298.6622857454597" c1y="224.3245714909195" description="" straight="1" type="2" ypos="149.9868572363793" endx="670.0000011111111" xpos="670.025304031702" endy="373" c2x="670.0084354179747">
+    <transition c1x="672.0168697248384" c2y="280.3289524121265" c1y="214.6579048242529" description="" straight="1" type="2" ypos="148.9868572363793" endx="524.0000011111111" xpos="746.025304031702" endy="346" c2x="598.0084354179747">
       <from>1</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">!(LShoulderPitch&lt;-80)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="411.3681785593899" c2y="218.337947741962" c1y="290.675895483924" description="" straight="1" type="2" ypos="363.0138432258861" endx="410.0000011111111" xpos="412.0522672835293" endy="146" c2x="410.6840898352505">
-      <from>2</from>
-      <to>3</to>
-      <inputs default="0" any="0" invert="0">LShoulderPitch&lt;-80</inputs>
-      <outputs></outputs>
-    </transition>
-    <transition c1x="570.5105487483984" c2y="402.5925691499355" c1y="405.2529982552604" description="" straight="1" type="2" ypos="407.9134273605854" endx="450.8821794200633" xpos="630.3247334125659" endy="399.9321400446105" c2x="510.6963640842308">
+    <transition c1x="398.5953294680484" c2y="227.0445411519226" c1y="303.978984256254" description="" straight="1" type="2" ypos="380.9134273605854" endx="227.1365215790132" xpos="484.3247334125659" endy="150.1100980475913" c2x="312.8659255235307">
       <from>4</from>
-      <to>2</to>
+      <to>0</to>
       <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="509.6758667916424" c2y="109.7174797887639" c1y="107.3326062526173" description="" straight="1" type="2" ypos="104.9477327164707" endx="629.0552868266996" xpos="449.9861567741139" endy="112.1023533249106" c2x="569.365576809171">
+    <transition c1x="589.0092001249758" c2y="94.71747978876397" c1y="78.33260625261732" description="" straight="1" type="2" ypos="61.9477327164707" endx="705.0552868266996" xpos="530.9861567741139" endy="111.1023533249106" c2x="647.0322434758376">
       <from>3</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">timeout(500000)</inputs>

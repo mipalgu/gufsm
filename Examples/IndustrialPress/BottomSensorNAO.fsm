@@ -17,13 +17,13 @@
       <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="678.233441594876" c2y="290.5849240096443" c1y="208.5488270427206" description="" straight="1" type="2" ypos="126.5127300757968" endx="687.3696095892882" xpos="673.6653575976699" endy="372.621020976568" c2x="682.801525592082">
+    <transition c1x="678.233441594876" c2y="290.5849240096442" c1y="208.5488270427205" description="" straight="1" type="2" ypos="126.5127300757968" endx="687.3696095892882" xpos="673.6653575976699" endy="372.621020976568" c2x="682.801525592082">
       <from>1</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">LShoulderPitch>80</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="360.7487396317503" c2y="207.9197625348098" c1y="285.9635991234809" description="" straight="1" type="2" ypos="364.007435712152" endx="377.1480994168004" xpos="352.5490597392252" endy="129.8759259461388" c2x="368.9484195242754">
+    <transition c1x="360.7487396317503" c2y="207.9197625348099" c1y="285.9635991234809" description="" straight="1" type="2" ypos="364.007435712152" endx="377.1480994168004" xpos="352.5490597392252" endy="129.8759259461388" c2x="368.9484195242753">
       <from>3</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">!(LShoulderPitch>80)</inputs>
