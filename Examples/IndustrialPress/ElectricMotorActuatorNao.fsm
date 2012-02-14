@@ -1,0 +1,57 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vlad Estivill-Castro" description="" version="1" name="FSM" arrowtype="1" numbits="3" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="134" endx="110" xpos="50" endy="134"/>
+    <state pencolor="0" radius="40" description="OnEntry {post(&quot;stiffness&quot;,&quot;80  &quot;); ;print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="134" code="0" xpos="150" linewidth="1">FALSEINIT</state>
+    <state pencolor="0" radius="40" description="OnEntry {motorOn=1; print_state_name();}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="188" code="1" xpos="627" linewidth="1">ElectricMotorOn</state>
+    <state pencolor="0" radius="40" description="OnEntry{target=LShoulderPitch-10; &#xa;    postv(&quot;gunaomotion_genericAngleChange&quot;,&quot;2,target,1000000&quot;    );&#xa;}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="100" code="2" xpos="910" linewidth="1">RISE10SLOW</state>
+    <state pencolor="0" radius="40" description="OnEntry{target=LShoulderPitch+10; &#xa;    postv(&quot;gunaomotion_genericAngleChange&quot;,&quot;2,target,500000&quot;    );&#xa;}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="457" code="3" xpos="635" linewidth="1">LOWER10FAST</state>
+    <state pencolor="0" radius="40" description="OnEntry {motorOn=0;print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="197" code="4" xpos="402" linewidth="1">ElectricMotorOff</state>
+    <transition c1x="246.5456286125749" c2y="178.2820341868201" c1y="160.9917295941367" description="" straight="1" type="2" ypos="143.7014250014533" endx="362.025485826098" xpos="188.8057000058133" endy="195.5723387795035" c2x="304.2855572193365">
+      <from>0</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="542.9340257566117" c2y="214.4303677836209" c1y="213.6080696633909" description="" straight="1" type="2" ypos="212.7857715431608" endx="437.5926985125095" xpos="595.6046893786629" endy="215.252665903851" c2x="490.2633621345606">
+      <from>1</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">!signalMotorOn</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="712.301758981278" c2y="34.71760199655466" c1y="142.5870631982755" description="" straight="0" type="2" ypos="154.5833167102424" endx="881.7157287525381" xpos="648.9846600590511" endy="71.7157287525381" c2x="782.3742787692071">
+      <from>1</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">!(LShoulderPitch&lt;-80)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="799.9017230947951" c2y="174.3877514868589" c1y="137.7081750697716" description="" straight="1" type="2" ypos="101.0285986526843" endx="659.6787145305905" xpos="870.0132273768976" endy="211.0673279039462" c2x="729.790218812693">
+      <from>2</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">!gunamotion_genericAngleChangeIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="546.9097779021249" c2y="297.1574136345278" c1y="361.144881399216" description="" straight="1" type="2" ypos="425.1323491639042" endx="419.0802522163132" xpos="610.8245407450307" endy="233.1699458698396" c2x="482.995015059219">
+      <from>3</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">!gunamotion_genericAngleChangeIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="497.739682085415" c2y="162.4725191543767" c1y="174.1750980463672" description="" straight="1" type="2" ypos="185.8776769383577" endx="612.3739051030802" xpos="440.4225705765825" endy="150.7699402623861" c2x="555.0567935942476">
+      <from>4</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">signalMotorOn</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="456.0396193880945" c2y="408.3155817430013" c1y="294.2728839404342" description="" straight="0" type="2" ypos="236.768281902634" endx="629.3431457505076" xpos="397.7007262807963" endy="496.5979797464466" c2x="441.7174245197147">
+      <from>4</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">!(LShoulderPitch>80)</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>
