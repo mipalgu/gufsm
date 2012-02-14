@@ -6,39 +6,39 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="98" endx="146" xpos="86" endy="98"/>
-    <state pencolor="0" radius="40" description="OnEntry {&#xa; post(&quot;sensors_postJoints_Frequency&quot;,1); signalPlungerAtBottom=1;print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="98" code="0" xpos="186" linewidth="1">FALSEINIT</state>
-    <state pencolor="0" radius="40" description="OnEntry {sensorAtBottomActive=0; print_state_name();}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="90" code="1" xpos="694" linewidth="1">IndicatingPressAwayFromBottom</state>
-    <state pencolor="0" radius="40" description="OnEntry {sensorAtBottomActive=1;print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="400" code="3" xpos="373" linewidth="1">IndicatingPressAtBottom</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa; post(&quot;sensors_postJoints_Frequency&quot;,&quot;1&quot;);&#xa; post(&quot;sensors_postJoints&quot;,&quot;On&quot;);  signalPlungerAtBottom=1; print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="98" code="0" xpos="186" linewidth="1">FALSEINIT</state>
+    <state pencolor="0" radius="40" description="OnEntry {sensorAtBottomActive=0;  print_state_name();&#xa; post(&quot;QSay&quot;,&quot;Away&quot;);  }&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="90" code="1" xpos="690" linewidth="1">IndicatingPressAwayFromBottom</state>
+    <state pencolor="0" radius="40" description="OnEntry {sensorAtBottomActive=1;print_state_name();&#xa; post(&quot;QSay&quot;,&quot;Bottom&quot;);  }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="400" code="3" xpos="370" linewidth="1">IndicatingPressAtBottom</state>
     <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="90" code="4" xpos="374" linewidth="1">WAIT</state>
     <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="409" code="5" xpos="704" linewidth="1">WAIT</state>
-    <transition c1x="257.7219770173045" c2y="289.6611183560107" c1y="208.1350452516807" description="" straight="1" type="2" ypos="126.6089721473506" endx="345.2543325173652" xpos="213.955799267274" endy="371.1871914603408" c2x="301.4881547673348">
+    <transition c1x="256.7219770173044" c2y="289.6611183560107" c1y="208.1350452516807" description="" straight="1" type="2" ypos="126.6089721473506" endx="342.2543325173652" xpos="213.955799267274" endy="371.1871914603408" c2x="299.4881547673348">
       <from>0</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="680.9001082615426" c2y="290.5849240096443" c1y="208.5488270427205" description="" straight="1" type="2" ypos="126.5127300757968" endx="687.3696095892882" xpos="677.6653575976699" endy="372.621020976568" c2x="684.1348589254154">
+    <transition c1x="678.233441594876" c2y="290.5849240096443" c1y="208.5488270427206" description="" straight="1" type="2" ypos="126.5127300757968" endx="687.3696095892882" xpos="673.6653575976699" endy="372.621020976568" c2x="682.801525592082">
       <from>1</from>
       <to>5</to>
-      <inputs default="0" any="0" invert="0">LShoulderPitch>170</inputs>
+      <inputs default="0" any="0" invert="0">LShoulderPitch>80</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="362.7487396317503" c2y="207.9197625348098" c1y="285.9635991234809" description="" straight="1" type="2" ypos="364.007435712152" endx="377.1480994168004" xpos="355.5490597392252" endy="129.8759259461388" c2x="369.9484195242754">
+    <transition c1x="360.7487396317503" c2y="207.9197625348098" c1y="285.9635991234809" description="" straight="1" type="2" ypos="364.007435712152" endx="377.1480994168004" xpos="352.5490597392252" endy="129.8759259461388" c2x="368.9484195242754">
       <from>3</from>
       <to>4</to>
-      <inputs default="0" any="0" invert="0">!(LShoulderPitch>170)</inputs>
+      <inputs default="0" any="0" invert="0">!(LShoulderPitch>80)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="493.9973308944448" c2y="86.13649671795645" c1y="86.53431838128348" description="" straight="1" type="2" ypos="86.93214004461052" endx="654.2276338432076" xpos="413.8821794200633" endy="85.7386750546294" c2x="574.1124823688262">
+    <transition c1x="492.6639975611114" c2y="86.13649671795643" c1y="86.53431838128348" description="" straight="1" type="2" ypos="86.93214004461052" endx="650.2276338432076" xpos="413.8821794200633" endy="85.7386750546294" c2x="571.4458157021595">
       <from>4</from>
       <to>1</to>
-      <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
+      <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="581.3547469876161" c2y="400.0385631503879" c1y="399.0248590172463" description="" straight="1" type="2" ypos="398.0111548841049" endx="412.9861567741139" xpos="665.5390420943671" endy="401.0522672835293" c2x="497.170451880865">
+    <transition c1x="580.3547469876161" c2y="400.0385631503879" c1y="399.0248590172463" description="" straight="1" type="2" ypos="398.0111548841049" endx="409.9861567741139" xpos="665.5390420943671" endy="401.0522672835293" c2x="495.170451880865">
       <from>5</from>
       <to>3</to>
-      <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
+      <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
       <outputs></outputs>
     </transition>
   </machine>
