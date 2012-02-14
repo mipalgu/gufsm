@@ -6,7 +6,7 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="98" endx="146" xpos="86" endy="98"/>
-    <state pencolor="0" radius="40" description="OnEntry {&#xa; post(&quot;sensors_postJoints_Frequency&quot;,&quot;1&quot;);&#xa; post(&quot;sensors_postJoints&quot;,&quot;On&quot;);  signalPlungerAtBottom=1; print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="98" code="0" xpos="186" linewidth="1">FALSEINIT</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa; post(&quot;sensors_postJoints_Frequency&quot;,&quot;1&quot;);&#xa; post(&quot;sensors_postJoints&quot;,&quot;On&quot;); print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="98" code="0" xpos="186" linewidth="1">FALSEINIT</state>
     <state pencolor="0" radius="40" description="OnEntry {sensorAtBottomActive=0;  print_state_name();&#xa; post(&quot;QSay&quot;,&quot;Away&quot;);  }&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="90" code="1" xpos="690" linewidth="1">IndicatingPressAwayFromBottom</state>
     <state pencolor="0" radius="40" description="OnEntry {sensorAtBottomActive=1;print_state_name();&#xa; post(&quot;QSay&quot;,&quot;Bottom&quot;);  }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="400" code="3" xpos="370" linewidth="1">IndicatingPressAtBottom</state>
     <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="90" code="4" xpos="374" linewidth="1">WAIT</state>
