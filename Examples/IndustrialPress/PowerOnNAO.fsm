@@ -17,7 +17,7 @@
       <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="676.8356178484723" c2y="261.7717962215012" c1y="189.3812821016493" description="" straight="1" type="2" ypos="116.9907679817975" endx="713.4645485852354" xpos="658.5211524800909" endy="334.1623103413531" c2x="695.150083216854">
+    <transition c1x="676.8356178484725" c2y="261.7717962215012" c1y="189.3812821016494" description="" straight="1" type="2" ypos="116.9907679817975" endx="713.4645485852354" xpos="658.5211524800909" endy="334.1623103413531" c2x="695.1500832168539">
       <from>1</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">timeout(2000000)</inputs>
@@ -35,10 +35,22 @@
       <inputs default="0" any="0" invert="0">ChestBoard_Button</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="465.0417459427527" c2y="86.66884347056912" c1y="86.95911678283899" description="" straight="1" type="2" ypos="87.24939009510885" endx="589.1642717412918" xpos="402.9804830434832" endy="86.37857015829925" c2x="527.1030088420223">
+    <transition c1x="603.7752539868549" c2y="410.5333988533685" c1y="387.9169174690921" description="" straight="1" type="2" ypos="365.3004360848158" endx="402.6202857894087" xpos="704.3527380855779" endy="433.1498802376449" c2x="503.1977698881318">
+      <from>3</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">!PowerOn</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="465.0417459427528" c2y="86.66884347056912" c1y="86.95911678283899" description="" straight="1" type="2" ypos="87.24939009510885" endx="589.1642717412918" xpos="402.9804830434832" endy="86.37857015829925" c2x="527.1030088420223">
       <from>4</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">ChestBoard_Button</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="461.9532276727837" c2y="102.7724788394855" c1y="122.686957300812" description="" straight="0" type="2" ypos="86.60143576213856" endx="594.8687266539216" xpos="402.9954781822148" endy="110.858000378159" c2x="530.9109771633526">
+      <from>4</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">PowerOn</inputs>
       <outputs></outputs>
     </transition>
   </machine>
