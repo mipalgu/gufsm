@@ -9,7 +9,7 @@
     <state pencolor="0" radius="40" description="OnEntry {int target; int delta; delta=10;   post(&quot;gunaomotion_holdingStiffness&quot;,&quot;100&quot;);&#xa;    print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="134" code="0" xpos="150" linewidth="1">FALSEINIT</state>
     <state pencolor="0" radius="40" description="OnEntry {motorOn=1; print_state_name();}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="188" code="1" xpos="627" linewidth="1">ElectricMotorOn</state>
     <state pencolor="0" radius="40" description="OnEntry{target=LShoulderPitch-delta;  print_state_name();      postv(&quot;gunaomotion_genericAngleChange&quot;,2,target,500000 );&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="90" code="2" xpos="910" linewidth="1">RISE10SLOW</state>
-    <state pencolor="0" radius="40" description="OnEntry{target=LShoulderPitch+(2*delta);  print_state_name(); &#xa;    postv(&quot;gunaomotion_genericAngleChange&quot;,2,target,150000   );&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="410" code="3" xpos="580" linewidth="1">LOWER10FAST</state>
+    <state pencolor="0" radius="40" description="OnEntry{target=LShoulderPitch+(2*delta);  print_state_name(); &#xa;    postv(&quot;gunaomotion_genericAngleChange&quot;,2,target,500000   );&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="410" code="3" xpos="580" linewidth="1">LOWER10FAST</state>
     <state pencolor="0" radius="40" description="OnEntry {motorOn=0;print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="197" code="4" xpos="402" linewidth="1">ElectricMotorOff</state>
     <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="425" code="5" xpos="247" linewidth="1">WAIT</state>
     <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="303" code="6" xpos="878" linewidth="1">WAIT</state>
@@ -31,16 +31,16 @@
       <inputs default="0" any="0" invert="0">!(LShoulderPitch&lt;-80)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="824.7538016313434" c2y="168.4965482761686" c1y="148.9930965523373" description="" straight="1" type="2" ypos="129.4896448285059" endx="667" xpos="903.6307024470152" endy="188" c2x="745.8769008156718">
+    <transition c1x="899.3035051782346" c2y="219.8649936614883" c1y="174.6773192449971" description="" straight="1" type="2" ypos="129.4896448285059" endx="890.6491106406735" xpos="903.6307024470152" endy="265.0526680779794" c2x="894.9763079094541">
       <from>2</from>
-      <to>1</to>
-      <inputs default="0" any="0" invert="0">timeout(50000)</inputs>
+      <to>6</to>
+      <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="500.9147470857559" c2y="289.5518211644726" c1y="347.6262737226344" description="" straight="1" type="2" ypos="405.7007262807963" endx="422.2808050625358" xpos="540.2317180973661" endy="231.4773686063108" c2x="461.5977760741459">
+    <transition c1x="455.1033318642888" c2y="427.1985802019452" c1y="416.4496532413708" description="" straight="1" type="2" ypos="405.7007262807963" endx="284.8465593981342" xpos="540.2317180973661" endy="437.9475071625196" c2x="369.9749456312115">
       <from>3</from>
-      <to>4</to>
-      <inputs default="0" any="0" invert="0">timeout(15000)</inputs>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
       <outputs></outputs>
     </transition>
     <transition c1x="497.739682085415" c2y="162.4725191543766" c1y="174.1750980463672" description="" straight="1" type="2" ypos="185.8776769383577" endx="612.3739051030802" xpos="440.4225705765825" endy="150.7699402623861" c2x="555.0567935942477">
@@ -55,7 +55,7 @@
       <inputs default="0" any="0" invert="0">!(LShoulderPitch>80)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="298.7757851220663" c2y="283.9814889455963" c1y="334.9935743413608" description="" straight="1" type="2" ypos="386.0056597371253" endx="384.5013712460278" xpos="255.9129920600856" endy="232.9694035498318" c2x="341.6385781840471">
+    <transition c1x="298.7757851220663" c2y="283.9814889455963" c1y="334.9935743413608" description="" straight="1" type="2" ypos="386.0056597371253" endx="384.5013712460278" xpos="255.9129920600856" endy="232.9694035498318" c2x="341.638578184047">
       <from>5</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">!gunamotion_genericAngleChangeIsRunning</inputs>
