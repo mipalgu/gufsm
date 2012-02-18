@@ -728,7 +728,7 @@ string StateMachineVector::kripkeInSVMformat()
              it != antlr_context->variables().end(); it++)
         {
                 const pair<string, int> &p = *it;
-                names[i++] = (string *) &p.first;
+                names[i++] = new string(p.first);
         }
         assert(i == n);
         assert(n < 64);
@@ -751,6 +751,10 @@ string StateMachineVector::kripkeInSVMformat()
          ss << "TRUE:"  << kripkeToString(kstates.front(), n, names, true) << ";"<< std::endl;
         /* Write the closing ESAC  */
         ss << "esac"  << std::endl;
+
+        for (i = 0; i < n; i++)
+                delete names[i];
+
         return ss.str();
         
 }
