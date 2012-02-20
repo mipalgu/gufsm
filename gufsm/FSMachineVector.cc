@@ -387,7 +387,7 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                                 (*next.freeze_point)[machineToRunOnce].ringletStage=result ? EtransitionTrue : EtransitionFalse;
                                 (*next.freeze_point)[machineToRunOnce].transition_id=0;
                                 /* output a derived state */
-                                ss << "\t" << kripkeToString(next, n, names,true) << ( (ext_comb < n_comb-1 )? "|" : ";" );
+                                ss << "\t" << kripkeToString(next, n, names,true) << ( (ext_comb < n_comb-1 )? " |" : ";" );
                                 ss << "\t-- machine :"<< machineToRunOnce << " evaluates Transition 0 with result " << result << " \n";
                         }
                         else

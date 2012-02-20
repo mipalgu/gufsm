@@ -230,9 +230,10 @@ const LocalKripkeFrezzePointVector &Machine::localKripkeStateNames(bool snapshot
                 /* we neeed information on transitions labels here */
                 
                 int transitionNumber=0;
+   
 
-                for (TransitionVector::iterator it = _currentState->transitions().begin();
-                     it != _currentState->transitions().end(); it++)
+                for (TransitionVector::iterator it_trans = s->transitions().begin();
+                     it_trans != s->transitions().end(); it_trans++)
                 {
                         rigletCurrentStage.transition_id=transitionNumber;
                         
