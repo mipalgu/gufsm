@@ -436,7 +436,7 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                         //next.variable_combination=ANTLRContextToVariableCombination(n, names);
                         (*next.freeze_point)[machineToRunOnce].ringletStage=result ? EtransitionTrue : EtransitionFalse;
                         (*next.freeze_point)[machineToRunOnce].transition_id=tid;
-                        ss << "\t" << kripkeToString(next, n, names) ;
+                        ss << "\t" << kripkeToString(next, n, names) <<  ";" ;
                         ss << "\t-- machine : "<< machineToRunOnce << "evaluates Transition " << tid <<" with result " << result << " \n";
                 }
                 else    /* all transitions exhausted, execute internal state */
