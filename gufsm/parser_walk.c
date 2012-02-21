@@ -58,6 +58,7 @@
 #include <string.h>
 #include <libgen.h>
 #include <errno.h>
+#include <gu_util.h>
 
 #include "parser_walk.h"
 #include "TransitionContainerParser.h"
@@ -82,7 +83,7 @@ static inline const char *getContent(pANTLR3_BASE_TREE tree)
 {
         pANTLR3_STRING s = tree->toString(tree);
         if (!s) return NULL;
-        return (const char *) s->chars;
+        return gu_strdup((const char *) s->chars);
 }
 
 
@@ -93,6 +94,7 @@ int walk_parse_tree(pANTLR3_RECOGNIZER_SHARED_STATE state,
                       pa_callback_f up,
                       void *context)
 {
+        const char *content = NULL;
         int rv = 1;
 
         /*
@@ -100,14 +102,19 @@ int walk_parse_tree(pANTLR3_RECOGNIZER_SHARED_STATE state,
          */
 	if (tree->children == NULL || tree->children->size(tree->children) == 0)
 	{
-                if (callback && (rv = callback(context, getTString(state, tree),
-                                               getContent(tree), state, tree)) < 0)
-                        return rv;
+                if (callback)
+                {
+                        content = getContent(tree);
+                        rv = callback(context, getTString(state, tree),
+                                      content, state, tree);
+                        free((void *) content);
+                        if (rv < 0)
+                                return rv;
+                }
 	}
         else                                            /* non-nil node */
 	{
                 const char *terminal = NULL;
-                const char *content = NULL;
 
                 if (!tree->isNilNode(tree))             /* non-nil node? */
                 {
@@ -140,8 +147,14 @@ int walk_parse_tree(pANTLR3_RECOGNIZER_SHARED_STATE state,
                 /*
                  * finished with subtree, call up()
                  */
-                if (up) rv = up(context, getTString(state, tree), getContent(tree),
+                if (up)
+                {
+                        if (!content) content = getContent(tree);
+                        rv = up(context, getTString(state, tree), content,
                                 state, tree);
+                }
+                if (content) free((void *) content);
+                
         }
         return rv;
 }

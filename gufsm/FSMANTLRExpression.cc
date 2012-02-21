@@ -93,11 +93,13 @@ static inline const char *getTString(pANTLR3_RECOGNIZER_SHARED_STATE state, pANT
         return (const char *) state->tokenNames[getType(tree)];
 }
 
-static inline const char *getContent(pANTLR3_BASE_TREE tree)
+static inline string getContent(pANTLR3_BASE_TREE tree)
 {
         pANTLR3_STRING s = tree->toString(tree);
         if (!s) return NULL;
-        return (const char *) s->chars;
+        string rv = (const char *) s->chars;
+        s->factory->destroy(s->factory, s);
+        return rv;
 }
 
 static
@@ -108,7 +110,7 @@ long long evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
         ANTLRContext *context = (ANTLRContext *) m->context();
         ANTLR3_UINT32 n = tree->children ? tree->children->size(tree->children) : 0;
         const char *terminal = getTString(state, tree);
-        const char *content  = getContent(tree);
+        string content  = getContent(tree);
         
         if (string("K_PLUS") == terminal)
         {
@@ -230,10 +232,10 @@ long long evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
          * leaf node
          */
         if (string("STRING_LITERAL") == terminal)
-                return (long long) string_guts(content);
+                return (long long) string_guts(content.c_str());
 
         if (string("K_INT") == terminal)
-                return atoi(content);
+                return atoi(content.c_str());
 
         if (string("K_ID") != terminal)
         {
@@ -319,7 +321,7 @@ void print_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
 {
         ANTLR3_UINT32 n = tree->children ? tree->children->size(tree->children) : 0;
         const char *terminal = getTString(state, tree);
-        const char *content  = getContent(tree);
+        string content  = getContent(tree);
         
         if (string("K_PLUS") == terminal)
         {
@@ -408,7 +410,7 @@ void print_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
          * leaf node
          */
         if (string("STRING_LITERAL") == terminal)
-                ss << "``" << string_guts(content) << "''";
+                ss << "``" << string_guts(content.c_str()) << "''";
 
         if (string("K_INT") == terminal)
         {
@@ -482,9 +484,9 @@ void expression_extract_callback(void *context, const char *terminal, const char
                 pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
                         tree->children->get(tree->children, i);
                 const char *terminal = getTString(state, t);
-                const char *content  = getContent(t);
+                string content  = getContent(t);
 
-                expression_extract_callback(context, terminal, content, state, t);
+                expression_extract_callback(context, terminal, content.c_str(), state, t);
         }
 }
 
@@ -494,9 +496,9 @@ void expression_extract_callback(void *context, const char *terminal, const char
 void ANTLRExpression::set_external_variables(Machine *fsm)
 {
         const char *terminal = getTString(antlrState(), expression());
-        const char *content  = getContent(expression());
+        string content  = getContent(expression());
 
-        expression_extract_callback(fsm, terminal, content, antlrState(), expression());
+        expression_extract_callback(fsm, terminal, content.c_str(), antlrState(), expression());
 }
 
 

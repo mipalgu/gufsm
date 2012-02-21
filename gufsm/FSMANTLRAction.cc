@@ -89,13 +89,14 @@ static inline const char *getTString(pANTLR3_RECOGNIZER_SHARED_STATE state, pANT
         return (const char *) state->tokenNames[getType(tree)];
 }
 
-static inline const char *getContent(pANTLR3_BASE_TREE tree)
+static inline string getContent(pANTLR3_BASE_TREE tree)
 {
         pANTLR3_STRING s = tree->toString(tree);
         if (!s) return NULL;
-        return (const char *) s->chars;
+        string rv = (const char *) s->chars;
+        s->factory->destroy(s->factory, s);
+        return rv;
 }
-
 
 static int
 statement_callback(void *context, const char *terminal, const char *content,
@@ -121,7 +122,7 @@ statement_callback(void *context, const char *terminal, const char *content,
                 pANTLR3_BASE_TREE t1 = (pANTLR3_BASE_TREE)
                         tree->children->get(tree->children, 0);
                 const char *t1t = getTString(state, t1);
-                const char *t1c = getContent(t1);
+                string t1c = getContent(t1);
                 assert(string("K_ID") == t1t);
                 
                 pANTLR3_BASE_TREE t2 = (pANTLR3_BASE_TREE)
