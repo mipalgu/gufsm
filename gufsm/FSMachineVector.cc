@@ -339,6 +339,13 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
         next.freeze_point = freeze;
         int machineToRunOnce= s.whose_turn;
         int stateToRun = (*s.freeze_point)[machineToRunOnce].stateID;
+       
+        bool debug_vlad=false;
+        
+        if (debug_vlad)
+        {
+                DBG(outputList(kstates,n,names));
+        }
         
         Machine * m = machines()[machineToRunOnce];
 
@@ -354,7 +361,11 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                 
                 /* output a derived state */
                 ss << "\t" << kripkeToString(next, n, names, true) << ";";
+                DBG(cerr << "\t" << kripkeToString(next, n, names, true) << ";");
+
                 ss << "\t-- machine :"<< machineToRunOnce << " executes OnEntry \n";
+                DBG(cerr << "\t-- machine :"<< machineToRunOnce << " executes OnEntry \n");
+
                 /* check next is not in the list, and if so, push it and output to the SMV output
                  */
                 if (! inList(kstates,next))
@@ -371,6 +382,8 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                 size_t num_ext = ext_offs.size();
                 unsigned long long n_comb = (1ULL << num_ext);
                 ss << "\t -- machine: "<< machineToRunOnce << " finished on Entry, generating * " << n_comb << " * combinations of external variables --\n";
+                DBG(cerr << "\t -- machine: "<< machineToRunOnce << " finished on Entry, generating * " << n_comb << " * combinations of external variables --\n");
+
                 for (ext_comb = 0; ext_comb < n_comb; ext_comb++)
                 {
                         KripkeState current = s;
@@ -389,6 +402,8 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                                 /* output a derived state */
                                 ss << "\t" << kripkeToString(next, n, names,true) << ( (ext_comb < n_comb-1 )? " |" : ";" );
                                 ss << "\t-- machine :"<< machineToRunOnce << " evaluates Transition 0 with result " << result << " \n";
+                                DBG(cerr << "\t" << kripkeToString(next, n, names,true) << ( (ext_comb < n_comb-1 )? " |" : ";" ));
+                                DBG(cerr << "\t-- machine :"<< machineToRunOnce << " evaluates Transition 0 with result " << result << " \n");
                         }
                         else
                         {
@@ -401,6 +416,8 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                                 /* output a derived state */
                                 ss << "\t" << kripkeToString(next, n, names, true) <<( (ext_comb < n_comb-1 )? "|" : ";" );
                                 ss << "\t-- machine :"<< machineToRunOnce << " execute internal \n";
+                                DBG(cerr<< "\t" << kripkeToString(next, n, names, true) <<( (ext_comb < n_comb-1 )? "|" : ";" ));
+                                DBG(cerr << "\t-- machine :"<< machineToRunOnce << " execute internal \n");
                         }
                         
                         
@@ -436,8 +453,10 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                         //next.variable_combination=ANTLRContextToVariableCombination(n, names);
                         (*next.freeze_point)[machineToRunOnce].ringletStage=result ? EtransitionTrue : EtransitionFalse;
                         (*next.freeze_point)[machineToRunOnce].transition_id=tid;
-                        ss << "\t" << kripkeToString(next, n, names) <<  ";" ;
+                        ss << "\t" << kripkeToString(next, n, names,true) <<  ";" ;
                         ss << "\t-- machine : "<< machineToRunOnce << "evaluates Transition " << tid <<" with result " << result << " \n";
+                        DBG(cerr << "\t" << kripkeToString(next, n, names,true) <<  ";") ;
+                        DBG(cerr << "\t-- machine : "<< machineToRunOnce << "evaluates Transition " << tid <<" with result " << result << " \n");
                 }
                 else    /* all transitions exhausted, execute internal state */
                 {
@@ -445,12 +464,16 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                         /* place values in next*/
                         next.variable_combination=ANTLRContextToVariableCombination(n, names);
                         (*next.freeze_point)[machineToRunOnce].ringletStage=EpcAfterOnEntry;
+                        // reset transition id
+                        (*next.freeze_point)[machineToRunOnce].transition_id=0;
                         /* sequential scheduler pauses this FSM here and moves to next */
                         next.whose_turn = (next.whose_turn + 1) % machines().size();
 
                         /* output a derived state */
                         ss << "\t" << kripkeToString(next, n, names,true)<<";" ;
                         ss << "\t-- machine : "<< machineToRunOnce << "execute internal \n";
+                        DBG(cerr<< "\t" << kripkeToString(next, n, names,true)<<";" );
+                        DBG(cerr << "\t-- machine : "<< machineToRunOnce << "execute internal \n");
                 }
                 
 
@@ -477,6 +500,8 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                 /* output a derived state */
                 ss << "\t" << kripkeToString(next, n, names,true) <<";";
                 ss << "\t-- machine : "<< machineToRunOnce << " executes OnExit \n";
+                DBG( cerr << "\t" << kripkeToString(next, n, names,true) <<";" );
+                DBG(cerr  << "\t-- machine : "<< machineToRunOnce << " executes OnExit \n");
                 /* check next is not in the list, and if so, push it and output to the SMV output
                  */
                 if (! inList(kstates,next))
@@ -744,6 +769,8 @@ string StateMachineVector::kripkeInSVMformat()
                 /* as source */
                 KripkeState &s = *it;
                 ss << kripkeToString(s, n, names) << ":\n";
+                DBG(cerr << kripkeToString(s, n, names) << ":\n");
+
                 ss << generate_from(s, kstates,n,names);
         }
 
@@ -778,6 +805,7 @@ std:: string StateMachineVector ::descriptionSMVformat(KripkeFreezePointVector &
 
 bool StateMachineVector :: inList( const std::list<KripkeState>  & list , const KripkeState &theCandidate)
 {
+        DBG(cerr << list.size() << "\n");
         for (std::list<KripkeState>::const_iterator it = list.begin();
              it != list.end(); it++)
         {
@@ -787,4 +815,33 @@ bool StateMachineVector :: inList( const std::list<KripkeState>  & list , const 
         }
         return false;
 }
+
+void StateMachineVector ::    outputList ( std::list<KripkeState>  & list , size_t n, string **names)
+{
+        cerr << list.size() << "\n";
+        int i=0;
+        for (std::list<KripkeState>::iterator it = list.begin();
+             it != list.end(); it++)
+        {
+                 KripkeState &kp = *it;
+                
+                cerr <<   i  << " varibale comb: " << kp.variable_combination << 
+                                " whose turn " << kp.whose_turn << 
+                " vector pointer FrezzePointVector " << kp.freeze_point <<std::endl ;
+                KripkeFreezePointVector::iterator it2 = kp.freeze_point->begin();
+                while (it2 != kp.freeze_point->end())
+                {
+                        cerr << "    machine ponter: " << it2->machine;
+                        cerr << "    stateID: " << it2->stateID;
+                        cerr << "    ringletStage: " << it2->ringletStage;
+                        cerr << "    transitionID: " << it2->transition_id;
+                        *it2++;
+                }
+                
+                cerr << " " <<  kripkeToString (kp,n,names) << std::endl;
+                i++;
+        }
+       
+}
+
 

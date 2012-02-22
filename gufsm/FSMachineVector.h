@@ -130,6 +130,7 @@ namespace FSM
                 unsigned long long  AllToExtVariableCombination(unsigned long long v, size_t n, std:: string **names, std::vector<int> &posOfExternals);
                 unsigned long long extVarToKripke(unsigned long long all_vars, unsigned long long ext, const std::vector<int> &ext_offsets);
                 bool inList( const std::list<KripkeState>  & , const KripkeState &);
+                void outputList (  std::list<KripkeState>  & , size_t n, std::string **names);
 
         public:
                 /** constructor */
