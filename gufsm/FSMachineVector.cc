@@ -344,7 +344,7 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
         
         if (debug_vlad)
         {
-                outputList(kstates,n,names);
+                DBG(outputList(kstates,n,names));
         }
         
         Machine * m = machines()[machineToRunOnce];
@@ -361,10 +361,10 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                 
                 /* output a derived state */
                 ss << "\t" << kripkeToString(next, n, names, true) << ";";
-                cerr << "\t" << kripkeToString(next, n, names, true) << ";";
+                DBG(cerr << "\t" << kripkeToString(next, n, names, true) << ";");
 
                 ss << "\t-- machine :"<< machineToRunOnce << " executes OnEntry \n";
-                cerr << "\t-- machine :"<< machineToRunOnce << " executes OnEntry \n";
+                DBG(cerr << "\t-- machine :"<< machineToRunOnce << " executes OnEntry \n");
 
                 /* check next is not in the list, and if so, push it and output to the SMV output
                  */
@@ -382,7 +382,7 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                 size_t num_ext = ext_offs.size();
                 unsigned long long n_comb = (1ULL << num_ext);
                 ss << "\t -- machine: "<< machineToRunOnce << " finished on Entry, generating * " << n_comb << " * combinations of external variables --\n";
-                cerr << "\t -- machine: "<< machineToRunOnce << " finished on Entry, generating * " << n_comb << " * combinations of external variables --\n";
+                DBG(cerr << "\t -- machine: "<< machineToRunOnce << " finished on Entry, generating * " << n_comb << " * combinations of external variables --\n");
 
                 for (ext_comb = 0; ext_comb < n_comb; ext_comb++)
                 {
@@ -402,8 +402,8 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                                 /* output a derived state */
                                 ss << "\t" << kripkeToString(next, n, names,true) << ( (ext_comb < n_comb-1 )? " |" : ";" );
                                 ss << "\t-- machine :"<< machineToRunOnce << " evaluates Transition 0 with result " << result << " \n";
-                                cerr << "\t" << kripkeToString(next, n, names,true) << ( (ext_comb < n_comb-1 )? " |" : ";" );
-                                cerr << "\t-- machine :"<< machineToRunOnce << " evaluates Transition 0 with result " << result << " \n";
+                                DBG(cerr << "\t" << kripkeToString(next, n, names,true) << ( (ext_comb < n_comb-1 )? " |" : ";" ));
+                                DBG(cerr << "\t-- machine :"<< machineToRunOnce << " evaluates Transition 0 with result " << result << " \n");
                         }
                         else
                         {
@@ -416,8 +416,8 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                                 /* output a derived state */
                                 ss << "\t" << kripkeToString(next, n, names, true) <<( (ext_comb < n_comb-1 )? "|" : ";" );
                                 ss << "\t-- machine :"<< machineToRunOnce << " execute internal \n";
-                                cerr<< "\t" << kripkeToString(next, n, names, true) <<( (ext_comb < n_comb-1 )? "|" : ";" );
-                                cerr << "\t-- machine :"<< machineToRunOnce << " execute internal \n";
+                                DBG(cerr<< "\t" << kripkeToString(next, n, names, true) <<( (ext_comb < n_comb-1 )? "|" : ";" ));
+                                DBG(cerr << "\t-- machine :"<< machineToRunOnce << " execute internal \n");
                         }
                         
                         
@@ -455,8 +455,8 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                         (*next.freeze_point)[machineToRunOnce].transition_id=tid;
                         ss << "\t" << kripkeToString(next, n, names,true) <<  ";" ;
                         ss << "\t-- machine : "<< machineToRunOnce << "evaluates Transition " << tid <<" with result " << result << " \n";
-                        cerr << "\t" << kripkeToString(next, n, names,true) <<  ";" ;
-                        cerr << "\t-- machine : "<< machineToRunOnce << "evaluates Transition " << tid <<" with result " << result << " \n";
+                        DBG(cerr << "\t" << kripkeToString(next, n, names,true) <<  ";") ;
+                        DBG(cerr << "\t-- machine : "<< machineToRunOnce << "evaluates Transition " << tid <<" with result " << result << " \n");
                 }
                 else    /* all transitions exhausted, execute internal state */
                 {
@@ -472,8 +472,8 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                         /* output a derived state */
                         ss << "\t" << kripkeToString(next, n, names,true)<<";" ;
                         ss << "\t-- machine : "<< machineToRunOnce << "execute internal \n";
-                        cerr<< "\t" << kripkeToString(next, n, names,true)<<";" ;
-                        cerr << "\t-- machine : "<< machineToRunOnce << "execute internal \n";
+                        DBG(cerr<< "\t" << kripkeToString(next, n, names,true)<<";" );
+                        DBG(cerr << "\t-- machine : "<< machineToRunOnce << "execute internal \n");
                 }
                 
 
@@ -500,8 +500,8 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                 /* output a derived state */
                 ss << "\t" << kripkeToString(next, n, names,true) <<";";
                 ss << "\t-- machine : "<< machineToRunOnce << " executes OnExit \n";
-                cerr << "\t" << kripkeToString(next, n, names,true) <<";";
-                cerr  << "\t-- machine : "<< machineToRunOnce << " executes OnExit \n";
+                DBG( cerr << "\t" << kripkeToString(next, n, names,true) <<";" );
+                DBG(cerr  << "\t-- machine : "<< machineToRunOnce << " executes OnExit \n");
                 /* check next is not in the list, and if so, push it and output to the SMV output
                  */
                 if (! inList(kstates,next))
@@ -769,7 +769,7 @@ string StateMachineVector::kripkeInSVMformat()
                 /* as source */
                 KripkeState &s = *it;
                 ss << kripkeToString(s, n, names) << ":\n";
-                cerr << kripkeToString(s, n, names) << ":\n";
+                DBG(cerr << kripkeToString(s, n, names) << ":\n");
 
                 ss << generate_from(s, kstates,n,names);
         }
@@ -805,7 +805,7 @@ std:: string StateMachineVector ::descriptionSMVformat(KripkeFreezePointVector &
 
 bool StateMachineVector :: inList( const std::list<KripkeState>  & list , const KripkeState &theCandidate)
 {
-        cerr << list.size() << "\n";
+        DBG(cerr << list.size() << "\n");
         for (std::list<KripkeState>::const_iterator it = list.begin();
              it != list.end(); it++)
         {
