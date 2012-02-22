@@ -83,7 +83,9 @@ static inline const char *getContent(pANTLR3_BASE_TREE tree)
 {
         pANTLR3_STRING s = tree->toString(tree);
         if (!s) return NULL;
-        return gu_strdup((const char *) s->chars);
+        const char *rv = gu_strdup((const char *) s->chars);
+        s->factory->destroy(s->factory, s);
+        return rv;
 }
 
 
