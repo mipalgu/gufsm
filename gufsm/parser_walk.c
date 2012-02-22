@@ -54,13 +54,14 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#include "parser_walk.h"
+
 #include <stdio.h>
 #include <string.h>
 #include <libgen.h>
 #include <errno.h>
 #include <gu_util.h>
 
-#include "parser_walk.h"
 #include "TransitionContainerParser.h"
 #include "ActionsContainerParser.h"
 #include "SimpleCLexer.h"
