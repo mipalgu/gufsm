@@ -283,14 +283,16 @@ void StateMachineVector::restart()
 
 using namespace std;
 
-static std::string variableNRange(string varName)
+static std::string variableNRange(string varName, int isBoolean)
 {
         stringstream ss;
         ss << varName<< " : " ;
         ss << "{" << LOW_RANGE<< ",";
-        for (int i= LOW_RANGE+1;  i<HIGH_RANGE-1; i++)
+    
+    int high_range = isBoolean ? 1 : PATERN_BITS;
+        for (int i= LOW_RANGE+1;  i<high_range-1; i++)
                 ss << i << "," ;
-        ss<<  HIGH_RANGE << "};" << std::endl;
+        ss<<  high_range << "};" << std::endl;
         
         return ss.str();
         
@@ -380,7 +382,7 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                 unsigned long long vars=s.variable_combination;
                 unsigned long long ext_comb = AllToExtVariableCombination(vars, n, names, ext_offs);
                 size_t num_ext = ext_offs.size();
-                unsigned long long n_comb = (1ULL << num_ext);
+                unsigned long long n_comb = (1ULL << (num_ext*BITS));
                 ss << "\t -- machine: "<< machineToRunOnce << " finished on Entry, generating * " << n_comb << " * combinations of external variables --\n";
                 DBG(cerr << "\t -- machine: "<< machineToRunOnce << " finished on Entry, generating * " << n_comb << " * combinations of external variables --\n");
 
@@ -535,8 +537,13 @@ string StateMachineVector:: kripkeToString(KripkeState &s, size_t n, string **na
         
         for (int i = 0; i < n; i++)
         {
-                unsigned long long j = (1ULL << i);
-                ss << (derived? next : "") << *names[i] << (derived? ")" : "" ) <<"=" << ((s.variable_combination & j) ? 1 : 0) << " & ";
+        unsigned long long j = 0;   /* a block of BITS set to 1 */
+        for (int b=0; b<BITS; b++)
+            j |= 1ULL;
+        
+            j = (1ULL << (i*BITS)); /*shifted left as much as i blocks of BITS */
+
+            ss << (derived? next : "") << *names[i] << (derived? ")" : "" ) <<"=" << ((s.variable_combination & j) >> (i*BITS)) << " & ";
         }
         ss << (derived? next : "") << "pc" << (derived? ")" : "" ) << "="<< descriptionSMVformat (*s.freeze_point);
         
@@ -550,8 +557,15 @@ void StateMachineVector:: kripkeToANTLRContext (KripkeState &s, size_t n, string
         
         for (int i = 0; i < n; i++)
         {
-                unsigned long long j = (1ULL << i);
-                antrlContext->set_variable(*names[i],((s.variable_combination & j) ? 1 : 0) );                
+                
+        unsigned long long j = 0;   /* a block of BITS set to 1 */
+        for (int b=0; b<BITS; b++)
+            j |= 1ULL;
+        
+        j = (1ULL << (i*BITS)); /*shifted left as much as i blocks of BITS */        
+        
+        
+                antrlContext->set_variable(*names[i],((s.variable_combination & j) >> (i*BITS)) );                
         }
         //ss << "pc="<< descriptionSMVformat (*s.freeze_point);
         
@@ -562,10 +576,12 @@ unsigned long long StateMachineVector:: ANTLRContextToVariableCombination(size_t
         ANTLRContext* antrlContext = (ANTLRContext *) context();
 
         unsigned long long j = 0;
+        unsigned long long binary_value;
+
         for (int i = 0; i < n; i++)
         {
-                if (antrlContext->value(*names[i]))
-                        j |= (1ULL << i);
+        binary_value = PATERN_BITS | antrlContext->value(*names[i]);
+                        j |= (binary_value << (i*BITS));
         }
         return j;
 }
@@ -581,8 +597,8 @@ unsigned long long StateMachineVector::AllToExtVariableCombination(unsigned long
                 if (name.find('$') != string::npos)     // is there a dollar?
                         continue;                       // skip internal variable
                 posOfExternals.push_back(i);            // this ext is at index i
-                if (all_vars & (1ULL << i))             // external var TRUE?
-                        j |= (1ULL << k);               // set bit if ext var is true
+                if (all_vars & (1ULL << (i*BITS)))             // external var TRUE?
+                        j |= (1ULL << (k*BITS));               // set bit if ext var is true
                 k++;
         }
         return j;
@@ -593,7 +609,7 @@ unsigned long long StateMachineVector::extVarToKripke(unsigned long long all_var
 {
         size_t n = ext_offsets.size();
         for (int i = 0; i < n; i++)
-                if (ext & (1ULL << i))
+                if (ext & (1ULL << (i*BITS) ))
                         all_vars |= (1ULL << ext_offsets[i]);
                 else
                         all_vars &= ~(1ULL << ext_offsets[i]);
@@ -620,11 +636,13 @@ string StateMachineVector::kripkeInSVMformat()
         
                 /* print variables of this machine in smv fromat*/
                 /* ALL BOOLEAN, TODO, make integer values */
+                int variableNumber=0;
                 for (map<string, int>::iterator it = antlr_context->variables().begin(); 
                      it != antlr_context->variables().end(); it++)
                 {
                         const pair<string, int> &p = *it;
-                        ss << variableNRange(p.first);
+                        ss << variableNRange(p.first,variableNumber & _typeBoolMask);
+                        variableNumber++;
                 }
         }
         // range of the variable turn */
@@ -754,12 +772,18 @@ string StateMachineVector::kripkeInSVMformat()
         {
                 const pair<string, int> &p = *it;
                 names[i++] = new string(p.first);
+        
+        DATA_TYPES aVariableType = antlr_context->theVariableType(*names[i-1]);
+        
+                DBG( std::cerr << " Variable " << names[i-1]->c_str() << " has type : " << aVariableType << std::endl; )
+        
+            
         }
         assert(i == n);
-        assert(n < 64);
+    assert(n*BITS < 64); // memory word is a limit
 
         list<KripkeState> kstates;
-        unsigned long long combinations = (1ULL << n);
+        unsigned long long combinations = (1ULL << (n*BITS));
         for (unsigned long long k = 0; k < combinations; k++)
                 kstates.push_back(KripkeState(k, &kripkePCValues[0]));
 

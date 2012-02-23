@@ -68,6 +68,9 @@
 #include "gu_util.h"
 #include "FSMSuspensibleMachine.h"
 
+const int BITS = 4;
+const unsigned long long PATERN_BITS = 16ULL; // BITS all set to 1
+
 namespace FSM
 {
         typedef std::vector<SuspensibleMachine *> MachineVector;
@@ -119,6 +122,11 @@ namespace FSM
                 useconds_t      _idle_timeout;  /// idle timeout in usec
                 idle_f          _no_transition_fired; /// idle function
                 bool            _accepting;     /// all machines are in an accepting state
+        
+        unsigned long long   _typeBoolMask; // i-th bit is 1 if variable is Boolean, 0 if is non-negative integer of BITS
+        unsigned long long   _externKripkeMask; // i-th bit is 1 if variable is external, that is can be changed outside all the machines in the vector
+        
+
 
                 std::string generate_from(KripkeState &, std::list<KripkeState> &, size_t n, std::string **names);
                 std::string  kripkeToString(KripkeState &s, size_t n, std::string **names, bool derived=false);

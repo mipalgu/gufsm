@@ -82,15 +82,23 @@ vardef_callback(void *context, const char *terminal, const char *content,
         Machine *fsm = self->fsm();
         ANTLRContext *antlr_context = (ANTLRContext *) fsm->context();
 
+        DATA_TYPES defaultType = TYPE_BOOLEAN;
+    
         //fsm->addState(self->state());
+        if (string("K_INT_TYPE") == terminal)         /* variable type*/
+            {
+            DBG( std:: cerr << "setting type to Int " <<std::endl;)
+            defaultType=TYPE_NON_NEGATIVE_INT;
+            }
 
         if (string("K_ID") == terminal)         /* variable name */
         {
-                antlr_context->set_internal_variable(content, fsm->id());
+                antlr_context->set_internal_variable(content, fsm->id(),0,defaultType);
                 return 0;                       /* no children */
         }
 
         /* XXX: we don't worry about types at the moment */
+       /** Would like to distinguish NON-NEGATIVE INTEGERS from BOOleans */
 
         return 1;
 }

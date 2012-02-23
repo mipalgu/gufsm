@@ -70,12 +70,16 @@ extern "C"
 #include<iostream>
 #include "FSMWBContext.h"
 
+
+enum DATA_TYPES {TYPE_BOOLEAN, TYPE_NON_NEGATIVE_INT};
+
 namespace FSM
 {
         class Expression;
         class ANTLRContext: public WBContext
         {
                 std::map<std::string, int> _variables; /// our own state-machine internal variables
+                std::map<std::string, DATA_TYPES> _variable_type; /// the type of a variable
                 std::map<std::string, Expression *> _functions; /// well known functions
         public:
                 /**
@@ -93,6 +97,14 @@ namespace FSM
                 {
                         variables()[name] = val;
                 }
+                /** variable type getter */
+        std::map<std::string, DATA_TYPES> &variablesType() { return _variable_type; }
+        /** set type of internal variable */
+        void set_variable_type(std::string name, DATA_TYPES val = TYPE_BOOLEAN)
+        {
+        variablesType()[name] = val;
+        }
+        
                 /** return the qualfied name for an internal variable for a given machine */
                 std::string internal_variable_name(const std::string &name, int mid)
                 {
@@ -101,15 +113,24 @@ namespace FSM
                         return ss.str();
                 }
                /** set internal variable */
-                void set_internal_variable(const std::string &name, int mid, int val = 0)
+                void set_internal_variable(const std::string &name, int mid, int val = 0, DATA_TYPES theType=TYPE_BOOLEAN)
                 {
                         variables()[internal_variable_name(name, mid)] = val;
+                        variablesType()[internal_variable_name(name, mid)] = theType;
+
+                    
                 }
                 /** get internal variable value */
                 int value(const std::string &name)
                 {
                         return variables()[name];
                 }
+            /** get internal variable type */
+            DATA_TYPES theVariableType(const std::string &name)
+            {
+                return variablesType()[name];
+            }
+        
                 /** find variable */
                 bool exists(const std::string &name)
                 {
