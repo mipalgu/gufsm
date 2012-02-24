@@ -69,7 +69,7 @@
 #include "FSMSuspensibleMachine.h"
 
 const int BITS = 4;
-const unsigned long long PATERN_BITS = 16ULL; // BITS all set to 1
+const unsigned long long PATERN_BITS = (1ULL << (const unsigned long long) BITS)-1ULL; // BITS all set to 1
 
 namespace FSM
 {

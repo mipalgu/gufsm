@@ -122,9 +122,11 @@ namespace FSM
                 }
                 /** get internal variable value */
                 int value(const std::string &name)
-                {
+                { // don't think this is right,
+                  //needs mapping an M$$ infront
                         return variables()[name];
                 }
+                
                 std::string external_variable_name(const std::string &name)
                 {
                         std::stringstream ss;

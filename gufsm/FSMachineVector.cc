@@ -283,13 +283,13 @@ void StateMachineVector::restart()
 
 using namespace std;
 
-static std::string variableNRange(string varName, int isBoolean)
+static std::string variableNRange(string varName, DATA_TYPES isBoolean)
 {
         stringstream ss;
         ss << varName<< " : " ;
         ss << "{" << LOW_RANGE<< ",";
     
-    int high_range = isBoolean ? 1 : PATERN_BITS;
+    int high_range = isBoolean== TYPE_BOOLEAN ? 1 : PATERN_BITS;
         for (int i= LOW_RANGE+1;  i<high_range-1; i++)
                 ss << i << "," ;
         ss<<  high_range << "};" << std::endl;
@@ -537,11 +537,7 @@ string StateMachineVector:: kripkeToString(KripkeState &s, size_t n, string **na
         
         for (int i = 0; i < n; i++)
         {
-        unsigned long long j = 0;   /* a block of BITS set to 1 */
-        for (int b=0; b<BITS; b++)
-            j |= 1ULL;
-        
-            j = (1ULL << (i*BITS)); /*shifted left as much as i blocks of BITS */
+        unsigned long long j = (PATERN_BITS << (i*BITS)); /*shifted left as much as i blocks of BITS */
 
             ss << (derived? next : "") << *names[i] << (derived? ")" : "" ) <<"=" << ((s.variable_combination & j) >> (i*BITS)) << " & ";
         }
@@ -564,8 +560,8 @@ void StateMachineVector:: kripkeToANTLRContext (KripkeState &s, size_t n, string
         
         j = (1ULL << (i*BITS)); /*shifted left as much as i blocks of BITS */        
         
-        
-                antrlContext->set_variable(*names[i],((s.variable_combination & j) >> (i*BITS)) );                
+                unsigned long long value=(s.variable_combination & j) >> (i*BITS);
+                antrlContext->set_variable(*names[i],(int) value);                
         }
         //ss << "pc="<< descriptionSMVformat (*s.freeze_point);
         
@@ -641,7 +637,8 @@ string StateMachineVector::kripkeInSVMformat()
                      it != antlr_context->variables().end(); it++)
                 {
                         const pair<string, int> &p = *it;
-                        ss << variableNRange(p.first,variableNumber & _typeBoolMask);
+                        DATA_TYPES the_type=antlr_context->theVariableType(p.first);
+                        ss << variableNRange(p.first,the_type);
                         variableNumber++;
                 }
         }
@@ -767,25 +764,52 @@ string StateMachineVector::kripkeInSVMformat()
         size_t n = antlr_context->variables().size();
         string *names[n];
         i = 0;
+        int totalBits=0;
+        _typeBoolMask=0;
         for (map<string, int>::iterator it = antlr_context->variables().begin(); 
              it != antlr_context->variables().end(); it++)
         {
                 const pair<string, int> &p = *it;
                 names[i++] = new string(p.first);
         
-        DATA_TYPES aVariableType = antlr_context->theVariableType(*names[i-1]);
+                DATA_TYPES aVariableType = antlr_context->theVariableType(*names[i-1]);
+                if (TYPE_BOOLEAN ==aVariableType)
+                {   _typeBoolMask |=  (1ULL << (i-1));
+                        totalBits++;
+                        }
+                else{
+                        totalBits+=BITS;
+                }
         
                 DBG( std::cerr << " Variable " << names[i-1]->c_str() << " has type : " << aVariableType << std::endl; )
         
             
         }
         assert(i == n);
-    assert(n*BITS < 64); // memory word is a limit
+        assert(totalBits < 64); // memory word is a limit
 
         list<KripkeState> kstates;
-        unsigned long long combinations = (1ULL << (n*BITS));
+        unsigned long long combinations = (1ULL << (totalBits));
         for (unsigned long long k = 0; k < combinations; k++)
-                kstates.push_back(KripkeState(k, &kripkePCValues[0]));
+        {       
+                unsigned long long regularPack =0;
+                 int positionInCombiantion=0;
+                for (int varNumber=0; varNumber<n; varNumber++)
+                {       
+                        if (_typeBoolMask & (1ULL << varNumber)) 
+                                        //copyBit
+                                { unsigned long long oneBit = (k & (1ULL << positionInCombiantion) ) != 0 ? 1ULL : 0;
+                                        positionInCombiantion++;
+                                        regularPack |= oneBit << (BITS*varNumber);
+                                }
+                                else //copyBITS;
+                                { unsigned long long theBits = PATERN_BITS & (k >> positionInCombiantion) ;
+                                        regularPack |= theBits << (BITS*varNumber);
+                                        positionInCombiantion+=BITS;
+                                }
+                }
+                kstates.push_back(KripkeState(regularPack, &kripkePCValues[0]));
+        }
 
         for (std::list<KripkeState>::iterator it = kstates.begin();
              it != kstates.end(); it++)
