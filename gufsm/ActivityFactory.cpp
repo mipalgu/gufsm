@@ -74,44 +74,26 @@ extern "C"
 using namespace FSM;
 using namespace std;
 
-static int
-vardef_callback(void *context, const char *terminal, const char *content,
-             pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
+static inline ANTLR3_UINT32 getType(pANTLR3_BASE_TREE tree)
 {
-        ActivityFactory *self = (ActivityFactory *) context;
-        Machine *fsm = self->fsm();
-        ANTLRContext *antlr_context = (ANTLRContext *) fsm->context();
-
-        DATA_TYPES defaultType = TYPE_BOOLEAN;
-    
-        //fsm->addState(self->state());
-        if (string("K_INT_TYPE") == terminal)         /* variable type*/
-            {
-            DBG( std:: cerr << "setting type to Int " <<std::endl;)
-            defaultType=TYPE_NON_NEGATIVE_INT;
-            }
-
-        if (string("K_ID") == terminal)         /* variable name */
-        {
-                antlr_context->set_internal_variable(content, fsm->id(),0,defaultType);
-                return 0;                       /* no children */
-        }
-
-        /* XXX: we don't worry about types at the moment */
-       /** Would like to distinguish NON-NEGATIVE INTEGERS from BOOleans */
-
-        return 1;
+	if  (tree->isNilNode(tree) == ANTLR3_TRUE)
+                return 0;
+        
+	return	((pANTLR3_COMMON_TREE)(tree->super))->token->getType(((pANTLR3_COMMON_TREE)(tree->super))->token);
 }
 
-
-static int
-vardef_pop(void *context, const char *terminal, const char *content,
-           pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
+static inline const char *getTString(pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
 {
-        //ActivityFactory *self = (ActivityFactory *) context;
-        //self->fsm()->addState(self->state());
-        
-        return 1;
+        return (const char *) state->tokenNames[getType(tree)];
+}
+
+static inline const char *getContent(pANTLR3_BASE_TREE tree)
+{
+        pANTLR3_STRING s = tree->toString(tree);
+        if (!s) return NULL;
+        const char *rv = gu_strdup((const char *) s->chars);
+        s->factory->destroy(s->factory, s);
+        return rv;
 }
 
 
@@ -120,17 +102,42 @@ block_callback(void *context, const char *terminal, const char *content,
             pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
 {
         ActivityFactory *self = (ActivityFactory *) context;
+        Machine *fsm = self->fsm();
+        ANTLRContext *antlr_context = (ANTLRContext *) fsm->context();
 
         DBG(cout << __FUNCTION__ << "(" << terminal << ", " << content << ")" <<
             endl);
 
         assert(terminal);       /* must not be nil */
 
+        ANTLR3_UINT32 n = tree->children ? tree->children->size(tree->children) : 0;
+
+
         if (string("VAR_DEF") == terminal)      /* internal variable */
         {
-                if (walk_parse_children(state, tree, vardef_callback,
-                                        NULL, vardef_pop, context) == -1)
-                        return 0;
+                assert(n == 2);
+                
+                pANTLR3_BASE_TREE t1 = (pANTLR3_BASE_TREE)
+                        tree->children->get(tree->children, 0);
+                pANTLR3_BASE_TREE t2 = (pANTLR3_BASE_TREE)
+                        tree->children->get(tree->children, 1);
+
+                assert(!tree->isNilNode(t1));
+                assert(!tree->isNilNode(t2));
+
+                const char *t1terminal = getTString(state, t1);
+                string t2content = getContent(t2);
+                
+                DATA_TYPES defaultType = TYPE_BOOLEAN;
+
+                if (string("K_INT_TYPE") == t1terminal)         /* variable type*/
+                {
+                        DBG( std:: cerr << "setting type to Int " <<std::endl;)
+                        defaultType=TYPE_NON_NEGATIVE_INT;
+                }
+
+                antlr_context->set_internal_variable(t2content, fsm->id(), 0, defaultType);
+
                 return 0;
         }
         if (string("STATEMENT_LIST") == terminal)       /* actions */

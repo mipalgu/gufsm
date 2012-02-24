@@ -29,6 +29,8 @@ ONEXIT:		'OnExit';
 K_FOR : 'for' ;
 K_CHAR: 'char';
 K_INT_TYPE : 'int' ;
+K_BOOL 	:	 'bool';
+K_EXTERN :	 'extern' ;
 K_VOID: 'void';
 
 K_ID  :   ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*

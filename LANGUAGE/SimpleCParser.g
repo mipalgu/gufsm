@@ -44,6 +44,8 @@ type
     :   K_INT_TYPE   
     |   K_CHAR  
     |   K_VOID
+    |	K_BOOL
+    |	K_EXTERN
     |   K_ID        
     ;
 
