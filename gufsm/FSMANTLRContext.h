@@ -125,6 +125,30 @@ namespace FSM
                 {
                         return variables()[name];
                 }
+                std::string external_variable_name(const std::string &name)
+                {
+                        std::stringstream ss;
+                        ss << "E$$" << name;
+                        return ss.str();
+                }
+                /** set external variable */
+                void set_external_variable(const std::string &name, int val = 0, DATA_TYPES theType=TYPE_BOOLEAN)
+                {
+                        const std::string &ext_name = external_variable_name(name);
+                        variables()[ext_name] = val;
+                        variablesType()[ext_name] = theType;
+                        
+                        
+                }
+                /**
+                 * remove leading E$$ from external variable name
+                 */
+                std::string visible_variable_name_for_extern(const std::string &name)
+                {
+                        return name.substr(3);
+                }
+                
+
             /** get internal variable type */
             DATA_TYPES theVariableType(const std::string &name)
             {
@@ -137,12 +161,24 @@ namespace FSM
                         return variables().count(name) != 0;
                 }
                 
+                /** find external variable */
+                bool external_variable_exists(const std::string &name)
+                {
+                        return exists(external_variable_name(name));
+                }
+                
                 /** find internal variable for given machine ID */
                 bool internal_variable_exists(int mid, const std::string &name)
                 {
                         return exists(internal_variable_name(name, mid));
                 }
 
+                /** get cached external variable  */
+                int external_cached_variable_value(const std::string &name)
+                {
+                        return value(external_variable_name(name));
+                }
+                
                 /** find internal variable for given machine ID */
                 int internal_variable_value(int mid, const std::string &name)
                 {

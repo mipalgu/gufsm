@@ -135,6 +135,12 @@ block_callback(void *context, const char *terminal, const char *content,
                         DBG( std:: cerr << "setting type to Int " <<std::endl;)
                         defaultType=TYPE_NON_NEGATIVE_INT;
                 }
+                else if (string("K_EXTERN") == t1terminal)         /* variable type*/
+                {
+                        DBG( std:: cerr << "setting type to Ext " <<std::endl;)
+                        antlr_context->set_external_variable(t2content);
+                        return 0;
+                }
 
                 antlr_context->set_internal_variable(t2content, fsm->id(), 0, defaultType);
 

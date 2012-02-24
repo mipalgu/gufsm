@@ -134,11 +134,16 @@ statement_callback(void *context, const char *terminal, const char *content,
                         c->set_internal_variable(t1c, m->id(), result);
                         return 0;                       /* parse children */
                 }
+                else if (c->external_variable_exists(t1c))
+                {
+                        c->set_external_variable(t1c, result); /* cache ext variable */
+                        if (c->whiteboard())
+                                c->whiteboard()->addMessage(c->visible_variable_name_for_extern(t1c), WBMsg(result));
+                        return 0;                       /* parse children */
+                }
                 else
                 {
-                        c->set_variable(t1c, result);   /* cache ext variable */
-                        if (c->whiteboard())
-                                c->whiteboard()->addMessage(t1c, WBMsg(result));
+                        c->set_variable(t1c, result);   /* set global variable */
                         return 0;
                 }
         }

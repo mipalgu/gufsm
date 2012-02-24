@@ -88,8 +88,8 @@ namespace FSM
                 /** print abstract expression for a given state */
                 virtual std::string description(pANTLR3_RECOGNIZER_SHARED_STATE state,
                                                 pANTLR3_BASE_TREE tree);
-                /** extract external variables from expression */
-                void set_external_variables(Machine *fsm);
+                /** extract global variables from expression */
+                void set_global_variables(Machine *fsm);
 
                 static int evaluate(pANTLR3_RECOGNIZER_SHARED_STATE state,
                                                      pANTLR3_BASE_TREE tree,

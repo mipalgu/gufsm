@@ -251,8 +251,10 @@ long long evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
                 if (n) cerr << " *** WARNING: Variable '" << content << "' is not a function, but called with " << n << "parameters!" << endl;
                 if (context->internal_variable_exists(m->id(), content))
                         return context->internal_variable_value(m->id(), content);
+                else if (context->external_variable_exists(content))
+                        return context->external_cached_variable_value(content);  // external variable cached from WB
                 else
-                        return context->value(content); // external variable cached from WB
+                        return context->value(content); // global variable
         }
 
         /*
@@ -472,9 +474,14 @@ void expression_extract_callback(void *context, const char *terminal, const char
         ANTLRContext *antlr_context = (ANTLRContext *) m->context();
         ANTLR3_UINT32 n = tree->children ? tree->children->size(tree->children) : 0;
 
+        /*
+         * extract global (non-declared) variables from expression
+         */
         if (string("K_ID") == terminal)
         {
-                if (!n && !antlr_context->internal_variable_exists(m->id(), content))
+                if (!n &&
+                    !antlr_context->external_variable_exists(content) &&
+                    !antlr_context->internal_variable_exists(m->id(), content))
                         antlr_context->set_variable(content);
                 return;
         }
@@ -493,7 +500,7 @@ void expression_extract_callback(void *context, const char *terminal, const char
 
 
 
-void ANTLRExpression::set_external_variables(Machine *fsm)
+void ANTLRExpression::set_global_variables(Machine *fsm)
 {
         const char *terminal = getTString(antlrState(), expression());
         string content  = getContent(expression());
