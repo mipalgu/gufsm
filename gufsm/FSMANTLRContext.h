@@ -113,12 +113,17 @@ namespace FSM
                         return ss.str();
                 }
                /** set internal variable */
-                void set_internal_variable(const std::string &name, int mid, int val = 0, DATA_TYPES theType=TYPE_BOOLEAN)
+                void set_internal_variable(const std::string &name, int mid, int val = 0)
+                {
+                        variables()[internal_variable_name(name, mid)] = val;
+                }
+                /** set internal variable and type*/
+                void set_internal_variable_and_type(const std::string &name, int mid, int val = 0, DATA_TYPES theType=TYPE_BOOLEAN)
                 {
                         variables()[internal_variable_name(name, mid)] = val;
                         variablesType()[internal_variable_name(name, mid)] = theType;
-
-                    
+                        
+                        
                 }
                 /** get internal variable value */
                 int value(const std::string &name)

@@ -142,7 +142,7 @@ block_callback(void *context, const char *terminal, const char *content,
                         return 0;
                 }
 
-                antlr_context->set_internal_variable(t2content, fsm->id(), 0, defaultType);
+                antlr_context->set_internal_variable_and_type(t2content, fsm->id(), 0, defaultType);
 
                 return 0;
         }

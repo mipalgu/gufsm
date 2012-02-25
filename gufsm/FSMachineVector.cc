@@ -382,7 +382,8 @@ string StateMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                 unsigned long long vars=s.variable_combination;
                 unsigned long long ext_comb = AllToExtVariableCombination(vars, n, names, ext_offs);
                 size_t num_ext = ext_offs.size();
-                unsigned long long n_comb = (1ULL << (num_ext*BITS));
+                /// external are always BOOLEAN
+                unsigned long long n_comb = (1ULL << (num_ext));
                 ss << "\t -- machine: "<< machineToRunOnce << " finished on Entry, generating * " << n_comb << " * combinations of external variables --\n";
                 DBG(cerr << "\t -- machine: "<< machineToRunOnce << " finished on Entry, generating * " << n_comb << " * combinations of external variables --\n");
 
@@ -555,10 +556,8 @@ void StateMachineVector:: kripkeToANTLRContext (KripkeState &s, size_t n, string
         {
                 
         unsigned long long j = 0;   /* a block of BITS set to 1 */
-        for (int b=0; b<BITS; b++)
-            j |= 1ULL;
         
-        j = (1ULL << (i*BITS)); /*shifted left as much as i blocks of BITS */        
+        j = (PATERN_BITS << (i*BITS)); /*shifted left as much as i blocks of BITS */        
         
                 unsigned long long value=(s.variable_combination & j) >> (i*BITS);
                 antrlContext->set_variable(*names[i],(int) value);                
@@ -576,7 +575,7 @@ unsigned long long StateMachineVector:: ANTLRContextToVariableCombination(size_t
 
         for (int i = 0; i < n; i++)
         {
-        binary_value = PATERN_BITS | antrlContext->value(*names[i]);
+        binary_value = PATERN_BITS & antrlContext->value(*names[i]);
                         j |= (binary_value << (i*BITS));
         }
         return j;
@@ -590,12 +589,16 @@ unsigned long long StateMachineVector::AllToExtVariableCombination(unsigned long
         for (int i = 0; i < n; i++)
         {
                 const string &name = *names[i];
-                if (name.find('$') != string::npos)     // is there a dollar?
-                        continue;                       // skip internal variable
-                posOfExternals.push_back(i);            // this ext is at index i
-                if (all_vars & (1ULL << (i*BITS)))             // external var TRUE?
-                        j |= (1ULL << (k*BITS));               // set bit if ext var is true
-                k++;
+                
+                // has a $ and starts with E is external 
+                if (  (name.find('$')!=string::npos) && ('E'==name[0]) ){
+                         posOfExternals.push_back(i);            // this ext is at index i
+                        if (all_vars & (1ULL << (i*BITS)))             // external var TRUE?
+                                j |= (1ULL << (k*BITS));               // set bit if ext var is true
+                        k++;
+                        
+                }
+
         }
         return j;
 }
@@ -605,10 +608,10 @@ unsigned long long StateMachineVector::extVarToKripke(unsigned long long all_var
 {
         size_t n = ext_offsets.size();
         for (int i = 0; i < n; i++)
-                if (ext & (1ULL << (i*BITS) ))
-                        all_vars |= (1ULL << ext_offsets[i]);
+                if (ext & (1ULL << i ))  // ext is a combiantion of single bits
+                        all_vars |= (1ULL << (ext_offsets[i]*BITS) );
                 else
-                        all_vars &= ~(1ULL << ext_offsets[i]);
+                        all_vars &= ~(1ULL << (ext_offsets[i]*BITS) );
         return all_vars;
 }
 
