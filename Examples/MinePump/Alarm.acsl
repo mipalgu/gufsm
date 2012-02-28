@@ -1,0 +1,11 @@
+2	NOT_RINGING
+OnEntry{  bell=0;
+ post("QSay","sshh"); }
+OnExit {}
+{}
+
+0	RINGING
+OnEntry {bell=1;  post("QSay","Ring");  }
+OnExit{}
+{}
+

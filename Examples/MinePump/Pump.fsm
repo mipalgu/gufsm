@@ -1,0 +1,24 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vladimir Estivill-Castro" description="" version="1" name="MicrowaveEngine" arrowtype="1" numbits="2" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="2">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="120" endx="120" xpos="60" endy="120"/>
+    <state pencolor="0" radius="40" description="OnEntry{ motor=0;&#xa; post(&quot;QSay&quot;,&quot;stop&quot;); }&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="120" code="2" xpos="160" linewidth="1">NOT_RUNNING</state>
+    <state pencolor="0" radius="40" description="OnEntry {motor=1;  post(&quot;QSay&quot;,&quot;on&quot;);  }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="114" code="0" xpos="725" linewidth="1">RUNNING</state>
+    <transition c1x="356.0023959767341" c2y="95.03056941689356" c1y="93.94968265378544" description="" straight="1" type="2" ypos="92.86879589067735" endx="689.2229123600034" xpos="189.3921377850995" endy="96.11145618000165" c2x="522.6126541683687">
+      <from>2</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">(highWaterSensorOn||(!lowWaterSensorOn&amp;&amp;operatorButtonOn))&amp;&amp;supervisorButtonOn&amp;&amp;!methaneSensorHigh</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="524.2339317934772" c2y="143.2891413604294" c1y="139.6281284134315" description="" straight="1" type="2" ypos="135.9671154664336" endx="189.5582337565332" xpos="691.5717808119491" endy="146.9501543074273" c2x="356.8960827750051">
+      <from>0</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">(!highWaterSensorOn&amp;&amp;(lowWaterSensorOn||!operatorButtonOn))||!supervisorButtonOn||methaneSensorHigh</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>

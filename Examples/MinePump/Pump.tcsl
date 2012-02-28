@@ -1,0 +1,2 @@
+0 2 (!highWaterSensorOn&&(lowWaterSensorOn||!operatorButtonOn))||!supervisorButtonOn||methaneSensorHigh
+2 0 (highWaterSensorOn||(!lowWaterSensorOn&&operatorButtonOn))&&supervisorButtonOn&&!methaneSensorHigh
