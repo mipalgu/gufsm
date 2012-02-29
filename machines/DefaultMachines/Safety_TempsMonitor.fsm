@@ -23,13 +23,13 @@
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="1056.169680839962" c2y="217.6275113182702" c1y="155.1383109794719" description="" straight="1" type="2" ypos="92.64911064067351" endx="1272.614378675844" xpos="947.9473319220206" endy="280.1167116570685" c2x="1164.392029757903">
+    <transition c1x="1056.169680839962" c2y="217.6275113182702" c1y="155.1383109794718" description="" straight="1" type="2" ypos="92.64911064067351" endx="1272.614378675844" xpos="947.9473319220206" endy="280.1167116570685" c2x="1164.392029757903">
       <from>10</from>
       <to>13</to>
       <inputs default="0" any="0" invert="0">newTemps!=sensors_postTemps_Updated</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="1143.863216867241" c2y="171.0204798193301" c1y="237.3280975613841" description="" straight="1" type="2" ypos="303.635715303438" endx="941.4527335528969" xpos="1245.068458524413" endy="104.7128620772761" c2x="1042.657975210069">
+    <transition c1x="1143.863216867241" c2y="171.0204798193301" c1y="237.328097561384" description="" straight="1" type="2" ypos="303.635715303438" endx="941.4527335528969" xpos="1245.068458524413" endy="104.7128620772761" c2x="1042.657975210069">
       <from>13</from>
       <to>10</to>
       <inputs default="0" any="0" invert="0">(HeadYaw_temp&lt;maxTemp)&amp;&amp;(HeadPitch_temp&lt;maxTemp)&amp;&amp;(LShoulderPitch_temp&lt;maxTemp)&amp;&amp;(LShoulderRoll_temp&lt;maxTemp)&amp;&amp;(LElbowYaw_temp&lt;maxTemp)&amp;&amp;(LElbowRoll_temp&lt;maxTemp)&amp;&amp;(LHipYawPitch_temp&lt;maxTemp)&amp;&amp;(LHipRoll_temp&lt;maxTemp)&amp;&amp;(LHipPitch_temp&lt;maxTemp)&amp;&amp;(LKneePitch_temp&lt;maxTemp)&amp;&amp;(LAnklePitch_temp&lt;maxTemp)&amp;&amp;(LAnkleRoll_temp&lt;maxTemp)&amp;&amp;(RHipRoll_temp&lt;maxTemp)&amp;&amp;(RHipPitch_temp&lt;maxTemp)&amp;&amp;(RKneePitch_temp&lt;maxTemp)&amp;&amp;(RAnklePitch_temp&lt;maxTemp)&amp;&amp;(RAnkleRoll_temp&lt;maxTemp)&amp;&amp;(RShoulderPitch_temp&lt;maxTemp)&amp;&amp;(RShoulderRoll_temp&lt;maxTemp)&amp;&amp;(RElbowYaw_temp&lt;maxTemp)&amp;&amp;(RElbowRoll_temp&lt;maxTemp)</inputs>
@@ -38,10 +38,10 @@
     <transition c1x="1173.627916069073" c2y="431.3425946949149" c1y="380.2611633330503" description="" straight="1" type="2" ypos="329.1797319711857" endx="1034.24971118823" xpos="1243.317018509494" endy="482.4240260567795" c2x="1103.938813628651">
       <from>13</from>
       <to>4</to>
-      <inputs default="0" any="0" invert="0">!((HeadYaw_temp&lt;maxTemp)&amp;&amp;(HeadPitch_temp&lt;maxTemp)&amp;&amp;(LShoulderPitch_temp&lt;maxTemp)&amp;&amp;(LShoulderRoll_temp&lt;maxTemp)&amp;&amp;(LElbowYaw_temp&lt;maxTemp)&amp;&amp;(LElbowRoll_temp&lt;maxTemp)&amp;&amp;(LHipYawPitch_temp&lt;maxTemp)&amp;&amp;(LHipRoll_temp&lt;maxTemp)&amp;&amp;(LHipPitch_temp&lt;maxTemp)&amp;&amp;(LKneePitch_temp&lt;maxTemp)&amp;&amp;(LAnklePitch_temp&lt;maxTemp)&amp;&amp;(LAnkleRoll_temp&lt;maxTemp)&amp;&amp;(RHipRoll_temp&lt;maxTemp)&amp;&amp;(RHipPitch_temp&lt;maxTemp)&amp;&amp;(RKneePitch_temp&lt;maxTemp)&amp;&amp;(RAnklePitch_temp&lt;maxTemp)&amp;&amp;(RAnkleRoll_temp&lt;maxTemp)&amp;&amp;(RShoulderPitch_temp&lt;maxTemp)&amp;&amp;(RShoulderRoll_temp&lt;maxTemp)&amp;&amp;(RElbowYaw_temp&lt;maxTemp)&amp;&amp;(RElbowRoll_temp&lt;maxTemp))</inputs>
+      <inputs default="0" any="0" invert="0">!((HeadYaw_temp>maxTemp)&amp;&amp;(HeadPitch_temp>maxTemp)&amp;&amp;(LShoulderPitch_temp>maxTemp)&amp;&amp;(LShoulderRoll_temp>maxTemp)&amp;&amp;(LElbowYaw_temp>maxTemp)&amp;&amp;(LElbowRoll_temp>maxTemp)&amp;&amp;(LHipYawPitch_temp>maxTemp)&amp;&amp;(LHipRoll_temp>maxTemp)&amp;&amp;(LHipPitch_temp>maxTemp)&amp;&amp;(LKneePitch_temp>maxTemp)&amp;&amp;(LAnklePitch_temp>maxTemp)&amp;&amp;(LAnkleRoll_temp>maxTemp)&amp;&amp;(RHipRoll_temp>maxTemp)&amp;&amp;(RHipPitch_temp>maxTemp)&amp;&amp;(RKneePitch_temp>maxTemp)&amp;&amp;(RAnklePitch_temp>maxTemp)&amp;&amp;(RAnkleRoll_temp>maxTemp)&amp;&amp;(RShoulderPitch_temp>maxTemp)&amp;&amp;(RShoulderRoll_temp>maxTemp)&amp;&amp;(RElbowYaw_temp>maxTemp)&amp;&amp;(RElbowRoll_temp>maxTemp))</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="951.8811853378643" c2y="235.6012401517406" c1y="353.952769115251" description="" straight="1" type="2" ypos="472.3042980787615" endx="924.5759739432204" xpos="965.5337910351861" endy="117.2497111882301" c2x="938.2285796405424">
+    <transition c1x="951.8811853378643" c2y="235.6012401517406" c1y="353.952769115251" description="" straight="1" type="2" ypos="472.3042980787615" endx="924.5759739432204" xpos="965.5337910351861" endy="117.2497111882301" c2x="938.2285796405423">
       <from>4</from>
       <to>10</to>
       <inputs default="0" any="0" invert="0">timeout(60000000)</inputs>
