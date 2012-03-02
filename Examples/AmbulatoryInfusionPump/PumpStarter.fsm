@@ -1,0 +1,25 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vladimir Estivill-Castro" description="" version="1" name="StartPump" arrowtype="1" numbits="2" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="137" endx="240" xpos="180" endy="137"/>
+    <state pencolor="0" radius="40" description="OnEntry { beeperStartSignal=1;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="137" code="0" xpos="280" linewidth="1">STARTING</state>
+    <state pencolor="0" radius="40" description="OnEntry {motor=1; beeperStartSignal=0;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="135" code="1" xpos="612" linewidth="1">RUNNING</state>
+    <state pencolor="0" radius="40" description="OnEntry {aborted=1;  motor=0;   beeperStartSignal=0;  } &#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="351" code="2" xpos="282" linewidth="1">ABORTED</state>
+    <transition c1x="404.0046572079693" c2y="136.326801965315" c1y="136.5429212410159" description="" straight="1" type="2" ypos="136.7590405167168" endx="572.0154231738912" xpos="319.9992742250083" endy="136.1106826896141" c2x="488.0100401909302">
+      <from>0</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">buttonHeldPressed &amp;&amp; timeout(3000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="278.4540951906429" c2y="266.3673765393046" c1y="221.6568562179248" description="" straight="1" type="2" ypos="176.9463358965449" endx="279.5048685537928" xpos="277.928708509068" endy="311.0778968606845" c2x="278.9794818722179">
+      <from>0</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">!buttonHeldPressed</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>

@@ -6,7 +6,7 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="98" endx="190" xpos="130" endy="98"/>
-    <state pencolor="0" radius="40" description="OnEntry {motor=0; fireTimeBeeper=0;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="98" code="0" xpos="230" linewidth="1">NOT_RUNNING</state>
+    <state pencolor="0" radius="40" description="OnEntry {motor=0; fireTimeBeeper=0;   aborted=0;    &#xa;  beeperStartSignal=0;  &#xa; } &#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="98" code="0" xpos="230" linewidth="1">NOT_RUNNING</state>
     <state pencolor="0" radius="40" description="OnEntry {motor=1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="108" code="1" xpos="796" linewidth="1">RUNNING</state>
     <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="207" code="2" xpos="503" linewidth="1">RECALCULATING</state>
     <state pencolor="0" radius="40" description="OnEntry { fireTimeBeeper=1;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="350" code="3" xpos="510" linewidth="1">DOSAGE_COMPLETE</state>
