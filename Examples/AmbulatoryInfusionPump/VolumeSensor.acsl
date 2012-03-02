@@ -1,15 +1,15 @@
 0	INDICATING_NO_VOLUME
-OnEntry { empty=1; volumeNormal=0;}
+OnEntry { volumeEmpty=1; volumeNormal=0;}
 OnExit { }
 { }
 
 1	INDICATING_VOLUME_NORMAL
-OnEntry { empty=0; volumeNormal=1;}
+OnEntry { volumeEmpty=0; volumeNormal=1;}
 OnExit { }
 { }
 
 2	INDICATING_VOLUME_LOW
-OnEntry { empty=0; volumeNormal=0;}
+OnEntry { volumeEmpty=0; volumeNormal=0;}
 OnExit { }
 { }
 
