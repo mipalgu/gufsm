@@ -5,13 +5,13 @@
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
-    <itransition ypos="427" endx="426" xpos="366" endy="427"/>
-    <state pencolor="0" radius="40" description="OnEntry {motor=0; fireTimeBeeper=0;   aborted=0;    &#xa;  beeperStartSignal=0;  dossageInterrupted=0;&#xa; } &#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="427" code="0" xpos="466" linewidth="1">NOT_RUNNING</state>
+    <itransition ypos="430" endx="430" xpos="370" endy="430"/>
+    <state pencolor="0" radius="40" description="OnEntry  { motor=0; fireTimeBeeper=0;   aborted=0; beeperStartSignal=0;   dossageInterrupted=0;}&#xa;OnExit{ }&#xa;{ }" finalstate="0" moore_outputs="" ypos="430" code="0" xpos="470" linewidth="1">NOT_RUNNING</state>
     <state pencolor="0" radius="40" description="OnEntry {motor=1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="82" code="1" xpos="755" linewidth="1">RUNNING</state>
     <state pencolor="0" radius="40" description="OnEntry {dossageInterrupted=1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="134" code="2" xpos="507" linewidth="1">RECALCULATING</state>
-    <state pencolor="0" radius="40" description="OnEntry { fireTimeBeeper=1 ;   dossageInterrupted=0;     } &#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="235" code="3" xpos="508" linewidth="1">DOSAGE_COMPLETE</state>
-    <state pencolor="0" radius="40" description="OnEntry { &#xa; } &#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="76" code="4" xpos="299" linewidth="1">NOT_RUNNING</state>
-    <transition c1x="385.7784405510064" c2y="208.1308467506452" c1y="303.6649814383731" description="" straight="1" type="2" ypos="399.199116126101" endx="282.8543917369483" xpos="437.2404649580355" endy="112.5967120629173" c2x="334.3164161439774">
+    <state pencolor="0" radius="40" description="OnEntry {fireTimeBeeper=1;  dossageInterrupted=0; }&#xa;OnExit {}&#xa;{} &#xa;" finalstate="0" moore_outputs="" ypos="235" code="3" xpos="508" linewidth="1">DOSAGE_COMPLETE</state>
+    <state pencolor="0" radius="40" description="OnEntry {}&#xa;OnExit{ }&#xa;{} &#xa;" finalstate="0" moore_outputs="" ypos="80" code="4" xpos="300" linewidth="1">NOT_RUNNING</state>
+    <transition c1x="388.7784405510064" c2y="211.7975134173118" c1y="306.9983147717064" description="" straight="1" type="2" ypos="402.199116126101" endx="283.8543917369483" xpos="441.2404649580355" endy="116.5967120629173" c2x="336.3164161439773">
       <from>0</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">batteriesConnected</inputs>
@@ -29,25 +29,25 @@
       <inputs default="0" any="0" invert="0">timeLeft&lt;1</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="678.1212944283619" c2y="329.3395410369689" c1y="225.1031225817234" description="" straight="1" type="2" ypos="120.8667041264779" endx="505.4557569532857" xpos="764.4540631659" endy="433.5759594922143" c2x="591.7885256908238">
+    <transition c1x="679.4546277616953" c2y="331.3395410369689" c1y="226.1031225817234" description="" straight="1" type="2" ypos="120.8667041264779" endx="509.4557569532857" xpos="764.4540631659" endy="436.5759594922143" c2x="594.4551923574905">
       <from>1</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">!batteriesConnected</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="424.3077045868037" c2y="104.1973504834001" c1y="111.6825937905694" description="" straight="1" type="2" ypos="119.1678370977386" endx="333.2200031607293" xpos="469.8515552998409" endy="96.71210717623089" c2x="378.7638538737665">
+    <transition c1x="424.641037920137" c2y="106.8640171500668" c1y="113.0159271239027" description="" straight="1" type="2" ypos="119.1678370977386" endx="334.2200031607293" xpos="469.8515552998409" endy="100.7121071762309" c2x="379.4305205404332">
       <from>2</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="420.9525495884228" c2y="146.2920777465797" c1y="177.2460279495965" description="" straight="1" type="2" ypos="208.1999781526133" endx="306.2464971790774" xpos="478.3055757930955" endy="115.3381275435629" c2x="363.5995233837501">
+    <transition c1x="421.2858829217561" c2y="148.9587444132464" c1y="178.5793612829299" description="" straight="1" type="2" ypos="208.1999781526133" endx="307.2464971790774" xpos="478.3055757930955" endy="119.3381275435629" c2x="364.2661900504168">
       <from>3</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="465.6093154293933" c2y="44.48948911341822" c1y="45.56953107634572" description="" straight="1" type="2" ypos="46.64957303927323" endx="744.4753037683156" xpos="326.1763212599322" endy="43.40944715049071" c2x="605.0423095988544">
+    <transition c1x="466.27598209606" c2y="45.82282244675155" c1y="48.23619774301239" description="" straight="1" type="2" ypos="50.64957303927323" endx="744.4753037683156" xpos="327.1763212599322" endy="43.40944715049071" c2x="605.3756429321878">
       <from>4</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">normalCharge&amp;&amp;!airOnLine&amp;&amp;!blockageInLine&amp;&amp;volumeNormal&amp;&amp;ssbuttonHelPressed</inputs>
