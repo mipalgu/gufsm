@@ -1,0 +1,24 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vladimir Estivill-Castro" description="" version="1" name="MasterBatteries" arrowtype="1" numbits="1" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="103" endx="118" xpos="58" endy="103"/>
+    <state pencolor="0" radius="40" description="OnEntry {batteriesConnected=0; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="103" code="0" xpos="158" linewidth="1">BATTERIES_OFF</state>
+    <state pencolor="0" radius="40" description="OnEntry {batteriesConnected=1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="109" code="1" xpos="475" linewidth="1">BATTERIES_ON</state>
+    <transition c1x="273.4091255937416" c2y="77.33926866625114" c1y="75.78160512077739" description="" straight="1" type="2" ypos="74.22394157530364" endx="448.6598156852593" xpos="185.7837805479827" endy="78.89693221172489" c2x="361.0344706395005">
+      <from>0</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">batteriesInPlace</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="358.5707247202022" c2y="132.0657946078561" c1y="133.4303160881237" description="" straight="1" type="2" ypos="134.7948375683913" endx="186.8554928412381" xpos="444.4283406596844" endy="130.7012731275885" c2x="272.7131087807202">
+      <from>1</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">!batteriesInPlace</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>
