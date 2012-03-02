@@ -1,0 +1,31 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vladimir Estivill-Castro" description="" version="1" name="Beeper" arrowtype="1" numbits="2" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="108" endx="213" xpos="153" endy="108"/>
+    <state pencolor="0" radius="40" description="OnEntry {int times; times=0; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="108" code="0" xpos="253" linewidth="1">SILENT</state>
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="116" code="1" xpos="508" linewidth="1">Armed</state>
+    <state pencolor="0" radius="40" description="OnEntry {post(&quot;QSay&quot;,&quot;dossage applied&quot;);  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="288" code="2" xpos="504" linewidth="1">BEEPING</state>
+    <transition c1x="351.5393833029477" c2y="108.9516282073743" c1y="109.1868268220409" description="" straight="1" type="2" ypos="109.4220254367075" endx="468.6687198006216" xpos="292.9747150541108" endy="108.7164295927077" c2x="410.1040515517847">
+      <from>0</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">batteriesConnected</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="509.6598217387437" c2y="217.4852667719014" c1y="186.7118404500589" description="" straight="1" type="2" ypos="155.9384141282165" endx="508.5418636464293" xpos="510.2188007849009" endy="248.2586930937438" c2x="509.1008426925865">
+      <from>1</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">fireTimeBeeper</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="401.697681011431" c2y="187.2956017447604" c1y="233.3091917160071" description="" straight="1" type="2" ypos="279.3227816872538" endx="275.1880078490092" xpos="464.9525175926419" endy="141.2820117735137" c2x="338.4428444302201">
+      <from>2</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">!fireTimeBeeper</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>
