@@ -1,0 +1,49 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vladimir Estivill-Castro" description="" version="1" name="ErrorDisplay" arrowtype="1" numbits="2" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="90" endx="160" xpos="100" endy="90"/>
+    <state pencolor="0" radius="40" description="OnEntry {post(&quot;QSay&quot;,&quot;empty&quot;);  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="90" code="0" xpos="200" linewidth="1">DISPLAY_EMPTY</state>
+    <state pencolor="0" radius="40" description="OnEntry {post(&quot;QSay&quot;,&quot;line blocked&quot;);  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="94" code="1" xpos="530" linewidth="1">DISPLAY_LINE_BLOCKED</state>
+    <state pencolor="0" radius="40" description="OnEntry {post(&quot;QSay&quot;,&quot;air on line&quot;);  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="289" code="2" xpos="358" linewidth="1">DISPLAY_AIR_ON_LINE</state>
+    <transition c1x="321.0537904107001" c2y="63.51547536079982" c1y="63.32734918562273" description="" straight="1" type="2" ypos="63.13922301044563" endx="503.8824151172215" xpos="229.6394780574393" endy="63.70360153597692" c2x="412.4681027639608">
+      <from>0</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">blockageInLine</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="252.6418774602993" c2y="224.010427465287" c1y="174.7776268737408" description="" straight="1" type="2" ypos="125.5448262821945" endx="321.2341987992777" xpos="218.3457167908101" endy="273.2432280568333" c2x="286.9380381297885">
+      <from>0</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">airOnLine</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="452.1964561171964" c2y="204.8017612918923" c1y="160.1383904898094" description="" straight="1" type="2" ypos="115.4750196877264" endx="364.0822873701576" xpos="496.2535404907157" endy="249.4651320939753" c2x="408.139371743677">
+      <from>1</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">airOnLine</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="406.6472201401145" c2y="92.692418610793" c1y="93.16603643668508" description="" straight="1" type="2" ypos="93.63965426257715" endx="239.9384141282165" xpos="490.0016231460635" endy="92.21880078490092" c2x="323.2928171341655">
+      <from>1</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">volumeEmpty</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="426.5956118324319" c2y="172.6729079550763" c1y="215.5687282701558" description="" straight="1" type="2" ypos="258.4645485852354" endx="512.1114561800017" xpos="383.837689658647" endy="129.7770876399966" c2x="469.3535340062168">
+      <from>2</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">blockageInLine</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="298.7068554888482" c2y="165.2958655221275" c1y="210.9076253342095" description="" straight="1" type="2" ypos="256.5193851462915" endx="226.8114503187508" xpos="334.654558073897" endy="119.6841057100455" c2x="262.7591529037995">
+      <from>2</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">volumeEmpty</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>
