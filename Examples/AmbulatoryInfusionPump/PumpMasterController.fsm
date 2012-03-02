@@ -1,0 +1,24 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vladimir Estivill-Castro" description="" version="1" name="FSM" arrowtype="1" numbits="1" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="98" endx="190" xpos="130" endy="98"/>
+    <state pencolor="0" radius="40" description="OnEntry {motor=0; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="98" code="0" xpos="230" linewidth="1">NOT_RUNNING</state>
+    <state pencolor="0" radius="40" description="OnEntry {motor=1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="108" code="1" xpos="796" linewidth="1">RUNNING</state>
+    <transition c1x="423.5911750165542" c2y="66.29052079298695" c1y="63.1715944354832" description="" straight="1" type="2" ypos="60.05266807797945" endx="785.4753037683156" xpos="242.6491106406735" endy="69.40944715049071" c2x="604.5332393924349">
+      <from>0</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">normalCharge &amp;&amp; !airOnLine &amp;&amp; ! blockageInLine &amp;&amp; volumeNormal &amp;&amp; ssButtonHelPressed</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="594.9065332858803" c2y="138.1319206158234" c1y="139.3406297320464" description="" straight="1" type="2" ypos="140.5493388482694" endx="239.2186553551685" xpos="772.7504722512361" endy="136.9232114996004" c2x="417.0625943205244">
+      <from>1</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">!batteriesConnected||airOnLine||!volume||blockageInLine||timeExpired</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>
