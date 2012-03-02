@@ -8,13 +8,13 @@
     <itransition ypos="100" endx="158" xpos="98" endy="100"/>
     <state pencolor="0" radius="40" description="OnEntry {normalCharge=1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="100" code="0" xpos="198" linewidth="1">INDICATING_NORMAL_CHARGE</state>
     <state pencolor="0" radius="40" description="OnEntry {normalCharge=0; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="101" code="1" xpos="550" linewidth="1">INDICATING_LOW_CHARGE</state>
-    <transition c1x="325.4431283908336" c2y="77.36481193868352" c1y="76.43894210951342" description="" straight="1" type="2" ypos="75.51307228034332" endx="517.0714885633878" xpos="229.6289483045565" endy="78.29068176785361" c2x="421.2573084771107">
+    <transition c1x="325.4431283908336" c2y="77.3648119386835" c1y="76.43894210951342" description="" straight="1" type="2" ypos="75.51307228034332" endx="517.0714885633878" xpos="229.6289483045565" endy="78.2906817678536" c2x="421.2573084771107">
       <from>0</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">batteriesSensorLow</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="419.8976415041367" c2y="124.2299286735511" c1y="122.7553668680435" description="" straight="1" type="2" ypos="121.2808050625357" endx="228.6476617250317" xpos="515.5226313936893" endy="125.7044904790588" c2x="324.2726516145842">
+    <transition c1x="419.8976415041367" c2y="124.2299286735511" c1y="122.7553668680434" description="" straight="1" type="2" ypos="121.2808050625357" endx="228.6476617250317" xpos="515.5226313936892" endy="125.7044904790588" c2x="324.2726516145842">
       <from>1</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">!batteriesSensorLow</inputs>

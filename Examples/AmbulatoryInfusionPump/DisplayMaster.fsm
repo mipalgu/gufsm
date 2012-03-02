@@ -1,0 +1,44 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vladimir Estivill-Castro" description="" version="1" name="DisplayMaster" arrowtype="1" numbits="3" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="161" endx="105" xpos="45" endy="161"/>
+    <state pencolor="0" radius="40" description="OnEntry {post(&quot;QSay&quot;,&quot;dots&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="161" code="0" xpos="145" linewidth="1">DISPLAY_IDLE</state>
+    <state pencolor="0" radius="40" description="OnEntry {restart(&quot;DisplayOnError&quot;); }&#xa;OnExit {suspend(&quot;DisplayOnError&quot;); }&#xa;{ }" finalstate="0" moore_outputs="" ypos="152" code="1" xpos="503" linewidth="1">ON_ERROR</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;QSay&quot;,&quot;pump running&quot;);}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="467" code="2" xpos="182" linewidth="1">DISPLAY_RUNNING</state>
+    <state pencolor="0" radius="40" description="OnEntry {post(&quot;QSay&quot;,&quot;battery low&quot;);  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="301" code="7" xpos="413" linewidth="1">DISPLAY_BATTERY_LOW</state>
+    <transition c1x="277.8866147964282" c2y="159.5792712760124" c1y="159.7870011500174" description="" straight="1" type="2" ypos="159.9947310240225" endx="463.6851125226272" xpos="184.9873659333287" endy="159.3715414020074" c2x="370.7858636595276">
+      <from>0</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">!motor&amp;&amp;buttonHeldPressed</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="237.1072526010859" c2y="264.2776926209188" c1y="228.5806892735396" description="" straight="1" type="2" ypos="192.8836859261604" endx="373.0131427636207" xpos="169.1543075198185" endy="299.974695968298" c2x="305.0601976823533">
+      <from>0</from>
+      <to>7</to>
+      <inputs default="0" any="0" invert="0">!normalCharge&amp;&amp;!buttonHelpPressed</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="170.8023559228901" c2y="351.9418995213384" c1y="275.1378618847304" description="" straight="1" type="2" ypos="198.3338242481224" endx="193.6887414239608" xpos="159.3591631723548" endy="428.7459371579465" c2x="182.2455486734254">
+      <from>0</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">motor</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="98.39067256819126" c2y="277.7308466415429" c1y="356.7232876970405" description="" straight="0" type="2" ypos="438.7157287525381" endx="131.7405601994976" xpos="153.7157287525381" endy="198.7384055860453" c2x="100.0656163838445">
+      <from>2</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">timeout(3000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="328.179257999478" c2y="204.6497941379972" c1y="233.7236143327738" description="" straight="1" type="2" ypos="262.7974345275505" endx="182.2497111882302" xpos="401.1440314051019" endy="175.5759739432205" c2x="255.2144845938541">
+      <from>7</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">normalCharge&amp;&amp;timeout(3000000)</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>
