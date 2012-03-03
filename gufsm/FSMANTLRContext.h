@@ -156,6 +156,15 @@ namespace FSM
                 }
                 
 
+                /**
+                 * check if name is an external variable name
+                 */
+                bool name_is_external_variable(const std::string &name)
+                {
+                        return name.substr(0,2) == "E$";
+                }
+                
+                
             /** get internal variable type */
             DATA_TYPES theVariableType(const std::string &name)
             {

@@ -125,8 +125,7 @@ void ANTLRContext::take_snapshot()
              i != variables().end(); i++ )
         {
                 const std::pair<std::string, int> &p = *i;
-                if (p.first.find('$') != std::string::npos)
-                        continue;       // ignore internal vars
-                set_variable(p.first, wbIntValue(whiteboard(), p.first));
+                if (name_is_external_variable(p.first))
+                        set_variable(p.first, wbIntValue(whiteboard(), visible_variable_name_for_extern(p.first)));
         }
 }
