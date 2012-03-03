@@ -35,7 +35,7 @@
       <inputs default="0" any="0" invert="0">!batteriesConnected</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="424.641037920137" c2y="106.8640171500668" c1y="113.0159271239027" description="" straight="1" type="2" ypos="119.1678370977386" endx="334.2200031607293" xpos="469.8515552998409" endy="100.7121071762309" c2x="379.4305205404332">
+    <transition c1x="424.6410379201371" c2y="106.8640171500668" c1y="113.0159271239027" description="" straight="1" type="2" ypos="119.1678370977386" endx="334.2200031607293" xpos="469.8515552998409" endy="100.7121071762309" c2x="379.4305205404332">
       <from>2</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">1</inputs>
@@ -47,7 +47,7 @@
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="466.27598209606" c2y="45.82282244675155" c1y="48.23619774301239" description="" straight="1" type="2" ypos="50.64957303927323" endx="744.4753037683156" xpos="327.1763212599322" endy="43.40944715049071" c2x="605.3756429321878">
+    <transition c1x="466.27598209606" c2y="45.82282244675156" c1y="48.2361977430124" description="" straight="1" type="2" ypos="50.64957303927323" endx="744.4753037683156" xpos="327.1763212599322" endy="43.40944715049073" c2x="605.3756429321878">
       <from>4</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">normalCharge&amp;&amp;!airOnLine&amp;&amp;!blockageInLine&amp;&amp;volumeNormal&amp;&amp;ssbuttonHelPressed</inputs>
