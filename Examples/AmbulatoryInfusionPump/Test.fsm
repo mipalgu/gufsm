@@ -7,7 +7,7 @@
     <outputnames></outputnames>
     <itransition ypos="100" endx="144" xpos="84" endy="100"/>
     <state pencolor="0" radius="40" description="OnEntry {change=0;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="100" code="0" xpos="184" linewidth="1">INIT</state>
-    <state pencolor="0" radius="40" description="OnEntry {post(&quot;QSay&quot;,&quot;no&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="239" code="1" xpos="606" linewidth="1">NO_CHANGE</state>
+    <state pencolor="0" radius="40" description="OnEntry {post(&quot;QSay&quot;,&quot;no&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="239" code="1" xpos="609" linewidth="1">NO_CHANGE</state>
     <state pencolor="0" radius="40" description="OnEntry {change=1;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="105" code="2" xpos="502" linewidth="1">CHANGE</state>
     <state pencolor="0" radius="40" description="OnEntry {post(&quot;QSay&quot;,&quot;change&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="244" code="3" xpos="418" linewidth="1">SAY_CHANGE</state>
     <transition c1x="303.4115878656314" c2y="100.5981103345026" c1y="100.6134817119991" description="" straight="1" type="2" ypos="100.6288530894956" endx="462.2446506130552" xpos="223.9950564919195" endy="100.5827389570061" c2x="382.8281192393433">
@@ -16,19 +16,19 @@
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="398.6497418452398" c2y="300.4092363486673" c1y="413.447624417579" description="" straight="0" type="2" ypos="226.4860124864909" endx="176.933437488249" xpos="568.0078940237352" endy="139.3708482797554" c2x="179.2915896667444">
+    <transition c1x="401.6497418452398" c2y="300.4092363486673" c1y="413.447624417579" description="" straight="0" type="2" ypos="226.4860124864909" endx="176.933437488249" xpos="571.0078940237352" endy="139.3708482797554" c2x="179.2915896667444">
       <from>1</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="470.4717624628059" c2y="189.274548296925" c1y="164.9193606884618" description="" straight="1" type="2" ypos="140.5641730799987" endx="444.0316549382387" xpos="483.6918162250894" endy="213.6297359053881" c2x="457.2517087005223">
+    <transition c1x="470.4717624628058" c2y="189.274548296925" c1y="164.9193606884618" description="" straight="1" type="2" ypos="140.5641730799987" endx="444.0316549382387" xpos="483.6918162250894" endy="213.6297359053881" c2x="457.2517087005223">
       <from>2</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">change</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="543.5379415547707" c2y="184.0107342865698" c1y="161.1312224913178" description="" straight="1" type="2" ypos="138.2517106960658" endx="582.1470399464963" xpos="524.2333923589078" endy="206.8902460818219" c2x="562.8424907506335">
+    <transition c1x="544.5379415547707" c2y="184.0107342865698" c1y="161.1312224913178" description="" straight="1" type="2" ypos="138.2517106960658" endx="585.1470399464963" xpos="524.2333923589078" endy="206.8902460818219" c2x="564.8424907506335">
       <from>2</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">!change</inputs>

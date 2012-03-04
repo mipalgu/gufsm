@@ -10,7 +10,7 @@
     <state pencolor="0" radius="40" description="OnEntry {motor=1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="82" code="1" xpos="755" linewidth="1">RUNNING</state>
     <state pencolor="0" radius="40" description="OnEntry {dossageInterrupted=1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="134" code="2" xpos="507" linewidth="1">RECALCULATING</state>
     <state pencolor="0" radius="40" description="OnEntry {fireTimeBeeper=1;  dossageInterrupted=0; }&#xa;OnExit {}&#xa;{} &#xa;" finalstate="0" moore_outputs="" ypos="235" code="3" xpos="508" linewidth="1">DOSAGE_COMPLETE</state>
-    <state pencolor="0" radius="40" description="OnEntry {}&#xa;OnExit{ }&#xa;{} &#xa;" finalstate="0" moore_outputs="" ypos="80" code="4" xpos="300" linewidth="1">NOT_RUNNING</state>
+    <state pencolor="0" radius="40" description="OnEntry {extern airOnLine; extern blockageInLine; }&#xa;OnExit{ }&#xa;{} &#xa;" finalstate="0" moore_outputs="" ypos="80" code="4" xpos="300" linewidth="1">NOT_RUNNING</state>
     <transition c1x="388.7784405510064" c2y="211.7975134173118" c1y="306.9983147717064" description="" straight="1" type="2" ypos="402.199116126101" endx="283.8543917369483" xpos="441.2404649580355" endy="116.5967120629173" c2x="336.3164161439773">
       <from>0</from>
       <to>4</to>
@@ -29,7 +29,7 @@
       <inputs default="0" any="0" invert="0">timeLeft&lt;1</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="679.4546277616953" c2y="331.3395410369689" c1y="226.1031225817234" description="" straight="1" type="2" ypos="120.8667041264779" endx="509.4557569532857" xpos="764.4540631659" endy="436.5759594922143" c2x="594.4551923574905">
+    <transition c1x="679.4546277616953" c2y="331.3395410369689" c1y="226.1031225817234" description="" straight="1" type="2" ypos="120.8667041264779" endx="509.4557569532857" xpos="764.4540631659" endy="436.5759594922143" c2x="594.4551923574904">
       <from>1</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">!batteriesConnected</inputs>
