@@ -8,7 +8,7 @@
     <itransition ypos="100" endx="140" xpos="80" endy="100"/>
     <state pencolor="0" radius="40" description="OnEntry{ int currentTime; extern  buttonPushed; extern doorOpen; currentTime=0;&#xa;   }&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="100" code="1" xpos="180" linewidth="1">INIT</state>
     <state pencolor="0" radius="40" description="OnEntry {  timeLeft = 0 &lt; currentTime; }&#xa;OnExit{}&#xa;{ }" finalstate="0" moore_outputs="" ypos="90" code="2" xpos="410" linewidth="1">TEST</state>
-    <state pencolor="0" radius="40" description="OnEntry {currentTime=30+currentTime;}&#xa;OnExit{timeLeft=1;}&#xa;{}" finalstate="0" moore_outputs="" ypos="110" code="3" xpos="680" linewidth="1">ADD_TIME</state>
+    <state pencolor="0" radius="40" description="OnEntry {currentTime=3+currentTime;}&#xa;OnExit{timeLeft=1;}&#xa;{}" finalstate="0" moore_outputs="" ypos="110" code="3" xpos="680" linewidth="1">ADD_TIME</state>
     <state pencolor="0" radius="40" description="OnEntry { currentTime=currentTime-1; print_state_name(); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="310" code="4" xpos="470" linewidth="1">DECREMENT</state>
     <transition c1x="264.3357293100674" c2y="72.36390275022687" c1y="72.6163493204521" description="" straight="1" type="2" ypos="72.86879589067735" endx="374.2229123600034" xpos="209.3921377850995" endy="72.11145618000162" c2x="319.2793208350354">
       <from>1</from>
@@ -25,7 +25,7 @@
     <transition c1x="507.4756370744936" c2y="256.0451198150708" c1y="156.3697668364426" description="" straight="0" type="2" ypos="120.9926132277332" endx="499.7827776258596" xpos="435.2875053201406" endy="283.298199369919" c2x="536.4465464547063">
       <from>2</from>
       <to>4</to>
-      <inputs default="0" any="0" invert="0">!doorOpen &amp;&amp; timeLeft &amp;&amp; timeout(1000000)</inputs>
+      <inputs default="0" any="0" invert="0">!doorOpen&amp;&amp;timeLeft&amp;&amp;1</inputs>
       <outputs></outputs>
     </transition>
     <transition c1x="574.9667275757384" c2y="108.7225234855653" c1y="106.4811499445572" description="" straight="1" type="2" ypos="104.2397764035491" endx="444.0663326681818" xpos="640.4169250295168" endy="110.9638970265734" c2x="509.5165301219602">
