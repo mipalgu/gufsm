@@ -6,10 +6,10 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="121" endx="138" xpos="78" endy="121"/>
-    <state pencolor="0" radius="40" description="OnEntry{ int sound; sound=0;}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="121" code="2" xpos="178" linewidth="1">OFF</state>
+    <state pencolor="0" radius="40" description="OnEntry{  sound=0;}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="121" code="2" xpos="178" linewidth="1">OFF</state>
     <state pencolor="0" radius="40" description="OnEntry {}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="110" code="0" xpos="463" linewidth="1">ARMED</state>
     <state pencolor="0" radius="40" description="OnEntry{ sound=1; post(&quot;QSay&quot;,&quot;DIIIIING, DIIIING&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="304" code="1" xpos="328" linewidth="1">RINGING</state>
-    <transition c1x="280.6690626434008" c2y="92.69723608356023" c1y="93.2830159871188" description="" straight="1" type="2" ypos="93.86879589067736" endx="427.2229123600034" xpos="207.3921377850995" endy="92.11145618000167" c2x="353.9459875017021">
+    <transition c1x="280.6690626434008" c2y="92.69723608356021" c1y="93.28301598711877" description="" straight="1" type="2" ypos="93.86879589067735" endx="427.2229123600034" xpos="207.3921377850995" endy="92.11145618000164" c2x="353.9459875017021">
       <from>2</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">timeLeft</inputs>
