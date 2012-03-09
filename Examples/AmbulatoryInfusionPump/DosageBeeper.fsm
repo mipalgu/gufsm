@@ -1,0 +1,51 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vladimir Estivill-Castro" description="" version="1" name="Beeper" arrowtype="1" numbits="3" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="76" endx="219" xpos="159" endy="76"/>
+    <state pencolor="0" radius="40" description="OnEntry {int times; times=0; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="76" code="0" xpos="259" linewidth="1">SILENT</state>
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="78" code="1" xpos="626" linewidth="1">Armed</state>
+    <state pencolor="0" radius="40" description="OnEntry {post(&quot;QSay&quot;,&quot;dossage applied&quot;);  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="217" code="2" xpos="450" linewidth="1">BEEPING_AT_END</state>
+    <state pencolor="0" radius="40" description="OnEntry {post(&quot;QSay&quot;,&quot;starting&quot;);  }&#xa;OnExit { }&#xa;{ post(&quot;QSay&quot;,&quot;starting&quot;);  }" finalstate="0" moore_outputs="" ypos="348" code="3" xpos="506" linewidth="1">BEEPING_AT_START</state>
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="342" code="4" xpos="269" linewidth="1">WAIT</state>
+    <transition c1x="394.8727166362811" c2y="72.9516282073743" c1y="75.1868268220409" description="" straight="1" type="2" ypos="77.4220254367075" endx="586.6687198006216" xpos="298.9747150541108" endy="70.7164295927077" c2x="490.7707182184513">
+      <from>0</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">batteriesConnected</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="575.0870436605221" c2y="160.4500596113663" c1y="139.1942368697914" description="" straight="1" type="2" ypos="117.9384141282165" endx="468.8235294117647" xpos="628.2188007849008" endy="181.7058823529412" c2x="521.9552865361434">
+      <from>1</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">fireTimeBeeper</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="609.8741727474639" c2y="255.9444219715137" c1y="184.6479693126981" description="" straight="1" type="2" ypos="113.3515166538825" endx="540.1915006088692" xpos="644.7155088167613" endy="327.2408746303294" c2x="575.0328366781665">
+      <from>1</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">beeperStartSignal</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="367.697681011431" c2y="142.2956017447604" c1y="175.3091917160071" description="" straight="1" type="2" ypos="208.3227816872538" endx="281.1880078490092" xpos="410.9525175926419" endy="109.2820117735137" c2x="324.4428444302201">
+      <from>2</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">!fireTimeBeeper</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="413.4813430766823" c2y="348.1934064849308" c1y="347.5905363095557" description="" straight="1" type="2" ypos="346.9876661341806" endx="308.4184046297739" xpos="466.0128123001365" endy="348.7962766603059" c2x="360.9498738532281">
+      <from>3</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">timeout(3000000)||aborted</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="255.4566428352216" c2y="176.1501907106065" c1y="239.4349664156903" description="" straight="1" type="2" ypos="302.7197421207741" endx="243.4777199976747" xpos="261.446104253995" endy="112.8654150055226" c2x="249.4671814164481">
+      <from>4</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">!beeperStartSignal</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>
