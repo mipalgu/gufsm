@@ -6,7 +6,7 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="164" endx="151" xpos="91" endy="164"/>
-    <state pencolor="0" radius="40" description="OnEntry {low=1; signalMotorOn=0; print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="164" code="0" xpos="191" linewidth="1">PressClosed</state>
+    <state pencolor="0" radius="40" description="OnEntry {extern PowerOn; low=1; signalMotorOn=0; print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="164" code="0" xpos="191" linewidth="1">PressClosed</state>
     <state pencolor="0" radius="40" description="OnEntry {signalMotorOn=1; print_state_name();}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="159" code="1" xpos="423" linewidth="1">OpeningPress</state>
     <state pencolor="0" radius="40" description="OnEntry{print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="147" code="2" xpos="703" linewidth="1">Open</state>
     <state pencolor="0" radius="40" description="OnEntry{signalMotorOn=0;print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="371" code="3" xpos="536" linewidth="1">Closing</state>
