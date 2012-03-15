@@ -6,17 +6,17 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="126" endx="140" xpos="80" endy="126"/>
-    <state pencolor="0" radius="40" description="OnEntry {extern low;&#xa; extern gunxt_valueRotationSensorA;&#xa; low=1;print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="126" code="0" xpos="180" linewidth="1">IndicatingPressLOWerThanPONR</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa; extern gunxt_valueRotationSensorA;&#xa; low=1;print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="126" code="0" xpos="180" linewidth="1">IndicatingPressLOWerThanPONR</state>
     <state pencolor="0" radius="40" description="OnEntry {low=0; print_state_name();&#xa; }&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="130" code="1" xpos="715" linewidth="1">IndicatingPressHIGHerThanPONR</state>
     <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="118" code="4" xpos="469" linewidth="1">WAIT</state>
     <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="366" code="3" xpos="477" linewidth="1">WAIT</state>
-    <transition c1x="289.5026880342024" c2y="124.8770070993365" c1y="121.0482596472292" description="" straight="1" type="2" ypos="117.219512195122" endx="430.4592836148024" xpos="219.0243902439024" endy="128.7057545514438" c2x="359.9809858245024">
+    <transition c1x="289.5026880342024" c2y="124.8770070993365" c1y="121.0482596472293" description="" straight="1" type="2" ypos="117.219512195122" endx="430.4592836148024" xpos="219.0243902439024" endy="128.7057545514438" c2x="359.9809858245024">
       <from>0</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">gunxt_valueRotationSensorA>1400</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="654.2374411360055" c2y="293.8979055382293" c1y="231.497236077912" description="" straight="1" type="2" ypos="169.0965666175947" endx="515.8057000058133" xpos="723.4533117011016" endy="356.2985749985467" c2x="585.0215705709094">
+    <transition c1x="654.2374411360055" c2y="293.8979055382294" c1y="231.497236077912" description="" straight="1" type="2" ypos="169.0965666175947" endx="515.8057000058133" xpos="723.4533117011016" endy="356.2985749985467" c2x="585.0215705709094">
       <from>1</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">gunxt_valueRotationSensorA&lt;1400</inputs>
