@@ -13,13 +13,13 @@
     <transition c1x="289.5026880342024" c2y="124.8770070993365" c1y="121.0482596472292" description="" straight="1" type="2" ypos="117.219512195122" endx="430.4592836148024" xpos="219.0243902439024" endy="128.7057545514438" c2x="359.9809858245024">
       <from>0</from>
       <to>4</to>
-      <inputs default="0" any="0" invert="0">gunxt_valueRotationSensorA>-600</inputs>
+      <inputs default="0" any="0" invert="0">gunxt_valueRotationSensorA>1400</inputs>
       <outputs></outputs>
     </transition>
     <transition c1x="654.2374411360055" c2y="293.8979055382293" c1y="231.497236077912" description="" straight="1" type="2" ypos="169.0965666175947" endx="515.8057000058133" xpos="723.4533117011016" endy="356.2985749985467" c2x="585.0215705709094">
       <from>1</from>
       <to>3</to>
-      <inputs default="0" any="0" invert="0">gunxt_valueRotationSensorA&lt;-600</inputs>
+      <inputs default="0" any="0" invert="0">gunxt_valueRotationSensorA&lt;1400</inputs>
       <outputs></outputs>
     </transition>
     <transition c1x="564.2359106411134" c2y="124.8613181153809" c1y="119.7226362307617" description="" straight="1" type="2" ypos="114.5839543461426" endx="675" xpos="508.8538659616701" endy="130" c2x="619.6179553205567">
