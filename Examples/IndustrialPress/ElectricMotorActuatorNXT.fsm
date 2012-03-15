@@ -9,10 +9,10 @@
     <state pencolor="0" radius="40" description="OnEntry {extern signalMotorOn;&#xa; extern gunxt_valueTouchSensor1;&#xa; extern gunxt_valueTouchSensor2;&#xa; extern gunxt_valueRotationSensorA;&#xa; signalMotorOn=0;&#xa; post(&quot;gunxt_startRotationSensor&quot;,&quot;A&quot;);&#xa; post(&quot;gunxt_startTouchSensor&quot;,&quot;1&quot;);&#xa; post(&quot;gunxt_startTouchSensor&quot;,&quot;2&quot;);&#xa;    print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="114" code="0" xpos="146" linewidth="1">FALSEINIT</state>
     <state pencolor="0" radius="40" description="OnEntry {motorOn=1; &#xa; print_state_name();}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="187" code="1" xpos="834" linewidth="1">ElectricMotorOn</state>
     <state pencolor="0" radius="40" description="OnEntry {motorOn=0; &#xa; post(&quot;gunxt_runBackwardMotor&quot;,&quot;A,10&quot;); print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="190" code="4" xpos="492" linewidth="1">ElectricMotorOff</state>
-    <state pencolor="0" radius="40" description="OnEntry{ post(&quot;gunxt_stopMotor&quot;,&quot;A&quot;);&#xa; post(&quot;gunxt_startRotationSensor&quot;,&quot;A&quot;);&#xa;   print_state_name();  }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="98" code="3" xpos="1035" linewidth="1">TEST_UP</state>
+    <state pencolor="0" radius="40" description="OnEntry{ post(&quot;gunxt_stopMotor&quot;,&quot;A&quot;);&#xa;   print_state_name();  }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="98" code="3" xpos="1035" linewidth="1">TEST_UP</state>
     <state pencolor="0" radius="40" description="OnEntry {motorOn=1; &#xa; post(&quot;gunxt_runForwardMotor&quot;,&quot;A,10&quot;);&#xa; print_state_name();}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="367" code="2" xpos="1009" linewidth="1">MOVE_UP</state>
     <state pencolor="0" radius="40" description="OnEntry {motorOn=0; &#xa; post(&quot;gunxt_runBackwardMotor&quot;,&quot;A,40&quot;); print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="430" code="5" xpos="399" linewidth="1">MOVE_DOWN</state>
-    <state pencolor="0" radius="40" description="OnEntry{ post(&quot;gunxt_stopMotor&quot;,&quot;A&quot;);&#xa;   print_state_name();  }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="54" code="6" xpos="584" linewidth="1">TEST_DOWN</state>
+    <state pencolor="0" radius="40" description="OnEntry{ post(&quot;gunxt_stopMotor&quot;,&quot;A&quot;);&#xa;  post(&quot;gunxt_startRotationSensor&quot;,&quot;A&quot;);&#xa;   print_state_name();  }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="54" code="6" xpos="584" linewidth="1">TEST_DOWN</state>
     <transition c1x="273.8789619459082" c2y="166.9487008534868" c1y="145.32506292747" description="" straight="1" type="2" ypos="123.7014250014533" endx="452.025485826098" xpos="184.8057000058133" endy="188.5723387795035" c2x="362.9522238860031">
       <from>0</from>
       <to>4</to>
@@ -49,7 +49,7 @@
       <inputs default="0" any="0" invert="0">!gunxt_valueTouchSensor2</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="506.788145296962" c2y="89.45721922347656" c1y="119.8278658075385" description="" straight="1" type="2" ypos="150.1985123916004" endx="544.3247334125659" xpos="488.0198512391601" endy="59.08657263941462" c2x="525.5564393547639">
+    <transition c1x="506.788145296962" c2y="89.45721922347653" c1y="119.8278658075385" description="" straight="1" type="2" ypos="150.1985123916004" endx="544.3247334125659" xpos="488.0198512391601" endy="59.08657263941459" c2x="525.5564393547639">
       <from>4</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">gunxt_valueTouchSensor2</inputs>
