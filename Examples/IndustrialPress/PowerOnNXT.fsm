@@ -23,6 +23,12 @@
       <inputs default="0" any="0" invert="0">gunxt_valueTouchSensor4</inputs>
       <outputs></outputs>
     </transition>
+    <transition c1x="576.4070767433614" c2y="298.2357395519945" c1y="213.6895230786801" description="" straight="1" type="2" ypos="129.1433066053657" endx="399.311739665052" xpos="664.9547452825161" endy="382.7819560253089" c2x="487.8594082042067">
+      <from>1</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">!PowerOn</inputs>
+      <outputs></outputs>
+    </transition>
     <transition c1x="371.2642660093115" c2y="225.3184913123091" c1y="297.6868890695043" description="" straight="1" type="2" ypos="370.0552868266996" endx="377.9975046777557" xpos="367.8976466750894" endy="152.9500935551138" c2x="374.6308853435336">
       <from>2</from>
       <to>4</to>
