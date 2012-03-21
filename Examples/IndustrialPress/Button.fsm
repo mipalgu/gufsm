@@ -6,9 +6,9 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="164" endx="151" xpos="91" endy="164"/>
-    <state pencolor="0" radius="40" description="OnEntry {buttonPushed=0;print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="164" code="0" xpos="191" linewidth="1">ButtonIsReleased</state>
+    <state pencolor="0" radius="40" description="OnEntry { operatorPushingButton; buttonPushed=0;print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="164" code="0" xpos="191" linewidth="1">ButtonIsReleased</state>
     <state pencolor="0" radius="40" description="OnEntry {buttonPushed=1; print_state_name();}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="156" code="1" xpos="500" linewidth="1">ButtonPressed</state>
-    <transition c1x="296.7238421832391" c2y="121.0661420912034" c1y="123.3623439200206" description="" straight="1" type="2" ypos="125.6585457488379" endx="485.3739051030802" xpos="202.3988107233185" endy="118.7699402623861" c2x="391.0488736431597">
+    <transition c1x="296.7238421832391" c2y="121.0661420912034" c1y="123.3623439200206" description="" straight="1" type="2" ypos="125.6585457488379" endx="485.3739051030802" xpos="202.3988107233185" endy="118.7699402623861" c2x="391.0488736431596">
       <from>0</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">operatorPushingButton</inputs>

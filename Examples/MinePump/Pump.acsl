@@ -1,5 +1,8 @@
 2	NOT_RUNNING
-OnEntry{ motor=0;
+OnEntry{ extern highWaterSensorOn;  extern lowWaterSensorOn;
+ extern operatorButtonOn; 
+ extern supervisorButtonOn;
+ extern methaneSensorHigh; motor=0;
  post("QSay","stop"); }
 OnExit {}
 {}
