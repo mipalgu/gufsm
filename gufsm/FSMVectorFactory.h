@@ -70,6 +70,7 @@ namespace FSM
 
         class StateMachineVectorFactory
         {
+            protected:
                 StateMachineVector *_fsms;      /// delivered FSMs
                 ANTLRContext *_context;         /// factory context
 
@@ -79,6 +80,9 @@ namespace FSM
         public:
                 /** constructor that builds vector of machines */
                 StateMachineVectorFactory(ANTLRContext *context, const std::vector<std::string> &names_of_machines_to_build);
+            
+                /** Default constructor. */
+                StateMachineVectorFactory();
 
                 /** destructore (unsubscribes from whiteboard) */
                 virtual ~StateMachineVectorFactory();
@@ -87,7 +91,7 @@ namespace FSM
                 StateMachineVector *fsms() { return _fsms; }
 
                 /** create a new machine with a given name and index */
-                SuspensibleMachine *addMachine(std::string name, int index=-1, bool resume=false);
+                virtual SuspensibleMachine *addMachine(std::string name, int index=-1, bool resume=false);
 
                 /** execute state machines */
                 void execute(void);

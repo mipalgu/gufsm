@@ -113,7 +113,8 @@ int walk_parse_tree(pANTLR3_RECOGNIZER_SHARED_STATE state,
                         free((void *) content);
                         if (rv < 0)
                                 return rv;
-                }
+                } else 
+                {}
 	}
         else                                            /* non-nil node */
 	{

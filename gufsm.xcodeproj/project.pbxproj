@@ -702,7 +702,7 @@
 		F1AFCD28147B56FA00C975DC /* FSMachineVector.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMachineVector.cc; sourceTree = "<group>"; };
 		F1AFCD2C147B573700C975DC /* FSMachineVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMachineVector.h; sourceTree = "<group>"; };
 		F1AFCD2D147B8F4200C975DC /* FSMWBSubMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMWBSubMachine.h; sourceTree = "<group>"; };
-		F1AFCD2E147B8F7800C975DC /* FSMWBSubMachine.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMWBSubMachine.cc; sourceTree = "<group>"; };
+		F1AFCD2E147B8F7800C975DC /* FSMWBSubMachine.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMWBSubMachine.cc; path = ../../gufsm/gufsm/FSMWBSubMachine.cc; sourceTree = "<group>"; };
 		F1F8EAC31480B6BE008AB889 /* FSMANTLRExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMANTLRExpression.h; sourceTree = "<group>"; };
 		F1F8EAC61480B732008AB889 /* FSMANTLRExpression.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRExpression.cc; sourceTree = "<group>"; };
 		F1F8EAC91480B98E008AB889 /* FSMANTLRContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMANTLRContext.h; sourceTree = "<group>"; };
@@ -810,6 +810,7 @@
 		F1284D0514A6CAA800C0247E /* SimpleWhiteboardTest */ = {
 			isa = PBXGroup;
 			children = (
+				F1AFCD2E147B8F7800C975DC /* FSMWBSubMachine.cc */,
 				F1284D0614A6CAA800C0247E /* InfoPlist.strings */,
 				F1284D0814A6CAA800C0247E /* SimpleWhiteboardTest-Info.plist */,
 				F1284D0914A6CAA800C0247E /* SimpleWhiteboardTest-Prefix.pch */,
@@ -1393,7 +1394,6 @@
 				F16CC30E142C0F62001F788B /* FSMState.h */,
 				F191E604142D9B970014AF84 /* FSMSuspensibleMachine.cc */,
 				F191E603142D9A2D0014AF84 /* FSMSuspensibleMachine.h */,
-				F1AFCD2E147B8F7800C975DC /* FSMWBSubMachine.cc */,
 				F1AFCD2D147B8F4200C975DC /* FSMWBSubMachine.h */,
 				F19C2B96142C7B37007CFC83 /* FSMTransition.h */,
 				F12DCDD71484BAD100461AD6 /* FSMTransition.cc */,
@@ -1931,8 +1931,8 @@
 				F1AFCD2F147B8F7800C975DC /* FSMWBSubMachine.cc in Sources */,
 				F1A9E7D2147F76C200C852FC /* ActivityFactory.cpp in Sources */,
 				F1A9E7D4147F76C200C852FC /* parser_walk.c in Sources */,
-				F1A9E7DA147F79E400C852FC /* FSMVectorFactory.cc in Sources */,
 				F1A9E7DE147F7C4600C852FC /* FSMWBSubMachineFactory.cc in Sources */,
+				F1A9E7DA147F79E400C852FC /* FSMVectorFactory.cc in Sources */,
 				F1A9E8471480B10700C852FC /* FSMANTLRAction.cc in Sources */,
 				F1F8EAC71480B732008AB889 /* FSMANTLRExpression.cc in Sources */,
 				F12DCCE414830A9D00461AD6 /* TransitionFactory.cpp in Sources */,

@@ -80,6 +80,10 @@ WBSubMachineFactory::WBSubMachineFactory(WBContext *context, const string &machi
         machine()->initialise();
 }
 
+WBSubMachineFactory::WBSubMachineFactory()
+{
+        _machine = NULL;
+}
 
 bool WBSubMachineFactory::determineSuspendState(const char *name)
 {

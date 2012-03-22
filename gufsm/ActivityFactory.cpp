@@ -347,6 +347,11 @@ ActivityFactory::ActivityFactory(FSM::Machine *machine, const char *filename,
         _named_actions(func), _currentAction(NULL), _currentStage(STAGE_ON_ENTRY),
         _currentState(NULL)
 {
+        init(machine, filename, func);
+}
+
+void ActivityFactory::init(FSM::Machine *machine, const char *filename, map<std::string, Action *> *func)
+{
         if (parse_actions(filename, NULL, activity_push, activity_pop, this) == -1)
                 set_error(true);
 }
