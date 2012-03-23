@@ -71,7 +71,6 @@ namespace FSM
 
 class ActivityFactory
 {
-protected:
         FSM::Machine *_fsm;
         std::map<std::string, FSM::Action *> *_named_actions;
         const char *_file;
@@ -82,9 +81,6 @@ protected:
         FSM::ANTLRAction *_currentAction;
 
         bool _error;
-        
-        /* Used to move code out of the constructor. */
-        void init(FSM::Machine *machine, const char *filename, std::map<std::string, FSM::Action *> *func);
         
 public:
         ActivityFactory(FSM::Machine *machine, const char *filename,

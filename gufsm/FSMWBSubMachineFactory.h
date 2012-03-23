@@ -67,14 +67,10 @@ namespace FSM
 
         class WBSubMachineFactory
         {
-        protected:
                 WBSubMachine *_machine; /// built state machine
         public:
                 /** constructor that builds vector of machines */
                 WBSubMachineFactory(WBContext *context, const std::string &machine_name, int mid=0);
-            
-                /** Default. */
-                WBSubMachineFactory();
 
                 /** getter */
                 WBSubMachine *machine() { return _machine; }
