@@ -1,0 +1,83 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vlad Estivill-Castro" description="" version="1" name="FSM" arrowtype="1" numbits="3" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="114" endx="106" xpos="46" endy="114"/>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa; extern gunxt_valueTouchSensor1;&#xa; extern gunxt_valueTouchSensor2;&#xa; extern gunxt_valueRotationSensorA;&#xa; signalMotorOn=0;&#xa; post(&quot;gunxt_startRotationSensor&quot;,&quot;A&quot;);&#xa; post(&quot;gunxt_startTouchSensor&quot;,&quot;1&quot;);&#xa; post(&quot;gunxt_startTouchSensor&quot;,&quot;2&quot;);&#xa;    print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="114" code="0" xpos="146" linewidth="1">FALSEINIT</state>
+    <state pencolor="0" radius="40" description="OnEntry {motorOn=1; &#xa; print_state_name();}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="187" code="1" xpos="834" linewidth="1">ElectricMotorOn</state>
+    <state pencolor="0" radius="40" description="OnEntry {motorOn=0; &#xa; post(&quot;gunxt_runBackwardMotor&quot;,&quot;A,10&quot;); print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="190" code="4" xpos="492" linewidth="1">ElectricMotorOff</state>
+    <state pencolor="0" radius="40" description="OnEntry{ post(&quot;gunxt_stopMotor&quot;,&quot;A&quot;);&#xa;   print_state_name();  }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="98" code="3" xpos="1035" linewidth="1">TEST_UP</state>
+    <state pencolor="0" radius="40" description="OnEntry {motorOn=1; &#xa; post(&quot;gunxt_runForwardMotor&quot;,&quot;A,10&quot;);&#xa; print_state_name();}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="367" code="2" xpos="1009" linewidth="1">MOVE_UP</state>
+    <state pencolor="0" radius="40" description="OnEntry {motorOn=0; &#xa; post(&quot;gunxt_runBackwardMotor&quot;,&quot;A,40&quot;); print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="430" code="5" xpos="399" linewidth="1">MOVE_DOWN</state>
+    <state pencolor="0" radius="40" description="OnEntry{ post(&quot;gunxt_stopMotor&quot;,&quot;A&quot;);&#xa;  post(&quot;gunxt_startRotationSensor&quot;,&quot;A&quot;);&#xa;   print_state_name();  }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="54" code="6" xpos="584" linewidth="1">TEST_DOWN</state>
+    <transition c1x="273.8789619459082" c2y="166.9487008534868" c1y="145.32506292747" description="" straight="1" type="2" ypos="123.7014250014533" endx="452.025485826098" xpos="184.8057000058133" endy="188.5723387795035" c2x="362.9522238860031">
+      <from>0</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">timeout(2000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="710.9340257566117" c2y="209.4303677836209" c1y="210.6080696633909" description="" straight="1" type="2" ypos="211.7857715431608" endx="527.5926985125095" xpos="802.6046893786629" endy="208.252665903851" c2x="619.2633621345607">
+      <from>1</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">!signalMotorOn</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="914.4724509939894" c2y="123.5047801757854" c1y="154.8715067951492" description="" straight="1" type="2" ypos="186.2382334145131" endx="995.4318615058452" xpos="873.9927457380614" endy="92.13805355642151" c2x="954.9521562499173">
+      <from>1</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">gunxt_valueTouchSensor1</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="866.8360395538421" c2y="317.495166855963" c1y="270.0389237908523" description="" straight="1" type="2" ypos="222.5826807257415" endx="969.0524934609365" xpos="815.7278126002949" endy="364.9514099210737" c2x="917.9442665073893">
+      <from>1</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">!gunxt_valueTouchSensor1</inputs>
+      <outputs>4</outputs>
+    </transition>
+    <transition c1x="626.739682085415" c2y="159.4725191543766" c1y="169.1750980463672" description="" straight="1" type="2" ypos="178.8776769383577" endx="819.3739051030802" xpos="530.4225705765824" endy="149.7699402623861" c2x="723.0567935942477">
+      <from>4</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">signalMotorOn</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="437.5578699663872" c2y="336.0226293302768" c1y="278.0255850035935" description="" straight="1" type="2" ypos="220.0285406769102" endx="381.5238414905235" xpos="465.574884204319" endy="394.0196736569601" c2x="409.5408557284554">
+      <from>4</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">!gunxt_valueTouchSensor2</inputs>
+      <outputs>2</outputs>
+    </transition>
+    <transition c1x="506.7881452969621" c2y="89.45721922347653" c1y="119.8278658075385" description="" straight="1" type="2" ypos="150.1985123916004" endx="544.3247334125659" xpos="488.0198512391601" endy="59.08657263941459" c2x="525.5564393547641">
+      <from>4</from>
+      <to>6</to>
+      <inputs default="0" any="0" invert="0">gunxt_valueTouchSensor2</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="959.8797165633606" c2y="130.7363993351231" c1y="99.90108878469007" description="" straight="1" type="2" ypos="69.06577823425711" endx="864.877209424682" xpos="1007.3809701327" endy="161.571709885556" c2x="912.3784629940213">
+      <from>3</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="951.6698415684206" c2y="256.1523243481412" c1y="292.173312171164" description="" straight="1" type="2" ypos="328.1942999941867" endx="856.4123747081684" xpos="999.2985749985467" endy="220.1313365251185" c2x="904.0411081382945">
+      <from>2</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="448.3252554417014" c2y="280.4835217423144" c1y="337.1015815161886" description="" straight="1" type="2" ypos="393.7196412900627" endx="513.2868618087339" xpos="415.8444522581852" endy="223.8654619684402" c2x="480.8060586252176">
+      <from>5</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="581.7708760551958" c2y="135.5501856820591" c1y="108.9172284647605" description="" straight="1" type="2" ypos="82.2842712474619" endx="520.7440856706636" xpos="612.2842712474619" endy="162.1831428993577" c2x="551.2574808629297">
+      <from>6</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>
