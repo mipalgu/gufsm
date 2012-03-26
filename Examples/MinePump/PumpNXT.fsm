@@ -6,7 +6,7 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="120" endx="120" xpos="60" endy="120"/>
-    <state pencolor="0" radius="40" description="OnEntry{ extern highWaterSensorOn;  extern lowWaterSensorOn;&#xa; extern operatorButtonOn; &#xa; extern supervisorButtonOn;&#xa; extern methaneSensorHigh; &#xa;  post(&quot;gunxt_stopMotor&quot;,&quot;A&quot;);&#xa;  }&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="120" code="2" xpos="160" linewidth="1">NOT_RUNNING</state>
+    <state pencolor="0" radius="40" description="OnEntry{   extern lowWaterSensorOn;&#xa; extern operatorButtonOn; &#xa; extern supervisorButtonOn;&#xa; extern methaneSensorHigh; &#xa;  post(&quot;gunxt_stopMotor&quot;,&quot;A&quot;);&#xa;  }&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="120" code="2" xpos="160" linewidth="1">NOT_RUNNING</state>
     <state pencolor="0" radius="40" description="OnEntry {post(&quot;gunxt_runForwardMotor&quot;,&quot;A,100&quot;); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="114" code="0" xpos="725" linewidth="1">RUNNING</state>
     <transition c1x="356.0023959767341" c2y="95.03056941689353" c1y="93.94968265378544" description="" straight="1" type="2" ypos="92.86879589067735" endx="689.2229123600034" xpos="189.3921377850995" endy="96.11145618000162" c2x="522.6126541683687">
       <from>2</from>
