@@ -1,0 +1,49 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vlad Estivill-Castro" description="" version="1" name="FSM" arrowtype="1" numbits="2" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="100" endx="150" xpos="90" endy="100"/>
+    <state pencolor="0" radius="40" description="OnEntry { extern supervisorButtonOn; extern supervisorButtonOff; extern supervisorButtonInactive;  indicateOn=0; indicateOff=0;&#xa; print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="100" code="0" xpos="190" linewidth="1">INACTIVE</state>
+    <state pencolor="0" radius="40" description="OnEntry {indicateOff=1; &#xa; print_state_name();&#xa;   }&#xa;OnExit{ indicateOff=0;}&#xa;{}" finalstate="0" moore_outputs="" ypos="290" code="2" xpos="309" linewidth="1">INDICATE_OFF</state>
+    <state pencolor="0" radius="40" description="OnEntry {indicateOn=1; &#xa; print_state_name();&#xa;   }&#xa;OnExit{ indicateOn=0;}&#xa;{}" finalstate="0" moore_outputs="" ypos="100" code="1" xpos="590" linewidth="1">INDICATE_ON</state>
+    <transition c1x="335.7921998659455" c2y="77.77860486689798" c1y="79.08407764079782" description="" straight="1" type="2" ypos="80.38955041469764" endx="557.6505566278724" xpos="224.863021484982" endy="76.47313209299816" c2x="446.721378246909">
+      <from>0</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">supervisorButtonOn</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="239.5569177056031" c2y="214.8438034979511" c1y="172.5035336667017" description="" straight="1" type="2" ypos="130.1632638354522" endx="286.1282935324731" xpos="216.2712297921681" endy="257.1840733292005" c2x="262.8426056190381">
+      <from>0</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">supervisorButtonOff</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="241.9533012286263" c2y="186.1091661758362" c1y="232.5601605299705" description="" straight="1" type="2" ypos="279.0111548841049" endx="184.7818194971445" xpos="270.5390420943671" endy="139.6581718217018" c2x="213.3675603628854">
+      <from>2</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">supervisorButtonInactive</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="405.477157560678" c2y="171.9939791155481" c1y="212.837801867765" description="" straight="1" type="2" ypos="253.6816246199819" endx="564.9068184850942" xpos="325.7623270984699" endy="131.1501563633313" c2x="485.1919880228861">
+      <from>2</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">supervisorButtonOn</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="524.8358635685887" c2y="235.5195332644437" c1y="184.1871659456878" description="" straight="1" type="2" ypos="132.8547986269318" endx="348.8759259461388" xpos="612.8158323798137" endy="286.8519005831996" c2x="436.8558947573638">
+      <from>1</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">supervisorButtonOff</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="443.87594485664" c2y="112.4304283836543" c1y="112.211746126635" description="" straight="1" type="2" ypos="111.9930638696158" endx="227.9473319220206" xpos="551.8402513239498" endy="112.6491106406735" c2x="335.9116383893303">
+      <from>1</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">supervisorButtonInactive</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>
