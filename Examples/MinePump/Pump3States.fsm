@@ -1,23 +1,23 @@
 <?xml version='1.0'?>
 <!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
 <qfsmproject version="0.53" author="Qfsm">
-  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vladimir Estivill-Castro" description="" version="1" name="MicrowaveEngine" arrowtype="1" numbits="2" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="2">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vlad Estivill-Castro" description="" version="1" name="FSMtestvlad" arrowtype="1" numbits="2" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
-    <itransition ypos="120" endx="120" xpos="60" endy="120"/>
-    <state pencolor="0" radius="40" description="OnEntry{ extern highWaterSensorOn;  extern lowWaterSensorOn;&#xa; extern operatorButtonOn; &#xa; &#xa; extern methaneSensorHigh; motor=0;&#xa; post(&quot;QSay&quot;,&quot;stop&quot;); }&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="120" code="2" xpos="160" linewidth="1">NOT_RUNNING</state>
-    <state pencolor="0" radius="40" description="OnEntry {motor=1;  post(&quot;QSay&quot;,&quot;on&quot;);  }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="110" code="0" xpos="793" linewidth="1">RUNNING</state>
-    <transition c1x="378.6690626434008" c2y="92.36390275022687" c1y="92.6163493204521" description="" straight="1" type="2" ypos="92.86879589067735" endx="757.2229123600034" xpos="189.3921377850995" endy="92.11145618000162" c2x="567.9459875017021">
-      <from>2</from>
-      <to>0</to>
-      <inputs default="0" any="0" invert="0">(indicateOn||(!lowWaterSensorOn&amp;&amp;(highWaterSensorOn||operatorButtonOn)))&amp;&amp;!indicateOff&amp;&amp;!methaneSensorHigh</inputs>
-      <outputs></outputs>
-    </transition>
-    <transition c1x="569.5672651268104" c2y="141.9558080270961" c1y="136.9614617467648" description="" straight="1" type="2" ypos="131.9671154664336" endx="189.5582337565332" xpos="759.5717808119491" endy="146.9501543074273" c2x="379.5627494416718">
+    <itransition ypos="110" endx="100" xpos="40" endy="110"/>
+    <state pencolor="0" radius="40" description="OnEntry{ extern indicateOn;  extern indicateOff;  extern indicateInactive; extern highWaterSensorOn;  extern lowWaterSensorOn; extern operatorButtonOn;  extern methaneSensorHigh; motor=0;   post(&quot;QSay&quot;,&quot;stop&quot;);  }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="110" code="0" xpos="140" linewidth="1">START</state>
+    <state pencolor="0" radius="40" description="OnEntry {motor=1;  post(&quot;QSay&quot;,&quot;on&quot;);  }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="109" code="2" xpos="612" linewidth="1">RUNNING</state>
+    <transition c1x="311.4136021808967" c2y="100.7976451736613" c1y="105.8547301478251" description="" straight="1" type="2" ypos="110.9118151219888" endx="574.2615944139548" xpos="179.9896060643677" endy="95.74056019949759" c2x="442.8375982974258">
       <from>0</from>
       <to>2</to>
-      <inputs default="0" any="0" invert="0">lowWaterSensorOn||(!highWaterSensorOn&amp;&amp;!operatorButtonOn))||indicateOff||methaneSensorHigh</inputs>
+      <inputs default="0" any="0" invert="0">!methaneSensorHigh&amp;&amp;!indicateOff&amp;&amp;(indicateOn||(!lowWaterSensorOn&amp;&amp;(highWaterSensorOn||operatorButtonOn)))</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="438.6226101271997" c2y="125.8118880274846" c1y="117.4483168" description="" straight="1" type="2" ypos="109.0847455725154" endx="171.8676508360959" xpos="572.0000897727515" endy="134.1754592549693" c2x="305.2451304816478">
+      <from>2</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">methaneSensorHigh||indicateOff||(lowWaterSensorOn&amp;&amp;!indicateOn)||(!highWaterSensorOn&amp;&amp;!operatorButtonOn&amp;&amp;!indicateOn)</inputs>
       <outputs></outputs>
     </transition>
   </machine>
