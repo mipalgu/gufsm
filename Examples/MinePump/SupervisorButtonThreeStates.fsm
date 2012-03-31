@@ -6,7 +6,7 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="120" endx="120" xpos="60" endy="120"/>
-    <state pencolor="0" radius="40" description="OnEntry{ extern supervisorButtonOn;  extern  supervisorButtonOff;&#xa; extern supervisorButtonInactive;&#xa; indicateOn=0; indicateOff=0; &#xa; print_state_name();&#xa; post(&quot;QSay&quot;,&quot;inactive&quot;); }&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="120" code="0" xpos="160" linewidth="1">INACTIVE</state>
+    <state pencolor="0" radius="40" description="OnEntry{ supervisorButtonOn;    supervisorButtonOff;&#xa;  supervisorButtonInactive;&#xa; indicateOn=0; indicateOff=0; &#xa; print_state_name();&#xa; post(&quot;QSay&quot;,&quot;inactive&quot;); }&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="120" code="0" xpos="160" linewidth="1">INACTIVE</state>
     <state pencolor="0" radius="40" description="OnEntry {indicateOn=1; print_state_name();&#xa;   }&#xa;OnExit{ indicateOn=0;}&#xa;{}" finalstate="0" moore_outputs="" ypos="100" code="4" xpos="590" linewidth="1">INDICATE_ON</state>
     <state pencolor="0" radius="40" description="OnEntry {indicateOff=1; print_state_name();&#xa;   }&#xa;OnExit{ indicateOff=0;}&#xa;{}" finalstate="0" moore_outputs="" ypos="291" code="3" xpos="341" linewidth="1">INDICATE_OFF</state>
     <transition c1x="309.3875511470414" c2y="92.90582398925436" c1y="92.57020058294255" description="" straight="1" type="2" ypos="92.23457717663072" endx="550.5751098074693" xpos="188.7937718168274" endy="93.24144739556618" c2x="429.9813304772554">
