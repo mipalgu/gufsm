@@ -6,7 +6,7 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="110" endx="100" xpos="40" endy="110"/>
-    <state pencolor="0" radius="40" description="OnEntry{ extern indicateOn;  extern indicateOff;  extern indicateInactive; extern highWaterSensorOn;  extern lowWaterSensorOn; extern operatorButtonOn;  extern methaneSensorHigh; motor=0;   post(&quot;QSay&quot;,&quot;stop&quot;);  }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="110" code="0" xpos="140" linewidth="1">START</state>
+    <state pencolor="0" radius="40" description="OnEntry{  extern indicateInactive; extern highWaterSensorOn;  extern lowWaterSensorOn; extern operatorButtonOn;  extern methaneSensorHigh; motor=0;   post(&quot;QSay&quot;,&quot;stop&quot;);  }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="110" code="0" xpos="140" linewidth="1">START</state>
     <state pencolor="0" radius="40" description="OnEntry {motor=1;  post(&quot;QSay&quot;,&quot;on&quot;);  }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="109" code="2" xpos="612" linewidth="1">RUNNING</state>
     <transition c1x="311.4136021808967" c2y="100.7976451736613" c1y="105.8547301478251" description="" straight="1" type="2" ypos="110.9118151219888" endx="574.2615944139548" xpos="179.9896060643677" endy="95.74056019949759" c2x="442.8375982974258">
       <from>0</from>
