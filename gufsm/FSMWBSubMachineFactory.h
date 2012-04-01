@@ -71,6 +71,9 @@ namespace FSM
         public:
                 /** constructor that builds vector of machines */
                 WBSubMachineFactory(WBContext *context, const std::string &machine_name, int mid=0);
+                
+                /** Defaut constructor for subclasses. */
+                WBSubMachineFactory();
 
                 /** getter */
                 WBSubMachine *machine() { return _machine; }
