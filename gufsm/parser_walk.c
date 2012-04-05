@@ -84,7 +84,7 @@ static inline const char *getTString(pANTLR3_RECOGNIZER_SHARED_STATE state, pANT
 static inline const char *getContent(pANTLR3_BASE_TREE tree)
 {
         pANTLR3_STRING s = tree->toString(tree);
-        if (!s) return NULL;
+        if (!s || !s->chars) return NULL;
         const char *rv = gu_strdup((const char *) s->chars);
         s->factory->destroy(s->factory, s);
         return rv;
@@ -201,7 +201,10 @@ int walk_parse_tree(pANTLR3_RECOGNIZER_SHARED_STATE state,
                         rv = up(context, getTString(state, tree), content,
                                 state, tree);
                 }
-                if (content) free((void *) content);
+                if (content) {
+                        free((void *) content);
+                        content = NULL;
+                }
                 
         }
         return rv;
@@ -276,7 +279,7 @@ open_parse_file(const char *filename, pANTLR3_INPUT_STREAM *inputRef,
         return tstream;
 }
 
-int parse_action(const char * description, const char * name, pa_callback_f down, pa_callback_f up, void * context)
+int parse_description(const char * description, const char * name, pa_callback_f down, pa_callback_f up, void * context)
 {
         int rv = -1;
         
@@ -314,7 +317,7 @@ int parse_action(const char * description, const char * name, pa_callback_f down
         
         /* By this point, we have already created a state with an id before this function is 
          * called, so we just parse the state description here. */
-        rv = walk_parse_children(parser->pParser->rec->state, actionsAST.tree, NULL, up, down, context);
+        rv = walk_parse_children(parser->pParser->rec->state, actionsAST.tree, NULL, down, up, context);
         
 err4:   parser->free(parser);
 err3:   tstream->free(tstream);

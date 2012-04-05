@@ -86,7 +86,7 @@ typedef int (*pa_callback_f)(void *context,
  * @param[up] up            Callback for ascending from subtree.
  * @param[in] context       Caller-specified context used for parsing (passed to callbacks).
  */
-int parse_action(const char * description, const char * name, pa_callback_f down, pa_callback_f up, void * context);
+int parse_description(const char * description, const char * name, pa_callback_f down, pa_callback_f up, void * context);
 
 /**
  * The main entry point for parsing actions
