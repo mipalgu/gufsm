@@ -350,7 +350,8 @@ ActivityFactory::ActivityFactory(FSM::Machine *machine, const char *filename, ma
                 _currentAction(NULL), 
                 _error(false)
 {
-        init(machine, filename, func);
+        if (parse_actions(filename, NULL, activity_push, activity_pop, this) == -1)
+                set_error(true);
 }
 
 ActivityFactory::ActivityFactory(FSM::Machine *machine, const char *filename, map<std::string, Action *> *func, bool noInit) : 
@@ -362,10 +363,4 @@ _currentStage(STAGE_ON_ENTRY),
 _currentAction(NULL), 
 _error(false)
 {
-}
-
-void ActivityFactory::init(FSM::Machine *machine, const char *filename, map<std::string, Action *> *func)
-{
-        if (parse_actions(filename, NULL, activity_push, activity_pop, this) == -1)
-                set_error(true);
 }

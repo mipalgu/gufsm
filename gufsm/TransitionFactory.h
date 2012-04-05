@@ -83,6 +83,8 @@ class TransitionFactory
         
 public:
         TransitionFactory(FSM::Machine *machine, const char *filename);
+        /* Intialize member variables only. */
+        TransitionFactory(FSM::Machine * machine, const char * filename, bool noInit);
         FSM::Machine *fsm() { return _fsm; }
         bool error() { return _error; }
         void set_error(bool e) { _error = e; }

@@ -80,9 +80,6 @@ protected:
 
         FSM::ActionStage _currentStage; /* onEntry, onExit, internal */
         FSM::ANTLRAction *_currentAction;
-        
-        /* Seperate the init code from the constructor. */
-        void init(FSM::Machine *machine, const char *filename, std::map<std::string, FSM::Action *> *func);
 
         bool _error;
         
