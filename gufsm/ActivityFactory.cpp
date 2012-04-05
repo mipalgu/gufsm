@@ -341,11 +341,30 @@ activity_pop(void *context, const char *terminal, const char *content,
         return 1;
 }
 
-ActivityFactory::ActivityFactory(FSM::Machine *machine, const char *filename,
-                                 map<std::string, Action *> *func):
-        _fsm(machine), _file(filename), _error(false),
-        _named_actions(func), _currentAction(NULL), _currentStage(STAGE_ON_ENTRY),
-        _currentState(NULL)
+ActivityFactory::ActivityFactory(FSM::Machine *machine, const char *filename, map<std::string, Action *> *func) : 
+                _fsm(machine), 
+                _named_actions(func), 
+                _file(filename), 
+                _currentState(NULL),
+                _currentStage(STAGE_ON_ENTRY), 
+                _currentAction(NULL), 
+                _error(false)
+{
+        init(machine, filename, func);
+}
+
+ActivityFactory::ActivityFactory(FSM::Machine *machine, const char *filename, map<std::string, Action *> *func, bool noInit) : 
+_fsm(machine), 
+_named_actions(func), 
+_file(filename), 
+_currentState(NULL),
+_currentStage(STAGE_ON_ENTRY), 
+_currentAction(NULL), 
+_error(false)
+{
+}
+
+void ActivityFactory::init(FSM::Machine *machine, const char *filename, map<std::string, Action *> *func)
 {
         if (parse_actions(filename, NULL, activity_push, activity_pop, this) == -1)
                 set_error(true);

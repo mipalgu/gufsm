@@ -7,11 +7,11 @@
     <outputnames></outputnames>
     <itransition ypos="160" endx="150" xpos="90" endy="160"/>
     <state pencolor="0" radius="40" description="OnEntry { extern gunxt_valueTouchSensor3;&#xa; supervisorButtonOn=0;&#xa; supervisorButtonOff=0;&#xa; supervisorButtonInactive=0;&#xa; methaneSensorHigh=0;&#xa;  post(&quot;gunxt_startTouchSensor&quot;,&quot;3&quot;);&#xa;   print_state_name(); &#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="160" code="0" xpos="190" linewidth="1">FALSEINIT</state>
-    <state pencolor="0" radius="40" description="OnEntry {supervisorButtonOff=1; &#xa; methaneSensorHigh=0;&#xa;  print_state_name();}&#xa;OnExit {supervisorButtonOff=0;}&#xa;{}" finalstate="0" moore_outputs="" ypos="52" code="1" xpos="620" linewidth="1">PowerOff</state>
+    <state pencolor="0" radius="40" description="OnEntry {supervisorButtonOff=1; &#xa; methaneSensorHigh=0;&#xa;  print_state_name();}&#xa;OnExit {supervisorButtonOff=0;}&#xa;{}" finalstate="0" moore_outputs="" ypos="52" code="1" xpos="620" linewidth="1">SupervisorOff</state>
     <state pencolor="0" radius="40" description="OnEntry { supervisorButtonOn=1;&#xa; methaneSensorHigh=0;&#xa; print_state_name(); &#xa;      }&#xa;OnExit{supervisorButtonOn=0;}&#xa;{}" finalstate="0" moore_outputs="" ypos="360" code="2" xpos="330" linewidth="1">SupervisorOn</state>
     <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="186" code="3" xpos="884" linewidth="1">Wait</state>
     <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="113" code="4" xpos="376" linewidth="1">Wait</state>
-    <state pencolor="0" radius="40" description="OnEntry {supervisorButtonInactive=1; &#xa; methaneSensorHigh=0;&#xa;  print_state_name();}&#xa;OnExit {supervisorButtonInactive=0;}&#xa;{}" finalstate="0" moore_outputs="" ypos="430" code="5" xpos="753" linewidth="1">Inacetive</state>
+    <state pencolor="0" radius="40" description="OnEntry {supervisorButtonInactive=1; &#xa; methaneSensorHigh=0;&#xa;  print_state_name();}&#xa;OnExit {supervisorButtonInactive=0;}&#xa;{}" finalstate="0" moore_outputs="" ypos="430" code="5" xpos="753" linewidth="1">SupervisorInactive</state>
     <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="513" code="6" xpos="559" linewidth="1">Wait</state>
     <transition c1x="242.6122453881826" c2y="286.4858468052213" c1y="239.2429234026106" description="" straight="1" type="2" ypos="192" endx="299.8367361645477" xpos="214" endy="333.7287702078319" c2x="271.2244907763651">
       <from>0</from>
@@ -37,7 +37,7 @@
       <inputs default="0" any="0" invert="0">!gunxt_valueTouchSensor3</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="470.8296937993033" c2y="76.68505430209629" c1y="92.6928902914463" description="" straight="1" type="2" ypos="108.7007262807963" endx="580.9525175926419" xpos="415.768281902634" endy="60.67721831274628" c2x="525.8911056959726">
+    <transition c1x="470.8296937993033" c2y="76.68505430209629" c1y="92.6928902914463" description="" straight="1" type="2" ypos="108.7007262807963" endx="580.9525175926419" xpos="415.768281902634" endy="60.67721831274629" c2x="525.8911056959726">
       <from>4</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">!gunxt_valueTouchSensor3</inputs>
