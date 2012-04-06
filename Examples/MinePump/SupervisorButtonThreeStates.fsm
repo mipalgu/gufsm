@@ -9,7 +9,7 @@
     <state pencolor="0" radius="40" description="OnEntry{ extern supervisorButtonOn;  extern  supervisorButtonOff;&#xa; indicateOn=0; indicateOff=0; &#xa; ; }&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="120" code="0" xpos="160" linewidth="1">INACTIVE</state>
     <state pencolor="0" radius="40" description="OnEntry {indicateOn=1; &#xa;   }&#xa;OnExit{ indicateOn=0;}&#xa;{}" finalstate="0" moore_outputs="" ypos="100" code="4" xpos="590" linewidth="1">INDICATE_ON</state>
     <state pencolor="0" radius="40" description="OnEntry {indicateOff=1; &#xa;   }&#xa;OnExit{ indicateOff=0;}&#xa;{}" finalstate="0" moore_outputs="" ypos="291" code="3" xpos="341" linewidth="1">INDICATE_OFF</state>
-    <transition c1x="309.3875511470413" c2y="92.90582398925436" c1y="92.57020058294253" description="" straight="1" type="2" ypos="92.23457717663069" endx="550.5751098074693" xpos="188.7937718168274" endy="93.24144739556618" c2x="429.9813304772553">
+    <transition c1x="309.3875511470413" c2y="92.90582398925436" c1y="92.57020058294252" description="" straight="1" type="2" ypos="92.23457717663069" endx="550.5751098074693" xpos="188.7937718168274" endy="93.24144739556618" c2x="429.9813304772553">
       <from>0</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">supervisorButtonOn&amp;&amp;!supervisorButtonOff</inputs>
@@ -24,7 +24,7 @@
     <transition c1x="435.112908640059" c2y="139.2510895561195" c1y="131.5520248048116" description="" straight="1" type="2" ypos="123.8529600535038" endx="189.5582337565332" xpos="557.8902460818219" endy="146.9501543074273" c2x="312.3355711982961">
       <from>4</from>
       <to>0</to>
-      <inputs default="0" any="0" invert="0">supervi!supervisorButtonOn&amp;&amp;!supervisorButtonOff</inputs>
+      <inputs default="0" any="0" invert="0">!supervisorButtonOn&amp;&amp;!supervisorButtonOff</inputs>
       <outputs></outputs>
     </transition>
     <transition c1x="531.1872499819489" c2y="246.6365204299281" c1y="191.4146342589839" description="" straight="1" type="2" ypos="136.1927480880398" endx="379.4979870394562" xpos="607.0318814531952" endy="301.8584066008722" c2x="455.3426185107026">
