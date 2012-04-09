@@ -89,6 +89,18 @@ typedef int (*pa_callback_f)(void *context,
 int parse_description(const char * description, const char * name, pa_callback_f down, pa_callback_f up, void * context);
 
 /**
+ * The main entry point for parsing transitions
+ * @param[in] transition text.
+ * @param[in] callback function to be called for every node in the parse tree (can be NULL)
+ * @param[in] down     callback for descending into subtree (can be NULL)
+ * @param[in] up       callback for ascending from subtree (can be NULL)
+ * @param[in] context  caller-specified context to use for parsing (passed to callbacks)
+ * @return -1 in case of an error, -2 to abort sibling walk, >=0 otherwise
+ */
+int parse_transition_string(const char *transition, pa_callback_f callback,
+                      pa_callback_f down, pa_callback_f up, void *context);
+
+/**
  * The main entry point for parsing actions
  * @param[in] filename the name of the file to parse
  * @param[in] callback function to be called for every node in the parse tree (can be NULL)
