@@ -6,9 +6,9 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="110" endx="100" xpos="40" endy="110"/>
-    <state pencolor="0" radius="40" description="OnEntry{  extern indicateInactive; extern highWaterSensorOn;  extern lowWaterSensorOn; extern operatorButtonOn;  extern methaneSensorHigh; motor=0;   post(&quot;QSay&quot;,&quot;stop&quot;);  }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="110" code="0" xpos="140" linewidth="1">START</state>
+    <state pencolor="0" radius="40" description="OnEntry{   extern highWaterSensorOn;  extern lowWaterSensorOn; extern operatorButtonOn;  extern methaneSensorHigh; motor=0;   post(&quot;QSay&quot;,&quot;stop&quot;);  }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="110" code="0" xpos="140" linewidth="1">START</state>
     <state pencolor="0" radius="40" description="OnEntry {motor=1;  post(&quot;QSay&quot;,&quot;on&quot;);  }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="114" code="2" xpos="808" linewidth="1">RUNNING</state>
-    <transition c1x="376.7469355142301" c2y="104.1309785069947" c1y="107.5213968144917" description="" straight="1" type="2" ypos="110.9118151219888" endx="770.2615944139548" xpos="179.9896060643677" endy="100.7405601994976" c2x="573.5042649640924">
+    <transition c1x="376.74693551423" c2y="104.1309785069947" c1y="107.5213968144917" description="" straight="1" type="2" ypos="110.9118151219888" endx="770.2615944139548" xpos="179.9896060643677" endy="100.7405601994976" c2x="573.5042649640924">
       <from>0</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">!methaneSensorHigh&amp;&amp;!indicateOff&amp;&amp;(indicateOn||(!lowWaterSensorOn&amp;&amp;(highWaterSensorOn||operatorButtonOn)))</inputs>
