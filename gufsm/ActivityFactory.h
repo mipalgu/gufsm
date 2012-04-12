@@ -71,6 +71,7 @@ namespace FSM
 
 class ActivityFactory
 {
+protected:
         FSM::Machine *_fsm;
         std::map<std::string, FSM::Action *> *_named_actions;
         const char *_file;
@@ -79,12 +80,17 @@ class ActivityFactory
 
         FSM::ActionStage _currentStage; /* onEntry, onExit, internal */
         FSM::ANTLRAction *_currentAction;
+        
+        /* Seperate the init code from the constructor. */
+        void init(FSM::Machine *machine, const char *filename, std::map<std::string, FSM::Action *> *func);
 
         bool _error;
         
 public:
-        ActivityFactory(FSM::Machine *machine, const char *filename,
-                        std::map<std::string, FSM::Action *> *func);
+        /* Init member variables and call the init function. */
+        ActivityFactory(FSM::Machine *machine, const char *filename, std::map<std::string, FSM::Action *> *func);
+        /* Init member variables but don't call the init function. */
+        ActivityFactory(FSM::Machine *machine, const char *filename, std::map<std::string, FSM::Action *> *func, bool noInit);
         FSM::Machine *fsm() { return _fsm; }
         bool error() { return _error; }
         void set_error(bool e) { _error = e; }

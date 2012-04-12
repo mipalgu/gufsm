@@ -66,6 +66,7 @@
 #include "ActionsContainerParser.h"
 #include "SimpleCLexer.h"
 
+
 static inline ANTLR3_UINT32 getType(pANTLR3_BASE_TREE tree)
 {
 	if  (tree->isNilNode(tree) == ANTLR3_TRUE)
@@ -87,6 +88,50 @@ static inline const char *getContent(pANTLR3_BASE_TREE tree)
         const char *rv = gu_strdup((const char *) s->chars);
         s->factory->destroy(s->factory, s);
         return rv;
+}
+
+pANTLR3_COMMON_TOKEN_STREAM open_string_stream(const char *string, 
+                                               const char *n,
+                                               pANTLR3_INPUT_STREAM *inputRef, 
+                                               pSimpleCLexer *lexerRef)
+{
+        pANTLR3_UINT8 data = (pANTLR3_UINT8) string;
+        pANTLR3_UINT8 name = (pANTLR3_UINT8) n;
+        pANTLR3_INPUT_STREAM input = antlr3StringStreamNew(data, ANTLR3_ENC_UTF8,
+                                                           (ANTLR3_UINT32) strlen(string), name);
+        if (!input)
+        {
+                ANTLR3_FPRINTF(stderr, "Unable to string stream %s: %s\n", n,
+                               strerror(errno));
+                return NULL;
+        }
+        
+        pSimpleCLexer lexer = SimpleCLexerNew(input);
+        
+        if (!lexer)
+        {
+                ANTLR3_FPRINTF(stderr, "Unable to create lexer for %s: %s\n", n,
+                               strerror(errno));
+                input->free(input);
+                return NULL;
+        }
+        
+        pANTLR3_COMMON_TOKEN_STREAM tstream =
+        antlr3CommonTokenStreamSourceNew(ANTLR3_SIZE_HINT,
+                                         TOKENSOURCE(lexer));
+        if (!tstream)
+        {
+                ANTLR3_FPRINTF(stderr, "Unable to create token source for %s: %s\n",
+                               n, strerror(errno));
+                lexer->free(lexer);
+                input->free(input);
+                return NULL;
+        }
+        
+        if (inputRef) *inputRef = input;
+        if (lexerRef) *lexerRef = lexer;
+        
+        return tstream;
 }
 
 
@@ -231,6 +276,54 @@ open_parse_file(const char *filename, pANTLR3_INPUT_STREAM *inputRef,
         return tstream;
 }
 
+int parse_action(const char * description, const char * name, pa_callback_f down, pa_callback_f up, void * context)
+{
+        int rv = -1;
+        
+        if (!description) { errno = EINVAL; return rv; }
+        if (!name) name = "unknown";
+        
+        pANTLR3_INPUT_STREAM input = NULL;
+        pSimpleCLexer lexer = NULL;
+        pANTLR3_COMMON_TOKEN_STREAM tstream = open_string_stream(description, name,
+                                                                 &input, &lexer);
+        if (!tstream) goto err2;
+        
+        pActionsContainerParser parser = ActionsContainerParserNew(tstream);
+        
+        if (!parser)
+        {
+                ANTLR3_FPRINTF(stderr, "Unable to create parser for %s: %s\n",
+                               name, strerror(errno));
+                goto err3;
+        }
+        
+        /*
+         * parse file and generate AST
+         */
+        ActionsContainerParser_description_return actionsAST = parser->description(parser);
+        
+        if ( parser->pParser->rec->state->errorCount > 0)
+        {
+                ANTLR3_FPRINTF(stderr, "Parsing %s returned %d errors, tree walking aborted.\n",
+                               name,
+                               parser->pParser->rec->state->errorCount);
+                printf("Error\n");
+                goto err4;
+        }
+        
+        /* By this point, we have already created a state with an id before this function is 
+         * called, so we just parse the state description here. */
+        rv = walk_parse_children(parser->pParser->rec->state, actionsAST.tree, NULL, up, down, context);
+        
+err4:   parser->free(parser);
+err3:   tstream->free(tstream);
+err2:   if (lexer) lexer->free(lexer);
+        if (input) input->free(input);
+
+        
+        return rv;
+}
 
 int parse_actions(const char *filename, pa_callback_f callback,
                   pa_callback_f down, pa_callback_f up, void *context)

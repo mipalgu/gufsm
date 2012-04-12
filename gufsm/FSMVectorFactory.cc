@@ -108,6 +108,9 @@ StateMachineVectorFactory::StateMachineVectorFactory(ANTLRContext *context,
                 cerr << "Failed to subscribe to '" << wb_name << "'" << endl;
 }
 
+StateMachineVectorFactory::StateMachineVectorFactory() {
+        return;
+}
 
 StateMachineVectorFactory::~StateMachineVectorFactory()
 {

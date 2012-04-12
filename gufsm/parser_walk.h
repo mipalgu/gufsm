@@ -57,7 +57,9 @@
 #ifndef _PARSER_WALK_H_
 #define _PARSER_WALK_H_
 
+#include <stdbool.h>
 #include <antlr3.h>
+#include "SimpleCLexer.h"
 
 /**
  * This is the callback function that gets invoked on every single token
@@ -74,6 +76,18 @@ typedef int (*pa_callback_f)(void *context,
                              const char *content,
                              pANTLR3_RECOGNIZER_SHARED_STATE state,
                              pANTLR3_BASE_TREE tree);
+
+/**
+ * The state description, state name and state id are supplied so that this function can
+ * create an entire state.
+ * @param[in] description   State description.
+ * @param[in] name          State name.
+ * @param[in] id            State id.
+ * @param[in] down          Callback for descending into subtree.
+ * @param[up] up            Callback for ascending from subtree.
+ * @param[in] context       Caller-specified context used for parsing (passed to callbacks).
+ */
+int parse_action(const char * description, const char * name, pa_callback_f down, pa_callback_f up, void * context);
 
 /**
  * The main entry point for parsing actions
@@ -134,5 +148,11 @@ int walk_parse_children(pANTLR3_RECOGNIZER_SHARED_STATE state,
                           pa_callback_f down,
                           pa_callback_f up,
                           void *context);
+
+/* Utility method. */
+pANTLR3_COMMON_TOKEN_STREAM open_string_stream(const char *string, 
+                                               const char *n, 
+                                               pANTLR3_INPUT_STREAM *inputRef, 
+                                               pSimpleCLexer *lexerRef);
 
 #endif // _PARSER_WALK_H_
