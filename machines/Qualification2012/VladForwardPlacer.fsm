@@ -1,11 +1,11 @@
 <?xml version='1.0'?>
 <!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
-<qfsmproject version="0.53" author="Qfsm">
+<qfsmproject version="0.52" author="Qfsm">
   <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="A Game Controller developed with QFSM.&#xa;This graphically replicates revision 1190 of&#xa;AGameController.txt and&#xa;TGameController.txt&#xa;from the repository" version="1" name="GameController" arrowtype="1" numbits="5" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="2" numout="0" initialstate="7">
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
-    <itransition ypos="90" endx="73.5494181990515" xpos="1" endy="123.527140916879"/>
+    <itransition ypos="90" endx="73,5494181990515" xpos="1" endy="123,527140916879"/>
     <state pencolor="959488" radius="40" description="OnEntry { int repeat; repeat=0; print_state_name();    }&#xa;OnExit { }&#xa;{ }&#xa;&#xa;" finalstate="0" moore_outputs="" ypos="140" code="7" xpos="110" linewidth="1">DUMMY</state>
     <state pencolor="0" radius="40" description="OnEntry { print_state_name(); post(&quot;Speech&quot;, &quot;Spin&quot;); &#xa;               post(&quot;NaoWalk&quot;, &quot;0 0 -90&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="503" code="2" xpos="1231" linewidth="1">FACEFORWARDS</state>
     <state pencolor="0" radius="40" description="OnEntry { print_state_name(); post(&quot;Speech&quot;, &quot;Back&quot;); &#xa;               post(&quot;NaoWalk&quot;, &quot;5 0 0&quot;); &#xa;&#x9;post(&quot;suspend&quot;,&quot;SMHeadUpDown&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="504" code="10" xpos="704" linewidth="1">NEARBALL</state>
@@ -21,127 +21,127 @@
     <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="498" code="5" xpos="960" linewidth="1">WAIT</state>
     <state pencolor="0" radius="40" description="OnEntry{ print_state_name();  postv(&quot;NaoHeadAbs&quot;, 0,25,10 ); }&#xa;OnExit{post(&quot;resume&quot;,&quot;SMHeadUpDown&quot;); }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="135" code="0" xpos="259" linewidth="1">LOWERHEAD</state>
     <state pencolor="0" radius="40" description="OnEntry{print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="260" code="6" xpos="350" linewidth="1">FINDBALL</state>
-    <transition c1x="173.1878842123046" c2y="140.8537666503843" c1y="139.7561199444066" description="" straight="1" type="2" ypos="138.658473238429" endx="219.6086576472825" xpos="149.9774974948156" endy="141.9514133563619" c2x="196.3982709297935">
+    <transition c1x="173,1878842123046" c2y="140,8537666503843" c1y="139,7561199444066" description="" straight="1" type="2" ypos="138,658473238429" endx="219,6086576472825" xpos="149,9774974948156" endy="141,9514133563619" c2x="196,3982709297936">
       <from>7</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1143.269142136806" c2y="488.7665475193785" c1y="515.7514524771119" description="" straight="1" type="2" ypos="542.7363574348453" endx="976.9773550492288" xpos="1226.415035680595" endy="461.7816425616452" c2x="1060.123248593017">
+    <transition c1x="1143,269142136806" c2y="488,7665475193785" c1y="515,7514524771119" description="" straight="1" type="2" ypos="542,7363574348453" endx="976,9773550492288" xpos="1226,415035680595" endy="461,7816425616452" c2x="1060,123248593017">
       <from>2</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">NaoWalkIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1190.678729381954" c2y="150.5718124208821" c1y="137.4193838190182" description="" straight="1" type="2" ypos="124.2669552171543" endx="1250.743258883246" xpos="1160.646464631308" endy="163.724241022746" c2x="1220.7109941326">
+    <transition c1x="1190,678729381954" c2y="150,5718124208821" c1y="137,4193838190182" description="" straight="1" type="2" ypos="124,2669552171543" endx="1250,743258883246" xpos="1160,646464631308" endy="163,724241022746" c2x="1220,7109941326">
       <from>11</from>
       <to>18</to>
       <inputs default="0" any="0" invert="0">NaoWalkIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="913.1834386667216" c2y="154.2228704012049" c1y="118.7277525759236" description="" straight="1" type="2" ypos="83.23263475064219" endx="941.8119921509908" xpos="898.869161924587" endy="189.7179882264863" c2x="927.4977154088563">
+    <transition c1x="913,1834386667216" c2y="154,2228704012049" c1y="118,7277525759236" description="" straight="1" type="2" ypos="83,23263475064219" endx="941,8119921509908" xpos="898,869161924587" endy="189,7179882264863" c2x="927,4977154088563">
       <from>12</from>
       <to>17</to>
       <inputs default="0" any="0" invert="0">NaoWalkIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="691.8241358340737" c2y="186.0996488104631" c1y="172.2815588537615" description="" straight="1" type="2" ypos="158.4634688970599" endx="742.5627595295268" xpos="666.454823986347" endy="199.9177387671647" c2x="717.1934476818002">
+    <transition c1x="691,8241358340737" c2y="186,0996488104631" c1y="172,2815588537615" description="" straight="1" type="2" ypos="158,4634688970599" endx="742,5627595295268" xpos="666,454823986347" endy="199,9177387671647" c2x="717,1934476818002">
       <from>14</from>
       <to>16</to>
       <inputs default="0" any="0" invert="0">NaoWalkIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="530.6187102604941" c2y="65.36703288596865" c1y="93.01605739347784" description="" straight="1" type="2" ypos="120.665081900987" endx="600.065146623041" xpos="495.8954920792207" endy="37.71800837845948" c2x="565.3419284417675">
+    <transition c1x="530,6187102604941" c2y="65,36703288596865" c1y="93,01605739347784" description="" straight="1" type="2" ypos="120,665081900987" endx="600,065146623041" xpos="495,8954920792207" endy="37,71800837845948" c2x="565,3419284417675">
       <from>13</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">Ballfiltered_x&lt;160</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="532.8368700586091" c2y="116.7281316534085" c1y="122.3653134878264" description="" straight="1" type="2" ypos="128.0024953222443" endx="604.6104230655994" xpos="496.9500935551138" endy="111.0909498189906" c2x="568.7236465621042">
+    <transition c1x="532,8368700586091" c2y="116,7281316534085" c1y="122,3653134878264" description="" straight="1" type="2" ypos="128,0024953222443" endx="604,6104230655994" xpos="496,9500935551138" endy="111,0909498189906" c2x="568,7236465621042">
       <from>13</from>
       <to>14</to>
       <inputs default="0" any="0" invert="0">Ballfiltered_x>200</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="555.9461852009546" c2y="197.6034318091135" c1y="183.2350679677957" description="" straight="1" type="2" ypos="168.8667041264779" endx="734.9304292710638" xpos="466.4540631659" endy="211.9717956504313" c2x="645.4383072360092">
+    <transition c1x="555,9461852009546" c2y="197,6034318091135" c1y="183,2350679677957" description="" straight="1" type="2" ypos="168,8667041264779" endx="734,9304292710638" xpos="466,4540631659" endy="211,9717956504313" c2x="645,4383072360092">
       <from>13</from>
       <to>16</to>
       <inputs default="0" any="0" invert="0">(Ballfiltered_x&lt;201)&amp;&amp;(Ballfiltered_x>159)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="705.0127723290485" c2y="139.3577392440976" c1y="88.06255224672771" description="" straight="1" type="2" ypos="36.76736524935781" endx="755.2999931379716" xpos="679.869161924587" endy="190.6529262414675" c2x="730.1563827335101">
+    <transition c1x="705,0127723290485" c2y="139,3577392440976" c1y="88,06255224672771" description="" straight="1" type="2" ypos="36,76736524935781" endx="755,2999931379716" xpos="679,869161924587" endy="190,6529262414675" c2x="730,1563827335101">
       <from>4</from>
       <to>16</to>
       <inputs default="0" any="0" invert="0">NaoWalkIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="456.4305021119675" c2y="289.6942362774368" c1y="304.8906221086756" description="" straight="1" type="2" ypos="320.0870079399144" endx="387.2801868616518" xpos="491.0056597371254" endy="274.497850446198" c2x="421.8553444868097">
+    <transition c1x="456,4305021119675" c2y="289,6942362774368" c1y="304,8906221086756" description="" straight="1" type="2" ypos="320,0870079399144" endx="387,2801868616518" xpos="491,0056597371254" endy="274,497850446198" c2x="421,8553444868097">
       <from>15</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">~NaoWalkIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="602.015686752664" c2y="430.2325166892888" c1y="393.7988576266999" description="" straight="1" type="2" ypos="357.3651985641111" endx="689.6408368276452" xpos="558.2031117151733" endy="466.6661757518776" c2x="645.8282617901546">
+    <transition c1x="602,015686752664" c2y="430,2325166892888" c1y="393,7988576266999" description="" straight="1" type="2" ypos="357,3651985641111" endx="689,6408368276452" xpos="558,2031117151733" endy="466,6661757518776" c2x="645,8282617901546">
       <from>15</from>
       <to>10</to>
       <inputs default="0" any="0" invert="0">~forwardPlacing</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="814.3382004016953" c2y="128.2795423640556" c1y="177.6397711820278" description="" straight="1" type="2" ypos="227" endx="819.0146012050859" xpos="812" endy="78.9193135460834" c2x="816.6764008033906">
+    <transition c1x="814,3382004016953" c2y="128,2795423640556" c1y="177,6397711820278" description="" straight="1" type="2" ypos="227" endx="819,0146012050859" xpos="812" endy="78,9193135460834" c2x="816,6764008033906">
       <from>16</from>
       <to>12</to>
       <inputs default="0" any="0" invert="0">~NaoWalkIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="744.7151611098584" c2y="398.1767509350385" c1y="332.0116736917788" description="" straight="1" type="2" ypos="265.846596448519" endx="709.2181805028555" xpos="762.4636514133599" endy="464.3418281782982" c2x="726.966670806357">
+    <transition c1x="744,7151611098584" c2y="398,1767509350385" c1y="332,0116736917788" description="" straight="1" type="2" ypos="265,846596448519" endx="709,2181805028555" xpos="762,4636514133599" endy="464,3418281782982" c2x="726,966670806357">
       <from>16</from>
       <to>10</to>
       <inputs default="0" any="0" invert="0">~forwardPlacing</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1039.794397157941" c2y="114.1471762808265" c1y="162.8741827787541" description="" straight="1" type="2" ypos="211.6011892766816" endx="1114.700282971498" xpos="1002.341454251162" endy="65.42016978289902" c2x="1077.247340064719">
+    <transition c1x="1039,794397157941" c2y="114,1471762808265" c1y="162,8741827787541" description="" straight="1" type="2" ypos="211,6011892766816" endx="1114,700282971498" xpos="1002,341454251162" endy="65,42016978289902" c2x="1077,247340064719">
       <from>17</from>
       <to>11</to>
       <inputs default="0" any="0" invert="0">~NaoWalkIsRunning&amp;&amp;(repeat>1)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="806.2438952783122" c2y="303.4512814034406" c1y="267.7228308356955" description="" straight="1" type="2" ypos="231.9943802679504" endx="568.6829814905059" xpos="925.0243521722152" endy="339.1797319711857" c2x="687.463438384409">
+    <transition c1x="806,2438952783122" c2y="303,4512814034406" c1y="267,7228308356955" description="" straight="1" type="2" ypos="231,9943802679504" endx="568,6829814905059" xpos="925,0243521722152" endy="339,1797319711857" c2x="687,463438384409">
       <from>17</from>
       <to>15</to>
       <inputs default="0" any="0" invert="0">~NaoWalkIsRunning&amp;&amp;(repeat&lt;2)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1257.936774954406" c2y="402.3905531134385" c1y="312.981106226877" description="" straight="1" type="2" ypos="223.5716593403156" endx="1269.4" xpos="1252.205162431609" endy="491.8" c2x="1263.668387477203">
+    <transition c1x="1257,936774954406" c2y="402,3905531134385" c1y="312,981106226877" description="" straight="1" type="2" ypos="223,5716593403156" endx="1269,4" xpos="1252,205162431609" endy="491,8" c2x="1263,668387477203">
       <from>18</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">~NaoWalkIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1071.818585773468" c2y="386.3039849337281" c1y="299.1796292077718" description="" straight="1" type="2" ypos="212.0552734818155" endx="729.7948375683914" xpos="1242.830459876006" endy="473.4283406596844" c2x="900.8067116709296">
+    <transition c1x="1071,818585773468" c2y="386,3039849337281" c1y="299,1796292077718" description="" straight="1" type="2" ypos="212,0552734818155" endx="729,7948375683914" xpos="1242,830459876006" endy="473,4283406596844" c2x="900,8067116709296">
       <from>18</from>
       <to>10</to>
       <inputs default="0" any="0" invert="0">~forwardPlacing</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="866.937513321502" c2y="503.1466747720534" c1y="487.4377224899426" description="" straight="1" type="2" ypos="471.7287702078319" endx="741.1390676354104" xpos="929.8367361645478" endy="518.8556270541641" c2x="804.0382904784561">
+    <transition c1x="866,937513321502" c2y="503,1466747720534" c1y="487,4377224899426" description="" straight="1" type="2" ypos="471,7287702078319" endx="741,1390676354104" xpos="929,8367361645478" endy="518,8556270541641" c2x="804,0382904784561">
       <from>5</from>
       <to>10</to>
       <inputs default="0" any="0" invert="0">~NaoWalkIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="305.0894905912963" c2y="202.2853355869849" c1y="167.6913648051835" description="" straight="1" type="2" ypos="133.097394023382" endx="317.3590207559338" xpos="298.9547255089775" endy="236.8793063687864" c2x="311.224255673615">
+    <transition c1x="305,0894905912963" c2y="202,285335586985" c1y="167,6913648051835" description="" straight="1" type="2" ypos="133,097394023382" endx="317,3590207559338" xpos="298,9547255089775" endy="236,8793063687864" c2x="311,224255673615">
       <from>0</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">timeout(4000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="391.4006394827689" c2y="179.0654773164938" c1y="203.6988164613148" description="" straight="1" type="2" ypos="228.3321556061358" endx="425.3287097774611" xpos="374.4366043354228" endy="154.4321381716728" c2x="408.364674630115">
+    <transition c1x="391,4006394827689" c2y="179,0654773164938" c1y="203,6988164613148" description="" straight="1" type="2" ypos="228,3321556061358" endx="425,3287097774611" xpos="374,4366043354228" endy="154,4321381716728" c2x="408,364674630115">
       <from>6</from>
       <to>13</to>
       <inputs default="0" any="0" invert="0">BallIsVisible</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="505.8329647301605" c2y="250.7744056358204" c1y="253.9689810545396" description="" straight="1" type="2" ypos="257.1635564732589" endx="737.7002829714983" xpos="389.8993056094916" endy="247.5798302171011" c2x="621.7666238508293">
+    <transition c1x="505,8329647301605" c2y="250,7744056358204" c1y="253,9689810545396" description="" straight="1" type="2" ypos="257,1635564732589" endx="737,7002829714983" xpos="389,8993056094916" endy="247,5798302171011" c2x="621,7666238508293">
       <from>6</from>
       <to>16</to>
       <inputs default="0" any="0" invert="0">timeout(2000)</inputs>
