@@ -57,6 +57,7 @@
 #ifndef _PARSER_WALK_H_
 #define _PARSER_WALK_H_
 
+#include <stdbool.h>
 #include <antlr3.h>
 #include "SimpleCLexer.h"
 

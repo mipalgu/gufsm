@@ -1,0 +1,24 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vladimir Estivill-Castro" description="" version="1" name="FSMBell" arrowtype="1" numbits="1" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="127" endx="159" xpos="99" endy="127"/>
+    <state pencolor="0" radius="40" description="OnEntry { noise=0;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="127" code="0" xpos="199" linewidth="1">SILENT</state>
+    <state pencolor="0" radius="40" description="OnEntry { noise=1;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="120" code="1" xpos="486" linewidth="1">MAKING_NOISE</state>
+    <transition c1x="310.658738417148" c2y="106.0082267672706" c1y="116.0164535345411" description="" straight="1" type="2" ypos="126.0246803018117" endx="454" xpos="238.988107625722" endy="96" c2x="382.329369208574">
+      <from>0</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">bell</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="373.917545310817" c2y="142.0633572237822" c1y="131.5193384609853" description="" straight="1" type="2" ypos="120.9753196981883" endx="229.728851183895" xpos="446.011892374278" endy="152.6073759865792" c2x="301.823198247356">
+      <from>1</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">!bell</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>

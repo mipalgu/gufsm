@@ -14,7 +14,7 @@
       <inputs default="0" any="0" invert="0">CO2SensorHigh||airFlowLow</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="357.5672651268105" c2y="145.2891413604294" c1y="143.6281284134314" description="" straight="1" type="2" ypos="141.9671154664335" endx="219.5582337565332" xpos="426.5717808119491" endy="146.9501543074273" c2x="288.5627494416718">
+    <transition c1x="357.5672651268105" c2y="145.2891413604294" c1y="143.6281284134315" description="" straight="1" type="2" ypos="141.9671154664335" endx="219.5582337565332" xpos="426.5717808119491" endy="146.9501543074273" c2x="288.5627494416718">
       <from>0</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">!CO2SensorHigh&amp;&amp;!airFlowLow</inputs>

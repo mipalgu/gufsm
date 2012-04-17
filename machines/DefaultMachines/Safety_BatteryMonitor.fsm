@@ -5,8 +5,8 @@
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
-    <itransition ypos="80" endx="48" xpos="-12" endy="80"/>
-    <state pencolor="12124415" radius="40" description="OnEntry {&#xa;&#x9;int batteryWarned;&#xa;&#x9;int batteryPercentage;&#xa;&#x9;int oldbatteryPercentage;&#xa;&#x9;int roundedbatteryPercentage;&#xa;&#x9;int oldRoundedbatteryPercentage;&#xa;&#x9;int newSensors;&#xa;&#x9;int sensorsFreq;&#xa;&#x9;sensors_postTemps_Updated=0;&#xa;&#x9;sensors_postSensors_Frequency=0;&#xa;&#x9;batteryWarned=0;&#xa;&#x9;maxTemp=60;&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="80" code="0" xpos="88" linewidth="1">Init</state>
+    <itransition ypos="80" endx="51" xpos="-9" endy="80"/>
+    <state pencolor="12124415" radius="40" description="OnEntry {&#xa;&#x9;int batteryWarned;&#xa;&#x9;int batteryPercentage;&#xa;&#x9;int oldbatteryPercentage;&#xa;&#x9;int roundedbatteryPercentage;&#xa;&#x9;int oldRoundedbatteryPercentage;&#xa;&#x9;int newSensors;&#xa;&#x9;int sensorsFreq;&#xa;&#x9;extern sensors_postTemps_Updated;&#xa;&#x9;extern sensors_postSensors_Frequency;&#xa;&#x9;extern sensors_postSensors_Updated;&#xa;&#x9;extern Battery_Charge;&#xa;&#x9;sensors_postTemps_Updated=0;&#xa;&#x9;sensors_postSensors_Frequency=0;&#xa;&#x9;batteryWarned=0;&#xa;&#x9;maxTemp=60;&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="80" code="0" xpos="91" linewidth="1">Init</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;post(&quot;sensors_postSensors&quot;, &quot;On&quot;); &#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="106" code="12" xpos="563" linewidth="1">Monitor</state>
     <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;sensorsFreq = sensors_postSensors_Frequency;&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="94" code="6" xpos="435" linewidth="1">GetSensorsFreq</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;post(&quot;sensors_postSensors_Frequency&quot;, &quot;500&quot;); &#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="212" code="8" xpos="457" linewidth="1">SetSensorsFreq</state>
@@ -22,7 +22,7 @@
     <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;postv(&quot;Ears&quot;, 0, 0); &#x9;&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="564" code="14" xpos="730" linewidth="1">FlashOff2</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;postv(&quot;Ears&quot;, 0, 0); &#x9;&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="452" code="11" xpos="457" linewidth="1">FlashOff3</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;oldbatteryPercentage = batteryPercentage;&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="359" code="5" xpos="1012" linewidth="1">CheckBatt</state>
-    <transition c1x="214.5045825612262" c2y="107.1358016228498" c1y="103.7194854736523" description="" straight="1" type="2" ypos="100.3031693244548" endx="398.5853409014958" xpos="122.4642033910914" endy="110.5521177720474" c2x="306.544961731361">
+    <transition c1x="216.5045825612262" c2y="107.1358016228499" c1y="103.7194854736523" description="" straight="1" type="2" ypos="100.3031693244548" endx="398.5853409014958" xpos="125.4642033910914" endy="110.5521177720474" c2x="307.544961731361">
       <from>0</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">1</inputs>
@@ -52,19 +52,19 @@
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="1061.169680839962" c2y="165.6275113182702" c1y="129.1383109794718" description="" straight="1" type="2" ypos="92.64911064067351" endx="1287.614378675844" xpos="947.9473319220206" endy="202.1167116570685" c2x="1174.392029757903">
+    <transition c1x="1061.169680839962" c2y="165.6275113182702" c1y="129.1383109794719" description="" straight="1" type="2" ypos="92.64911064067351" endx="1287.614378675844" xpos="947.9473319220206" endy="202.1167116570686" c2x="1174.392029757903">
       <from>10</from>
       <to>13</to>
       <inputs default="0" any="0" invert="0">newSensors!=sensors_postSensors_Updated</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="1249.48945118475" c2y="420.8922872285856" c1y="350.1991624173708" description="" straight="1" type="2" ypos="279.5060376061559" endx="1176.127999707712" xpos="1286.170176923269" endy="491.5854120398004" c2x="1212.808725446231">
+    <transition c1x="1249.48945118475" c2y="420.8922872285856" c1y="350.1991624173708" description="" straight="1" type="2" ypos="279.506037606156" endx="1176.127999707712" xpos="1286.170176923269" endy="491.5854120398004" c2x="1212.808725446231">
       <from>13</from>
       <to>16</to>
       <inputs default="0" any="0" invert="0">oldRoundedbatteryPercentage!=roundedbatteryPercentage</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="1155.114598330568" c2y="145.9617239885421" c1y="181.8203801888091" description="" straight="1" type="2" ypos="217.6790363890761" endx="936.3401843147408" xpos="1264.501805338481" endy="110.1030677882751" c2x="1045.727391322654">
+    <transition c1x="1155.114598330568" c2y="145.9617239885421" c1y="181.8203801888091" description="" straight="1" type="2" ypos="217.6790363890762" endx="936.3401843147408" xpos="1264.501805338481" endy="110.1030677882751" c2x="1045.727391322654">
       <from>13</from>
       <to>10</to>
       <inputs default="0" any="0" invert="0">oldRoundedbatteryPercentage==roundedbatteryPercentage</inputs>
@@ -76,13 +76,13 @@
       <inputs default="0" any="0" invert="0">(batteryPercentage&lt;10)&amp;&amp;(oldbatteryPercentage!=batteryPercentage)</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="1092.814301848867" c2y="420.9418995031706" c1y="455.9768872464887" description="" straight="1" type="2" ypos="491.0118749898068" endx="1041.597602935838" xpos="1118.422651305382" endy="385.9069117598524" c2x="1067.205952392352">
+    <transition c1x="1092.814301848867" c2y="420.9418995031705" c1y="455.9768872464887" description="" straight="1" type="2" ypos="491.0118749898068" endx="1041.597602935838" xpos="1118.422651305382" endy="385.9069117598524" c2x="1067.205952392353">
       <from>16</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">timeout(roundedbatteryPercentage*100000)</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="785.147829722261" c2y="402.467926846543" c1y="387.7157255613324" description="" straight="1" type="2" ypos="372.9635242761218" endx="820.859175002349" xpos="767.292157082217" endy="417.2201281317537" c2x="803.0035023623051">
+    <transition c1x="785.147829722261" c2y="402.4679268465431" c1y="387.7157255613324" description="" straight="1" type="2" ypos="372.9635242761218" endx="820.859175002349" xpos="767.292157082217" endy="417.2201281317537" c2x="803.0035023623051">
       <from>3</from>
       <to>9</to>
       <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
@@ -106,13 +106,13 @@
       <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="551.9766987378435" c2y="458.1248413585855" c1y="454.9848616249295" description="" straight="1" type="2" ypos="451.8448818912734" endx="495.9122485874147" xpos="580.008923813058" endy="461.2648210922416" c2x="523.9444736626291">
+    <transition c1x="551.9766987378435" c2y="458.1248413585856" c1y="454.9848616249295" description="" straight="1" type="2" ypos="451.8448818912734" endx="495.9122485874147" xpos="580.008923813058" endy="461.2648210922416" c2x="523.9444736626291">
       <from>15</from>
       <to>11</to>
       <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="860.3913335279794" c2y="520.757959131241" c1y="507.5159182624818" description="" straight="1" type="2" ypos="494.2738773937227" endx="898.0000025000001" xpos="841.5869990419692" endy="534.0000000000001" c2x="879.1956680139898">
+    <transition c1x="860.3913335279794" c2y="520.757959131241" c1y="507.5159182624819" description="" straight="1" type="2" ypos="494.2738773937227" endx="898.0000025000001" xpos="841.5869990419692" endy="534.0000000000001" c2x="879.1956680139898">
       <from>9</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
