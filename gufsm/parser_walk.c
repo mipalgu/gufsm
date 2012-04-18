@@ -328,55 +328,6 @@ err2:   if (lexer) lexer->free(lexer);
         return rv;
 }
 
-int parse_transition_string(const char *transition, pa_callback_f callback, pa_callback_f down, pa_callback_f up, void *context) 
-{
-        int rv = -1;
-        
-        if (!transition) { errno = EINVAL; return rv; }
-        
-        pANTLR3_INPUT_STREAM input = NULL;
-        pSimpleCLexer lexer = NULL;
-        pANTLR3_COMMON_TOKEN_STREAM tstream = open_string_stream(transition, "name", &input, &lexer);
-        if (!tstream) goto err2;
-        
-        pTransitionContainerParser parser = TransitionContainerParserNew(tstream);
-        
-        if (!parser)
-        {
-                ANTLR3_FPRINTF(stderr, "Unable to create parser for %s: %s\n",
-                               transition, strerror(errno));
-                goto err3;
-        }
-        
-        /*
-         * parse file and generate AST
-         */
-        TransitionContainerParser_transitions_return transitionsAST = parser->transitions(parser);
-        
-        if ( parser->pParser->rec->state->errorCount > 0)
-        {
-                ANTLR3_FPRINTF(stderr, "Parsing %s returned %d errors, tree walking aborted.\n",
-                               transition,
-                               parser->pParser->rec->state->errorCount);
-                goto err4;
-        }
-        
-        //printf("Tree:\n%s\n", transitionsAST.tree->toStringTree(transitionsAST.tree)->chars);
-        /*
-         * now that we have an AST, walk the tree and invoke callbacks
-         * on tokens so that this can be used, e.g. from a factory method
-         */
-        //printf("Tree:\n");
-        rv = walk_parse_tree(parser->pParser->rec->state, transitionsAST.tree,
-                             callback, down, up, context);
-        
-err4:   // parser->free(parser);
-err3:   // tstream->free(tstream);
-err2:   // lexer->free(lexer);
-        // input->free(input);
-        
-        return rv;
-}
 
 int parse_actions(const char *filename, pa_callback_f callback,
                   pa_callback_f down, pa_callback_f up, void *context)
@@ -427,6 +378,58 @@ err3:   // tstream->free(tstream);
 err2:   // if (lexer) lexer->free(lexer);
         // if (input) input->free(input);
 
+        return rv;
+}
+
+int get_expr_tree(const char *transition, 
+                  void *context,
+                  pANTLR3_BASE_TREE * tree, 
+                  pANTLR3_RECOGNIZER_SHARED_STATE * state) 
+{
+        int rv = -1;
+        
+        if (!transition) { 
+                errno = EINVAL; 
+                return rv;
+        }
+        
+        pANTLR3_INPUT_STREAM input = NULL;
+        pSimpleCLexer lexer = NULL;
+        pANTLR3_COMMON_TOKEN_STREAM tstream = open_string_stream(transition, "dummyname", &input, &lexer);
+        if (!tstream) goto err2;
+        
+        pTransitionContainer_SimpleCParser parser = TransitionContainer_SimpleCParserNew(tstream, NULL);
+        
+        if (!parser)
+        {
+                ANTLR3_FPRINTF(stderr, "Unable to create parser for %s: %s\n",
+                               transition, strerror(errno));
+                goto err3;
+        }
+        
+        // Parse just the expression string that 'transition' should point to.
+        TransitionContainer_SimpleCParser_expr_return transitionsAST = parser->expr(parser);
+        
+        if ( parser->pParser->rec->state->errorCount > 0)
+        {
+                ANTLR3_FPRINTF(stderr, "Parsing %s returned %d errors, tree walking aborted.\n",
+                               transition,
+                               parser->pParser->rec->state->errorCount);
+                
+                return -1;
+        }
+        
+        *tree = transitionsAST.tree;
+        *state = parser->pParser->rec->state;
+        rv = 1;
+        
+err4:   // parser->free(parser);
+err3:   // tstream->free(tstream);
+err2:   // lexer->free(lexer);
+        // input->free(input);
+        
+        // Allocate memory for a 
+        
         return rv;
 }
 

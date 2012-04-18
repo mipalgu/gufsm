@@ -210,6 +210,11 @@ namespace FSM
                  * restart all state machines from their initial state
                  */
                 virtual void restart();
+                
+                /**
+                 * call suspend() on all state machines.
+                 */
+                virtual void suspend();
 
                 /**
                  * printable state machine vector description
