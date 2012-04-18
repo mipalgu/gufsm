@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C3F7B94E15356F6E004945B6 /* NSMutableArray+Stack.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F7B94B15356F6E004945B6 /* NSMutableArray+Stack.m */; };
+		C3F7B94F15356F6E004945B6 /* NSString+MixedCase.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F7B94D15356F6E004945B6 /* NSString+MixedCase.m */; };
 		E17009871495DE1900700118 /* ActionsContainer_SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E17009771495DE1900700118 /* ActionsContainer_SimpleCParser.c */; };
 		E17009881495DE1900700118 /* ActionsContainerParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E170097A1495DE1900700118 /* ActionsContainerParser.c */; };
 		E17009891495DE1900700118 /* SimpleCLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = E170097C1495DE1900700118 /* SimpleCLexer.c */; };
@@ -18,8 +20,6 @@
 		F1AE8BB21332ADF800E8F7AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1AE8BB11332ADF800E8F7AB /* Foundation.framework */; };
 		F1AE8BB51332ADF800E8F7AB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AE8BB41332ADF800E8F7AB /* main.m */; };
 		F1AE8BD61332B1D000E8F7AB /* QFSMParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AE8BD51332B1D000E8F7AB /* QFSMParser.m */; };
-		F1AE8BDB1332B82000E8F7AB /* NSString+MixedCase.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AE8BDA1332B82000E8F7AB /* NSString+MixedCase.m */; };
-		F1AE8BDE1332BD2A00E8F7AB /* NSMutableArray+Stack.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AE8BDD1332BD2A00E8F7AB /* NSMutableArray+Stack.m */; };
 		F1AE8BED1332DCDC00E8F7AB /* QFSMElement.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AE8BEC1332DCDB00E8F7AB /* QFSMElement.m */; };
 		F1AE8BF31332E96700E8F7AB /* QFSMExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AE8BF21332E96600E8F7AB /* QFSMExporter.m */; };
 /* End PBXBuildFile section */
@@ -47,6 +47,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C3F7B94A15356F6E004945B6 /* NSMutableArray+Stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Stack.h"; sourceTree = SOURCE_ROOT; };
+		C3F7B94B15356F6E004945B6 /* NSMutableArray+Stack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Stack.m"; sourceTree = SOURCE_ROOT; };
+		C3F7B94C15356F6E004945B6 /* NSString+MixedCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MixedCase.h"; sourceTree = SOURCE_ROOT; };
+		C3F7B94D15356F6E004945B6 /* NSString+MixedCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MixedCase.m"; sourceTree = SOURCE_ROOT; };
 		E17009721495DDB900700118 /* SimpleCLexer.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleCLexer.g; sourceTree = "<group>"; };
 		E17009731495DDB900700118 /* SimpleCParser.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleCParser.g; sourceTree = "<group>"; };
 		E17009741495DDCE00700118 /* ActionsContainer.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ActionsContainer.g; sourceTree = "<group>"; };
@@ -78,10 +82,6 @@
 		F1AE8BB81332ADF800E8F7AB /* qfsm2gu.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = qfsm2gu.1; sourceTree = "<group>"; };
 		F1AE8BD41332B1D000E8F7AB /* QFSMParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QFSMParser.h; sourceTree = "<group>"; };
 		F1AE8BD51332B1D000E8F7AB /* QFSMParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QFSMParser.m; sourceTree = "<group>"; };
-		F1AE8BD91332B82000E8F7AB /* NSString+MixedCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MixedCase.h"; sourceTree = "<group>"; };
-		F1AE8BDA1332B82000E8F7AB /* NSString+MixedCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MixedCase.m"; sourceTree = "<group>"; };
-		F1AE8BDC1332BD2A00E8F7AB /* NSMutableArray+Stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Stack.h"; sourceTree = "<group>"; };
-		F1AE8BDD1332BD2A00E8F7AB /* NSMutableArray+Stack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Stack.m"; sourceTree = "<group>"; };
 		F1AE8BEB1332DCDB00E8F7AB /* QFSMElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QFSMElement.h; sourceTree = "<group>"; };
 		F1AE8BEC1332DCDB00E8F7AB /* QFSMElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QFSMElement.m; sourceTree = "<group>"; };
 		F1AE8BF11332E96600E8F7AB /* QFSMExporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QFSMExporter.h; sourceTree = "<group>"; };
@@ -202,10 +202,10 @@
 		F1AE8BD81332B7E000E8F7AB /* Supporting Classes */ = {
 			isa = PBXGroup;
 			children = (
-				F1AE8BD91332B82000E8F7AB /* NSString+MixedCase.h */,
-				F1AE8BDA1332B82000E8F7AB /* NSString+MixedCase.m */,
-				F1AE8BDC1332BD2A00E8F7AB /* NSMutableArray+Stack.h */,
-				F1AE8BDD1332BD2A00E8F7AB /* NSMutableArray+Stack.m */,
+				C3F7B94A15356F6E004945B6 /* NSMutableArray+Stack.h */,
+				C3F7B94B15356F6E004945B6 /* NSMutableArray+Stack.m */,
+				C3F7B94C15356F6E004945B6 /* NSString+MixedCase.h */,
+				C3F7B94D15356F6E004945B6 /* NSString+MixedCase.m */,
 			);
 			name = "Supporting Classes";
 			path = ../../guwhiteboard/objc/Classes;
@@ -353,8 +353,6 @@
 			files = (
 				F1AE8BB51332ADF800E8F7AB /* main.m in Sources */,
 				F1AE8BD61332B1D000E8F7AB /* QFSMParser.m in Sources */,
-				F1AE8BDB1332B82000E8F7AB /* NSString+MixedCase.m in Sources */,
-				F1AE8BDE1332BD2A00E8F7AB /* NSMutableArray+Stack.m in Sources */,
 				E17009891495DE1900700118 /* SimpleCLexer.c in Sources */,
 				E17009871495DE1900700118 /* ActionsContainer_SimpleCParser.c in Sources */,
 				F1AE8BED1332DCDC00E8F7AB /* QFSMElement.m in Sources */,
@@ -364,6 +362,8 @@
 				E170098C1495DE1900700118 /* TransitionContainerParser.c in Sources */,
 				F1084F7D1411DFA8004806EA /* syntax_check.c in Sources */,
 				E170098A1495DE1900700118 /* SimpleCParser.c in Sources */,
+				C3F7B94E15356F6E004945B6 /* NSMutableArray+Stack.m in Sources */,
+				C3F7B94F15356F6E004945B6 /* NSString+MixedCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

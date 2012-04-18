@@ -1,23 +1,33 @@
 <?xml version='1.0'?>
 <!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<<<<<<< HEAD
 <qfsmproject version="0.53" author="Qfsm">
   <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="" version="1" name="PingPong" arrowtype="1" numbits="1" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="2" numout="0" initialstate="0">
+=======
+<qfsmproject version="0.52" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="" version="1" name="PingPong" arrowtype="1" numbits="2" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="2" numout="0" initialstate="0">
+>>>>>>> 27fa34d8c2e136d488c6aa820810e024c465ee5a
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="96" endx="103" xpos="43" endy="96"/>
-    <state pencolor="0" radius="40" description="OnEntry { x = x + 1; post_int(&quot;Say&quot;, x); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="96" code="0" xpos="143" linewidth="1">Ping</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;Say&quot;, &quot;Ping&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="96" code="0" xpos="143" linewidth="1">Ping</state>
     <state pencolor="0" radius="40" description="OnEntry { post(&quot;Say&quot;, &quot;Pong&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="90" code="1" xpos="380" linewidth="1">Pong</state>
+<<<<<<< HEAD
     <transition c1x="235.7085064867048" c2y="84.97960864726126" c1y="89.66064229597578" description="" straight="1" type="2" ypos="94.34167594469029" endx="341.1942999941867" xpos="182.9656097329639" endy="80.29857499854674" c2x="288.4514032404458">
+=======
+    <state pencolor="0" radius="40" description="OnEntry {}&#xa;OnExit {}&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="321" code="2" xpos="215" linewidth="1">Suspend</state>
+    <transition c1x="235,7085064867049" c2y="84,97960864726126" c1y="89,66064229597578" description="" straight="1" type="2" ypos="94,34167594469029" endx="341,1942999941867" xpos="182,9656097329639" endy="80,29857499854674" c2x="288,4514032404458">
+>>>>>>> 27fa34d8c2e136d488c6aa820810e024c465ee5a
       <from>0</from>
       <to>1</to>
-      <inputs default="0" any="0" invert="0">timeout(1)</inputs>
+      <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="286.4497130813365" c2y="105.7824095238934" c1y="98.72036678960154" description="" straight="1" type="2" ypos="91.65832405530972" endx="179.2803587099373" xpos="340.0343902670361" endy="112.8444522581852" c2x="232.8650358956369">
+    <transition c1x="286,4497130813365" c2y="105,7824095238934" c1y="98,72036678960154" description="" straight="1" type="2" ypos="91,65832405530972" endx="179,2803587099373" xpos="340,0343902670361" endy="112,8444522581852" c2x="232,8650358956369">
       <from>1</from>
       <to>0</to>
-      <inputs default="0" any="0" invert="0">timeout(1)</inputs>
+      <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
       <outputs></outputs>
     </transition>
   </machine>

@@ -150,11 +150,12 @@ public:
         /** default constructor */
         WBPostIntVecAction(): WBPostAction<std::vector<int> >() {}
         
-        /** set parameters */
+        /** set parameters (clears vector on first element) */
         virtual void add_parameter(int index, long long value)
         {
                 if (index--)
                 {
+                        if (!index) _content.clear();
                         if (index >= _content.size())
                                 _content.push_back(value);
                         else

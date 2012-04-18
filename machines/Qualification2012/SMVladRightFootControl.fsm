@@ -1,20 +1,20 @@
 <?xml version='1.0'?>
 <!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
-<qfsmproject version="0.53" author="Qfsm">
+<qfsmproject version="0.52" author="Qfsm">
   <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vladimir Estivill-Castro" description="Submachine of Game Controller to LED out the team we r playing" version="1" name="FSMVladLEDcontrol" arrowtype="1" numbits="1" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="216" endx="133" xpos="73" endy="216"/>
-    <state pencolor="0" radius="40" description="OnEntry {&#xa; post(&quot;LEDS&quot;,&quot;RFoot White&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="216" code="0" xpos="173" linewidth="1">WE_VE_KICKOFF</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa; post(&quot;LEDS&quot;,&quot;RFoot Red&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="216" code="0" xpos="173" linewidth="1">WE_VE_KICKOFF</state>
     <state pencolor="0" radius="40" description="OnEntry { &#xa; post(&quot;LEDS&quot;,&quot;RFoot Off&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="216" code="1" xpos="438" linewidth="1">WE_DEFEND_KICKOFF</state>
-    <transition c1x="274.6583481180147" c2y="217.3233793516924" c1y="215.4141239527426" description="" straight="1" type="2" ypos="213.5048685537928" endx="398.130838075413" xpos="212.9221031393155" endy="219.2326347506422" c2x="336.3945930967138">
+    <transition c1x="274,6583481180147" c2y="217,3233793516924" c1y="215,4141239527426" description="" straight="1" type="2" ypos="213,5048685537928" endx="398,130838075413" xpos="212,9221031393155" endy="219,2326347506422" c2x="336,3945930967138">
       <from>0</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">!(kickOffTeam==ourTeam)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="336.8646708278711" c2y="234.5446832732408" c1y="233.3451457681462" description="" straight="1" type="2" ypos="232.1456082630517" endx="207.7874366094479" xpos="401.4032879370827" endy="235.7442207783353" c2x="272.3260537186595">
+    <transition c1x="336,8646708278711" c2y="234,5446832732407" c1y="233,3451457681462" description="" straight="1" type="2" ypos="232,1456082630517" endx="207,7874366094479" xpos="401,4032879370827" endy="235,7442207783353" c2x="272,3260537186595">
       <from>1</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">kickOffTeam==ourTeam</inputs>

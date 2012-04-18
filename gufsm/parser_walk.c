@@ -398,7 +398,7 @@ int get_expr_tree(const char *transition,
         pANTLR3_COMMON_TOKEN_STREAM tstream = open_string_stream(transition, "dummyname", &input, &lexer);
         if (!tstream) goto err2;
         
-        pTransitionContainer_SimpleCParser parser = TransitionContainer_SimpleCParserNew(tstream, NULL);
+        pTransitionContainerParser parser = TransitionContainerParserNew(tstream, NULL);
         
         if (!parser)
         {
