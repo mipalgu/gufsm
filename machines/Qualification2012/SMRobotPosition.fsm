@@ -5,18 +5,18 @@
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
-    <itransition ypos="288" endx="77.5494181990515" xpos="2" endy="301.527140916879"/>
-    <state pencolor="959488" radius="40" description="OnEntry { &#xa; extern InertialSensor_AngleY;&#xa; extern InertialSensor_AngleX;&#xa; int frontAngle;&#xa; int sideAngle;&#xa; frontAngle=70;&#xa; sideAngle = 70;&#xa; post(&quot;sensors_postSensors&quot;,&quot;On&quot;);&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="318" code="7" xpos="114" linewidth="1">SetUp</state>
+    <itransition ypos="290" endx="73.5494181990515" xpos="-2" endy="303.527140916879"/>
+    <state pencolor="959488" radius="40" description="OnEntry { &#xa; extern InertialSensor_AngleY;&#xa; extern InertialSensor_AngleX;&#xa; int frontalAngle;&#xa; int lateralAngle;&#xa; frontalAngle=70;&#xa; lateralAngle = 70;&#xa; post(&quot;sensors_postSensors&quot;,&quot;On&quot;);&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="320" code="7" xpos="110" linewidth="1">SetUp</state>
     <state pencolor="0" radius="40" description="OnEntry { &#xa; post(&quot;Say&quot;, &quot;falling left&quot;); &#xa; post(&quot;gunaoposition&quot;,&quot;robotFallenRight&quot;); &#xa;}&#xa;OnExit { }&#xa;{&#xa;  &#xa; }&#xa;" finalstate="0" moore_outputs="" ypos="315" code="0" xpos="876" linewidth="1">FallingLeft</state>
     <state pencolor="0" radius="40" description="OnEntry { &#xa; post(&quot;Say&quot;, &quot;falling right&quot;); &#xa; post(&quot;gunaoposition&quot;,&quot;robotFallenRight&quot;); &#xa;}&#xa;OnExit { }&#xa;{&#xa; &#xa;}&#xa;" finalstate="0" moore_outputs="" ypos="444" code="2" xpos="768" linewidth="1">FallingRight</state>
     <state pencolor="0" radius="40" description="OnEntry { &#xa; post(&quot;Say&quot;, &quot;falling forward&quot;); &#xa; post(&quot;gunaoposition&quot;,&quot;robotFallenForward&quot;); &#xa;}&#xa;OnExit { }&#xa;{&#xa; &#xa;}&#xa;" finalstate="0" moore_outputs="" ypos="208" code="6" xpos="479" linewidth="1">FallingForward</state>
     <state pencolor="0" radius="40" description="OnEntry { &#xa; post(&quot;Say&quot;, &quot;falling backward&quot;);&#xa; post(&quot;gunaoposition&quot;,&quot;robotFallenBackward&quot;); &#xa;}&#xa;OnExit { }&#xa;{&#xa;  &#xa; }&#xa;" finalstate="0" moore_outputs="" ypos="210" code="1" xpos="783" linewidth="1">FallingBackward</state>
-    <state pencolor="0" radius="40" description="OnEntry { print_state_name();}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="324" code="5" xpos="290" linewidth="1">Delay</state>
+    <state pencolor="0" radius="40" description="OnEntry { print_state_name();  print_int(InertialSensor_AngleY); print_int(InertialSensor_AngleX); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="324" code="5" xpos="290" linewidth="1">Delay</state>
     <state pencolor="0" radius="40" description="OnEntry {   post(&quot;Say&quot;, &quot;Up&quot;); &#xa; post(&quot;gunaoposition&quot;,&quot;robotUp&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="518" code="8" xpos="535" linewidth="1">AnglesUp</state>
     <state pencolor="0" radius="40" description="OnEntry { print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="49" code="9" xpos="545" linewidth="1">NoForward</state>
     <state pencolor="0" radius="40" description="OnEntry {print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="96" code="10" xpos="980" linewidth="1">NoBackwards</state>
     <state pencolor="0" radius="40" description="OnEntry {print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="509" code="4" xpos="1082" linewidth="1">NoLeft</state>
-    <transition c1x="185.7445912589993" c2y="333.9409725043438" c1y="331.2328343680141" description="" straight="1" type="2" ypos="328.5246962316843" endx="252.0526680779794" xpos="152.5905528495093" endy="336.6491106406735" c2x="218.8986296684894">
+    <transition c1x="183.0779245923327" c2y="334.6076391710105" c1y="332.5661677013474" description="" straight="1" type="2" ypos="330.5246962316843" endx="252.0526680779795" xpos="148.5905528495093" endy="336.6491106406735" c2x="217.5652963351561">
       <from>7</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
