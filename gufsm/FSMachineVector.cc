@@ -154,6 +154,16 @@ bool StateMachineVector::executeOnce()
         return fired;
 }
 
+void StateMachineVector::suspend()
+{
+        for (MachineVector::iterator it = machines().begin();
+             it != machines().end(); it++)
+        {
+                SuspensibleMachine * m = *it;
+                m->suspend();
+        }
+}
+
 #ifndef __BLOCKS__
 struct spawn_context
 {

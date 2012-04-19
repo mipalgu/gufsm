@@ -160,7 +160,7 @@ transition_pop(void *context, const char *terminal, const char *content,
                              << s << " -> " << self->dest_id() << endl;
                         return -1;
                 }
-
+                printf("%s\n.", t->description().c_str());
                 source->addTransition(t);
         }
         else
@@ -179,3 +179,10 @@ TransitionFactory::TransitionFactory(FSM::Machine *machine, const char *filename
         if (parse_transitions(filename, NULL, transition_push, transition_pop, this) == -1)
                 set_error(true);
 }
+
+TransitionFactory::TransitionFactory(FSM::Machine *machine, const char *filename, bool noInit):
+_fsm(machine), _file(filename), _error(false),
+_state_id(-1), _destination_id(-1) 
+{
+}
+

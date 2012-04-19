@@ -87,7 +87,7 @@ typedef int (*pa_callback_f)(void *context,
  * @param[up] up            Callback for ascending from subtree.
  * @param[in] context       Caller-specified context used for parsing (passed to callbacks).
  */
-int parse_action(const char * description, const char * name, pa_callback_f down, pa_callback_f up, void * context);
+int parse_description(const char * description, const char * name, pa_callback_f down, pa_callback_f up, void * context);
 
 /**
  * The main entry point for parsing actions
@@ -100,6 +100,20 @@ int parse_action(const char * description, const char * name, pa_callback_f down
  */
 int parse_actions(const char *filename, pa_callback_f callback,
                   pa_callback_f down, pa_callback_f up, void *context);
+
+/**
+ * The main entry point for parsing transitions
+ * @param[in] transition text.
+ * @param[in] callback function to be called for every node in the parse tree (can be NULL)
+ * @param[in] down     callback for descending into subtree (can be NULL)
+ * @param[in] up       callback for ascending from subtree (can be NULL)
+ * @param[in] context  caller-specified context to use for parsing (passed to callbacks)
+ * @return -1 in case of an error, -2 to abort sibling walk, >=0 otherwise
+ */
+int get_expr_tree(const char *transition, 
+                  void *context, 
+                  pANTLR3_BASE_TREE * tree, 
+                  pANTLR3_RECOGNIZER_SHARED_STATE * state);
 
 /**
  * The main entry point for parsing transitions
