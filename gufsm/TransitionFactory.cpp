@@ -160,7 +160,6 @@ transition_pop(void *context, const char *terminal, const char *content,
                              << s << " -> " << self->dest_id() << endl;
                         return -1;
                 }
-                printf("%s\n.", t->description().c_str());
                 source->addTransition(t);
         }
         else

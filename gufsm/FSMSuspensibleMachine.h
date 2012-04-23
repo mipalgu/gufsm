@@ -59,6 +59,7 @@
 #define gufsm_FSMSuspensibleMachine_h
 
 #include "FSMachine.h"
+#include "ExecComStruct.h"
 
 namespace FSM
 {
@@ -71,9 +72,11 @@ namespace FSM
                 bool _deleteSuspendState;       /// should delete in destructor?
         public:
                 /** constructor */
-                SuspensibleMachine(State *initialState = NULL, Context *ctx = NULL, int mid=0,
+                SuspensibleMachine(ExecCom_Struct * execCom = NULL,
+                                   State *initialState = NULL, 
+                                   Context *ctx = NULL, int mid=0,
                                    State *s = NULL, bool del = false):
-                                Machine(initialState, ctx, mid), _suspendState(s),
+                                Machine(execCom, initialState, ctx, mid), _suspendState(s),
                                 _resumeState(NULL),
                                 _deleteSuspendState(del) {}
                 /** destructor */

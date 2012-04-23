@@ -270,6 +270,7 @@ long long evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
                 result = evaluate_node(state, t, m);
                 func_expr->add_parameter(i, result);
         }
+        
         return func_expr->evaluate(m);
 }
 

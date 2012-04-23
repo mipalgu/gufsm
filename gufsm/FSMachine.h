@@ -62,6 +62,8 @@
 #include <string>
 #include <sys/time.h>
 
+#include "ExecComStruct.h"
+
 namespace FSM
 {
         class State;
@@ -126,14 +128,24 @@ namespace FSM
                 
                 LocalKripkeFrezzePointVector _localKripkeStateNames;
                 bool _have_kripke_states;        /// built already?
-
+        protected:
+                /* Communicate back to Executer class. */
+                ExecCom_Struct * _execCom;
         public:
                 /** constructor */
-                Machine(State *initial = NULL, Context *ctx = NULL, int mid=0): _id(mid),
-                        _context(ctx), _currentState(initial),
-                        _previousState(NULL), _states(), _localKripkeStateNames(),
-                        _have_kripke_states(false)
+                Machine(ExecCom_Struct * execCom, 
+                        State *initial = NULL, 
+                        Context *ctx = NULL, int mid=0) 
+                :  _id(mid),
+                   _context(ctx), 
+                   _currentState(initial),
+                   _previousState(NULL), 
+                   _states(), 
+                   _localKripkeStateNames(),
+                   _have_kripke_states(false)
                 {
+                        _execCom = execCom;
+                        
                         if (initial)
                         {
                                 addState(initial);

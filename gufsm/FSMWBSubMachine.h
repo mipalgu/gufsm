@@ -60,6 +60,7 @@
 
 #include <Whiteboard.h>
 #include "FSMSuspensibleMachine.h"
+#include "ExecComStruct.h"
 
 namespace FSM
 {
@@ -74,8 +75,12 @@ namespace FSM
                 bool _scheduleRestart;  /// should restart when executing next time
         public:
                 /** constructor */
-                WBSubMachine(State *initialState = NULL, WBContext *ctx = NULL, int mid=0,
-                             State *s = NULL, bool del = false);
+                WBSubMachine(State *initialState = NULL, 
+                             WBContext *ctx = NULL, 
+                             int mid=0,
+                             State *s = NULL, 
+                             bool del = false,
+                             ExecCom_Struct * execCom = NULL);
 
                 /** destructor */
                 virtual ~WBSubMachine();
