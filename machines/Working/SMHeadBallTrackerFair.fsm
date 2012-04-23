@@ -1,6 +1,6 @@
 <?xml version='1.0'?>
 <!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
-<qfsmproject version="0.53" author="Qfsm">
+<qfsmproject version="0.52" author="Qfsm">
   <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene, Carl" description="" version="1" name="SMHeadBallTracker" arrowtype="1" numbits="5" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
@@ -38,7 +38,7 @@
       <inputs default="0" any="0" invert="0">timeout(100000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="924.3677789778202" c2y="473.0705582046689" c1y="480.1025057929061" description="" straight="1" type="2" ypos="487.1344533811434" endx="1025.308884931453" xpos="873.8972260010037" endy="466.0386106164316" c2x="974.8383319546368">
+    <transition c1x="924.3677789778201" c2y="473.0705582046688" c1y="480.1025057929061" description="" straight="1" type="2" ypos="487.1344533811434" endx="1025.308884931453" xpos="873.8972260010037" endy="466.0386106164316" c2x="974.8383319546365">
       <from>3</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">guvision_selectCamera</inputs>
@@ -86,7 +86,7 @@
       <inputs default="0" any="0" invert="0">timeout(3500000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1215.77409011571" c2y="232.8503641074144" c1y="194.3498388555021" description="" straight="1" type="2" ypos="155.8493136035898" endx="1111.947331922021" xpos="1267.687469212554" endy="271.3508893593266" c2x="1163.860711018865">
+    <transition c1x="1215.77409011571" c2y="232.8503641074143" c1y="194.349838855502" description="" straight="1" type="2" ypos="155.8493136035898" endx="1111.947331922021" xpos="1267.687469212554" endy="271.3508893593266" c2x="1163.860711018865">
       <from>9</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">timeout(20000)</inputs>
@@ -104,7 +104,7 @@
       <inputs default="0" any="0" invert="0">abs(ball_y)>4</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="672.5279586725129" c2y="94.17472595007783" c1y="76.08121775004228" description="" straight="1" type="2" ypos="57.98770955000674" endx="404.758589264898" xpos="806.4126433763204" endy="112.2682341501134" c2x="538.6432739687054">
+    <transition c1x="672.5279586725129" c2y="94.17472595007786" c1y="76.0812177500423" description="" straight="1" type="2" ypos="57.98770955000674" endx="404.758589264898" xpos="806.4126433763204" endy="112.2682341501134" c2x="538.6432739687054">
       <from>13</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">timeout(100000)</inputs>
@@ -116,7 +116,7 @@
       <inputs default="0" any="0" invert="0">guvision_selectCamera</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="136.336130710766" c2y="296.5846260789323" c1y="260.6469721555394" description="" straight="1" type="2" ypos="224.7093182321464" endx="92.86541500552261" xpos="158.0714885633878" endy="332.5222800023253" c2x="114.6007728581443">
+    <transition c1x="136.3361307107661" c2y="296.5846260789323" c1y="260.6469721555393" description="" straight="1" type="2" ypos="224.7093182321464" endx="92.86541500552261" xpos="158.0714885633878" endy="332.5222800023253" c2x="114.6007728581443">
       <from>2</from>
       <to>8</to>
       <inputs default="0" any="0" invert="0">!guvision_selectCamera</inputs>
@@ -152,7 +152,7 @@
       <inputs default="0" any="0" invert="0">timeout(5000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="155.6236839994126" c2y="554.6883323670805" c1y="589.1767071340337" description="" straight="1" type="2" ypos="623.665081900987" endx="257.0800678397965" xpos="104.8954920792207" endy="520.1999576001272" c2x="206.3518759196045">
+    <transition c1x="155.6236839994126" c2y="554.6883323670804" c1y="589.1767071340338" description="" straight="1" type="2" ypos="623.665081900987" endx="257.0800678397965" xpos="104.8954920792207" endy="520.1999576001272" c2x="206.3518759196046">
       <from>16</from>
       <to>18</to>
       <inputs default="0" any="0" invert="0">doLeft</inputs>
@@ -200,7 +200,7 @@
       <inputs default="0" any="0" invert="0">doLeft</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="250.9192787787752" c2y="647.6350200357683" c1y="648.0838707067152" description="" straight="1" type="2" ypos="648.5327213776619" endx="103.3999010527113" xpos="324.6789676418071" endy="647.1861693648216" c2x="177.1595899157433">
+    <transition c1x="250.9192787787752" c2y="647.6350200357683" c1y="648.0838707067152" description="" straight="1" type="2" ypos="648.5327213776619" endx="103.3999010527113" xpos="324.6789676418071" endy="647.1861693648216" c2x="177.1595899157432">
       <from>17</from>
       <to>16</to>
       <inputs default="0" any="0" invert="0">~gunaomotion_naoHeadIsRunning</inputs>
