@@ -1,0 +1,51 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Hans Wannop" description="" version="1" name="FSM" arrowtype="1" numbits="3" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="311" endx="190" xpos="130" endy="311"/>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;extern gunxt_valueLightSensor1;&#xa;&#x9;extern gunxt_valueLightSensor2;&#xa;&#xa;&#x9;int blackValue;&#xa;&#x9;int whiteValue;&#xa;&#xa;&#x9;post(&quot;gunxt_startLightSensor&quot;,&quot;1&quot;); &#xa;&#x9;post(&quot;gunxt_startLightSensor&quot;,&quot;2&quot;); &#xa;&#xa;&#x9;print_state_name();&#xa;}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="311" code="0" xpos="230" linewidth="1">TurnOnSensors</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;post(&quot;gunxt_runForwardMotor&quot;,&quot;A,10&quot;); &#xa;&#x9;post(&quot;gunxt_runBackwardMotor&quot;,&quot;B,10&quot;); &#xa;&#xa;&#x9;print_state_name();&#xa;}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="101" code="1" xpos="940" linewidth="1">TurnLeft</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;post(&quot;gunxt_runBackwardMotor&quot;,&quot;A,10&quot;); &#xa;&#x9;post(&quot;gunxt_runBackwardMotor&quot;,&quot;B,10&quot;); &#xa;&#xa;&#x9;print_state_name();&#xa;}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="321" code="3" xpos="630" linewidth="1">DriveForward</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;blackValue = gunxt_valueLightSensor1;&#xa;&#x9;whiteValue = gunxt_valueLightSensor2;&#xa;&#xa;&#x9;print_state_name();&#xa;}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="315" code="2" xpos="428" linewidth="1">CalibrateSensors</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;post(&quot;gunxt_runBackwardMotor&quot;,&quot;A,10&quot;); &#xa;&#x9;post(&quot;gunxt_runForwardMotor&quot;,&quot;B,10&quot;); &#xa;&#xa;&#x9;print_state_name();&#xa;}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="532" code="4" xpos="950" linewidth="1">TurnRight</state>
+    <transition c1x="309.1506827819434" c2y="315.2245499675653" c1y="315.4490999351306" description="" straight="1" type="2" ypos="315.6736499026959" endx="388" xpos="269.7260241729151" endy="315" c2x="348.5753413909717">
+      <from>0</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">timeout(2000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="842.9296724717864" c2y="245.9873706151815" c1y="193.1627490793722" description="" straight="1" type="2" ypos="140.3381275435629" endx="663.2820117735138" xpos="932.7535028209227" endy="298.8119921509908" c2x="753.1058421226501">
+      <from>1</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">gunxt_valueLightSensor1>whiteValue+-3</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="709.7736772794846" c2y="150.4101160240517" c1y="217.7087758681019" description="" straight="1" type="2" ypos="285.007435712152" endx="904.2229123600034" xpos="612.5490597392252" endy="83.11145618000162" c2x="806.998294819744">
+      <from>3</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">gunxt_valueLightSensor1&lt;blackValue+3</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="762.2497472882774" c2y="438.7622176532207" c1y="385.5244353064414" description="" straight="1" type="2" ypos="332.286652959662" endx="950.0000017391304" xpos="668.3746200628508" endy="492.0000000000001" c2x="856.1248745137038">
+      <from>3</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">gunxt_valueLightSensor2&lt;blackValue+3</inputs>
+      <outputs>2</outputs>
+    </transition>
+    <transition c1x="508.7127232234016" c2y="316.7854538705669" c1y="315.8927269352835" description="" straight="1" type="2" ypos="315" endx="590.1381696702048" xpos="468" endy="317.6781808058504" c2x="549.4254464468032">
+      <from>2</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="815.9231837853941" c2y="422.6532243066316" c1y="485.3011343816048" description="" straight="1" type="2" ypos="547.949044456578" endx="621.1351558564413" xpos="913.3171977498706" endy="360.0053142316584" c2x="718.5291698209178">
+      <from>4</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">gunxt_valueLightSensor2>whiteValue+-3</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>
