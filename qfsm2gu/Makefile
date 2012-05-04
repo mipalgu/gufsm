@@ -34,15 +34,25 @@ all: link-utils ${ALL_TARGETS}
 
 ${BUILDDIR}/GNUmakefile: link-utils GNUmakefile.in
 	mkdir -p ${BUILDDIR}
-	( cd ${BUILDDIR} && ln -fs ../*.[mh] . )
+	( cd ${BUILDDIR} && ln -fs ../*.[cmh] . )
 	sed -e 's^OBJCINC^-I`find /usr/lib/gcc -name include -type d | sort -r | head -n1`^g' -e 's^BSDLIB^`[ ! -e /usr/lib/libbsd.a ] || echo "-lbsd"`^g' GNUmakefile.in > ${BUILDDIR}/GNUmakefile
 
-do-build: ${BUILDDIR}/GNUmakefile
+do-build: ${ANTLR_OBJS} ${BUILDDIR}/GNUmakefile
 	cd ${BUILDDIR} && ${GMAKE} ${GMAKEFLAGS} CC=${HOST_CC} CXX=${HOST_CXX}
 
 link-utils:
 .for file in ${UTIL_SRCS} ${UTIL_HDRS}
 	$Eln -s ${UTIL_DIR}/${file} . 2>/dev/null || true
 .endfor
+
+.if `whoami` != root
+NSUDO?=sudo
+.endif
+install: ${ALL_TARGETS}
+.if exists(${BUILDDIR}/obj/${BIN})
+	${NSUDO} install -c -s -o root -m 755 ${BUILDDIR}/obj/${BIN} ${PREFIX}/bin/
+.else
+	${NSUDO} install -c -s -o root -m 755 ${BUILDDIR}/${BIN} ${PREFIX}/bin/
+.endif
 
 .include "../../../mk/mipal.mk"

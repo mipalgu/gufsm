@@ -42,9 +42,10 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.GDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.GDB"
       launchStyle = "0"
-      useCustomWorkingDirectory = "NO"
-      customWorkingDirectory = "/Users/Robert/src/MiPal/GUNao/posix/gubehaviourinterpreter/guSeeker"
+      useCustomWorkingDirectory = "YES"
+      customWorkingDirectory = "/Users/Robert/src/MiPal/GUNao/posix/gufsm/machines/HansNXT"
       buildConfiguration = "Debug"
+      ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
       <BuildableProductRunnable>
@@ -60,6 +61,10 @@
          <CommandLineArgument
             argument = "SMPlayer2.fsm"
             isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "LineFollowerNXT.fsm"
+            isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
       <AdditionalOptions>

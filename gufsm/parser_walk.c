@@ -319,10 +319,10 @@ int parse_description(const char * description, const char * name, pa_callback_f
          * called, so we just parse the state description here. */
         rv = walk_parse_children(parser->pParser->rec->state, actionsAST.tree, NULL, down, up, context);
         
-err4:   parser->free(parser);
-err3:   tstream->free(tstream);
-err2:   if (lexer) lexer->free(lexer);
-        if (input) input->free(input);
+err4:   //parser->free(parser);
+err3:   //tstream->free(tstream);
+err2:   //if (lexer) lexer->free(lexer);
+        //if (input) input->free(input);
 
         
         return rv;
@@ -398,7 +398,7 @@ int get_expr_tree(const char *transition,
         pANTLR3_COMMON_TOKEN_STREAM tstream = open_string_stream(transition, "dummyname", &input, &lexer);
         if (!tstream) goto err2;
         
-        pTransitionContainerParser parser = TransitionContainerParserNew(tstream);
+        pTransitionContainer_SimpleCParser parser = TransitionContainer_SimpleCParserNew(tstream, NULL);
         
         if (!parser)
         {
@@ -423,7 +423,7 @@ int get_expr_tree(const char *transition,
         *state = parser->pParser->rec->state;
         rv = 1;
         
-err4:   // parser->free(parser);
+//err4:   // parser->free(parser);
 err3:   // tstream->free(tstream);
 err2:   // lexer->free(lexer);
         // input->free(input);

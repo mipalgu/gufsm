@@ -64,9 +64,22 @@ using namespace FSM;
 using namespace std;
 using namespace guWhiteboard;
 
-WBSubMachine::WBSubMachine(State *initialState, WBContext *ctx, int mid, State *s, bool del):
-        SuspensibleMachine(initialState, ctx, mid, s, del), _deleteContext(false),
-        _scheduleSuspend(false), _scheduleResume(false), _scheduleRestart(false)
+WBSubMachine::WBSubMachine(State *initialState, 
+                           WBContext *ctx, 
+                           int mid, 
+                           State *s, 
+                           bool del, 
+                           ExecCom_Struct * execCom)
+             : SuspensibleMachine(execCom, 
+                                  initialState, 
+                                  ctx, 
+                                  mid, 
+                                  s, 
+                                  del), 
+               _deleteContext(false),
+               _scheduleSuspend(false), 
+               _scheduleResume(false), 
+               _scheduleRestart(false)
 {
         if (!ctx)
         {
@@ -114,6 +127,7 @@ WBSubMachine::WBSubMachine(State *initialState, WBContext *ctx, int mid, State *
         wb->subscribeToMessage(wb_name, WB_BIND(WBSubMachine::wb_restart_me), r);
 	if (r != Whiteboard::METHOD_OK)
                 cerr << "Failed to subscribe to '" << wb_name << "'" << endl;
+        
 }
 
 

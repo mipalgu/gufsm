@@ -215,6 +215,11 @@ namespace FSM
                  * call suspend() on all state machines.
                  */
                 virtual void suspend();
+                
+                /**
+                 * call resume() on all state machines.
+                 */
+                virtual void resume();
 
                 /**
                  * printable state machine vector description

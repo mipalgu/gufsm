@@ -12,6 +12,10 @@
 #import "QFSMElement.h"
 #import "NSString+MixedCase.h"
 
+#ifdef GNUSTEP_BASE_VERSION
+#include "GTMNSString+HTML.h"
+#endif
+
 @interface QFSMKeyValue: NSObject
 {
         NSString *key;
@@ -129,8 +133,11 @@
         if ([stateName length])
                 [aString appendFormat: @"%@\n", stateName];
         if ([description length])
-            [aString appendFormat: @"%@\n", description];
-
+#ifdef GNUSTEP_BASE_VERSION
+                [aString appendFormat: @"%@\n", [description gtm_stringByUnescapingFromHTML]];
+#else
+                [aString appendFormat: @"%@\n", description];
+#endif
         if ([stateID isEqualToString: initialStateID])
                 initialStateIndex = [states count];
 
