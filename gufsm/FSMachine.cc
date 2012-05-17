@@ -109,8 +109,8 @@ bool Machine::executeOnce(bool *fired)
                 //  state in this particular machine.
                 if (_execCom) {
                         dispatch_semaphore_wait(_execCom->_flagProtect, DISPATCH_TIME_FOREVER);
-                        _execCom->_currentExecutingMachineId = id();
-                        _execCom->_currentExecutingStateID = _currentState->stateID();
+			// Use the machine id as the index of the array.
+                        _execCom->_currentExecutingStateIDs[id()] = _currentState->stateID();
                         dispatch_semaphore_signal(_execCom->_flagProtect);
                 }
                 
