@@ -32,12 +32,15 @@ struct ExecCom_Struct {
         /* What executing state are all the machines in? */
         enum ExecCom::ExecCom_State_Type _state;
         
-        /* What machine is currently being evaluated? */
-        int _currentExecutingMachineId;
-        
-        /* What is the current executing state in the machine
-         * currently being evaluated? */
-        int _currentExecutingStateID;
+        /* For each machine ( the index ), what state is running?
+	 * ( the content ). */
+        int * _currentExecutingStateIDs;
+	
+	/* Number of machines running. */
+	int _numMachines;
+	
+	/* Are there machines still executing? */
+	bool _stillExecuting;
 };
 
 #endif
