@@ -95,6 +95,7 @@ StateMachineVectorFactory::StateMachineVectorFactory(ANTLRContext *context,
                 wb->subscribeToMessage(wb_name, WB_BIND(StateMachineVectorFactory::wb_reread_specific), r);
                 if (r != Whiteboard::METHOD_OK)
                         cerr << "Failed to subscribe to '" << wb_name << "'" << endl;
+
         }
 
         wb_name = "reload";

@@ -127,10 +127,10 @@ namespace FSM
                 /** specific resume from the whiteboard (wb message name must be suspend_MACHINENAME */
                 void wb_resume_me(std::string, WBMsg *) { _scheduleResume = true; }
 
-                /** resume from the whiteboard, requires a string with the machine's name */
+                /** restart from the whiteboard, requires a string with the machine's name */
                 void wb_restart(std::string s, WBMsg *msg) { if (name() == msg->getStringValue()) wb_restart_me(s, msg); }
 
-                /** specific resume from the whiteboard (wb message name must be suspend_MACHINENAME */
+                /** specific restart from the whiteboard (wb message name must be suspend_MACHINENAME */
                 void wb_restart_me(std::string, WBMsg *) { _scheduleRestart = true; }
         };
 }
