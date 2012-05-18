@@ -1,124 +1,184 @@
 <?xml version='1.0'?>
 <!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
 <qfsmproject version="0.53" author="Qfsm">
-  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Hans Wannop" description="" version="1" name="FSM" arrowtype="1" numbits="4" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Hans Wannop" description="" version="1" name="FSM" arrowtype="1" numbits="5" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
-    <itransition ypos="272.5" endx="107.8333333333333" xpos="47.83333333333331" endy="272.5"/>
-    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;extern gunxt_valueLightSensor1;&#xa;&#x9;extern gunxt_valueLightSensor2;&#xa;&#xa;&#x9;int leftWhiteValue;&#xa;&#x9;int rightWhiteValue;&#xa;&#xa;&#x9;post(&quot;gunxt_startLightSensor&quot;,&quot;1&quot;); &#xa;&#x9;post(&quot;gunxt_startLightSensor&quot;,&quot;2&quot;); &#xa;&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="272.5" code="0" xpos="147.8333333333333" linewidth="1">TurnOnSensors</state>
-    <state pencolor="0" radius="40" description="OnEntry{ &#xa;&#x9;post(&quot;gunxt_runForwardMotor&quot;,&quot;A,10&quot;);&#xa;&#x9;post(&quot;gunxt_runBackwardMotor&quot;,&quot;B,10&quot;);&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="61.4999999999999" code="4" xpos="789.4999999999999" linewidth="1">TurnLeft</state>
-    <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;post(&quot;gunxt_runBackwardMotor&quot;,&quot;A,15&quot;);&#xa;&#x9;post(&quot;gunxt_runBackwardMotor&quot;,&quot;B,15&quot;);&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="279" code="2" xpos="539.9999999999999" linewidth="1">DriveForward</state>
-    <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;leftWhiteValue = gunxt_valueLightSensor1;&#xa;&#x9;rightWhiteValue = gunxt_valueLightSensor2;&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="279" code="1" xpos="347" linewidth="1">CalibrateSensors</state>
-    <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;post(&quot;gunxt_runBackwardMotor&quot;,&quot;A,10&quot;);&#xa;&#x9;post(&quot;gunxt_runForwardMotor&quot;,&quot;B,10&quot;);&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="477.04" code="5" xpos="797" linewidth="1">TurnRight</state>
-    <state pencolor="0" radius="40" description="OnEntry{ &#xa;&#x9;post(&quot;gunxt_stopMotor&quot;,&quot;A&quot;);&#xa;&#x9;post(&quot;gunxt_stopMotor&quot;,&quot;B&quot;);&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="278" code="3" xpos="1044" linewidth="1">Stop</state>
-    <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;post(&quot;gunxt_runBackwardMotor&quot;,&quot;A,10&quot;);&#xa;&#x9;post(&quot;gunxt_runBackwardMotor&quot;,&quot;B,10&quot;);&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="281.6666666666666" code="7" xpos="1240" linewidth="1">DriveForward</state>
-    <state pencolor="0" radius="40" description="OnEntry{ &#xa;&#x9;post(&quot;gunxt_runBackwardMotor&quot;,&quot;A,10&quot;);&#xa;&#x9;post(&quot;gunxt_stopMotor&quot;,&quot;B&quot;);&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="366.1666666666667" code="6" xpos="1466" linewidth="1">RunAStopB</state>
-    <state pencolor="0" radius="40" description="OnEntry{ &#xa;&#x9;post(&quot;gunxt_runBackwardMotor&quot;,&quot;B, 10&quot;);&#xa;&#x9;post(&quot;gunxt_stopMotor&quot;,&quot;A&quot;);&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="189.1666666666667" code="8" xpos="1464" linewidth="1">RunBStopA</state>
-    <state pencolor="0" radius="40" description="OnEntry{ &#xa;&#x9;post(&quot;gunxt_stopMotor&quot;,&quot;A&quot;);&#xa;&#x9;post(&quot;gunxt_stopMotor&quot;,&quot;B&quot;);&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="275.1666666666667" code="9" xpos="1701" linewidth="1">IsStraightStop</state>
-    <state pencolor="0" radius="40" description="OnEntry{ &#xa;&#x9;post(&quot;gunxt_runForwardMotor&quot;,&quot;A,10&quot;);&#xa;&#x9;post(&quot;gunxt_runBackwardMotor&quot;,&quot;B,10&quot;);&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="645" code="11" xpos="1037" linewidth="1">TurnLeft</state>
-    <state pencolor="0" radius="40" description="OnEntry{ &#xa;&#x9;post(&quot;gunxt_runForwardMotor&quot;,&quot;A,10&quot;);&#xa;&#x9;post(&quot;gunxt_runBackwardMotor&quot;,&quot;B,10&quot;);&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="641.6666666666666" code="12" xpos="562.5" linewidth="1">TurnLeft</state>
-    <transition c1x="227.3729050041655" c2y="278.391216634232" c1y="277.7824332684639" description="" straight="1" type="2" ypos="277.1736499026959" endx="307" xpos="187.5593575062483" endy="279" c2x="267.1864525020828">
+    <itransition ypos="550.3624" endx="141.0109333333333" xpos="81.0109333333333" endy="550.3624"/>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;extern gunxt_valueLightSensor1;&#xa;&#x9;extern gunxt_valueLightSensor2;&#xa;&#x9;extern gunxt_direction;&#xa;&#xa;&#x9;int leftWhiteValue;&#xa;&#x9;int rightWhiteValue;&#xa;&#xa;&#x9;post(&quot;gunxt_startLightSensor&quot;,&quot;1&quot;); &#xa;&#x9;post(&quot;gunxt_startLightSensor&quot;,&quot;2&quot;); &#xa;&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="550.3624" code="0" xpos="181.0109333333333" linewidth="1">TurnOnSensors</state>
+    <state pencolor="0" radius="40" description="OnEntry{ &#xa;&#x9;post(&quot;gunxt_runForwardMotor&quot;,&quot;A,10&quot;);&#xa;&#x9;post(&quot;gunxt_runBackwardMotor&quot;,&quot;B,10&quot;);&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="339.3623999999998" code="4" xpos="822.6775999999999" linewidth="1">TurnLeft</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;post(&quot;gunxt_direction&quot;,&quot;0&quot;);&#xa;&#x9;post(&quot;gunxt_runBackwardMotor&quot;,&quot;A,15&quot;);&#xa;&#x9;post(&quot;gunxt_runBackwardMotor&quot;,&quot;B,15&quot;);&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="556.8624" code="2" xpos="573.1775999999999" linewidth="1">DriveForward</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;leftWhiteValue = gunxt_valueLightSensor1;&#xa;&#x9;rightWhiteValue = gunxt_valueLightSensor2;&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="556.8624" code="1" xpos="380.1776" linewidth="1">CalibrateSensors</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;post(&quot;gunxt_runBackwardMotor&quot;,&quot;A,10&quot;);&#xa;&#x9;post(&quot;gunxt_runForwardMotor&quot;,&quot;B,10&quot;);&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="754.9023999999999" code="5" xpos="830.1776" linewidth="1">TurnRight</state>
+    <state pencolor="0" radius="40" description="OnEntry{ &#xa;&#x9;post(&quot;gunxt_stopMotor&quot;,&quot;A&quot;);&#xa;&#x9;post(&quot;gunxt_stopMotor&quot;,&quot;B&quot;);&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="561.4399999999999" code="3" xpos="1080" linewidth="1">Stop</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;post(&quot;gunxt_runBackwardMotor&quot;,&quot;A,10&quot;);&#xa;&#x9;post(&quot;gunxt_runBackwardMotor&quot;,&quot;B,10&quot;);&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="559.5290666666665" code="7" xpos="1273.1776" linewidth="1">DriveForward</state>
+    <state pencolor="0" radius="40" description="OnEntry{ &#xa;&#x9;post(&quot;gunxt_runBackwardMotor&quot;,&quot;A,10&quot;);&#xa;&#x9;post(&quot;gunxt_stopMotor&quot;,&quot;B&quot;);&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="682.96" code="6" xpos="1512.88" linewidth="1">RunAStopB</state>
+    <state pencolor="0" radius="40" description="OnEntry{ &#xa;&#x9;post(&quot;gunxt_runBackwardMotor&quot;,&quot;B, 10&quot;);&#xa;&#x9;post(&quot;gunxt_stopMotor&quot;,&quot;A&quot;);&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="408.08" code="8" xpos="1504.32" linewidth="1">RunBStopA</state>
+    <state pencolor="0" radius="40" description="OnEntry{ &#xa;&#x9;post(&quot;gunxt_stopMotor&quot;,&quot;A&quot;);&#xa;&#x9;post(&quot;gunxt_stopMotor&quot;,&quot;B&quot;);&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="553.0290666666667" code="9" xpos="1734.1776" linewidth="1">WaitForNextDirection</state>
+    <state pencolor="0" radius="40" description="OnEntry{ &#xa;&#x9;post(&quot;gunxt_runForwardMotor&quot;,&quot;B,10&quot;);&#xa;&#x9;post(&quot;gunxt_runBackwardMotor&quot;,&quot;A,10&quot;);&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="944.24" code="11" xpos="1251.52" linewidth="1">TurnRight</state>
+    <state pencolor="0" radius="40" description="OnEntry{ &#xa;&#x9;post(&quot;gunxt_runForwardMotor&quot;,&quot;B,10&quot;);&#xa;&#x9;post(&quot;gunxt_runBackwardMotor&quot;,&quot;A,10&quot;);&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="935.6" code="12" xpos="603.6" linewidth="1">TurnRight</state>
+    <state pencolor="0" radius="40" description="OnEntry{ &#xa;&#x9;post(&quot;gunxt_runForwardMotor&quot;,&quot;A,10&quot;);&#xa;&#x9;post(&quot;gunxt_runBackwardMotor&quot;,&quot;B,10&quot;);&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="187.2" code="10" xpos="1251.6" linewidth="1">TurnLeft</state>
+    <state pencolor="0" radius="40" description="OnEntry{ &#xa;&#x9;post(&quot;gunxt_runForwardMotor&quot;,&quot;A,10&quot;);&#xa;&#x9;post(&quot;gunxt_runBackwardMotor&quot;,&quot;B,10&quot;);&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="168.2944" code="13" xpos="614.1472" linewidth="1">TurnLeft</state>
+    <state pencolor="0" radius="40" description="OnEntry{ &#xa;&#x9;post(&quot;gunxt_runForwardMotor&quot;,&quot;B,10&quot;);&#xa;&#x9;post(&quot;gunxt_runBackwardMotor&quot;,&quot;A,10&quot;);&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="847.2" code="14" xpos="997.6" linewidth="1">TurnRight</state>
+    <state pencolor="0" radius="40" description="OnEntry{ &#xa;&#x9;post(&quot;gunxt_runForwardMotor&quot;,&quot;B,10&quot;);&#xa;&#x9;post(&quot;gunxt_runBackwardMotor&quot;,&quot;A,10&quot;);&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="751.4400000000001" code="15" xpos="1570" linewidth="1">TurnRight</state>
+    <state pencolor="0" radius="40" description="OnEntry{ &#xa;&#x9;post(&quot;gunxt_runForwardMotor&quot;,&quot;B,10&quot;);&#xa;&#x9;post(&quot;gunxt_runBackwardMotor&quot;,&quot;A,10&quot;);&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="821.2" code="16" xpos="1301.2" linewidth="1">TurnRight</state>
+    <state pencolor="0" radius="40" description="OnEntry{ &#xa;&#x9;post(&quot;gunxt_runForwardMotor&quot;,&quot;B,10&quot;);&#xa;&#x9;post(&quot;gunxt_runBackwardMotor&quot;,&quot;A,10&quot;);&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="825.2" code="17" xpos="705.2" linewidth="1">TurnRight</state>
+    <transition c1x="260.5505050041655" c2y="556.2536166342319" c1y="555.6448332684639" description="" straight="1" type="2" ypos="555.0360499026958" endx="340.1776" xpos="220.7369575062483" endy="556.8624" c2x="300.3640525020828">
       <from>0</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">timeout(2000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="712.5963391384529" c2y="204.8207039485148" c1y="152.8294157460388" description="" straight="1" type="2" ypos="100.8381275435628" endx="573.2820117735137" xpos="782.2535028209226" endy="256.8119921509909" c2x="642.9391754559833">
+    <transition c1x="756.4470658512435" c2y="497.3684671988406" c1y="442.2344973712017" description="" straight="0" type="2" ypos="378.7005275435627" endx="609.6789919118851" xpos="815.4311028209225" endy="540.5024370264796" c2x="695.0630288815642">
       <from>4</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">gunxt_valueLightSensor1>leftWhiteValue+-5</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="884.9260206089102" c2y="195.3588745053803" c1y="141.8992371763642" description="" straight="1" type="2" ypos="88.43959984734801" endx="1016.642354844747" xpos="819.0678534909918" endy="248.8185118343964" c2x="950.7841877268286">
+    <transition c1x="919.0444206089102" c2y="476.9396745053802" c1y="421.6208371763641" description="" straight="1" type="2" ypos="366.3019998473479" endx="1052.642354844747" xpos="852.2454534909917" endy="532.2585118343964" c2x="985.8433877268285">
       <from>4</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">gunxt_valueLightSensor2&lt;rightWhiteValue+-10</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="599.6070106128179" c2y="110.0767826907183" c1y="176.5421092014352" description="" straight="1" type="2" ypos="243.007435712152" endx="753.7229123600033" xpos="522.5490597392253" endy="43.61145618000148" c2x="676.6649614864107">
-      <from>2</from>
-      <to>4</to>
-      <inputs default="0" any="0" invert="0">gunxt_valueLightSensor1&lt;leftWhiteValue+-10</inputs>
-      <outputs>1</outputs>
-    </transition>
-    <transition c1x="651.2497472882773" c2y="388.1222176532207" c1y="339.2044353064413" description="" straight="1" type="2" ypos="290.286652959662" endx="797.0000017391304" xpos="578.3746200628507" endy="437.04" c2x="724.1248745137038">
+    <transition c1x="703.6273472882772" c2y="651.5846176532206" c1y="605.0668353064412" description="" straight="0" type="2" ypos="568.149052959662" endx="830.1776017391304" xpos="611.5522200628507" endy="714.9023999999999" c2x="769.3024745137037">
       <from>2</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">gunxt_valueLightSensor2&lt;rightWhiteValue+-10</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="721.1907129876379" c2y="275.9259140712796" c1y="275.3322945629545" description="" straight="1" type="2" ypos="274.7386750546295" endx="1004.027406649329" xpos="579.7723661567923" endy="276.5195335796047" c2x="862.6090598184835">
+    <transition c1x="755.3091129876379" c2y="557.5067140712796" c1y="555.0538945629546" description="" straight="1" type="2" ypos="552.6010750546295" endx="1040.027406649329" xpos="612.9499661567922" endy="559.9595335796047" c2x="897.6682598184836">
       <from>2</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">(gunxt_valueLightSensor1&lt;leftWhiteValue+-10)&amp;&amp;(gunxt_valueLightSensor2&lt;rightWhiteValue+-10)</inputs>
       <outputs>0</outputs>
     </transition>
-    <transition c1x="424.7127232234016" c2y="276.7854538705669" c1y="277.8927269352835" description="" straight="1" type="2" ypos="279" endx="500.1381696702047" xpos="387" endy="275.6781808058504" c2x="462.4254464468032">
+    <transition c1x="627.1039512935243" c2y="373.9740842417508" c1y="434.2074983609585" description="" straight="0" type="2" ypos="518.7984453440131" endx="785.5282001237316" xpos="585.4713120491319" endy="324.5326296432774" c2x="684.9947759259294">
+      <from>2</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">gunxt_valueLightSensor1&lt;leftWhiteValue+-10</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="457.8903232234015" c2y="554.6478538705669" c1y="555.7551269352834" description="" straight="1" type="2" ypos="556.8624" endx="533.3157696702046" xpos="420.1776" endy="553.5405808058504" c2x="495.6030464468031">
       <from>1</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="683.9231837853943" c2y="376.3332243066316" c1y="434.6611343816048" description="" straight="1" type="2" ypos="492.989044456578" endx="531.1351558564414" xpos="760.3171977498706" endy="318.0053142316585" c2x="607.5291698209178">
+    <transition c1x="703.701551193575" c2y="675.0548142552871" c1y="731.9531293559323" description="" straight="0" type="2" ypos="770.8514444565778" endx="578.115058080984" xpos="793.4947977498706" endy="596.5564991546416" c2x="628.3083046372795">
       <from>5</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">gunxt_valueLightSensor2>rightWhiteValue+-5</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="893.1840523085339" c2y="357.2283395250166" c1y="406.7249132001465" description="" straight="1" type="2" ypos="456.2214868752764" endx="1017.241410735102" xpos="831.1553730952498" endy="307.7317658498867" c2x="955.212731521818">
+    <transition c1x="927.3024523085338" c2y="638.8091395250166" c1y="686.4465132001465" description="" straight="1" type="2" ypos="734.0838868752764" endx="1053.241410735102" xpos="864.3329730952498" endy="591.1717658498866" c2x="990.2719315218179">
       <from>5</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">gunxt_valueLightSensor1&lt;leftWhiteValue+-10</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="1120.486497957754" c2y="281.1949383331613" c1y="277.0436090281427" description="" straight="0" type="2" ypos="276.4916396039899" endx="1200.015423173891" xpos="1083.971550494267" endy="280.5559839770525" c2x="1166.628430669786">
+    <transition c1x="1156.486497957754" c2y="559.0573383331612" c1y="560.4836090281427" description="" straight="0" type="2" ypos="559.9316396039898" endx="1233.193023173891" xpos="1119.971550494267" endy="558.4183839770524" c2x="1199.806030669786">
       <from>3</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="1323.249488919115" c2y="212.4040597117456" c1y="235.6414527568246" description="" straight="1" type="2" ypos="258.8788458019035" endx="1424" xpos="1272.874233378673" endy="189.1666666666667" c2x="1373.624744459558">
+    <transition c1x="1358.807888919115" c2y="450.9670819339678" c1y="493.8541638679355" description="" straight="1" type="2" ypos="536.7412458019033" endx="1464.32" xpos="1306.051833378673" endy="408.08" c2x="1411.563944459558">
       <from>7</from>
       <to>8</to>
       <inputs default="0" any="0" invert="0">gunxt_valueLightSensor1>leftWhiteValue+-5</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="1322.854763872841" c2y="348.1639897438025" c1y="327.409229156323" description="" straight="1" type="2" ypos="306.6544685688436" endx="1426.094786863081" xpos="1271.234752377721" endy="368.9187503312818" c2x="1374.474775367961">
+    <transition c1x="1360.599830539508" c2y="651.9803452993579" c1y="618.2486069341007" description="" straight="1" type="2" ypos="584.5168685688437" endx="1472.974786863081" xpos="1304.412352377721" endy="685.712083664615" c2x="1416.787308701294">
       <from>7</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">gunxt_valueLightSensor2>rightWhiteValue+-5</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="1559.876615428295" c2y="319.0614794203397" c1y="339.4294242670107" description="" straight="1" type="2" ypos="359.7973691136818" endx="1668.650556627872" xpos="1505.489644828506" endy="298.6935345736686" c2x="1614.263586028084">
+    <transition c1x="1602.189148761628" c2y="609.9008571981173" c1y="643.2457798225661" description="" straight="1" type="2" ypos="676.590702447015" endx="1701.828156627872" xpos="1552.369644828506" endy="576.5559345736683" c2x="1652.00865269475">
       <from>6</from>
       <to>9</to>
       <inputs default="0" any="0" invert="0">gunxt_valueLightSensor1>leftWhiteValue+-5</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="1557.441501397913" c2y="235.4512689415022" c1y="211.7686245771261" description="" straight="1" type="2" ypos="188.0859802127501" endx="1664.353706603913" xpos="1503.985398794914" endy="259.1339133058783" c2x="1610.897604000913">
+    <transition c1x="1595.380701397914" c2y="493.6639800526131" c1y="450.3316467993482" description="" straight="1" type="2" ypos="406.9993135460833" endx="1697.531306603913" xpos="1544.305398794914" endy="536.9963133058779" c2x="1646.456004000913">
       <from>8</from>
       <to>9</to>
       <inputs default="0" any="0" invert="0">gunxt_valueLightSensor2>rightWhiteValue+-5</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="1708.602464001174" c2y="453.8897410451439" c1y="568.9979474478716" description="" straight="0" type="2" ypos="314.9543384197287" endx="1038.427661220496" xpos="1705.11596604342" endy="605.025485826098" c2x="1037.882524527572">
+    <transition c1x="1892.154999584349" c2y="189.0152943188241" c1y="206.1469194471189" description="" straight="0" type="2" ypos="529.900971999247" endx="1291.557590172672" xpos="1766.813335583174" endy="185.3585365622003" c2x="1442.434160586452">
+      <from>9</from>
+      <to>10</to>
+      <inputs default="0" any="0" invert="0">gunxt_direction==2</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1900.620590587264" c2y="959.0005968317848" c1y="791.8324871921425" description="" straight="0" type="2" ypos="577.4201397442706" endx="1291.334679618298" xpos="1765.88052658609" endy="940.3940557866406" c2x="1664.34040414587">
       <from>9</from>
       <to>11</to>
-      <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
+      <inputs default="0" any="0" invert="0">gunxt_direction==3</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="865.5258317321682" c2y="643.5370975577918" c1y="643.0586475708581" description="" straight="1" type="2" ypos="642.5801975839244" endx="602.4309749269999" xpos="997.0732601347523" endy="644.0155475447255" c2x="733.978403329584">
+    <transition c1x="1707.481141528523" c2y="136.3476621311698" c1y="206.0750967795574" description="" straight="0" type="2" ypos="513.2113773324384" endx="557.7291925797574" xpos="1730.362941944174" endy="519.9659678123453" c2x="450.4545531662097">
+      <from>9</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">gunxt_direction==0</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1738.575165348445" c2y="697.0775764223364" c1y="685.6937696182853" description="" straight="0" type="2" ypos="593.0283736763887" endx="1609.753040928034" xpos="1733.942145668957" endy="747.0020120579155" c2x="1694.237439206006">
+      <from>9</from>
+      <to>15</to>
+      <inputs default="0" any="0" invert="0">gunxt_direction==3</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1022.239165065501" c2y="939.2393197800141" c1y="940.5297586819693" description="" straight="1" type="2" ypos="941.8201975839245" endx="643.5309749269999" xpos="1211.593260134752" endy="937.948880878059" c2x="832.8850699962508">
       <from>11</from>
       <to>12</to>
-      <inputs default="0" any="0" invert="0">gunxt_valueLightSensor1&lt;leftWhiteValue+-10</inputs>
+      <inputs default="0" any="0" invert="0">gunxt_valueLightSensor2&lt;rightWhiteValue+-10</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="481.0090469670619" c2y="420.9800594709052" c1y="504.3999980526534" description="" straight="0" type="2" ypos="601.6820898405579" endx="512.7072699855995" xpos="561.3893173103859" endy="308.2422107297149" c2x="448.6634998211377">
+    <transition c1x="290.0382798656711" c2y="586.8680594709052" c1y="938.2275738383659" description="" straight="0" type="2" ypos="939.7859757857123" endx="545.8848699855995" xpos="563.819632898609" endy="586.1046107297148" c2x="297.2906998211377">
       <from>12</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">(gunxt_valueLightSensor1>leftWhiteValue+-5)&amp;&amp;(gunxt_valueLightSensor2>rightWhiteValue+-5)</inputs>
       <outputs>0</outputs>
+    </transition>
+    <transition c1x="1026.517802925116" c2y="173.1695613162334" c1y="175.4320966126977" description="" straight="1" type="2" ypos="177.694631909162" endx="654.0617861218781" xpos="1212.745811326735" endy="170.9070260197691" c2x="840.2897945234969">
+      <from>10</from>
+      <to>13</to>
+      <inputs default="0" any="0" invert="0">gunxt_valueLightSensor1&lt;leftWhiteValue+-10</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="296.8521848912802" c2y="529.8996419791063" c1y="167.1370649197276" description="" straight="0" type="2" ypos="167.8975108465166" endx="542.6932976462562" xpos="574.1491690609669" endy="530.9643825082009" c2x="283.155197467394">
+      <from>13</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">(gunxt_valueLightSensor1>leftWhiteValue+-5)&amp;&amp;(gunxt_valueLightSensor2>rightWhiteValue+-5)</inputs>
+      <outputs>0</outputs>
+    </transition>
+    <transition c1x="880.9321912441844" c2y="837.9337837571696" c1y="854.3429337108927" description="" straight="0" type="2" ypos="849.9520836646152" endx="745.0070000063914" xpos="957.6947868630807" endy="829.1246338034471" c2x="821.7695956252878">
+      <from>14</from>
+      <to>17</to>
+      <inputs default="0" any="0" invert="0">gunxt_valueLightSensor2&lt;rightWhiteValue+-10</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1469.978956641132" c2y="809.2022513064727" c1y="788.8809268939403" description="" straight="0" type="2" ypos="767.519602481408" endx="1341.188392338699" xpos="1533.374238792349" endy="822.1635757190049" c2x="1418.983674489916">
+      <from>15</from>
+      <to>16</to>
+      <inputs default="0" any="0" invert="0">gunxt_valueLightSensor2&lt;rightWhiteValue+-10</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1196.869480465112" c2y="848.6978208509478" c1y="839.6808683955504" description="" straight="0" type="2" ypos="829.663717727246" endx="1037.576239974144" xpos="1262.105684783673" endy="848.5784910335907" c2x="1110.370017827791">
+      <from>16</from>
+      <to>14</to>
+      <inputs default="0" any="0" invert="0">gunxt_valueLightSensor2>rightWhiteValue+-5</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="582.6992842319453" c2y="661.4975974848561" c1y="776.9752781041988" description="" straight="0" type="2" ypos="819.6721587235413" endx="560.5302443250747" xpos="665.5838041853805" endy="594.8103168655136" c2x="525.81476427851">
+      <from>17</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">gunxt_valueLightSensor2>rightWhiteValue+-5</inputs>
+      <outputs>1</outputs>
     </transition>
   </machine>
 </qfsmproject>
