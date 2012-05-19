@@ -59,6 +59,7 @@
 #include <Whiteboard.h>
 #include "FSMWBSubMachine.h"
 #include "FSMWBContext.h"
+#include "FSMState.h"
 
 using namespace FSM;
 using namespace std;
@@ -79,7 +80,8 @@ WBSubMachine::WBSubMachine(State *initialState,
                _deleteContext(false),
                _scheduleSuspend(false), 
                _scheduleResume(false), 
-               _scheduleRestart(false)
+               _scheduleRestart(false),
+	       _beingMonitored(false)
 {
         if (!ctx)
         {
@@ -125,6 +127,18 @@ WBSubMachine::WBSubMachine(State *initialState,
         wb_name += name();
         
         wb->subscribeToMessage(wb_name, WB_BIND(WBSubMachine::wb_restart_me), r);
+	if (r != Whiteboard::METHOD_OK)
+                cerr << "Failed to subscribe to '" << wb_name << "'" << endl;
+	
+	wb_name = "startMonitoring";
+        wb->subscribeToMessage(wb_name, WB_BIND(WBSubMachine::wb_startMonitoring), r);
+	if (r != Whiteboard::METHOD_OK)
+                cerr << "Failed to subscribe to '" << wb_name << "'" << endl;
+        
+        wb_name += "_";
+        wb_name += name();
+        
+        wb->subscribeToMessage(wb_name, WB_BIND(WBSubMachine::wb_startMonitoring_me), r);
 	if (r != Whiteboard::METHOD_OK)
                 cerr << "Failed to subscribe to '" << wb_name << "'" << endl;
         
@@ -180,7 +194,9 @@ bool WBSubMachine::executeOnce(bool *fired)
         if (_scheduleSuspend) suspend();
         else if (_scheduleRestart) restart();
         else if (_scheduleResume) resume();
-
+	
+	if (_beingMonitored) postMonitoringData();
+	
         return SuspensibleMachine::executeOnce(fired);
 }
 
@@ -238,4 +254,22 @@ void WBSubMachine::resume()
         wb->addMessage(wb_name, WBMsg(true));
 
         _scheduleResume = false;
+}
+
+void WBSubMachine::postMonitoringData() {
+	Whiteboard *wb = ((WBContext *)context())->whiteboard();
+	string wb_name = "postMonitoringData";
+	
+	wb->addMessage(wb_name, WBMsg(false));
+}
+
+void WBSubMachine::wb_startMonitoring(std::string s, WBMsg * msg) {
+	if (name() != msg->getStringValue())
+		return;
+		
+	_beingMonitored = true;
+}
+
+void  WBSubMachine::wb_startMonitoring_me(std::string s, WBMsg * msg) {
+	_beingMonitored = true;
 }
