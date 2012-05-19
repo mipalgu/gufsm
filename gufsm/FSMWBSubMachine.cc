@@ -260,6 +260,9 @@ void WBSubMachine::postMonitoringData() {
 	Whiteboard *wb = ((WBContext *)context())->whiteboard();
 	string wb_name = "postMonitoringData";
 	
+	// Get all variable names.
+	
+	
 	wb->addMessage(wb_name, WBMsg(false));
 }
 

@@ -6,10 +6,10 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="141" endx="140" xpos="80" endy="141"/>
-    <state pencolor="0" radius="40" description="OnEntry { extern switchPong;&#xa;  extern switchPing;&#xa;  extern onWhiteboard;&#xa;  post(&quot;Say&quot;, &quot;Ping&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="141" code="0" xpos="180" linewidth="1">Ping</state>
-    <state pencolor="0" radius="40" description="OnEntry { onWhiteboard=onWhiteboard+1;&#xa; post(&quot;Say&quot;, &quot;Pong&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="150" code="1" xpos="540" linewidth="1">Pong</state>
+    <state pencolor="0" radius="40" description="OnEntry { extern switchPong;&#xa;  extern switchPing;&#xa;  extern onWhiteboard;&#xa;  int x;&#xa;  x = 1;&#xa;  post(&quot;Say&quot;, &quot;Ping&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="141" code="0" xpos="180" linewidth="1">Ping</state>
+    <state pencolor="0" radius="40" description="OnEntry { onWhiteboard=onWhiteboard+1;&#xa;          post(&quot;Say&quot;, &quot;Pong&quot;);&#xa;          x = x + 1; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="150" code="1" xpos="540" linewidth="1">Pong</state>
     <state pencolor="0" radius="40" description="OnEntry {onWhitebaord=0;&#xa;         post(&quot;Say&quot;,&quot;suspended&quot;); }&#xa;OnExit {}&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="350" code="2" xpos="381" linewidth="1">Suspend</state>
-    <transition c1x="306.7417717768455" c2y="124.5425722725146" c1y="118.3184489933033" description="" straight="1" type="2" ypos="112.094325714092" endx="504.9275036531473" xpos="207.6489058386946" endy="130.7666955517259" c2x="405.8346377149964">
+    <transition c1x="306.7417717768454" c2y="124.5425722725146" c1y="118.3184489933033" description="" straight="1" type="2" ypos="112.094325714092" endx="504.9275036531473" xpos="207.6489058386946" endy="130.7666955517259" c2x="405.8346377149963">
       <from>0</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">switchPong</inputs>
