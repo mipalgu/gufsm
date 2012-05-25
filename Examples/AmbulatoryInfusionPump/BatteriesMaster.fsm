@@ -5,16 +5,16 @@
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
-    <itransition ypos="103" endx="118" xpos="58" endy="103"/>
-    <state pencolor="0" radius="40" description="OnEntry {batteriesConnected=0;  suspend(&quot;BatteriesSensor&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="103" code="0" xpos="158" linewidth="1">BATTERIES_OFF</state>
-    <state pencolor="0" radius="40" description="OnEntry {batteriesConnected=1;  restart(&quot;BatteriesSensor&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="109" code="1" xpos="475" linewidth="1">BATTERIES_ON</state>
-    <transition c1x="273.4091255937416" c2y="77.33926866625114" c1y="75.7816051207774" description="" straight="1" type="2" ypos="74.22394157530366" endx="448.6598156852593" xpos="185.7837805479827" endy="78.89693221172489" c2x="361.0344706395005">
+    <itransition ypos="100" endx="120" xpos="60" endy="100"/>
+    <state pencolor="0" radius="40" description="OnEntry { extern batteriesInPlace; batteriesConnected=0;  suspend(&quot;BatteriesSensor&quot;);  print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="100" code="0" xpos="160" linewidth="1">BATTERIES_OFF</state>
+    <state pencolor="0" radius="40" description="OnEntry {batteriesConnected=1;  resume(&quot;BatteriesSensor&quot;);  print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="109" code="1" xpos="475" linewidth="1">BATTERIES_ON</state>
+    <transition c1x="274.7424589270749" c2y="76.33926866625114" c1y="73.7816051207774" description="" straight="1" type="2" ypos="71.22394157530366" endx="448.6598156852593" xpos="187.7837805479827" endy="78.89693221172489" c2x="361.7011373061671">
       <from>0</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">batteriesInPlace</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="358.5707247202023" c2y="132.0657946078561" c1y="133.4303160881237" description="" straight="1" type="2" ypos="134.7948375683913" endx="186.8554928412381" xpos="444.4283406596844" endy="130.7012731275885" c2x="272.7131087807202">
+    <transition c1x="359.2373913868689" c2y="130.0657946078561" c1y="132.4303160881237" description="" straight="1" type="2" ypos="134.7948375683913" endx="188.8554928412381" xpos="444.4283406596844" endy="127.7012731275885" c2x="274.0464421140535">
       <from>1</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">!batteriesInPlace</inputs>
