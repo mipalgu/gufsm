@@ -7,7 +7,7 @@ msg type (valueVolDetector)?
  content? 5
  data type (Int)? 
 
-ONE EXTERNAL: valueVolDetector
+OVERALL EXTERNAL VARIABLE valueVolDetector
 
 2) The submachine PumpStarter tested in issolation
 
@@ -30,7 +30,8 @@ extern airOnLine; extern blockageInLine;
 batteriesConnected and normalCharge  should come from the Batteries machine
 volumeBormal and VolumeEmpty should come from VolumeSensor
 
-4) A concurrent machine is DosageBeeper tested individually
+4) A concurrent machine is DosageBeeper tested individually (now
+Beeper.fsm not needed)
 
 -beeperStartSignal comes from the PumpMasterCOntroller turn on
 ion Entry to Running, turn off on entry to Pump With Power
@@ -64,3 +65,29 @@ OVERALL EXTERNAL VARIABLE batteriesSensorLow
 8) Now we test 3 machines, the two for the batteries and the DossageBeeper
 batteriesConencted and normalCharge are no longer external
 These 3 machiens work
+
+
+9) Testing 2 machines together, the PumpMaster Controller and the
+VolumeSensor. Now volumeNormal and VolumeEmpty are shared
+OVERALL EXTERNAL VARIABLE batteriesSensorLow
+
+10) Testing 4 machines, PumpMasterCOntroller, Volume, Sensor, Batteries master
+and Batteries Sensor.
+OVERALL EXTERNAL VARIABLE batteriesSensorLow
+OVERALL EXTERNAL VARIABLE batteriesInPlace
+batteriesConencted and normalCharge are no longer external in PumpMasterController
+
+11) Testing 2 Machines DisplayOnError and VolumeSensor
+OVERALL EXTERNAL VARIABLE airOnLine
+OVERALL EXTERNAL VARIABLE blockageInLine
+OVERALL EXTERNAL VARIABLE valueVolDetector
+
+12) Testing 5 Machines DisplayMaster DisplayOnError and VolumeSensor BateryMaster battery Sensor
+we artificially make motor and aborted external
+OVERALL EXTERNAL VARIABLE buttonHeldPressed
+OVERALL EXTERNAL VARIABLE airOnLine
+OVERALL EXTERNAL VARIABLE blockageInLine
+OVERALL EXTERNAL VARIABLE valueVolDetector
+OVERALL EXTERNAL VARIABLE batteriesSensorLow
+OVERALL EXTERNAL VARIABLE batteriesInPlace
+
