@@ -6,7 +6,7 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="50" endx="160" xpos="100" endy="50"/>
-    <state pencolor="0" radius="40" description="OnEntry {   extern airOnLine;  extern blockageInLine;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="50" code="0" xpos="200" linewidth="1">TEST_EMPTY</state>
+    <state pencolor="0" radius="40" description="OnEntry {   }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="50" code="0" xpos="200" linewidth="1">TEST_EMPTY</state>
     <state pencolor="0" radius="40" description="OnEntry {post(&quot;QSay&quot;,&quot;line blocked&quot;); displayChanged=1;  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="208" code="1" xpos="543" linewidth="1">DISPLAY_LINE_BLOCKED</state>
     <state pencolor="0" radius="40" description="OnEntry {post(&quot;QSay&quot;,&quot;air on line&quot;);&#xa; displayChanged=1;  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="493" code="2" xpos="259" linewidth="1">DISPLAY_AIR_ON_LINE</state>
     <state pencolor="0" radius="40" description="OnEntry {post(&quot;QSay&quot;,&quot;empty&quot;); displayChanged=1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="48" code="3" xpos="539" linewidth="1">DISPLAY_EMPTY</state>

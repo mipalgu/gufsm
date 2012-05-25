@@ -6,7 +6,7 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="70" endx="130" xpos="70" endy="70"/>
-    <state pencolor="0" radius="40" description="OnEntry {   extern airOnLine;  extern blockageInLine;  extern motor;  extern aborted;  post(&quot;QSay&quot;,&quot;dots&quot;);  displayChanged=0;  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="70" code="0" xpos="170" linewidth="1">DISPLAY_IDLE</state>
+    <state pencolor="0" radius="40" description="OnEntry {     post(&quot;QSay&quot;,&quot;dots&quot;);  displayChanged=0;  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="70" code="0" xpos="170" linewidth="1">DISPLAY_IDLE</state>
     <state pencolor="0" radius="40" description="OnEntry {restart(&quot;DisplayOnError&quot;);  print_state_name(); }&#xa;OnExit {suspend(&quot;DisplayOnError&quot;); }&#xa;{ }" finalstate="0" moore_outputs="" ypos="61" code="1" xpos="558" linewidth="1">ON_ERROR</state>
     <state pencolor="0" radius="40" description="OnEntry { post(&quot;QSay&quot;,&quot;pump running&quot;); displayChanged=1;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="435" code="2" xpos="254" linewidth="1">DISPLAY_RUNNING</state>
     <state pencolor="0" radius="40" description="OnEntry {post(&quot;QSay&quot;,&quot;battery low&quot;);  displayChanged =1 ; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="235" code="7" xpos="642" linewidth="1">DISPLAY_BATTERY_LOW</state>
