@@ -73,8 +73,6 @@ namespace FSM
                 bool _scheduleSuspend;  /// should suspend when executing next time
                 bool _scheduleResume;   /// should resume when executing next time
                 bool _scheduleRestart;  /// should restart when executing next time
-		bool _beingMonitored;   /*  has someone asked for this machine to send
-		                         *  debugging information over the whiteboard. */
         public:
                 /** constructor */
                 WBSubMachine(State *initialState = NULL, 
@@ -116,10 +114,6 @@ namespace FSM
 
                 /** should the context be deleted in the destructor? */
                 void setDeleteContext(bool del = true) { _deleteContext = del; }
-		
-		/** Post the running state id and non-external variables to the 
-		  * whiteboard for debugging. */
-		void postMonitoringData();
 
                 /** suspend from the whiteboard, requires a string with the machine's name */
                 void wb_suspend(std::string, WBMsg *msg) { if (name() == msg->getStringValue()) _scheduleSuspend = true; }

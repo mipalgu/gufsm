@@ -80,8 +80,7 @@ WBSubMachine::WBSubMachine(State *initialState,
                _deleteContext(false),
                _scheduleSuspend(false), 
                _scheduleResume(false), 
-               _scheduleRestart(false),
-	       _beingMonitored(false)
+               _scheduleRestart(false)
 {
         if (!ctx)
         {
@@ -195,8 +194,6 @@ bool WBSubMachine::executeOnce(bool *fired)
         else if (_scheduleRestart) restart();
         else if (_scheduleResume) resume();
 	
-	if (_beingMonitored) postMonitoringData();
-	
         return SuspensibleMachine::executeOnce(fired);
 }
 
@@ -256,25 +253,13 @@ void WBSubMachine::resume()
         _scheduleResume = false;
 }
 
-void WBSubMachine::postMonitoringData() {
-	Whiteboard *wb = ((WBContext *)context())->whiteboard();
-	string wb_name = "postMonitoringData";
-	
-	// Don't do this here. Just set the flag and then print the
-	//  the var values where they are being printed at the
-	//  moment.
-	
-	
-	wb->addMessage(wb_name, WBMsg(false));
-}
-
 void WBSubMachine::wb_startMonitoring(std::string s, WBMsg * msg) {
 	if (name() != msg->getStringValue())
 		return;
 		
-	_beingMonitored = true;
+	setBeingMonitored(true);
 }
 
 void  WBSubMachine::wb_startMonitoring_me(std::string s, WBMsg * msg) {
-	_beingMonitored = true;
+	setBeingMonitored(true);
 }

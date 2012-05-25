@@ -123,6 +123,9 @@ namespace FSM
 
                 timeval _state_time;    /// state start time
                 timeval _actty_time;    /// internal activity start time
+		
+		bool _beingMonitored;   /*  has someone asked for this machine to send
+		                         *  debugging information over the whiteboard. */
 
                 long _activities_count; /// how many times have activities run?
                 
@@ -135,7 +138,8 @@ namespace FSM
                 /** constructor */
                 Machine(ExecCom_Struct * execCom, 
                         State *initial = NULL, 
-                        Context *ctx = NULL, int mid=0) 
+                        Context *ctx = NULL, int mid=0,
+			bool beingMonitored=FALSE) 
                 :  _id(mid),
                    _context(ctx), 
                    _currentState(initial),
@@ -182,6 +186,13 @@ namespace FSM
 
                 /** set the preceding state */
                 void setPreviousState(State *s) { _previousState = s; }
+		
+		/** is this machine being monitored? **/
+		bool isBeingMonitored() { return _beingMonitored; }
+		
+		/** start posting internal and global variables to the
+		  * whiteboard. */
+		void setBeingMonitored(bool b) { _beingMonitored = b; }
 
                 /** get the current state's start time */
                 timeval &stateTime() { return _state_time; }
