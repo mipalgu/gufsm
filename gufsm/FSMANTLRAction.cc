@@ -132,6 +132,7 @@ statement_callback(void *context, const char *terminal, const char *content,
                 if (c->internal_variable_exists(m->id(), t1c))
                 {
                         c->set_internal_variable(t1c, m->id(), result);
+			
                         return 0;                       /* parse children */
                 }
                 else if (c->external_variable_exists(t1c))
