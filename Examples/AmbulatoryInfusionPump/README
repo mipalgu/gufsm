@@ -1,0 +1,16 @@
+
+
+The submachien for the VolumeSensor.fm was tested by itself with messages
+using the WhiteBaord Moniotr like 
+msg type (valueVolDetector)? 
+      int --> 0
+ content? 5
+ data type (Int)? 
+
+ONE EXTERNAL: valueVolDetector
+
+The machine PumpStarter tested in issolation
+
+Two externals
+buttonHeldPressed
+dossageInterrupted
