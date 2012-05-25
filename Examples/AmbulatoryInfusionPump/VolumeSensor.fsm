@@ -6,10 +6,10 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="109" endx="190" xpos="130" endy="109"/>
-    <state pencolor="0" radius="40" description="OnEntry { volumeEmpty=1; volumeNormal=0;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="109" code="0" xpos="230" linewidth="1">INDICATING_NO_VOLUME</state>
-    <state pencolor="0" radius="40" description="OnEntry { volumeEmpty=0; volumeNormal=1;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="343" code="1" xpos="414" linewidth="1">INDICATING_VOLUME_NORMAL</state>
-    <state pencolor="0" radius="40" description="OnEntry { volumeEmpty=0; volumeNormal=0;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="104" code="2" xpos="567" linewidth="1">INDICATING_VOLUME_LOW</state>
-    <transition c1x="353.5786995306765" c2y="93.11836883399278" c1y="92.54324369039881" description="" straight="1" type="2" ypos="91.96811854680485" endx="528.3506024159501" xpos="266.1927480880398" endy="93.69349397758674" c2x="440.9646509733133">
+    <state pencolor="0" radius="40" description="OnEntry { extern valueVolDetector; volumeEmpty=1; volumeNormal=0; print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="109" code="0" xpos="230" linewidth="1">INDICATING_NO_VOLUME</state>
+    <state pencolor="0" radius="40" description="OnEntry { volumeEmpty=0; volumeNormal=1; print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="343" code="1" xpos="414" linewidth="1">INDICATING_VOLUME_NORMAL</state>
+    <state pencolor="0" radius="40" description="OnEntry { volumeEmpty=0; volumeNormal=0; print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="104" code="2" xpos="567" linewidth="1">INDICATING_VOLUME_LOW</state>
+    <transition c1x="353.5786995306765" c2y="93.11836883399279" c1y="92.54324369039881" description="" straight="1" type="2" ypos="91.96811854680485" endx="528.3506024159501" xpos="266.1927480880398" endy="93.69349397758675" c2x="440.9646509733133">
       <from>0</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">(valueVolDetector&lt;5)&amp;&amp;(valueVolDetector>0)</inputs>
@@ -21,7 +21,7 @@
       <inputs default="0" any="0" invert="0">valueVolDetector>4</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="499.5870274731842" c2y="198.1030342314738" c1y="263.9217972154857" description="" straight="1" type="2" ypos="329.7405601994976" endx="595.2842712474619" xpos="451.7384055860452" endy="132.2842712474619" c2x="547.4356493603231">
+    <transition c1x="499.5870274731841" c2y="198.1030342314738" c1y="263.9217972154857" description="" straight="1" type="2" ypos="329.7405601994976" endx="595.2842712474619" xpos="451.7384055860452" endy="132.2842712474619" c2x="547.4356493603229">
       <from>1</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">(valueVolDetector&lt;5)&amp;&amp;(valueVolDetector>0)</inputs>
