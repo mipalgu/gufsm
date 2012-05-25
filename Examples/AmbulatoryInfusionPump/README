@@ -91,3 +91,11 @@ OVERALL EXTERNAL VARIABLE valueVolDetector
 OVERALL EXTERNAL VARIABLE batteriesSensorLow
 OVERALL EXTERNAL VARIABLE batteriesInPlace
 
+13) Testing all machines to see if the PumpMasterController does controll
+the PumpStarter
+OVERALL EXTERNAL VARIABLE buttonHeldPressed
+OVERALL EXTERNAL VARIABLE airOnLine
+OVERALL EXTERNAL VARIABLE blockageInLine
+OVERALL EXTERNAL VARIABLE valueVolDetector
+OVERALL EXTERNAL VARIABLE batteriesSensorLow
+OVERALL EXTERNAL VARIABLE batteriesInPlace
