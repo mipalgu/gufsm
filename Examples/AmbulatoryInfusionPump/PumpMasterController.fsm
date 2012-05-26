@@ -19,7 +19,7 @@
       <inputs default="0" any="0" invert="0">batteriesConnected</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="760.829267246284" c2y="151.4995769282885" c1y="182.0244578882789" description="" straight="1" type="2" ypos="212.5493388482694" endx="588.9868572363793" xpos="846.7504722512361" endy="120.974695968298" c2x="674.9080622413314">
+    <transition c1x="760.8292672462838" c2y="151.4995769282885" c1y="182.0244578882789" description="" straight="1" type="2" ypos="212.5493388482694" endx="588.9868572363793" xpos="846.7504722512361" endy="120.974695968298" c2x="674.9080622413315">
       <from>1</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">airOnLine||volumeEmpty||blockageInLine</inputs>
@@ -31,7 +31,7 @@
       <inputs default="0" any="0" invert="0">timeLeft&lt;1</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="782.7879610950287" c2y="370.6728743703021" c1y="294.76978924839" description="" straight="1" type="2" ypos="218.8667041264779" endx="589.4557569532858" xpos="879.4540631659" endy="446.5759594922143" c2x="686.1218590241572">
+    <transition c1x="782.7879610950287" c2y="370.6728743703022" c1y="294.7697892483901" description="" straight="1" type="2" ypos="218.8667041264779" endx="589.4557569532858" xpos="879.4540631659" endy="446.5759594922143" c2x="686.1218590241572">
       <from>1</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">!batteriesConnected</inputs>
@@ -43,7 +43,7 @@
       <inputs default="0" any="0" invert="0">aborted</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="452.6410379201371" c2y="101.5306838167335" c1y="104.349260457236" description="" straight="1" type="2" ypos="107.1678370977386" endx="334.2200031607293" xpos="511.8515552998408" endy="98.71210717623092" c2x="393.4305205404332">
+    <transition c1x="452.641037920137" c2y="101.5306838167335" c1y="104.349260457236" description="" straight="1" type="2" ypos="107.1678370977386" endx="334.2200031607293" xpos="511.8515552998408" endy="98.71210717623092" c2x="393.4305205404331">
       <from>2</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">1</inputs>

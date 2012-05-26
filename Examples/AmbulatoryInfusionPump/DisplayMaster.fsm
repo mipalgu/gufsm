@@ -7,23 +7,23 @@
     <outputnames></outputnames>
     <itransition ypos="70" endx="130" xpos="70" endy="70"/>
     <state pencolor="0" radius="40" description="OnEntry {     post(&quot;QSay&quot;,&quot;dots&quot;);  displayChanged=0;  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="70" code="0" xpos="170" linewidth="1">DISPLAY_IDLE</state>
-    <state pencolor="0" radius="40" description="OnEntry {restart(&quot;DisplayOnError&quot;);  print_state_name(); }&#xa;OnExit {suspend(&quot;DisplayOnError&quot;); }&#xa;{ }" finalstate="0" moore_outputs="" ypos="61" code="1" xpos="558" linewidth="1">ON_ERROR</state>
+    <state pencolor="0" radius="40" description="OnEntry {restart(&quot;DisplayOnError&quot;);  print_state_name(); }&#xa;OnExit {suspend(&quot;DisplayOnError&quot;); }&#xa;{ }" finalstate="0" moore_outputs="" ypos="60" code="1" xpos="560" linewidth="1">ON_ERROR</state>
     <state pencolor="0" radius="40" description="OnEntry { post(&quot;QSay&quot;,&quot;display running&quot;); print_int(motor); displayChanged=1;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="435" code="2" xpos="254" linewidth="1">DISPLAY_RUNNING</state>
-    <state pencolor="0" radius="40" description="OnEntry {post(&quot;QSay&quot;,&quot;battery low&quot;);  displayChanged =1 ; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="235" code="7" xpos="642" linewidth="1">DISPLAY_BATTERY_LOW</state>
-    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="235" code="3" xpos="445" linewidth="1">TEST_BATTERY</state>
+    <state pencolor="0" radius="40" description="OnEntry {post(&quot;QSay&quot;,&quot;battery low&quot;);  displayChanged =1 ; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="240" code="7" xpos="640" linewidth="1">DISPLAY_BATTERY_LOW</state>
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="238" code="3" xpos="450" linewidth="1">TEST_BATTERY</state>
     <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="365" code="4" xpos="446" linewidth="1">TEST_VOLUME</state>
     <state pencolor="0" radius="40" description="OnEntry {post(&quot;QSay&quot;,&quot;volume low&quot;);  &#xa; displayChanged=1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="372" code="6" xpos="644" linewidth="1">DISPLAY_VOLUME_LOW</state>
     <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="538" code="8" xpos="412" linewidth="1">TEST_ABORTED</state>
     <state pencolor="0" radius="40" description="OnEntry {post(&quot;QSay&quot;,&quot;aborted&quot;);&#xa; displayChanged=1;  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="540" code="9" xpos="640" linewidth="1">DISPLAY_ABORTED</state>
     <state pencolor="0" radius="40" description="OnEntry{  }&#xa;OnExit {  }&#xa;{ } &#xa;" finalstate="0" moore_outputs="" ypos="250" code="5" xpos="190" linewidth="1">TEST_DISPLAY</state>
     <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ } &#xa;" finalstate="0" moore_outputs="" ypos="130" code="10" xpos="320" linewidth="1">ALREADY_DOTS</state>
-    <transition c1x="231.6650686941906" c2y="116.2387361752168" c1y="100.1285914723748" description="" straight="1" type="2" ypos="84.01844676953279" endx="280.0690250730001" xpos="207.4630905047858" endy="132.3488808780588" c2x="255.8670468835953">
+    <transition c1x="231.6650686941906" c2y="116.2387361752168" c1y="100.1285914723748" description="" straight="1" type="2" ypos="84.0184467695328" endx="280.0690250730001" xpos="207.4630905047858" endy="132.3488808780588" c2x="255.8670468835954">
       <from>0</from>
       <to>10</to>
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="463.8357701250838" c2y="93.69128364009006" c1y="76.09807609694143" description="" straight="1" type="2" ypos="58.50486855379279" endx="355.3515166538825" xpos="518.0778968606844" endy="111.2844911832387" c2x="409.5936433894831">
+    <transition c1x="465.1691034584171" c2y="93.35795030675675" c1y="75.43140943027477" description="" straight="1" type="2" ypos="57.50486855379279" endx="355.3515166538825" xpos="520.0778968606844" endy="111.2844911832387" c2x="410.2603100561498">
       <from>1</from>
       <to>10</to>
       <inputs default="0" any="0" invert="0">!buttonHeldPressed</inputs>
@@ -35,19 +35,19 @@
       <inputs default="0" any="0" invert="0">timeout(4000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="575.2133781605756" c2y="328.9295666494881" c1y="298.6788929187695" description="" straight="1" type="2" ypos="268.4282191880509" endx="485.5743654145941" xpos="620.0328845335664" endy="359.1802403802067" c2x="530.3938717875849">
+    <transition c1x="573.8800448272423" c2y="330.5962333161548" c1y="302.0122262521028" description="" straight="1" type="2" ypos="273.4282191880509" endx="485.5743654145941" xpos="618.0328845335664" endy="359.1802403802067" c2x="529.7272051209183">
       <from>7</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">timeout(3000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="524.0043809212069" c2y="234.3164639788653" c1y="234.6582319894327" description="" straight="1" type="2" ypos="235" endx="602.0131427636207" xpos="485" endy="233.974695968298" c2x="563.0087618424138">
+    <transition c1x="526.6710475878735" c2y="238.6497973121987" c1y="238.3248986560993" description="" straight="1" type="2" ypos="238" endx="600.0131427636207" xpos="490" endy="238.974695968298" c2x="563.3420951757472">
       <from>3</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">!normalCharge</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="438.5524270666698" c2y="310.6141942164809" c1y="292.7808503777723" description="" straight="1" type="2" ypos="274.9475065390635" endx="429.7544613578621" xpos="442.9514099210737" endy="328.4475380551897" c2x="434.153444212266">
+    <transition c1x="441.8857604000032" c2y="311.6141942164809" c1y="294.7808503777723" description="" straight="1" type="2" ypos="277.9475065390636" endx="429.7544613578621" xpos="447.9514099210737" endy="328.4475380551897" c2x="435.8201108789327">
       <from>3</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">normalCharge</inputs>
@@ -101,19 +101,19 @@
       <inputs default="0" any="0" invert="0">displayChanged</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="246.7667618674073" c2y="184.3016968450536" c1y="204.05223765417" description="" straight="1" type="2" ypos="223.8027784632863" endx="299.8451589790366" xpos="220.2275633115927" endy="164.5511560359373" c2x="273.305960423222">
+    <transition c1x="246.7667618674073" c2y="184.3016968450537" c1y="204.05223765417" description="" straight="1" type="2" ypos="223.8027784632863" endx="299.8451589790366" xpos="220.2275633115927" endy="164.5511560359374" c2x="273.305960423222">
       <from>5</from>
       <to>10</to>
       <inputs default="0" any="0" invert="0">!displayChanged</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="377.7682298294147" c2y="183.3089223444629" c1y="170.3008261794316" description="" straight="1" type="2" ypos="157.2927300144004" endx="434.8202680288143" xpos="349.2422107297148" endy="196.3170185094941" c2x="406.2942489291145">
+    <transition c1x="379.4348964960813" c2y="185.3089223444629" c1y="171.3008261794316" description="" straight="1" type="2" ypos="157.2927300144004" endx="439.8202680288143" xpos="349.2422107297148" endy="199.3170185094941" c2x="409.6275822624478">
       <from>10</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">!buttonHelpPressed</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="391.4397473088274" c2y="57.17240081705069" c1y="73.76635180031889" description="" straight="1" type="2" ypos="90.36030278358707" endx="523.6058102463707" xpos="325.3567158400558" endy="40.57844983378251" c2x="457.522778777599">
+    <transition c1x="392.1064139754941" c2y="56.50573415038403" c1y="73.43301846698554" description="" straight="1" type="2" ypos="90.36030278358707" endx="525.6058102463707" xpos="325.3567158400558" endy="39.57844983378251" c2x="458.8561121109324">
       <from>10</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">!motor&amp;&amp;buttonHeldPressed</inputs>

@@ -6,7 +6,7 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="100" endx="130" xpos="70" endy="100"/>
-    <state pencolor="0" radius="40" description="OnEntry { extern fireTimeBeeper; extern beeperStartSignal; int times; times=0; print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="100" code="0" xpos="170" linewidth="1">SILENT</state>
+    <state pencolor="0" radius="40" description="OnEntry { int times; times=0; print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="100" code="0" xpos="170" linewidth="1">SILENT</state>
     <state pencolor="0" radius="40" description="OnEntry { print_state_name(); }&#xa;OnExit {times=4; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="130" code="1" xpos="490" linewidth="1">Armed</state>
     <state pencolor="0" radius="40" description="OnEntry {post(&quot;QSay&quot;,&quot;dossage applied&quot;);  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="258" code="2" xpos="301" linewidth="1">BEEPING_AT_END</state>
     <state pencolor="0" radius="40" description="OnEntry {post(&quot;Say&quot;,&quot;starting&quot;);  }&#xa;OnExit { }&#xa;{ post(&quot;Say&quot;,&quot;starting&quot;);  }" finalstate="0" moore_outputs="" ypos="346" code="3" xpos="487" linewidth="1">BEEPING_AT_START</state>
@@ -20,49 +20,49 @@
       <inputs default="0" any="0" invert="0">batteriesConnected</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="441.205600230401" c2y="220.6921382257802" c1y="195.3152761769984" description="" straight="1" type="2" ypos="169.9384141282165" endx="339.1791991214012" xpos="492.2188007849008" endy="246.0690002745621" c2x="390.1923996759011">
+    <transition c1x="441.2056002304009" c2y="220.6921382257802" c1y="195.3152761769984" description="" straight="1" type="2" ypos="169.9384141282165" endx="339.1791991214012" xpos="492.2188007849008" endy="246.0690002745621" c2x="390.1923996759011">
       <from>1</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">fireTimeBeeper</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="512.8741727474638" c2y="271.9444219715138" c1y="218.6479693126982" description="" straight="1" type="2" ypos="165.3515166538825" endx="521.1915006088692" xpos="508.7155088167613" endy="325.2408746303295" c2x="517.0328366781666">
+    <transition c1x="512.8741727474639" c2y="271.9444219715138" c1y="218.6479693126982" description="" straight="1" type="2" ypos="165.3515166538825" endx="521.1915006088692" xpos="508.7155088167613" endy="325.2408746303295" c2x="517.0328366781666">
       <from>1</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">beeperStartSignal</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="373.6541179442192" c2y="131.2818075294551" c1y="142.7180575246368" description="" straight="1" type="2" ypos="154.1543075198185" endx="204.7297256849783" xpos="458.1163140738396" endy="119.8455575342734" c2x="289.1919218145988">
+    <transition c1x="373.6541179442191" c2y="131.2818075294551" c1y="142.7180575246368" description="" straight="1" type="2" ypos="154.1543075198185" endx="204.7297256849783" xpos="458.1163140738396" endy="119.8455575342734" c2x="289.1919218145987">
       <from>1</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">!batteriesConnected</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="574.3799501647113" c2y="140.4832046445014" c1y="133.0329718007538" description="" straight="1" type="2" ypos="125.5827389570061" endx="663.6291517202446" xpos="529.7553493869448" endy="147.933437488249" c2x="619.0045509424781">
+    <transition c1x="574.3799501647114" c2y="140.4832046445014" c1y="133.0329718007537" description="" straight="1" type="2" ypos="125.5827389570061" endx="663.6291517202446" xpos="529.7553493869448" endy="147.933437488249" c2x="619.004550942478">
       <from>1</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">!normalCharge</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="238.697681011431" c2y="171.9622684114271" c1y="210.6425250493405" description="" straight="1" type="2" ypos="249.3227816872538" endx="192.1880078490092" xpos="261.9525175926419" endy="133.2820117735137" c2x="215.4428444302201">
+    <transition c1x="238.697681011431" c2y="171.9622684114271" c1y="210.6425250493404" description="" straight="1" type="2" ypos="249.3227816872538" endx="192.1880078490092" xpos="261.9525175926419" endy="133.2820117735137" c2x="215.4428444302201">
       <from>2</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">!fireTimeBeeper</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="357.4813430766824" c2y="341.5267398182642" c1y="343.2572029762223" description="" straight="1" type="2" ypos="344.9876661341806" endx="178.4184046297739" xpos="447.0128123001365" endy="339.7962766603059" c2x="267.9498738532281">
+    <transition c1x="357.4813430766823" c2y="341.5267398182642" c1y="343.2572029762223" description="" straight="1" type="2" ypos="344.9876661341806" endx="178.4184046297739" xpos="447.0128123001365" endy="339.7962766603059" c2x="267.9498738532282">
       <from>3</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">timeout(3000000)||aborted</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="139.1233095018882" c2y="189.1501907106065" c1y="241.4349664156903" description="" straight="1" type="2" ypos="293.7197421207741" endx="154.4777199976747" xpos="131.446104253995" endy="136.8654150055226" c2x="146.8005147497815">
+    <transition c1x="139.1233095018882" c2y="189.1501907106064" c1y="241.4349664156902" description="" straight="1" type="2" ypos="293.7197421207741" endx="154.4777199976747" xpos="131.446104253995" endy="136.8654150055226" c2x="146.8005147497815">
       <from>4</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">!beeperStartSignal</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="738.5579413882002" c2y="276.8556666704342" c1y="226.0052538456988" description="" straight="1" type="2" ypos="175.1548410209634" endx="740.5715120927259" xpos="737.5511560359373" endy="327.7060794951695" c2x="739.564726740463">
+    <transition c1x="738.5579413882002" c2y="276.8556666704341" c1y="226.0052538456988" description="" straight="1" type="2" ypos="175.1548410209634" endx="740.5715120927259" xpos="737.5511560359373" endy="327.7060794951695" c2x="739.564726740463">
       <from>5</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
@@ -74,13 +74,13 @@
       <inputs default="0" any="0" invert="0">times&lt;0</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="399.374209495305" c2y="69.20213155765921" c1y="63.5143611629097" description="" straight="1" type="2" ypos="57.82659076816018" endx="201.1365215790132" xpos="498.4930534534509" endy="74.88990195240874" c2x="300.255365537159">
+    <transition c1x="399.374209495305" c2y="69.20213155765921" c1y="63.5143611629097" description="" straight="1" type="2" ypos="57.82659076816018" endx="201.1365215790132" xpos="498.4930534534509" endy="74.88990195240874" c2x="300.2553655371592">
       <from>6</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">timeout(10000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="664.78353413865" c2y="225.5376706816089" c1y="285.7688353408044" description="" straight="1" type="2" ypos="346" endx="664.3506024159501" xpos="665" endy="165.3065060224133" c2x="664.5670682773001">
+    <transition c1x="664.78353413865" c2y="225.5376706816089" c1y="285.7688353408045" description="" straight="1" type="2" ypos="346" endx="664.3506024159501" xpos="665" endy="165.3065060224133" c2x="664.5670682773001">
       <from>7</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">1</inputs>
