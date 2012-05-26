@@ -6,12 +6,24 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="108" endx="156" xpos="96" endy="108"/>
-    <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnEnxit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="108" code="0" xpos="196" linewidth="1">Start</state>
-    <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnEnxit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="100" code="1" xpos="412" linewidth="1">Consume</state>
-    <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnEnxit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="279" code="2" xpos="414" linewidth="1">Trotle</state>
-    <transition c1x="413.5988016453366" c2y="206.0293508049408" c1y="173.0134271188591" description="" straight="1" type="2" ypos="139.9975034327775" endx="415.902605976618" xpos="412.4468994796958" endy="239.0452744910225" c2x="414.7507038109773">
+    <state pencolor="0" radius="40" description="OnEntry{ extern data;  int thisData;&#xa;  post(&quot;Say&quot;,&quot;Consumer Started&quot;);}&#xa;OnEnxit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="108" code="0" xpos="196" linewidth="1">Start</state>
+    <state pencolor="0" radius="40" description="OnEntry{ ithisData =data;&#xa;  post_int(&quot;Say&quot;,thisData);}&#xa;OnEnxit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="100" code="1" xpos="412" linewidth="1">Consume</state>
+    <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnEnxit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="284" code="2" xpos="416" linewidth="1">Trotle</state>
+    <transition c1x="281.738031250989" c2y="108.8365917004488" c1y="107.6780626400268" description="" straight="1" type="2" ypos="106.5195335796048" endx="373.2689070516257" xpos="235.9725933506707" endy="109.9951207608708" c2x="327.5034691513074">
+      <from>0</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="348.2795172781365" c2y="215.8278490552452" c1y="171.9854192017121" description="" straight="0" type="2" ypos="124.3372617462854" endx="386.6078622149005" xpos="380.2557455483234" endy="256.8687958906773" c2x="351.91115122285">
       <from>1</from>
       <to>2</to>
+      <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="473.5436661928383" c2y="144.1383848424309" c1y="214.2096908508372" description="" straight="0" type="2" ypos="257.1885496812492" endx="449.3338242481224" xpos="445.6841057100455" endy="114.3591631723548" c2x="472.2753135098839">
+      <from>2</from>
+      <to>1</to>
       <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
       <outputs></outputs>
     </transition>
