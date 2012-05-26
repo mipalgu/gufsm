@@ -1,0 +1,19 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vlad Estivill-Castro" description="" version="1" name="FSMConsumer" arrowtype="1" numbits="2" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="108" endx="156" xpos="96" endy="108"/>
+    <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnEnxit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="108" code="0" xpos="196" linewidth="1">Start</state>
+    <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnEnxit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="100" code="1" xpos="412" linewidth="1">Consume</state>
+    <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnEnxit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="279" code="2" xpos="414" linewidth="1">Trotle</state>
+    <transition c1x="413.5988016453366" c2y="206.0293508049408" c1y="173.0134271188591" description="" straight="1" type="2" ypos="139.9975034327775" endx="415.902605976618" xpos="412.4468994796958" endy="239.0452744910225" c2x="414.7507038109773">
+      <from>1</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>
