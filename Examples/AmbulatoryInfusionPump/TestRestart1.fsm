@@ -1,0 +1,44 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vladimir Estivill-Castro" description="" version="1" name="FSM" arrowtype="1" numbits="3" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="440" endx="510" xpos="450" endy="440"/>
+    <state pencolor="0" radius="40" description="OnEntry  {  extern batteriesConnected; extern  buttonHeldPressed; extern airOnLine; extern blockageInLine;  motor=0; fireTimeBeeper=0;   beeperStartSignal=0;    dossageInterrupted=0;   suspend(&quot;PumpStarter&quot;);   print_state_name();   &#xa; }&#xa;OnExit{ }&#xa;{ }" finalstate="0" moore_outputs="" ypos="440" code="0" xpos="550" linewidth="1">PUMP_OFF_NO_POWER</state>
+    <state pencolor="0" radius="40" description="OnEntry {print_state_name();}&#xa;OnExit {motor=0; suspend(&quot;PumpStarter&quot;); }&#xa;{ }" finalstate="0" moore_outputs="" ypos="180" code="1" xpos="810" linewidth="1">TEST_RUNNING</state>
+    <state pencolor="0" radius="40" description="OnEntry {    print_state_name();  aborted=0; fireTimeBeeper=0;   beeperStartSignal=0;   }&#xa;OnExit{ }&#xa;{} &#xa;" finalstate="0" moore_outputs="" ypos="78" code="4" xpos="300" linewidth="1">PUMP_WITH_POWER</state>
+    <state pencolor="0" radius="40" description="OnEntry {print_state_name();   beeperStartSignal=1;  resume(&quot;PumpStarter&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="60" code="5" xpos="800" linewidth="1">INVOKE_STARTER</state>
+    <transition c1x="442.1117738843398" c2y="213.7975134173118" c1y="312.9983147717064" description="" straight="1" type="2" ypos="412.199116126101" endx="283.8543917369483" xpos="521.2404649580355" endy="114.5967120629173" c2x="362.9830828106441">
+      <from>0</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">batteriesConnected</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="742.7879610950287" c2y="370.6728743703021" c1y="294.76978924839" description="" straight="1" type="2" ypos="218.8667041264779" endx="589.4557569532858" xpos="819.4540631659" endy="446.5759594922143" c2x="666.1218590241572">
+      <from>1</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">!batteriesConnected</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="624.1618915956715" c2y="126.3098779013776" c1y="149.6319539005783" description="" straight="1" type="2" ypos="172.9540298997789" endx="331.2347523777212" xpos="770.6254612046466" endy="102.987801902177" c2x="477.6983219866964">
+      <from>1</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">timeLeft&lt;1</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="471.4683786602669" c2y="54.85079762714018" c1y="51.75018533320671" description="" straight="1" type="2" ypos="48.64957303927323" endx="760.0524934609365" xpos="327.1763212599322" endy="57.95140992107366" c2x="615.7604360606017">
+      <from>4</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">buttonHeldPressed</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="803.1645759967815" c2y="126.9070176219484" c1y="113.4120149903433" description="" straight="1" type="2" ypos="99.91701235873833" endx="804.3431457505076" xpos="802.5752911199186" endy="140.4020202535534" c2x="803.7538608736446">
+      <from>5</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">timeout(4000000)</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>

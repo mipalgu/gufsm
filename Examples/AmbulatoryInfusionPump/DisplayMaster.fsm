@@ -8,7 +8,7 @@
     <itransition ypos="70" endx="130" xpos="70" endy="70"/>
     <state pencolor="0" radius="40" description="OnEntry {     post(&quot;QSay&quot;,&quot;dots&quot;);  displayChanged=0;  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="70" code="0" xpos="170" linewidth="1">DISPLAY_IDLE</state>
     <state pencolor="0" radius="40" description="OnEntry {restart(&quot;DisplayOnError&quot;);  print_state_name(); }&#xa;OnExit {suspend(&quot;DisplayOnError&quot;); }&#xa;{ }" finalstate="0" moore_outputs="" ypos="61" code="1" xpos="558" linewidth="1">ON_ERROR</state>
-    <state pencolor="0" radius="40" description="OnEntry { post(&quot;QSay&quot;,&quot;pump running&quot;); displayChanged=1;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="435" code="2" xpos="254" linewidth="1">DISPLAY_RUNNING</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;QSay&quot;,&quot;display running&quot;); print_int(motor); displayChanged=1;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="435" code="2" xpos="254" linewidth="1">DISPLAY_RUNNING</state>
     <state pencolor="0" radius="40" description="OnEntry {post(&quot;QSay&quot;,&quot;battery low&quot;);  displayChanged =1 ; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="235" code="7" xpos="642" linewidth="1">DISPLAY_BATTERY_LOW</state>
     <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="235" code="3" xpos="445" linewidth="1">TEST_BATTERY</state>
     <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="365" code="4" xpos="446" linewidth="1">TEST_VOLUME</state>
@@ -32,10 +32,10 @@
     <transition c1x="257.3906736492723" c2y="370.3948630889918" c1y="324.7232876970405" description="" straight="0" type="2" ypos="395" endx="195.1735673627107" xpos="254.0000010810811" endy="289.6640164474489" c2x="204.2391837465552">
       <from>2</from>
       <to>5</to>
-      <inputs default="0" any="0" invert="0">timeout(3000000)</inputs>
+      <inputs default="0" any="0" invert="0">timeout(4000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="575.2133781605756" c2y="328.9295666494881" c1y="298.6788929187695" description="" straight="1" type="2" ypos="268.4282191880509" endx="485.5743654145941" xpos="620.0328845335664" endy="359.1802403802067" c2x="530.3938717875848">
+    <transition c1x="575.2133781605756" c2y="328.9295666494881" c1y="298.6788929187695" description="" straight="1" type="2" ypos="268.4282191880509" endx="485.5743654145941" xpos="620.0328845335664" endy="359.1802403802067" c2x="530.3938717875849">
       <from>7</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">timeout(3000000)</inputs>
@@ -47,7 +47,7 @@
       <inputs default="0" any="0" invert="0">!normalCharge</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="438.5524270666698" c2y="310.614194216481" c1y="292.7808503777722" description="" straight="1" type="2" ypos="274.9475065390635" endx="429.7544613578621" xpos="442.9514099210737" endy="328.4475380551897" c2x="434.153444212266">
+    <transition c1x="438.5524270666698" c2y="310.6141942164809" c1y="292.7808503777723" description="" straight="1" type="2" ypos="274.9475065390635" endx="429.7544613578621" xpos="442.9514099210737" endy="328.4475380551897" c2x="434.153444212266">
       <from>3</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">normalCharge</inputs>
@@ -65,7 +65,7 @@
       <inputs default="0" any="0" invert="0">volumeNormal&amp;&amp;!motor</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="376.1449134623289" c2y="420.2443908281929" c1y="406.5140856880878" description="" straight="1" type="2" ypos="392.7837805479827" endx="293.9868572363793" xpos="417.2239415753036" endy="433.974695968298" c2x="335.0658853493541">
+    <transition c1x="376.1449134623288" c2y="420.2443908281929" c1y="406.5140856880878" description="" straight="1" type="2" ypos="392.7837805479827" endx="293.9868572363793" xpos="417.2239415753036" endy="433.974695968298" c2x="335.0658853493541">
       <from>4</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">volumeNormal&amp;&amp;motor</inputs>
