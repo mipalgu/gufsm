@@ -7,38 +7,38 @@
     <outputnames></outputnames>
     <itransition ypos="100" endx="130" xpos="70" endy="100"/>
     <state pencolor="0" radius="40" description="OnEntry { int times; times=0; print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="100" code="0" xpos="170" linewidth="1">SILENT</state>
-    <state pencolor="0" radius="40" description="OnEntry { print_state_name(); }&#xa;OnExit {times=4; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="130" code="1" xpos="490" linewidth="1">Armed</state>
+    <state pencolor="0" radius="40" description="OnEntry { print_state_name(); }&#xa;OnExit {times=4; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="130" code="1" xpos="489" linewidth="1">Armed</state>
     <state pencolor="0" radius="40" description="OnEntry {post(&quot;QSay&quot;,&quot;dossage applied&quot;);  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="258" code="2" xpos="301" linewidth="1">BEEPING_AT_END</state>
     <state pencolor="0" radius="40" description="OnEntry {post(&quot;Say&quot;,&quot;starting&quot;);  }&#xa;OnExit { }&#xa;{ post(&quot;Say&quot;,&quot;starting&quot;);  }" finalstate="0" moore_outputs="" ypos="346" code="3" xpos="487" linewidth="1">BEEPING_AT_START</state>
     <state pencolor="0" radius="40" description="OnEntry { print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="333" code="4" xpos="139" linewidth="1">WAIT</state>
-    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="155" code="5" xpos="703" linewidth="1">ALRM_BATTERY_LOW</state>
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="160" code="5" xpos="700" linewidth="1">ALRM_BATTERY_LOW</state>
     <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="47" code="6" xpos="537" linewidth="1">PAUSE</state>
-    <state pencolor="0" radius="40" description="OnEntry {post(&quot;Say&quot;,&quot;low battery&quot;);  times=times-1;  }&#xa;OnExit { }&#xa;{  }" finalstate="0" moore_outputs="" ypos="346" code="7" xpos="705" linewidth="1">BEEPING_LOW_BATERRY</state>
-    <transition c1x="290.2060499696144" c2y="115.618294874041" c1y="108.5201601553742" description="" straight="1" type="2" ypos="101.4220254367075" endx="450.6687198006216" xpos="209.9747150541108" endy="122.7164295927077" c2x="370.437384885118">
+    <state pencolor="0" radius="40" description="OnEntry {post(&quot;Say&quot;,&quot;low battery&quot;);  times=times-1;  }&#xa;OnExit { }&#xa;{  }" finalstate="0" moore_outputs="" ypos="350" code="7" xpos="710" linewidth="1">BEEPING_LOW_BATERRY</state>
+    <transition c1x="289.8727166362811" c2y="115.618294874041" c1y="108.5201601553742" description="" straight="1" type="2" ypos="101.4220254367075" endx="449.6687198006216" xpos="209.9747150541108" endy="122.7164295927077" c2x="369.7707182184513">
       <from>0</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">batteriesConnected</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="441.2056002304009" c2y="220.6921382257802" c1y="195.3152761769984" description="" straight="1" type="2" ypos="169.9384141282165" endx="339.1791991214012" xpos="492.2188007849008" endy="246.0690002745621" c2x="390.1923996759011">
+    <transition c1x="440.5389335637342" c2y="220.6921382257802" c1y="195.3152761769984" description="" straight="1" type="2" ypos="169.9384141282165" endx="339.1791991214012" xpos="491.2188007849008" endy="246.0690002745621" c2x="389.8590663425678">
       <from>1</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">fireTimeBeeper</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="512.8741727474639" c2y="271.9444219715138" c1y="218.6479693126982" description="" straight="1" type="2" ypos="165.3515166538825" endx="521.1915006088692" xpos="508.7155088167613" endy="325.2408746303295" c2x="517.0328366781666">
+    <transition c1x="512.2075060807973" c2y="271.9444219715138" c1y="218.6479693126981" description="" straight="1" type="2" ypos="165.3515166538825" endx="521.1915006088692" xpos="507.7155088167613" endy="325.2408746303295" c2x="516.6995033448333">
       <from>1</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">beeperStartSignal</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="373.6541179442191" c2y="131.2818075294551" c1y="142.7180575246368" description="" straight="1" type="2" ypos="154.1543075198185" endx="204.7297256849783" xpos="458.1163140738396" endy="119.8455575342734" c2x="289.1919218145987">
+    <transition c1x="372.9874512775525" c2y="131.2818075294551" c1y="142.7180575246368" description="" straight="1" type="2" ypos="154.1543075198185" endx="204.7297256849783" xpos="457.1163140738396" endy="119.8455575342734" c2x="288.8585884812654">
       <from>1</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">!batteriesConnected</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="574.3799501647114" c2y="140.4832046445014" c1y="133.0329718007537" description="" straight="1" type="2" ypos="125.5827389570061" endx="663.6291517202446" xpos="529.7553493869448" endy="147.933437488249" c2x="619.004550942478">
+    <transition c1x="572.7132834980447" c2y="143.8165379778347" c1y="134.6996384674204" description="" straight="1" type="2" ypos="125.5827389570061" endx="660.6291517202446" xpos="528.7553493869448" endy="152.933437488249" c2x="616.6712176091447">
       <from>1</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">!normalCharge</inputs>
@@ -62,13 +62,13 @@
       <inputs default="0" any="0" invert="0">!beeperStartSignal</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="738.5579413882002" c2y="276.8556666704341" c1y="226.0052538456988" description="" straight="1" type="2" ypos="175.1548410209634" endx="740.5715120927259" xpos="737.5511560359373" endy="327.7060794951695" c2x="739.564726740463">
+    <transition c1x="738.2246080548668" c2y="281.1890000037675" c1y="230.6719205123655" description="" straight="1" type="2" ypos="180.1548410209634" endx="745.5715120927259" xpos="734.5511560359373" endy="331.7060794951695" c2x="741.8980600737964">
       <from>5</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="637.3118465106891" c2y="87.36271652563266" c1y="110.2744927904905" description="" straight="1" type="2" ypos="133.1862690553484" endx="572.9925642878479" xpos="669.4714876221096" endy="64.45094026077479" c2x="605.1522053992685">
+    <transition c1x="635.3118465106891" c2y="89.02938319229933" c1y="113.6078261238239" description="" straight="1" type="2" ypos="138.1862690553484" endx="572.9925642878479" xpos="666.4714876221096" endy="64.45094026077481" c2x="604.1522053992685">
       <from>5</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">times&lt;0</inputs>
@@ -80,7 +80,7 @@
       <inputs default="0" any="0" invert="0">timeout(10000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="664.78353413865" c2y="225.5376706816089" c1y="285.7688353408045" description="" straight="1" type="2" ypos="346" endx="664.3506024159501" xpos="665" endy="165.3065060224133" c2x="664.5670682773001">
+    <transition c1x="667.1168674719834" c2y="230.2043373482755" c1y="290.1021686741378" description="" straight="1" type="2" ypos="350" endx="661.3506024159501" xpos="670" endy="170.3065060224133" c2x="664.2337349439667">
       <from>7</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">1</inputs>
