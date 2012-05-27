@@ -1,0 +1,24 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vlad Estivill-Castro" description="" version="1" name="FSMStatesOperator" arrowtype="1" numbits="1" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="83" endx="99" xpos="39" endy="83"/>
+    <state pencolor="0" radius="40" description="OnEntry{extern  operatorPressesButton; operatorPushingButton=1;}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="83" code="0" xpos="139" linewidth="1">PUSHING_THE_BUTTON</state>
+    <state pencolor="0" radius="40" description="OnEntry{operatorPushingButton=1;}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="92" code="1" xpos="450" linewidth="1">BUTTON_FREE</state>
+    <transition c1x="251.9087687654403" c2y="56.55059389510934" c1y="54.20021876588901" description="" straight="1" type="2" ypos="51.84984363666868" endx="427.5399432665094" xpos="164.0931815149058" endy="58.90096902432967" c2x="339.7243560159749">
+      <from>0</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">!operatorPressesButton</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="335.2312936467865" c2y="116.7351318953422" c1y="118.3605098725062" description="" straight="1" type="2" ypos="119.9858878496703" endx="162.8529600535038" xpos="421.4204604434278" endy="115.1097539181781" c2x="249.0421268501451">
+      <from>1</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">!operatorPressesButton</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>
