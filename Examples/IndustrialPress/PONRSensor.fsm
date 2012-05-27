@@ -5,16 +5,16 @@
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
-    <itransition ypos="192.4537037037037" endx="133.4953703703703" xpos="133.4953703703703" endy="192.4537037037037"/>
+    <itransition ypos="190" endx="130" xpos="130" endy="190"/>
     <state pencolor="0" radius="100" description="OnEntry { low = 1; print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="203.0324074074074" code="1" xpos="683.449074074074" linewidth="2">IndicatingPressAtBottom</state>
-    <state pencolor="0" radius="100" description="OnEntry { extern signalPlungeBelowPONR; low = 0;  print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="192.4537037037037" code="0" xpos="233.4953703703703" linewidth="2">IndicatingPressHigherThanPONR</state>
-    <transition c1x="517.3702045631353" c2y="300.1264022863061" c1y="272.0314614718835" description="" straight="0" type="2" ypos="234.6078169537572" endx="314.7491954333388" xpos="588.5649683872928" endy="250.7444912488768" c2x="366.4995148130519">
+    <state pencolor="0" radius="100" description="OnEntry { extern signalPlungeBelowPONR; low = 0;  print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="190" code="0" xpos="230" linewidth="2">IndicatingPressHigherThanPONR</state>
+    <transition c1x="517.3702045631353" c2y="297.6726985826024" c1y="272.0314614718835" description="" straight="0" type="2" ypos="234.6078169537572" endx="311.2538250629685" xpos="588.5649683872928" endy="248.2907875451731" c2x="363.0041444426816">
       <from>1</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">signalPlungeBelowPONR</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="392.310284926025" c2y="108.0939345406662" c1y="123.2097552401662" description="" straight="0" type="2" ypos="153.2098351989254" endx="607.0492952360007" xpos="325.4731871784446" endy="138.5105212485737" c2x="539.5177530439759">
+    <transition c1x="388.8149145556547" c2y="108.0939345406662" c1y="120.7560515364625" description="" straight="0" type="2" ypos="150.7561314952217" endx="607.0492952360007" xpos="321.9778168080743" endy="138.5105212485737" c2x="539.5177530439759">
       <from>0</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">!signalPlungeBelowPONR</inputs>
