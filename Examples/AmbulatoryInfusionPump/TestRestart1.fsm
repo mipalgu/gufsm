@@ -1,7 +1,7 @@
 <?xml version='1.0'?>
 <!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
 <qfsmproject version="0.53" author="Qfsm">
-  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vladimir Estivill-Castro" description="" version="1" name="TestRestart1" arrowtype="1" numbits="3" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vladimir Estivill-Castro" description="" version="1" name="FSM" arrowtype="1" numbits="3" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
@@ -9,7 +9,7 @@
     <state pencolor="0" radius="40" description="OnEntry  {  extern batteriesConnected; extern  buttonHeldPressed; extern airOnLine; extern blockageInLine;  motor=0; fireTimeBeeper=0;   beeperStartSignal=0;    dossageInterrupted=0;   suspend(&quot;PumpStarter&quot;);   print_state_name();   &#xa; }&#xa;OnExit{ }&#xa;{ }" finalstate="0" moore_outputs="" ypos="440" code="0" xpos="550" linewidth="1">PUMP_OFF_NO_POWER</state>
     <state pencolor="0" radius="40" description="OnEntry {print_state_name();}&#xa;OnExit {motor=0; suspend(&quot;PumpStarter&quot;); }&#xa;{ }" finalstate="0" moore_outputs="" ypos="180" code="1" xpos="810" linewidth="1">TEST_RUNNING</state>
     <state pencolor="0" radius="40" description="OnEntry {    print_state_name();  aborted=0; fireTimeBeeper=0;   beeperStartSignal=0;   }&#xa;OnExit{ }&#xa;{} &#xa;" finalstate="0" moore_outputs="" ypos="78" code="4" xpos="300" linewidth="1">PUMP_WITH_POWER</state>
-    <state pencolor="0" radius="40" description="OnEntry {print_state_name();   beeperStartSignal=1;  resume(&quot;PumpStarter&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="60" code="5" xpos="800" linewidth="1">INVOKE_STARTER</state>
+    <state pencolor="0" radius="40" description="OnEntry {print_state_name();   beeperStartSignal=1;  restart(&quot;PumpStarter&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="60" code="5" xpos="800" linewidth="1">INVOKE_STARTER</state>
     <transition c1x="442.1117738843398" c2y="213.7975134173118" c1y="312.9983147717064" description="" straight="1" type="2" ypos="412.199116126101" endx="283.8543917369483" xpos="521.2404649580355" endy="114.5967120629173" c2x="362.9830828106441">
       <from>0</from>
       <to>4</to>
