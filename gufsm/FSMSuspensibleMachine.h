@@ -99,6 +99,9 @@ namespace FSM
 
                 /** is this machine scheduled for resumption? */
                 virtual bool scheduledForResume() { return false; }
+
+                /** is this machine scheduled for restart? */
+                virtual bool scheduledForRestart() { return false; }
         };
 }
 

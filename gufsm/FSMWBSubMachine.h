@@ -110,6 +110,9 @@ namespace FSM
 
                 /** is this machine scheduled for resumption? */
                 virtual bool scheduledForResume() { return _scheduleResume; }
+                
+                /** is this machine scheduled for restart? */
+                virtual bool scheduledForRestart() { return _scheduleRestart; }
 
                 /** return whether the context will be deleted by the destructor */
                 bool willDeleteContext() { return _deleteContext; }

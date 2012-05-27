@@ -1,7 +1,7 @@
 <?xml version='1.0'?>
 <!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
 <qfsmproject version="0.53" author="Qfsm">
-  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vladimir Estivill-Castro" description="" version="1" name="FSM" arrowtype="1" numbits="3" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vladimir Estivill-Castro" description="" version="1" name="TestRestart1" arrowtype="1" numbits="3" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
@@ -16,13 +16,13 @@
       <inputs default="0" any="0" invert="0">batteriesConnected</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="742.7879610950287" c2y="370.6728743703021" c1y="294.76978924839" description="" straight="1" type="2" ypos="218.8667041264779" endx="589.4557569532858" xpos="819.4540631659" endy="446.5759594922143" c2x="666.1218590241572">
+    <transition c1x="742.7879610950287" c2y="370.6728743703022" c1y="294.7697892483901" description="" straight="1" type="2" ypos="218.8667041264779" endx="589.4557569532858" xpos="819.4540631659" endy="446.5759594922143" c2x="666.1218590241572">
       <from>1</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">!batteriesConnected</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="624.1618915956715" c2y="126.3098779013776" c1y="149.6319539005783" description="" straight="1" type="2" ypos="172.9540298997789" endx="331.2347523777212" xpos="770.6254612046466" endy="102.987801902177" c2x="477.6983219866964">
+    <transition c1x="624.1618915956715" c2y="126.3098779013776" c1y="149.6319539005783" description="" straight="1" type="2" ypos="172.9540298997789" endx="331.2347523777212" xpos="770.6254612046466" endy="102.987801902177" c2x="477.6983219866963">
       <from>1</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">timeLeft&lt;1</inputs>
@@ -34,7 +34,7 @@
       <inputs default="0" any="0" invert="0">buttonHeldPressed</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="803.1645759967815" c2y="126.9070176219484" c1y="113.4120149903433" description="" straight="1" type="2" ypos="99.91701235873833" endx="804.3431457505076" xpos="802.5752911199186" endy="140.4020202535534" c2x="803.7538608736446">
+    <transition c1x="803.1645759967815" c2y="126.9070176219484" c1y="113.4120149903434" description="" straight="1" type="2" ypos="99.91701235873833" endx="804.3431457505076" xpos="802.5752911199186" endy="140.4020202535534" c2x="803.7538608736446">
       <from>5</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">timeout(4000000)</inputs>
