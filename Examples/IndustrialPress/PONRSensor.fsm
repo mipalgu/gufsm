@@ -6,18 +6,18 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="192.4537037037037" endx="133.4953703703703" xpos="133.4953703703703" endy="192.4537037037037"/>
-    <state pencolor="0" radius="100" description="OnEntry { extern signalPlungeBelowPONR; low = 0; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="192.4537037037037" code="0" xpos="233.4953703703703" linewidth="2">IndicatingPressHigherThanPONR</state>
-    <state pencolor="0" radius="100" description="OnEntry { low = 1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="203.0324074074074" code="1" xpos="683.449074074074" linewidth="2">IndicatingPressAtBottom</state>
-    <transition c1x="392.310284926025" c2y="108.0939345406662" c1y="123.2097552401662" description="" straight="0" type="2" ypos="153.2098351989254" endx="607.0492952360007" xpos="325.4731871784446" endy="138.5105212485737" c2x="539.5177530439759">
-      <from>0</from>
-      <to>1</to>
-      <inputs default="0" any="0" invert="0">!signalPlungeBelowPONR</inputs>
-      <outputs></outputs>
-    </transition>
+    <state pencolor="0" radius="100" description="OnEntry { low = 1; print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="203.0324074074074" code="1" xpos="683.449074074074" linewidth="2">IndicatingPressAtBottom</state>
+    <state pencolor="0" radius="100" description="OnEntry { extern signalPlungeBelowPONR; low = 0;  print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="192.4537037037037" code="0" xpos="233.4953703703703" linewidth="2">IndicatingPressHigherThanPONR</state>
     <transition c1x="517.3702045631353" c2y="300.1264022863061" c1y="272.0314614718835" description="" straight="0" type="2" ypos="234.6078169537572" endx="314.7491954333388" xpos="588.5649683872928" endy="250.7444912488768" c2x="366.4995148130519">
       <from>1</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">signalPlungeBelowPONR</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="392.310284926025" c2y="108.0939345406662" c1y="123.2097552401662" description="" straight="0" type="2" ypos="153.2098351989254" endx="607.0492952360007" xpos="325.4731871784446" endy="138.5105212485737" c2x="539.5177530439759">
+      <from>0</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">!signalPlungeBelowPONR</inputs>
       <outputs></outputs>
     </transition>
   </machine>
