@@ -7,8 +7,8 @@
     <outputnames></outputnames>
     <itransition ypos="215.9953703703704" endx="116.9675925925926" xpos="116.9675925925926" endy="215.9953703703704"/>
     <state pencolor="0" radius="100" description="OnEntry{extern  operatorPressesButton; operatorPushingButton=1; print_state_name(); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="215.9953703703704" code="0" xpos="216.9675925925926" linewidth="2">PUSHING_THE_BUTTON</state>
-    <state pencolor="0" radius="100" description="OnEntry{operatorPushingButton=1; print_state_name(); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="234.0972222222222" code="1" xpos="603.9351851851852" linewidth="2">BUTTON_FREE</state>
-    <transition c1x="352.8583416666872" c2y="111.6388304167857" c1y="84.65949753200651" description="" straight="0" type="2" ypos="138.1199794620421" endx="547.7850433514586" xpos="279.7005463798571" endy="151.3496447830464" c2x="485.0439147312952">
+    <state pencolor="0" radius="100" description="OnEntry{operatorPushingButton=0; print_state_name(); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="234.0972222222222" code="1" xpos="603.9351851851852" linewidth="2">BUTTON_FREE</state>
+    <transition c1x="352.8583416666872" c2y="111.6388304167857" c1y="84.65949753200651" description="" straight="0" type="2" ypos="138.1199794620421" endx="547.7850433514586" xpos="279.7005463798571" endy="151.3496447830465" c2x="485.0439147312952">
       <from>0</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">!operatorPressesButton</inputs>
