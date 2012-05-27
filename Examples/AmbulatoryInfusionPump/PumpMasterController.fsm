@@ -10,10 +10,10 @@
     <state pencolor="0" radius="40" description="OnEntry {print_state_name();}&#xa;OnExit {motor=0; suspend(&quot;PumpStarter&quot;); }&#xa;{ }" finalstate="0" moore_outputs="" ypos="180" code="1" xpos="870" linewidth="1">TEST_RUNNING</state>
     <state pencolor="0" radius="40" description="OnEntry {dossageInterrupted=1;   print_state_name();  recalcualtion=timeLeft; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="122" code="2" xpos="549" linewidth="1">RECALCULATING</state>
     <state pencolor="0" radius="40" description="OnEntry {fireTimeBeeper=1;  dossageInterrupted=0 ; timeLeft=0;    print_state_name();   print_int(motor);  }&#xa;OnExit {}&#xa;{} &#xa;" finalstate="0" moore_outputs="" ypos="225" code="3" xpos="554" linewidth="1">DOSAGE_COMPLETE</state>
-    <state pencolor="0" radius="40" description="OnEntry {    print_state_name();  aborted=0; fireTimeBeeper=0;   beeperStartSignal=0;   }&#xa;OnExit{ }&#xa;{} &#xa;" finalstate="0" moore_outputs="" ypos="78" code="4" xpos="300" linewidth="1">PUMP_WITH_POWER</state>
+    <state pencolor="0" radius="40" description="OnEntry {    print_state_name();  aborted=0; fireTimeBeeper=0;   beeperStartSignal=0;   }&#xa;OnExit{ }&#xa;{} &#xa;" finalstate="0" moore_outputs="" ypos="80" code="4" xpos="300" linewidth="1">PUMP_WITH_POWER</state>
     <state pencolor="0" radius="40" description="OnEntry {print_state_name();   beeperStartSignal=1;  restart(&quot;PumpStarter&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="50" code="5" xpos="860" linewidth="1">INVOKE_STARTER</state>
     <state pencolor="0" radius="40" description="OnEntry { dossageInterrupted=0 ; timeLeft=0;    print_state_name();     }&#xa;OnExit {}&#xa;{} &#xa;" finalstate="0" moore_outputs="" ypos="340" code="6" xpos="584" linewidth="1">DOSAGE_ABORTED</state>
-    <transition c1x="442.1117738843398" c2y="213.7975134173118" c1y="312.9983147717064" description="" straight="1" type="2" ypos="412.199116126101" endx="283.8543917369483" xpos="521.2404649580355" endy="114.5967120629173" c2x="362.9830828106441">
+    <transition c1x="442.1117738843398" c2y="215.1308467506452" c1y="313.6649814383731" description="" straight="1" type="2" ypos="412.199116126101" endx="283.8543917369483" xpos="521.2404649580355" endy="116.5967120629173" c2x="362.9830828106441">
       <from>0</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">batteriesConnected</inputs>
@@ -43,19 +43,19 @@
       <inputs default="0" any="0" invert="0">aborted</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="452.641037920137" c2y="101.5306838167335" c1y="104.349260457236" description="" straight="1" type="2" ypos="107.1678370977386" endx="334.2200031607293" xpos="511.8515552998408" endy="98.71210717623092" c2x="393.4305205404331">
+    <transition c1x="452.641037920137" c2y="102.8640171500668" c1y="105.0159271239027" description="" straight="1" type="2" ypos="107.1678370977386" endx="334.2200031607293" xpos="511.8515552998408" endy="100.7121071762309" c2x="393.4305205404331">
       <from>2</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="458.2941271261197" c2y="138.1755019411726" c1y="168.1877400468929" description="" straight="1" type="2" ypos="198.1999781526133" endx="326.2712297921681" xpos="524.3055757930955" endy="108.1632638354522" c2x="392.2826784591439">
+    <transition c1x="458.2941271261197" c2y="139.5088352745059" c1y="168.8544067135596" description="" straight="1" type="2" ypos="198.1999781526133" endx="326.2712297921681" xpos="524.3055757930955" endy="110.1632638354522" c2x="392.2826784591439">
       <from>3</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="491.4683786602669" c2y="48.18413096047352" c1y="48.41685199987337" description="" straight="1" type="2" ypos="48.64957303927323" endx="820.0524934609365" xpos="327.1763212599322" endy="47.95140992107366" c2x="655.7604360606017">
+    <transition c1x="491.4683786602669" c2y="48.85079762714018" c1y="49.75018533320671" description="" straight="1" type="2" ypos="50.64957303927323" endx="820.0524934609365" xpos="327.1763212599322" endy="47.95140992107366" c2x="655.7604360606017">
       <from>4</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">normalCharge&amp;&amp;!airOnLine&amp;&amp;!blockageInLine&amp;&amp;volumeNormal&amp;&amp;buttonHeldPressed</inputs>
@@ -67,7 +67,7 @@
       <inputs default="0" any="0" invert="0">timeout(3000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="469.8691588729017" c2y="183.8360152445777" c1y="250.187811379252" description="" straight="1" type="2" ypos="316.5396075139263" endx="306.4028463421465" xpos="551.6023151382792" endy="117.4842191099034" c2x="388.1360026075241">
+    <transition c1x="469.8691588729017" c2y="185.169348577911" c1y="250.8544780459187" description="" straight="1" type="2" ypos="316.5396075139263" endx="306.4028463421465" xpos="551.6023151382792" endy="119.4842191099034" c2x="388.1360026075241">
       <from>6</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">1</inputs>
