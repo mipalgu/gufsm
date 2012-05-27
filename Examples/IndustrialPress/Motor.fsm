@@ -1,0 +1,24 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="" version="1" name="Motor" arrowtype="1" numbits="1" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="267.5" endx="306.25" xpos="306.25" endy="267.5"/>
+    <state pencolor="0" radius="100" description="OnEntry { extern signalMotorOn; motorOn = 1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="267.5" code="0" xpos="406.25" linewidth="2">ElectricMotorOn</state>
+    <state pencolor="0" radius="100" description="OnEntry { motorOn = 1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="282.6388888888889" code="1" xpos="750.4166666666666" linewidth="2">ElectricMotorOff</state>
+    <transition c1x="565.0649145556547" c2y="187.7004160221477" c1y="198.2560515364625" description="" straight="0" type="2" ypos="228.2561314952217" endx="674.0168878285933" xpos="498.2278168080743" endy="218.1170027300552" c2x="606.4853456365685">
+      <from>0</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">!signalMotorOn</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="584.3377971557279" c2y="375.1726985826024" c1y="351.637942953365" description="" straight="0" type="2" ypos="314.2142984352387" endx="487.5038250629685" xpos="655.5325609798854" endy="325.7907875451731" c2x="539.2541444426815">
+      <from>1</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">signalMotorOn</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>
