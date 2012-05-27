@@ -1,23 +1,23 @@
 <?xml version='1.0'?>
 <!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
 <qfsmproject version="0.53" author="Qfsm">
-  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vlad Estivill-Castro" description="" version="1" name="StatesOfOperator" arrowtype="1" numbits="1" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vlad Estivill-Castro" description="" version="1" name="StatesOfOperator" arrowtype="1" numbits="1" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="1">
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
-    <itransition ypos="215.9953703703704" endx="116.9675925925926" xpos="116.9675925925926" endy="215.9953703703704"/>
-    <state pencolor="0" radius="100" description="OnEntry{extern  operatorPressesButton; operatorPushingButton=1; print_state_name(); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="215.9953703703704" code="0" xpos="216.9675925925926" linewidth="2">PUSHING_THE_BUTTON</state>
+    <itransition ypos="230.3825277572068" endx="504.004203777858" xpos="504.004203777858" endy="230.3825277572068"/>
     <state pencolor="0" radius="100" description="OnEntry{operatorPushingButton=0; print_state_name(); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="234.0972222222222" code="1" xpos="603.9351851851852" linewidth="2">BUTTON_FREE</state>
-    <transition c1x="352.8583416666872" c2y="111.6388304167857" c1y="84.65949753200651" description="" straight="0" type="2" ypos="138.1199794620421" endx="547.7850433514586" xpos="279.7005463798571" endy="151.3496447830465" c2x="485.0439147312952">
-      <from>0</from>
-      <to>1</to>
-      <inputs default="0" any="0" invert="0">!operatorPressesButton</inputs>
-      <outputs></outputs>
-    </transition>
+    <state pencolor="0" radius="100" description="OnEntry{extern  operatorPressesButton; operatorPushingButton=1; print_state_name(); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="215.9953703703704" code="0" xpos="216.9675925925926" linewidth="2">PUSHING_THE_BUTTON</state>
     <transition c1x="471.7195020686001" c2y="335.2214290233968" c1y="333.085139918015" description="" straight="0" type="2" ypos="304.061941846398" endx="276.5999927263521" xpos="532.4863362937547" endy="296.2697551658156" c2x="369.8194696196983">
       <from>1</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">operatorPressesButton</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="352.8583416666872" c2y="111.6388304167857" c1y="84.65949753200651" description="" straight="0" type="2" ypos="138.1199794620421" endx="547.7850433514586" xpos="279.7005463798571" endy="151.3496447830465" c2x="485.0439147312952">
+      <from>0</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">!operatorPressesButton</inputs>
       <outputs></outputs>
     </transition>
   </machine>
