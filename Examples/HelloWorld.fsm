@@ -6,7 +6,7 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="100" endx="100" xpos="40" endy="100"/>
-    <state pencolor="0" radius="40" description="OnEntry { int internalX;&#xa;          extern externalX;&#xa;          globalX;&#xa;          post(&quot;Say&quot;, &quot;Hello&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="100" code="0" xpos="140" linewidth="1">Hello</state>
+    <state pencolor="0" radius="40" description="OnEntry { int internalX;&#xa;          extern externalX;&#xa;          globalX;&#xa;&#x9;superx;&#xa;          post(&quot;Say&quot;, &quot;Hello&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="100" code="0" xpos="140" linewidth="1">Hello</state>
     <state pencolor="0" radius="40" description="OnEntry { extern dummy;&#xa;          internalX = internalX + 1;&#xa;          globalX = globalX + 5;&#xa;          externalX = externalX + 10;&#xa;          post(&quot;Say&quot;, &quot;World&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="107" code="1" xpos="385" linewidth="1">World</state>
     <transition c1x="229.499284" c2y="66.821394" c1y="69.117808" description="" straight="0" type="2" ypos="86.41422144889773" endx="351.2535404907157" xpos="177.6221559876678" endy="85.52498031227363" c2x="295.376412">
       <from>0</from>
