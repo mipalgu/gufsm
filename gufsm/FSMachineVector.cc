@@ -200,7 +200,7 @@ bool StateMachineVector::executeOnceOnQueue(dispatch_queue_t queue)
              it != machines().end(); it++)
         {
                 SuspensibleMachine *m = *it;
-                if (m->isSuspended() && !m->scheduledForResume())
+                if (m->isSuspended() && !m->scheduledForResume() && !m->scheduledForRestart())
                         setAccepting(false);    // a suspended machine is never accepting
                 else
                 {

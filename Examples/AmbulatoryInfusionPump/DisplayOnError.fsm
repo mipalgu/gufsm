@@ -5,38 +5,38 @@
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
-    <itransition ypos="52" endx="159" xpos="99" endy="52"/>
-    <state pencolor="0" radius="40" description="OnEntry {  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="52" code="0" xpos="199" linewidth="1">TEST_EMPTY</state>
+    <itransition ypos="50" endx="160" xpos="100" endy="50"/>
+    <state pencolor="0" radius="40" description="OnEntry {   }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="50" code="0" xpos="200" linewidth="1">TEST_EMPTY</state>
     <state pencolor="0" radius="40" description="OnEntry {post(&quot;QSay&quot;,&quot;line blocked&quot;); displayChanged=1;  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="208" code="1" xpos="543" linewidth="1">DISPLAY_LINE_BLOCKED</state>
     <state pencolor="0" radius="40" description="OnEntry {post(&quot;QSay&quot;,&quot;air on line&quot;);&#xa; displayChanged=1;  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="493" code="2" xpos="259" linewidth="1">DISPLAY_AIR_ON_LINE</state>
     <state pencolor="0" radius="40" description="OnEntry {post(&quot;QSay&quot;,&quot;empty&quot;); displayChanged=1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="48" code="3" xpos="539" linewidth="1">DISPLAY_EMPTY</state>
     <state pencolor="0" radius="40" description="OnEntry {  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="196" code="4" xpos="324" linewidth="1">TEST_BLOCKAGE</state>
-    <state pencolor="0" radius="40" description="OnEntry {  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="359" code="6" xpos="330" linewidth="1">TEST_AIR</state>
-    <transition c1x="239.7533253318866" c2y="134.8674488963384" c1y="113.4260128612236" description="" straight="1" type="2" ypos="91.98457682610874" endx="319.0386106164317" xpos="200.1106826896141" endy="156.3088849314533" c2x="279.3959679741591">
+    <state pencolor="0" radius="40" description="OnEntry {  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="360" code="6" xpos="332" linewidth="1">TEST_AIR</state>
+    <transition c1x="240.4199919985533" c2y="134.2007822296718" c1y="112.0926795278903" description="" straight="1" type="2" ypos="89.98457682610874" endx="319.0386106164317" xpos="201.1106826896141" endy="156.3088849314533" c2x="279.7293013074925">
       <from>0</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">~volumeEmpty</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="325.7061491955192" c2y="51.25994134139516" c1y="51.10383702893293" description="" straight="1" type="2" ypos="50.94773271647069" endx="499.1461340383299" xpos="238.9861567741139" endy="51.4160456538574" c2x="412.4261416169246">
+    <transition c1x="326.3728158621859" c2y="50.59327467472849" c1y="49.77050369559959" description="" straight="1" type="2" ypos="48.94773271647069" endx="499.1461340383299" xpos="239.9861567741139" endy="51.4160456538574" c2x="412.7594749502579">
       <from>0</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">volumeEmpty</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="454.5401684451444" c2y="290.5443284909317" c1y="251.4807947669628" description="" straight="1" type="2" ypos="212.4172610429939" endx="357.1312041093227" xpos="503.2446506130552" endy="329.6078622149005" c2x="405.8356862772335">
+    <transition c1x="455.2068351118111" c2y="291.2109951575983" c1y="251.8141281002961" description="" straight="1" type="2" ypos="212.4172610429939" endx="359.1312041093227" xpos="503.2446506130552" endy="330.6078622149005" c2x="407.1690196105669">
       <from>1</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">timeout(3000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="218.9210850776965" c2y="206.0243850448361" c1y="331.2359615500129" description="" straight="1" type="2" ypos="456.4475380551897" endx="171.2543325173652" xpos="242.7544613578621" endy="80.81280853965926" c2x="195.0877087975308">
+    <transition c1x="219.2544184110298" c2y="204.6910517115028" c1y="330.5692948833462" description="" straight="1" type="2" ypos="456.4475380551897" endx="172.2543325173652" xpos="242.7544613578621" endy="78.81280853965927" c2x="195.7543754641975">
       <from>2</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">timeout(3000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="451.5358954609702" c2y="132.0354989026242" c1y="96.88380634490761" description="" straight="1" type="2" ypos="61.73211378719103" endx="351.7456674826349" xpos="501.4310094501378" endy="167.1871914603408" c2x="401.6407814718025">
+    <transition c1x="451.5358954609702" c2y="132.0354989026242" c1y="96.88380634490764" description="" straight="1" type="2" ypos="61.73211378719107" endx="351.7456674826349" xpos="501.4310094501378" endy="167.1871914603408" c2x="401.6407814718025">
       <from>3</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">timeout(3000000)</inputs>
@@ -48,19 +48,19 @@
       <inputs default="0" any="0" invert="0">blockageInLine</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="324.3049585762519" c2y="291.7697145692628" c1y="263.8775566820885" description="" straight="1" type="2" ypos="235.9853987949141" endx="322.7535028209226" xpos="325.0806864539166" endy="319.6618724564371" c2x="323.5292306985873">
+    <transition c1x="324.9716252429186" c2y="292.4363812359294" c1y="264.2108900154217" description="" straight="1" type="2" ypos="235.9853987949141" endx="324.7535028209226" xpos="325.0806864539166" endy="320.6618724564371" c2x="324.8625640319206">
       <from>4</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">~blockageInLine</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="257.9785174122013" c2y="181.8984800288945" c1y="272.157262841376" description="" straight="1" type="2" ypos="362.4160456538575" endx="193.6432841599442" xpos="290.14613403833" endy="91.63969721641293" c2x="225.8109007860728">
+    <transition c1x="259.6451840788681" c2y="180.8984800288945" c1y="272.157262841376" description="" straight="1" type="2" ypos="363.4160456538575" endx="194.6432841599442" xpos="292.14613403833" endy="89.63969721641293" c2x="227.1442341194061">
       <from>6</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="322.7497153248932" c2y="455.8598387609998" c1y="427.2675526742169" description="" straight="1" type="2" ypos="398.675266587434" endx="298.0760006958504" xpos="335.0865726394146" endy="484.4521248477827" c2x="310.4128580103718">
+    <transition c1x="324.0830486582265" c2y="456.1931720943331" c1y="427.9342193408836" description="" straight="1" type="2" ypos="399.675266587434" endx="298.0760006958504" xpos="337.0865726394146" endy="484.4521248477827" c2x="311.0795246770385">
       <from>6</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">airOnLine</inputs>
