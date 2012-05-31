@@ -356,16 +356,18 @@ int main (int argc, char * const argv[])
         while (argc-- > 0)
                 machine_names.push_back(*argv++);
 
+        ANTLRContext antlr_context;
+        StateMachineVectorFactory factory(&antlr_context, machine_names);
 
         if (kripke_flag)
         {
-                return run_machine_vector(machine_names, dump_kripke, verbose);
+                return run_machine_vector(factory, machine_names, dump_kripke, verbose);
         }
         if (blocks_flag)                        // execute on dispatch queue
         {
-                return run_machine_vector(machine_names, block_schedule, verbose);
+                return run_machine_vector(factory, machine_names, block_schedule, verbose);
         }
 
-        return run_machine_vector(machine_names, factory_execute, verbose);
+        return run_machine_vector(factory, machine_names, factory_execute, verbose);
 }
 

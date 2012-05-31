@@ -15,6 +15,6 @@
 
 typedef int (*machine_runner_f)(FSM::StateMachineVectorFactory &factory, std::vector<std::string> &machine_names);
 
-int run_machine_vector(std::vector<std::string> &machine_names, machine_runner_f execute, bool verbose = false);
+int run_machine_vector(FSM::StateMachineVectorFactory &factory, std::vector<std::string> &machine_names, machine_runner_f execute, bool verbose = false);
 
 #endif

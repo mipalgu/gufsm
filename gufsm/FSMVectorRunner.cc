@@ -22,9 +22,9 @@
 #include "FSMVectorRunner.h"
 
 #define ANTLRFunc(x,n)  x func ## x; \
-antlr_context.set_function((n), &func ## x);
+                        antlr_context.set_function((n), &func ## x);
 #define ANTLRMaths(x)   ANTLRMaths ## x func ## x; \
-antlr_context.set_function(func ## x.name(), &func ## x);
+                        antlr_context.set_function(func ## x.name(), &func ## x);
 
 using namespace std;
 using namespace FSM;
@@ -236,10 +236,10 @@ static void usage(const char *cmd)
 }
 
 
-int run_machine_vector(vector<string> &machine_names, machine_runner_f execute, bool verbose)
+int run_machine_vector(StateMachineVectorFactory &factory, vector<string> &machine_names, machine_runner_f execute, bool verbose)
 {
-        ANTLRContext antlr_context;             // create whiteboard
-        
+        ANTLRContext &antlr_context = factory.context();
+
         ANTLRFunc(TimeoutPredicate,     "timeout");
         ANTLRFunc(SystemFunction,       "system");
 #ifdef NEED_SLEEP
@@ -288,8 +288,6 @@ int run_machine_vector(vector<string> &machine_names, machine_runner_f execute, 
         ANTLRMaths(FTA);
         ANTLRMaths(GAvg);
         
-        StateMachineVectorFactory factory(&antlr_context, machine_names);
-
         if (verbose)
         {
                 string descr = factory.fsms()->description();

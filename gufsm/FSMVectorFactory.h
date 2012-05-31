@@ -84,8 +84,11 @@ namespace FSM
                 /** Default constructor. */
                 StateMachineVectorFactory();
 
-                /** destructore (unsubscribes from whiteboard) */
+                /** destructor (unsubscribes from whiteboard) */
                 virtual ~StateMachineVectorFactory();
+
+                /** get ANTLR context */
+                virtual ANTLRContext &context() { return *_context; }
 
                 /** getter */
                 StateMachineVector *fsms() { return _fsms; }
