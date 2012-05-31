@@ -122,7 +122,7 @@ namespace FSM
                 void wb_suspend(std::string, WBMsg *msg) { if (name() == msg->getStringValue()) _scheduleSuspend = true; }
 
                 /** specific suspend from the whiteboard (wb message name must be suspend_MACHINENAME */
-                void wb_suspend_me(std::string, WBMsg *) { _scheduleSuspend = true; }
+                void wb_suspend_me(std::string s, WBMsg *msg) { _scheduleSuspend = msg->boolValue(); if (!_scheduleSuspend) wb_resume_me(s, msg); }
 
                 /** resume from the whiteboard, requires a string with the machine's name */
                 void wb_resume(std::string, WBMsg *msg) { if (name() == msg->getStringValue()) _scheduleResume = true; }
