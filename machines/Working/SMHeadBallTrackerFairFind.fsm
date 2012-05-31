@@ -11,9 +11,10 @@
     <state pencolor="511" radius="40" description="OnEntry {&#xa; }&#xa;OnExit {  &#x9;dx=ball_x;&#xa; &#x9;dy=ball_y; &#x9;mx=guvision_opencv_ballInfo1_radius*dx/fx;&#xa;&#x9;my=dy/fy;&#xa; }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="70" code="9" xpos="1321" linewidth="1">Calculate</state>
     <state pencolor="0" radius="40" description="OnEntry { print_state_name();&#xa;&#x9;ball_x = Ballfiltered_x;&#xa;&#x9;ball_y = Ballfiltered_y;&#xa;&#x9;ball_d = BallDistance;&#xa; }&#xa;OnExit { &#xa; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="55" code="13" xpos="979" linewidth="1">WaitForBall</state>
     <state pencolor="0" radius="40" description="OnEntry{update = Ballfiltered;}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="80" code="21" xpos="310" linewidth="1">DUMMY</state>
-    <state pencolor="0" radius="40" description="OnEntry{print_state_name(); restart(&quot;SMHeadScan&quot;);}&#xa;OnExit{suspend(&quot;SMHeadScan&quot;); post(&quot;Say&quot;,&quot;FOUND&quot;);}&#xa;{}" finalstate="0" moore_outputs="" ypos="381" code="3" xpos="436" linewidth="1">FINDING</state>
-    <state pencolor="0" radius="40" description="OnEntry{print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="215" code="4" xpos="577" linewidth="1">FOUND</state>
+    <state pencolor="0" radius="40" description="OnEntry{print_state_name(); restart(&quot;SMHeadScan&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="377" code="3" xpos="440" linewidth="1">START_FINDING</state>
+    <state pencolor="0" radius="40" description="OnEntry{print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="229" code="4" xpos="799" linewidth="1">FOUND</state>
     <state pencolor="0" radius="40" description="OnEntry{print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="280" code="5" xpos="240" linewidth="1">WAIT</state>
+    <state pencolor="0" radius="40" description="OnEntry{print_state_name(); }&#xa;OnExit{suspend(&quot;SMHeadScan&quot;); post(&quot;Say&quot;,&quot;FOUND&quot;);}&#xa;{}" finalstate="0" moore_outputs="" ypos="381" code="6" xpos="610" linewidth="1">END_FINDING</state>
     <transition c1x="187.85998" c2y="127.101630292856" c1y="126.81664" description="" straight="0" type="2" ypos="103.6118659289698" endx="277.5193851462915" xpos="171.6850747928837" endy="103.345441926103" c2x="232.1453946008746">
       <from>0</from>
       <to>21</to>
@@ -62,16 +63,28 @@
       <inputs default="0" any="0" invert="0">!BallIsVisible</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="493.1746138301745" c2y="283.6535508953599" c1y="316.3267754476799" description="" straight="1" type="2" ypos="349" endx="559.5238414905234" xpos="460" endy="250.9803263430399" c2x="526.3492276603489">
+    <transition c1x="510.0143368284577" c2y="378.4589776007861" c1y="378.1999468231127" description="" straight="1" type="2" ypos="377.9409160454392" endx="570.065146623041" xpos="479.9889319311661" endy="378.7180083784595" c2x="540.0397417257493">
       <from>3</from>
-      <to>4</to>
-      <inputs default="0" any="0" invert="0">BallIsVisible</inputs>
+      <to>6</to>
+      <inputs default="0" any="0" invert="0">timeout(10000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="313.1792743092309" c2y="350.1249833186981" c1y="327.49038587939" description="" straight="1" type="2" ypos="304.8557884400818" endx="396.8580086005301" xpos="271.3399071635814" endy="372.7595807580063" c2x="355.0186414548805">
+    <transition c1x="622.3783300742278" c2y="143.2403247839007" c1y="174.3567284384495" description="" straight="1" type="2" ypos="205.4731320929982" endx="333.8338769669386" xpos="766.6505566278724" endy="112.1239211293521" c2x="478.1061035205832">
+      <from>4</from>
+      <to>21</to>
+      <inputs default="0" any="0" invert="0">!gunaomotion_naoHeadIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="314.5126076425643" c2y="347.4583166520314" c1y="326.1570525460567" description="" straight="1" type="2" ypos="304.8557884400818" endx="400.8580086005301" xpos="271.3399071635814" endy="368.7595807580063" c2x="357.6853081215472">
       <from>5</from>
       <to>3</to>
-      <inputs default="0" any="0" invert="0">gunaomotion_naoHeadIsRunning</inputs>
+      <inputs default="0" any="0" invert="0">!gunaomotion_naoHeadIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="680.7889806076528" c2y="292.1888209774835" c1y="319.3973156119271" description="" straight="1" type="2" ypos="346.6058102463707" endx="781.5238414905234" xpos="630.4215501662175" endy="264.9803263430399" c2x="731.1564110490881">
+      <from>6</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">BallIsVisible</inputs>
       <outputs></outputs>
     </transition>
   </machine>
