@@ -72,11 +72,11 @@ namespace FSM
                 bool _deleteSuspendState;       /// should delete in destructor?
         public:
                 /** constructor */
-                SuspensibleMachine(ExecCom_Struct * execCom = NULL,
-                                   State *initialState = NULL, 
+                SuspensibleMachine(State *initialState = NULL, 
                                    Context *ctx = NULL, int mid=0,
-                                   State *s = NULL, bool del = false):
-                                Machine(execCom, initialState, ctx, mid), _suspendState(s),
+                                   State *s = NULL, bool del = false,
+				   ExecCom_Struct * execCom = NULL):
+                                Machine(initialState, ctx, mid, execCom), _suspendState(s),
                                 _resumeState(NULL),
                                 _deleteSuspendState(del) {}
                 /** destructor */
