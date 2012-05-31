@@ -136,10 +136,10 @@ namespace FSM
                 ExecCom_Struct * _execCom;
         public:
                 /** constructor */
-                Machine(ExecCom_Struct * execCom, 
-                        State *initial = NULL, 
+                Machine(State *initial = NULL, 
                         Context *ctx = NULL, int mid=0,
-			bool beingMonitored=false) 
+			bool beingMonitored=false,
+			ExecCom_Struct * execCom = NULL) 
                 :  _id(mid),
                    _context(ctx), 
                    _currentState(initial),
