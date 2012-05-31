@@ -139,7 +139,7 @@ namespace FSM
                 Machine(ExecCom_Struct * execCom, 
                         State *initial = NULL, 
                         Context *ctx = NULL, int mid=0,
-			bool beingMonitored=FALSE) 
+			bool beingMonitored=false) 
                 :  _id(mid),
                    _context(ctx), 
                    _currentState(initial),
