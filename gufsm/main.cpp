@@ -143,6 +143,7 @@ struct SystemFunction: public ContentAction<string>
  */
 typedef WBPostAction<const char *> PostStringFunction;
 typedef WBPostAction<int> PostIntFunction;
+typedef WBPostAction<bool> PostBoolFunction;
 
 class WBPostIntVecAction: public WBPostAction<std::vector<int> >
 {
@@ -166,14 +167,15 @@ public:
         
 };
 
-class WBSuspendFunction: public PostStringFunction
+class WBSuspendFunction: public PostBoolFunction
 {
 public:
-        WBSuspendFunction(std::string name = "suspend"): PostStringFunction(name, "") {}
+        WBSuspendFunction(std::string name = "suspend"): PostBoolFunction(name, false) {}
 
         virtual void add_parameter(int index, long long value)
         {
-                PostStringFunction::add_parameter(1, value);
+                _type = string("suspend_") + (const char *) value;
+                PostBoolFunction::add_parameter(1, true);
         }
 };
 
@@ -182,14 +184,75 @@ class WBResumeFunction: public WBSuspendFunction
 {
 public:
         WBResumeFunction(): WBSuspendFunction("resume") {}
+
+        virtual void add_parameter(int index, long long value)
+        {
+                _type = string("suspend_") + (const char *) value;
+                PostBoolFunction::add_parameter(1, false);
+        }
 };
 
 
-class WBRestartFunction: public WBSuspendFunction
+class WBRestartFunction: public PostStringFunction
 {
 public:
-        WBRestartFunction(): WBSuspendFunction("restart") {}
+        WBRestartFunction(std::string name = "restart"): PostStringFunction(name, "") {}
+
+        virtual void add_parameter(int index, long long value)
+        {
+                PostStringFunction::add_parameter(1, value);
+        }
 };
+
+class WBSayFunction: public PostStringFunction
+{
+public:
+        WBSayFunction(std::string name = "QSay"): PostStringFunction(name, "") {}
+        
+        virtual void add_parameter(int index, long long value)
+        {
+                PostStringFunction::add_parameter(1, value);
+        }
+};
+
+class WBSpeechFunction: public PostStringFunction
+{
+public:
+        WBSpeechFunction(std::string name = "QSpeech"): PostStringFunction(name, "") {}
+        
+        virtual void add_parameter(int index, long long value)
+        {
+                PostStringFunction::add_parameter(1, value);
+        }
+};
+
+class WBSayStateFunction: public PostStringFunction
+{
+public:
+        WBSayStateFunction(std::string name = "Say"): PostStringFunction(name, "") {}
+
+        virtual void performv(Machine *m, ActionStage s, int i, va_list l)
+        {
+                stringstream ss;
+                ss << _content << m->currentState()->name();
+                setContent(ss.str().c_str());
+
+                WBPostAction::performv(m, s, i, l);
+                setContent("");
+        }
+
+        virtual void add_parameter(int index, long long value)
+        {
+                PostStringFunction::add_parameter(1, value);
+        }
+};
+
+class WBSpeakStateFunction: public WBSayStateFunction
+{
+public:
+        WBSpeakStateFunction(std::string name = "Speech"): WBSayStateFunction(name) {}
+};
+
 
 /*
  * CDL functions
@@ -280,6 +343,11 @@ int main (int argc, char * const argv[])
         ANTLRFunc(WBSuspendFunction,    "suspend");
         ANTLRFunc(WBResumeFunction,     "resume");
         ANTLRFunc(WBRestartFunction,    "restart");
+
+        ANTLRFunc(WBSayFunction,        "say");     // uses QSay
+        ANTLRFunc(WBSpeechFunction,     "speech");  // uses QSpeech
+        ANTLRFunc(WBSayStateFunction,   "say_state_name");      // uses Say
+        ANTLRFunc(WBSpeakStateFunction, "speak_state_name");    // uses Speech
 
         ANTLRFunc(LoadTheoryFunction,   "load_theory");
         ANTLRFunc(ProofFunction,        "prove");
