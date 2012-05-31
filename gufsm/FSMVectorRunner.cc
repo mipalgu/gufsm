@@ -188,7 +188,7 @@ public:
                 ss << _content << m->currentState()->name();
                 setContent(ss.str().c_str());
                 
-                WBPostAction::performv(m, s, i, l);
+                PostStringFunction::performv(m, s, i, l);
                 setContent("");
         }
         

@@ -1890,7 +1890,7 @@
 		};
 		F12B4239147DC25100FF4A6B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
@@ -1901,7 +1901,7 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/bash;
 			shellScript = "cd ${SRCROOT}\nout=\"${SRCROOT}/build.host\"\nmkdir -p \"$out\"\nfor ((i=0; i < SCRIPT_INPUT_FILE_COUNT ; i++)); do\ninputFile=`eval echo '$SCRIPT_INPUT_FILE_'$i`\noutputFile=\"$out\"/`basename \"$inputFile\" | sed 's/.g$/.tokens/'`\n\njava -classpath /usr/local/share/java/antlr-3.4-complete.jar org.antlr.Tool -language C -o \"$out\" \"$inputFile\" 2>&1 | sed 's/warning\\([^:]*\\): \\([^ ]*\\): \\(.*\\)$/\\2: warning: \\3 \\1/' 1>&2\ndone\n";
 		};
