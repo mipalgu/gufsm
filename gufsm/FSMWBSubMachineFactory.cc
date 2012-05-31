@@ -67,7 +67,7 @@ using namespace std;
 
 WBSubMachineFactory::WBSubMachineFactory(WBContext *context, const string &machine_name, int mid)
 {
-        setMachine(new WBSubMachine(NULL, context, mid));
+        setMachine(new WBSubMachine(machine_name, NULL, context, mid));
 
         string a_file_name = machine_name + string(".acsl");
         string t_file_name = machine_name + string(".tcsl");

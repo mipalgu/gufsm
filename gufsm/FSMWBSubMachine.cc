@@ -65,18 +65,18 @@ using namespace FSM;
 using namespace std;
 using namespace guWhiteboard;
 
-WBSubMachine::WBSubMachine(State *initialState, 
+WBSubMachine::WBSubMachine(const string &mname, State *initialState, 
                            WBContext *ctx, 
                            int mid, 
                            State *s, 
                            bool del, 
-                           ExecCom_Struct * execCom)
-             : SuspensibleMachine(execCom, 
+                           ExecCom_Struct * execCom): SuspensibleMachine(execCom, 
                                   initialState, 
                                   ctx, 
                                   mid, 
                                   s, 
-                                  del), 
+                                  del),
+               _name(mname),
                _deleteContext(false),
                _scheduleSuspend(false), 
                _scheduleResume(false), 

@@ -207,7 +207,7 @@ public:
 class WBSayFunction: public PostStringFunction
 {
 public:
-        WBSayFunction(std::string name = "QSay"): PostStringFunction(name, "") {}
+        WBSayFunction(std::string name = "Say"): PostStringFunction(name, "") {}
         
         virtual void add_parameter(int index, long long value)
         {
@@ -218,7 +218,7 @@ public:
 class WBSpeechFunction: public PostStringFunction
 {
 public:
-        WBSpeechFunction(std::string name = "QSpeech"): PostStringFunction(name, "") {}
+        WBSpeechFunction(std::string name = "Speech"): PostStringFunction(name, "") {}
         
         virtual void add_parameter(int index, long long value)
         {
@@ -344,10 +344,10 @@ int main (int argc, char * const argv[])
         ANTLRFunc(WBResumeFunction,     "resume");
         ANTLRFunc(WBRestartFunction,    "restart");
 
-        ANTLRFunc(WBSayFunction,        "say");     // uses QSay
-        ANTLRFunc(WBSpeechFunction,     "speech");  // uses QSpeech
-        ANTLRFunc(WBSayStateFunction,   "say_state_name");      // uses Say
-        ANTLRFunc(WBSpeakStateFunction, "speak_state_name");    // uses Speech
+        ANTLRFunc(WBSayFunction,        "say");                 // sends Say
+        ANTLRFunc(WBSpeechFunction,     "speech");              // sends Speech
+        ANTLRFunc(WBSayStateFunction,   "say_state_name");      // sends Say
+        ANTLRFunc(WBSpeakStateFunction, "speak_state_name");    // sends Speech
 
         ANTLRFunc(LoadTheoryFunction,   "load_theory");
         ANTLRFunc(ProofFunction,        "prove");
