@@ -142,7 +142,18 @@ WBSubMachine::WBSubMachine(const string &mname, State *initialState,
         wb->subscribeToMessage(wb_name, WB_BIND(WBSubMachine::wb_startMonitoring_me), r);
 	if (r != Whiteboard::METHOD_OK)
                 cerr << "Failed to subscribe to '" << wb_name << "'" << endl;
+	
+	wb_name = "stopMonitoring";
+        wb->subscribeToMessage(wb_name, WB_BIND(WBSubMachine::wb_stopMonitoring), r);
+	if (r != Whiteboard::METHOD_OK)
+                cerr << "Failed to subscribe to '" << wb_name << "'" << endl;
         
+        wb_name += "_";
+        wb_name += name();
+        
+        wb->subscribeToMessage(wb_name, WB_BIND(WBSubMachine::wb_stopMonitoring_me), r);
+	if (r != Whiteboard::METHOD_OK)
+                cerr << "Failed to subscribe to '" << wb_name << "'" << endl;
 }
 
 
@@ -195,6 +206,25 @@ bool WBSubMachine::executeOnce(bool *fired)
         if (_scheduleSuspend) suspend();
         else if (_scheduleRestart) restart();
         else if (_scheduleResume) resume();
+	
+	/* Post the name and id of this machine to the whiteboard, so
+	 * that a monitoring module can identify the machines without
+	 * their name. Post a number of times incase the messages don't
+	 * make it to the whiteboard. */
+	if ( isBeingMonitored() ) {
+		int mpostcount = getMachineIdPostCount();
+		if ( mpostcount < TIMES_TO_POST_NAME_AND_ID ) {
+			ANTLRContext * c = (ANTLRContext *) context();
+			
+			char msgName[60];
+			msgName[59] = 0;
+			WBMsg mid(id());
+			sprintf(msgName, "indexof_%s", name().c_str());
+			c->whiteboard()->addMessage(msgName, mid);
+			
+			setMachineIdPostCount(++mpostcount);
+		}
+	}
 	
         return SuspensibleMachine::executeOnce(fired);
 }
@@ -260,8 +290,23 @@ void WBSubMachine::wb_startMonitoring(std::string s, WBMsg * msg) {
 		return;
 		
 	setBeingMonitored(true);
+	
+	setMachineIdPostCount(0);
 }
 
 void  WBSubMachine::wb_startMonitoring_me(std::string s, WBMsg * msg) {
 	setBeingMonitored(true);
+	
+	setMachineIdPostCount(0);
+}
+
+void WBSubMachine::wb_stopMonitoring(std::string s, WBMsg * msg) {
+	if (name() != msg->getStringValue())
+		return;
+		
+	setBeingMonitored(false);
+}
+
+void  WBSubMachine::wb_stopMonitoring_me(std::string s, WBMsg * msg) {
+	setBeingMonitored(false);
 }

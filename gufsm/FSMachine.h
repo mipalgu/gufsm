@@ -64,6 +64,8 @@
 
 #include "ExecComStruct.h"
 
+#define TIMES_TO_POST_NAME_AND_ID 5
+
 namespace FSM
 {
         class State;
@@ -131,6 +133,9 @@ namespace FSM
                 
                 LocalKripkeFrezzePointVector _localKripkeStateNames;
                 bool _have_kripke_states;        /// built already?
+		
+		int _machineIdPostCount; /* How many times have we posted machine name/id pairs
+					  *  to the whiteboard? */
         protected:
                 /* Communicate back to Executer class. */
                 ExecCom_Struct * _execCom;
@@ -146,7 +151,8 @@ namespace FSM
                    _previousState(NULL), 
                    _states(), 
                    _localKripkeStateNames(),
-                   _have_kripke_states(false)
+                   _have_kripke_states(false),
+		   _machineIdPostCount(0)
                 {
                         _execCom = execCom;
                         
@@ -211,6 +217,12 @@ namespace FSM
 
                 /** context setter */
                 void setContext(Context *ctx = NULL) { _context = ctx; }
+		
+		/** If we are monitoring machines, how many times have we
+		  * pose the name and id of each machine being executed? */
+		int getMachineIdPostCount() { return _machineIdPostCount; }
+		
+		void setMachineIdPostCount(int i) { _machineIdPostCount = i; }
 
                 /** put the state machine into its initial state */
                 virtual void initialise()

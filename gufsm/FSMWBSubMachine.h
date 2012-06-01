@@ -143,6 +143,10 @@ namespace FSM
 		/** Start sending non-external variables over the whiteboard, as well
 		    as the current state for this machine. */
 		void wb_startMonitoring_me(std::string, WBMsg *);
+		
+		/** Stop sending internal state machine data over the whiteboard. */
+		void wb_stopMonitoring(std::string, WBMsg *);
+		void wb_stopMonitoring_me(std::string, WBMsg *);
         };
 }
 #endif
