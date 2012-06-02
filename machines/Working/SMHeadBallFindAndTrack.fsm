@@ -15,7 +15,7 @@
     <state pencolor="0" radius="40" description="OnEntry{print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="300" code="4" xpos="682" linewidth="1">FOUND</state>
     <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;gunaomotion_trackerTarget = 0; &#xa;&#x9;print_state_name();}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="151" code="5" xpos="240" linewidth="1">WAIT</state>
     <state pencolor="0" radius="40" description="OnEntry{print_state_name(); }&#xa;OnExit{suspend(&quot;SMHeadScan&quot;); post(&quot;Say&quot;,&quot;FOUND&quot;);}&#xa;{}" finalstate="0" moore_outputs="" ypos="493" code="6" xpos="540" linewidth="1">END_FINDING</state>
-    <state pencolor="0" radius="40" description="OnEntry { yPos = HeadPitch * mul_factor; zPos = HeadYaw * mul_factor;  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="157" code="2" xpos="588" linewidth="1">Setup_Tracker</state>
+    <state pencolor="0" radius="40" description="OnEntry { yPos = HeadPitch; zPos = HeadYaw;  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="157" code="2" xpos="588" linewidth="1">Setup_Tracker</state>
     <state pencolor="0" radius="40" description="OnEntry{update = Ballfiltered;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="50" code="7" xpos="647" linewidth="1">Loop</state>
     <transition c1x="350.130254" c2y="316.821506" c1y="334.971082" description="" straight="0" type="2" ypos="359.1544424657267" endx="400.961513648651" xpos="403.2702743150217" endy="268.719875926632" c2x="390.106909">
       <from>0</from>
