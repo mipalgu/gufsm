@@ -423,6 +423,8 @@
 		F12DCDD71484BAD100461AD6 /* FSMTransition.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMTransition.cc; sourceTree = "<group>"; };
 		F132711B1452812500E5786D /* FSMWBQueryPredicate.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMWBQueryPredicate.cc; sourceTree = "<group>"; };
 		F132711E1452814300E5786D /* FSMWBQueryPredicate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMWBQueryPredicate.h; sourceTree = "<group>"; };
+		F13BA40E1579E92500929C9C /* FSMVectorRunner.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMVectorRunner.cc; sourceTree = "<group>"; };
+		F13BA40F1579E92500929C9C /* FSMVectorRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMVectorRunner.h; sourceTree = "<group>"; };
 		F1467C301577445300652FB7 /* FSMVectorRunner.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FSMVectorRunner.cc; sourceTree = "<group>"; };
 		F14EB9BF1491B86600ED85D7 /* FSMANTLRContext.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRContext.cc; sourceTree = "<group>"; };
 		F15A2BF614CF81F400D88624 /* COOL.correct */ = {isa = PBXFileReference; lastKnownFileType = text; path = COOL.correct; sourceTree = "<group>"; };
@@ -1414,6 +1416,8 @@
 				F191E602142D99150014AF84 /* FSMachine.h */,
 				F1AFCD28147B56FA00C975DC /* FSMachineVector.cc */,
 				F1AFCD2C147B573700C975DC /* FSMachineVector.h */,
+				F13BA40E1579E92500929C9C /* FSMVectorRunner.cc */,
+				F13BA40F1579E92500929C9C /* FSMVectorRunner.h */,
 				F5EE57F61487441C001F6C9C /* stringConstants.c */,
 				F5EE57F71487441C001F6C9C /* stringConstants.h */,
 				F16CC30F142C0F86001F788B /* FSMState.cc */,
