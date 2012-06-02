@@ -68,7 +68,7 @@
 #include <vector>
 #include "FSMAction.h"
 
-#define FIXED_FACTOR    10000
+#define FIXED_FACTOR    100
 
 namespace FSM
 {

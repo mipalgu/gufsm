@@ -5,91 +5,91 @@
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
-    <itransition ypos="70" endx="110" xpos="50" endy="70"/>
-    <state pencolor="12124415" radius="40" description="OnEntry {&#x9;&#xa;&#x9;extern BallIsVisible;&#xa;&#x9;extern Ballfiltered;&#xa;&#x9;extern Ballfiltered_x;&#xa;&#x9;extern Ballfiltered_y;&#xa;&#x9;extern BallDistance;&#xa;&#x9;extern guvision_opencv_ballInfo1_radius;&#xa;&#x9;extern gunaomotion_naoHeadIsRunning;&#xa;&#x9;extern gunaomotion_trackerTarget;&#xa;&#x9;extern gunaomotion_trackerTargetIsRunning;&#xa;&#x9;extern guvision_selectCamera;&#xa;&#x9;extern guvision_width;&#xa;&#x9;extern guvision_height;&#xa;&#x9;extern HeadYaw;&#xa;&#x9;extern HeadPitch;&#xa;&#x9;extern horiz_fov;&#xa;&#x9;extern vertical_fov;&#xa;&#x9;extern zPos;&#xa;&#x9;extern yPos;&#xa;&#x9;extern mul_factor;&#xa;&#x9;extern dist_factor;&#xa;&#x9;int originalZ; &#xa;&#x9;int originalY; &#xa;&#x9;int headPitch; int doLeft; int ball_x; int ball_y; int dy; int my; int period; int fx; int fy; int fs; int update; int mx; int dx; int doLowBottomSeek; int targetAngle; int lowerSeek; int minMove;&#xa;&#x9;period=100000; &#xa;        fx=5*guvision_width/4; &#xa;        fy=guvision_height/24;&#xa;        fs=10240/guvision_width; &#xa;        minMove = guvision_width/160; &#xa;        headSeekSpeed=2;&#xa;&#x9;horiz_fov = 61;&#xa;&#x9;vert_fov = 48;&#xa;&#x9;originalZ = 0;&#xa;&#x9;originalY = 0;&#xa;&#x9;zPos = 0;&#xa;&#x9;yPos = 0;&#xa;&#x9;mul_factor = 100;&#xa;&#x9;dist_factor = 50;&#xa;&#x9;suspend(&quot;SMHeadScan&quot;);&#xa; }&#xa;OnExit { post(&quot;guvision_runVisionPipeline&quot;, &quot;&quot;); post(&quot;sensors_postJoints&quot;, &quot;On&quot;);post(&quot;sensors_postJoints_Frequency&quot;, &quot;2&quot;);  post(&quot;SpeechOutput&quot;, &quot;On&quot;);  }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="70" code="0" xpos="150" linewidth="1">Init</state>
-    <state pencolor="511" radius="40" description="OnEntry { postv(&quot;gunaomotion_updateTrackerTarget&quot;, yPos / mul_factor, zPos / mul_factor);&#xa; }&#xa;OnExit { }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="180" code="1" xpos="1080" linewidth="1">Correct</state>
-    <state pencolor="511" radius="40" description="OnEntry {&#xa;&#x9;originalZ = zPos;&#xa;&#x9;originalY = yPos;&#xa; }&#xa;OnExit {&#xa;&#x9;zPos = zPos - mul_factor * dist_factor * horiz_fov * ball_x / ( guvision_width  * headSeekSpeed * BallDistance);&#xa;&#x9;yPos = yPos + mul_factor * dist_factor * vert_fov  * ball_y / ( guvision_height * headSeekSpeed * BallDistance);  &#x9;dx=ball_x;&#xa; &#x9;dy=ball_y; &#x9;mx=guvision_opencv_ballInfo1_radius*dx/fx;&#xa;&#x9;my=dy/fy;&#xa; }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="70" code="9" xpos="1320" linewidth="1">Calculate</state>
-    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;gunaomotion_trackerTarget = 1; &#xa;&#x9;print_state_name();&#xa;&#x9;ball_x = Ballfiltered_x;&#xa;&#x9;ball_y = Ballfiltered_y;&#xa;&#x9;ball_d = BallDistance;&#xa; }&#xa;OnExit { &#xa; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="60" code="13" xpos="980" linewidth="1">WaitForBall</state>
-    <state pencolor="0" radius="40" description="OnEntry{update = Ballfiltered;}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="80" code="21" xpos="310" linewidth="1">DUMMY</state>
-    <state pencolor="0" radius="40" description="OnEntry{print_state_name(); restart(&quot;SMHeadScan&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="382" code="3" xpos="422" linewidth="1">START_FINDING</state>
-    <state pencolor="0" radius="40" description="OnEntry{print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="229" code="4" xpos="799" linewidth="1">FOUND</state>
-    <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;gunaomotion_trackerTarget = 0; &#xa;&#x9;print_state_name();}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="279" code="5" xpos="238" linewidth="1">WAIT</state>
-    <state pencolor="0" radius="40" description="OnEntry{print_state_name(); }&#xa;OnExit{suspend(&quot;SMHeadScan&quot;); post(&quot;Say&quot;,&quot;FOUND&quot;);}&#xa;{}" finalstate="0" moore_outputs="" ypos="381" code="6" xpos="610" linewidth="1">END_FINDING</state>
-    <state pencolor="0" radius="40" description="OnEntry { yPos = HeadPitch * mul_factor; zPos = HeadYaw * mul_factor;  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="42" code="2" xpos="518" linewidth="1">Setup_Tracker</state>
-    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="42" code="7" xpos="672" linewidth="1">Loop</state>
-    <transition c1x="187.859980" c2y="127.101630" c1y="126.816640" description="" straight="0" type="2" ypos="103.6118659289698" endx="277.5193851462915" xpos="171.6850747928837" endy="103.345441926103" c2x="232.145395">
+    <itransition ypos="379" endx="398" xpos="338" endy="379"/>
+    <state pencolor="12124415" radius="40" description="OnEntry {&#x9;&#xa;&#x9;extern BallIsVisible;&#xa;&#x9;extern Ballfiltered;&#xa;&#x9;extern Ballfiltered_x;&#xa;&#x9;extern Ballfiltered_y;&#xa;&#x9;extern BallDistance;&#xa;&#x9;extern guvision_opencv_ballInfo1_radius;&#xa;&#x9;extern gunaomotion_naoHeadIsRunning;&#xa;&#x9;extern gunaomotion_trackerTarget;&#xa;&#x9;extern gunaomotion_trackerTargetIsRunning;&#xa;&#x9;extern guvision_selectCamera;&#xa;&#x9;extern guvision_width;&#xa;&#x9;extern guvision_height;&#xa;&#x9;extern HeadYaw;&#xa;&#x9;extern HeadPitch;&#xa;&#x9;extern horiz_fov;&#xa;&#x9;extern vertical_fov;&#xa;&#x9;extern zPos;&#xa;&#x9;extern yPos;&#xa;&#x9;extern mul_factor;&#xa;&#x9;extern dist_factor;&#xa;&#x9;extern x_per_cm_dist;&#xa;&#x9;extern y_per_cm_dist;&#xa;&#x9;extern tx;&#xa;&#x9;extern ty;&#xa;&#x9;int originalZ; &#xa;&#x9;int originalY; &#xa;&#x9;int headPitch; int doLeft; int ball_x; int ball_y; int dy; int my; int period; int fx; int fy; int fs; int update; int mx; int dx; int doLowBottomSeek; int targetAngle; int lowerSeek; int minMove;&#xa;&#x9;period=100000; &#xa;        fx=5*guvision_width/4; &#xa;        fy=guvision_height/24;&#xa;        fs=10240/guvision_width; &#xa;        minMove = guvision_width/160; &#xa;        headSeekSpeed=2;&#xa;&#x9;horiz_fov = 61;&#xa;&#x9;vert_fov = 48;&#xa;&#x9;originalZ = 0;&#xa;&#x9;originalY = 0;&#xa;&#x9;zPos = 0;&#xa;&#x9;yPos = 0;&#xa;&#x9;mul_factor = 100;&#xa;&#x9;dist_factor = 50; &#xa;&#x9;FIXED_FACTOR = 100; &#xa;&#x9;tx =  tan(horiz_fov/2);&#xa;&#x9;ty =  tan(vert_fov/2);&#xa;&#x9;x_per_cm_dist = FIXED_FACTOR/2 * guvision_width  / tx;&#xa;&#x9;y_per_cm_dist = FIXED_FACTOR/2 * guvision_height / ty;&#xa;&#x9;suspend(&quot;SMHeadScan&quot;);&#xa; }&#xa;OnExit { post(&quot;guvision_runVisionPipeline&quot;, &quot;&quot;); post(&quot;sensors_postJoints&quot;, &quot;On&quot;);post(&quot;sensors_postJoints_Frequency&quot;, &quot;2&quot;);  post(&quot;SpeechOutput&quot;, &quot;On&quot;);  }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="379" code="0" xpos="438" linewidth="1">Init</state>
+    <state pencolor="511" radius="40" description="OnEntry { postv(&quot;gunaomotion_updateTrackerTarget&quot;, yPos, zPos);&#xa; }&#xa;OnExit { }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="180" code="1" xpos="1080" linewidth="1">Correct</state>
+    <state pencolor="511" radius="40" description="OnEntry { }&#xa;OnExit {&#xa;&#x9;tx = FIXED_FACTOR * ball_x / x_per_cm_dist;&#xa;&#x9;ty = FIXED_FACTOR * ball_y / y_per_cm_dist;&#xa;&#x9;zPos = -atan(tx);&#xa;&#x9;yPos =  atan(ty);&#xa;  }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="70" code="9" xpos="1320" linewidth="1">Calculate</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;gunaomotion_trackerTarget = 1; &#xa;&#x9;ball_x = Ballfiltered_x;&#xa;&#x9;ball_y = Ballfiltered_y;&#xa;&#x9;ball_d = BallDistance;&#xa; }&#xa;OnExit { &#xa; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="60" code="13" xpos="980" linewidth="1">WaitForBall</state>
+    <state pencolor="0" radius="40" description="OnEntry{update = Ballfiltered;}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="230" code="21" xpos="411" linewidth="1">DUMMY</state>
+    <state pencolor="0" radius="40" description="OnEntry{print_state_name(); restart(&quot;SMHeadScan&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="439" code="3" xpos="263" linewidth="1">START_FINDING</state>
+    <state pencolor="0" radius="40" description="OnEntry{print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="300" code="4" xpos="682" linewidth="1">FOUND</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;gunaomotion_trackerTarget = 0; &#xa;&#x9;print_state_name();}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="151" code="5" xpos="240" linewidth="1">WAIT</state>
+    <state pencolor="0" radius="40" description="OnEntry{print_state_name(); }&#xa;OnExit{suspend(&quot;SMHeadScan&quot;); post(&quot;Say&quot;,&quot;FOUND&quot;);}&#xa;{}" finalstate="0" moore_outputs="" ypos="493" code="6" xpos="540" linewidth="1">END_FINDING</state>
+    <state pencolor="0" radius="40" description="OnEntry { yPos = HeadPitch * mul_factor; zPos = HeadYaw * mul_factor;  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="157" code="2" xpos="588" linewidth="1">Setup_Tracker</state>
+    <state pencolor="0" radius="40" description="OnEntry{update = Ballfiltered;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="50" code="7" xpos="647" linewidth="1">Loop</state>
+    <transition c1x="350.130254" c2y="316.821506" c1y="334.971082" description="" straight="0" type="2" ypos="359.1544424657267" endx="400.961513648651" xpos="403.2702743150217" endy="268.719875926632" c2x="390.106909">
       <from>0</from>
       <to>21</to>
       <inputs default="0" any="0" invert="0">timeout(100000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="874.016262" c2y="162.957149" c1y="151.861316" description="" straight="0" type="2" ypos="196.1456082630522" endx="673.7374889710522" xpos="1043.403287937083" endy="81.96224633420238" c2x="684.405279">
+    <transition c1x="874.016262" c2y="121.266392" c1y="151.861316" description="" straight="0" type="2" ypos="196.1456082630522" endx="683.0609222987309" xpos="1043.403287937083" endy="67.30924270339085" c2x="756.466201">
       <from>1</from>
       <to>7</to>
-      <inputs default="0" any="0" invert="0">timeout(1000)</inputs>
+      <inputs default="0" any="0" invert="0">timeout(200000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1238.440757" c2y="146.183697" c1y="125.016506" description="" straight="1" type="2" ypos="103.8493136035898" endx="1117.947331922021" xpos="1298.687469212554" endy="167.3508893593271" c2x="1178.194044">
+    <transition c1x="1238.440757" c2y="146.183697" c1y="125.016506" description="" straight="1" type="2" ypos="103.8493136035898" endx="1117.947331922021" xpos="1298.687469212554" endy="167.3508893593272" c2x="1178.194044">
       <from>9</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">timeout(1000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1106.576751" c2y="66.718595" c1y="65.102413" description="" straight="1" type="2" ypos="63.48622970981594" endx="1280.034677076306" xpos="1019.847787923678" endy="68.33477821151274" c2x="1193.305714">
+    <transition c1x="1106.576751" c2y="66.718595" c1y="65.102413" description="" straight="1" type="2" ypos="63.48622970981592" endx="1280.034677076306" xpos="1019.847787923678" endy="68.33477821151274" c2x="1193.305714">
       <from>13</from>
       <to>9</to>
       <inputs default="0" any="0" invert="0">timeout(1000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="286.190395" c2y="203.570991" c1y="160.996781" description="" straight="1" type="2" ypos="118.4225705765824" endx="260.8158323798137" xpos="298.8776769383577" endy="246.1452013730681" c2x="273.503114">
-      <from>21</from>
-      <to>5</to>
-      <inputs default="0" any="0" invert="0">!BallIsVisible</inputs>
-      <outputs></outputs>
-    </transition>
-    <transition c1x="392.491410" c2y="57.500194" c1y="65.155742" description="" straight="1" type="2" ypos="72.81128995466138" endx="478.7767729723632" xpos="349.3487286692219" endy="49.84464540552736" c2x="435.634092">
+    <transition c1x="483.158077" c2y="184.166860" c1y="203.489075" description="" straight="1" type="2" ypos="222.8112899546614" endx="548.7767729723632" xpos="450.3487286692219" endy="164.8446454055274" c2x="515.967425">
       <from>21</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">BallIsVisible</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="498.014337" c2y="380.125644" c1y="381.533280" description="" straight="1" type="2" ypos="382.9409160454392" endx="570.065146623041" xpos="461.9889319311661" endy="378.7180083784595" c2x="534.039742">
+    <transition c1x="326.472571" c2y="164.593983" c1y="224.587090" description="" straight="0" type="2" ypos="227.5801975839244" endx="279.2711940236113" xpos="371.0732601347524" endy="158.6008762626344" c2x="326.871883">
+      <from>21</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">!BallIsVisible</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="368.681003" c2y="473.792311" c1y="456.866613" description="" straight="1" type="2" ypos="439.9409160454392" endx="500.065146623041" xpos="302.9889319311661" endy="490.7180083784595" c2x="434.373075">
       <from>3</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">timeout(10000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="622.378330" c2y="143.240325" c1y="174.356728" description="" straight="1" type="2" ypos="205.4731320929982" endx="333.8338769669386" xpos="766.6505566278724" endy="112.1239211293521" c2x="478.106104">
+    <transition c1x="546.378330" c2y="317.573658" c1y="267.023395" description="" straight="0" type="2" ypos="276.4731320929982" endx="434.8338769669386" xpos="649.6505566278724" endy="262.1239211293521" c2x="459.106104">
       <from>4</from>
       <to>21</to>
       <inputs default="0" any="0" invert="0">!gunaomotion_naoHeadIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="307.179274" c2y="350.458317" c1y="327.157053" description="" straight="1" type="2" ypos="303.8557884400818" endx="382.8580086005301" xpos="269.3399071635814" endy="373.7595807580063" c2x="345.018641">
+    <transition c1x="244.115804" c2y="329.685153" c1y="260.252486" description="" straight="1" type="2" ypos="190.8198189037581" endx="259.9321400446105" xpos="236.2076362948802" endy="399.1178205799367" c2x="252.023972">
       <from>5</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">!gunaomotion_naoHeadIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="680.788981" c2y="292.188821" c1y="319.397316" description="" straight="1" type="2" ypos="346.6058102463707" endx="781.5238414905234" xpos="630.4215501662175" endy="264.9803263430399" c2x="731.156411">
+    <transition c1x="595.122314" c2y="376.855488" c1y="417.730649" description="" straight="1" type="2" ypos="458.6058102463707" endx="664.5238414905234" xpos="560.4215501662175" endy="335.9803263430399" c2x="629.823078">
       <from>6</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">BallIsVisible</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="582.679251" c2y="40.841674" c1y="41.420837" description="" straight="1" type="2" ypos="42" endx="632.0377536657976" xpos="558" endy="40.26251102894772" c2x="607.358502">
+    <transition c1x="624.211487" c2y="102.416571" c1y="115.208297" description="" straight="1" type="2" ypos="128.0000226562235" endx="641.5345041145188" xpos="615.5499784765877" endy="89.62484516973899" c2x="632.872996">
       <from>2</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="913.015202" c2y="134.936088" c1y="45.829386" description="" straight="0" type="2" ypos="37.58273895700614" endx="948.1535122350759" xpos="711.7553493869448" endy="84.20333070134234" c2x="625.173777">
+    <transition c1x="888.015202" c2y="47.761013" c1y="53.829386" description="" straight="0" type="2" ypos="45.58273895700614" endx="940.4795186499559" xpos="686.7553493869448" endy="53.82492478905561" c2x="702.653296">
       <from>7</from>
       <to>13</to>
       <inputs default="0" any="0" invert="0">(update!=Ballfiltered)&amp;&amp;BallIsVisible</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="517.159342" c2y="203.082769" c1y="132.126927" description="" straight="1" type="2" ypos="61.17108547662095" endx="277.6911150685467" xpos="636.893455287538" endy="274.0386106164316" c2x="397.425228">
+    <transition c1x="454.322743" c2y="26.371038" c1y="2.471788" description="" straight="0" type="2" ypos="45.70072628079631" endx="269.4861656080296" xpos="607.2317180973661" endy="123.9710148593061" c2x="301.288596">
       <from>7</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">!BallIsVisible</inputs>
