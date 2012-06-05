@@ -163,6 +163,16 @@ namespace FSM
                 {
                         return name.substr(0,2) == "E$";
                 }
+		
+		/**
+		 * check if name is an internal variable name
+		 */
+		bool name_is_internal_variable(const std::string &name)
+		{
+			return name.substr(0, 1) == "M" &&
+			       name.find("$$") != -1;
+			
+		}
                 
                 
             /** get internal variable type */
@@ -200,6 +210,11 @@ namespace FSM
                 {
                         return value(internal_variable_name(name, mid));
                 }
+		
+		/** Extract the machine id from the given variable name. 
+		    Returns -1 if name is not the name of an internal 
+		    variable. */
+		int internal_variable_mid(const std::string &name);
                 
                 /** all names of internal variables */
                 std::string allNames();

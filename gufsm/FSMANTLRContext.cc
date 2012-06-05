@@ -90,6 +90,21 @@ std::string ANTLRContext::allNames()
         return ss.str();
 }
 
+int ANTLRContext::internal_variable_mid(const std::string &name) 
+{
+	// Minimum internal name is 'M0$$'.
+	if (exists(name)) {
+		if (name.length() >= 4) {
+			const char * cstr = name.c_str();
+			int mid = atoi(cstr + 1);
+			if (mid >= 0)
+				return mid;
+		}
+	}
+	
+	return -1;
+}
+
 
 static int wbIntValue(Whiteboard *wb, const string &name)
 {
