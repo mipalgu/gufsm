@@ -60,6 +60,7 @@
 
 #include <string>
 #include "FSMActivity.h"
+#include "FSMANTLRContext.h"
 
 namespace FSM
 {
@@ -76,7 +77,6 @@ namespace FSM
                 
                 /** list of transitions away from this state */
                 TransitionVector _transitions;
-                
         public:
                 State(int stateID = 0, const std::string name = ""):
                 _activity(), _stateID(stateID), _name(name) {}

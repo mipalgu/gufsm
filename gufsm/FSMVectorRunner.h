@@ -1,9 +1,8 @@
 /*
- *  ExecComStruct.h
+ *  FSMVectorRunner.h
  *  
- *  Created by Robert Coleman on 22/04/12.
- *  Copyright (c) 2012 Robert Coleman.
- *  All rights reserved.
+ *  Created by René Hexel on 31/05/12.
+ *  Copyright (c) 2012 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -55,42 +54,15 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#ifndef _FSMVectorRunner_h
+#define _FSMVectorRunner_h
 
-/* 
- * Data structure used for communication with the executing
- * state machines.
- */
-#ifndef ExecCom_Do_h
-#define ExecCom_Do_h
+#include <vector>
+#include <string>
+#include "FSMVectorFactory.h"
 
-#include <dispatch/dispatch.h>
+typedef int (*machine_runner_f)(FSM::StateMachineVectorFactory &factory, std::vector<std::string> &machine_names);
 
-namespace ExecCom {
-        enum ExecCom_Do_Type {SUSPEND, RESTART, STOP, RESUME, RUN};
-        enum ExecCom_State_Type {SUSPENDED, RUNNING, STOPPED};
-}
-
-// Execution Communication.
-struct ExecCom_Struct {
-        /* Will need to be procured before changing or accessing
-         * the flag. */
-        dispatch_semaphore_t _flagProtect;
-        
-        /* What should the executer do? */
-        enum ExecCom::ExecCom_Do_Type _shouldDo;
-        
-        /* What executing state are all the machines in? */
-        enum ExecCom::ExecCom_State_Type _state;
-        
-        /* For each machine ( the index ), what state is running?
-	 * ( the content ). */
-        int * _currentExecutingStateIDs;
-	
-	/* Number of machines running. */
-	int _numMachines;
-	
-	/* Are there machines still executing? */
-	bool _stillExecuting;
-};
+int run_machine_vector(FSM::StateMachineVectorFactory &factory, std::vector<std::string> &machine_names, machine_runner_f execute, bool verbose = false);
 
 #endif

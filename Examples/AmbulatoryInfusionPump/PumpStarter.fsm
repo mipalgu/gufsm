@@ -1,51 +1,84 @@
 <?xml version='1.0'?>
 <!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
 <qfsmproject version="0.53" author="Qfsm">
-  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vladimir Estivill-Castro" description="" version="1" name="StartPump" arrowtype="1" numbits="3" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vladimir Estivill-Castro" description="" version="1" name="StartPump" arrowtype="1" numbits="4" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
-    <itransition ypos="137" endx="240" xpos="180" endy="137"/>
-    <state pencolor="0" radius="40" description="OnEntry { beeperStartSignal=1;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="137" code="0" xpos="280" linewidth="1">STARTING</state>
-    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="130" code="1" xpos="595" linewidth="1">TEST_DOSSAGE_STATUS</state>
-    <state pencolor="0" radius="40" description="OnEntry {aborted=1;  motor=0;   beeperStartSignal=0; }&#xa;OnExit{}&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="350" code="2" xpos="280" linewidth="1">ABORTED</state>
-    <state pencolor="0" radius="40" description="OnEntry {motor=1; beeperStartSignal=0;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="412" code="3" xpos="590" linewidth="1">RUNNING</state>
-    <state pencolor="0" radius="40" description="OnEntry {timeleft=120; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="271" code="4" xpos="483" linewidth="1">NEW_TIME</state>
-    <state pencolor="0" radius="40" description="OnEntry {timeLeft=recalcualtion; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="268" code="5" xpos="677" linewidth="1">OLDTIME_TIME</state>
-    <transition c1x="398.3379905413026" c2y="132.9934686319817" c1y="134.8762545743492" description="" straight="1" type="2" ypos="136.7590405167168" endx="555.0154231738912" xpos="319.9992742250083" endy="131.1106826896141" c2x="476.676706857597">
+    <itransition ypos="60" endx="140" xpos="80" endy="60"/>
+    <state pencolor="0" radius="40" description="OnEntry { print_state_name();  &#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="60" code="0" xpos="180" linewidth="1">STARTING</state>
+    <state pencolor="0" radius="40" description="OnEntry {print_state_name();  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="100" code="1" xpos="659" linewidth="1">TEST_DOSSAGE_STATUS</state>
+    <state pencolor="0" radius="40" description="OnEntry {aborted=1;  motor=0;   beeperStartSignal=0;    print_state_name();  }&#xa;OnExit{}&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="299" code="2" xpos="373" linewidth="1">ABORTED</state>
+    <state pencolor="0" radius="40" description="OnEntry {motor=1; beeperStartSignal=0; print_state_name();  print_int(timeLeft);&#xa;  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="376" code="3" xpos="595" linewidth="1">START_MOTOR</state>
+    <state pencolor="0" radius="40" description="OnEntry {timeLeft=40;   print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="270" code="4" xpos="480" linewidth="1">NEW_TIME</state>
+    <state pencolor="0" radius="40" description="OnEntry {timeLeft=recalcualtion;  print_state_name();  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="270" code="5" xpos="680" linewidth="1">OLDTIME_TIME</state>
+    <state pencolor="0" radius="40" description="OnEntry {timeLeft=timeLeft-1; print_state_name();  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="505" code="7" xpos="379" linewidth="1">DECREMNET_A_SECOND</state>
+    <state pencolor="0" radius="40" description="OnEntry { print_state_name();  print_int(timeLeft);&#xa;  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="503" code="8" xpos="600" linewidth="1">RUNNING</state>
+    <state pencolor="0" radius="40" description="OnEntry{ }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="114" code="6" xpos="357" linewidth="1">INITIAL</state>
+    <transition c1x="250.2107708962679" c2y="85.58698970512225" c1y="85.45825065770639" description="" straight="1" type="2" ypos="85.32951161029054" endx="328.7157287525381" xpos="210.9582919681328" endy="85.7157287525381" c2x="289.463249824403">
       <from>0</from>
-      <to>1</to>
-      <inputs default="0" any="0" invert="0">buttonHeldPressed &amp;&amp; timeout(3000000)</inputs>
+      <to>6</to>
+      <inputs default="0" any="0" invert="0">buttonHeldPressed</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="277.7874285239762" c2y="265.700709872638" c1y="221.3235228845914" description="" straight="1" type="2" ypos="176.9463358965449" endx="277.5048685537928" xpos="277.928708509068" endy="310.0778968606845" c2x="277.6461485388845">
-      <from>0</from>
-      <to>2</to>
-      <inputs default="0" any="0" invert="0">!buttonHeldPressed</inputs>
-      <outputs></outputs>
-    </transition>
-    <transition c1x="549.7805085310935" c2y="213.176788180073" c1y="187.7512612218668" description="" straight="1" type="2" ypos="162.3257342636606" endx="506.4603924860737" xpos="571.4405665536033" endy="238.6023151382792" c2x="528.1204505085835">
+    <transition c1x="591.4471751977601" c2y="202.5101215134063" c1y="167.4179278885335" description="" straight="1" type="2" ypos="132.3257342636606" endx="503.4603924860737" xpos="635.4405665536033" endy="237.6023151382792" c2x="547.4537838419169">
       <from>1</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">!dossageInterrupted</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="616.5783626260408" c2y="215.9823953797419" c1y="192.8202836007218" description="" straight="1" type="2" ypos="169.6581718217018" endx="649.2987268724114" xpos="600.2181805028555" endy="239.1445071587619" c2x="632.9385447492261">
+    <transition c1x="660.2450292927075" c2y="207.3157287130753" c1y="173.4869502673886" description="" straight="1" type="2" ypos="139.6581718217018" endx="652.2987268724114" xpos="664.2181805028555" endy="241.144507158762" c2x="656.2718780825594">
       <from>1</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">dossageInterrupted</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="524.1714407801142" c2y="359.4857456147478" c1y="331.1748219308379" description="" straight="1" type="2" ypos="302.863898246928" endx="558.1535122350759" xpos="507.1804050526333" endy="387.7966692986577" c2x="541.1624765075951">
-      <from>4</from>
-      <to>3</to>
+    <transition c1x="301.5622339881821" c2y="152.9918842637324" c1y="207.8045694060636" description="" straight="1" type="2" ypos="262.6172545483948" endx="191.9309997254379" xpos="356.3778511195542" endy="98.17919912140118" c2x="246.74661685681">
+      <from>2</from>
+      <to>0</to>
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="644.2861040391821" c2y="357.9473928681347" c1y="330.0920072729832" description="" straight="1" type="2" ypos="302.2366216778316" endx="620.2275633115927" xpos="656.3153744029768" endy="385.8027784632863" c2x="632.2568336753874">
+    <transition c1x="604.7457585201882" c2y="463.2525421861085" c1y="439.3815303996356" description="" straight="1" type="2" ypos="415.5105186131628" endx="636.7142814384057" xpos="588.7614970610796" endy="487.1235539725813" c2x="620.730019979297">
+      <from>3</from>
+      <to>8</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="523.8381074467809" c2y="335.1524122814145" c1y="318.5081552641713" description="" straight="1" type="2" ypos="301.863898246928" endx="563.1535122350759" xpos="504.1804050526334" endy="351.7966692986577" c2x="543.4958098409284">
+      <from>4</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">!buttonHeldPressed</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="647.9527707058487" c2y="334.6140595348014" c1y="319.4253406063165" description="" straight="1" type="2" ypos="304.2366216778316" endx="625.2275633115927" xpos="659.3153744029768" endy="349.8027784632863" c2x="636.5901670087208">
       <from>5</from>
       <to>3</to>
+      <inputs default="0" any="0" invert="0">!buttonHeldPressed</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="464.5725858877699" c2y="487.5197193119462" c1y="487.7962105670592" description="" straight="1" type="2" ypos="488.0727018221721" endx="563.2341987992777" xpos="415.2417794320161" endy="487.2432280568333" c2x="513.9033923435238">
+      <from>7</from>
+      <to>8</to>
       <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="512.8929711383576" c2y="509.0888073252601" c1y="507.1853994734003" description="" straight="1" type="2" ypos="505.2819916215405" endx="418.5486201689907" xpos="560.065146623041" endy="510.9922151771198" c2x="465.7207956536741">
+      <from>8</from>
+      <to>7</to>
+      <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="470.4612130750701" c2y="108.0863770426938" c1y="115.0620713957735" description="" straight="1" type="2" ypos="122.0377657488532" endx="619.0154231738912" xpos="396.1841080256596" endy="101.1106826896141" c2x="544.7383181244808">
+      <from>6</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">buttonHeldPressed&amp;&amp;timeout(3000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="361.5016235530186" c2y="224.0519312404563" c1y="189.0259656202282" description="" straight="1" type="2" ypos="154" endx="370.5048685537928" xpos="357.0000010526316" endy="259.0778968606845" c2x="366.0032460534057">
+      <from>6</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">!buttonHeldPressed</inputs>
       <outputs></outputs>
     </transition>
   </machine>

@@ -1,0 +1,101 @@
+
+
+1) The submachien for the VolumeSensor.fm was tested by itself with messages
+using the WhiteBaord Moniotr like 
+msg type (valueVolDetector)? 
+      int --> 0
+ content? 5
+ data type (Int)? 
+
+OVERALL EXTERNAL VARIABLE valueVolDetector
+
+2) The submachine PumpStarter tested in issolation
+
+Two externals
+buttonHeldPressed
+dossageInterrupted
+
+3) The master machine is PumpMasterController
+Tested individually with
+extern batteriesConnected; extern timeLeft;
+extern volumeNormal; extern  timeLeft;
+extern normalCharge;  extern volumeEmpty; extern  ssbuttonHeldPressed;
+extern airOnLine; extern blockageInLine; 
+
+
+But beleive the only extern should be
+extern airOnLine; extern blockageInLine; 
+ extern  ssbuttonHeldPressed;
+
+batteriesConnected and normalCharge  should come from the Batteries machine
+volumeBormal and VolumeEmpty should come from VolumeSensor
+
+4) A concurrent machine is DosageBeeper tested individually (now
+Beeper.fsm not needed)
+
+-beeperStartSignal comes from the PumpMasterCOntroller turn on
+ion Entry to Running, turn off on entry to Pump With Power
+-fireTimeBeeper comes also from PumpMasterControoler, turn on on Entry
+to Dossage COmplete, turn off on entry to pump with power
+
+- batteriesConencted comes from BatteriesMaster.fsm
+- normalCharge comes from BatteriesSensor.fsm
+
+-aborted comes from PumpStarter state aborted who turn it on
+- times is an internal variable to count 3 times
+
+
+5) BatteriesMaster has the first
+
+OVERALL EXTERNAL VARIABLE batteriesInPlace
+produces the shared variable batteriesConnected
+
+Tested individually
+
+6) BatteriesSensor is sub-machine of Batteries Master
+OVERALL EXTERNAL VARIABLE batteriesSensorLow
+produces the shared variable normalCharge
+
+
+7) But machiens for the Batteries tested and theu work with the two overall
+external variables
+OVERALL EXTERNAL VARIABLE batteriesInPlace
+OVERALL EXTERNAL VARIABLE batteriesSensorLow
+
+8) Now we test 3 machines, the two for the batteries and the DossageBeeper
+batteriesConencted and normalCharge are no longer external
+These 3 machiens work
+
+
+9) Testing 2 machines together, the PumpMaster Controller and the
+VolumeSensor. Now volumeNormal and VolumeEmpty are shared
+OVERALL EXTERNAL VARIABLE batteriesSensorLow
+
+10) Testing 4 machines, PumpMasterCOntroller, Volume, Sensor, Batteries master
+and Batteries Sensor.
+OVERALL EXTERNAL VARIABLE batteriesSensorLow
+OVERALL EXTERNAL VARIABLE batteriesInPlace
+batteriesConencted and normalCharge are no longer external in PumpMasterController
+
+11) Testing 2 Machines DisplayOnError and VolumeSensor
+OVERALL EXTERNAL VARIABLE airOnLine
+OVERALL EXTERNAL VARIABLE blockageInLine
+OVERALL EXTERNAL VARIABLE valueVolDetector
+
+12) Testing 5 Machines DisplayMaster DisplayOnError and VolumeSensor BateryMaster battery Sensor
+we artificially make motor and aborted external
+OVERALL EXTERNAL VARIABLE buttonHeldPressed
+OVERALL EXTERNAL VARIABLE airOnLine
+OVERALL EXTERNAL VARIABLE blockageInLine
+OVERALL EXTERNAL VARIABLE valueVolDetector
+OVERALL EXTERNAL VARIABLE batteriesSensorLow
+OVERALL EXTERNAL VARIABLE batteriesInPlace
+
+13) Testing all machines to see if the PumpMasterController does controll
+the PumpStarter
+OVERALL EXTERNAL VARIABLE buttonHeldPressed
+OVERALL EXTERNAL VARIABLE airOnLine
+OVERALL EXTERNAL VARIABLE blockageInLine
+OVERALL EXTERNAL VARIABLE valueVolDetector
+OVERALL EXTERNAL VARIABLE batteriesSensorLow
+OVERALL EXTERNAL VARIABLE batteriesInPlace

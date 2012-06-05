@@ -69,6 +69,7 @@
 #include "FSMExpression.h"
 #include "FSMWBPostAction.h"
 #include "FSMVectorFactory.h"
+#include "FSMVectorRunner.h"
 
 #define ANTLRFunc(x,n)  x func ## x; \
                         antlr_context.set_function((n), &func ## x);
@@ -78,142 +79,11 @@
 using namespace std;
 using namespace FSM;
 
+int dump_kripke(StateMachineVectorFactory &factory, vector<string> &machine_names);
+int block_schedule(StateMachineVectorFactory &factory, vector<string> &machine_names);
+int factory_execute(StateMachineVectorFactory &factory, vector<string> &machine_names);
+
 static cdlbridge *gucdlbridge;
-
-/*
- * System functions
- */
-struct StringFunction: public ContentAction<string>
-{
-        virtual void performv(Machine *m, ActionStage, int, va_list)
-        {
-                evaluate(m);
-        }
-        /** setting any parameter sets the content */
-        virtual void add_parameter(int index, long long value)
-        {
-                setContent((const char *)value);
-        }
-};
-
-
-#ifdef NEED_SLEEP
-struct SleepFunction: public TimeoutPredicate
-{
-        virtual int evaluate(Machine *m = NULL)
-        {
-                protected_usleep(1000000LL * timeout());
-                return 0;
-        }
-};
-#endif
-
-struct PrintStatenameFunction: public PrintingAction<string>
-{
-        PrintStatenameFunction(): PrintingAction<string>("") {}
-        virtual int evaluate(Machine *m = NULL)
-        {
-                stringstream ss;
-                ss << "Machine " << m->id() << " state " << m->currentState()->name();
-                setContent(ss.str());
-                perform(m);
-                return 0;
-        }
-};
-
-struct SystemFunction: public ContentAction<string>
-{
-        virtual void performv(Machine *m, ActionStage, int, va_list)
-        {
-                evaluate(m);
-        }
-        virtual int evaluate(Machine *m = NULL)
-        {
-                return system(_content.c_str());
-        }
-        /** setting any parameter sets the content */
-        virtual void add_parameter(int index, long long value)
-        {
-                setContent((const char *)value);
-        }
-};
-
-/*
- * Whiteboard functions
- */
-typedef WBPostAction<const char *> PostStringFunction;
-typedef WBPostAction<int> PostIntFunction;
-
-class WBPostIntVecAction: public WBPostAction<std::vector<int> >
-{
-public:
-        /** default constructor */
-        WBPostIntVecAction(): WBPostAction<std::vector<int> >() {}
-        
-        /** set parameters (clears vector on first element) */
-        virtual void add_parameter(int index, long long value)
-        {
-                if (index--)
-                {
-                        if (!index) _content.clear();
-                        if (index >= _content.size())
-                                _content.push_back(value);
-                        else
-                                _content[index] = value;
-                }
-                else _type = (const char *) value;
-        }
-        
-};
-
-class WBSuspendFunction: public PostStringFunction
-{
-public:
-        WBSuspendFunction(std::string name = "suspend"): PostStringFunction(name, "") {}
-
-        virtual void add_parameter(int index, long long value)
-        {
-                PostStringFunction::add_parameter(1, value);
-        }
-};
-
-
-class WBResumeFunction: public WBSuspendFunction
-{
-public:
-        WBResumeFunction(): WBSuspendFunction("resume") {}
-};
-
-
-class WBRestartFunction: public WBSuspendFunction
-{
-public:
-        WBRestartFunction(): WBSuspendFunction("restart") {}
-};
-
-/*
- * CDL functions
- */
-struct ProofFunction: public StringFunction
-{
-        virtual int evaluate(Machine *m = NULL)
-        {
-                if (!gucdlbridge) return -3;
-                return gucdlbridge->update_proofs("", _content);
-        }
-};
-
-
-struct LoadTheoryFunction: public StringFunction
-{
-        virtual int evaluate(Machine *m = NULL)
-        {
-                if (!gucdlbridge) return -3;
-                return gucdlbridge->load_theory_file(_content);
-        }
-};
-
-
 
 static void usage(const char *cmd)
 {
@@ -221,6 +91,31 @@ static void usage(const char *cmd)
         exit(EXIT_FAILURE);
 }
 
+
+int dump_kripke(StateMachineVectorFactory &factory, vector<string> &machine_names)
+{
+        string kripke = factory.fsms()->kripkeInSVMformat();
+        cout << kripke << endl;
+        return EXIT_SUCCESS;
+}
+
+
+int block_schedule(StateMachineVectorFactory &factory, vector<string> &machine_names)
+{
+        factory.fsms()->scheduleExecuteOnQueue();
+        
+        dispatch_main();                        // never returns
+
+        return EXIT_FAILURE;
+}
+
+
+int factory_execute(StateMachineVectorFactory &factory, vector<string> &machine_names)
+{
+        factory.execute();                      // execute synchronously
+        
+        return EXIT_SUCCESS;
+}
 
 int main (int argc, char * const argv[])
 {
@@ -263,72 +158,18 @@ int main (int argc, char * const argv[])
         while (argc-- > 0)
                 machine_names.push_back(*argv++);
 
-        ANTLRContext antlr_context;             // create whiteboard
-
-        ANTLRFunc(TimeoutPredicate,     "timeout");
-        ANTLRFunc(SystemFunction,       "system");
-#ifdef NEED_SLEEP
-        ANTLRFunc(SleepFunction,        "sleep");
-#endif
-        ANTLRFunc(PrintStatenameFunction, "print_state_name");
-        ANTLRFunc(PrintStringAction,    "print");
-        ANTLRFunc(PrintIntAction,       "print_int");
-        ANTLRFunc(PrintFixedAction,     "print_fixed");
-        ANTLRFunc(PostStringFunction,   "post");
-        ANTLRFunc(PostIntFunction,      "post_int");
-        ANTLRFunc(WBPostIntVecAction,   "postv");
-        ANTLRFunc(WBSuspendFunction,    "suspend");
-        ANTLRFunc(WBResumeFunction,     "resume");
-        ANTLRFunc(WBRestartFunction,    "restart");
-
-        ANTLRFunc(LoadTheoryFunction,   "load_theory");
-        ANTLRFunc(ProofFunction,        "prove");
-
-        /*
-         * maths functions
-         */
-        ANTLRMaths(Abs);
-        ANTLRMaths(Sign);
-        ANTLRMaths(Random);
-        ANTLRMaths(SRandom);
-        ANTLRMaths(Sin);
-        ANTLRMaths(Cos);
-        ANTLRMaths(Tan);
-        ANTLRMaths(Cot);
-        ANTLRMaths(ATan);
-        ANTLRMaths(ASin);
-        ANTLRMaths(ACos);
-        ANTLRMaths(Log);
-        ANTLRMaths(Ld);
-        ANTLRMaths(Lg);
-
-        ANTLRMaths(Min);
-        ANTLRMaths(Max);
-        ANTLRMaths(Avg);
-        ANTLRMaths(FTA);
-        ANTLRMaths(GAvg);
-        
+        ANTLRContext antlr_context;
         StateMachineVectorFactory factory(&antlr_context, machine_names);
 
-        if (verbose)
-        {
-                string descr = factory.fsms()->description();
-                cout << descr << endl;
-        }
         if (kripke_flag)
         {
-                string kripke = factory.fsms()->kripkeInSVMformat();
-                cout << kripke << endl;
-                return EXIT_SUCCESS;
+                return run_machine_vector(factory, machine_names, dump_kripke, verbose);
         }
         if (blocks_flag)                        // execute on dispatch queue
         {
-                factory.fsms()->scheduleExecuteOnQueue();
-
-                dispatch_main();                // never returns
+                return run_machine_vector(factory, machine_names, block_schedule, verbose);
         }
-        else factory.execute();                 // execute synchronously
 
-        return EXIT_SUCCESS;
+        return run_machine_vector(factory, machine_names, factory_execute, verbose);
 }
 

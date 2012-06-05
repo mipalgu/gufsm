@@ -64,6 +64,8 @@
 
 #include "ExecComStruct.h"
 
+#define TIMES_TO_POST_NAME_AND_ID 5
+
 namespace FSM
 {
         class State;
@@ -123,26 +125,34 @@ namespace FSM
 
                 timeval _state_time;    /// state start time
                 timeval _actty_time;    /// internal activity start time
+		
+		bool _beingMonitored;   /*  has someone asked for this machine to send
+		                         *  debugging information over the whiteboard. */
 
                 long _activities_count; /// how many times have activities run?
                 
                 LocalKripkeFrezzePointVector _localKripkeStateNames;
                 bool _have_kripke_states;        /// built already?
+		
+		int _machineIdPostCount; /* How many times have we posted machine name/id pairs
+					  *  to the whiteboard? */
         protected:
                 /* Communicate back to Executer class. */
                 ExecCom_Struct * _execCom;
         public:
                 /** constructor */
-                Machine(ExecCom_Struct * execCom, 
-                        State *initial = NULL, 
-                        Context *ctx = NULL, int mid=0) 
+                Machine(State *initial = NULL, 
+                        Context *ctx = NULL, int mid=0,
+			bool beingMonitored=false,
+			ExecCom_Struct * execCom = NULL) 
                 :  _id(mid),
                    _context(ctx), 
                    _currentState(initial),
                    _previousState(NULL), 
                    _states(), 
                    _localKripkeStateNames(),
-                   _have_kripke_states(false)
+                   _have_kripke_states(false),
+		   _machineIdPostCount(0)
                 {
                         _execCom = execCom;
                         
@@ -182,6 +192,13 @@ namespace FSM
 
                 /** set the preceding state */
                 void setPreviousState(State *s) { _previousState = s; }
+		
+		/** is this machine being monitored? **/
+		bool isBeingMonitored() { return _beingMonitored; }
+		
+		/** start posting internal and global variables to the
+		  * whiteboard. */
+		void setBeingMonitored(bool b) { _beingMonitored = b; }
 
                 /** get the current state's start time */
                 timeval &stateTime() { return _state_time; }
@@ -200,6 +217,12 @@ namespace FSM
 
                 /** context setter */
                 void setContext(Context *ctx = NULL) { _context = ctx; }
+		
+		/** If we are monitoring machines, how many times have we
+		  * pose the name and id of each machine being executed? */
+		int getMachineIdPostCount() { return _machineIdPostCount; }
+		
+		void setMachineIdPostCount(int i) { _machineIdPostCount = i; }
 
                 /** put the state machine into its initial state */
                 virtual void initialise()

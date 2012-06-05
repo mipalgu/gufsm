@@ -1,0 +1,24 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Robert Coleman" description="" version="1" name="HelloWorld" arrowtype="1" numbits="1" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="100" endx="100" xpos="40" endy="100"/>
+    <state pencolor="0" radius="40" description="OnEntry { int internalX;&#xa;          extern externalX;&#xa;          globalX;&#xa;&#x9;superx;&#xa;          post(&quot;Say&quot;, &quot;Hello&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="100" code="0" xpos="140" linewidth="1">Hello</state>
+    <state pencolor="0" radius="40" description="OnEntry { extern dummy;&#xa;          internalX = internalX + 1;&#xa;          globalX = globalX + 5;&#xa;          externalX = externalX + 10;&#xa;          post(&quot;Say&quot;, &quot;World&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="107" code="1" xpos="385" linewidth="1">World</state>
+    <transition c1x="229.499284" c2y="66.821394" c1y="69.117808" description="" straight="0" type="2" ypos="86.41422144889773" endx="351.2535404907157" xpos="177.6221559876678" endy="85.52498031227363" c2x="295.376412">
+      <from>0</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="297.420621" c2y="159.513809" c1y="156.380479" description="" straight="0" type="2" ypos="133.2471485969915" endx="161.63030365254" xpos="354.8157791134598" endy="133.6471390150621" c2x="221.025462">
+      <from>1</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>

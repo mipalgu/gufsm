@@ -1,115 +1,23 @@
 <?xml version='1.0'?>
 <!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
-<qfsmproject version="0.52" author="Qfsm">
-  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="" version="1" name="PingPong" arrowtype="1" numbits="4" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="2" numout="0" initialstate="0">
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="" version="1" name="PingPong" arrowtype="1" numbits="1" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
-    <itransition ypos="96" endx="103" xpos="43" endy="96"/>
-    <state pencolor="0" radius="40" description="OnEntry {post(&quot;Say&quot;,&quot;&quot;,&quot;Hello everybody&quot;);}&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="96" code="0" xpos="143" linewidth="1">Ping</state>
-    <state pencolor="0" radius="40" description="OnEntry { post(&quot;gunaomotion_naoMotionPlayer&quot;, &quot;get_up_anywhere&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="397" code="1" xpos="69" linewidth="1">Pong</state>
-    <state pencolor="0" radius="40" description="OnEntry {post(&quot;Say&quot;,&quot;&quot;,&quot;I can walk, look at me&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="89" code="2" xpos="287" linewidth="1">State_2</state>
-    <state pencolor="0" radius="40" description="OnEntry {post(&quot;gunaomotion_naoWalk&quot;,&quot; 50,0,0&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="406" code="3" xpos="227" linewidth="1">State_3</state>
-    <state pencolor="0" radius="40" description="OnEntry {post(&quot;Say&quot;,&quot;&quot;,&quot;Left&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="89" code="4" xpos="414" linewidth="1">State_4</state>
-    <state pencolor="0" radius="40" description="OnEntry {post(&quot;gunaomotion_naoWalk&quot;,&quot; -30,0,90&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="39" code="5" xpos="590" linewidth="1">State_5</state>
-    <state pencolor="0" radius="40" description="OnEntry {post(&quot;gunaomotion_naoWalk&quot;,&quot; 50,0,0&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="32" code="6" xpos="800" linewidth="1">State_6</state>
-    <state pencolor="0" radius="40" description="OnEntry {post(&quot;Say&quot;,&quot;&quot;,&quot;Right&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="276" code="7" xpos="397" linewidth="1">State_7</state>
-    <state pencolor="0" radius="40" description="OnEntry {post(&quot;gunaomotion_naoWalk&quot;,&quot; -30,0,180&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="337" code="8" xpos="580" linewidth="1">State_8</state>
-    <state pencolor="0" radius="40" description="OnEntry {post(&quot;gunaomotion_naoWalk&quot;,&quot; 60,0,0&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="239" code="9" xpos="702" linewidth="1">State_9</state>
-    <state pencolor="0" radius="40" description="OnEntry {post(&quot;Say&quot;,&quot;&quot;,&quot;Pass me the ball&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="345" code="10" xpos="796" linewidth="1">State_10</state>
-    <state pencolor="0" radius="40" description="OnEntry {post(&quot;gunaomotion_naoMotionPlayer&quot;,&quot;&quot;,&quot;right_ninja_kick&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="239" code="11" xpos="908" linewidth="1">State_11</state>
-    <state pencolor="0" radius="40" description="OnEntry {post(&quot;Say&quot;,&quot;&quot;,&quot;Woow, Have you seen?&quot;); &#xa;}&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="138" code="12" xpos="1032" linewidth="1">State_12</state>
-    <state pencolor="0" radius="40" description="OnEntry {post(&quot;Say&quot;,&quot;&quot;,&quot;I'm a good football player&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="243" code="13" xpos="1164" linewidth="1">State_13</state>
-    <state pencolor="0" radius="40" description="OnEntry {post(&quot;Say&quot;,&quot;&quot;,&quot;I'm tired&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="497" code="14" xpos="645" linewidth="1">State_14</state>
-    <state pencolor="0" radius="40" description="OnEntry {post(&quot;gunaomotion_naoMotionPlayer&quot;,&quot;&quot;,&quot;sit_from_kneel_or_stand&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="482" code="15" xpos="887" linewidth="1">State_15</state>
-    <transition c1x="132,0418398200382" c2y="289,646275313928" c1y="191,9939756293091" description="" straight="1" type="2" ypos="94,34167594469029" endx="30,1942999941867" xpos="182,9656097329639" endy="387,2985749985468" c2x="81,11806990711244">
+    <itransition ypos="288" endx="365" xpos="305" endy="288"/>
+    <state pencolor="0" radius="40" description="OnEntry { say(&quot;Ping&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="288" code="0" xpos="405" linewidth="1">Ping</state>
+    <state pencolor="0" radius="40" description="OnEntry {  say_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="301" code="1" xpos="629" linewidth="1">Pong</state>
+    <transition c1x="494.362842" c2y="285.513480" c1y="287.915505" description="" straight="1" type="2" ypos="290.3175289664808" endx="593.2229123600034" xpos="444.9328068070543" endy="283.1114561800017" c2x="543.792877">
       <from>0</from>
       <to>1</to>
-      <inputs default="0" any="0" invert="0">timeout(3000000)</inputs>
+      <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="154,9888922808896" c2y="189,4474777298675" c1y="295,1815042633758" description="" straight="1" type="2" ypos="400,915530796884" endx="247,3508839726946" xpos="108,807896434987" endy="83,71345119635929" c2x="201,1698881267921">
+    <transition c1x="536.770236" c2y="311.127775" c1y="304.905123" description="" straight="1" type="2" ypos="298.6824710335192" endx="432.1763212599322" xpos="589.0671931929458" endy="317.3504269607268" c2x="484.473279">
       <from>1</from>
-      <to>2</to>
-      <inputs default="0" any="0" invert="0">timeout(10000000)</inputs>
-      <outputs></outputs>
-    </transition>
-    <transition c1x="280,378949508147" c2y="302,4712523757412" c1y="195,6206855573329" description="" straight="1" type="2" ypos="88,77011873892461" endx="187,1381696702048" xpos="326,9993394271181" endy="409,3218191941496" c2x="233,7585595891759">
-      <from>2</from>
-      <to>3</to>
-      <inputs default="0" any="0" invert="0">timeout(3000000)</inputs>
-      <outputs></outputs>
-    </transition>
-    <transition c1x="293,166490092641" c2y="194,8368561129135" c1y="284,4281735836891" description="" straight="1" type="2" ypos="374,0194910544647" endx="377,4475380551897" xpos="251,0259661113666" endy="105,2455386421379" c2x="335,3070140739154">
-      <from>3</from>
-      <to>4</to>
-      <inputs default="0" any="0" invert="0">timeout(9000000)</inputs>
-      <outputs></outputs>
-    </transition>
-    <transition c1x="486,4698157168302" c2y="48,65020251221046" c1y="68,82510125610523" description="" straight="1" type="2" ypos="89" endx="551,4094471504907" xpos="454" endy="28,47530376831568" c2x="518,9396314336605">
-      <from>4</from>
-      <to>5</to>
-      <inputs default="0" any="0" invert="0">timeout(2000000)</inputs>
-      <outputs></outputs>
-    </transition>
-    <transition c1x="673,3793623645873" c2y="32,19802769917627" c1y="36,37620415919248" description="" straight="1" type="2" ypos="40,5543806192087" endx="760,1985123916004" xpos="629,9697873510809" endy="28,01985123916005" c2x="716,7889373780939">
-      <from>5</from>
-      <to>6</to>
-      <inputs default="0" any="0" invert="0">timeout(4000000)</inputs>
-      <outputs></outputs>
-    </transition>
-    <transition c1x="653,3148929252538" c2y="188,6998784088309" c1y="118,3771118668906" description="" straight="1" type="2" ypos="48,05434532495023" endx="433,2183574383548" xpos="763,3631606687034" endy="259,0226449507712" c2x="543,2666251818043">
-      <from>6</from>
-      <to>7</to>
-      <inputs default="0" any="0" invert="0">timeout(7000000)</inputs>
-      <outputs></outputs>
-    </transition>
-    <transition c1x="472,4309047612279" c2y="326,7296210670643" c1y="300,3136338710768" description="" straight="1" type="2" ypos="273,8976466750894" endx="543,4032879370827" xpos="436,9447131733004" endy="353,1456082630517" c2x="507,9170963491552">
-      <from>7</from>
-      <to>8</to>
-      <inputs default="0" any="0" invert="0">timeout(2000000)</inputs>
-      <outputs></outputs>
-    </transition>
-    <transition c1x="634,2835637719365" c2y="266,527782374019" c1y="302,5527505212798" description="" straight="1" type="2" ypos="338,5777186685406" endx="662,912945443088" xpos="619,9688729363606" endy="230,5028142267582" c2x="648,5982546075121">
-      <from>8</from>
-      <to>9</to>
-      <inputs default="0" any="0" invert="0">timeout(7000000)</inputs>
-      <outputs></outputs>
-    </transition>
-    <transition c1x="746,382910276396" c2y="307,7267467934022" c1y="270,4534935868045" description="" straight="1" type="2" ypos="233,1802403802067" endx="756" xpos="741,5743654145941" endy="345" c2x="751,1914551381981">
-      <from>9</from>
-      <to>10</to>
-      <inputs default="0" any="0" invert="0">timeout(9000000)</inputs>
-      <outputs></outputs>
-    </transition>
-    <transition c1x="847,2723511587765" c2y="282,001161905092" c1y="310,5044733639861" description="" straight="1" type="2" ypos="339,0077848228802" endx="870,7198131383482" xpos="835,5486201689906" endy="253,497850446198" c2x="858,9960821485623">
-      <from>10</from>
-      <to>11</to>
-      <inputs default="0" any="0" invert="0">timeout(7000000)</inputs>
-      <outputs></outputs>
-    </transition>
-    <transition c1x="962,666400099619" c2y="171,0566605302363" c1y="205,5409822809692" description="" straight="1" type="2" ypos="240,025304031702" endx="992,025485826098" xpos="947,9868572363794" endy="136,5723387795035" c2x="977,3459429628584">
-      <from>11</from>
-      <to>12</to>
-      <inputs default="0" any="0" invert="0">timeout(6000000)</inputs>
-      <outputs></outputs>
-    </transition>
-    <transition c1x="1072,972796361016" c2y="195,1829213824725" c1y="186,5890697925819" description="" straight="1" type="2" ypos="177,9952182026913" endx="1156,155354594473" xpos="1031,381517244288" endy="203,7767729723632" c2x="1114,564075477745">
-      <from>12</from>
-      <to>13</to>
-      <inputs default="0" any="0" invert="0">timeout(2000000)</inputs>
-      <outputs></outputs>
-    </transition>
-    <transition c1x="980,3738738617368" c2y="419,0828297606882" c1y="339,8330663120709" description="" straight="1" type="2" ypos="260,5833028634535" endx="684,9777962791661" xpos="1128,071912653022" endy="498,3325932093055" c2x="832,6758350704515">
-      <from>13</from>
-      <to>14</to>
-      <inputs default="0" any="0" invert="0">timeout(2000000)</inputs>
-      <outputs></outputs>
-    </transition>
-    <transition c1x="740,6268241107491" c2y="499,1256149067355" c1y="496,8255125663258" description="" straight="1" type="2" ypos="494,5254102259161" endx="852,0337089551385" xpos="684,9233816885544" endy="501,4257172471453" c2x="796,3302665329438">
-      <from>14</from>
-      <to>15</to>
-      <inputs default="0" any="0" invert="0">timeout(3000000)</inputs>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
       <outputs></outputs>
     </transition>
   </machine>
