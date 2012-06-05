@@ -80,6 +80,7 @@ using namespace std;
 using namespace FSM;
 
 int dump_kripke(StateMachineVectorFactory &factory, vector<string> &machine_names);
+int dumpNames(ANTLRContext & context);
 int block_schedule(StateMachineVectorFactory &factory, vector<string> &machine_names);
 int factory_execute(StateMachineVectorFactory &factory, vector<string> &machine_names);
 
@@ -285,7 +286,7 @@ struct LoadTheoryFunction: public StringFunction
 
 static void usage(const char *cmd)
 {
-        cerr << "Usage: " << cmd << " [-b][-k][-v] [fsm [...]]" << endl;
+        cerr << "Usage: " << cmd << " [-b][-k][-v][-n] [fsm [...]]" << endl;
         exit(EXIT_FAILURE);
 }
 
@@ -315,16 +316,28 @@ int factory_execute(StateMachineVectorFactory &factory, vector<string> &machine_
         return EXIT_SUCCESS;
 }
 
+int dumpNames(ANTLRContext & context) 
+{
+	map<string, int> names = context.variables();
+	map<string, int>::iterator it;
+	
+	for (it = names.begin(); it != names.end(); it++) {	
+		printf("%s\n", (*it).first.c_str());
+	}
+	
+	return EXIT_SUCCESS;
+}
+
 int main (int argc, char * const argv[])
 {
-        bool kripke_flag = false, verbose = false, want_cdl = true,
+        bool kripke_flag = false, verbose = false, dump_names = false, want_cdl = true,
 #ifdef __APPLE__
         blocks_flag = true;
 #else
         blocks_flag = false;
 #endif
         int ch;
-        while ((ch = getopt(argc, argv, "BbCkv")) != -1)
+        while ((ch = getopt(argc, argv, "BbCkvn")) != -1)
         {
                 switch (ch)
                 {
@@ -343,6 +356,9 @@ int main (int argc, char * const argv[])
                         case 'v':
                                 verbose = true;
                                 break;
+			case 'n': // dump variable names and scopes
+				dump_names = true;
+				break;
                         case '?':
                         default:
                                 usage(argv[0]);
@@ -358,6 +374,11 @@ int main (int argc, char * const argv[])
 
         ANTLRContext antlr_context;
         StateMachineVectorFactory factory(&antlr_context, machine_names);
+	
+	/* Print the names then exit if that was requested. */
+	if (dump_names) {
+		return dumpNames(antlr_context);
+	}
 
         if (kripke_flag)
         {

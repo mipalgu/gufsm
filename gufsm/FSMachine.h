@@ -137,7 +137,7 @@ namespace FSM
 		int _machineIdPostCount; /* How many times have we posted machine name/id pairs
 					  *  to the whiteboard? */
         protected:
-                /* Communicate back to Executer class. */
+                /* Communicate back to FSMInterpreter class. */
                 ExecCom_Struct * _execCom;
         public:
                 /** constructor */
