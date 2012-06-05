@@ -36,7 +36,7 @@
       <inputs default="0" any="0" invert="0">gunxt_valueLightSensor1>leftWhiteValue+-5</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="919.0444206089102" c2y="476.9396745053802" c1y="421.6208371763641" description="" straight="1" type="2" ypos="366.3019998473479" endx="1052.642354844747" xpos="852.2454534909917" endy="532.2585118343964" c2x="985.8433877268285">
+    <transition c1x="919.0444206089102" c2y="476.9396745053802" c1y="421.620837176364" description="" straight="1" type="2" ypos="366.3019998473479" endx="1052.642354844747" xpos="852.2454534909917" endy="532.2585118343964" c2x="985.8433877268285">
       <from>4</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">gunxt_valueLightSensor2&lt;rightWhiteValue+-10</inputs>
@@ -48,7 +48,7 @@
       <inputs default="0" any="0" invert="0">gunxt_valueLightSensor2&lt;rightWhiteValue+-10</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="755.3091129876379" c2y="557.5067140712796" c1y="555.0538945629546" description="" straight="1" type="2" ypos="552.6010750546295" endx="1040.027406649329" xpos="612.9499661567922" endy="559.9595335796047" c2x="897.6682598184836">
+    <transition c1x="755.3091129876378" c2y="557.5067140712796" c1y="555.0538945629546" description="" straight="1" type="2" ypos="552.6010750546295" endx="1040.027406649329" xpos="612.9499661567922" endy="559.9595335796047" c2x="897.6682598184834">
       <from>2</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">(gunxt_valueLightSensor1&lt;leftWhiteValue+-10)&amp;&amp;(gunxt_valueLightSensor2&lt;rightWhiteValue+-10)</inputs>
@@ -90,7 +90,7 @@
       <inputs default="0" any="0" invert="0">gunxt_valueLightSensor1>leftWhiteValue+-5</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="1360.599830539508" c2y="651.9803452993579" c1y="618.2486069341007" description="" straight="1" type="2" ypos="584.5168685688437" endx="1472.974786863081" xpos="1304.412352377721" endy="685.712083664615" c2x="1416.787308701294">
+    <transition c1x="1360.599830539508" c2y="651.9803452993579" c1y="618.2486069341008" description="" straight="1" type="2" ypos="584.5168685688437" endx="1472.974786863081" xpos="1304.412352377721" endy="685.712083664615" c2x="1416.787308701294">
       <from>7</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">gunxt_valueLightSensor2>rightWhiteValue+-5</inputs>
@@ -111,28 +111,28 @@
     <transition c1x="1892.154999584349" c2y="189.0152943188241" c1y="206.1469194471189" description="" straight="0" type="2" ypos="529.900971999247" endx="1291.557590172672" xpos="1766.813335583174" endy="185.3585365622003" c2x="1442.434160586452">
       <from>9</from>
       <to>10</to>
-      <inputs default="0" any="0" invert="0">gunxt_direction==2</inputs>
+      <inputs default="0" any="0" invert="0">gunxt_direction==3</inputs>
       <outputs>1</outputs>
     </transition>
     <transition c1x="1900.620590587264" c2y="959.0005968317848" c1y="791.8324871921425" description="" straight="0" type="2" ypos="577.4201397442706" endx="1291.334679618298" xpos="1765.88052658609" endy="940.3940557866406" c2x="1664.34040414587">
       <from>9</from>
       <to>11</to>
-      <inputs default="0" any="0" invert="0">gunxt_direction==3</inputs>
+      <inputs default="0" any="0" invert="0">gunxt_direction==4</inputs>
       <outputs>1</outputs>
     </transition>
     <transition c1x="1707.481141528523" c2y="136.3476621311698" c1y="206.0750967795574" description="" straight="0" type="2" ypos="513.2113773324384" endx="557.7291925797574" xpos="1730.362941944174" endy="519.9659678123453" c2x="450.4545531662097">
       <from>9</from>
       <to>2</to>
-      <inputs default="0" any="0" invert="0">gunxt_direction==0</inputs>
+      <inputs default="0" any="0" invert="0">gunxt_direction==1</inputs>
       <outputs>1</outputs>
     </transition>
     <transition c1x="1738.575165348445" c2y="697.0775764223364" c1y="685.6937696182853" description="" straight="0" type="2" ypos="593.0283736763887" endx="1609.753040928034" xpos="1733.942145668957" endy="747.0020120579155" c2x="1694.237439206006">
       <from>9</from>
       <to>15</to>
-      <inputs default="0" any="0" invert="0">gunxt_direction==3</inputs>
+      <inputs default="0" any="0" invert="0">gunxt_direction==2</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="1022.239165065501" c2y="939.2393197800141" c1y="940.5297586819693" description="" straight="1" type="2" ypos="941.8201975839245" endx="643.5309749269999" xpos="1211.593260134752" endy="937.948880878059" c2x="832.8850699962508">
+    <transition c1x="1022.239165065501" c2y="939.2393197800142" c1y="940.5297586819693" description="" straight="1" type="2" ypos="941.8201975839245" endx="643.5309749269999" xpos="1211.593260134752" endy="937.948880878059" c2x="832.8850699962506">
       <from>11</from>
       <to>12</to>
       <inputs default="0" any="0" invert="0">gunxt_valueLightSensor2&lt;rightWhiteValue+-10</inputs>
@@ -144,7 +144,7 @@
       <inputs default="0" any="0" invert="0">(gunxt_valueLightSensor1>leftWhiteValue+-5)&amp;&amp;(gunxt_valueLightSensor2>rightWhiteValue+-5)</inputs>
       <outputs>0</outputs>
     </transition>
-    <transition c1x="1026.517802925116" c2y="173.1695613162334" c1y="175.4320966126977" description="" straight="1" type="2" ypos="177.694631909162" endx="654.0617861218781" xpos="1212.745811326735" endy="170.9070260197691" c2x="840.2897945234969">
+    <transition c1x="1026.517802925116" c2y="173.1695613162334" c1y="175.4320966126977" description="" straight="1" type="2" ypos="177.694631909162" endx="654.0617861218781" xpos="1212.745811326735" endy="170.9070260197691" c2x="840.289794523497">
       <from>10</from>
       <to>13</to>
       <inputs default="0" any="0" invert="0">gunxt_valueLightSensor1&lt;leftWhiteValue+-10</inputs>
