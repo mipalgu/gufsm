@@ -1,12 +1,12 @@
 <?xml version='1.0'?>
 <!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
 <qfsmproject version="0.53" author="Qfsm">
-  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene, Carl" description="" version="1" name="SMHeadBallTrackerFair" arrowtype="1" numbits="5" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene, Carl" description="" version="1" name="SMHeadScan" arrowtype="1" numbits="5" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="70" endx="110" xpos="50" endy="70"/>
-    <state pencolor="12124415" radius="40" description="OnEntry {&#x9;&#xa;&#x9;extern gunaomotion_naoHeadIsRunning;&#xa;&#x9;extern guvision_selectCamera;&#xa;&#x9;extern HeadYaw;&#xa;&#x9;int speedUpDown; &#xa;&#x9;int headPitch; int doLeft; int ball_x; int ball_y; int dy; int my; int period; int fx; int fy; int fs; int update; int mx; int dx; int doLowBottomSeek; int targetAngle; int lowerSeek; int minMove;&#xa;&#x9;speedUpDown=20;&#xa;        &#x9;headSeekSpeed=17;&#xa; }&#xa;OnExit { post(&quot;guvision_runVisionPipeline&quot;, &quot;&quot;); post(&quot;sensors_postJoints&quot;, &quot;On&quot;);post(&quot;sensors_postJoints_Frequency&quot;, &quot;2&quot;);  post(&quot;SpeechOutput&quot;, &quot;On&quot;);   }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="70" code="0" xpos="150" linewidth="1">Init</state>
+    <state pencolor="12124415" radius="40" description="OnEntry {&#x9;&#xa;&#x9;extern gunaomotion_naoHeadIsRunning;&#xa;&#x9;extern guvision_selectCamera;&#xa;&#x9;extern HeadYaw;&#xa;&#x9;int speedUpDown; &#xa;&#x9;int headPitch; int doLeft; int ball_x; int ball_y; int dy; int my; int period; int fx; int fy; int fs; int update; int mx; int dx; int doLowBottomSeek; int targetAngle; int lowerSeek; int minMove;&#xa;&#x9;speedUpDown=20;&#xa;        &#x9;headSeekSpeed=17;&#xa;&#x9;guvision_selectCamera=1;&#xa; }&#xa;OnExit { post(&quot;guvision_runVisionPipeline&quot;, &quot;&quot;); post(&quot;sensors_postJoints&quot;, &quot;On&quot;);post(&quot;sensors_postJoints_Frequency&quot;, &quot;2&quot;);  post(&quot;SpeechOutput&quot;, &quot;On&quot;);   }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="70" code="0" xpos="150" linewidth="1">Init</state>
     <state pencolor="51995" radius="40" description="OnEntry { &#xa;&#x9;Head_Stiffness=0; &#xa;}&#xa;OnExit {}&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="552" code="3" xpos="1134" linewidth="1">Loosen_Head</state>
     <state pencolor="51995" radius="40" description="OnEntry {   post(&quot;Speech&quot;, &quot;Lower Camera&quot;); }&#xa;OnExit { post(&quot;guvision_selectCamera&quot;, &quot;1&quot;); }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="567" code="5" xpos="1370" linewidth="1">Lower_Camera</state>
     <state pencolor="51995" radius="40" description="OnEntry {  post(&quot;Speech&quot;, &quot;Upper Camera&quot;);  }&#xa;OnExit {  post(&quot;guvision_selectCamera&quot;, &quot;0&quot;);  }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="391" code="4" xpos="1218" linewidth="1">Upper_Camera</state>
@@ -17,97 +17,97 @@
     <state pencolor="0" radius="40" description="OnEntry {  &#xa;print_state_name();&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="780" code="16" xpos="270" linewidth="1">PickDirToMove</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="626" code="14" xpos="601" linewidth="1">EvalRight</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="424" code="15" xpos="893" linewidth="1">FinishedSweep</state>
-    <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;headPitch=10;&#xa;&#x9;lowerSeek=1;&#xa;&#x9;doLeft=1;&#xa;&#x9;post(&quot;Speech&quot;, &quot;Low Bottom Seek&quot;); &#xa;&#x9;targetAngle = 45;&#xa;&#x9;doLowBottomSeek=0;&#xa;&#x9;gunaomotion_naoHeadIsRunning=1;&#xa;&#x9;postv(&quot;gunaomotion_naoHeadAbs&quot;, 0, headPitch, speedUpDown);&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="845" code="17" xpos="810" linewidth="1">LowBottomSeek</state>
+    <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;headPitch=17;&#xa;&#x9;lowerSeek=1;&#xa;&#x9;doLeft=1;&#xa;&#x9;post(&quot;Speech&quot;, &quot;Low Bottom Seek&quot;); &#xa;&#x9;targetAngle = 28;&#xa;&#x9;doLowBottomSeek=0;&#xa;&#x9;gunaomotion_naoHeadIsRunning=1;&#xa;&#x9;postv(&quot;gunaomotion_naoHeadAbs&quot;, 0, headPitch, speedUpDown);&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="845" code="17" xpos="810" linewidth="1">LowBottomSeek</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;postv(&quot;gunaomotion_naoHeadRel&quot;, 8, 0, headSeekSpeed);&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="332" code="18" xpos="447" linewidth="1">GoLeft</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;postv(&quot;gunaomotion_naoHeadRel&quot;, -8, 0, headSeekSpeed);&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="727" code="19" xpos="733" linewidth="1">GoRight</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;doLeft = 1-doLeft;&#xa;&#x9;targetAngle=-targetAngle;&#xa;&#x9;postv(&quot;gunaomotion_naoHeadAbs&quot;, 0, headPitch, speedUpDown);&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="467" code="20" xpos="671" linewidth="1">ChangeDir</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="378" code="11" xpos="628" linewidth="1">EvalLeft</state>
     <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="550" code="22" xpos="230" linewidth="1">WAIT</state>
-    <transition c1x="187.85998" c2y="148.756188366753" c1y="126.81664" description="" straight="0" type="2" ypos="103.6118659289698" endx="226.0220654545831" xpos="171.6850747928837" endy="202.610037366753" c2x="242.6260094545831">
+    <transition c1x="187.859980" c2y="148.756188" c1y="126.816640" description="" straight="0" type="2" ypos="103.6118659289698" endx="226.0220654545832" xpos="171.6850747928837" endy="202.610037366753" c2x="242.626009">
       <from>0</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">timeout(100000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1222.653221731398" c2y="558.5137757547074" c1y="566.3897876731311" description="" straight="1" type="2" ypos="574.2657995915548" endx="1333.499627019402" xpos="1167.230019087396" endy="550.6377638362836" c2x="1278.0764243754">
+    <transition c1x="1225.307825" c2y="561.133105" c1y="557.803463" description="" straight="1" type="2" ypos="554.4738217387476" endx="1330.080551771321" xpos="1172.921462022962" endy="564.4627469346178" c2x="1277.694189">
       <from>3</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">!guvision_selectCamera</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1160.08786500997" c2y="429.2862879315028" c1y="472.5339652465741" description="" straight="1" type="2" ypos="515.7816425616453" endx="1178.308884931453" xpos="1150.977355049229" endy="386.0386106164316" c2x="1169.198374970712">
+    <transition c1x="1167.859169" c2y="456.783326" c1y="487.103259" description="" straight="1" type="2" ypos="517.4231909995473" endx="1199.497359732199" xpos="1152.040074261106" endy="426.4633938466182" c2x="1183.678265">
       <from>3</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">guvision_selectCamera</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1363.947782394124" c2y="369.8674515188139" c1y="455.5534148720243" description="" straight="1" type="2" ypos="541.2393782252346" endx="1290.642354844747" xpos="1400.600496168812" endy="284.1814881656035" c2x="1327.295068619435">
+    <transition c1x="1360.300460" c2y="313.197242" c1y="508.802758" description="" straight="1" type="2" ypos="527.5442430467142" endx="1324.411560504909" xpos="1363.424040507786" endy="293.4693630294536" c2x="1327.699540">
       <from>5</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">timeout(200000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1264.558637743958" c2y="300.1059153280899" c1y="343.6745057721316" description="" straight="1" type="2" ypos="387.2430962161733" endx="1278.029553014748" xpos="1257.823180108563" endy="256.5373248840482" c2x="1271.294095379353">
+    <transition c1x="1252.951037" c2y="302.533410" c1y="343.466590" description="" straight="1" type="2" ypos="358.773959494023" endx="1294.896772431377" xpos="1241.695618019101" endy="286.4203894933275" c2x="1283.048963">
       <from>4</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">timeout(200000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="929.8386398492964" c2y="236.0621273055706" c1y="237.8387559604776" description="" straight="1" type="2" ypos="239.6153846153846" endx="227.3620733940434" xpos="1281.076923076923" endy="234.2854986506637" c2x="578.6003566216699">
+    <transition c1x="929.339426" c2y="232.090517" c1y="242.940496" description="" straight="1" type="2" ypos="253.7904757175488" endx="229.9807586990465" xpos="1279.01876026843" endy="221.240537725591" c2x="579.660093">
       <from>6</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="249.2535339390487" c2y="300.4184832766385" c1y="272.9792542870669" description="" straight="1" type="2" ypos="245.5400252974952" endx="306.1908979749704" xpos="220.7848519210879" endy="327.8577122662102" c2x="277.7222159570096">
+    <transition c1x="246.094757" c2y="303.905243" c1y="276.094757" description="" straight="1" type="2" ypos="248.2842712474619" endx="301.7157287525381" xpos="218.2842712474619" endy="331.7157287525381" c2x="273.905243">
       <from>2</from>
       <to>10</to>
       <inputs default="0" any="0" invert="0">guvision_selectCamera</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="138.0476593931357" c2y="294.2364394107155" c1y="268.4728788214309" description="" straight="1" type="2" ypos="242.7093182321464" endx="100.0000010526316" xpos="157.0714885633878" endy="320" c2x="119.0238302228836">
+    <transition c1x="152.789899" c2y="302.117620" c1y="277.882380" description="" straight="1" type="2" ypos="253.6471390150621" endx="121.63030365254" xpos="168.36969634746" endy="326.3528609849379" c2x="137.210101">
       <from>2</from>
       <to>8</to>
       <inputs default="0" any="0" invert="0">!guvision_selectCamera</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="77.77186280935817" c2y="684.2536803769627" c1y="476.2384537022998" description="" straight="0" type="2" ypos="399.2232270276368" endx="260.0048792391292" xpos="92.15535459447264" endy="741.2689070516257" c2x="193.3883710242437">
+    <transition c1x="77.771863" c2y="684.253680" c1y="476.238454" description="" straight="0" type="2" ypos="399.2232270276368" endx="260.0048792391292" xpos="92.15535459447264" endy="741.2689070516257" c2x="193.388371">
       <from>8</from>
       <to>16</to>
       <inputs default="0" any="0" invert="0">timeout(5000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="146.9991277935453" c2y="481.6448814657266" c1y="435.1936410423759" description="" straight="0" type="2" ypos="388.2842712474619" endx="195.2702743150216" xpos="128.2842712474619" endy="530.1544424657267" c2x="176.9393483150216">
+    <transition c1x="146.999128" c2y="481.644881" c1y="435.193641" description="" straight="0" type="2" ypos="388.2842712474619" endx="195.2702743150216" xpos="128.2842712474619" endy="530.1544424657267" c2x="176.939348">
       <from>8</from>
       <to>22</to>
       <inputs default="0" any="0" invert="0">gunaomotion_naoHeadIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="297.7058439515443" c2y="475.3220076250745" c1y="437.4098164508713" description="" straight="1" type="2" ypos="399.4976252766682" endx="245.7567719431667" xpos="323.6803799557331" endy="513.2341987992777" c2x="271.7313079473555">
+    <transition c1x="290.456714" c2y="474.867757" c1y="435.132243" description="" straight="1" type="2" ypos="395.3967288952793" endx="248.6298573133048" xpos="311.3701426866951" endy="514.6032711047206" c2x="269.543286">
       <from>10</from>
       <to>22</to>
       <inputs default="0" any="0" invert="0">gunaomotion_naoHeadIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="327.7049847790204" c2y="624.7287172386846" c1y="508.772321954742" description="" straight="1" type="2" ypos="392.8159266707995" endx="277.3715414020074" xpos="352.8717064675269" endy="740.6851125226272" c2x="302.5382630905139">
+    <transition c1x="308.114382" c2y="626.800673" c1y="513.199327" description="" straight="1" type="2" ypos="399.5979797464466" endx="275.6568542494924" xpos="324.3431457505076" endy="740.4020202535534" c2x="291.885618">
       <from>10</from>
       <to>16</to>
       <inputs default="0" any="0" invert="0">timeout(5000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="438.7768543947953" c2y="754.6381422175931" c1y="765.7241666631387" description="" straight="1" type="2" ypos="776.8101911086844" endx="696.5853409014958" xpos="309.872611141445" endy="743.5521177720474" c2x="567.6810976481455">
+    <transition c1x="328.617203" c2y="733.709961" c1y="773.290039" description="" straight="1" type="2" ypos="775.4508742061762" endx="694.2530356325113" xpos="309.7404762743474" endy="731.4353976489782" c2x="674.382797">
       <from>16</from>
       <to>19</to>
       <inputs default="0" any="0" invert="0">~doLeft</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="334.5379679775918" c2y="485.130171926521" c1y="617.0603862529147" description="" straight="1" type="2" ypos="748.9906005793084" endx="413.0800678397965" xpos="295.2669180464894" endy="353.1999576001272" c2x="373.8090179086941">
+    <transition c1x="291.679557" c2y="386.872551" c1y="725.127449" description="" straight="1" type="2" ypos="742.7982707440863" endx="432.6694454769212" xpos="284.6980046390552" endy="368.2716860245159" c2x="425.320443">
       <from>16</from>
       <to>18</to>
       <inputs default="0" any="0" invert="0">doLeft</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="713.0484959879946" c2y="510.7282664249533" c1y="574.1110909238038" description="" straight="1" type="2" ypos="637.4939154226539" endx="860.5193851462915" xpos="639.313051408846" endy="447.345441926103" c2x="786.783940567143">
+    <transition c1x="649.521300" c2y="457.566105" c1y="592.433895" description="" straight="1" type="2" ypos="603.8122356377642" endx="860.9265980506293" xpos="633.0734019493707" endy="446.1877643622359" c2x="844.478700">
       <from>14</from>
       <to>15</to>
       <inputs default="0" any="0" invert="0">HeadYaw&lt;targetAngle</inputs>
@@ -119,73 +119,73 @@
       <inputs default="0" any="0" invert="0">!(HeadYaw&lt;targetAngle)</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="808.9432807652178" c2y="449.5598373183136" c1y="447.7052742700954" description="" straight="1" type="2" ypos="445.8507112218769" endx="707.8386900427423" xpos="859.4955761264555" endy="451.4144003665321" c2x="758.39098540398">
+    <transition c1x="835.076560" c2y="455.780595" c1y="435.219405" description="" straight="1" type="2" ypos="431.4162169463809" endx="709.2883758627107" xpos="854.7116241372893" endy="459.5837830536191" c2x="728.923440">
       <from>15</from>
       <to>20</to>
       <inputs default="0" any="0" invert="0">doLeft</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="862.1585604499162" c2y="691.6448436579503" c1y="577.2840275787754" description="" straight="1" type="2" ypos="462.9232114996004" endx="818.9129920600857" xpos="883.7813446448315" endy="806.0056597371254" c2x="840.535776255001">
+    <transition c1x="862.883265" c2y="691.258098" c1y="576.760787" description="" straight="1" type="2" ypos="462.263476513927" endx="817.737057191439" xpos="885.456369238347" endy="805.7554087036647" c2x="840.310161">
       <from>15</from>
       <to>17</to>
       <inputs default="0" any="0" invert="0">doLowBottomSeek</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="983.6277507934889" c2y="502.3773827954796" c1y="475.1886913977398" description="" straight="1" type="2" ypos="448" endx="1100.883252380467" xpos="925" endy="529.5660741932194" c2x="1042.255501586978">
+    <transition c1x="945.106627" c2y="524.325111" c1y="451.674889" description="" straight="1" type="2" ypos="442.2935705562281" endx="1099.556636687102" xpos="927.4433633128982" endy="533.7064294437719" c2x="1081.893373">
       <from>15</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">~doLowBottomSeek</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="616.9192787787752" c2y="807.3016867024351" c1y="820.4172040400484" description="" straight="1" type="2" ypos="833.5327213776619" endx="307.3999010527114" xpos="771.678967641807" endy="794.1861693648216" c2x="462.1595899157433">
+    <transition c1x="616.762223" c2y="803.260103" c1y="821.739897" description="" straight="1" type="2" ypos="840.2196916495592" endx="309.713330911354" xpos="770.286669088646" endy="784.7803083504408" c2x="463.237777">
       <from>17</from>
       <to>16</to>
       <inputs default="0" any="0" invert="0">~gunaomotion_naoHeadIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="615.3618068984867" c2y="832.7277052429357" c1y="850.8638526214679" description="" straight="1" type="2" ypos="869" endx="290.0854206954601" xpos="778" endy="814.5915578644036" c2x="452.7236137969734">
+    <transition c1x="616.762223" c2y="803.260103" c1y="821.739897" description="" straight="1" type="2" ypos="840.2196916495592" endx="309.713330911354" xpos="770.286669088646" endy="784.7803083504408" c2x="463.237777">
       <from>17</from>
       <to>16</to>
       <inputs default="0" any="0" invert="0">timeout(5000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="520.7056444443053" c2y="358.2397679858693" c1y="348.5180223230876" description="" straight="1" type="2" ypos="338.7962766603059" endx="589.2801240733679" xpos="486.4184046297739" endy="367.961513648651" c2x="554.9928842588365">
+    <transition c1x="504.182222" c2y="363.467502" c1y="346.532498" description="" straight="1" type="2" ypos="341.6062277302327" endx="590.2015821919103" xpos="484.7984178080897" endy="368.3937722697673" c2x="570.817778">
       <from>18</from>
       <to>11</to>
       <inputs default="0" any="0" invert="0">timeout(100000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="701.4084787219841" c2y="667.3761288166064" c1y="677.4278237332812" description="" straight="1" type="2" ypos="687.4795186499559" endx="625.8752857440635" xpos="739.1750752109444" endy="657.3244338999317" c2x="663.6418822330238">
+    <transition c1x="686.142965" c2y="661.852731" c1y="691.147269" description="" straight="1" type="2" ypos="703.3007371670863" endx="631.9732939994517" xpos="702.0267060005483" endy="649.6992628329137" c2x="647.857035">
       <from>19</from>
       <to>14</to>
       <inputs default="0" any="0" invert="0">timeout(100000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="651.0291245537012" c2y="578.9769914150719" c1y="541.6554078315971" description="" straight="1" type="2" ypos="504.3338242481224" endx="639.8057000058133" xpos="656.6408368276452" endy="616.2985749985467" c2x="645.4174122797573">
+    <transition c1x="647.227041" c2y="572.001422" c1y="520.998578" description="" straight="1" type="2" ypos="502.6939752914265" endx="616.7143287446531" xpos="655.2856712553469" endy="590.3060247085734" c2x="624.772959">
       <from>20</from>
       <to>14</to>
       <inputs default="0" any="0" invert="0">~gunaomotion_naoHeadIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="613.5868277841416" c2y="548.7468548382001" c1y="501.3312161414367" description="" straight="1" type="2" ypos="453.9155774446734" endx="574.3593692276459" xpos="633.2005570623896" endy="596.1624935349635" c2x="593.9730985058939">
+    <transition c1x="642.428557" c2y="561.102008" c1y="531.897992" description="" straight="1" type="2" ypos="502.6939752914265" endx="616.7143287446531" xpos="655.2856712553469" endy="590.3060247085734" c2x="629.571443">
       <from>20</from>
       <to>14</to>
       <inputs default="0" any="0" invert="0">timeout(5000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="493.5794923662145" c2y="633.1221253725219" c1y="511.7469593064127" description="" straight="1" type="2" ypos="390.3717932403035" endx="300.8157728449876" xpos="589.9613521268279" endy="754.497291438631" c2x="397.197632605601">
+    <transition c1x="500.242632" c2y="635.793815" c1y="521.459391" description="" straight="1" type="2" ypos="407.124967437303" endx="296.6022154421596" xpos="602.0628399438943" endy="750.1282385258431" c2x="398.422424">
       <from>11</from>
       <to>16</to>
       <inputs default="0" any="0" invert="0">!(HeadYaw>targetAngle)</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="728.4026922750621" c2y="416.6983207410906" c1y="403.7397872326887" description="" straight="1" type="2" ypos="390.7812537242869" endx="853.4020202535534" xpos="665.9030282858164" endy="429.6568542494924" c2x="790.9023562643076">
+    <transition c1x="686.130711" c2y="413.909386" c1y="388.090614" description="" straight="1" type="2" ypos="384.6700668215992" endx="854.5746150494832" xpos="666.4253849505168" endy="417.3299331784008" c2x="834.869289">
       <from>11</from>
       <to>15</to>
       <inputs default="0" any="0" invert="0">HeadYaw>targetAngle</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="246.7148565460834" c2y="644.4904389999999" c1y="634.909369794914" description="" straight="0" type="2" ypos="589.9853987949141" endx="267.6511191219412" xpos="228.9193135460834" endy="740.0690250730001" c2x="260.669074">
+    <transition c1x="246.714857" c2y="644.490439" c1y="634.909370" description="" straight="0" type="2" ypos="589.9853987949141" endx="267.6511191219412" xpos="228.9193135460834" endy="740.0690250730001" c2x="260.669074">
       <from>22</from>
       <to>16</to>
       <inputs default="0" any="0" invert="0">~gunaomotion_naoHeadIsRunning</inputs>
