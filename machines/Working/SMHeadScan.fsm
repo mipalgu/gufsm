@@ -6,7 +6,7 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="70" endx="110" xpos="50" endy="70"/>
-    <state pencolor="12124415" radius="40" description="OnEntry {&#x9;&#xa;&#x9;extern gunaomotion_naoHeadIsRunning;&#xa;&#x9;extern guvision_selectCamera;&#xa;&#x9;extern HeadYaw;&#xa;&#x9;int speedUpDown; &#xa;&#x9;int headPitch; int doLeft; int ball_x; int ball_y; int dy; int my; int period; int fx; int fy; int fs; int update; int mx; int dx; int doLowBottomSeek; int targetAngle; int lowerSeek; int minMove;&#xa;&#x9;speedUpDown=20;&#xa;        &#x9;headSeekSpeed=17;&#xa;&#x9;guvision_selectCamera=1;&#xa; }&#xa;OnExit { post(&quot;guvision_runVisionPipeline&quot;, &quot;&quot;); post(&quot;sensors_postJoints&quot;, &quot;On&quot;);post(&quot;sensors_postJoints_Frequency&quot;, &quot;2&quot;);  post(&quot;SpeechOutput&quot;, &quot;On&quot;);   }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="70" code="0" xpos="150" linewidth="1">Init</state>
+    <state pencolor="12124415" radius="40" description="OnEntry {&#x9;&#xa;&#x9;extern gunaomotion_naoHeadIsRunning;&#xa;&#x9;extern guvision_selectCamera;&#xa;&#x9;extern&#x9; sensors_postJoints_Frequency;&#xa;&#x9;extern HeadYaw;&#xa;&#x9;int speedUpDown; &#xa;&#x9;int headPitch; int doLeft; int ball_x; int ball_y; int dy; int my; int period; int fx; int fy; int fs; int update; int mx; int dx; int doLowBottomSeek; int targetAngle; int lowerSeek; int minMove;&#xa;&#x9;speedUpDown=20;&#xa;        &#x9;headSeekSpeed=17;&#xa;&#x9;guvision_selectCamera=1;&#xa; }&#xa;OnExit { post(&quot;guvision_runVisionPipeline&quot;, &quot;now&quot;); post(&quot;sensors_postJoints&quot;, &quot;On&quot;);   sensors_postJoints_Frequency=2;  post(&quot;SpeechOutput&quot;, &quot;On&quot;);   }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="70" code="0" xpos="150" linewidth="1">Init</state>
     <state pencolor="51995" radius="40" description="OnEntry { &#xa;&#x9;Head_Stiffness=0; &#xa;}&#xa;OnExit {}&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="552" code="3" xpos="1134" linewidth="1">Loosen_Head</state>
     <state pencolor="51995" radius="40" description="OnEntry {   post(&quot;Speech&quot;, &quot;Lower Camera&quot;); }&#xa;OnExit { guvision_selectCamera= 1; }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="567" code="5" xpos="1370" linewidth="1">Lower_Camera</state>
     <state pencolor="51995" radius="40" description="OnEntry {  post(&quot;Speech&quot;, &quot;Upper Camera&quot;);  }&#xa;OnExit {  guvision_selectCamera= 0;  }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="391" code="4" xpos="1218" linewidth="1">Upper_Camera</state>
@@ -29,25 +29,25 @@
       <inputs default="0" any="0" invert="0">timeout(100000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1225.307825" c2y="561.133105" c1y="557.803463" description="" straight="1" type="2" ypos="554.4738217387476" endx="1330.080551771321" xpos="1172.921462022962" endy="564.4627469346178" c2x="1277.694189">
+    <transition c1x="1192.881186" c2y="563.257552" c1y="555.742448" description="" straight="1" type="2" ypos="554.4738217387476" endx="1331.078537977038" xpos="1172.921462022962" endy="564.5261782612524" c2x="1311.118814">
       <from>3</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">!guvision_selectCamera</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1167.859169" c2y="456.783326" c1y="487.103259" description="" straight="1" type="2" ypos="517.4231909995473" endx="1199.497359732199" xpos="1152.040074261106" endy="426.4633938466182" c2x="1183.678265">
+    <transition c1x="1161.291394" c2y="443.308506" c1y="499.691494" description="" straight="1" type="2" ypos="517.4231909995473" endx="1199.959925738894" xpos="1152.040074261106" endy="425.5768090004527" c2x="1190.708606">
       <from>3</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">guvision_selectCamera</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1358.532164" c2y="257.474768" c1y="509.125232" description="" straight="1" type="2" ypos="527.7628693994778" endx="1304.78043421346" xpos="1362.225195678503" endy="237.8562023355091" c2x="1308.667836">
+    <transition c1x="1358.532164" c2y="257.474768" c1y="509.125232" description="" straight="1" type="2" ypos="528.7437976644909" endx="1304.78043421346" xpos="1362.41956578654" endy="237.8562023355091" c2x="1308.667836">
       <from>5</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">timeout(200000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1240.558756" c2y="254.116993" c1y="336.483007" description="" straight="1" type="2" ypos="354.0393267031243" endx="1282.288280083674" xpos="1233.294071709052" endy="235.6366564644537" c2x="1274.641244">
+    <transition c1x="1240.558756" c2y="254.116993" c1y="336.483007" description="" straight="1" type="2" ypos="354.9633435355462" endx="1282.288280083674" xpos="1232.911719916326" endy="235.6366564644537" c2x="1274.641244">
       <from>4</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">timeout(200000)</inputs>
