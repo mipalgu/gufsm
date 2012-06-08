@@ -130,6 +130,18 @@ int dumpNames(ANTLRContext & context)
 	return EXIT_SUCCESS;
 }
 
+static StateMachineVectorFactory *exit_factory; // exit handler only
+static void exit_handler(void)
+{
+        exit_factory->fsms()->suspend();
+        exit_factory->fsms()->executeOnce();
+}
+
+static void signal_handler(int)
+{
+        exit_factory->fsms()->scheduleSuspend();
+}
+
 int main (int argc, char * const argv[])
 {
         bool kripke_flag = false, verbose = false, dump_names = false, want_cdl = true,
@@ -176,12 +188,33 @@ int main (int argc, char * const argv[])
 
         ANTLRContext antlr_context;
         StateMachineVectorFactory factory(&antlr_context, machine_names);
-	
+	exit_factory = &factory;
+
 	/* Print the names then exit if that was requested. */
 	if (dump_names) {
 		return dumpNames(antlr_context);
 	}
-
+#if 1
+        signal(SIGINT,  signal_handler);
+        signal(SIGTERM, signal_handler);
+        signal(SIGQUIT, signal_handler);
+        signal(SIGSTOP, signal_handler);
+        signal(SIGSTOP, signal_handler);
+#else
+#ifdef __APPLE__
+        atexit_b(
+        ^{
+                factoryp->fsms()->suspend();
+                if (blocks_flag)
+                        protected_sleep(1);     // should create group and wait
+                else
+                        factoryp->fsms()->executeOnce();
+        });
+#else
+        exit_factory = &factory;
+        atexit(exit_handler);
+#endif
+#endif // 0
         if (kripke_flag)
         {
                 return run_machine_vector(factory, machine_names, dump_kripke, verbose);
