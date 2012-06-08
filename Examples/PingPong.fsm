@@ -8,13 +8,13 @@
     <itransition ypos="288" endx="365" xpos="305" endy="288"/>
     <state pencolor="0" radius="40" description="OnEntry { say(&quot;Ping&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="288" code="0" xpos="405" linewidth="1">Ping</state>
     <state pencolor="0" radius="40" description="OnEntry {  say_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="301" code="1" xpos="629" linewidth="1">Pong</state>
-    <transition c1x="494.362842" c2y="285.513480" c1y="287.915505" description="" straight="1" type="2" ypos="290.3175289664808" endx="593.2229123600034" xpos="444.9328068070543" endy="283.1114561800017" c2x="543.792877">
+    <transition c1x="463.599644" c2y="287.405545" c1y="281.138391" description="" straight="1" type="2" ypos="283.4643598287569" endx="591.0493895151342" xpos="443.7353581142218" endy="292.013834865417" c2x="571.587538">
       <from>0</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="536.770236" c2y="311.127775" c1y="304.905123" description="" straight="1" type="2" ypos="298.6824710335192" endx="432.1763212599322" xpos="589.0671931929458" endy="317.3504269607268" c2x="484.473279">
+    <transition c1x="570.400356" c2y="301.594455" c1y="307.861609" description="" straight="1" type="2" ypos="305.5356401712431" endx="442.9506104848658" xpos="590.2646418857782" endy="296.986165134583" c2x="462.412462">
       <from>1</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">timeout(500000)</inputs>

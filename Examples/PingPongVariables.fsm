@@ -9,13 +9,13 @@
     <state pencolor="0" radius="40" description="OnEntry { extern switchPong;&#xa;  extern switchPing;&#xa;  extern onWhiteboard;&#xa;  post(&quot;Say&quot;, &quot;Ping&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="141" code="0" xpos="180" linewidth="1">Ping</state>
     <state pencolor="0" radius="40" description="OnEntry { onWhiteboard=onWhiteboard+1;&#xa; post(&quot;Say&quot;, &quot;Pong&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="150" code="1" xpos="540" linewidth="1">Pong</state>
     <state pencolor="0" radius="40" description="OnEntry {onWhitebaord=0;&#xa;         post(&quot;Say&quot;,&quot;suspended&quot;); }&#xa;OnExit {}&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="350" code="2" xpos="381" linewidth="1">Suspend</state>
-    <transition c1x="306.7417717768455" c2y="124.5425722725146" c1y="118.3184489933033" description="" straight="1" type="2" ypos="112.094325714092" endx="504.9275036531473" xpos="207.6489058386946" endy="130.7666955517259" c2x="405.8346377149964">
+    <transition c1x="238.341560" c2y="138.305820" c1y="132.210095" description="" straight="1" type="2" ypos="135.1897240577704" endx="501.7737484434318" xpos="218.5647597357373" endy="142.2699487754628" c2x="482.170543">
       <from>0</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">switchPong</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="406.1562823854503" c2y="151.1386492936743" c1y="150.2884534714534" description="" straight="1" type="2" ypos="149.4382576492326" endx="218.4609579056329" xpos="500.0039446253589" endy="151.9888451158951" c2x="312.3086201455416">
+    <transition c1x="481.658440" c2y="152.694180" c1y="158.789905" description="" straight="1" type="2" ypos="155.8102759422296" endx="218.2262515565682" xpos="501.4352402642626" endy="148.7300512245372" c2x="237.829457">
       <from>1</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">switchPing</inputs>
