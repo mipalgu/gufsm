@@ -174,6 +174,16 @@ void StateMachineVector::resume()
         }
 }
 
+void StateMachineVector::scheduleSuspend()
+{
+        for (MachineVector::iterator it = machines().begin();
+             it != machines().end(); it++)
+        {
+                SuspensibleMachine * m = *it;
+                m->scheduleSuspend();
+        }
+}
+
 #ifndef __BLOCKS__
 struct spawn_context
 {

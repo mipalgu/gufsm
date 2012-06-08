@@ -112,6 +112,9 @@ namespace FSM
                 /** is this machine scheduled for restart? */
                 virtual bool scheduledForRestart() { return _scheduleRestart; }
 
+                /** schedule suspend (subclass responsibility */
+                virtual void scheduleSuspend(bool s=true) { _scheduleSuspend = s; }
+
                 /** return whether the context will be deleted by the destructor */
                 bool willDeleteContext() { return _deleteContext; }
 

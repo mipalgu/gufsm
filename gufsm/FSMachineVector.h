@@ -222,6 +222,11 @@ namespace FSM
                 virtual void resume();
 
                 /**
+                 * schedule suspend() on all state machines.
+                 */
+                virtual void scheduleSuspend();
+
+                /**
                  * printable state machine vector description
                  */
                 virtual std::string description();

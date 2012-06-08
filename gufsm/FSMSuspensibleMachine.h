@@ -102,6 +102,9 @@ namespace FSM
 
                 /** is this machine scheduled for restart? */
                 virtual bool scheduledForRestart() { return false; }
+
+                /** schedule suspend (subclass responsibility */
+                virtual void scheduleSuspend(bool s=true) { }
         };
 }
 
