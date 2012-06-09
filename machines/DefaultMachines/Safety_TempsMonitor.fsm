@@ -1,47 +1,47 @@
 <?xml version='1.0'?>
 <!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
 <qfsmproject version="0.53" author="Qfsm">
-  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene, Carl" description="" version="1" name="SMHeadBallTracker" arrowtype="1" numbits="4" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene, Carl" description="" version="1" name="Safety_TempsMonitor" arrowtype="1" numbits="4" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="80" endx="48" xpos="-12" endy="80"/>
-    <state pencolor="12124415" radius="40" description="OnEntry {&#xa;&#x9;int newTemps;&#xa;&#x9;extern sensors_postTemps_Updated;&#xa;&#x9;extern HeadYaw_temp;&#xa;&#x9;extern HeadPitch_temp;&#xa;&#x9;extern LShoulderPitch_temp;&#xa;&#x9;extern LShoulderRoll_temp;&#xa;&#x9;extern LElbowYaw_temp;&#xa;&#x9;extern LElbowRoll_temp;&#xa;&#x9;extern LHipYawPitch_temp;&#xa;&#x9;extern LHipRoll_temp;&#xa;&#x9;extern LHipPitch_temp;&#xa;&#x9;extern LKneePitch_temp;&#xa;&#x9;extern LAnklePitch_temp;&#xa;&#x9;extern LAnkleRoll_temp;&#xa;&#x9;extern RHipRoll_temp;&#xa;&#x9;extern RHipPitch_temp;&#xa;&#x9;extern RKneePitch_temp;&#xa;&#x9;extern RAnklePitch_temp;&#xa;&#x9;extern RAnkleRoll_temp;&#xa;&#x9;extern RShoulderPitch_temp;&#xa;&#x9;extern RShoulderRoll_temp;&#xa;&#x9;extern RElbowYaw_temp;&#xa;&#x9;extern RElbowRoll_temp;&#xa;&#x9;maxTemp=60;&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="80" code="0" xpos="88" linewidth="1">Init</state>
+    <state pencolor="12124415" radius="40" description="OnEntry {&#xa;&#x9;int newTemps;&#xa;&#x9;extern sensors_postTemps_Updated;&#xa;&#x9;extern HeadYaw_temp;&#xa;&#x9;extern HeadPitch_temp;&#xa;&#x9;extern LShoulderPitch_temp;&#xa;&#x9;extern LShoulderRoll_temp;&#xa;&#x9;extern LElbowYaw_temp;&#xa;&#x9;extern LElbowRoll_temp;&#xa;&#x9;extern LHipYawPitch_temp;&#xa;&#x9;extern LHipRoll_temp;&#xa;&#x9;extern LHipPitch_temp;&#xa;&#x9;extern LKneePitch_temp;&#xa;&#x9;extern LAnklePitch_temp;&#xa;&#x9;extern LAnkleRoll_temp;&#xa;&#x9;extern RHipRoll_temp;&#xa;&#x9;extern RHipPitch_temp;&#xa;&#x9;extern RKneePitch_temp;&#xa;&#x9;extern RAnklePitch_temp;&#xa;&#x9;extern RAnkleRoll_temp;&#xa;&#x9;extern RShoulderPitch_temp;&#xa;&#x9;extern RShoulderRoll_temp;&#xa;&#x9;extern RElbowYaw_temp;&#xa;&#x9;extern RElbowRoll_temp;&#xa;&#x9;maxTemp=80;&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="80" code="0" xpos="88" linewidth="1">Init</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;post(&quot;sensors_postTemps&quot;, &quot;On&quot;); &#xa;&#x9;post(&quot;sensors_postTemps_Frequency&quot;, &quot;500&quot;); &#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="106" code="12" xpos="563" linewidth="1">Monitor</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;newTemps = sensors_postTemps_Updated;&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="80" code="10" xpos="910" linewidth="1">WaitForData</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="319" code="13" xpos="1282" linewidth="1">UpdateTemps</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;post(&quot;Say&quot;, &quot;Joints Very Hot&quot;); &#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="497" code="4" xpos="997" linewidth="1">Hot</state>
-    <transition c1x="255.9761355940609" c2y="104.1010564414849" c1y="102.2021128829699" description="" straight="1" type="2" ypos="100.3031693244548" endx="523" xpos="122.4642033910914" endy="106" c2x="389.4880677970305">
+    <transition c1x="146.911813" c2y="102.775353" c1y="83.224647" description="" straight="1" type="2" ypos="82.18620107122824" endx="524.0582934187471" xpos="127.9402118782082" endy="103.8684539555525" c2x="504.088187">
       <from>0</from>
       <to>12</to>
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="692.6605449707162" c2y="96.53765732687555" c1y="100.4262040130776" description="" straight="1" type="2" ypos="104.3147506992796" endx="872.0526680779794" xpos="602.9644834170845" endy="92.64911064067351" c2x="782.3566065243477">
+    <transition c1x="691.297926" c2y="89.687820" c1y="96.386899" description="" straight="1" type="2" ypos="103.0859782972316" endx="870.1118133782786" xpos="601.8909819561784" endy="82.9887402079676" c2x="780.704870">
       <from>12</from>
       <to>10</to>
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="1056.169680839962" c2y="217.6275113182702" c1y="155.1383109794718" description="" straight="1" type="2" ypos="92.64911064067351" endx="1272.614378675844" xpos="947.9473319220206" endy="280.1167116570685" c2x="1164.392029757903">
+    <transition c1x="959.638199" c2y="287.108791" c1y="111.891209" description="" straight="1" type="2" ypos="101.6211583672915" endx="1249.188309038424" xpos="943.653016370847" endy="297.9193705918908" c2x="1232.361801">
       <from>10</from>
       <to>13</to>
       <inputs default="0" any="0" invert="0">newTemps!=sensors_postTemps_Updated</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="1143.863216867241" c2y="171.0204798193301" c1y="237.328097561384" description="" straight="1" type="2" ypos="303.635715303438" endx="941.4527335528969" xpos="1245.068458524413" endy="104.7128620772761" c2x="1042.657975210069">
+    <transition c1x="1147.343211" c2y="167.053896" c1y="232.486633" description="" straight="1" type="2" ypos="297.9193705918908" endx="943.653016370847" xpos="1249.188309038424" endy="101.6211583672915" c2x="1045.498114">
       <from>13</from>
       <to>10</to>
       <inputs default="0" any="0" invert="0">(HeadYaw_temp&lt;maxTemp)&amp;&amp;(HeadPitch_temp&lt;maxTemp)&amp;&amp;(LShoulderPitch_temp&lt;maxTemp)&amp;&amp;(LShoulderRoll_temp&lt;maxTemp)&amp;&amp;(LElbowYaw_temp&lt;maxTemp)&amp;&amp;(LElbowRoll_temp&lt;maxTemp)&amp;&amp;(LHipYawPitch_temp&lt;maxTemp)&amp;&amp;(LHipRoll_temp&lt;maxTemp)&amp;&amp;(LHipPitch_temp&lt;maxTemp)&amp;&amp;(LKneePitch_temp&lt;maxTemp)&amp;&amp;(LAnklePitch_temp&lt;maxTemp)&amp;&amp;(LAnkleRoll_temp&lt;maxTemp)&amp;&amp;(RHipRoll_temp&lt;maxTemp)&amp;&amp;(RHipPitch_temp&lt;maxTemp)&amp;&amp;(RKneePitch_temp&lt;maxTemp)&amp;&amp;(RAnklePitch_temp&lt;maxTemp)&amp;&amp;(RAnkleRoll_temp&lt;maxTemp)&amp;&amp;(RShoulderPitch_temp&lt;maxTemp)&amp;&amp;(RShoulderRoll_temp&lt;maxTemp)&amp;&amp;(RElbowYaw_temp&lt;maxTemp)&amp;&amp;(RElbowRoll_temp&lt;maxTemp)</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="1173.627916069073" c2y="431.3425946949149" c1y="380.2611633330503" description="" straight="1" type="2" ypos="329.1797319711857" endx="1034.24971118823" xpos="1243.317018509494" endy="482.4240260567795" c2x="1103.938813628651">
+    <transition c1x="1176.256571" c2y="430.427004" c1y="385.043264" description="" straight="1" type="2" ypos="339.659524845469" endx="1030.926618155913" xpos="1248.921547297985" endy="475.8107437482369" c2x="1103.591595">
       <from>13</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">!((HeadYaw_temp>maxTemp)&amp;&amp;(HeadPitch_temp>maxTemp)&amp;&amp;(LShoulderPitch_temp>maxTemp)&amp;&amp;(LShoulderRoll_temp>maxTemp)&amp;&amp;(LElbowYaw_temp>maxTemp)&amp;&amp;(LElbowRoll_temp>maxTemp)&amp;&amp;(LHipYawPitch_temp>maxTemp)&amp;&amp;(LHipRoll_temp>maxTemp)&amp;&amp;(LHipPitch_temp>maxTemp)&amp;&amp;(LKneePitch_temp>maxTemp)&amp;&amp;(LAnklePitch_temp>maxTemp)&amp;&amp;(LAnkleRoll_temp>maxTemp)&amp;&amp;(RHipRoll_temp>maxTemp)&amp;&amp;(RHipPitch_temp>maxTemp)&amp;&amp;(RKneePitch_temp>maxTemp)&amp;&amp;(RAnklePitch_temp>maxTemp)&amp;&amp;(RAnkleRoll_temp>maxTemp)&amp;&amp;(RShoulderPitch_temp>maxTemp)&amp;&amp;(RShoulderRoll_temp>maxTemp)&amp;&amp;(RElbowYaw_temp>maxTemp)&amp;&amp;(RElbowRoll_temp>maxTemp))</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="951.8811853378643" c2y="235.6012401517406" c1y="353.952769115251" description="" straight="1" type="2" ypos="472.3042980787615" endx="924.5759739432204" xpos="965.5337910351861" endy="117.2497111882301" c2x="938.2285796405423">
+    <transition c1x="965.413017" c2y="232.378598" c1y="345.600324" description="" straight="1" type="2" ypos="457.8431284545451" endx="918.1694192432964" xpos="988.8305807567036" endy="119.1568715454549" c2x="941.791218">
       <from>4</from>
       <to>10</to>
       <inputs default="0" any="0" invert="0">timeout(60000000)</inputs>

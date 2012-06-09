@@ -17,8 +17,8 @@
     <state pencolor="16711710" radius="40" description="OnEntry{print_state_name(); }&#xa;OnExit{suspend(&quot;SMHeadScan&quot;); post(&quot;Say&quot;,&quot;FOUND&quot;);}&#xa;{}" finalstate="0" moore_outputs="" ypos="411" code="6" xpos="150" linewidth="1">END_FINDING</state>
     <state pencolor="45317" radius="40" description="OnEntry { gunaomotion_headStiffness = 1; sensors_postJoints = 1; sensors_postJoints_Frequency = 1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="76" code="2" xpos="455" linewidth="1">Setup_Tracker</state>
     <state pencolor="45317" radius="40" description="OnEntry{update = Ballfiltered; yPos = HeadPitch; zPos = HeadYaw; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="75" code="7" xpos="619" linewidth="1">Loop</state>
-    <state pencolor="0" radius="40" description="OnEntry { say(&quot;suspended ball find and track&quot;) ;&#xa; &#x9;gunaomotion_trackerTarget = 0; &#xa; suspend(&quot;SMHeadScan&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="1" moore_outputs="" ypos="389" code="8" xpos="560" linewidth="1">Suspend</state>
-    <transition c1x="144.895756" c2y="119.505700" c1y="122.494300" description="" straight="1" type="2" ypos="123.6232544006314" endx="215.0689070823422" xpos="125.9293260693927" endy="118.3173269593844" c2x="195.104244">
+    <state pencolor="0" radius="40" description="OnEntry {  suspend(&quot;SMHeadScan&quot;);&#xa;&#x9;say(&quot;suspended ball find and track&quot;) ;&#xa; &#x9;gunaomotion_trackerTarget = 0; &#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="1" moore_outputs="" ypos="389" code="8" xpos="560" linewidth="1">Suspend</state>
+    <transition c1x="144.895756" c2y="119.505700" c1y="122.494300" description="" straight="1" type="2" ypos="123.6826730406156" endx="215.0689070823422" xpos="124.9310929176579" endy="118.3173269593844" c2x="195.104244">
       <from>0</from>
       <to>21</to>
       <inputs default="0" any="0" invert="0">timeout(100000)</inputs>
