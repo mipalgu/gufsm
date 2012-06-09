@@ -5,17 +5,17 @@
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
-    <itransition ypos="56" endx="33" xpos="-27" endy="56"/>
-    <state pencolor="12124415" radius="40" description="OnEntry { int boundaryCloseFar;&#xa;&#x9; int boundaryLeftRight;&#xa;         int fullSpeed;&#xa;         int currentSpeed;&#xa;&#x9;int vladCounter;&#x9;extern vladHalt;&#xa;&#x9;extern gunaomotion_naoWalkIsRunning;&#xa;&#x9;extern sensors_postJoints_Frequency;&#xa;&#x9;extern Ballfiltered_x;&#xa;&#x9;extern Ballfiltered_y;&#xa;&#x9;extern BallDistance;&#xa;&#x9;extern HeadYaw;&#xa;&#x9;extern Ballfiltered;&#xa;&#x9;extern gunaomotion_naoMotionPlayerIsRunnig;&#xa;&#x9;int ball_x; int ball_y; int update; timeTo=22000;&#xa;      boundaryCloseFar=70;&#xa;&#x9;boundaryLeftRight=10;&#xa;&#x9;fullSpeed=100;&#xa;&#x9;currentSpeed=fullSpeed;&#xa;&#x9;suspend(&quot;SMHeadBallFindAndTrack&quot;);&#xa;&#x9;post_int(&quot;gunaomotion_holdingStiffness&quot;,100); vladCounter=0;&#xa; }&#xa;OnExit { &#xa;&#x9;post(&quot;guvision_runVisionPipeline&quot;, &quot;now&quot;);&#xa;&#x9;post(&quot;sensors_postJoints&quot;, &quot;On&quot;);&#xa;&#x9;sensors_postJoints_Frequency=2;&#xa;  }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="56" code="0" xpos="73" linewidth="1">INIT</state>
-    <state pencolor="16711710" radius="40" description="OnEntry {  &#xa;&#x9;update = Ballfiltered;&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="90" code="7" xpos="894" linewidth="1">Wait</state>
-    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;ball_x = Ballfiltered_x;&#xa;&#x9;ball_y = Ballfiltered_y;&#xa;&#x9;ball_d = BallDistance;&#xa;&#x9;&#x9;print_int(  BallDistance);&#xa;&#x9;print_int(HeadYaw);&#xa; }&#xa;OnExit { &#xa; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="96.80000000000001" code="13" xpos="1074" linewidth="1">WaitForBall</state>
-    <state pencolor="0" radius="40" description="OnEntry {  print_state_name();  restart(&quot;SMHeadBallFindAndTrack&quot;); vladCounter=vladCounter+1;&#xa;&#x9;&#xa; }&#xa;OnExit { &#xa;&#x9;&#xa; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="59" code="18" xpos="481" linewidth="1">DCM_On</state>
+    <itransition ypos="55" endx="29" xpos="-31" endy="55"/>
+    <state pencolor="12124415" radius="40" description="OnEntry { int boundaryCloseFar;&#xa;&#x9; int boundaryLeftRight;&#xa;         int fullSpeed;&#xa;         int currentSpeed;&#xa;&#x9;int vladCounter;&#x9;&#xa;&#x9;extern kick;&#xa;&#x9;extern vladHalt;&#xa;&#x9;extern gunaomotion_naoWalkIsRunning;&#xa;&#x9;extern sensors_postJoints_Frequency;&#xa;&#x9;extern Ballfiltered_x;&#xa;&#x9;extern Ballfiltered_y;&#xa;&#x9;extern BallDistance;&#xa;&#x9;extern HeadYaw;&#xa;&#x9;extern Ballfiltered;&#xa;&#x9;extern gunaomotion_naoMotionPlayerIsRunnig;&#xa;&#x9;int ball_x; int ball_y; int update; timeTo=22000;&#xa;      boundaryCloseFar=60;&#xa;&#x9;boundaryLeftRight=10;&#xa;&#x9;fullSpeed=100;&#xa;&#x9;currentSpeed=fullSpeed;&#xa;&#x9;suspend(&quot;SMHeadBallFindAndTrack&quot;);&#xa;&#x9;post_int(&quot;gunaomotion_holdingStiffness&quot;,100); vladCounter=0;&#xa; }&#xa;OnExit { &#xa;&#x9;post(&quot;guvision_runVisionPipeline&quot;, &quot;now&quot;);&#xa;&#x9;post(&quot;sensors_postJoints&quot;, &quot;On&quot;);&#xa;&#x9;sensors_postJoints_Frequency=2;&#xa;  }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="55" code="0" xpos="69" linewidth="1">INIT</state>
+    <state pencolor="16711710" radius="40" description="OnEntry {  print_state_name();&#xa;&#x9;update = Ballfiltered;&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="104" code="7" xpos="761" linewidth="1">Wait</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;ball_x = Ballfiltered_x;&#xa;&#x9;ball_y = Ballfiltered_y;&#xa;&#x9;ball_d = BallDistance;&#xa;&#x9;print_int(  Ballfiltered);&#xa;&#x9;print_int(  BallDistance);&#xa;&#x9;print_int(HeadYaw);&#xa; }&#xa;OnExit { &#xa; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="96.80000000000001" code="13" xpos="1074" linewidth="1">WaitForBall</state>
+    <state pencolor="0" radius="40" description="OnEntry {  print_state_name(); vladCounter=vladCounter+1;&#xa;&#x9; currentSpeed=fullSpeed;&#xa; }&#xa;OnExit { &#xa;&#x9;&#xa; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="85" code="18" xpos="482" linewidth="1">DCM_On</state>
     <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;print_state_name();&#xa;&#x9;postv(&quot;gunaomotion_naoWalk&quot;  ,  100  , 0, HeadYaw   ,currentSpeed);&#xa;&#x9;post(&quot;Speech&quot;, &quot;Left&quot;);&#xa; }&#xa;OnExit { &#xa;&#x9;&#xa; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="308" code="19" xpos="1340" linewidth="1">LeftWalk</state>
     <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;print_state_name();&#xa;&#x9;postv(&quot;gunaomotion_naoWalk&quot;,  100, 0, HeadYaw, currentSpeed );&#xa;&#x9;post(&quot;Speech&quot;, &quot;Right&quot;);&#xa; }&#xa;OnExit { &#xa;&#x9;&#xa; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="448" code="20" xpos="1567" linewidth="1">RightWalk</state>
-    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit { &#xa; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="92.8" code="21" xpos="1601.6" linewidth="1">Continue</state>
-    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;print_state_name();&#xa;&#x9;print_int(  BallDistance);&#xa;&#x9;print_int( max(10, min(30, BallDistance)));&#xa;&#x9;postv(&quot;gunaomotion_naoWalk&quot;,100 , 0,0 , currentSpeed);&#xa;&#x9;post(&quot;Speech&quot;, &quot;Go&quot;);&#xa; }&#xa;OnExit { &#xa; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="83" code="23" xpos="1247" linewidth="1">Forward</state>
-    <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;suspend(&quot;SMHeadBallTrackerFair&quot;);&#xa;&#x9;postv(&quot;gunaomotion_naoWalk&quot;, 0, 0, 0, 0);&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="553" code="1" xpos="803" linewidth="1">GotBall</state>
-    <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;post(&quot;Speech&quot;, &quot;Lost Ball&quot;);&#xa;&#x9;postv(&quot;gunaomotion_naoWalk&quot;, 0, 0, 0, 0);&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="229" code="2" xpos="956" linewidth="1">LostBall</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa; }&#xa;OnExit { &#xa; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="92.8" code="21" xpos="1601.6" linewidth="1">Continue</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;print_state_name();&#xa;&#x9;print_int(  BallDistance);&#xa;&#x9;print_int( max(10, min(30, BallDistance)));&#xa;&#x9;postv(&quot;gunaomotion_naoWalk&quot;,100 , 0,0 , currentSpeed);&#xa;&#x9;post(&quot;Speech&quot;, &quot;Go&quot;);&#xa; }&#xa;OnExit { &#xa; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="74" code="23" xpos="1301" linewidth="1">Forward</state>
+    <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;suspend(&quot;SMHeadBallTrackerFair&quot;);&#xa;&#x9;postv(&quot;gunaomotion_naoWalk&quot;, 0, 0, 0, 0);&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="578" code="1" xpos="781" linewidth="1">GotBall</state>
+    <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;post(&quot;Speech&quot;, &quot;Lost Ball&quot;);&#xa;&#x9;postv(&quot;gunaomotion_naoWalk&quot;, 0, 0, 0, 0);&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="220" code="2" xpos="898" linewidth="1">LostBall</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;post(&quot;NaoRunDisconnect&quot;, &quot;&quot;);&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="750" code="4" xpos="581" linewidth="1">DisconnectDCM</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="318" code="5" xpos="377" linewidth="1">ExtraWait</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;NaoMotionPlayerIsRunning=1;&#xa;&#x9;post(&quot;NaoMotionPlayer&quot;, &quot;left_ninja_kick&quot;);&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="481" code="6" xpos="360" linewidth="1">Kick</state>
@@ -26,146 +26,146 @@
     <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;post(&quot;Speech&quot;, &quot;Kicking&quot;);&#xa;&#x9;postv(&quot;gunaomotion_naoWalk&quot;, 0, 0, 0, 0);&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="581" code="10" xpos="461" linewidth="1">Near</state>
     <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;postv(&quot;gunaomotion_naoWalk&quot;, 20, 0, 0, 100);&#xa;&#x9;post(&quot;Speech&quot;, &quot;Need to walk forward slightly, above command fails&quot;);&#xa; }&#xa;OnExit { &#xa; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="448.4" code="12" xpos="538" linewidth="1">Far</state>
     <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="644" code="11" xpos="663" linewidth="1">SpinEnd</state>
-    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#xa; }&#xa;OnExit { &#xa; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="461" code="15" xpos="1120" linewidth="1">LEFT_OR_RIGHT</state>
-    <state pencolor="0" radius="40" description="OnEntry { print_state_name();&#xa;&#x9;postv(&quot;gunaomotion_naoWalk&quot;, 0, 0, 0, 0);&#xa; }&#xa;OnExit { &#xa; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="383" code="16" xpos="935" linewidth="1">Stop2</state>
-    <state pencolor="0" radius="40" description="OnEntry { print_state_name();&#x9;post(&quot;QSay&quot;, &quot;Starting Ball Follower&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="80" code="17" xpos="248" linewidth="1">IS_GET_UP_DONE</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#xa; }&#xa;OnExit { &#xa; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="431" code="15" xpos="1173" linewidth="1">LEFT_OR_RIGHT</state>
+    <state pencolor="0" radius="40" description="OnEntry { print_state_name();&#xa;&#x9;postv(&quot;gunaomotion_naoWalk&quot;,10, 0, 0);&#xa; }&#xa;OnExit { &#xa; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="359" code="16" xpos="890" linewidth="1">BITBACK</state>
+    <state pencolor="0" radius="40" description="OnEntry { print_state_name();&#xa;   restart(&quot;SMHeadBallFindAndTrack&quot;);&#x9;post(&quot;QSay&quot;, &quot;Starting Ball Follower&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="80" code="17" xpos="250" linewidth="1">IS_GET_UP_DONE</state>
     <state pencolor="0" radius="40" description="OnEntry {post(&quot;gunaomotion_naoMotionPlayer&quot;, &quot;kneel&quot;);&#xa; suspend(&quot;SMHeadBallFindAndTrack&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="215" code="22" xpos="310" linewidth="1">KNEELDOWN</state>
     <state pencolor="0" radius="40" description="OnEntry {print_state_name(); }&#xa;OnExit {post_int (&quot;gunaomotion_holdingStiffness&quot;,0); }&#xa;{ }" finalstate="0" moore_outputs="" ypos="380" code="24" xpos="210" linewidth="1">REMOVE_STIFFNESS</state>
     <state pencolor="0" radius="40" description="OnEntry { print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="520" code="25" xpos="90" linewidth="1">STOP</state>
-    <state pencolor="0" radius="40" description="OnEntry { print_state_name( );  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="287" code="26" xpos="1471" linewidth="1">WAIT_WALK</state>
-    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="420" code="27" xpos="703" linewidth="1">WAIT_FOR_STOP</state>
-    <state pencolor="0" radius="40" description="OnEntry {post(&quot;Speech&quot;,&quot;Go&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="247" code="28" xpos="1208" linewidth="1">SSAY_FORWARD</state>
+    <state pencolor="0" radius="40" description="OnEntry { print_state_name( );  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="315" code="26" xpos="1481" linewidth="1">WAIT_WALK</state>
+    <state pencolor="0" radius="40" description="OnEntry {  restart(&quot;SMHeadBallFindAndTrack&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="231" code="27" xpos="720" linewidth="1">WAIT_FOR_STOP</state>
+    <state pencolor="0" radius="40" description="OnEntry {post(&quot;Speech&quot;,&quot;Go&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="238" code="28" xpos="1244" linewidth="1">SSAY_FORWARD</state>
     <state pencolor="0" radius="40" description="OnEntry {post(&quot;Speech&quot;,&quot;Left&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="447" code="29" xpos="1383" linewidth="1">SAY_LEFT</state>
     <state pencolor="0" radius="40" description="OnEntry {post(&quot;Speech&quot;,&quot;Right&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="621" code="30" xpos="1311" linewidth="1">SAY_RIGHT</state>
-    <state pencolor="0" radius="40" description="OnEntry {currentSpeed=fullSpeed; &#xa;  post(&quot;QSay&quot;,&quot;Fast&quot;) ;  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="110" code="31" xpos="725" linewidth="1">FULL_SPEED</state>
-    <state pencolor="0" radius="40" description="OnEntry {currentSpeed=fullSpeed / 2;&#xa;  post(&quot;QSay&quot;,&quot;Slow&quot;);  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="238" code="32" xpos="750" linewidth="1">SLOW_DOWN</state>
-    <transition c1x="85.576857" c2y="218.356070" c1y="113.643930" description="" straight="1" type="2" ypos="95.08063045639969" endx="112.6864840665477" xpos="81.52668300866904" endy="237.8963853050103" c2x="108.423143">
+    <state pencolor="0" radius="40" description="OnEntry {currentSpeed=fullSpeed /5;&#xa;  post(&quot;Speech&quot;,&quot;Minimum&quot;);  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="588" code="33" xpos="1046" linewidth="1">SLOW_DOWN</state>
+    <state pencolor="0" radius="40" description="OnEntry { print_state_name();&#xa;&#x9;postv(&quot;gunaomotion_naoWalk&quot;, 0, 0, 0);&#xa;&#x9;post(&quot;Speech&quot;,&quot;Kicking&quot;);&#xa; }&#xa;OnExit { &#xa; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="490" code="31" xpos="856" linewidth="1">Stop2</state>
+    <transition c1x="82.910191" c2y="218.022737" c1y="112.977263" description="" straight="1" type="2" ypos="94.08063045639969" endx="112.6864840665477" xpos="77.52668300866904" endy="237.8963853050103" c2x="107.089809">
       <from>0</from>
       <to>9</to>
       <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="952.957944" c2y="94.572700" c1y="92.227300" description="" straight="1" type="2" ypos="91.47228311575773" endx="1035.027799877001" xpos="932.9722001229986" endy="95.32771688424228" c2x="1015.042056">
+    <transition c1x="878.657162" c2y="98.696655" c1y="102.103345" description="" straight="1" type="2" ypos="105.5100339648797" endx="1034.02851269436" xpos="800.9714873056396" endy="95.28996603512029" c2x="956.342838">
       <from>7</from>
       <to>13</to>
       <inputs default="0" any="0" invert="0">update!=Ballfiltered</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="918.034083" c2y="175.117137" c1y="143.882863" description="" straight="1" type="2" ypos="125.6174854048674" endx="940.113064064016" xpos="909.886935935984" endy="193.3825145951326" c2x="931.965917">
+    <transition c1x="812.098098" c2y="169.156415" c1y="154.843585" description="" straight="1" type="2" ypos="140.5307542614025" endx="881.7057067323242" xpos="777.2942932676758" endy="183.4692457385976" c2x="846.901902">
       <from>7</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="1113.277453" c2y="202.974079" c1y="140.825921" description="" straight="1" type="2" ypos="125.9018798988067" endx="1182.03693803968" xpos="1099.96306196032" endy="217.8981201011933" c2x="1168.722547">
+    <transition c1x="1125.277453" c2y="196.974079" c1y="137.825921" description="" straight="1" type="2" ypos="126.6480819474941" endx="1218.03693803968" xpos="1100.628781497764" endy="208.8981201011933" c2x="1192.722547">
       <from>13</from>
       <to>28</to>
       <inputs default="0" any="0" invert="0">BallDistance>boundaryCloseFar</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="1081.393212" c2y="402.465050" c1y="155.334950" description="" straight="1" type="2" ypos="135.4925943418058" endx="1115.112961725088" xpos="1078.887038274912" endy="422.3074056581942" c2x="1112.606788">
+    <transition c1x="1099.059878" c2y="382.465050" c1y="145.334950" description="" straight="1" type="2" ypos="136.4847121454418" endx="1168.112961725088" xpos="1079.012346948628" endy="392.3074056581942" c2x="1147.940122">
       <from>13</from>
       <to>15</to>
       <inputs default="0" any="0" invert="0">(abs(HeadYaw)>boundaryLeftRight)&amp;&amp;(BallDistance>boundaryCloseFar)</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="437.412805" c2y="175.236243" c1y="98.763757" description="" straight="1" type="2" ypos="85.28451751336641" endx="338.8118749665747" xpos="452.1881250334253" endy="188.7154824866336" c2x="353.587195">
+    <transition c1x="1058.626311" c2y="410.586774" c1y="273.173547" description="" straight="1" type="2" ypos="135.7603210815679" endx="1046.000013333333" xpos="1064.939460213589" endy="548.0000000000023" c2x="1052.313162">
+      <from>13</from>
+      <to>33</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs>5</outputs>
+    </transition>
+    <transition c1x="438.079471" c2y="183.902909" c1y="116.097091" description="" straight="1" type="2" ypos="111.9584795008886" endx="338.8118749665747" xpos="452.4493590086414" endy="188.7154824866336" c2x="353.920529">
       <from>18</from>
       <to>22</to>
       <inputs default="0" any="0" invert="0">vladHalt</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="538.751956" c2y="97.928894" c1y="71.071106" description="" straight="1" type="2" ypos="66.97920535559551" endx="686.8249782987195" xpos="519.1750217012805" endy="102.0207946444045" c2x="667.248044">
+    <transition c1x="587.166615" c2y="105.551299" c1y="101.445743" description="" straight="1" type="2" ypos="97.34018792149746" endx="721.4020202535534" xpos="520.0489127579505" endy="109.6568542494924" c2x="654.284318">
       <from>18</from>
-      <to>31</to>
-      <inputs default="0" any="0" invert="0">BallDistance>boundaryCloseFar</inputs>
+      <to>7</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="530.119041" c2y="205.314839" c1y="91.685161" description="" straight="1" type="2" ypos="80.60544564917799" endx="717.5314811193917" xpos="513.4685188806083" endy="216.394554350822" c2x="700.880959">
-      <from>18</from>
-      <to>32</to>
-      <inputs default="0" any="0" invert="0">BallDistance&lt;boundaryCloseFar</inputs>
-      <outputs></outputs>
-    </transition>
-    <transition c1x="1385.563988" c2y="130.282302" c1y="270.517698" description="" straight="1" type="2" ypos="283.2235629409184" endx="1571.48143153041" xpos="1370.11856846959" endy="117.5764370590815" c2x="1556.036012">
+    <transition c1x="1436.982099" c2y="173.215675" c1y="228.219619" description="" straight="1" type="2" ypos="283.2235629409184" endx="1570.70916054401" xpos="1370.11856846959" endy="118.2117303170067" c2x="1503.845630">
       <from>19</from>
       <to>21</to>
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="1572.720111" c2y="151.522060" c1y="389.277940" description="" straight="1" type="2" ypos="409.183723026461" endx="1597.818909956969" xpos="1570.781090043031" endy="131.616276973539" c2x="1595.879889">
+    <transition c1x="1579.826014" c2y="224.470522" c1y="316.329478" description="" straight="1" type="2" ypos="408.1884338732933" endx="1597.721958930225" xpos="1570.878041069775" endy="132.6115661267067" c2x="1588.773986">
       <from>20</from>
       <to>21</to>
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="1552.644558" c2y="-1.736085" c1y="-27.608753" description="" straight="0" type="2" ypos="89.57374210924711" endx="518.4114502982513" xpos="1562.733674472336" endy="44.84431610336436" c2x="768.988026">
+    <transition c1x="1552.644558" c2y="24.263915" c1y="-27.608753" description="" straight="0" type="2" ypos="89.49101754794577" endx="519.4114502982513" xpos="1561.737102022908" endy="70.84431610336436" c2x="769.988026">
       <from>21</from>
       <to>18</to>
-      <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
+      <inputs default="0" any="0" invert="0">1</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1305.977481" c2y="91.170053" c1y="84.629947" description="" straight="1" type="2" ypos="84.07742279483384" endx="1562.614885403257" xpos="1285.985114596743" endy="91.72257720516616" c2x="1542.622519">
+    <transition c1x="1414.528244" c2y="86.164984" c1y="80.635016" description="" straight="1" type="2" ypos="75.10504902034241" endx="1561.615267080264" xpos="1340.984732919736" endy="91.69495097965759" c2x="1488.071756">
       <from>23</from>
       <to>21</to>
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="800.769164" c2y="679.042190" c1y="611.957810" description="" straight="1" type="2" ypos="591.972111753714" endx="797.4746204447351" xpos="801.5253795552649" endy="699.027888246286" c2x="798.230836">
+    <transition c1x="786.102497" c2y="687.375523" c1y="628.624477" description="" straight="1" type="2" ypos="616.972111753714" endx="797.4746204447351" xpos="779.5253795552649" endy="699.027888246286" c2x="790.897503">
       <from>1</from>
       <to>14</to>
       <inputs default="0" any="0" invert="0">timeout(200000)</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="995.288313" c2y="140.816229" c1y="184.983771" description="" straight="1" type="2" ypos="199.9045265078077" endx="1048.029758910146" xpos="981.970241089854" endy="125.8954734921923" c2x="1034.711687">
+    <transition c1x="965.101446" c2y="148.062516" c1y="169.483521" description="" straight="1" type="2" ypos="190.1584887259567" endx="1047.363855292457" xpos="924.6361447075425" endy="126.6415112740433" c2x="1006.232651">
       <from>2</from>
       <to>13</to>
       <inputs default="0" any="0" invert="0">update!=Ballfiltered</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="948.028321" c2y="324.541020" c1y="287.458980" description="" straight="1" type="2" ypos="267.6423765537277" endx="940.2694149845993" xpos="950.7305850154007" endy="344.3576234462723" c2x="942.971679">
+    <transition c1x="893.531824" c2y="299.455598" c1y="279.544402" description="" straight="1" type="2" ypos="259.633206721772" endx="895.4045281893326" xpos="892.5954718106674" endy="319.366793278228" c2x="894.468176">
       <from>2</from>
       <to>16</to>
       <inputs default="0" any="0" invert="0">!BallIsVisible</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="523.740203" c2y="725.223771" c1y="735.776229" description="" straight="1" type="2" ypos="740.5978461642022" endx="461.8496962107755" xpos="543.1503037892245" endy="720.4021538357978" c2x="481.259797">
+    <transition c1x="523.740203" c2y="725.223771" c1y="735.776229" description="" straight="1" type="2" ypos="740.3567652966177" endx="461.8496962107755" xpos="542.179798758179" endy="720.4021538357978" c2x="481.259797">
       <from>4</from>
       <to>8</to>
       <inputs default="0" any="0" invert="0">timeout(2000000)</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="398.984925" c2y="113.750919" c1y="263.249081" description="" straight="1" type="2" ypos="281.808714864832" endx="466.4675920692762" xpos="391.5324079307238" endy="95.19128513516803" c2x="459.015075">
+    <transition c1x="416.719927" c2y="175.349083" c1y="228.578899" description="" straight="1" type="2" ypos="280.8807331946995" endx="467.0949662248987" xpos="391.9050337751013" endy="122.1192668053006" c2x="441.907447">
       <from>5</from>
       <to>18</to>
       <inputs default="0" any="0" invert="0">startDCM</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="366.120179" c2y="376.681713" c1y="422.318287" description="" straight="1" type="2" ypos="442.2103932543636" endx="372.9544581921729" xpos="364.0455418078271" endy="356.7896067456364" c2x="370.879821">
+    <transition c1x="367.049758" c2y="385.594737" c1y="413.405263" description="" straight="1" type="2" ypos="441.2157879531934" endx="372.8507263509465" xpos="364.1492736490535" endy="357.7842120468066" c2x="369.950242">
       <from>6</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">~NaoMotionPlayerIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="321.740137" c2y="534.089032" c1y="559.910968" description="" straight="1" type="2" ypos="577.9072498193482" endx="342.9853332457446" xpos="313.0146667542554" endy="516.0927501806518" c2x="334.259863">
+    <transition c1x="322.859464" c2y="537.297459" c1y="557.602355" description="" straight="1" type="2" ypos="577.007435712152" endx="342.5490597392252" xpos="313.4509402607748" endy="516.992564287848" c2x="332.704262">
       <from>3</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">~NaoWalkIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="377.153672" c2y="648.866720" c1y="675.133280" description="" straight="1" type="2" ypos="687.2914903940405" endx="326.9662166281921" xpos="393.0337833718079" endy="636.7085096059595" c2x="342.846328">
+    <transition c1x="371.275930" c2y="653.974777" c1y="670.633134" description="" straight="1" type="2" ypos="687.2914903940405" endx="327.7602221827612" xpos="393.0337833718079" endy="637.3164201086764" c2x="349.518076">
       <from>8</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">timeout(2000000)</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="153.083243" c2y="129.514296" c1y="226.485704" description="" straight="1" type="2" ypos="243.2702110151563" endx="226.7924326475758" xpos="142.2075673524242" endy="112.7297889848436" c2x="215.916757">
+    <transition c1x="170.887928" c2y="156.802747" c1y="200.036479" description="" straight="1" type="2" ypos="243.2702110151563" endx="228.2486488693085" xpos="142.2075673524242" endy="113.5690143434294" c2x="199.568288">
       <from>9</from>
       <to>17</to>
       <inputs default="0" any="0" invert="0">gunaomotion_naoMotionPlayerIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="170.402522" c2y="156.243263" c1y="199.756737" description="" straight="1" type="2" ypos="243.2702110151563" endx="226.7924326475758" xpos="142.2075673524242" endy="112.7297889848436" c2x="198.597478">
+    <transition c1x="170.887928" c2y="156.802747" c1y="200.036479" description="" straight="1" type="2" ypos="243.2702110151563" endx="228.2486488693085" xpos="142.2075673524242" endy="113.5690143434294" c2x="199.568288">
       <from>9</from>
       <to>17</to>
       <inputs default="0" any="0" invert="0">timeout(3000000)</inputs>
@@ -177,7 +177,7 @@
       <inputs default="0" any="0" invert="0">~gunaomotion_naoWalkIsRunning</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="463.258879" c2y="117.956742" c1y="522.043258" description="" straight="1" type="2" ypos="542.0285940562812" endx="479.5068426841487" xpos="462.4931573158513" endy="97.97140594371879" c2x="478.741121">
+    <transition c1x="468.484957" c2y="263.989980" c1y="403.009287" description="" straight="1" type="2" ypos="542.0285940562812" endx="480.4685565991269" xpos="462.4931573158513" endy="124.9706727627885" c2x="474.476757">
       <from>10</from>
       <to>18</to>
       <inputs default="0" any="0" invert="0">timeout(4000000)</inputs>
@@ -189,13 +189,13 @@
       <inputs default="0" any="0" invert="0">BallDistance&lt;30</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="529.454700" c2y="117.377888" c1y="390.022112" description="" straight="1" type="2" ypos="409.8112263017769" endx="486.6485878294779" xpos="532.3514121705221" endy="97.58877369822308" c2x="489.545300">
+    <transition c1x="517.498749" c2y="219.655895" c1y="314.733561" description="" straight="1" type="2" ypos="409.8112263017769" endx="487.7934234148492" xpos="532.3514121705221" endy="124.578229434075" c2x="502.646086">
       <from>12</from>
       <to>18</to>
       <inputs default="0" any="0" invert="0">timeout(5000000)</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="592.879530" c2y="531.338117" c1y="470.061883" description="" straight="1" type="2" ypos="462.7188714991486" endx="766.7237003128645" xpos="574.2762996871355" endy="538.6811285008514" c2x="748.120470">
+    <transition c1x="585.546197" c2y="548.004784" c1y="478.395216" description="" straight="1" type="2" ypos="462.7188714991486" endx="744.7237003128645" xpos="574.2762996871355" endy="563.6811285008514" c2x="733.453803">
       <from>12</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">BallDistance&lt;45</inputs>
@@ -213,37 +213,37 @@
       <inputs default="0" any="0" invert="0">BallDistance&lt;30</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="1165.227859" c2y="583.112789" c1y="498.887211" description="" straight="1" type="2" ypos="486.0440889562711" endx="1281.103618808451" xpos="1149.896381191549" endy="595.955911043729" c2x="1265.772141">
+    <transition c1x="1200.561192" c2y="573.112789" c1y="478.887211" description="" straight="1" type="2" ypos="456.0440889562711" endx="1281.103618808451" xpos="1202.896381191549" endy="595.955911043729" c2x="1283.438808">
       <from>15</from>
       <to>30</to>
       <inputs default="0" any="0" invert="0">HeadYaw&lt;-boundaryLeftRight</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="1178.916585" c2y="450.136244" c1y="457.863756" description="" straight="1" type="2" ypos="458.9268895185239" endx="1344.055138812269" xpos="1158.944861187731" endy="449.0731104814761" c2x="1324.083415">
+    <transition c1x="1255.648758" c2y="442.393141" c1y="435.660015" description="" straight="1" type="2" ypos="428.9268895185239" endx="1343.056552627969" xpos="1211.944861187731" endy="449.1262671604883" c2x="1299.352655">
       <from>15</from>
       <to>29</to>
       <inputs default="0" any="0" invert="0">HeadYaw>boundaryLeftRight</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="1142.438587" c2y="301.566563" c1y="406.433437" description="" straight="1" type="2" ypos="424.9305768376889" endx="1193.167713839797" xpos="1134.832286160203" endy="283.0694231623111" c2x="1185.561413">
+    <transition c1x="1189.771920" c2y="285.566563" c1y="383.433437" description="" straight="1" type="2" ypos="394.9305768376889" endx="1229.167713839797" xpos="1187.832286160203" endy="274.0694231623111" c2x="1227.228080">
       <from>15</from>
       <to>28</to>
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs>4</outputs>
     </transition>
-    <transition c1x="876.736309" c2y="410.707946" c1y="392.292054" description="" straight="1" type="2" ypos="389.142205333197" endx="741.5132874946407" xpos="896.4867125053593" endy="413.857794666803" c2x="761.263691">
+    <transition c1x="820.166397" c2y="271.566767" c1y="318.433233" description="" straight="1" type="2" ypos="365.299697777638" endx="759.500807686811" xpos="850.499192313189" endy="224.700302222362" c2x="789.833603">
       <from>16</from>
       <to>27</to>
       <inputs default="0" any="0" invert="0">timeout(10000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="844.828904" c2y="405.619265" c1y="397.380735" description="" straight="1" type="2" ypos="389.142205333197" endx="741.5132874946407" xpos="896.4867125053593" endy="413.857794666803" c2x="793.171096">
+    <transition c1x="820.166397" c2y="271.566767" c1y="318.433233" description="" straight="1" type="2" ypos="365.299697777638" endx="759.500807686811" xpos="850.499192313189" endy="224.700302222362" c2x="789.833603">
       <from>16</from>
       <to>27</to>
       <inputs default="0" any="0" invert="0">gunaomotion_naoWalkIsRunning</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="317.944458" c2y="33.146151" c1y="57.741752" description="" straight="0" type="2" ypos="74.78181949714454" endx="441" xpos="287.6581718217018" endy="59" c2x="405.603944">
+    <transition c1x="319.944458" c2y="59.146151" c1y="57.741752" description="" straight="0" type="2" ypos="74.78181949714454" endx="442" xpos="289.6581718217018" endy="85" c2x="406.603944">
       <from>17</from>
       <to>18</to>
       <inputs default="0" any="0" invert="0">~gunaomotion_naoMotionPlayerIsRunning</inputs>
@@ -261,47 +261,53 @@
       <inputs default="0" any="0" invert="0">!gunaomotion_naoMotionPlayerIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1503.924851" c2y="141.758699" c1y="238.041301" description="" straight="1" type="2" ypos="254.6374702905534" endx="1579.836115447715" xpos="1492.763884552285" endy="125.1625297094466" c2x="1568.675149">
+    <transition c1x="1528.268612" c2y="178.207382" c1y="230.422426" description="" straight="1" type="2" ypos="282.6374702905534" endx="1579.278067125862" xpos="1502.763884552285" endy="125.992338163535" c2x="1553.773340">
       <from>26</from>
       <to>21</to>
       <inputs default="0" any="0" invert="0">!gunaomotion_naoWalkingIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="672.093788" c2y="109.257398" c1y="369.742602" description="" straight="1" type="2" ypos="386.7790079288792" endx="501.4295297501075" xpos="682.5704702498924" endy="92.2209920711208" c2x="511.906212">
+    <transition c1x="633.682212" c2y="145.024271" c1y="170.975729" description="" straight="1" type="2" ypos="196.9271876193633" endx="502.9533638462642" xpos="699.0466361537358" endy="119.0728123806367" c2x="568.317788">
       <from>27</from>
       <to>18</to>
       <inputs default="0" any="0" invert="0">!gunaomotion_naoWalkIsRunning</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="1221.649838" c2y="140.399320" c1y="189.600680" description="" straight="1" type="2" ypos="209.0580767294059" endx="1237.9772255637" xpos="1217.0227744363" endy="120.9419232705942" c2x="1233.350162">
+    <transition c1x="1265.930474" c2y="141.962554" c1y="171.010316" description="" straight="1" type="2" ypos="200.0580767294059" endx="1291.745872373026" xpos="1253.0227744363" endy="112.9147930980453" c2x="1278.838173">
       <from>28</from>
       <to>23</to>
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1365.563471" c2y="364.364594" c1y="390.635406" description="" straight="1" type="2" ypos="409.7420480505548" endx="1351.525841250548" xpos="1371.474158749452" endy="345.2579519494452" c2x="1357.436529">
+    <transition c1x="1365.563471" c2y="364.364594" c1y="390.635406" description="" straight="1" type="2" ypos="408.7867159492869" endx="1351.525841250548" xpos="1371.178624358413" endy="345.2579519494452" c2x="1357.436529">
       <from>29</from>
       <to>19</to>
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1359.884355" c2y="481.035130" c1y="587.964870" description="" straight="1" type="2" ypos="599.1632188438709" endx="1534.68661285567" xpos="1343.31338714433" endy="469.836781156129" c2x="1518.115645">
+    <transition c1x="1406.828280" c2y="513.318872" c1y="556.241045" description="" straight="1" type="2" ypos="599.1632188438709" endx="1533.858064467354" xpos="1343.31338714433" endy="470.3966986216708" c2x="1470.343172">
       <from>30</from>
       <to>20</to>
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="783.591139" c2y="96.933863" c1y="103.066137" description="" straight="1" type="2" ypos="105.416599309074" endx="855.2702641616752" xpos="763.7297358383248" endy="94.58340069092601" c2x="835.408861">
-      <from>31</from>
-      <to>7</to>
-      <inputs default="0" any="0" invert="0">vladCounter&lt;500</inputs>
-      <outputs>2</outputs>
+    <transition c1x="1098.943500" c2y="489.101201" c1y="527.481900" description="" straight="1" type="2" ypos="565.8625982809265" endx="1138.199112566055" xpos="1079.31569367623" endy="450.7205028792352" c2x="1118.571306">
+      <from>33</from>
+      <to>15</to>
+      <inputs default="0" any="0" invert="0">BallDistance>20</inputs>
+      <outputs>5</outputs>
     </transition>
-    <transition c1x="791.143943" c2y="132.286830" c1y="195.713170" description="" straight="1" type="2" ypos="210.0476886945449" endx="866.8031565676653" xpos="777.1968434323347" endy="117.9523113054551" c2x="852.856057">
-      <from>32</from>
-      <to>7</to>
-      <inputs default="0" any="0" invert="0">vladCounter&lt;500</inputs>
-      <outputs></outputs>
+    <transition c1x="968.482424" c2y="535.326703" c1y="552.369135" description="" straight="1" type="2" ypos="569.41156719971" endx="884.2842712474619" xpos="1010.581499664312" endy="518.2842712474619" c2x="926.383347">
+      <from>33</from>
+      <to>31</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs>5</outputs>
+    </transition>
+    <transition c1x="715.608534" c2y="236.489515" c1y="349.003383" description="" straight="1" type="2" ypos="461.5172500122727" endx="490.9943802679504" xpos="827.9156101519612" endy="123.9756478277848" c2x="603.301457">
+      <from>31</from>
+      <to>18</to>
+      <inputs default="0" any="0" invert="0">kick</inputs>
+      <outputs>5</outputs>
     </transition>
   </machine>
 </qfsmproject>
