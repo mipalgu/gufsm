@@ -175,6 +175,20 @@ namespace FSM
         };
 
         /**
+         * Printing action for strings (no newline)
+         */
+        class PrintStringNoNLAction: public PrintStringAction
+        {
+        public:
+                /** print the content of this action */
+                virtual void performv(Machine *, ActionStage, int, va_list)
+                {
+                        std::cout << _content;
+                }
+                
+        };
+
+        /**
          * Printing action for ints
          */
         class PrintIntAction: public PrintingAction<int>

@@ -382,6 +382,7 @@ int run_machine_vector(StateMachineVectorFactory &factory, vector<string> &machi
 #endif
         ANTLRFunc(PrintStatenameFunction, "print_state_name");
         ANTLRFunc(PrintStringAction,    "print");
+        ANTLRFunc(PrintStringNoNLAction,"printn");
         ANTLRFunc(PrintIntAction,       "print_int");
         ANTLRFunc(PrintFixedAction,     "print_fixed");
         ANTLRFunc(PostStringFunction,   "post");
