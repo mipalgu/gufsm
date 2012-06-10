@@ -207,7 +207,7 @@ bool WBSubMachine::executeOnce(bool *fired)
         else if (_scheduleRestart) restart();
         else if (_scheduleResume) resume();
 	
-	
+#ifdef DEBUG_MONITORING
 	if ( isBeingMonitored() ) {
 		/* Post the name and id of this machine to the whiteboard, so
 		 * that a monitoring module can identify the machines without
@@ -234,6 +234,7 @@ bool WBSubMachine::executeOnce(bool *fired)
 		sprintf(msgName, "mon_c_state_m:%d", id());
 		c->whiteboard()->addMessage(msgName, msg);
 	}
+#endif
 	
         return SuspensibleMachine::executeOnce(fired);
 }

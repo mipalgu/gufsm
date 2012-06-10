@@ -133,6 +133,7 @@ statement_callback(void *context, const char *terminal, const char *content,
                 {
                         c->set_internal_variable(t1c, m->id(), result);
 			
+#ifdef DEBUG_MONITORING
 			// Decide to post the value if we are monitoring the
 			//  machine from eg Qfsm.
 			if (m->isBeingMonitored()) {
@@ -143,6 +144,7 @@ statement_callback(void *context, const char *terminal, const char *content,
 					c->whiteboard()->addMessage(msgName, WBMsg(result));
 				}
 			}
+#endif
 			
                         return 0;                       /* parse children */
                 }
@@ -157,6 +159,7 @@ statement_callback(void *context, const char *terminal, const char *content,
                 {
                         c->set_variable(t1c, result);   /* set global variable */
 			
+#ifdef DEBUG_MONITORING
 			// Decide to post the value if we are monitoring the
 			//  machine from eg Qfsm.
 			if (m->isBeingMonitored()) {
@@ -167,6 +170,7 @@ statement_callback(void *context, const char *terminal, const char *content,
 					c->whiteboard()->addMessage(msgName, WBMsg(result));
 				}
 			}
+#endif
 			
                         return 0;
                 }
