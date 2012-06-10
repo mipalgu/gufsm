@@ -115,7 +115,7 @@ namespace FSM
                 ContentAction(const T &content): _content(content) {}
                 
                 /** getter method */
-                virtual const T &content() { return _content; }
+                virtual const T &content() const { return _content; }
                 
                 /** setter method */
                 virtual void setContent(const T &c) { _content = c; }
