@@ -77,7 +77,7 @@ using namespace std;
 
 static void default_idle_sleep(useconds_t t)
 {
-        usleep(t);
+        protected_usleep(t);
 }
 
 
