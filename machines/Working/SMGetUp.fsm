@@ -5,16 +5,16 @@
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
-    <itransition ypos="125" endx="102.5494181990515" xpos="30" endy="158.527140916879"/>
-    <state pencolor="959488" radius="40" description="OnEntry { suspend(&quot;SMBallFollower&quot;);  suspend(&quot;SMHeadScan&quot;);&#xa;&#x9;holdingStiffness=100;&#xa;               post(&quot;gunaomotion_naoMotionPlayer&quot;, &quot;stop now&quot;); &#xa;               post(&quot;Say&quot;, &quot;about to get up&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="304" code="7" xpos="315" linewidth="1">Up</state>
-    <state pencolor="0" radius="40" description="OnEntry { holdingStiffness=100; suspend(&quot;SMBallFollower&quot;); &#xa;&#x9;post(&quot;gunaomotion_naoMotionPlayer&quot;, &quot;get_up_from_back_lie_down&quot;); &#xa;               post(&quot;Say&quot;, &quot;Getting up from back&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="66" code="0" xpos="215" linewidth="1">BackGetUp</state>
-    <state pencolor="0" radius="40" description="OnEntry {  holdingStiffness=100; suspend(&quot;SMBallFollower&quot;); &#xa;&#x9;post(&quot;gunaomotion_naoMotionPlayer&quot;, &quot;get_up_from_front_lie_down&quot;); &#xa;               post(&quot;Say&quot;, &quot;Getting up from front&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="337" code="1" xpos="629" linewidth="1">FrontGetUp</state>
-    <state pencolor="0" radius="40" description="OnEntry {  holdingStiffness=100; suspend(&quot;SMBallFollower&quot;); &#xa;               post(&quot;Speech&quot;, &quot;Lying down now&quot;); &#xa;               post(&quot;gunaomotion_naoMotionPlayer&quot;, &quot;side_to_lie_down&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="550" code="2" xpos="281" linewidth="1">SideToLieDown</state>
-    <state pencolor="0" radius="40" description="OnEntry { post(&quot;Speech&quot;, &quot;starting wait&quot;); }&#xa;OnExit { post(&quot;Speech&quot;, &quot;finished waiting&quot;); }&#xa;{ }" finalstate="0" moore_outputs="" ypos="72" code="3" xpos="459" linewidth="1">WAIT</state>
-    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { post(&quot;Say&quot;, &quot;finished waiting&quot;); }&#xa;{ }" finalstate="0" moore_outputs="" ypos="480" code="4" xpos="678" linewidth="1">WAIT</state>
-    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="476" code="5" xpos="64" linewidth="1">WAIT</state>
-    <state pencolor="0" radius="40" description="OnEntry { extern fallen;&#xa;&#x9;extern robotFallenForward;&#xa;&#x9;extern robotFallenBack;&#xa;&#x9;extern robotFallenRight;&#xa;&#x9;extern robotFallenLeft;&#xa;&#x9;extern holdingStiffness; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="175" code="6" xpos="139" linewidth="1">Init</state>
-    <transition c1x="316.460037" c2y="167.688924" c1y="238.020393" description="" straight="0" type="2" ypos="264.1985123916004" endx="213.4012784660451" xpos="318.98014876084" endy="105.9680383488716" c2x="232.441976">
+    <itransition ypos="130" endx="103.5494181990515" xpos="31" endy="163.527140916879"/>
+    <state pencolor="959488" radius="40" description="OnEntry { suspend(&quot;SMBallFollower&quot;);  suspend(&quot;SMHeadScan&quot;);&#xa;&#x9;gunaomotion_holdingStiffness=100;&#xa;        post(&quot;gunaomotion_naoMotionPlayer&quot;, &quot;stop now&quot;); &#xa;&#x9;print_state_name();&#xa;               post(&quot;Say&quot;, &quot;about to get up&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="304" code="7" xpos="315" linewidth="1">Up</state>
+    <state pencolor="0" radius="40" description="OnEntry { gunaomotion_holdingStiffness=100; suspend(&quot;SMBallFollower&quot;); &#xa;&#x9;post(&quot;gunaomotion_naoMotionPlayer&quot;, &quot;get_up_from_back_lie_down&quot;); &#xa;               post(&quot;Say&quot;, &quot;Getting up from back&quot;);&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="69" code="0" xpos="220" linewidth="1">BackGetUp</state>
+    <state pencolor="0" radius="40" description="OnEntry {  gunaomotion_holdingStiffness=100; suspend(&quot;SMBallFollower&quot;); &#xa;&#x9;post(&quot;gunaomotion_naoMotionPlayer&quot;, &quot;get_up_from_front_lie_down&quot;); &#xa;               post(&quot;Say&quot;, &quot;Getting up from front&quot;);&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="337" code="1" xpos="629" linewidth="1">FrontGetUp</state>
+    <state pencolor="0" radius="40" description="OnEntry {  gunaomotion_holdingStiffness=100; suspend(&quot;SMBallFollower&quot;); &#xa;               post(&quot;Speech&quot;, &quot;Lying down now&quot;); &#xa;               post(&quot;gunaomotion_naoMotionPlayer&quot;, &quot;side_to_lie_down&quot;);&#xa;&#x9;print_state_name();&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="550" code="2" xpos="281" linewidth="1">SideToLieDown</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;Speech&quot;, &quot;starting wait&quot;); }&#xa;OnExit { post(&quot;Speech&quot;, &quot;finished waiting&quot;); }&#xa;{ print_state_name(); }" finalstate="0" moore_outputs="" ypos="71" code="3" xpos="509" linewidth="1">WAIT</state>
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { post(&quot;Speech&quot;, &quot;finished waiting&quot;); }&#xa;{ print_state_name(); }" finalstate="0" moore_outputs="" ypos="480" code="4" xpos="678" linewidth="1">WAIT</state>
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ print_state_name(); }" finalstate="0" moore_outputs="" ypos="476" code="5" xpos="64" linewidth="1">WAIT</state>
+    <state pencolor="0" radius="40" description="OnEntry { extern fallen;&#xa;&#x9;extern robotFallenForward;&#xa;&#x9;extern robotFallenBack;&#xa;&#x9;extern robotFallenRight;&#xa;&#x9;extern robotFallenLeft;&#xa;&#x9;extern gunaomotion_holdingStiffness;&#xa;&#x9;extern gunaomotion_naoMotionPlayerIsRunning;&#xa;  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="180" code="6" xpos="140" linewidth="1">Init</state>
+    <transition c1x="316.460037" c2y="170.688924" c1y="238.020393" description="" straight="0" type="2" ypos="264.1985123916004" endx="218.4012784660451" xpos="318.98014876084" endy="108.9680383488716" c2x="237.441976">
       <from>7</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">robotFallenBack</inputs>
@@ -38,43 +38,43 @@
       <inputs default="0" any="0" invert="0">robotFallenLeft</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="309.662637" c2y="69.672230" c1y="68.327770" description="" straight="1" type="2" ypos="66.98330931045467" endx="419.0120880415097" xpos="254.9879119584903" endy="71.01669068954533" c2x="364.337363">
+    <transition c1x="278.998587" c2y="70.591705" c1y="69.408295" description="" straight="1" type="2" ypos="69.27680998056378" endx="470.0009338633208" xpos="259.9990421914658" endy="70.73011026895031" c2x="450.001413">
       <from>0</from>
       <to>3</to>
-      <inputs default="0" any="0" invert="0">NaoMotionPlayerIsRunning</inputs>
+      <inputs default="0" any="0" invert="0">gunaomotion_naoMotionPlayerIsRunning</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="648.589305" c2y="422.121422" c1y="394.878578" description="" straight="1" type="2" ypos="375.1097707084536" endx="666.1528321493286" xpos="641.150941385304" endy="442.8429735592578" c2x="658.410695">
+    <transition c1x="648.125156" c2y="424.185769" c1y="392.814231" description="" straight="1" type="2" ypos="373.894152816334" endx="665.357947636361" xpos="641.642052363639" endy="443.105847183666" c2x="658.874844">
       <from>1</from>
       <to>4</to>
-      <inputs default="0" any="0" invert="0">NaoMotionPlayerIsRunning</inputs>
+      <inputs default="0" any="0" invert="0">gunaomotion_naoMotionPlayerIsRunning</inputs>
       <outputs>1</outputs>
     </transition>
     <transition c1x="203.826232" c2y="545.739767" c1y="557.869084" description="" straight="0" type="2" ypos="557.99840047984" endx="98.86302148498197" xpos="241.8078376487837" endy="495.6104495853024" c2x="126.844627">
       <from>2</from>
       <to>5</to>
-      <inputs default="0" any="0" invert="0">NaoMotionPlayerIsRunning</inputs>
+      <inputs default="0" any="0" invert="0">gunaomotion_naoMotionPlayerIsRunning</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="376.477720" c2y="299.204332" c1y="133.953742" description="" straight="0" type="2" ypos="98.81145031875081" endx="354.8253690423715" xpos="429.3158942899545" endy="300.2663716522777" c2x="465.493597">
+    <transition c1x="426.477720" c2y="299.204332" c1y="132.953742" description="" straight="0" type="2" ypos="97.81145031875081" endx="354.8253690423715" xpos="479.3158942899545" endy="300.2663716522777" c2x="465.493597">
       <from>3</from>
       <to>7</to>
-      <inputs default="0" any="0" invert="0">!NaoMotionPlayerIsRunning</inputs>
+      <inputs default="0" any="0" invert="0">~gunaomotion_naoMotionPlayerIsRunning</inputs>
       <outputs>1</outputs>
     </transition>
     <transition c1x="511.727050" c2y="401.053006" c1y="495.809613" description="" straight="0" type="2" ypos="480" endx="341.1175848827785" xpos="638" endy="334.2963984640231" c2x="393.922317">
       <from>4</from>
       <to>7</to>
-      <inputs default="0" any="0" invert="0">!NaoMotionPlayerIsRunning</inputs>
+      <inputs default="0" any="0" invert="0">~gunaomotion_naoMotionPlayerIsRunning</inputs>
       <outputs>1</outputs>
     </transition>
     <transition c1x="104.715535" c2y="383.792902" c1y="398.430964" description="" straight="0" type="2" ypos="436.0690250730001" endx="280.4488439640626" xpos="66.34888087805882" endy="324.1548410209634" c2x="215.082190">
       <from>5</from>
       <to>7</to>
-      <inputs default="0" any="0" invert="0">!NaoMotionPlayerIsRunning</inputs>
+      <inputs default="0" any="0" invert="0">~gunaomotion_naoMotionPlayerIsRunning</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="207.326409" c2y="256.651722" c1y="227.649160" description="" straight="1" type="2" ypos="198.6465989933159" endx="279.4551737178055" xpos="171.2620265335163" endy="285.6542832091899" c2x="243.390791">
+    <transition c1x="188.140037" c2y="269.889345" c1y="214.110655" description="" straight="1" type="2" ypos="202.5477211806569" endx="283.1786193014923" xpos="171.8213806985077" endy="281.4522788193431" c2x="266.859963">
       <from>6</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">fallen</inputs>

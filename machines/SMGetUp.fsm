@@ -1,7 +1,7 @@
 <?xml version='1.0'?>
 <!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
 <qfsmproject version="0.53" author="Qfsm">
-  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="A Game Controller developed with QFSM.&#xa;This graphically replicates revision 1190 of&#xa;AGameController.txt and&#xa;TGameController.txt&#xa;from the repository" version="1" name="GameController" arrowtype="1" numbits="3" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="7">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="A Game Controller developed with QFSM.&#xa;This graphically replicates revision 1190 of&#xa;AGameController.txt and&#xa;TGameController.txt&#xa;from the repository" version="1" name="SMGetUp" arrowtype="1" numbits="3" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="7">
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
@@ -13,61 +13,61 @@
     <state pencolor="0" radius="40" description="OnEntry { post(&quot;Say&quot;, &quot;starting wait&quot;); }&#xa;OnExit { post(&quot;Say&quot;, &quot;finished waiting&quot;); }&#xa;{ }" finalstate="0" moore_outputs="" ypos="72" code="3" xpos="459" linewidth="1">WAIT</state>
     <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { post(&quot;Say&quot;, &quot;finished waiting&quot;); }&#xa;{ }" finalstate="0" moore_outputs="" ypos="480" code="4" xpos="678" linewidth="1">WAIT</state>
     <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="476" code="5" xpos="64" linewidth="1">WAIT</state>
-    <transition c1x="316.4600371262535" c2y="167.6889244017213" c1y="238.02039257839" description="" straight="0" type="2" ypos="264.1985123916004" endx="213.4012784660451" xpos="318.98014876084" endy="105.9680383488716" c2x="232.441976174287">
+    <transition c1x="316.460037" c2y="167.688924" c1y="238.020393" description="" straight="0" type="2" ypos="264.1985123916004" endx="213.4012784660451" xpos="318.98014876084" endy="105.9680383488716" c2x="232.441976">
       <from>7</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">robotFallenBack</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="385.0769617237727" c2y="302.8309511914894" c1y="314.1241258655966" description="" straight="0" type="2" ypos="319.0282043495687" endx="600.2535404907157" xpos="352.0695707289362" endy="320.5249803122736" c2x="552.9954393534667">
+    <transition c1x="385.076962" c2y="302.830951" c1y="314.124126" description="" straight="0" type="2" ypos="319.0282043495687" endx="600.2535404907157" xpos="352.0695707289362" endy="320.5249803122736" c2x="552.995439">
       <from>7</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">robotFallenForward</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="337.1398818791632" c2y="435.3555829589756" c1y="398.2976876867425" description="" straight="0" type="2" ypos="343.3148874773728" endx="291.2357024126513" xpos="322.3715414020074" endy="511.3317908855395" c2x="330.3830978775497">
+    <transition c1x="337.139882" c2y="435.355583" c1y="398.297688" description="" straight="0" type="2" ypos="343.3148874773728" endx="291.2357024126513" xpos="322.3715414020074" endy="511.3317908855395" c2x="330.383098">
       <from>7</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">robotFallenRight</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="303.4226515143013" c2y="485.2655054768818" c1y="386.604976721061" description="" straight="0" type="2" ypos="342.5407163851976" endx="265.7700077898282" xpos="304.2942454485562" endy="513.0128760610114" c2x="253.7367140859293">
+    <transition c1x="303.422652" c2y="485.265505" c1y="386.604977" description="" straight="0" type="2" ypos="342.5407163851976" endx="265.7700077898282" xpos="304.2942454485562" endy="513.0128760610114" c2x="253.736714">
       <from>7</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">robotFallenLeft</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="309.5717474108991" c2y="69.05196218567103" c1y="69.61967678319637" description="" straight="1" type="2" ypos="70.18739138072169" endx="419.1548059989848" xpos="254.7802181168562" endy="68.48424758814571" c2x="364.3632767049419">
+    <transition c1x="273.982170" c2y="70.549619" c1y="67.450381" description="" straight="1" type="2" ypos="66.95872657769331" endx="420.0117858404719" xpos="253.9882141595281" endy="71.04127342230669" c2x="400.017830">
       <from>0</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">NaoMotionPlayerIsRunning</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="672.2051839845167" c2y="414.5204038924476" c1y="388.9315179631636" description="" straight="1" type="2" ypos="363.3426320338796" endx="680.9548674206125" xpos="667.8303422664687" endy="440.1092898217316" c2x="676.5800257025645">
+    <transition c1x="651.922639" c2y="423.788088" c1y="398.211912" description="" straight="1" type="2" ypos="380.1097707084535" endx="666.1528321493286" xpos="646.150941385304" endy="442.8429735592578" c2x="660.077361">
       <from>1</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">NaoMotionPlayerIsRunning</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="203.8262322608498" c2y="545.7397665501483" c1y="557.8690835149941" description="" straight="0" type="2" ypos="557.99840047984" endx="98.86302148498197" xpos="241.8078376487837" endy="495.6104495853024" c2x="126.8446268729159">
+    <transition c1x="203.826232" c2y="545.739767" c1y="557.869084" description="" straight="0" type="2" ypos="557.99840047984" endx="98.86302148498197" xpos="241.8078376487837" endy="495.6104495853024" c2x="126.844627">
       <from>2</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">NaoMotionPlayerIsRunning</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="376.4777200575186" c2y="299.2043318402895" c1y="133.9537423470521" description="" straight="0" type="2" ypos="98.81145031875081" endx="354.8253690423715" xpos="429.3158942899545" endy="300.2663716522777" c2x="465.4935974049678">
+    <transition c1x="376.477720" c2y="299.204332" c1y="133.953742" description="" straight="0" type="2" ypos="98.81145031875081" endx="354.8253690423715" xpos="429.3158942899545" endy="300.2663716522777" c2x="465.493597">
       <from>3</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">!NaoMotionPlayerIsRunning</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="511.7270498141434" c2y="401.053005934504" c1y="495.8096134049849" description="" straight="0" type="2" ypos="480" endx="341.1175848827785" xpos="638" endy="334.2963984640231" c2x="393.922317348461">
+    <transition c1x="511.727050" c2y="401.053006" c1y="495.809613" description="" straight="0" type="2" ypos="480" endx="341.1175848827785" xpos="638" endy="334.2963984640231" c2x="393.922317">
       <from>4</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">!NaoMotionPlayerIsRunning</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="104.7155352400601" c2y="383.7929023716424" c1y="398.4309637223212" description="" straight="0" type="2" ypos="436.0690250730001" endx="280.4488439640626" xpos="66.34888087805882" endy="324.1548410209634" c2x="215.0821896020614">
+    <transition c1x="104.715535" c2y="383.792902" c1y="398.430964" description="" straight="0" type="2" ypos="436.0690250730001" endx="280.4488439640626" xpos="66.34888087805882" endy="324.1548410209634" c2x="215.082190">
       <from>5</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">!NaoMotionPlayerIsRunning</inputs>
