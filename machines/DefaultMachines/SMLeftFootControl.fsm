@@ -1,20 +1,20 @@
 <?xml version='1.0'?>
 <!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
 <qfsmproject version="0.53" author="Qfsm">
-  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vladimir Estivill-Castro" description="Submachine of Game Controller to LED out the team we r playing" version="1" name="FSMVladLEDcontrol" arrowtype="1" numbits="1" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="1">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vladimir Estivill-Castro" description="Submachine of Game Controller to LED out the team we r playing" version="1" name="SMLeftFootControl" arrowtype="1" numbits="1" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="1">
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
-    <itransition ypos="268.7780628795916" endx="360.0075679889882" xpos="300.0075679889882" endy="268.7780628795916"/>
-    <state pencolor="0" radius="40" description="OnEntry { post(&quot;LEDS&quot;,&quot;Face Red&quot;);&#xa; post(&quot;LEDS&quot;,&quot;LFoot Red&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="296" code="0" xpos="193" linewidth="1">WE_R_RED</state>
-    <state pencolor="0" radius="40" description="OnEntry { post(&quot;LEDS&quot;,&quot;Face Blue&quot;);&#xa; post(&quot;LEDS&quot;,&quot;LFoot Blue&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="268" code="1" xpos="400" linewidth="1">WE_R_BLUE</state>
-    <transition c1x="275.3250147846813" c2y="278.6567126850258" c1y="286.0807906194093" description="" straight="1" type="2" ypos="293.5048685537928" endx="360.130838075413" xpos="232.9221031393155" endy="271.2326347506422" c2x="317.7279264300472">
+    <itransition ypos="297.7780628795916" endx="417.0075679889882" xpos="357.0075679889882" endy="297.7780628795916"/>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;LEDS&quot;,&quot;Face Red&quot;);&#xa; post(&quot;LEDS&quot;,&quot;LFoot Red&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="300" code="0" xpos="190" linewidth="1">WE_R_RED</state>
+    <state pencolor="0" radius="40" description="OnEntry {  extern ourTeam;&#xa; post(&quot;LEDS&quot;,&quot;Face Blue&quot;);&#xa; post(&quot;LEDS&quot;,&quot;LFoot Blue&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="297" code="1" xpos="457" linewidth="1">WE_R_BLUE</state>
+    <transition c1x="253.205963" c2y="239.969054" c1y="218.725382" description="" straight="0" type="2" ypos="287.8364174477422" endx="417.0321290552672" xpos="228.1057378815108" endy="295.3970988348669" c2x="396.047390">
       <from>0</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">!ourTeam</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="320.2198174500456" c2y="308.7070850560215" c1y="299.6841189857521" description="" straight="1" type="2" ypos="290.6611529154826" endx="226.5828062860861" xpos="367.0383230320253" endy="317.730051126291" c2x="273.4013118680658">
+    <transition c1x="380.553894" c2y="366.355098" c1y="363.107296" description="" straight="0" type="2" ypos="309.1635825522578" endx="229.9678709447328" xpos="418.8942621184892" endy="301.6029011651331" c2x="293.260882">
       <from>1</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">ourTeam</inputs>
