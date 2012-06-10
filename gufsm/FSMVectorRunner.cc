@@ -139,6 +139,32 @@ struct SystemFunction: public ContentAction<string>
 };
 
 /*
+ * State machine functions (see also: Whiteboard functions below)
+ */
+class SuspendAllFunction: public Action
+{
+        StateMachineVector *_fsms;
+public:
+        /** default constructor */
+        SuspendAllFunction(): Action(), _fsms(NULL) {}
+
+        /** setter for state machine vector */
+        void setFSMs(StateMachineVector *v) { _fsms = v; }
+
+        /** getter for state machine vector */
+        StateMachineVector *fsms() const { return _fsms; }
+
+        /** suspend all state machines except for the current one */
+        virtual void performv(Machine *m, ActionStage, int, va_list)
+        {
+                _fsms->suspend();
+                static_cast<SuspensibleMachine*>(m)->resume();
+        }
+       
+};
+
+
+/*
  * Whiteboard functions
  */
 typedef WBPostAction<const char *> PostStringFunction;
@@ -304,7 +330,10 @@ int run_machine_vector(StateMachineVectorFactory &factory, vector<string> &machi
         ANTLRFunc(WBSuspendFunction,    "suspend");
         ANTLRFunc(WBResumeFunction,     "resume");
         ANTLRFunc(WBRestartFunction,    "restart");
-        
+        ANTLRFunc(SuspendAllFunction,   "suspendAll");
+
+        funcSuspendAllFunction.setFSMs(factory.fsms());         // needs vector
+
         ANTLRFunc(WBSayFunction,        "say");                 // sends Say
         ANTLRFunc(WBSpeechFunction,     "speech");              // sends Speech
         ANTLRFunc(WBSayStateFunction,   "say_state_name");      // sends Say
