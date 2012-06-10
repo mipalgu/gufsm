@@ -6,14 +6,14 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="80" endx="50" xpos="-10" endy="80"/>
-    <state pencolor="12124415" radius="40" description="OnEntry { &#xa;&#x9;extern playerNumber;&#xa;&#x9;extern sensors_postTemps_Updated;&#xa;&#x9;int newTemps;&#xa;&#x9;int initPostCount;&#xa;&#x9;sensors_postTemps_Updated = 0;&#xa;&#x9;initPostCount = 0;&#xa;&#x9;newTemps = 0;&#xa; &#xa;&#x9;suspendAll();&#xa; }&#xa;OnExit { playerNumber = read_int(&quot;/home/nao/data/player&quot;);&#xa;&#x9;post(&quot;QSpeech&quot;, &quot;Player&quot;);&#xa;&#x9;post_int(&quot;QSpeech&quot;, playerNumber);&#xa;&#x9;post(&quot;QSpeech&quot;, &quot;starting&quot;);&#xa; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="80" code="0" xpos="90" linewidth="1">Init</state>
+    <state pencolor="12124415" radius="40" description="OnEntry { &#xa;&#x9;extern playerNumber;&#xa;&#x9;extern sensors_postTemps_Updated;&#xa;&#x9;int newTemps;&#xa;&#x9;int initPostCount;&#xa;&#x9;sensors_postTemps_Updated = 0;&#xa;&#x9;initPostCount = 0;&#xa;&#x9;newTemps = 0;&#xa; &#xa;&#x9;suspendAll();&#xa; }&#xa;OnExit { playerNumber = read_int(&quot;/home/nao/data/player&quot;);&#xa;&#x9;post(&quot;QSpeech&quot;, &quot;Player&quot;);&#xa;&#x9;post_int(&quot;QSpeech&quot;, playerNumber);&#xa; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="80" code="0" xpos="90" linewidth="1">Init</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;initPostCount = initPostCount + 1;&#xa;&#x9;post(&quot;sensors_postTemps&quot;, &quot;On&quot;); &#xa; }&#xa;OnExit { }&#xa;{ print_state_name(); }&#xa;" finalstate="0" moore_outputs="" ypos="178" code="5" xpos="161" linewidth="1">WaitForRobotStart</state>
     <state pencolor="0" radius="40" description="OnEntry {  print_state_name();&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="80" code="14" xpos="409" linewidth="1">OnRobotStart</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;initPostCount = initPostCount - 1;&#xa;&#x9;post(&quot;sensors_postTemps&quot;, &quot;Off&quot;); &#xa; }&#xa;OnExit { }&#xa;{ print_state_name(); }&#xa;" finalstate="0" moore_outputs="" ypos="208" code="3" xpos="501" linewidth="1">RemoveExtraListeners</state>
-    <state pencolor="0" radius="40" description="OnEntry {  print_state_name();&#xa;&#x9;post(&quot;QSpeech&quot;, &quot;Starting Machines&quot;); &#xa;&#xa;&#x9;restart(&quot;Safety_BatteryMonitor&quot;);&#xa;&#x9;restart(&quot;Safety_TempsMonitor&quot;);&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="97" code="6" xpos="691" linewidth="1">StartMachines</state>
+    <state pencolor="0" radius="40" description="OnEntry {  print_state_name();&#xa;&#x9;post(&quot;QSpeech&quot;, &quot;Starting Machines&quot;); &#xa;&#xa;&#x9;restart(&quot;Safety_BatteryMonitor&quot;);&#xa;&#x9;restart(&quot;Safety_TempsMonitor&quot;);&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="100" code="6" xpos="690" linewidth="1">StartMachines</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="313" code="1" xpos="135" linewidth="1">Wait</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="341" code="2" xpos="469" linewidth="1">Wait2</state>
-    <transition c1x="121.293724" c2y="134.805846" c1y="123.194154" description="" straight="1" type="2" ypos="111.5824629047094" endx="138.1188278955676" xpos="112.8811721044324" endy="146.4175370952906" c2x="129.706276">
+    <transition c1x="121.293724" c2y="134.805846" c1y="123.194154" description="" straight="1" type="2" ypos="112.3922696458558" endx="138.1188278955676" xpos="113.4678688250588" endy="146.4175370952906" c2x="129.706276">
       <from>0</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">1</inputs>
@@ -43,13 +43,13 @@
       <inputs default="0" any="0" invert="0">timeout(400000)</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="575.558171" c2y="140.557668" c1y="164.442332" description="" straight="1" type="2" ypos="188.3269947139229" endx="657.3254864472553" xpos="534.6745135527447" endy="116.6730052860771" c2x="616.441829">
+    <transition c1x="574.937021" c2y="142.893959" c1y="165.610477" description="" straight="1" type="2" ypos="188.3269947139229" endx="655.4620373818004" xpos="534.6745135527447" endy="120.1774413190535" c2x="615.199529">
       <from>3</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">initPostCount&lt;1</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="629.807708" c2y="4.591044" c1y="-5.061273" description="" straight="1" type="2" ypos="58.53904209436709" endx="706.8966763746433" xpos="680.0111548841048" endy="61.38686084827879" c2x="765.977228">
+    <transition c1x="628.807708" c2y="7.591044" c1y="-2.061273" description="" straight="1" type="2" ypos="61.53904209436709" endx="705.8966763746433" xpos="679.0111548841048" endy="64.38686084827879" c2x="764.977228">
       <from>6</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">timeout(4000000)</inputs>
