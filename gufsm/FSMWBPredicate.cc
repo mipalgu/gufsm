@@ -58,6 +58,7 @@
 #include <Whiteboard.h>
 #include "FSMWBPredicate.h"
 #include "FSMWBContext.h"
+#include <ctype.h>
 
 using namespace std;
 using namespace FSM;
@@ -77,8 +78,10 @@ int WBPredicate::evaluate(WBMsg &msg)
                         return msg.getFloatValue() != 0.0f;
                         
                 case WBMsg::TypeString:
-                        char c = *msg.getStringValue().c_str();
-                        return c != 0 && c != 'n' && c != 'N' && c != 'f' && c != 'F' && c != '-' && c != '0';
+                        const char *s = msg.getStringValue().c_str();
+                        char c = *s;
+                        c = toupper(c);
+                        return c != 0 && c != 'N' && c != 'F' && c != '-' && c != '0' && !(c == 'O' && toupper(s[1]) == 'F');
         }
         return false;
 }
