@@ -1,61 +1,67 @@
 <?xml version='1.0'?>
 <!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
 <qfsmproject version="0.53" author="Qfsm">
-  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene, Carl" description="" version="1" name="SMHeadBallTracker" arrowtype="1" numbits="4" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene, Carl" description="" version="1" name="StateMachineStarter" arrowtype="1" numbits="4" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
-    <itransition ypos="80" endx="48" xpos="-12" endy="80"/>
-    <state pencolor="12124415" radius="40" description="OnEntry { &#xa;&#x9;extern sensors_postTemps_Updated;&#xa;&#x9;int newTemps;&#xa;&#x9;int initPostCount;&#xa;&#x9;sensors_postTemps_Updated = 0;&#xa;&#x9;initPostCount = 0;&#xa;&#x9;newTemps = 0;&#xa;&#xa;&#x9;suspend(&quot;Safety_BatteryMonitor&quot;);&#xa;&#x9;suspend(&quot;Safety_TempsMonitor&quot;);&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="80" code="0" xpos="88" linewidth="1">Init</state>
-    <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;initPostCount = initPostCount + 1;&#xa;&#x9;post(&quot;sensors_postTemps&quot;, &quot;On&quot;); &#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="178" code="5" xpos="161" linewidth="1">WaitForRobotStart</state>
-    <state pencolor="0" radius="40" description="OnEntry {  &#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="80" code="14" xpos="409" linewidth="1">OnRobotStart</state>
-    <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;initPostCount = initPostCount - 1;&#xa;&#x9;post(&quot;sensors_postTemps&quot;, &quot;Off&quot;); &#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="208" code="3" xpos="501" linewidth="1">RemoveExtraListeners</state>
-    <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;post(&quot;Say&quot;, &quot;Starting Machines&quot;); &#xa;&#xa;&#xa;&#x9;restart(&quot;Safety_BatteryMonitor&quot;);&#xa;&#x9;restart(&quot;Safety_TempsMonitor&quot;);&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="97" code="6" xpos="691" linewidth="1">StartMachines</state>
+    <itransition ypos="80" endx="50" xpos="-10" endy="80"/>
+    <state pencolor="12124415" radius="40" description="OnEntry { &#xa;&#x9;extern playerNumber;&#xa;&#x9;extern sensors_postTemps_Updated;&#xa;&#x9;int newTemps;&#xa;&#x9;int initPostCount;&#xa;&#x9;sensors_postTemps_Updated = 0;&#xa;&#x9;initPostCount = 0;&#xa;&#x9;newTemps = 0;&#xa; &#xa;&#x9;suspendAll();&#xa; }&#xa;OnExit { playerNumber = read_int(&quot;/home/nao/data/player&quot;);&#xa;&#x9;post(&quot;QSpeech&quot;, &quot;Player&quot;);&#xa;&#x9;post_int(&quot;QSpeech&quot;, playerNumber);&#xa; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="80" code="0" xpos="90" linewidth="1">Init</state>
+    <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;initPostCount = initPostCount + 1;&#xa;&#x9;post(&quot;sensors_postTemps&quot;, &quot;On&quot;); &#xa; }&#xa;OnExit { }&#xa;{ print_state_name(); }&#xa;" finalstate="0" moore_outputs="" ypos="178" code="5" xpos="161" linewidth="1">WaitForRobotStart</state>
+    <state pencolor="0" radius="40" description="OnEntry {  print_state_name();&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="80" code="14" xpos="409" linewidth="1">OnRobotStart</state>
+    <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;initPostCount = initPostCount - 1;&#xa;&#x9;post(&quot;sensors_postTemps&quot;, &quot;Off&quot;); &#xa; }&#xa;OnExit { }&#xa;{ print_state_name(); }&#xa;" finalstate="0" moore_outputs="" ypos="208" code="3" xpos="501" linewidth="1">RemoveExtraListeners</state>
+    <state pencolor="0" radius="40" description="OnEntry {  print_state_name();&#xa;&#x9;post(&quot;QSpeech&quot;, &quot;Starting Machines&quot;); &#xa;&#xa;&#x9;restart(&quot;Safety_BatteryMonitor&quot;);&#xa;&#x9;restart(&quot;Safety_TempsMonitor&quot;);&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="100" code="6" xpos="690" linewidth="1">StartMachines</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="313" code="1" xpos="135" linewidth="1">Wait</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="341" code="2" xpos="469" linewidth="1">Wait2</state>
-    <transition c1x="126.0931669811627" c2y="132.8306069175463" c1y="116.5668881210005" description="" straight="1" type="2" ypos="100.3031693244548" endx="133.3510941613054" xpos="122.4642033910914" endy="149.094325714092" c2x="129.7221305712341">
+    <transition c1x="121.293724" c2y="134.805846" c1y="123.194154" description="" straight="1" type="2" ypos="112.3922696458558" endx="138.1188278955676" xpos="113.4678688250588" endy="146.4175370952906" c2x="129.706276">
       <from>0</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="256.9688372288533" c2y="112.0222593143557" c1y="144.0445186287114" description="" straight="1" type="2" ypos="176.0667779430671" endx="369" xpos="200.95325584328" endy="80" c2x="312.9844186144267">
+    <transition c1x="255.756931" c2y="117.444271" c1y="140.555729" description="" straight="1" type="2" ypos="163.6671864662746" endx="372.7292065677154" xpos="197.2707934322846" endy="94.33281353372536" c2x="314.243069">
       <from>5</from>
       <to>14</to>
-      <inputs default="0" any="0" invert="0">newTemps!=sensors_postTemps_Updated</inputs>
+      <inputs default="0" any="0" invert="0">newTemps != sensors_postTemps_Updated</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="165.5261007377581" c2y="259.954141392917" c1y="238.6132423500179" description="" straight="1" type="2" ypos="217.2723433071189" endx="159.3884304339877" xpos="168.5949358896433" endy="281.295040435816" c2x="162.4572655858729">
+    <transition c1x="160.071963" c2y="257.882402" c1y="236.992701" description="" straight="1" type="2" ypos="216.9951751039616" endx="148.913588061534" xpos="160.3865518674137" endy="276.5663333267987" c2x="156.048761">
       <from>5</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="465.7127683431049" c2y="147.873229739554" c1y="125.561378744159" description="" straight="1" type="2" ypos="103.2495277487639" endx="514.039627332776" xpos="441.5493388482694" endy="170.1850807349491" c2x="489.8761978379405">
+    <transition c1x="447.253935" c2y="154.777134" c1y="133.222866" description="" straight="1" type="2" ypos="111.6685994823658" endx="478.2381941220495" xpos="431.7618058779505" endy="176.3314005176342" c2x="462.746065">
       <from>14</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="498.8589598095458" c2y="294.4495774753833" c1y="271.1486826995305" description="" straight="1" type="2" ypos="247.8477879236777" endx="501.5493388482694" xpos="497.513770290184" endy="317.7504722512361" c2x="500.2041493289076">
+    <transition c1x="497.369033" c2y="286.905089" c1y="266.888166" description="" straight="1" type="2" ypos="246.9260757520064" endx="484.5688869534665" xpos="498.5998694724956" endy="305.2423468467213" c2x="492.552932">
       <from>3</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">timeout(400000)</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="578.0740445298389" c2y="140.516467057196" c1y="171.3838234737186" description="" straight="1" type="2" ypos="202.2511798902411" endx="653.0526680779794" xpos="540.5847327557688" endy="109.6491106406735" c2x="615.5633563039092">
+    <transition c1x="574.937021" c2y="142.893959" c1y="165.610477" description="" straight="1" type="2" ypos="188.3269947139229" endx="655.4620373818004" xpos="534.6745135527447" endy="120.1774413190535" c2x="615.199529">
       <from>3</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">initPostCount&lt;1</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="113.4934781120801" c2y="233.4783527371396" c1y="260.6724342268174" description="" straight="1" type="2" ypos="287.8665157164951" endx="132.7157287525381" xpos="103.8823527918511" endy="206.2842712474619" c2x="123.1046034323091">
+    <transition c1x="628.807708" c2y="7.591044" c1y="-2.061273" description="" straight="1" type="2" ypos="61.53904209436709" endx="705.8966763746433" xpos="679.0111548841048" endy="64.38686084827879" c2x="764.977228">
+      <from>6</from>
+      <to>6</to>
+      <inputs default="0" any="0" invert="0">timeout(4000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="135.928037" c2y="233.117598" c1y="254.007299" description="" straight="1" type="2" ypos="274.0048248960384" endx="147.086411938466" xpos="135.6134481325863" endy="214.4336666732013" c2x="139.951239">
       <from>1</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="448.7217551412176" c2y="256.0774682089968" c1y="284.7292191708484" description="" straight="1" type="2" ypos="313.3809701327" endx="466.0337089551385" xpos="440.0657782342571" endy="227.4257172471453" c2x="457.377732048178">
+    <transition c1x="472.630967" c2y="262.094911" c1y="282.111834" description="" straight="1" type="2" ypos="302.0739242479936" endx="485.4311130465335" xpos="471.4001305275044" endy="243.7576531532787" c2x="477.447068">
       <from>2</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">1</inputs>

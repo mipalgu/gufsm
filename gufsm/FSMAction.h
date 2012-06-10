@@ -115,7 +115,7 @@ namespace FSM
                 ContentAction(const T &content): _content(content) {}
                 
                 /** getter method */
-                virtual const T &content() { return _content; }
+                virtual const T &content() const { return _content; }
                 
                 /** setter method */
                 virtual void setContent(const T &c) { _content = c; }
@@ -172,6 +172,20 @@ namespace FSM
                 {
                         setContent((const char *)value);
                 }
+        };
+
+        /**
+         * Printing action for strings (no newline)
+         */
+        class PrintStringNoNLAction: public PrintStringAction
+        {
+        public:
+                /** print the content of this action */
+                virtual void performv(Machine *, ActionStage, int, va_list)
+                {
+                        std::cout << _content;
+                }
+                
         };
 
         /**

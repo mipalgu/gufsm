@@ -95,6 +95,38 @@ namespace FSM
                         c->whiteboard()->addMessage(_type, WBMsg(ContentAction<C>::content()));
                 }
         };
+
+        /**
+         * FSM Whiteboard getting actions
+         */
+        class WBGetAction: public ContentAction<std::string>
+        {
+        public:
+                /** setting any parameter sets the message content */
+                virtual void add_parameter(int index, long long value)
+                {
+                        setContent((const char *) value);
+                }
+
+                /** get a whiteboard message */
+                WBMsg getMessage(Machine *m) const
+                {
+                        WBContext *c = (WBContext *) m->context();
+                        return c->whiteboard()->getMessage(content());
+                }
+
+                /** read an int from the whiteboard */
+                virtual int evaluate(Machine *m)
+                {
+                        return getMessage(m).intValue();
+                }
+
+                /** get from the whiteboard and throw away */
+                virtual void performv(Machine *m, ActionStage, int, va_list)
+                {
+                        evaluate(m);
+                }
+        };
 }
 
 #endif

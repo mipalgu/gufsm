@@ -138,6 +138,59 @@ struct SystemFunction: public ContentAction<string>
         }
 };
 
+struct ReadIntFunction: public ContentAction<string>
+{
+        /** read an integer from a file and throw it away */
+        virtual void performv(Machine *m, ActionStage, int, va_list)
+        {
+                evaluate(m);
+        }
+
+        /** read the file passed as a parameter and interpret the content as an int */
+        virtual int evaluate(Machine *m = NULL)
+        {
+                return int_from_file(_content.c_str());
+        }
+
+        /** setting any parameter sets the content */
+        virtual void add_parameter(int index, long long value)
+        {
+                setContent((const char *)value);
+        }
+};
+
+/*
+ * State machine functions (see also: Whiteboard functions below)
+ */
+class SuspendAllFunction: public Action
+{
+        StateMachineVector *_fsms;
+public:
+        /** default constructor */
+        SuspendAllFunction(): Action(), _fsms(NULL) {}
+
+        /** setter for state machine vector */
+        void setFSMs(StateMachineVector *v) { _fsms = v; }
+
+        /** getter for state machine vector */
+        StateMachineVector *fsms() const { return _fsms; }
+
+        /** suspend all state machines except for the current one */
+        virtual void performv(Machine *m, ActionStage s = STAGE_ON_ENTRY, int i = 0, va_list l = NULL)
+        {
+                _fsms->suspend();
+                if (m) static_cast<SuspensibleMachine*>(m)->resume();
+        }
+
+        /** suspend machines and return number of machines suspended */
+        virtual int evaluate(Machine *m = NULL)
+        {
+                performv(m);
+                return _fsms->machines().size() - (m != NULL);
+        }
+};
+
+
 /*
  * Whiteboard functions
  */
@@ -145,11 +198,11 @@ typedef WBPostAction<const char *> PostStringFunction;
 typedef WBPostAction<int> PostIntFunction;
 typedef WBPostAction<bool> PostBoolFunction;
 
-class WBPostIntVecAction: public WBPostAction<std::vector<int> >
+class WBPostIntVecAction: public WBPostAction<vector<int> >
 {
 public:
         /** default constructor */
-        WBPostIntVecAction(): WBPostAction<std::vector<int> >() {}
+        WBPostIntVecAction(): WBPostAction<vector<int> >() {}
         
         /** set parameters (clears vector on first element) */
         virtual void add_parameter(int index, long long value)
@@ -165,6 +218,37 @@ public:
                 else _type = (const char *) value;
         }
         
+};
+
+
+class WBGetIntVecAction: public WBGetAction
+{
+        int _index;
+public:
+        /** default constructor */
+        WBGetIntVecAction(): WBGetAction(), _index(0) {}
+
+        /** set parameters (clears vector on first element) */
+        virtual void add_parameter(int i, long long value)
+        {
+                if (i) _index = value;
+                else WBGetAction::add_parameter(i, value);
+        }
+
+        /** read an int at given index from the whiteboard */
+        virtual int evaluate(Machine *m)
+        {
+                WBMsg msg = getMessage(m);
+
+                if (msg.getType() == WBMsg::TypeArray)
+                {
+                        const vector<int> &vec = msg.getArrayValue();
+                        if (_index >= 0 && vec.size() > _index)
+                                return vec[_index];
+                        return 0;
+                }
+                return msg.intValue();
+        }
 };
 
 class WBSuspendFunction: public PostBoolFunction
@@ -291,20 +375,27 @@ int run_machine_vector(StateMachineVectorFactory &factory, vector<string> &machi
 
         ANTLRFunc(TimeoutPredicate,     "timeout");
         ANTLRFunc(SystemFunction,       "system");
+        ANTLRFunc(ReadIntFunction,      "read_int");
+
 #ifdef NEED_SLEEP
         ANTLRFunc(SleepFunction,        "sleep");
 #endif
         ANTLRFunc(PrintStatenameFunction, "print_state_name");
         ANTLRFunc(PrintStringAction,    "print");
+        ANTLRFunc(PrintStringNoNLAction,"printn");
         ANTLRFunc(PrintIntAction,       "print_int");
         ANTLRFunc(PrintFixedAction,     "print_fixed");
         ANTLRFunc(PostStringFunction,   "post");
         ANTLRFunc(PostIntFunction,      "post_int");
         ANTLRFunc(WBPostIntVecAction,   "postv");
+        ANTLRFunc(WBGetIntVecAction,    "getv");
         ANTLRFunc(WBSuspendFunction,    "suspend");
         ANTLRFunc(WBResumeFunction,     "resume");
         ANTLRFunc(WBRestartFunction,    "restart");
-        
+        ANTLRFunc(SuspendAllFunction,   "suspendAll");
+
+        funcSuspendAllFunction.setFSMs(factory.fsms());         // needs vector
+
         ANTLRFunc(WBSayFunction,        "say");                 // sends Say
         ANTLRFunc(WBSpeechFunction,     "speech");              // sends Speech
         ANTLRFunc(WBSayStateFunction,   "say_state_name");      // sends Say

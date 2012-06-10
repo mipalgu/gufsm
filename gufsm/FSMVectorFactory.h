@@ -88,10 +88,10 @@ namespace FSM
                 virtual ~StateMachineVectorFactory();
 
                 /** get ANTLR context */
-                virtual ANTLRContext &context() { return *_context; }
+                virtual ANTLRContext &context() const { return *_context; }
 
                 /** getter */
-                StateMachineVector *fsms() { return _fsms; }
+                StateMachineVector *fsms() const { return _fsms; }
 
                 /** create a new machine with a given name and index */
                 SuspensibleMachine *addMachine(std::string name, int index=-1, bool resume=false);
