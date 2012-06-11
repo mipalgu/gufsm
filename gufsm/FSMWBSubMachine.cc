@@ -207,7 +207,7 @@ bool WBSubMachine::executeOnce(bool *fired)
         else if (_scheduleRestart) restart();
         else if (_scheduleResume) resume();
 	
-#ifdef DEBUG_MONITORING
+#ifdef MONITORING_MODE_ON
 	/* Post the name and id of this machine to the whiteboard, so
 	 * that a monitoring module can identify the machines without
 	 * their name. Post a number of times incase the messages don't

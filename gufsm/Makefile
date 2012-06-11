@@ -64,6 +64,6 @@ ANTLR_GRAMMARS=SimpleCLexer.g
 .include "../../../mk/util.mk"		# required for gu_util
 
 SPECIFIC_CPPFLAGS+=${CDL_CPPFLAGS} 	# for CDL includes
-SPECIFIC_CPPFLAGS+=-D DEBUG_MONITORING
+SPECIFIC_CPPFLAGS+=-DMONITORING_MODE_ON
 
 .include "../../../mk/mipal.mk"
