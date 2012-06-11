@@ -63,7 +63,7 @@ ANTLR_GRAMMARS=SimpleCLexer.g
 .include "../../../mk/cdlengine.mk"	# required for the whiteboard
 .include "../../../mk/util.mk"		# required for gu_util
 
-     # for CDL includes
-SPECIFIC_CPPFLAGS+=${CDL_CPPFLAGS} 
+SPECIFIC_CPPFLAGS+=${CDL_CPPFLAGS} 	# for CDL includes
+SPECIFIC_CPPFLAGS+=-D DEBUG_MONITORING
 
 .include "../../../mk/mipal.mk"
