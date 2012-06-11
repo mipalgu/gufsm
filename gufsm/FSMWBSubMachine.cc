@@ -207,33 +207,31 @@ bool WBSubMachine::executeOnce(bool *fired)
         else if (_scheduleRestart) restart();
         else if (_scheduleResume) resume();
 	
-#ifdef DEBUG_MONITORING
-	if ( isBeingMonitored() ) {
-		/* Post the name and id of this machine to the whiteboard, so
-		 * that a monitoring module can identify the machines without
-		 * their name. Post a number of times incase the messages don't
-		 * make it to the whiteboard. */
-		int mpostcount = getMachineIdPostCount();
-		ANTLRContext * c = (ANTLRContext *) context();
-		if ( mpostcount < TIMES_TO_POST_NAME_AND_ID ) 
-		{
-			char msgName[60];
-			msgName[59] = 0;
-			WBMsg mid(id());
-			sprintf(msgName, "gu_indexof_%s", name().c_str());
-			c->whiteboard()->addMessage(msgName, mid);
-			
-			setMachineIdPostCount(++mpostcount);
-		}
-		
-		/* Post the running state id. */
+#ifdef MONITORING_MODE_ON
+	/* Post the name and id of this machine to the whiteboard, so
+	 * that a monitoring module can identify the machines without
+	 * their name. Post a number of times incase the messages don't
+	 * make it to the whiteboard. */
+	int mpostcount = getMachineIdPostCount();
+	ANTLRContext * c = (ANTLRContext *) context();
+	if ( mpostcount < TIMES_TO_POST_NAME_AND_ID ) 
+	{
 		char msgName[60];
 		msgName[59] = 0;
-		int csid = currentStateID();
-		WBMsg msg(csid);
-		sprintf(msgName, "mon_c_state_m:%d", id());
-		c->whiteboard()->addMessage(msgName, msg);
+		WBMsg mid(id());
+		sprintf(msgName, "gu_indexof_%s", name().c_str());
+		c->whiteboard()->addMessage(msgName, mid);
+		
+		setMachineIdPostCount(++mpostcount);
 	}
+	
+	/* Post the running state id. */
+	char msgName[60];
+	msgName[59] = 0;
+	int csid = currentStateID();
+	WBMsg msg(csid);
+	sprintf(msgName, "mon_c_state_m:%d", id());
+	c->whiteboard()->addMessage(msgName, msg);
 #endif
 	
         return SuspensibleMachine::executeOnce(fired);
