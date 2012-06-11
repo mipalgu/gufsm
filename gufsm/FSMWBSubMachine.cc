@@ -131,27 +131,11 @@ WBSubMachine::WBSubMachine(const string &mname, State *initialState,
 	if (r != Whiteboard::METHOD_OK)
                 cerr << "Failed to subscribe to '" << wb_name << "'" << endl;
 	
-	wb_name = "startMonitoring";
-        wb->subscribeToMessage(wb_name, WB_BIND(WBSubMachine::wb_startMonitoring), r);
-	if (r != Whiteboard::METHOD_OK)
-                cerr << "Failed to subscribe to '" << wb_name << "'" << endl;
-        
+	wb_name = "monitor";
         wb_name += "_";
         wb_name += name();
         
-        wb->subscribeToMessage(wb_name, WB_BIND(WBSubMachine::wb_startMonitoring_me), r);
-	if (r != Whiteboard::METHOD_OK)
-                cerr << "Failed to subscribe to '" << wb_name << "'" << endl;
-	
-	wb_name = "stopMonitoring";
-        wb->subscribeToMessage(wb_name, WB_BIND(WBSubMachine::wb_stopMonitoring), r);
-	if (r != Whiteboard::METHOD_OK)
-                cerr << "Failed to subscribe to '" << wb_name << "'" << endl;
-        
-        wb_name += "_";
-        wb_name += name();
-        
-        wb->subscribeToMessage(wb_name, WB_BIND(WBSubMachine::wb_stopMonitoring_me), r);
+        wb->subscribeToMessage(wb_name, WB_BIND(WBSubMachine::wb_setMonitoring_me), r);
 	if (r != Whiteboard::METHOD_OK)
                 cerr << "Failed to subscribe to '" << wb_name << "'" << endl;
 }
@@ -190,6 +174,14 @@ WBSubMachine::~WBSubMachine()
 	if (r != Whiteboard::METHOD_OK)
                 cerr << "Failed to un-subscribe from '" << wb_name << "'" << endl;
         
+        wb_name += "_";
+        wb_name += name();
+        
+        wb->unsubscribeToMessage(wb_name, r);
+	if (r != Whiteboard::METHOD_OK)
+                cerr << "Failed to un-subscribe from '" << wb_name << "'" << endl;
+		
+	wb_name = "monitor";
         wb_name += "_";
         wb_name += name();
         
@@ -293,28 +285,12 @@ void WBSubMachine::resume()
         _scheduleResume = false;
 }
 
-void WBSubMachine::wb_startMonitoring(std::string s, WBMsg * msg) {
-	if (name() != msg->getStringValue())
-		return;
-		
-	setBeingMonitored(true);
-	
+
+void  WBSubMachine::wb_setMonitoring_me(std::string s, WBMsg * msg) 
+{
+	if (msg->getType() == WBMsg::TypeBool) {
+		setBeingMonitored(msg->getBoolValue());
+	}
+	// Reset the post count.
 	setMachineIdPostCount(0);
-}
-
-void  WBSubMachine::wb_startMonitoring_me(std::string s, WBMsg * msg) {
-	setBeingMonitored(true);
-	
-	setMachineIdPostCount(0);
-}
-
-void WBSubMachine::wb_stopMonitoring(std::string s, WBMsg * msg) {
-	if (name() != msg->getStringValue())
-		return;
-		
-	setBeingMonitored(false);
-}
-
-void  WBSubMachine::wb_stopMonitoring_me(std::string s, WBMsg * msg) {
-	setBeingMonitored(false);
 }
