@@ -61,7 +61,7 @@
       <inputs default="0" any="0" invert="0">UDPOurGoalPushed</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="534.912050" c2y="715.219875" c1y="659.780125" description="" straight="1" type="2" ypos="641.2105909445252" endx="564.51576362219" xpos="527.48423637781" endy="733.7894090554748" c2x="557.087950">
+    <transition c1x="539.704282" c2y="702.310819" c1y="671.760705" description="" straight="1" type="2" ypos="641.2105909445252" endx="564.1443729458359" xpos="527.48423637781" endy="732.8609323645896" c2x="551.924327">
       <from>3</from>
       <to>19</to>
       <inputs default="0" any="0" invert="0">~shortChestButtonPressed</inputs>
@@ -205,13 +205,13 @@
       <inputs default="0" any="0" invert="0">~shortChestButtonPressed</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="637.815058" c2y="785.332138" c1y="774.667862" description="" straight="1" type="2" ypos="773.0855357389268" endx="792.1222496895228" xpos="617.8777503104772" endy="786.9144642610732" c2x="772.184942">
+    <transition c1x="637.815058" c2y="785.332138" c1y="774.667862" description="" straight="1" type="2" ypos="773.1646520399248" endx="792.1222496895228" xpos="618.8746157030535" endy="786.9144642610732" c2x="772.184942">
       <from>19</from>
       <to>18</to>
       <inputs default="0" any="0" invert="0">shortChestButtonPressed</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="636.493543" c2y="633.247360" c1y="756.752640" description="playing received from game controller" straight="1" type="2" ypos="761.2432704640371" endx="1191.995793813921" xpos="617.0042061860788" endy="628.7567295359629" c2x="1172.506457">
+    <transition c1x="636.493543" c2y="633.247360" c1y="756.752640" description="playing received from game controller" straight="1" type="2" ypos="761.0187389374739" endx="1191.995793813921" xpos="617.978673011363" endy="628.7567295359629" c2x="1172.506457">
       <from>19</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">playingReceived</inputs>
@@ -223,7 +223,7 @@
       <inputs default="0" any="0" invert="0">UDPTheirGoalPushed</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="597.259425" c2y="282.770084" c1y="713.896583" description="" straight="1" type="2" ypos="732.9146904560332" endx="743.7635439388092" xpos="591.0697893945242" endy="263.7519762106335" c2x="737.573908">
+    <transition c1x="597.259425" c2y="282.770084" c1y="713.896583" description="" straight="1" type="2" ypos="731.963785083111" endx="743.7635439388092" xpos="591.379271173871" endy="263.7519762106335" c2x="737.573908">
       <from>19</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">readyReceived</inputs>
