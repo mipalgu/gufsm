@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E1144EB61585E21600C3C113 /* SimpleCLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = E1144EB41585E21600C3C113 /* SimpleCLexer.c */; };
+		E1144EB71585E21600C3C113 /* SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E1144EB51585E21600C3C113 /* SimpleCParser.c */; };
+		E1144EBD1585E23900C3C113 /* ActionsContainer_SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E1144EB81585E23900C3C113 /* ActionsContainer_SimpleCParser.c */; };
+		E1144EBE1585E23900C3C113 /* ActionsContainerLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = E1144EB91585E23900C3C113 /* ActionsContainerLexer.c */; };
+		E1144EBF1585E23900C3C113 /* ActionsContainerParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E1144EBA1585E23900C3C113 /* ActionsContainerParser.c */; };
+		E1144EC01585E23900C3C113 /* TransitionContainer_SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E1144EBB1585E23900C3C113 /* TransitionContainer_SimpleCParser.c */; };
+		E1144EC11585E23900C3C113 /* TransitionContainerParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E1144EBC1585E23900C3C113 /* TransitionContainerParser.c */; };
 		E11CABDD14BD243900A1019A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E11CABDC14BD243900A1019A /* main.cpp */; };
 		E11CABDF14BD243900A1019A /* fsmWbDependencyDump.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = E11CABDE14BD243900A1019A /* fsmWbDependencyDump.1 */; };
 		E11FB97C14BD4741009C778E /* libantlr3c.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A9E8C91480B36100C852FC /* libantlr3c.a */; };
@@ -258,6 +265,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E1144EB41585E21600C3C113 /* SimpleCLexer.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = SimpleCLexer.c; path = gufsm/build.host/SimpleCLexer.c; sourceTree = "<group>"; };
+		E1144EB51585E21600C3C113 /* SimpleCParser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = SimpleCParser.c; path = gufsm/build.host/SimpleCParser.c; sourceTree = "<group>"; };
+		E1144EB81585E23900C3C113 /* ActionsContainer_SimpleCParser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = ActionsContainer_SimpleCParser.c; path = gufsm/build.host/ActionsContainer_SimpleCParser.c; sourceTree = "<group>"; };
+		E1144EB91585E23900C3C113 /* ActionsContainerLexer.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = ActionsContainerLexer.c; path = gufsm/build.host/ActionsContainerLexer.c; sourceTree = "<group>"; };
+		E1144EBA1585E23900C3C113 /* ActionsContainerParser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = ActionsContainerParser.c; path = gufsm/build.host/ActionsContainerParser.c; sourceTree = "<group>"; };
+		E1144EBB1585E23900C3C113 /* TransitionContainer_SimpleCParser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = TransitionContainer_SimpleCParser.c; path = gufsm/build.host/TransitionContainer_SimpleCParser.c; sourceTree = "<group>"; };
+		E1144EBC1585E23900C3C113 /* TransitionContainerParser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = TransitionContainerParser.c; path = gufsm/build.host/TransitionContainerParser.c; sourceTree = "<group>"; };
 		E11CABD914BD243900A1019A /* fsmWbDependencyDump */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = fsmWbDependencyDump; sourceTree = BUILT_PRODUCTS_DIR; };
 		E11CABDC14BD243900A1019A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		E11CABDE14BD243900A1019A /* fsmWbDependencyDump.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = fsmWbDependencyDump.1; sourceTree = "<group>"; };
@@ -1339,6 +1353,13 @@
 		F16CC2EF142C0C01001F788B = {
 			isa = PBXGroup;
 			children = (
+				E1144EB81585E23900C3C113 /* ActionsContainer_SimpleCParser.c */,
+				E1144EB91585E23900C3C113 /* ActionsContainerLexer.c */,
+				E1144EBA1585E23900C3C113 /* ActionsContainerParser.c */,
+				E1144EBB1585E23900C3C113 /* TransitionContainer_SimpleCParser.c */,
+				E1144EBC1585E23900C3C113 /* TransitionContainerParser.c */,
+				E1144EB41585E21600C3C113 /* SimpleCLexer.c */,
+				E1144EB51585E21600C3C113 /* SimpleCParser.c */,
 				F1A9E8C91480B36100C852FC /* libantlr3c.a */,
 				F16CC2FD142C0C01001F788B /* gufsm */,
 				F1284CFF14A6CAA800C0247E /* gusimplewhiteboard */,
@@ -1385,6 +1406,7 @@
 				F132711B1452812500E5786D /* FSMWBQueryPredicate.cc */,
 				F132711E1452814300E5786D /* FSMWBQueryPredicate.h */,
 				F192CCE5144D356300FF8526 /* FSMWBContext.cc */,
+				F13BA40F1579E92500929C9C /* FSMVectorRunner.h */,
 				F192CCE4144D354100FF8526 /* FSMWBContext.h */,
 				F14EB9BF1491B86600ED85D7 /* FSMANTLRContext.cc */,
 				F1F8EAC91480B98E008AB889 /* FSMANTLRContext.h */,
@@ -1393,7 +1415,6 @@
 				F1AFCD28147B56FA00C975DC /* FSMachineVector.cc */,
 				F1AFCD2C147B573700C975DC /* FSMachineVector.h */,
 				F13BA40E1579E92500929C9C /* FSMVectorRunner.cc */,
-				F13BA40F1579E92500929C9C /* FSMVectorRunner.h */,
 				F5EE57F61487441C001F6C9C /* stringConstants.c */,
 				F5EE57F71487441C001F6C9C /* stringConstants.h */,
 				F16CC30F142C0F86001F788B /* FSMState.cc */,
@@ -1847,7 +1868,7 @@
 		};
 		F12B4239147DC25100FF4A6B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -1858,7 +1879,7 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
 			shellScript = "cd ${SRCROOT}\nout=\"${SRCROOT}/build.host\"\nmkdir -p \"$out\"\nfor ((i=0; i < SCRIPT_INPUT_FILE_COUNT ; i++)); do\ninputFile=`eval echo '$SCRIPT_INPUT_FILE_'$i`\noutputFile=\"$out\"/`basename \"$inputFile\" | sed 's/.g$/.tokens/'`\n\njava -classpath /usr/local/share/java/antlr-3.4-complete.jar org.antlr.Tool -language C -o \"$out\" \"$inputFile\" 2>&1 | sed 's/warning\\([^:]*\\): \\([^ ]*\\): \\(.*\\)$/\\2: warning: \\3 \\1/' 1>&2\ndone\n";
 		};
@@ -1927,6 +1948,13 @@
 				F16CC335142C3433001F788B /* FSMAction.cc in Sources */,
 				F1A3DF6E142D3BFF0060F293 /* FSMachine.cc in Sources */,
 				F191E605142D9B970014AF84 /* FSMSuspensibleMachine.cc in Sources */,
+				E1144EB61585E21600C3C113 /* SimpleCLexer.c in Sources */,
+				E1144EB71585E21600C3C113 /* SimpleCParser.c in Sources */,
+				E1144EBD1585E23900C3C113 /* ActionsContainer_SimpleCParser.c in Sources */,
+				E1144EBE1585E23900C3C113 /* ActionsContainerLexer.c in Sources */,
+				E1144EBF1585E23900C3C113 /* ActionsContainerParser.c in Sources */,
+				E1144EC01585E23900C3C113 /* TransitionContainer_SimpleCParser.c in Sources */,
+				E1144EC11585E23900C3C113 /* TransitionContainerParser.c in Sources */,
 				F1199D6014302767003853BF /* FSMExpression.cc in Sources */,
 				F192CCD9144D27CD00FF8526 /* gu_util.cpp in Sources */,
 				F192CCE0144D291F00FF8526 /* FSMWBPredicate.cc in Sources */,
