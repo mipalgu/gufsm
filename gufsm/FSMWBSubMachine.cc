@@ -222,7 +222,7 @@ bool WBSubMachine::executeOnce(bool *fired)
                 char msgName[60];
                 int csid = currentStateID();
                 WBMsg msg(csid);
-                sprintf(msgName, sizeof(msgName), "mon_c_state_m:%d", id());
+                snprintf(msgName, sizeof(msgName), "mon_c_state_m:%d", id());
                 c->whiteboard()->addMessage(msgName, msg);
         }
 #endif
