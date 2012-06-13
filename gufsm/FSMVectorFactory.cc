@@ -256,6 +256,8 @@ void StateMachineVectorFactory::execute(void)
 
                 if (!fsms()->executeOnce())
                         fsms()->noTransitionFired();
+                else
+                        protected_usleep(9500);
         }
         while (!fsms()->accepting());
 }
