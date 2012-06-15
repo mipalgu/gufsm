@@ -16,7 +16,7 @@
     <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="49" code="9" xpos="545" linewidth="1">NoForward</state>
     <state pencolor="0" radius="40" description="OnEntry {}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="96" code="10" xpos="980" linewidth="1">NoBackwards</state>
     <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="511" code="4" xpos="1080" linewidth="1">NoLeft</state>
-    <transition c1x="182.663540" c2y="322.363038" c1y="321.614745" description="" straight="1" type="2" ypos="320.8664527541207" endx="250.0098728867356" xpos="148.9903739354328" endy="323.1113305085942" c2x="216.336707">
+    <transition c1x="168.985437" c2y="322.689213" c1y="321.310787" description="" straight="1" type="2" ypos="320.8886694914058" endx="251.0096260645672" xpos="149.9901271132644" endy="323.1335472458793" c2x="231.014563">
       <from>7</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
@@ -58,7 +58,7 @@
       <inputs default="0" any="0" invert="0">(InertialSensor_AngleY>frontalAngle)</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="446.824438" c2y="397.539483" c1y="446.460517" description="" straight="1" type="2" ypos="495.3815513037417" endx="321.5266868508205" xpos="509.4733131491795" endy="348.6184486962583" c2x="384.175562">
+    <transition c1x="494.498137" c2y="360.312212" c1y="483.687788" description="" straight="1" type="2" ypos="495.9970125211482" endx="320.73851967955" xpos="510.26148032045" endy="348.0029874788518" c2x="336.501863">
       <from>8</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
@@ -94,7 +94,7 @@
       <inputs default="0" any="0" invert="0">!(InertialSensor_AngleX>lateralAngle)</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="1000.411533" c2y="428.750564" c1y="456.481753" description="" straight="0" type="2" ypos="488.0615062254669" endx="793.520714590013" xpos="1047.230723179238" endy="413.1991375637775" c2x="872.632305">
+    <transition c1x="1000.411533" c2y="428.750564" c1y="456.481753" description="" straight="0" type="2" ypos="488.061506225467" endx="793.520714590013" xpos="1047.230723179238" endy="413.1991375637775" c2x="872.632305">
       <from>4</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">(InertialSensor_AngleX>lateralAngle)</inputs>

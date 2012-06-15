@@ -1,0 +1,31 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="" version="1" name="SMPlayer" arrowtype="1" numbits="2" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="82" endx="75" xpos="15" endy="82"/>
+    <state pencolor="0" radius="40" description="OnEntry { extern SMBallFollowerIsRunning;&#xa;&#x9;extern SMKickerIsRunning;&#xa;&#x9;extern guvision_runVisionPipeline;&#xa;&#x9;suspend(&quot;SMKicker&quot;);&#xa;&#x9;resume(&quot;SMBallFollower&quot;);&#xa;&#x9;guvision_runVisionPipeline=1;&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="82" code="0" xpos="115" linewidth="1">INIT</state>
+    <state pencolor="0" radius="40" description="OnEntry { resume(&quot;SMKicker&quot;); }&#xa;OnExit { resume(&quot;SMBallFollower&quot;); }&#xa;{ }" finalstate="0" moore_outputs="" ypos="93" code="1" xpos="574" linewidth="1">Kick</state>
+    <state pencolor="0" radius="40" description="OnEntry { resume(&quot;SMBallFollower&quot;); }&#xa;OnExit { resume(&quot;SMKicker&quot;); }&#xa;{ }" finalstate="0" moore_outputs="" ypos="91" code="2" xpos="329" linewidth="1">Follow</state>
+    <transition c1x="199.712723" c2y="85.785454" c1y="83.892727" description="" straight="1" type="2" ypos="82" endx="289.1381696702048" xpos="155" endy="87.6781808058504" c2x="244.425446">
+      <from>0</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">SMBallFollowerIsRunning</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="476.419622" c2y="133.327524" c1y="110.000502" description="" straight="0" type="2" ypos="92.67348026703185" endx="361.2561998342283" xpos="534.0013327114017" endy="114.6545465451007" c2x="418.837911">
+      <from>1</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">~SMKickerIsRunning</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="424.298089" c2y="52.882050" c1y="73.104285" description="" straight="0" type="2" ypos="91.32651973296815" endx="543.8969322117249" xpos="368.9986672885983" endy="66.65981568525928" c2x="486.597511">
+      <from>2</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">~SMBallFollowerIsRunning</inputs>
+      <outputs>1</outputs>
+    </transition>
+  </machine>
+</qfsmproject>
