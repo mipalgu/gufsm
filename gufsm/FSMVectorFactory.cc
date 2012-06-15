@@ -255,9 +255,12 @@ void StateMachineVectorFactory::execute(void)
                 dispatch_semaphore_signal(_queue_semaphore);
 
                 if (!fsms()->executeOnce())
+#if 0
                         fsms()->noTransitionFired();
-                else
-                        protected_usleep(9500);
+#else
+                        ;
+                protected_usleep(19500);
+#endif
         }
         while (!fsms()->accepting());
 }
