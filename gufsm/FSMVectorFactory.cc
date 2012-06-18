@@ -258,7 +258,10 @@ void StateMachineVectorFactory::execute(void)
 #if 0
                         fsms()->noTransitionFired();
 #else
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wempty-body"
                         ;
+#pragma clang diagnostic pop
                 protected_usleep(19500);
 #endif
         }
