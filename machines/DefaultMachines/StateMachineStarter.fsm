@@ -10,7 +10,7 @@
     <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;initPostCount = initPostCount + 1;&#xa;&#x9;post(&quot;sensors_postTemps&quot;, &quot;On&quot;); &#xa; }&#xa;OnExit { }&#xa;{ print_state_name(); }&#xa;" finalstate="0" moore_outputs="" ypos="178" code="5" xpos="161" linewidth="1">WaitForRobotStart</state>
     <state pencolor="0" radius="40" description="OnEntry {  print_state_name();&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="80" code="14" xpos="409" linewidth="1">OnRobotStart</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;initPostCount = initPostCount - 1;&#xa;&#x9;post(&quot;sensors_postTemps&quot;, &quot;Off&quot;); &#xa; }&#xa;OnExit { }&#xa;{ print_state_name(); }&#xa;" finalstate="0" moore_outputs="" ypos="208" code="3" xpos="501" linewidth="1">RemoveExtraListeners</state>
-    <state pencolor="0" radius="40" description="OnEntry {  print_state_name();&#xa;&#x9;post(&quot;QSpeech&quot;, &quot;Starting Machines&quot;); &#xa;&#xa;&#x9;resume(&quot;Safety_BatteryMonitor&quot;);&#xa;&#x9;resume(&quot;Safety_TempsMonitor&quot;);&#xa;&#x9;resume(&quot;SMRobotPosition&quot;);&#xa;&#x9;restart(&quot;SMGameController&quot;);&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="100" code="6" xpos="690" linewidth="1">StartMachines</state>
+    <state pencolor="0" radius="40" description="OnEntry {  print_state_name();&#xa;&#x9;post(&quot;QSpeech&quot;, &quot;Starting Machines&quot;); &#xa;&#xa;&#x9;resume(&quot;Safety_BatteryMonitor&quot;);&#xa;&#x9;resume(&quot;Safety_TempsMonitor&quot;);&#xa;&#x9;resume(&quot;SMRobotPosition&quot;);&#xa;&#x9;restart(&quot;SMGameController&quot;);&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="153" code="6" xpos="687" linewidth="1">StartMachines</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="313" code="1" xpos="135" linewidth="1">Wait</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="341" code="2" xpos="469" linewidth="1">Wait2</state>
     <transition c1x="124.615107" c2y="130.221402" c1y="127.778598" description="" straight="1" type="2" ypos="111.5824629047094" endx="138.1188278955676" xpos="112.8811721044324" endy="146.4175370952906" c2x="126.384893">
@@ -43,13 +43,13 @@
       <inputs default="0" any="0" invert="0">timeout(400000)</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="574.997746" c2y="142.780565" c1y="165.715573" description="" straight="1" type="2" ypos="188.6505814040835" endx="655.2702743150217" xpos="534.8614825428539" endy="119.8455575342734" c2x="615.134010">
+    <transition c1x="584.402404" c2y="191.446990" c1y="190.048786" description="" straight="1" type="2" ypos="188.6505814040835" endx="683.4842475881458" xpos="534.8614825428539" endy="192.8451940010152" c2x="633.943326">
       <from>3</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">initPostCount&lt;1</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="628.807708" c2y="7.591044" c1y="-2.061273" description="" straight="1" type="2" ypos="61.53904209436709" endx="705.8966763746433" xpos="679.0111548841048" endy="64.38686084827879" c2x="764.977228">
+    <transition c1x="625.807708" c2y="60.591044" c1y="50.938727" description="" straight="1" type="2" ypos="114.5390420943671" endx="702.8966763746433" xpos="676.0111548841048" endy="117.3868608482788" c2x="761.977228">
       <from>6</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">timeout(4000000)</inputs>

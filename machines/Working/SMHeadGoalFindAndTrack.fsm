@@ -1,50 +1,99 @@
 <?xml version='1.0'?>
 <!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
 <qfsmproject version="0.53" author="Qfsm">
-  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene, Carl" description="" version="1" name="SMHeadGoalFindAndTrack" arrowtype="1" numbits="3" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene, Carl" description="" version="1" name="SMHeadGoalFindAndTrack" arrowtype="1" numbits="5" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
-    <itransition ypos="83.33333333333334" endx="175" xpos="115" endy="83.33333333333334"/>
-    <state pencolor="12124415" radius="40" description="OnEntry {&#x9;&#xa;&#x9;&#xa;&#x9;suspend(&quot;SMHeadScan&quot;);&#xa; }&#xa;OnExit { post(&quot;guvision_runVisionPipeline&quot;, &quot;&quot;); post(&quot;sensors_postJoints&quot;, &quot;On&quot;);    sensors_postJoints_Frequency=2;     post(&quot;SpeechOutput&quot;, &quot;On&quot;);  }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="83.33333333333334" code="0" xpos="215" linewidth="1">Init</state>
-    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="121.6666666666667" code="1" xpos="429.1666666666666" linewidth="1">START LOOK</state>
-    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="125.6666666666667" code="2" xpos="609.1666666666666" linewidth="1">GET GOAL POS</state>
-    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="183.3333333333333" code="3" xpos="807.5" linewidth="1">MOVE HEAD</state>
-    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="283.3333333333334" code="4" xpos="417.5" linewidth="1">LOOKING</state>
-    <transition c1x="298.999516" c2y="107.604750" c1y="97.301288" description="" straight="1" type="2" ypos="87.09178759956602" endx="389.3436328604806" xpos="254.8230338061861" endy="117.908212400434" c2x="344.171575">
+    <itransition ypos="126" endx="46" xpos="-14" endy="126"/>
+    <state pencolor="12124415" radius="40" description="OnEntry {&#x9;&#xa;&#x9;extern GoalIsVisible;&#xa;&#x9;extern sensors_postJoints_Frequency;&#xa;&#x9;extern Goalfiltered;&#xa;&#x9;extern Goalfiltered_x;&#xa;&#x9;extern Goalfiltered_y;&#xa;&#x9;extern GoalDistance;&#xa;&#x9;extern guvision_opencv_ballInfo1_radius;&#xa;&#x9;extern gunaomotion_headStiffness;&#xa;&#x9;extern gunaomotion_naoHeadIsRunning;&#xa;&#x9;extern gunaomotion_trackerTarget;&#xa;&#x9;extern gunaomotion_trackerTargetIsRunning;&#xa;&#x9;extern guvision_selectCamera;&#xa;&#x9;extern guvision_width;&#xa;&#x9;extern guvision_height;&#xa;&#x9;extern HeadYaw;&#xa;&#x9;extern HeadPitch;&#xa;&#x9;extern horiz_fov;&#xa;&#x9;extern vertical_fov;&#xa;&#x9;extern zPos;&#xa;&#x9;extern yPos;&#xa;&#x9;extern track_smoothness;&#xa;&#x9;extern dist_factor;&#xa;&#x9;extern x_per_cm_dist;&#xa;&#x9;extern y_per_cm_dist;&#xa;&#x9;extern tx;&#xa;&#x9;extern ty;&#xa;&#x9;int delay;&#xa;&#x9;int originalZ; &#xa;&#x9;int originalY; &#xa;&#x9;int headPitch; int doLeft; int goal_x; int goal_y; int dy; int my; int period; int fx; int fy; int fs; int update; int mx; int dx; int doLowBottomSeek; int targetAngle; int lowerSeek; int minMove;&#xa;&#x9;period=100000; &#xa;        fx=5*guvision_width/4; &#xa;        fy=guvision_height/24;&#xa;        fs=10240/guvision_width; &#xa;        minMove = guvision_width/160; &#xa;        headSeekSpeed=2;&#xa;&#x9;horiz_fov = 61;&#xa;&#x9;vert_fov = 48;&#xa;&#x9;originalZ = 0;&#xa;&#x9;originalY = 0;&#xa;&#x9;zPos = 0;&#xa;&#x9;yPos = 0;&#xa;&#x9;delay = 50;&#xa;&#x9;track_smoothness = 4;&#xa;&#x9;dist_factor = 50; &#xa;&#x9;FIXED_FACTOR = 100; &#xa;&#x9;tx =  tan(horiz_fov/2);&#xa;&#x9;ty =  tan(vert_fov/2);&#xa;&#x9;x_per_cm_dist = FIXED_FACTOR/2 * guvision_width  / tx;&#xa;&#x9;y_per_cm_dist = FIXED_FACTOR/2 * guvision_height / ty;&#xa;&#x9;suspend(&quot;SMHeadScan&quot;);&#xa; }&#xa;OnExit { post(&quot;guvision_runVisionPipeline&quot;, &quot;&quot;); post(&quot;sensors_postJoints&quot;, &quot;On&quot;);    sensors_postJoints_Frequency=2;     post(&quot;SpeechOutput&quot;, &quot;On&quot;);  }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="126" code="0" xpos="86" linewidth="1">Init</state>
+    <state pencolor="511" radius="40" description="OnEntry { postv(&quot;gunaomotion_updateTrackerTarget&quot;, yPos, zPos, delay);&#xa; }&#xa;OnExit { }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="262" code="1" xpos="651" linewidth="1">Correct</state>
+    <state pencolor="511" radius="40" description="OnEntry { }&#xa;OnExit {&#xa;&#x9;tx = FIXED_FACTOR * goal_x / x_per_cm_dist;&#xa;&#x9;ty = FIXED_FACTOR * goal_y / y_per_cm_dist;&#xa;&#x9;zPos = (zPos * (track_smoothness-1) - 2*atan(tx)) / track_smoothness;&#xa;&#x9;yPos = (yPos * (track_smoothness-1) + 2*atan(ty)) / track_smoothness;&#xa;  }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="201" code="9" xpos="789" linewidth="1">Calculate</state>
+    <state pencolor="45317" radius="40" description="OnEntry { &#xa;&#x9;gunaomotion_trackerTarget = 1; &#xa;&#x9;goal_x = Goalfiltered_x;&#xa;&#x9;goal_y = Goalfiltered_y;&#xa;&#x9;goal_d = GoalDistance;&#xa; }&#xa;OnExit { &#xa; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="68" code="13" xpos="872" linewidth="1">WaitForGoal</state>
+    <state pencolor="0" radius="40" description="OnEntry { gunaomotion_headStiffness = 100;  update =Goalfiltered;}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="116" code="21" xpos="254" linewidth="1">DUMMY</state>
+    <state pencolor="16711710" radius="40" description="OnEntry{print_state_name(); resume(&quot;SMHeadScan&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="412" code="3" xpos="334" linewidth="1">START_FINDING</state>
+    <state pencolor="0" radius="40" description="OnEntry{print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="268" code="4" xpos="175" linewidth="1">FOUND</state>
+    <state pencolor="16711710" radius="40" description="OnEntry {&#xa;&#x9;gunaomotion_trackerTarget = 0; &#xa;&#x9;print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="280" code="5" xpos="412" linewidth="1">WAIT</state>
+    <state pencolor="16711710" radius="40" description="OnEntry{print_state_name(); }&#xa;OnExit{suspend(&quot;SMHeadScan&quot;); post(&quot;Say&quot;,&quot;FOUND&quot;);}&#xa;{}" finalstate="0" moore_outputs="" ypos="411" code="6" xpos="150" linewidth="1">END_FINDING</state>
+    <state pencolor="45317" radius="40" description="OnEntry { sensors_postJoints = 1; sensors_postJoints_Frequency = 1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="76" code="2" xpos="455" linewidth="1">Setup_Tracker</state>
+    <state pencolor="45317" radius="40" description="OnEntry{update = Goalfiltered; yPos = HeadPitch; zPos = HeadYaw; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="75" code="7" xpos="619" linewidth="1">Loop</state>
+    <state pencolor="0" radius="40" description="OnEntry {  suspend(&quot;SMHeadScan&quot;);&#xa;&#x9;say(&quot;suspended ball find and track&quot;) ;&#xa; &#x9;gunaomotion_trackerTarget = 0; &#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="1" moore_outputs="" ypos="389" code="8" xpos="560" linewidth="1">Suspend</state>
+    <transition c1x="155.309775" c2y="120.125582" c1y="121.874418" description="" straight="1" type="2" ypos="123.6232544006314" endx="214.0706739306073" xpos="125.9293260693927" endy="118.3767455993686" c2x="184.690225">
       <from>0</from>
+      <to>21</to>
+      <inputs default="0" any="0" invert="0">timeout(100000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="638.084384" c2y="150.475632" c1y="186.524368" description="" straight="1" type="2" ypos="222.5731051465484" endx="625.7468483171681" xpos="644.2531516828319" endy="114.4268948534516" c2x="631.915616">
+      <from>1</from>
+      <to>7</to>
+      <inputs default="0" any="0" invert="0">timeout(delay*1000/track_smoothness)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="730.804938" c2y="236.276096" c1y="226.723904" description="" straight="1" type="2" ypos="217.171712021684" endx="687.5851845736457" xpos="752.4148154263543" endy="245.828287978316" c2x="709.195062">
+      <from>9</from>
       <to>1</to>
-      <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
+      <inputs default="0" any="0" invert="0">1</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="502.163458" c2y="124.044516" c1y="123.288818" description="" straight="1" type="2" ypos="122.5553361580725" endx="570.1762927312338" xpos="469.156793779931" endy="124.8002139125459" c2x="536.169875">
-      <from>1</from>
+    <transition c1x="837.274327" c2y="145.355247" c1y="123.644753" description="" straight="1" type="2" ypos="101.9342583843912" endx="810.1770183902591" xpos="850.8229816097409" endy="167.0657416156088" c2x="823.725673">
+      <from>13</from>
+      <to>9</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="334.076905" c2y="91.935703" c1y="100.064297" description="" straight="1" type="2" ypos="108.1928923576162" endx="415.7692840970212" xpos="293.2307159029788" endy="83.80710764238384" c2x="374.923095">
+      <from>21</from>
       <to>2</to>
-      <inputs default="0" any="0" invert="0">found</inputs>
+      <inputs default="0" any="0" invert="0">GoalIsVisible</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="425.180203" c2y="216.326631" c1y="188.944773" description="" straight="1" type="2" ypos="161.5629161280218" endx="422.9654958854813" xpos="426.2875558807957" endy="243.7084881635944" c2x="424.072849">
-      <from>1</from>
-      <to>4</to>
-      <inputs default="0" any="0" invert="0">!found</inputs>
+    <transition c1x="315.917473" c2y="215.731231" c1y="180.268769" description="" straight="1" type="2" ypos="144.806306889667" endx="384.2475823867843" xpos="281.7524176132157" endy="251.193693110333" c2x="350.082527">
+      <from>21</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">!GoalIsVisible</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="667.820224" c2y="157.273288" c1y="132.051038" description="" straight="1" type="2" ypos="129.8868445538158" endx="772.5105673947158" xpos="647.9376622510055" endy="166.1072018477014" c2x="754.567269">
-      <from>2</from>
-      <to>3</to>
-      <inputs default="0" any="0" invert="0">timeout(10000)</inputs>
-      <outputs></outputs>
-    </transition>
-    <transition c1x="748.846443" c2y="151.726712" c1y="176.948962" description="" straight="1" type="2" ypos="179.1131554461842" endx="644.1560992719508" xpos="768.7290044156612" endy="142.8927981522986" c2x="662.099398">
+    <transition c1x="259.333530" c2y="411.405796" c1y="411.594204" description="" straight="1" type="2" ypos="411.7826119061095" endx="189.999409275846" xpos="294.000590724154" endy="411.2173880938905" c2x="224.666470">
       <from>3</from>
-      <to>2</to>
+      <to>6</to>
       <inputs default="0" any="0" invert="0">timeout(10000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="493.084187" c2y="189.610172" c1y="223.766083" description="" straight="1" type="2" ypos="257.9219949570066" endx="582.4702385447589" xpos="448.3911618739701" endy="155.4542601500586" c2x="537.777213">
+    <transition c1x="207.482252" c2y="178.497498" c1y="205.502502" description="" straight="1" type="2" ypos="232.5075056110655" endx="235.5532430478564" xpos="193.4467569521436" endy="151.4924943889345" c2x="221.517748">
       <from>4</from>
-      <to>2</to>
-      <inputs default="0" any="0" invert="0">found</inputs>
+      <to>21</to>
+      <inputs default="0" any="0" invert="0">!gunaomotion_naoHeadIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="379.216943" c2y="356.520980" c1y="335.479020" description="" straight="1" type="2" ypos="314.4370611285726" endx="354.3491724850657" xpos="391.6508275149343" endy="377.5629388714274" c2x="366.783057">
+      <from>5</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">!gunaomotion_naoHeadIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="160.629510" c2y="328.800796" c1y="350.199204" description="" straight="1" type="2" ypos="371.5976122092337" endx="168.11147066595" xpos="156.88852933405" endy="307.4023877907663" c2x="164.370490">
+      <from>6</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">GoalIsVisible</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="522.999752" c2y="75.414633" c1y="75.585367" description="" straight="1" type="2" ypos="75.75610209502598" endx="579.0007435842621" xpos="494.9992564157379" endy="75.24389790497402" c2x="551.000248">
+      <from>2</from>
+      <to>7</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="716.661566" c2y="70.702099" c1y="72.297901" description="" straight="1" type="2" ypos="73.89370399579582" endx="832.0153015623341" xpos="658.9846984376659" endy="69.10629600420418" c2x="774.338434">
+      <from>7</from>
+      <to>13</to>
+      <inputs default="0" any="0" invert="0">(update!=Goalfiltered)&amp;&amp;GoalIsVisible</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="540.526254" c2y="202.284454" c1y="152.715546" description="" straight="1" type="2" ypos="103.1466373254917" endx="440.4212386652525" xpos="590.5787613347476" endy="251.8533626745084" c2x="490.473746">
+      <from>7</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">!GoalIsVisible</inputs>
       <outputs></outputs>
     </transition>
   </machine>
