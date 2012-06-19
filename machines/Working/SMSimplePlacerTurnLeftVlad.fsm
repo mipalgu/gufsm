@@ -16,7 +16,7 @@
     <state pencolor="0" radius="40" description="OnEntry { gunaowalk_stop=1; print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="645" code="8" xpos="619.1666666666666" linewidth="1">Stop</state>
     <state pencolor="0" radius="40" description="OnEntry { post(&quot;gunaomotion_naoMotionPlayer&quot;, &quot;dcm_from_getup&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="73.33333333333334" code="9" xpos="374.1666666666667" linewidth="1">Stance</state>
     <state pencolor="0" radius="40" description="OnEntry { gunaowalk_disconnect=1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="565.8333333333334" code="4" xpos="409.1666666666667" linewidth="1">Disconnect</state>
-    <state pencolor="0" radius="40" description="OnEntry { post_int(&quot;QSay&quot;,GoalDistance  ) ; postv(&quot;gunaomotion_naoHeadAbs&quot;, 0,0, 50);&#xa; postv(&quot;gunaowalk_walk&quot;, 0, 0, 0, 0); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="410" code="10" xpos="520" linewidth="1">SAY_DISTANCE</state>
+    <state pencolor="0" radius="40" description="OnEntry { post_int(&quot;QSay&quot;,GoalDistance  ) ; postv(&quot;gunaomotion_naoHeadAbs&quot;, 0,0, 50);  suspend(&quot;SMHeadGoalFindAndTrack&quot;);&#xa; postv(&quot;gunaowalk_walk&quot;, 0, 0, 0, 0); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="410" code="10" xpos="520" linewidth="1">SAY_DISTANCE</state>
     <state pencolor="0" radius="40" description="OnEntry {postv(&quot;gunaowalk_walk&quot;,- 100, 0, 0, 100);  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="517.5" code="13" xpos="1263.333333333333" linewidth="1">BACK_A_BIT</state>
     <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="680.8333333333334" code="12" xpos="998.3333333333333" linewidth="1">TEST_GOAL</state>
     <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="691.6666666666667" code="14" xpos="1241.666666666667" linewidth="1">TOO_CLOSE_OPONENT</state>
@@ -28,9 +28,9 @@
     <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;doLeft = 1-doLeft;&#xa;&#x9;targetAngle=-targetAngle;&#xa;&#x9;postv(&quot;gunaomotion_naoHeadAbs&quot;, 0,0, 50);&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="177.5" code="20" xpos="1214.166666666667" linewidth="1">ChangeDir</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="279.1666666666666" code="21" xpos="1015" linewidth="1">EvalRight</state>
     <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="402.5000000000001" code="22" xpos="683.3333333333333" linewidth="1">SCAN</state>
-    <transition c1x="286.402356" c2y="332.819868" c1y="273.933656" description="" straight="1" type="2" ypos="215.0474438617981" endx="484.4284879072741" xpos="187.3892907379184" endy="391.7060794951695" c2x="385.415422">
+    <transition c1x="222.259405" c2y="232.763083" c1y="223.905263" description="" straight="1" type="2" ypos="215.0474438617981" endx="291.9996345850883" xpos="187.3892907379184" endy="241.6209020721962" c2x="257.129520">
       <from>0</from>
-      <to>10</to>
+      <to>6</to>
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs></outputs>
     </transition>
