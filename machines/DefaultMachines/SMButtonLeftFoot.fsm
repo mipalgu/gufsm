@@ -10,7 +10,7 @@
     <state pencolor="16711710" radius="40" description="OnEntry { leftFootBumpPressed=0; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="226" code="1" xpos="138" linewidth="1">Button_Off</state>
     <state pencolor="45317" radius="40" description="OnEntry { leftFootBumpPressed=1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="68" code="2" xpos="400" linewidth="1">Button_On</state>
     <state pencolor="45317" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="230" code="3" xpos="397" linewidth="1">Wait_Release</state>
-    <transition c1x="138.000000" c2y="157.666667" c1y="129.333333" description="" straight="1" type="2" ypos="102" endx="138.0000002439024" xpos="138.0000002439024" endy="186" c2x="138.000000">
+    <transition c1x="138.000000" c2y="167.000000" c1y="121.000000" description="" straight="1" type="2" ypos="101" endx="138.0000002378049" xpos="138.0000002378049" endy="187" c2x="138.000000">
       <from>0</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">1</inputs>
@@ -40,25 +40,25 @@
       <inputs default="0" any="0" invert="0">LFoot_Bumper_Right</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="398.907595" c2y="171.010114" c1y="126.989886" description="" straight="1" type="2" ypos="107.9931430530052" endx="397.7220984162348" xpos="399.2593862397592" endy="191.0066855233199" c2x="398.092405">
+    <transition c1x="398.907595" c2y="171.010114" c1y="126.989886" description="" straight="1" type="2" ypos="106.9933144766801" endx="397.7220984162348" xpos="399.2779015837652" endy="191.0066855233199" c2x="398.092405">
       <from>2</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="298.001510" c2y="227.544376" c1y="228.471066" description="" straight="1" type="2" ypos="229.3977552163953" endx="177.9952305009295" xpos="358.0046502615937" endy="226.6176869575433" c2x="237.998370">
+    <transition c1x="338.007035" c2y="226.911088" c1y="229.088912" description="" straight="1" type="2" ypos="229.3977552163953" endx="176.9953497384062" xpos="358.0046502615937" endy="226.6022447836047" c2x="196.992965">
       <from>3</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">1</inputs>
-      <outputs></outputs>
+      <outputs>3</outputs>
     </transition>
-    <transition c1x="448.588007" c2y="315.533103" c1y="338.345178" description="" straight="1" type="2" ypos="269.3351213419259" endx="377.2794971207648" xpos="404.2627976025748" endy="264.8008874339445" c2x="312.832974">
+    <transition c1x="448.158107" c2y="314.820327" c1y="337.442301" description="" straight="1" type="2" ypos="269.3351213419259" endx="377.7725096927456" xpos="404.2627976025748" endy="263.9308652480959" c2x="313.534365">
       <from>3</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">LFoot_Bumper_Left</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="482.498218" c2y="281.543106" c1y="145.797537" description="" straight="1" type="2" ypos="210.2650779227596" endx="436.3381275435629" xpos="431.7927126077466" endy="237.2464971790774" c2x="505.366546">
+    <transition c1x="481.785733" c2y="281.113580" c1y="146.499224" description="" straight="1" type="2" ypos="210.2650779227596" endx="435.3546743549738" xpos="431.7927126077466" endy="237.0653347496004" c2x="504.463491">
       <from>3</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">LFoot_Bumper_Right</inputs>
