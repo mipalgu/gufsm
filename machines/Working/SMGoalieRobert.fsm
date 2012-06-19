@@ -26,7 +26,7 @@
     <state pencolor="0" radius="40" description="OnEntry{ &#xa; nearCount = 0;}&#xa;OnExit{ }&#xa;{ }" finalstate="0" moore_outputs="" ypos="286" code="18" xpos="214" linewidth="1">ResetNearCount</state>
     <state pencolor="0" radius="40" description="OnEntry{ }&#xa;OnExit{ }&#xa;{ }" finalstate="0" moore_outputs="" ypos="408" code="16" xpos="1324" linewidth="1">DecideKick</state>
     <state pencolor="0" radius="40" description="OnEntry{ &#xa; print_state_name();&#xa; post(&quot;gunaomotion_naoMotionPlayer&quot;,&quot;kneel&quot;);}&#xa;OnExit{ }&#xa;{ }" finalstate="0" moore_outputs="" ypos="448" code="19" xpos="1712" linewidth="1">Kneel</state>
-    <transition c1x="153.646743" c2y="452.443392" c1y="371.556608" description="" straight="1" type="2" ypos="363.6485475607012" endx="348.5385936957064" xpos="136.3706731326088" endy="460.7676661283163" c2x="330.353257">
+    <transition c1x="153.646743" c2y="452.443392" c1y="371.556608" description="" straight="1" type="2" ypos="363.2323338716837" endx="348.5385936957064" xpos="135.4614063042936" endy="460.7676661283163" c2x="330.353257">
       <from>0</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">1</inputs>
