@@ -1,12 +1,12 @@
 <?xml version='1.0'?>
 <!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
 <qfsmproject version="0.53" author="Qfsm">
-  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="" description="" version="" name="SMGoalieEugene" arrowtype="1" numbits="5" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="2" numout="0" initialstate="0">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="" description="" version="" name="SMGoalieRobert" arrowtype="1" numbits="5" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="2" numout="0" initialstate="0">
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="347" endx="60" xpos="0" endy="347"/>
-    <state pencolor="0" radius="40" description="OnEntry{ &#xa; int nearCount;&#xa; int lastRadius;&#xa; extern BallIsVisible;&#xa; extern BallDistance;&#xa; extern Ballfiltered_x;&#xa; extern Ballfiltered_y;&#xa; extern HeadYaw;&#xa; extern stopGoalie;&#xa; extern gunaomotion_holdingStiffness;&#xa; extern guvision_opencv_ballInfo1_radius;&#xa; nearCount = 0;&#xa; print_state_name();&#xa; restart(&quot;SMHeadBallFindAndTrack&quot;);&#xa; post(&quot;sensors_postJoints&quot;, &quot;On&quot;);&#xa; post(&quot;sensors_postJoints_Frequency&quot;, &quot;2&quot;);}&#xa;OnExit{ }&#xa;{ }" finalstate="0" moore_outputs="" ypos="347" code="0" xpos="100" linewidth="1">INIT</state>
+    <state pencolor="0" radius="40" description="OnEntry{ &#xa; int nearCount;&#xa; int lastRadius;&#xa; extern BallIsVisible;&#xa; extern BallDistance;&#xa; extern Ballfiltered_x;&#xa; extern Ballfiltered_y;&#xa; extern HeadYaw;&#xa; extern stopGoalie;&#xa; extern gunaomotion_holdingStiffness;&#xa; extern guvision_opencv_ballInfo1_radius;&#xa; nearCount = 0;&#xa; print_state_name();&#xa; restart(&quot;SMHeadBallFindAndTrackGoalie&quot;);&#xa; post(&quot;sensors_postJoints&quot;, &quot;On&quot;);&#xa; post(&quot;sensors_postJoints_Frequency&quot;, &quot;2&quot;);}&#xa;OnExit{ }&#xa;{ }" finalstate="0" moore_outputs="" ypos="347" code="0" xpos="100" linewidth="1">INIT</state>
     <state pencolor="0" radius="40" description="OnEntry{ &#xa; print_state_name();}&#xa;OnExit{ }&#xa;{ }" finalstate="0" moore_outputs="" ypos="166" code="1" xpos="515" linewidth="1">Visible</state>
     <state pencolor="0" radius="40" description="OnEntry{ &#xa; print_state_name();}&#xa;OnExit{ }&#xa;{ }" finalstate="0" moore_outputs="" ypos="612" code="2" xpos="162" linewidth="1">NotVisible</state>
     <state pencolor="0" radius="40" description="OnEntry{ &#xa; print_state_name();}&#xa;OnExit{ }&#xa;{ }" finalstate="0" moore_outputs="" ypos="477" code="3" xpos="384" linewidth="1">Wait</state>
@@ -26,7 +26,7 @@
     <state pencolor="0" radius="40" description="OnEntry{ &#xa; nearCount = 0;}&#xa;OnExit{ }&#xa;{ }" finalstate="0" moore_outputs="" ypos="286" code="18" xpos="214" linewidth="1">ResetNearCount</state>
     <state pencolor="0" radius="40" description="OnEntry{ }&#xa;OnExit{ }&#xa;{ }" finalstate="0" moore_outputs="" ypos="408" code="16" xpos="1324" linewidth="1">DecideKick</state>
     <state pencolor="0" radius="40" description="OnEntry{ &#xa; print_state_name();&#xa; post(&quot;gunaomotion_naoMotionPlayer&quot;,&quot;kneel&quot;);}&#xa;OnExit{ }&#xa;{ }" finalstate="0" moore_outputs="" ypos="448" code="19" xpos="1712" linewidth="1">Kneel</state>
-    <transition c1x="153.646743" c2y="452.443392" c1y="371.556608" description="" straight="1" type="2" ypos="363.2323338716837" endx="348.5385936957064" xpos="135.4614063042936" endy="460.7676661283163" c2x="330.353257">
+    <transition c1x="153.646743" c2y="452.443392" c1y="371.556608" description="" straight="1" type="2" ypos="363.6485475607012" endx="348.5385936957064" xpos="136.3706731326088" endy="460.7676661283163" c2x="330.353257">
       <from>0</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">1</inputs>
