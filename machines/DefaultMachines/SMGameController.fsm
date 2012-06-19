@@ -9,10 +9,10 @@
     <state pencolor="2420992" radius="40" description="OnEntry { print_state_name();&#xa;&#x9;&#x9; restart(&quot;SMPlayer&quot;);&#xa;               shortChestButtonPressed=0;&#xa;               post(&quot;LEDS&quot;,&quot;ChestBoard Green&quot;);&#xa;               post(&quot;QSay&quot;, &quot;play&quot;);&#xa;&#x9;&#xa; }&#xa;OnExit {  playingReceived=0;&#xa;           suspend(&quot;SMPlayer&quot;); gameStart=0; }&#xa;{               }&#xa;" finalstate="0" moore_outputs="" ypos="620" code="2" xpos="1230" linewidth="1">PLAYING</state>
     <state pencolor="16711680" radius="40" description="OnEntry { print_state_name();&#xa;  suspend(&quot;SMVladLeftFootControl&quot;);&#xa;  suspend(&quot;SMGetUp&quot;);&#xa; post(&quot;LEDS&quot;,&quot;ChestBoard Red&quot;);&#xa; post(&quot;LEDS&quot;,&quot;RFoot Off&quot;);&#xa; post(&quot;LEDS&quot;,&quot;Ears Off&quot;);&#xa; post(&quot;LEDS&quot;,&quot;Face Yellow&quot;); &#xa;  post(&quot;QSay&quot;, &quot;penalised&quot;);&#xa; suspend(&quot;SMLeftFootControl&quot;); suspend(&quot;SMRightFootControl&quot;);&#xa;              &#xa;          }&#xa;OnExit {penaltyReceived=0;  resume(&quot;SMVladLeftFootControl&quot;)  ; &#xa;    }&#xa;{ &#xa; post(&quot;LEDS&quot;,&quot;ChestBoard Red&quot;);&#xa; post(&quot;LEDS&quot;,&quot;RFoot Off&quot;);&#xa; post(&quot;LEDS&quot;,&quot;Ears Off&quot;);&#xa; post(&quot;LEDS&quot;,&quot;Face Yellow&quot;); &#xa; }&#xa;" finalstate="0" moore_outputs="" ypos="605" code="3" xpos="513" linewidth="1">PENALIZED</state>
     <state pencolor="12124415" radius="40" description="OnEntry { print_state_name();&#xa; post(&quot;LEDS&quot;,&quot;ChestBoard Yellow&quot;);&#xa;               post( &quot;QSay&quot;, &quot;set&quot;);&#xa;&#x9;resume(&quot;SMHeadBallFindAndTrack&quot;); &#xa;       }&#xa;OnExit {  setReceived=0; suspend(&quot;SMHeadBallFindAndTrack&quot;);  }&#xa;{               }" finalstate="0" moore_outputs="" ypos="190.8333333333333" code="4" xpos="1216.666666666667" linewidth="1">SET</state>
-    <state pencolor="0" radius="45" description="OnEntry { print_state_name(); post(&quot;QSay&quot;, &quot;change side&quot;); &#xa; ourTeam=!ourTeam;&#xa; kickOffTeam=!kickOffTeam; &#xa;               }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="232.5" code="6" xpos="254.1666666666667" linewidth="1">CHANGE_TEAM</state>
-    <state pencolor="0" radius="40" description="OnEntry { print_state_name(); post(&quot;QSay&quot;, &quot;change kick off&quot;);  kickOffTeam=!kickOffTeam; &#xa;                }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="403.3333333333334" code="8" xpos="255" linewidth="1">CHANGE_KICK_OFF</state>
+    <state pencolor="0" radius="45" description="OnEntry { print_state_name(); post(&quot;QSay&quot;, &quot;change side&quot;); &#xa; ourTeam=!ourTeam;&#xa; kickOffTeam=!kickOffTeam; &#xa;               }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="207" code="6" xpos="235" linewidth="1">CHANGE_TEAM</state>
+    <state pencolor="0" radius="40" description="OnEntry { print_state_name(); post(&quot;QSay&quot;, &quot;change kick off&quot;);  kickOffTeam=!kickOffTeam; &#xa;                }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="333" code="8" xpos="211" linewidth="1">CHANGE_KICK_OFF</state>
     <state pencolor="32832" radius="40" description="OnEntry  {print_state_name(); readyReceived=0; post(&quot;LEDS&quot;,&quot;ChestBoard Off&quot;);&#xa; post(&quot;LEDS&quot;,&quot;Ears Blue&quot;);&#xa; post(&quot;QSay&quot;,&quot;I'm in initial&quot;); &#xa; resume(&quot;SMButtonChest&quot;); &#xa; resume(&quot;SMButtonLeftFoot&quot;); &#xa; resume(&quot;SMButtonRightFoot&quot;); &#xa; restart(&quot;SMLeftFootControl&quot;); restart(&quot;SMRightFootControl&quot;);&#xa;  }&#xa;OnExit {initialReceived=0; }&#xa;{  }&#xa;" finalstate="0" moore_outputs="" ypos="267.5" code="7" xpos="514.1666666666666" linewidth="1">INITIAL</state>
-    <state pencolor="0" radius="40" description="OnEntry { print_state_name(); post(&quot;QSay&quot;, &quot;Reds kick&quot;); kickOffTeam=1;  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="117" code="10" xpos="658" linewidth="1">ForcedToRedKickOff</state>
+    <state pencolor="0" radius="40" description="OnEntry { print_state_name(); post(&quot;QSay&quot;, &quot;Reds kick&quot;); kickOffTeam=1;  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="101" code="10" xpos="652" linewidth="1">ForcedToRedKickOff</state>
     <state pencolor="0" radius="40" description="OnEntry { print_state_name(); post(&quot;QSay&quot;, &quot;Blues kick&quot;); kickOffTeam=0; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="44" code="9" xpos="817" linewidth="1">ForcedToBlueKickOff</state>
     <state pencolor="0" radius="40" description="OnEntry { &#xa;               post(&quot;QSay&quot;, &quot;GO OOH OOH OHH OOH OOH AH AH al MY PAL.  MY PAL WOW! WOW! WOW! YEAH! YEAH!&quot;); &#xa;kickOffTeam=!ourTeam;&#xa;               }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="404" code="11" xpos="774" linewidth="1">WeScore</state>
     <state pencolor="0" radius="40" description="OnEntry { &#xa;               post(&quot;QSay&quot;, &quot;Oh, we don't like that&quot;); &#xa;kickOffTeam=ourTeam;}&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="321.6666666666666" code="12" xpos="1010.833333333333" linewidth="1">TheyScore</state>
@@ -28,19 +28,17 @@
     <state pencolor="16776960" radius="40" description="OnEntry { resume(&quot;SMGetUp&quot;); }&#xa;OnExit { suspend(&quot;SMGetUp&quot;); }&#xa;{ }" finalstate="0" moore_outputs="" ypos="110" code="16" xpos="990" linewidth="1">GetUp</state>
     <state pencolor="16776960" radius="40" description="OnEntry { resume(&quot;SMGetUp&quot;); }&#xa;OnExit { suspend(&quot;SMGetUp&quot;); }&#xa;{ }" finalstate="0" moore_outputs="" ypos="105" code="20" xpos="1091" linewidth="1">GetUp</state>
     <state pencolor="14089984" radius="40" description="OnEntry { resume(&quot;SMGetUp&quot;); &#xa;               post(&quot;Speech&quot;, &quot;getting up&quot;); &#xa;               suspend(&quot;SMPlayer&quot;); }&#xa;OnExit {   suspend(&quot;SMGetUp&quot;); &#xa;               post(&quot;Speech&quot;, &quot;I am up&quot;); }&#xa;{ }" finalstate="0" moore_outputs="" ypos="880" code="21" xpos="1190" linewidth="1">GetUp</state>
-    <transition c1x="1184.595860" c2y="267.675776" c1y="582.324224" description="ready received from game controller" straight="1" type="2" ypos="594.4571012161074" endx="790.0129060710738" xpos="1199.217532234796" endy="254.9043263142953" c2x="805.404140">
+    <state pencolor="13684944" radius="40" description="OnEntry { print_state_name(); post(&quot;Speech&quot;, &quot;Check&quot;); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="530" code="22" xpos="247" linewidth="1">Check</state>
+    <state pencolor="13684944" radius="40" description="OnEntry { say(&quot;Control&quot;);  print_state_name(); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="410" code="23" xpos="285" linewidth="1">Control</state>
+    <state pencolor="13684944" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="383" code="24" xpos="604" linewidth="1">Go_Ready</state>
+    <state pencolor="13684944" radius="40" description="OnEntry { say(&quot;Go&quot;); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="274" code="25" xpos="1306" linewidth="1">Go_Play</state>
+    <transition c1x="1063.072511" c2y="368.514300" c1y="481.485700" description="ready received from game controller" straight="1" type="2" ypos="594.4571012161074" endx="790.7824677652039" xpos="1199.217532234796" endy="255.5428987838926" c2x="926.927489">
       <from>2</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">readyReceived</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="978.336104" c2y="610.285851" c1y="614.735065" description="manually penalised" straight="1" type="2" ypos="619.1633629806676" endx="552.9912495240882" xpos="1190.008750475912" endy="605.8366370193324" c2x="765.663677">
-      <from>2</from>
-      <to>3</to>
-      <inputs default="0" any="0" invert="0">shortChestButtonPressed</inputs>
-      <outputs>2</outputs>
-    </transition>
-    <transition c1x="978.336104" c2y="610.285851" c1y="614.735065" description="" straight="1" type="2" ypos="619.1633629806676" endx="552.9912495240882" xpos="1190.008750475912" endy="605.8366370193324" c2x="765.663677">
+    <transition c1x="1162.123342" c2y="595.972291" c1y="605.541707" description="" straight="0" type="2" ypos="612.2316657744008" endx="551.5407487507966" xpos="1190.761587909812" endy="599.0325310450769" c2x="571.305235">
       <from>2</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">penaltyReceived</inputs>
@@ -70,7 +68,13 @@
       <inputs default="0" any="0" invert="0">fallen</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="534.912050" c2y="715.219875" c1y="659.780125" description="" straight="1" type="2" ypos="642.1390676354104" endx="564.51576362219" xpos="527.8556270541641" endy="733.7894090554748" c2x="557.087950">
+    <transition c1x="1164.756351" c2y="616.458293" c1y="631.808909" description="manually penalised" straight="0" type="2" ypos="617.781199215099" endx="551.257451787933" xpos="1190.061585871784" endy="612.5741258699593" c2x="570.876658">
+      <from>2</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">shortChestButtonPressed</inputs>
+      <outputs>2</outputs>
+    </transition>
+    <transition c1x="534.912050" c2y="715.219875" c1y="659.780125" description="" straight="1" type="2" ypos="641.2105909445252" endx="564.51576362219" xpos="527.48423637781" endy="733.7894090554748" c2x="557.087950">
       <from>3</from>
       <to>19</to>
       <inputs default="0" any="0" invert="0">~shortChestButtonPressed</inputs>
@@ -88,79 +92,73 @@
       <inputs default="0" any="0" invert="0">fallen</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="317.594549" c2y="259.628691" c1y="241.038369" description="change team on left foot bumper press" straight="1" type="2" ypos="238.3701285342277" endx="475.515300863375" xpos="297.7733357780727" endy="262.29693152648" c2x="455.694088">
+    <transition c1x="327.489791" c2y="218.424993" c1y="195.623457" description="change team on left foot bumper press" straight="0" type="2" ypos="201.5850884616343" endx="476.408722448268" xpos="279.6730201915169" endy="254.2963017150385" c2x="426.713921">
       <from>6</from>
       <to>7</to>
-      <inputs default="0" any="0" invert="0">!leftFootBumpPressed</inputs>
+      <inputs default="0" any="0" invert="0">~leftFootBumpPressed</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="307.257481" c2y="294.888969" c1y="375.944364" description="" straight="1" type="2" ypos="385.2287603838316" endx="479.6235857630159" xpos="289.5430809036508" endy="285.6045729495019" c2x="461.909185">
+    <transition c1x="272.585155" c2y="326.111192" c1y="329.475816" description="" straight="0" type="2" ypos="324.0870079399144" endx="478.7378657398453" xpos="249.9943402628747" endy="286.06879276872" c2x="388.575852">
       <from>8</from>
       <to>7</to>
-      <inputs default="0" any="0" invert="0">!rightFootBumpPressed</inputs>
+      <inputs default="0" any="0" invert="0">~rightFootBumpPressed</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="572.491978" c2y="238.897081" c1y="258.602919" description="go to ready state when received from Game Controller" straight="1" type="2" ypos="261.618878402815" endx="721.4459806406761" xpos="552.7206860259905" endy="235.881121597185" c2x="701.674689">
+    <transition c1x="609.291972" c2y="244.510640" c1y="252.989360" description="go to ready state when received from Game Controller" straight="1" type="2" ypos="261.4680804131436" endx="720.4574160417191" xpos="553.7092506249476" endy="236.0319195868564" c2x="664.874694">
       <from>7</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">readyReceived&amp;&amp;timeout(1000000)</inputs>
       <outputs>4</outputs>
     </transition>
-    <transition c1x="416.267979" c2y="246.345730" c1y="254.321331" description="change team on left foot bumper press" straight="1" type="2" ypos="262.29693152648" endx="297.7733357780727" xpos="475.515300863375" endy="238.3701285342277" c2x="357.020657">
+    <transition c1x="397.879090" c2y="250.043214" c1y="262.821331" description="change team on left foot bumper press" straight="0" type="2" ypos="262.1635195143385" endx="278.1714475707071" xpos="474.5242402017521" endy="219.6974845796198" c2x="334.414327">
       <from>7</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">leftFootBumpPressed</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="416.263417" c2y="352.020698" c1y="318.812635" description="" straight="1" type="2" ypos="285.6045729495019" endx="289.5430809036508" xpos="479.6235857630159" endy="385.2287603838316" c2x="352.903249">
+    <transition c1x="400.930084" c2y="285.465142" c1y="292.034858" description="" straight="0" type="2" ypos="286.06879276872" endx="245.5430809036508" xpos="478.7378657398453" endy="314.8954270504981" c2x="312.236583">
       <from>7</from>
       <to>8</to>
       <inputs default="0" any="0" invert="0">rightFootBumpPressed</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="513.733992" c2y="478.833415" c1y="392.666591" description="" straight="1" type="2" ypos="306.4997669888281" endx="513.1382707788144" xpos="514.0318526573226" endy="565.0002389858173" c2x="513.436131">
+    <transition c1x="513.962717" c2y="546.000353" c1y="326.499647" description="" straight="1" type="2" ypos="307.4997610141826" endx="513.134814009344" xpos="514.0283958878522" endy="566.0002330111719" c2x="513.203949">
       <from>7</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">shortChestButtonPressed</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="697.533117" c2y="186.203508" c1y="160.796492" description="back to initial after change team" straight="1" type="2" ypos="145.9502234199986" endx="733.8679399217712" xpos="684.1320600782288" endy="201.0497765800014" c2x="720.466883">
+    <transition c1x="708.537701" c2y="179.004022" c1y="137.266271" description="back to initial after change team" straight="0" type="2" ypos="124.9726198641656" endx="738.7611263310065" xpos="682.7622089071674" endy="196.1044214495085" c2x="731.672661">
       <from>10</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">!UDPRedKickOffPushed||timeout(1000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="799.712881" c2y="173.589402" c1y="100.410598" description="back to initial after change team" straight="1" type="2" ypos="81.28836116961719" endx="771.4270784229473" xpos="805.5729215770527" endy="192.7116388303828" c2x="777.287119">
+    <transition c1x="809.771109" c2y="172.448283" c1y="102.555471" description="back to initial after change team" straight="0" type="2" ypos="82.70615852116296" endx="778.1831091184687" xpos="812.2215805401154" endy="194.3717170946191" c2x="791.820086">
       <from>9</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">!UDPBlueKickOffPushed||timeout(1000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="769.268165" c2y="288.809946" c1y="345.190054" description="" straight="1" type="2" ypos="365.1256289626509" endx="763.1278229570281" xpos="770.8721770429719" endy="268.8743710373491" c2x="764.731835">
+    <transition c1x="768.317459" c2y="301.622643" c1y="333.374136" description="" straight="1" type="2" ypos="365.1256289626509" endx="763.2080235456699" xpos="770.8721770429719" endy="269.8711497818965" c2x="765.762741">
       <from>11</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">!UDPOurGoalPushed||timeout(1000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="955.417844" c2y="250.251508" c1y="301.415159" description="" straight="1" type="2" ypos="308.280076856342" endx="796.6305775718881" xpos="974.2027557614449" endy="243.3865898103246" c2x="815.415489">
+    <transition c1x="915.325112" c2y="265.246583" c1y="286.763330" description="" straight="1" type="2" ypos="308.280076856342" endx="797.5698231506545" xpos="974.2027557614449" endy="243.729835702897" c2x="856.447467">
       <from>12</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">!UDPTheirGoalPushed||timeout(1000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="818.784191" c2y="195.875043" c1y="224.958290" description="set received from Game Controller" straight="1" type="2" ypos="226.6673443372862" endx="1177.80931979077" xpos="798.857346875897" endy="194.1659889960471" c2x="1157.882475">
+    <transition c1x="818.784191" c2y="195.875043" c1y="224.958290" description="set received from Game Controller" straight="1" type="2" ypos="226.5818916279858" endx="1177.80931979077" xpos="799.853689103484" endy="194.1659889960471" c2x="1157.882475">
       <from>1</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">setReceived</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="717.289313" c2y="164.316741" c1y="182.683259" description="" straight="1" type="2" ypos="201.0497765800014" endx="684.1320600782288" xpos="733.8679399217712" endy="145.9502234199986" c2x="700.710687">
-      <from>1</from>
-      <to>10</to>
-      <inputs default="0" any="0" invert="0">UDPRedKickOffPushed</inputs>
-      <outputs></outputs>
-    </transition>
-    <transition c1x="782.809026" c2y="118.429454" c1y="155.570546" description="" straight="1" type="2" ypos="192.7116388303828" endx="805.5729215770527" xpos="771.4270784229473" endy="81.28836116961719" c2x="794.190974">
+    <transition c1x="767.228891" c2y="62.551717" c1y="171.444529" description="" straight="0" type="2" ypos="190.3013758757303" endx="799.271468609493" xpos="764.9009430357791" endy="78.73757583274643" c2x="761.179914">
       <from>1</from>
       <to>9</to>
       <inputs default="0" any="0" invert="0">UDPBlueKickOffPushed</inputs>
@@ -171,6 +169,18 @@
       <to>16</to>
       <inputs default="0" any="0" invert="0">fallen</inputs>
       <outputs>1</outputs>
+    </transition>
+    <transition c1x="705.514967" c2y="177.995978" c1y="208.084618" description="" straight="0" type="2" ypos="217.3508893593265" endx="672.7079018272686" xpos="722.0526680779794" endy="134.0481890867292" c2x="653.327339">
+      <from>1</from>
+      <to>10</to>
+      <inputs default="0" any="0" invert="0">UDPRedKickOffPushed</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="818.809352" c2y="269.260785" c1y="234.739215" description="" straight="1" type="2" ypos="233.2130272204035" endx="1267.126021800413" xpos="799.870746871371" endy="270.8672984601066" c2x="1247.190648">
+      <from>1</from>
+      <to>25</to>
+      <inputs default="0" any="0" invert="0">shortChestButtonPressed</inputs>
+      <outputs></outputs>
     </transition>
     <transition c1x="409.137920" c2y="779.738611" c1y="841.261389" description="" straight="1" type="2" ypos="846.5965111368479" endx="167.586798473324" xpos="428.4132015266761" endy="774.4034888631521" c2x="186.862080">
       <from>13</from>
@@ -196,7 +206,7 @@
       <inputs default="0" any="0" invert="0">!gunaomotion_naoMotionPlayerIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="538.478083" c2y="209.476262" c1y="135.523738" description="" straight="1" type="2" ypos="115.8546743549738" endx="521.2320014162671" xpos="542.1013319170662" endy="229.1453256450262" c2x="524.855250">
+    <transition c1x="535.205276" c2y="190.726140" c1y="153.290407" description="" straight="1" type="2" ypos="115.8546743549738" endx="521.413163845744" xpos="542.1013319170662" endy="228.1618724564371" c2x="528.309220">
       <from>14</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">!gunaomotion_naoMotionPlayerIsRunning</inputs>
@@ -214,7 +224,7 @@
       <inputs default="0" any="0" invert="0">gunaomotion_naoMotionPlayerIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="305.588532" c2y="231.360614" c1y="105.868713" description="" straight="1" type="2" ypos="93.61807322598449" endx="483.3392798166133" xpos="289.7796159333935" endy="243.6112532769683" c2x="467.530363">
+    <transition c1x="354.036022" c2y="193.205172" c1y="143.411623" description="" straight="1" type="2" ypos="93.61807322598449" endx="482.5488339999453" xpos="289.7796159333935" endy="242.9987213097111" c2x="418.292428">
       <from>17</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">timeout(7000000)</inputs>
@@ -244,7 +254,7 @@
       <inputs default="0" any="0" invert="0">UDPTheirGoalPushed</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="597.750648" c2y="285.941159" c1y="714.058841" description="" straight="1" type="2" ypos="733.0219460691809" endx="747.6055041454106" xpos="591.3944958545894" endy="266.9780539308191" c2x="741.249352">
+    <transition c1x="643.358896" c2y="422.958121" c1y="577.990034" description="" straight="1" type="2" ypos="733.0219460691809" endx="747.2876965593955" xpos="591.3944958545894" endy="267.9262091598144" c2x="695.323296">
       <from>19</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">readyReceived</inputs>
@@ -254,6 +264,12 @@
       <from>19</from>
       <to>11</to>
       <inputs default="0" any="0" invert="0">UDPOurGoalPushed</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="489.073626" c2y="608.298290" c1y="787.215294" description="" straight="0" type="2" ypos="775.6568542494924" endx="260.4534558799263" xpos="539.4020202535534" endy="567.6696764637935" c2x="281.596416">
+      <from>19</from>
+      <to>22</to>
+      <inputs default="0" any="0" invert="0">(leftFootBumpPressed &amp;&amp; rightFootBumpPressed)</inputs>
       <outputs></outputs>
     </transition>
     <transition c1x="918.568854" c2y="204.338360" c1y="174.586744" description="" straight="0" type="2" ypos="136.1684610046105" endx="797.3781590609661" xpos="959.747534833502" endy="215.7566427688865" c2x="872.556840">
@@ -285,6 +301,54 @@
       <to>2</to>
       <inputs default="0" any="0" invert="0">robotIsUp</inputs>
       <outputs>1</outputs>
+    </transition>
+    <transition c1x="264.811611" c2y="466.247191" c1y="473.752809" description="" straight="1" type="2" ypos="492.819653211321" endx="273.2262235169183" xpos="258.7737764830817" endy="447.180346788679" c2x="267.188389">
+      <from>22</from>
+      <to>23</to>
+      <inputs default="0" any="0" invert="0">(~leftFootBumpPressed &amp;&amp; ~rightFootBumpPressed)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="316.703549" c2y="703.183379" c1y="534.907056" description="" straight="0" type="2" ypos="534.0047839276987" endx="545.7179882264862" xpos="286.7990163910171" endy="747.8119921509908" c2x="505.575028">
+      <from>22</from>
+      <to>19</to>
+      <inputs default="0" any="0" invert="0">timeout(2000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="329.837758" c2y="566.651917" c1y="448.348083" description="" straight="1" type="2" ypos="435.3487325950546" endx="483.3614818888593" xpos="314.6385181111407" endy="579.6512674049454" c2x="468.162242">
+      <from>23</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">timeout(2000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="328.033530" c2y="345.726727" c1y="351.629342" description="" straight="0" type="2" ypos="378.1099214978032" endx="496.8929743623093" xpos="309.1458669987996" endy="303.5779649394805" c2x="477.814167">
+      <from>23</from>
+      <to>7</to>
+      <inputs default="0" any="0" invert="0">(leftFootBumpPressed &amp;&amp; rightFootBumpPressed)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="392.737111" c2y="365.172223" c1y="373.958479" description="" straight="0" type="2" ypos="391.712853632522" endx="567.8072519119603" xpos="320.5749951192469" endy="365.9681185468048" c2x="482.706478">
+      <from>23</from>
+      <to>24</to>
+      <inputs default="0" any="0" invert="0">(leftFootBumpPressed &amp;&amp; shortChestButtonPressed)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="404.287017" c2y="393.096393" c1y="399.903607" description="" straight="1" type="2" ypos="406.7108201229135" endx="565.1389488596079" xpos="323.8610511403921" endy="386.2891798770865" c2x="484.712983">
+      <from>23</from>
+      <to>24</to>
+      <inputs default="0" any="0" invert="0">(rightFootBumpPressed &amp;&amp; shortChestButtonPressed)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="663.878758" c2y="285.257201" c1y="320.624427" description="" straight="0" type="2" ypos="354.9916533243012" endx="726.5212154410582" xpos="632.5575299438498" endy="251.8899745193081" c2x="683.199987">
+      <from>24</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">~shortChestButtonPressed</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="1277.949177" c2y="491.318222" c1y="401.705063" description="" straight="1" type="2" ypos="312.0919043741325" endx="1238.581546561239" xpos="1297.632992102792" endy="580.9313801290949" c2x="1258.265362">
+      <from>25</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">~shortChestButtonPressed</inputs>
+      <outputs></outputs>
     </transition>
   </machine>
 </qfsmproject>
