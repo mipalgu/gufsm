@@ -16,11 +16,11 @@
     <state pencolor="0" radius="40" description="OnEntry { gunaowalk_stop=1; print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="645" code="8" xpos="619.1666666666666" linewidth="1">Stop</state>
     <state pencolor="0" radius="40" description="OnEntry { post(&quot;gunaomotion_naoMotionPlayer&quot;, &quot;dcm_from_getup&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="73.33333333333334" code="9" xpos="374.1666666666667" linewidth="1">Stance</state>
     <state pencolor="0" radius="40" description="OnEntry { gunaowalk_disconnect=1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="565.8333333333334" code="4" xpos="409.1666666666667" linewidth="1">Disconnect</state>
-    <state pencolor="0" radius="40" description="OnEntry { post_int(&quot;QSay&quot;,GoalDistance  ) ; postv(&quot;gunaomotion_naoHeadAbs&quot;, 0,0, 50);&#xa; postv(&quot;gunaowalk_walk&quot;, 0, 0, 0, 0); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="410" code="10" xpos="520" linewidth="1">SAY_DISTANCE</state>
+    <state pencolor="0" radius="40" description="OnEntry { post_int(&quot;QSay&quot;,GoalDistance  ) ;&#xa; postv(&quot;gunaomotion_naoHeadAbs&quot;, 0,0, 50);  suspend(&quot;SMHeadGoalFindAndTrack&quot;);&#xa; postv(&quot;gunaowalk_walk&quot;, 0, 0, 0, 0); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="410" code="10" xpos="520" linewidth="1">SAY_DISTANCE</state>
     <state pencolor="0" radius="40" description="OnEntry {postv(&quot;gunaowalk_walk&quot;,- 100, 0, 0, 100);  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="517.5" code="13" xpos="1263.333333333333" linewidth="1">BACK_A_BIT</state>
     <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="680.8333333333334" code="12" xpos="998.3333333333333" linewidth="1">TEST_GOAL</state>
     <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="691.6666666666667" code="14" xpos="1241.666666666667" linewidth="1">TOO_CLOSE_OPONENT</state>
-    <state pencolor="0" radius="40" description="OnEntry {print_state_name();  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="554.1666666666666" code="15" xpos="989.1666666666667" linewidth="1">PAUSE</state>
+    <state pencolor="0" radius="40" description="OnEntry {print_state_name(); post_int(&quot;QSay&quot;,GoalDistance  ) ;  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="530.8333333333334" code="15" xpos="989.1666666666666" linewidth="1">PAUSE</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;postv(&quot;gunaomotion_naoHeadRel&quot;, 8, 0, headSeekSpeed);&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="80" code="18" xpos="846.6666666666666" linewidth="1">GoLeft</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="82.5" code="17" xpos="1046.666666666667" linewidth="1">EvalLeft</state>
     <state pencolor="0" radius="40" description="OnEntry {postv(&quot;gunaomotion_naoHeadAbs&quot;, 0,0, 50) ; &#xa;  resume(&quot;SMHeadGoalFindAndTrack&quot;);  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="406.6666666666667" code="16" xpos="1126.666666666667" linewidth="1">START_TRACKING</state>
@@ -28,9 +28,9 @@
     <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;doLeft = 1-doLeft;&#xa;&#x9;targetAngle=-targetAngle;&#xa;&#x9;postv(&quot;gunaomotion_naoHeadAbs&quot;, 0,0, 50);&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="177.5" code="20" xpos="1214.166666666667" linewidth="1">ChangeDir</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="279.1666666666666" code="21" xpos="1015" linewidth="1">EvalRight</state>
     <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="402.5000000000001" code="22" xpos="683.3333333333333" linewidth="1">SCAN</state>
-    <transition c1x="286.402356" c2y="332.819868" c1y="273.933656" description="" straight="1" type="2" ypos="215.0474438617981" endx="484.4284879072741" xpos="187.3892907379184" endy="391.7060794951695" c2x="385.415422">
+    <transition c1x="222.259405" c2y="232.763083" c1y="223.905263" description="" straight="1" type="2" ypos="215.0474438617981" endx="291.9996345850883" xpos="187.3892907379184" endy="241.6209020721962" c2x="257.129520">
       <from>0</from>
-      <to>10</to>
+      <to>6</to>
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs></outputs>
     </transition>
@@ -88,7 +88,7 @@
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1163.157433" c2y="511.977306" c1y="499.731473" description="" straight="1" type="2" ypos="487.4856402065969" endx="1015.688076478516" xpos="1236.892111610574" endy="524.2231394597402" c2x="1089.422755">
+    <transition c1x="1163.157433" c2y="496.421751" c1y="491.953696" description="" straight="1" type="2" ypos="487.4856402065969" endx="1015.688076478516" xpos="1236.892111610574" endy="500.8898061264069" c2x="1089.422755">
       <from>13</from>
       <to>15</to>
       <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
@@ -103,7 +103,7 @@
     <transition c1x="860.748022" c2y="668.316699" c1y="682.956180" description="" straight="1" type="2" ypos="697.5956604318034" endx="658.2141490740247" xpos="962.0149579533154" endy="653.6772183127463" c2x="759.481085">
       <from>12</from>
       <to>8</to>
-      <inputs default="0" any="0" invert="0">GoalDistance&lt;myStartApart</inputs>
+      <inputs default="0" any="0" invert="0">GoalDistance>myStartApart</inputs>
       <outputs></outputs>
     </transition>
     <transition c1x="1262.058752" c2y="590.744004" c1y="626.040677" description="" straight="1" type="2" ypos="661.3373488573927" endx="1250.68422269266" xpos="1267.746016375278" endy="555.4473319220206" c2x="1256.371487">
@@ -112,13 +112,13 @@
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="978.385610" c2y="643.676232" c1y="618.902572" description="" straight="1" type="2" ypos="594.1289130008689" endx="960.2984760738645" xpos="987.4291776956145" endy="668.4498914349017" c2x="969.342043">
+    <transition c1x="978.385610" c2y="635.898454" c1y="603.347017" description="" straight="1" type="2" ypos="570.7955796675358" endx="960.2984760738645" xpos="987.4291776956144" endy="668.4498914349017" c2x="969.342043">
       <from>15</from>
       <to>12</to>
       <inputs default="0" any="0" invert="0">GoalIsVisible</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="842.001725" c2y="600.991129" c1y="592.527084" description="" straight="1" type="2" ypos="584.0630394140129" endx="600.8209498758564" xpos="962.5921131134698" endy="609.4551737178055" c2x="721.411338">
+    <transition c1x="842.001725" c2y="593.213351" c1y="576.971529" description="" straight="1" type="2" ypos="560.7297060806796" endx="600.8209498758564" xpos="962.5921131134697" endy="609.4551737178055" c2x="721.411338">
       <from>15</from>
       <to>8</to>
       <inputs default="0" any="0" invert="0">~GoalIsVisible</inputs>
@@ -142,7 +142,7 @@
       <inputs default="0" any="0" invert="0">!(HeadYaw>targetAngle)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1102.328288" c2y="483.709322" c1y="451.641473" description="" straight="1" type="2" ypos="419.5736237781923" endx="977.9307165358382" xpos="1164.527074193808" endy="515.7771703863358" c2x="1040.129502">
+    <transition c1x="1102.328288" c2y="468.153766" c1y="443.863695" description="" straight="1" type="2" ypos="419.5736237781923" endx="977.9307165358381" xpos="1164.527074193808" endy="492.4438370530025" c2x="1040.129502">
       <from>16</from>
       <to>15</to>
       <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
