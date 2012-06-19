@@ -77,7 +77,7 @@
       <inputs default="0" any="0" invert="0">stopGoalie</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="889.774486" c2y="340.665211" c1y="317.359073" description="" straight="1" type="2" ypos="294.0529338316493" endx="900.2384663077312" xpos="884.5424953499621" endy="363.9713499162572" c2x="895.006476">
+    <transition c1x="889.774486" c2y="340.665211" c1y="317.359073" description="" straight="1" type="2" ypos="295.0286500837428" endx="900.2384663077312" xpos="884.7615336922688" endy="363.9713499162572" c2x="895.006476">
       <from>5</from>
       <to>8</to>
       <inputs default="0" any="0" invert="0">timeout(50000)</inputs>
@@ -173,7 +173,7 @@
       <inputs default="0" any="0" invert="0">guvision_opencv_ballInfo1_radius!=lastRadius</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="761.391985" c2y="269.680647" c1y="283.319353" description="" straight="1" type="2" ypos="287.9568601482462" endx="838.0629254999595" xpos="741.9370745000405" endy="265.0431398517538" c2x="818.608015">
+    <transition c1x="773.654776" c2y="272.835630" c1y="280.396245" description="" straight="1" type="2" ypos="287.9568601482462" endx="837.0901799999585" xpos="741.9370745000405" endy="265.275015232568" c2x="805.372478">
       <from>17</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">nearCount>2</inputs>
