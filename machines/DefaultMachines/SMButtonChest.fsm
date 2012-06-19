@@ -1,0 +1,44 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="" version="1" name="FSMChestButton" arrowtype="1" numbits="2" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="62" endx="98" xpos="38" endy="62"/>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;extern ChestBoard_Button;&#xa;&#x9;extern shortChestButtonPressed;&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="62" code="0" xpos="138" linewidth="1">Init</state>
+    <state pencolor="16711710" radius="40" description="OnEntry { shortChestButtonPressed=0; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="226" code="1" xpos="138" linewidth="1">Button_Off</state>
+    <state pencolor="45317" radius="40" description="OnEntry { shortChestButtonPressed=1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="68" code="2" xpos="400" linewidth="1">Button_On</state>
+    <state pencolor="45317" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="230" code="3" xpos="397" linewidth="1">Wait_Release</state>
+    <transition c1x="138.254731" c2y="158.002434" c1y="129.997566" description="" straight="1" type="2" ypos="101.9926994716649" endx="137.2358082903503" xpos="138.7641917096497" endy="186.0073005283351" c2x="137.745269">
+      <from>0</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">~ChestBoard_Button</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="238.661724" c2y="65.636970" c1y="64.363030" description="" straight="1" type="2" ypos="63.08909025474606" endx="360.0148292186088" xpos="177.9851707813912" endy="66.91090974525395" c2x="299.338276">
+      <from>0</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">ChestBoard_Button</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="236.814153" c2y="127.446678" c1y="166.553322" description="" straight="1" type="2" ypos="205.6599651534224" endx="365.5575409931287" xpos="172.4424590068713" endy="88.34003484657757" c2x="301.185847">
+      <from>1</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">ChestBoard_Button</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="398.681078" c2y="163.003913" c1y="134.996087" description="" straight="1" type="2" ypos="107.9879613254863" endx="397.9567671728184" xpos="399.0187003355709" endy="191.0117377076508" c2x="398.318922">
+      <from>2</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="298.017091" c2y="228.043041" c1y="228.008889" description="" straight="1" type="2" ypos="227.9747363080161" endx="177.9460294276907" xpos="358.0526213080016" endy="228.0771935302399" c2x="237.981560">
+      <from>3</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">~ChestBoard_Button</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>
