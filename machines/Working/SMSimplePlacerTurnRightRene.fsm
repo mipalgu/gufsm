@@ -15,6 +15,7 @@
     <state pencolor="0" radius="40" description="OnEntry { gunaowalk_disconnect=1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="361" code="7" xpos="196" linewidth="1">Disconnect</state>
     <state pencolor="0" radius="40" description="OnEntry { gunaowalk_stop=1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="486" code="8" xpos="296" linewidth="1">Stop</state>
     <state pencolor="0" radius="40" description="OnEntry { post(&quot;gunaomotion_naoMotionPlayer&quot;, &quot;dcm_from_getup&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="102" code="9" xpos="552" linewidth="1">Stance</state>
+    <state pencolor="0" radius="40" description="OnEntry { suspend(&quot;SMReady&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="371" code="4" xpos="371" linewidth="1">Suspend_Me</state>
     <transition c1x="394.149204" c2y="245.034187" c1y="240.965813" description="" straight="1" type="2" ypos="233.8587577652532" endx="423.5454415305296" xpos="375.4545584694704" endy="252.1412422347468" c2x="404.850796">
       <from>0</from>
       <to>6</to>
@@ -27,13 +28,13 @@
       <inputs default="0" any="0" invert="0">NaoIsReadyToRun</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="742.060862" c2y="368.337411" c1y="350.077521" description="" straight="1" type="2" ypos="331.8176314993036" endx="691.4393847159432" xpos="767.3715999019554" endy="386.5973010263552" c2x="716.750123">
+    <transition c1x="751.151908" c2y="375.481019" c1y="343.518981" description="" straight="1" type="2" ypos="331.8176314993036" endx="690.6284000980446" xpos="767.3715999019554" endy="387.1823685006964" c2x="706.848092">
       <from>2</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">timeout(10000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="601.252095" c2y="473.909530" c1y="422.090470" description="" straight="1" type="2" ypos="418.1969291216046" endx="334.1723439389989" xpos="619.8488780112831" endy="478.0079941064355" c2x="353.747905">
+    <transition c1x="601.252095" c2y="473.909530" c1y="422.090470" description="" straight="1" type="2" ypos="417.9920058935645" endx="334.1723439389989" xpos="620.8276560610011" endy="478.0079941064355" c2x="353.747905">
       <from>3</from>
       <to>8</to>
       <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
@@ -45,13 +46,13 @@
       <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="247.301441" c2y="372.483536" c1y="253.626064" description="" straight="1" type="2" ypos="330.6008510723792" endx="234.4693630294536" xpos="221.9979180796526" endy="354.588439495091" c2x="314.444622">
+    <transition c1x="262.237188" c2y="338.677436" c1y="334.639144" description="" straight="1" type="2" ypos="330.6008510723792" endx="342.7157287525381" xpos="221.9979180796526" endy="342.7157287525381" c2x="302.476459">
       <from>7</from>
-      <to>7</to>
+      <to>4</to>
       <inputs default="0" any="0" invert="0">timeout(5000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="254.753863" c2y="413.338540" c1y="434.442328" description="" straight="1" type="2" ypos="455.5461164317218" endx="220.987801902177" xpos="271.6368931453774" endy="392.2347523777212" c2x="237.870832">
+    <transition c1x="259.142992" c2y="407.071260" c1y="439.928740" description="" straight="1" type="2" ypos="455.5461164317218" endx="220.3631068546225" xpos="271.6368931453774" endy="391.4538835682782" c2x="232.857008">
       <from>8</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">timeout(5000000)</inputs>
@@ -61,6 +62,12 @@
       <from>9</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">timeout(2000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="358.313130" c2y="283.016716" c1y="307.442879" description="" straight="1" type="2" ypos="331.8690416771391" endx="349.5246962316843" xpos="362.7073465805857" endy="258.5905528495093" c2x="353.918913">
+      <from>4</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
       <outputs></outputs>
     </transition>
   </machine>
