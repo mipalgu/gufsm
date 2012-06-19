@@ -6,7 +6,7 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="62" endx="98" xpos="38" endy="62"/>
-    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;extern RFoot_Bumper_Left;&#xa;&#x9;extern RFoot_Bumper_Right;&#xa;&#x9;extern rightFootBumpPressed;&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="62" code="0" xpos="138" linewidth="1">Init</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;extern RFoot_Bumper_Left;&#xa;&#x9;extern RFoot_Bumper_Right;&#xa;&#x9;extern rightFootBumpPressed;&#xa;&#x9;post(&quot;sensors_postSensors&quot;,&quot;On&quot;);&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="62" code="0" xpos="138" linewidth="1">Init</state>
     <state pencolor="16711710" radius="40" description="OnEntry { rightFootBumpPressed=0; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="226" code="1" xpos="138" linewidth="1">Button_Off</state>
     <state pencolor="45317" radius="40" description="OnEntry { rightFootBumpPressed=1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="71" code="2" xpos="400" linewidth="1">Button_On</state>
     <state pencolor="45317" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="230" code="3" xpos="397" linewidth="1">Wait_Release</state>
