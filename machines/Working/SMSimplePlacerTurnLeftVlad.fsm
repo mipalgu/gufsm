@@ -10,9 +10,9 @@
     <state pencolor="0" radius="40" description="OnEntry { gunaowalk_ready=1; print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="60" code="1" xpos="600" linewidth="1">Setup</state>
     <state pencolor="0" radius="40" description="OnEntry { postv(&quot;gunaowalk_walk&quot;, 100,  0, -1, 100); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="140" code="2" xpos="680" linewidth="1">Walk_Forward_with_right_skew</state>
     <state pencolor="0" radius="40" description="OnEntry { postv(&quot;gunaowalk_walk&quot;, 0, 0, 90, 100); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="251" code="3" xpos="530" linewidth="1">Turn90</state>
-    <state pencolor="0" radius="40" description="OnEntry { gunaowalk_stop=1; gunaowalk_disconnect=1; suspend(&quot;SMHeadGoalFindAndTrack&quot;);  }&#xa;OnExit { }&#xa;{ }" finalstate="1" moore_outputs="" ypos="78" code="5" xpos="126" linewidth="1">Suspend</state>
+    <state pencolor="0" radius="40" description="OnEntry { gunaowalk_stop=1; gunaowalk_disconnect=1; suspend(&quot;SMHeadGoalFindAndTrack&quot;); print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="1" moore_outputs="" ypos="78" code="5" xpos="126" linewidth="1">Suspend</state>
     <state pencolor="0" radius="40" description="OnEntry { gunaomotion_holdingStiffness=100; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="270" code="6" xpos="358" linewidth="1">SetStiffness</state>
-    <state pencolor="0" radius="40" description="OnEntry { suspend(&quot;SMReady&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="430.8333333333334" code="7" xpos="169.1666666666667" linewidth="1">Suspend_Me</state>
+    <state pencolor="0" radius="40" description="OnEntry { suspend(&quot;SMReady&quot;); print_state_name();  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="430.8333333333334" code="7" xpos="169.1666666666667" linewidth="1">Suspend_Me</state>
     <state pencolor="0" radius="40" description="OnEntry { gunaowalk_stop=1; print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="587" code="8" xpos="639" linewidth="1">Stop</state>
     <state pencolor="0" radius="40" description="OnEntry { post(&quot;gunaomotion_naoMotionPlayer&quot;, &quot;dcm_from_getup&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="70" code="9" xpos="416" linewidth="1">Stance</state>
     <state pencolor="0" radius="40" description="OnEntry { gunaowalk_disconnect=1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="565.8333333333334" code="4" xpos="409.1666666666667" linewidth="1">Disconnect</state>
@@ -33,7 +33,7 @@
     <state pencolor="0" radius="40" description="OnEntry { postv(&quot;gunaowalk_walk&quot;, 0, 90, 0, 100); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="844" code="24" xpos="1021" linewidth="1">TurnRight</state>
     <state pencolor="0" radius="40" description="OnEntry { lostGoals=lostGoals+1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="548" code="25" xpos="864" linewidth="1">COUNT_LOST_GOALS</state>
     <state pencolor="0" radius="40" description="OnEntry {postv(&quot;gunaowalk_walk&quot;, 0,0, 0,0);  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="454" code="28" xpos="1264" linewidth="1">PAUSE_A_BIT</state>
-    <state pencolor="0" radius="40" description="OnEntry {  localPlayerNumber=3; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="87" code="26" xpos="259" linewidth="1">ADJUST_FOR_GOALIE</state>
+    <state pencolor="0" radius="40" description="OnEntry {  localPlayerNumber=3; print_state_name();  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="87" code="26" xpos="259" linewidth="1">ADJUST_FOR_GOALIE</state>
     <transition c1x="231.118827" c2y="246.661099" c1y="230.956984" description="" straight="1" type="2" ypos="215.2528688151982" endx="318.7353844132567" xpos="187.3105480593255" endy="262.3652136359111" c2x="274.927106">
       <from>0</from>
       <to>6</to>
