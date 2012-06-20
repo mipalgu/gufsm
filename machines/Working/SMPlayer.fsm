@@ -15,7 +15,7 @@
     <state pencolor="0" radius="40" description="OnEntry { gunaowalk_ready=1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="370" code="6" xpos="774" linewidth="1">Engage_DCM</state>
     <state pencolor="0" radius="40" description="OnEntry { postv(&quot;gunaowalk_walk&quot;, 100, 0, 0, 100); }&#xa;OnExit {  gunaowalk_disconnect=1;  walkAMeter=0; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="500" code="7" xpos="709" linewidth="1">Walk</state>
     <state pencolor="0" radius="40" description="OnEntry {  post(&quot;gunaomotion_naoMotionPlayer&quot;, &quot;dcm_from_getup&quot;);  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="253" code="8" xpos="827" linewidth="1">Stance</state>
-    <transition c1x="174.994756" c2y="163.786597" c1y="165.213403" description="" straight="1" type="2" ypos="165.466714067754" endx="302.0034662045129" xpos="155.9964449184483" endy="163.5199537839398" c2x="282.005244">
+    <transition c1x="174.994756" c2y="163.786597" c1y="165.213403" description="" straight="1" type="2" ypos="165.4800462160602" endx="302.0034662045129" xpos="154.9965337954871" endy="163.5199537839398" c2x="282.005244">
       <from>0</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">SMBallFollowerIsRunning</inputs>
@@ -81,10 +81,10 @@
       <inputs default="0" any="0" invert="0">NaoIsReadyToRun</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="500.296858" c2y="284.040243" c1y="382.450507" description="" straight="1" type="2" ypos="480.860770307225" endx="150.8520288893462" xpos="675.0192718328874" endy="185.629979172077" c2x="325.574443">
+    <transition c1x="657.593257" c2y="194.954219" c1y="471.045781" description="" straight="1" type="2" ypos="480.860770307225" endx="149.9807281671126" xpos="675.0192718328874" endy="185.139229692775" c2x="167.406743">
       <from>7</from>
       <to>0</to>
-      <inputs default="0" any="0" invert="0">timeout(5000000)</inputs>
+      <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
       <outputs></outputs>
     </transition>
     <transition c1x="802.654863" c2y="316.256961" c1y="306.743039" description="" straight="1" type="2" ypos="288.5250599212723" endx="790.0925485113456" xpos="810.9074514886544" endy="334.4749400787277" c2x="798.345137">
