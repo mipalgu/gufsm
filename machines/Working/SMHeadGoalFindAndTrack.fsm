@@ -10,15 +10,15 @@
     <state pencolor="511" radius="40" description="OnEntry { postv(&quot;gunaomotion_updateTrackerTarget&quot;, yPos, zPos, delay);&#xa; }&#xa;OnExit { }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="262" code="1" xpos="651" linewidth="1">Correct</state>
     <state pencolor="511" radius="40" description="OnEntry { }&#xa;OnExit {&#xa;&#x9;tx = FIXED_FACTOR * goal_x / x_per_cm_dist;&#xa;&#x9;ty = FIXED_FACTOR * goal_y / y_per_cm_dist;&#xa;&#x9;zPos = (zPos * (track_smoothness-1) - 2*atan(tx)) / track_smoothness;&#xa;&#x9;yPos = (yPos * (track_smoothness-1) + 2*atan(ty)) / track_smoothness;&#xa;  }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="201" code="9" xpos="789" linewidth="1">Calculate</state>
     <state pencolor="45317" radius="40" description="OnEntry { &#xa;&#x9;gunaomotion_trackerTarget = 1; &#xa;&#x9;goal_x = Goalfiltered_x;&#xa;&#x9;goal_y = Goalfiltered_y;&#xa;&#x9;goal_d = GoalDistance;&#xa; }&#xa;OnExit { &#xa; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="68" code="13" xpos="872" linewidth="1">WaitForGoal</state>
-    <state pencolor="0" radius="40" description="OnEntry { gunaomotion_headStiffness = 100;  update =Goalfiltered;}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="116" code="21" xpos="254" linewidth="1">DUMMY</state>
+    <state pencolor="0" radius="40" description="OnEntry { gunaomotion_headStiffness = 100;  update =Goalfiltered;}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="119" code="21" xpos="249" linewidth="1">DUMMY</state>
     <state pencolor="16711710" radius="40" description="OnEntry{print_state_name(); resume(&quot;SMHeadScan&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="412" code="3" xpos="334" linewidth="1">START_FINDING</state>
-    <state pencolor="0" radius="40" description="OnEntry{print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="268" code="4" xpos="175" linewidth="1">FOUND</state>
+    <state pencolor="0" radius="40" description="OnEntry{print_state_name(); &#xa;suspend(&quot;SMHeadScan&quot;);&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="268" code="4" xpos="175" linewidth="1">FOUND</state>
     <state pencolor="16711710" radius="40" description="OnEntry {&#xa;&#x9;gunaomotion_trackerTarget = 0; &#xa;&#x9;print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="280" code="5" xpos="412" linewidth="1">WAIT</state>
     <state pencolor="16711710" radius="40" description="OnEntry{print_state_name(); }&#xa;OnExit{suspend(&quot;SMHeadScan&quot;); post(&quot;Say&quot;,&quot;FOUND&quot;);}&#xa;{}" finalstate="0" moore_outputs="" ypos="411" code="6" xpos="150" linewidth="1">END_FINDING</state>
-    <state pencolor="45317" radius="40" description="OnEntry { sensors_postJoints = 1; sensors_postJoints_Frequency = 1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="76" code="2" xpos="455" linewidth="1">Setup_Tracker</state>
+    <state pencolor="45317" radius="40" description="OnEntry { sensors_postJoints = 1; sensors_postJoints_Frequency = 1; suspend(&quot;SMHeadScan&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="76" code="2" xpos="455" linewidth="1">Setup_Tracker</state>
     <state pencolor="45317" radius="40" description="OnEntry{update = Goalfiltered; yPos = HeadPitch; zPos = HeadYaw; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="75" code="7" xpos="619" linewidth="1">Loop</state>
     <state pencolor="0" radius="40" description="OnEntry {  suspend(&quot;SMHeadScan&quot;);&#xa;&#x9;say(&quot;suspended ball find and track&quot;) ;&#xa; &#x9;gunaomotion_trackerTarget = 0; &#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="1" moore_outputs="" ypos="389" code="8" xpos="560" linewidth="1">Suspend</state>
-    <transition c1x="144.895756" c2y="119.505700" c1y="122.494300" description="" straight="1" type="2" ypos="123.6826730406156" endx="215.0689070823422" xpos="124.9310929176579" endy="118.3173269593844" c2x="195.104244">
+    <transition c1x="143.229089" c2y="121.505700" c1y="123.494300" description="" straight="1" type="2" ypos="123.6826730406156" endx="210.0689070823422" xpos="124.9310929176579" endy="121.3173269593844" c2x="191.770911">
       <from>0</from>
       <to>21</to>
       <inputs default="0" any="0" invert="0">timeout(100000)</inputs>
@@ -42,13 +42,13 @@
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="311.865306" c2y="87.515484" c1y="104.484516" description="" straight="1" type="2" ypos="108.3880700486758" endx="416.7500519945957" xpos="292.2499480054043" endy="83.61192995132424" c2x="397.134694">
+    <transition c1x="330.089727" c2y="93.000762" c1y="102.194416" description="" straight="1" type="2" ypos="111.3880700486758" endx="415.7692840970212" xpos="287.2499480054043" endy="83.80710764238384" c2x="372.929505">
       <from>21</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">GoalIsVisible</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="294.934816" c2y="237.510697" c1y="158.489303" description="" straight="1" type="2" ypos="144.0861492174253" endx="384.9413928271147" xpos="281.0586071728853" endy="251.9138507825747" c2x="371.065184">
+    <transition c1x="291.601483" c2y="238.510697" c1y="160.489303" description="" straight="1" type="2" ypos="147.0861492174253" endx="384.9413928271147" xpos="276.0586071728853" endy="251.9138507825747" c2x="369.398517">
       <from>21</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">!GoalIsVisible</inputs>
@@ -60,7 +60,7 @@
       <inputs default="0" any="0" invert="0">timeout(10000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="202.208967" c2y="168.351429" c1y="215.648571" description="" straight="1" type="2" ypos="233.3948179707889" endx="236.01441197166" xpos="192.98558802834" endy="150.6051820292111" c2x="226.791033">
+    <transition c1x="200.542300" c2y="170.351429" c1y="216.648571" description="" straight="1" type="2" ypos="232.5075056110655" endx="231.01441197166" xpos="193.4467569521436" endy="153.6051820292111" c2x="223.457700">
       <from>4</from>
       <to>21</to>
       <inputs default="0" any="0" invert="0">!gunaomotion_naoHeadIsRunning</inputs>
@@ -72,13 +72,13 @@
       <inputs default="0" any="0" invert="0">!gunaomotion_naoHeadIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="160.160581" c2y="326.118522" c1y="352.881478" description="" straight="1" type="2" ypos="372.5826719040028" endx="168.2836838993012" xpos="156.7163161006988" endy="306.4173280959972" c2x="164.839419">
+    <transition c1x="160.514701" c2y="329.129149" c1y="350.855911" description="" straight="1" type="2" ypos="372.5826719040028" endx="168.11147066595" xpos="156.7163161006988" endy="307.4023877907663" c2x="164.313086">
       <from>6</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">GoalIsVisible</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="513.998903" c2y="75.359749" c1y="75.640251" description="" straight="1" type="2" ypos="75.76219954265034" endx="580.0007249946556" xpos="493.9992750053444" endy="75.23780045734966" c2x="560.001097">
+    <transition c1x="513.998903" c2y="75.359749" c1y="75.640251" description="" straight="1" type="2" ypos="75.75610209502598" endx="580.0007249946556" xpos="494.9992564157379" endy="75.23780045734966" c2x="560.001097">
       <from>2</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">1</inputs>
