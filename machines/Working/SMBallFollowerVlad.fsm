@@ -43,7 +43,7 @@
     <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="824" code="31" xpos="1071" linewidth="1">WAIT_SEE_GOAL</state>
     <state pencolor="0" radius="40" description="OnEntry {  postv(&quot;gunaomotion_naoHeadAbs&quot; ,curentYaw , currentPitch, 50); }&#xa;OnExit { guvision_selectCamera=1; resume(&quot;SMHeadBallFindAndTrack&quot;); }&#xa;{ }" finalstate="0" moore_outputs="" ypos="508" code="35" xpos="366" linewidth="1">BACK_TO_PAST_LOOKING</state>
     <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="217" code="36" xpos="315" linewidth="1">TEST_FROM_PENALIZED</state>
-    <state pencolor="0" radius="40" description="OnEntry {postv(&quot;gunaomotion_naoWalk&quot;,100 , 0,100);  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="372" code="37" xpos="305" linewidth="1">WALK_A_METER</state>
+    <state pencolor="0" radius="40" description="OnEntry {postv(&quot;gunaomotion_naoWalk&quot;,100 , 0,0);  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="370" code="37" xpos="310" linewidth="1">WALK_A_METER</state>
     <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="405" code="38" xpos="484" linewidth="1">WAIT</state>
     <transition c1x="76.660514" c2y="250.272165" c1y="118.727835" description="" straight="1" type="2" ypos="99.81548121303464" endx="91.2583041751606" xpos="74.83763674342502" endy="270.1799058172912" c2x="89.339486">
       <from>0</from>
@@ -369,19 +369,19 @@
       <inputs default="0" any="0" invert="0">~walkAMeter</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="309.949807" c2y="306.972337" c1y="281.944675" description="" straight="1" type="2" ypos="256.9170123587383" endx="305.000002" xpos="312.4247088800814" endy="332.0000000000001" c2x="307.474904">
+    <transition c1x="311.616473" c2y="305.639004" c1y="281.278008" description="" straight="1" type="2" ypos="256.9170123587383" endx="310.000002" xpos="312.4247088800814" endy="330.0000000000001" c2x="310.808238">
       <from>36</from>
       <to>37</to>
       <inputs default="0" any="0" invert="0">walkAMeter</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="380.834916" c2y="225.635089" c1y="283.500901" description="" straight="1" type="2" ypos="341.3667134346113" endx="481.0615062254669" xpos="330.721620365031" endy="167.7692768207616" c2x="430.948211">
+    <transition c1x="384.168249" c2y="224.968422" c1y="282.167568" description="" straight="1" type="2" ypos="339.3667134346113" endx="481.0615062254669" xpos="335.721620365031" endy="167.7692768207616" c2x="432.614878">
       <from>37</from>
       <to>18</to>
       <inputs default="0" any="0" invert="0">timeout(4000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="377.456072" c2y="396.679255" c1y="388.358510" description="" straight="1" type="2" ypos="380.0377657488532" endx="444" xpos="344.1841080256596" endy="405" c2x="410.728036">
+    <transition c1x="380.789405" c2y="396.012589" c1y="387.025177" description="" straight="1" type="2" ypos="378.0377657488532" endx="444" xpos="349.1841080256596" endy="405" c2x="412.394703">
       <from>37</from>
       <to>38</to>
       <inputs default="0" any="0" invert="0">gunaomotion_naoWalkIsRunning</inputs>
