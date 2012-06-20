@@ -27,7 +27,7 @@
     <state pencolor="13041408" radius="40" description="OnEntry { belt_x = guvision_belt_blue_team_Info_x; }&#xa;OnExit {  guvision_belt_blue_team_Info_x = 2000; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="520" code="8" xpos="1065" linewidth="1">Check_Blue</state>
     <state pencolor="13041408" radius="40" description="OnEntry { belt_x = guvision_belt_pink_team_Info_x; }&#xa;OnExit {  guvision_belt_pink_team_Info_x = 2000; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="559" code="9" xpos="1285" linewidth="1">Check_Red</state>
     <state pencolor="13041408" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="370" code="13" xpos="1199" linewidth="1">Check_Team</state>
-    <transition c1x="130.985251" c2y="57.319159" c1y="68.680841" description="" straight="1" type="2" ypos="69.10565493895908" endx="659.0097494281196" xpos="111.990000586544" endy="56.87198643451489" c2x="639.014749">
+    <transition c1x="130.985251" c2y="57.319159" c1y="68.680841" description="" straight="1" type="2" ypos="69.12801356548511" endx="659.0097494281196" xpos="110.9902505718804" endy="56.87198643451489" c2x="639.014749">
       <from>0</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">1</inputs>
@@ -135,7 +135,7 @@
       <inputs default="0" any="0" invert="0">timeout(4000000)</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="1232.441854" c2y="313.371140" c1y="255.628860" description="" straight="1" type="2" ypos="237.3924475103385" endx="1209.945215299" xpos="1237.774138154872" endy="332.56736367742" c2x="1215.558146">
+    <transition c1x="1232.441854" c2y="313.371140" c1y="255.628860" description="" straight="1" type="2" ypos="236.43263632258" endx="1209.945215299" xpos="1238.054784701" endy="332.56736367742" c2x="1215.558146">
       <from>3</from>
       <to>13</to>
       <inputs default="0" any="0" invert="0">timeout(2000000)</inputs>
@@ -168,13 +168,13 @@
     <transition c1x="1082.358226" c2y="743.491709" c1y="760.508291" description="" straight="1" type="2" ypos="762.7088700920942" endx="908.7632068347483" xpos="1102.236793165252" endy="741.2911299079058" c2x="928.641774">
       <from>31</from>
       <to>6</to>
-      <inputs default="0" any="0" invert="0">~guvision_goalLeftX</inputs>
+      <inputs default="0" any="0" invert="0">~GoalIsVisible</inputs>
       <outputs>2</outputs>
     </transition>
     <transition c1x="1085.152678" c2y="870.971688" c1y="786.028312" description="" straight="1" type="2" ypos="779.5780366450385" endx="816.9160262508855" xpos="1104.083973749114" endy="877.4219633549615" c2x="835.847322">
       <from>31</from>
       <to>11</to>
-      <inputs default="0" any="0" invert="0">guvision_goalLeftX</inputs>
+      <inputs default="0" any="0" invert="0">GoalIsVisible</inputs>
       <outputs>1</outputs>
     </transition>
     <transition c1x="363.989465" c2y="297.114921" c1y="305.885079" description="" straight="1" type="2" ypos="306.2630182196021" endx="848.0069639825858" xpos="343.9930360174142" endy="296.7369817803979" c2x="828.010535">
@@ -183,7 +183,7 @@
       <inputs default="0" any="0" invert="0">timeout(10000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="379.016661" c2y="111.523813" c1y="143.709637" description="" straight="1" type="2" ypos="175.8954605585283" endx="110.8947548937789" xpos="513.0776139785655" endy="79.33798917074023" c2x="244.955708">
+    <transition c1x="493.630237" c2y="83.773534" c1y="171.226466" description="" straight="1" type="2" ypos="175.8954605585283" endx="109.9223860214344" xpos="513.0776139785655" endy="79.10453944147173" c2x="129.369763">
       <from>2</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">1</inputs>
