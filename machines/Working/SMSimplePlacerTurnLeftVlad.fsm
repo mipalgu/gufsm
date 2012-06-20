@@ -7,8 +7,8 @@
     <outputnames></outputnames>
     <itransition ypos="200.8333333333333" endx="110" xpos="50" endy="200.8333333333333"/>
     <state pencolor="0" radius="40" description="OnEntry {    int localPlayerNumber;&#xa;&#x9;int weHaveKickOff;&#xa;&#x9;int lostGoals;&#xa;&#x9;int lengthStraight;&#xa;       int myStartApart;&#xa;       int headSeekSpeed; int doLeft;&#xa;&#x9;int targetAngle ;&#xa;&#x9;extern gameStart;&#xa;&#x9;extern GoalDistance;&#xa;&#x9;extern playerNumber;&#xa;&#x9;extern HeadYaw;&#xa; &#x9;extern gunaomotion_holdingStiffness;&#xa;&#x9;extern gunaomotion_naoHeadIsRunning;&#xa;&#x9;extern guvision_selectCamera;&#xa; &#x9;extern gunaowalk_stop;&#xa;&#x9;extern gunaowalk_ready;&#xa;&#x9;extern gunaowalk_disconnect;&#xa;&#x9;extern NaoIsReadyToRun;&#xa;&#x9;extern NaoIsRunning;&#xa;&#x9; extern kickOffTeam;&#xa;&#x9; extern ourTeam;&#xa;&#x9; post(&quot;guvision_runVisionPipeline&quot;,&quot;itial&quot;); &#xa;&#x9;guvision_selectCamera=0;&#xa;&#x9;weHaveKickOff = ourTeam == kickOffTeam;&#xa;&#x9;myStartApart=425 - 100*weHaveKickOff;&#xa;        headSeekSpeed=17;doLeft=1;&#xa;&#x9;localPlayerNumber=playerNumber;&#xa;&#x9;targetAngle = 12; lostGoals=0;&#xa;&#x9;resume(&quot;SMHeadGoalFindAndTrack&quot;);&#xa;&#x9;lengthStraight=4000000;&#xa;&#x9;print_state_name();&#xa;&#x9;print_int(gameStart);&#xa;&#x9;print_int(myStartApart);&#xa;&#x9;&#xa; }&#xa;OnExit {  post(&quot;sensors_postJoints&quot;, &quot;On&quot;);   sensors_postJoints_Frequency=2; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="200.8333333333333" code="0" xpos="150" linewidth="1">Init</state>
-    <state pencolor="0" radius="40" description="OnEntry { gunaowalk_ready=1; print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="61" code="1" xpos="601" linewidth="1">Setup</state>
-    <state pencolor="0" radius="40" description="OnEntry { postv(&quot;gunaowalk_walk&quot;, 100, 0, 0, 100); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="142.5" code="2" xpos="675.8333333333333" linewidth="1">Walk_Forward</state>
+    <state pencolor="0" radius="40" description="OnEntry { gunaowalk_ready=1; print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="60" code="1" xpos="600" linewidth="1">Setup</state>
+    <state pencolor="0" radius="40" description="OnEntry { postv(&quot;gunaowalk_walk&quot;, 100,  0, -1, 100); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="140" code="2" xpos="680" linewidth="1">Walk_Forward_with_right_skew</state>
     <state pencolor="0" radius="40" description="OnEntry { postv(&quot;gunaowalk_walk&quot;, 0, 0, 90, 100); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="251" code="3" xpos="530" linewidth="1">Turn90</state>
     <state pencolor="0" radius="40" description="OnEntry { gunaowalk_stop=1; gunaowalk_disconnect=1; suspend(&quot;SMHeadGoalFindAndTrack&quot;);  }&#xa;OnExit { }&#xa;{ }" finalstate="1" moore_outputs="" ypos="78" code="5" xpos="126" linewidth="1">Suspend</state>
     <state pencolor="0" radius="40" description="OnEntry { gunaomotion_holdingStiffness=100; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="270" code="6" xpos="358" linewidth="1">SetStiffness</state>
@@ -34,7 +34,7 @@
     <state pencolor="0" radius="40" description="OnEntry { lostGoals=lostGoals+1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="548" code="25" xpos="864" linewidth="1">COUNT_LOST_GOALS</state>
     <state pencolor="0" radius="40" description="OnEntry {postv(&quot;gunaowalk_walk&quot;, 0,0, 0,0);  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="454" code="28" xpos="1264" linewidth="1">PAUSE_A_BIT</state>
     <state pencolor="0" radius="40" description="OnEntry {  localPlayerNumber=3; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="87" code="26" xpos="259" linewidth="1">ADJUST_FOR_GOALIE</state>
-    <transition c1x="231.770183" c2y="242.137933" c1y="228.695401" description="" straight="1" type="2" ypos="215.2528688151982" endx="320.6894519406745" xpos="187.3105480593255" endy="255.5804645181351" c2x="276.229817">
+    <transition c1x="231.118827" c2y="246.661099" c1y="230.956984" description="" straight="1" type="2" ypos="215.2528688151982" endx="318.7353844132567" xpos="187.3105480593255" endy="262.3652136359111" c2x="274.927106">
       <from>0</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">gameStart</inputs>
@@ -52,13 +52,13 @@
       <inputs default="0" any="0" invert="0">playerNumber==1</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="629.887139" c2y="112.824346" c1y="90.675654" description="" straight="1" type="2" ypos="81.93814419553323" endx="642.9305353117811" xpos="633.9027980215521" endy="121.5618558044668" c2x="646.946194">
+    <transition c1x="637.915487" c2y="106.174993" c1y="93.825007" description="" straight="1" type="2" ypos="81.47501968772642" endx="646.2535404907157" xpos="633.7464595092843" endy="118.5249803122736" c2x="642.084513">
       <from>1</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">NaoIsReadyToRun</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="617.068274" c2y="206.663074" c1y="186.239102" description="" straight="1" type="2" ypos="165.8151313094862" endx="562.0650990037224" xpos="644.5698618047039" endy="227.0870448107834" c2x="589.566687">
+    <transition c1x="619.311634" c2y="206.029015" c1y="184.970985" description="" straight="1" type="2" ypos="163.9129551892166" endx="562.0650990037224" xpos="647.9349009962776" endy="227.0870448107834" c2x="590.688366">
       <from>2</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">timeout(lengthStraight*localPlayerNumber)</inputs>
@@ -67,10 +67,10 @@
     <transition c1x="520.751561" c2y="343.781803" c1y="317.218197" description="" straight="1" type="2" ypos="290.6545918656109" endx="512.7453163843401" xpos="524.7546836156599" endy="370.3454081343891" c2x="516.748439">
       <from>3</from>
       <to>10</to>
-      <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
+      <inputs default="0" any="0" invert="0">timeout(1500000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="375.282744" c2y="128.960421" c1y="211.039579" description="" straight="1" type="2" ypos="231.3451008510169" endx="405.9712933323776" xpos="368.2858529924333" endy="107.6885266702585" c2x="398.717256">
+    <transition c1x="380.761951" c2y="149.551633" c1y="190.448367" description="" straight="1" type="2" ypos="231.3451008510169" endx="405.7141470075667" xpos="368.2858529924333" endy="108.6548991489831" c2x="393.238049">
       <from>6</from>
       <to>9</to>
       <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
@@ -88,7 +88,7 @@
       <inputs default="0" any="0" invert="0">timeout(5000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="481.579946" c2y="64.437016" c1y="66.562984" description="" straight="1" type="2" ypos="65.67157702349128" endx="562.2409397103538" xpos="454.7590602896462" endy="65.32842297650872" c2x="535.420054">
+    <transition c1x="490.584294" c2y="64.813136" c1y="65.186864" description="" straight="1" type="2" ypos="65.56059181896542" endx="560.2471176516449" xpos="455.7528823483551" endy="64.43940818103459" c2x="525.415706">
       <from>9</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">timeout(2000000)</inputs>
@@ -256,7 +256,7 @@
       <inputs default="0" any="0" invert="0">timeout(100000)</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="300.991342" c2y="195.796477" c1y="158.275757" description="" straight="1" type="2" ypos="120.7550365275712" endx="342.050955543422" xpos="280.461535569999" endy="233.3171977498706" c2x="321.521149">
+    <transition c1x="298.525876" c2y="198.597936" c1y="159.676486" description="" straight="1" type="2" ypos="120.7550365275712" endx="334.654558073897" xpos="280.461535569999" endy="237.5193851462915" c2x="316.590217">
       <from>26</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">gameStart</inputs>
