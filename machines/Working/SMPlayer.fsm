@@ -1,45 +1,97 @@
 <?xml version='1.0'?>
 <!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
 <qfsmproject version="0.53" author="Qfsm">
-  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="" version="1" name="SMPlayer" arrowtype="1" numbits="3" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="" version="1" name="SMPlayer" arrowtype="1" numbits="4" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
-    <itransition ypos="82" endx="75" xpos="15" endy="82"/>
-    <state pencolor="0" radius="40" description="OnEntry { extern SMBallFollowerIsRunning;&#xa;&#x9;extern SMKickerIsRunning;&#xa;&#x9;extern guvision_runVisionPipeline;&#xa;&#x9;suspend(&quot;SMKicker&quot;);&#xa;&#x9;resume(&quot;SMBallFollower&quot;);&#xa;&#x9;guvision_runVisionPipeline=1;&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="82" code="0" xpos="115" linewidth="1">INIT</state>
-    <state pencolor="16711710" radius="40" description="OnEntry { resume(&quot;SMKicker&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="98.47222222222223" code="1" xpos="567.9166666666666" linewidth="1">Kick</state>
-    <state pencolor="45317" radius="40" description="OnEntry { resume(&quot;SMBallFollower&quot;); }&#xa;OnExit { suspend(&quot;SMBallFollower&quot;); }&#xa;{ }" finalstate="0" moore_outputs="" ypos="79" code="2" xpos="340" linewidth="1">Follow</state>
-    <state pencolor="12124415" radius="40" description="OnEntry { }&#xa;OnExit { resume(&quot;SMBallFollower&quot;);&#xa;&#x9;suspend(&quot;SMKicker&quot;);&#xa; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="230.1388888888889" code="3" xpos="520.5555555555555" linewidth="1">Kicking</state>
-    <state pencolor="13684944" radius="40" description="OnEntry { &#xa;&#x9;suspend(&quot;SMBallFollower&quot;);&#xa;&#x9;suspend(&quot;SMKicker&quot;);&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="1" moore_outputs="" ypos="230" code="4" xpos="123" linewidth="1">Suspend</state>
-    <transition c1x="203.332148" c2y="80.177762" c1y="80.822238" description="" straight="1" type="2" ypos="81.46671406775403" endx="300.0035550815517" xpos="154.9964449184483" endy="79.53328593224597" c2x="251.667852">
+    <itransition ypos="166" endx="76" xpos="16" endy="166"/>
+    <state pencolor="0" radius="40" description="OnEntry { extern SMBallFollowerIsRunning;&#xa;&#x9;extern SMKickerIsRunning;&#xa;&#x9;extern guvision_runVisionPipeline;&#xa;&#x9;extern gunaomotion_holdingStiffness;&#xa;&#x9;extern gunaowalk_ready;&#xa;&#x9;extern gunaowalk_disconnect;&#xa;&#x9;extern NaoIsReadyToRun;&#xa;&#x9;extern walkAMeter;&#xa;&#x9;extern disableUpperCamera;&#xa;&#x9;disableUpperCamera=1;&#xa;&#x9;suspend(&quot;SMKicker&quot;);&#xa;&#x9;resume(&quot;SMBallFollower&quot;);&#xa;&#x9;guvision_runVisionPipeline=1;&#xa;&#x9;gunaomotion_holdingStiffness=100;&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="166" code="0" xpos="116" linewidth="1">INIT</state>
+    <state pencolor="16711710" radius="40" description="OnEntry { resume(&quot;SMKicker&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="182.4722222222222" code="1" xpos="568.9166666666666" linewidth="1">Kick</state>
+    <state pencolor="45317" radius="40" description="OnEntry { resume(&quot;SMBallFollower&quot;); }&#xa;OnExit { suspend(&quot;SMBallFollower&quot;); }&#xa;{ }" finalstate="0" moore_outputs="" ypos="163" code="2" xpos="341" linewidth="1">Follow</state>
+    <state pencolor="12124415" radius="40" description="OnEntry { }&#xa;OnExit { resume(&quot;SMBallFollower&quot;);&#xa;&#x9;suspend(&quot;SMKicker&quot;);&#xa; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="314.1388888888889" code="3" xpos="521.5555555555555" linewidth="1">Kicking</state>
+    <state pencolor="13684944" radius="40" description="OnEntry { &#xa;&#x9;suspend(&quot;SMBallFollower&quot;);&#xa;&#x9;suspend(&quot;SMKicker&quot;);&#xa;&#x9; gunaowalk_disconnect=1;&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="1" moore_outputs="" ypos="314" code="4" xpos="124" linewidth="1">Suspend</state>
+    <state pencolor="0" radius="40" description="OnEntry { suspend(&quot;SMBallFollower&quot;);&#xa;&#x9;  suspend(&quot;SMKicker&quot;);&#xa;&#x9; gunaomotion_holdingStiffness=100;&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="122" code="5" xpos="822" linewidth="1">Stop</state>
+    <state pencolor="0" radius="40" description="OnEntry { gunaowalk_ready=1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="370" code="6" xpos="774" linewidth="1">Engage_DCM</state>
+    <state pencolor="0" radius="40" description="OnEntry { postv(&quot;gunaowalk_walk&quot;, 100, 0, 0, 100); }&#xa;OnExit {  gunaowalk_disconnect=1;  walkAMeter=0; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="500" code="7" xpos="709" linewidth="1">Walk</state>
+    <state pencolor="0" radius="40" description="OnEntry {  post(&quot;gunaomotion_naoMotionPlayer&quot;, &quot;dcm_from_getup&quot;);  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="253" code="8" xpos="827" linewidth="1">Stance</state>
+    <transition c1x="203.998845" c2y="164.173318" c1y="164.826682" description="" straight="1" type="2" ypos="165.466714067754" endx="302.0034662045129" xpos="155.9964449184483" endy="163.5199537839398" c2x="253.001155">
       <from>0</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">SMBallFollowerIsRunning</inputs>
+      <outputs>2</outputs>
+    </transition>
+    <transition c1x="356.308160" c2y="93.383421" c1y="80.524704" description="" straight="0" type="2" ypos="163.5119095277871" endx="784.9563056092181" xpos="155.9225425768711" endy="106.9081245074592" c2x="577.648146">
+      <from>0</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">walkAMeter</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="547.616651" c2y="173.703654" c1y="154.907457" description="" straight="1" type="2" ypos="136.111260368399" endx="534.0944922726929" xpos="554.3777299495292" endy="192.4998507427122" c2x="540.855571">
+    <transition c1x="548.729475" c2y="258.017313" c1y="238.593799" description="" straight="1" type="2" ypos="219.1702844147446" endx="534.7560188547645" xpos="555.7162033674576" endy="277.4408266963666" c2x="541.742747">
       <from>1</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">SMKickerIsRunning</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="429.257159" c2y="90.846474" c1y="86.625749" description="" straight="1" type="2" ypos="82.4050239137203" endx="528.0618575196265" xpos="379.8548091470401" endy="95.06719830850191" c2x="478.659508">
+    <transition c1x="665.597635" c2y="145.333538" c1y="159.371084" description="" straight="1" type="2" ypos="173.4086303849894" endx="783.0951861634909" xpos="606.8488601572631" endy="131.2959916279311" c2x="724.346411">
+      <from>1</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">walkAMeter</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="429.925035" c2y="174.874849" c1y="170.597374" description="" straight="1" type="2" ypos="166.3198983158773" endx="530.0582277483026" xpos="379.8584389183641" endy="179.1523239063449" c2x="479.991631">
       <from>2</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">~SMBallFollowerIsRunning</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="373.472590" c2y="136.068680" c1y="176.413310" description="" straight="1" type="2" ypos="216.4148382761744" endx="152.5719367983559" xpos="482.9836187571997" endy="95.72405061271452" c2x="263.022264">
+    <transition c1x="512.064785" c2y="112.534653" c1y="126.377866" description="" straight="0" type="2" ypos="143.7666955517259" endx="782.2586930937439" xpos="376.0724963468527" endy="117.4581363535707" c2x="646.125491">
+      <from>2</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">walkAMeter</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="461.463726" c2y="195.558778" c1y="312.826791" description="" straight="0" type="2" ypos="307.3224171264711" endx="150.6179782755876" xpos="483.1558717975848" endy="186.0398498026044" c2x="167.061518">
       <from>3</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">~SMKickerIsRunning</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="373.472590" c2y="136.068680" c1y="176.413310" description="" straight="1" type="2" ypos="216.4148382761744" endx="152.5719367983559" xpos="482.9836187571997" endy="95.72405061271452" c2x="263.022264">
+    <transition c1x="470.494038" c2y="176.312098" c1y="282.580110" description="" straight="0" type="2" ypos="294.6000353313496" endx="155.3842910338161" xpos="487.8030267368576" endy="172.9912530896593" c2x="174.091829">
       <from>3</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">timeout(15000000)</inputs>
       <outputs>1</outputs>
+    </transition>
+    <transition c1x="632.374821" c2y="193.409406" c1y="243.268247" description="" straight="1" type="2" ypos="293.1270882311888" endx="788.3017336085846" xpos="554.4113652871855" endy="143.5505647771284" c2x="710.338278">
+      <from>3</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">walkAMeter</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="824.175202" c2y="196.009701" c1y="178.990299" description="" straight="1" type="2" ypos="161.970895963783" endx="825.4743932838251" xpos="823.5256067161749" endy="213.029104036217" c2x="824.824798">
+      <from>5</from>
+      <to>8</to>
+      <inputs default="0" any="0" invert="0">timeout(200000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="744.944877" c2y="444.673336" c1y="424.462494" description="" straight="1" type="2" ypos="404.2516523420132" endx="728.1540852272229" xpos="753.3402731905318" endy="464.8841770834246" c2x="736.549481">
+      <from>6</from>
+      <to>7</to>
+      <inputs default="0" any="0" invert="0">NaoIsReadyToRun</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="493.501955" c2y="295.160139" c1y="389.353987" description="" straight="1" type="2" ypos="483.5478347137557" endx="135.4257172471453" xpos="672.5400732667481" endy="200.9662910448615" c2x="314.463836">
+      <from>7</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">timeout(5000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="803.944699" c2y="318.958414" c1y="304.197186" description="" straight="1" type="2" ypos="289.4359588936126" endx="790.8444522581851" xpos="810.4948220396456" endy="333.7196412900627" c2x="797.394576">
+      <from>8</from>
+      <to>6</to>
+      <inputs default="0" any="0" invert="0">timeout(200000)</inputs>
+      <outputs>2</outputs>
     </transition>
   </machine>
 </qfsmproject>
