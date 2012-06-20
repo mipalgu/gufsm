@@ -67,7 +67,7 @@
     <transition c1x="521.733303" c2y="351.582009" c1y="309.417991" description="" straight="1" type="2" ypos="289.6152824686822" endx="512.9644267644362" xpos="524.5355732355638" endy="371.3847175313178" c2x="515.766697">
       <from>3</from>
       <to>10</to>
-      <inputs default="0" any="0" invert="0">timeout(1500000)</inputs>
+      <inputs default="0" any="0" invert="0">timeout(2000000)</inputs>
       <outputs></outputs>
     </transition>
     <transition c1x="374.432943" c2y="126.665319" c1y="213.334681" description="" straight="1" type="2" ypos="232.5432635876294" endx="405.1375464404126" xpos="368.8624535595874" endy="107.4567364123705" c2x="399.567057">
