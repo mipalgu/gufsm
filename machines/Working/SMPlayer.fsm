@@ -17,7 +17,7 @@
     <state pencolor="0" radius="40" description="OnEntry {  post(&quot;gunaomotion_naoMotionPlayer&quot;, &quot;dcm_from_getup&quot;);  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="317" code="8" xpos="634" linewidth="1">Stance</state>
     <state pencolor="0" radius="40" description="OnEntry { &#x9; gunaomotion_holdingStiffness=100;  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="237" code="9" xpos="755" linewidth="1">Holding_Stiffness</state>
     <state pencolor="0" radius="40" description="OnEntry {  gunaowalk_disconnect=1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="306" code="10" xpos="296" linewidth="1">Disengage</state>
-    <transition c1x="174.994756" c2y="163.786597" c1y="165.213403" description="" straight="1" type="2" ypos="165.466714067754" endx="302.0034662045129" xpos="155.9964449184483" endy="163.5199537839398" c2x="282.005244">
+    <transition c1x="174.994756" c2y="163.786597" c1y="165.213403" description="" straight="1" type="2" ypos="165.4800462160602" endx="302.0034662045129" xpos="154.9965337954871" endy="163.5199537839398" c2x="282.005244">
       <from>0</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">SMBallFollowerIsRunning</inputs>
@@ -35,7 +35,7 @@
       <inputs default="0" any="0" invert="0">SMKickerIsRunning</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="643.597635" c2y="137.333538" c1y="155.371084" description="" straight="1" type="2" ypos="173.4086303849894" endx="717.0951861634909" xpos="606.8488601572631" endy="119.2959916279311" c2x="680.346411">
+    <transition c1x="623.932949" c2y="131.312172" c1y="161.160050" description="" straight="1" type="2" ypos="168.3845151144821" endx="719.6333049556805" xpos="605.2833617109861" endy="124.0877071077401" c2x="700.983718">
       <from>1</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">walkAMeter</inputs>
@@ -65,43 +65,43 @@
       <inputs default="0" any="0" invert="0">timeout(15000000)</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="610.374821" c2y="185.409406" c1y="239.268247" description="" straight="1" type="2" ypos="293.1270882311888" endx="722.3017336085846" xpos="554.4113652871855" endy="131.5505647771284" c2x="666.338278">
+    <transition c1x="566.051507" c2y="148.744165" c1y="275.394724" description="" straight="1" type="2" ypos="288.5283394458966" endx="726.5874217854326" xpos="550.9681337701229" endy="135.6105494429924" c2x="711.504048">
       <from>3</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">walkAMeter</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="757.678112" c2y="181.173416" c1y="164.839273" description="" straight="1" type="2" ypos="148.5051308840144" endx="748.648068780116" xpos="762.1931329393869" endy="197.5075580676775" c2x="753.163090">
+    <transition c1x="755.535447" c2y="178.001829" c1y="168.998171" description="" straight="1" type="2" ypos="148.9987910537978" endx="755.3070770949118" xpos="755.6929229050882" endy="198.0012089462022" c2x="755.464553">
       <from>5</from>
       <to>9</to>
       <inputs default="0" any="0" invert="0">timeout(200000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="591.672078" c2y="424.399439" c1y="428.629788" description="" straight="1" type="2" ypos="432.860136289875" endx="510.9829116782331" xpos="632.0166611137226" endy="420.1690909847436" c2x="551.327495">
+    <transition c1x="612.165241" c2y="423.412607" c1y="429.587393" description="" straight="1" type="2" ypos="431.0831920185763" endx="509.8907730856498" xpos="632.1092269143502" endy="421.9168079814237" c2x="529.834759">
       <from>6</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">NaoIsReadyToRun</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="400.281760" c2y="352.623025" c1y="375.996523" description="" straight="1" type="2" ypos="399.370020827923" endx="328.5493388482694" xpos="436.1479711106538" endy="329.2495277487639" c2x="364.415550">
+    <transition c1x="402.025591" c2y="351.080216" c1y="374.462238" description="" straight="1" type="2" ypos="397.8442606234619" endx="329.6033981474397" xpos="438.2366868062463" endy="327.6981942323468" c2x="365.814494">
       <from>7</from>
       <to>10</to>
       <inputs default="0" any="0" invert="0">timeout(2500000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="652.269605" c2y="383.434505" c1y="367.565495" description="" straight="1" type="2" ypos="352.5861387646236" endx="653.1911845385888" xpos="652.2654517552935" endy="399.303514704492" c2x="652.730395">
+    <transition c1x="651.789760" c2y="377.745894" c1y="373.254106" description="" straight="1" type="2" ypos="354.1849175076643" endx="659.2406671129609" xpos="645.7593328870391" endy="396.8150824923357" c2x="653.210240">
       <from>8</from>
       <to>6</to>
-      <inputs default="0" any="0" invert="0">timeout(200000)</inputs>
+      <inputs default="0" any="0" invert="0">timeout(1200000)</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="702.222059" c2y="285.546946" c1y="268.453054" description="" straight="1" type="2" ypos="251.3591631723548" endx="671.3338242481224" xpos="717.6661757518776" endy="302.6408368276452" c2x="686.777941">
+    <transition c1x="705.784240" c2y="284.460655" c1y="269.539345" description="" straight="1" type="2" ypos="258.5090587516895" endx="666.5324513619304" xpos="722.4675486380696" endy="295.4909412483105" c2x="683.215760">
       <from>9</from>
       <to>8</to>
       <inputs default="0" any="0" invert="0">timeout(200000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="223.494343" c2y="224.814175" c1y="253.258085" description="" straight="1" type="2" ypos="281.7019956971681" endx="142.0316549382387" xpos="264.2256866809121" endy="196.3702640946119" c2x="182.762999">
+    <transition c1x="249.428219" c2y="202.222496" c1y="269.777504" description="" straight="1" type="2" ypos="281.4423754594032" endx="146.7847364776767" xpos="264.425911304947" endy="189.9436839270819" c2x="162.571781">
       <from>10</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">timeout(100000)</inputs>
