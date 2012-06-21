@@ -69,7 +69,7 @@
       <inputs default="0" any="0" invert="0">fallen</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="1256.788114" c2y="626.048216" c1y="532.951784" description="" straight="1" type="2" ypos="520.8664337732714" endx="1283.665483767519" xpos="1253.334516232481" endy="638.1335662267286" c2x="1280.211886">
+    <transition c1x="1263.365057" c2y="598.397233" c1y="559.631833" description="" straight="1" type="2" ypos="520.8664337732714" endx="1283.426137197456" xpos="1253.334516232481" endy="637.1626320274139" c2x="1273.395597">
       <from>7</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">timeout(300000)</inputs>
