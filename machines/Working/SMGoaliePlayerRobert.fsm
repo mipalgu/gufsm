@@ -11,15 +11,13 @@
     <state pencolor="45317" radius="40" description="OnEntry { resume(&quot;SMBallFollower&quot;); }&#xa;OnExit { suspend(&quot;SMBallFollower&quot;); }&#xa;{ }" finalstate="0" moore_outputs="" ypos="332" code="2" xpos="640" linewidth="1">Follow</state>
     <state pencolor="12124415" radius="40" description="OnEntry { }&#xa;OnExit { resume(&quot;SMBallFollower&quot;);&#xa;&#x9;suspend(&quot;SMKicker&quot;);&#xa; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="483.1388888888889" code="3" xpos="820.5555555555555" linewidth="1">Kicking</state>
     <state pencolor="13684944" radius="40" description="OnEntry { &#xa;&#x9;suspend(&quot;SMBallFollower&quot;);&#xa;&#x9;suspend(&quot;SMKicker&quot;);&#xa;&#x9;suspend(&quot;SMGoalie&quot;);&#xa;&#x9; gunaowalk_disconnect=1;&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="1" moore_outputs="" ypos="238" code="4" xpos="242" linewidth="1">Suspend</state>
-    <state pencolor="0" radius="40" description="OnEntry { wantFieldPlayer=1;&#xa;&#x9; suspend(&quot;SMBallFollower&quot;);&#xa;&#x9;  suspend(&quot;SMKicker&quot;);&#xa;&#x9; gunaomotion_holdingStiffness=100;&#xa;         post(&quot;Speech&quot;, &quot;I'm a player&quot;);&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="291" code="5" xpos="1121" linewidth="1">Stop</state>
+    <state pencolor="0" radius="40" description="OnEntry { wantFieldPlayer=1;&#xa;&#x9; suspend(&quot;SMBallFollower&quot;);&#xa;&#x9;  suspend(&quot;SMKicker&quot;);&#xa;&#x9; gunaomotion_holdingStiffness=100; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="291" code="5" xpos="1121" linewidth="1">Stop</state>
     <state pencolor="0" radius="40" description="OnEntry { gunaowalk_ready=1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="539" code="6" xpos="1073" linewidth="1">Engage_DCM</state>
     <state pencolor="0" radius="40" description="OnEntry { postv(&quot;gunaowalk_walk&quot;, 100, 0, 0, 100); }&#xa;OnExit {  gunaowalk_disconnect=1;  walkAMeter=0; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="669" code="7" xpos="1008" linewidth="1">Walk</state>
     <state pencolor="0" radius="40" description="OnEntry {  post(&quot;gunaomotion_naoMotionPlayer&quot;, &quot;dcm_from_getup&quot;);  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="422" code="8" xpos="1126" linewidth="1">Stance</state>
     <state pencolor="0" radius="40" description="OnEntry { extern SMBallFollowerIsRunning;&#xa;&#x9;extern SMKickerIsRunning;&#xa;&#x9;extern guvision_runVisionPipeline;&#xa;&#x9;extern gunaomotion_holdingStiffness;&#xa;&#x9;extern gunaowalk_ready;&#xa;&#x9;extern gunaowalk_disconnect;&#xa;&#x9;extern NaoIsReadyToRun;&#xa;&#x9;extern walkAMeter;&#xa;&#x9;extern disableUpperCamera;&#xa;&#x9;int wantFieldPlayer;&#xa;        int timesPenalized;&#xa;&#x9;wantFieldPlayer=0;&#xa;&#x9;disableUpperCamera=1;&#xa;&#x9;suspend(&quot;SMKicker&quot;);&#xa;&#x9;suspend(&quot;SMBallFollower&quot;);&#xa;&#x9;resume(&quot;SMGoalie&quot;);&#xa;&#x9;guvision_runVisionPipeline=1;&#xa;&#x9;gunaomotion_holdingStiffness=100;&#xa;        timesPenalized = 0;&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="130" code="9" xpos="119" linewidth="1">Init</state>
-    <state pencolor="0" radius="40" description="OnEntry { resume(&quot;SMGoalie&quot;);&#xa;          post(&quot;Speech&quot;, &quot;I'm a goalie&quot;); }&#xa;OnExit { suspend(&quot;SMGoalie&quot;); }&#xa;{ }" finalstate="0" moore_outputs="" ypos="55" code="10" xpos="1135" linewidth="1">Goalie</state>
+    <state pencolor="0" radius="40" description="OnEntry { resume(&quot;SMGoalie&quot;); }&#xa;OnExit { suspend(&quot;SMGoalie&quot;); }&#xa;{ }" finalstate="0" moore_outputs="" ypos="160" code="10" xpos="1125" linewidth="1">Goalie</state>
     <state pencolor="0" radius="40" description="OnEntry { timesPenalized = timesPenalized + 1;&#xa;          walkAMeter = 0; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="117" code="11" xpos="447" linewidth="1">IncrementCounter</state>
-    <state pencolor="0" radius="40" description="OnEntry { post(&quot;Speech&quot;, &quot;I'm a goalie&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="173" code="12" xpos="1162" linewidth="1">SayGoalie</state>
-    <state pencolor="0" radius="40" description="OnEntry { post(&quot;Speech&quot;, &quot;I'm a player&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="175" code="13" xpos="961" linewidth="1">SayPlayer</state>
     <transition c1x="503.3321483061494" c2y="333.1777619774153" c1y="333.8222380225847" description="" straight="1" type="2" ypos="334.466714067754" endx="600.0035550815517" xpos="454.9964449184483" endy="332.533285932246" c2x="551.6678516938505">
       <from>0</from>
       <to>2</to>
@@ -74,7 +72,7 @@
       <inputs default="0" any="0" invert="0">walkAMeter</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1123.175202238725" c2y="365.0097013454057" c1y="347.9902986545943" description="" straight="1" type="2" ypos="330.9708959637829" endx="1124.474393283825" xpos="1122.525606716175" endy="382.029104036217" c2x="1123.824797761275">
+    <transition c1x="1123.175202238725" c2y="365.0097013454057" c1y="347.9902986545943" description="" straight="1" type="2" ypos="330.970895963783" endx="1124.474393283825" xpos="1122.525606716175" endy="382.029104036217" c2x="1123.824797761275">
       <from>5</from>
       <to>8</to>
       <inputs default="0" any="0" invert="0">timeout(200000)</inputs>
@@ -104,22 +102,22 @@
       <inputs default="0" any="0" invert="0">walkAMeter</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="611.4580608313323" c2y="33.88982533914927" c1y="63.5089011692362" description="" straight="0" type="2" ypos="104.3508893593265" endx="1144.111456180002" xpos="484.9473319220206" endy="137.2229123600034" c2x="987.0802459206457">
+    <transition c1x="934.0757660099194" c2y="84.5780272135475" c1y="71.0400883836748" description="" straight="0" type="2" ypos="160" endx="486.7876717530621" xpos="1085" endy="121.1159660434202" c2x="567.4317188814907">
+      <from>10</from>
+      <to>11</to>
+      <inputs default="0" any="0" invert="0">walkAMeter</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="611.4580608313323" c2y="39.85794388595409" c1y="63.5089011692362" description="" straight="0" type="2" ypos="104.3508893593265" endx="1088.80725191196" xpos="484.9473319220206" endy="142.9681185468048" c2x="929.887497832606">
       <from>11</from>
-      <to>12</to>
+      <to>10</to>
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="593.1570094697538" c2y="165.1205839144832" c1y="180.8225305939154" description="" straight="0" type="2" ypos="135.8235294117647" endx="922.2953091041262" xpos="482.2941176470588" endy="164.9031241141199" c2x="838.296490420899">
+    <transition c1x="615.1570094697538" c2y="146.2712703108932" c1y="116.8225305939154" description="" straight="0" type="2" ypos="135.8235294117647" endx="1099.687469212554" xpos="482.2941176470588" endy="257.15068639641" c2x="962.9839596334533">
       <from>11</from>
-      <to>13</to>
+      <to>5</to>
       <inputs default="0" any="0" invert="0">timesPenalized > 2</inputs>
-      <outputs>1</outputs>
-    </transition>
-    <transition c1x="965.0757660099194" c2y="106.5780272135475" c1y="35.0400883836748" description="" straight="0" type="2" ypos="158.5021495538021" endx="486.7876717530621" xpos="1124.719813138348" endy="121.1159660434202" c2x="567.4317188814907">
-      <from>12</from>
-      <to>11</to>
-      <inputs default="0" any="0" invert="0">walkAMeter</inputs>
       <outputs>1</outputs>
     </transition>
   </machine>
