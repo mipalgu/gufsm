@@ -6,7 +6,7 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="200.8333333333333" endx="110" xpos="50" endy="200.8333333333333"/>
-    <state pencolor="0" radius="40" description="OnEntry {    int localPlayerNumber;&#xa;&#x9;int weHaveKickOff;&#xa;&#x9;int lostGoals;&#xa;&#x9;int lengthStraight;&#xa;       int myStartApart;&#xa;       int headSeekSpeed; int doLeft;&#xa;&#x9;int targetAngle ;&#xa;               int  minLongAngle ;&#xa;&#x9;extern gameStart;&#xa;&#x9;extern GoalDistance;&#xa;&#x9;extern playerNumber;&#xa;&#x9;extern HeadYaw;&#xa; &#x9;extern gunaomotion_holdingStiffness;&#xa;&#x9;extern gunaomotion_naoHeadIsRunning;&#xa;&#x9;extern guvision_selectCamera;&#xa; &#x9;extern gunaowalk_stop;&#xa;&#x9;extern gunaowalk_ready;&#xa;&#x9;extern gunaowalk_disconnect;&#xa;&#x9;extern NaoIsReadyToRun;&#xa;&#x9;extern NaoIsRunning;&#xa;&#x9; extern kickOffTeam;&#xa;&#x9; extern ourTeam;&#xa;&#x9; post(&quot;guvision_runVisionPipeline&quot;,&quot;itial&quot;); &#xa;&#x9;guvision_selectCamera=0;&#xa;&#x9;weHaveKickOff = ourTeam == kickOffTeam;&#xa;&#x9;myStartApart=425 - 100*weHaveKickOff;&#xa;        headSeekSpeed=17;doLeft=1;&#xa;&#x9;localPlayerNumber=playerNumber;&#xa;&#x9;targetAngle = 12; lostGoals=0;&#xa;&#x9;resume(&quot;SMHeadGoalFindAndTrack&quot;);&#xa;&#x9;lengthStraight=4000000;&#xa;                minLongAngle = 10;&#xa;&#x9;print_state_name();&#xa;&#x9;print_int(gameStart);&#xa;&#x9;print_int(myStartApart);&#xa;&#x9;&#xa; }&#xa;OnExit {  post(&quot;sensors_postJoints&quot;, &quot;On&quot;);   sensors_postJoints_Frequency=2; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="200.8333333333333" code="0" xpos="150" linewidth="1">Init</state>
+    <state pencolor="0" radius="40" description="OnEntry {    int localPlayerNumber;&#xa;&#x9;int weHaveKickOff;&#xa;&#x9;int lostGoals;&#xa;&#x9;int lengthStraight;&#xa;       int myStartApart;&#xa;       int headSeekSpeed; int doLeft;&#xa;&#x9;int targetAngle ;&#xa;               int  minLongAngle ;&#xa;&#x9;extern gameStart;&#xa;&#x9;extern GoalDistance;&#xa;&#x9;extern playerNumber;&#xa;&#x9;extern HeadYaw;&#xa; &#x9;extern gunaomotion_holdingStiffness;&#xa;&#x9;extern gunaomotion_naoHeadIsRunning;&#xa;&#x9;extern guvision_selectCamera;&#xa; &#x9;extern gunaowalk_stop;&#xa;&#x9;extern gunaowalk_ready;&#xa;&#x9;extern gunaowalk_disconnect;&#xa;&#x9;extern NaoIsReadyToRun;&#xa;&#x9;extern NaoIsRunning;&#xa;&#x9; extern kickOffTeam;&#xa;&#x9; extern ourTeam;&#xa;&#x9; post(&quot;guvision_runVisionPipeline&quot;,&quot;itial&quot;); &#xa;&#x9;guvision_selectCamera=0;&#xa;&#x9;weHaveKickOff = ourTeam == kickOffTeam;&#xa;&#x9;myStartApart=425 - 100*weHaveKickOff;&#xa;        headSeekSpeed=17;doLeft=1;&#xa;&#x9;localPlayerNumber=playerNumber;&#xa;&#x9;targetAngle = 12; lostGoals=0;&#xa;&#x9;resume(&quot;SMHeadGoalFindAndTrack&quot;);&#xa;&#x9;lengthStraight=4000000;&#xa;                minLongAngle = 10;&#xa;&#x9;print_state_name();&#xa;&#x9;print_int(gameStart);&#xa;&#x9;print_int(myStartApart);&#xa;         post_int(&quot;QSay&quot;,myStartApart  ) ;&#xa;&#x9;&#xa; }&#xa;OnExit {  post(&quot;sensors_postJoints&quot;, &quot;On&quot;);   sensors_postJoints_Frequency=2; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="200.8333333333333" code="0" xpos="150" linewidth="1">Init</state>
     <state pencolor="0" radius="40" description="OnEntry { gunaowalk_ready=1; print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="60" code="1" xpos="600" linewidth="1">Setup</state>
     <state pencolor="0" radius="40" description="OnEntry { postv(&quot;gunaowalk_walk&quot;, 100,  0, 0, 100); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="185" code="2" xpos="560" linewidth="1">Walk_Forward_with_right_skew</state>
     <state pencolor="0" radius="40" description="OnEntry { postv(&quot;gunaowalk_walk&quot;, 0, 0, 90, 100); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="331" code="3" xpos="550" linewidth="1">Turn90</state>
@@ -51,7 +51,7 @@
     <state pencolor="0" radius="40" description="OnEntry {  &#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="573" code="42" xpos="1278" linewidth="1">EvalRight</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;doLeft = 1-doLeft;&#xa;&#x9;targetAngle=-targetAngle;&#xa;&#x9;postv(&quot;gunaomotion_naoHeadAbs&quot;, 0,0, 50);&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="516" code="43" xpos="1138" linewidth="1">ChangeDir</state>
     <state pencolor="0" radius="40" description="OnEntry {postv(&quot;gunaomotion_naoHeadAbs&quot;, 0,0, 50) ; &#xa;  resume(&quot;SMHeadGoalFindAndTrack&quot;);  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="807" code="44" xpos="1357" linewidth="1">START_TRACKING</state>
-    <transition c1x="205.985758" c2y="251.382941" c1y="219.450392" description="" straight="1" type="2" ypos="213.1395248732804" endx="320.9924649593879" xpos="187.0075350406121" endy="257.6938084600529" c2x="302.014242">
+    <transition c1x="205.985758" c2y="251.382941" c1y="219.450392" description="" straight="1" type="2" ypos="213.4550682460996" endx="320.9924649593879" xpos="187.9564461954996" endy="257.6938084600529" c2x="302.014242">
       <from>0</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">gameStart</inputs>
@@ -63,7 +63,7 @@
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="190.804796" c2y="129.614183" c1y="158.219150" description="" straight="1" type="2" ypos="172.6646359788385" endx="232.0273381115086" xpos="176.9726618884914" endy="115.1686973544948" c2x="218.195204">
+    <transition c1x="190.804796" c2y="129.614183" c1y="158.219150" description="" straight="1" type="2" ypos="171.9423616876976" endx="232.0273381115086" xpos="177.6642686035809" endy="115.1686973544948" c2x="218.195204">
       <from>0</from>
       <to>26</to>
       <inputs default="0" any="0" invert="0">playerNumber==1</inputs>
@@ -81,7 +81,7 @@
       <inputs default="0" any="0" invert="0">timeout(lengthStraight*localPlayerNumber)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="593.774777" c2y="261.754933" c1y="302.245067" description="" straight="1" type="2" ypos="305.6026715048324" endx="665.4031132497259" xpos="579.5968867502741" endy="258.3973284951676" c2x="651.225223">
+    <transition c1x="607.945997" c2y="274.566585" c1y="290.084628" description="" straight="1" type="2" ypos="305.6026715048324" endx="664.6442187176676" xpos="579.5968867502741" endy="259.0485420463257" c2x="636.295108">
       <from>3</from>
       <to>10</to>
       <inputs default="0" any="0" invert="0">timeout(1500000)</inputs>
@@ -117,7 +117,7 @@
       <inputs default="0" any="0" invert="0">timeout(5000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="754.531624" c2y="203.086168" c1y="215.913832" description="" straight="1" type="2" ypos="228.0955836746473" endx="801.30960454444" xpos="733.69039545556" endy="190.9044163253527" c2x="780.468376">
+    <transition c1x="754.531624" c2y="203.086168" c1y="215.913832" description="" straight="1" type="2" ypos="227.9698294098947" endx="801.30960454444" xpos="734.6824568774974" endy="190.9044163253527" c2x="780.468376">
       <from>10</from>
       <to>22</to>
       <inputs default="0" any="0" invert="0">timeout(10000)</inputs>
@@ -255,7 +255,7 @@
       <inputs default="0" any="0" invert="0">timeout(10000)</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="890.065133" c2y="256.293595" c1y="343.706405" description="" straight="1" type="2" ypos="345.2127085739798" endx="727.3467762275883" xpos="907.6532237724117" endy="254.7872914260202" c2x="744.934867">
+    <transition c1x="847.827543" c2y="285.301529" c1y="315.257119" description="" straight="1" type="2" ypos="345.2127085739798" endx="728.1761807462444" xpos="907.6532237724117" endy="255.3459399241232" c2x="788.001862">
       <from>25</from>
       <to>10</to>
       <inputs default="0" any="0" invert="0">lostGoals&lt;2</inputs>
