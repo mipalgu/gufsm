@@ -246,7 +246,7 @@
     <transition c1x="935.291891" c2y="346.605349" c1y="106.394651" description="" straight="1" type="2" ypos="89.362565866819" endx="686.7901059584881" xpos="946.2098940415119" endy="363.637434133181" c2x="697.708109">
       <from>19</from>
       <to>12</to>
-      <inputs default="0" any="0" invert="0">timeout(100000*BallDistance)</inputs>
+      <inputs default="0" any="0" invert="0">timeout(90000*BallDistance)</inputs>
       <outputs>1</outputs>
     </transition>
     <transition c1x="1194.536746" c2y="522.763552" c1y="93.784900" description="" straight="0" type="2" ypos="76.18616936482154" endx="1022.745667482635" xpos="1011.399901052711" endy="688.1871914603407" c2x="1129.926858">
