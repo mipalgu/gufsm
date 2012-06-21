@@ -44,7 +44,7 @@
     <transition c1x="588.684426616652" c2y="245.927725466765" c1y="217.0722745332349" description="" straight="1" type="2" ypos="188.2168235997049" endx="671.946720150044" xpos="547.053279849956" endy="274.7831764002951" c2x="630.315573383348">
       <from>1</from>
       <to>17</to>
-      <inputs default="0" any="0" invert="0">guvision_opencv_ballInfo1_radius>40</inputs>
+      <inputs default="0" any="0" invert="0">BallDistance &lt; 80</inputs>
       <outputs>1</outputs>
     </transition>
     <transition c1x="402.5909440019377" c2y="241.1857584060881" c1y="210.8142415939119" description="" straight="1" type="2" ypos="180.4427247817356" endx="250.2271679941869" xpos="478.7728320058131" endy="271.5572752182644" c2x="326.4090559980623">
