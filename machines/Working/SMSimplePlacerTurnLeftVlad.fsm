@@ -16,7 +16,7 @@
     <state pencolor="0" radius="40" description="OnEntry { gunaowalk_stop=1; print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="592" code="8" xpos="478" linewidth="1">Stop</state>
     <state pencolor="0" radius="40" description="OnEntry { post(&quot;gunaomotion_naoMotionPlayer&quot;, &quot;dcm_from_getup&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="73" code="9" xpos="402" linewidth="1">Stance</state>
     <state pencolor="0" radius="40" description="OnEntry { gunaowalk_disconnect=1;&#xa; resume(&quot;SMHeadBallFindAndTrack&quot;);  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="544" code="4" xpos="260" linewidth="1">Disconnect</state>
-    <state pencolor="0" radius="40" description="OnEntry { post_int(&quot;QSay&quot;,GoalDistance  ) ;&#xa; postv(&quot;gunaomotion_naoHeadAbs&quot;, 0,0, 50);  suspend(&quot;SMHeadGoalFindAndTrack&quot;);&#xa; postv(&quot;gunaowalk_walk&quot;, 0, 0, 0, 0); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="204" code="10" xpos="698" linewidth="1">SAY_DISTANCE</state>
+    <state pencolor="0" radius="40" description="OnEntry { post_int(&quot;QSay&quot;,GoalDistance  ) ;&#xa; postv(&quot;gunaomotion_naoHeadAbs&quot;, 0,0, 50);  suspend(&quot;SMHeadGoalFindAndTrack&quot;);&#xa; postv(&quot;gunaowalk_walk&quot;, 0, 0, 0, 0); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="233" code="10" xpos="695" linewidth="1">SAY_DISTANCE</state>
     <state pencolor="0" radius="40" description="OnEntry {postv(&quot;gunaowalk_walk&quot;, -100,0,  -HeadYaw, 100);  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="152" code="13" xpos="1700" linewidth="1">BACK_A_BIT</state>
     <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { post(&quot;QSay&quot;,&quot;FACING OPONENT&quot;  ) ;  }&#xa;{ }" finalstate="0" moore_outputs="" ypos="393" code="12" xpos="1201" linewidth="1">TEST_DISTANCE_ASSUME_OPONENT</state>
     <state pencolor="0" radius="40" description="OnEntry { postv(&quot;gunaowalk_walk&quot;, 0, 0, 90, 100);     post(&quot;QSay&quot;,&quot;FACING MINE&quot;  ) ;  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="387" code="14" xpos="1508" linewidth="1">TOO_CLOSE_OPONENT_TURN</state>
@@ -81,7 +81,7 @@
       <inputs default="0" any="0" invert="0">timeout(lengthStraight*localPlayerNumber)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="594.774777" c2y="242.421600" c1y="292.578400" description="" straight="1" type="2" ypos="305.6026715048324" endx="668.4031132497259" xpos="579.5968867502741" endy="229.3973284951676" c2x="653.225223">
+    <transition c1x="593.774777" c2y="261.754933" c1y="302.245067" description="" straight="1" type="2" ypos="305.6026715048324" endx="665.4031132497259" xpos="579.5968867502741" endy="258.3973284951676" c2x="651.225223">
       <from>3</from>
       <to>10</to>
       <inputs default="0" any="0" invert="0">timeout(1500000)</inputs>
@@ -117,10 +117,10 @@
       <inputs default="0" any="0" invert="0">timeout(5000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="756.531624" c2y="193.419502" c1y="196.580498" description="" straight="1" type="2" ypos="199.0955836746473" endx="801.30960454444" xpos="736.69039545556" endy="190.9044163253527" c2x="781.468376">
+    <transition c1x="754.531624" c2y="203.086168" c1y="215.913832" description="" straight="1" type="2" ypos="228.0955836746473" endx="801.30960454444" xpos="733.69039545556" endy="190.9044163253527" c2x="780.468376">
       <from>10</from>
       <to>22</to>
-      <inputs default="0" any="0" invert="0">1</inputs>
+      <inputs default="0" any="0" invert="0">timeout(10000)</inputs>
       <outputs></outputs>
     </transition>
     <transition c1x="1642.417086" c2y="189.146671" c1y="164.853329" description="" straight="1" type="2" ypos="160.4962682708996" endx="1514.06328185363" xpos="1661.93671814637" endy="193.5037317291004" c2x="1533.582914">
@@ -255,7 +255,7 @@
       <inputs default="0" any="0" invert="0">timeout(10000)</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="891.065133" c2y="236.960261" c1y="334.039739" description="" straight="1" type="2" ypos="345.2127085739798" endx="730.3467762275883" xpos="907.6532237724117" endy="225.7872914260202" c2x="746.934867">
+    <transition c1x="890.065133" c2y="256.293595" c1y="343.706405" description="" straight="1" type="2" ypos="345.2127085739798" endx="727.3467762275883" xpos="907.6532237724117" endy="254.7872914260202" c2x="744.934867">
       <from>25</from>
       <to>10</to>
       <inputs default="0" any="0" invert="0">lostGoals&lt;2</inputs>
