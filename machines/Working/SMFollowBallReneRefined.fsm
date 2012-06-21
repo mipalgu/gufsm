@@ -18,7 +18,7 @@
     <state pencolor="16711710" radius="40" description="OnEntry { update = Ballfiltered;  resume(&quot;SMBallSeeker&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="507" code="11" xpos="567" linewidth="1">Wait</state>
     <state pencolor="12124415" radius="40" description="OnEntry { print_state_name();  }&#xa;OnExit { suspend(&quot;SMBallSeeker&quot;); }&#xa;{ }" finalstate="0" moore_outputs="" ypos="391" code="12" xpos="659" linewidth="1">Check</state>
     <state pencolor="12124415" radius="40" description="OnEntry { print_state_name(); post_int(&quot;Speech&quot;, BallDistance); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="363" code="13" xpos="796" linewidth="1">Visible</state>
-    <state pencolor="511" radius="40" description="OnEntry { corrYaw = HeadYaw / 2; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="404" code="14" xpos="1009" linewidth="1">Decide_Long</state>
+    <state pencolor="511" radius="40" description="OnEntry { corrYaw = HeadYaw / 4; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="404" code="14" xpos="1009" linewidth="1">Decide_Long</state>
     <state pencolor="511" radius="40" description="OnEntry { postv(&quot;gunaowalk_walk&quot;, 100, corrYaw, corrYaw, 100); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="637" code="15" xpos="739" linewidth="1">Long_Left</state>
     <state pencolor="511" radius="40" description="OnEntry { postv(&quot;gunaowalk_walk&quot;, 100, corrYaw, corrYaw, 100); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="579" code="16" xpos="969" linewidth="1">Long_Right</state>
     <state pencolor="45317" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="222" code="17" xpos="981" linewidth="1">Decide_Short</state>
@@ -141,7 +141,7 @@
       <inputs default="0" any="0" invert="0">fallen</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="853.936439" c2y="392.847915" c1y="374.152085" description="" straight="1" type="2" ypos="370.3717169244656" endx="970.7030315875323" xpos="834.2969684124677" endy="396.6282830755344" c2x="951.063561">
+    <transition c1x="879.438332" c2y="387.750082" c1y="379.060900" description="" straight="1" type="2" ypos="370.3717169244656" endx="969.7210580384947" xpos="834.2969684124677" endy="396.4392646928558" c2x="924.579695">
       <from>13</from>
       <to>14</to>
       <inputs default="0" any="0" invert="0">BallDistance > boundaryCloseFar</inputs>
@@ -165,19 +165,19 @@
       <inputs default="0" any="0" invert="0">fallen</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="975.487775" c2y="568.441470" c1y="452.558530" description="" straight="1" type="2" ypos="436.098011100091" endx="884.1521485056966" xpos="986.8478514943034" endy="584.901988899909" c2x="895.512225">
+    <transition c1x="975.487775" c2y="568.441470" c1y="452.558530" description="" straight="1" type="2" ypos="436.9210370257343" endx="884.1521485056966" xpos="986.279847686465" endy="584.901988899909" c2x="895.512225">
       <from>14</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">abs(HeadYaw) &lt; minLongAngle</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="995.853337" c2y="521.483348" c1y="461.516652" description="" straight="1" type="2" ypos="442.0194817563028" endx="977.6901672585835" xpos="1000.309832741416" endy="540.9805182436971" c2x="982.146663">
+    <transition c1x="995.853337" c2y="521.483348" c1y="461.516652" description="" straight="1" type="2" ypos="442.9943402628747" endx="977.6901672585835" xpos="1000.087007939914" endy="540.9805182436971" c2x="982.146663">
       <from>14</from>
       <to>16</to>
       <inputs default="0" any="0" invert="0">HeadYaw &lt; 0</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="964.332567" c2y="598.453659" c1y="442.546341" description="" straight="1" type="2" ypos="429.4797845652363" endx="768.5259306120763" xpos="979.4740693879237" endy="611.5202154347637" c2x="783.667433">
+    <transition c1x="964.332567" c2y="598.453659" c1y="442.546341" description="" straight="1" type="2" ypos="430.1331123746014" endx="768.5259306120763" xpos="978.7169942440242" endy="611.5202154347637" c2x="783.667433">
       <from>14</from>
       <to>15</to>
       <inputs default="0" any="0" invert="0">HeadYaw > 0</inputs>
