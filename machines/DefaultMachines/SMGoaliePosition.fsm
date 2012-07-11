@@ -1,0 +1,104 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="A Game Controller developed with QFSM.&#xa;This graphically replicates revision 1190 of&#xa;AGameController.txt and&#xa;TGameController.txt&#xa;from the repository" version="1" name="SMGoaliePosition" arrowtype="1" numbits="4" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="7">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="290" endx="73.5494181990515" xpos="-2" endy="303.527140916879"/>
+    <state pencolor="959488" radius="40" description="OnEntry { &#xa;&#x9;extern robotFallenForward;&#xa;&#x9;extern robotFallenBack;&#xa;&#x9;extern robotFallenLeft;&#xa;&#x9;extern robotFallenRight;&#xa;&#x9;extern fallen;&#xa; extern InertialSensor_AngleY;&#xa; extern InertialSensor_AngleX;&#xa; int frontalAngle;&#xa; int lateralAngle;&#xa; frontalAngle=75;&#xa; lateralAngle = 85;&#xa; post(&quot;sensors_postSensors&quot;,&quot;On&quot;);&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="320" code="7" xpos="110" linewidth="1">SetUp</state>
+    <state pencolor="0" radius="40" description="OnEntry { fallen=1; robotFallenLeft=1;&#xa; post(&quot;Speech&quot;, &quot;falling left&quot;); &#xa; post(&quot;gunaoposition&quot;,&quot;robotFallenRight&quot;); &#xa;}&#xa;OnExit { }&#xa;{&#xa;  &#xa; }&#xa;" finalstate="0" moore_outputs="" ypos="349" code="0" xpos="938" linewidth="1">FallingLeft</state>
+    <state pencolor="0" radius="40" description="OnEntry { fallen=1; robotFallenRight=1;&#xa; post(&quot;Speech&quot;, &quot;falling right&quot;); &#xa; post(&quot;gunaoposition&quot;,&quot;robotFallenRight&quot;); &#xa;}&#xa;OnExit { }&#xa;{&#xa; &#xa;}&#xa;" finalstate="0" moore_outputs="" ypos="447" code="2" xpos="817" linewidth="1">FallingRight</state>
+    <state pencolor="0" radius="40" description="OnEntry { fallen=1; robotFallenForward=1;&#xa; post(&quot;Speech&quot;, &quot;falling forward&quot;); &#xa; post(&quot;gunaoposition&quot;,&quot;robotFallenForward&quot;); &#xa;}&#xa;OnExit { }&#xa;{&#xa; &#xa;}&#xa;" finalstate="0" moore_outputs="" ypos="211" code="6" xpos="528" linewidth="1">FallingForward</state>
+    <state pencolor="0" radius="40" description="OnEntry { fallen=1; robotFallenBack=1;&#xa; post(&quot;Speech&quot;, &quot;falling backward&quot;);&#xa; post(&quot;gunaoposition&quot;,&quot;robotFallenBackward&quot;); &#xa;}&#xa;OnExit { }&#xa;{&#xa;  &#xa; }&#xa;" finalstate="0" moore_outputs="" ypos="213" code="1" xpos="832" linewidth="1">FallingBackward</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="327" code="5" xpos="339" linewidth="1">Delay</state>
+    <state pencolor="0" radius="40" description="OnEntry {  fallen=0;&#xa;&#x9;robotFallenLeft=0;&#xa;&#x9;robotFallenRight=0;&#xa;&#x9;robotFallenBack=0;&#xa;&#x9;robotFallenForward=0;&#xa; post(&quot;gunaoposition&quot;,&quot;robotUp&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="523" code="8" xpos="590" linewidth="1">AnglesUp</state>
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="52" code="9" xpos="594" linewidth="1">NoForward</state>
+    <state pencolor="0" radius="40" description="OnEntry {}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="99" code="10" xpos="1029" linewidth="1">NoBackwards</state>
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="513" code="4" xpos="1135" linewidth="1">NoLeft</state>
+    <transition c1x="199.327264" c2y="324.269472" c1y="322.730528" description="" straight="1" type="2" ypos="321.2221365848251" endx="300.0182077175961" xpos="149.9813254178502" endy="325.8084168297955" c2x="249.672736">
+      <from>7</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="725.334866" c2y="334.133698" c1y="341.866302" description="" straight="1" type="2" ypos="349.5989054786843" endx="377.995401167671" xpos="899.004598832329" endy="326.4010945213157" c2x="551.665134">
+      <from>0</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">!(InertialSensor_AngleX&lt;(-lateralAngle))</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="645.057924" c2y="370.165375" c1y="403.834625" description="" straight="1" type="2" ypos="437.503875501322" endx="376.8262292530674" xpos="779.1737707469326" endy="336.496124498678" c2x="510.942076">
+      <from>2</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">!(InertialSensor_AngleX>lateralAngle)</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="554.983910" c2y="117.006692" c1y="145.993308" description="" straight="1" type="2" ypos="174.9799251234993" endx="579.0482708059809" xpos="542.9517291940191" endy="88.02007487650067" c2x="567.016090">
+      <from>6</from>
+      <to>9</to>
+      <inputs default="0" any="0" invert="0">!(InertialSensor_AngleY>frontalAngle)</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="655.000881" c2y="286.071198" c1y="253.928802" description="" straight="1" type="2" ypos="221.7864068393377" endx="376.9973558929255" xpos="794.0026441070745" endy="318.2135931606622" c2x="515.999119">
+      <from>1</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">!(InertialSensor_AngleY&lt;(-frontalAngle))</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="432.839214" c2y="153.199153" c1y="225.800847" description="" straight="1" type="2" ypos="298.4025418833095" endx="567.4823570190688" xpos="365.5176429809312" endy="80.59745811669053" c2x="500.160786">
+      <from>5</from>
+      <to>9</to>
+      <inputs default="0" any="0" invert="0">!(InertialSensor_AngleY>frontalAngle)</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="413.079602" c2y="256.466845" c1y="281.533155" description="" straight="1" type="2" ypos="306.5994638884142" endx="494.7611954733645" xpos="372.2388045266355" endy="231.4005361115858" c2x="453.920398">
+      <from>5</from>
+      <to>6</to>
+      <inputs default="0" any="0" invert="0">(InertialSensor_AngleY>frontalAngle)</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="496.087160" c2y="400.334329" c1y="449.665671" description="" straight="1" type="2" ypos="498.3815513037417" endx="369.73851967955" xpos="558.4733131491795" endy="351.0029874788518" c2x="432.912840">
+      <from>8</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="684.101018" c2y="152.049312" c1y="112.950688" description="" straight="1" type="2" ypos="73.85206534046421" endx="799.6969468880094" xpos="626.3030531119906" endy="191.1479346595358" c2x="741.898982">
+      <from>9</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">(InertialSensor_AngleY&lt;(-frontalAngle))</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="751.924777" c2y="81.936863" c1y="69.063137" description="" straight="1" type="2" ypos="56.18941060720075" endx="990.2256677844186" xpos="632.7743322155814" endy="94.81058939279924" c2x="871.075223">
+      <from>9</from>
+      <to>10</to>
+      <inputs default="0" any="0" invert="0">!(InertialSensor_AngleY&lt;(-frontalAngle))</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1067.378698" c2y="362.361735" c1y="249.638265" description="" straight="1" type="2" ypos="136.9147960588816" endx="1125.863904564125" xpos="1038.136095435875" endy="475.0852039411184" c2x="1096.621302">
+      <from>10</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">!(InertialSensor_AngleX&lt;(-lateralAngle))</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="993.090022" c2y="253.923540" c1y="194.076460" description="" straight="1" type="2" ypos="134.2293811250199" endx="954.7299344155346" xpos="1012.270065584465" endy="313.7706188749801" c2x="973.909978">
+      <from>10</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">(InertialSensor_AngleX&lt;(-lateralAngle))</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="940.668432" c2y="519.438498" c1y="516.544807" description="" straight="1" type="2" ypos="513.6511151747145" endx="629.9944249767652" xpos="1096.005435647654" endy="522.3321895643954" c2x="785.331429">
+      <from>4</from>
+      <to>8</to>
+      <inputs default="0" any="0" invert="0">!(InertialSensor_AngleX>lateralAngle)</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1016.289762" c2y="471.729442" c1y="488.270558" description="" straight="1" type="2" ypos="504.8116737023321" endx="855.1307135055578" xpos="1096.869286494442" endy="455.1883262976679" c2x="935.710238">
+      <from>4</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">(InertialSensor_AngleX>lateralAngle)</inputs>
+      <outputs>1</outputs>
+    </transition>
+  </machine>
+</qfsmproject>

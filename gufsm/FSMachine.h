@@ -152,6 +152,7 @@ namespace FSM
                    _states(), 
                    _localKripkeStateNames(),
                    _have_kripke_states(false),
+                   _beingMonitored(false),
 		   _machineIdPostCount(0)
                 {
                         _execCom = execCom;

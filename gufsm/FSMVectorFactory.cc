@@ -255,7 +255,15 @@ void StateMachineVectorFactory::execute(void)
                 dispatch_semaphore_signal(_queue_semaphore);
 
                 if (!fsms()->executeOnce())
+#if 0
                         fsms()->noTransitionFired();
+#else
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wempty-body"
+                        ;
+#pragma clang diagnostic pop
+                protected_usleep(19500);
+#endif
         }
         while (!fsms()->accepting());
 }

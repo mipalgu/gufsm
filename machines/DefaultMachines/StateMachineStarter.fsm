@@ -6,62 +6,62 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="80" endx="50" xpos="-10" endy="80"/>
-    <state pencolor="12124415" radius="40" description="OnEntry { &#xa;&#x9;extern playerNumber;&#xa;&#x9;extern sensors_postTemps_Updated;&#xa;&#x9;int newTemps;&#xa;&#x9;int initPostCount;&#xa;&#x9;sensors_postTemps_Updated = 0;&#xa;&#x9;initPostCount = 0;&#xa;&#x9;newTemps = 0;&#xa; &#xa;&#x9;suspendAll();&#xa; }&#xa;OnExit { playerNumber = read_int(&quot;/home/nao/data/player&quot;);&#xa;&#x9;post(&quot;QSpeech&quot;, &quot;Player&quot;);&#xa;&#x9;post_int(&quot;QSpeech&quot;, playerNumber);&#xa; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="80" code="0" xpos="90" linewidth="1">Init</state>
+    <state pencolor="12124415" radius="40" description="OnEntry { &#xa;&#x9;extern playerNumber;&#xa;&#x9;extern sensors_postTemps_Updated;&#xa;&#x9;int newTemps;&#xa;&#x9;int initPostCount;&#xa;&#x9;sensors_postTemps_Updated = 0;&#xa;&#x9;initPostCount = 0;&#xa;&#x9;newTemps = 0;&#xa; &#xa;&#x9;suspendAll();&#xa; }&#xa;OnExit { playerNumber = read_int(&quot;/home/nao/data/player&quot;); }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="80" code="0" xpos="90" linewidth="1">Init</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;initPostCount = initPostCount + 1;&#xa;&#x9;post(&quot;sensors_postTemps&quot;, &quot;On&quot;); &#xa; }&#xa;OnExit { }&#xa;{ print_state_name(); }&#xa;" finalstate="0" moore_outputs="" ypos="178" code="5" xpos="161" linewidth="1">WaitForRobotStart</state>
-    <state pencolor="0" radius="40" description="OnEntry {  print_state_name();&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="80" code="14" xpos="409" linewidth="1">OnRobotStart</state>
+    <state pencolor="0" radius="40" description="OnEntry {  print_state_name();&#xa;&#x9;post(&quot;QSay&quot;, &quot;Player&quot;);&#xa;&#x9;post_int(&quot;QSay&quot;, playerNumber);&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="80" code="14" xpos="409" linewidth="1">OnRobotStart</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;initPostCount = initPostCount - 1;&#xa;&#x9;post(&quot;sensors_postTemps&quot;, &quot;Off&quot;); &#xa; }&#xa;OnExit { }&#xa;{ print_state_name(); }&#xa;" finalstate="0" moore_outputs="" ypos="208" code="3" xpos="501" linewidth="1">RemoveExtraListeners</state>
-    <state pencolor="0" radius="40" description="OnEntry {  print_state_name();&#xa;&#x9;post(&quot;QSpeech&quot;, &quot;Starting Machines&quot;); &#xa;&#xa;&#x9;resume(&quot;Safety_BatteryMonitor&quot;);&#xa;&#x9;resume(&quot;Safety_TempsMonitor&quot;);&#xa;&#x9;resume(&quot;SMRobotPosition&quot;);&#xa;&#x9;restart(&quot;SMGameController&quot;);&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="100" code="6" xpos="690" linewidth="1">StartMachines</state>
-    <state pencolor="0" radius="40" description="OnEntry {  &#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="313" code="1" xpos="135" linewidth="1">Wait</state>
-    <state pencolor="0" radius="40" description="OnEntry {  &#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="341" code="2" xpos="469" linewidth="1">Wait2</state>
-    <transition c1x="124.615107" c2y="130.221402" c1y="127.778598" description="" straight="1" type="2" ypos="111.5824629047094" endx="138.1188278955676" xpos="112.8811721044324" endy="146.4175370952906" c2x="126.384893">
+    <state pencolor="0" radius="40" description="OnEntry {  print_state_name();&#xa;&#x9;post(&quot;QSpeech&quot;, &quot;Starting Machines&quot;); &#xa;&#xa;&#x9;resume(&quot;Safety_BatteryMonitor&quot;);&#xa;&#x9;resume(&quot;Safety_TempsMonitor&quot;);&#xa;&#x9;resume(&quot;SMRobotPosition&quot;);&#xa;&#x9;restart(&quot;SMGameController&quot;);&#xa; }&#xa;OnExit {&#xa;&#x9;suspend(&quot;StateMachineStarter&quot;);&#xa; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="149" code="6" xpos="688" linewidth="1">StartMachines</state>
+    <state pencolor="0" radius="40" description="OnEntry {  &#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="228" code="1" xpos="331" linewidth="1">Wait</state>
+    <state pencolor="0" radius="40" description="OnEntry {  &#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="293" code="2" xpos="645" linewidth="1">Wait2</state>
+    <transition c1x="124.615107" c2y="130.221402" c1y="127.778598" description="" straight="1" type="2" ypos="112.3922696458558" endx="138.1188278955676" xpos="113.4678688250588" endy="146.4175370952906" c2x="126.384893">
       <from>0</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="215.871200" c2y="101.682974" c1y="156.317026" description="" straight="1" type="2" ypos="163.6671864662746" endx="372.7292065677154" xpos="197.2707934322846" endy="94.33281353372536" c2x="354.128800">
+    <transition c1x="255.446924" c2y="117.689277" c1y="140.678232" description="" straight="1" type="2" ypos="163.6671864662746" endx="371.7991862232979" xpos="197.2707934322846" endy="94.70032157305167" c2x="313.623055">
       <from>5</from>
       <to>14</to>
       <inputs default="0" any="0" invert="0">newTemps != sensors_postTemps_Updated</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="149.842087" c2y="255.064683" c1y="235.935317" description="" straight="1" type="2" ypos="216.296226622129" endx="142.3755695716693" xpos="153.6244304283307" endy="274.703773377871" c2x="146.157913">
+    <transition c1x="219.633507" c2y="197.776172" c1y="184.565963" description="" straight="0" type="2" ypos="182.340212985195" endx="296.0640762775806" xpos="199.7577418233202" endy="210.6656054717422" c2x="273.148218">
       <from>5</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="443.434527" c2y="160.091093" c1y="127.908907" description="" straight="1" type="2" ypos="111.6685994823658" endx="478.2381941220495" xpos="431.7618058779505" endy="176.3314005176342" c2x="466.565473">
+    <transition c1x="447.448481" c2y="154.506462" c1y="133.493538" description="" straight="1" type="2" ypos="112.4806148537085" endx="477.654558073897" xpos="432.345441926103" endy="175.5193851462915" c2x="462.551519">
       <from>14</from>
       <to>3</to>
-      <inputs default="0" any="0" invert="0">1</inputs>
+      <inputs default="0" any="0" invert="0">timeout(100000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="487.198373" c2y="283.636988" c1y="265.363012" description="" straight="1" type="2" ypos="245.9179229026473" endx="478.1231092698099" xpos="491.8768907301901" endy="303.0820770973526" c2x="482.801627">
+    <transition c1x="566.215462" c2y="246.914420" c1y="232.755458" description="" straight="0" type="2" ypos="221.945122660064" endx="614.5400172353728" xpos="538.4904461696012" endy="267.0733833680787" c2x="595.877740">
       <from>3</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">timeout(400000)</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="574.997746" c2y="142.780565" c1y="165.715573" description="" straight="1" type="2" ypos="188.6505814040835" endx="655.2702743150217" xpos="534.8614825428539" endy="119.8455575342734" c2x="615.134010">
+    <transition c1x="576.119387" c2y="172.447489" c1y="184.552511" description="" straight="1" type="2" ypos="196.6575332931741" endx="649.6418398641887" xpos="539.3581601358113" endy="160.3424667068259" c2x="612.880613">
       <from>3</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">initPostCount&lt;1</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="628.807708" c2y="7.591044" c1y="-2.061273" description="" straight="1" type="2" ypos="61.53904209436709" endx="705.8966763746433" xpos="679.0111548841048" endy="64.38686084827879" c2x="764.977228">
+    <transition c1x="726.133405" c2y="146.279583" c1y="36.275365" description="" straight="1" type="2" ypos="115.7179882264863" endx="725.4305082873429" xpos="710.1880078490092" endy="138.0475094452838" c2x="806.968901">
       <from>6</from>
       <to>6</to>
-      <inputs default="0" any="0" invert="0">timeout(4000000)</inputs>
+      <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="146.125190" c2y="235.765409" c1y="255.234591" description="" straight="1" type="2" ypos="274.703773377871" endx="153.6244304283307" xpos="142.3755695716693" endy="216.296226622129" c2x="149.874810">
+    <transition c1x="272.366493" c2y="215.223828" c1y="221.434037" description="" straight="0" type="2" ypos="223.659787014805" endx="195.9359237224194" xpos="292.2422581766798" endy="195.3343945282578" c2x="215.851782">
       <from>1</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="482.707703" c2y="264.972641" c1y="284.027359" description="" straight="1" type="2" ypos="303.0820770973526" endx="491.8768907301901" xpos="478.1231092698099" endy="245.9179229026473" c2x="487.292297">
+    <transition c1x="582.034925" c2y="258.908426" c1y="273.764277" description="" straight="0" type="2" ypos="279.0548773399361" endx="531.4599827646272" xpos="607.5095538303988" endy="233.9266166319213" c2x="551.595141">
       <from>2</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">1</inputs>

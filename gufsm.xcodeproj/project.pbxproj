@@ -2150,6 +2150,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_OPTIMIZATION_LEVEL = 0;
+				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = "MONITORING_MODE_ON=1";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib,
