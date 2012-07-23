@@ -658,6 +658,7 @@ string StateMachineVector::kripkeInSVMformat()
         /* We need to find all the variables */
         
         /* Do we have variables? */
+        int number_of_variables=0;
         if (!antlr_context->isEmpty())
         {
                 ss <<"VAR" << endl;
@@ -665,14 +666,16 @@ string StateMachineVector::kripkeInSVMformat()
         
                 /* print variables of this machine in smv fromat*/
                 /* ALL BOOLEAN, TODO, make integer values */
-                int variableNumber=0;
-                for (map<string, int>::iterator it = antlr_context->variables().begin(); 
+                for (map<string, int>::iterator it = antlr_context->variables().begin();
                      it != antlr_context->variables().end(); it++)
                 {
                         const pair<string, int> &p = *it;
+                        if (antlr_context->external_variable_exists(p.first))
+                                continue;
+
                         DATA_TYPES the_type=antlr_context->theVariableType(p.first);
                         ss << variableNRange(p.first,the_type);
-                        variableNumber++;
+                        number_of_variables++;
                 }
         }
         // range of the variable turn */
@@ -794,7 +797,7 @@ string StateMachineVector::kripkeInSVMformat()
         /* generate a context  */
         /* initial Kripke states will be palced in a queue              */
         
-        size_t n = antlr_context->variables().size();
+        size_t n = number_of_variables;
         string *names[n];
         i = 0;
         int totalBits=0;
@@ -803,6 +806,8 @@ string StateMachineVector::kripkeInSVMformat()
              it != antlr_context->variables().end(); it++)
         {
                 const pair<string, int> &p = *it;
+                if (antlr_context->external_variable_exists(p.first))
+                        continue;
                 names[i++] = new string(p.first);
         
                 DATA_TYPES aVariableType = antlr_context->theVariableType(*names[i-1]);
