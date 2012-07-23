@@ -6,7 +6,7 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="204.4135900650597" endx="592.7126917733378" xpos="592.7126917733378" endy="204.4135900650597"/>
-    <state pencolor="0" radius="100" description="OnEntry { soperatorPushingButton = 0;  print_state_name();}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="205.3472222222222" code="1" xpos="692.7083333333334" linewidth="2">ButtonFree</state>
+    <state pencolor="0" radius="100" description="OnEntry { operatorPushingButton = 0;  print_state_name();}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="205.3472222222222" code="1" xpos="692.7083333333334" linewidth="2">ButtonFree</state>
     <state pencolor="0" radius="100" description="OnEntry { extern operatorPressesButton; operatorPushingButton = 1;  print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="200" code="0" xpos="220" linewidth="2">PushingTheButton</state>
     <transition c1x="526.6294638223947" c2y="307.6726985826023" c1y="274.3462762866983" description="" straight="0" type="2" ypos="236.922631768572" endx="301.2538250629685" xpos="597.8242276465521" endy="258.290787545173" c2x="353.0041444426815">
       <from>1</from>
