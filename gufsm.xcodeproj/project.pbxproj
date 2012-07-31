@@ -69,6 +69,9 @@
 		F132711D1452812500E5786D /* FSMWBQueryPredicate.cc in Sources */ = {isa = PBXBuildFile; fileRef = F132711B1452812500E5786D /* FSMWBQueryPredicate.cc */; };
 		F14EB9C01491B86600ED85D7 /* FSMANTLRContext.cc in Sources */ = {isa = PBXBuildFile; fileRef = F14EB9BF1491B86600ED85D7 /* FSMANTLRContext.cc */; };
 		F14EB9C11491B86600ED85D7 /* FSMANTLRContext.cc in Sources */ = {isa = PBXBuildFile; fileRef = F14EB9BF1491B86600ED85D7 /* FSMANTLRContext.cc */; };
+		F155F66C15C3A78A008F5637 /* simplecc.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = F155F66B15C3A78A008F5637 /* simplecc.1 */; };
+		F155F68515C3A9A0008F5637 /* main.cc in Sources */ = {isa = PBXBuildFile; fileRef = F155F68415C3A97D008F5637 /* main.cc */; };
+		F155F68815C3A9E2008F5637 /* simplec_lexer.cc in Sources */ = {isa = PBXBuildFile; fileRef = F155F68615C3A9E2008F5637 /* simplec_lexer.cc */; };
 		F15A2CF814CF843700D88624 /* claus.c in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C0014CF81F400D88624 /* claus.c */; };
 		F15A2CF914CF843700D88624 /* defeas.c in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C0F14CF81F400D88624 /* defeas.c */; };
 		F15A2CFA14CF843700D88624 /* oset.c in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C2114CF81F400D88624 /* oset.c */; };
@@ -252,6 +255,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		F155F66415C3A78A008F5637 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				F155F66C15C3A78A008F5637 /* simplecc.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		F16CC2F8142C0C01001F788B /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -419,6 +432,11 @@
 		F13BA40E1579E92500929C9C /* FSMVectorRunner.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMVectorRunner.cc; sourceTree = "<group>"; };
 		F13BA40F1579E92500929C9C /* FSMVectorRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMVectorRunner.h; sourceTree = "<group>"; };
 		F14EB9BF1491B86600ED85D7 /* FSMANTLRContext.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRContext.cc; sourceTree = "<group>"; };
+		F155F66615C3A78A008F5637 /* simplecc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = simplecc; sourceTree = BUILT_PRODUCTS_DIR; };
+		F155F66B15C3A78A008F5637 /* simplecc.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = simplecc.1; sourceTree = "<group>"; };
+		F155F68415C3A97D008F5637 /* main.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cc; sourceTree = "<group>"; };
+		F155F68615C3A9E2008F5637 /* simplec_lexer.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simplec_lexer.cc; sourceTree = "<group>"; };
+		F155F68715C3A9E2008F5637 /* simplec_lexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simplec_lexer.h; sourceTree = "<group>"; };
 		F15A2BF614CF81F400D88624 /* COOL.correct */ = {isa = PBXFileReference; lastKnownFileType = text; path = COOL.correct; sourceTree = "<group>"; };
 		F15A2BF714CF81F400D88624 /* COOL_theory.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = COOL_theory.c; sourceTree = "<group>"; };
 		F15A2BF814CF81F400D88624 /* COOL_theory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = COOL_theory.h; sourceTree = "<group>"; };
@@ -736,6 +754,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F155F66315C3A78A008F5637 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F16CC2F7142C0C01001F788B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -985,6 +1010,17 @@
 			children = (
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F155F66815C3A78A008F5637 /* simplecc */ = {
+			isa = PBXGroup;
+			children = (
+				F155F68415C3A97D008F5637 /* main.cc */,
+				F155F68615C3A9E2008F5637 /* simplec_lexer.cc */,
+				F155F68715C3A9E2008F5637 /* simplec_lexer.h */,
+				F155F66B15C3A78A008F5637 /* simplecc.1 */,
+			);
+			path = simplecc;
 			sourceTree = "<group>";
 		};
 		F15A2BF014CF81F400D88624 /* cdl */ = {
@@ -1367,6 +1403,7 @@
 				F12B41CC147DBC7D00FF4A6B /* gubehaviourinterpreter */,
 				F192CC8F144D27C200FF8526 /* Common */,
 				E11CABDB14BD243900A1019A /* fsmWbDependencyDump */,
+				F155F66815C3A78A008F5637 /* simplecc */,
 				F16CC31B142C2AD9001F788B /* Frameworks */,
 				F16CC2FB142C0C01001F788B /* Products */,
 				F15A2BF014CF81F400D88624 /* cdl */,
@@ -1379,6 +1416,7 @@
 				F16CC2FA142C0C01001F788B /* gufsm */,
 				F16CC31A142C2AD9001F788B /* FSMTest.octest */,
 				E11CABD914BD243900A1019A /* fsmWbDependencyDump */,
+				F155F66615C3A78A008F5637 /* simplecc */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1644,6 +1682,23 @@
 			productReference = E11CABD914BD243900A1019A /* fsmWbDependencyDump */;
 			productType = "com.apple.product-type.tool";
 		};
+		F155F66515C3A78A008F5637 /* simplecc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F155F68015C3A78A008F5637 /* Build configuration list for PBXNativeTarget "simplecc" */;
+			buildPhases = (
+				F155F66215C3A78A008F5637 /* Sources */,
+				F155F66315C3A78A008F5637 /* Frameworks */,
+				F155F66415C3A78A008F5637 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = simplecc;
+			productName = simplecc;
+			productReference = F155F66615C3A78A008F5637 /* simplecc */;
+			productType = "com.apple.product-type.tool";
+		};
 		F16CC2F9142C0C01001F788B /* gufsm */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F16CC304142C0C01001F788B /* Build configuration list for PBXNativeTarget "gufsm" */;
@@ -1726,6 +1781,7 @@
 				F16CC2F9142C0C01001F788B /* gufsm */,
 				F16CC319142C2AD9001F788B /* FSMTest */,
 				E11CABD814BD243900A1019A /* fsmWbDependencyDump */,
+				F155F66515C3A78A008F5637 /* simplecc */,
 			);
 		};
 /* End PBXProject section */
@@ -1938,6 +1994,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F155F66215C3A78A008F5637 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F155F68515C3A9A0008F5637 /* main.cc in Sources */,
+				F155F68815C3A9E2008F5637 /* simplec_lexer.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F16CC2F6142C0C01001F788B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2081,11 +2146,35 @@
 			};
 			name = Release;
 		};
+		F155F66D15C3A78A008F5637 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F155F66E15C3A78A008F5637 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		F16CC302142C0C01001F788B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2121,7 +2210,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -2210,6 +2299,15 @@
 			buildConfigurations = (
 				E11CABE114BD243900A1019A /* Debug */,
 				E11CABE214BD243900A1019A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F155F68015C3A78A008F5637 /* Build configuration list for PBXNativeTarget "simplecc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F155F66D15C3A78A008F5637 /* Debug */,
+				F155F66E15C3A78A008F5637 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
