@@ -3,7 +3,7 @@
 //  clfsm
 //
 //  Created by Rene Hexel on 1/08/12.
-//  Copyright (c) 2012 ICT. All rights reserved.
+//  Copyright (c) 2012 Rene Hexel. All rights reserved.
 //
 
 #include <iostream>

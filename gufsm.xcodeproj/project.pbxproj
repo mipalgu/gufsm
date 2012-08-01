@@ -123,7 +123,6 @@
 		F1A517D015C91BDC00348C25 /* main.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1A517CF15C91BDC00348C25 /* main.cc */; };
 		F1A517D215C91BDC00348C25 /* clfsm.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1A517D115C91BDC00348C25 /* clfsm.1 */; };
 		F1A517E815C91CA500348C25 /* FSMAction.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC334142C3433001F788B /* FSMAction.cc */; };
-		F1A517E915C91CA500348C25 /* FSMANTLRAction.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E8461480B10700C852FC /* FSMANTLRAction.cc */; };
 		F1A517EA15C91CA500348C25 /* FSMExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1199D5F14302767003853BF /* FSMExpression.cc */; };
 		F1A517EB15C91CA500348C25 /* FSMWBPredicate.cc in Sources */ = {isa = PBXBuildFile; fileRef = F192CCDF144D291F00FF8526 /* FSMWBPredicate.cc */; };
 		F1A517EC15C91CA500348C25 /* FSMWBQueryPredicate.cc in Sources */ = {isa = PBXBuildFile; fileRef = F132711B1452812500E5786D /* FSMWBQueryPredicate.cc */; };
@@ -133,7 +132,11 @@
 		F1A517F015C91CA500348C25 /* FSMSuspensibleMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F191E604142D9B970014AF84 /* FSMSuspensibleMachine.cc */; };
 		F1A517F115C91CA500348C25 /* FSMWBSubMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1AFCD2E147B8F7800C975DC /* FSMWBSubMachine.cc */; };
 		F1A517F215C91CA500348C25 /* FSMTransition.cc in Sources */ = {isa = PBXBuildFile; fileRef = F12DCDD71484BAD100461AD6 /* FSMTransition.cc */; };
-		F1A517F315C91CA500348C25 /* FSMWBSubMachineFactory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7DD147F7C4600C852FC /* FSMWBSubMachineFactory.cc */; };
+		F1A517F615C91F6900348C25 /* stringConstants.c in Sources */ = {isa = PBXBuildFile; fileRef = F5EE57F61487441C001F6C9C /* stringConstants.c */; };
+		F1A517F715C922C900348C25 /* gusimplewhiteboard.c in Sources */ = {isa = PBXBuildFile; fileRef = F1284D0014A6CAA800C0247E /* gusimplewhiteboard.c */; };
+		F1A517F815C922C900348C25 /* Whiteboard.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1284D0E14A6CAA800C0247E /* Whiteboard.cc */; };
+		F1A517F915C922C900348C25 /* WhiteboardConstants.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1284D1014A6CAA800C0247E /* WhiteboardConstants.cc */; };
+		F1A517FA15C9232200348C25 /* FSMActivity.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC312142C1247001F788B /* FSMActivity.cc */; };
 		F1A9E7D2147F76C200C852FC /* ActivityFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CC147F76C200C852FC /* ActivityFactory.cpp */; };
 		F1A9E7D3147F76C200C852FC /* ActivityFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CC147F76C200C852FC /* ActivityFactory.cpp */; };
 		F1A9E7D4147F76C200C852FC /* parser_walk.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CE147F76C200C852FC /* parser_walk.c */; };
@@ -747,6 +750,7 @@
 		F1A517CC15C91BDC00348C25 /* clfsm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = clfsm; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1A517CF15C91BDC00348C25 /* main.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cc; sourceTree = "<group>"; };
 		F1A517D115C91BDC00348C25 /* clfsm.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = clfsm.1; sourceTree = "<group>"; };
+		F1A517F415C91ECC00348C25 /* stringConstants.c */ = {isa = PBXFileReference; lastKnownFileType = file; name = stringConstants.c; path = gufsm/stringConstants.c; sourceTree = "<group>"; };
 		F1A9E7CC147F76C200C852FC /* ActivityFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ActivityFactory.cpp; sourceTree = "<group>"; };
 		F1A9E7CD147F76C200C852FC /* ActivityFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityFactory.h; sourceTree = "<group>"; };
 		F1A9E7CE147F76C200C852FC /* parser_walk.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = parser_walk.c; sourceTree = "<group>"; };
@@ -1423,6 +1427,7 @@
 		F16CC2EF142C0C01001F788B = {
 			isa = PBXGroup;
 			children = (
+				F1A517F415C91ECC00348C25 /* stringConstants.c */,
 				E1144EB81585E23900C3C113 /* ActionsContainer_SimpleCParser.c */,
 				E1144EB91585E23900C3C113 /* ActionsContainerLexer.c */,
 				E1144EBA1585E23900C3C113 /* ActionsContainerParser.c */,
@@ -2171,7 +2176,6 @@
 			files = (
 				F1A517D015C91BDC00348C25 /* main.cc in Sources */,
 				F1A517E815C91CA500348C25 /* FSMAction.cc in Sources */,
-				F1A517E915C91CA500348C25 /* FSMANTLRAction.cc in Sources */,
 				F1A517EA15C91CA500348C25 /* FSMExpression.cc in Sources */,
 				F1A517EB15C91CA500348C25 /* FSMWBPredicate.cc in Sources */,
 				F1A517EC15C91CA500348C25 /* FSMWBQueryPredicate.cc in Sources */,
@@ -2181,7 +2185,11 @@
 				F1A517F015C91CA500348C25 /* FSMSuspensibleMachine.cc in Sources */,
 				F1A517F115C91CA500348C25 /* FSMWBSubMachine.cc in Sources */,
 				F1A517F215C91CA500348C25 /* FSMTransition.cc in Sources */,
-				F1A517F315C91CA500348C25 /* FSMWBSubMachineFactory.cc in Sources */,
+				F1A517F615C91F6900348C25 /* stringConstants.c in Sources */,
+				F1A517F715C922C900348C25 /* gusimplewhiteboard.c in Sources */,
+				F1A517F815C922C900348C25 /* Whiteboard.cc in Sources */,
+				F1A517F915C922C900348C25 /* WhiteboardConstants.cc in Sources */,
+				F1A517FA15C9232200348C25 /* FSMActivity.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2271,8 +2279,10 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../gusimplewhiteboard\"",
@@ -2301,8 +2311,10 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../gusimplewhiteboard\"",
@@ -2382,7 +2394,6 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -2395,7 +2406,6 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
