@@ -144,6 +144,9 @@ namespace FSM
                 /** constructor */
                 StateMachineVector(Context *ctx = NULL, useconds_t timeout = 10000L, idle_f default_idle_function = NULL);
 
+                /** destructor */
+                virtual ~StateMachineVector() {}
+
                 /** machines getter method */
                 MachineVector &machines() { return _machines; }
                 

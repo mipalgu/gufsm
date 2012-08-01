@@ -1,9 +1,9 @@
 /*
- *  FSMState.h
- *  
- *  Created by René Hexel on 23/09/11.
- *  Copyright (c) 2011 Rene Hexel.
- *  All rights reserved.
+ *  CLState.h
+ *  gufsm
+ *
+ *  Created by Rene Hexel on 1/08/12.
+ *  Copyright (c) 2012 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -55,57 +55,14 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef gufsm_FSMState_h
-#define gufsm_FSMState_h
+#ifndef __gufsm__CLState__
+#define __gufsm__CLState__
 
-#include <string>
-#include "FSMActivity.h"
+#include <FSMState.h>
 
 namespace FSM
 {
-        class Transition;
-        
-        typedef std::vector<Transition *> TransitionVector;
-        typedef TransitionVector::iterator TransitionIterator;
-        
-        class State
-        {
-                Activity _activity;  /// the activity represented by this state
-                int _stateID;           /// state number within machine
-                std::string _name;      /// name of the state
-                
-                /** list of transitions away from this state */
-                TransitionVector _transitions;
-        public:
-                State(int stateID = 0, const std::string name = ""):
-                _activity(), _stateID(stateID), _name(name) {}
-
-                virtual ~State() {}
-
-                /** get the numerical state ID */
-                int stateID() const { return _stateID; }
-                
-                /** set the numerical state ID */
-                void setStateID(int i) { _stateID = i; }
-                
-                /** get the state's name */
-                const std::string &name() const { return _name; }
-                
-                /** set the state's name */
-                void setName(const std::string &name) { _name = name; }
-                
-                /** get the state's activity */
-                Activity &activity() { return _activity; }
-                
-                /** get that state's transitions */
-                TransitionVector &transitions() { return _transitions; }
-                
-                /** add a transition */
-                void addTransition(Transition *t) { _transitions.push_back(t); }
-                /**
-                 * printable state  description
-                 */
-                virtual std::string description();
-        };
+        typedef FSM::State CLState;
 }
-#endif
+
+#endif /* defined(__gufsm__CLState__) */

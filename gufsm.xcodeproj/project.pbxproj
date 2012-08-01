@@ -751,6 +751,8 @@
 		F1A517CF15C91BDC00348C25 /* main.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cc; sourceTree = "<group>"; };
 		F1A517D115C91BDC00348C25 /* clfsm.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = clfsm.1; sourceTree = "<group>"; };
 		F1A517F415C91ECC00348C25 /* stringConstants.c */ = {isa = PBXFileReference; lastKnownFileType = file; name = stringConstants.c; path = gufsm/stringConstants.c; sourceTree = "<group>"; };
+		F1A5180215C9438A00348C25 /* CLState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLState.h; sourceTree = "<group>"; };
+		F1A5180515C947D400348C25 /* CLAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLAction.h; sourceTree = "<group>"; };
 		F1A9E7CC147F76C200C852FC /* ActivityFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ActivityFactory.cpp; sourceTree = "<group>"; };
 		F1A9E7CD147F76C200C852FC /* ActivityFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityFactory.h; sourceTree = "<group>"; };
 		F1A9E7CE147F76C200C852FC /* parser_walk.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = parser_walk.c; sourceTree = "<group>"; };
@@ -1715,6 +1717,8 @@
 		F1A5180015C9278500348C25 /* examples */ = {
 			isa = PBXGroup;
 			children = (
+				F1A5180215C9438A00348C25 /* CLState.h */,
+				F1A5180515C947D400348C25 /* CLAction.h */,
 			);
 			path = examples;
 			sourceTree = "<group>";
