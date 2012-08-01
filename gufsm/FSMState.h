@@ -60,7 +60,6 @@
 
 #include <string>
 #include "FSMActivity.h"
-#include "FSMANTLRContext.h"
 
 namespace FSM
 {
