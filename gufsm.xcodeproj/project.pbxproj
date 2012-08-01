@@ -120,6 +120,20 @@
 		F192CCE7144D356300FF8526 /* FSMWBContext.cc in Sources */ = {isa = PBXBuildFile; fileRef = F192CCE5144D356300FF8526 /* FSMWBContext.cc */; };
 		F1A3DF6D142D3BFE0060F293 /* FSMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30B142C0CDE001F788B /* FSMachine.cc */; };
 		F1A3DF6E142D3BFF0060F293 /* FSMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30B142C0CDE001F788B /* FSMachine.cc */; };
+		F1A517D015C91BDC00348C25 /* main.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1A517CF15C91BDC00348C25 /* main.cc */; };
+		F1A517D215C91BDC00348C25 /* clfsm.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1A517D115C91BDC00348C25 /* clfsm.1 */; };
+		F1A517E815C91CA500348C25 /* FSMAction.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC334142C3433001F788B /* FSMAction.cc */; };
+		F1A517E915C91CA500348C25 /* FSMANTLRAction.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E8461480B10700C852FC /* FSMANTLRAction.cc */; };
+		F1A517EA15C91CA500348C25 /* FSMExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1199D5F14302767003853BF /* FSMExpression.cc */; };
+		F1A517EB15C91CA500348C25 /* FSMWBPredicate.cc in Sources */ = {isa = PBXBuildFile; fileRef = F192CCDF144D291F00FF8526 /* FSMWBPredicate.cc */; };
+		F1A517EC15C91CA500348C25 /* FSMWBQueryPredicate.cc in Sources */ = {isa = PBXBuildFile; fileRef = F132711B1452812500E5786D /* FSMWBQueryPredicate.cc */; };
+		F1A517ED15C91CA500348C25 /* FSMWBContext.cc in Sources */ = {isa = PBXBuildFile; fileRef = F192CCE5144D356300FF8526 /* FSMWBContext.cc */; };
+		F1A517EE15C91CA500348C25 /* FSMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30B142C0CDE001F788B /* FSMachine.cc */; };
+		F1A517EF15C91CA500348C25 /* FSMState.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30F142C0F86001F788B /* FSMState.cc */; };
+		F1A517F015C91CA500348C25 /* FSMSuspensibleMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F191E604142D9B970014AF84 /* FSMSuspensibleMachine.cc */; };
+		F1A517F115C91CA500348C25 /* FSMWBSubMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1AFCD2E147B8F7800C975DC /* FSMWBSubMachine.cc */; };
+		F1A517F215C91CA500348C25 /* FSMTransition.cc in Sources */ = {isa = PBXBuildFile; fileRef = F12DCDD71484BAD100461AD6 /* FSMTransition.cc */; };
+		F1A517F315C91CA500348C25 /* FSMWBSubMachineFactory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7DD147F7C4600C852FC /* FSMWBSubMachineFactory.cc */; };
 		F1A9E7D2147F76C200C852FC /* ActivityFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CC147F76C200C852FC /* ActivityFactory.cpp */; };
 		F1A9E7D3147F76C200C852FC /* ActivityFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CC147F76C200C852FC /* ActivityFactory.cpp */; };
 		F1A9E7D4147F76C200C852FC /* parser_walk.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CE147F76C200C852FC /* parser_walk.c */; };
@@ -272,6 +286,16 @@
 			dstSubfolderSpec = 0;
 			files = (
 				F16CC301142C0C01001F788B /* gufsm.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		F1A517CA15C91BDC00348C25 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				F1A517D215C91BDC00348C25 /* clfsm.1 in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -720,6 +744,9 @@
 		F192CCE5144D356300FF8526 /* FSMWBContext.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMWBContext.cc; sourceTree = "<group>"; };
 		F19C2B96142C7B37007CFC83 /* FSMTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMTransition.h; sourceTree = "<group>"; };
 		F19C2B98142C7D5A007CFC83 /* FSMExpression.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMExpression.h; sourceTree = "<group>"; };
+		F1A517CC15C91BDC00348C25 /* clfsm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = clfsm; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1A517CF15C91BDC00348C25 /* main.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cc; sourceTree = "<group>"; };
+		F1A517D115C91BDC00348C25 /* clfsm.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = clfsm.1; sourceTree = "<group>"; };
 		F1A9E7CC147F76C200C852FC /* ActivityFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ActivityFactory.cpp; sourceTree = "<group>"; };
 		F1A9E7CD147F76C200C852FC /* ActivityFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityFactory.h; sourceTree = "<group>"; };
 		F1A9E7CE147F76C200C852FC /* parser_walk.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = parser_walk.c; sourceTree = "<group>"; };
@@ -776,6 +803,13 @@
 				F16CC31D142C2AD9001F788B /* SenTestingKit.framework in Frameworks */,
 				F16CC31F142C2AD9001F788B /* Cocoa.framework in Frameworks */,
 				F1A9E8CB1480B36100C852FC /* libantlr3c.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1A517C915C91BDC00348C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1404,6 +1438,7 @@
 				F192CC8F144D27C200FF8526 /* Common */,
 				E11CABDB14BD243900A1019A /* fsmWbDependencyDump */,
 				F155F66815C3A78A008F5637 /* simplecc */,
+				F1A517CE15C91BDC00348C25 /* clfsm */,
 				F16CC31B142C2AD9001F788B /* Frameworks */,
 				F16CC2FB142C0C01001F788B /* Products */,
 				F15A2BF014CF81F400D88624 /* cdl */,
@@ -1417,6 +1452,7 @@
 				F16CC31A142C2AD9001F788B /* FSMTest.octest */,
 				E11CABD914BD243900A1019A /* fsmWbDependencyDump */,
 				F155F66615C3A78A008F5637 /* simplecc */,
+				F1A517CC15C91BDC00348C25 /* clfsm */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1661,6 +1697,15 @@
 			path = LocalOnly;
 			sourceTree = "<group>";
 		};
+		F1A517CE15C91BDC00348C25 /* clfsm */ = {
+			isa = PBXGroup;
+			children = (
+				F1A517CF15C91BDC00348C25 /* main.cc */,
+				F1A517D115C91BDC00348C25 /* clfsm.1 */,
+			);
+			path = clfsm;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1735,6 +1780,23 @@
 			productReference = F16CC31A142C2AD9001F788B /* FSMTest.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
+		F1A517CB15C91BDC00348C25 /* clfsm */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F1A517E615C91BDC00348C25 /* Build configuration list for PBXNativeTarget "clfsm" */;
+			buildPhases = (
+				F1A517C815C91BDC00348C25 /* Sources */,
+				F1A517C915C91BDC00348C25 /* Frameworks */,
+				F1A517CA15C91BDC00348C25 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = clfsm;
+			productName = clfsm;
+			productReference = F1A517CC15C91BDC00348C25 /* clfsm */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1782,6 +1844,7 @@
 				F16CC319142C2AD9001F788B /* FSMTest */,
 				E11CABD814BD243900A1019A /* fsmWbDependencyDump */,
 				F155F66515C3A78A008F5637 /* simplecc */,
+				F1A517CB15C91BDC00348C25 /* clfsm */,
 			);
 		};
 /* End PBXProject section */
@@ -2102,6 +2165,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F1A517C815C91BDC00348C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1A517D015C91BDC00348C25 /* main.cc in Sources */,
+				F1A517E815C91CA500348C25 /* FSMAction.cc in Sources */,
+				F1A517E915C91CA500348C25 /* FSMANTLRAction.cc in Sources */,
+				F1A517EA15C91CA500348C25 /* FSMExpression.cc in Sources */,
+				F1A517EB15C91CA500348C25 /* FSMWBPredicate.cc in Sources */,
+				F1A517EC15C91CA500348C25 /* FSMWBQueryPredicate.cc in Sources */,
+				F1A517ED15C91CA500348C25 /* FSMWBContext.cc in Sources */,
+				F1A517EE15C91CA500348C25 /* FSMachine.cc in Sources */,
+				F1A517EF15C91CA500348C25 /* FSMState.cc in Sources */,
+				F1A517F015C91CA500348C25 /* FSMSuspensibleMachine.cc in Sources */,
+				F1A517F115C91CA500348C25 /* FSMWBSubMachine.cc in Sources */,
+				F1A517F215C91CA500348C25 /* FSMTransition.cc in Sources */,
+				F1A517F315C91CA500348C25 /* FSMWBSubMachineFactory.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -2291,6 +2374,32 @@
 			};
 			name = Release;
 		};
+		F1A517D315C91BDC00348C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F1A517D415C91BDC00348C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2338,6 +2447,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		F1A517E615C91BDC00348C25 /* Build configuration list for PBXNativeTarget "clfsm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1A517D315C91BDC00348C25 /* Debug */,
+				F1A517D415C91BDC00348C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
