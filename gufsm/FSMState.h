@@ -79,7 +79,9 @@ namespace FSM
         public:
                 State(int stateID = 0, const std::string name = ""):
                 _activity(), _stateID(stateID), _name(name) {}
-                
+
+                virtual ~State() {}
+
                 /** get the numerical state ID */
                 int stateID() { return _stateID; }
                 
@@ -104,7 +106,6 @@ namespace FSM
                  * printable state  description
                  */
                 virtual std::string description();
-                
         };
 }
 #endif

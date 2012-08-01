@@ -200,7 +200,7 @@ namespace FSM
                 /** setting any parameter sets the context */
                 virtual void add_parameter(int index, long long value)
                 {
-                        setContent(value);
+                        setContent(int(value));
                 }
         };
 

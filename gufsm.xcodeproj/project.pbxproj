@@ -1705,10 +1705,18 @@
 		F1A517CE15C91BDC00348C25 /* clfsm */ = {
 			isa = PBXGroup;
 			children = (
+				F1A5180015C9278500348C25 /* examples */,
 				F1A517CF15C91BDC00348C25 /* main.cc */,
 				F1A517D115C91BDC00348C25 /* clfsm.1 */,
 			);
 			path = clfsm;
+			sourceTree = "<group>";
+		};
+		F1A5180015C9278500348C25 /* examples */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = examples;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

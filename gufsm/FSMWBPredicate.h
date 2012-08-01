@@ -92,6 +92,8 @@ namespace FSM
                  */
                 WBExpression(WBContext *wc): _wb(wc->whiteboard()) {}
 
+                virtual ~WBExpression() {}      /// destructor
+
                 /** whiteboard getter */
                 guWhiteboard::Whiteboard *whiteboard() { return _wb; }
                 
@@ -133,6 +135,8 @@ namespace FSM
                  * @param wc the whiteboard context to use (may not be null)
                  */
                 WBPredicate(const std::string &expr, bool neg, WBContext *wc): Predicate(expr, false, neg), WBExpression(wc) {}
+
+                virtual ~WBPredicate() {}       /// destructor
 
                 /** return the value, negated if necessary */
                 virtual int evaluate(Machine *m = NULL);

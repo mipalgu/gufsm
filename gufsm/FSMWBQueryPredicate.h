@@ -100,6 +100,8 @@ namespace FSM
                  */
                 WBQueryPredicate(const std::string &p, bool neg, WBContext *wc);
 
+                virtual ~WBQueryPredicate() {}  /// destructor
+
                 /** whiteboard setter (subscribes to message responses) */
                 void setWhiteboard(guWhiteboard::Whiteboard *wb);
 
