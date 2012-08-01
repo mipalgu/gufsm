@@ -137,6 +137,8 @@
 		F1A517F815C922C900348C25 /* Whiteboard.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1284D0E14A6CAA800C0247E /* Whiteboard.cc */; };
 		F1A517F915C922C900348C25 /* WhiteboardConstants.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1284D1014A6CAA800C0247E /* WhiteboardConstants.cc */; };
 		F1A517FA15C9232200348C25 /* FSMActivity.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC312142C1247001F788B /* FSMActivity.cc */; };
+		F1A5180715C94EC500348C25 /* FSMachineVector.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1AFCD28147B56FA00C975DC /* FSMachineVector.cc */; };
+		F1A5180815C94F0600348C25 /* gu_util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F192CCC4144D27C200FF8526 /* gu_util.cpp */; };
 		F1A9E7D2147F76C200C852FC /* ActivityFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CC147F76C200C852FC /* ActivityFactory.cpp */; };
 		F1A9E7D3147F76C200C852FC /* ActivityFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CC147F76C200C852FC /* ActivityFactory.cpp */; };
 		F1A9E7D4147F76C200C852FC /* parser_walk.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CE147F76C200C852FC /* parser_walk.c */; };
@@ -2202,6 +2204,8 @@
 				F1A517F815C922C900348C25 /* Whiteboard.cc in Sources */,
 				F1A517F915C922C900348C25 /* WhiteboardConstants.cc in Sources */,
 				F1A517FA15C9232200348C25 /* FSMActivity.cc in Sources */,
+				F1A5180715C94EC500348C25 /* FSMachineVector.cc in Sources */,
+				F1A5180815C94F0600348C25 /* gu_util.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
