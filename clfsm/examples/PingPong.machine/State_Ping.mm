@@ -1,5 +1,5 @@
 /*
- *  CLAction.h
+ *  PingPong.cc
  *  gufsm
  *
  *  Created by Rene Hexel on 1/08/12.
@@ -55,20 +55,42 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef __clfsm__CLAction__
-#define __clfsm__CLAction__
+#include "PingPong.h"
+#include "State_Ping.h"
 
-namespace FSM
+using namespace FSM;
+using namespace CLM;
+using namespace State;
+
+Ping::Ping(): CLState(*new Ping::OnEntry, *new Ping::OnExit, *new Ping::Internal)
 {
-        class CLMachine;
-        
-        class CLAction
-        {
-        public:
-                virtual ~CLAction() {}
-                virtual void perform(CLMachine *) = 0;
-        };
 }
 
 
-#endif /* defined(__gufsm__CLAction__) */
+Ping::~Ping()
+{
+        if (&onEntryAction())    delete &onEntryAction();
+        if (&onExitAction())     delete &onExitAction();
+        if (&internalAction())   delete &internalAction();
+}
+
+
+void Ping::OnEntry::perform(CLMachine *_machine)
+{
+#       include "PingPong_VarRefs.mm"
+#       include "State_Ping_OnEntry.mm"
+}
+
+
+void Ping::OnExit::perform(CLMachine *_machine)
+{
+#       include "PingPong_VarRefs.mm"
+#       include "State_Ping_OnExit"
+}
+
+
+void Ping::OnExit::perform(CLMachine *_machine)
+{
+#       include "PingPong_VarRefs.mm"
+#       include "State_Ping_Internal"
+}

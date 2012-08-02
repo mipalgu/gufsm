@@ -1,5 +1,5 @@
 /*
- *  CLAction.h
+ *  CLMachine.h
  *  gufsm
  *
  *  Created by Rene Hexel on 1/08/12.
@@ -55,20 +55,28 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef __clfsm__CLAction__
-#define __clfsm__CLAction__
+#ifndef clfsm_CLMachine_h
+#define clfsm_CLMachine_h
 
 namespace FSM
 {
-        class CLMachine;
-        
-        class CLAction
+        class CLState;
+
+        class CLMachine
         {
+                const char *    _machineName;   /// name of this machine
+                int             _machineID;     /// number of this machine
         public:
-                virtual ~CLAction() {}
-                virtual void perform(CLMachine *) = 0;
+                CLMachine(int mid = 0, const char *name = ""): _machineName(name), _machineID(mid) {}
+                virtual ~CLMachine() {}
+                const char *machineName() const { return _machineName; }
+                int machineID() const { return _machineID; }
+                void setMachineName(const char *name) { _machineName = name; }
+                void setMachineID(int mid) { _machineID = mid; }
+                CLState *state(int i) const { return states()[i]; }
+                virtual CLState **states() const = 0;
+                virtual int numberOfStates() const = 0;
         };
 }
 
-
-#endif /* defined(__gufsm__CLAction__) */
+#endif

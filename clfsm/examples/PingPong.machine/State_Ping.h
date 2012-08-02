@@ -1,8 +1,8 @@
 /*
- *  CLAction.h
- *  gufsm
+ *  State_Ping.h
+ *  clfsm
  *
- *  Created by Rene Hexel on 1/08/12.
+ *  Created by Rene Hexel on 3/08/12.
  *  Copyright (c) 2012 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,20 +55,39 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef __clfsm__CLAction__
-#define __clfsm__CLAction__
+#ifndef clfsm_State_Ping_h
+#define clfsm_State_Ping_h
+
+#include "CLState.h"
+#include "CLAction.h"
 
 namespace FSM
 {
-        class CLMachine;
-        
-        class CLAction
+    namespace CLM
+    {
+        namespace State
         {
-        public:
-                virtual ~CLAction() {}
-                virtual void perform(CLMachine *) = 0;
-        };
+            class Ping: public CLState
+            {
+                class OnEntry: public CLAction
+                {
+                    virtual void perform(CLMachine *);
+                };
+                class OnExit: public CLAction
+                {
+                    virtual void perform(CLMachine *);
+                };
+                class Internal: public CLAction
+                {
+                    virtual void perform(CLMachine *);
+                };
+
+            public:
+                Ping();
+                virtual ~Ping();
+            };
+        }
+    }
 }
 
-
-#endif /* defined(__gufsm__CLAction__) */
+#endif

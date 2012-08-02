@@ -1,5 +1,5 @@
 /*
- *  CLAction.h
+ *  PingPong.cc
  *  gufsm
  *
  *  Created by Rene Hexel on 1/08/12.
@@ -55,20 +55,16 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef __clfsm__CLAction__
-#define __clfsm__CLAction__
+#include "PingPong.h"
 
-namespace FSM
+using namespace FSM;
+using namespace CLM;
+
+PingPong::PingPong(int mid, const char *name): CLMachine(mid, name)
 {
-        class CLMachine;
-        
-        class CLAction
-        {
-        public:
-                virtual ~CLAction() {}
-                virtual void perform(CLMachine *) = 0;
-        };
 }
 
 
-#endif /* defined(__gufsm__CLAction__) */
+PingPong::~PingPong()
+{
+}

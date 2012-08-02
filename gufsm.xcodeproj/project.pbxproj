@@ -98,6 +98,8 @@
 		F15A2D0F14CF85D900D88624 /* cdlbridge.cc in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C4E14CF81F400D88624 /* cdlbridge.cc */; };
 		F15A2D1014CF85D900D88624 /* cdlbridge_wbmsg.cc in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C5014CF81F400D88624 /* cdlbridge_wbmsg.cc */; };
 		F15A2D1114CF85D900D88624 /* cdlengine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C5214CF81F400D88624 /* cdlengine.cc */; };
+		F167F7AA15CB3CB000A56F17 /* State_Ping.mm in Sources */ = {isa = PBXBuildFile; fileRef = F167F7A915CB3CB000A56F17 /* State_Ping.mm */; };
+		F167F7AC15CB440F00A56F17 /* PingPong_VarRefs.mm in Sources */ = {isa = PBXBuildFile; fileRef = F167F7AB15CB440F00A56F17 /* PingPong_VarRefs.mm */; };
 		F16CC2FF142C0C01001F788B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F16CC2FE142C0C01001F788B /* main.cpp */; };
 		F16CC301142C0C01001F788B /* gufsm.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = F16CC300142C0C01001F788B /* gufsm.1 */; };
 		F16CC310142C0F86001F788B /* FSMState.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30F142C0F86001F788B /* FSMState.cc */; };
@@ -139,6 +141,7 @@
 		F1A517FA15C9232200348C25 /* FSMActivity.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC312142C1247001F788B /* FSMActivity.cc */; };
 		F1A5180715C94EC500348C25 /* FSMachineVector.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1AFCD28147B56FA00C975DC /* FSMachineVector.cc */; };
 		F1A5180815C94F0600348C25 /* gu_util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F192CCC4144D27C200FF8526 /* gu_util.cpp */; };
+		F1A5180D15C9514A00348C25 /* PingPong.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1A5180B15C9514A00348C25 /* PingPong.mm */; };
 		F1A9E7D2147F76C200C852FC /* ActivityFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CC147F76C200C852FC /* ActivityFactory.cpp */; };
 		F1A9E7D3147F76C200C852FC /* ActivityFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CC147F76C200C852FC /* ActivityFactory.cpp */; };
 		F1A9E7D4147F76C200C852FC /* parser_walk.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CE147F76C200C852FC /* parser_walk.c */; };
@@ -653,6 +656,9 @@
 		F15A2CD814CF81F400D88624 /* SmartDominoPlayer.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = SmartDominoPlayer.d; sourceTree = "<group>"; };
 		F15A2CD914CF81F400D88624 /* Super_Tight_Aggressive.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = Super_Tight_Aggressive.d; sourceTree = "<group>"; };
 		F15A2CDA14CF81F400D88624 /* Tight_Agrressive.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = Tight_Agrressive.d; sourceTree = "<group>"; };
+		F167F7A815CB38CF00A56F17 /* State_Ping.h */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = State_Ping.h; sourceTree = "<group>"; };
+		F167F7A915CB3CB000A56F17 /* State_Ping.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = State_Ping.mm; sourceTree = "<group>"; };
+		F167F7AB15CB440F00A56F17 /* PingPong_VarRefs.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PingPong_VarRefs.mm; sourceTree = "<group>"; };
 		F16CC2FA142C0C01001F788B /* gufsm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = gufsm; sourceTree = BUILT_PRODUCTS_DIR; };
 		F16CC2FE142C0C01001F788B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		F16CC300142C0C01001F788B /* gufsm.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = gufsm.1; sourceTree = "<group>"; };
@@ -719,8 +725,6 @@
 		F192CCBC144D27C200FF8526 /* BallInfo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BallInfo.cpp; sourceTree = "<group>"; };
 		F192CCBD144D27C200FF8526 /* BallInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BallInfo.h; sourceTree = "<group>"; };
 		F192CCBE144D27C200FF8526 /* defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = defines.h; sourceTree = "<group>"; };
-		F192CCBF144D27C200FF8526 /* DominoRecognition.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DominoRecognition.cpp; sourceTree = "<group>"; };
-		F192CCC0144D27C200FF8526 /* DominoRecognition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DominoRecognition.h; sourceTree = "<group>"; };
 		F192CCC1144D27C200FF8526 /* DONT_PUT_FILES_HERE */ = {isa = PBXFileReference; lastKnownFileType = text; path = DONT_PUT_FILES_HERE; sourceTree = "<group>"; };
 		F192CCC2144D27C200FF8526 /* GoalInfo.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GoalInfo.cc; sourceTree = "<group>"; };
 		F192CCC3144D27C200FF8526 /* GoalInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoalInfo.h; sourceTree = "<group>"; };
@@ -752,9 +756,13 @@
 		F1A517CC15C91BDC00348C25 /* clfsm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = clfsm; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1A517CF15C91BDC00348C25 /* main.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cc; sourceTree = "<group>"; };
 		F1A517D115C91BDC00348C25 /* clfsm.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = clfsm.1; sourceTree = "<group>"; };
-		F1A517F415C91ECC00348C25 /* stringConstants.c */ = {isa = PBXFileReference; lastKnownFileType = file; name = stringConstants.c; path = gufsm/stringConstants.c; sourceTree = "<group>"; };
+		F1A517F415C91ECC00348C25 /* stringConstants.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = stringConstants.c; path = gufsm/stringConstants.c; sourceTree = "<group>"; };
 		F1A5180215C9438A00348C25 /* CLState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLState.h; sourceTree = "<group>"; };
 		F1A5180515C947D400348C25 /* CLAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLAction.h; sourceTree = "<group>"; };
+		F1A5180915C94FF900348C25 /* CLMachine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLMachine.h; sourceTree = "<group>"; };
+		F1A5180B15C9514A00348C25 /* PingPong.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PingPong.mm; sourceTree = "<group>"; };
+		F1A5180C15C9514A00348C25 /* PingPong.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = PingPong.h; sourceTree = "<group>"; };
+		F1A5180E15C9577000348C25 /* PingPong_Variables.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PingPong_Variables.h; sourceTree = "<group>"; };
 		F1A9E7CC147F76C200C852FC /* ActivityFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ActivityFactory.cpp; sourceTree = "<group>"; };
 		F1A9E7CD147F76C200C852FC /* ActivityFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityFactory.h; sourceTree = "<group>"; };
 		F1A9E7CE147F76C200C852FC /* parser_walk.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = parser_walk.c; sourceTree = "<group>"; };
@@ -1571,8 +1579,6 @@
 				F192CCBC144D27C200FF8526 /* BallInfo.cpp */,
 				F192CCBD144D27C200FF8526 /* BallInfo.h */,
 				F192CCBE144D27C200FF8526 /* defines.h */,
-				F192CCBF144D27C200FF8526 /* DominoRecognition.cpp */,
-				F192CCC0144D27C200FF8526 /* DominoRecognition.h */,
 				F192CCC1144D27C200FF8526 /* DONT_PUT_FILES_HERE */,
 				F192CCC2144D27C200FF8526 /* GoalInfo.cc */,
 				F192CCC3144D27C200FF8526 /* GoalInfo.h */,
@@ -1721,8 +1727,23 @@
 			children = (
 				F1A5180215C9438A00348C25 /* CLState.h */,
 				F1A5180515C947D400348C25 /* CLAction.h */,
+				F1A5180915C94FF900348C25 /* CLMachine.h */,
+				F1A5180A15C9513600348C25 /* PingPong.machine */,
 			);
 			path = examples;
+			sourceTree = "<group>";
+		};
+		F1A5180A15C9513600348C25 /* PingPong.machine */ = {
+			isa = PBXGroup;
+			children = (
+				F1A5180C15C9514A00348C25 /* PingPong.h */,
+				F1A5180B15C9514A00348C25 /* PingPong.mm */,
+				F1A5180E15C9577000348C25 /* PingPong_Variables.h */,
+				F167F7AB15CB440F00A56F17 /* PingPong_VarRefs.mm */,
+				F167F7A815CB38CF00A56F17 /* State_Ping.h */,
+				F167F7A915CB3CB000A56F17 /* State_Ping.mm */,
+			);
+			path = PingPong.machine;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2206,6 +2227,9 @@
 				F1A517FA15C9232200348C25 /* FSMActivity.cc in Sources */,
 				F1A5180715C94EC500348C25 /* FSMachineVector.cc in Sources */,
 				F1A5180815C94F0600348C25 /* gu_util.cpp in Sources */,
+				F1A5180D15C9514A00348C25 /* PingPong.mm in Sources */,
+				F167F7AA15CB3CB000A56F17 /* State_Ping.mm in Sources */,
+				F167F7AC15CB440F00A56F17 /* PingPong_VarRefs.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2481,6 +2505,7 @@
 				F1A517D415C91BDC00348C25 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

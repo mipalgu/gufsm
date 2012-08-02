@@ -55,14 +55,36 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef __gufsm__CLState__
-#define __gufsm__CLState__
+#ifndef __clfsm__CLState__
+#define __clfsm__CLState__
 
-#include <FSMState.h>
+#include "CLAction.h"
 
 namespace FSM
 {
-        typedef FSM::State CLState;
+        class CLMachine;
+
+        class CLState
+        {
+                CLAction        &_onEntryAction;        /// onEntry
+                CLAction        &_onExitAction;         /// onExit
+                CLAction        &_internalAction;       /// internal
+        public:
+                CLState(CLAction &onEntry, CLAction &onExit, CLAction &internal): _onEntryAction(onEntry), _onExitAction(onExit), _internalAction(internal) {}
+                virtual ~CLState() {}
+
+                CLAction &onEntryAction()       { return _onEntryAction; }
+                CLAction &onExitAction()        { return _onExitAction; }
+                CLAction &internalAction()      { return _internalAction; }
+
+                const CLAction &onEntryAction() const { return _onEntryAction; }
+                const CLAction &onExitAction()  const { return _onExitAction; }
+                const CLAction &internalAction()const { return _internalAction; }
+
+                void performOnEntry(CLMachine *m) const { _onEntryAction.perform(m); }
+                void performOnExit(CLMachine *m) const { _onExitAction.perform(m); }
+                void performInternal(CLMachine *m) const { _internalAction.perform(m); }
+        };
 }
 
 #endif /* defined(__gufsm__CLState__) */
