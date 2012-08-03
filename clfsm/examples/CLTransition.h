@@ -1,8 +1,8 @@
 /*
- *  PingPong.cc
- *  gufsm
+ *  CLTransition.h
+ *  clfsm
  *
- *  Created by Rene Hexel on 1/08/12.
+ *  Created by Rene Hexel on 3/08/12.
  *  Copyright (c) 2012 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,60 +55,34 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#include "PingPong.h"
-#include "State_Pong.h"
+#ifndef clfsm_CLTransition_h
+#define clfsm_CLTransition_h
 
-#include "PingPong_Includes.h"
-#include "State_Pong_Includes.h"
-
-using namespace FSM;
-using namespace CLM;
-using namespace State;
-
-Pong::Pong(): CLState(*new Pong::OnEntry, *new Pong::OnExit, *new Pong::Internal)
+namespace FSM
 {
-        _transitions[0] = new Transition_0();
+        class CLMachine;
+        class CLState;
+
+        /** class representing a transition in a clang FSM */
+        class CLTransition
+        {
+                int _destinationState;  /// destination state for this transition
+        public:
+                /** default constructor */
+                CLTransition(int to = -1): _destinationState(to) {}
+
+                /** default destructor */
+                virtual ~CLTransition() {}
+
+                /** destination state getter */
+                int destinationState() const { return _destinationState; }
+
+                /** destination state setter */
+                void setDestinationState(int to) { _destinationState = to; }
+
+                /** check if the transition should fire */
+                virtual bool check(CLMachine *, CLState *) const { return true; }
+        };
 }
 
-
-Pong::~Pong()
-{
-        if (&onEntryAction())    delete &onEntryAction();
-        if (&onExitAction())     delete &onExitAction();
-        if (&internalAction())   delete &internalAction();
-}
-
-
-void Pong::OnEntry::perform(CLMachine *_machine, CLState *_state) const
-{
-#       include "PingPong_VarRefs.mm"
-#       include "State_Pong_VarRefs.mm"
-#       include "State_Pong_OnEntry.mm"
-}
-
-
-void Pong::OnExit::perform(CLMachine *_machine, CLState *_state) const
-{
-#       include "PingPong_VarRefs.mm"
-#       include "State_Pong_VarRefs.mm"
-#       include "State_Pong_OnExit.mm"
-}
-
-
-void Pong::Internal::perform(CLMachine *_machine, CLState *_state) const
-{
-#       include "PingPong_VarRefs.mm"
-#       include "State_Pong_VarRefs.mm"
-#       include "State_Pong_Internal.mm"
-}
-
-
-bool Pong::Transition_0::check(CLMachine *_machine, CLState *_state) const
-{
-#       include "PingPong_VarRefs.mm"
-#       include "State_Pong_VarRefs.mm"
-        return
-        (
-#               include "State_Pong_Transition_0.expr"
-         );
-}
+#endif

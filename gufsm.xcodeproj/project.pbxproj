@@ -697,6 +697,9 @@
 		F18AD00315CB522300492118 /* State_Ping_VarRefs.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = State_Ping_VarRefs.mm; sourceTree = "<group>"; };
 		F18AD00415CB544200492118 /* State_Pong_Variables.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = State_Pong_Variables.h; sourceTree = "<group>"; };
 		F18AD00515CB544200492118 /* State_Pong_VarRefs.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = State_Pong_VarRefs.mm; sourceTree = "<group>"; };
+		F18AD00615CB656B00492118 /* CLTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLTransition.h; sourceTree = "<group>"; };
+		F18AD00715CB6C8C00492118 /* State_Ping_Transition_0.expr */ = {isa = PBXFileReference; lastKnownFileType = text; path = State_Ping_Transition_0.expr; sourceTree = "<group>"; };
+		F18AD00915CB6F6D00492118 /* State_Pong_Transition_0.expr */ = {isa = PBXFileReference; lastKnownFileType = text; path = State_Pong_Transition_0.expr; sourceTree = "<group>"; };
 		F191E602142D99150014AF84 /* FSMachine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMachine.h; sourceTree = "<group>"; };
 		F191E603142D9A2D0014AF84 /* FSMSuspensibleMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMSuspensibleMachine.h; sourceTree = "<group>"; };
 		F191E604142D9B970014AF84 /* FSMSuspensibleMachine.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMSuspensibleMachine.cc; sourceTree = "<group>"; };
@@ -1740,8 +1743,9 @@
 		F1A5180015C9278500348C25 /* examples */ = {
 			isa = PBXGroup;
 			children = (
-				F1A5180215C9438A00348C25 /* CLState.h */,
 				F1A5180515C947D400348C25 /* CLAction.h */,
+				F18AD00615CB656B00492118 /* CLTransition.h */,
+				F1A5180215C9438A00348C25 /* CLState.h */,
 				F1A5180915C94FF900348C25 /* CLMachine.h */,
 				F1A5180A15C9513600348C25 /* PingPong.machine */,
 			);
@@ -1764,6 +1768,7 @@
 				F18ACF4615CB4A3A00492118 /* State_Ping_OnEntry.mm */,
 				F18ACF4915CB4B3D00492118 /* State_Ping_OnExit.mm */,
 				F18ACF4815CB4B3D00492118 /* State_Ping_Internal.mm */,
+				F18AD00715CB6C8C00492118 /* State_Ping_Transition_0.expr */,
 				F18ACF5015CB4F2800492118 /* State_Pong.h */,
 				F18ACF5115CB4F2800492118 /* State_Pong.mm */,
 				F18ACF4C15CB4F2700492118 /* State_Pong_Includes.h */,
@@ -1772,6 +1777,7 @@
 				F18ACF4E15CB4F2800492118 /* State_Pong_OnEntry.mm */,
 				F18ACF4F15CB4F2800492118 /* State_Pong_OnExit.mm */,
 				F18ACF4D15CB4F2700492118 /* State_Pong_Internal.mm */,
+				F18AD00915CB6F6D00492118 /* State_Pong_Transition_0.expr */,
 			);
 			path = PingPong.machine;
 			sourceTree = "<group>";

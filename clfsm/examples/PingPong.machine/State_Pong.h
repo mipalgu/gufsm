@@ -60,6 +60,7 @@
 
 #include "CLState.h"
 #include "CLAction.h"
+#include "CLTransition.h"
 
 namespace FSM
 {
@@ -71,17 +72,27 @@ namespace FSM
             {
                 class OnEntry: public CLAction
                 {
-                        virtual void perform(CLMachine *, CLState *);
+                        virtual void perform(CLMachine *, CLState *) const;
                 };
                 class OnExit: public CLAction
                 {
-                        virtual void perform(CLMachine *, CLState *);
+                        virtual void perform(CLMachine *, CLState *) const;
                 };
                 class Internal: public CLAction
                 {
-                        virtual void perform(CLMachine *, CLState *);
+                        virtual void perform(CLMachine *, CLState *) const;
                 };
 
+                    class Transition_0: public CLTransition
+                    {
+                    public:
+                            Transition_0(int toState = 0): CLTransition(toState) {}
+
+                            virtual bool check(CLMachine *, CLState *) const;
+                    };
+                    
+                    CLTransition *_transitions[1];
+                    
             public:
                 Pong();
                 virtual ~Pong();

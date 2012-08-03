@@ -1,5 +1,5 @@
 /*
- *  PingPong.cc
+ *  PingPong.mm
  *  gufsm
  *
  *  Created by Rene Hexel on 1/08/12.
@@ -67,6 +67,7 @@ using namespace State;
 
 Ping::Ping(): CLState(*new Ping::OnEntry, *new Ping::OnExit, *new Ping::Internal)
 {
+        _transitions[0] = new Transition_0();
 }
 
 
@@ -78,7 +79,7 @@ Ping::~Ping()
 }
 
 
-void Ping::OnEntry::perform(CLMachine *_machine, CLState *_state)
+void Ping::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
 #       include "PingPong_VarRefs.mm"
 #       include "State_Ping_VarRefs.mm"
@@ -86,7 +87,7 @@ void Ping::OnEntry::perform(CLMachine *_machine, CLState *_state)
 }
 
 
-void Ping::OnExit::perform(CLMachine *_machine, CLState *_state)
+void Ping::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
 #       include "PingPong_VarRefs.mm"
 #       include "State_Ping_VarRefs.mm"
@@ -94,9 +95,20 @@ void Ping::OnExit::perform(CLMachine *_machine, CLState *_state)
 }
 
 
-void Ping::Internal::perform(CLMachine *_machine, CLState *_state)
+void Ping::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
 #       include "PingPong_VarRefs.mm"
 #       include "State_Ping_VarRefs.mm"
 #       include "State_Ping_Internal.mm"
+}
+
+
+bool Ping::Transition_0::check(CLMachine *_machine, CLState *_state) const
+{
+#       include "PingPong_VarRefs.mm"
+#       include "State_Ping_VarRefs.mm"
+        return
+        (
+#               include "State_Ping_Transition_0.expr"
+        );
 }

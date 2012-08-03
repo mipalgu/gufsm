@@ -64,6 +64,7 @@ namespace FSM
 {
         class State;
         class CLMachine;
+        class CLTransition;
 
         class CLState
         {
@@ -101,6 +102,15 @@ namespace FSM
 
                 /** perform the internal action */
                 void performInternal(CLMachine *m){ _internalAction.perform(m, this); }
+
+                /** return the ith transition leading out of this state */
+                CLTransition *transition(int i) const { return transitions()[i]; }
+
+                /** return the array of transitions for this state */
+                virtual CLTransition **transitions() const = 0;
+
+                /** return the number of transitions leading out of this state */
+                virtual int numberOfTransitions() const = 0;
         };
 }
 

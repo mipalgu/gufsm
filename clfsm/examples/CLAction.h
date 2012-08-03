@@ -70,7 +70,7 @@ namespace FSM
         {
         public:
                 virtual ~CLAction() {}
-                virtual void perform(CLMachine *, CLState *) = 0;
+                virtual void perform(CLMachine *, CLState *) const = 0;
         };
 }
 
