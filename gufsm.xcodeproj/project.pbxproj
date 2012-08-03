@@ -112,6 +112,9 @@
 		F16CC335142C3433001F788B /* FSMAction.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC334142C3433001F788B /* FSMAction.cc */; };
 		F16CC336142C390D001F788B /* FSMAction.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC334142C3433001F788B /* FSMAction.cc */; };
 		F18ACF5215CB4F5E00492118 /* State_Pong.mm in Sources */ = {isa = PBXBuildFile; fileRef = F18ACF5115CB4F2800492118 /* State_Pong.mm */; settings = {COMPILER_FLAGS = "-Weverything -Wno-weak-vtables -Wno-padded"; }; };
+		F18AD00C15CBA63800492118 /* FSMANTLRMachineVector.cc in Sources */ = {isa = PBXBuildFile; fileRef = F18AD00A15CBA63800492118 /* FSMANTLRMachineVector.cc */; };
+		F18AD00D15CBA63800492118 /* FSMANTLRMachineVector.cc in Sources */ = {isa = PBXBuildFile; fileRef = F18AD00A15CBA63800492118 /* FSMANTLRMachineVector.cc */; };
+		F18AD00E15CBA63800492118 /* FSMANTLRMachineVector.cc in Sources */ = {isa = PBXBuildFile; fileRef = F18AD00A15CBA63800492118 /* FSMANTLRMachineVector.cc */; };
 		F191E605142D9B970014AF84 /* FSMSuspensibleMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F191E604142D9B970014AF84 /* FSMSuspensibleMachine.cc */; };
 		F191E606142D9B970014AF84 /* FSMSuspensibleMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F191E604142D9B970014AF84 /* FSMSuspensibleMachine.cc */; };
 		F192CCD9144D27CD00FF8526 /* gu_util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F192CCC4144D27C200FF8526 /* gu_util.cpp */; };
@@ -122,7 +125,7 @@
 		F192CCE7144D356300FF8526 /* FSMWBContext.cc in Sources */ = {isa = PBXBuildFile; fileRef = F192CCE5144D356300FF8526 /* FSMWBContext.cc */; };
 		F1A3DF6D142D3BFE0060F293 /* FSMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30B142C0CDE001F788B /* FSMachine.cc */; };
 		F1A3DF6E142D3BFF0060F293 /* FSMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30B142C0CDE001F788B /* FSMachine.cc */; };
-		F1A517D015C91BDC00348C25 /* main.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1A517CF15C91BDC00348C25 /* main.cc */; };
+		F1A517D015C91BDC00348C25 /* clfsm+PingPong.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1A517CF15C91BDC00348C25 /* clfsm+PingPong.cc */; };
 		F1A517D215C91BDC00348C25 /* clfsm.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1A517D115C91BDC00348C25 /* clfsm.1 */; };
 		F1A517E815C91CA500348C25 /* FSMAction.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC334142C3433001F788B /* FSMAction.cc */; };
 		F1A517EA15C91CA500348C25 /* FSMExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1199D5F14302767003853BF /* FSMExpression.cc */; };
@@ -700,6 +703,8 @@
 		F18AD00615CB656B00492118 /* CLTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLTransition.h; sourceTree = "<group>"; };
 		F18AD00715CB6C8C00492118 /* State_Ping_Transition_0.expr */ = {isa = PBXFileReference; lastKnownFileType = text; path = State_Ping_Transition_0.expr; sourceTree = "<group>"; };
 		F18AD00915CB6F6D00492118 /* State_Pong_Transition_0.expr */ = {isa = PBXFileReference; lastKnownFileType = text; path = State_Pong_Transition_0.expr; sourceTree = "<group>"; };
+		F18AD00A15CBA63800492118 /* FSMANTLRMachineVector.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRMachineVector.cc; sourceTree = "<group>"; };
+		F18AD00B15CBA63800492118 /* FSMANTLRMachineVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMANTLRMachineVector.h; sourceTree = "<group>"; };
 		F191E602142D99150014AF84 /* FSMachine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMachine.h; sourceTree = "<group>"; };
 		F191E603142D9A2D0014AF84 /* FSMSuspensibleMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMSuspensibleMachine.h; sourceTree = "<group>"; };
 		F191E604142D9B970014AF84 /* FSMSuspensibleMachine.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMSuspensibleMachine.cc; sourceTree = "<group>"; };
@@ -772,7 +777,7 @@
 		F19C2B96142C7B37007CFC83 /* FSMTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMTransition.h; sourceTree = "<group>"; };
 		F19C2B98142C7D5A007CFC83 /* FSMExpression.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMExpression.h; sourceTree = "<group>"; };
 		F1A517CC15C91BDC00348C25 /* clfsm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = clfsm; sourceTree = BUILT_PRODUCTS_DIR; };
-		F1A517CF15C91BDC00348C25 /* main.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cc; sourceTree = "<group>"; };
+		F1A517CF15C91BDC00348C25 /* clfsm+PingPong.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "clfsm+PingPong.cc"; sourceTree = "<group>"; };
 		F1A517D115C91BDC00348C25 /* clfsm.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = clfsm.1; sourceTree = "<group>"; };
 		F1A517F415C91ECC00348C25 /* stringConstants.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = stringConstants.c; path = gufsm/stringConstants.c; sourceTree = "<group>"; };
 		F1A5180215C9438A00348C25 /* CLState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLState.h; sourceTree = "<group>"; };
@@ -1504,6 +1509,8 @@
 				F177D0FA1499753A0003748C /* FSMWBPostAction.h */,
 				F1A9E8341480A2A200C852FC /* FSMANTLRAction.h */,
 				F1A9E8461480B10700C852FC /* FSMANTLRAction.cc */,
+				F18AD00A15CBA63800492118 /* FSMANTLRMachineVector.cc */,
+				F18AD00B15CBA63800492118 /* FSMANTLRMachineVector.h */,
 				F16CC312142C1247001F788B /* FSMActivity.cc */,
 				F16CC311142C10B3001F788B /* FSMActivity.h */,
 				F1199D5F14302767003853BF /* FSMExpression.cc */,
@@ -1734,7 +1741,7 @@
 			isa = PBXGroup;
 			children = (
 				F1A5180015C9278500348C25 /* examples */,
-				F1A517CF15C91BDC00348C25 /* main.cc */,
+				F1A517CF15C91BDC00348C25 /* clfsm+PingPong.cc */,
 				F1A517D115C91BDC00348C25 /* clfsm.1 */,
 			);
 			path = clfsm;
@@ -2130,6 +2137,7 @@
 				E11FB9B814BD4793009C778E /* gusimplewhiteboard.c in Sources */,
 				E11FB9B914BD4793009C778E /* Whiteboard.cc in Sources */,
 				E11FB9BA14BD4793009C778E /* WhiteboardConstants.cc in Sources */,
+				F18AD00E15CBA63800492118 /* FSMANTLRMachineVector.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2193,6 +2201,7 @@
 				F15A2D0D14CF85D800D88624 /* cdlbridge_wbmsg.cc in Sources */,
 				F15A2D0E14CF85D800D88624 /* cdlengine.cc in Sources */,
 				F1DF55911584274B0097A438 /* FSMVectorRunner.cc in Sources */,
+				F18AD00C15CBA63800492118 /* FSMANTLRMachineVector.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2238,6 +2247,7 @@
 				F15A2D1014CF85D900D88624 /* cdlbridge_wbmsg.cc in Sources */,
 				F15A2D1114CF85D900D88624 /* cdlengine.cc in Sources */,
 				F1DF55921584274C0097A438 /* FSMVectorRunner.cc in Sources */,
+				F18AD00D15CBA63800492118 /* FSMANTLRMachineVector.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2245,7 +2255,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1A517D015C91BDC00348C25 /* main.cc in Sources */,
+				F1A517D015C91BDC00348C25 /* clfsm+PingPong.cc in Sources */,
 				F1A517E815C91CA500348C25 /* FSMAction.cc in Sources */,
 				F1A517EA15C91CA500348C25 /* FSMExpression.cc in Sources */,
 				F1A517EB15C91CA500348C25 /* FSMWBPredicate.cc in Sources */,

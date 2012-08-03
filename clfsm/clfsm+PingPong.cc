@@ -1,6 +1,6 @@
 /*
- *  PingPong.cc
- *  gufsm
+ *  clfsm+PingPong.cc
+ *  clfsm
  *
  *  Created by Rene Hexel on 1/08/12.
  *  Copyright (c) 2012 Rene Hexel. All rights reserved.
@@ -55,23 +55,11 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#include <iostream>
+
 #include "PingPong.h"
-#include "State_Ping.h"
-#include "State_Pong.h"
-#include "PingPong_Includes.h"
 
-using namespace FSM;
-using namespace CLM;
-
-PingPong::PingPong(int mid, const char *name): CLMachine(mid, name)
+int main(int argc, const char *argv[])
 {
-        _states[0] = new State::Ping;
-        _states[1] = new State::Pong;
 }
 
-
-PingPong::~PingPong()
-{
-        delete _states[0];
-        delete _states[1];
-}

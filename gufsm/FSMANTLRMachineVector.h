@@ -1,9 +1,9 @@
 /*
- *  PingPong.cc
+ *  FSMANTLRMachineVector.h
  *  gufsm
  *
- *  Created by Rene Hexel on 1/08/12.
- *  Copyright (c) 2012 Rene Hexel. All rights reserved.
+ *  Created by Rene Hexel on 3/08/12.
+ *  Copyright (c) 2012 Rene Hexel and Vlad Estivill-Castro. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -55,23 +55,48 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#include "PingPong.h"
-#include "State_Ping.h"
-#include "State_Pong.h"
-#include "PingPong_Includes.h"
+#ifndef __gufsm__FSMANTLRMachineVector__
+#define __gufsm__FSMANTLRMachineVector__
 
-using namespace FSM;
-using namespace CLM;
+#include "FSMachineVector.h"
 
-PingPong::PingPong(int mid, const char *name): CLMachine(mid, name)
+namespace FSM
 {
-        _states[0] = new State::Ping;
-        _states[1] = new State::Pong;
-}
+        class ANTLRContext;
 
+        /**
+         * State machine vector using ANTLR ASTs
+         */
+        class ANTLRMachineVector: public StateMachineVector
+        {
+                unsigned long long   _typeBoolMask; // i-th bit is 1 if variable is Boolean, 0 if is non-negative integer of BITS
+                unsigned long long   _externKripkeMask; // i-th bit is 1 if variable is external, that is can be changed outside all the machines in the vector
+        public:
+                /// Default constructor
+                ANTLRMachineVector(ANTLRContext *context): StateMachineVector(context), _typeBoolMask(0ULL), _externKripkeMask(0ULL) {}
 
-PingPong::~PingPong()
-{
-        delete _states[0];
-        delete _states[1];
+                /// generate Kripke String
+                std::string generate_from(KripkeState &, std::list<KripkeState> &, size_t n, std::string **names);
+                /// convert Kripke state to a string
+                std::string kripkeToString(KripkeState &s, size_t n, std::string **names, bool derived=false);
+
+                void add_if_not_seen(KripkeState &, std::list<KripkeState> &);
+                void  kripkeToANTLRContext (KripkeState &s, size_t n, std:: string **names);
+                unsigned long long  ANTLRContextToVariableCombination(size_t n, std:: string **names);
+                unsigned long long  AllToExtVariableCombination(unsigned long long v, size_t n, std:: string **names, std::vector<int> &posOfExternals);
+                unsigned long long extVarToKripke(unsigned long long all_vars, unsigned long long ext, const std::vector<int> &ext_offsets);
+                bool inList( const std::list<KripkeState>  & , const KripkeState &);
+                void outputList (  std::list<KripkeState>  & , size_t n, std::string **names);
+
+                /**
+                 * print the Kripke structure in smv format
+                 */
+                virtual std::string kripkeInSVMformat();
+
+                /**
+                 * Serialise a Kripke Gobal vector in smv format
+                 */
+                std::string descriptionSMVformat(KripkeFreezePointVector &);
+        };
 }
+#endif /* defined(__gufsm__FSMANTLRMachineVector__) */
