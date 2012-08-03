@@ -71,15 +71,15 @@ namespace FSM
             {
                 class OnEntry: public CLAction
                 {
-                    virtual void perform(CLMachine *, CLState *, StateMachineVector *, Machine *, class State *);
+                    virtual void perform(CLMachine *, CLState *);
                 };
                 class OnExit: public CLAction
                 {
-                    virtual void perform(CLMachine *, CLState *, StateMachineVector *, Machine *, class State *);
+                    virtual void perform(CLMachine *, CLState *);
                 };
                 class Internal: public CLAction
                 {
-                    virtual void perform(CLMachine *, CLState *, StateMachineVector *, Machine *, class State *);
+                    virtual void perform(CLMachine *, CLState *);
                 };
 
             public:

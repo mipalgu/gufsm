@@ -78,7 +78,7 @@ Ping::~Ping()
 }
 
 
-void Ping::OnEntry::perform(CLMachine *_machine, CLState *_state, StateMachineVector *_vector_context, Machine *_machine_context, class State *_state_context)
+void Ping::OnEntry::perform(CLMachine *_machine, CLState *_state)
 {
 #       include "PingPong_VarRefs.mm"
 #       include "State_Ping_VarRefs.mm"
@@ -86,7 +86,7 @@ void Ping::OnEntry::perform(CLMachine *_machine, CLState *_state, StateMachineVe
 }
 
 
-void Ping::OnExit::perform(CLMachine *_machine, CLState *_state, StateMachineVector *_vector_context, Machine *_machine_context, class State *_state_context)
+void Ping::OnExit::perform(CLMachine *_machine, CLState *_state)
 {
 #       include "PingPong_VarRefs.mm"
 #       include "State_Ping_VarRefs.mm"
@@ -94,7 +94,7 @@ void Ping::OnExit::perform(CLMachine *_machine, CLState *_state, StateMachineVec
 }
 
 
-void Ping::Internal::perform(CLMachine *_machine, CLState *_state, StateMachineVector *_vector_context, Machine *_machine_context, class State *_state_context)
+void Ping::Internal::perform(CLMachine *_machine, CLState *_state)
 {
 #       include "PingPong_VarRefs.mm"
 #       include "State_Ping_VarRefs.mm"

@@ -60,21 +60,55 @@
 
 namespace FSM
 {
+        class StateMachineVector;
+        class Machine;
         class CLState;
 
         class CLMachine
         {
-                const char *    _machineName;   /// name of this machine
-                int             _machineID;     /// number of this machine
+                StateMachineVector      *_vectorContext;/// current vector
+                Machine                 *_machineContext;/// FSM context
+                CLState                 *_currentState; /// current state
+                const char              *_machineName;  /// name of this machine
+                int                      _machineID;    /// number of this machine
         public:
-                CLMachine(int mid = 0, const char *name = ""): _machineName(name), _machineID(mid) {}
+                /** default constructor */
+                CLMachine(int mid = 0, const char *name = ""): _machineName(name), _machineID(mid), _vectorContext(nullptr), _machineContext(nullptr), _currentState(nullptr) {}
+
+                /** default destructor (subclass responsibility) */
                 virtual ~CLMachine() {}
+
+                /** access method for the current state the machine is in */
+                CLState *currentState() const { return _currentState; }
+
+                /** access method for the FSM context of this machine */
+                Machine *machineContext() const { return _machineContext; }
+
+                /** access method for the FSM vector of this machine */
+                StateMachineVector *vectorContext() const { return _vectorContext; }
+
+                /** return the name of this machine */
                 const char *machineName() const { return _machineName; }
+
+                /** return the ID number of this machine */
                 int machineID() const { return _machineID; }
+
+                /** set the current state of this machine */
+                void setCurrentState(CLState *state) { _currentState = state; }
+
+                /** set the name of this machine (name needs to be retained externally!) */
                 void setMachineName(const char *name) { _machineName = name; }
+
+                /** set the ID number of this machine */
                 void setMachineID(int mid) { _machineID = mid; }
+
+                /** return the ith state of this machine */
                 CLState *state(int i) const { return states()[i]; }
+
+                /** return the array of states this machine contains */
                 virtual CLState **states() const = 0;
+
+                /** return the number of states this machine has */
                 virtual int numberOfStates() const = 0;
         };
 }

@@ -78,7 +78,7 @@ Pong::~Pong()
 }
 
 
-void Pong::OnEntry::perform(CLMachine *_machine, CLState *_state, StateMachineVector *_vector_context, Machine *_machine_context, class State *_state_context)
+void Pong::OnEntry::perform(CLMachine *_machine, CLState *_state)
 {
 #       include "PingPong_VarRefs.mm"
 #       include "State_Pong_VarRefs.mm"
@@ -86,7 +86,7 @@ void Pong::OnEntry::perform(CLMachine *_machine, CLState *_state, StateMachineVe
 }
 
 
-void Pong::OnExit::perform(CLMachine *_machine, CLState *_state, StateMachineVector *_vector_context, Machine *_machine_context, class State *_state_context)
+void Pong::OnExit::perform(CLMachine *_machine, CLState *_state)
 {
 #       include "PingPong_VarRefs.mm"
 #       include "State_Pong_VarRefs.mm"
@@ -94,7 +94,7 @@ void Pong::OnExit::perform(CLMachine *_machine, CLState *_state, StateMachineVec
 }
 
 
-void Pong::Internal::perform(CLMachine *_machine, CLState *_state, StateMachineVector *_vector_context, Machine *_machine_context, class State *_state_context)
+void Pong::Internal::perform(CLMachine *_machine, CLState *_state)
 {
 #       include "PingPong_VarRefs.mm"
 #       include "State_Pong_VarRefs.mm"

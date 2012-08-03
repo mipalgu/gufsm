@@ -62,28 +62,45 @@
 
 namespace FSM
 {
+        class State;
         class CLMachine;
 
         class CLState
         {
+                class State     *_stateContext;         /// FSM context
                 CLAction        &_onEntryAction;        /// onEntry
                 CLAction        &_onExitAction;         /// onExit
                 CLAction        &_internalAction;       /// internal
         public:
-                CLState(CLAction &onEntry, CLAction &onExit, CLAction &internal): _onEntryAction(onEntry), _onExitAction(onExit), _internalAction(internal) {}
+                /** default constructor */
+                CLState(CLAction &onEntry, CLAction &onExit, CLAction &internal, class State *context = nullptr): _onEntryAction(onEntry), _onExitAction(onExit), _internalAction(internal), _stateContext(context) {}
+
+                /** destructor (subclass responsibility!) */
                 virtual ~CLState() {}
 
-                CLAction &onEntryAction()       { return _onEntryAction; }
-                CLAction &onExitAction()        { return _onExitAction; }
-                CLAction &internalAction()      { return _internalAction; }
+                /** state context getter */
+                class State *stateContext() const { return _stateContext; }
 
-                const CLAction &onEntryAction() const { return _onEntryAction; }
-                const CLAction &onExitAction()  const { return _onExitAction; }
-                const CLAction &internalAction()const { return _internalAction; }
+                /** state context setter */
+                void setStateContext(class State *state) { _stateContext = state; }
 
-                void performOnEntry(CLMachine *m, StateMachineVector *_vector_context, Machine *_machine_context, class State *_state_context) { _onEntryAction.perform(m, this, _vector_context, _machine_context, _state_context); }
-                void performOnExit(CLMachine *m, StateMachineVector *_vector_context, Machine *_machine_context, class State *_state_context)  { _onExitAction.perform(m, this, _vector_context, _machine_context, _state_context); }
-                void performInternal(CLMachine *m, StateMachineVector *_vector_context, Machine *_machine_context, class State *_state_context){ _internalAction.perform(m, this, _vector_context, _machine_context, _state_context); }
+                /** onEntry action getter */
+                CLAction &onEntryAction() const { return _onEntryAction; }
+
+                /** onExit action getter */
+                CLAction &onExitAction()  const { return _onExitAction; }
+
+                /** internal action getter */
+                CLAction &internalAction()const { return _internalAction; }
+
+                /** perform the onEntry action */
+                void performOnEntry(CLMachine *m) { _onEntryAction.perform(m, this); }
+
+                /** perform the onExit action */
+                void performOnExit(CLMachine *m)  { _onExitAction.perform(m, this); }
+
+                /** perform the internal action */
+                void performInternal(CLMachine *m){ _internalAction.perform(m, this); }
         };
 }
 
