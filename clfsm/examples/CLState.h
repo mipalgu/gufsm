@@ -74,7 +74,7 @@ namespace FSM
                 CLAction        &_internalAction;       /// internal
         public:
                 /** default constructor */
-                CLState(CLAction &onEntry, CLAction &onExit, CLAction &internal, class State *context = nullptr): _onEntryAction(onEntry), _onExitAction(onExit), _internalAction(internal), _stateContext(context) {}
+                CLState(CLAction &onEntry, CLAction &onExit, CLAction &internal, class State *context = 0): _stateContext(context), _onEntryAction(onEntry), _onExitAction(onExit), _internalAction(internal) {}
 
                 /** destructor (subclass responsibility!) */
                 virtual ~CLState() {}
@@ -107,7 +107,7 @@ namespace FSM
                 CLTransition *transition(int i) const { return transitions()[i]; }
 
                 /** return the array of transitions for this state */
-                virtual CLTransition **transitions() const = 0;
+                virtual CLTransition * const *transitions() const = 0;
 
                 /** return the number of transitions leading out of this state */
                 virtual int numberOfTransitions() const = 0;

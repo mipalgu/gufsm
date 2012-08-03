@@ -97,6 +97,9 @@ namespace FSM
                 Pong();
                 virtual ~Pong();
 
+                virtual CLTransition * const *transitions() const { return _transitions; }
+                virtual int numberOfTransitions() const { return 1; }
+                    
 #               include "State_Pong_Variables.h"
             };
         }

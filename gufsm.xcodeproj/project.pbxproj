@@ -98,7 +98,7 @@
 		F15A2D0F14CF85D900D88624 /* cdlbridge.cc in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C4E14CF81F400D88624 /* cdlbridge.cc */; };
 		F15A2D1014CF85D900D88624 /* cdlbridge_wbmsg.cc in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C5014CF81F400D88624 /* cdlbridge_wbmsg.cc */; };
 		F15A2D1114CF85D900D88624 /* cdlengine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C5214CF81F400D88624 /* cdlengine.cc */; };
-		F167F7AA15CB3CB000A56F17 /* State_Ping.mm in Sources */ = {isa = PBXBuildFile; fileRef = F167F7A915CB3CB000A56F17 /* State_Ping.mm */; };
+		F167F7AA15CB3CB000A56F17 /* State_Ping.mm in Sources */ = {isa = PBXBuildFile; fileRef = F167F7A915CB3CB000A56F17 /* State_Ping.mm */; settings = {COMPILER_FLAGS = "-Weverything -Wno-weak-vtables -Wno-padded"; }; };
 		F16CC2FF142C0C01001F788B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F16CC2FE142C0C01001F788B /* main.cpp */; };
 		F16CC301142C0C01001F788B /* gufsm.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = F16CC300142C0C01001F788B /* gufsm.1 */; };
 		F16CC310142C0F86001F788B /* FSMState.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30F142C0F86001F788B /* FSMState.cc */; };
@@ -111,7 +111,7 @@
 		F16CC333142C2B88001F788B /* FSMState.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30F142C0F86001F788B /* FSMState.cc */; };
 		F16CC335142C3433001F788B /* FSMAction.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC334142C3433001F788B /* FSMAction.cc */; };
 		F16CC336142C390D001F788B /* FSMAction.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC334142C3433001F788B /* FSMAction.cc */; };
-		F18ACF5215CB4F5E00492118 /* State_Pong.mm in Sources */ = {isa = PBXBuildFile; fileRef = F18ACF5115CB4F2800492118 /* State_Pong.mm */; };
+		F18ACF5215CB4F5E00492118 /* State_Pong.mm in Sources */ = {isa = PBXBuildFile; fileRef = F18ACF5115CB4F2800492118 /* State_Pong.mm */; settings = {COMPILER_FLAGS = "-Weverything -Wno-weak-vtables -Wno-padded"; }; };
 		F191E605142D9B970014AF84 /* FSMSuspensibleMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F191E604142D9B970014AF84 /* FSMSuspensibleMachine.cc */; };
 		F191E606142D9B970014AF84 /* FSMSuspensibleMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F191E604142D9B970014AF84 /* FSMSuspensibleMachine.cc */; };
 		F192CCD9144D27CD00FF8526 /* gu_util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F192CCC4144D27C200FF8526 /* gu_util.cpp */; };
@@ -141,7 +141,7 @@
 		F1A517FA15C9232200348C25 /* FSMActivity.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC312142C1247001F788B /* FSMActivity.cc */; };
 		F1A5180715C94EC500348C25 /* FSMachineVector.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1AFCD28147B56FA00C975DC /* FSMachineVector.cc */; };
 		F1A5180815C94F0600348C25 /* gu_util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F192CCC4144D27C200FF8526 /* gu_util.cpp */; };
-		F1A5180D15C9514A00348C25 /* PingPong.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1A5180B15C9514A00348C25 /* PingPong.mm */; };
+		F1A5180D15C9514A00348C25 /* PingPong.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1A5180B15C9514A00348C25 /* PingPong.mm */; settings = {COMPILER_FLAGS = "-Weverything -Wno-weak-vtables -Wno-padded"; }; };
 		F1A9E7D2147F76C200C852FC /* ActivityFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CC147F76C200C852FC /* ActivityFactory.cpp */; };
 		F1A9E7D3147F76C200C852FC /* ActivityFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CC147F76C200C852FC /* ActivityFactory.cpp */; };
 		F1A9E7D4147F76C200C852FC /* parser_walk.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CE147F76C200C852FC /* parser_walk.c */; };

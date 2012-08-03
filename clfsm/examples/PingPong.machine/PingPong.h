@@ -72,7 +72,7 @@ namespace FSM
         public:
             PingPong(int mid  = 0, const char *name = "PingPong");
             virtual ~PingPong();
-            virtual CLState ** states() { return _states; }
+            virtual CLState * const * states() const { return _states; }
             virtual int numberOfStates() const { return 2; }
 #           include "PingPong_Variables.h"
         };

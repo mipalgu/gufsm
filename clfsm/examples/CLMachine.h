@@ -73,10 +73,10 @@ namespace FSM
                 int                      _machineID;    /// number of this machine
         public:
                 /** default constructor */
-                CLMachine(int mid = 0, const char *name = ""): _machineName(name), _machineID(mid), _vectorContext(nullptr), _machineContext(nullptr), _currentState(nullptr) {}
+                CLMachine(int mid = 0, const char *name = ""): _vectorContext(0), _machineContext(0), _currentState(0), _machineName(name), _machineID(mid) {}
 
                 /** default destructor (subclass responsibility) */
-                virtual ~CLMachine() {}
+                virtual ~CLMachine() {};
 
                 /** access method for the current state the machine is in */
                 CLState *currentState() const { return _currentState; }
@@ -106,7 +106,7 @@ namespace FSM
                 CLState *state(int i) const { return states()[i]; }
 
                 /** return the array of states this machine contains */
-                virtual CLState **states() const = 0;
+                virtual CLState * const *states() const = 0;
 
                 /** return the number of states this machine has */
                 virtual int numberOfStates() const = 0;

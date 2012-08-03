@@ -97,8 +97,8 @@ namespace FSM
                 Ping();
                 virtual ~Ping();
 
-                virtual CLTransition **transitions() { return _transitions; }
-                virtual int numberOfTransitions() { return 1; }
+                virtual CLTransition * const *transitions() const { return _transitions; }
+                virtual int numberOfTransitions() const { return 1; }
 
 #               include "State_Ping_Variables.h"
             };
