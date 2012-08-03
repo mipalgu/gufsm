@@ -73,9 +73,11 @@ Pong::Pong(): CLState(*new Pong::OnEntry, *new Pong::OnExit, *new Pong::Internal
 
 Pong::~Pong()
 {
-        if (&onEntryAction())    delete &onEntryAction();
-        if (&onExitAction())     delete &onExitAction();
-        if (&internalAction())   delete &internalAction();
+        delete &onEntryAction();
+        delete &onExitAction();
+        delete &internalAction();
+
+        delete _transitions[0];
 }
 
 

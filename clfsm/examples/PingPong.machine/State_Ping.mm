@@ -73,9 +73,11 @@ Ping::Ping(): CLState(*new Ping::OnEntry, *new Ping::OnExit, *new Ping::Internal
 
 Ping::~Ping()
 {
-        if (&onEntryAction())    delete &onEntryAction();
-        if (&onExitAction())     delete &onExitAction();
-        if (&internalAction())   delete &internalAction();
+        delete &onEntryAction();
+        delete &onExitAction();
+        delete &internalAction();
+
+        delete _transitions[0];
 }
 
 
