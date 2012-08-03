@@ -1,8 +1,8 @@
 /*
- *  PingPong.cc
- *  gufsm
+ *  State_Pong.h
+ *  clfsm
  *
- *  Created by Rene Hexel on 1/08/12.
+ *  Created by Rene Hexel on 3/08/12.
  *  Copyright (c) 2012 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,17 +55,41 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#include "PingPong.h"
-#include "PingPong_Includes.h"
+#ifndef clfsm_State_Pong_h
+#define clfsm_State_Pong_h
 
-using namespace FSM;
-using namespace CLM;
+#include "CLState.h"
+#include "CLAction.h"
 
-PingPong::PingPong(int mid, const char *name): CLMachine(mid, name)
+namespace FSM
 {
+    namespace CLM
+    {
+        namespace State
+        {
+            class Pong: public CLState
+            {
+                class OnEntry: public CLAction
+                {
+                        virtual void perform(CLMachine *, CLState *, StateMachineVector *, Machine *, class State *);
+                };
+                class OnExit: public CLAction
+                {
+                        virtual void perform(CLMachine *, CLState *, StateMachineVector *, Machine *, class State *);
+                };
+                class Internal: public CLAction
+                {
+                        virtual void perform(CLMachine *, CLState *, StateMachineVector *, Machine *, class State *);
+                };
+
+            public:
+                Pong();
+                virtual ~Pong();
+
+#               include "State_Pong_Variables.h"
+            };
+        }
+    }
 }
 
-
-PingPong::~PingPong()
-{
-}
+#endif

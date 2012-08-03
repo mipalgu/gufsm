@@ -1,0 +1,2 @@
+counter++;
+puts(text = "Ping");

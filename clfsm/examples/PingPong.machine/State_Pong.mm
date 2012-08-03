@@ -56,16 +56,47 @@
  *
  */
 #include "PingPong.h"
+#include "State_Pong.h"
+
 #include "PingPong_Includes.h"
+#include "State_Pong_Includes.h"
 
 using namespace FSM;
 using namespace CLM;
+using namespace State;
 
-PingPong::PingPong(int mid, const char *name): CLMachine(mid, name)
+Pong::Pong(): CLState(*new Pong::OnEntry, *new Pong::OnExit, *new Pong::Internal)
 {
 }
 
 
-PingPong::~PingPong()
+Pong::~Pong()
 {
+        if (&onEntryAction())    delete &onEntryAction();
+        if (&onExitAction())     delete &onExitAction();
+        if (&internalAction())   delete &internalAction();
+}
+
+
+void Pong::OnEntry::perform(CLMachine *_machine, CLState *_state, StateMachineVector *_vector_context, Machine *_machine_context, class State *_state_context)
+{
+#       include "PingPong_VarRefs.mm"
+#       include "State_Pong_VarRefs.mm"
+#       include "State_Pong_OnEntry.mm"
+}
+
+
+void Pong::OnExit::perform(CLMachine *_machine, CLState *_state, StateMachineVector *_vector_context, Machine *_machine_context, class State *_state_context)
+{
+#       include "PingPong_VarRefs.mm"
+#       include "State_Pong_VarRefs.mm"
+#       include "State_Pong_OnExit.mm"
+}
+
+
+void Pong::Internal::perform(CLMachine *_machine, CLState *_state, StateMachineVector *_vector_context, Machine *_machine_context, class State *_state_context)
+{
+#       include "PingPong_VarRefs.mm"
+#       include "State_Pong_VarRefs.mm"
+#       include "State_Pong_Internal.mm"
 }

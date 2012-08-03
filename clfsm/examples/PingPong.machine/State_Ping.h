@@ -71,20 +71,22 @@ namespace FSM
             {
                 class OnEntry: public CLAction
                 {
-                    virtual void perform(CLMachine *);
+                    virtual void perform(CLMachine *, CLState *, StateMachineVector *, Machine *, class State *);
                 };
                 class OnExit: public CLAction
                 {
-                    virtual void perform(CLMachine *);
+                    virtual void perform(CLMachine *, CLState *, StateMachineVector *, Machine *, class State *);
                 };
                 class Internal: public CLAction
                 {
-                    virtual void perform(CLMachine *);
+                    virtual void perform(CLMachine *, CLState *, StateMachineVector *, Machine *, class State *);
                 };
 
             public:
                 Ping();
                 virtual ~Ping();
+
+#               include "State_Ping_Variables.h"
             };
         }
     }

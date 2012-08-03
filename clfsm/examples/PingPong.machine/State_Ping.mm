@@ -58,6 +58,9 @@
 #include "PingPong.h"
 #include "State_Ping.h"
 
+#include "PingPong_Includes.h"
+#include "State_Ping_Includes.h"
+
 using namespace FSM;
 using namespace CLM;
 using namespace State;
@@ -75,22 +78,25 @@ Ping::~Ping()
 }
 
 
-void Ping::OnEntry::perform(CLMachine *_machine)
+void Ping::OnEntry::perform(CLMachine *_machine, CLState *_state, StateMachineVector *_vector_context, Machine *_machine_context, class State *_state_context)
 {
 #       include "PingPong_VarRefs.mm"
+#       include "State_Ping_VarRefs.mm"
 #       include "State_Ping_OnEntry.mm"
 }
 
 
-void Ping::OnExit::perform(CLMachine *_machine)
+void Ping::OnExit::perform(CLMachine *_machine, CLState *_state, StateMachineVector *_vector_context, Machine *_machine_context, class State *_state_context)
 {
 #       include "PingPong_VarRefs.mm"
-#       include "State_Ping_OnExit"
+#       include "State_Ping_VarRefs.mm"
+#       include "State_Ping_OnExit.mm"
 }
 
 
-void Ping::OnExit::perform(CLMachine *_machine)
+void Ping::Internal::perform(CLMachine *_machine, CLState *_state, StateMachineVector *_vector_context, Machine *_machine_context, class State *_state_context)
 {
 #       include "PingPong_VarRefs.mm"
-#       include "State_Ping_Internal"
+#       include "State_Ping_VarRefs.mm"
+#       include "State_Ping_Internal.mm"
 }

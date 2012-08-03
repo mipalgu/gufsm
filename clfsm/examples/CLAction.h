@@ -60,13 +60,17 @@
 
 namespace FSM
 {
+        class StateMachineVector;
+        class Machine;
+        class State;
         class CLMachine;
+        class CLState;
         
         class CLAction
         {
         public:
                 virtual ~CLAction() {}
-                virtual void perform(CLMachine *) = 0;
+                virtual void perform(CLMachine *, CLState *, StateMachineVector *, Machine *, State *) = 0;
         };
 }
 

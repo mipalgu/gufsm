@@ -81,9 +81,9 @@ namespace FSM
                 const CLAction &onExitAction()  const { return _onExitAction; }
                 const CLAction &internalAction()const { return _internalAction; }
 
-                void performOnEntry(CLMachine *m) const { _onEntryAction.perform(m); }
-                void performOnExit(CLMachine *m) const { _onExitAction.perform(m); }
-                void performInternal(CLMachine *m) const { _internalAction.perform(m); }
+                void performOnEntry(CLMachine *m, StateMachineVector *_vector_context, Machine *_machine_context, class State *_state_context) { _onEntryAction.perform(m, this, _vector_context, _machine_context, _state_context); }
+                void performOnExit(CLMachine *m, StateMachineVector *_vector_context, Machine *_machine_context, class State *_state_context)  { _onExitAction.perform(m, this, _vector_context, _machine_context, _state_context); }
+                void performInternal(CLMachine *m, StateMachineVector *_vector_context, Machine *_machine_context, class State *_state_context){ _internalAction.perform(m, this, _vector_context, _machine_context, _state_context); }
         };
 }
 

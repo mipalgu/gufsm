@@ -99,7 +99,6 @@
 		F15A2D1014CF85D900D88624 /* cdlbridge_wbmsg.cc in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C5014CF81F400D88624 /* cdlbridge_wbmsg.cc */; };
 		F15A2D1114CF85D900D88624 /* cdlengine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C5214CF81F400D88624 /* cdlengine.cc */; };
 		F167F7AA15CB3CB000A56F17 /* State_Ping.mm in Sources */ = {isa = PBXBuildFile; fileRef = F167F7A915CB3CB000A56F17 /* State_Ping.mm */; };
-		F167F7AC15CB440F00A56F17 /* PingPong_VarRefs.mm in Sources */ = {isa = PBXBuildFile; fileRef = F167F7AB15CB440F00A56F17 /* PingPong_VarRefs.mm */; };
 		F16CC2FF142C0C01001F788B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F16CC2FE142C0C01001F788B /* main.cpp */; };
 		F16CC301142C0C01001F788B /* gufsm.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = F16CC300142C0C01001F788B /* gufsm.1 */; };
 		F16CC310142C0F86001F788B /* FSMState.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30F142C0F86001F788B /* FSMState.cc */; };
@@ -112,6 +111,7 @@
 		F16CC333142C2B88001F788B /* FSMState.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30F142C0F86001F788B /* FSMState.cc */; };
 		F16CC335142C3433001F788B /* FSMAction.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC334142C3433001F788B /* FSMAction.cc */; };
 		F16CC336142C390D001F788B /* FSMAction.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC334142C3433001F788B /* FSMAction.cc */; };
+		F18ACF5215CB4F5E00492118 /* State_Pong.mm in Sources */ = {isa = PBXBuildFile; fileRef = F18ACF5115CB4F2800492118 /* State_Pong.mm */; };
 		F191E605142D9B970014AF84 /* FSMSuspensibleMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F191E604142D9B970014AF84 /* FSMSuspensibleMachine.cc */; };
 		F191E606142D9B970014AF84 /* FSMSuspensibleMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F191E604142D9B970014AF84 /* FSMSuspensibleMachine.cc */; };
 		F192CCD9144D27CD00FF8526 /* gu_util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F192CCC4144D27C200FF8526 /* gu_util.cpp */; };
@@ -682,6 +682,21 @@
 		F16CC32D142C2AD9001F788B /* FSMTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FSMTest-Prefix.pch"; sourceTree = "<group>"; };
 		F16CC334142C3433001F788B /* FSMAction.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMAction.cc; sourceTree = "<group>"; };
 		F177D0FA1499753A0003748C /* FSMWBPostAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMWBPostAction.h; sourceTree = "<group>"; };
+		F18ACF4615CB4A3A00492118 /* State_Ping_OnEntry.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = State_Ping_OnEntry.mm; sourceTree = "<group>"; };
+		F18ACF4815CB4B3D00492118 /* State_Ping_Internal.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = State_Ping_Internal.mm; sourceTree = "<group>"; };
+		F18ACF4915CB4B3D00492118 /* State_Ping_OnExit.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = State_Ping_OnExit.mm; sourceTree = "<group>"; };
+		F18ACF4A15CB4CD500492118 /* State_Ping_Includes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = State_Ping_Includes.h; sourceTree = "<group>"; };
+		F18ACF4B15CB4D0600492118 /* PingPong_Includes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PingPong_Includes.h; sourceTree = "<group>"; };
+		F18ACF4C15CB4F2700492118 /* State_Pong_Includes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = State_Pong_Includes.h; sourceTree = "<group>"; };
+		F18ACF4D15CB4F2700492118 /* State_Pong_Internal.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = State_Pong_Internal.mm; sourceTree = "<group>"; };
+		F18ACF4E15CB4F2800492118 /* State_Pong_OnEntry.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = State_Pong_OnEntry.mm; sourceTree = "<group>"; };
+		F18ACF4F15CB4F2800492118 /* State_Pong_OnExit.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = State_Pong_OnExit.mm; sourceTree = "<group>"; };
+		F18ACF5015CB4F2800492118 /* State_Pong.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = State_Pong.h; sourceTree = "<group>"; };
+		F18ACF5115CB4F2800492118 /* State_Pong.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = State_Pong.mm; sourceTree = "<group>"; };
+		F18AD00215CB51CB00492118 /* State_Ping_Variables.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = State_Ping_Variables.h; sourceTree = "<group>"; };
+		F18AD00315CB522300492118 /* State_Ping_VarRefs.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = State_Ping_VarRefs.mm; sourceTree = "<group>"; };
+		F18AD00415CB544200492118 /* State_Pong_Variables.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = State_Pong_Variables.h; sourceTree = "<group>"; };
+		F18AD00515CB544200492118 /* State_Pong_VarRefs.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = State_Pong_VarRefs.mm; sourceTree = "<group>"; };
 		F191E602142D99150014AF84 /* FSMachine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMachine.h; sourceTree = "<group>"; };
 		F191E603142D9A2D0014AF84 /* FSMSuspensibleMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMSuspensibleMachine.h; sourceTree = "<group>"; };
 		F191E604142D9B970014AF84 /* FSMSuspensibleMachine.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMSuspensibleMachine.cc; sourceTree = "<group>"; };
@@ -1738,10 +1753,25 @@
 			children = (
 				F1A5180C15C9514A00348C25 /* PingPong.h */,
 				F1A5180B15C9514A00348C25 /* PingPong.mm */,
+				F18ACF4B15CB4D0600492118 /* PingPong_Includes.h */,
 				F1A5180E15C9577000348C25 /* PingPong_Variables.h */,
 				F167F7AB15CB440F00A56F17 /* PingPong_VarRefs.mm */,
 				F167F7A815CB38CF00A56F17 /* State_Ping.h */,
 				F167F7A915CB3CB000A56F17 /* State_Ping.mm */,
+				F18ACF4A15CB4CD500492118 /* State_Ping_Includes.h */,
+				F18AD00215CB51CB00492118 /* State_Ping_Variables.h */,
+				F18AD00315CB522300492118 /* State_Ping_VarRefs.mm */,
+				F18ACF4615CB4A3A00492118 /* State_Ping_OnEntry.mm */,
+				F18ACF4915CB4B3D00492118 /* State_Ping_OnExit.mm */,
+				F18ACF4815CB4B3D00492118 /* State_Ping_Internal.mm */,
+				F18ACF5015CB4F2800492118 /* State_Pong.h */,
+				F18ACF5115CB4F2800492118 /* State_Pong.mm */,
+				F18ACF4C15CB4F2700492118 /* State_Pong_Includes.h */,
+				F18AD00415CB544200492118 /* State_Pong_Variables.h */,
+				F18AD00515CB544200492118 /* State_Pong_VarRefs.mm */,
+				F18ACF4E15CB4F2800492118 /* State_Pong_OnEntry.mm */,
+				F18ACF4F15CB4F2800492118 /* State_Pong_OnExit.mm */,
+				F18ACF4D15CB4F2700492118 /* State_Pong_Internal.mm */,
 			);
 			path = PingPong.machine;
 			sourceTree = "<group>";
@@ -2229,7 +2259,7 @@
 				F1A5180815C94F0600348C25 /* gu_util.cpp in Sources */,
 				F1A5180D15C9514A00348C25 /* PingPong.mm in Sources */,
 				F167F7AA15CB3CB000A56F17 /* State_Ping.mm in Sources */,
-				F167F7AC15CB440F00A56F17 /* PingPong_VarRefs.mm in Sources */,
+				F18ACF5215CB4F5E00492118 /* State_Pong.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
