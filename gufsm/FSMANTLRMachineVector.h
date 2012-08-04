@@ -76,7 +76,7 @@ namespace FSM
                 unsigned long long   _externKripkeMask; // i-th bit is 1 if variable is external, that is can be changed outside all the machines in the vector
         public:
                 /// Default constructor
-                ANTLRMachineVector(ANTLRContext *context): StateMachineVector(context), _typeBoolMask(0ULL), _externKripkeMask(0ULL) {}
+                ANTLRMachineVector(ANTLRContext *context): StateMachineVector((Context *)context), _typeBoolMask(0ULL), _externKripkeMask(0ULL) {}
 
                 /// generate Kripke String
                 std::string generate_from(KripkeState &, std::list<KripkeState> &, size_t n, std::string **names);
