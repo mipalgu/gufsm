@@ -36,7 +36,7 @@
       <inputs default="0" any="0" invert="0">sensorAtBottomActive</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="414.1602014555854" c2y="227.3596116756673" c1y="229.3070549909994" description="" straight="1" type="2" ypos="231.2544983063316" endx="539.1860622999108" xpos="351.6472710334227" endy="225.4121683603351" c2x="476.6731318777481">
+    <transition c1x="413.1602014555854" c2y="247.3596116756673" c1y="254.3070549909994" description="" straight="0" type="2" ypos="231.2544983063316" endx="539.1860622999108" xpos="351.6472710334227" endy="225.4121683603351" c2x="476.6731318777481">
       <from>3</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">!motorOn</inputs>
@@ -48,7 +48,7 @@
       <inputs default="0" any="0" invert="0">sensorAtTopActive</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="476.6731318777481" c2y="229.3070549909994" c1y="227.3596116756673" description="" straight="1" type="2" ypos="225.4121683603351" endx="351.6472710334227" xpos="539.1860622999108" endy="231.2544983063316" c2x="414.1602014555854">
+    <transition c1x="478.6731318777481" c2y="193.3070549909994" c1y="194.3596116756673" description="" straight="0" type="2" ypos="225.4121683603351" endx="351.6472710334227" xpos="539.1860622999108" endy="231.2544983063316" c2x="412.1602014555854">
       <from>4</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">motorOn</inputs>
