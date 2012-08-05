@@ -75,6 +75,7 @@ namespace FSM
         class Context
         {
         public:
+                virtual ~Context() {}           /// destructor
                 virtual void take_snapshot() {} /// take a snapshot of current context
         };
 
@@ -163,6 +164,9 @@ namespace FSM
                                 initialise();
                         }
                 }
+
+                /** destructor */
+                virtual ~Machine() {}
 
                 /** ID setter */
                 void setID(int i) { _id = i; }

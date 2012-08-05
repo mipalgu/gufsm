@@ -1,9 +1,9 @@
 /*
- *  ExecComStruct.h
- *  
- *  Created by Robert Coleman on 22/04/12.
- *  Copyright (c) 2012 Robert Coleman.
- *  All rights reserved.
+ *  clfsm+PingPong.cc
+ *  clfsm
+ *
+ *  Created by Rene Hexel on 1/08/12.
+ *  Copyright (c) 2012 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -55,42 +55,34 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#include <iostream>
+#include <sstream>
 
-/* 
- * Data structure used for communication with the executing
- * state machines.
- */
-#ifndef ExecCom_Do_h
-#define ExecCom_Do_h
+#include "FSMWBSubMachine.h"
+#include "FSMachineVector.h"
+#include "FSMWBContext.h"
+#include "PingPong.h"
 
-#include <dispatch/dispatch.h>
+using namespace std;
+using namespace FSM;
 
-namespace ExecCom {
-        enum ExecCom_Do_Type {SUSPEND, RESTART, STOP, RESUME, RUN};
-        enum ExecCom_State_Type {SUSPENDED, RUNNING, STOPPED};
+void playPingPong(int numberOfPingPongs);
+void playPingPong(int numberOfPingPongs)
+{
+        WBContext *context = new WBContext();
+        StateMachineVector *fsms = new StateMachineVector(context);
+        
+        for (int i = 0; i < numberOfPingPongs; i++)
+        {
+                stringstream ss;
+                ss << "PingPong " << i;
+                WBSubMachine *fsm = new WBSubMachine(ss.str(), NULL, context, i);
+                CLM::PingPong *clm = new CLM::PingPong(i, ss.str().c_str());
+        }
 }
 
-// Execution Communication.
-struct ExecCom_Struct {
-        /* Will need to be procured before changing or accessing
-         * the flag. */
-        dispatch_semaphore_t _flagProtect;
-        
-        /* What should the executer do? */
-        enum ExecCom::ExecCom_Do_Type _shouldDo;
-        
-        /* What executing state are all the machines in? */
-        enum ExecCom::ExecCom_State_Type _state;
-        
-        /* For each machine ( the index ), what state is running?
-	 * ( the content ). */
-        int * _currentExecutingStateIDs;
-	
-	/* Number of machines running. */
-	int _numMachines;
-	
-	/* Are there machines still executing? */
-	bool _stillExecuting;
-};
 
-#endif
+int main(int argc, const char *argv[])
+{
+}
+

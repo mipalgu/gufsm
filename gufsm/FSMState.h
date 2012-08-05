@@ -60,7 +60,6 @@
 
 #include <string>
 #include "FSMActivity.h"
-#include "FSMANTLRContext.h"
 
 namespace FSM
 {
@@ -80,15 +79,17 @@ namespace FSM
         public:
                 State(int stateID = 0, const std::string name = ""):
                 _activity(), _stateID(stateID), _name(name) {}
-                
+
+                virtual ~State() {}
+
                 /** get the numerical state ID */
-                int stateID() { return _stateID; }
+                int stateID() const { return _stateID; }
                 
                 /** set the numerical state ID */
                 void setStateID(int i) { _stateID = i; }
                 
                 /** get the state's name */
-                const std::string &name() { return _name; }
+                const std::string &name() const { return _name; }
                 
                 /** set the state's name */
                 void setName(const std::string &name) { _name = name; }
@@ -105,7 +106,6 @@ namespace FSM
                  * printable state  description
                  */
                 virtual std::string description();
-                
         };
 }
 #endif

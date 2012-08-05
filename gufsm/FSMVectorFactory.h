@@ -61,7 +61,7 @@
 #include <string>
 #include <queue>
 #include <Whiteboard.h>
-#include "FSMachineVector.h"
+#include "FSMANTLRMachineVector.h"
 
 namespace FSM
 {
@@ -71,7 +71,7 @@ namespace FSM
         class StateMachineVectorFactory
         {
         protected:
-                StateMachineVector *_fsms;      /// delivered FSMs
+                ANTLRMachineVector *_fsms;      /// delivered FSMs
                 ANTLRContext *_context;         /// factory context
 
                 std::queue<std::string> _reload_queue; /// queue for reloading machines
@@ -91,7 +91,7 @@ namespace FSM
                 virtual ANTLRContext &context() const { return *_context; }
 
                 /** getter */
-                StateMachineVector *fsms() const { return _fsms; }
+                ANTLRMachineVector *fsms() const { return _fsms; }
 
                 /** create a new machine with a given name and index */
                 SuspensibleMachine *addMachine(std::string name, int index=-1, bool resume=false);

@@ -1,9 +1,9 @@
 /*
- *  ExecComStruct.h
- *  
- *  Created by Robert Coleman on 22/04/12.
- *  Copyright (c) 2012 Robert Coleman.
- *  All rights reserved.
+ *  PingPong.mm
+ *  gufsm
+ *
+ *  Created by Rene Hexel on 1/08/12.
+ *  Copyright (c) 2012 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -55,42 +55,62 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#include "PingPong.h"
+#include "State_Ping.h"
 
-/* 
- * Data structure used for communication with the executing
- * state machines.
- */
-#ifndef ExecCom_Do_h
-#define ExecCom_Do_h
+#include "PingPong_Includes.h"
+#include "State_Ping_Includes.h"
 
-#include <dispatch/dispatch.h>
+using namespace FSM;
+using namespace CLM;
+using namespace State;
 
-namespace ExecCom {
-        enum ExecCom_Do_Type {SUSPEND, RESTART, STOP, RESUME, RUN};
-        enum ExecCom_State_Type {SUSPENDED, RUNNING, STOPPED};
+Ping::Ping(): CLState(*new Ping::OnEntry, *new Ping::OnExit, *new Ping::Internal)
+{
+        _transitions[0] = new Transition_0();
 }
 
-// Execution Communication.
-struct ExecCom_Struct {
-        /* Will need to be procured before changing or accessing
-         * the flag. */
-        dispatch_semaphore_t _flagProtect;
-        
-        /* What should the executer do? */
-        enum ExecCom::ExecCom_Do_Type _shouldDo;
-        
-        /* What executing state are all the machines in? */
-        enum ExecCom::ExecCom_State_Type _state;
-        
-        /* For each machine ( the index ), what state is running?
-	 * ( the content ). */
-        int * _currentExecutingStateIDs;
-	
-	/* Number of machines running. */
-	int _numMachines;
-	
-	/* Are there machines still executing? */
-	bool _stillExecuting;
-};
 
-#endif
+Ping::~Ping()
+{
+        delete &onEntryAction();
+        delete &onExitAction();
+        delete &internalAction();
+
+        delete _transitions[0];
+}
+
+
+void Ping::OnEntry::perform(CLMachine *_machine, CLState *_state) const
+{
+#       include "PingPong_VarRefs.mm"
+#       include "State_Ping_VarRefs.mm"
+#       include "State_Ping_OnEntry.mm"
+}
+
+
+void Ping::OnExit::perform(CLMachine *_machine, CLState *_state) const
+{
+#       include "PingPong_VarRefs.mm"
+#       include "State_Ping_VarRefs.mm"
+#       include "State_Ping_OnExit.mm"
+}
+
+
+void Ping::Internal::perform(CLMachine *_machine, CLState *_state) const
+{
+#       include "PingPong_VarRefs.mm"
+#       include "State_Ping_VarRefs.mm"
+#       include "State_Ping_Internal.mm"
+}
+
+
+bool Ping::Transition_0::check(CLMachine *_machine, CLState *_state) const
+{
+#       include "PingPong_VarRefs.mm"
+#       include "State_Ping_VarRefs.mm"
+        return
+        (
+#               include "State_Ping_Transition_0.expr"
+        );
+}

@@ -68,9 +68,6 @@
 #include "gu_util.h"
 #include "FSMSuspensibleMachine.h"
 
-const int BITS = 3;
-const unsigned long long PATERN_BITS = (1ULL << (const unsigned long long) BITS)-1ULL; // BITS all set to 1
-
 namespace FSM
 {
         typedef std::vector<SuspensibleMachine *> MachineVector;
@@ -117,32 +114,24 @@ namespace FSM
          */
         class StateMachineVector
         {
+        protected:
                 Context         *_context;      /// global context
                 MachineVector   _machines;      /// vector of suspensible FSMs
                 useconds_t      _idle_timeout;  /// idle timeout in usec
                 idle_f          _no_transition_fired; /// idle function
                 bool            _accepting;     /// all machines are in an accepting state
-        
-        unsigned long long   _typeBoolMask; // i-th bit is 1 if variable is Boolean, 0 if is non-negative integer of BITS
-        unsigned long long   _externKripkeMask; // i-th bit is 1 if variable is external, that is can be changed outside all the machines in the vector
-        
-
-
-                std::string generate_from(KripkeState &, std::list<KripkeState> &, size_t n, std::string **names);
-                std::string  kripkeToString(KripkeState &s, size_t n, std::string **names, bool derived=false);
-
                 dispatch_queue_t _queue;        /// dispatch run queue
-                void add_if_not_seen(KripkeState &, std::list<KripkeState> &);
-                void  kripkeToANTLRContext (KripkeState &s, size_t n, std:: string **names);
-                unsigned long long  ANTLRContextToVariableCombination(size_t n, std:: string **names);
-                unsigned long long  AllToExtVariableCombination(unsigned long long v, size_t n, std:: string **names, std::vector<int> &posOfExternals);
-                unsigned long long extVarToKripke(unsigned long long all_vars, unsigned long long ext, const std::vector<int> &ext_offsets);
-                bool inList( const std::list<KripkeState>  & , const KripkeState &);
-                void outputList (  std::list<KripkeState>  & , size_t n, std::string **names);
 
+                /// subclass responsibility
+                std::string generate_from(KripkeState &, std::list<KripkeState> &, size_t n, std::string **names) { return ""; }
+                /// subclass responsibility
+                std::string kripkeToString(KripkeState &s, size_t n, std::string **names, bool derived=false) { return ""; }
         public:
                 /** constructor */
                 StateMachineVector(Context *ctx = NULL, useconds_t timeout = 10000L, idle_f default_idle_function = NULL);
+
+                /** destructor */
+                virtual ~StateMachineVector() {}
 
                 /** machines getter method */
                 MachineVector &machines() { return _machines; }
@@ -202,9 +191,10 @@ namespace FSM
                 virtual void noTransitionFired(void) { if (_no_transition_fired) _no_transition_fired(_idle_timeout); }
 
                 /**
+                 * subclass responsibility:
                  * print the Kripke structure in svm format 
                  */
-                virtual std::string kripkeInSVMformat();
+                virtual std::string kripkeInSVMformat() { return ""; }
 
                 /**
                  * restart all state machines from their initial state
@@ -232,9 +222,9 @@ namespace FSM
                 virtual std::string description();
                 
                 /** 
-                 * To serialize a Kirpke Gobal vector in smv format
+                 * subclass responsibility: serialise a Kripke Gobal vector in smv format
                  */
-                std:: string descriptionSMVformat(KripkeFreezePointVector &);
+                std::string descriptionSMVformat(KripkeFreezePointVector &) { return ""; }
 #ifndef __BLOCKS__
                 /** not really public */
                 void do_spawn_once_on_queue(dispatch_queue_t queue);
