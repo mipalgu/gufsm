@@ -1,8 +1,8 @@
 /*
- *  clfsm+PingPong.cc
+ *  clfsm_factory.h
  *  clfsm
  *
- *  Created by Rene Hexel on 1/08/12.
+ *  Created by Rene Hexel on 5/08/12.
  *  Copyright (c) 2012 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,34 +55,15 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#include <iostream>
-#include <sstream>
+#ifndef ____clfsm_factory__
+#define ____clfsm_factory__
 
-#include "FSMWBSubMachine.h"
-#include "FSMachineVector.h"
-#include "FSMWBContext.h"
-#include "PingPong.h"
-
-using namespace std;
-using namespace FSM;
-
-void playPingPong(int numberOfPingPongs);
-void playPingPong(int numberOfPingPongs)
+namespace FSM
 {
-        WBContext *context = new WBContext();
-        StateMachineVector *fsms = new StateMachineVector(context);
-        
-        for (int i = 0; i < numberOfPingPongs; i++)
+        class CLFSMFactory
         {
-                stringstream ss;
-                ss << "PingPong " << i;
-                WBSubMachine *fsm = new WBSubMachine(ss.str(), NULL, context, i);
-                CLM::PingPong *clm = new CLM::PingPong(i, ss.str().c_str());
-        }
+
+        };
 }
 
-
-int main(int argc, const char *argv[])
-{
-}
-
+#endif /* defined(____clfsm_factory__) */
