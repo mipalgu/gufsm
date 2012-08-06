@@ -1,9 +1,9 @@
 /*
- *  ExecComStruct.h
- *  
- *  Created by Robert Coleman on 22/04/12.
- *  Copyright (c) 2012 Robert Coleman.
- *  All rights reserved.
+ *  FSMANTLRMachineVector.h
+ *  gufsm
+ *
+ *  Created by Rene Hexel on 3/08/12.
+ *  Copyright (c) 2012 Rene Hexel and Vlad Estivill-Castro. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -55,42 +55,51 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#ifndef __gufsm__FSMANTLRMachineVector__
+#define __gufsm__FSMANTLRMachineVector__
 
-/* 
- * Data structure used for communication with the executing
- * state machines.
- */
-#ifndef ExecCom_Do_h
-#define ExecCom_Do_h
+#include "FSMachineVector.h"
 
-#include <dispatch/dispatch.h>
+const int BITS = 3;
+const unsigned long long PATERN_BITS = (1ULL << (const unsigned long long) BITS)-1ULL; // BITS all set to 1
 
-namespace ExecCom {
-        enum ExecCom_Do_Type {SUSPEND, RESTART, STOP, RESUME, RUN};
-        enum ExecCom_State_Type {SUSPENDED, RUNNING, STOPPED};
+namespace FSM
+{
+        class ANTLRContext;
+
+        /**
+         * State machine vector using ANTLR ASTs
+         */
+        class ANTLRMachineVector: public StateMachineVector
+        {
+                unsigned long long   _typeBoolMask; // i-th bit is 1 if variable is Boolean, 0 if is non-negative integer of BITS
+                unsigned long long   _externKripkeMask; // i-th bit is 1 if variable is external, that is can be changed outside all the machines in the vector
+        public:
+                /// Default constructor
+                ANTLRMachineVector(ANTLRContext *context): StateMachineVector((Context *)context), _typeBoolMask(0ULL), _externKripkeMask(0ULL) {}
+
+                /// generate Kripke String
+                std::string generate_from(KripkeState &, std::list<KripkeState> &, size_t n, std::string **names);
+                /// convert Kripke state to a string
+                std::string kripkeToString(KripkeState &s, size_t n, std::string **names, bool derived=false);
+
+                void add_if_not_seen(KripkeState &, std::list<KripkeState> &);
+                void  kripkeToANTLRContext (KripkeState &s, size_t n, std:: string **names);
+                unsigned long long  ANTLRContextToVariableCombination(size_t n, std:: string **names);
+                unsigned long long  AllToExtVariableCombination(unsigned long long v, size_t n, std:: string **names, std::vector<int> &posOfExternals);
+                unsigned long long extVarToKripke(unsigned long long all_vars, unsigned long long ext, const std::vector<int> &ext_offsets);
+                bool inList( const std::list<KripkeState>  & , const KripkeState &);
+                void outputList (  std::list<KripkeState>  & , size_t n, std::string **names);
+
+                /**
+                 * print the Kripke structure in smv format
+                 */
+                virtual std::string kripkeInSVMformat();
+
+                /**
+                 * Serialise a Kripke Gobal vector in smv format
+                 */
+                std::string descriptionSMVformat(KripkeFreezePointVector &);
+        };
 }
-
-// Execution Communication.
-struct ExecCom_Struct {
-        /* Will need to be procured before changing or accessing
-         * the flag. */
-        dispatch_semaphore_t _flagProtect;
-        
-        /* What should the executer do? */
-        enum ExecCom::ExecCom_Do_Type _shouldDo;
-        
-        /* What executing state are all the machines in? */
-        enum ExecCom::ExecCom_State_Type _state;
-        
-        /* For each machine ( the index ), what state is running?
-	 * ( the content ). */
-        int * _currentExecutingStateIDs;
-	
-	/* Number of machines running. */
-	int _numMachines;
-	
-	/* Are there machines still executing? */
-	bool _stillExecuting;
-};
-
-#endif
+#endif /* defined(__gufsm__FSMANTLRMachineVector__) */

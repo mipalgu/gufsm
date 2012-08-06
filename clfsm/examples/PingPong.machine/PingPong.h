@@ -1,9 +1,9 @@
 /*
- *  ExecComStruct.h
- *  
- *  Created by Robert Coleman on 22/04/12.
- *  Copyright (c) 2012 Robert Coleman.
- *  All rights reserved.
+ *  PingPong.h
+ *  gufsm
+ *
+ *  Created by Rene Hexel on 1/08/12.
+ *  Copyright (c) 2012 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -55,42 +55,28 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#ifndef __clfsm__PingPong__
+#define __clfsm__PingPong__
 
-/* 
- * Data structure used for communication with the executing
- * state machines.
- */
-#ifndef ExecCom_Do_h
-#define ExecCom_Do_h
+#include "CLMachine.h"
 
-#include <dispatch/dispatch.h>
+namespace FSM
+{
+    class CLState;
 
-namespace ExecCom {
-        enum ExecCom_Do_Type {SUSPEND, RESTART, STOP, RESUME, RUN};
-        enum ExecCom_State_Type {SUSPENDED, RUNNING, STOPPED};
+    namespace CLM
+    {
+        class PingPong: public CLMachine
+        {
+            CLState *_states[2];
+        public:
+            PingPong(int mid  = 0, const char *name = "PingPong");
+            virtual ~PingPong();
+            virtual CLState * const * states() const { return _states; }
+            virtual int numberOfStates() const { return 2; }
+#           include "PingPong_Variables.h"
+        };
+    }
 }
 
-// Execution Communication.
-struct ExecCom_Struct {
-        /* Will need to be procured before changing or accessing
-         * the flag. */
-        dispatch_semaphore_t _flagProtect;
-        
-        /* What should the executer do? */
-        enum ExecCom::ExecCom_Do_Type _shouldDo;
-        
-        /* What executing state are all the machines in? */
-        enum ExecCom::ExecCom_State_Type _state;
-        
-        /* For each machine ( the index ), what state is running?
-	 * ( the content ). */
-        int * _currentExecutingStateIDs;
-	
-	/* Number of machines running. */
-	int _numMachines;
-	
-	/* Are there machines still executing? */
-	bool _stillExecuting;
-};
-
-#endif
+#endif /* defined(__gufsm__PingPong__) */

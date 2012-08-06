@@ -1,9 +1,9 @@
 /*
- *  ExecComStruct.h
- *  
- *  Created by Robert Coleman on 22/04/12.
- *  Copyright (c) 2012 Robert Coleman.
- *  All rights reserved.
+ *  State_Ping.h
+ *  clfsm
+ *
+ *  Created by Rene Hexel on 3/08/12.
+ *  Copyright (c) 2012 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -55,42 +55,55 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#ifndef clfsm_State_Ping_h
+#define clfsm_State_Ping_h
 
-/* 
- * Data structure used for communication with the executing
- * state machines.
- */
-#ifndef ExecCom_Do_h
-#define ExecCom_Do_h
+#include "CLState.h"
+#include "CLAction.h"
+#include "CLTransition.h"
 
-#include <dispatch/dispatch.h>
+namespace FSM
+{
+    namespace CLM
+    {
+        namespace State
+        {
+            class Ping: public CLState
+            {
+                class OnEntry: public CLAction
+                {
+                    virtual void perform(CLMachine *, CLState *) const;
+                };
+                class OnExit: public CLAction
+                {
+                    virtual void perform(CLMachine *, CLState *) const;
+                };
+                class Internal: public CLAction
+                {
+                    virtual void perform(CLMachine *, CLState *) const;
+                };
 
-namespace ExecCom {
-        enum ExecCom_Do_Type {SUSPEND, RESTART, STOP, RESUME, RUN};
-        enum ExecCom_State_Type {SUSPENDED, RUNNING, STOPPED};
+                class Transition_0: public CLTransition
+                {
+                public:
+                    Transition_0(int toState = 1): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                CLTransition *_transitions[1];
+
+            public:
+                Ping();
+                virtual ~Ping();
+
+                virtual CLTransition * const *transitions() const { return _transitions; }
+                virtual int numberOfTransitions() const { return 1; }
+
+#               include "State_Ping_Variables.h"
+            };
+        }
+    }
 }
-
-// Execution Communication.
-struct ExecCom_Struct {
-        /* Will need to be procured before changing or accessing
-         * the flag. */
-        dispatch_semaphore_t _flagProtect;
-        
-        /* What should the executer do? */
-        enum ExecCom::ExecCom_Do_Type _shouldDo;
-        
-        /* What executing state are all the machines in? */
-        enum ExecCom::ExecCom_State_Type _state;
-        
-        /* For each machine ( the index ), what state is running?
-	 * ( the content ). */
-        int * _currentExecutingStateIDs;
-	
-	/* Number of machines running. */
-	int _numMachines;
-	
-	/* Are there machines still executing? */
-	bool _stillExecuting;
-};
 
 #endif

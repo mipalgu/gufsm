@@ -1,9 +1,9 @@
 /*
- *  ExecComStruct.h
- *  
- *  Created by Robert Coleman on 22/04/12.
- *  Copyright (c) 2012 Robert Coleman.
- *  All rights reserved.
+ *  CLState.h
+ *  gufsm
+ *
+ *  Created by Rene Hexel on 1/08/12.
+ *  Copyright (c) 2012 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -55,42 +55,63 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#ifndef __clfsm__CLState__
+#define __clfsm__CLState__
 
-/* 
- * Data structure used for communication with the executing
- * state machines.
- */
-#ifndef ExecCom_Do_h
-#define ExecCom_Do_h
+#include "CLAction.h"
 
-#include <dispatch/dispatch.h>
+namespace FSM
+{
+        class State;
+        class CLMachine;
+        class CLTransition;
 
-namespace ExecCom {
-        enum ExecCom_Do_Type {SUSPEND, RESTART, STOP, RESUME, RUN};
-        enum ExecCom_State_Type {SUSPENDED, RUNNING, STOPPED};
+        class CLState
+        {
+                class State     *_stateContext;         /// FSM context
+                CLAction        &_onEntryAction;        /// onEntry
+                CLAction        &_onExitAction;         /// onExit
+                CLAction        &_internalAction;       /// internal
+        public:
+                /** default constructor */
+                CLState(CLAction &onEntry, CLAction &onExit, CLAction &internal, class State *context = 0): _stateContext(context), _onEntryAction(onEntry), _onExitAction(onExit), _internalAction(internal) {}
+
+                /** destructor (subclass responsibility!) */
+                virtual ~CLState() {}
+
+                /** state context getter */
+                class State *stateContext() const { return _stateContext; }
+
+                /** state context setter */
+                void setStateContext(class State *state) { _stateContext = state; }
+
+                /** onEntry action getter */
+                CLAction &onEntryAction() const { return _onEntryAction; }
+
+                /** onExit action getter */
+                CLAction &onExitAction()  const { return _onExitAction; }
+
+                /** internal action getter */
+                CLAction &internalAction()const { return _internalAction; }
+
+                /** perform the onEntry action */
+                void performOnEntry(CLMachine *m) { _onEntryAction.perform(m, this); }
+
+                /** perform the onExit action */
+                void performOnExit(CLMachine *m)  { _onExitAction.perform(m, this); }
+
+                /** perform the internal action */
+                void performInternal(CLMachine *m){ _internalAction.perform(m, this); }
+
+                /** return the ith transition leading out of this state */
+                CLTransition *transition(int i) const { return transitions()[i]; }
+
+                /** return the array of transitions for this state */
+                virtual CLTransition * const *transitions() const = 0;
+
+                /** return the number of transitions leading out of this state */
+                virtual int numberOfTransitions() const = 0;
+        };
 }
 
-// Execution Communication.
-struct ExecCom_Struct {
-        /* Will need to be procured before changing or accessing
-         * the flag. */
-        dispatch_semaphore_t _flagProtect;
-        
-        /* What should the executer do? */
-        enum ExecCom::ExecCom_Do_Type _shouldDo;
-        
-        /* What executing state are all the machines in? */
-        enum ExecCom::ExecCom_State_Type _state;
-        
-        /* For each machine ( the index ), what state is running?
-	 * ( the content ). */
-        int * _currentExecutingStateIDs;
-	
-	/* Number of machines running. */
-	int _numMachines;
-	
-	/* Are there machines still executing? */
-	bool _stillExecuting;
-};
-
-#endif
+#endif /* defined(__gufsm__CLState__) */
