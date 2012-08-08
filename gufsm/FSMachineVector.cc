@@ -58,6 +58,7 @@
 #include <iostream>
 #include <sstream>
 #include <cassert>
+#include <cstdlib>
 #include "FSMachineVector.h"
 #include "FSMState.h"
 
