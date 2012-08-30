@@ -1,0 +1,24 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vlad Estivill-Castro" description="" version="1" name="FSM" arrowtype="1" numbits="1" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="184" endx="206" xpos="146" endy="184"/>
+    <state pencolor="0" radius="40" description="OnEntry{ extern said; &#xa; print_state_name() ;}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="184" code="0" xpos="246" linewidth="1">Init</state>
+    <state pencolor="0" radius="40" description="OnEntry{ post(&quot;QSay&quot;,&quot;A test&quot;);&#xa; print_state_name(); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="193" code="1" xpos="624" linewidth="1">Say</state>
+    <transition c1x="385.3349135162867" c2y="189.3303927590204" c1y="187.141251938436" description="" straight="1" type="2" ypos="184.9521111178516" endx="584.0274066493294" xpos="285.9886669497654" endy="191.5195335796048" c2x="484.681160082808">
+      <from>0</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">!said</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="482.4348926246609" c2y="201.4746348600556" c1y="196.761261871102" description="" straight="1" type="2" ypos="192.0478888821484" endx="279.2820117735138" xpos="584.0113330502345" endy="206.1880078490092" c2x="380.8584521990873">
+      <from>1</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">said</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>

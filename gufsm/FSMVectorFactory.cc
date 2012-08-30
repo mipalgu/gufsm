@@ -73,7 +73,7 @@ StateMachineVectorFactory::StateMachineVectorFactory(ANTLRContext *context,
                                                      const vector<string> &names_of_machines_to_build)
 {
         _context = context;
-        _fsms = new StateMachineVector(context);
+        _fsms = new ANTLRMachineVector(context);
         _queue_semaphore = dispatch_semaphore_create(1);
 
         Whiteboard *wb = context->whiteboard();
@@ -258,7 +258,10 @@ void StateMachineVectorFactory::execute(void)
 #if 0
                         fsms()->noTransitionFired();
 #else
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wempty-body"
                         ;
+#pragma clang diagnostic pop
                 protected_usleep(19500);
 #endif
         }

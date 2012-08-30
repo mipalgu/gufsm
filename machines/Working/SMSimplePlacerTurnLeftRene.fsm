@@ -1,0 +1,74 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="" version="1" name="SMSimplePlacerTurnLeftRene" arrowtype="1" numbits="4" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="220" endx="299" xpos="239" endy="220"/>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;extern gunaomotion_holdingStiffness;&#xa;&#x9;extern gunaowalk_stop;&#xa;&#x9;extern gunaowalk_ready;&#xa;&#x9;extern gunaowalk_disconnect;&#xa;&#x9;extern NaoIsReadyToRun;&#xa;&#x9;extern NaoIsRunning;&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="220" code="0" xpos="339" linewidth="1">Init</state>
+    <state pencolor="0" radius="40" description="OnEntry { gunaowalk_ready=1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="94" code="1" xpos="843" linewidth="1">Setup</state>
+    <state pencolor="0" radius="40" description="OnEntry { postv(&quot;gunaowalk_walk&quot;, 100, 0, 0, 100); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="309" code="2" xpos="799" linewidth="1">Walk_Forward</state>
+    <state pencolor="0" radius="40" description="OnEntry { postv(&quot;gunaowalk_walk&quot;, 0, 0, 90, 100); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="410" code="3" xpos="659" linewidth="1">Turn90</state>
+    <state pencolor="0" radius="40" description="OnEntry { gunaowalk_stop=1; gunaowalk_disconnect=1; }&#xa;OnExit { }&#xa;{ }" finalstate="1" moore_outputs="" ypos="98" code="5" xpos="363" linewidth="1">Suspend</state>
+    <state pencolor="0" radius="40" description="OnEntry { gunaomotion_holdingStiffness=100; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="266" code="6" xpos="460" linewidth="1">SetStiffness</state>
+    <state pencolor="0" radius="40" description="OnEntry { gunaowalk_disconnect=1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="361" code="7" xpos="196" linewidth="1">Disconnect</state>
+    <state pencolor="0" radius="40" description="OnEntry { gunaowalk_stop=1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="486" code="8" xpos="296" linewidth="1">Stop</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;gunaomotion_naoMotionPlayer&quot;, &quot;dcm_from_getup&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="102" code="9" xpos="552" linewidth="1">Stance</state>
+    <state pencolor="0" radius="40" description="OnEntry { suspend(&quot;SMReady&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="370" code="4" xpos="370" linewidth="1">Suspend_Me</state>
+    <transition c1x="394.149204" c2y="245.034187" c1y="240.965813" description="" straight="1" type="2" ypos="233.8587577652532" endx="423.5454415305296" xpos="375.4545584694704" endy="252.1412422347468" c2x="404.850796">
+      <from>0</from>
+      <to>6</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="831.170757" c2y="251.198019" c1y="151.801981" description="" straight="1" type="2" ypos="132.2080891983539" endx="806.8193298824538" xpos="835.1806701175462" endy="270.7919108016462" c2x="810.829243">
+      <from>1</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">NaoIsReadyToRun</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="751.151908" c2y="375.481019" c1y="343.518981" description="" straight="1" type="2" ypos="331.8176314993036" endx="690.6284000980446" xpos="767.3715999019554" endy="387.1823685006964" c2x="706.848092">
+      <from>2</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">timeout(10000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="601.252095" c2y="473.909530" c1y="422.090470" description="" straight="1" type="2" ypos="417.9920058935645" endx="334.1723439389989" xpos="620.8276560610011" endy="478.0079941064355" c2x="353.747905">
+      <from>3</from>
+      <to>8</to>
+      <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="488.865807" c2y="153.456439" c1y="214.543561" description="" straight="1" type="2" ypos="231.9864213965692" endx="532.9192120029535" xpos="479.0807879970465" endy="136.0135786034308" c2x="523.134193">
+      <from>6</from>
+      <to>9</to>
+      <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="259.922867" c2y="341.501264" c1y="335.770927" description="" straight="1" type="2" ypos="330.0405896417597" endx="337.1123123342488" xpos="221.3281446274709" endy="347.2316008467877" c2x="298.517590">
+      <from>7</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">timeout(5000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="259.142992" c2y="407.071260" c1y="439.928740" description="" straight="1" type="2" ypos="455.5461164317218" endx="220.3631068546225" xpos="271.6368931453774" endy="391.4538835682782" c2x="232.857008">
+      <from>8</from>
+      <to>7</to>
+      <inputs default="0" any="0" invert="0">timeout(5000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="610.977717" c2y="95.621381" c1y="100.378619" description="" straight="1" type="2" ypos="100.9282399811404" endx="804.0147293139836" xpos="590.9852706860164" endy="95.07176001885956" c2x="784.022283">
+      <from>9</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">timeout(2000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="359.639456" c2y="281.351000" c1y="306.089399" description="" straight="1" type="2" ypos="330.8277975261008" endx="355.1095445706407" xpos="361.9044114887275" endy="256.6126012969106" c2x="357.374500">
+      <from>4</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>

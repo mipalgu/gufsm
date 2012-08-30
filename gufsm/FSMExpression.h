@@ -71,6 +71,9 @@ namespace FSM
         class Expression
         {
         public:
+                /** destructor */
+                virtual ~Expression() {}
+
                 /** evaluation needs to be performed by sublcasses */
                 virtual int evaluate(Machine *m = NULL) = 0;
 
@@ -99,6 +102,10 @@ namespace FSM
                 /** default constructor */
                 Predicate(const std::string &p = "TRUE", bool v = true, bool neg = false):
                                 _name(p), _value(v), _negation(neg) {}
+
+                /** destructor */
+                virtual ~Predicate() {}
+
                 /** return the predicate name */
                 const std::string &name() { return _name; }
                 
@@ -131,6 +138,9 @@ namespace FSM
         public:
                 /** default constructor */
                 TimeoutPredicate(long t = 1000): _timeout(t) {}
+
+                /** destructor */
+                virtual ~TimeoutPredicate() {}
 
                 /** getter */
                 long timeout() { return _timeout; }
