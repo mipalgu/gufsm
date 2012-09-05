@@ -369,7 +369,7 @@ static void usage(const char *cmd)
 }
 
 
-int run_machine_vector(StateMachineVectorFactory &factory, vector<string> &machine_names, machine_runner_f execute, bool verbose)
+int run_machine_vector(ANTLRStateMachineVectorFactory &factory, vector<string> &machine_names, machine_runner_f execute, bool verbose)
 {
         ANTLRContext &antlr_context = factory.context();
 

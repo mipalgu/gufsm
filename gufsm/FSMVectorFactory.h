@@ -68,7 +68,7 @@ namespace FSM
         class ANTLRContext;
         class SuspensibleMachine;
 
-        class StateMachineVectorFactory
+        class ANTLRStateMachineVectorFactory
         {
         protected:
                 ANTLRMachineVector *_fsms;      /// delivered FSMs
@@ -79,13 +79,13 @@ namespace FSM
                 dispatch_semaphore_t _queue_semaphore; /// queue protector
         public:
                 /** constructor that builds vector of machines */
-                StateMachineVectorFactory(ANTLRContext *context, const std::vector<std::string> &names_of_machines_to_build);
+                ANTLRStateMachineVectorFactory(ANTLRContext *context, const std::vector<std::string> &names_of_machines_to_build);
                 
                 /** Default constructor. */
-                StateMachineVectorFactory();
+                ANTLRStateMachineVectorFactory();
 
                 /** destructor (unsubscribes from whiteboard) */
-                virtual ~StateMachineVectorFactory();
+                virtual ~ANTLRStateMachineVectorFactory();
 
                 /** get ANTLR context */
                 virtual ANTLRContext &context() const { return *_context; }
