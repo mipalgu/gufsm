@@ -469,6 +469,8 @@
 		F139BF4915F6E24400C3C62D /* FSMANTLRMaths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMANTLRMaths.h; sourceTree = "<group>"; };
 		F139BF4A15F6E24400C3C62D /* FSMANTLRVectorFactory.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRVectorFactory.cc; sourceTree = "<group>"; };
 		F139BF4B15F6E24400C3C62D /* FSMANTLRVectorFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMANTLRVectorFactory.h; sourceTree = "<group>"; };
+		F139CB9715F6EB0B00C3C62D /* clfsm_vector_factory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = clfsm_vector_factory.cc; sourceTree = "<group>"; };
+		F139CB9815F6EB0B00C3C62D /* clfsm_vector_factory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = clfsm_vector_factory.h; sourceTree = "<group>"; };
 		F13BA40E1579E92500929C9C /* FSMVectorRunner.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMVectorRunner.cc; sourceTree = "<group>"; };
 		F13BA40F1579E92500929C9C /* FSMVectorRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMVectorRunner.h; sourceTree = "<group>"; };
 		F14EB9BF1491B86600ED85D7 /* FSMANTLRContext.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRContext.cc; sourceTree = "<group>"; };
@@ -1746,6 +1748,8 @@
 		F1A517CE15C91BDC00348C25 /* clfsm */ = {
 			isa = PBXGroup;
 			children = (
+				F139CB9715F6EB0B00C3C62D /* clfsm_vector_factory.cc */,
+				F139CB9815F6EB0B00C3C62D /* clfsm_vector_factory.h */,
 				F1A5180015C9278500348C25 /* examples */,
 				F1A517CF15C91BDC00348C25 /* clfsm+PingPong.cc */,
 				F1A517D115C91BDC00348C25 /* clfsm.1 */,

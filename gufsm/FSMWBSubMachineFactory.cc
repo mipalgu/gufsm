@@ -1,5 +1,5 @@
 /*
- *  FSMState.h
+ *  WBSubMachineFactory.cc
  *  
  *  Created by René Hexel on 23/09/11.
  *  Copyright (c) 2011 Rene Hexel.
