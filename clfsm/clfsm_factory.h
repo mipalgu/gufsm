@@ -58,7 +58,7 @@
 #ifndef ____clfsm_factory__
 #define ____clfsm_factory__
 
-#include <vector>
+#include "FSMFactory.h"
 
 namespace FSM
 {
@@ -67,18 +67,14 @@ namespace FSM
         class StateMachineVector;
         class Context;
 
-        class CLFSMFactory
+        class CLFSMFactory: public Factory
         {
-        protected:
-                StateMachineVector      *_fsms;         /// created FSMs
-                Context                 *_context;      /// factory context
-                std::vector<CLMachine *> _clmachines;   /// CL machines in vector
         public:
-                CLFSMFactory(Context *context);         /// default constructor
-                virtual ~CLFSMFactory();                /// destructor
+                /** default constructor */
+                CLFSMFactory(Context *context, int mid=0);
 
-                /** add a machine to the vector */
-                virtual SuspensibleMachine *addMachine(CLMachine *clm, int index=-1, bool resume=false);
+                /** destructor */
+                virtual ~CLFSMFactory() {};
         };
 }
 

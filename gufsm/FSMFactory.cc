@@ -1,9 +1,9 @@
 /*
- *  clfsm_vector_factory.h
- *  clfsm
- *
+ *  FSMFactory.cc
+ *  
  *  Created by Rene Hexel on 5/09/12.
- *  Copyright (c) 2012 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2011-2012 Rene Hexel.
+ *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -55,31 +55,46 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef ____clfsm_vector_factory__
-#define ____clfsm_vector_factory__
+#include "FSMSuspensibleMachine.h"
+#include "FSMFactory.h"
+#include "FSMTransition.h"
+#include "FSMState.h"
+#include "gu_util.h"
 
-#include <vector>
+using namespace FSM;
+using namespace std;
 
-namespace FSM
+bool FSM::Factory::determineSuspendState(const char *name)
 {
-        class CLMachine;
-        class SuspensibleMachine;
-        class StateMachineVector;
-        class Context;
+        if (machine()->suspendState()) return true;
 
-        class CLFSMVectorFactory
+        for (StateVector::const_iterator i = machine()->states().begin(); i != machine()->states().end(); i++)
         {
-        protected:
-                StateMachineVector      *_fsms;         /// created FSMs
-                Context                 *_context;      /// factory context
-                std::vector<CLMachine *> _clmachines;   /// CL machines in vector
-        public:
-                CLFSMVectorFactory(Context *context);   /// default constructor
-                virtual ~CLFSMVectorFactory();           /// destructor
-
-                /** add a machine to the vector */
-                virtual SuspensibleMachine *addMachine(CLMachine *clm, int index=-1, bool resume=false);
-        };
+                if ((*i)->transitions().size()) // nonempty, cannot be suspend
+                        continue;
+                if (name && (*i)->name() != name)
+                        continue;               // non-matching name
+                bool transitionsFound = false;
+                StateVector::const_iterator j = machine()->states().begin();
+                for (; j != machine()->states().end(); j++)
+                {
+                        if (j == i) continue;   // ignore the tested state
+                        for (TransitionVector::const_iterator k = (*j)->transitions().begin(); k != (*j)->transitions().end(); k++)
+                        {
+                                if ((*k)->target() == *i)
+                                {
+                                        transitionsFound = true;
+                                        break;
+                                }
+                        }
+                        if (transitionsFound) break;
+                }
+                if (!transitionsFound)          // found my suspend state
+                {
+                        machine()->setSuspendState(*i);
+                        DBG(cout << "Found suspend state " << (*i)->name() << endl);
+                        return true;
+                }
+        }
+        return false;                           // no suspend state found
 }
-
-#endif /* defined(____clfsm_factory__) */

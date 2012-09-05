@@ -55,21 +55,13 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#include "FSMachineVector.h"
+#include "FSMSuspensibleMachine.h"
 #include "clfsm_factory.h"
-
 
 using namespace std;
 using namespace FSM;
 
-CLFSMFactory::CLFSMFactory(Context *context): _context(context), _clmachines()
+FSM::CLFSMFactory::CLFSMFactory(Context *context, int mid)
 {
-        _fsms = new StateMachineVector(context);
+        setMachine(new SuspensibleMachine(NULL, context, mid));
 }
-
-
-SuspensibleMachine *CLFSMFactory::addMachine(CLMachine *clm, int index=, bool resume)
-{
-        SuspensibleMachine *machine = 0;
-}
-

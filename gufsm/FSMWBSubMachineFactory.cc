@@ -83,39 +83,3 @@ WBSubMachineFactory::WBSubMachineFactory(WBContext *context, const string &machi
 WBSubMachineFactory::WBSubMachineFactory() {
         return;
 }
-
-
-bool WBSubMachineFactory::determineSuspendState(const char *name)
-{
-        if (machine()->suspendState()) return true;
-
-        for (StateVector::const_iterator i = machine()->states().begin(); i != machine()->states().end(); i++)
-        {
-                if ((*i)->transitions().size()) // nonempty, cannot be suspend
-                        continue;
-                if (name && (*i)->name() != name)
-                        continue;               // non-matching name
-                bool transitionsFound = false;
-                StateVector::const_iterator j = machine()->states().begin();
-                for (; j != machine()->states().end(); j++)
-                {
-                        if (j == i) continue;   // ignore the tested state
-                        for (TransitionVector::const_iterator k = (*j)->transitions().begin(); k != (*j)->transitions().end(); k++)
-                        {
-                                if ((*k)->target() == *i)
-                                {
-                                        transitionsFound = true;
-                                        break;
-                                }
-                        }
-                        if (transitionsFound) break;
-                }
-                if (!transitionsFound)          // found my suspend state
-                {
-                        machine()->setSuspendState(*i);
-                        DBG(cout << "Found suspend state " << (*i)->name() << endl);
-                        return true;
-                }
-        }
-        return false;                           // no suspend state foujnd
-}

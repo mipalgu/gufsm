@@ -65,6 +65,9 @@
 		F12DCCE414830A9D00461AD6 /* TransitionFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7D0147F76C200C852FC /* TransitionFactory.cpp */; };
 		F12DCCE714830A9E00461AD6 /* TransitionFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7D0147F76C200C852FC /* TransitionFactory.cpp */; };
 		F12DCDD81484BAD100461AD6 /* FSMTransition.cc in Sources */ = {isa = PBXBuildFile; fileRef = F12DCDD71484BAD100461AD6 /* FSMTransition.cc */; };
+		F12EAE5615F6F48A002DB436 /* clfsm_factory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F12EAE5415F6F48A002DB436 /* clfsm_factory.cc */; };
+		F12EAE5C15F6F993002DB436 /* FSMFactory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F12EAE5A15F6F993002DB436 /* FSMFactory.cc */; };
+		F12EAE6115F6FDAE002DB436 /* FSMFactory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F12EAE6015F6FDAE002DB436 /* FSMFactory.cc */; };
 		F132711C1452812500E5786D /* FSMWBQueryPredicate.cc in Sources */ = {isa = PBXBuildFile; fileRef = F132711B1452812500E5786D /* FSMWBQueryPredicate.cc */; };
 		F132711D1452812500E5786D /* FSMWBQueryPredicate.cc in Sources */ = {isa = PBXBuildFile; fileRef = F132711B1452812500E5786D /* FSMWBQueryPredicate.cc */; };
 		F139CAE615F6E24600C3C62D /* FSMANTLRVectorFactory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F139BF4A15F6E24400C3C62D /* FSMANTLRVectorFactory.cc */; };
@@ -313,13 +316,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E1144EB41585E21600C3C113 /* SimpleCLexer.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = SimpleCLexer.c; path = gufsm/build.host/SimpleCLexer.c; sourceTree = "<group>"; };
-		E1144EB51585E21600C3C113 /* SimpleCParser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = SimpleCParser.c; path = gufsm/build.host/SimpleCParser.c; sourceTree = "<group>"; };
-		E1144EB81585E23900C3C113 /* ActionsContainer_SimpleCParser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = ActionsContainer_SimpleCParser.c; path = gufsm/build.host/ActionsContainer_SimpleCParser.c; sourceTree = "<group>"; };
-		E1144EB91585E23900C3C113 /* ActionsContainerLexer.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = ActionsContainerLexer.c; path = gufsm/build.host/ActionsContainerLexer.c; sourceTree = "<group>"; };
-		E1144EBA1585E23900C3C113 /* ActionsContainerParser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = ActionsContainerParser.c; path = gufsm/build.host/ActionsContainerParser.c; sourceTree = "<group>"; };
-		E1144EBB1585E23900C3C113 /* TransitionContainer_SimpleCParser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = TransitionContainer_SimpleCParser.c; path = gufsm/build.host/TransitionContainer_SimpleCParser.c; sourceTree = "<group>"; };
-		E1144EBC1585E23900C3C113 /* TransitionContainerParser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = TransitionContainerParser.c; path = gufsm/build.host/TransitionContainerParser.c; sourceTree = "<group>"; };
+		E1144EB41585E21600C3C113 /* SimpleCLexer.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = SimpleCLexer.c; path = ../gufsm/build.host/SimpleCLexer.c; sourceTree = "<group>"; };
+		E1144EB51585E21600C3C113 /* SimpleCParser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = SimpleCParser.c; path = ../gufsm/build.host/SimpleCParser.c; sourceTree = "<group>"; };
+		E1144EB81585E23900C3C113 /* ActionsContainer_SimpleCParser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = ActionsContainer_SimpleCParser.c; path = ../gufsm/build.host/ActionsContainer_SimpleCParser.c; sourceTree = "<group>"; };
+		E1144EB91585E23900C3C113 /* ActionsContainerLexer.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = ActionsContainerLexer.c; path = ../gufsm/build.host/ActionsContainerLexer.c; sourceTree = "<group>"; };
+		E1144EBA1585E23900C3C113 /* ActionsContainerParser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = ActionsContainerParser.c; path = ../gufsm/build.host/ActionsContainerParser.c; sourceTree = "<group>"; };
+		E1144EBB1585E23900C3C113 /* TransitionContainer_SimpleCParser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = TransitionContainer_SimpleCParser.c; path = ../gufsm/build.host/TransitionContainer_SimpleCParser.c; sourceTree = "<group>"; };
+		E1144EBC1585E23900C3C113 /* TransitionContainerParser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = TransitionContainerParser.c; path = ../gufsm/build.host/TransitionContainerParser.c; sourceTree = "<group>"; };
 		E11CABD914BD243900A1019A /* fsmWbDependencyDump */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = fsmWbDependencyDump; sourceTree = BUILT_PRODUCTS_DIR; };
 		E11CABDC14BD243900A1019A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		E11CABDE14BD243900A1019A /* fsmWbDependencyDump.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = fsmWbDependencyDump.1; sourceTree = "<group>"; };
@@ -462,6 +465,14 @@
 		F12B423C147DC38B00FF4A6B /* SMLexer.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SMLexer.g; sourceTree = "<group>"; };
 		F12B423D147DC38B00FF4A6B /* TransitionsParser.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TransitionsParser.g; sourceTree = "<group>"; };
 		F12DCDD71484BAD100461AD6 /* FSMTransition.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMTransition.cc; sourceTree = "<group>"; };
+		F12EAE5415F6F48A002DB436 /* clfsm_factory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = clfsm_factory.cc; sourceTree = "<group>"; };
+		F12EAE5515F6F48A002DB436 /* clfsm_vector_factory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = clfsm_vector_factory.cc; sourceTree = "<group>"; };
+		F12EAE5815F6F4C3002DB436 /* clfsm_factory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = clfsm_factory.h; sourceTree = "<group>"; };
+		F12EAE5915F6F4C3002DB436 /* clfsm_vector_factory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = clfsm_vector_factory.h; sourceTree = "<group>"; };
+		F12EAE5A15F6F993002DB436 /* FSMFactory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FSMFactory.cc; sourceTree = "<group>"; };
+		F12EAE5B15F6F993002DB436 /* FSMFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMFactory.h; sourceTree = "<group>"; };
+		F12EAE5E15F6FC26002DB436 /* FSMFactory.cc */ = {isa = PBXFileReference; lastKnownFileType = file; name = FSMFactory.cc; path = gufsm/FSMFactory.cc; sourceTree = "<group>"; };
+		F12EAE6015F6FDAE002DB436 /* FSMFactory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FSMFactory.cc; path = gufsm/FSMFactory.cc; sourceTree = "<group>"; };
 		F132711B1452812500E5786D /* FSMWBQueryPredicate.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMWBQueryPredicate.cc; sourceTree = "<group>"; };
 		F132711E1452814300E5786D /* FSMWBQueryPredicate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMWBQueryPredicate.h; sourceTree = "<group>"; };
 		F139B78A15F6E24200C3C62D /* ActionsContainer.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ActionsContainer.g; path = LANGUAGE/ActionsContainer.g; sourceTree = SOURCE_ROOT; };
@@ -469,8 +480,6 @@
 		F139BF4915F6E24400C3C62D /* FSMANTLRMaths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMANTLRMaths.h; sourceTree = "<group>"; };
 		F139BF4A15F6E24400C3C62D /* FSMANTLRVectorFactory.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRVectorFactory.cc; sourceTree = "<group>"; };
 		F139BF4B15F6E24400C3C62D /* FSMANTLRVectorFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMANTLRVectorFactory.h; sourceTree = "<group>"; };
-		F139CB9715F6EB0B00C3C62D /* clfsm_vector_factory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = clfsm_vector_factory.cc; sourceTree = "<group>"; };
-		F139CB9815F6EB0B00C3C62D /* clfsm_vector_factory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = clfsm_vector_factory.h; sourceTree = "<group>"; };
 		F13BA40E1579E92500929C9C /* FSMVectorRunner.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMVectorRunner.cc; sourceTree = "<group>"; };
 		F13BA40F1579E92500929C9C /* FSMVectorRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMVectorRunner.h; sourceTree = "<group>"; };
 		F14EB9BF1491B86600ED85D7 /* FSMANTLRContext.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRContext.cc; sourceTree = "<group>"; };
@@ -786,7 +795,7 @@
 		F1A517CC15C91BDC00348C25 /* clfsm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = clfsm; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1A517CF15C91BDC00348C25 /* clfsm+PingPong.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "clfsm+PingPong.cc"; sourceTree = "<group>"; };
 		F1A517D115C91BDC00348C25 /* clfsm.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = clfsm.1; sourceTree = "<group>"; };
-		F1A517F415C91ECC00348C25 /* stringConstants.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = stringConstants.c; path = gufsm/stringConstants.c; sourceTree = "<group>"; };
+		F1A517F415C91ECC00348C25 /* stringConstants.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = stringConstants.c; path = ../gufsm/stringConstants.c; sourceTree = "<group>"; };
 		F1A5180215C9438A00348C25 /* CLState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLState.h; sourceTree = "<group>"; };
 		F1A5180515C947D400348C25 /* CLAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLAction.h; sourceTree = "<group>"; };
 		F1A5180915C94FF900348C25 /* CLMachine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLMachine.h; sourceTree = "<group>"; };
@@ -1467,14 +1476,8 @@
 		F16CC2EF142C0C01001F788B = {
 			isa = PBXGroup;
 			children = (
-				F1A517F415C91ECC00348C25 /* stringConstants.c */,
-				E1144EB81585E23900C3C113 /* ActionsContainer_SimpleCParser.c */,
-				E1144EB91585E23900C3C113 /* ActionsContainerLexer.c */,
-				E1144EBA1585E23900C3C113 /* ActionsContainerParser.c */,
-				E1144EBB1585E23900C3C113 /* TransitionContainer_SimpleCParser.c */,
-				E1144EBC1585E23900C3C113 /* TransitionContainerParser.c */,
-				E1144EB41585E21600C3C113 /* SimpleCLexer.c */,
-				E1144EB51585E21600C3C113 /* SimpleCParser.c */,
+				F12EAE6015F6FDAE002DB436 /* FSMFactory.cc */,
+				F12EAE5E15F6FC26002DB436 /* FSMFactory.cc */,
 				F1A9E8C91480B36100C852FC /* libantlr3c.a */,
 				F16CC2FD142C0C01001F788B /* gufsm */,
 				F1284CFF14A6CAA800C0247E /* gusimplewhiteboard */,
@@ -1538,6 +1541,8 @@
 				F1F8EAC91480B98E008AB889 /* FSMANTLRContext.h */,
 				F16CC30B142C0CDE001F788B /* FSMachine.cc */,
 				F191E602142D99150014AF84 /* FSMachine.h */,
+				F12EAE5A15F6F993002DB436 /* FSMFactory.cc */,
+				F12EAE5B15F6F993002DB436 /* FSMFactory.h */,
 				F1AFCD28147B56FA00C975DC /* FSMachineVector.cc */,
 				F1AFCD2C147B573700C975DC /* FSMachineVector.h */,
 				F13BA40E1579E92500929C9C /* FSMVectorRunner.cc */,
@@ -1748,8 +1753,18 @@
 		F1A517CE15C91BDC00348C25 /* clfsm */ = {
 			isa = PBXGroup;
 			children = (
-				F139CB9715F6EB0B00C3C62D /* clfsm_vector_factory.cc */,
-				F139CB9815F6EB0B00C3C62D /* clfsm_vector_factory.h */,
+				F12EAE5415F6F48A002DB436 /* clfsm_factory.cc */,
+				F12EAE5815F6F4C3002DB436 /* clfsm_factory.h */,
+				F12EAE5515F6F48A002DB436 /* clfsm_vector_factory.cc */,
+				F12EAE5915F6F4C3002DB436 /* clfsm_vector_factory.h */,
+				F1A517F415C91ECC00348C25 /* stringConstants.c */,
+				E1144EB81585E23900C3C113 /* ActionsContainer_SimpleCParser.c */,
+				E1144EB91585E23900C3C113 /* ActionsContainerLexer.c */,
+				E1144EBA1585E23900C3C113 /* ActionsContainerParser.c */,
+				E1144EBB1585E23900C3C113 /* TransitionContainer_SimpleCParser.c */,
+				E1144EBC1585E23900C3C113 /* TransitionContainerParser.c */,
+				E1144EB41585E21600C3C113 /* SimpleCLexer.c */,
+				E1144EB51585E21600C3C113 /* SimpleCParser.c */,
 				F1A5180015C9278500348C25 /* examples */,
 				F1A517CF15C91BDC00348C25 /* clfsm+PingPong.cc */,
 				F1A517D115C91BDC00348C25 /* clfsm.1 */,
@@ -2171,6 +2186,7 @@
 				F16CC335142C3433001F788B /* FSMAction.cc in Sources */,
 				F1A3DF6E142D3BFF0060F293 /* FSMachine.cc in Sources */,
 				F191E605142D9B970014AF84 /* FSMSuspensibleMachine.cc in Sources */,
+				F12EAE5C15F6F993002DB436 /* FSMFactory.cc in Sources */,
 				E1144EB61585E21600C3C113 /* SimpleCLexer.c in Sources */,
 				E1144EB71585E21600C3C113 /* SimpleCParser.c in Sources */,
 				E1144EBD1585E23900C3C113 /* ActionsContainer_SimpleCParser.c in Sources */,
@@ -2265,6 +2281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F12EAE5615F6F48A002DB436 /* clfsm_factory.cc in Sources */,
 				F1A517D015C91BDC00348C25 /* clfsm+PingPong.cc in Sources */,
 				F1A517E815C91CA500348C25 /* FSMAction.cc in Sources */,
 				F1A517EA15C91CA500348C25 /* FSMExpression.cc in Sources */,
@@ -2272,6 +2289,7 @@
 				F1A517EC15C91CA500348C25 /* FSMWBQueryPredicate.cc in Sources */,
 				F1A517ED15C91CA500348C25 /* FSMWBContext.cc in Sources */,
 				F1A517EE15C91CA500348C25 /* FSMachine.cc in Sources */,
+				F12EAE6115F6FDAE002DB436 /* FSMFactory.cc in Sources */,
 				F1A517EF15C91CA500348C25 /* FSMState.cc in Sources */,
 				F1A517F015C91CA500348C25 /* FSMSuspensibleMachine.cc in Sources */,
 				F1A517F115C91CA500348C25 /* FSMWBSubMachine.cc in Sources */,

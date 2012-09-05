@@ -1,8 +1,8 @@
 /*
- *  clfsm_factory.cc
+ *  clfsm_vector_factory.cc
  *  clfsm
  *
- *  Created by Rene Hexel on 5/08/12.
+ *  Created by Rene Hexel on 5/09/12.
  *  Copyright (c) 2012 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,20 +56,21 @@
  *
  */
 #include "FSMachineVector.h"
-#include "clfsm_factory.h"
+#include "clfsm_vector_factory.h"
 
 
 using namespace std;
 using namespace FSM;
 
-CLFSMFactory::CLFSMFactory(Context *context): _context(context), _clmachines()
+CLFSMVectorFactory::CLFSMVectorFactory(Context *context): _context(context), _clmachines()
 {
         _fsms = new StateMachineVector(context);
 }
 
 
-SuspensibleMachine *CLFSMFactory::addMachine(CLMachine *clm, int index=, bool resume)
+SuspensibleMachine *CLFSMVectorFactory::addMachine(CLMachine *clm, int index, bool resume)
 {
+        
         SuspensibleMachine *machine = 0;
 }
 

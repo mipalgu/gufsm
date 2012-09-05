@@ -59,15 +59,15 @@
 #define gufsm_FSMWBSubMachineFactory_h
 
 #include <string>
+#include "FSMFactory.h"
 #include "FSMWBSubMachine.h"
 
 namespace FSM
 {
         class Context;
 
-        class WBSubMachineFactory
+        class WBSubMachineFactory: public Factory
         {
-                WBSubMachine *_machine; /// built state machine
         public:
                 /** constructor that builds vector of machines */
                 WBSubMachineFactory(WBContext *context, const std::string &machine_name, int mid=0);
@@ -75,14 +75,14 @@ namespace FSM
                 /** Defaut constructor for subclasses. */
                 WBSubMachineFactory();
 
+                /** Destructor */
+                virtual ~WBSubMachineFactory() {}
+
                 /** getter */
-                WBSubMachine *machine() { return _machine; }
+                WBSubMachine *machine() const { return static_cast<WBSubMachine*>(_machine); }
 
                 /** setter */
                 void setMachine(WBSubMachine *m) { _machine = m; }
-
-                /** search for a suspend state */
-                bool determineSuspendState(const char *name = "Suspend");
         };
 }
 
