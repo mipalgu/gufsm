@@ -67,6 +67,8 @@
 		F12DCDD81484BAD100461AD6 /* FSMTransition.cc in Sources */ = {isa = PBXBuildFile; fileRef = F12DCDD71484BAD100461AD6 /* FSMTransition.cc */; };
 		F132711C1452812500E5786D /* FSMWBQueryPredicate.cc in Sources */ = {isa = PBXBuildFile; fileRef = F132711B1452812500E5786D /* FSMWBQueryPredicate.cc */; };
 		F132711D1452812500E5786D /* FSMWBQueryPredicate.cc in Sources */ = {isa = PBXBuildFile; fileRef = F132711B1452812500E5786D /* FSMWBQueryPredicate.cc */; };
+		F139CAE615F6E24600C3C62D /* FSMANTLRVectorFactory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F139BF4A15F6E24400C3C62D /* FSMANTLRVectorFactory.cc */; };
+		F139CAE715F6E24600C3C62D /* FSMANTLRVectorFactory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F139BF4A15F6E24400C3C62D /* FSMANTLRVectorFactory.cc */; };
 		F14EB9C01491B86600ED85D7 /* FSMANTLRContext.cc in Sources */ = {isa = PBXBuildFile; fileRef = F14EB9BF1491B86600ED85D7 /* FSMANTLRContext.cc */; };
 		F14EB9C11491B86600ED85D7 /* FSMANTLRContext.cc in Sources */ = {isa = PBXBuildFile; fileRef = F14EB9BF1491B86600ED85D7 /* FSMANTLRContext.cc */; };
 		F155F66C15C3A78A008F5637 /* simplecc.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = F155F66B15C3A78A008F5637 /* simplecc.1 */; };
@@ -149,8 +151,6 @@
 		F1A9E7D3147F76C200C852FC /* ActivityFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CC147F76C200C852FC /* ActivityFactory.cpp */; };
 		F1A9E7D4147F76C200C852FC /* parser_walk.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CE147F76C200C852FC /* parser_walk.c */; };
 		F1A9E7D5147F76C200C852FC /* parser_walk.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CE147F76C200C852FC /* parser_walk.c */; };
-		F1A9E7DA147F79E400C852FC /* FSMVectorFactory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7D9147F79E300C852FC /* FSMVectorFactory.cc */; };
-		F1A9E7DB147F79E400C852FC /* FSMVectorFactory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7D9147F79E300C852FC /* FSMVectorFactory.cc */; };
 		F1A9E7DE147F7C4600C852FC /* FSMWBSubMachineFactory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7DD147F7C4600C852FC /* FSMWBSubMachineFactory.cc */; };
 		F1A9E7DF147F7C4600C852FC /* FSMWBSubMachineFactory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7DD147F7C4600C852FC /* FSMWBSubMachineFactory.cc */; };
 		F1A9E8471480B10700C852FC /* FSMANTLRAction.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E8461480B10700C852FC /* FSMANTLRAction.cc */; };
@@ -464,6 +464,11 @@
 		F12DCDD71484BAD100461AD6 /* FSMTransition.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMTransition.cc; sourceTree = "<group>"; };
 		F132711B1452812500E5786D /* FSMWBQueryPredicate.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMWBQueryPredicate.cc; sourceTree = "<group>"; };
 		F132711E1452814300E5786D /* FSMWBQueryPredicate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMWBQueryPredicate.h; sourceTree = "<group>"; };
+		F139B78A15F6E24200C3C62D /* ActionsContainer.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ActionsContainer.g; path = LANGUAGE/ActionsContainer.g; sourceTree = SOURCE_ROOT; };
+		F139BF4815F6E24400C3C62D /* ExecComStruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExecComStruct.h; sourceTree = "<group>"; };
+		F139BF4915F6E24400C3C62D /* FSMANTLRMaths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMANTLRMaths.h; sourceTree = "<group>"; };
+		F139BF4A15F6E24400C3C62D /* FSMANTLRVectorFactory.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRVectorFactory.cc; sourceTree = "<group>"; };
+		F139BF4B15F6E24400C3C62D /* FSMANTLRVectorFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMANTLRVectorFactory.h; sourceTree = "<group>"; };
 		F13BA40E1579E92500929C9C /* FSMVectorRunner.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMVectorRunner.cc; sourceTree = "<group>"; };
 		F13BA40F1579E92500929C9C /* FSMVectorRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMVectorRunner.h; sourceTree = "<group>"; };
 		F14EB9BF1491B86600ED85D7 /* FSMANTLRContext.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRContext.cc; sourceTree = "<group>"; };
@@ -792,8 +797,6 @@
 		F1A9E7CF147F76C200C852FC /* parser_walk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parser_walk.h; sourceTree = "<group>"; };
 		F1A9E7D0147F76C200C852FC /* TransitionFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TransitionFactory.cpp; sourceTree = "<group>"; };
 		F1A9E7D1147F76C200C852FC /* TransitionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionFactory.h; sourceTree = "<group>"; };
-		F1A9E7D8147F789500C852FC /* FSMVectorFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMVectorFactory.h; sourceTree = "<group>"; };
-		F1A9E7D9147F79E300C852FC /* FSMVectorFactory.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMVectorFactory.cc; sourceTree = "<group>"; };
 		F1A9E7DC147F7B8600C852FC /* FSMWBSubMachineFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMWBSubMachineFactory.h; sourceTree = "<group>"; };
 		F1A9E7DD147F7C4600C852FC /* FSMWBSubMachineFactory.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMWBSubMachineFactory.cc; sourceTree = "<group>"; };
 		F1A9E8341480A2A200C852FC /* FSMANTLRAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMANTLRAction.h; sourceTree = "<group>"; };
@@ -1512,6 +1515,11 @@
 				F18AD00A15CBA63800492118 /* FSMANTLRMachineVector.cc */,
 				F18AD00B15CBA63800492118 /* FSMANTLRMachineVector.h */,
 				F16CC312142C1247001F788B /* FSMActivity.cc */,
+				F139B78A15F6E24200C3C62D /* ActionsContainer.g */,
+				F139BF4815F6E24400C3C62D /* ExecComStruct.h */,
+				F139BF4915F6E24400C3C62D /* FSMANTLRMaths.h */,
+				F139BF4A15F6E24400C3C62D /* FSMANTLRVectorFactory.cc */,
+				F139BF4B15F6E24400C3C62D /* FSMANTLRVectorFactory.h */,
 				F16CC311142C10B3001F788B /* FSMActivity.h */,
 				F1199D5F14302767003853BF /* FSMExpression.cc */,
 				F19C2B98142C7D5A007CFC83 /* FSMExpression.h */,
@@ -1543,8 +1551,6 @@
 				F12DCDD71484BAD100461AD6 /* FSMTransition.cc */,
 				F1A9E7DC147F7B8600C852FC /* FSMWBSubMachineFactory.h */,
 				F1A9E7DD147F7C4600C852FC /* FSMWBSubMachineFactory.cc */,
-				F1A9E7D8147F789500C852FC /* FSMVectorFactory.h */,
-				F1A9E7D9147F79E300C852FC /* FSMVectorFactory.cc */,
 				F1A9E7CC147F76C200C852FC /* ActivityFactory.cpp */,
 				F1A9E7CD147F76C200C852FC /* ActivityFactory.h */,
 				F1A9E7CE147F76C200C852FC /* parser_walk.c */,
@@ -2138,6 +2144,7 @@
 				E11FB9B914BD4793009C778E /* Whiteboard.cc in Sources */,
 				E11FB9BA14BD4793009C778E /* WhiteboardConstants.cc in Sources */,
 				F18AD00E15CBA63800492118 /* FSMANTLRMachineVector.cc in Sources */,
+				F139CAE715F6E24600C3C62D /* FSMANTLRVectorFactory.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2176,7 +2183,6 @@
 				F1AFCD2F147B8F7800C975DC /* FSMWBSubMachine.cc in Sources */,
 				F1A9E7D2147F76C200C852FC /* ActivityFactory.cpp in Sources */,
 				F1A9E7D4147F76C200C852FC /* parser_walk.c in Sources */,
-				F1A9E7DA147F79E400C852FC /* FSMVectorFactory.cc in Sources */,
 				F1A9E7DE147F7C4600C852FC /* FSMWBSubMachineFactory.cc in Sources */,
 				F1A9E8471480B10700C852FC /* FSMANTLRAction.cc in Sources */,
 				F1F8EAC71480B732008AB889 /* FSMANTLRExpression.cc in Sources */,
@@ -2202,6 +2208,7 @@
 				F15A2D0E14CF85D800D88624 /* cdlengine.cc in Sources */,
 				F1DF55911584274B0097A438 /* FSMVectorRunner.cc in Sources */,
 				F18AD00C15CBA63800492118 /* FSMANTLRMachineVector.cc in Sources */,
+				F139CAE615F6E24600C3C62D /* FSMANTLRVectorFactory.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2224,7 +2231,6 @@
 				F1AFCD30147B8F7800C975DC /* FSMWBSubMachine.cc in Sources */,
 				F1A9E7D3147F76C200C852FC /* ActivityFactory.cpp in Sources */,
 				F1A9E7D5147F76C200C852FC /* parser_walk.c in Sources */,
-				F1A9E7DB147F79E400C852FC /* FSMVectorFactory.cc in Sources */,
 				F1A9E7DF147F7C4600C852FC /* FSMWBSubMachineFactory.cc in Sources */,
 				F1A9E8481480B10700C852FC /* FSMANTLRAction.cc in Sources */,
 				F1F8EAC81480B732008AB889 /* FSMANTLRExpression.cc in Sources */,

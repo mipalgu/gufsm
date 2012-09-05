@@ -59,7 +59,7 @@
 
 #include <vector>
 #include <string>
-#include "FSMVectorFactory.h"
+#include "FSMANTLRVectorFactory.h"
 
 typedef int (*machine_runner_f)(FSM::ANTLRStateMachineVectorFactory &factory, std::vector<std::string> &machine_names);
 

@@ -61,7 +61,7 @@
 #include <iostream>
 #include <gu_util.h>
 
-#include "FSMVectorFactory.h"
+#include "FSMANTLRVectorFactory.h"
 #include "FSMWBSubMachine.h"
 #include "FSMWBSubMachineFactory.h"
 

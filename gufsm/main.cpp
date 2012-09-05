@@ -68,7 +68,7 @@
 #include "FSMState.h"
 #include "FSMExpression.h"
 #include "FSMWBPostAction.h"
-#include "FSMVectorFactory.h"
+#include "FSMANTLRVectorFactory.h"
 #include "FSMVectorRunner.h"
 
 #define ANTLRFunc(x,n)  x func ## x; \
