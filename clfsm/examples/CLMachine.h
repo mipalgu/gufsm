@@ -69,17 +69,21 @@ namespace FSM
                 StateMachineVector      *_vectorContext;/// current vector
                 Machine                 *_machineContext;/// FSM context
                 CLState                 *_currentState; /// current state
+                CLState                 *_suspendState; /// suspend state
                 const char              *_machineName;  /// name of this machine
                 int                      _machineID;    /// number of this machine
         public:
                 /** default constructor */
-                CLMachine(int mid = 0, const char *name = ""): _vectorContext(0), _machineContext(0), _currentState(0), _machineName(name), _machineID(mid) {}
+                CLMachine(int mid = 0, const char *name = ""): _vectorContext(0), _machineContext(0), _currentState(0), _suspendState(0), _machineName(name), _machineID(mid) {}
 
                 /** default destructor (subclass responsibility) */
                 virtual ~CLMachine() {};
 
                 /** access method for the current state the machine is in */
                 CLState *currentState() const { return _currentState; }
+
+                /** access method for the suspend state of the machine */
+                CLState *suspendState() const { return _suspendState; }
 
                 /** access method for the FSM context of this machine */
                 Machine *machineContext() const { return _machineContext; }
@@ -96,11 +100,17 @@ namespace FSM
                 /** set the current state of this machine */
                 void setCurrentState(CLState *state) { _currentState = state; }
 
+                /** set the suspend state of this machine */
+                void setSuspendState(CLState *state) { _suspendState = state; }
+
                 /** set the name of this machine (name needs to be retained externally!) */
                 void setMachineName(const char *name) { _machineName = name; }
 
                 /** set the ID number of this machine */
                 void setMachineID(int mid) { _machineID = mid; }
+
+                /** set the underlying machine context */
+                void setMachineContext(Machine *m) { _machineContext = m; }
 
                 /** return the ith state of this machine */
                 CLState *state(int i) const { return states()[i]; }

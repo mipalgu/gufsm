@@ -94,7 +94,7 @@ namespace FSM
                 CLTransition *_transitions[1];
 
             public:
-                Ping();
+                Ping(const char *name = "Ping");
                 virtual ~Ping();
 
                 virtual CLTransition * const *transitions() const { return _transitions; }

@@ -68,16 +68,23 @@ namespace FSM
 
         class CLState
         {
+                const char      *_name;                 /// name fo the state
                 class State     *_stateContext;         /// FSM context
                 CLAction        &_onEntryAction;        /// onEntry
                 CLAction        &_onExitAction;         /// onExit
                 CLAction        &_internalAction;       /// internal
         public:
                 /** default constructor */
-                CLState(CLAction &onEntry, CLAction &onExit, CLAction &internal, class State *context = 0): _stateContext(context), _onEntryAction(onEntry), _onExitAction(onExit), _internalAction(internal) {}
+                CLState(const char *name, CLAction &onEntry, CLAction &onExit, CLAction &internal, class State *context = 0): _name(name), _stateContext(context), _onEntryAction(onEntry), _onExitAction(onExit), _internalAction(internal) {}
 
                 /** destructor (subclass responsibility!) */
                 virtual ~CLState() {}
+
+                /** name getter */
+                const char *name() const { return _name; }
+
+                /** name setter */
+                void setName(const char *name) { _name = name; }
 
                 /** state context getter */
                 class State *stateContext() const { return _stateContext; }

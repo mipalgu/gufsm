@@ -94,7 +94,7 @@ namespace FSM
                     CLTransition *_transitions[1];
                     
             public:
-                Pong();
+                Pong(const char *name = "Pong");
                 virtual ~Pong();
 
                 virtual CLTransition * const *transitions() const { return _transitions; }

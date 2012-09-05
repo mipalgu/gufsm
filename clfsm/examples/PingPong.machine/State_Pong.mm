@@ -65,7 +65,7 @@ using namespace FSM;
 using namespace CLM;
 using namespace State;
 
-Pong::Pong(): CLState(*new Pong::OnEntry, *new Pong::OnExit, *new Pong::Internal)
+Pong::Pong(const char *name): CLState(name, *new Pong::OnEntry, *new Pong::OnExit, *new Pong::Internal)
 {
         _transitions[0] = new Transition_0();
 }

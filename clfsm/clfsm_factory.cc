@@ -56,12 +56,83 @@
  *
  */
 #include "FSMSuspensibleMachine.h"
+#include "FSMTransition.h"
+#include "FSMState.h"
+#include "CLMachine.h"
+#include "CLState.h"
+#include "CLTransition.h"
 #include "clfsm_factory.h"
 
 using namespace std;
 using namespace FSM;
 
-FSM::CLFSMFactory::CLFSMFactory(Context *context, int mid)
+CLFSMFactory::CLFSMFactory(Context *context, CLMachine *clm, int mid): _clm(clm)
 {
-        setMachine(new SuspensibleMachine(NULL, context, mid));
+        State *initialState = NULL;
+        State *suspendState = NULL;
+        CLState * const *cl_states = clm->states();
+        const CLState * cl_initial = clm->currentState();
+        const CLState * cl_suspend = clm->suspendState();
+        int n = clm->numberOfStates();
+        State *states[n];
+
+        /*
+         * create a state for each CL state
+         */
+        for (int i = 0; i < n; i++)
+        {
+                CLState *clstate = cl_states[i];
+                State *state = createState(clstate, i);
+                states[i] = state;
+                if (clstate == cl_initial) initialState = state;
+                else if (clstate == cl_suspend) suspendState = state;
+        }
+
+        /*
+         * create a machine for the CL machine
+         */
+        createMachine(clm, context, initialState, mid, clm->machineName());
+        SuspensibleMachine *fsm = machine();
+        for (int i = 0; i < n; i++)
+        {
+                CLState *clstate = cl_states[i];
+                State *state = states[i];
+                fsm->addState(state);
+                createTransitions(clstate, state, states);
+        }
+
+        if (suspendState)
+                fsm->setSuspendState(suspendState);
+        else
+                determineSuspendState();
 }
+
+
+void CLFSMFactory::createMachine(CLMachine *clm, Context *context, State *initialState, int mid, const char *name)
+{
+        SuspensibleMachine *fsm = new SuspensibleMachine(initialState, context, mid);
+        setMachine(fsm);
+        clm->setMachineContext(fsm);
+}
+
+
+State *CLFSMFactory::createState(CLState *clstate, int state_number)
+{
+        return new State(state_number, clstate->name());
+}
+
+
+void CLFSMFactory::createTransitions(CLState *clstate, State *state, State **states)
+{
+        CLTransition * const *cl_transitions = clstate->transitions();
+        int n = clstate->numberOfTransitions();
+        state->transitions().reserve(n);
+        for (int i = 0; i < n; i++)
+        {
+                CLTransition *cl_transition = cl_transitions[i];
+                State *dest = states[cl_transition->destinationState()];
+                Transition *transition = new Transition(state, dest, nullptr);
+                state->addTransition(transition);
+        }
+}
+
