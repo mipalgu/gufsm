@@ -63,7 +63,7 @@
 
 #include "FSMANTLRVectorFactory.h"
 #include "FSMWBSubMachine.h"
-#include "FSMWBSubMachineFactory.h"
+#include "FSMANTLRMachineFactory.h"
 
 using namespace FSM;
 using namespace std;
@@ -151,7 +151,7 @@ ANTLRStateMachineVectorFactory::~ANTLRStateMachineVectorFactory()
 
 SuspensibleMachine *ANTLRStateMachineVectorFactory::addMachine(std::string name, int index, bool resume)
 {
-        WBSubMachineFactory machine_factory(_context, name, index);
+        ANTLRMachineFactory machine_factory(_context, name, index);
         SuspensibleMachine *machine = machine_factory.machine();
         machine->initialise();
         fsms()->addMachine(machine, index, resume);

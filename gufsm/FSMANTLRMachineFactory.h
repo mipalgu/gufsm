@@ -1,7 +1,7 @@
 /*
- *  WBSubMachineFactory.cc
+ *  FSMachineVector.h
  *  
- *  Created by René Hexel on 23/09/11.
+ *  Created by René Hexel on 22/11/11.
  *  Copyright (c) 2011 Rene Hexel.
  *  All rights reserved.
  *
@@ -55,31 +55,36 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#include "FSMWBSubMachineFactory.h"
-#include "FSMTransition.h"
-#include "FSMState.h"
-#include "ActivityFactory.h"
-#include "TransitionFactory.h"
-#include "gu_util.h"
+#ifndef gufsm_FSMANTLRMachineFactory_h
+#define gufsm_FSMANTLRMachineFactory_h
 
-using namespace FSM;
-using namespace std;
+#include <string>
+#include "FSMFactory.h"
+#include "FSMWBSubMachine.h"
 
-WBSubMachineFactory::WBSubMachineFactory(WBContext *context, const string &machine_name, int mid)
+namespace FSM
 {
-        setMachine(new WBSubMachine(machine_name, NULL, context, mid));
+        class Context;
 
-        string a_file_name = machine_name + string(".acsl");
-        string t_file_name = machine_name + string(".tcsl");
+        class ANTLRMachineFactory: public Factory
+        {
+        public:
+                /** constructor that builds vector of machines */
+                ANTLRMachineFactory(WBContext *context, const std::string &machine_name, int mid=0);
+                
+                /** Defaut constructor for subclasses. */
+                ANTLRMachineFactory();
 
-        ActivityFactory afactory(machine(), a_file_name.c_str(), NULL);
-        TransitionFactory tfactory(machine(), t_file_name.c_str());
-        if (!determineSuspendState())
-                determineSuspendState(NULL);
-        machine()->setName(machine_name);
-        machine()->initialise();
+                /** Destructor */
+                virtual ~ANTLRMachineFactory() {}
+
+                /** getter */
+                WBSubMachine *machine() const { return static_cast<WBSubMachine*>(_machine); }
+
+                /** setter */
+                void setMachine(WBSubMachine *m) { _machine = m; }
+        };
 }
 
-WBSubMachineFactory::WBSubMachineFactory() {
-        return;
-}
+
+#endif
