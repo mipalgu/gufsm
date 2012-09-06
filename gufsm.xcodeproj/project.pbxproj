@@ -116,6 +116,7 @@
 		F16CC333142C2B88001F788B /* FSMState.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30F142C0F86001F788B /* FSMState.cc */; };
 		F16CC335142C3433001F788B /* FSMAction.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC334142C3433001F788B /* FSMAction.cc */; };
 		F16CC336142C390D001F788B /* FSMAction.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC334142C3433001F788B /* FSMAction.cc */; };
+		F170781E15F95B830058AECD /* CLTransitionExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F170781D15F95B830058AECD /* CLTransitionExpression.cc */; };
 		F18ACF5215CB4F5E00492118 /* State_Pong.mm in Sources */ = {isa = PBXBuildFile; fileRef = F18ACF5115CB4F2800492118 /* State_Pong.mm */; settings = {COMPILER_FLAGS = "-Weverything -Wno-weak-vtables -Wno-padded"; }; };
 		F18AD00C15CBA63800492118 /* FSMANTLRMachineVector.cc in Sources */ = {isa = PBXBuildFile; fileRef = F18AD00A15CBA63800492118 /* FSMANTLRMachineVector.cc */; };
 		F18AD00D15CBA63800492118 /* FSMANTLRMachineVector.cc in Sources */ = {isa = PBXBuildFile; fileRef = F18AD00A15CBA63800492118 /* FSMANTLRMachineVector.cc */; };
@@ -700,6 +701,7 @@
 		F16CC32B142C2AD9001F788B /* FSMTest.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = FSMTest.mm; sourceTree = "<group>"; };
 		F16CC32D142C2AD9001F788B /* FSMTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FSMTest-Prefix.pch"; sourceTree = "<group>"; };
 		F16CC334142C3433001F788B /* FSMAction.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMAction.cc; sourceTree = "<group>"; };
+		F170781D15F95B830058AECD /* CLTransitionExpression.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CLTransitionExpression.cc; path = clfsm/CLTransitionExpression.cc; sourceTree = "<group>"; };
 		F177D0FA1499753A0003748C /* FSMWBPostAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMWBPostAction.h; sourceTree = "<group>"; };
 		F18ACF4615CB4A3A00492118 /* State_Ping_OnEntry.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = State_Ping_OnEntry.mm; sourceTree = "<group>"; };
 		F18ACF4815CB4B3D00492118 /* State_Ping_Internal.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = State_Ping_Internal.mm; sourceTree = "<group>"; };
@@ -1479,6 +1481,7 @@
 		F16CC2EF142C0C01001F788B = {
 			isa = PBXGroup;
 			children = (
+				F170781D15F95B830058AECD /* CLTransitionExpression.cc */,
 				F1A9E8C91480B36100C852FC /* libantlr3c.a */,
 				F16CC2FD142C0C01001F788B /* gufsm */,
 				F1284CFF14A6CAA800C0247E /* gusimplewhiteboard */,
@@ -2306,6 +2309,7 @@
 				F1A517F915C922C900348C25 /* WhiteboardConstants.cc in Sources */,
 				F1A517FA15C9232200348C25 /* FSMActivity.cc in Sources */,
 				F1A5180715C94EC500348C25 /* FSMachineVector.cc in Sources */,
+				F170781E15F95B830058AECD /* CLTransitionExpression.cc in Sources */,
 				F1A5180815C94F0600348C25 /* gu_util.cpp in Sources */,
 				F1A5180D15C9514A00348C25 /* PingPong.mm in Sources */,
 				F167F7AA15CB3CB000A56F17 /* State_Ping.mm in Sources */,

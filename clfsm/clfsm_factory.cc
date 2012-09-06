@@ -99,7 +99,7 @@ CLFSMFactory::CLFSMFactory(Context *context, CLMachine *clm, int mid): _clm(clm)
                 CLState *clstate = cl_states[i];
                 State *state = states[i];
                 fsm->addState(state);
-                createTransitions(clstate, state, states);
+                createTransitions(clm, clstate, state, states);
         }
 
         if (suspendState)
@@ -123,7 +123,7 @@ State *CLFSMFactory::createState(CLState *clstate, int state_number)
 }
 
 
-void CLFSMFactory::createTransitions(CLState *clstate, State *state, State **states)
+void CLFSMFactory::createTransitions(CLMachine *clm, CLState *clstate, State *state, State **states)
 {
         CLTransition * const *cl_transitions = clstate->transitions();
         int n = clstate->numberOfTransitions();
@@ -132,8 +132,8 @@ void CLFSMFactory::createTransitions(CLState *clstate, State *state, State **sta
         {
                 CLTransition *cl_transition = cl_transitions[i];
                 State *dest = states[cl_transition->destinationState()];
-                CLTransitionExpression *expression = new CLTransitionExpression(
-                Transition *transition = new Transition(state, dest, nullptr);
+                CLTransitionExpression *expression = new CLTransitionExpression(clm, clstate, cl_transition);
+                Transition *transition = new Transition(state, dest, expression);
                 state->addTransition(transition);
         }
 }

@@ -1,8 +1,8 @@
 /*
- *  clfsm_factory.h
+ *  CLTransition.h
  *  clfsm
  *
- *  Created by Rene Hexel on 5/08/12.
+ *  Created by Rene Hexel on 3/08/12.
  *  Copyright (c) 2012 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,7 +32,7 @@
  * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER
  * OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
  * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
@@ -55,38 +55,34 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef ____clfsm_factory__
-#define ____clfsm_factory__
-
-#include "FSMFactory.h"
+#ifndef clfsm_CLTransition_h
+#define clfsm_CLTransition_h
 
 namespace FSM
 {
         class CLMachine;
         class CLState;
-        class SuspensibleMachine;
-        class Context;
-        class State;
 
-        class CLFSMFactory: public Factory
+        /** class representing a transition in a clang FSM */
+        class CLTransition
         {
-                CLMachine *_clm;        /// underlying CL machine
+                int _destinationState;  /// destination state for this transition
         public:
                 /** default constructor */
-                CLFSMFactory(Context *context, CLMachine *clm, int mid=0);
+                CLTransition(int to = -1): _destinationState(to) {}
 
-                /** destructor */
-                virtual ~CLFSMFactory() {};
+                /** default destructor */
+                virtual ~CLTransition() {}
 
-                /** machine creator */
-                virtual void createMachine(CLMachine *clm, Context *context = 0, State *initialState = 0, int mid = 0, const char *name = "");
+                /** destination state getter */
+                int destinationState() const { return _destinationState; }
 
-                /** state creator */
-                virtual State *createState(CLState *clstate, int state_number);
+                /** destination state setter */
+                void setDestinationState(int to) { _destinationState = to; }
 
-                /** transitions creator */
-                virtual void createTransitions(CLMachine *clm, CLState *clstate, State *state, State **states);
+                /** check if the transition should fire */
+                virtual bool check(CLMachine *, CLState *) const { return true; }
         };
 }
 
-#endif /* defined(____clfsm_factory__) */
+#endif

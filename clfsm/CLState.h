@@ -1,8 +1,8 @@
 /*
- *  clfsm_factory.h
- *  clfsm
+ *  CLState.h
+ *  gufsm
  *
- *  Created by Rene Hexel on 5/08/12.
+ *  Created by Rene Hexel on 1/08/12.
  *  Copyright (c) 2012 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,7 +32,7 @@
  * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER
  * OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
  * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
@@ -55,38 +55,70 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef ____clfsm_factory__
-#define ____clfsm_factory__
+#ifndef __clfsm__CLState__
+#define __clfsm__CLState__
 
-#include "FSMFactory.h"
+#include "CLAction.h"
 
 namespace FSM
 {
-        class CLMachine;
-        class CLState;
-        class SuspensibleMachine;
-        class Context;
         class State;
+        class CLMachine;
+        class CLTransition;
 
-        class CLFSMFactory: public Factory
+        class CLState
         {
-                CLMachine *_clm;        /// underlying CL machine
+                const char      *_name;                 /// name fo the state
+                class State     *_stateContext;         /// FSM context
+                CLAction        &_onEntryAction;        /// onEntry
+                CLAction        &_onExitAction;         /// onExit
+                CLAction        &_internalAction;       /// internal
         public:
                 /** default constructor */
-                CLFSMFactory(Context *context, CLMachine *clm, int mid=0);
+                CLState(const char *name, CLAction &onEntry, CLAction &onExit, CLAction &internal, class State *context = 0): _name(name), _stateContext(context), _onEntryAction(onEntry), _onExitAction(onExit), _internalAction(internal) {}
 
-                /** destructor */
-                virtual ~CLFSMFactory() {};
+                /** destructor (subclass responsibility!) */
+                virtual ~CLState() {}
 
-                /** machine creator */
-                virtual void createMachine(CLMachine *clm, Context *context = 0, State *initialState = 0, int mid = 0, const char *name = "");
+                /** name getter */
+                const char *name() const { return _name; }
 
-                /** state creator */
-                virtual State *createState(CLState *clstate, int state_number);
+                /** name setter */
+                void setName(const char *name) { _name = name; }
 
-                /** transitions creator */
-                virtual void createTransitions(CLMachine *clm, CLState *clstate, State *state, State **states);
+                /** state context getter */
+                class State *stateContext() const { return _stateContext; }
+
+                /** state context setter */
+                void setStateContext(class State *state) { _stateContext = state; }
+
+                /** onEntry action getter */
+                CLAction &onEntryAction() const { return _onEntryAction; }
+
+                /** onExit action getter */
+                CLAction &onExitAction()  const { return _onExitAction; }
+
+                /** internal action getter */
+                CLAction &internalAction()const { return _internalAction; }
+
+                /** perform the onEntry action */
+                void performOnEntry(CLMachine *m) { _onEntryAction.perform(m, this); }
+
+                /** perform the onExit action */
+                void performOnExit(CLMachine *m)  { _onExitAction.perform(m, this); }
+
+                /** perform the internal action */
+                void performInternal(CLMachine *m){ _internalAction.perform(m, this); }
+
+                /** return the ith transition leading out of this state */
+                CLTransition *transition(int i) const { return transitions()[i]; }
+
+                /** return the array of transitions for this state */
+                virtual CLTransition * const *transitions() const = 0;
+
+                /** return the number of transitions leading out of this state */
+                virtual int numberOfTransitions() const = 0;
         };
 }
 
-#endif /* defined(____clfsm_factory__) */
+#endif /* defined(__gufsm__CLState__) */
