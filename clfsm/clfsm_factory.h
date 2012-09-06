@@ -76,7 +76,7 @@ namespace FSM
                 CLFSMFactory(Context *context, CLMachine *clm, int mid=0);
 
                 /** destructor */
-                virtual ~CLFSMFactory() {};
+                virtual ~CLFSMFactory();
 
                 /** machine creator */
                 virtual void createMachine(CLMachine *clm, Context *context = 0, State *initialState = 0, int mid = 0, const char *name = "");

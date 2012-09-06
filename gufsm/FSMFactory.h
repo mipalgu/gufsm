@@ -68,8 +68,10 @@ namespace FSM
         protected:
                 SuspensibleMachine *_machine;   /// built state machine
         public:
-                /** Destructor */
-                virtual ~Factory() {}
+                /** Destructor
+                 *  (for compatibility, this does not destroy _machine,
+                 *  but subclassess may) */
+                virtual ~Factory() { }
 
                 /** getter */
                 SuspensibleMachine *machine() const { return _machine; }

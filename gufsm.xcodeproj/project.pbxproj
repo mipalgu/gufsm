@@ -155,7 +155,6 @@
 		F1A9E7D3147F76C200C852FC /* ActivityFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CC147F76C200C852FC /* ActivityFactory.cpp */; };
 		F1A9E7D4147F76C200C852FC /* parser_walk.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CE147F76C200C852FC /* parser_walk.c */; };
 		F1A9E7D5147F76C200C852FC /* parser_walk.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CE147F76C200C852FC /* parser_walk.c */; };
-		F1A9E7DF147F7C4600C852FC /* FSMWBSubMachineFactory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7DD147F7C4600C852FC /* FSMWBSubMachineFactory.cc */; };
 		F1A9E8471480B10700C852FC /* FSMANTLRAction.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E8461480B10700C852FC /* FSMANTLRAction.cc */; };
 		F1A9E8481480B10700C852FC /* FSMANTLRAction.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E8461480B10700C852FC /* FSMANTLRAction.cc */; };
 		F1A9E8CA1480B36100C852FC /* libantlr3c.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A9E8C91480B36100C852FC /* libantlr3c.a */; };
@@ -317,13 +316,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E1144EB41585E21600C3C113 /* SimpleCLexer.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = SimpleCLexer.c; path = ../gufsm/build.host/SimpleCLexer.c; sourceTree = "<group>"; };
-		E1144EB51585E21600C3C113 /* SimpleCParser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = SimpleCParser.c; path = ../gufsm/build.host/SimpleCParser.c; sourceTree = "<group>"; };
-		E1144EB81585E23900C3C113 /* ActionsContainer_SimpleCParser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = ActionsContainer_SimpleCParser.c; path = ../gufsm/build.host/ActionsContainer_SimpleCParser.c; sourceTree = "<group>"; };
-		E1144EB91585E23900C3C113 /* ActionsContainerLexer.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = ActionsContainerLexer.c; path = ../gufsm/build.host/ActionsContainerLexer.c; sourceTree = "<group>"; };
-		E1144EBA1585E23900C3C113 /* ActionsContainerParser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = ActionsContainerParser.c; path = ../gufsm/build.host/ActionsContainerParser.c; sourceTree = "<group>"; };
-		E1144EBB1585E23900C3C113 /* TransitionContainer_SimpleCParser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = TransitionContainer_SimpleCParser.c; path = ../gufsm/build.host/TransitionContainer_SimpleCParser.c; sourceTree = "<group>"; };
-		E1144EBC1585E23900C3C113 /* TransitionContainerParser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = TransitionContainerParser.c; path = ../gufsm/build.host/TransitionContainerParser.c; sourceTree = "<group>"; };
+		E1144EB41585E21600C3C113 /* SimpleCLexer.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = SimpleCLexer.c; path = build.host/SimpleCLexer.c; sourceTree = "<group>"; };
+		E1144EB51585E21600C3C113 /* SimpleCParser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = SimpleCParser.c; path = build.host/SimpleCParser.c; sourceTree = "<group>"; };
+		E1144EB81585E23900C3C113 /* ActionsContainer_SimpleCParser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = ActionsContainer_SimpleCParser.c; path = build.host/ActionsContainer_SimpleCParser.c; sourceTree = "<group>"; };
+		E1144EB91585E23900C3C113 /* ActionsContainerLexer.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = ActionsContainerLexer.c; path = build.host/ActionsContainerLexer.c; sourceTree = "<group>"; };
+		E1144EBA1585E23900C3C113 /* ActionsContainerParser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = ActionsContainerParser.c; path = build.host/ActionsContainerParser.c; sourceTree = "<group>"; };
+		E1144EBB1585E23900C3C113 /* TransitionContainer_SimpleCParser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = TransitionContainer_SimpleCParser.c; path = build.host/TransitionContainer_SimpleCParser.c; sourceTree = "<group>"; };
+		E1144EBC1585E23900C3C113 /* TransitionContainerParser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = TransitionContainerParser.c; path = build.host/TransitionContainerParser.c; sourceTree = "<group>"; };
 		E11CABD914BD243900A1019A /* fsmWbDependencyDump */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = fsmWbDependencyDump; sourceTree = BUILT_PRODUCTS_DIR; };
 		E11CABDC14BD243900A1019A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		E11CABDE14BD243900A1019A /* fsmWbDependencyDump.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = fsmWbDependencyDump.1; sourceTree = "<group>"; };
@@ -701,7 +700,7 @@
 		F16CC32B142C2AD9001F788B /* FSMTest.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = FSMTest.mm; sourceTree = "<group>"; };
 		F16CC32D142C2AD9001F788B /* FSMTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FSMTest-Prefix.pch"; sourceTree = "<group>"; };
 		F16CC334142C3433001F788B /* FSMAction.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMAction.cc; sourceTree = "<group>"; };
-		F170781D15F95B830058AECD /* CLTransitionExpression.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CLTransitionExpression.cc; path = clfsm/CLTransitionExpression.cc; sourceTree = "<group>"; };
+		F170781D15F95B830058AECD /* CLTransitionExpression.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CLTransitionExpression.cc; sourceTree = "<group>"; };
 		F177D0FA1499753A0003748C /* FSMWBPostAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMWBPostAction.h; sourceTree = "<group>"; };
 		F18ACF4615CB4A3A00492118 /* State_Ping_OnEntry.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = State_Ping_OnEntry.mm; sourceTree = "<group>"; };
 		F18ACF4815CB4B3D00492118 /* State_Ping_Internal.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = State_Ping_Internal.mm; sourceTree = "<group>"; };
@@ -797,7 +796,7 @@
 		F1A517CC15C91BDC00348C25 /* clfsm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = clfsm; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1A517CF15C91BDC00348C25 /* clfsm+PingPong.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "clfsm+PingPong.cc"; sourceTree = "<group>"; };
 		F1A517D115C91BDC00348C25 /* clfsm.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = clfsm.1; sourceTree = "<group>"; };
-		F1A517F415C91ECC00348C25 /* stringConstants.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = stringConstants.c; path = ../gufsm/stringConstants.c; sourceTree = "<group>"; };
+		F1A517F415C91ECC00348C25 /* stringConstants.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = stringConstants.c; sourceTree = "<group>"; };
 		F1A5180215C9438A00348C25 /* CLState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLState.h; sourceTree = "<group>"; };
 		F1A5180515C947D400348C25 /* CLAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLAction.h; sourceTree = "<group>"; };
 		F1A5180915C94FF900348C25 /* CLMachine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLMachine.h; sourceTree = "<group>"; };
@@ -810,8 +809,6 @@
 		F1A9E7CF147F76C200C852FC /* parser_walk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parser_walk.h; sourceTree = "<group>"; };
 		F1A9E7D0147F76C200C852FC /* TransitionFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TransitionFactory.cpp; sourceTree = "<group>"; };
 		F1A9E7D1147F76C200C852FC /* TransitionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionFactory.h; sourceTree = "<group>"; };
-		F1A9E7DC147F7B8600C852FC /* FSMWBSubMachineFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMWBSubMachineFactory.h; sourceTree = "<group>"; };
-		F1A9E7DD147F7C4600C852FC /* FSMWBSubMachineFactory.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMWBSubMachineFactory.cc; sourceTree = "<group>"; };
 		F1A9E8341480A2A200C852FC /* FSMANTLRAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMANTLRAction.h; sourceTree = "<group>"; };
 		F1A9E8461480B10700C852FC /* FSMANTLRAction.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRAction.cc; sourceTree = "<group>"; };
 		F1A9E8C91480B36100C852FC /* libantlr3c.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libantlr3c.a; path = /Users/rh/Devel/src/MiPal/GUNao/posix/gubehaviourinterpreter/../../../../../../../../../../usr/local/lib/libantlr3c.a; sourceTree = "<absolute>"; };
@@ -1481,7 +1478,6 @@
 		F16CC2EF142C0C01001F788B = {
 			isa = PBXGroup;
 			children = (
-				F170781D15F95B830058AECD /* CLTransitionExpression.cc */,
 				F1A9E8C91480B36100C852FC /* libantlr3c.a */,
 				F16CC2FD142C0C01001F788B /* gufsm */,
 				F1284CFF14A6CAA800C0247E /* gusimplewhiteboard */,
@@ -1565,14 +1561,20 @@
 				F1AFCD2D147B8F4200C975DC /* FSMWBSubMachine.h */,
 				F19C2B96142C7B37007CFC83 /* FSMTransition.h */,
 				F12DCDD71484BAD100461AD6 /* FSMTransition.cc */,
-				F1A9E7DC147F7B8600C852FC /* FSMWBSubMachineFactory.h */,
-				F1A9E7DD147F7C4600C852FC /* FSMWBSubMachineFactory.cc */,
 				F1A9E7CC147F76C200C852FC /* ActivityFactory.cpp */,
 				F1A9E7CD147F76C200C852FC /* ActivityFactory.h */,
 				F1A9E7CE147F76C200C852FC /* parser_walk.c */,
 				F1A9E7CF147F76C200C852FC /* parser_walk.h */,
 				F1A9E7D0147F76C200C852FC /* TransitionFactory.cpp */,
 				F1A9E7D1147F76C200C852FC /* TransitionFactory.h */,
+				F1A517F415C91ECC00348C25 /* stringConstants.c */,
+				E1144EB81585E23900C3C113 /* ActionsContainer_SimpleCParser.c */,
+				E1144EB91585E23900C3C113 /* ActionsContainerLexer.c */,
+				E1144EBA1585E23900C3C113 /* ActionsContainerParser.c */,
+				E1144EBB1585E23900C3C113 /* TransitionContainer_SimpleCParser.c */,
+				E1144EBC1585E23900C3C113 /* TransitionContainerParser.c */,
+				E1144EB41585E21600C3C113 /* SimpleCLexer.c */,
+				E1144EB51585E21600C3C113 /* SimpleCParser.c */,
 			);
 			path = gufsm;
 			sourceTree = "<group>";
@@ -1762,18 +1764,11 @@
 		F1A517CE15C91BDC00348C25 /* clfsm */ = {
 			isa = PBXGroup;
 			children = (
+				F170781D15F95B830058AECD /* CLTransitionExpression.cc */,
 				F12EAE5415F6F48A002DB436 /* clfsm_factory.cc */,
 				F12EAE5815F6F4C3002DB436 /* clfsm_factory.h */,
 				F12EAE5515F6F48A002DB436 /* clfsm_vector_factory.cc */,
 				F12EAE5915F6F4C3002DB436 /* clfsm_vector_factory.h */,
-				F1A517F415C91ECC00348C25 /* stringConstants.c */,
-				E1144EB81585E23900C3C113 /* ActionsContainer_SimpleCParser.c */,
-				E1144EB91585E23900C3C113 /* ActionsContainerLexer.c */,
-				E1144EBA1585E23900C3C113 /* ActionsContainerParser.c */,
-				E1144EBB1585E23900C3C113 /* TransitionContainer_SimpleCParser.c */,
-				E1144EBC1585E23900C3C113 /* TransitionContainerParser.c */,
-				E1144EB41585E21600C3C113 /* SimpleCLexer.c */,
-				E1144EB51585E21600C3C113 /* SimpleCParser.c */,
 				F1A5180015C9278500348C25 /* examples */,
 				F1A517CF15C91BDC00348C25 /* clfsm+PingPong.cc */,
 				F1A517D115C91BDC00348C25 /* clfsm.1 */,
@@ -2260,7 +2255,6 @@
 				F1AFCD30147B8F7800C975DC /* FSMWBSubMachine.cc in Sources */,
 				F1A9E7D3147F76C200C852FC /* ActivityFactory.cpp in Sources */,
 				F1A9E7D5147F76C200C852FC /* parser_walk.c in Sources */,
-				F1A9E7DF147F7C4600C852FC /* FSMWBSubMachineFactory.cc in Sources */,
 				F1A9E8481480B10700C852FC /* FSMANTLRAction.cc in Sources */,
 				F1F8EAC81480B732008AB889 /* FSMANTLRExpression.cc in Sources */,
 				F12DCCE714830A9E00461AD6 /* TransitionFactory.cpp in Sources */,
