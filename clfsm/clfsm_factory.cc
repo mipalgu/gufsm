@@ -138,3 +138,34 @@ void CLFSMFactory::createTransitions(CLMachine *clm, CLState *clstate, State *st
         }
 }
 
+
+CLFSMFactory::~CLFSMFactory()
+{
+        int n = _clm->numberOfStates();
+
+        /*
+         * tear down each state
+         */
+        for (int i = 0; i < n; i++)
+        {
+                CLState *clstate = _clm->state(i);
+                State *state = machine()->states()[i];
+                CLTransition * const *cl_transitions = clstate->transitions();
+                int m = clstate->numberOfTransitions();
+                for (int j = 0; j < m; j++)
+                {
+                        CLTransition *cltransition = cl_transitions[j];
+                        Transition *transition = state->transitions()[j];
+                        auto expression = transition->expression();
+
+                        delete expression;
+                        delete transition;
+                        delete cltransition;
+                }
+                delete state;
+                delete clstate;
+        }
+
+        delete machine();
+        delete _clm;
+}
