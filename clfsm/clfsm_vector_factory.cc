@@ -95,7 +95,10 @@ SuspensibleMachine *CLFSMVectorFactory::addMachine(CLMachine *clm, int index, bo
                 _clfactories.push_back(factory);
         }
 
-        return factory->machine();
+        SuspensibleMachine *m = factory->machine();
+        _fsms->addMachine(m, index);
+
+        return m;
 }
 
 

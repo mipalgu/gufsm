@@ -62,6 +62,7 @@
 #include "CLState.h"
 #include "CLTransition.h"
 #include "CLTransitionExpression.h"
+#include "CLActionAction.h"
 #include "clfsm_factory.h"
 
 using namespace std;
@@ -99,6 +100,7 @@ CLFSMFactory::CLFSMFactory(Context *context, CLMachine *clm, int mid, bool del):
                 CLState *clstate = cl_states[i];
                 State *state = states[i];
                 fsm->addState(state);
+                createActions(clm, clstate, state);
                 createTransitions(clm, clstate, state, states);
         }
 
@@ -120,6 +122,18 @@ void CLFSMFactory::createMachine(CLMachine *clm, Context *context, State *initia
 State *CLFSMFactory::createState(CLState *clstate, int state_number)
 {
         return new State(state_number, clstate->name());
+}
+
+
+void CLFSMFactory::createActions(CLMachine *clm, CLState *clstate, State *state)
+{
+        CLActionAction *onEntry  = new CLActionAction(clm, clstate, &clstate->onEntryAction());
+        CLActionAction *onExit   = new CLActionAction(clm, clstate, &clstate->onExitAction());
+        CLActionAction *internal = new CLActionAction(clm, clstate, &clstate->internalAction());
+
+        state->activity().addOnEntryAction(onEntry);
+        state->activity().addOnExitAction(onExit);
+        state->activity().addInternalAction(internal);
 }
 
 
@@ -162,6 +176,16 @@ CLFSMFactory::~CLFSMFactory()
                         delete transition;
                         delete cltransition;
                 }
+
+                for (auto onEntryAction: state->activity().onEntryActions())
+                        delete onEntryAction;
+
+                for (auto onExitAction: state->activity().onExitActions())
+                        delete onExitAction;
+
+                for (auto internalAction: state->activity().internalActions())
+                        delete internalAction;
+
                 delete state;
                 delete clstate;
         }
