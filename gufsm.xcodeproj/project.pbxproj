@@ -48,6 +48,7 @@
 		E11FB9B814BD4793009C778E /* gusimplewhiteboard.c in Sources */ = {isa = PBXBuildFile; fileRef = E11FB99914BD4793009C778E /* gusimplewhiteboard.c */; };
 		E11FB9B914BD4793009C778E /* Whiteboard.cc in Sources */ = {isa = PBXBuildFile; fileRef = E11FB99A14BD4793009C778E /* Whiteboard.cc */; };
 		E11FB9BA14BD4793009C778E /* WhiteboardConstants.cc in Sources */ = {isa = PBXBuildFile; fileRef = E11FB99B14BD4793009C778E /* WhiteboardConstants.cc */; };
+		F11144FC15F98447005953C1 /* clfsm_vector_factory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F11144FB15F98447005953C1 /* clfsm_vector_factory.cc */; };
 		F1199D6014302767003853BF /* FSMExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1199D5F14302767003853BF /* FSMExpression.cc */; };
 		F1199D6114302767003853BF /* FSMExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1199D5F14302767003853BF /* FSMExpression.cc */; };
 		F1284D1214A6CAA800C0247E /* gusimplewhiteboard.c in Sources */ = {isa = PBXBuildFile; fileRef = F1284D0014A6CAA800C0247E /* gusimplewhiteboard.c */; };
@@ -357,6 +358,7 @@
 		E11FB99914BD4793009C778E /* gusimplewhiteboard.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gusimplewhiteboard.c; path = ../../gusimplewhiteboard/gusimplewhiteboard.c; sourceTree = "<group>"; };
 		E11FB99A14BD4793009C778E /* Whiteboard.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Whiteboard.cc; path = ../../gusimplewhiteboard/Whiteboard.cc; sourceTree = "<group>"; };
 		E11FB99B14BD4793009C778E /* WhiteboardConstants.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WhiteboardConstants.cc; path = ../../gusimplewhiteboard/WhiteboardConstants.cc; sourceTree = "<group>"; };
+		F11144FB15F98447005953C1 /* clfsm_vector_factory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = clfsm_vector_factory.cc; path = clfsm/clfsm_vector_factory.cc; sourceTree = "<group>"; };
 		F1199D5F14302767003853BF /* FSMExpression.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMExpression.cc; sourceTree = "<group>"; };
 		F1284D0014A6CAA800C0247E /* gusimplewhiteboard.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gusimplewhiteboard.c; sourceTree = "<group>"; };
 		F1284D0114A6CAA800C0247E /* gusimplewhiteboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gusimplewhiteboard.h; sourceTree = "<group>"; };
@@ -1478,6 +1480,7 @@
 		F16CC2EF142C0C01001F788B = {
 			isa = PBXGroup;
 			children = (
+				F11144FB15F98447005953C1 /* clfsm_vector_factory.cc */,
 				F1A9E8C91480B36100C852FC /* libantlr3c.a */,
 				F16CC2FD142C0C01001F788B /* gufsm */,
 				F1284CFF14A6CAA800C0247E /* gusimplewhiteboard */,
@@ -2285,6 +2288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F12EAE5615F6F48A002DB436 /* clfsm_factory.cc in Sources */,
+				F11144FC15F98447005953C1 /* clfsm_vector_factory.cc in Sources */,
 				F1A517D015C91BDC00348C25 /* clfsm+PingPong.cc in Sources */,
 				F1A517E815C91CA500348C25 /* FSMAction.cc in Sources */,
 				F1A517EA15C91CA500348C25 /* FSMExpression.cc in Sources */,

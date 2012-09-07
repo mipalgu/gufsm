@@ -73,13 +73,19 @@ namespace FSM
                 Factory(SuspensibleMachine *m = 0, bool del = false): _machine(m), _delete(del) {}
 
                 /** Destructor */
-                virtual ~Factory() { if (_delete && _machine) delete _machine; }
+                virtual ~Factory();
 
-                /** getter */
+                /** machine getter */
                 SuspensibleMachine *machine() const { return _machine; }
 
-                /** setter */
+                /** machine setter */
                 void setMachine(SuspensibleMachine *m) { _machine = m; }
+
+                /** delete mode getter */
+                bool deleteOnDealloc() const { return _delete; }
+
+                /** delete mode setter */
+                void setDeleteOnDealloc(bool del = true) { _delete = del; }
 
                 /** search for a suspend state */
                 virtual bool determineSuspendState(const char *name = "Suspend");

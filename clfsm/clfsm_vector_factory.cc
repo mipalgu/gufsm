@@ -56,21 +56,50 @@
  *
  */
 #include "FSMachineVector.h"
+#include "clfsm_factory.h"
 #include "clfsm_vector_factory.h"
 
 
 using namespace std;
 using namespace FSM;
 
-CLFSMVectorFactory::CLFSMVectorFactory(Context *context): _context(context), _clmachines()
+CLFSMVectorFactory::CLFSMVectorFactory(Context *context, bool del): _context(context), _clmachines(), _clfactories(), _delete(del)
 {
         _fsms = new StateMachineVector(context);
 }
 
 
-SuspensibleMachine *CLFSMVectorFactory::addMachine(CLMachine *clm, int index, bool resume)
+CLFSMVectorFactory::~CLFSMVectorFactory()
 {
-        
-        SuspensibleMachine *machine = 0;
+        if (_delete) delete _fsms;
 }
 
+
+SuspensibleMachine *CLFSMVectorFactory::addMachine(CLMachine *clm, int index, bool resume)
+{
+        int n = int(_clmachines.size());
+        if (index < 0) index = n;
+        else if (index > n) throw "invalid index";
+
+        CLFSMFactory *factory = machine_factory(clm, index);
+
+        if (index < n)
+        {
+                _clmachines[index] = clm;
+                if (_clfactories[index]) delete _clfactories[index];
+                _clfactories[index] = factory;
+        }
+        else
+        {
+                _clmachines.push_back(clm);
+                _clfactories.push_back(factory);
+        }
+
+        return factory->machine();
+}
+
+
+CLFSMFactory *CLFSMVectorFactory::machine_factory(CLMachine *clm, int index)
+{
+        return new CLFSMFactory(_context, clm, index, _delete);
+}

@@ -67,7 +67,7 @@
 using namespace std;
 using namespace FSM;
 
-CLFSMFactory::CLFSMFactory(Context *context, CLMachine *clm, int mid): _clm(clm)
+CLFSMFactory::CLFSMFactory(Context *context, CLMachine *clm, int mid, bool del): Factory(NULL, del), _clm(clm)
 {
         State *initialState = NULL;
         State *suspendState = NULL;
@@ -166,6 +166,5 @@ CLFSMFactory::~CLFSMFactory()
                 delete clstate;
         }
 
-        delete machine();
         delete _clm;
 }

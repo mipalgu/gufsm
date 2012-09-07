@@ -63,6 +63,7 @@
 namespace FSM
 {
         class CLMachine;
+        class CLFSMFactory;
         class SuspensibleMachine;
         class StateMachineVector;
         class Context;
@@ -73,12 +74,27 @@ namespace FSM
                 StateMachineVector      *_fsms;         /// created FSMs
                 Context                 *_context;      /// factory context
                 std::vector<CLMachine *> _clmachines;   /// CL machines in vector
+                std::vector<CLFSMFactory *> _clfactories; /// factories
+                bool                     _delete;       /// delete machines?
         public:
-                CLFSMVectorFactory(Context *context);   /// default constructor
+                /// default constructor
+                CLFSMVectorFactory(Context *context, bool del = true);
                 virtual ~CLFSMVectorFactory();           /// destructor
+
+                /// state machine vector getter
+                StateMachineVector *fsms() const { return _fsms; }
+
+                /// delete mode getter
+                bool deleteOnDealloc() const { return _delete; }
+
+                /// delete mode setter
+                void setDeleteOnDealloc(bool del = true) { _delete = del; }
 
                 /** add a machine to the vector */
                 virtual SuspensibleMachine *addMachine(CLMachine *clm, int index=-1, bool resume=false);
+
+                /// return the machine factory to use (override in subclasses)
+                virtual CLFSMFactory *machine_factory(CLMachine *clm, int index);
         };
 }
 

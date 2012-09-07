@@ -64,6 +64,13 @@
 using namespace FSM;
 using namespace std;
 
+Factory::~Factory()
+{
+        if (_delete && _machine)
+                delete _machine;
+}
+
+
 bool FSM::Factory::determineSuspendState(const char *name)
 {
         if (machine()->suspendState()) return true;

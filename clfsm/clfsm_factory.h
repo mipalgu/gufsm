@@ -73,7 +73,7 @@ namespace FSM
                 CLMachine *_clm;        /// underlying CL machine
         public:
                 /** default constructor */
-                CLFSMFactory(Context *context, CLMachine *clm, int mid=0);
+                CLFSMFactory(Context *context, CLMachine *clm, int mid=0, bool del=true);
 
                 /** destructor */
                 virtual ~CLFSMFactory();
