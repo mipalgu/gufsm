@@ -67,9 +67,13 @@ namespace FSM
         {
         protected:
                 SuspensibleMachine *_machine;   /// built state machine
+                bool                _delete;    /// delete machine (default: no)
         public:
+                /** Constructor */
+                Factory(SuspensibleMachine *m = 0, bool del = false): _machine(m), _delete(del) {}
+
                 /** Destructor */
-                virtual ~Factory() {}
+                virtual ~Factory() { if (_delete && _machine) delete _machine; }
 
                 /** getter */
                 SuspensibleMachine *machine() const { return _machine; }
