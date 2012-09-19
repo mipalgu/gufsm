@@ -421,6 +421,7 @@ int run_machine_vector(ANTLRStateMachineVectorFactory &factory, vector<string> &
         ANTLRMaths(Log);
         ANTLRMaths(Ld);
         ANTLRMaths(Lg);
+		ANTLRMaths(Sqrt);
         
         ANTLRMaths(Min);
         ANTLRMaths(Max);
