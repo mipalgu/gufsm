@@ -7,7 +7,7 @@
     <outputnames></outputnames>
     <itransition ypos="213.28" endx="19" xpos="-41" endy="213.28"/>
     <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;extern guparticlefilter_currentX;&#xa;&#x9;extern guparticlefilter_currentY;&#xa;&#x9;extern guparticlefilter_currentRotation;&#xa;&#x9;extern DistanceToGoal;&#xa;&#x9;extern gunaowalk_ready;&#xa;&#x9;extern gunaowalk_stop;&#xa;&#x9;int ang;&#xa;&#x9;int cx;&#xa;&#x9;int cy;&#xa;&#x9;int gx;&#xa;&#x9;int gy;&#xa;&#x9;int turnToAngle;&#xa;&#x9;int fieldWidth;&#xa;&#x9;int xDiff;&#xa;&#x9;int hypo;&#x9;&#xa;&#x9;post(&quot;gunaomotion_naoMotionPlayer&quot;, &quot;dcm_from_getup&quot;);&#xa;&#x9;print_state_name();&#x9;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="213.28" code="0" xpos="59" linewidth="1">State_0</state>
-    <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;ang=guparticlefilter_currentRotation;&#xa;&#x9;cx=guparticlefilter_currentX;&#xa;&#x9;xy=guparticlefilter_currentY;&#xa;&#x9;gx=150;&#xa;&#x9;gy=10;&#xa;&#x9;fieldWidth = 300;&#xa;&#x9;post(&quot;gunaowalk_ready&quot;, &quot;ready&quot;);&#xa;&#x9;print_state_name();&#x9;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="206.4466666666667" code="1" xpos="169.1666666666667" linewidth="1">setup</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;ang=guparticlefilter_currentRotation;&#xa;&#x9;cx=guparticlefilter_currentX;&#xa;&#x9;xy=guparticlefilter_currentY;&#xa;&#x9;gx=250;&#xa;&#x9;gy=50;&#xa;&#x9;fieldWidth = 300;&#xa;&#x9;post(&quot;gunaowalk_ready&quot;, &quot;ready&quot;);&#xa;&#x9;print_state_name();&#x9;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="206.4466666666667" code="1" xpos="169.1666666666667" linewidth="1">setup</state>
     <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;postv(&quot;gunaowalk_walk&quot;, 0,0,35,100);&#x9;&#xa;&#x9;print_state_name();&#x9;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="55.91999999999999" code="2" xpos="410" linewidth="1">turnLeft</state>
     <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;postv(&quot;gunaowalk_walk&quot;, 0,0,-35,100);&#x9;&#xa;&#x9;print_state_name();&#x9;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="164.28" code="3" xpos="410" linewidth="1">turnRight</state>
     <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;post(&quot;gunaowalk_stop&quot;, &quot;stop&quot;);&#x9;&#xa;&#x9;print_state_name();&#x9;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="211.28" code="4" xpos="646" linewidth="1">finishedTurning</state>
@@ -28,14 +28,17 @@
     <state pencolor="0" radius="40" description="OnEntry {&#x9;postv(&quot;gunaowalk_walk&quot;,0,0,35,100);&#x9;&#xa;&#x9;&#x9;print_state_name();&#x9;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="1143.2" code="18" xpos="759.52" linewidth="1">turnLeft</state>
     <state pencolor="0" radius="40" description="OnEntry { &#x9;print_state_name();&#xa;&#x9;&#x9;post(&quot;gunaowalk_stop&quot;,&quot;stop&quot;);&#x9;&#xa;&#x9;&#x9;post(&quot;gunaowalk_disconnect&quot;,&quot;stop&quot;);&#xa;&#x9;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="1262.96" code="19" xpos="754.24" linewidth="1">doNothing</state>
     <state pencolor="0" radius="40" description="OnEntry {&#x9;post(&quot;gunaowalk_stop&quot;,&quot;stop&quot;);&#x9;&#xa;&#x9;&#x9;post(&quot;gunaowalk_disconnect&quot;,&quot;stop&quot;);&#xa;&#x9;&#x9;print_state_name();&#x9;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="1169.52" code="20" xpos="463.6800000000001" linewidth="1">finishTurning</state>
-    <state pencolor="0" radius="40" description="OnEntry {&#x9;print_state_machine();&#xa;&#x9;&#x9;post(&quot;gunaowalk_disconnect&quot;,&quot;Disconnected&quot;);&#x9;&#xa;&#x9;&#x9;print_state_name();&#x9;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="1169.52" code="21" xpos="201.6000000000001" linewidth="1">End</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#x9;print_state_machine();&#xa;&#x9;&#x9;post(&quot;gunaowalk_disconnect&quot;,&quot;Disconnected&quot;);&#x9;&#xa;&#x9;&#x9;print_state_name();&#x9;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="1248.8" code="21" xpos="91.2" linewidth="1">End</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#x9;post(&quot;gunaowalk_ready&quot;, &quot;ready&quot;);&#x9;&#xa;&#x9;&#x9;print_state_name();&#x9;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="1092" code="26" xpos="321" linewidth="1">getToX</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;postv(&quot;gunaowalk_walk&quot;, 0,-35,0,100);&#x9;&#xa;&#x9;print_state_name();&#x9;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="979" code="24" xpos="33" linewidth="1">StepRight</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;postv(&quot;gunaowalk_walk&quot;, 0,35,0,100);&#x9;&#xa;&#x9;print_state_name();&#x9;}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="1070" code="25" xpos="125" linewidth="1">stepLeft</state>
     <transition c1x="106.7184210043636" c2y="292.0769061600533" c1y="299.0847220334872" description="" straight="0" type="2" ypos="253.259204573588" endx="175.742626158881" xpos="60.28965176043832" endy="245.9024236199524" c2x="137.3138569149557">
       <from>0</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">timeout(3000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="263.1939094200472" c2y="114.7082187775596" c1y="154.8304850107862" description="" straight="1" type="2" ypos="194.9527512440129" endx="374.6222921091161" xpos="207.4797180755128" endy="74.585952544333" c2x="318.9081007645817">
+    <transition c1x="263.1939094200472" c2y="114.7082187775596" c1y="154.8304850107862" description="" straight="1" type="2" ypos="194.9527512440129" endx="374.6222921091161" xpos="207.4797180755128" endy="74.58595254433298" c2x="318.9081007645817">
       <from>1</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">((guparticlefilter_currentRotation &lt;360) &amp;&amp; (guparticlefilter_currentRotation>180))</inputs>
@@ -50,7 +53,7 @@
     <transition c1x="262.7596366268374" c2y="179.2471571178652" c1y="193.6143817243419" description="" straight="1" type="2" ypos="207.9816063308186" endx="370.0044992407674" xpos="209.1372053198724" endy="164.8799325113885" c2x="316.3820679338024">
       <from>1</from>
       <to>3</to>
-      <inputs default="0" any="0" invert="0">((guparticlefilter_currentRotation>0) &amp;&amp; (guparticlefilter_currentRotation&lt;180))</inputs>
+      <inputs default="0" any="0" invert="0">((guparticlefilter_currentRotation>-1) &amp;&amp; (guparticlefilter_currentRotation&lt;180))</inputs>
       <outputs></outputs>
     </transition>
     <transition c1x="500.4897381894243" c2y="147.7272267176078" c1y="114.6520261455941" description="" straight="1" type="2" ypos="81.57682557358032" endx="620.0940631961784" xpos="440.6875756860472" endy="180.8024272896216" c2x="560.2919006928013">
@@ -137,10 +140,10 @@
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="222.2565896554646" c2y="854.9876554894946" c1y="854.5137473269272" description="" straight="1" type="2" ypos="854.0398391643597" endx="421.6546126520576" xpos="122.5575781571681" endy="855.4615636520621" c2x="321.9556011537611">
+    <transition c1x="222.1317187714454" c2y="851.3466130547865" c1y="852.6932261095732" description="" straight="1" type="2" ypos="854.0398391643597" endx="421.28" xpos="122.5575781571681" endy="850" c2x="321.7058593857226">
       <from>14</from>
       <to>15</to>
-      <inputs default="0" any="0" invert="0">((guparticlefilter_currentX==gx) &amp;&amp; (guparticlefilter_currentY==gy))</inputs>
+      <inputs default="0" any="0" invert="0">(guparticlefilter_currentY==gy)</inputs>
       <outputs></outputs>
     </transition>
     <transition c1x="550.8222845545931" c2y="849.6259121417037" c1y="850.0292895680285" description="" straight="1" type="2" ypos="850.4326669943534" endx="649.9115338188784" xpos="501.2776599224504" endy="849.2225347153787" c2x="600.3669091867357">
@@ -155,7 +158,7 @@
       <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="904.4533234078187" c2y="974.7139214102903" c1y="926.1683554547524" description="" straight="1" type="2" ypos="877.6227894992146" endx="800.5383624331701" xpos="956.4108038951431" endy="1023.259487365828" c2x="852.4958429204944">
+    <transition c1x="904.4533234078187" c2y="974.7139214102903" c1y="926.1683554547524" description="" straight="1" type="2" ypos="877.6227894992146" endx="800.5383624331699" xpos="956.4108038951431" endy="1023.259487365828" c2x="852.4958429204943">
       <from>22</from>
       <to>17</to>
       <inputs default="0" any="0" invert="0">(guparticlefilter_currentRotation>0)</inputs>
@@ -173,28 +176,58 @@
       <inputs default="0" any="0" invert="0">(guparticlefilter_currentRotation == 0)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="639.475963815276" c2y="1102.544153148036" c1y="1075.299571332196" description="" straight="1" type="2" ypos="1048.054989516357" endx="468.3088852469269" xpos="725.0595030994506" endy="1129.788734963875" c2x="553.8924245311015">
+    <transition c1x="639.475963815276" c2y="1102.544153148036" c1y="1075.299571332196" description="" straight="1" type="2" ypos="1048.054989516357" endx="468.3088852469269" xpos="725.0595030994505" endy="1129.788734963875" c2x="553.8924245311015">
       <from>17</from>
       <to>20</to>
       <inputs default="0" any="0" invert="0">(guparticlefilter_currentRotation==0)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="647.6774230251959" c2y="1161.631948564992" c1y="1154.188314142127" description="" straight="1" type="2" ypos="1146.744679719262" endx="503.6775310927978" xpos="719.677368991395" endy="1169.075582987857" c2x="575.6774770589969">
+    <transition c1x="647.6774230251959" c2y="1161.631948564992" c1y="1154.188314142127" description="" straight="1" type="2" ypos="1146.744679719262" endx="503.6775310927978" xpos="719.677368991395" endy="1169.075582987857" c2x="575.6774770589968">
       <from>18</from>
       <to>20</to>
       <inputs default="0" any="0" invert="0">(guparticlefilter_currentRotation==0)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="552.4946612942842" c2y="1218.133598937721" c1y="1234.423900883458" description="" straight="1" type="2" ypos="1250.714202829194" endx="225.1627772464946" xpos="716.160603318179" endy="1201.843296991985" c2x="388.8287192703894">
+    <transition c1x="515.6946612942842" c2y="1270.986932271055" c1y="1260.850567550124" description="" straight="1" type="2" ypos="1250.714202829194" endx="114.7627772464945" xpos="716.160603318179" endy="1281.123296991985" c2x="315.2287192703893">
       <from>19</from>
       <to>21</to>
       <inputs default="0" any="0" invert="0">(guparticlefilter_currentRotation==0)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="362.9724006150615" c2y="1170.75324697053" c1y="1170.136623485265" description="" straight="1" type="2" ypos="1169.52" endx="241.5572018451841" xpos="423.6800000000001" endy="1171.369870455795" c2x="302.2648012301228">
+    <transition c1x="405.6942756108357" c2y="1117.348267286529" c1y="1133.886099715672" description="" straight="1" type="2" ypos="1150.423932144815" endx="360.0176400827083" xpos="428.5325933748995" endy="1100.810434857386" c2x="382.855957846772">
       <from>20</from>
-      <to>21</to>
+      <to>26</to>
       <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="218.2299845273851" c2y="1019.084714465635" c1y="1041.280885111273" description="" straight="1" type="2" ypos="1063.47705575691" endx="68.77708763999665" xpos="292.9564329710793" endy="996.8885438199983" c2x="143.5035360836909">
+      <from>26</from>
+      <to>24</to>
+      <inputs default="0" any="0" invert="0">guparticlefilter_currentX&lt;gx</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="242.4423330708717" c2y="1076.903471163125" c1y="1082.595377260619" description="" straight="1" type="2" ypos="1088.287283358114" endx="164.9816471658153" xpos="281.1726760234" endy="1071.211565065631" c2x="203.7119901183435">
+      <from>26</from>
+      <to>25</to>
+      <inputs default="0" any="0" invert="0">guparticelfilter_currentX>gx</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="234.3841586970891" c2y="1193.74473964846" c1y="1153.763246583044" description="" straight="1" type="2" ypos="1113.781753517628" endx="128.2510666486647" xpos="287.4507047213012" endy="1233.726232713877" c2x="181.3176126728769">
+      <from>26</from>
+      <to>21</to>
+      <inputs default="0" any="0" invert="0">guparticlefilter_currentX==gx</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="-89.92413030471312" c2y="1338.684333551671" c1y="1111.700433876509" description="" straight="0" type="2" ypos="1015.996534201347" endx="57.41337182180705" xpos="48.20711863202676" endy="1227.388233226832" c2x="-106.4553792414531">
+      <from>24</from>
+      <to>21</to>
+      <inputs default="0" any="0" invert="0">(guparticlefilter_currentX>gx)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="112.7428667039315" c2y="1178.05716222094" c1y="1143.375246740612" description="" straight="1" type="2" ypos="1108.693331260283" endx="108.5092427033909" xpos="114.8596787042017" endy="1212.739077701269" c2x="110.6260547036611">
+      <from>25</from>
+      <to>21</to>
+      <inputs default="0" any="0" invert="0">(guparticlefilter_currentX&lt;gx)</inputs>
       <outputs></outputs>
     </transition>
   </machine>
