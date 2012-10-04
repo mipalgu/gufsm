@@ -1,8 +1,8 @@
 /*
- *  clfsm_vector_factory.cc
+ *  clfsm_cc_delegate.h
  *  clfsm
  *
- *  Created by Rene Hexel on 19/09/12.
+ *  Created by Rene Hexel on 3/10/12.
  *  Copyright (c) 2012 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,76 +55,21 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef __gufsm__clfsm_cc__
-#define __gufsm__clfsm_cc__
+#ifndef gufsm_clfsm_cc_delegate_h
+#define gufsm_clfsm_cc_delegate_h
 
-#include <cstdint>
-#include <iostream>
-
-#ifndef __STDC_LIMIT_MACROS
-#define __STDC_LIMIT_MACROS
-#endif
-
-#ifndef __STDC_CONSTANT_MACROS
-#define __STDC_CONSTANT_MACROS
-#endif
- 
-#include <clang/Driver/Arg.h>
-#include <clang/Driver/ArgList.h>
-#include <clang/Driver/Options.h>
-#include <clang/Driver/DriverDiagnostic.h>
-#include <clang/Driver/OptTable.h>
-#include <clang/Frontend/CompilerInstance.h>
-#include <clang/Frontend/CompilerInvocation.h>
-#include <clang/Frontend/FrontendDiagnostic.h>
-#include <clang/Frontend/TextDiagnosticBuffer.h>
-#include <clang/Frontend/TextDiagnosticPrinter.h>
-#include <clang/FrontendTool/Utils.h>
-#include <llvm/ADT/Statistic.h>
-#include <llvm/Support/ErrorHandling.h>
-#include <llvm/Support/ManagedStatic.h>
-#include <llvm/Support/TargetSelect.h>
-#include <llvm/Support/Timer.h>
-#include <llvm/Support/raw_ostream.h>
-#include <llvm/LinkAllPasses.h>
+#include <string>
 
 namespace FSM
 {
-        class CcDelegate;
+        class Cc;
 
-        class Cc
+        class CcDelegate
         {
-                CcDelegate *_delegate;
-
-                llvm::OwningPtr<clang::CompilerInstance> clang;
-                llvm::IntrusiveRefCntPtr<clang::DiagnosticIDs> diagIDs;
         public:
-                /// constructor: takes a compiler instance and diagnostic IDs
-                Cc(clang::CompilerInstance *ci, clang::DiagnosticIDs *dis):
-                        clang(ci), diagIDs(dis) {}
-                /// default constructor: creates a new compiler instance
-                Cc(): Cc(new clang::CompilerInstance(), new clang::DiagnosticIDs()) {}
-
-                /// default destructor
-                virtual ~Cc() {}
-
-                /// delegate getter
-                CcDelegate *delegate() const { return _delegate; }
-
-                /// delegate setter
-                void setDelegate(CcDelegate *aDelegate) { _delegate = aDelegate; }
-
-                /// set up: needs to be called only once in any program
-                static void setup();
-
-                /// tear down: needs to be called only once in any program
-                static void teardown();
-
-                /// compile using the given arguments
-                virtual bool compile(const char **argBegin, const char **argEnd, void *mainAddr, clang::TextDiagnosticBuffer *diagsBuffer = nullptr, const char *argv0 = "FSM::Cc");
-
-                /// standard error handler
-                virtual void errorHandler(const std::string &message);
+                void handleError(class Cc *cc, const std::string &message);
         };
 }
-#endif /* defined(__gufsm__clfsm_cc__) */
+
+
+#endif
