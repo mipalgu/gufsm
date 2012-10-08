@@ -77,7 +77,7 @@
       <inputs default="0" any="0" invert="0">timeout(200000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="612.165241" c2y="423.412607" c1y="429.587393" description="" straight="1" type="2" ypos="431.0831920185763" endx="509.8907730856498" xpos="632.1092269143502" endy="421.9168079814237" c2x="529.834759">
+    <transition c1x="612.165241" c2y="423.412607" c1y="429.587393" description="" straight="1" type="2" ypos="431.0084020703346" endx="509.8907730856498" xpos="631.1120276044618" endy="421.9168079814237" c2x="529.834759">
       <from>6</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">NaoIsReadyToRun</inputs>
@@ -89,7 +89,7 @@
       <inputs default="0" any="0" invert="0">timeout(2500000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="651.789760" c2y="377.745894" c1y="373.254106" description="" straight="1" type="2" ypos="354.1849175076643" endx="659.2406671129609" xpos="645.7593328870391" endy="396.8150824923357" c2x="653.210240">
+    <transition c1x="650.152604" c2y="381.969388" c1y="368.077153" description="" straight="1" type="2" ypos="354.1849175076643" endx="658.9391457568829" xpos="645.7593328870391" endy="395.8616230690623" c2x="654.545875">
       <from>8</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">timeout(1200000)</inputs>
