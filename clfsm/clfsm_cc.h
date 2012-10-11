@@ -61,6 +61,12 @@
 #include <cstdint>
 #include <iostream>
 
+#ifndef USE_LIBCLANG_INTERNAL
+
+#include <clang-c/Index.h>
+
+#else // use libclang internals
+
 #ifndef __STDC_LIMIT_MACROS
 #define __STDC_LIMIT_MACROS
 #endif
@@ -88,6 +94,8 @@
 #include <llvm/Support/raw_ostream.h>
 #include <llvm/LinkAllPasses.h>
 
+#endif // USE_LIBCLANG_INTERNAL
+
 namespace FSM
 {
         class CcDelegate;
@@ -95,15 +103,19 @@ namespace FSM
         class Cc
         {
                 CcDelegate *_delegate;
-
+#ifdef USE_LIBCLANG_INTERNAL
                 llvm::OwningPtr<clang::CompilerInstance> clang;
                 llvm::IntrusiveRefCntPtr<clang::DiagnosticIDs> diagIDs;
         public:
                 /// constructor: takes a compiler instance and diagnostic IDs
-                Cc(clang::CompilerInstance *ci, clang::DiagnosticIDs *dis):
+                Cc(clang::CompilerInstance *ci, clang::DiagnosticIDs *dis): _delegate(nullptr),
                         clang(ci), diagIDs(dis) {}
                 /// default constructor: creates a new compiler instance
                 Cc(): Cc(new clang::CompilerInstance(), new clang::DiagnosticIDs()) {}
+#else
+        public:
+                Cc(): _delegate(nullptr) {}
+#endif
 
                 /// default destructor
                 virtual ~Cc() {}
@@ -121,7 +133,7 @@ namespace FSM
                 static void teardown();
 
                 /// compile using the given arguments
-                virtual bool compile(const char **argBegin, const char **argEnd, void *mainAddr, clang::TextDiagnosticBuffer *diagsBuffer = nullptr, const char *argv0 = "FSM::Cc");
+                virtual bool compile(const char **argBegin, const char **argEnd, void *mainAddr, const char *argv0 = "clang");
 
                 /// standard error handler
                 virtual void errorHandler(const std::string &message);

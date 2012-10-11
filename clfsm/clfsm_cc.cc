@@ -56,16 +56,22 @@
  *
  */
 #include <dispatch/dispatch.h>
+#include <unistd.h>
+#include <vector>
 #include "clfsm_cc_delegate.h"
 #include "clfsm_cc.h"
 
-using namespace std;
+
+#ifdef USE_LIBCLANG_INTERNAL
 using namespace llvm;
 using namespace clang;
+#endif
+using namespace std;
 using namespace FSM;
 
 void Cc::setup()
 {
+#ifdef USE_LIBCLANG_INTERNAL
         static dispatch_once_t once;
 
         dispatch_once(&once,
@@ -75,17 +81,20 @@ void Cc::setup()
                 InitializeAllAsmPrinters();
                 InitializeAllAsmParsers();
         });
+#endif
 }
 
 
 void Cc::teardown()
 {
+#ifdef USE_LIBCLANG_INTERNAL
         static dispatch_once_t once;
         
         dispatch_once(&once,
         ^{
                 llvm_shutdown();
         });
+#endif
 }
 
 
@@ -103,15 +112,84 @@ void Cc::errorHandler(const std::string &message)
                 delegate()->handleError(this, message);
                 return;
         }
-
+#ifdef USE_LIBCLANG_INTERNAL
         clang->getDiagnostics().Report(diag::err_fe_error_backend) << message;
+#else
+        cerr << message << endl;
+#endif
 }
 
 
-bool Cc::compile(const char **argBegin, const char **argEnd, void *mainAddr, TextDiagnosticBuffer *db, const char *argv0)
+bool Cc::compile(const char **argBegin, const char **argEnd, void *mainAddr, const char *argv0)
 {
-        TextDiagnosticBuffer *diagsBuffer = db;
-        if (!db) diagsBuffer = new TextDiagnosticBuffer;
+        if (argEnd < argBegin)
+        {
+                const string error("Invalid arguments to clang");
+
+                if (delegate())
+                        delegate()->handleError(this, error);
+                else
+                        cerr << error << endl;
+
+                return false;
+        }
+
+#ifndef USE_LIBCLANG_INTERNAL
+        bool success = true;
+        pid_t pid = fork();
+
+        switch (pid)
+        {
+                case -1:
+                        cerr << "Cannot fork " << argv0 << ": " << strerror(errno) << endl;
+                        return false;
+
+                case 0:
+                {
+                        ssize_t n = argEnd - argBegin;
+                        vector<char *> args;
+                        args.reserve(n+2);
+                        args[0] = (char *) argv0;
+                        for (int i = 0; i < n; i++)
+                                args[i+1] = (char *) *argBegin++;
+                        args[n+1] = nullptr;
+                        execvp(argv0, &args[0]);
+                        cerr << "Cannot exec " << argv0 << endl;
+                        exit(EXIT_FAILURE);
+                }
+
+                default:
+                        break;
+        }
+
+        int status;
+        if (waitpid(pid, &status, 0) != pid)
+        {
+                cerr << "Error executing " << argv0 << ": " << strerror(errno) << endl;
+                return false;
+        }
+        if (WIFSIGNALED(status))
+        {
+                cerr << argv0 << " exited due to signal " << WTERMSIG(status) << endl;
+                return false;
+        }
+        if (WIFSTOPPED(status))
+        {
+                cerr << argv0 << " stopped due to signal " << WSTOPSIG(status) << endl;
+                return false;
+        }
+        if (WCOREDUMP(status))
+        {
+                cerr << "Error " << argv0 << " dumped core" << endl;
+                return false;
+        }
+        if (WEXITSTATUS(status) != EXIT_SUCCESS)
+        {
+                cerr << argv0 << " exited with return code " << WEXITSTATUS(status) << endl;
+                return false;
+        }
+#else
+        TextDiagnosticBuffer *diagsBuffer = new TextDiagnosticBuffer;
         if (!diagsBuffer)
                 return false;
         //
@@ -158,6 +236,7 @@ bool Cc::compile(const char **argBegin, const char **argEnd, void *mainAddr, Tex
         }
 fin:
         if (!db) delete diagsBuffer;
+#endif // USE_LIBCLANG_INTERNAL
 
         return success;
 }
