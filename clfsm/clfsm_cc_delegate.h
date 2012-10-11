@@ -67,7 +67,8 @@ namespace FSM
         class CcDelegate
         {
         public:
-                void handleError(class Cc *cc, const std::string &message) {}
+                virtual ~CcDelegate() {}
+                virtual void handleError(class Cc *cc, const std::string &message) {}
         };
 }
 
