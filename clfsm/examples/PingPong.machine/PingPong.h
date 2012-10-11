@@ -79,4 +79,9 @@ namespace FSM
     }
 }
 
+extern "C"
+{
+        FSM::CLM::PingPong *CLM_Create_PingPong(int mid, const char *name);
+}
+
 #endif /* defined(__gufsm__PingPong__) */

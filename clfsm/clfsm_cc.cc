@@ -120,20 +120,8 @@ void Cc::errorHandler(const std::string &message)
 }
 
 
-bool Cc::compile(const char **argBegin, const char **argEnd, void *mainAddr, const char *argv0)
+bool Cc::compile(vector<string> args, const char *argv0)
 {
-        if (argEnd < argBegin)
-        {
-                const string error("Invalid arguments to clang");
-
-                if (delegate())
-                        delegate()->handleError(this, error);
-                else
-                        cerr << error << endl;
-
-                return false;
-        }
-
 #ifndef USE_LIBCLANG_INTERNAL
         bool success = true;
         pid_t pid = fork();
@@ -146,14 +134,14 @@ bool Cc::compile(const char **argBegin, const char **argEnd, void *mainAddr, con
 
                 case 0:
                 {
-                        ssize_t n = argEnd - argBegin;
-                        vector<char *> args;
-                        args.reserve(n+2);
-                        args[0] = (char *) argv0;
+                        ssize_t n = args.size();
+                        vector<char *> exec_args;
+                        exec_args.reserve(n+2);
+                        exec_args[0] = (char *) argv0;
                         for (int i = 0; i < n; i++)
-                                args[i+1] = (char *) *argBegin++;
-                        args[n+1] = nullptr;
-                        execvp(argv0, &args[0]);
+                                exec_args[i+1] = (char *) args[i].c_str();
+                        exec_args[n+1] = nullptr;
+                        execvp(argv0, &exec_args[0]);
                         cerr << "Cannot exec " << argv0 << endl;
                         exit(EXIT_FAILURE);
                 }

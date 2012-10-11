@@ -78,7 +78,7 @@ CLFSMVectorFactory *createPingPong(int numberOfPingPongs)
         {
                 stringstream ss;
                 ss << "PingPong " << i;
-                CLM::PingPong *clm = new CLM::PingPong(i, gu_strdup(ss.str().c_str()));
+                CLM::PingPong *clm = CLM_Create_PingPong(i, gu_strdup(ss.str().c_str()));
                 factory->addMachine(clm);
         }
 

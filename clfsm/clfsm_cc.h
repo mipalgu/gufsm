@@ -59,6 +59,8 @@
 #define __gufsm__clfsm_cc__
 
 #include <cstdint>
+#include <vector>
+#include <string>
 #include <iostream>
 
 #ifndef USE_LIBCLANG_INTERNAL
@@ -133,7 +135,7 @@ namespace FSM
                 static void teardown();
 
                 /// compile using the given arguments
-                virtual bool compile(const char **argBegin, const char **argEnd, void *mainAddr, const char *argv0 = "clang");
+                virtual bool compile(std::vector<std::string> args, const char *argv0 = "clang");
 
                 /// standard error handler
                 virtual void errorHandler(const std::string &message);
