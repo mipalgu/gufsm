@@ -66,6 +66,7 @@
 		F12DCCE414830A9D00461AD6 /* TransitionFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7D0147F76C200C852FC /* TransitionFactory.cpp */; };
 		F12DCCE714830A9E00461AD6 /* TransitionFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7D0147F76C200C852FC /* TransitionFactory.cpp */; };
 		F12DCDD81484BAD100461AD6 /* FSMTransition.cc in Sources */ = {isa = PBXBuildFile; fileRef = F12DCDD71484BAD100461AD6 /* FSMTransition.cc */; };
+		F12E5ED11627F36D00B95186 /* clfsm_main.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1D575B71627B9E400976A23 /* clfsm_main.cc */; };
 		F12EAE5C15F6F993002DB436 /* FSMFactory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F12EAE5A15F6F993002DB436 /* FSMFactory.cc */; };
 		F132711C1452812500E5786D /* FSMWBQueryPredicate.cc in Sources */ = {isa = PBXBuildFile; fileRef = F132711B1452812500E5786D /* FSMWBQueryPredicate.cc */; };
 		F132711D1452812500E5786D /* FSMWBQueryPredicate.cc in Sources */ = {isa = PBXBuildFile; fileRef = F132711B1452812500E5786D /* FSMWBQueryPredicate.cc */; };
@@ -167,7 +168,6 @@
 		F1D575B4162797CB00976A23 /* libclfsm.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F1D5758D1627948900976A23 /* libclfsm.dylib */; };
 		F1D575B5162798B600976A23 /* clfsm_vector_factory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F11144FB15F98447005953C1 /* clfsm_vector_factory.cc */; };
 		F1D575B6162798C900976A23 /* clfsm_factory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F12EAE5415F6F48A002DB436 /* clfsm_factory.cc */; };
-		F1D575B81627B9E400976A23 /* clfsm_main.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1D575B71627B9E400976A23 /* clfsm_main.cc */; };
 		F1D962B415F7236300EB0B30 /* FSMANTLRMachineFactory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1D962B315F7236300EB0B30 /* FSMANTLRMachineFactory.cc */; };
 		F1DF55911584274B0097A438 /* FSMVectorRunner.cc in Sources */ = {isa = PBXBuildFile; fileRef = F13BA40E1579E92500929C9C /* FSMVectorRunner.cc */; };
 		F1DF55921584274C0097A438 /* FSMVectorRunner.cc in Sources */ = {isa = PBXBuildFile; fileRef = F13BA40E1579E92500929C9C /* FSMVectorRunner.cc */; };
@@ -2602,7 +2602,7 @@
 				F1A5180D15C9514A00348C25 /* PingPong.mm in Sources */,
 				F167F7AA15CB3CB000A56F17 /* State_Ping.mm in Sources */,
 				F18ACF5215CB4F5E00492118 /* State_Pong.mm in Sources */,
-				F1D575B81627B9E400976A23 /* clfsm_main.cc in Sources */,
+				F12E5ED11627F36D00B95186 /* clfsm_main.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2956,6 +2956,7 @@
 				F1D575991627948900976A23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

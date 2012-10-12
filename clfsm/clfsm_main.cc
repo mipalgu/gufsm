@@ -69,12 +69,11 @@
 using namespace std;
 using namespace FSM;
 
-static CLFSMVectorFactory *createMachines(const vector<string> &machines, const vector<string> &compiler_args, const vector<string> &linker_args)
+static CLFSMVectorFactory *createMachines(vector<MachineWrapper> &machineWrappers, const vector<string> &machines, const vector<string> &compiler_args, const vector<string> &linker_args)
 {
         WBContext *context = new WBContext();
         CLFSMVectorFactory *factory = new CLFSMVectorFactory(context);
         int i = 0;
-        vector<MachineWrapper> machineWrappers;
         for (const string &machine: machines)
         {
                 machineWrappers.push_back(machine);
@@ -98,6 +97,7 @@ static void usage(const char *cmd)
 
 int main(int argc, char * const argv[])
 {
+        vector<MachineWrapper> machineWrappers;
         vector<string> machines;
         vector<string> compiler_args;
         vector<string> linker_args;
@@ -132,7 +132,7 @@ int main(int argc, char * const argv[])
         if (!compiler_args.size()) compiler_args = MachineWrapper::default_compiler_args();
         if (!linker_args.size())   linker_args   = MachineWrapper::default_linker_args();
 
-        CLFSMVectorFactory *factory = createMachines(machines, compiler_args, linker_args);
+        CLFSMVectorFactory *factory = createMachines(machineWrappers, machines, compiler_args, linker_args);
         factory->fsms()->execute();
         delete factory;
 

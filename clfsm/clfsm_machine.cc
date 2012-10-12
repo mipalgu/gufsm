@@ -230,11 +230,11 @@ CLMachine *MachineWrapper::instantiate(int id, const char *machine_name)
         }
         if (!_factory)
         {
-                string symbol = string("_CLM_Create_") + name();
+                string symbol = string("CLM_Create_") + name();
                 _factory = create_machine_f(dlsym(_shared_object, symbol.c_str()));
                 if (!_factory)
                 {
-                        symbol = string("CLM_Create_") + name();
+                        symbol = string("_CLM_Create_") + name();
                         if (!(_factory = create_machine_f(dlsym(_shared_object, symbol.c_str()))))
                                 return nullptr;
                 }

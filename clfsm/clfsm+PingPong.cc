@@ -91,6 +91,7 @@ int main(int argc, const char *argv[])
         int n = 1;
 
         if (argc > 1) n = atoi(argv[1]);
+        if (n < 1) n = 1;
 
         CLFSMVectorFactory *factory = createPingPong(n);
         factory->fsms()->execute();
