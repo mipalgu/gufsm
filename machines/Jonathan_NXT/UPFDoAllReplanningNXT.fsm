@@ -6,11 +6,11 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="128" endx="101" xpos="41" endy="128"/>
-    <state pencolor="0" radius="40" description="OnEntry { extern upf_plannerResponse_gridMapLoaded;&#xa;  extern upf_plannerResponse_pddlLoaded;&#xa;  extern upf_plannerResponse_plannerStarted;&#xa;  extern&#xa; upf_plannerResponse_move;&#xa;  extern&#xa; upf_plannerResponse_direction;&#xa;  extern &#xa; turnMovement;&#xa;  extern&#xa; upf_plannerResponse_moreActions;&#xa;  extern&#xa; BallDistance;&#xa;  extern&#xa; gunaomotion_naoMotionPlayerIsRunning;&#xa;   }&#xa;OnExit{ }&#xa;{ }" finalstate="0" moore_outputs="" ypos="128" code="0" xpos="141" linewidth="1">INITIAL</state>
-    <state pencolor="0" radius="40" description="OnEntry { post(&quot;upf_doAll&quot;,&quot;GridMap2.txt&quot;);&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="291,984" code="1" xpos="271,328" linewidth="1">LOADING</state>
-    <state pencolor="0" radius="40" description="OnEntry { &#xa;  post(&quot;QSay&quot;,&quot;Loading Grid FAILED&quot;);  }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="351,52" code="2" xpos="561,28" linewidth="1">GRID_NO_OK</state>
-    <state pencolor="0" radius="40" description="OnEntry{ print_state_name(); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="108,48" code="4" xpos="704,3199999999999" linewidth="1">WAIT</state>
-    <state pencolor="0" radius="40" description="OnEntry { post(&quot;upf_giveNextAction&quot;,&quot;now&quot;);&#xa;  post(&quot;QSay&quot;,&quot;What next?&quot;);  }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="104,24" code="10" xpos="1396,08" linewidth="1">REQUEST_ACTION</state>
+    <state pencolor="0" radius="40" description="OnEntry { extern upf_plannerResponse_gridMapLoaded;&#xa;  extern upf_plannerResponse_pddlLoaded;&#xa;  extern upf_plannerResponse_plannerStarted;&#xa;  extern&#xa; upf_plannerResponse_move;&#xa;  extern&#xa; upf_plannerResponse_direction;&#xa;  extern &#xa; turnMovement;&#xa;  extern&#xa; upf_plannerResponse_moreActions;&#xa;  extern&#xa; upf_isObstacleKnown;&#xa;  extern&#xa; BallDistance;&#xa;  extern&#xa; gunaomotion_naoMotionPlayerIsRunning;&#xa;   }&#xa;OnExit{ }&#xa;{ }" finalstate="0" moore_outputs="" ypos="128" code="0" xpos="141" linewidth="1">INITIAL</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;upf_doAll&quot;,&quot;GridMap2.txt&quot;);&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="317,6" code="1" xpos="566,4000000000001" linewidth="1">LOADING</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;  post(&quot;QSay&quot;,&quot;Loading Grid FAILED&quot;);  }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="332" code="2" xpos="761,5999999999999" linewidth="1">GRID_NO_OK</state>
+    <state pencolor="0" radius="40" description="OnEntry{ print_state_name(); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="110" code="4" xpos="844" linewidth="1">WAIT</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;upf_giveNextAction&quot;,&quot;now&quot;);&#xa;  post(&quot;QSay&quot;,&quot;What next?&quot;);  }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="117" code="10" xpos="1360" linewidth="1">REQUEST_ACTION</state>
     <state pencolor="0" radius="40" description="OnEntry { &#xa; post(&quot;gunxt_nxtWalk&quot;,&quot;20,0,0&quot;);&#xa;   }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="627,5360000000001" code="11" xpos="964,528" linewidth="1">FORWARD</state>
     <state pencolor="0" radius="40" description="OnEntry{ print_state_name(); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="428,5439999999999" code="12" xpos="1400,424" linewidth="1">WAIT</state>
     <state pencolor="0" radius="40" description="OnEntry {  &#xa; post(&quot;gunxt_nxtWalk&quot;,&quot;0,0,180&quot;);&#xa; post(&quot;gunxt_nxtWalk&quot;,&quot;20,0,0&quot;);&#xa;   }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="686,1759999999999" code="13" xpos="1081,808" linewidth="1">BACKWARD</state>
@@ -22,34 +22,42 @@
     <state pencolor="0" radius="40" description="OnEntry { &#xa; post(&quot;gunxt_nxtWalk&quot;,&quot;0,0,-135&quot;);&#xa; post(&quot;gunxt_nxtWalk&quot;,&quot;20,0,0&quot;);&#xa;   }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="633,4559999999999" code="19" xpos="1807,104" linewidth="1">HALF_RIGHT_RIGHT</state>
     <state pencolor="0" radius="40" description="OnEntry{ print_state_name(); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="904,5439999999999" code="20" xpos="1382,424" linewidth="1">WAIT</state>
     <state pencolor="0" radius="40" description="OnEntry { &#xa; post(&quot;upf_exitPlanner&quot;,&quot;now&quot;); &#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="410,368" code="21" xpos="1758,352" linewidth="1">NO_MORE_ACTIONS</state>
-    <state pencolor="0" radius="40" description="OnEntry{ print_state_name(); &#xa; post(&quot;gunaomotion_naoWalk&quot;,&quot;25,0,0&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="781,28" code="7" xpos="739,28" linewidth="1">ACCURATING</state>
-    <state pencolor="0" radius="40" description="OnEntry{ print_state_name(); &#xa; post(&quot;upf_replanning&quot;,upf_plannerResponse_move);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="599,52" code="8" xpos="607,12" linewidth="1">REPLANNING</state>
-    <state pencolor="0" radius="40" description="OnEntry {}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="733,824" code="25" xpos="382,352" linewidth="1">WAIT</state>
-    <transition c1x="197,7764658986214" c2y="236,4104101380535" c1y="182,9391736010177" description="" straight="1" type="2" ypos="129,4679370639818" endx="231,3832868266996" xpos="180,9730554345823" endy="289,8816466750894" c2x="214,5798763626605">
+    <state pencolor="0" radius="40" description="OnEntry{ print_state_name(); &#xa; post(&quot;gunxt_nxtWalk&quot;,&quot;-10,0,0&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="837,024" code="7" xpos="743,456" linewidth="1">ACCURATING</state>
+    <state pencolor="0" radius="40" description="OnEntry{ print_state_name(); &#xa; post(&quot;upf_replanning&quot;,upf_plannerResponse_move);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="545,184" code="8" xpos="428,16" linewidth="1">REPLANNING</state>
+    <state pencolor="0" radius="40" description="OnEntry {}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="929,232" code="25" xpos="411,472" linewidth="1">WAIT</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa; post(&quot;gunxt_startTouchSensor&quot;,&quot;1&quot;);&#xa; post(&quot;gunxt_startTouchSensor&quot;,&quot;2&quot;);&#xa; }&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="303,6" code="3" xpos="314" linewidth="1">TURN_ON_SENSORS</state>
+    <state pencolor="0" radius="40" description="OnEntry {}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="117,2" code="5" xpos="442,8" linewidth="1">WAIT</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa; post(&quot;gunxt_nxtWalk&quot;,&quot;-5,0,0&quot;);&#xa; post(&quot;gunxt_nxtWalk&quot;,&quot;0,0,-15&quot;);&#xa; post(&quot;gunxt_nxtWalk&quot;,&quot;-5,0,0&quot;);&#xa; post(&quot;gunxt_nxtWalk&quot;,&quot;0,0,15&quot;);}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="931,36" code="6" xpos="1741,216" linewidth="1">ACCURATING_LEFT</state>
+    <state pencolor="0" radius="40" description="OnEntry {}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="769,6319999999999" code="9" xpos="1951,504" linewidth="1">WAIT</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa; post(&quot;gunxt_nxtWalk&quot;,&quot;-5,0,0&quot;);&#xa; post(&quot;gunxt_nxtWalk&quot;,&quot;0,0,15&quot;);&#xa; post(&quot;gunxt_nxtWalk&quot;,&quot;-5,0,0&quot;);&#xa; post(&quot;gunxt_nxtWalk&quot;,&quot;0,0,-15&quot;);}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="1028,16" code="22" xpos="1883,52" linewidth="1">ACCURATING_RIGHT</state>
+    <state pencolor="0" radius="40" description="OnEntry {}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="896,8319999999998" code="23" xpos="2063,232" linewidth="1">WAIT</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa; post(&quot;upf_isObstacleknown&quot;,&quot;1&quot;);}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="710" code="24" xpos="515,7760000000001" linewidth="1">IS_OBSTACLE_KNOWN</state>
+    <state pencolor="0" radius="40" description="OnEntry {}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="529,0400000000001" code="26" xpos="646,2879999999999" linewidth="1">WAIT</state>
+    <transition c1x="213,2950628568112" c2y="234,0164838857334" c1y="181,7422104748576" description="" straight="1" type="2" ypos="129,4679370639818" endx="277,939077701269" xpos="180,9730554345823" endy="286,2907572966092" c2x="245,6170702790401">
       <from>0</from>
-      <to>1</to>
-      <inputs default="0" any="0" invert="0">timeout(4000000)</inputs>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">timeout(2000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="427,5117226884443" c2y="163,1707956332778" c1y="220,9228569044019" description="" straight="1" type="2" ypos="278,674918175526" endx="664,4373138731286" xpos="309,0489270961021" endy="105,4187343621537" c2x="545,9745182807865">
+    <transition c1x="670,7863893551109" c2y="172,7227956332778" c1y="238,5068569044019" description="" straight="1" type="2" ypos="304,290918175526" endx="804,1173138731286" xpos="604,1209270961022" endy="106,9387343621537" c2x="737,4518516141198">
       <from>1</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">timeout(3000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="665,3801141311479" c2y="259,2233052148477" c1y="203,6807385182747" description="" straight="1" type="2" ypos="148,1381718217017" endx="577,0639813877333" xpos="709,5381805028553" endy="314,7658719114207" c2x="621,2220477594407">
+    <transition c1x="825,2734474644814" c2y="246,716638548181" c1y="198,1874051849414" description="" straight="1" type="2" ypos="149,6581718217017" endx="777,3839813877332" xpos="849,2181805028554" endy="295,2458719114207" c2x="801,3287144261072">
       <from>4</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">~upf_plannerResponse_gridMapLoaded</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="948,3740918324062" c2y="102,0196009935453" c1y="106,574850611064" description="" straight="1" type="2" ypos="111,1301002285826" endx="1356,65804436961" xpos="744,2321155638042" endy="97,46435137602668" c2x="1152,516068101008">
+    <transition c1x="1029,46742516574" c2y="111,0329343268787" c1y="111,8415172777306" description="" straight="1" type="2" ypos="112,6501002285826" endx="1320,57804436961" xpos="883,9121155638043" endy="110,2243513760267" c2x="1175,022734767675">
       <from>4</from>
       <to>10</to>
       <inputs default="0" any="0" invert="0">upf_plannerResponse_gridMapLoaded</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1397,562023378392" c2y="307,1615743622338" c1y="225,690555038732" description="" straight="1" type="2" ypos="144,2195357152303" endx="1403,084760420951" xpos="1394,800654857113" endy="388,6325936857355" c2x="1400,323391899672">
+    <transition c1x="1373,508690045059" c2y="311,4149076955671" c1y="234,1972217053987" description="" straight="1" type="2" ypos="156,9795357152303" endx="1403,084760420951" xpos="1358,720654857113" endy="388,6325936857355" c2x="1388,296725233005">
       <from>10</from>
       <to>12</to>
       <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
@@ -61,7 +69,7 @@
       <inputs default="0" any="0" invert="0">gunxtmotion_gunxt_nxtWalkIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1240,546794032793" c2y="550,4661626665022" c1y="490,4765775493175" description="" straight="1" type="2" ypos="430,4869924321328" endx="1000,69794586984" xpos="1360,47121811427" endy="610,455747783687" c2x="1120,622369951317">
+    <transition c1x="1240,546794032793" c2y="550,4661626665023" c1y="490,4765775493176" description="" straight="1" type="2" ypos="430,4869924321328" endx="1000,69794586984" xpos="1360,47121811427" endy="610,4557477836871" c2x="1120,622369951317">
       <from>12</from>
       <to>11</to>
       <inputs default="0" any="0" invert="0">turnMovement==0</inputs>
@@ -103,7 +111,7 @@
       <inputs default="0" any="0" invert="0">turnMovement==3</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1280,004653049942" c2y="590,3238499333205" c1y="514,7525049291766" description="" straight="1" type="2" ypos="439,1811599250326" endx="1116,285368606311" xpos="1361,864295271757" endy="665,8951949374645" c2x="1198,145010828126">
+    <transition c1x="1280,004653049942" c2y="590,3238499333206" c1y="514,7525049291766" description="" straight="1" type="2" ypos="439,1811599250326" endx="1116,285368606311" xpos="1361,864295271757" endy="665,8951949374646" c2x="1198,145010828126">
       <from>12</from>
       <to>13</to>
       <inputs default="0" any="0" invert="0">turnMovement==1</inputs>
@@ -115,13 +123,13 @@
       <inputs default="0" any="0" invert="0">turnMovement==11</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1165,701658657153" c2y="851,8911387422895" c1y="794,1000915182424" description="" straight="0" type="2" ypos="710,6770442941953" endx="1344,868947364536" xpos="1113,426014303461" endy="918,3141859663369" c2x="1277,593303010844">
+    <transition c1x="1165,701658657153" c2y="851,8911387422895" c1y="794,1000915182424" description="" straight="0" type="2" ypos="710,6770442941954" endx="1344,868947364536" xpos="1113,426014303461" endy="918,314185966337" c2x="1277,593303010844">
       <from>13</from>
       <to>20</to>
       <inputs default="0" any="0" invert="0">gunxtmotion_gunxt_nxtWalkIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1261,90714676191" c2y="836,2828359162553" c1y="789,5838196894452" description="" straight="1" type="2" ypos="742,8848034626351" endx="1348,733143973539" xpos="1218,494148156096" endy="882,9818521430655" c2x="1305,320145367725">
+    <transition c1x="1261,90714676191" c2y="836,2828359162554" c1y="789,5838196894452" description="" straight="1" type="2" ypos="742,8848034626351" endx="1348,733143973539" xpos="1218,494148156096" endy="882,9818521430656" c2x="1305,320145367725">
       <from>14</from>
       <to>20</to>
       <inputs default="0" any="0" invert="0">gunxtmotion_gunxt_nxtWalkIsRunning</inputs>
@@ -133,7 +141,7 @@
       <inputs default="0" any="0" invert="0">gunxtmotion_gunxt_nxtWalkIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1504,085936934554" c2y="835,6076956607642" c1y="784,0938284456995" description="" straight="1" type="2" ypos="732,5799612306348" endx="1418,430370056621" xpos="1546,913720373521" endy="887,1215628758289" c2x="1461,258153495588">
+    <transition c1x="1504,085936934554" c2y="835,6076956607643" c1y="784,0938284456996" description="" straight="1" type="2" ypos="732,5799612306348" endx="1418,430370056621" xpos="1546,913720373521" endy="887,1215628758291" c2x="1461,258153495588">
       <from>16</from>
       <to>20</to>
       <inputs default="0" any="0" invert="0">gunxtmotion_gunxt_nxtWalkIsRunning</inputs>
@@ -145,46 +153,112 @@
       <inputs default="0" any="0" invert="0">gunxtmotion_gunxt_nxtWalkIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1642,684855700073" c2y="841,5103724400531" c1y="800,4439915193179" description="" straight="0" type="2" ypos="694,3776105985822" endx="1419,070293396087" xpos="1663,560136852065" endy="920,5767533607884" c2x="1482,94557454808">
+    <transition c1x="1642,684855700073" c2y="841,5103724400531" c1y="800,4439915193179" description="" straight="0" type="2" ypos="694,3776105985822" endx="1419,070293396087" xpos="1663,560136852065" endy="920,5767533607886" c2x="1482,94557454808">
       <from>18</from>
       <to>20</to>
       <inputs default="0" any="0" invert="0">gunxtmotion_gunxt_nxtWalkIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1760,432677843872" c2y="838,2575108704464" c1y="861,9116087293312" description="" straight="0" type="2" ypos="658,6537065882159" endx="1403,541364845025" xpos="1776,038334343295" endy="938,5154130115616" c2x="1506,147021344448">
+    <transition c1x="1760,432677843872" c2y="838,2575108704464" c1y="861,9116087293312" description="" straight="0" type="2" ypos="658,6537065882159" endx="1403,541364845025" xpos="1776,038334343295" endy="938,5154130115615" c2x="1506,147021344448">
       <from>19</from>
       <to>20</to>
       <inputs default="0" any="0" invert="0">gunxtmotion_gunxt_nxtWalkIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="701,8024461194639" c2y="420,431510525127" c1y="814,4025281094941" description="" straight="0" type="2" ypos="940,3210876399967" endx="1361,725416084681" xpos="1364,535456180002" endy="124,7281078678658" c2x="779,7492045486316">
+    <transition c1x="701,8024461194639" c2y="331,811660776776" c1y="814,4025281094941" description="" straight="0" type="2" ypos="940,3210876399967" endx="1348,478478822656" xpos="1364,535456180002" endy="155,3047588396013" c2x="832,3166670478612">
       <from>20</from>
       <to>10</to>
       <inputs default="0" any="0" invert="0">~gunxtmotion_gunxt_nxtWalkIsRunning</inputs>
-      <outputs>2</outputs>
-    </transition>
-    <transition c1x="1187,061126019023" c2y="810,0375130441921" c1y="1058,052694854214" description="" straight="0" type="2" ypos="944,4931447895724" endx="778,1935468904372" xpos="1384,440390483454" endy="790,5393665229185" c2x="975,866070111834">
-      <from>20</from>
-      <to>7</to>
-      <inputs default="0" any="0" invert="0">BallDistance&lt;15</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="606,3470292033974" c2y="757,6192030388576" c1y="769,3188243059778" description="" straight="1" type="2" ypos="781,0184455730982" endx="420,4793773239547" xpos="699,2808551431187" endy="745,9195817717372" c2x="513,4132032636761">
+    <transition c1x="1187,061126019023" c2y="865,7815130441921" c1y="1058,052694854214" description="" straight="0" type="2" ypos="944,4931447895725" endx="782,3695468904373" xpos="1384,440390483454" endy="846,2833665229185" c2x="980,0420701118339">
+      <from>20</from>
+      <to>7</to>
+      <inputs default="0" any="0" invert="0">gunxt_valueSonarSensor3&lt;10</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1515,231142937412" c2y="928,0411254907259" c1y="919,0653967319593" description="" straight="1" type="2" ypos="910,0896679731927" endx="1701,618020253553" xpos="1422,037704279341" endy="937,0168542494924" c2x="1608,424581595482">
+      <from>20</from>
+      <to>6</to>
+      <inputs default="0" any="0" invert="0">gunxt_valueTouchSensor1==1</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1565,918407114829" c2y="1009,004327133696" c1y="961,5643830199299" description="" straight="1" type="2" ypos="914,1244389061638" endx="1855,235728752538" xpos="1421,259746295974" endy="1056,444271247462" c2x="1710,577067933683">
+      <from>20</from>
+      <to>22</to>
+      <inputs default="0" any="0" invert="0">gunxt_valueTouchSensor2==1</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="618,5573425902085" c2y="908,0635325976442" c1y="872,4129890853712" description="" straight="1" type="2" ypos="836,7624455730983" endx="448,7583174843878" xpos="703,4568551431188" endy="943,7140761099172" c2x="533,6578300372981">
       <from>7</from>
       <to>25</to>
       <inputs default="0" any="0" invert="0">gunxtmotion_gunxt_nxtWalkIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="879,4679172837858" c2y="265,6530959075552" c1y="421,9529329333986" description="" straight="1" type="2" ypos="578,2527699592421" endx="1356,408163848788" xpos="640,9977940012848" endy="109,3532588817117" c2x="1117,938040566287">
+    <transition c1x="748,1345839504526" c2y="256,0477625742218" c1y="389,982266266732" description="" straight="1" type="2" ypos="523,9167699592422" endx="1320,328163848788" xpos="462,0377940012849" endy="122,1132588817117" c2x="1034,23137389962">
       <from>8</from>
       <to>10</to>
       <inputs default="0" any="0" invert="0">timeout(2000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="465,1290890551815" c2y="651,1514696833439" c1y="677,9443933569945" description="" straight="1" type="2" ypos="704,7373170306453" endx="575,7664255287478" xpos="409,8104208183984" endy="624,3585460096931" c2x="520,4477572919646">
+    <transition c1x="469,2776132191652" c2y="798,3125533198286" c1y="849,228935175237" description="" straight="1" type="2" ypos="900,1453170306453" endx="529,9719980206987" xpos="438,9304208183985" endy="747,3961714644203" c2x="499,624805619932">
       <from>25</from>
-      <to>8</to>
+      <to>24</to>
       <inputs default="0" any="0" invert="0">~gunxtmotion_gunxt_nxtWalkIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="366,4244098628393" c2y="184,0793360911642" c1y="231,6819221914422" description="" straight="1" type="2" ypos="279,2845082917201" endx="407,7513636529341" xpos="345,7609329677919" endy="136,4767499908863" c2x="387,0878867578867">
+      <from>3</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">timeout(2000000)</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="494,2110580760021" c2y="239,9651725456045" c1y="192,7006091858208" description="" straight="1" type="2" ypos="145,4360458260371" endx="540,3683450617613" xpos="471,1324145831225" endy="287,2297359053882" c2x="517,2897015688817">
+      <from>5</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">timeout(2000000)</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1825,355350007281" c2y="833,2202000809867" c1y="876,5275950994377" description="" straight="1" type="2" ypos="919,8349901178887" endx="1917,02663139369" xpos="1779,519709314076" endy="789,9128050625358" c2x="1871,190990700485">
+      <from>6</from>
+      <to>9</to>
+      <inputs default="0" any="0" invert="0">gunxtmotion_gunxt_nxtWalkIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="1990,025186526229" c2y="202,2046203108801" c1y="330,3536210444603" description="" straight="0" type="2" ypos="736,2237072321099" endx="1397,404011948539" xpos="1929,506591645038" endy="131,1753268094099" c2x="1695,777303414865">
+      <from>9</from>
+      <to>10</to>
+      <inputs default="0" any="0" invert="0">~gunxtmotion_gunxt_nxtWalkIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="1955,98545934026" c2y="952,4728474326607" c1y="978,5160919294839" description="" straight="1" type="2" ypos="1004,559336426307" endx="2036,325088240147" xpos="1915,815644890316" endy="926,4296029358376" c2x="1996,155273790203">
+      <from>22</from>
+      <to>23</to>
+      <inputs default="0" any="0" invert="0">~gunxtmotion_gunxt_nxtWalkIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="2167,037469031492" c2y="104,0071508550098" c1y="317,9507991515088" description="" straight="0" type="2" ypos="867,1264474480078" endx="1396,607780077996" xpos="2036,444313508239" endy="100,8795025585107" c2x="1806,878624554744">
+      <from>23</from>
+      <to>10</to>
+      <inputs default="0" any="0" invert="0">~gunxtmotion_gunxt_nxtWalkIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="571,8977686178985" c2y="600,809065622814" c1y="644,0696888239457" description="" straight="1" type="2" ypos="687,3303120250773" endx="618,2296908797123" xpos="548,7318074869916" endy="557,5484424216825" c2x="595,0637297488054">
+      <from>24</from>
+      <to>26</to>
+      <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="894,5485323840279" c2y="256,9519818528195" c1y="382,6398721929618" description="" straight="1" type="2" ypos="508,3277625331041" endx="1322,629748551582" xpos="680,5079243002509" endy="131,2640915126772" c2x="1108,589140467805">
+      <from>26</from>
+      <to>10</to>
+      <inputs default="0" any="0" invert="0">isObstacleKnown</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="547,734867407916" c2y="559,5390429929594" c1y="534,6087800574647" description="" straight="1" type="2" ypos="509,6785171219701" endx="420,6324015710339" xpos="611,2861003263571" endy="584,469305928454" c2x="484,183634489475">
+      <from>26</from>
+      <to>8</to>
+      <inputs default="0" any="0" invert="0">~isObstacleKnown</inputs>
       <outputs></outputs>
     </transition>
   </machine>
