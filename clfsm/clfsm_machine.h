@@ -64,12 +64,20 @@
 
 namespace FSM
 {
+        class CLMachine;
+
+        typedef CLMachine* (*create_machine_f)(int, const char *);
+
         class MachineWrapper
         {
-                std::string _fullPath;
-                std::string _name;
-                class Cc *_compiler;
-                bool _delete_compiler;
+                std::string _fullPath;  /// full name, including path
+                std::string _name;      /// name w/o path and extension
+                create_machine_f _factory; /// machine factory
+                void *_shared_object;   /// object as returned by dlopen()
+                class Cc *_compiler;    /// C++ compiler wrapper
+                const std::vector<std::string> *_compiler_args;
+                const std::vector<std::string> *_linker_args;
+                bool _delete_compiler;  /// does the compiler need deletion?
         public:
                 MachineWrapper(std::string path);
                 virtual ~MachineWrapper();
@@ -89,6 +97,12 @@ namespace FSM
                 /// get the compiler
                 Cc *compiler() const { return _compiler; }
 
+                /// set the compiler arguments
+                virtual void setCompilerArgs(const std::vector<std::string> &args) { _compiler_args = &args; };
+
+                /// set the linker arguments
+                virtual void setLinkerArgs(const std::vector<std::string> &args) { _linker_args = &args; };
+
                 /// return the states of the given machine
                 std::vector<std::string> states() const;
 
@@ -97,6 +111,15 @@ namespace FSM
 
                 /// compile the given machine with same args for compiler and linker
                 bool compile(const std::vector<std::string> &args) { return compile(args, args); }
+
+                /// instantiate a machine
+                CLMachine *instantiate(int id, const char *machine_name);
+
+                /// return the default compiler args
+                static const std::vector<std::string> &default_compiler_args();
+
+                /// return the default linker args
+                static const std::vector<std::string> &default_linker_args();
         };
 }
 

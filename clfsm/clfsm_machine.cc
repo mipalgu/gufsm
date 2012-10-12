@@ -59,6 +59,7 @@
 #include <fstream>
 #include <dispatch/dispatch.h>
 #include <libgen.h>
+#include <dlfcn.h>
 #include <sys/utsname.h>
 #include "clfsm_cc.h"
 #include "clfsm_machine.h"
@@ -68,7 +69,7 @@ using namespace FSM;
 
 static dispatch_queue_t sync_queue = nullptr;
 
-MachineWrapper::MachineWrapper(string path): _fullPath(path), _compiler(nullptr), _delete_compiler(false)
+MachineWrapper::MachineWrapper(string path): _fullPath(path), _factory(nullptr), _shared_object(nullptr), _compiler(nullptr), _compiler_args(nullptr), _linker_args(nullptr), _delete_compiler(false)
 {
         char pathName[path.length()];
 
@@ -83,6 +84,7 @@ MachineWrapper::MachineWrapper(string path): _fullPath(path), _compiler(nullptr)
 
 MachineWrapper::~MachineWrapper()
 {
+        if (_shared_object) dlclose(_shared_object);
         if (_delete_compiler) delete _compiler;
 }
 
@@ -202,4 +204,65 @@ bool MachineWrapper::compile(const vector<string> &compiler_args, const vector<s
         }
 
         return success;
+}
+
+
+CLMachine *MachineWrapper::instantiate(int id, const char *machine_name)
+{
+        if (!_shared_object)
+        {
+                string shared_path = binaryDirectory() + "/" + _name + ".so";
+                if (!(_shared_object = dlopen(shared_path.c_str(), RTLD_NOW|RTLD_GLOBAL)))
+                {
+                        const vector<string> *compiler_args = _compiler_args;
+                        const vector<string> *linker_args = _linker_args;
+
+                        if (!compiler_args) compiler_args = &default_compiler_args();
+                        if (!linker_args)   linker_args   = &default_linker_args();
+
+                        compile(*compiler_args, *linker_args);
+
+                        if (!(_shared_object = dlopen(shared_path.c_str(), RTLD_NOW|RTLD_GLOBAL)))
+                                return nullptr;
+                }
+        }
+        if (!_factory)
+        {
+                string symbol = string("_CLM_Create_") + name();
+                _factory = create_machine_f(dlsym(_shared_object, symbol.c_str()));
+                if (!_factory)
+                {
+                        symbol = string("CLM_Create_") + name();
+                        if (!(_factory = create_machine_f(dlsym(_shared_object, symbol.c_str()))))
+                                return nullptr;
+                }
+        }
+        return _factory(id, machine_name);
+}
+
+
+const vector<string> &MachineWrapper::default_compiler_args()
+{
+        static vector<string> args;
+
+        if (!args.size())
+        {
+                args.push_back("-I/usr/local/include/clfsm");
+                args.push_back("-I/usr/local/include");
+        }
+        return args;
+}
+
+
+const vector<string> &MachineWrapper::default_linker_args()
+{
+        static vector<string> args;
+
+        if (!args.size())
+        {
+                args.push_back("-L/usr/local/lib");
+                args.push_back("-rpath");
+                args.push_back("/usr/local/lib");
+        }
+        return args;
 }
