@@ -61,6 +61,7 @@
 #include <libgen.h>
 #include <dlfcn.h>
 #include <sys/utsname.h>
+#include <gu_util.h>
 #include "clfsm_cc.h"
 #include "clfsm_machine.h"
 
@@ -121,8 +122,9 @@ vector<string> MachineWrapper::states() const
 {
         stringstream filename;
 
-        filename << binaryDirectory() << "/States";
+        filename << path() << "/States";
 
+        DBG(cout << filename.str() << endl);
         ifstream file(filename.str());
         vector<string> states;
 
@@ -181,7 +183,7 @@ bool MachineWrapper::compile(const vector<string> &compiler_args, const vector<s
                 args.push_back("-c");
                 args.push_back("-o");
                 args.push_back(outfilename);
-                args.push_back(file.str());
+                args.push_back(_fullPath + "/" + file.str());
 
                 if (!compiler()->compile(args))
                         success = false;

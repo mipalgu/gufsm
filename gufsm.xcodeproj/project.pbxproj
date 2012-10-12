@@ -129,7 +129,6 @@
 		F192CCE7144D356300FF8526 /* FSMWBContext.cc in Sources */ = {isa = PBXBuildFile; fileRef = F192CCE5144D356300FF8526 /* FSMWBContext.cc */; };
 		F1A3DF6D142D3BFE0060F293 /* FSMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30B142C0CDE001F788B /* FSMachine.cc */; };
 		F1A3DF6E142D3BFF0060F293 /* FSMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30B142C0CDE001F788B /* FSMachine.cc */; };
-		F1A517D015C91BDC00348C25 /* clfsm+PingPong.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1A517CF15C91BDC00348C25 /* clfsm+PingPong.cc */; };
 		F1A517D215C91BDC00348C25 /* clfsm.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1A517D115C91BDC00348C25 /* clfsm.1 */; };
 		F1A5180D15C9514A00348C25 /* PingPong.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1A5180B15C9514A00348C25 /* PingPong.mm */; settings = {COMPILER_FLAGS = "-Weverything -Wno-weak-vtables -Wno-padded"; }; };
 		F1A9E7D2147F76C200C852FC /* ActivityFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CC147F76C200C852FC /* ActivityFactory.cpp */; };
@@ -168,6 +167,7 @@
 		F1D575B4162797CB00976A23 /* libclfsm.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F1D5758D1627948900976A23 /* libclfsm.dylib */; };
 		F1D575B5162798B600976A23 /* clfsm_vector_factory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F11144FB15F98447005953C1 /* clfsm_vector_factory.cc */; };
 		F1D575B6162798C900976A23 /* clfsm_factory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F12EAE5415F6F48A002DB436 /* clfsm_factory.cc */; };
+		F1D575B81627B9E400976A23 /* clfsm_main.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1D575B71627B9E400976A23 /* clfsm_main.cc */; };
 		F1D962B415F7236300EB0B30 /* FSMANTLRMachineFactory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1D962B315F7236300EB0B30 /* FSMANTLRMachineFactory.cc */; };
 		F1DF55911584274B0097A438 /* FSMVectorRunner.cc in Sources */ = {isa = PBXBuildFile; fileRef = F13BA40E1579E92500929C9C /* FSMVectorRunner.cc */; };
 		F1DF55921584274C0097A438 /* FSMVectorRunner.cc in Sources */ = {isa = PBXBuildFile; fileRef = F13BA40E1579E92500929C9C /* FSMVectorRunner.cc */; };
@@ -951,6 +951,7 @@
 		F1D575931627948900976A23 /* libclfsm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libclfsm.h; sourceTree = "<group>"; };
 		F1D575941627948900976A23 /* libclfsmPriv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libclfsmPriv.h; sourceTree = "<group>"; };
 		F1D575951627948900976A23 /* libclfsm.cp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = libclfsm.cp; sourceTree = "<group>"; };
+		F1D575B71627B9E400976A23 /* clfsm_main.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = clfsm_main.cc; sourceTree = "<group>"; };
 		F1D962B015F722D400EB0B30 /* FSMANTLRVectorFactory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRVectorFactory.cc; sourceTree = "<group>"; };
 		F1D962B115F7231300EB0B30 /* FSMANTLRMachineFactory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRMachineFactory.cc; sourceTree = "<group>"; };
 		F1D962B315F7236300EB0B30 /* FSMANTLRMachineFactory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRMachineFactory.cc; sourceTree = "<group>"; };
@@ -2029,6 +2030,7 @@
 				F1D126F11609382400E526BE /* clfsm_cc.cc */,
 				F1D126F21609382400E526BE /* clfsm_cc.h */,
 				F1158173161BCA20006C6363 /* clfsm_cc_delegate.h */,
+				F1D575B71627B9E400976A23 /* clfsm_main.cc */,
 				F1A5180015C9278500348C25 /* examples */,
 				F1A517CF15C91BDC00348C25 /* clfsm+PingPong.cc */,
 				F1A517D115C91BDC00348C25 /* clfsm.1 */,
@@ -2595,12 +2597,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1A517D015C91BDC00348C25 /* clfsm+PingPong.cc in Sources */,
 				F1D126F31609382400E526BE /* clfsm_cc.cc in Sources */,
 				F108330B1626997A00D6C789 /* clfsm_machine.cc in Sources */,
 				F1A5180D15C9514A00348C25 /* PingPong.mm in Sources */,
 				F167F7AA15CB3CB000A56F17 /* State_Ping.mm in Sources */,
 				F18ACF5215CB4F5E00492118 /* State_Pong.mm in Sources */,
+				F1D575B81627B9E400976A23 /* clfsm_main.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

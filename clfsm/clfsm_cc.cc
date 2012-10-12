@@ -58,6 +58,7 @@
 #include <dispatch/dispatch.h>
 #include <unistd.h>
 #include <vector>
+#include <gu_util.h>
 #include "clfsm_cc_delegate.h"
 #include "clfsm_cc.h"
 
@@ -138,8 +139,13 @@ bool Cc::compile(vector<string> args, const char *argv0)
                         vector<char *> exec_args;
                         exec_args.reserve(n+2);
                         exec_args[0] = (char *) argv0;
+                        DBG(cout << argv0 << " ");
                         for (int i = 0; i < n; i++)
+                        {
                                 exec_args[i+1] = (char *) args[i].c_str();
+                                DBG(cout << args[i] << " ");
+                        }
+                        DBG(cout << endl);
                         exec_args[n+1] = nullptr;
                         execvp(argv0, &exec_args[0]);
                         cerr << "Cannot exec " << argv0 << endl;
@@ -150,10 +156,12 @@ bool Cc::compile(vector<string> args, const char *argv0)
                         break;
         }
 
-        int status;
-        if (waitpid(pid, &status, 0) != pid)
+        int status = 0;
+        while (waitpid(pid, &status, 0) != pid) if (errno != EAGAIN && errno != EINTR)
         {
-                cerr << "Error executing " << argv0 << ": " << strerror(errno) << endl;
+                if (errno == ENOENT)    // child exited before we got there
+                        break;
+                cerr << "Error executing " << argv0 << ": " << strerror(errno) << " (" << errno << ")" << endl;
                 return false;
         }
         if (WIFSIGNALED(status))
