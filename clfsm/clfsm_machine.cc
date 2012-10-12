@@ -66,6 +66,8 @@
 using namespace std;
 using namespace FSM;
 
+static dispatch_queue_t sync_queue = nullptr;
+
 MachineWrapper::MachineWrapper(string path): _fullPath(path), _compiler(nullptr), _delete_compiler(false)
 {
         char pathName[path.length()];
@@ -136,10 +138,14 @@ vector<string> MachineWrapper::states() const
 }
 
 
-bool MachineWrapper::compile(const vector<string> &args)
+bool MachineWrapper::compile(const vector<string> &compiler_args, const vector<string> &linker_args)
 {
         string binary_directory = binaryDirectory();
-
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken,
+        ^{
+                sync_queue = dispatch_queue_create("net.mipal.clfsm.compile", DISPATCH_QUEUE_SERIAL);
+        });
         if (!compiler()) setCompiler();
 
         mkdir(binary_directory.c_str(), 0777);
@@ -147,10 +153,11 @@ bool MachineWrapper::compile(const vector<string> &args)
         vector<string> files = states();
         files.push_back("");
 
+        __block vector<string> outfiles;
         __block bool success = true;
         dispatch_apply(files.size(), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(size_t i)
         {
-                vector<string> compiler_args = args;
+                vector<string> args = compiler_args;
                 stringstream file;
                 stringstream outfile;
 
@@ -159,19 +166,40 @@ bool MachineWrapper::compile(const vector<string> &args)
                 else
                         file << name();
 
-                outfile << binary_directory << "/" << file.str() << ".so";
+                outfile << binary_directory << "/" << file.str() << ".o";
                 file << ".mm";
 
-                compiler_args.push_back("-I");
-                compiler_args.push_back(path());
-                compiler_args.push_back("-c");
-                compiler_args.push_back("-o");
-                compiler_args.push_back(outfile.str());
-                compiler_args.push_back(file.str());
+                string outfilename = outfile.str();
 
-                if (!compiler()->compile(compiler_args))
+                args.push_back("-I");
+                args.push_back(path());
+                args.push_back("-Weverything");
+                args.push_back("-Wno-weak-vtables");
+                args.push_back("-Wno-padded");
+                args.push_back("-c");
+                args.push_back("-o");
+                args.push_back(outfilename);
+                args.push_back(file.str());
+
+                if (!compiler()->compile(args))
                         success = false;
+                else dispatch_sync(sync_queue,
+                ^{
+                        outfiles.push_back(outfilename);
+                });
         });
+        if (success)    // link into shared object if compiler was successful
+        {
+                vector<string> args = linker_args;
+                for (const string &outfile: outfiles)
+                        args.push_back(outfile);
+                args.push_back("-shared");
+                args.push_back("-lclfsm");
+                args.push_back("-o");
+                args.push_back(binary_directory + "/" + name() + ".so");
+
+                success = compiler()->compile(args);
+        }
 
         return success;
 }

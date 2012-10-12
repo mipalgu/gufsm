@@ -93,7 +93,10 @@ namespace FSM
                 std::vector<std::string> states() const;
 
                 /// compile the given machine
-                virtual bool compile(const std::vector<std::string> &args);
+                virtual bool compile(const std::vector<std::string> &args, const std::vector<std::string> &linker_args);
+
+                /// compile the given machine with same args for compiler and linker
+                bool compile(const std::vector<std::string> &args) { return compile(args, args); }
         };
 }
 
