@@ -1,7 +1,7 @@
 <?xml version='1.0'?>
 <!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
 <qfsmproject version="0.53" author="Qfsm">
-  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene, Carl" description="" version="1" name="StateMachineStarter" arrowtype="1" numbits="3" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene, Carl" description="" version="1" name="StateMachineStarter" arrowtype="1" numbits="4" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
@@ -10,7 +10,12 @@
     <state pencolor="0" radius="40" description="OnEntry {  print_state_name();&#xa;&#x9;post(&quot;QSay&quot;, &quot;Starting Machines&quot;); &#xa;&#xa;&#x9;resume(&quot;Safety_BatteryMonitor&quot;);&#xa;&#x9;resume(&quot;Safety_TempsMonitor&quot;);&#xa;&#x9;resume(&quot;SMRobotPosition&quot;);&#xa; &#x9;resume(&quot;SMButtonChest&quot;); &#xa; &#x9;resume(&quot;SMButtonLeftFoot&quot;); &#xa; &#x9;resume(&quot;SMButtonRightFoot&quot;);&#xa; }&#xa;OnExit {&#xa;&#xa; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="149" code="6" xpos="688" linewidth="1">StartMachines</state>
     <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;resume(&quot;SMGameController&quot;);&#xa; }&#xa;OnExit { &#xa; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="403" code="4" xpos="1048" linewidth="1">StartGameController</state>
     <state pencolor="0" radius="40" description="OnEntry {&#xa; suspendAll();&#xa; post(&quot;QSay&quot;, &quot;Starting Game Controller&quot;);&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="287" code="7" xpos="1054" linewidth="1">Pre_StartGameController</state>
-    <transition c1x="301.366878" c2y="124.214029" c1y="109.129483" description="" straight="1" type="2" ypos="94.04493766353566" endx="649.1942999941867" xpos="127.4531671027618" endy="139.2985749985467" c2x="475.280589">
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="451" code="1" xpos="465" linewidth="1">RestartCheck2</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;post(&quot;QSay&quot;, &quot;Stopping Machines&quot;); &#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="278" code="2" xpos="248" linewidth="1">RestartFSMs</state>
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="591" code="3" xpos="657" linewidth="1">RestartCheck1</state>
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="532" code="5" xpos="1019" linewidth="1">GameControllerRunning</state>
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="378" code="8" xpos="704" linewidth="1">RestartCheckFailed</state>
+    <transition c1x="301.916513" c2y="124.433471" c1y="104.451905" description="" straight="1" type="2" ypos="84.47034021142009" endx="648.2636425651548" xpos="128.7429484989741" endy="144.4150356805948" c2x="475.090078">
       <from>0</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
@@ -28,16 +33,64 @@
       <inputs default="0" any="0" invert="0">((leftFootBumpPressed==1) &amp;&amp; (shortChestButtonPressed==1))</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1083.194413" c2y="474.951593" c1y="516.676529" description="" straight="1" type="2" ypos="442.9704469852526" endx="1024.098022331147" xpos="1049.537324884048" endy="433.8171293847701" c2x="953.216202">
+    <transition c1x="1035.718282" c2y="476.138203" c1y="459.082106" description="" straight="1" type="2" ypos="442.0260092972659" endx="1028.701425001453" xpos="1039.226711088211" endy="493.1942999941867" c2x="1032.209854">
       <from>4</from>
-      <to>4</to>
-      <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">(shortChestButtonPressed==0)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1051.345702" c2y="350.684912" c1y="338.316423" description="" straight="1" type="2" ypos="325.9479344127423" endx="1050.066203417122" xpos="1051.985451668306" endy="363.0534006023157" c2x="1050.705953">
+    <transition c1x="1050.952350" c2y="344.078766" c1y="345.921234" description="" straight="1" type="2" ypos="325.9479344127423" endx="1050.014548331694" xpos="1051.985451668306" endy="364.0520655872577" c2x="1051.047650">
       <from>7</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">timeout(100000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="380.760553" c2y="341.668519" c1y="387.331481" description="" straight="1" type="2" ypos="432.9944426980975" endx="283.7183413143431" xpos="429.2816586856569" endy="296.0055573019025" c2x="332.239447">
+      <from>1</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">(shortChestButtonPressed==1)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="558.064078" c2y="409.613326" c1y="424.464326" description="" straight="1" type="2" ypos="439.3153251949299" endx="667.6816246199819" xpos="503.2553051837227" endy="394.7623270984699" c2x="612.872851">
+      <from>1</from>
+      <to>8</to>
+      <inputs default="0" any="0" invert="0">timeout(3000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="185.518503" c2y="154.524618" c1y="203.475382" description="" straight="1" type="2" ypos="251.7704068435565" endx="119.4444905879157" xpos="217.8005224739326" endy="105.5738533275324" c2x="152.481497">
+      <from>2</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="580.679236" c2y="502.763386" c1y="539.236614" description="" straight="1" type="2" ypos="575.7098428729206" endx="501.9622928811136" xpos="620.0377071188864" endy="466.2901571270793" c2x="541.320764">
+      <from>3</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">(shortChestButtonPressed==0)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="670.144204" c2y="461.280419" c1y="506.160839" description="" straight="1" type="2" ypos="551.041258391588" endx="692.8" xpos="658.816306436746" endy="416.4" c2x="681.472102">
+      <from>3</from>
+      <to>8</to>
+      <inputs default="0" any="0" invert="0">timeout(3000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="958.915926" c2y="668.303327" c1y="563.186304" description="" straight="0" type="2" ypos="552.6146753407664" endx="696.6018956863256" xpos="985.893578257462" endy="596.6293745700023" c2x="744.412796">
+      <from>5</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">((leftFootBumpPressed==1) &amp;&amp; (shortChestButtonPressed==1))</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="907.270021" c2y="578.824223" c1y="483.175777" description="" straight="0" type="2" ypos="540.0483951881893" endx="696.1389686428302" xpos="980.8395055732407" endy="582.7452357044212" c2x="724.729979">
+      <from>5</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">((rightFootBumpPressed==1) &amp;&amp; (shortChestButtonPressed==1))</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="823.528826" c2y="467.666621" c1y="431.617513" description="" straight="1" type="2" ypos="395.5684052801977" endx="990.7157287525381" xpos="739.935374436768" endy="503.7157287525381" c2x="907.122277">
+      <from>8</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
       <outputs></outputs>
     </transition>
   </machine>
