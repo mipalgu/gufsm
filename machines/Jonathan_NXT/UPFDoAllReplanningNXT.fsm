@@ -23,7 +23,6 @@
     <state pencolor="0" radius="40" description="OnEntry{ print_state_name(); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="904,5439999999999" code="20" xpos="1382,424" linewidth="1">WAIT_AFTER</state>
     <state pencolor="0" radius="40" description="OnEntry { &#xa; post(&quot;upf_exitPlanner&quot;,&quot;now&quot;); &#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="410,368" code="21" xpos="1758,352" linewidth="1">NO_MORE_ACTIONS</state>
     <state pencolor="0" radius="40" description="OnEntry{ print_state_name(); &#xa; post(&quot;gunxt_nxtWalk&quot;,&quot;-10,0,0&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="837,024" code="7" xpos="743,456" linewidth="1">ACCURATING</state>
-    <state pencolor="0" radius="40" description="OnEntry{ print_state_name(); &#xa; post(&quot;upf_replanning&quot;,upf_plannerResponse_move);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="545,184" code="8" xpos="428,16" linewidth="1">REPLANNING</state>
     <state pencolor="0" radius="40" description="OnEntry {}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="929,232" code="25" xpos="411,472" linewidth="1">WAIT</state>
     <state pencolor="0" radius="40" description="OnEntry {&#xa; post(&quot;gunxt_startSonarSensor&quot;,&quot;3&quot;);&#xa; }&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="303,6" code="3" xpos="314" linewidth="1">TURN_ON_SENSORS</state>
     <state pencolor="0" radius="40" description="OnEntry {}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="117,2" code="5" xpos="442,8" linewidth="1">WAIT</state>
@@ -191,18 +190,6 @@
       <from>7</from>
       <to>25</to>
       <inputs default="0" any="0" invert="0">gunxtmotion_gunxt_nxtWalkIsRunning</inputs>
-      <outputs></outputs>
-    </transition>
-    <transition c1x="748,1345839504527" c2y="256,0477625742218" c1y="389,982266266732" description="" straight="1" type="2" ypos="523,9167699592422" endx="1320,328163848788" xpos="462,0377940012849" endy="122,1132588817116" c2x="1034,23137389962">
-      <from>8</from>
-      <to>10</to>
-      <inputs default="0" any="0" invert="0">timeout(2000000)</inputs>
-      <outputs></outputs>
-    </transition>
-    <transition c1x="434,9131494545461" c2y="690,1574190919121" c1y="795,1513680612786" description="" straight="1" type="2" ypos="900,1453170306453" endx="426,8786067268413" xpos="438,9304208183985" endy="585,1634701225454" c2x="430,8958780906937">
-      <from>25</from>
-      <to>8</to>
-      <inputs default="0" any="0" invert="0">~gunxtmotion_gunxt_nxtWalkIsRunning</inputs>
       <outputs></outputs>
     </transition>
     <transition c1x="366,4244098628394" c2y="184,0793360911642" c1y="231,6819221914422" description="" straight="1" type="2" ypos="279,2845082917201" endx="407,7513636529342" xpos="345,7609329677919" endy="136,4767499908863" c2x="387,0878867578867">
