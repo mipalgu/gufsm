@@ -18,7 +18,7 @@
     <state pencolor="16711710" radius="40" description="OnEntry { update = Ballfiltered;  resume(&quot;SMBallSeeker&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="507" code="11" xpos="567" linewidth="1">Wait</state>
     <state pencolor="12124415" radius="40" description="OnEntry { print_state_name();  }&#xa;OnExit { suspend(&quot;SMBallSeeker&quot;); }&#xa;{ }" finalstate="0" moore_outputs="" ypos="391" code="12" xpos="659" linewidth="1">Check</state>
     <state pencolor="12124415" radius="40" description="OnEntry { print_state_name(); post_int(&quot;Speech&quot;, BallDistance); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="363" code="13" xpos="796" linewidth="1">Visible</state>
-    <state pencolor="511" radius="40" description="OnEntry { corrYaw = gurobotmodel_ballSightingRR /6;  &#xa;&#x9;post(&quot;QSay&quot;, &quot;Long&quot;);&#xa;  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="404" code="14" xpos="1009" linewidth="1">Decide_Long</state>
+    <state pencolor="511" radius="40" description="OnEntry { corrYaw = gurobotmodel_ballSightingRR /10;  &#xa;&#x9;post(&quot;QSay&quot;, &quot;Long&quot;);&#xa;  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="404" code="14" xpos="1009" linewidth="1">Decide_Long</state>
     <state pencolor="511" radius="40" description="OnEntry { postv(&quot;gunaowalk_walk&quot;, 100, corrYaw, corrYaw, 100); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="637" code="15" xpos="739" linewidth="1">Long_Left</state>
     <state pencolor="511" radius="40" description="OnEntry { postv(&quot;gunaowalk_walk&quot;, 100, corrYaw, corrYaw, 100); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="579" code="16" xpos="969" linewidth="1">Long_Right</state>
     <state pencolor="45317" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="222" code="17" xpos="981" linewidth="1">Decide_Short</state>
@@ -208,7 +208,7 @@
       <inputs default="0" any="0" invert="0">timeout(1500000)</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="1035.610968" c2y="125.011359" c1y="158.745570" description="" straight="1" type="2" ypos="192.479780298857" endx="1093.860101682058" xpos="1006.486400859993" endy="91.27714841142868" c2x="1064.735535">
+    <transition c1x="1019.556350" c2y="105.658794" c1y="177.341206" description="" straight="1" type="2" ypos="192.479780298857" endx="1094.513599140007" xpos="1006.486400859993" endy="90.52021970114295" c2x="1081.443650">
       <from>17</from>
       <to>20</to>
       <inputs default="0" any="0" invert="0">HeadYaw &lt; 0</inputs>
