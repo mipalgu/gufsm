@@ -1,1 +1,1 @@
-int counter;    // just an example of a state-internal variable
+int	counter;	// just an example of a state-internal variable

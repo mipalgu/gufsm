@@ -6,12 +6,12 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="80" endx="50" xpos="-10" endy="80"/>
-    <state pencolor="12124415" radius="40" description="OnEntry { &#xa;&#x9;extern shortChestButtonPressed;&#xa;&#x9;extern rightFootBumpPressed;&#xa;&#x9;extern leftFootBumpPressed;&#xa;&#x9;extern playerNumber;&#xa;&#xa;&#x9;playerNumber = read_int(&quot;/home/nao/data/player&quot;);&#xa;&#x9;post(&quot;QSay&quot;, &quot;Player&quot;);&#xa;&#x9;post_int(&quot;QSay&quot;, playerNumber); &#xa;&#xa;&#x9;suspendAll();&#xa; }&#xa;OnExit {  }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="80" code="0" xpos="90" linewidth="1">Init</state>
+    <state pencolor="12124415" radius="40" description="OnEntry { &#xa;&#x9;extern shortChestButtonPressed;&#xa;&#x9;extern rightFootBumpPressed;&#xa;&#x9;extern leftFootBumpPressed;&#xa;&#x9;extern playerNumber;&#xa;&#x9;extern wbStartGameController;&#xa;&#x9;extern wbStopFSMs;&#xa;&#x9;playerNumber = read_int(&quot;/home/nao/data/player&quot;);&#xa;&#x9;post(&quot;QSay&quot;, &quot;Player&quot;);&#xa;&#x9;post_int(&quot;QSay&quot;, playerNumber); &#xa;&#xa;&#x9;suspendAll();&#xa; }&#xa;OnExit {  }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="80" code="0" xpos="90" linewidth="1">Init</state>
     <state pencolor="0" radius="40" description="OnEntry {  print_state_name();&#xa;&#x9;post(&quot;QSay&quot;, &quot;Starting Machines&quot;); &#xa;&#xa;&#x9;resume(&quot;Safety_BatteryMonitor&quot;);&#xa;&#x9;resume(&quot;Safety_TempsMonitor&quot;);&#xa;&#x9;resume(&quot;SMRobotPosition&quot;);&#xa; &#x9;resume(&quot;SMButtonChest&quot;); &#xa; &#x9;resume(&quot;SMButtonLeftFoot&quot;); &#xa; &#x9;resume(&quot;SMButtonRightFoot&quot;);&#xa; }&#xa;OnExit {&#xa;&#xa; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="149" code="6" xpos="688" linewidth="1">StartMachines</state>
     <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;resume(&quot;SMGameController&quot;);&#xa; }&#xa;OnExit { &#xa; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="403" code="4" xpos="1048" linewidth="1">StartGameController</state>
-    <state pencolor="0" radius="40" description="OnEntry {&#xa; post(&quot;QSay&quot;, &quot;Starting Game Controller&quot;);&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="287" code="7" xpos="1054" linewidth="1">Pre_StartGameController</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa; &#x9;post(&quot;QSay&quot;, &quot;Starting Game Controller&quot;);&#xa;&#x9;wbStartGameController=0;&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="287" code="7" xpos="1054" linewidth="1">Pre_StartGameController</state>
     <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="451" code="1" xpos="465" linewidth="1">RestartCheck2</state>
-    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;post(&quot;QSay&quot;, &quot;Stopping Machines&quot;); &#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="278" code="2" xpos="248" linewidth="1">RestartFSMs</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;post(&quot;QSay&quot;, &quot;Stopping Machines&quot;); &#xa;&#x9;wbStopFSMs=0;&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="278" code="2" xpos="248" linewidth="1">RestartFSMs</state>
     <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="591" code="3" xpos="657" linewidth="1">RestartCheck1</state>
     <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="532" code="5" xpos="1019" linewidth="1">GameControllerRunning</state>
     <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="378" code="8" xpos="704" linewidth="1">RestartCheckFailed</state>
@@ -21,7 +21,7 @@
       <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="744.006548" c2y="202.642584" c1y="167.554422" description="" straight="0" type="2" ypos="161.5792691153172" endx="1035.439720213178" xpos="725.9705410617814" endy="251.5667385887937" c2x="1049.323433">
+    <transition c1x="744.006548" c2y="222.548070" c1y="167.554422" description="" straight="0" type="2" ypos="161.5792691153172" endx="1020.014393352075" xpos="725.9705410617814" endy="265.9054855288744" c2x="1005.337826">
       <from>6</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">((rightFootBumpPressed==1) &amp;&amp; (shortChestButtonPressed==1))</inputs>
@@ -31,6 +31,12 @@
       <from>6</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">((leftFootBumpPressed==1) &amp;&amp; (shortChestButtonPressed==1))</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="926.067079" c2y="175.199919" c1y="93.656037" description="" straight="0" type="2" ypos="163.1121557947916" endx="1030.345453454899" xpos="725.4278914557517" endy="254.7438001657719" c2x="1013.706266">
+      <from>6</from>
+      <to>7</to>
+      <inputs default="0" any="0" invert="0">wbStartGameController</inputs>
       <outputs></outputs>
     </transition>
     <transition c1x="1035.059399" c2y="474.436636" c1y="460.563364" description="" straight="1" type="2" ypos="441.0503590648343" endx="1027.553956688994" xpos="1039.446043311006" endy="493.9496409351657" c2x="1031.940601">
@@ -45,7 +51,7 @@
       <inputs default="0" any="0" invert="0">timeout(100000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="418.866583" c2y="314.779176" c1y="414.220824" description="" straight="1" type="2" ypos="426.6883412131784" endx="278.4949708482097" xpos="434.5050291517903" endy="302.3116587868216" c2x="294.133417">
+    <transition c1x="382.762317" c2y="344.186137" c1y="385.437239" description="" straight="1" type="2" ypos="426.6883412131784" endx="279.276893177651" xpos="434.5050291517903" endy="302.9350346531504" c2x="331.019605">
       <from>1</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">(shortChestButtonPressed==1)</inputs>
@@ -57,7 +63,7 @@
       <inputs default="0" any="0" invert="0">timeout(3000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="211.199828" c2y="126.116671" c1y="231.883329" description="" straight="1" type="2" ypos="247.5160987833355" endx="114.32553733451" xpos="223.67446266549" endy="110.4839012166645" c2x="126.800172">
+    <transition c1x="211.199828" c2y="126.116671" c1y="231.883329" description="" straight="1" type="2" ypos="246.7344602906005" endx="114.32553733451" xpos="223.0507309389641" endy="110.4839012166645" c2x="126.800172">
       <from>2</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">1</inputs>
@@ -85,6 +91,12 @@
       <from>5</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">((rightFootBumpPressed==1) &amp;&amp; (shortChestButtonPressed==1))</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="811.640744" c2y="550.161337" c1y="848.699777" description="" straight="0" type="2" ypos="571.3771030203393" endx="248.0000030769231" xpos="1011.968374460654" endy="317.9999999999999" c2x="272.336186">
+      <from>5</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">wbStopFSMs</inputs>
       <outputs></outputs>
     </transition>
     <transition c1x="757.004677" c2y="506.086602" c1y="403.913398" description="" straight="1" type="2" ypos="395.1291951481928" endx="983.9630099241512" xpos="739.0369900758488" endy="514.8708048518072" c2x="965.995323">

@@ -1,0 +1,12 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene, Carl" description="" version="1" name="SMBallSeeker" arrowtype="1" numbits="4" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="275" endx="293" xpos="233" endy="275"/>
+    <state pencolor="12124415" radius="40" description="OnEntry { &#xa;         restart(&quot;SMHeadScanner&quot;);&#xa;         restart(&quot;SMWalkScanner&quot;);&#xa; }&#xa;OnExit { &#xa;  }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="275" code="0" xpos="333" linewidth="1">INIT</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;         suspend(&quot;SMHeadScanner&quot;);&#xa;         suspend(&quot;SMWalkScanner&quot;);&#xa; }&#xa;OnExit { &#xa; }&#xa;{ }" finalstate="1" moore_outputs="" ypos="279" code="10" xpos="608" linewidth="1">Suspend</state>
+  </machine>
+</qfsmproject>
