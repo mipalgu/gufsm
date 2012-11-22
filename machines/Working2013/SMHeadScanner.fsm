@@ -6,7 +6,7 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="70" endx="110" xpos="50" endy="70"/>
-    <state pencolor="12124415" radius="40" description="OnEntry {&#x9;&#xa;&#x9;extern disableUpperCamera;&#xa;&#x9;extern gunaomotion_naoHeadIsRunning;&#xa;&#x9;extern gunaomotion_headStiffness;&#xa;&#x9;extern guvision_selectCamera;&#xa;&#x9;extern&#x9; sensors_postJoints_Frequency;&#xa;&#x9;extern HeadYaw;&#xa;&#x9;int speedUpDown; &#xa;&#x9;int headPitch; int doLeft; int ball_x; int ball_y; int dy; int my; int period; int fx; int fy; int fs; int update; int mx; int dx; int doLowBottomSeek; int targetAngle; int lowerSeek; int minMove;&#xa;&#x9;speedUpDown=20;&#xa;        &#x9;headSeekSpeed=17;&#xa;&#x9;guvision_selectCamera=1;&#xa; }&#xa;OnExit { post(&quot;guvision_runVisionPipeline&quot;, &quot;now&quot;); post(&quot;sensors_postJoints&quot;, &quot;On&quot;);   sensors_postJoints_Frequency=2;  post(&quot;SpeechOutput&quot;, &quot;On&quot;);   }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="70" code="0" xpos="150" linewidth="1">Init</state>
+    <state pencolor="12124415" radius="40" description="OnEntry {&#x9;&#xa;&#x9;extern disableUpperCamera;&#xa;&#x9;extern gunaomotion_naoHeadIsRunning;&#xa;&#x9;extern gunaomotion_headStiffness;&#xa;&#x9;extern guvision_selectCamera;&#xa;&#x9;extern&#x9; sensors_postJoints_Frequency;&#xa;&#x9;extern HeadYaw;&#xa;&#x9;int speedUpDown; &#xa;&#x9;int headPitch; int doLeft; int ball_x; int ball_y; int dy; int my; int period; int fx; int fy; int fs; int update; int mx; int dx; int doLowBottomSeek; int targetAngle; int lowerSeek; int minMove;&#xa;&#x9;speedUpDown=20;&#xa;        &#x9;headSeekSpeed=50;&#xa;&#x9;guvision_selectCamera=1;&#xa; }&#xa;OnExit { post(&quot;guvision_runVisionPipeline&quot;, &quot;now&quot;); post(&quot;sensors_postJoints&quot;, &quot;On&quot;);   sensors_postJoints_Frequency=2;  post(&quot;SpeechOutput&quot;, &quot;On&quot;);   }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="70" code="0" xpos="150" linewidth="1">Init</state>
     <state pencolor="51995" radius="40" description="OnEntry { &#xa;&#x9;Head_Stiffness=0; &#xa;}&#xa;OnExit {}&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="552" code="3" xpos="1134" linewidth="1">Loosen_Head</state>
     <state pencolor="51995" radius="40" description="OnEntry {   post(&quot;Speech&quot;, &quot;Lower Camera&quot;); }&#xa;OnExit { guvision_selectCamera= 1; }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="567" code="5" xpos="1370" linewidth="1">Lower_Camera</state>
     <state pencolor="51995" radius="40" description="OnEntry {  post(&quot;Speech&quot;, &quot;Upper Camera&quot;);  }&#xa;OnExit {  guvision_selectCamera= 0;  }&#xa;{}&#xa;" finalstate="0" moore_outputs="" ypos="391" code="4" xpos="1218" linewidth="1">Upper_Camera</state>
@@ -24,7 +24,7 @@
     <state pencolor="0" radius="40" description="OnEntry {  &#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="315.2" code="11" xpos="950.8" linewidth="1">EvalLeft</state>
     <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="378.8" code="22" xpos="398" linewidth="1">WAIT</state>
     <state pencolor="0" radius="40" description="OnEntry {&#xa;&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="250" code="1" xpos="59" linewidth="1">Suspend</state>
-    <transition c1x="199.941184" c2y="147.785384" c1y="101.414616" description="" straight="1" type="2" ypos="90.76559363091654" endx="290.5880306380301" xpos="183.0119693619699" endy="158.4344063690835" c2x="273.658816">
+    <transition c1x="199.941184" c2y="147.785384" c1y="101.414616" description="" straight="1" type="2" ypos="91.298044749658" endx="290.5880306380301" xpos="183.8584301148409" endy="158.4344063690835" c2x="273.658816">
       <from>0</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">timeout(100000)</inputs>
@@ -96,7 +96,7 @@
       <inputs default="0" any="0" invert="0">timeout(5000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="548.867499" c2y="615.965201" c1y="563.634799" description="" straight="1" type="2" ypos="548.7077485466591" endx="608.8435176777656" xpos="535.5564823222344" endy="630.8922514533409" c2x="595.532501">
+    <transition c1x="559.763644" c2y="602.999849" c1y="575.853799" description="" straight="1" type="2" ypos="548.7077485466591" endx="608.1779668489903" xpos="535.5564823222344" endy="630.1458989265035" c2x="583.970805">
       <from>16</from>
       <to>19</to>
       <inputs default="0" any="0" invert="0">~doLeft</inputs>
@@ -156,7 +156,7 @@
       <inputs default="0" any="0" invert="0">timeout(100000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="682.368945" c2y="595.702658" c1y="625.097342" description="" straight="1" type="2" ypos="636.9287517591456" endx="738.556121349158" xpos="666.2438786508419" endy="583.8712482408544" c2x="722.431055">
+    <transition c1x="682.368945" c2y="595.702658" c1y="625.097342" description="" straight="1" type="2" ypos="636.3371812914314" endx="738.556121349158" xpos="667.0501319495814" endy="583.8712482408544" c2x="722.431055">
       <from>19</from>
       <to>14</to>
       <inputs default="0" any="0" invert="0">timeout(100000)</inputs>
