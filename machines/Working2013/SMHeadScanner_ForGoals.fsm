@@ -1,0 +1,86 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene, Carl" description="" version="1" name="SMHeadScanner_ForGoals" arrowtype="1" numbits="4" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="70" endx="110" xpos="50" endy="70"/>
+    <state pencolor="12124415" radius="40" description="OnEntry {&#x9;&#xa;&#x9;extern gunaomotion_naoHeadIsRunning;&#xa;&#x9;extern SMHeadScanner_ForGoals_GoalFound;&#xa;&#x9;extern gurobotmodel_goalSightingRR;&#xa;&#x9;extern GoalIsVisible;&#xa;&#x9;extern gunaomotion_headStiffness;&#xa;&#x9;extern guvision_selectCamera;&#xa;&#x9;extern HeadYaw;&#xa;&#x9;extern HeadPitch;&#xa;&#x9;int goal_target_angle;&#xa;&#x9;goal_target_angle=0;&#xa;       &#x9;headSeekSpeed=30;&#xa;&#x9;guvision_selectCamera=0;&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="70" code="0" xpos="150" linewidth="1">Init</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa;&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="250" code="1" xpos="59" linewidth="1">Suspend</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;postv(&quot;gunaomotion_naoHeadAbs&quot;,90, 0, headSeekSpeed);&#xa;&#x9;gunaomotion_naoHeadIsRunning=1;&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="180" code="6" xpos="382" linewidth="1">GoLeft</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;postv(&quot;gunaomotion_naoHeadAbs&quot;,0, 0, headSeekSpeed);&#xa;&#x9;gunaomotion_naoHeadIsRunning=1;&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="152" code="7" xpos="782" linewidth="1">GoMid</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;postv(&quot;gunaomotion_naoHeadAbs&quot;,-90, 0, headSeekSpeed);&#xa;&#x9;gunaomotion_naoHeadIsRunning=1;&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="390" code="5" xpos="782" linewidth="1">GoRight</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;SMHeadScanner_ForGoals_GoalFound=0;&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="639" code="3" xpos="345" linewidth="1">DefaultPosition</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;goal_target_angle=gurobotmodel_goalSightingRR;&#xa;&#x9;post(&quot;Say&quot;, &quot;Got it&quot;);&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="272" code="4" xpos="546" linewidth="1">Found</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;postv(&quot;gunaomotion_naoHeadAbs&quot;,goal_target_angle, 0, headSeekSpeed);&#xa;&#x9;gunaomotion_naoHeadIsRunning=1;&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="351" code="2" xpos="290" linewidth="1">BackToTargetAngle</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;SMHeadScanner_ForGoals_GoalFound=1;&#xa;&#x9;post(&quot;QSay&quot;, &quot;Found&quot;);&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="501" code="8" xpos="113" linewidth="1">Fin</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;postv(&quot;gunaomotion_naoHeadAbs&quot;, 0, 0, headSeekSpeed);&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="53" code="9" xpos="403" linewidth="1">InitPose</state>
+    <transition c1x="136.554747" c2y="344.380973" c1y="226.619027" description="" straight="1" type="2" ypos="108.8570806180281" endx="116.3357586609444" xpos="146.6642413390556" endy="462.1429193819719" c2x="126.445253">
+      <from>0</from>
+      <to>8</to>
+      <inputs default="0" any="0" invert="0">GoalIsVisible</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="247.304085" c2y="59.538219" c1y="63.461781" description="" straight="1" type="2" ypos="67.38534256897748" endx="364.087745291253" xpos="188.912254708747" endy="55.61465743102252" c2x="305.695915">
+      <from>0</from>
+      <to>9</to>
+      <inputs default="0" any="0" invert="0">~GoalIsVisible</inputs>
+      <outputs>2</outputs>
+    </transition>
+    <transition c1x="528.301600" c2y="162.241112" c1y="169.758888" description="" straight="1" type="2" ypos="177.2766640197034" endx="743.0952002814765" xpos="420.9047997185235" endy="154.7233359802966" c2x="635.698400">
+      <from>6</from>
+      <to>7</to>
+      <inputs default="0" any="0" invert="0">~gunaomotion_naoHeadIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="448.004526" c2y="234.973071" c1y="217.026929" description="" straight="1" type="2" ypos="199.0807879970465" endx="511.9864213965692" xpos="416.0135786034308" endy="252.9192120029535" c2x="479.995474">
+      <from>6</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">GoalIsVisible</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="782.000000" c2y="297.666667" c1y="244.333333" description="" straight="1" type="2" ypos="191" endx="782.0000001638656" xpos="782.0000001638656" endy="351" c2x="782.000000">
+      <from>7</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">~gunaomotion_naoHeadIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="691.745327" c2y="226.107793" c1y="197.892207" description="" straight="1" type="2" ypos="169.6766203786773" endx="580.7640200780653" xpos="747.2359799219347" endy="254.3233796213227" c2x="636.254673">
+      <from>7</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">GoalIsVisible</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="625.038228" c2y="549.564116" c1y="479.435884" description="" straight="1" type="2" ypos="409.3076511654039" endx="378.8853154991226" xpos="748.1146845008774" endy="619.692348834596" c2x="501.961772">
+      <from>5</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">~gunaomotion_naoHeadIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="691.705780" c2y="317.147110" c1y="344.852890" description="" straight="1" type="2" ypos="372.5586697755016" endx="580.8826604489967" xpos="747.1173395510033" endy="289.4413302244984" c2x="636.294220">
+      <from>5</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">GoalIsVisible</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="448.244691" c2y="320.833323" c1y="302.166677" description="" straight="1" type="2" ypos="283.5000319527854" endx="327.2659263280133" xpos="508.7340736719867" endy="339.4999680472146" c2x="387.755309">
+      <from>4</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">~gunaomotion_naoHeadIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="221.082357" c2y="442.595218" c1y="409.404782" description="" straight="1" type="2" ypos="376.214346120663" endx="142.7529284223824" xpos="260.2470715776176" endy="475.785653879337" c2x="181.917643">
+      <from>2</from>
+      <to>8</to>
+      <inputs default="0" any="0" invert="0">~gunaomotion_naoHeadIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="393.879192" c2y="124.840827" c1y="108.159173" description="" straight="1" type="2" ypos="91.47752010472837" endx="388.3624245842464" xpos="396.6375754157536" endy="141.5224798952716" c2x="391.120808">
+      <from>9</from>
+      <to>6</to>
+      <inputs default="0" any="0" invert="0">timeout(300000)</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>
