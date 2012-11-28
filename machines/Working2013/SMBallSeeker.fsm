@@ -5,14 +5,21 @@
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
-    <itransition ypos="275" endx="293" xpos="233" endy="275"/>
-    <state pencolor="12124415" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }&#xa;&#xa;" finalstate="0" moore_outputs="" ypos="275" code="0" xpos="333" linewidth="1">INIT</state>
-    <state pencolor="0" radius="40" description="OnEntry { &#xa;         suspend(&quot;SMHeadScanner&quot;);&#xa;         suspend(&quot;SMWalkScanner&quot;);&#xa; }&#xa;OnExit { &#xa; }&#xa;{ }" finalstate="1" moore_outputs="" ypos="331" code="10" xpos="832" linewidth="1">Suspend</state>
-    <state pencolor="0" radius="40" description="OnEntry { &#xa;         restart(&quot;SMHeadScanner&quot;);&#xa;         restart(&quot;SMWalkScanner&quot;);&#xa; }&#xa;OnExit { &#xa;  }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="240" code="1" xpos="505" linewidth="1">Seek</state>
-    <transition c1x="403.197312" c2y="251.661407" c1y="259.342666" description="" straight="1" type="2" ypos="267.0239248983557" endx="465.1985123916004" xpos="372.1967119280805" endy="243.98014876084" c2x="434.197912">
+    <itransition ypos="309" endx="162" xpos="102" endy="309"/>
+    <state pencolor="12124415" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }&#xa;&#xa;" finalstate="0" moore_outputs="" ypos="309" code="0" xpos="202" linewidth="1">INIT</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;         suspend(&quot;SMHeadScanner&quot;);&#xa;         suspend(&quot;SMWalkScanner&quot;);&#xa; }&#xa;OnExit { &#xa; }&#xa;{ }" finalstate="1" moore_outputs="" ypos="313" code="10" xpos="852" linewidth="1">Suspend</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;         restart(&quot;SMWalkScanner&quot;);&#xa; }&#xa;OnExit { &#xa;  }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="308" code="1" xpos="653" linewidth="1">Head_And_Body_Seeking</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa;         restart(&quot;SMHeadScanner&quot;);&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="302" code="2" xpos="424" linewidth="1">Initial_Head_Seeking</state>
+    <transition c1x="288.993542" c2y="304.743040" c1y="306.256960" description="" straight="1" type="2" ypos="307.7708811364927" endx="385.0193731859098" xpos="240.9806268140902" endy="303.2291188635073" c2x="337.006458">
       <from>0</from>
-      <to>1</to>
+      <to>2</to>
       <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="513.324520" c2y="305.521377" c1y="304.478623" description="" straight="1" type="2" ypos="303.4358679546928" endx="614.0264412297686" xpos="462.9735587702315" endy="306.5641320453072" c2x="563.675480">
+      <from>2</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">timeout(2000000)</inputs>
       <outputs></outputs>
     </transition>
   </machine>
