@@ -21,10 +21,10 @@
     <transition c1x="138.999263" c2y="235.294996" c1y="235.705004" description="" straight="1" type="2" ypos="235.8050024374543" endx="241.0004874908596" xpos="118.9995125091404" endy="235.1949975625457" c2x="221.000737">
       <from>0</from>
       <to>13</to>
-      <inputs default="0" any="0" invert="0">1</inputs>
+      <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="472.913156" c2y="411.428615" c1y="462.571385" description="" straight="1" type="2" ypos="473.6585662248066" endx="560.3285920462845" xpos="457.4834953371441" endy="399.7578979308136" c2x="544.086844">
+    <transition c1x="472.913156" c2y="411.428615" c1y="462.571385" description="" straight="1" type="2" ypos="474.2421020691864" endx="560.3285920462845" xpos="456.6714079537155" endy="399.7578979308136" c2x="544.086844">
       <from>2</from>
       <to>8</to>
       <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
@@ -36,61 +36,61 @@
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="224.490402" c2y="399.734748" c1y="334.392185" description="" straight="1" type="2" ypos="269.0496225786862" endx="151.50399280753" xpos="260.9836070126582" endy="465.0773101757064" c2x="187.997198">
+    <transition c1x="251.231611" c2y="448.489033" c1y="286.510967" description="" straight="1" type="2" ypos="269.0496225786862" endx="151.0163929873418" xpos="260.9836070126582" endy="465.9503774213138" c2x="160.768389">
       <from>13</from>
       <to>14</to>
       <inputs default="0" any="0" invert="0">BallDistance > boundaryCloseFar</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="492.742779" c2y="155.740207" c1y="191.460296" description="" straight="1" type="2" ypos="227.1803863107306" endx="841.8122757786042" xpos="318.2080311158609" endy="120.0201166043788" c2x="667.277528">
+    <transition c1x="337.801893" c2y="123.829672" c1y="223.170328" description="" straight="1" type="2" ypos="227.1803863107306" endx="842.7919688841391" xpos="318.2080311158609" endy="119.8196136892694" c2x="823.198107">
       <from>13</from>
       <to>17</to>
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="242.999301" c2y="498.136512" c1y="498.863488" description="" straight="1" type="2" ypos="499.590465152285" endx="385.0020965398372" xpos="171.9979034601628" endy="497.409534847715" c2x="314.000699">
+    <transition c1x="190.996908" c2y="497.604064" c1y="499.395936" description="" straight="1" type="2" ypos="499.6007035234779" endx="386.0020441263412" xpos="170.9979558736588" endy="497.3992964765221" c2x="366.003092">
       <from>14</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">abs(ballAngle) &lt; minLongAngle</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="260.278961" c2y="575.008080" c1y="543.991920" description="" straight="1" type="2" ypos="512.9757606661756" endx="441.1631180574544" xpos="169.8368819425456" endy="606.0242393338244" c2x="350.721039">
+    <transition c1x="187.809401" c2y="599.860753" c1y="519.139247" description="" straight="1" type="2" ypos="512.6513666495212" endx="442.1090401060181" xpos="168.8909598939819" endy="606.3486333504788" c2x="423.190599">
       <from>14</from>
       <to>16</to>
       <inputs default="0" any="0" invert="0">ballAngle &lt; 0</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="211.267779" c2y="429.905392" c1y="455.094608" description="" straight="1" type="2" ypos="480.2838230515047" endx="300.1966615604821" xpos="166.8033384395179" endy="404.7161769484953" c2x="255.732221">
+    <transition c1x="183.334924" c2y="414.081361" c1y="470.918639" description="" straight="1" type="2" ypos="480.7767274752171" endx="301.0667450214701" xpos="165.9332549785299" endy="404.2232725247829" c2x="283.665076">
       <from>14</from>
       <to>15</to>
       <inputs default="0" any="0" invert="0">ballAngle > 0</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="393.971436" c2y="378.835687" c1y="383.164313" description="" straight="1" type="2" ypos="383.755466629701" endx="553.018881342166" xpos="374.9806345208553" endy="378.2134200360415" c2x="533.028564">
+    <transition c1x="393.971436" c2y="378.835687" c1y="383.164313" description="" straight="1" type="2" ypos="383.7865799639585" endx="553.018881342166" xpos="373.981118657834" endy="378.2134200360415" c2x="533.028564">
       <from>15</from>
       <to>8</to>
       <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="503.962335" c2y="430.459160" c1y="565.540840" description="" straight="1" type="2" ypos="582.7565014794993" endx="575.4994733491894" xpos="495.9236170777545" endy="412.3374110574882" c2x="567.037665">
+    <transition c1x="503.962335" c2y="430.459160" c1y="565.540840" description="" straight="1" type="2" ypos="583.6625889425118" endx="575.4994733491894" xpos="495.5005266508106" endy="412.3374110574882" c2x="567.037665">
       <from>16</from>
       <to>8</to>
       <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="871.446641" c2y="376.778584" c1y="170.221416" description="" straight="1" type="2" ypos="151.4721466980183" endx="834.3149324477403" xpos="874.5231462074458" endy="396.5146569694322" c2x="837.553359">
+    <transition c1x="871.446641" c2y="376.778584" c1y="170.221416" description="" straight="1" type="2" ypos="150.4853430305679" endx="834.3149324477403" xpos="874.6850675522597" endy="396.5146569694322" c2x="837.553359">
       <from>17</from>
       <to>20</to>
       <inputs default="0" any="0" invert="0">ballAngle &lt; 0</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="827.369305" c2y="181.408364" c1y="136.591636" description="" straight="1" type="2" ypos="128.6722954390137" endx="711.4507984135411" xpos="844.6402067553424" endy="189.7445119469616" c2x="729.630695">
+    <transition c1x="827.369305" c2y="181.408364" c1y="136.591636" description="" straight="1" type="2" ypos="128.2554880530384" endx="711.4507984135411" xpos="845.5492015864589" endy="189.7445119469616" c2x="729.630695">
       <from>17</from>
       <to>18</to>
       <inputs default="0" any="0" invert="0">ballAngle > 0</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="846.010961" c2y="231.494557" c1y="159.505443" description="" straight="1" type="2" ypos="144.2070802095031" endx="781.12834786901" xpos="857.2786175702462" endy="247.5980967957344" c2x="792.989039">
+    <transition c1x="846.010961" c2y="231.494557" c1y="159.505443" description="" straight="1" type="2" ypos="143.4019032042656" endx="781.12834786901" xpos="857.87165213099" endy="247.5980967957344" c2x="792.989039">
       <from>17</from>
       <to>19</to>
       <inputs default="0" any="0" invert="0">abs(ballAngle) &lt; minShortAngle</inputs>

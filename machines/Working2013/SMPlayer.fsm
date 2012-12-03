@@ -18,7 +18,7 @@
     <state pencolor="0" radius="40" description="OnEntry { &#x9; gunaomotion_holdingStiffness=100;  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="160" code="9" xpos="819" linewidth="1">Holding_Stiffness</state>
     <state pencolor="0" radius="40" description="OnEntry {  gunaowalk_disconnect=1; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="234" code="10" xpos="184" linewidth="1">Disengage</state>
     <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;restart(&quot;SMBallSeeker&quot;);&#xa;&#x9;post(&quot;QSay&quot;, &quot;Seek&quot;);&#xa; }&#xa;OnExit {&#xa;&#x9;suspend(&quot;SMBallSeeker&quot;);&#xa; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="253" code="11" xpos="555" linewidth="1">SeekBall</state>
-    <transition c1x="389.607921" c2y="405.351951" c1y="391.551850" description="" straight="1" type="2" ypos="377.7517496400135" endx="675.1855140243467" xpos="246.8191238262619" endy="419.1520516512682" c2x="532.396717">
+    <transition c1x="266.726367" c2y="417.324276" c1y="379.675724" description="" straight="1" type="2" ypos="377.7517496400135" endx="676.1808761737381" xpos="246.8191238262619" endy="419.2482503599865" c2x="656.273633">
       <from>0</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">BallIsVisible</inputs>
@@ -30,7 +30,7 @@
       <inputs default="0" any="0" invert="0">walkAMeter</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="335.627034" c2y="297.833211" c1y="329.496049" description="" straight="1" type="2" ypos="361.1588865458369" endx="517.2304185751677" xpos="244.8253418892115" endy="266.1703727735006" c2x="426.428726">
+    <transition c1x="263.710133" c2y="272.426300" c1y="354.573700" description="" straight="1" type="2" ypos="361.1588865458369" endx="518.1746581107885" xpos="244.8253418892115" endy="265.8411134541631" c2x="499.289867">
       <from>0</from>
       <to>11</to>
       <inputs default="0" any="0" invert="0">~BallIsVisible</inputs>
@@ -48,13 +48,13 @@
       <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="695.854451" c2y="504.192761" c1y="478.807239" description="" straight="1" type="2" ypos="460.8354163967006" endx="680.6555325283124" xpos="702.0199666376283" endy="523.110469013217" c2x="687.145549">
+    <transition c1x="695.854451" c2y="504.192761" c1y="478.807239" description="" straight="1" type="2" ypos="459.889530986783" endx="680.6555325283124" xpos="702.3444674716876" endy="523.110469013217" c2x="687.145549">
       <from>2</from>
       <to>1</to>
-      <inputs default="0" any="0" invert="0">BallDistance &lt; 10</inputs>
+      <inputs default="0" any="0" invert="0">BallDistance &lt; 8</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="761.308083" c2y="354.559013" c1y="386.440987" description="" straight="1" type="2" ypos="398.2142284568392" endx="817.3895721441963" xpos="746.3953106213371" endy="342.1661272545818" c2x="801.691917">
+    <transition c1x="761.308083" c2y="354.559013" c1y="386.440987" description="" straight="1" type="2" ypos="398.8338727454182" endx="817.3895721441963" xpos="745.6104278558037" endy="342.1661272545818" c2x="801.691917">
       <from>2</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">walkAMeter</inputs>
@@ -114,7 +114,7 @@
       <inputs default="0" any="0" invert="0">timeout(100000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="612.599658" c2y="305.221919" c1y="265.778081" description="" straight="1" type="2" ypos="261.6631058993598" endx="809.9256495723137" xpos="594.0506158232681" endy="309.5534717481242" c2x="790.400342">
+    <transition c1x="612.599658" c2y="305.221919" c1y="265.778081" description="" straight="1" type="2" ypos="261.4465282518758" endx="809.9256495723137" xpos="593.0743504276863" endy="309.5534717481242" c2x="790.400342">
       <from>11</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">walkAMeter</inputs>

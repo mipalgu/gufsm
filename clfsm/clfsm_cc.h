@@ -65,7 +65,7 @@
 
 #ifndef USE_LIBCLANG_INTERNAL
 
-#include <clang-c/Index.h>
+//#include <clang-c/Index.h>
 
 #else // use libclang internals
 

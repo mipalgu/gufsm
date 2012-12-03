@@ -61,6 +61,7 @@
 #include <libgen.h>
 #include <dlfcn.h>
 #include <sys/utsname.h>
+#include <sys/stat.h>
 #include <gu_util.h>
 #include "clfsm_cc.h"
 #include "clfsm_machine.h"
