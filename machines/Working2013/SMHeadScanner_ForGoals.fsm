@@ -1,0 +1,32 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene, Carl" description="" version="1" name="SMHeadScanner_ForGoals" arrowtype="1" numbits="4" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="70" endx="109" xpos="49" endy="70"/>
+    <state pencolor="12124415" radius="40" description="OnEntry {&#x9;&#xa;&#x9;extern HAL_Head_IsRunning;&#xa;&#x9;extern gunaomotion_headStiffness;&#xa;&#x9;extern guvision_selectCamera;&#xa;&#x9;extern HeadYaw;&#xa;&#x9;extern HeadPitch;&#xa;&#x9;int speed; int BOTTOM_CAM; int TOP_CAM; &#xa;&#x9;int s_low_pitch; int low_pitch; int mid_pitch; int long_pitch;&#xa;&#x9;int s_low_yaw; int low_yaw; int mid_yaw; int long_yaw;&#xa;        speed=70;&#xa;&#x9;BOTTOM_CAM=1;&#xa;&#x9;TOP_CAM=0;&#xa;&#x9;guvision_selectCamera=BOTTOM_CAM;&#xa;&#xa;&#x9;s_low_pitch=21;&#xa;&#x9;s_low_yaw=46;&#xa;&#x9;low_pitch=-10;&#xa;&#x9;low_yaw=53;&#xa;&#x9;mid_pitch=-20;&#xa;&#x9;mid_yaw=90;&#xa;&#x9;long_pitch=0;&#xa;&#x9;long_yaw=90;&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="70" code="0" xpos="149" linewidth="1">Init</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;post(&quot;HAL_Head_Stop&quot;, &quot;&quot;); &#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="250" code="1" xpos="58" linewidth="1">Suspend</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;postv(&quot;HAL_Head_MoveAbsSpeed&quot;, long_yaw, long_pitch, speed);&#xa;&#x9;HAL_Head_IsRunning=1;&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="173" code="8" xpos="798" linewidth="1">Long_Scan</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;postv(&quot;HAL_Head_MoveAbsSpeed&quot;, -long_yaw, long_pitch, speed);&#xa;&#x9;HAL_Head_IsRunning=1;&#xa;&#x9;guvision_selectCamera=TOP_CAM;&#xa;&#x9;post(&quot;Speech&quot;, &quot;Top Scan&quot;);&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="176" code="9" xpos="425" linewidth="1">Long_Head_Position</state>
+    <transition c1x="256.278184" c2y="127.412345" c1y="104.662380" description="" straight="1" type="2" ypos="81.91241510717336" endx="394.4645485852354" xpos="187.1850018503913" endy="150.162310341353" c2x="325.371366">
+      <from>0</from>
+      <to>9</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="673.674812" c2y="235.499624" c1y="241.590383" description="" straight="0" type="2" ypos="190.6689440769058" endx="456.2347523777212" xpos="763.2320777841531" endy="200.987801902177" c2x="571.352298">
+      <from>8</from>
+      <to>9</to>
+      <inputs default="0" any="0" invert="0">~HAL_Head_IsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="562.666235" c2y="174.107235" c1y="174.892765" description="" straight="1" type="2" ypos="175.6782945874041" endx="758.001293700577" xpos="464.9987062994231" endy="173.3217054125959" c2x="660.333765">
+      <from>9</from>
+      <to>8</to>
+      <inputs default="0" any="0" invert="0">~HAL_Head_IsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>

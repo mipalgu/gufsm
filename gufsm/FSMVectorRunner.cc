@@ -67,7 +67,7 @@
 #include "FSMState.h"
 #include "FSMExpression.h"
 #include "FSMWBPostAction.h"
-#include "FSMVectorFactory.h"
+#include "FSMANTLRVectorFactory.h"
 #include "FSMVectorRunner.h"
 
 #define ANTLRFunc(x,n)  x func ## x; \
@@ -369,7 +369,7 @@ static void usage(const char *cmd)
 }
 
 
-int run_machine_vector(StateMachineVectorFactory &factory, vector<string> &machine_names, machine_runner_f execute, bool verbose)
+int run_machine_vector(ANTLRStateMachineVectorFactory &factory, vector<string> &machine_names, machine_runner_f execute, bool verbose)
 {
         ANTLRContext &antlr_context = factory.context();
 
@@ -421,6 +421,7 @@ int run_machine_vector(StateMachineVectorFactory &factory, vector<string> &machi
         ANTLRMaths(Log);
         ANTLRMaths(Ld);
         ANTLRMaths(Lg);
+		ANTLRMaths(Sqrt);
         
         ANTLRMaths(Min);
         ANTLRMaths(Max);

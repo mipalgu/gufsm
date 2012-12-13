@@ -68,7 +68,7 @@
 #include "FSMState.h"
 #include "FSMExpression.h"
 #include "FSMWBPostAction.h"
-#include "FSMVectorFactory.h"
+#include "FSMANTLRVectorFactory.h"
 #include "FSMVectorRunner.h"
 
 #define ANTLRFunc(x,n)  x func ## x; \
@@ -79,10 +79,10 @@
 using namespace std;
 using namespace FSM;
 
-int dump_kripke(StateMachineVectorFactory &factory, vector<string> &machine_names);
+int dump_kripke(ANTLRStateMachineVectorFactory &factory, vector<string> &machine_names);
 int dumpNames(ANTLRContext & context);
-int block_schedule(StateMachineVectorFactory &factory, vector<string> &machine_names);
-int factory_execute(StateMachineVectorFactory &factory, vector<string> &machine_names);
+int block_schedule(ANTLRStateMachineVectorFactory &factory, vector<string> &machine_names);
+int factory_execute(ANTLRStateMachineVectorFactory &factory, vector<string> &machine_names);
 
 static cdlbridge *gucdlbridge;
 
@@ -93,7 +93,7 @@ static void usage(const char *cmd)
 }
 
 
-int dump_kripke(StateMachineVectorFactory &factory, vector<string> &machine_names)
+int dump_kripke(ANTLRStateMachineVectorFactory &factory, vector<string> &machine_names)
 {
         string kripke = factory.fsms()->kripkeInSVMformat();
         cout << kripke << endl;
@@ -101,7 +101,7 @@ int dump_kripke(StateMachineVectorFactory &factory, vector<string> &machine_name
 }
 
 
-int block_schedule(StateMachineVectorFactory &factory, vector<string> &machine_names)
+int block_schedule(ANTLRStateMachineVectorFactory &factory, vector<string> &machine_names)
 {
         factory.fsms()->scheduleExecuteOnQueue();
         
@@ -111,7 +111,7 @@ int block_schedule(StateMachineVectorFactory &factory, vector<string> &machine_n
 }
 
 
-int factory_execute(StateMachineVectorFactory &factory, vector<string> &machine_names)
+int factory_execute(ANTLRStateMachineVectorFactory &factory, vector<string> &machine_names)
 {
         factory.execute();                      // execute synchronously
         
@@ -130,7 +130,7 @@ int dumpNames(ANTLRContext & context)
 	return EXIT_SUCCESS;
 }
 
-static StateMachineVectorFactory *exit_factory; // exit handler only
+static ANTLRStateMachineVectorFactory *exit_factory; // exit handler only
 static void exit_handler(void)
 {
         exit_factory->fsms()->suspend();
@@ -187,7 +187,7 @@ int main (int argc, char * const argv[])
                 machine_names.push_back(*argv++);
 
         ANTLRContext antlr_context;
-        StateMachineVectorFactory factory(&antlr_context, machine_names);
+        ANTLRStateMachineVectorFactory factory(&antlr_context, machine_names);
 	exit_factory = &factory;
 
 	/* Print the names then exit if that was requested. */

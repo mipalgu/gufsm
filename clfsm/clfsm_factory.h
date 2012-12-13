@@ -32,7 +32,7 @@
  * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER
  * OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ * PROCUREMENT OF SUBSTITTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
  * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
@@ -58,11 +58,37 @@
 #ifndef ____clfsm_factory__
 #define ____clfsm_factory__
 
+#include "FSMFactory.h"
+
 namespace FSM
 {
-        class CLFSMFactory
-        {
+        class CLMachine;
+        class CLState;
+        class SuspensibleMachine;
+        class Context;
+        class State;
 
+        class CLFSMFactory: public Factory
+        {
+                CLMachine *_clm;        /// underlying CL machine
+        public:
+                /** default constructor */
+                CLFSMFactory(Context *context, CLMachine *clm, int mid=0, bool del=true);
+
+                /** destructor */
+                virtual ~CLFSMFactory();
+
+                /** machine creator */
+                virtual void createMachine(CLMachine *clm, Context *context = 0, State *initialState = 0, int mid = 0, const char *name = "");
+
+                /** state creator */
+                virtual State *createState(CLState *clstate, int state_number);
+
+                /** actions creator */
+                virtual void createActions(CLMachine *clm, CLState *clstate, State *state);
+
+                /** transitions creator */
+                virtual void createTransitions(CLMachine *clm, CLState *clstate, State *state, State **states);
         };
 }
 

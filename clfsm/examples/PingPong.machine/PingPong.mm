@@ -63,10 +63,21 @@
 using namespace FSM;
 using namespace CLM;
 
+extern "C"
+{
+        PingPong *CLM_Create_PingPong(int mid, const char *name)
+        {
+                return new PingPong(mid, name);
+        }
+}
+
+
 PingPong::PingPong(int mid, const char *name): CLMachine(mid, name)
 {
         _states[0] = new State::Ping;
         _states[1] = new State::Pong;
+
+        setCurrentState(_states[0]);            // set initial state
 }
 
 

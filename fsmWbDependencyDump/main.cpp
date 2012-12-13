@@ -19,7 +19,7 @@
 #include "../gufsm/FSMState.h"
 #include "../gufsm/FSMExpression.h"
 #include "../gufsm/FSMWBPostAction.h"
-#include "../gufsm/FSMVectorFactory.h"
+#include "../gufsm/FSMANTLRVectorFactory.h"
 
 #define ANTLRFunc(x,n)  x func ## x; \
                         antlr_context.set_function((n), &func ## x);
@@ -40,10 +40,10 @@ int tokenize(string &input, vector<string> &output);
 void test_tokenize();
 
 /* Print conditions. */
-int printConditions(StateMachineVectorFactory &factory, ANTLRContext &antlr_context);
+int printConditions(ANTLRStateMachineVectorFactory &factory, ANTLRContext &antlr_context);
 
 /* Print values. */
-int printValues(StateMachineVectorFactory &factory, ANTLRContext &antlr_context);
+int printValues(ANTLRStateMachineVectorFactory &factory, ANTLRContext &antlr_context);
 
 /* Silence all output. */
 void silenceAllOutput();
@@ -132,7 +132,7 @@ int main (int argc, char * const argv[])
     argv += optind;
 
     // Load the machines by name into gufsm.
-    StateMachineVectorFactory factory(&antlr_context, machine_name);
+    ANTLRStateMachineVectorFactory factory(&antlr_context, machine_name);
     
     if (c) {
         if (!printConditions(factory, antlr_context)) {
@@ -186,7 +186,7 @@ void test_tokenize() {
     }
 }
 
-int printConditions(StateMachineVectorFactory &factory, ANTLRContext &antlr_context) {
+int printConditions(ANTLRStateMachineVectorFactory &factory, ANTLRContext &antlr_context) {
     // Tokenized internal variable names.
     vector<string> variable_names;
     // Get a list of all the variable names
@@ -205,7 +205,7 @@ int printConditions(StateMachineVectorFactory &factory, ANTLRContext &antlr_cont
     return 1;
 }
 
-int printValues(StateMachineVectorFactory &factory, ANTLRContext &antlr_context) {
+int printValues(ANTLRStateMachineVectorFactory &factory, ANTLRContext &antlr_context) {
     // Get the index of this machine.
     int thisMachineIndex = factory.index_of_machine_named(machine_name[0]);
     // Get a list of all the machines in the factory.

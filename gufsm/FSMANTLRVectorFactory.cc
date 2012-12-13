@@ -61,15 +61,15 @@
 #include <iostream>
 #include <gu_util.h>
 
-#include "FSMVectorFactory.h"
+#include "FSMANTLRVectorFactory.h"
 #include "FSMWBSubMachine.h"
-#include "FSMWBSubMachineFactory.h"
+#include "FSMANTLRMachineFactory.h"
 
 using namespace FSM;
 using namespace std;
 using namespace guWhiteboard;
 
-StateMachineVectorFactory::StateMachineVectorFactory(ANTLRContext *context,
+ANTLRStateMachineVectorFactory::ANTLRStateMachineVectorFactory(ANTLRContext *context,
                                                      const vector<string> &names_of_machines_to_build)
 {
         _context = context;
@@ -87,33 +87,33 @@ StateMachineVectorFactory::StateMachineVectorFactory(ANTLRContext *context,
                 addMachine(file, mid++);
 
                 wb_name = "reload_" + file;
-                wb->subscribeToMessage(wb_name, WB_BIND(StateMachineVectorFactory::wb_reload_specific), r);
+                wb->subscribeToMessage(wb_name, WB_BIND(ANTLRStateMachineVectorFactory::wb_reload_specific), r);
                 if (r != Whiteboard::METHOD_OK)
                         cerr << "Failed to subscribe to '" << wb_name << "'" << endl;
 
                 wb_name = "reread_" + file;
-                wb->subscribeToMessage(wb_name, WB_BIND(StateMachineVectorFactory::wb_reread_specific), r);
+                wb->subscribeToMessage(wb_name, WB_BIND(ANTLRStateMachineVectorFactory::wb_reread_specific), r);
                 if (r != Whiteboard::METHOD_OK)
                         cerr << "Failed to subscribe to '" << wb_name << "'" << endl;
 
         }
 
         wb_name = "reload";
-        wb->subscribeToMessage(wb_name, WB_BIND(StateMachineVectorFactory::wb_reload), r);
+        wb->subscribeToMessage(wb_name, WB_BIND(ANTLRStateMachineVectorFactory::wb_reload), r);
 	if (r != Whiteboard::METHOD_OK)
                 cerr << "Failed to subscribe to '" << wb_name << "'" << endl;
 
         wb_name = "reread";
-        wb->subscribeToMessage(wb_name, WB_BIND(StateMachineVectorFactory::wb_reread), r);
+        wb->subscribeToMessage(wb_name, WB_BIND(ANTLRStateMachineVectorFactory::wb_reread), r);
 	if (r != Whiteboard::METHOD_OK)
                 cerr << "Failed to subscribe to '" << wb_name << "'" << endl;
 }
 
-StateMachineVectorFactory::StateMachineVectorFactory() {
+ANTLRStateMachineVectorFactory::ANTLRStateMachineVectorFactory() {
         return;
 }
 
-StateMachineVectorFactory::~StateMachineVectorFactory()
+ANTLRStateMachineVectorFactory::~ANTLRStateMachineVectorFactory()
 {
         Whiteboard::WBResult r;
         Whiteboard *wb = _context->whiteboard();
@@ -149,9 +149,9 @@ StateMachineVectorFactory::~StateMachineVectorFactory()
 }
 
 
-SuspensibleMachine *StateMachineVectorFactory::addMachine(std::string name, int index, bool resume)
+SuspensibleMachine *ANTLRStateMachineVectorFactory::addMachine(std::string name, int index, bool resume)
 {
-        WBSubMachineFactory machine_factory(_context, name, index);
+        ANTLRMachineFactory machine_factory(_context, name, index);
         SuspensibleMachine *machine = machine_factory.machine();
         machine->initialise();
         fsms()->addMachine(machine, index, resume);
@@ -161,7 +161,7 @@ SuspensibleMachine *StateMachineVectorFactory::addMachine(std::string name, int 
 }
 
 
-int StateMachineVectorFactory::index_of_machine_named(string machine_name)
+int ANTLRStateMachineVectorFactory::index_of_machine_named(string machine_name)
 {
         int i = 0;
         for (MachineVector::iterator it = fsms()->machines().begin();
@@ -178,7 +178,7 @@ int StateMachineVectorFactory::index_of_machine_named(string machine_name)
 }
 
 
-void StateMachineVectorFactory::reloadMachine(string name)
+void ANTLRStateMachineVectorFactory::reloadMachine(string name)
 {
         int i = index_of_machine_named(name);
 
@@ -186,14 +186,14 @@ void StateMachineVectorFactory::reloadMachine(string name)
 }
 
 
-void StateMachineVectorFactory::rereadMachine(string name)
+void ANTLRStateMachineVectorFactory::rereadMachine(string name)
 {
         int i = index_of_machine_named(name);
         
         addMachine(name, i, true);
 }
 
-void StateMachineVectorFactory::wb_reload(string, WBMsg *machinemsg)
+void ANTLRStateMachineVectorFactory::wb_reload(string, WBMsg *machinemsg)
 {
 #ifdef __APPLE__
         string *s = new string(machinemsg->getStringValue());
@@ -206,7 +206,7 @@ void StateMachineVectorFactory::wb_reload(string, WBMsg *machinemsg)
 }
 
 
-void StateMachineVectorFactory::wb_reread(string, WBMsg *machinemsg)
+void ANTLRStateMachineVectorFactory::wb_reread(string, WBMsg *machinemsg)
 {
 #ifdef __APPLE__
         string *s = new string(machinemsg->getStringValue());
@@ -219,7 +219,7 @@ void StateMachineVectorFactory::wb_reread(string, WBMsg *machinemsg)
 }
 
 
-void StateMachineVectorFactory::wb_reload_specific(string, WBMsg *machinemsg)
+void ANTLRStateMachineVectorFactory::wb_reload_specific(string, WBMsg *machinemsg)
 {
         string msg = machinemsg->getStringValue();
         size_t pos = msg.find('_');
@@ -228,7 +228,7 @@ void StateMachineVectorFactory::wb_reload_specific(string, WBMsg *machinemsg)
 }
 
 
-void StateMachineVectorFactory::wb_reread_specific(string, WBMsg *machinemsg)
+void ANTLRStateMachineVectorFactory::wb_reread_specific(string, WBMsg *machinemsg)
 {
         string msg = machinemsg->getStringValue();
         size_t pos = msg.find('_');
@@ -237,7 +237,7 @@ void StateMachineVectorFactory::wb_reread_specific(string, WBMsg *machinemsg)
 }
 
 
-void StateMachineVectorFactory::execute(void)
+void ANTLRStateMachineVectorFactory::execute(void)
 {
         do
         {

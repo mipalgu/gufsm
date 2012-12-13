@@ -1,7 +1,7 @@
 /*
- *  FSMVectorFactory.h
+ *  FSMachineVector.h
  *  
- *  Created by René Hexel on 23/09/11.
+ *  Created by René Hexel on 22/11/11.
  *  Copyright (c) 2011 Rene Hexel.
  *  All rights reserved.
  *
@@ -55,70 +55,36 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef gufsm_FSMVectorFactory_h
-#define gufsm_FSMVectorFactory_h
+#ifndef gufsm_FSMANTLRMachineFactory_h
+#define gufsm_FSMANTLRMachineFactory_h
 
 #include <string>
-#include <queue>
-#include <Whiteboard.h>
-#include "FSMANTLRMachineVector.h"
+#include "FSMFactory.h"
+#include "FSMWBSubMachine.h"
 
 namespace FSM
 {
-        class ANTLRContext;
-        class SuspensibleMachine;
+        class Context;
 
-        class StateMachineVectorFactory
+        class ANTLRMachineFactory: public Factory
         {
-        protected:
-                ANTLRMachineVector *_fsms;      /// delivered FSMs
-                ANTLRContext *_context;         /// factory context
-
-                std::queue<std::string> _reload_queue; /// queue for reloading machines
-                std::queue<std::string> _reread_queue; /// queue for rereading machines
-                dispatch_semaphore_t _queue_semaphore; /// queue protector
         public:
                 /** constructor that builds vector of machines */
-                StateMachineVectorFactory(ANTLRContext *context, const std::vector<std::string> &names_of_machines_to_build);
+                ANTLRMachineFactory(WBContext *context, const std::string &machine_name, int mid=0);
                 
-                /** Default constructor. */
-                StateMachineVectorFactory();
+                /** Defaut constructor for subclasses. */
+                ANTLRMachineFactory();
 
-                /** destructor (unsubscribes from whiteboard) */
-                virtual ~StateMachineVectorFactory();
-
-                /** get ANTLR context */
-                virtual ANTLRContext &context() const { return *_context; }
+                /** Destructor */
+                virtual ~ANTLRMachineFactory() {}
 
                 /** getter */
-                ANTLRMachineVector *fsms() const { return _fsms; }
+                WBSubMachine *machine() const { return static_cast<WBSubMachine*>(_machine); }
 
-                /** create a new machine with a given name and index */
-                SuspensibleMachine *addMachine(std::string name, int index=-1, bool resume=false);
-
-                /** execute state machines */
-                void execute(void);
-
-                /** get the index of a machine with a given name (-1 if not found) */
-                int index_of_machine_named(std::string machine_name);
-
-                /** reload given state machine and restart from initial state */
-                void reloadMachine(std::string name);
-                
-                /** reread given state machine and resume from current state */
-                void rereadMachine(std::string name);
-
-                /** reload callback on Whiteboard */
-                void wb_reload(std::string, WBMsg *machinemsg);
-
-                /** reread callback on Whiteboard (work like reload, but tries to resume from current state */
-                void wb_reread(std::string, WBMsg *machinemsg);
-
-                /** reload_MACHINE callback on Whiteboard */
-                void wb_reload_specific(std::string, WBMsg *machinemsg);
-                
-                /** reread_MACHINE callback on Whiteboard (work like reload, but tries to resume from current state */
-                void wb_reread_specific(std::string, WBMsg *machinemsg);
+                /** setter */
+                void setMachine(WBSubMachine *m) { _machine = m; }
         };
 }
+
+
 #endif

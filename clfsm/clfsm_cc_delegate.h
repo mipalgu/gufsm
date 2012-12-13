@@ -1,9 +1,9 @@
 /*
- *  FSMachineVector.h
- *  
- *  Created by René Hexel on 22/11/11.
- *  Copyright (c) 2011 Rene Hexel.
- *  All rights reserved.
+ *  clfsm_cc_delegate.h
+ *  clfsm
+ *
+ *  Created by Rene Hexel on 3/10/12.
+ *  Copyright (c) 2012 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -55,34 +55,20 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef gufsm_FSMWBSubMachineFactory_h
-#define gufsm_FSMWBSubMachineFactory_h
+#ifndef gufsm_clfsm_cc_delegate_h
+#define gufsm_clfsm_cc_delegate_h
 
 #include <string>
-#include "FSMWBSubMachine.h"
 
 namespace FSM
 {
-        class Context;
+        class Cc;
 
-        class WBSubMachineFactory
+        class CcDelegate
         {
-                WBSubMachine *_machine; /// built state machine
         public:
-                /** constructor that builds vector of machines */
-                WBSubMachineFactory(WBContext *context, const std::string &machine_name, int mid=0);
-                
-                /** Defaut constructor for subclasses. */
-                WBSubMachineFactory();
-
-                /** getter */
-                WBSubMachine *machine() { return _machine; }
-
-                /** setter */
-                void setMachine(WBSubMachine *m) { _machine = m; }
-
-                /** search for a suspend state */
-                bool determineSuspendState(const char *name = "Suspend");
+                virtual ~CcDelegate() {}
+                virtual void handleError(class Cc *cc, const std::string &message) {}
         };
 }
 

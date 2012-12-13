@@ -58,31 +58,45 @@
 #include <iostream>
 #include <sstream>
 
+#include "gu_util.h"
 #include "FSMWBSubMachine.h"
 #include "FSMachineVector.h"
 #include "FSMWBContext.h"
+#include "clfsm_vector_factory.h"
 #include "PingPong.h"
 
 using namespace std;
 using namespace FSM;
 
-void playPingPong(int numberOfPingPongs);
-void playPingPong(int numberOfPingPongs)
+CLFSMVectorFactory *createPingPong(int numberOfPingPongs);
+CLFSMVectorFactory *createPingPong(int numberOfPingPongs)
 {
         WBContext *context = new WBContext();
-        StateMachineVector *fsms = new StateMachineVector(context);
-        
+        CLFSMVectorFactory *factory = new CLFSMVectorFactory(context);
+
         for (int i = 0; i < numberOfPingPongs; i++)
         {
                 stringstream ss;
                 ss << "PingPong " << i;
-                WBSubMachine *fsm = new WBSubMachine(ss.str(), NULL, context, i);
-                CLM::PingPong *clm = new CLM::PingPong(i, ss.str().c_str());
+                CLM::PingPong *clm = CLM_Create_PingPong(i, gu_strdup(ss.str().c_str()));
+                factory->addMachine(clm);
         }
+
+        return factory;
 }
 
 
 int main(int argc, const char *argv[])
 {
+        int n = 1;
+
+        if (argc > 1) n = atoi(argv[1]);
+        if (n < 1) n = 1;
+
+        CLFSMVectorFactory *factory = createPingPong(n);
+        factory->fsms()->execute();
+        delete factory;
+
+        return EXIT_SUCCESS;
 }
 

@@ -428,6 +428,19 @@ namespace FSM
                         return pow(total, 1.0 / content().size());
                 }
         };
+		
+		 /**
+         * fixed point sqrt()
+         */
+        class ANTLRMathsSqrt: public ANTLRMathsSingle
+        {
+        public:
+                virtual const char *name(void) { return "sqrt"; }
+                virtual int evaluate(Machine *m = NULL)
+                {
+                        return sqrt(content());
+                }
+        };
 }
 
 #endif // _FSMANTLRMaths_h

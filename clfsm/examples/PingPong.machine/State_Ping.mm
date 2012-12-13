@@ -65,7 +65,7 @@ using namespace FSM;
 using namespace CLM;
 using namespace State;
 
-Ping::Ping(): CLState(*new Ping::OnEntry, *new Ping::OnExit, *new Ping::Internal)
+Ping::Ping(const char *name): CLState(name, *new Ping::OnEntry, *new Ping::OnExit, *new Ping::Internal)
 {
         _transitions[0] = new Transition_0();
 }
