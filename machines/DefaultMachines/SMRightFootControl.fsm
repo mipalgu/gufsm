@@ -6,15 +6,15 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="220" endx="130" xpos="70" endy="220"/>
-    <state pencolor="0" radius="40" description="OnEntry { extern kickOffTeam;  extern ourTeam;&#xa; post(&quot;LEDS&quot;,&quot;RFoot Red&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="220" code="0" xpos="170" linewidth="1">WE_VE_KICKOFF</state>
-    <state pencolor="0" radius="40" description="OnEntry { &#xa; post(&quot;LEDS&quot;,&quot;RFoot Off&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="216" code="1" xpos="438" linewidth="1">WE_DEFEND_KICKOFF</state>
-    <transition c1x="227.944290" c2y="206.623021" c1y="208.888776" description="" straight="1" type="2" ypos="212.6552927997456" endx="399.495707342044" xpos="208.3021575912184" endy="209.8016577288377" c2x="379.749916">
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;extern kickOffTeam; &#xa;&#x9;extern ourTeam;&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 10, 0);&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="220" code="0" xpos="170" linewidth="1">WE_VE_KICKOFF</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;postv(&quot;leds_groupChange&quot;, 10, -1);&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="216" code="1" xpos="438" linewidth="1">WE_DEFEND_KICKOFF</state>
+    <transition c1x="272.358982" c2y="210.584140" c1y="211.525553" description="" straight="1" type="2" ypos="212.466966974098" endx="398.5084177867118" xpos="209.2842641961215" endy="209.642725875731" c2x="335.433700">
       <from>0</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">!(kickOffTeam==ourTeam)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="380.055710" c2y="229.376979" c1y="227.111224" description="" straight="1" type="2" ypos="223.3447072002544" endx="208.504292657956" xpos="399.6978424087816" endy="226.1983422711623" c2x="228.250084">
+    <transition c1x="336.295756" c2y="225.353085" c1y="224.348896" description="" straight="1" type="2" ypos="223.533033025902" endx="209.4915822132882" xpos="398.7157358038785" endy="226.357274124269" c2x="272.893669">
       <from>1</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">kickOffTeam==ourTeam</inputs>

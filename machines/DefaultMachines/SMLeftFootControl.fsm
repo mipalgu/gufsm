@@ -6,8 +6,8 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="297.7780628795916" endx="417.0075679889882" xpos="357.0075679889882" endy="297.7780628795916"/>
-    <state pencolor="0" radius="40" description="OnEntry { post(&quot;LEDS&quot;,&quot;Face Red&quot;);&#xa; post(&quot;LEDS&quot;,&quot;LFoot Red&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="300" code="0" xpos="190" linewidth="1">WE_R_RED</state>
-    <state pencolor="0" radius="40" description="OnEntry {  extern ourTeam;&#xa; post(&quot;LEDS&quot;,&quot;Face Blue&quot;);&#xa; post(&quot;LEDS&quot;,&quot;LFoot Blue&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="297" code="1" xpos="457" linewidth="1">WE_R_BLUE</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;postv(&quot;leds_groupChange&quot;, 4, 0);&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 8, 0);&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="300" code="0" xpos="190" linewidth="1">WE_R_RED</state>
+    <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;extern ourTeam;&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 4, 2);&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 8, 2);&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="297" code="1" xpos="457" linewidth="1">WE_R_BLUE</state>
     <transition c1x="253.205963" c2y="239.969054" c1y="218.725382" description="" straight="0" type="2" ypos="287.8364174477422" endx="417.0321290552672" xpos="228.1057378815108" endy="295.3970988348669" c2x="396.047390">
       <from>0</from>
       <to>1</to>
