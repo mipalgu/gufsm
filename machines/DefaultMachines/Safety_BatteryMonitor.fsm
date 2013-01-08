@@ -21,14 +21,13 @@
     <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="308" code="4" xpos="650" linewidth="1">Wait</state>
     <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="410" code="8" xpos="1129" linewidth="1">CheckDirection</state>
     <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;post(&quot;QSay&quot;, &quot;Power levels critical, shutdown imminent, save me masters&quot;);&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="515" code="1" xpos="842" linewidth="1">VerbalWarning</state>
-    <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;post(&quot;QSay&quot;, &quot;Update reset&quot;);&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="180" code="5" xpos="809" linewidth="1">Say</state>
-    <transition c1x="376.666657" c2y="79.350020" c1y="79.651201" description="" straight="1" type="2" ypos="79.95238098787719" endx="870.0000298168463" xpos="129.9999709285749" endy="79.04884001243364" c2x="623.333344">
+    <transition c1x="149.999956" c2y="79.072039" c1y="79.927961" description="" straight="1" type="2" ypos="79.95238098787719" endx="871.0000290714252" xpos="129.9999709285749" endy="79.04761901212281" c2x="851.000044">
       <from>0</from>
       <to>10</to>
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="969.000000" c2y="79.000000" c1y="79.000000" description="" straight="1" type="2" ypos="79" endx="1251" xpos="950" endy="79" c2x="1231.000000">
+    <transition c1x="969.000000" c2y="79.000000" c1y="79.000000" description="" straight="1" type="2" ypos="79" endx="1251" xpos="949" endy="79" c2x="1231.000000">
       <from>10</from>
       <to>13</to>
       <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
@@ -40,7 +39,7 @@
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="1037.043314" c2y="156.663793" c1y="206.043314" description="" straight="1" type="2" ypos="255.4228355337247" endx="938.2842712474619" xpos="1086.422835533725" endy="107.2842712474619" c2x="987.663793">
+    <transition c1x="1072.280700" c2y="120.719300" c1y="241.280700" description="" straight="1" type="2" ypos="255.4228355337247" endx="937.5771644662753" xpos="1086.422835533725" endy="106.5771644662753" c2x="951.719300">
       <from>16</from>
       <to>10</to>
       <inputs default="0" any="0" invert="0">oldRoundedbatteryPercentage==roundedbatteryPercentage</inputs>
@@ -58,7 +57,7 @@
       <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="392.968418" c2y="225.351577" c1y="267.648423" description="" straight="1" type="2" ypos="278.7107952535301" endx="468.2920624566643" xpos="377.5209615829084" endy="213.7069746278081" c2x="452.031582">
+    <transition c1x="392.968418" c2y="225.351577" c1y="267.648423" description="" straight="1" type="2" ypos="279.2930253721918" endx="468.2920624566643" xpos="376.7079375433357" endy="213.7069746278081" c2x="452.031582">
       <from>2</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">1</inputs>
@@ -88,7 +87,7 @@
       <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="412.088336" c2y="362.950830" c1y="391.850451" description="" straight="1" type="2" ypos="420.7500713389697" endx="368.9315692993873" xpos="433.6667199330973" endy="334.051208883108" c2x="390.509953">
+    <transition c1x="421.700935" c2y="349.275533" c1y="404.724467" description="" straight="1" type="2" ypos="420.7500713389697" endx="368.3332800669027" xpos="433.6667199330973" endy="333.2499286610303" c2x="380.299065">
       <from>11</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
@@ -100,13 +99,13 @@
       <inputs default="0" any="0" invert="0">timeout(100000)</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="710.404981" c2y="225.249160" c1y="253.735994" description="" straight="1" type="2" ypos="282.2228269536561" endx="772.6816246199819" xpos="679.2666593539276" endy="196.7623270984699" c2x="741.543303">
+    <transition c1x="746.351133" c2y="163.440222" c1y="223.492014" description="" straight="1" type="2" ypos="283.543805279267" endx="878.295040435816" xpos="680.3791793796605" endy="103.3884304339877" c2x="812.323087">
       <from>4</from>
-      <to>5</to>
+      <to>10</to>
       <inputs default="0" any="0" invert="0">(batteryCycledLEDs==roundedbatteryPercentage) || ((roundedbatteryPercentage==0) &amp;&amp; (batteryCycledLEDs==10))</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="535.669117" c2y="304.268800" c1y="305.750868" description="" straight="1" type="2" ypos="307.2329352951264" endx="384.9922623908488" xpos="611.0075441689224" endy="302.7867330306396" c2x="460.330690">
+    <transition c1x="591.011413" c2y="303.160431" c1y="306.839569" description="" straight="1" type="2" ypos="307.2329352951264" endx="383.9924558310776" xpos="611.0075441689224" endy="302.7670647048736" c2x="403.988587">
       <from>4</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">batteryCycledLEDs!=roundedbatteryPercentage</inputs>
@@ -127,12 +126,6 @@
     <transition c1x="897.368041" c2y="614.619126" c1y="535.380874" description="" straight="1" type="2" ypos="528.4721031663343" endx="1131.400786398125" xpos="878.5992136018747" endy="621.5278968336657" c2x="1112.631959">
       <from>1</from>
       <to>3</to>
-      <inputs default="0" any="0" invert="0">1</inputs>
-      <outputs>3</outputs>
-    </transition>
-    <transition c1x="850.856181" c2y="119.238576" c1y="135.477153" description="" straight="1" type="2" ypos="151.7157287525381" endx="878" xpos="837.2842712474619" endy="103" c2x="864.428090">
-      <from>5</from>
-      <to>10</to>
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs>3</outputs>
     </transition>
