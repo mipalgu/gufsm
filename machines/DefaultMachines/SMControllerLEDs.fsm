@@ -6,91 +6,91 @@
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="218" endx="400" xpos="340" endy="218"/>
-    <state pencolor="32832" radius="40" description="OnEntry  {&#xa;&#x9;extern Robocup_Init;&#xa;&#x9;extern Robocup_Ready;&#xa;&#x9;extern Robocup_Set;&#xa;&#x9;extern Robocup_Playing;&#xa;&#x9;extern Robocup_GameOver;&#xa;&#x9;extern Robocup_Penalised;&#xa;&#x9;int LED_Off; &#xa;&#x9;int LED_Red; &#xa;&#x9;int LED_Green;&#xa;&#x9;int LED_Blue;&#xa;&#x9;int LED_Yellow;&#xa;&#x9;LED_Off=-1;&#xa;&#x9;LED_Red=0;&#xa;&#x9;LED_Green=1;&#xa;&#x9;LED_Blue=2;&#xa;&#x9;LED_Yellow=3;&#x9;&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 0, LED_Off);&#xa;  }&#xa;OnExit {&#xa; }&#xa;{  }&#xa;" finalstate="0" moore_outputs="" ypos="218" code="7" xpos="440" linewidth="1">INITIAL</state>
+    <state pencolor="32832" radius="40" description="OnEntry  {&#xa;&#x9;extern Robocup_State;&#xa;&#x9;int Robocup_Init;&#xa;&#x9;int Robocup_Ready;&#xa;&#x9;int Robocup_Set;&#xa;&#x9;int Robocup_Playing;&#xa;&#x9;int Robocup_GameOver;&#xa;&#x9;int Robocup_Penalised;&#xa;&#x9;int Robocup_OtherState;&#xa;&#x9;int LED_Off; &#xa;&#x9;int LED_Red; &#xa;&#x9;int LED_Green;&#xa;&#x9;int LED_Blue;&#xa;&#x9;int LED_Yellow;&#xa;&#x9;LED_Off=-1;&#xa;&#x9;LED_Red=0;&#xa;&#x9;LED_Green=1;&#xa;&#x9;LED_Blue=2;&#xa;&#x9;LED_Yellow=3;&#x9;&#xa;&#x9;Robocup_Init=0;&#xa;&#x9;Robocup_Ready=1;&#xa;&#x9;Robocup_Set=2;&#xa;&#x9;Robocup_Playing=3;&#xa;&#x9;Robocup_Penalised=4;&#xa;&#x9;Robocup_GameOver=5;&#xa;&#x9;Robocup_OtherState=-1;&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 0, LED_Off);&#xa;  }&#xa;OnExit {&#xa; }&#xa;{  }&#xa;" finalstate="0" moore_outputs="" ypos="218" code="7" xpos="440" linewidth="1">INITIAL</state>
     <state pencolor="0" radius="40" description="OnEntry  {&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 0, LED_Off);&#xa;  }&#xa;OnExit {&#xa; }&#xa;{  }&#xa;" finalstate="0" moore_outputs="" ypos="118" code="9" xpos="188" linewidth="1">Suspend</state>
     <state pencolor="0" radius="40" description="OnEntry  {&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 7, LED_Off);&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 4, LED_Yellow);&#xa;  }&#xa;OnExit {&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 4, LED_Off);&#xa; }&#xa;{  }" finalstate="0" moore_outputs="" ypos="136" code="1" xpos="753" linewidth="1">Robocup_Init</state>
     <state pencolor="0" radius="40" description="OnEntry  {&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 7, LED_Blue);&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 4, LED_Blue);&#xa;  }&#xa;OnExit {&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 7, LED_Off);&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 4, LED_Off);&#xa; }&#xa;{  }" finalstate="0" moore_outputs="" ypos="249" code="8" xpos="813" linewidth="1">Robocup_Ready</state>
-    <state pencolor="0" radius="40" description="OnEntry  {&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 7, LED_Yellow);&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 4, LED_Yellow);&#xa;  }&#xa;OnExit {&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 7, LED_Off);&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 4, LED_Off);&#xa; }&#xa;{  }" finalstate="0" moore_outputs="" ypos="413" code="2" xpos="828" linewidth="1">Robocup_Set</state>
+    <state pencolor="0" radius="40" description="OnEntry  {&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 7, LED_Yellow);&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 4, LED_Yellow);&#xa;  }&#xa;OnExit {&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 7, LED_Off);&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 4, LED_Off);&#xa; }&#xa;{  }" finalstate="0" moore_outputs="" ypos="411" code="2" xpos="830" linewidth="1">Robocup_Set</state>
     <state pencolor="0" radius="40" description="OnEntry  {&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 7, LED_Green);&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 4, LED_Green);&#xa;  }&#xa;OnExit {&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 7, LED_Off);&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 4, LED_Off);&#xa; }&#xa;{  }" finalstate="0" moore_outputs="" ypos="574" code="3" xpos="752" linewidth="1">Robocup_Playing</state>
     <state pencolor="0" radius="40" description="OnEntry  {&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 7, LED_Off);&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 8, LED_Off);&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 4, LED_Yellow);&#xa;  }&#xa;OnExit {&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 4, LED_Off);&#xa; }&#xa;{  }" finalstate="0" moore_outputs="" ypos="582" code="0" xpos="565" linewidth="1">Robocup_GameOver</state>
     <state pencolor="0" radius="40" description="OnEntry  {&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 7, LED_Red);&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 10, LED_Off);&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 4, LED_Yellow);&#xa;  }&#xa;OnExit {&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 7, LED_Off);&#xa;&#x9;postv(&quot;leds_groupChange&quot;, 4, LED_Off);&#xa; }&#xa;{  }" finalstate="0" moore_outputs="" ypos="491" code="4" xpos="431" linewidth="1">Robocup_Penalised</state>
     <state pencolor="0" radius="40" description="OnEntry  {&#xa;  }&#xa;OnExit {&#xa; }&#xa;{  }&#xa;" finalstate="0" moore_outputs="" ypos="337" code="6" xpos="622" linewidth="1">Wait</state>
-    <transition c1x="511.547272" c2y="290.219092" c1y="264.780908" description="" straight="1" type="2" ypos="239.8899745193081" endx="589.3581850550318" xpos="473.4787845589418" endy="315.6572748436746" c2x="550.452728">
+    <transition c1x="511.547272" c2y="290.219092" c1y="264.780908" description="" straight="1" type="2" ypos="239.3427251563254" endx="589.3581850550318" xpos="472.6418149449682" endy="315.6572748436746" c2x="550.452728">
       <from>7</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">1</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="729.857843" c2y="293.916168" c1y="190.271913" description="" straight="1" type="2" ypos="172.7945173544592" endx="648.6446691355355" xpos="737.3104017689298" endy="308.52085663757" c2x="662.308602">
+    <transition c1x="729.857843" c2y="293.916168" c1y="190.271913" description="" straight="1" type="2" ypos="171.8746544205977" endx="648.6446691355355" xpos="737.7026417247065" endy="308.52085663757" c2x="662.308602">
       <from>1</from>
       <to>6</to>
-      <inputs default="0" any="0" invert="0">!Robocup_Init</inputs>
+      <inputs default="0" any="0" invert="0">Robocup_State!=Robocup_Init</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="764.515250" c2y="321.991348" c1y="282.618879" description="" straight="1" type="2" ypos="271.7924604651724" endx="659.7170292134074" xpos="780.1289831927342" endy="327.0790268967721" c2x="679.059095">
+    <transition c1x="764.515250" c2y="321.991348" c1y="282.618879" description="" straight="1" type="2" ypos="271.2226489535431" endx="659.7170292134074" xpos="780.9507586129158" endy="327.0790268967721" c2x="679.059095">
       <from>8</from>
       <to>6</to>
-      <inputs default="0" any="0" invert="0">!Robocup_Ready</inputs>
+      <inputs default="0" any="0" invert="0">Robocup_State!=Robocup_Ready</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="769.941715" c2y="366.723228" c1y="402.500689" description="" straight="1" type="2" ypos="405.8818229669581" endx="655.6893674654564" xpos="788.6384507961606" endy="356.6475576033627" c2x="672.965966">
+    <transition c1x="771.823487" c2y="366.128238" c1y="401.176896" description="" straight="1" type="2" ypos="404.5067616522322" endx="655.9156824709512" xpos="791.5443390934563" endy="356.2542588153794" c2x="673.308340">
       <from>2</from>
       <to>6</to>
-      <inputs default="0" any="0" invert="0">!Robocup_Set</inputs>
+      <inputs default="0" any="0" invert="0">Robocup_State!=Robocup_Set</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="715.073896" c2y="392.870271" c1y="527.984102" description="" straight="1" type="2" ypos="542.8027812862348" endx="634.5334258303802" xpos="726.9653531176192" endy="373.9311959859731" c2x="640.960824">
+    <transition c1x="715.073896" c2y="392.870271" c1y="527.984102" description="" straight="1" type="2" ypos="543.5827117540789" endx="634.5334258303802" xpos="727.5912192896787" endy="373.9311959859731" c2x="640.960824">
       <from>3</from>
       <to>6</to>
-      <inputs default="0" any="0" invert="0">!Robocup_Playing</inputs>
+      <inputs default="0" any="0" invert="0">Robocup_State!=Robocup_Playing</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="568.187619" c2y="391.270659" c1y="523.086172" description="" straight="1" type="2" ypos="542.0584219603297" endx="606.7006978963026" xpos="567.1610977999451" endy="372.8738254879487" c2x="598.854902">
+    <transition c1x="568.187619" c2y="391.270659" c1y="523.086172" description="" straight="1" type="2" ypos="543.0569614113215" endx="606.7006978963026" xpos="567.1070703549465" endy="372.8738254879487" c2x="598.854902">
       <from>0</from>
       <to>6</to>
-      <inputs default="0" any="0" invert="0">!Robocup_GameOver</inputs>
+      <inputs default="0" any="0" invert="0">Robocup_State!=Robocup_GameOver</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="469.801717" c2y="365.494396" c1y="446.554227" description="" straight="1" type="2" ypos="460.867272652995" endx="587.8498567952652" xpos="457.3062491174827" endy="355.8352785776082" c2x="570.336963">
+    <transition c1x="469.801717" c2y="365.494396" c1y="446.554227" description="" straight="1" type="2" ypos="461.6205908366701" endx="587.8498567952652" xpos="456.6485928895456" endy="355.8352785776082" c2x="570.336963">
       <from>4</from>
       <to>6</to>
-      <inputs default="0" any="0" invert="0">!Robocup_Penalised</inputs>
+      <inputs default="0" any="0" invert="0">Robocup_State!=Robocup_Penalised</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="666.755617" c2y="210.514700" c1y="255.820023" description="" straight="1" type="2" ypos="301.1253455794023" endx="725.6721342199636" xpos="637.2973582752935" endy="165.2093778076205" c2x="696.213876">
+    <transition c1x="645.142157" c2y="179.083832" c1y="282.728087" description="" straight="1" type="2" ypos="301.1253455794023" endx="726.3553308644645" xpos="637.2973582752935" endy="164.47914336243" c2x="712.691398">
       <from>6</from>
       <to>1</to>
-      <inputs default="0" any="0" invert="0">Robocup_Init</inputs>
+      <inputs default="0" any="0" invert="0">Robocup_State==Robocup_Init</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="694.138117" c2y="277.709355" c1y="296.243353" description="" straight="1" type="2" ypos="314.7773510464569" endx="774.3158674734283" xpos="654.0492413870842" endy="259.1753570289517" c2x="734.226992">
+    <transition c1x="670.484750" c2y="264.008652" c1y="303.381121" description="" straight="1" type="2" ypos="314.7773510464569" endx="775.2829707865926" xpos="654.0492413870842" endy="258.9209731032279" c2x="755.940905">
       <from>6</from>
       <to>8</to>
-      <inputs default="0" any="0" invert="0">Robocup_Ready</inputs>
+      <inputs default="0" any="0" invert="0">Robocup_State==Robocup_Ready</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="704.733941" c2y="376.545847" c1y="360.243035" description="" straight="1" type="2" ypos="343.9402226072159" endx="793.446802599532" xpos="660.3775104737434" endy="392.848658868346" c2x="749.090372">
+    <transition c1x="680.176513" c2y="381.871762" c1y="346.823104" description="" straight="1" type="2" ypos="343.4932383477678" endx="796.0843175290488" xpos="660.4556609065437" endy="391.7457411846206" c2x="778.691660">
       <from>6</from>
       <to>2</to>
-      <inputs default="0" any="0" invert="0">Robocup_Set</inputs>
+      <inputs default="0" any="0" invert="0">Robocup_State==Robocup_Set</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="677.320922" c2y="479.886996" c1y="423.652142" description="" straight="1" type="2" ypos="367.4172882459211" endx="739.145204276533" xpos="646.4087807103213" endy="536.1218502707968" c2x="708.233063">
+    <transition c1x="658.926104" c2y="518.129729" c1y="383.015898" description="" straight="1" type="2" ypos="367.4172882459211" endx="739.4665741696198" xpos="646.4087807103213" endy="537.0688040140269" c2x="733.039176">
       <from>6</from>
       <to>3</to>
-      <inputs default="0" any="0" invert="0">Robocup_Playing</inputs>
+      <inputs default="0" any="0" invert="0">Robocup_State==Robocup_Playing</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="606.825817" c2y="488.785235" c1y="432.364137" description="" straight="1" type="2" ypos="375.9430385886785" endx="580.6915919012281" xpos="619.8929296450535" endy="545.206332832873" c2x="593.758704">
+    <transition c1x="618.812381" c2y="527.729341" c1y="395.913828" description="" straight="1" type="2" ypos="375.9430385886785" endx="580.2993021036974" xpos="619.8929296450535" endy="546.1261745120513" c2x="588.145098">
       <from>6</from>
       <to>0</to>
-      <inputs default="0" any="0" invert="0">Robocup_GameOver</inputs>
+      <inputs default="0" any="0" invert="0">Robocup_State==Robocup_GameOver</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="552.909534" c2y="436.580980" c1y="401.480195" description="" straight="1" type="2" ypos="366.3794091633299" endx="466.0257879022921" xpos="596.3514071104545" endy="471.6817655614275" c2x="509.467661">
+    <transition c1x="583.198283" c2y="462.505604" c1y="381.445773" description="" straight="1" type="2" ypos="366.3794091633299" endx="465.1501432047348" xpos="596.3514071104545" endy="472.1647214223918" c2x="482.663037">
       <from>6</from>
       <to>4</to>
-      <inputs default="0" any="0" invert="0">Robocup_Penalised</inputs>
+      <inputs default="0" any="0" invert="0">Robocup_State==Robocup_Penalised</inputs>
       <outputs></outputs>
     </transition>
   </machine>
