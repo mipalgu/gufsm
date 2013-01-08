@@ -10,7 +10,7 @@
     <state pencolor="0" radius="40" description="OnEntry { print_state_name();&#xa; post(&quot;gunxt_nxtWalk&quot;,&quot;0,0,-45&quot;);}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="208,48" code="1" xpos="880" linewidth="1">BACWARD</state>
     <state pencolor="0" radius="40" description="OnEntry { print_state_name();&#xa; }&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="121,2" code="2" xpos="529,1999999999999" linewidth="1">WAIT</state>
     <state pencolor="0" radius="40" description="OnEntry { print_state_name();&#xa; }&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="381,2" code="3" xpos="530" linewidth="1">WAIT</state>
-    <transition c1x="303,0690724158615" c2y="148,4249200745142" c1y="178,3106005699793" description="" straight="1" type="1" ypos="208,1962810654444" endx="489,2885936857356" xpos="209,9593117809244" endy="118,5392395790491" c2x="396,1788330507986">
+    <transition c1x="303,0690724158615" c2y="148,4249200745142" c1y="178,3106005699793" description="" straight="1" type="1" ypos="208,1962810654444" endx="489,2885936857356" xpos="209,9593117809244" endy="118,5392395790491" c2x="396,1788330507985">
       <from>0</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">gunxtmotion_gunxt_nxtWalkIsRunning</inputs>
@@ -28,7 +28,7 @@
       <inputs default="0" any="0" invert="0">~gunxtmotion_gunxt_nxtWalkIsRunning</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="397,3618935707303" c2y="275,0489267936598" c1y="319,5180233702185" description="" straight="1" type="1" ypos="363,9871199467773" endx="204,2997170285018" xpos="493,8929818418445" endy="230,579830217101" c2x="300,830805299616">
+    <transition c1x="397,3618935707303" c2y="275,0489267936597" c1y="319,5180233702185" description="" straight="1" type="1" ypos="363,9871199467773" endx="204,2997170285018" xpos="493,8929818418445" endy="230,579830217101" c2x="300,830805299616">
       <from>3</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">~gunxtmotion_gunxt_nxtWalkIsRunning</inputs>
