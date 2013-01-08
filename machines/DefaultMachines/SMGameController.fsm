@@ -9,16 +9,16 @@
     <state pencolor="2420992" radius="40" description="OnEntry { &#xa;&#x9; restart(&quot;SMPlayer&quot;);&#xa;         shortChestButtonPressed=0;&#xa;&#x9;Robocup_State=Robocup_Playing;&#xa;         post(&quot;QSay&quot;, &quot;play&quot;);&#xa;&#x9;&#xa; }&#xa;OnExit {  &#xa;&#x9;playingReceived=0;&#xa;        suspend(&quot;SMPlayer&quot;);&#xa;&#x9;gameStart=0;&#xa; &#x9;Robocup_State=Robocup_OtherState;&#xa; }&#xa;{  &#xa;        &#xa;  }&#xa;" finalstate="0" moore_outputs="" ypos="620" code="2" xpos="1230" linewidth="1">PLAYING</state>
     <state pencolor="16711680" radius="40" description="OnEntry { print_state_name();&#xa;  suspend(&quot;SMBallSeeker&quot;);&#xa;  suspend(&quot;SMVladLeftFootControl&quot;);&#xa;  suspend(&quot;SMGetUp&quot;);&#xa;&#xa; &#xa;  post(&quot;QSay&quot;, &quot;penalised&quot;);&#xa; suspend(&quot;SMLeftFootControl&quot;); suspend(&quot;SMRightFootControl&quot;);&#xa; post(&quot;gunaoemergencystopmotion_stop&quot;, &quot;stop&quot;);&#xa;          }&#xa;OnExit {penaltyReceived=0;  resume(&quot;SMVladLeftFootControl&quot;)  ;&#xa;&#xa;    }&#xa;{ &#xa; &#xa; }&#xa;" finalstate="0" moore_outputs="" ypos="605" code="3" xpos="513" linewidth="1">PENALIZED</state>
     <state pencolor="12124415" radius="40" description="OnEntry { print_state_name();&#xa;&#x9;Robocup_State=Robocup_Set;&#xa;               post( &quot;QSay&quot;, &quot;set&quot;);&#xa;&#x9;resume(&quot;SMHeadBallFindAndTrack&quot;); &#xa;       }&#xa;OnExit {  setReceived=0; suspend(&quot;SMHeadBallFindAndTrack&quot;);&#xa; &#x9;Robocup_State=Robocup_OtherState;  }&#xa;{               }" finalstate="0" moore_outputs="" ypos="190.8333333333333" code="4" xpos="1216.666666666667" linewidth="1">SET</state>
-    <state pencolor="0" radius="45" description="OnEntry { print_state_name(); post(&quot;QSay&quot;, &quot;change side&quot;); &#xa; Robocup_ourTeam=!Robocup_ourTeam;&#xa; kickOffTeam=!kickOffTeam; &#xa;               }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="207" code="6" xpos="235" linewidth="1">CHANGE_TEAM</state>
-    <state pencolor="0" radius="40" description="OnEntry { print_state_name(); post(&quot;QSay&quot;, &quot;change kick off&quot;);  kickOffTeam=!kickOffTeam; &#xa;                }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="333" code="8" xpos="211" linewidth="1">CHANGE_KICK_OFF</state>
+    <state pencolor="0" radius="45" description="OnEntry { print_state_name(); post(&quot;QSay&quot;, &quot;change side&quot;); &#xa; Robocup_ourTeam=!Robocup_ourTeam;&#xa; Robocup_kickOffTeam=!Robocup_kickOffTeam; &#xa;               }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="207" code="6" xpos="235" linewidth="1">CHANGE_TEAM</state>
+    <state pencolor="0" radius="40" description="OnEntry { print_state_name(); post(&quot;QSay&quot;, &quot;change kick off&quot;);  Robocup_kickOffTeam=!Robocup_kickOffTeam; &#xa;                }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="333" code="8" xpos="211" linewidth="1">CHANGE_KICK_OFF</state>
     <state pencolor="32832" radius="40" description="OnEntry  {&#xa; print_state_name(); &#xa; readyReceived=0;&#xa;&#x9;Robocup_State=Robocup_Init;&#xa; post(&quot;QSay&quot;,&quot;I'm in initial&quot;); &#xa; resume(&quot;SMButtonChest&quot;); &#xa; resume(&quot;SMButtonLeftFoot&quot;); &#xa; resume(&quot;SMButtonRightFoot&quot;); &#xa; restart(&quot;SMLeftFootControl&quot;); restart(&quot;SMRightFootControl&quot;);&#xa;  }&#xa;OnExit {initialReceived=0; &#x9;Robocup_State=Robocup_OtherState; }&#xa;{  }&#xa;" finalstate="0" moore_outputs="" ypos="269" code="7" xpos="510" linewidth="1">INITIAL</state>
-    <state pencolor="0" radius="40" description="OnEntry { print_state_name(); post(&quot;QSay&quot;, &quot;Reds kick&quot;); kickOffTeam=1;  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="101" code="10" xpos="652" linewidth="1">ForcedToRedKickOff</state>
-    <state pencolor="0" radius="40" description="OnEntry { print_state_name(); post(&quot;QSay&quot;, &quot;Blues kick&quot;); kickOffTeam=0; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="44" code="9" xpos="817" linewidth="1">ForcedToBlueKickOff</state>
-    <state pencolor="0" radius="40" description="OnEntry { &#xa;               post(&quot;QSay&quot;, &quot;GO OOH OOH OHH OOH OOH AH AH al MY PAL.  MY PAL WOW! WOW! WOW! YEAH! YEAH!&quot;); &#xa;kickOffTeam=!Robocup_ourTeam;&#xa;               }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="404" code="11" xpos="774" linewidth="1">WeScore</state>
-    <state pencolor="0" radius="40" description="OnEntry { &#xa;               post(&quot;QSay&quot;, &quot;Oh, we don't like that&quot;); &#xa;kickOffTeam=Robocup_ourTeam;}&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="321.6666666666666" code="12" xpos="1010.833333333333" linewidth="1">TheyScore</state>
+    <state pencolor="0" radius="40" description="OnEntry { print_state_name(); post(&quot;QSay&quot;, &quot;Reds kick&quot;); Robocup_kickOffTeam=1;  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="101" code="10" xpos="652" linewidth="1">ForcedToRedKickOff</state>
+    <state pencolor="0" radius="40" description="OnEntry { print_state_name(); post(&quot;QSay&quot;, &quot;Blues kick&quot;); Robocup_kickOffTeam=0; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="44" code="9" xpos="817" linewidth="1">ForcedToBlueKickOff</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;               post(&quot;QSay&quot;, &quot;GO OOH OOH OHH OOH OOH AH AH al MY PAL.  MY PAL WOW! WOW! WOW! YEAH! YEAH!&quot;); &#xa;Robocup_kickOffTeam=!Robocup_ourTeam;&#xa;               }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="404" code="11" xpos="774" linewidth="1">WeScore</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;               post(&quot;QSay&quot;, &quot;Oh, we don't like that&quot;); &#xa;Robocup_kickOffTeam=Robocup_ourTeam;}&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="321.6666666666666" code="12" xpos="1010.833333333333" linewidth="1">TheyScore</state>
     <state pencolor="511" radius="40" description="OnEntry {print_state_name();&#xa;&#x9;Robocup_State=Robocup_Ready;&#xa;              post(&quot;QSay&quot;,&quot;Ready&quot;);&#xa;&#x9;restart(&quot;SMReady&quot;);&#xa;&#x9; suspend(&quot;SMLeftFootControl&quot;); suspend(&quot;SMRightFootControl&quot;);&#xa;&#x9;}&#xa;OnExit{   readyReceived=0;&#xa;&#x9;suspend(&quot;SMReady&quot;); &#xa;&#x9;Robocup_State=Robocup_OtherState;&#xa; }&#xa;{}" finalstate="0" moore_outputs="" ypos="230" code="1" xpos="760" linewidth="1">NEWREADY</state>
     <state pencolor="16739593" radius="40" description="OnEntry{print_name_state();&#xa;  suspend(&quot;SMGetUp&quot;);&#xa; suspend(&quot;SMVladLeftFootControl&quot;);&#xa;&#x9;Robocup_State=Robocup_GameOver;&#xa; post(&quot;QSay&quot;,&quot;Game over&quot;);&#xa; post(&quot;gunaomotion_naoMotionPlayer&quot;, &quot;kneel&quot;); }&#xa;OnExit{resume(&quot;SMVladLeftFootControl&quot;);&#xa; finishedReceived=0; &#x9;Robocup_State=Robocup_OtherState;}&#xa;{}" finalstate="0" moore_outputs="" ypos="857" code="13" xpos="466" linewidth="1">FINISHED</state>
-    <state pencolor="0" radius="45" description="OnEntry { extern penaltyReceived; extern initialReceived;&#xa;&#x9;extern fallen;&#xa;&#x9;extern robotIsUp;&#xa;&#x9;extern walkAMeter;&#xa;  extern gameStart;&#xa;  extern readyReceived;&#xa;  extern setReceived;&#xa;  extern playingReceived;&#xa;  extern finishedReceived;&#xa;  extern UDPOurGoalPushed;&#xa;  extern UDPTheirGoalPushed;&#xa;  extern UDPBlueKickOffPushed;&#xa;  extern UDPRedKickOffPushed;&#xa; extern leftFootBumpPressed;&#xa; extern rightFootBumpPressed;&#xa; extern shortChestButtonPressed; &#xa; extern gunaomotion_naoMotionPlayerIsRunning;&#xa; extern  gunaomotion_holdingStiffness;&#xa; extern  Robocup_ourTeam;&#xa; extern kickOffTeam;&#xa; extern Robocup_State;&#xa;&#x9;int Robocup_Init;&#xa;&#x9;int Robocup_Ready;&#xa;&#x9;int Robocup_Set;&#xa;&#x9;int Robocup_Playing;&#xa;&#x9;int Robocup_GameOver;&#xa;&#x9;int Robocup_Penalised;&#xa;&#x9;int Robocup_OtherState;&#xa;&#x9;Robocup_Init=0;&#xa;&#x9;Robocup_Ready=1;&#xa;&#x9;Robocup_Set=2;&#xa;&#x9;Robocup_Playing=3;&#xa;&#x9;Robocup_Penalised=4;&#xa;&#x9;Robocup_GameOver=5;&#xa;&#x9;Robocup_OtherState=-1;&#xa;&#x9;Robocup_State=Robocup_OtherState;&#xa; kickOffTeam=0; &#xa; Robocup_ourTeam=0;  &#xa;  walkAMeter=0;&#xa; suspend(&quot;SMReady&quot;); &#xa; suspend(&quot;SMHeadBallFindAndTrack&quot;);&#xa; gunaomotion_holdingStiffness= 100;&#xa; gameStart=1;&#xa; }&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="85" code="0" xpos="72.5" linewidth="1">DUMMY_INITIAL</state>
+    <state pencolor="0" radius="45" description="OnEntry { extern penaltyReceived; extern initialReceived;&#xa;&#x9;extern fallen;&#xa;&#x9;extern robotIsUp;&#xa;&#x9;extern walkAMeter;&#xa;  extern gameStart;&#xa;  extern readyReceived;&#xa;  extern setReceived;&#xa;  extern playingReceived;&#xa;  extern finishedReceived;&#xa;  extern UDPOurGoalPushed;&#xa;  extern UDPTheirGoalPushed;&#xa;  extern UDPBlueKickOffPushed;&#xa;  extern UDPRedKickOffPushed;&#xa; extern leftFootBumpPressed;&#xa; extern rightFootBumpPressed;&#xa; extern shortChestButtonPressed; &#xa; extern gunaomotion_naoMotionPlayerIsRunning;&#xa; extern  gunaomotion_holdingStiffness;&#xa; extern  Robocup_ourTeam;&#xa; extern Robocup_kickOffTeam;&#xa; extern Robocup_State;&#xa;&#x9;int Robocup_Init;&#xa;&#x9;int Robocup_Ready;&#xa;&#x9;int Robocup_Set;&#xa;&#x9;int Robocup_Playing;&#xa;&#x9;int Robocup_GameOver;&#xa;&#x9;int Robocup_Penalised;&#xa;&#x9;int Robocup_OtherState;&#xa;&#x9;Robocup_Init=0;&#xa;&#x9;Robocup_Ready=1;&#xa;&#x9;Robocup_Set=2;&#xa;&#x9;Robocup_Playing=3;&#xa;&#x9;Robocup_Penalised=4;&#xa;&#x9;Robocup_GameOver=5;&#xa;&#x9;Robocup_OtherState=-1;&#xa;&#x9;Robocup_State=Robocup_OtherState;&#xa; Robocup_kickOffTeam=0; &#xa; Robocup_ourTeam=0;  &#xa;  walkAMeter=0;&#xa; suspend(&quot;SMReady&quot;); &#xa; suspend(&quot;SMHeadBallFindAndTrack&quot;);&#xa; gunaomotion_holdingStiffness= 100;&#xa; gameStart=1;&#xa; }&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="85" code="0" xpos="72.5" linewidth="1">DUMMY_INITIAL</state>
     <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="764" code="5" xpos="130" linewidth="1">WAIT</state>
     <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="77.5" code="14" xpos="549.1666666666666" linewidth="1">WAIT</state>
     <state pencolor="14615040" radius="40" description="OnEntry { print_state_name(); &#xa; gunaomotion_holdingStiffness=0 ;&#xa; post(&quot;Head_Stiffness&quot;,&quot;0&quot;);&#xa; post(&quot;Speech&quot;, &quot;RELAX&quot;);&#xa; post(&quot;suspend&quot;,&quot;SMHeadUpDown&quot;); &#xa; post(&quot;guvision_stopVisionPipeline&quot;,&quot;now&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="428" code="15" xpos="103" linewidth="1">RELAX</state>
@@ -45,7 +45,7 @@
       <inputs default="0" any="0" invert="0">penaltyReceived</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="1149.445188" c2y="432.125129" c1y="510.347442" description="" straight="1" type="2" ypos="587.7638506809335" endx="1034.515197218569" xpos="1206.318136114764" endy="353.9028159857331" c2x="1091.980192">
+    <transition c1x="1149.050490" c2y="431.856494" c1y="509.810172" description="" straight="1" type="2" ypos="587.7638506809335" endx="1034.515197218569" xpos="1206.318136114764" endy="353.9028159857331" c2x="1091.782844">
       <from>2</from>
       <to>12</to>
       <inputs default="0" any="0" invert="0">UDPTheirGoalPushed</inputs>
@@ -57,7 +57,7 @@
       <inputs default="0" any="0" invert="0">finishedReceived</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1066.552654" c2y="481.850513" c1y="542.577573" description="" straight="1" type="2" ypos="602.8765462104382" endx="810.1495135557416" xpos="1193.850486444258" endy="421.1234537895618" c2x="938.351084">
+    <transition c1x="1065.950162" c2y="481.707818" c1y="542.292182" description="" straight="1" type="2" ypos="602.8765462104382" endx="810.1495135557416" xpos="1193.850486444258" endy="421.1234537895618" c2x="938.049838">
       <from>2</from>
       <to>11</to>
       <inputs default="0" any="0" invert="0">UDPOurGoalPushed</inputs>
@@ -123,19 +123,19 @@
       <inputs default="0" any="0" invert="0">shortChestButtonPressed</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="392.272571" c2y="285.465142" c1y="282.258043" description="" straight="0" type="2" ypos="274.2231846469922" endx="245.5430809036508" xpos="470.3424869395038" endy="314.8954270504981" c2x="312.236583">
+    <transition c1x="392.272571" c2y="285.465142" c1y="282.258043" description="" straight="0" type="2" ypos="274.2231846469922" endx="246.4288009268213" xpos="470.3424869395038" endy="314.4312072312801" c2x="312.236583">
       <from>7</from>
       <to>8</to>
       <inputs default="0" any="0" invert="0">rightFootBumpPressed</inputs>
       <outputs>3</outputs>
     </transition>
-    <transition c1x="708.537701" c2y="179.004022" c1y="137.266271" description="back to initial after change team" straight="0" type="2" ypos="124.9726198641656" endx="738.7611263310065" xpos="682.7622089071674" endy="196.1044214495085" c2x="731.672661">
+    <transition c1x="708.537701" c2y="179.004022" c1y="137.266271" description="back to initial after change team" straight="0" type="2" ypos="125.5873024247852" endx="738.7611263310065" xpos="683.5509834945307" endy="196.1044214495085" c2x="731.672661">
       <from>10</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">!UDPRedKickOffPushed||timeout(1000000)</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="809.771109" c2y="172.448283" c1y="102.555471" description="back to initial after change team" straight="0" type="2" ypos="82.70615852116296" endx="778.1831091184687" xpos="812.2215805401154" endy="194.371717094619" c2x="791.820086">
+    <transition c1x="809.771109" c2y="172.448283" c1y="102.555471" description="back to initial after change team" straight="0" type="2" ypos="83.69862412426971" endx="778.1831091184687" xpos="812.0990569642209" endy="194.371717094619" c2x="791.820086">
       <from>9</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">!UDPBlueKickOffPushed||timeout(1000000)</inputs>
@@ -159,7 +159,7 @@
       <inputs default="0" any="0" invert="0">setReceived</inputs>
       <outputs>2</outputs>
     </transition>
-    <transition c1x="767.228891" c2y="62.551717" c1y="171.444529" description="" straight="0" type="2" ypos="190.3013758757303" endx="799.271468609493" xpos="764.9009430357791" endy="78.73757583274643" c2x="761.179914">
+    <transition c1x="767.228891" c2y="62.551717" c1y="171.444529" description="" straight="0" type="2" ypos="190.3013758757303" endx="798.8168908815313" xpos="764.9009430357791" endy="79.62828290538094" c2x="761.179914">
       <from>1</from>
       <to>9</to>
       <inputs default="0" any="0" invert="0">UDPBlueKickOffPushed</inputs>
@@ -171,7 +171,7 @@
       <inputs default="0" any="0" invert="0">fallen</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="705.514967" c2y="177.995978" c1y="208.084618" description="" straight="0" type="2" ypos="217.3508893593265" endx="672.7079018272686" xpos="722.0526680779794" endy="134.0481890867292" c2x="653.327339">
+    <transition c1x="705.514967" c2y="177.995978" c1y="208.084618" description="" straight="0" type="2" ypos="217.3508893593265" endx="673.2388736689935" xpos="722.0526680779794" endy="134.8955785504915" c2x="653.327339">
       <from>1</from>
       <to>10</to>
       <inputs default="0" any="0" invert="0">UDPRedKickOffPushed</inputs>
@@ -249,7 +249,7 @@
       <inputs default="0" any="0" invert="0">playingReceived</inputs>
       <outputs>1</outputs>
     </transition>
-    <transition c1x="732.397958" c2y="480.621407" c1y="610.765525" description="" straight="1" type="2" ypos="740.1893765920101" endx="983.0853968543264" xpos="607.7479364790066" endy="350.4772900746565" c2x="857.741677">
+    <transition c1x="732.860423" c2y="480.381319" c1y="610.285348" description="" straight="1" type="2" ypos="740.1893765920101" endx="983.0853968543264" xpos="607.7479364790066" endy="350.4772900746565" c2x="857.972910">
       <from>19</from>
       <to>12</to>
       <inputs default="0" any="0" invert="0">UDPTheirGoalPushed</inputs>
@@ -261,7 +261,7 @@
       <inputs default="0" any="0" invert="0">readyReceived</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="650.611540" c2y="537.734630" c1y="636.148391" description="" straight="1" type="2" ypos="733.6791306848455" endx="755.2267160352329" xpos="598.7732839647671" endy="439.3208693151545" c2x="702.919128">
+    <transition c1x="650.924428" c2y="537.440290" c1y="635.559710" description="" straight="1" type="2" ypos="733.6791306848455" endx="755.2267160352329" xpos="598.7732839647671" endy="439.3208693151545" c2x="703.075572">
       <from>19</from>
       <to>11</to>
       <inputs default="0" any="0" invert="0">UDPOurGoalPushed</inputs>
