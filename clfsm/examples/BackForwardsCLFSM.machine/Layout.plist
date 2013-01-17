@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>States</key>
+	<dict>
+		<key>INIT</key>
+		<dict>
+			<key>x</key>
+			<real>89</real>
+			<key>y</key>
+			<real>68</real>
+		</dict>
+		<key>Ping</key>
+		<dict>
+			<key>x</key>
+			<real>349</real>
+			<key>y</key>
+			<real>184</real>
+		</dict>
+		<key>Pong</key>
+		<dict>
+			<key>x</key>
+			<real>630</real>
+			<key>y</key>
+			<real>79</real>
+		</dict>
+	</dict>
+</dict>
+</plist>
