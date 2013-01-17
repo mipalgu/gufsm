@@ -1,5 +1,5 @@
 //
-// BackForwardsCLFSM_VarRefs.mm -- 2013-01-17 23:54:53 +0000
+// BackForwardsCLFSM_VarRefs.mm -- 2013-01-17 23:59:01 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -10,6 +10,6 @@ BackForwardsCLFSM *_m = static_cast<BackForwardsCLFSM *>(_machine);
 #pragma clang diagnostic ignored "-Wshadow"
 
 int	&currentState = _m->currentState;	///< state no
-Whiteboard	&*wb = _m->*wb;	///< 
+guWhiteboard::Whiteboard	&*wb = _m->*wb;	///< 
 
 #pragma clang diagnostic pop
