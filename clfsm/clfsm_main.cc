@@ -101,6 +101,9 @@ int main(int argc, char * const argv[])
         vector<string> machines;
         vector<string> compiler_args;
         vector<string> linker_args;
+
+        compiler_args.push_back("-std=c++11");    /// XXX: fix this
+
         int ch;
         bool cflag = false;
         while ((ch = getopt(argc, argv, "cI:L:")) != -1)
