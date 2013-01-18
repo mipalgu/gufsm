@@ -106,12 +106,16 @@ int main(int argc, char * const argv[])
 
         int ch;
         bool cflag = false;
-        while ((ch = getopt(argc, argv, "cI:L:l:")) != -1)
+        while ((ch = getopt(argc, argv, "gcI:L:l:")) != -1)
         {
                 switch (ch)
                 {
                         case 'c':
                                 cflag = true;
+                                break;
+                        case 'g':
+                                compiler_args.push_back("-g");
+                                linker_args.push_back("-g");
                                 break;
                         case 'I':
                                 compiler_args.push_back("-I");

@@ -9,7 +9,7 @@
 
   stateName = "Ping";
   currentState = 1;
-  cout << stateName << endl;
+  cout << string( stateName ) << endl;
   wb-> addMessage(kDifferentialMotorForward, msgL);
   wb-> addMessage(kDifferentialMotorForward, msgR);
 }
