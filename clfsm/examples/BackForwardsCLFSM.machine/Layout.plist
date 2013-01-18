@@ -6,6 +6,27 @@
 	<dict>
 		<key>INIT</key>
 		<dict>
+			<key>Transitions</key>
+			<array>
+				<dict>
+					<key>controlPoint1X</key>
+					<real>0.0</real>
+					<key>controlPoint1Y</key>
+					<real>0.0</real>
+					<key>controlPoint2X</key>
+					<real>0.0</real>
+					<key>controlPoint2Y</key>
+					<real>0.0</real>
+					<key>dstPointX</key>
+					<real>0.0</real>
+					<key>dstPointY</key>
+					<real>0.0</real>
+					<key>srcPointX</key>
+					<real>0.0</real>
+					<key>srcPointY</key>
+					<real>0.0</real>
+				</dict>
+			</array>
 			<key>x</key>
 			<real>89</real>
 			<key>y</key>
@@ -13,6 +34,27 @@
 		</dict>
 		<key>Ping</key>
 		<dict>
+			<key>Transitions</key>
+			<array>
+				<dict>
+					<key>controlPoint1X</key>
+					<real>0.0</real>
+					<key>controlPoint1Y</key>
+					<real>0.0</real>
+					<key>controlPoint2X</key>
+					<real>0.0</real>
+					<key>controlPoint2Y</key>
+					<real>0.0</real>
+					<key>dstPointX</key>
+					<real>0.0</real>
+					<key>dstPointY</key>
+					<real>0.0</real>
+					<key>srcPointX</key>
+					<real>0.0</real>
+					<key>srcPointY</key>
+					<real>0.0</real>
+				</dict>
+			</array>
 			<key>x</key>
 			<real>349</real>
 			<key>y</key>
@@ -20,6 +62,27 @@
 		</dict>
 		<key>Pong</key>
 		<dict>
+			<key>Transitions</key>
+			<array>
+				<dict>
+					<key>controlPoint1X</key>
+					<real>0.0</real>
+					<key>controlPoint1Y</key>
+					<real>0.0</real>
+					<key>controlPoint2X</key>
+					<real>0.0</real>
+					<key>controlPoint2Y</key>
+					<real>0.0</real>
+					<key>dstPointX</key>
+					<real>0.0</real>
+					<key>dstPointY</key>
+					<real>0.0</real>
+					<key>srcPointX</key>
+					<real>0.0</real>
+					<key>srcPointY</key>
+					<real>0.0</real>
+				</dict>
+			</array>
 			<key>x</key>
 			<real>630</real>
 			<key>y</key>

@@ -1,5 +1,6 @@
 {
   using namespace std;
+  using namespace guWhiteboard;
 
   stateName = "INIT";
   currentState = 0;

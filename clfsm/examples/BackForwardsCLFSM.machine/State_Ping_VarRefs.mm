@@ -1,5 +1,5 @@
 //
-// State_Ping_VarRefs.mm -- 2013-01-18 00:32:40 +0000
+// State_Ping_VarRefs.mm -- 2013-01-18 02:11:00 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
