@@ -1,5 +1,6 @@
 {
   using namespace std;
+  using namespace guWhiteboard;
 
   stateName = "Pong";
   currentState = 2;
