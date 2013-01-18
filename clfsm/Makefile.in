@@ -3,7 +3,10 @@
 #
 MODULE_BASE=clfsm
 
-CFLAGS+=-stdlib=libc++
+SPECIFIC_CFLAGS=-stdlib=libc++
+SPECIFIC_LDFLAGS=-stdlib=libc++
+
+
 
 CC_SRCS= CLActionAction.cc
 CC_SRCS+=CLTransitionExpression.cc
@@ -53,7 +56,5 @@ HDRS+=stringConstants.h
 .include "../../../../mk/whiteboard.mk"	# required for the whiteboard
 .include "../../../../mk/util.mk"		# required for gu_util
 
-SPECIFIC_CPPFLAGS+=${CDL_CPPFLAGS} 	# for CDL includes
-#SPECIFIC_CPPFLAGS+=-DMONITORING_MODE_ON
 
 .include "../../../../mk/mipal.mk"

@@ -9,7 +9,7 @@ ALL_TARGETS=copy-and-build
 
 copy-and-build:
 	mkdir -p ${BUILDDIR}
-	cp -p ../gufsm/*.[ch]* ${BUILDDIR}
+	cp -p ../gufsm/*.c*  ../gufsm/*.h ${BUILDDIR}
 	cp -p *.c* *.h ${BUILDDIR}
 	cp -p Makefile.in ${BUILDDIR}/Makefile
 	cd ${BUILDDIR} && ${MAKE} host
