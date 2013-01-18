@@ -1,0 +1,59 @@
+#
+#	$Id: f734c0c5b874bf8ee255611c65a9ee769b7fe3e4 $
+#
+MODULE_BASE=clfsm
+
+CFLAGS+=-stdlib=libc++
+
+CC_SRCS= CLActionAction.cc
+CC_SRCS+=CLTransitionExpression.cc
+CC_SRCS+=FSMAction.cc
+CC_SRCS+=FSMActivity.cc
+CC_SRCS+=FSMExpression.cc
+CC_SRCS+=FSMWBPredicate.cc
+CC_SRCS+=FSMWBQueryPredicate.cc
+CC_SRCS+=FSMWBContext.cc
+CC_SRCS+=FSMachine.cc
+CC_SRCS+=FSMState.cc
+CC_SRCS+=FSMSuspensibleMachine.cc
+CC_SRCS+=FSMWBSubMachine.cc
+CC_SRCS+=FSMTransition.cc
+CC_SRCS+=FSMFactory.cc
+CC_SRCS+=FSMachineVector.cc
+CC_SRCS+=clfsm_vector_factory.cc
+CC_SRCS+=clfsm_factory.cc
+CC_SRCS+=clfsm_cc.cc
+CC_SRCS+=clfsm_machine.cc
+CC_SRCS+=clfsm_main.cc
+C_SRCS=stringConstants.c
+HDRS+=CLActionAction.h
+HDRS+=CLTransitionExpression.h
+HDRS+=FSM.h
+HDRS+=FSMAction.h
+HDRS+=FSMActivity.h
+HDRS+=FSMExpression.h
+HDRS+=FSMWBPredicate.h
+HDRS+=FSMWBQueryPredicate.h
+HDRS+=FSMWBContext.h
+HDRS+=FSMachine.h
+HDRS+=FSMState.h
+HDRS+=FSMSuspensibleMachine.h
+HDRS+=FSMWBSubMachine.h
+HDRS+=FSMTransition.h
+HDRS+=FSMFactory.h
+HDRS+=FSMachineVector.h
+HDRS+=clfsm_vector_factory.h
+HDRS+=clfsm_factory.h
+HDRS+=clfsm_machine.h
+HDRS+=stringConstants.h
+
+#CLANG_CXXFLAGS=-std=c++0x
+#TARGET_USE_CLANG=YES
+
+.include "../../../../mk/whiteboard.mk"	# required for the whiteboard
+.include "../../../../mk/util.mk"		# required for gu_util
+
+SPECIFIC_CPPFLAGS+=${CDL_CPPFLAGS} 	# for CDL includes
+#SPECIFIC_CPPFLAGS+=-DMONITORING_MODE_ON
+
+.include "../../../../mk/mipal.mk"
