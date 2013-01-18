@@ -1,7 +1,7 @@
 <?xml version='1.0'?>
 <!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
 <qfsmproject version="0.53" author="Qfsm">
-  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="Includes$&#xa;#include &lt;iostream>&#xa;#include &lt;Whiteboard.h>&#xa;&#xa;&#xa;$Variables$&#xa;int&#x9;currentState;&#x9;// state no&#xa;guWhiteboard::Whiteboard *&#x9;wb;&#xa;" version="1" name="BackForwardsCLFSM" arrowtype="1" numbits="2" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="Includes$&#xa;#include &lt;iostream>&#xa;#include &lt;Whiteboard.h>&#xa;#include &lt;WhiteboardConstants.h>&#xa;&#xa;&#xa;$Variables$&#xa;int&#x9;currentState;&#x9;// state no&#xa;guWhiteboard::Whiteboard *&#x9;wb;&#xa;" version="1" name="BackForwardsCLFSM" arrowtype="1" numbits="2" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
