@@ -91,7 +91,7 @@ static CLFSMVectorFactory *createMachines(vector<MachineWrapper> &machineWrapper
 
 static void usage(const char *cmd)
 {
-        cerr << "Usage: " << cmd << "[-c]{-I includedir}{-L linkdir}" << endl;
+        cerr << "Usage: " << cmd << "[-c]{-I includedir}{-L linkdir}{-l lib}" << endl;
 }
 
 
@@ -106,7 +106,7 @@ int main(int argc, char * const argv[])
 
         int ch;
         bool cflag = false;
-        while ((ch = getopt(argc, argv, "cI:L:")) != -1)
+        while ((ch = getopt(argc, argv, "cI:L:l:")) != -1)
         {
                 switch (ch)
                 {
@@ -119,6 +119,10 @@ int main(int argc, char * const argv[])
                                 break;
                         case 'L':
                                 linker_args.push_back("-L");
+                                linker_args.push_back(optarg);
+                                break;
+                        case 'l':
+                                linker_args.push_back("-l");
                                 linker_args.push_back(optarg);
                                 break;
                         case '?':
