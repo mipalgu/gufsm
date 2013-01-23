@@ -11,5 +11,5 @@
   currentState = 2;
   cout << stateName << endl;
   wb-> addMessage(kDifferentialMotorPower,msgL);
-  wb-> addMessage(kDifferentialMotroPower,msgR);
+  wb-> addMessage(kDifferentialMotorPower,msgR);
 }
