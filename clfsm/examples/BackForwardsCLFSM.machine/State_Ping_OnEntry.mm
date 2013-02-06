@@ -2,8 +2,8 @@
   using namespace std;
   using namespace guWhiteboard;
 
-  string strL = "1,50";
-  string strR = "0,50";
+  string strL = "1,60";
+  string strR = "0,60";
   WBMsg msgL(strL);
   WBMsg msgR(strR);
 
