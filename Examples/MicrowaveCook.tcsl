@@ -1,2 +1,0 @@
-2 1 !doorOpen && timeLeft
-1 2 (doorOpen || !timeLeft)

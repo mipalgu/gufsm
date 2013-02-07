@@ -10,6 +10,7 @@
   stateName = "Ping";
   currentState = 1;
   cout << string( stateName ) << endl;
+  wb-> addMessage(kSay,"ping is forwards");
   wb-> addMessage(kDifferentialMotorPower, msgL);
   wb-> addMessage(kDifferentialMotorPower, msgR);
 }

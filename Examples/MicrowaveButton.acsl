@@ -1,9 +1,0 @@
-1	WAIT
-OnEntry { }
-OnExit {  }
-{}
-
-2	CB_ADD
-OnEntry { }
-OnExit {  }
-{}

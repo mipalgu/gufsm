@@ -1,9 +1,0 @@
-2	NOTSHINELIGHT
-OnEntry {int light; light=0;}
-OnExit {  }
-{}
-
-1	SHINELIGHT
-OnEntry { light=1;}
-OnExit {  }
-{}
