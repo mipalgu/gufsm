@@ -58,7 +58,7 @@
 #ifndef __gufsm__clfsm_cc__
 #define __gufsm__clfsm_cc__
 
-#include <cstdint>
+//#include <cstdint>
 #include <vector>
 #include <string>
 #include <iostream>
@@ -110,13 +110,13 @@ namespace FSM
                 llvm::IntrusiveRefCntPtr<clang::DiagnosticIDs> diagIDs;
         public:
                 /// constructor: takes a compiler instance and diagnostic IDs
-                Cc(clang::CompilerInstance *ci, clang::DiagnosticIDs *dis): _delegate(nullptr),
+                Cc(clang::CompilerInstance *ci, clang::DiagnosticIDs *dis): _delegate(NULL),
                         clang(ci), diagIDs(dis) {}
                 /// default constructor: creates a new compiler instance
                 Cc(): Cc(new clang::CompilerInstance(), new clang::DiagnosticIDs()) {}
 #else
         public:
-                Cc(): _delegate(nullptr) {}
+                Cc(): _delegate(NULL) {}
 #endif
 
                 /// default destructor

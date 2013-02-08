@@ -92,7 +92,7 @@ namespace FSM
                 std::string binaryDirectory() const;
 
                 /// set the compiler
-                virtual void setCompiler(Cc *compiler = nullptr, bool del = false);
+                virtual void setCompiler(Cc *compiler = NULL, bool del = false);
 
                 /// get the compiler
                 Cc *compiler() const { return _compiler; }

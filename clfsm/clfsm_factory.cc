@@ -170,21 +170,21 @@ CLFSMFactory::~CLFSMFactory()
                 {
                         CLTransition *cltransition = cl_transitions[j];
                         Transition *transition = state->transitions()[j];
-                        auto expression = transition->expression();
+                        Expression *expression = transition->expression();
 
                         delete expression;
                         delete transition;
                         delete cltransition;
                 }
 
-                for (auto onEntryAction: state->activity().onEntryActions())
-                        delete onEntryAction;
+                for (ActionVector::iterator i = state->activity().onEntryActions().begin(); i !=  state->activity().onEntryActions().end(); i++)
+                        delete *i;
 
-                for (auto onExitAction: state->activity().onExitActions())
-                        delete onExitAction;
+                for (ActionVector::iterator i = state->activity().onExitActions().begin(); i !=  state->activity().onExitActions().end(); i++)
+                        delete *i;
 
-                for (auto internalAction: state->activity().internalActions())
-                        delete internalAction;
+                for (ActionVector::iterator i = state->activity().internalActions().begin(); i !=  state->activity().internalActions().end(); i++)
+                        delete *i;
 
                 delete state;
                 delete clstate;

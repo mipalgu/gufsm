@@ -56,12 +56,15 @@
  *
  */
 #include <dispatch/dispatch.h>
+#include <cstdlib>
+#include <cstdio>
+#include <cerrno>
 #include <unistd.h>
+#include <sys/wait.h>
 #include <vector>
 #include <gu_util.h>
 #include "clfsm_cc_delegate.h"
 #include "clfsm_cc.h"
-
 
 #ifdef USE_LIBCLANG_INTERNAL
 using namespace llvm;
@@ -146,7 +149,7 @@ bool Cc::compile(vector<string> args, const char *argv0)
                                 DBG(cout << args[i] << " ");
                         }
                         DBG(cout << endl);
-                        exec_args[n+1] = nullptr;
+                        exec_args[n+1] = NULL;
                         execvp(argv0, &exec_args[0]);
                         cerr << "Cannot exec " << argv0 << endl;
                         exit(EXIT_FAILURE);

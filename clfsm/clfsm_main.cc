@@ -74,8 +74,9 @@ static CLFSMVectorFactory *createMachines(vector<MachineWrapper> &machineWrapper
         WBContext *context = new WBContext();
         CLFSMVectorFactory *factory = new CLFSMVectorFactory(context);
         int i = 0;
-        for (const string &machine: machines)
+        for (vector<string>::const_iterator it = machines.begin(); it != machines.end(); it++)
         {
+                const string &machine = *it;
                 machineWrappers.push_back(machine);
                 MachineWrapper &machineWrapper = machineWrappers[i];
                 machineWrapper.setCompilerArgs(compiler_args);

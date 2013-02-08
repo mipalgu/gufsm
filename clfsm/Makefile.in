@@ -3,10 +3,10 @@
 #
 MODULE_BASE=clfsm
 
+.ifndef TARGET
 SPECIFIC_CFLAGS=-stdlib=libc++
 SPECIFIC_LDFLAGS=-stdlib=libc++
-
-
+.endif
 
 CC_SRCS= CLActionAction.cc
 CC_SRCS+=CLTransitionExpression.cc

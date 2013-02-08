@@ -69,9 +69,9 @@
 using namespace std;
 using namespace FSM;
 
-static dispatch_queue_t sync_queue = nullptr;
+static dispatch_queue_t sync_queue = NULL;
 
-MachineWrapper::MachineWrapper(string path): _fullPath(path), _factory(nullptr), _shared_object(nullptr), _compiler(nullptr), _compiler_args(nullptr), _linker_args(nullptr), _delete_compiler(false)
+MachineWrapper::MachineWrapper(string path): _fullPath(path), _factory(NULL), _shared_object(NULL), _compiler(NULL), _compiler_args(NULL), _linker_args(NULL), _delete_compiler(false)
 {
         char pathName[path.length()];
 
@@ -125,8 +125,9 @@ vector<string> MachineWrapper::states() const
 
         filename << path() << "/States";
 
-        DBG(cout << filename.str() << endl);
-        ifstream file(filename.str());
+        const string &fn = filename.str();
+        DBG(cout << fn << endl);
+        ifstream file(fn.c_str());
         vector<string> states;
 
         while (!file.eof())
@@ -142,15 +143,30 @@ vector<string> MachineWrapper::states() const
         return states;
 }
 
+static void create_compile_queue(void *)
+{
+        sync_queue = dispatch_queue_create("net.mipal.clfsm.compile", 0);
+}
+
+struct outfile_pushback_param
+{
+        vector<string> *outfilesp;
+        string *outfilenamep;
+};
+
+static void push_back_outfilename(void *p)
+{
+        outfile_pushback_param *param = (outfile_pushback_param *)(p);
+        param->outfilesp->push_back(*param->outfilenamep);
+}
+
 
 bool MachineWrapper::compile(const vector<string> &compiler_args, const vector<string> &linker_args)
 {
         string binary_directory = binaryDirectory();
         static dispatch_once_t onceToken;
-        dispatch_once(&onceToken,
-        ^{
-                sync_queue = dispatch_queue_create("net.mipal.clfsm.compile", DISPATCH_QUEUE_SERIAL);
-        });
+        dispatch_once_f(&onceToken, NULL, create_compile_queue);
+
         if (!compiler()) setCompiler();
 
         mkdir(binary_directory.c_str(), 0777);
@@ -158,9 +174,15 @@ bool MachineWrapper::compile(const vector<string> &compiler_args, const vector<s
         vector<string> files = states();
         files.push_back("");
 
+#ifdef __BLOCKS__
         __block vector<string> outfiles;
         __block bool success = true;
         dispatch_apply(files.size(), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(size_t i)
+#else
+        vector<string> outfiles;
+        bool success = true;
+        for (size_t i = 0; i < files.size(); i++)
+#endif
         {
                 vector<string> args = compiler_args;
                 stringstream file;
@@ -189,16 +211,25 @@ bool MachineWrapper::compile(const vector<string> &compiler_args, const vector<s
 
                 if (!compiler()->compile(args))
                         success = false;
+#ifdef __BLOCKS__
                 else dispatch_sync(sync_queue,
                 ^{
                         outfiles.push_back(outfilename);
                 });
         });
+#else
+                else
+                {
+                        outfile_pushback_param param = { &outfiles, &outfilename };
+                        dispatch_sync_f(sync_queue, &param, push_back_outfilename);
+                }
+        }
+#endif
         if (success)    // link into shared object if compiler was successful
         {
                 vector<string> args = linker_args;
-                for (const string &outfile: outfiles)
-                        args.push_back(outfile);
+                for (vector<string>::iterator of = outfiles.begin(); of != outfiles.end(); of++)
+                        args.push_back(*of);
                 args.push_back("-shared");
                 args.push_back("-stdlib=libc++");
                 //args.push_back("-lclfsm");
@@ -228,7 +259,7 @@ CLMachine *MachineWrapper::instantiate(int id, const char *machine_name)
                         compile(*compiler_args, *linker_args);
 
                         if (!(_shared_object = dlopen(shared_path.c_str(), RTLD_NOW|RTLD_GLOBAL)))
-                                return nullptr;
+                                return NULL;
                 }
         }
         if (!_factory)
@@ -239,7 +270,7 @@ CLMachine *MachineWrapper::instantiate(int id, const char *machine_name)
                 {
                         symbol = string("_CLM_Create_") + name();
                         if (!(_factory = create_machine_f(dlsym(_shared_object, symbol.c_str()))))
-                                return nullptr;
+                                return NULL;
                 }
         }
         return _factory(id, machine_name);
