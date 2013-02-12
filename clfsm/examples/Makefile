@@ -5,7 +5,7 @@
 #
 MACHINES=PingPongCLFSM BackForwardsCLFSM
 
-ALL_TARGETS=host-local robot-local
+ALL_TARGETS=robot-local #host-local
 SOPREFIX=#empty
 SKIP_COMPILING_WHITEBOARD=#defined
 SKIP_COMPILING_GU_UTIL=#defined
