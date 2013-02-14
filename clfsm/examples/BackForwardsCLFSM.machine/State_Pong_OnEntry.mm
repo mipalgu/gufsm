@@ -10,7 +10,7 @@
   stateName = "Pong";
   currentState = 2;
   cout << stateName << endl;
-  wb-> addMessage(kSay,"pong is back");
+  wb-> addMessage(kQSay,"pong is back");
   wb-> addMessage(kDifferentialMotorPower,msgL);
   wb-> addMessage(kDifferentialMotorPower,msgR);
 }

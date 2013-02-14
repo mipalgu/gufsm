@@ -1,2 +1,0 @@
-counter++;
-puts(text = "Ping");
