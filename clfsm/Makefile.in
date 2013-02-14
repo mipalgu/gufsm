@@ -4,6 +4,7 @@
 MODULE_BASE=clfsm
 
 .ifndef TARGET
+USE_LIBCPP=yes
 SPECIFIC_CFLAGS=-stdlib=libc++
 SPECIFIC_LDFLAGS=-stdlib=libc++
 .endif
