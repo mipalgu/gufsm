@@ -4,9 +4,11 @@
 MODULE_BASE=clfsm
 
 .ifndef TARGET
+.if "${UNAME}" != "Linux"
 USE_LIBCPP=yes
 SPECIFIC_CFLAGS=-stdlib=libc++
 SPECIFIC_LDFLAGS=-stdlib=libc++
+.endif
 .endif
 
 CC_SRCS= CLActionAction.cc
