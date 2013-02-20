@@ -1,5 +1,5 @@
 //
-// PingPongCLFSM.h -- 2013-01-18 00:50:49 +0000
+// PingPongCLFSM.h -- 2013-02-20 08:19:27 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -16,12 +16,12 @@ namespace FSM
     {
         class PingPongCLFSM: public CLMachine
         {
-            CLState *_states[2];
+            CLState *_states[4];
         public:
             PingPongCLFSM(int mid  = 0, const char *name = "PingPongCLFSM");
             virtual ~PingPongCLFSM();
             virtual CLState * const * states() const { return _states; }
-            virtual int numberOfStates() const { return 2; }
+            virtual int numberOfStates() const { return 4; }
 #           include "PingPongCLFSM_Variables.h"
         };
     }

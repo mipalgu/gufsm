@@ -4,19 +4,98 @@
 <dict>
 	<key>States</key>
 	<dict>
-		<key>Ping</key>
+		<key>GetBack</key>
 		<dict>
+			<key>Transitions</key>
+			<array>
+				<dict>
+					<key>controlPoint1X</key>
+					<real>0.0</real>
+					<key>controlPoint1Y</key>
+					<real>0.0</real>
+					<key>controlPoint2X</key>
+					<real>0.0</real>
+					<key>controlPoint2Y</key>
+					<real>0.0</real>
+					<key>dstPointX</key>
+					<real>0.0</real>
+					<key>dstPointY</key>
+					<real>0.0</real>
+					<key>srcPointX</key>
+					<real>0.0</real>
+					<key>srcPointY</key>
+					<real>0.0</real>
+				</dict>
+			</array>
 			<key>x</key>
-			<real>89</real>
+			<real>662</real>
 			<key>y</key>
-			<real>68</real>
+			<real>119</real>
 		</dict>
-		<key>Pong</key>
+		<key>GetCLoser</key>
 		<dict>
+			<key>Transitions</key>
+			<array>
+				<dict>
+					<key>controlPoint1X</key>
+					<real>0.0</real>
+					<key>controlPoint1Y</key>
+					<real>0.0</real>
+					<key>controlPoint2X</key>
+					<real>0.0</real>
+					<key>controlPoint2Y</key>
+					<real>0.0</real>
+					<key>dstPointX</key>
+					<real>0.0</real>
+					<key>dstPointY</key>
+					<real>0.0</real>
+					<key>srcPointX</key>
+					<real>0.0</real>
+					<key>srcPointY</key>
+					<real>0.0</real>
+				</dict>
+			</array>
 			<key>x</key>
-			<real>343</real>
+			<real>350</real>
 			<key>y</key>
-			<real>71</real>
+			<real>180</real>
+		</dict>
+		<key>INIT</key>
+		<dict>
+			<key>Transitions</key>
+			<array>
+				<dict>
+					<key>controlPoint1X</key>
+					<real>0.0</real>
+					<key>controlPoint1Y</key>
+					<real>0.0</real>
+					<key>controlPoint2X</key>
+					<real>0.0</real>
+					<key>controlPoint2Y</key>
+					<real>0.0</real>
+					<key>dstPointX</key>
+					<real>0.0</real>
+					<key>dstPointY</key>
+					<real>0.0</real>
+					<key>srcPointX</key>
+					<real>0.0</real>
+					<key>srcPointY</key>
+					<real>0.0</real>
+				</dict>
+			</array>
+			<key>x</key>
+			<real>90</real>
+			<key>y</key>
+			<real>70</real>
+		</dict>
+		<key>Stop</key>
+		<dict>
+			<key>Transitions</key>
+			<array/>
+			<key>x</key>
+			<real>638</real>
+			<key>y</key>
+			<real>301</real>
 		</dict>
 	</dict>
 </dict>
