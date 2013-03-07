@@ -4,98 +4,61 @@
 <dict>
 	<key>States</key>
 	<dict>
-		<key>GetBack</key>
+		<key>Ping</key>
 		<dict>
 			<key>Transitions</key>
 			<array>
 				<dict>
 					<key>controlPoint1X</key>
-					<real>0.0</real>
+					<real>174.73289349701594</real>
 					<key>controlPoint1Y</key>
-					<real>0.0</real>
+					<real>62.453684735490441</real>
 					<key>controlPoint2X</key>
-					<real>0.0</real>
+					<real>257.17076962489182</real>
 					<key>controlPoint2Y</key>
-					<real>0.0</real>
+					<real>66.262982843252018</real>
 					<key>dstPointX</key>
-					<real>0.0</real>
+					<real>298.13549666668865</real>
 					<key>dstPointY</key>
-					<real>0.0</real>
+					<real>69.44912827983616</real>
 					<key>srcPointX</key>
-					<real>0.0</real>
+					<real>133.81414629096807</real>
 					<key>srcPointY</key>
-					<real>0.0</real>
+					<real>66.184168811255489</real>
 				</dict>
 			</array>
 			<key>x</key>
-			<real>662</real>
+			<real>89</real>
 			<key>y</key>
-			<real>119</real>
+			<real>68</real>
 		</dict>
-		<key>GetCLoser</key>
+		<key>Pong</key>
 		<dict>
 			<key>Transitions</key>
 			<array>
 				<dict>
 					<key>controlPoint1X</key>
-					<real>0.0</real>
+					<real>257.19134527392595</real>
 					<key>controlPoint1Y</key>
-					<real>0.0</real>
+					<real>75.735416828489818</real>
 					<key>controlPoint2X</key>
-					<real>0.0</real>
+					<real>174.86731499234702</real>
 					<key>controlPoint2Y</key>
-					<real>0.0</real>
+					<real>72.165849705979312</real>
 					<key>dstPointX</key>
-					<real>0.0</real>
+					<real>133.89517347631892</real>
 					<key>dstPointY</key>
-					<real>0.0</real>
+					<real>69.364335756165431</real>
 					<key>srcPointX</key>
-					<real>0.0</real>
+					<real>298.13549666668865</real>
 					<key>srcPointY</key>
-					<real>0.0</real>
+					<real>72.55087172016384</real>
 				</dict>
 			</array>
 			<key>x</key>
-			<real>350</real>
+			<real>343</real>
 			<key>y</key>
-			<real>180</real>
-		</dict>
-		<key>INIT</key>
-		<dict>
-			<key>Transitions</key>
-			<array>
-				<dict>
-					<key>controlPoint1X</key>
-					<real>0.0</real>
-					<key>controlPoint1Y</key>
-					<real>0.0</real>
-					<key>controlPoint2X</key>
-					<real>0.0</real>
-					<key>controlPoint2Y</key>
-					<real>0.0</real>
-					<key>dstPointX</key>
-					<real>0.0</real>
-					<key>dstPointY</key>
-					<real>0.0</real>
-					<key>srcPointX</key>
-					<real>0.0</real>
-					<key>srcPointY</key>
-					<real>0.0</real>
-				</dict>
-			</array>
-			<key>x</key>
-			<real>90</real>
-			<key>y</key>
-			<real>70</real>
-		</dict>
-		<key>Stop</key>
-		<dict>
-			<key>Transitions</key>
-			<array/>
-			<key>x</key>
-			<real>638</real>
-			<key>y</key>
-			<real>301</real>
+			<real>71</real>
 		</dict>
 	</dict>
 </dict>
