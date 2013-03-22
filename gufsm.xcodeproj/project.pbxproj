@@ -77,6 +77,9 @@
 		F155F66C15C3A78A008F5637 /* simplecc.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = F155F66B15C3A78A008F5637 /* simplecc.1 */; };
 		F155F68515C3A9A0008F5637 /* main.cc in Sources */ = {isa = PBXBuildFile; fileRef = F155F68415C3A97D008F5637 /* main.cc */; };
 		F155F68815C3A9E2008F5637 /* simplec_lexer.cc in Sources */ = {isa = PBXBuildFile; fileRef = F155F68615C3A9E2008F5637 /* simplec_lexer.cc */; };
+		F157558E16FC0E5700C6EBA1 /* guwhiteboardtypelist_c_typestrings_generated.c in Sources */ = {isa = PBXBuildFile; fileRef = F157558D16FC0E5700C6EBA1 /* guwhiteboardtypelist_c_typestrings_generated.c */; };
+		F157558F16FC0E5700C6EBA1 /* guwhiteboardtypelist_c_typestrings_generated.c in Sources */ = {isa = PBXBuildFile; fileRef = F157558D16FC0E5700C6EBA1 /* guwhiteboardtypelist_c_typestrings_generated.c */; };
+		F15755A116FC0EA700C6EBA1 /* guwhiteboardtypelist_c_typestrings_generated.c in Sources */ = {isa = PBXBuildFile; fileRef = F157558D16FC0E5700C6EBA1 /* guwhiteboardtypelist_c_typestrings_generated.c */; };
 		F15A2CF814CF843700D88624 /* claus.c in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C0014CF81F400D88624 /* claus.c */; };
 		F15A2CF914CF843700D88624 /* defeas.c in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C0F14CF81F400D88624 /* defeas.c */; };
 		F15A2CFA14CF843700D88624 /* oset.c in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C2114CF81F400D88624 /* oset.c */; };
@@ -499,6 +502,7 @@
 		F155F68415C3A97D008F5637 /* main.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cc; sourceTree = "<group>"; };
 		F155F68615C3A9E2008F5637 /* simplec_lexer.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simplec_lexer.cc; sourceTree = "<group>"; };
 		F155F68715C3A9E2008F5637 /* simplec_lexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simplec_lexer.h; sourceTree = "<group>"; };
+		F157558D16FC0E5700C6EBA1 /* guwhiteboardtypelist_c_typestrings_generated.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = guwhiteboardtypelist_c_typestrings_generated.c; sourceTree = "<group>"; };
 		F15A2BF614CF81F400D88624 /* COOL.correct */ = {isa = PBXFileReference; lastKnownFileType = text; path = COOL.correct; sourceTree = "<group>"; };
 		F15A2BF714CF81F400D88624 /* COOL_theory.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = COOL_theory.c; sourceTree = "<group>"; };
 		F15A2BF814CF81F400D88624 /* COOL_theory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = COOL_theory.h; sourceTree = "<group>"; };
@@ -1056,6 +1060,7 @@
 			isa = PBXGroup;
 			children = (
 				F1284D0014A6CAA800C0247E /* gusimplewhiteboard.c */,
+				F157558D16FC0E5700C6EBA1 /* guwhiteboardtypelist_c_typestrings_generated.c */,
 				F1284D0114A6CAA800C0247E /* gusimplewhiteboard.h */,
 				F1284D0214A6CAA800C0247E /* gusimplewhiteboard.xcodeproj */,
 				F1284D0514A6CAA800C0247E /* SimpleWhiteboardTest */,
@@ -2543,6 +2548,7 @@
 				F15A2D0E14CF85D800D88624 /* cdlengine.cc in Sources */,
 				F1DF55911584274B0097A438 /* FSMVectorRunner.cc in Sources */,
 				F18AD00C15CBA63800492118 /* FSMANTLRMachineVector.cc in Sources */,
+				F157558E16FC0E5700C6EBA1 /* guwhiteboardtypelist_c_typestrings_generated.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2597,6 +2603,7 @@
 				F1D126F31609382400E526BE /* clfsm_cc.cc in Sources */,
 				F108330B1626997A00D6C789 /* clfsm_machine.cc in Sources */,
 				F12E5ED11627F36D00B95186 /* clfsm_main.cc in Sources */,
+				F157558F16FC0E5700C6EBA1 /* guwhiteboardtypelist_c_typestrings_generated.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2626,6 +2633,7 @@
 				F1D575B11627976800976A23 /* WhiteboardConstants.cc in Sources */,
 				F1D575B5162798B600976A23 /* clfsm_vector_factory.cc in Sources */,
 				F1D575B6162798C900976A23 /* clfsm_factory.cc in Sources */,
+				F15755A116FC0EA700C6EBA1 /* guwhiteboardtypelist_c_typestrings_generated.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
