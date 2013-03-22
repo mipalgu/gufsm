@@ -72,6 +72,12 @@ namespace FSM
         class Transition;
         class Machine;
 
+        /** return the start time for the current state in the given machine */
+        extern long long start_time_for_current_state(const Machine *machine);
+
+        /** return the current time in microseconds */
+        extern long long current_time_in_microseconds(void);
+
         class Context
         {
         public:
@@ -206,10 +212,10 @@ namespace FSM
 		void setBeingMonitored(bool b) { _beingMonitored = b; }
 
                 /** get the current state's start time */
-                timeval &stateTime() { return _state_time; }
+                const timeval &stateTime() const { return _state_time; }
 
                 /** get the current activity's start time */
-                timeval &activityTime() { return _actty_time; }
+                const timeval &activityTime() { return _actty_time; }
 
                 /** get the internal activities counter */
                 long activitiesCount() { return _activities_count; }

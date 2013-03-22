@@ -295,3 +295,27 @@ size_t Machine::numberOfTransitionsInCurrentState()
         return _currentState->transitions().size();
 }
 
+
+/**
+ * Convenience function to get the state time from the machine
+ */
+long long FSM::start_time_for_current_state(const Machine *machine)
+{
+        const timeval &state_time = machine->stateTime();
+        long long usec = state_time.tv_sec * 1000000LL + state_time.tv_usec;
+
+        return usec;
+}
+
+
+/**
+ * Convenience function to get the current time of day
+ */
+long long FSM::current_time_in_microseconds(void)
+{
+        timeval current_time;
+        gettimeofday(&current_time, NULL);
+        long long usec = current_time.tv_sec * 1000000LL + current_time.tv_usec;
+
+        return usec;
+}
