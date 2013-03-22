@@ -58,11 +58,19 @@
 #ifndef _CLMacros_h
 #define _CLMacros_h
 
+namespace FSM
+{
+        class Machine;
+
+        long long start_time_for_current_state(const class Machine *machine);
+        long long current_time_in_microseconds(void);
+}
+
 /*
  * Macros for making state machines more readable
  */
-#define timeout(t)      (_m->timeOut(t))
-#define after(t)        (_m->afterTimeOut(t))
-#define after_ms(t)     (_m->afterMSTimeOut(t))
+#define timeout(t)      (current_time_in_microseconds() > start_time_for_current_state((_m)->machineContext()) + (t))
+#define after(t)        (timeout((t) * 1000000.0L))
+#define after_ms(t)     (timeout((t) * 1000.0L))
 
 #endif

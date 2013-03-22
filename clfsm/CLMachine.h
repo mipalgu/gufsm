@@ -64,9 +64,6 @@ namespace FSM
         class Machine;
         class CLState;
 
-        extern long long start_time_for_current_state(const Machine *machine);
-        extern long long current_time_in_microseconds(void);
-
         class CLMachine
         {
                 StateMachineVector      *_vectorContext;/// current vector
@@ -126,18 +123,6 @@ namespace FSM
 
                 /** return the start time of the current state */
                 virtual long long startTimeOfCurrentState() const { return FSM::start_time_for_current_state(_machineContext); }
-
-                /**
-                 * return whether a timeout has occurred
-                 * @param t_us  timeout in microseconds
-                 */
-                virtual bool timeOut(long long t_us = 1000000LL) const { return FSM::current_time_in_microseconds() > startTimeOfCurrentState() + t_us; }
-
-                /** convenience method for floating point timeouts in seconds */
-                bool afterTimeOut(double t) { return timeOut(1000000.0L * t); }
-
-                /** convenience method for floating point timeouts in seconds */
-                bool afterMSTimeOut(double t_ms) { return timeOut(1000.0L * t_ms); }
         };
 }
 
