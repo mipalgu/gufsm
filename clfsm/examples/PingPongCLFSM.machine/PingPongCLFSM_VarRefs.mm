@@ -1,5 +1,5 @@
 //
-// PingPongCLFSM_VarRefs.mm -- 2013-03-07 00:25:43 +0000
+// PingPongCLFSM_VarRefs.mm -- 2013-03-21 02:43:02 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //

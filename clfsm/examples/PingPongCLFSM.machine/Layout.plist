@@ -7,26 +7,7 @@
 		<key>Ping</key>
 		<dict>
 			<key>Transitions</key>
-			<array>
-				<dict>
-					<key>controlPoint1X</key>
-					<real>174.73289349701594</real>
-					<key>controlPoint1Y</key>
-					<real>62.453684735490441</real>
-					<key>controlPoint2X</key>
-					<real>257.17076962489182</real>
-					<key>controlPoint2Y</key>
-					<real>66.262982843252018</real>
-					<key>dstPointX</key>
-					<real>298.13549666668865</real>
-					<key>dstPointY</key>
-					<real>69.44912827983616</real>
-					<key>srcPointX</key>
-					<real>133.81414629096807</real>
-					<key>srcPointY</key>
-					<real>66.184168811255489</real>
-				</dict>
-			</array>
+			<array/>
 			<key>x</key>
 			<real>89</real>
 			<key>y</key>
@@ -35,26 +16,7 @@
 		<key>Pong</key>
 		<dict>
 			<key>Transitions</key>
-			<array>
-				<dict>
-					<key>controlPoint1X</key>
-					<real>257.19134527392595</real>
-					<key>controlPoint1Y</key>
-					<real>75.735416828489818</real>
-					<key>controlPoint2X</key>
-					<real>174.86731499234702</real>
-					<key>controlPoint2Y</key>
-					<real>72.165849705979312</real>
-					<key>dstPointX</key>
-					<real>133.89517347631892</real>
-					<key>dstPointY</key>
-					<real>69.364335756165431</real>
-					<key>srcPointX</key>
-					<real>298.13549666668865</real>
-					<key>srcPointY</key>
-					<real>72.55087172016384</real>
-				</dict>
-			</array>
+			<array/>
 			<key>x</key>
 			<real>343</real>
 			<key>y</key>
