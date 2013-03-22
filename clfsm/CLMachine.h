@@ -131,13 +131,13 @@ namespace FSM
                  * return whether a timeout has occurred
                  * @param t_us  timeout in microseconds
                  */
-                virtual bool timeout(long long t_us = 1000000LL) const { return startTimeOfCurrentState() + t_us > FSM::current_time_in_microseconds(); }
+                virtual bool timeOut(long long t_us = 1000000LL) const { return FSM::current_time_in_microseconds() > startTimeOfCurrentState() + t_us; }
 
                 /** convenience method for floating point timeouts in seconds */
-                bool after(double t) { return timeout(1000000.0L * t); }
+                bool afterTimeOut(double t) { return timeOut(1000000.0L * t); }
 
                 /** convenience method for floating point timeouts in seconds */
-                bool after_ms(double t_ms) { return timeout(1000.0L * t_ms); }
+                bool afterMSTimeOut(double t_ms) { return timeOut(1000.0L * t_ms); }
         };
 }
 
