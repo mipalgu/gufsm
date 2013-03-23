@@ -3,12 +3,14 @@
 #
 # Makefile for pre- and cross-compiling .machine files
 #
-MACHINES=PingPongCLFSM BackForwardsCLFSM
+MACHINES=PingPongCLFSM BackForwardsCLFSM SayPingPong
 
 ALL_TARGETS=robot-local #host-local
 SOPREFIX=#empty
 SKIP_COMPILING_WHITEBOARD=#defined
 SKIP_COMPILING_GU_UTIL=#defined
+
+SPECIFIC_LIBS=-lclfsm -lgusimplewhiteboard
 
 .include "../../../../mk/prefs.mk"
 

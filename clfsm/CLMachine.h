@@ -120,9 +120,6 @@ namespace FSM
 
                 /** return the number of states this machine has */
                 virtual int numberOfStates() const = 0;
-
-                /** return the start time of the current state */
-                virtual long long startTimeOfCurrentState() const { return FSM::start_time_for_current_state(_machineContext); }
         };
 }
 
