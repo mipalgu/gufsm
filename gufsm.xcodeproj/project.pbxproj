@@ -382,7 +382,7 @@
 		F1284D0914A6CAA800C0247E /* SimpleWhiteboardTest-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SimpleWhiteboardTest-Prefix.pch"; sourceTree = "<group>"; };
 		F1284D0A14A6CAA800C0247E /* SimpleWhiteboardTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleWhiteboardTest.h; sourceTree = "<group>"; };
 		F1284D0B14A6CAA800C0247E /* SimpleWhiteboardTest.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SimpleWhiteboardTest.mm; sourceTree = "<group>"; };
-		F1284D0C14A6CAA800C0247E /* WBFunctor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBFunctor.h; sourceTree = "<group>"; };
+		F1284D0C14A6CAA800C0247E /* WBFunctor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = WBFunctor.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		F1284D0D14A6CAA800C0247E /* WBMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBMsg.h; sourceTree = "<group>"; };
 		F1284D0E14A6CAA800C0247E /* Whiteboard.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Whiteboard.cc; sourceTree = "<group>"; };
 		F1284D0F14A6CAA800C0247E /* Whiteboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Whiteboard.h; sourceTree = "<group>"; };
@@ -853,7 +853,7 @@
 		F192CC99144D27C200FF8526 /* alternative.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = alternative.h; sourceTree = "<group>"; };
 		F192CC9A144D27C200FF8526 /* cdecl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cdecl.h; sourceTree = "<group>"; };
 		F192CC9B144D27C200FF8526 /* defs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = defs.h; sourceTree = "<group>"; };
-		F192CC9C144D27C200FF8526 /* domain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = domain.h; sourceTree = "<group>"; };
+		F192CC9C144D27C200FF8526 /* domain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = domain.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		F192CC9D144D27C200FF8526 /* error.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = error.h; sourceTree = "<group>"; };
 		F192CC9E144D27C200FF8526 /* gccmacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gccmacro.h; sourceTree = "<group>"; };
 		F192CC9F144D27C200FF8526 /* llist.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = llist.h; sourceTree = "<group>"; };
@@ -872,13 +872,13 @@
 		F192CCAE144D27C200FF8526 /* rr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rr.h; sourceTree = "<group>"; };
 		F192CCB0144D27C200FF8526 /* glib-malloc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "glib-malloc.h"; sourceTree = "<group>"; };
 		F192CCB1144D27C200FF8526 /* glib-watch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "glib-watch.h"; sourceTree = "<group>"; };
-		F192CCB3144D27C200FF8526 /* ga-client.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ga-client.h"; sourceTree = "<group>"; };
-		F192CCB4144D27C200FF8526 /* ga-entry-group.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ga-entry-group.h"; sourceTree = "<group>"; };
+		F192CCB3144D27C200FF8526 /* ga-client.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "ga-client.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		F192CCB4144D27C200FF8526 /* ga-entry-group.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "ga-entry-group.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		F192CCB5144D27C200FF8526 /* ga-enums.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ga-enums.h"; sourceTree = "<group>"; };
 		F192CCB6144D27C200FF8526 /* ga-error.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ga-error.h"; sourceTree = "<group>"; };
-		F192CCB7144D27C200FF8526 /* ga-record-browser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ga-record-browser.h"; sourceTree = "<group>"; };
-		F192CCB8144D27C200FF8526 /* ga-service-browser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ga-service-browser.h"; sourceTree = "<group>"; };
-		F192CCB9144D27C200FF8526 /* ga-service-resolver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ga-service-resolver.h"; sourceTree = "<group>"; };
+		F192CCB7144D27C200FF8526 /* ga-record-browser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "ga-record-browser.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		F192CCB8144D27C200FF8526 /* ga-service-browser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "ga-service-browser.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		F192CCB9144D27C200FF8526 /* ga-service-resolver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "ga-service-resolver.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		F192CCBA144D27C200FF8526 /* Avahi_Browser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Avahi_Browser.cpp; sourceTree = "<group>"; };
 		F192CCBB144D27C200FF8526 /* Bonjour_Browser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Bonjour_Browser.cpp; sourceTree = "<group>"; };
 		F192CCBC144D27C200FF8526 /* BallInfo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BallInfo.cpp; sourceTree = "<group>"; };
