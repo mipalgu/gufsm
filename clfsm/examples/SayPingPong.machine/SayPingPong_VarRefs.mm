@@ -10,6 +10,6 @@ SayPingPong *_m = static_cast<SayPingPong *>(_machine);
 #pragma clang diagnostic ignored "-Wshadow"
 
 int	&currentState = _m->currentState;	///< state no
-QSay_t	&speech = _m->speech;	///< speech output
+QSay_t	&say = _m->say;	///< speech output
 
 #pragma clang diagnostic pop
