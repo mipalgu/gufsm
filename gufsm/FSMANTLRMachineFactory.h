@@ -2,7 +2,7 @@
  *  FSMachineVector.h
  *  
  *  Created by René Hexel on 22/11/11.
- *  Copyright (c) 2011 Rene Hexel.
+ *  Copyright (c) 2011, 2013 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -62,6 +62,19 @@
 #include "FSMFactory.h"
 #include "FSMWBSubMachine.h"
 
+#ifdef bool
+#undef bool
+#endif
+
+#ifdef true
+#undef true
+#undef false
+#endif
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wweak-vtables"
+#pragma clang diagnostic ignored "-Wpadded"
+
 namespace FSM
 {
         class Context;
@@ -86,5 +99,6 @@ namespace FSM
         };
 }
 
+#pragma clang diagnostic pop
 
 #endif

@@ -2,7 +2,7 @@
  *  FSMExpression.cc
  *  
  *  Created by René Hexel on 26/09/11.
- *  Copyright (c) 2011 Rene Hexel.
+ *  Copyright (c) 2011, 2013 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -59,6 +59,19 @@
 #include "FSMExpression.h"
 #include "FSMachine.h"
 
+#ifdef bool
+#undef bool
+#endif
+
+#ifdef true
+#undef true
+#undef false
+#endif
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+
+
 using namespace FSM;
 using namespace std;
 
@@ -92,3 +105,5 @@ int TimeoutPredicate::evaluate(Machine *machine)
 
         return t + _timeout < x;
 }
+
+#pragma clang diagnostic pop

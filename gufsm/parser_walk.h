@@ -82,9 +82,8 @@ typedef int (*pa_callback_f)(void *context,
  * create an entire state.
  * @param[in] description   State description.
  * @param[in] name          State name.
- * @param[in] id            State id.
  * @param[in] down          Callback for descending into subtree.
- * @param[up] up            Callback for ascending from subtree.
+ * @param[in] up            Callback for ascending from subtree.
  * @param[in] context       Caller-specified context used for parsing (passed to callbacks).
  */
 int parse_description(const char * description, const char * name, pa_callback_f down, pa_callback_f up, void * context);
@@ -104,10 +103,9 @@ int parse_actions(const char *filename, pa_callback_f callback,
 /**
  * The main entry point for parsing transitions
  * @param[in] transition text.
- * @param[in] callback function to be called for every node in the parse tree (can be NULL)
- * @param[in] down     callback for descending into subtree (can be NULL)
- * @param[in] up       callback for ascending from subtree (can be NULL)
  * @param[in] context  caller-specified context to use for parsing (passed to callbacks)
+ * @param[in] tree     root of the current subtree to start from
+ * @param[in] state    global ANTLR recogniser state
  * @return -1 in case of an error, -2 to abort sibling walk, >=0 otherwise
  */
 int get_expr_tree(const char *transition, 

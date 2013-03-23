@@ -61,6 +61,19 @@
 #include <string>
 #include "FSMTransition.h"
 
+#ifdef bool
+#undef bool
+#endif
+
+#ifdef true
+#undef true
+#undef false
+#endif
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpadded"
+#pragma clang diagnostic ignored "-Wunused-private-field"
+
 namespace FSM
 {
         class Machine;
@@ -95,5 +108,7 @@ public:
         void *expr_tree() { return _expr_tree; }
         void set_expr_tree(void *e) { _expr_tree = e; }
 };
+
+#pragma clang diagnostic push
 
 #endif

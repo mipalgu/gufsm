@@ -2,7 +2,7 @@
  *  FSMachineVector.cc
  *  
  *  Created by René Hexel on 22/11/11.
- *  Copyright (c) 2011 Rene Hexel.
+ *  Copyright (c) 2011, 2013 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -63,6 +63,9 @@
 #include "FSMState.h"
 
 #include "stringConstants.h"
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
 
 using namespace FSM;
 using namespace std;
@@ -241,7 +244,7 @@ struct spawn_queue_param
         dispatch_queue_t queue;
 };
 
-void StateMachineVector::do_spawn_once_on_queue(dispatch_queue_t queue)
+void StateMachineVector::do_spawn_once_on_queue(dispatch_queue_t queue) __attribute__((__noreturn__))
 {
         do
         {
@@ -259,6 +262,11 @@ static void spawn_execute_once_on_queue(void *p)
         par->self->do_spawn_once_on_queue(par->queue);
 }
 #endif
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wmissing-noreturn"
+#pragma clang diagnostic ignored "-Wweak-vtables"
+#pragma clang diagnostic ignored "-Wpadded"
 
 
 void StateMachineVector::scheduleExecuteOnQueue(dispatch_queue_t queue)
@@ -281,6 +289,8 @@ void StateMachineVector::scheduleExecuteOnQueue(dispatch_queue_t queue)
         dispatch_async_f(_queue, &p, spawn_execute_once_on_queue);
 #endif
 }
+
+#pragma clang diagnostic pop
 
 void StateMachineVector::initialise()
 {
@@ -317,3 +327,5 @@ string StateMachineVector::description()
         }
         return ss.str();
 }
+
+#pragma clang diagnostic pop

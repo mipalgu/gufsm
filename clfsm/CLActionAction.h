@@ -61,6 +61,20 @@
 #include "CLAction.h"
 #include "FSMAction.h"
 
+#ifdef bool
+#undef bool
+#endif
+
+#ifdef true
+#undef true
+#undef false
+#endif
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wshorten-64-to-32"
+#pragma clang diagnostic ignored "-Wweak-vtables"
+#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+
 namespace FSM
 {
         class CLAction;
@@ -74,7 +88,7 @@ namespace FSM
                 CLMachine       *_machine;
                 CLState         *_state;
         public:
-                CLActionAction(CLMachine *m, CLState *s, CLAction *a): _machine(m), _state(s), _action(a) {}
+                CLActionAction(CLMachine *m, CLState *s, CLAction *a): _action(a), _machine(m), _state(s) {}
                 virtual ~CLActionAction() {}
                 virtual void performv(Machine *, ActionStage, int, va_list)
                 {
@@ -82,5 +96,7 @@ namespace FSM
                 }
         };
 }
+
+#pragma clang diagnostic pop
 
 #endif /* defined(____CLActionAction__) */

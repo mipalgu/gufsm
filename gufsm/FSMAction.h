@@ -65,6 +65,21 @@
 
 #include "FSMExpression.h"
 
+#ifdef bool
+#undef bool
+#endif
+
+#ifdef true
+#undef true
+#undef false
+#endif
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wshorten-64-to-32"
+#pragma clang diagnostic ignored "-Wweak-vtables"
+#pragma clang diagnostic ignored "-Wpadded"
+#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+
 namespace FSM
 {
         class Machine;
@@ -220,5 +235,7 @@ namespace FSM
                 virtual std::string description();
         };
 }
+
+#pragma clang diagnostic pop
 
 #endif

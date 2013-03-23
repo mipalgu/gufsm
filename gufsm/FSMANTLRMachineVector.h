@@ -3,7 +3,8 @@
  *  gufsm
  *
  *  Created by Rene Hexel on 3/08/12.
- *  Copyright (c) 2012 Rene Hexel and Vlad Estivill-Castro. All rights reserved.
+ *  Copyright (c) 2012, 2013 Rene Hexel and Vlad Estivill-Castro.
+ *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -73,10 +74,9 @@ namespace FSM
         class ANTLRMachineVector: public StateMachineVector
         {
                 unsigned long long   _typeBoolMask; // i-th bit is 1 if variable is Boolean, 0 if is non-negative integer of BITS
-                unsigned long long   _externKripkeMask; // i-th bit is 1 if variable is external, that is can be changed outside all the machines in the vector
         public:
                 /// Default constructor
-                ANTLRMachineVector(ANTLRContext *context): StateMachineVector((Context *)context), _typeBoolMask(0ULL), _externKripkeMask(0ULL) {}
+                ANTLRMachineVector(ANTLRContext *context): StateMachineVector((Context *)context), _typeBoolMask(0ULL) {}
 
                 /// generate Kripke String
                 std::string generate_from(KripkeState &, std::list<KripkeState> &, size_t n, std::string **names);

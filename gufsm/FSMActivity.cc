@@ -61,6 +61,10 @@
 
 #include "FSMActivity.h"
 
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wswitch-enum"
+
 using namespace FSM;
 
 void Activity::perform(Machine *m, ActionStage stage)
@@ -129,3 +133,5 @@ string Activity::description(const ActionVector &actions)
 
         return s;
 }
+
+#pragma clang diagnostic pop

@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 11/10/12.
- *  Copyright (c) 2012 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2013 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -62,6 +62,12 @@
 #include <vector>
 #include "clfsm_cc_delegate.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wshorten-64-to-32"
+#pragma clang diagnostic ignored "-Wweak-vtables"
+#pragma clang diagnostic ignored "-Wpadded"
+#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+
 namespace FSM
 {
         class CLMachine;
@@ -70,20 +76,20 @@ namespace FSM
 
         class MachineWrapper
         {
-                std::string _fullPath;  /// full name, including path
-                std::string _name;      /// name w/o path and extension
-                create_machine_f _factory; /// machine factory
-                void *_shared_object;   /// object as returned by dlopen()
-                class Cc *_compiler;    /// C++ compiler wrapper
-                const std::vector<std::string> *_compiler_args;
-                const std::vector<std::string> *_linker_args;
-                bool _delete_compiler;  /// does the compiler need deletion?
+                std::string _fullPath;          ///< full name, including path
+                std::string _name;              ///< name w/o path and extension
+                create_machine_f _factory;      ///< machine factory
+                void *_shared_object;           ///< object as returned by dlopen()
+                class Cc *_compiler;            ///< C++ compiler wrapper
+                const std::vector<std::string> *_compiler_args; ///< compiler command line arguments
+                const std::vector<std::string> *_linker_args;   ///< linker command line arguments
+                bool _delete_compiler;          ///< does the compiler need deletion?
         public:
                 MachineWrapper(std::string path);
                 virtual ~MachineWrapper();
 
                 /// return the name of the machine (without path and extension)
-                const char *name() const { return _name.c_str(); };
+                const char *name() const { return _name.c_str(); }
 
                 /// return the full file system path of the machine
                 const char *path() const {return _fullPath.c_str(); }
@@ -98,10 +104,10 @@ namespace FSM
                 Cc *compiler() const { return _compiler; }
 
                 /// set the compiler arguments
-                virtual void setCompilerArgs(const std::vector<std::string> &args) { _compiler_args = &args; };
+                virtual void setCompilerArgs(const std::vector<std::string> &args) { _compiler_args = &args; }
 
                 /// set the linker arguments
-                virtual void setLinkerArgs(const std::vector<std::string> &args) { _linker_args = &args; };
+                virtual void setLinkerArgs(const std::vector<std::string> &args) { _linker_args = &args; }
 
                 /// return the states of the given machine
                 std::vector<std::string> states() const;

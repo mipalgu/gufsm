@@ -61,6 +61,19 @@
 #include "FSMExpression.h"
 #include "FSMWBContext.h"
 
+#ifdef bool
+#undef bool
+#endif
+
+#ifdef true
+#undef true
+#undef false
+#endif
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wweak-vtables"
+
+
 class WBMsg;
 
 namespace guWhiteboard
@@ -78,16 +91,12 @@ namespace FSM
         public:
                 /**
                  * Whiteboard constructor
-                 * @param expr whiteboard message name to get
-                 * @param neg is this a negation?
                  * @param wb the whiteboard to use (null to use machine context)
                  */
                 WBExpression(guWhiteboard::Whiteboard *wb = NULL): _wb(wb) {}
 
                 /**
                  * Whiteboard context constructor
-                 * @param expr whiteboard message name to get
-                 * @param neg is this a negation?
                  * @param wc the whiteboard context to use (may not be null)
                  */
                 WBExpression(WBContext *wc): _wb(wc->whiteboard()) {}
@@ -148,5 +157,7 @@ namespace FSM
                 void setValue(int v);
         };
 }
+
+#pragma clang diagnostic pop
 
 #endif

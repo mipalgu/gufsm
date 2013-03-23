@@ -62,17 +62,33 @@
 #include "FSMSuspensibleMachine.h"
 #include "ExecComStruct.h"
 
+#ifdef bool
+#undef bool
+#endif
+
+#ifdef true
+#undef true
+#undef false
+#endif
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpadded"
+
+
 namespace FSM
 {
         class WBContext;
 
+        /**
+         * Suspensible FSM with a whiteboard
+         */
         class WBSubMachine: public SuspensibleMachine
         {
-                std::string _name;      /// name for the machine on the Whiteboard
-                bool _deleteContext;    /// does the machine own its WB context?
-                bool _scheduleSuspend;  /// should suspend when executing next time
-                bool _scheduleResume;   /// should resume when executing next time
-                bool _scheduleRestart;  /// should restart when executing next time
+                bool _deleteContext;    ///< does the machine own its WB context?
+                bool _scheduleSuspend;  ///< should suspend when executing next time
+                bool _scheduleResume;   ///< should resume when executing next time
+                bool _scheduleRestart;  ///< should restart when executing next time
+                std::string _name;      ///< name for the machine on the Whiteboard
         public:
                 /** constructor */
                 WBSubMachine(const std::string &mname, State *initialState = NULL, 
@@ -143,4 +159,7 @@ namespace FSM
 		void wb_setMonitoring_me(std::string, WBMsg *);
         };
 }
+
+#pragma clang diagnostic pop
+
 #endif

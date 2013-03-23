@@ -79,7 +79,7 @@ namespace FSM
                 WBPostAction(): ContentAction<C>() {}
                 
                 /** designated constructor */
-                WBPostAction(std::string type, const C &content): _type(type), ContentAction<C>(content) {}
+                WBPostAction(std::string type, const C &content): ContentAction<C>(content), _type(type) {}
 
                 /** setting any parameter sets the context */
                 virtual void add_parameter(int index, long long value)

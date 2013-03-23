@@ -71,6 +71,9 @@ extern "C"
 #include "parser_walk.h"        
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wswitch-enum"
+
 using namespace FSM;
 using namespace std;
 
@@ -346,8 +349,8 @@ ActivityFactory::ActivityFactory(FSM::Machine *machine, const char *filename, ma
                 _named_actions(func), 
                 _file(filename), 
                 _currentState(NULL),
-                _currentStage(STAGE_ON_ENTRY), 
-                _currentAction(NULL), 
+                _currentAction(NULL),
+                _currentStage(STAGE_ON_ENTRY),
                 _error(false)
 {
         if (parse_actions(filename, NULL, activity_push, activity_pop, this) == -1)
@@ -359,8 +362,10 @@ _fsm(machine),
 _named_actions(func), 
 _file(filename), 
 _currentState(NULL),
-_currentStage(STAGE_ON_ENTRY), 
-_currentAction(NULL), 
+_currentAction(NULL),
+_currentStage(STAGE_ON_ENTRY),
 _error(false)
 {
 }
+
+#pragma clang diagnostic pop

@@ -60,6 +60,9 @@
 
 #include <string>
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wweak-vtables"
+
 namespace FSM
 {
         class Cc;
@@ -72,5 +75,6 @@ namespace FSM
         };
 }
 
+#pragma clang diagnostic pop
 
 #endif

@@ -61,6 +61,19 @@
 #include "FSMachine.h"
 #include "ExecComStruct.h"
 
+#ifdef bool
+#undef bool
+#endif
+
+#ifdef true
+#undef true
+#undef false
+#endif
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpadded"
+
+
 namespace FSM
 {
         class State;
@@ -108,5 +121,6 @@ namespace FSM
         };
 }
 
+#pragma clang diagnostic pop
 
 #endif

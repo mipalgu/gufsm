@@ -60,6 +60,19 @@
 
 #include "FSMachine.h"
 
+#ifdef bool
+#undef bool
+#endif
+
+#ifdef true
+#undef true
+#undef false
+#endif
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpadded"
+
+
 namespace guWhiteboard
 {
         class Whiteboard;
@@ -69,8 +82,8 @@ namespace FSM
 {
         class WBContext: public Context
         {
-                guWhiteboard::Whiteboard *_wb;  /** whiteboard pointer */
-                bool _deletewb;                 /** delete on destruction */
+                guWhiteboard::Whiteboard *_wb;  /**< whiteboard pointer */
+                bool _deletewb;                 /**< delete on destruction */
         public:
                 /**
                  * default constructor
@@ -89,5 +102,7 @@ namespace FSM
                 void setWhiteboard(guWhiteboard::Whiteboard *wb = NULL, bool deletewb = false);
         };
 }
+
+#pragma clang diagnostic pop
 
 #endif

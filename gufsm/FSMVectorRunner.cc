@@ -2,7 +2,7 @@
  *  FSMVectorRunner.cc
  *  
  *  Created by René Hexel on 31/05/12.
- *  Copyright (c) 2011-2012 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2011, 2012, 2013 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -69,6 +69,19 @@
 #include "FSMWBPostAction.h"
 #include "FSMANTLRVectorFactory.h"
 #include "FSMVectorRunner.h"
+
+#ifdef bool
+#undef bool
+#endif
+
+#ifdef true
+#undef true
+#undef false
+#endif
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wshorten-64-to-32"
+#pragma clang diagnostic ignored "-Wsign-compare"
 
 #define ANTLRFunc(x,n)  x func ## x; \
                         antlr_context.set_function((n), &func ## x);
@@ -362,7 +375,7 @@ struct LoadTheoryFunction: public StringFunction
 
 
 
-static void usage(const char *cmd)
+static __attribute__((__noreturn__)) void usage(const char *cmd)
 {
         cerr << "Usage: " << cmd << " [-b][-k][-v] [fsm [...]]" << endl;
         exit(EXIT_FAILURE);
@@ -438,3 +451,4 @@ int run_machine_vector(ANTLRStateMachineVectorFactory &factory, vector<string> &
         return execute(factory, machine_names);
 }
 
+#pragma clang diagnostic pop

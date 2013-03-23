@@ -58,6 +58,9 @@
 #ifndef __clfsm__CLAction__
 #define __clfsm__CLAction__
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wweak-vtables"
+
 namespace FSM
 {
         class StateMachineVector;
@@ -74,5 +77,6 @@ namespace FSM
         };
 }
 
+#pragma clang diagnostic pop
 
 #endif /* defined(__gufsm__CLAction__) */

@@ -2,7 +2,7 @@
  *  FSMVectorFactory.cc
  *  
  *  Created by René Hexel on 23/09/11.
- *  Copyright (c) 2011 Rene Hexel.
+ *  Copyright (c) 2011, 2013 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -64,6 +64,15 @@
 #include "FSMANTLRVectorFactory.h"
 #include "FSMWBSubMachine.h"
 #include "FSMANTLRMachineFactory.h"
+
+#ifdef bool
+#undef bool
+#endif
+
+#ifdef true
+#undef true
+#undef false
+#endif
 
 using namespace FSM;
 using namespace std;
@@ -160,6 +169,8 @@ SuspensibleMachine *ANTLRStateMachineVectorFactory::addMachine(std::string name,
         return machine;
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wsign-compare"
 
 int ANTLRStateMachineVectorFactory::index_of_machine_named(string machine_name)
 {
@@ -176,6 +187,8 @@ int ANTLRStateMachineVectorFactory::index_of_machine_named(string machine_name)
 
         return i;
 }
+
+#pragma clang diagnostic pop
 
 
 void ANTLRStateMachineVectorFactory::reloadMachine(string name)

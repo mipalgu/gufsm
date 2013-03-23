@@ -58,6 +58,19 @@
 #ifndef gufsm_FSMFactory_h
 #define gufsm_FSMFactory_h
 
+#ifdef bool
+#undef bool
+#endif
+
+#ifdef true
+#undef true
+#undef false
+#endif
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpadded"
+
+
 namespace FSM
 {
         class SuspensibleMachine;
@@ -66,8 +79,8 @@ namespace FSM
         class Factory
         {
         protected:
-                SuspensibleMachine *_machine;   /// built state machine
-                bool                _delete;    /// delete machine (default: no)
+                SuspensibleMachine *_machine;   ///< built state machine
+                bool                _delete;    ///< delete machine (default: no)
         public:
                 /** Constructor */
                 Factory(SuspensibleMachine *m = 0, bool del = false): _machine(m), _delete(del) {}
@@ -92,5 +105,6 @@ namespace FSM
         };
 }
 
+#pragma clang diagnostic pop
 
 #endif

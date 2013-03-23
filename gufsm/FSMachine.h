@@ -64,6 +64,21 @@
 
 #include "ExecComStruct.h"
 
+#ifdef bool
+#undef bool
+#endif
+
+#ifdef true
+#undef true
+#undef false
+#endif
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wshorten-64-to-32"
+#pragma clang diagnostic ignored "-Wweak-vtables"
+#pragma clang diagnostic ignored "-Wpadded"
+#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+
 #define TIMES_TO_POST_NAME_AND_ID 5
 
 namespace FSM
@@ -123,26 +138,25 @@ namespace FSM
          */
         class Machine
         {
-                Context *_context;      /// context used by behaviour
+                Context *_context;      ///< context used by behaviour
+
+                StateVector _states;    ///< machine states
+                State *_currentState;   ///< current state of the machine
+                State *_previousState;  ///< previous state
+
+                timeval _state_time;    ///< state start time
+                timeval _actty_time;    ///< internal activity start time
+		
                 int _id;                /// unique id of machine
-
-                StateVector _states;    /// machine states
-                State *_currentState;   /// current state of the machine
-                State *_previousState;  /// previous state
-
-                timeval _state_time;    /// state start time
-                timeval _actty_time;    /// internal activity start time
-		
-		bool _beingMonitored;   /*  has someone asked for this machine to send
-		                         *  debugging information over the whiteboard. */
-
+		bool _beingMonitored;   /**<  has someone asked for this machine to send
+		                         *    debugging information over the whiteboard. */
                 long _activities_count; /// how many times have activities run?
-                
-                LocalKripkeFrezzePointVector _localKripkeStateNames;
-                bool _have_kripke_states;        /// built already?
-		
-		int _machineIdPostCount; /* How many times have we posted machine name/id pairs
-					  *  to the whiteboard? */
+
+                LocalKripkeFrezzePointVector _localKripkeStateNames; ///< name of local kripke states
+                bool _have_kripke_states;        ///< built already?
+
+		int _machineIdPostCount; /**< How many times have we posted machine name/id pairs
+					  *   to the whiteboard? */
         protected:
                 /* Communicate back to FSMInterpreter class. */
                 ExecCom_Struct * _execCom;
@@ -151,15 +165,16 @@ namespace FSM
                 Machine(State *initial = NULL, 
                         Context *ctx = NULL, int mid=0,
 			bool beingMonitored=false,
-			ExecCom_Struct * execCom = NULL) 
-                :  _id(mid),
-                   _context(ctx), 
+			ExecCom_Struct * execCom = NULL):
+                   _context(ctx),
+                   _states(),
                    _currentState(initial),
-                   _previousState(NULL), 
-                   _states(), 
+                   _previousState(NULL),
+                   _id(mid),
+                   _beingMonitored(false),
+                   _activities_count(0),
                    _localKripkeStateNames(),
                    _have_kripke_states(false),
-                   _beingMonitored(false),
 		   _machineIdPostCount(0)
                 {
                         _execCom = execCom;
@@ -291,8 +306,8 @@ namespace FSM
                 
                 /**
                  * restart the current state machine from initial state
-                 * @param initialState state to start from (default: first state)
-                 * @return previous state the machine was in
+                 * @param state_id      state to start from (default: first state)
+                 * @return previous     state the machine was in
                  */
                 virtual State *stateForID(int state_id);
 
@@ -334,5 +349,7 @@ namespace FSM
                 virtual void executeOnExitForTransitionWithIndex(int i);
         };
 }
+
+#pragma clang diagnostic pop
 
 #endif

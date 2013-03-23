@@ -68,6 +68,21 @@
 #include <vector>
 #include "FSMAction.h"
 
+#ifdef bool
+#undef bool
+#endif
+
+#ifdef true
+#undef true
+#undef false
+#endif
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wshorten-64-to-32"
+#pragma clang diagnostic ignored "-Wsign-compare"
+#pragma clang diagnostic ignored "-Wweak-vtables"
+#pragma clang diagnostic ignored "-Wpadded"
+
 #define FIXED_FACTOR    100
 
 namespace FSM
@@ -442,5 +457,7 @@ namespace FSM
                 }
         };
 }
+
+#pragma clang diagnostic push
 
 #endif // _FSMANTLRMaths_h

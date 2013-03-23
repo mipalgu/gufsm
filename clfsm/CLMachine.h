@@ -3,7 +3,7 @@
  *  gufsm
  *
  *  Created by Rene Hexel on 1/08/12.
- *  Copyright (c) 2012 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2013 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -58,6 +58,19 @@
 #ifndef clfsm_CLMachine_h
 #define clfsm_CLMachine_h
 
+#ifdef bool
+#undef bool
+#endif
+
+#ifdef true
+#undef true
+#undef false
+#endif
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpadded"
+#pragma clang diagnostic ignored "-Wweak-vtables"
+
 namespace FSM
 {
         class StateMachineVector;
@@ -66,18 +79,18 @@ namespace FSM
 
         class CLMachine
         {
-                StateMachineVector      *_vectorContext;/// current vector
-                Machine                 *_machineContext;/// FSM context
-                CLState                 *_currentState; /// current state
-                CLState                 *_suspendState; /// suspend state
-                const char              *_machineName;  /// name of this machine
-                int                      _machineID;    /// number of this machine
+                StateMachineVector      *_vectorContext;        ///< current vector
+                Machine                 *_machineContext;       ///< FSM context
+                CLState                 *_currentState;         ///< current state
+                CLState                 *_suspendState;         ///< suspend state
+                const char              *_machineName;          ///< name of this machine
+                int                      _machineID;            ///< number of this machine
         public:
                 /** default constructor */
                 CLMachine(int mid = 0, const char *name = ""): _vectorContext(0), _machineContext(0), _currentState(0), _suspendState(0), _machineName(name), _machineID(mid) {}
 
                 /** default destructor (subclass responsibility) */
-                virtual ~CLMachine() {};
+                virtual ~CLMachine() {}
 
                 /** access method for the current state the machine is in */
                 CLState *currentState() const { return _currentState; }
@@ -122,5 +135,7 @@ namespace FSM
                 virtual int numberOfStates() const = 0;
         };
 }
+
+#pragma clang diagnostic pop
 
 #endif

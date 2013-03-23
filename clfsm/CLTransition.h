@@ -58,6 +58,20 @@
 #ifndef clfsm_CLTransition_h
 #define clfsm_CLTransition_h
 
+#ifdef bool
+#undef bool
+#endif
+
+#ifdef true
+#undef true
+#undef false
+#endif
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wweak-vtables"
+#pragma clang diagnostic ignored "-Wpadded"
+
+
 namespace FSM
 {
         class CLMachine;
@@ -84,5 +98,7 @@ namespace FSM
                 virtual bool check(CLMachine *, CLState *) const { return true; }
         };
 }
+
+#pragma clang diagnostic pop
 
 #endif

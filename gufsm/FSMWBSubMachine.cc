@@ -78,11 +78,11 @@ WBSubMachine::WBSubMachine(const string &mname, State *initialState,
 					  s, 
 					  del,
 					  execCom),
-                _name(mname),
                 _deleteContext(false),
                 _scheduleSuspend(false),
                 _scheduleResume(false),
-                _scheduleRestart(false)
+                _scheduleRestart(false),
+                _name(mname)
 {
         if (!ctx)
         {

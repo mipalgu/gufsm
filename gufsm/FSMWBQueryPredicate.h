@@ -62,6 +62,18 @@
 #include "FSMWBPredicate.h"
 #include "FSMWBContext.h"
 
+#ifdef bool
+#undef bool
+#endif
+
+#ifdef true
+#undef true
+#undef false
+#endif
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpadded"
+
 namespace guWhiteboard
 {
         class Whiteboard;
@@ -77,9 +89,9 @@ namespace FSM
          */
         class WBQueryPredicate: public WBPredicate
         {
-                bool _waiting;                  /// waiting for a callback?
-                pthread_mutex_t _lock;          /// condition lock
-                pthread_cond_t _receivedProof;  /// proof received condition
+                pthread_mutex_t _lock;          ///< condition lock
+                pthread_cond_t _receivedProof;  ///< proof received condition
+                bool _waiting;                  ///< waiting for a callback?
 
                 void init(guWhiteboard::Whiteboard *wb);
                 void callback(std::string dataName, WBMsg *msg);
@@ -109,5 +121,7 @@ namespace FSM
                 virtual int evaluate(Machine *m = NULL);
         };
 }
+
+#pragma clang diagnostic pop
 
 #endif

@@ -61,6 +61,9 @@
 #include <string>
 #include "FSMActivity.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpadded"
+
 namespace FSM
 {
         class Transition;
@@ -70,15 +73,16 @@ namespace FSM
         
         class State
         {
-                Activity _activity;  /// the activity represented by this state
-                int _stateID;           /// state number within machine
-                std::string _name;      /// name of the state
+                Activity _activity;     ///< the activity represented by this state
+                std::string _name;      ///< name of the state
                 
-                /** list of transitions away from this state */
+                /** list of transitions leading away from this state */
                 TransitionVector _transitions;
+
+                int _stateID;           ///< state number within machine
         public:
                 State(int stateID = 0, const std::string name = ""):
-                _activity(), _stateID(stateID), _name(name) {}
+                _activity(), _name(name), _transitions(), _stateID(stateID) {}
 
                 virtual ~State() {}
 
@@ -108,4 +112,7 @@ namespace FSM
                 virtual std::string description();
         };
 }
+
+#pragma clang diagnostic pop
+
 #endif

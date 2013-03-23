@@ -61,6 +61,18 @@
 #include <string>
 #include "FSMAction.h"
 
+#ifdef bool
+#undef bool
+#endif
+
+#ifdef true
+#undef true
+#undef false
+#endif
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpadded"
+
 namespace FSM
 {
         class Machine;
@@ -69,24 +81,27 @@ namespace FSM
         class ANTLRAction;
 }
 
+/**
+ * Factory for ANTLR state machine activities
+ */
 class ActivityFactory
 {
 protected:
-        FSM::Machine *_fsm;
-        std::map<std::string, FSM::Action *> *_named_actions;
-        const char *_file;
+        FSM::Machine *_fsm;                                     ///< state machine reference
+        std::map<std::string, FSM::Action *> *_named_actions;   ///< map from names to actions
+        const char *_file;                                      ///< name of file being processed
 
-        FSM::State *_currentState;
+        FSM::State *_currentState;                              ///< state currently being processed
 
-        FSM::ActionStage _currentStage; /* onEntry, onExit, internal */
-        FSM::ANTLRAction *_currentAction;
+        FSM::ANTLRAction *_currentAction;                       ///< action currently being processed
+        FSM::ActionStage _currentStage;                         ///< onEntry, onExit, or internal
 
-        bool _error;
+        bool _error;                                            ///< did an error occur?
         
 public:
-        /* Init member variables and call the init function. */
+        /** Init member variables and call the init function. */
         ActivityFactory(FSM::Machine *machine, const char *filename, std::map<std::string, FSM::Action *> *func);
-        /* Init member variables but don't call the init function. */
+        /** Init member variables but don't call the init function. */
         ActivityFactory(FSM::Machine *machine, const char *filename, std::map<std::string, FSM::Action *> *func, bool noInit);
         FSM::Machine *fsm() { return _fsm; }
         bool error() { return _error; }
@@ -100,5 +115,7 @@ public:
         FSM::ActionStage stage() { return _currentStage; }
         void set_stage(FSM::ActionStage stage) { _currentStage = stage; }
 };
+
+#pragma clang diagnostic pop
 
 #endif

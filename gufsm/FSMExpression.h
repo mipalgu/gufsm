@@ -2,7 +2,7 @@
  *  FSMExpression.h
  *  
  *  Created by René Hexel on 23/09/11.
- *  Copyright (c) 2011 Rene Hexel.
+ *  Copyright (c) 2011, 2013 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -61,6 +61,21 @@
 #include <string>
 #include <sstream>
 
+#ifdef bool
+#undef bool
+#endif
+
+#ifdef true
+#undef true
+#undef false
+#endif
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wshorten-64-to-32"
+#pragma clang diagnostic ignored "-Wweak-vtables"
+#pragma clang diagnostic ignored "-Wpadded"
+#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+
 namespace FSM
 {
         class Machine;
@@ -85,7 +100,7 @@ namespace FSM
                         return ss.str();
                 }
                 /** add a parameter (abstract method, does nothing) */
-                virtual void add_parameter(int index, long long value) {};
+                virtual void add_parameter(int index, long long value) {}
         };
         
         /**
@@ -158,8 +173,11 @@ namespace FSM
                 virtual void add_parameter(int index, long long value)
                 {
                         setTimeout(value);
-                };
+                }
 
         };
 }
+
+#pragma clang diagnostic pop
+
 #endif

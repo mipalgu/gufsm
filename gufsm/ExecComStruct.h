@@ -65,6 +65,18 @@
 
 #include <dispatch/dispatch.h>
 
+#ifdef bool
+#undef bool
+#endif
+
+#ifdef true
+#undef true
+#undef false
+#endif
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpadded"
+
 namespace ExecCom {
         enum ExecCom_Do_Type {SUSPEND, RESTART, STOP, RESUME, RUN};
         enum ExecCom_State_Type {SUSPENDED, RUNNING, STOPPED};
@@ -92,5 +104,7 @@ struct ExecCom_Struct {
 	/* Are there machines still executing? */
 	bool _stillExecuting;
 };
+
+#pragma clang diagnostic pop
 
 #endif

@@ -70,6 +70,19 @@ extern "C"
 #include<iostream>
 #include "FSMWBContext.h"
 
+#ifdef bool
+#undef bool
+#endif
+
+#ifdef true
+#undef true
+#undef false
+#endif
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wshorten-64-to-32"
+#pragma clang diagnostic ignored "-Wsign-compare"
+#pragma clang diagnostic ignored "-Wpadded"
 
 enum DATA_TYPES {TYPE_BOOLEAN, TYPE_NON_NEGATIVE_INT};
 
@@ -87,7 +100,7 @@ namespace FSM
                  * @param wb pointer to an already opened whiteboard
                  * @param deletewb delete wb pointer when destructed (only relevant if wb is non-NULL, otherwise the whiteboard will always be deleted in the destructor
                  */
-                ANTLRContext(guWhiteboard::Whiteboard *wb = NULL, bool deletewb = false): _variables(), WBContext(wb, deletewb) {}
+                ANTLRContext(guWhiteboard::Whiteboard *wb = NULL, bool deletewb = false): WBContext(wb, deletewb), _variables() {}
                 ANTLRContext(const ANTLRContext &orig): _variables(((ANTLRContext &)orig).variables()) {}
 
                 /** variable getter */
@@ -257,5 +270,7 @@ namespace FSM
         
         };
 }
+
+#pragma clang diagnostic pop
 
 #endif

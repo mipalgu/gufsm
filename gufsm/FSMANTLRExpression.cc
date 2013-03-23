@@ -2,7 +2,7 @@
  *  FSMExpression.cc
  *  
  *  Created by René Hexel on 26/09/11.
- *  Copyright (c) 2011 Rene Hexel.
+ *  Copyright (c) 2011-2013 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -62,6 +62,18 @@
 #include "FSMANTLRExpression.h"
 #include "FSMANTLRContext.h"
 #include "FSMachine.h"
+
+#ifdef bool
+#undef bool
+#endif
+
+#ifdef true
+#undef true
+#undef false
+#endif
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wshorten-64-to-32"
 
 using namespace FSM;
 using namespace std;
@@ -509,4 +521,4 @@ void ANTLRExpression::set_global_variables(Machine *fsm)
         expression_extract_callback(fsm, terminal, content.c_str(), antlrState(), expression());
 }
 
-
+#pragma clang diagnostic pop

@@ -106,6 +106,10 @@ int ANTLRContext::internal_variable_mid(const std::string &name)
 }
 
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wswitch-enum"
+
+
 static int wbIntValue(Whiteboard *wb, const string &name)
 {
         WBMsg msg = wb->getMessage(name);
@@ -133,6 +137,8 @@ static int wbIntValue(Whiteboard *wb, const string &name)
         return 0;
 }
 
+#pragma clang diagnostic pop
+
 
 void ANTLRContext::take_snapshot()
 {
@@ -144,3 +150,4 @@ void ANTLRContext::take_snapshot()
                         set_variable(p.first, wbIntValue(whiteboard(), visible_variable_name_for_extern(p.first)));
         }
 }
+

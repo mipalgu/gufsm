@@ -3,7 +3,8 @@
  *  gufsm
  *
  *  Created by Rene Hexel on 3/08/12.
- *  Copyright (c) 2012 Rene Hexel and Vlad Estivill-Castro. All rights reserved.
+ *  Copyright (c) 2012, 2013 Rene Hexel and Vlad Estivill-Castro.
+ *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -65,7 +66,21 @@
 
 #include "stringConstants.h"
 
-const bool NO_SELF = true;
+#ifdef bool
+#undef bool
+#endif
+
+#ifdef true
+#undef true
+#undef false
+#endif
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wshorten-64-to-32"
+#pragma clang diagnostic ignored "-Wsign-compare"
+#pragma clang diagnostic ignored "-Wvla"
+
+#define NO_SELF
 const int LOW_RANGE = 0;
 const int HIGH_RANGE = 1;
 
@@ -100,11 +115,11 @@ string ANTLRMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
 {
         stringstream ss;
 
-        if(!NO_SELF)
+#ifndef NO_SELF
         {ss << kripkeToString(s, n, names) << ":\n";
 
         }
-
+#endif
         /* RULE 1 :  Advance the Machien whose turn is it (its pc must be
          (OnEntry, or AfterOnEntry). The new machine in turn is
          incremented by one module the number of machine.
@@ -674,3 +689,5 @@ void ANTLRMachineVector ::    outputList ( std::list<KripkeState>  & list , size
         }
         
 }
+
+#pragma clang diagnostic pop

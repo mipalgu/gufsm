@@ -59,12 +59,26 @@
 #include <fstream>
 #include <dispatch/dispatch.h>
 #include <libgen.h>
+
+#ifdef bool
+#undef bool
+#endif
+
+#ifdef true
+#undef true
+#undef false
+#endif
+
 #include <dlfcn.h>
 #include <sys/utsname.h>
 #include <sys/stat.h>
 #include <gu_util.h>
 #include "clfsm_cc.h"
 #include "clfsm_machine.h"
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+#pragma clang diagnostic ignored "-Wvla"
 
 using namespace std;
 using namespace FSM;
@@ -302,3 +316,5 @@ const vector<string> &MachineWrapper::default_linker_args()
         }
         return args;
 }
+
+#pragma clang diagnostic pop

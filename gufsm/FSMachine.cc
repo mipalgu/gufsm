@@ -2,7 +2,7 @@
  *  FSMachine.cc
  *  
  *  Created by René Hexel on 23/09/11.
- *  Copyright (c) 2011 Rene Hexel.
+ *  Copyright (c) 2011, 2013 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -64,6 +64,18 @@
 #include <dispatch/dispatch.h>
 
 #include "stringConstants.h"
+
+#ifdef bool
+#undef bool
+#endif
+
+#ifdef true
+#undef true
+#undef false
+#endif
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
 
 using namespace FSM;
 
@@ -319,3 +331,5 @@ long long FSM::current_time_in_microseconds(void)
 
         return usec;
 }
+
+#pragma clang diagnostic pop

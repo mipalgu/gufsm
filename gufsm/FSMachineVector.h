@@ -2,7 +2,7 @@
  *  FSMachineVector.h
  *  
  *  Created by René Hexel on 22/11/11.
- *  Copyright (c) 2011 Rene Hexel.
+ *  Copyright (c) 2011, 2013 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -68,6 +68,19 @@
 #include "gu_util.h"
 #include "FSMSuspensibleMachine.h"
 
+#ifdef bool
+#undef bool
+#endif
+
+#ifdef true
+#undef true
+#undef false
+#endif
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpadded"
+#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+
 namespace FSM
 {
         typedef std::vector<SuspensibleMachine *> MachineVector;
@@ -79,8 +92,9 @@ namespace FSM
         struct KripkeState
         {
                 unsigned long long variable_combination;
-                int whose_turn;         // current machine's turn (id)
                 KripkeFreezePointVector *freeze_point;
+                int whose_turn;         // current machine's turn (id)
+
                 KripkeState(unsigned long long v, KripkeFreezePointVector *f, int w=0): variable_combination(v), freeze_point(f), whose_turn(w) {}
                 KripkeState &operator=(const KripkeState &other)
                 {
@@ -115,12 +129,12 @@ namespace FSM
         class StateMachineVector
         {
         protected:
-                Context         *_context;      /// global context
-                MachineVector   _machines;      /// vector of suspensible FSMs
-                useconds_t      _idle_timeout;  /// idle timeout in usec
-                idle_f          _no_transition_fired; /// idle function
-                bool            _accepting;     /// all machines are in an accepting state
-                dispatch_queue_t _queue;        /// dispatch run queue
+                Context         *_context;              ///< global context
+                MachineVector   _machines;              ///< vector of suspensible FSMs
+                idle_f          _no_transition_fired;   ///< idle function
+                dispatch_queue_t _queue;                ///< dispatch run queue
+                useconds_t      _idle_timeout;          ///< idle timeout in usec
+                bool            _accepting;             ///< all machines are in an accepting state
 
                 /// subclass responsibility
                 std::string generate_from(KripkeState &, std::list<KripkeState> &, size_t n, std::string **names) { return ""; }
@@ -231,5 +245,7 @@ namespace FSM
 #endif
         };
 }
+
+#pragma clang diagnostic pop
 
 #endif

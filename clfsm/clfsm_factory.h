@@ -60,6 +60,19 @@
 
 #include "FSMFactory.h"
 
+#ifdef bool
+#undef bool
+#endif
+
+#ifdef true
+#undef true
+#undef false
+#endif
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpadded"
+#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+
 namespace FSM
 {
         class CLMachine;
@@ -91,5 +104,7 @@ namespace FSM
                 virtual void createTransitions(CLMachine *clm, CLState *clstate, State *state, State **states);
         };
 }
+
+#pragma clang diagnostic pop
 
 #endif /* defined(____clfsm_factory__) */

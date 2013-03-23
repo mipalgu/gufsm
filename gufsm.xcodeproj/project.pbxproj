@@ -822,12 +822,12 @@
 		F16CC334142C3433001F788B /* FSMAction.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMAction.cc; sourceTree = "<group>"; };
 		F170781D15F95B830058AECD /* CLTransitionExpression.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CLTransitionExpression.cc; sourceTree = "<group>"; };
 		F1777E6016FD96C2006E263E /* gugenericwhiteboardobject.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; path = gugenericwhiteboardobject.cpp; sourceTree = "<group>"; };
-		F1777E6116FD96C2006E263E /* gugenericwhiteboardobject.h */ = {isa = PBXFileReference; lastKnownFileType = file; path = gugenericwhiteboardobject.h; sourceTree = "<group>"; };
-		F1777E6216FD96C2006E263E /* guwhiteboardtypelist_c_generated.h */ = {isa = PBXFileReference; lastKnownFileType = file; path = guwhiteboardtypelist_c_generated.h; sourceTree = "<group>"; };
-		F1777E6316FD96C2006E263E /* guwhiteboardtypelist_generated_template.h */ = {isa = PBXFileReference; lastKnownFileType = file; path = guwhiteboardtypelist_generated_template.h; sourceTree = "<group>"; };
-		F1777E6416FD96C2006E263E /* guwhiteboardtypelist_generated.h */ = {isa = PBXFileReference; lastKnownFileType = file; path = guwhiteboardtypelist_generated.h; sourceTree = "<group>"; };
-		F1777E6516FD96C2006E263E /* guwhiteboardtypelist.tsl */ = {isa = PBXFileReference; lastKnownFileType = file; path = guwhiteboardtypelist.tsl; sourceTree = "<group>"; };
-		F1777E6616FD96C2006E263E /* guwhiteboardwatcher.h */ = {isa = PBXFileReference; lastKnownFileType = file; path = guwhiteboardwatcher.h; sourceTree = "<group>"; };
+		F1777E6116FD96C2006E263E /* gugenericwhiteboardobject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gugenericwhiteboardobject.h; sourceTree = "<group>"; };
+		F1777E6216FD96C2006E263E /* guwhiteboardtypelist_c_generated.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = guwhiteboardtypelist_c_generated.h; sourceTree = "<group>"; };
+		F1777E6316FD96C2006E263E /* guwhiteboardtypelist_generated_template.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = guwhiteboardtypelist_generated_template.h; sourceTree = "<group>"; };
+		F1777E6416FD96C2006E263E /* guwhiteboardtypelist_generated.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = guwhiteboardtypelist_generated.h; sourceTree = "<group>"; };
+		F1777E6516FD96C2006E263E /* guwhiteboardtypelist.tsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = guwhiteboardtypelist.tsl; sourceTree = "<group>"; };
+		F1777E6616FD96C2006E263E /* guwhiteboardwatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = guwhiteboardwatcher.h; sourceTree = "<group>"; };
 		F177D0FA1499753A0003748C /* FSMWBPostAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMWBPostAction.h; sourceTree = "<group>"; };
 		F18ACF4615CB4A3A00492118 /* State_Ping_OnEntry.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = State_Ping_OnEntry.mm; sourceTree = "<group>"; };
 		F18ACF4815CB4B3D00492118 /* State_Ping_Internal.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = State_Ping_Internal.mm; sourceTree = "<group>"; };
@@ -2763,6 +2763,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "-Weverything";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -2794,6 +2795,7 @@
 					/opt/local/include,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_CFLAGS = "-Weverything";
 				SDKROOT = macosx;
 			};
 			name = Release;

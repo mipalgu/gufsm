@@ -2,7 +2,7 @@
  *  FSMachineVector.cc
  *  
  *  Created by René Hexel on 22/11/11.
- *  Copyright (c) 2011 Rene Hexel.
+ *  Copyright (c) 2011-2013 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -71,11 +71,6 @@
 #include "FSMANTLRVectorFactory.h"
 #include "FSMVectorRunner.h"
 
-#define ANTLRFunc(x,n)  x func ## x; \
-                        antlr_context.set_function((n), &func ## x);
-#define ANTLRMaths(x)   ANTLRMaths ## x func ## x; \
-                        antlr_context.set_function(func ## x.name(), &func ## x);
-
 using namespace std;
 using namespace FSM;
 
@@ -84,9 +79,7 @@ int dumpNames(ANTLRContext & context);
 int block_schedule(ANTLRStateMachineVectorFactory &factory, vector<string> &machine_names);
 int factory_execute(ANTLRStateMachineVectorFactory &factory, vector<string> &machine_names);
 
-static cdlbridge *gucdlbridge;
-
-static void usage(const char *cmd)
+static __attribute__((__noreturn__)) void usage(const char *cmd)
 {
         cerr << "Usage: " << cmd << " [-b][-k][-v][-n] [fsm [...]]" << endl;
         exit(EXIT_FAILURE);
