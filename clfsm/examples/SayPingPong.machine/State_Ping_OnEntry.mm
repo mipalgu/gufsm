@@ -7,5 +7,7 @@
   currentState = 0;
   cout << stateName << " " << (int)fmod((double)current_time_in_microseconds() / 1000000.0L, 100) << endl;
 
-        say << stateName;
+        say << stateName;       // equivalent alternatives are below
+//      say.set(stateName);
+//      say = string(stateName);
 }
