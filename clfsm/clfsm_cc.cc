@@ -66,6 +66,11 @@
 #include "clfsm_cc_delegate.h"
 #include "clfsm_cc.h"
 
+#pragma GCC diagnostic push
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-function"
+#pragma clang diagnostic ignored "-Wunused-function"
+
 #ifdef USE_LIBCLANG_INTERNAL
 using namespace llvm;
 using namespace clang;
@@ -239,3 +244,6 @@ fin:
 
         return success;
 }
+
+#pragma clang diagnostic pop
+#pragma GCC diagnostic pop
