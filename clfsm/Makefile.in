@@ -8,30 +8,16 @@ MODULE_BASE=clfsm
 USE_LIBCPP=yes
 SPECIFIC_CFLAGS=-stdlib=libc++
 SPECIFIC_LDFLAGS=-stdlib=libc++
+.else
+SPECIFIC_LIBS+=-Wl,-R/usr/local/lib
 .endif
 .endif
 
-CC_SRCS= CLActionAction.cc
-CC_SRCS+=CLTransitionExpression.cc
-CC_SRCS+=FSMAction.cc
-CC_SRCS+=FSMActivity.cc
-CC_SRCS+=FSMExpression.cc
-CC_SRCS+=FSMWBPredicate.cc
-CC_SRCS+=FSMWBQueryPredicate.cc
-CC_SRCS+=FSMWBContext.cc
-CC_SRCS+=FSMachine.cc
-CC_SRCS+=FSMState.cc
-CC_SRCS+=FSMSuspensibleMachine.cc
-CC_SRCS+=FSMWBSubMachine.cc
-CC_SRCS+=FSMTransition.cc
-CC_SRCS+=FSMFactory.cc
-CC_SRCS+=FSMachineVector.cc
-CC_SRCS+=clfsm_vector_factory.cc
-CC_SRCS+=clfsm_factory.cc
+SPECIFIC_LIBS+=-L/usr/local/lib -lclfsm
+
 CC_SRCS+=clfsm_cc.cc
 CC_SRCS+=clfsm_machine.cc
 CC_SRCS+=clfsm_main.cc
-C_SRCS=stringConstants.c
 HDRS+=CLActionAction.h
 HDRS+=CLTransitionExpression.h
 HDRS+=FSM.h

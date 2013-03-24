@@ -78,7 +78,6 @@
 		F155F68515C3A9A0008F5637 /* main.cc in Sources */ = {isa = PBXBuildFile; fileRef = F155F68415C3A97D008F5637 /* main.cc */; };
 		F155F68815C3A9E2008F5637 /* simplec_lexer.cc in Sources */ = {isa = PBXBuildFile; fileRef = F155F68615C3A9E2008F5637 /* simplec_lexer.cc */; };
 		F157558E16FC0E5700C6EBA1 /* guwhiteboardtypelist_c_typestrings_generated.c in Sources */ = {isa = PBXBuildFile; fileRef = F157558D16FC0E5700C6EBA1 /* guwhiteboardtypelist_c_typestrings_generated.c */; };
-		F157558F16FC0E5700C6EBA1 /* guwhiteboardtypelist_c_typestrings_generated.c in Sources */ = {isa = PBXBuildFile; fileRef = F157558D16FC0E5700C6EBA1 /* guwhiteboardtypelist_c_typestrings_generated.c */; };
 		F15755A116FC0EA700C6EBA1 /* guwhiteboardtypelist_c_typestrings_generated.c in Sources */ = {isa = PBXBuildFile; fileRef = F157558D16FC0E5700C6EBA1 /* guwhiteboardtypelist_c_typestrings_generated.c */; };
 		F15A2CF814CF843700D88624 /* claus.c in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C0014CF81F400D88624 /* claus.c */; };
 		F15A2CF914CF843700D88624 /* defeas.c in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C0F14CF81F400D88624 /* defeas.c */; };
@@ -2618,7 +2617,6 @@
 				F1D126F31609382400E526BE /* clfsm_cc.cc in Sources */,
 				F108330B1626997A00D6C789 /* clfsm_machine.cc in Sources */,
 				F12E5ED11627F36D00B95186 /* clfsm_main.cc in Sources */,
-				F157558F16FC0E5700C6EBA1 /* guwhiteboardtypelist_c_typestrings_generated.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

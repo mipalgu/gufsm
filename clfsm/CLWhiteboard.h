@@ -61,4 +61,12 @@
 #include <guwhiteboardtypelist_generated.h>
 #include <gugenericwhiteboardobject.h>
 
+#ifndef NO_FSM_WHITEBOARD_NAMESPACE
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wheader-hygiene"
+
+using namespace guWhiteboard;
+#endif
+
 #endif

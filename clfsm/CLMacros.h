@@ -58,6 +58,18 @@
 #ifndef _CLMacros_h
 #define _CLMacros_h
 
+#ifdef bool
+#undef bool
+#endif
+
+#ifdef true
+#undef true
+#undef false
+#endif
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+
 namespace FSM
 {
         class Machine;
@@ -74,3 +86,5 @@ namespace FSM
 #define after_ms(t)     (timeout((t) * 1000.0L))
 
 #endif
+
+#pragma clang diagnostic pop

@@ -120,7 +120,7 @@ namespace FSM
                 virtual void resume();
 
                 /** restart this state machine where it left off */
-                virtual virtual State *restart(State *initialState = NULL);
+                virtual State *restart(State *initialState = NULL);
 
                 /** is this machine scheduled for resumption? */
                 virtual bool scheduledForResume() { return _scheduleResume; }

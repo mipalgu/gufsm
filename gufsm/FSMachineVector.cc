@@ -244,7 +244,7 @@ struct spawn_queue_param
         dispatch_queue_t queue;
 };
 
-void StateMachineVector::do_spawn_once_on_queue(dispatch_queue_t queue) __attribute__((__noreturn__))
+ __attribute__((__noreturn__)) void StateMachineVector::do_spawn_once_on_queue(dispatch_queue_t queue)
 {
         do
         {
