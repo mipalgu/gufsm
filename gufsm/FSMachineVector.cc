@@ -80,10 +80,10 @@ StateMachineVector::StateMachineVector(Context *ctx, useconds_t timeout,
                                        idle_f default_idle_function):
         _context(ctx), _machines(), _idle_timeout(timeout), _accepting(false)
 {
-        string q_name("dispatch_queue_");
-        q_name += (long long) this;
+        stringstream ss;
+        ss << "dispatch_queue_" << (long long) this;
 
-        _queue = dispatch_queue_create(q_name.c_str(), NULL);
+        _queue = dispatch_queue_create(ss.str().c_str(), NULL);
 
         if (!default_idle_function) default_idle_function = default_idle_sleep;
         _no_transition_fired = default_idle_function;

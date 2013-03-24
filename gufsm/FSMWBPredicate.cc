@@ -80,7 +80,7 @@ int WBPredicate::evaluate(WBMsg &msg)
                 case WBMsg::TypeString:
                         const char *s = msg.getStringValue().c_str();
                         char c = *s;
-                        c = toupper(c);
+                        c = char(toupper(c));
                         return c != 0 && c != 'N' && c != 'F' && c != '-' && c != '0' && !(c == 'O' && toupper(s[1]) == 'F');
         }
         return false;

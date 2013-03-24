@@ -2,7 +2,7 @@
  *  FSMWBSubMachine.cc
  *  
  *  Created by René Hexel on 22/11/11.
- *  Copyright (c) 2011 Rene Hexel.
+ *  Copyright (c) 2011, 2013 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -231,10 +231,12 @@ bool WBSubMachine::executeOnce(bool *fired)
 }
 
 
-void WBSubMachine::restart()
+State *WBSubMachine::restart(State *initialState)
 {
-        SuspensibleMachine::restart();
+        State *oldState = SuspensibleMachine::restart(initialState);
         _scheduleRestart = false;
+
+        return oldState;
 }
 
 

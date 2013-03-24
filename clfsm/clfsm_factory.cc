@@ -191,14 +191,14 @@ CLFSMFactory::~CLFSMFactory()
                         delete cltransition;
                 }
 
-                for (ActionVector::iterator i = state->activity().onEntryActions().begin(); i !=  state->activity().onEntryActions().end(); i++)
-                        delete *i;
+                for (ActionVector::iterator j = state->activity().onEntryActions().begin(); j !=  state->activity().onEntryActions().end(); j++)
+                        delete *j;
 
-                for (ActionVector::iterator i = state->activity().onExitActions().begin(); i !=  state->activity().onExitActions().end(); i++)
-                        delete *i;
+                for (ActionVector::iterator j = state->activity().onExitActions().begin(); j !=  state->activity().onExitActions().end(); j++)
+                        delete *j;
 
-                for (ActionVector::iterator i = state->activity().internalActions().begin(); i !=  state->activity().internalActions().end(); i++)
-                        delete *i;
+                for (ActionVector::iterator j = state->activity().internalActions().begin(); j !=  state->activity().internalActions().end(); j++)
+                        delete *j;
 
                 delete state;
                 delete clstate;

@@ -2,7 +2,7 @@
  *  FSMWBSubMachine.h
  *  
  *  Created by René Hexel on 22/11/11.
- *  Copyright (c) 2011 Rene Hexel.
+ *  Copyright (c) 2011, 2013 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -120,7 +120,7 @@ namespace FSM
                 virtual void resume();
 
                 /** restart this state machine where it left off */
-                virtual void restart();
+                virtual virtual State *restart(State *initialState = NULL);
 
                 /** is this machine scheduled for resumption? */
                 virtual bool scheduledForResume() { return _scheduleResume; }
