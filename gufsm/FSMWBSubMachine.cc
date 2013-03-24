@@ -289,7 +289,7 @@ void WBSubMachine::resume()
 }
 
 
-void  WBSubMachine::wb_setMonitoring_me(std::string s, WBMsg * msg) 
+void  WBSubMachine::wb_setMonitoring_me(std::string, WBMsg * msg) 
 {
 	if (msg->getType() == WBMsg::TypeBool) {
 		setBeingMonitored(msg->getBoolValue());

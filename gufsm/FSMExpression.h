@@ -75,6 +75,7 @@
 #pragma clang diagnostic ignored "-Wweak-vtables"
 #pragma clang diagnostic ignored "-Wpadded"
 #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+#pragma clang diagnostic ignored "-Wunused-parameter"
 
 namespace FSM
 {
@@ -100,7 +101,7 @@ namespace FSM
                         return ss.str();
                 }
                 /** add a parameter (abstract method, does nothing) */
-                virtual void add_parameter(int index, long long value) {}
+                virtual void add_parameter(int, long long) {}
         };
         
         /**

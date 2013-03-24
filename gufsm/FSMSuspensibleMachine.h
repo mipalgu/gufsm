@@ -72,7 +72,7 @@
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wpadded"
-
+#pragma clang diagnostic ignored "-Wunused-parameter"
 
 namespace FSM
 {

@@ -59,6 +59,13 @@
 #ifndef __gufsm__FSMANTLRMachineVector__
 #define __gufsm__FSMANTLRMachineVector__
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wshorten-64-to-32"
+#pragma clang diagnostic ignored "-Wweak-vtables"
+#pragma clang diagnostic ignored "-Wpadded"
+#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+#pragma clang diagnostic ignored "-Wunused-parameter"
+
 #include "FSMachineVector.h"
 
 const int BITS = 3;
@@ -102,4 +109,7 @@ namespace FSM
                 std::string descriptionSMVformat(KripkeFreezePointVector &);
         };
 }
+
+#pragma clang diagnostic pop
+
 #endif /* defined(__gufsm__FSMANTLRMachineVector__) */

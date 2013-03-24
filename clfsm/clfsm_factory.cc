@@ -77,7 +77,7 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wvla"
 #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
-
+#pragma clang diagnostic ignored "-Wunused-parameter"
 
 using namespace std;
 using namespace FSM;

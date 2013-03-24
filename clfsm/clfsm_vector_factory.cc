@@ -59,6 +59,8 @@
 #include "clfsm_factory.h"
 #include "clfsm_vector_factory.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-parameter"
 
 using namespace std;
 using namespace FSM;
@@ -106,3 +108,5 @@ CLFSMFactory *CLFSMVectorFactory::machine_factory(CLMachine *clm, int index)
 {
         return new CLFSMFactory(_context, clm, index, _delete);
 }
+
+#pragma clang diagnostic pop

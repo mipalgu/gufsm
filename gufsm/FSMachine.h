@@ -78,6 +78,7 @@
 #pragma clang diagnostic ignored "-Wweak-vtables"
 #pragma clang diagnostic ignored "-Wpadded"
 #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+#pragma clang diagnostic ignored "-Wunused-parameter"
 
 #define TIMES_TO_POST_NAME_AND_ID 5
 
