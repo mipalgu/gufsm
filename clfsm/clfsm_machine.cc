@@ -248,7 +248,8 @@ bool MachineWrapper::compile(const vector<string> &compiler_args, const vector<s
                         args.push_back(*of);
                 args.push_back("-shared");
                 args.push_back("-stdlib=libc++");
-                //args.push_back("-lclfsm");
+                args.push_back("-L/usr/local/lib");
+                args.push_back("-lclfsm");
                 args.push_back("-o");
                 args.push_back(binary_directory + "/" + name() + ".so");
 
