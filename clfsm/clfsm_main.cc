@@ -64,6 +64,7 @@
 #include "FSMachineVector.h"
 #include "clfsm_machine.h"
 #include "clfsm_wb_vector_factory.h"
+#include "gugenericwhiteboardobject.h"
 
 using namespace std;
 using namespace FSM;
@@ -101,7 +102,11 @@ int main(int argc, char * const argv[])
         vector<string> machines;
         vector<string> compiler_args;
         vector<string> linker_args;
+/*
+        guWhiteboard::FSM::ControlStatus foo;
 
+        printf("foo:\t%p\nfoo[0]:\t%p\n", &foo, &foo.fsms()[0]);
+*/
         compiler_args.push_back("-std=c++11");    /// XXX: fix this
 
         int ch;
