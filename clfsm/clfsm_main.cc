@@ -62,17 +62,15 @@
 #include "gu_util.h"
 #include "FSMWBSubMachine.h"
 #include "FSMachineVector.h"
-#include "FSMWBContext.h"
 #include "clfsm_machine.h"
-#include "clfsm_vector_factory.h"
+#include "clfsm_wb_vector_factory.h"
 
 using namespace std;
 using namespace FSM;
 
-static CLFSMVectorFactory *createMachines(vector<MachineWrapper *> &machineWrappers, const vector<string> &machines, const vector<string> &compiler_args, const vector<string> &linker_args)
+static CLFSMWBVectorFactory *createMachines(vector<MachineWrapper *> &machineWrappers, const vector<string> &machines, const vector<string> &compiler_args, const vector<string> &linker_args)
 {
-        WBContext *context = new WBContext();
-        CLFSMVectorFactory *factory = new CLFSMVectorFactory(context);
+        CLFSMWBVectorFactory *factory = new CLFSMWBVectorFactory();
         int i = 0;
         for (vector<string>::const_iterator it = machines.begin(); it != machines.end(); it++)
         {

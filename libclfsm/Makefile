@@ -18,8 +18,8 @@ SPECIFIC_LDFLAGS=-stdlib=libc++
 SPECIFIC_LDFLAGS+=-Wl,-rpath -Wl,/usr/local/lib
 
 C_SRCS=stringConstants.c
-CC_SRCS=CLActionAction.cc CLTransitionExpression.cc FSMAction.cc FSMActivity.cc FSMExpression.cc FSMFactory.cc FSMState.cc FSMSuspensibleMachine.cc FSMTransition.cc FSMWBContext.cc FSMWBPredicate.cc FSMWBQueryPredicate.cc FSMWBSubMachine.cc FSMachine.cc FSMachineVector.cc clfsm_factory.cc clfsm_vector_factory.cc
-HDRS=CLAction.h CLActionAction.h CLTransitionExpression.h FSMAction.h FSMActivity.h FSMExpression.h FSMFactory.h FSMState.h FSMSuspensibleMachine.h FSMTransition.h FSMWBContext.h FSMWBPredicate.h FSMWBQueryPredicate.h FSMWBSubMachine.h FSMachine.h FSMachineVector.h clfsm_factory.h CLTransition.h clfsm_vector_factory.h stringConstants.h
+CC_SRCS=CLActionAction.cc CLTransitionExpression.cc FSMAction.cc FSMActivity.cc FSMExpression.cc FSMFactory.cc FSMState.cc FSMSuspensibleMachine.cc FSMTransition.cc FSMWBContext.cc FSMWBPredicate.cc FSMWBQueryPredicate.cc FSMWBSubMachine.cc FSMachine.cc FSMachineVector.cc clfsm_factory.cc clfsm_vector_factory.cc clfsm_wb_vector_factory.cc
+HDRS=CLAction.h CLActionAction.h CLTransitionExpression.h FSMAction.h FSMActivity.h FSMExpression.h FSMFactory.h FSMState.h FSMSuspensibleMachine.h FSMTransition.h FSMWBContext.h FSMWBPredicate.h FSMWBQueryPredicate.h FSMWBSubMachine.h FSMachine.h FSMachineVector.h clfsm_factory.h CLTransition.h clfsm_vector_factory.h clfsm_wb_vector_factory.h stringConstants.h
 INSTHDRS=CLMacros.h CLWhiteboard.h
 
 .include "../../../mk/whiteboard.mk"	# required for whiteboard clients
