@@ -69,7 +69,7 @@
 using namespace std;
 using namespace FSM;
 
-static CLFSMVectorFactory *createMachines(vector<MachineWrapper> &machineWrappers, const vector<string> &machines, const vector<string> &compiler_args, const vector<string> &linker_args)
+static CLFSMVectorFactory *createMachines(vector<MachineWrapper *> &machineWrappers, const vector<string> &machines, const vector<string> &compiler_args, const vector<string> &linker_args)
 {
         WBContext *context = new WBContext();
         CLFSMVectorFactory *factory = new CLFSMVectorFactory(context);
@@ -77,13 +77,14 @@ static CLFSMVectorFactory *createMachines(vector<MachineWrapper> &machineWrapper
         for (vector<string>::const_iterator it = machines.begin(); it != machines.end(); it++)
         {
                 const string &machine = *it;
-                machineWrappers.push_back(machine);
-                MachineWrapper &machineWrapper = machineWrappers[i];
+                machineWrappers.push_back(new MachineWrapper(machine));
+                MachineWrapper &machineWrapper = *machineWrappers[i];
                 machineWrapper.setCompilerArgs(compiler_args);
                 machineWrapper.setLinkerArgs(linker_args);
                 CLMachine *clm = machineWrapper.instantiate(i, machine.c_str());
                 if (clm) factory->addMachine(clm);
                 else cerr << "Could not add machine " << i << ": '" << machine << "'" << endl;
+                i++;
         }
 
         return factory;
@@ -98,7 +99,7 @@ static void usage(const char *cmd)
 
 int main(int argc, char * const argv[])
 {
-        vector<MachineWrapper> machineWrappers;
+        vector<MachineWrapper *> machineWrappers;
         vector<string> machines;
         vector<string> compiler_args;
         vector<string> linker_args;
@@ -147,6 +148,9 @@ int main(int argc, char * const argv[])
         CLFSMVectorFactory *factory = createMachines(machineWrappers, machines, compiler_args, linker_args);
         factory->fsms()->execute();
         delete factory;
+
+        for (vector<MachineWrapper *>::const_iterator it = machineWrappers.begin(); it != machineWrappers.end(); it++)
+                if (*it) delete *it;
 
         return EXIT_SUCCESS;
 }
