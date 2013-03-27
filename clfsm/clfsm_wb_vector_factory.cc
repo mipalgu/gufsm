@@ -57,6 +57,7 @@
  */
 #include "FSMWBContext.h"
 #include "clfsm_wb_vector_factory.h"
+#include "guwhiteboardwatcher.h"
 
 using namespace FSM;
 
