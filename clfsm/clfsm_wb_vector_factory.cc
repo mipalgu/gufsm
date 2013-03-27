@@ -60,7 +60,15 @@
 #include "guwhiteboardwatcher.h"
 
 using namespace FSM;
+using namespace guWhiteboard;
+using namespace std;
 
 CLFSMWBVectorFactory::CLFSMWBVectorFactory(WBContext *wbcontext, bool deleteOnDestruction): CLFSMVectorFactory(wbcontext, deleteOnDestruction)
 {
+}
+
+
+void CLFSMWBVectorFactory::whiteboard_fsm_control(WBTypes t, FSMControlStatus &controlMsg)
+{
+        
 }

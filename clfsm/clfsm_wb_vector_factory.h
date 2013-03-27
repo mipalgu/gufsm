@@ -60,6 +60,7 @@
 #define ____clfsm_wb_vector_factory__
 
 #include "clfsm_vector_factory.h"
+#include "guwhiteboardwatcher.h"
 
 #ifdef bool
 #undef bool
@@ -77,6 +78,11 @@
 namespace FSM
 {
         class WBContext;
+}
+
+namespace guWhiteboard
+{
+        class FSMControlStatus;
 }
 
 /**
@@ -97,6 +103,11 @@ public:
 
         /** context setter */
         void setContext(FSM::WBContext *context) { _context = (FSM::Context *) context; }
+
+        /**
+         * whiteboard callback for control message
+         */
+        void whiteboard_fsm_control(guWhiteboard::WBTypes t, guWhiteboard::FSMControlStatus &controlMsg);
 };
 
 #pragma clang diagnostic pop
