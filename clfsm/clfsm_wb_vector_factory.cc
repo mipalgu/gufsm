@@ -55,20 +55,50 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#include "FSMWBContext.h"
+#include "FSMachineVector.h"
 #include "clfsm_wb_vector_factory.h"
-#include "guwhiteboardwatcher.h"
+#include "gugenericwhiteboardobject.h"
+#include "typeClassDefs/FSM_Control.h"
 
 using namespace FSM;
 using namespace guWhiteboard;
 using namespace std;
 
-CLFSMWBVectorFactory::CLFSMWBVectorFactory(WBContext *wbcontext, bool deleteOnDestruction): CLFSMVectorFactory(wbcontext, deleteOnDestruction)
+CLFSMWBVectorFactory::CLFSMWBVectorFactory(Context *context, bool deleteOnDestruction): CLFSMVectorFactory(context, deleteOnDestruction)
 {
 }
 
 
 void CLFSMWBVectorFactory::whiteboard_fsm_control(WBTypes t, FSMControlStatus &controlMsg)
 {
-        
+        FSMControlType command = controlMsg.command();
+
+        switch (command)
+        {
+                case guWhiteboard::FSMStatus:
+                        postMachineStatus();
+                        break;
+                case guWhiteboard::FSMSuspend:
+                        break;
+                case guWhiteboard::FSMResume:
+                        break;
+                case guWhiteboard::FSMRestart:
+                        break;
+        }
 }
+
+
+void CLFSMWBVectorFactory::postMachineStatus()
+{
+        FSMControlStatus status;
+
+        int i = 0;
+        for (MachineVector::const_iterator it = fsms()->machines().begin(); it != fsms()->machines().end(); it++, i++)
+        {
+                if (i >= int(CONTROLSTATUS_NUM_FSMS-1))
+                        break;
+                const SuspensibleMachine *machine = *it;
+                status.fsms().set(i, machine->isSuspended());
+        }
+}
+

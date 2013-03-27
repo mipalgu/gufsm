@@ -151,13 +151,9 @@
 		F1D5759F1627956E00976A23 /* CLTransitionExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F170781D15F95B830058AECD /* CLTransitionExpression.cc */; };
 		F1D575A01627959C00976A23 /* FSMAction.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC334142C3433001F788B /* FSMAction.cc */; };
 		F1D575A1162795A600976A23 /* FSMExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1199D5F14302767003853BF /* FSMExpression.cc */; };
-		F1D575A2162795B000976A23 /* FSMWBPredicate.cc in Sources */ = {isa = PBXBuildFile; fileRef = F192CCDF144D291F00FF8526 /* FSMWBPredicate.cc */; };
-		F1D575A3162795B600976A23 /* FSMWBQueryPredicate.cc in Sources */ = {isa = PBXBuildFile; fileRef = F132711B1452812500E5786D /* FSMWBQueryPredicate.cc */; };
-		F1D575A4162795CD00976A23 /* FSMWBContext.cc in Sources */ = {isa = PBXBuildFile; fileRef = F192CCE5144D356300FF8526 /* FSMWBContext.cc */; };
 		F1D575A5162795D500976A23 /* FSMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30B142C0CDE001F788B /* FSMachine.cc */; };
 		F1D575A6162795DB00976A23 /* FSMState.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30F142C0F86001F788B /* FSMState.cc */; };
 		F1D575A7162795E700976A23 /* FSMSuspensibleMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F191E604142D9B970014AF84 /* FSMSuspensibleMachine.cc */; };
-		F1D575A8162795ED00976A23 /* FSMWBSubMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1AFCD2E147B8F7800C975DC /* FSMWBSubMachine.cc */; };
 		F1D575A91627960400976A23 /* FSMTransition.cc in Sources */ = {isa = PBXBuildFile; fileRef = F12DCDD71484BAD100461AD6 /* FSMTransition.cc */; };
 		F1D575AA1627960D00976A23 /* stringConstants.c in Sources */ = {isa = PBXBuildFile; fileRef = F5EE57F61487441C001F6C9C /* stringConstants.c */; };
 		F1D575AB1627962E00976A23 /* FSMActivity.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC312142C1247001F788B /* FSMActivity.cc */; };
@@ -2637,13 +2633,9 @@
 				F1D5759F1627956E00976A23 /* CLTransitionExpression.cc in Sources */,
 				F1D575A01627959C00976A23 /* FSMAction.cc in Sources */,
 				F1D575A1162795A600976A23 /* FSMExpression.cc in Sources */,
-				F1D575A2162795B000976A23 /* FSMWBPredicate.cc in Sources */,
-				F1D575A3162795B600976A23 /* FSMWBQueryPredicate.cc in Sources */,
-				F1D575A4162795CD00976A23 /* FSMWBContext.cc in Sources */,
 				F1D575A5162795D500976A23 /* FSMachine.cc in Sources */,
 				F1D575A6162795DB00976A23 /* FSMState.cc in Sources */,
 				F1D575A7162795E700976A23 /* FSMSuspensibleMachine.cc in Sources */,
-				F1D575A8162795ED00976A23 /* FSMWBSubMachine.cc in Sources */,
 				F1D575A91627960400976A23 /* FSMTransition.cc in Sources */,
 				F1D575AB1627962E00976A23 /* FSMActivity.cc in Sources */,
 				F1D575AA1627960D00976A23 /* stringConstants.c in Sources */,

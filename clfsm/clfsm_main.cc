@@ -60,7 +60,7 @@
 #include <unistd.h>
 
 #include "gu_util.h"
-#include "FSMWBSubMachine.h"
+#include "FSMSuspensibleMachine.h"
 #include "FSMachineVector.h"
 #include "clfsm_machine.h"
 #include "clfsm_wb_vector_factory.h"

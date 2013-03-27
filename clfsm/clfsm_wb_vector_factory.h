@@ -77,7 +77,7 @@
 
 namespace FSM
 {
-        class WBContext;
+        class Context;
 }
 
 namespace guWhiteboard
@@ -96,18 +96,23 @@ public:
          * @param[in] wbcontext                 Whiteboard context to use.
          * @param[in] deleteOnDestruction       Delete non-NULL wbcontext on destruction
          */
-        CLFSMWBVectorFactory(FSM::WBContext *wbcontext = NULL, bool deleteOnDestruction = false);
+        CLFSMWBVectorFactory(FSM::Context *wbcontext = NULL, bool deleteOnDestruction = false);
 
         /** context getter */
-        FSM::WBContext *context() { return (FSM::WBContext *)(_context); }
+        FSM::Context *context() { return (FSM::Context *)(_context); }
 
         /** context setter */
-        void setContext(FSM::WBContext *context) { _context = (FSM::Context *) context; }
+        void setContext(FSM::Context *context) { _context = (FSM::Context *) context; }
 
         /**
          * whiteboard callback for control message
          */
         void whiteboard_fsm_control(guWhiteboard::WBTypes t, guWhiteboard::FSMControlStatus &controlMsg);
+
+        /**
+         * post the status of all machines on the whiteboard
+         */
+        void postMachineStatus();
 };
 
 #pragma clang diagnostic pop

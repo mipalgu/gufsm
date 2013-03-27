@@ -96,13 +96,13 @@ namespace FSM
                 virtual ~SuspensibleMachine();
 
                 /** suspend state getter method */
-                State *suspendState() { return _suspendState; }
+                State *suspendState() const { return _suspendState; }
 
                 /** suspend state setter */
                 void setSuspendState(State *s, bool del = false);
 
                 /** tell whether this machine is suspended */
-                bool isSuspended() { return _suspendState && currentState() == _suspendState; }
+                bool isSuspended() const { return _suspendState && currentState() == _suspendState; }
 
                 /** suspend this state machine */
                 virtual void suspend();

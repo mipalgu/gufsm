@@ -79,7 +79,7 @@
 
 using namespace FSM;
 
-int Machine::currentStateID()
+int Machine::currentStateID() const
 {
         return _currentState->stateID();
 }
@@ -186,10 +186,10 @@ State *Machine::restart(State *initialState)
         return oldState;
 }
 
-State *Machine::stateForID(int state_id)
+State *Machine::stateForID(int state_id) const
 {
-        for (StateVector::const_iterator it = states().begin();
-             it != states().end(); it++)
+        for (StateVector::const_iterator it = const_states().begin();
+             it != const_states().end(); it++)
         {
                 State *s = *it;
                 if (s->stateID() == state_id)
@@ -201,12 +201,12 @@ State *Machine::stateForID(int state_id)
 
 using namespace std;
 
-string Machine::description()
+string Machine::description() const
 {
         stringstream ss;
         int i = 0;
-        for (StateVector::const_iterator it = states().begin();
-             it != states().end(); it++)
+        for (StateVector::const_iterator it = const_states().begin();
+             it != const_states().end(); it++)
         {
                 State *s = *it;
                 ss << "State " << i++ << " (" << (long) s <<  "): " << s->description() << endl;
@@ -281,11 +281,11 @@ const LocalKripkeFrezzePointVector &Machine::localKripkeStateNames(bool snapshot
         return _localKripkeStateNames;
 }
 
-string Machine::initialStateName()
+string Machine::initialStateName() const
 {
         stringstream ss;
         
-                ss << "M"<< id() << "$$" << pcBefore << (states()[0])->name();
+                ss << "M"<< id() << "$$" << pcBefore << (const_states()[0])->name();
  
         return ss.str();
 }

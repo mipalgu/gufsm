@@ -206,7 +206,7 @@ bool WBSubMachine::executeOnce(bool *fired)
 //                 * that a monitoring module can identify the machines without
 //                 * their name. Post a number of times incase the messages don't
 //                 * make it to the whiteboard. */
-//                int mpostcount = getMachineIdPostCount();
+//                int mpostcount = machineIdPostCount();
 //                ANTLRContext * c = (ANTLRContext *) context();
 //                if ( mpostcount < TIMES_TO_POST_NAME_AND_ID ) 
 //                {

@@ -194,10 +194,13 @@ namespace FSM
                 void setID(int i) { _id = i; }
 
                 /** ID getter */
-                int id() { return _id; }
+                int id() const { return _id; }
 
                 /** states getter method */
                 StateVector &states() { return _states; }
+
+                /** const states getter method */
+                const StateVector &const_states() const { return _states; }
                 
                 /** states setter method */
                 void setStates(const StateVector &sv) { _states = sv; }
@@ -206,22 +209,22 @@ namespace FSM
                 void addState(State *s) { _states.push_back(s); }
 
                 /** get the current state */
-                State *currentState() { return _currentState; }
+                State *currentState() const { return _currentState; }
 
                 /** set the current state */
                 void setCurrentState(State *s) { _currentState = s; }
 
                 /** get the current state ID */
-                int currentStateID();
+                int currentStateID() const;
 
                 /** get the preceding state */
-                State *previousState() { return _previousState; }
+                State *previousState() const { return _previousState; }
 
                 /** set the preceding state */
                 void setPreviousState(State *s) { _previousState = s; }
 		
 		/** is this machine being monitored? **/
-		bool isBeingMonitored() { return _beingMonitored; }
+		bool isBeingMonitored() const { return _beingMonitored; }
 		
 		/** start posting internal and global variables to the
 		  * whiteboard. */
@@ -231,23 +234,23 @@ namespace FSM
                 const timeval &stateTime() const { return _state_time; }
 
                 /** get the current activity's start time */
-                const timeval &activityTime() { return _actty_time; }
+                const timeval &activityTime() const { return _actty_time; }
 
                 /** get the internal activities counter */
-                long activitiesCount() { return _activities_count; }
+                long activitiesCount() const { return _activities_count; }
 
                 /** set the internal activities counter */
                 void setActivitiesCount(long n = 0) { _activities_count = n; }
 
                 /** context getter */
-                Context *context() { return _context; }
+                Context *context() const { return _context; }
 
                 /** context setter */
                 void setContext(Context *ctx = NULL) { _context = ctx; }
 		
 		/** If we are monitoring machines, how many times have we
 		  * pose the name and id of each machine being executed? */
-		int getMachineIdPostCount() { return _machineIdPostCount; }
+		int machineIdPostCount() const { return _machineIdPostCount; }
 		
 		void setMachineIdPostCount(int i) { _machineIdPostCount = i; }
 
@@ -274,19 +277,19 @@ namespace FSM
                 /**
                  * printable state machine description
                  */
-                virtual std::string description();
+                virtual std::string description() const;
                 
                 /**
                  *maybe the Kripke structure of a FSM
                  */
                 virtual std::string kripkeInSVMformat();
-                
+
                 /**
                  * PC values in the Kripke structure of this machine
                  * return false if failure
                  */
                 const LocalKripkeFrezzePointVector &localKripkeStateNames(bool      snapshotPerTransition=false);
-     
+
                 size_t sizeLocalKripkeStateNames()
                 { return _localKripkeStateNames.size();
                 }
@@ -294,10 +297,8 @@ namespace FSM
                 /**
                  * PC values in the Kripke structure of intial state of this machine
                  */
-                virtual std::string initialStateName();
-                
-              
-                
+                virtual std::string initialStateName() const;
+
                 /**
                  * restart the current state machine from initial state
                  * @param initialState state to start from (default: first state)
@@ -310,7 +311,7 @@ namespace FSM
                  * @param state_id      state to start from (default: first state)
                  * @return previous     state the machine was in
                  */
-                virtual State *stateForID(int state_id);
+                virtual State *stateForID(int state_id) const;
 
                 /**
                  * execute the OnEntry stage
