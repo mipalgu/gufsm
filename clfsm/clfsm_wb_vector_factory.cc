@@ -57,6 +57,7 @@
  */
 #include "FSMAsynchronousSuspensibleMachine.h"
 #include "FSMachineVector.h"
+#include "CLMachine.h"
 #include "clfsm_wb_vector_factory.h"
 #include "gugenericwhiteboardobject.h"
 
@@ -70,7 +71,7 @@ CLFSMWBVectorFactory::CLFSMWBVectorFactory(Context *context, bool deleteOnDestru
 }
 
 
-void CLFSMWBVectorFactory::whiteboard_fsm_control(WBTypes t, FSMControlStatus &controlMsg)
+void CLFSMWBVectorFactory::whiteboard_fsm_control(WBTypes, FSMControlStatus &controlMsg)
 {
         FSMControlType command = controlMsg.command();
 
@@ -89,6 +90,12 @@ void CLFSMWBVectorFactory::whiteboard_fsm_control(WBTypes t, FSMControlStatus &c
 }
 
 
+void CLFSMWBVectorFactory::whiteboard_fsm_names(WBTypes, FSMNames &namesReq)
+{
+        postMachineNamesFromIndex(namesReq.startoffs());
+}
+
+
 void CLFSMWBVectorFactory::postMachineStatus()
 {
         FSMControlStatus status;
@@ -103,7 +110,7 @@ void CLFSMWBVectorFactory::postMachineStatus()
                 const SuspensibleMachine *machine = *it;
                 status.fsms().set(i, machine->isSuspended());
         }
-        status.fsms().set(i, true);     // set the high bit to 1
+        status.fsms().set(i);           // set the high bit to 1
 
         wbstatus().set(status);         // post to whiteboard
 }
@@ -124,11 +131,11 @@ void CLFSMWBVectorFactory::suspendMachines(guWhiteboard::FSMControlStatus &suspe
                 if (suspendControl.fsms()[i])
                 {
                         machine->scheduleSuspend();
-                        status.fsms().set(i, true);
+                        status.fsms().set(i);
                 }
                 else status.fsms().set(i, machine->isSuspended());
         }
-        status.fsms().set(i, true);     // set the high bit to 1
+        status.fsms().set(i);           // set the high bit to 1
         
         wbstatus().set(status);         // post to whiteboard
 }
@@ -149,12 +156,12 @@ void CLFSMWBVectorFactory::resumeMachines(guWhiteboard::FSMControlStatus &resume
                 if (resumeControl.fsms()[i])
                 {
                         machine->scheduleResume();
-                        status.fsms().set(i, false);
+                        status.fsms().reset(i);
                 }
                 else status.fsms().set(i, machine->isSuspended());
         }
-        status.fsms().set(i, true);     // set the high bit to 1
-        
+        status.fsms().set(i);           // set the high bit to 1
+
         wbstatus().set(status);         // post to whiteboard
 }
 
@@ -174,11 +181,60 @@ void CLFSMWBVectorFactory::restartMachines(guWhiteboard::FSMControlStatus &resum
                 if (resumeControl.fsms()[i])
                 {
                         machine->scheduleRestart();
-                        status.fsms().set(i, false);
+                        status.fsms().reset(i);
                 }
                 else status.fsms().set(i, machine->isSuspended());
         }
-        status.fsms().set(i, true);     // set the high bit to 1
+        status.fsms().set(i);           // set the high bit to 1
         
         wbstatus().set(status);         // post to whiteboard
 }
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+
+void CLFSMWBVectorFactory::postMachineNames()
+{
+        int n = int(fsms()->machines().size());
+        int postCount = 0;
+        int16_t index = -1;
+        for (uint16_t oldIndex = 0; index < n; index = postMachineNamesFromIndex(oldIndex))
+        {
+                if (index == oldIndex) break;
+                if (postCount) protected_msleep(20);
+                if ((++postCount % GU_SIMPLE_WHITEBOARD_GENERATIONS) == 0)
+                        protected_msleep(80);
+                oldIndex = index;
+        }
+}
+
+#pragma clang diagnostic pop
+
+
+uint16_t CLFSMWBVectorFactory::postMachineNamesFromIndex(uint16_t index)
+{
+        FSMNames name_info;
+
+        name_info.set_startoffs(index);
+        char *currentName = name_info.names();
+
+        int n = int(_clmachines.size());
+        while (index < n)
+        {
+                CLMachine *machine = _clmachines[index];
+                const char *machine_name = machine->machineName();
+                int len = int(strlen(machine_name));
+                if (!machine_name || len >= name_info.available_space(currentName))
+                        break;
+                strcpy(currentName, machine_name);
+                currentName += len;
+                *currentName++ = '\0';
+                index++;
+        }
+        if (name_info.available_space(currentName)) *currentName = '\0';
+
+        wbfsmnames().set(name_info);
+
+        return index;
+}
+

@@ -92,7 +92,7 @@ namespace FSM
         {
                 whiteboard_watcher _watcher;            ///< whiteboard watcher to manage subscriptions
                 guWhiteboard::FSM_Status_t _wbstatus;   ///< current whiteboard status of machines
-
+                guWhiteboard::FSM_Names_t _wbfsmnames;  ///< fsm name information on the whiteboard
         public:
                 /**
                  * Designated constructor.
@@ -111,13 +111,21 @@ namespace FSM
                 whiteboard_watcher &watcher() { return _watcher; }
                 
                 /** status getter */
-                guWhiteboard::FSM_Status_t wbstatus() { return _wbstatus; }
-                
+                guWhiteboard::FSM_Status_t &wbstatus() { return _wbstatus; }
+
+                /** names getter */
+                guWhiteboard::FSM_Names_t &wbfsmnames() { return _wbfsmnames; }
+
                 /**
                  * whiteboard callback for control message
                  */
                 void whiteboard_fsm_control(guWhiteboard::WBTypes t, guWhiteboard::FSMControlStatus &controlMsg);
                 
+                /**
+                 * whiteboard callback for names message
+                 */
+                void whiteboard_fsm_names(guWhiteboard::WBTypes t, guWhiteboard::FSMNames &namesReq);
+
                 /// post the status of all machines on the whiteboard
                 void postMachineStatus();
                 
@@ -129,6 +137,12 @@ namespace FSM
                 
                 /// restart the machines whose bits are 1
                 void restartMachines(guWhiteboard::FSMControlStatus &restartControl);
+
+                /// post the names of the current machines on the whiteboard
+                void postMachineNames();
+
+                /// post one packet of names starting from the given index
+                uint16_t postMachineNamesFromIndex(uint16_t index);
         };
 }
 #pragma clang diagnostic pop
