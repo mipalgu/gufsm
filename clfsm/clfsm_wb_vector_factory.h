@@ -60,6 +60,7 @@
 #define ____clfsm_wb_vector_factory__
 
 #include "clfsm_vector_factory.h"
+#include "typeClassDefs/FSM_Control.h"
 #include "guwhiteboardwatcher.h"
 
 #ifdef bool
@@ -75,10 +76,10 @@
 #pragma clang diagnostic ignored "-Wpadded"
 #pragma clang diagnostic ignored "-Wweak-vtables"
 
-namespace guWhiteboard
-{
-        class FSMControlStatus;
-}
+//namespace guWhiteboard
+//{
+//        class FSMControlStatus;
+//}
 
 /**
  * Factory for whiteboard-controlled FSMs

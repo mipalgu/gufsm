@@ -59,7 +59,6 @@
 #include "FSMachineVector.h"
 #include "clfsm_wb_vector_factory.h"
 #include "gugenericwhiteboardobject.h"
-#include "typeClassDefs/FSM_Control.h"
 
 using namespace FSM;
 using namespace guWhiteboard;
@@ -67,7 +66,7 @@ using namespace std;
 
 CLFSMWBVectorFactory::CLFSMWBVectorFactory(Context *context, bool deleteOnDestruction): CLFSMVectorFactory(context, deleteOnDestruction), _watcher(),  _wbstatus()
 {
-//        SUBSCRIBE(&watcher(), FSM_Control, FSM::CLFSMWBVectorFactory, FSM::CLFSMWBVectorFactory::whiteboard_fsm_control);
+        SUBSCRIBE(&watcher(), FSM_Control, FSM::CLFSMWBVectorFactory, FSM::CLFSMWBVectorFactory::whiteboard_fsm_control);
 }
 
 
