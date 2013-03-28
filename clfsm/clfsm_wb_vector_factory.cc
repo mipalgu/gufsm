@@ -55,6 +55,7 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#include "FSMAsynchronousSuspensibleMachine.h"
 #include "FSMachineVector.h"
 #include "clfsm_wb_vector_factory.h"
 #include "gugenericwhiteboardobject.h"
@@ -64,8 +65,9 @@ using namespace FSM;
 using namespace guWhiteboard;
 using namespace std;
 
-CLFSMWBVectorFactory::CLFSMWBVectorFactory(Context *context, bool deleteOnDestruction): CLFSMVectorFactory(context, deleteOnDestruction)
+CLFSMWBVectorFactory::CLFSMWBVectorFactory(Context *context, bool deleteOnDestruction): CLFSMVectorFactory(context, deleteOnDestruction), _watcher(),  _wbstatus()
 {
+//        SUBSCRIBE(&watcher(), FSM_Control, FSM::CLFSMWBVectorFactory, FSM::CLFSMWBVectorFactory::whiteboard_fsm_control);
 }
 
 
@@ -92,6 +94,8 @@ void CLFSMWBVectorFactory::postMachineStatus()
 {
         FSMControlStatus status;
 
+        status.fsms().reset();
+
         int i = 0;
         for (MachineVector::const_iterator it = fsms()->machines().begin(); it != fsms()->machines().end(); it++, i++)
         {
@@ -100,5 +104,82 @@ void CLFSMWBVectorFactory::postMachineStatus()
                 const SuspensibleMachine *machine = *it;
                 status.fsms().set(i, machine->isSuspended());
         }
+        status.fsms().set(i, true);     // set the high bit to 1
+
+        wbstatus().set(status);         // post to whiteboard
 }
 
+
+void CLFSMWBVectorFactory::suspendMachines(guWhiteboard::FSMControlStatus &suspendControl)
+{
+        FSMControlStatus status;
+        
+        status.fsms().reset();
+
+        int i = 0;
+        for (MachineVector::iterator it = fsms()->machines().begin(); it != fsms()->machines().end(); it++, i++)
+        {
+                if (i >= int(CONTROLSTATUS_NUM_FSMS-1))
+                        break;
+                AsynchronousSuspensibleMachine *machine = static_cast<AsynchronousSuspensibleMachine *>(*it);
+                if (suspendControl.fsms()[i])
+                {
+                        machine->scheduleSuspend();
+                        status.fsms().set(i, true);
+                }
+                else status.fsms().set(i, machine->isSuspended());
+        }
+        status.fsms().set(i, true);     // set the high bit to 1
+        
+        wbstatus().set(status);         // post to whiteboard
+}
+
+
+void CLFSMWBVectorFactory::resumeMachines(guWhiteboard::FSMControlStatus &resumeControl)
+{
+        FSMControlStatus status;
+
+        status.fsms().reset();
+        
+        int i = 0;
+        for (MachineVector::iterator it = fsms()->machines().begin(); it != fsms()->machines().end(); it++, i++)
+        {
+                if (i >= int(CONTROLSTATUS_NUM_FSMS-1))
+                        break;
+                AsynchronousSuspensibleMachine *machine = static_cast<AsynchronousSuspensibleMachine *>(*it);
+                if (resumeControl.fsms()[i])
+                {
+                        machine->scheduleResume();
+                        status.fsms().set(i, false);
+                }
+                else status.fsms().set(i, machine->isSuspended());
+        }
+        status.fsms().set(i, true);     // set the high bit to 1
+        
+        wbstatus().set(status);         // post to whiteboard
+}
+
+
+void CLFSMWBVectorFactory::restartMachines(guWhiteboard::FSMControlStatus &resumeControl)
+{
+        FSMControlStatus status;
+        
+        status.fsms().reset();
+        
+        int i = 0;
+        for (MachineVector::iterator it = fsms()->machines().begin(); it != fsms()->machines().end(); it++, i++)
+        {
+                if (i >= int(CONTROLSTATUS_NUM_FSMS-1))
+                        break;
+                AsynchronousSuspensibleMachine *machine = static_cast<AsynchronousSuspensibleMachine *>(*it);
+                if (resumeControl.fsms()[i])
+                {
+                        machine->scheduleRestart();
+                        status.fsms().set(i, false);
+                }
+                else status.fsms().set(i, machine->isSuspended());
+        }
+        status.fsms().set(i, true);     // set the high bit to 1
+        
+        wbstatus().set(status);         // post to whiteboard
+}

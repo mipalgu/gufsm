@@ -158,15 +158,11 @@ namespace FSM
 
 		int _machineIdPostCount; /**< How many times have we posted machine name/id pairs
 					  *   to the whiteboard? */
-        protected:
-                /* Communicate back to FSMInterpreter class. */
-                ExecCom_Struct * _execCom;
         public:
                 /** constructor */
                 Machine(State *initial = NULL, 
                         Context *ctx = NULL, int mid=0,
-			bool beingMonitored=false,
-			ExecCom_Struct * execCom = NULL):
+			bool beingMonitored=false):
                    _context(ctx),
                    _states(),
                    _currentState(initial),
@@ -178,8 +174,6 @@ namespace FSM
                    _have_kripke_states(false),
 		   _machineIdPostCount(0)
                 {
-                        _execCom = execCom;
-                        
                         if (initial)
                         {
                                 addState(initial);

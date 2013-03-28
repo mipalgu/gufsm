@@ -1,9 +1,9 @@
 /*
- *  FSMSuspensibleMachine.h
- *  
- *  Created by René Hexel on 24/09/11.
- *  Copyright (c) 2011 Rene Hexel.
- *  All rights reserved.
+ *  FSMAsynchronousSuspensibleMachine.h
+ *  gufsm
+ *
+ *  Created by Rene Hexel on 25/03/13.
+ *  Copyright (c) 2013 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -55,11 +55,11 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef gufsm_FSMSuspensibleMachine_h
-#define gufsm_FSMSuspensibleMachine_h
+#ifndef __gufsm__FSMAsynchronousSuspensibleMachine__
+#define __gufsm__FSMAsynchronousSuspensibleMachine__
 
-#include "FSMachine.h"
-#include "ExecComStruct.h"
+#include "FSMSuspensibleMachine.h"
+
 
 #ifdef bool
 #undef bool
@@ -72,55 +72,58 @@
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wpadded"
-#pragma clang diagnostic ignored "-Wunused-parameter"
 
 namespace FSM
 {
-        class State;
+        class Context;
 
-        class SuspensibleMachine: public Machine
+        /**
+         * Suspensible FSM with a whiteboard
+         */
+        class AsynchronousSuspensibleMachine: public SuspensibleMachine
         {
-                State *_suspendState;           /// the suspend state
-                State *_resumeState;            /// state to resume to
-                bool _deleteSuspendState;       /// should delete in destructor?
+        protected:
+                bool _scheduleSuspend;  ///< should suspend when executing next time
+                bool _scheduleResume;   ///< should resume when executing next time
+                bool _scheduleRestart;  ///< should restart when executing next time
         public:
                 /** constructor */
-                SuspensibleMachine(State *initialState = NULL, 
-                                   Context *ctx = NULL, int mid=0,
-                                   State *s = NULL, bool del = false):
-                                Machine(initialState, ctx, mid),
-                                _suspendState(s),
-                                _resumeState(NULL),
-                                _deleteSuspendState(del) {}
-                /** destructor */
-                virtual ~SuspensibleMachine();
+                AsynchronousSuspensibleMachine(State *initialState = NULL,
+                                               Context *ctx = NULL,
+                                               int mid=0,
+                                               State *s = NULL,
+                                               bool del = false);
 
-                /** suspend state getter method */
-                State *suspendState() const { return _suspendState; }
+                // /** destructor */
+                //virtual ~AsynchronousSuspensibleMachine();
 
-                /** suspend state setter */
-                void setSuspendState(State *s, bool del = false);
-
-                /** tell whether this machine is suspended */
-                bool isSuspended() const { return _suspendState && currentState() == _suspendState; }
-
+                /** execute once */
+                virtual bool executeOnce(bool *fired=NULL);
+                
                 /** suspend this state machine */
                 virtual void suspend();
-
+                
                 /** resume this state machine where it left off */
                 virtual void resume();
+                
+                /** restart this state machine from its initial state */
+                virtual State *restart(State *initialState = NULL);
 
                 /** is this machine scheduled for resumption? */
-                virtual bool scheduledForResume() const { return false; }
-
+                virtual bool scheduledForResume() const { return _scheduleResume; }
+                
                 /** is this machine scheduled for restart? */
-                virtual bool scheduledForRestart() const { return false; }
+                virtual bool scheduledForRestart() const { return _scheduleRestart; }
 
-                /** schedule suspend (subclass responsibility */
-                virtual void scheduleSuspend(bool s=true) { if (s) suspend(); }
+                /** schedule suspend */
+                virtual void scheduleSuspend(bool s=true) { _scheduleSuspend = s; }
+                
+                /** schedule resume */
+                virtual void scheduleResume(bool s=true) { _scheduleResume = s; }
+                
+                /** schedule restart */
+                virtual void scheduleRestart(bool s=true) { _scheduleRestart = s; }
         };
 }
 
-#pragma clang diagnostic pop
-
-#endif
+#endif /* defined(__gufsm__FSMAsynchronousSuspensibleMachine__) */

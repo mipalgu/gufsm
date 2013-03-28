@@ -55,7 +55,7 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#include "FSMSuspensibleMachine.h"
+#include "FSMAsynchronousSuspensibleMachine.h"
 #include "FSMTransition.h"
 #include "FSMState.h"
 #include "CLMachine.h"
@@ -127,7 +127,7 @@ CLFSMFactory::CLFSMFactory(Context *context, CLMachine *clm, int mid, bool del):
 
 void CLFSMFactory::createMachine(CLMachine *clm, Context *context, State *initialState, int mid, const char *name)
 {
-        SuspensibleMachine *fsm = new SuspensibleMachine(initialState, context, mid);
+        AsynchronousSuspensibleMachine *fsm = new AsynchronousSuspensibleMachine(initialState, context, mid);
         setMachine(fsm);
         clm->setMachineContext(fsm);
 }

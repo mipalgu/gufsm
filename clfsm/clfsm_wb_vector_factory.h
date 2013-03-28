@@ -75,11 +75,6 @@
 #pragma clang diagnostic ignored "-Wpadded"
 #pragma clang diagnostic ignored "-Wweak-vtables"
 
-namespace FSM
-{
-        class Context;
-}
-
 namespace guWhiteboard
 {
         class FSMControlStatus;
@@ -88,33 +83,53 @@ namespace guWhiteboard
 /**
  * Factory for whiteboard-controlled FSMs
  */
-class CLFSMWBVectorFactory: public FSM::CLFSMVectorFactory
+namespace FSM
 {
-public:
-        /**
-         * Designated constructor.
-         * @param[in] wbcontext                 Whiteboard context to use.
-         * @param[in] deleteOnDestruction       Delete non-NULL wbcontext on destruction
-         */
-        CLFSMWBVectorFactory(FSM::Context *wbcontext = NULL, bool deleteOnDestruction = false);
+        class Context;
 
-        /** context getter */
-        FSM::Context *context() { return (FSM::Context *)(_context); }
+        class CLFSMWBVectorFactory: public FSM::CLFSMVectorFactory
+        {
+                whiteboard_watcher _watcher;            ///< whiteboard watcher to manage subscriptions
+                guWhiteboard::FSM_Status_t _wbstatus;   ///< current whiteboard status of machines
 
-        /** context setter */
-        void setContext(FSM::Context *context) { _context = (FSM::Context *) context; }
-
-        /**
-         * whiteboard callback for control message
-         */
-        void whiteboard_fsm_control(guWhiteboard::WBTypes t, guWhiteboard::FSMControlStatus &controlMsg);
-
-        /**
-         * post the status of all machines on the whiteboard
-         */
-        void postMachineStatus();
-};
-
+        public:
+                /**
+                 * Designated constructor.
+                 * @param[in] wbcontext                 Whiteboard context to use.
+                 * @param[in] deleteOnDestruction       Delete non-NULL wbcontext on destruction
+                 */
+                CLFSMWBVectorFactory(FSM::Context *wbcontext = NULL, bool deleteOnDestruction = false);
+                
+                /** context getter */
+                FSM::Context *context() { return (FSM::Context *)(_context); }
+                
+                /** context setter */
+                void setContext(FSM::Context *context) { _context = (FSM::Context *) context; }
+                
+                /** whiteboard watcher getter */
+                whiteboard_watcher &watcher() { return _watcher; }
+                
+                /** status getter */
+                guWhiteboard::FSM_Status_t wbstatus() { return _wbstatus; }
+                
+                /**
+                 * whiteboard callback for control message
+                 */
+                void whiteboard_fsm_control(guWhiteboard::WBTypes t, guWhiteboard::FSMControlStatus &controlMsg);
+                
+                /// post the status of all machines on the whiteboard
+                void postMachineStatus();
+                
+                /// suspend the machines whose bits are 1
+                void suspendMachines(guWhiteboard::FSMControlStatus &suspendControl);
+                
+                /// resume the machines whose bits are 1
+                void resumeMachines(guWhiteboard::FSMControlStatus &resumeControl);
+                
+                /// restart the machines whose bits are 1
+                void restartMachines(guWhiteboard::FSMControlStatus &restartControl);
+        };
+}
 #pragma clang diagnostic pop
 
 #endif /* defined(____clfsm_wb_vector_factory__) */

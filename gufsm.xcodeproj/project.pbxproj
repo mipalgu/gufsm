@@ -105,6 +105,9 @@
 		F15A2D0F14CF85D900D88624 /* cdlbridge.cc in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C4E14CF81F400D88624 /* cdlbridge.cc */; };
 		F15A2D1014CF85D900D88624 /* cdlbridge_wbmsg.cc in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C5014CF81F400D88624 /* cdlbridge_wbmsg.cc */; };
 		F15A2D1114CF85D900D88624 /* cdlengine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C5214CF81F400D88624 /* cdlengine.cc */; };
+		F16864FA1703BA29003B195F /* FSMAsynchronousSuspensibleMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16864F81703BA29003B195F /* FSMAsynchronousSuspensibleMachine.cc */; };
+		F16864FB1703BA29003B195F /* FSMAsynchronousSuspensibleMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16864F81703BA29003B195F /* FSMAsynchronousSuspensibleMachine.cc */; };
+		F16864FC1703BA29003B195F /* FSMAsynchronousSuspensibleMachine.h in Headers */ = {isa = PBXBuildFile; fileRef = F16864F91703BA29003B195F /* FSMAsynchronousSuspensibleMachine.h */; };
 		F16CC2FF142C0C01001F788B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F16CC2FE142C0C01001F788B /* main.cpp */; };
 		F16CC301142C0C01001F788B /* gufsm.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = F16CC300142C0C01001F788B /* gufsm.1 */; };
 		F16CC310142C0F86001F788B /* FSMState.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30F142C0F86001F788B /* FSMState.cc */; };
@@ -802,6 +805,8 @@
 		F16864F51703A560003B195F /* guwhiteboardtypelist_generated.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = guwhiteboardtypelist_generated.h; sourceTree = "<group>"; };
 		F16864F61703A560003B195F /* guwhiteboardtypelist.tsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = guwhiteboardtypelist.tsl; sourceTree = "<group>"; };
 		F16864F71703A560003B195F /* guwhiteboardwatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = guwhiteboardwatcher.h; sourceTree = "<group>"; };
+		F16864F81703BA29003B195F /* FSMAsynchronousSuspensibleMachine.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMAsynchronousSuspensibleMachine.cc; sourceTree = "<group>"; };
+		F16864F91703BA29003B195F /* FSMAsynchronousSuspensibleMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMAsynchronousSuspensibleMachine.h; sourceTree = "<group>"; };
 		F16CC2FA142C0C01001F788B /* gufsm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = gufsm; sourceTree = BUILT_PRODUCTS_DIR; };
 		F16CC2FE142C0C01001F788B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		F16CC300142C0C01001F788B /* gufsm.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = gufsm.1; sourceTree = "<group>"; };
@@ -1725,6 +1730,8 @@
 				F16CC30E142C0F62001F788B /* FSMState.h */,
 				F191E604142D9B970014AF84 /* FSMSuspensibleMachine.cc */,
 				F191E603142D9A2D0014AF84 /* FSMSuspensibleMachine.h */,
+				F16864F81703BA29003B195F /* FSMAsynchronousSuspensibleMachine.cc */,
+				F16864F91703BA29003B195F /* FSMAsynchronousSuspensibleMachine.h */,
 				F1AFCD2E147B8F7800C975DC /* FSMWBSubMachine.cc */,
 				F1AFCD2D147B8F4200C975DC /* FSMWBSubMachine.h */,
 				F19C2B96142C7B37007CFC83 /* FSMTransition.h */,
@@ -2130,6 +2137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1C7CE6016FFE48300D5D843 /* clfsm_wb_vector_factory.h in Headers */,
+				F16864FC1703BA29003B195F /* FSMAsynchronousSuspensibleMachine.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2568,6 +2576,7 @@
 				F1DF55911584274B0097A438 /* FSMVectorRunner.cc in Sources */,
 				F18AD00C15CBA63800492118 /* FSMANTLRMachineVector.cc in Sources */,
 				F157558E16FC0E5700C6EBA1 /* guwhiteboardtypelist_c_typestrings_generated.c in Sources */,
+				F16864FA1703BA29003B195F /* FSMAsynchronousSuspensibleMachine.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2650,6 +2659,7 @@
 				F15755A116FC0EA700C6EBA1 /* guwhiteboardtypelist_c_typestrings_generated.c in Sources */,
 				F1777E7A16FD97E6006E263E /* gugenericwhiteboardobject.cpp in Sources */,
 				F1C7CE5F16FFE48300D5D843 /* clfsm_wb_vector_factory.cc in Sources */,
+				F16864FB1703BA29003B195F /* FSMAsynchronousSuspensibleMachine.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

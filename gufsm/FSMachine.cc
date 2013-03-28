@@ -117,15 +117,6 @@ bool Machine::executeOnce(bool *fired)
          */
         if (_currentState != _previousState)    // entering a new state?
         {
-                // Inform the UI that we are executing this particular
-                //  state in this particular machine.
-                if (_execCom) {
-                        dispatch_semaphore_wait(_execCom->_flagProtect, DISPATCH_TIME_FOREVER);
-			// Use the machine id as the index of the array.
-                        _execCom->_currentExecutingStateIDs[id()] = _currentState->stateID();
-                        dispatch_semaphore_signal(_execCom->_flagProtect);
-                }
-                
                 gettimeofday(&_state_time, NULL);
                 _activities_count = 0;
                 executeOnEntry();
