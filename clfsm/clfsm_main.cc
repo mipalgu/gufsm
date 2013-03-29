@@ -60,7 +60,7 @@
 #include <unistd.h>
 
 #include "gu_util.h"
-#include "FSMWBSubMachine.h"
+#include "FSMSuspensibleMachine.h"
 #include "FSMachineVector.h"
 #include "clfsm_machine.h"
 #include "clfsm_wb_vector_factory.h"
@@ -148,7 +148,8 @@ int main(int argc, char * const argv[])
         if (!compiler_args.size()) compiler_args = MachineWrapper::default_compiler_args();
         if (!linker_args.size())   linker_args   = MachineWrapper::default_linker_args();
 
-        CLFSMVectorFactory *factory = createMachines(machineWrappers, machines, compiler_args, linker_args);
+        CLFSMWBVectorFactory *factory = createMachines(machineWrappers, machines, compiler_args, linker_args);
+        factory->postMachineStatus();
         factory->fsms()->execute();
         delete factory;
 

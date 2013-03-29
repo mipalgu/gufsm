@@ -59,21 +59,8 @@
 #define gufsm_FSMWBSubMachine_h
 
 #include <Whiteboard.h>
-#include "FSMSuspensibleMachine.h"
+#include "FSMAsynchronousSuspensibleMachine.h"
 #include "ExecComStruct.h"
-
-#ifdef bool
-#undef bool
-#endif
-
-#ifdef true
-#undef true
-#undef false
-#endif
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wpadded"
-
 
 namespace FSM
 {
@@ -82,12 +69,9 @@ namespace FSM
         /**
          * Suspensible FSM with a whiteboard
          */
-        class WBSubMachine: public SuspensibleMachine
+        class WBSubMachine: public AsynchronousSuspensibleMachine
         {
                 bool _deleteContext;    ///< does the machine own its WB context?
-                bool _scheduleSuspend;  ///< should suspend when executing next time
-                bool _scheduleResume;   ///< should resume when executing next time
-                bool _scheduleRestart;  ///< should restart when executing next time
                 std::string _name;      ///< name for the machine on the Whiteboard
         public:
                 /** constructor */
@@ -95,8 +79,7 @@ namespace FSM
                              WBContext *ctx = NULL, 
                              int mid=0,
                              State *s = NULL, 
-                             bool del = false,
-                             ExecCom_Struct * execCom = NULL);
+                             bool del = false);
 
                 /** destructor */
                 virtual ~WBSubMachine();
@@ -110,9 +93,6 @@ namespace FSM
                 /** name setter */
                 void setName(const std::string &name) { _name = name; }
 
-                /** execute once */
-                virtual bool executeOnce(bool *fired=NULL);
-
                 /** suspend this state machine */
                 virtual void suspend();
 
@@ -121,15 +101,6 @@ namespace FSM
 
                 /** restart this state machine where it left off */
                 virtual State *restart(State *initialState = NULL);
-
-                /** is this machine scheduled for resumption? */
-                virtual bool scheduledForResume() { return _scheduleResume; }
-                
-                /** is this machine scheduled for restart? */
-                virtual bool scheduledForRestart() { return _scheduleRestart; }
-
-                /** schedule suspend (subclass responsibility */
-                virtual void scheduleSuspend(bool s=true) { _scheduleSuspend = s; }
 
                 /** return whether the context will be deleted by the destructor */
                 bool willDeleteContext() { return _deleteContext; }

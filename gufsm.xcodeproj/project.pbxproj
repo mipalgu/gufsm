@@ -105,6 +105,9 @@
 		F15A2D0F14CF85D900D88624 /* cdlbridge.cc in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C4E14CF81F400D88624 /* cdlbridge.cc */; };
 		F15A2D1014CF85D900D88624 /* cdlbridge_wbmsg.cc in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C5014CF81F400D88624 /* cdlbridge_wbmsg.cc */; };
 		F15A2D1114CF85D900D88624 /* cdlengine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F15A2C5214CF81F400D88624 /* cdlengine.cc */; };
+		F16864FA1703BA29003B195F /* FSMAsynchronousSuspensibleMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16864F81703BA29003B195F /* FSMAsynchronousSuspensibleMachine.cc */; };
+		F16864FB1703BA29003B195F /* FSMAsynchronousSuspensibleMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16864F81703BA29003B195F /* FSMAsynchronousSuspensibleMachine.cc */; };
+		F16864FC1703BA29003B195F /* FSMAsynchronousSuspensibleMachine.h in Headers */ = {isa = PBXBuildFile; fileRef = F16864F91703BA29003B195F /* FSMAsynchronousSuspensibleMachine.h */; };
 		F16CC2FF142C0C01001F788B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F16CC2FE142C0C01001F788B /* main.cpp */; };
 		F16CC301142C0C01001F788B /* gufsm.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = F16CC300142C0C01001F788B /* gufsm.1 */; };
 		F16CC310142C0F86001F788B /* FSMState.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30F142C0F86001F788B /* FSMState.cc */; };
@@ -151,13 +154,9 @@
 		F1D5759F1627956E00976A23 /* CLTransitionExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F170781D15F95B830058AECD /* CLTransitionExpression.cc */; };
 		F1D575A01627959C00976A23 /* FSMAction.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC334142C3433001F788B /* FSMAction.cc */; };
 		F1D575A1162795A600976A23 /* FSMExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1199D5F14302767003853BF /* FSMExpression.cc */; };
-		F1D575A2162795B000976A23 /* FSMWBPredicate.cc in Sources */ = {isa = PBXBuildFile; fileRef = F192CCDF144D291F00FF8526 /* FSMWBPredicate.cc */; };
-		F1D575A3162795B600976A23 /* FSMWBQueryPredicate.cc in Sources */ = {isa = PBXBuildFile; fileRef = F132711B1452812500E5786D /* FSMWBQueryPredicate.cc */; };
-		F1D575A4162795CD00976A23 /* FSMWBContext.cc in Sources */ = {isa = PBXBuildFile; fileRef = F192CCE5144D356300FF8526 /* FSMWBContext.cc */; };
 		F1D575A5162795D500976A23 /* FSMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30B142C0CDE001F788B /* FSMachine.cc */; };
 		F1D575A6162795DB00976A23 /* FSMState.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30F142C0F86001F788B /* FSMState.cc */; };
 		F1D575A7162795E700976A23 /* FSMSuspensibleMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F191E604142D9B970014AF84 /* FSMSuspensibleMachine.cc */; };
-		F1D575A8162795ED00976A23 /* FSMWBSubMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1AFCD2E147B8F7800C975DC /* FSMWBSubMachine.cc */; };
 		F1D575A91627960400976A23 /* FSMTransition.cc in Sources */ = {isa = PBXBuildFile; fileRef = F12DCDD71484BAD100461AD6 /* FSMTransition.cc */; };
 		F1D575AA1627960D00976A23 /* stringConstants.c in Sources */ = {isa = PBXBuildFile; fileRef = F5EE57F61487441C001F6C9C /* stringConstants.c */; };
 		F1D575AB1627962E00976A23 /* FSMActivity.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC312142C1247001F788B /* FSMActivity.cc */; };
@@ -799,6 +798,15 @@
 		F167F7A815CB38CF00A56F17 /* State_Ping.h */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = State_Ping.h; sourceTree = "<group>"; };
 		F167F7A915CB3CB000A56F17 /* State_Ping.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = State_Ping.mm; sourceTree = "<group>"; };
 		F167F7AB15CB440F00A56F17 /* PingPong_VarRefs.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PingPong_VarRefs.mm; sourceTree = "<group>"; };
+		F16864F11703A560003B195F /* gugenericwhiteboardobject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = gugenericwhiteboardobject.cpp; sourceTree = "<group>"; };
+		F16864F21703A560003B195F /* gugenericwhiteboardobject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gugenericwhiteboardobject.h; sourceTree = "<group>"; };
+		F16864F31703A560003B195F /* guwhiteboardtypelist_c_generated.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = guwhiteboardtypelist_c_generated.h; sourceTree = "<group>"; };
+		F16864F41703A560003B195F /* guwhiteboardtypelist_c_typestrings_generated.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = guwhiteboardtypelist_c_typestrings_generated.c; sourceTree = "<group>"; };
+		F16864F51703A560003B195F /* guwhiteboardtypelist_generated.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = guwhiteboardtypelist_generated.h; sourceTree = "<group>"; };
+		F16864F61703A560003B195F /* guwhiteboardtypelist.tsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = guwhiteboardtypelist.tsl; sourceTree = "<group>"; };
+		F16864F71703A560003B195F /* guwhiteboardwatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = guwhiteboardwatcher.h; sourceTree = "<group>"; };
+		F16864F81703BA29003B195F /* FSMAsynchronousSuspensibleMachine.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMAsynchronousSuspensibleMachine.cc; sourceTree = "<group>"; };
+		F16864F91703BA29003B195F /* FSMAsynchronousSuspensibleMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMAsynchronousSuspensibleMachine.h; sourceTree = "<group>"; };
 		F16CC2FA142C0C01001F788B /* gufsm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = gufsm; sourceTree = BUILT_PRODUCTS_DIR; };
 		F16CC2FE142C0C01001F788B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		F16CC300142C0C01001F788B /* gufsm.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = gufsm.1; sourceTree = "<group>"; };
@@ -957,12 +965,6 @@
 		F1D126F11609382400E526BE /* clfsm_cc.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = clfsm_cc.cc; sourceTree = "<group>"; };
 		F1D126F21609382400E526BE /* clfsm_cc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clfsm_cc.h; sourceTree = "<group>"; };
 		F1D5758D1627948900976A23 /* libclfsm.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libclfsm.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		F1D575901627948900976A23 /* libclfsm-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "libclfsm-Prefix.pch"; sourceTree = "<group>"; };
-		F1D575911627948900976A23 /* libclfsmProj.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = libclfsmProj.xcconfig; sourceTree = "<group>"; };
-		F1D575921627948900976A23 /* libclfsmTarget.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = libclfsmTarget.xcconfig; sourceTree = "<group>"; };
-		F1D575931627948900976A23 /* libclfsm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libclfsm.h; sourceTree = "<group>"; };
-		F1D575941627948900976A23 /* libclfsmPriv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libclfsmPriv.h; sourceTree = "<group>"; };
-		F1D575951627948900976A23 /* libclfsm.cp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = libclfsm.cp; sourceTree = "<group>"; };
 		F1D575B71627B9E400976A23 /* clfsm_main.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = clfsm_main.cc; sourceTree = "<group>"; };
 		F1D962B015F722D400EB0B30 /* FSMANTLRVectorFactory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRVectorFactory.cc; sourceTree = "<group>"; };
 		F1D962B115F7231300EB0B30 /* FSMANTLRMachineFactory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRMachineFactory.cc; sourceTree = "<group>"; };
@@ -1073,6 +1075,13 @@
 				F1284D0014A6CAA800C0247E /* gusimplewhiteboard.c */,
 				F157558D16FC0E5700C6EBA1 /* guwhiteboardtypelist_c_typestrings_generated.c */,
 				F1284D0114A6CAA800C0247E /* gusimplewhiteboard.h */,
+				F16864F11703A560003B195F /* gugenericwhiteboardobject.cpp */,
+				F16864F21703A560003B195F /* gugenericwhiteboardobject.h */,
+				F16864F31703A560003B195F /* guwhiteboardtypelist_c_generated.h */,
+				F16864F41703A560003B195F /* guwhiteboardtypelist_c_typestrings_generated.c */,
+				F16864F51703A560003B195F /* guwhiteboardtypelist_generated.h */,
+				F16864F61703A560003B195F /* guwhiteboardtypelist.tsl */,
+				F16864F71703A560003B195F /* guwhiteboardwatcher.h */,
 				F1284D0214A6CAA800C0247E /* gusimplewhiteboard.xcodeproj */,
 				F1284D0514A6CAA800C0247E /* SimpleWhiteboardTest */,
 				F1284D0C14A6CAA800C0247E /* WBFunctor.h */,
@@ -1721,6 +1730,8 @@
 				F16CC30E142C0F62001F788B /* FSMState.h */,
 				F191E604142D9B970014AF84 /* FSMSuspensibleMachine.cc */,
 				F191E603142D9A2D0014AF84 /* FSMSuspensibleMachine.h */,
+				F16864F81703BA29003B195F /* FSMAsynchronousSuspensibleMachine.cc */,
+				F16864F91703BA29003B195F /* FSMAsynchronousSuspensibleMachine.h */,
 				F1AFCD2E147B8F7800C975DC /* FSMWBSubMachine.cc */,
 				F1AFCD2D147B8F4200C975DC /* FSMWBSubMachine.h */,
 				F19C2B96142C7B37007CFC83 /* FSMTransition.h */,
@@ -2106,11 +2117,6 @@
 		F1D5758E1627948900976A23 /* libclfsm */ = {
 			isa = PBXGroup;
 			children = (
-				F1D575911627948900976A23 /* libclfsmProj.xcconfig */,
-				F1D575921627948900976A23 /* libclfsmTarget.xcconfig */,
-				F1D575931627948900976A23 /* libclfsm.h */,
-				F1D575941627948900976A23 /* libclfsmPriv.h */,
-				F1D575951627948900976A23 /* libclfsm.cp */,
 				F1D5758F1627948900976A23 /* Supporting Files */,
 			);
 			path = libclfsm;
@@ -2119,7 +2125,6 @@
 		F1D5758F1627948900976A23 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F1D575901627948900976A23 /* libclfsm-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -2132,6 +2137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1C7CE6016FFE48300D5D843 /* clfsm_wb_vector_factory.h in Headers */,
+				F16864FC1703BA29003B195F /* FSMAsynchronousSuspensibleMachine.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2570,6 +2576,7 @@
 				F1DF55911584274B0097A438 /* FSMVectorRunner.cc in Sources */,
 				F18AD00C15CBA63800492118 /* FSMANTLRMachineVector.cc in Sources */,
 				F157558E16FC0E5700C6EBA1 /* guwhiteboardtypelist_c_typestrings_generated.c in Sources */,
+				F16864FA1703BA29003B195F /* FSMAsynchronousSuspensibleMachine.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2635,13 +2642,9 @@
 				F1D5759F1627956E00976A23 /* CLTransitionExpression.cc in Sources */,
 				F1D575A01627959C00976A23 /* FSMAction.cc in Sources */,
 				F1D575A1162795A600976A23 /* FSMExpression.cc in Sources */,
-				F1D575A2162795B000976A23 /* FSMWBPredicate.cc in Sources */,
-				F1D575A3162795B600976A23 /* FSMWBQueryPredicate.cc in Sources */,
-				F1D575A4162795CD00976A23 /* FSMWBContext.cc in Sources */,
 				F1D575A5162795D500976A23 /* FSMachine.cc in Sources */,
 				F1D575A6162795DB00976A23 /* FSMState.cc in Sources */,
 				F1D575A7162795E700976A23 /* FSMSuspensibleMachine.cc in Sources */,
-				F1D575A8162795ED00976A23 /* FSMWBSubMachine.cc in Sources */,
 				F1D575A91627960400976A23 /* FSMTransition.cc in Sources */,
 				F1D575AB1627962E00976A23 /* FSMActivity.cc in Sources */,
 				F1D575AA1627960D00976A23 /* stringConstants.c in Sources */,
@@ -2656,6 +2659,7 @@
 				F15755A116FC0EA700C6EBA1 /* guwhiteboardtypelist_c_typestrings_generated.c in Sources */,
 				F1777E7A16FD97E6006E263E /* gugenericwhiteboardobject.cpp in Sources */,
 				F1C7CE5F16FFE48300D5D843 /* clfsm_wb_vector_factory.cc in Sources */,
+				F16864FB1703BA29003B195F /* FSMAsynchronousSuspensibleMachine.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

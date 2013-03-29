@@ -96,7 +96,7 @@ SuspensibleMachine *StateMachineVector::addMachine(SuspensibleMachine *m, int in
         int mid = index;
         if (mid < 0|| mid > size) mid = size;
 
-        if (!m) m = new SuspensibleMachine(NULL, _context, 0, NULL, false, NULL);
+        if (!m) m = new SuspensibleMachine(NULL, _context, 0, NULL, false);
         if (!m->id()) m->setID(mid);
         if (index < 0 || index >= size )
                 _machines.push_back(m);
