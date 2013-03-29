@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>States</key>
+	<dict>
+		<key>Ping</key>
+		<dict>
+			<key>Transitions</key>
+			<array>
+				<dict>
+					<key>controlPoint1X</key>
+					<real>175.00483485492063</real>
+					<key>controlPoint1Y</key>
+					<real>67.511724128771846</real>
+					<key>controlPoint2X</key>
+					<real>256.99441539945656</real>
+					<key>controlPoint2Y</key>
+					<real>70.583436016001002</real>
+					<key>dstPointX</key>
+					<real>298.00104901883094</real>
+					<key>dstPointY</key>
+					<real>70.863438635441312</real>
+					<key>srcPointX</key>
+					<real>133.99855870703144</real>
+					<key>srcPointY</key>
+					<real>67.839929466259008</real>
+				</dict>
+			</array>
+			<key>x</key>
+			<real>89</real>
+			<key>y</key>
+			<real>68</real>
+		</dict>
+		<key>Pong</key>
+		<dict>
+			<key>Transitions</key>
+			<array>
+				<dict>
+					<key>controlPoint1X</key>
+					<real>256.99460523626232</real>
+					<key>controlPoint1Y</key>
+					<real>71.416562687750144</real>
+					<key>controlPoint2X</key>
+					<real>175.00585017195465</real>
+					<key>controlPoint2Y</key>
+					<real>68.366210895381371</real>
+					<key>dstPointX</key>
+					<real>133.99918925566439</real>
+					<key>dstPointY</key>
+					<real>68.120054582563895</real>
+					<key>srcPointX</key>
+					<real>298.00104901883094</real>
+					<key>srcPointY</key>
+					<real>71.136561364558688</real>
+				</dict>
+			</array>
+			<key>x</key>
+			<real>343</real>
+			<key>y</key>
+			<real>71</real>
+		</dict>
+	</dict>
+</dict>
+</plist>
