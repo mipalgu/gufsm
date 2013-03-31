@@ -99,8 +99,8 @@ namespace FSM
                 /** resume this state machine where it left off */
                 virtual void resume();
 
-                /** restart this state machine where it left off */
-                virtual State *restart(State *initialState = NULL);
+                ///** restart this state machine where it left off */
+                //virtual State *restart(State *initialState = NULL);
 
                 /** return whether the context will be deleted by the destructor */
                 bool willDeleteContext() { return _deleteContext; }
