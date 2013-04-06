@@ -134,6 +134,13 @@ string MachineWrapper::binaryDirectory() const
         return ss.str();
 }
 
+string MachineWrapper::includePathFile() const
+{
+        stringstream ss;
+        ss << _fullPath << "/IncludePath";
+
+        return ss.str();
+}
 
 vector<string> MachineWrapper::states() const
 {
@@ -266,13 +273,15 @@ CLMachine *MachineWrapper::instantiate(int id, const char *machine_name)
                 string shared_path = binaryDirectory() + "/" + _name + ".so";
                 if (!(_shared_object = dlopen(shared_path.c_str(), RTLD_NOW|RTLD_GLOBAL)))
                 {
-                        const vector<string> *compiler_args = _compiler_args;
+                        const vector<string> *cmdline_compiler_args = _compiler_args;
                         const vector<string> *linker_args = _linker_args;
+                        vector<string> compiler_args = cmdline_compiler_args ? *cmdline_compiler_args : default_compiler_args();
 
-                        if (!compiler_args) compiler_args = &default_compiler_args();
+                        add_machine_includes(compiler_args);
+
                         if (!linker_args)   linker_args   = &default_linker_args();
 
-                        compile(*compiler_args, *linker_args);
+                        compile(compiler_args, *linker_args);
 
                         if (!(_shared_object = dlopen(shared_path.c_str(), RTLD_NOW|RTLD_GLOBAL)))
                                 return NULL;
@@ -290,6 +299,65 @@ CLMachine *MachineWrapper::instantiate(int id, const char *machine_name)
                 }
         }
         return _factory(id, machine_name);
+}
+
+
+string MachineWrapper::stringByExpandingEnvironmentVariablesInString(string originalString)
+{
+        string expandedString;
+        unsigned start = 0;
+        unsigned pos = originalString.find_first_of('$');
+        while (pos != string::npos)
+        {
+                const char *value;
+                string env;
+                unsigned end;
+                if (pos > start)
+                        expandedString += originalString.substr(start, pos-start);
+                if (originalString[++pos] == '{' && (end = originalString.find_first_of('}', pos+1)) != string::npos)
+                {
+                        ++pos;
+                        env = originalString.substr(pos, end++-pos);
+                }
+                else if ((end = originalString.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJLKMNOPQRSTUVWXYZ0123456789_", pos+1)) != string::npos)
+                {
+                        ++pos;
+                        env = originalString.substr(pos, end-pos);
+                        start = end;
+                }
+                else
+                {
+                        if (originalString[pos] == '$') pos++;
+                        start = pos;
+                        goto skip_converting;
+                }
+                if ((value = getenv(env.c_str()))) expandedString += value;
+
+        skip_converting:
+                pos = originalString.find_first_of('$', start);
+        }
+        if (start < originalString.length())
+                expandedString += originalString.substr(start);
+
+        return expandedString;
+}
+
+
+void MachineWrapper::add_machine_includes(vector<string> &compiler_args)
+{
+        string fn = includePathFile();
+        DBG(cout << fn << endl);
+        ifstream file(fn.c_str());
+
+        while (!file.eof())
+        {
+                string directory;
+                getline(file, directory);
+                if (file.fail())
+                        break;
+                if (directory.length())
+                        compiler_args.push_back(string("-I")+stringByExpandingEnvironmentVariablesInString(directory));
+        }
 }
 
 

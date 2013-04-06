@@ -10,23 +10,29 @@
 			<array>
 				<dict>
 					<key>controlPoint1X</key>
-					<real>174.95281962172302</real>
+					<real>167.73813673358245</real>
 					<key>controlPoint1Y</key>
-					<real>65.529412926868432</real>
+					<real>39.447669653312261</real>
 					<key>controlPoint2X</key>
-					<real>257.02800092085033</real>
+					<real>262.76874484177785</real>
 					<key>controlPoint2Y</key>
-					<real>68.891810088026247</real>
+					<real>44.669101088056593</real>
 					<key>dstPointX</key>
-					<real>298.02686207387967</real>
+					<real>302.08568135161539</real>
 					<key>dstPointY</key>
-					<real>70.309054671093904</real>
+					<real>62.673116219792888</real>
 					<key>srcPointX</key>
-					<real>133.96310488753295</real>
+					<real>129.15289564827063</real>
 					<key>srcPointY</key>
-					<real>67.190281393464289</real>
+					<real>58.970610716859824</real>
 				</dict>
 			</array>
+			<key>expanded</key>
+			<false/>
+			<key>h</key>
+			<real>50</real>
+			<key>w</key>
+			<real>100</real>
 			<key>x</key>
 			<real>89</real>
 			<key>y</key>
@@ -38,27 +44,33 @@
 			<array>
 				<dict>
 					<key>controlPoint1X</key>
-					<real>257.03219725588599</real>
+					<real>281.15089681463513</real>
 					<key>controlPoint1Y</key>
-					<real>73.108044853478731</real>
+					<real>121.89837013719949</real>
 					<key>controlPoint2X</key>
-					<real>174.97945815358855</real>
+					<real>154.68435347317529</real>
 					<key>controlPoint2Y</key>
-					<real>69.853477502962448</real>
+					<real>116.25911971319371</real>
 					<key>dstPointX</key>
-					<real>133.97923532911486</real>
+					<real>120.74926852130508</real>
 					<key>dstPointY</key>
-					<real>68.607506818837891</real>
+					<real>82.173415897199092</real>
 					<key>srcPointX</key>
-					<real>298.02686207387967</real>
+					<real>313.10454269545346</real>
 					<key>srcPointY</key>
-					<real>71.690945328906096</real>
+					<real>85.948548020176162</real>
 				</dict>
 			</array>
+			<key>expanded</key>
+			<false/>
+			<key>h</key>
+			<real>50</real>
+			<key>w</key>
+			<real>100</real>
 			<key>x</key>
-			<real>343</real>
+			<real>289</real>
 			<key>y</key>
-			<real>71</real>
+			<real>65</real>
 		</dict>
 	</dict>
 </dict>

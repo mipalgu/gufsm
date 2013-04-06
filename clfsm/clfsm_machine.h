@@ -97,6 +97,9 @@ namespace FSM
                 /// return the full file system path of the binary directory
                 std::string binaryDirectory() const;
 
+                /// return the full file system path of the include path file
+                std::string includePathFile() const;
+
                 /// set the compiler
                 virtual void setCompiler(Cc *compiler = NULL, bool del = false);
 
@@ -126,6 +129,12 @@ namespace FSM
 
                 /// return the default linker args
                 static const std::vector<std::string> &default_linker_args();
+
+                /// add include directories from the given machine (if any) to the given compiler arguments
+                virtual void add_machine_includes(std::vector<std::string> &compiler_args);
+
+                /// return a string with $FOO or ${FOO} replaced with environment variable
+                static std::string stringByExpandingEnvironmentVariablesInString(std::string originalString);
         };
 }
 
