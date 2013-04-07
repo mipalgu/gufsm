@@ -15,7 +15,7 @@ SPECIFIC_LIBS+=-Wl,-R/usr/local/lib
 .endif
 .endif
 
-SPECIFIC_LIBS+=-L/usr/local/lib -lclfsm -ldl -lc++
+SPECIFIC_LIBS+=-L/usr/local/lib -lclfsm -ldl
 
 CC_SRCS+=clfsm_cc.cc
 CC_SRCS+=clfsm_machine.cc
