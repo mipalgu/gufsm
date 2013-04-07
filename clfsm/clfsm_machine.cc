@@ -318,6 +318,7 @@ string MachineWrapper::stringByExpandingEnvironmentVariablesInString(string orig
                 {
                         ++pos;
                         env = originalString.substr(pos, end++-pos);
+                        start=end;
                 }
                 else if ((end = originalString.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJLKMNOPQRSTUVWXYZ0123456789_", pos)) != string::npos)
                 {
