@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 12/10/12.
- *  Copyright (c) 2012 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2013 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -92,7 +92,7 @@ static CLFSMWBVectorFactory *createMachines(vector<MachineWrapper *> &machineWra
 
 static void usage(const char *cmd)
 {
-        cerr << "Usage: " << cmd << "[-c]{-I includedir}{-L linkdir}{-l lib}" << endl;
+        cerr << "Usage: " << cmd << "[-c][-fPIC]{-I includedir}{-L linkdir}{-l lib}" << endl;
 }
 
 
@@ -111,7 +111,7 @@ int main(int argc, char * const argv[])
 
         int ch;
         bool cflag = false;
-        while ((ch = getopt(argc, argv, "gcI:L:l:")) != -1)
+        while ((ch = getopt(argc, argv, "cgf:I:L:l:")) != -1)
         {
                 switch (ch)
                 {
@@ -122,6 +122,9 @@ int main(int argc, char * const argv[])
                                 compiler_args.push_back("-g");
                                 linker_args.push_back("-g");
                                 break;
+                        case 'f':
+                                compiler_args.push_back(string("-f")+optarg);
+				break;
                         case 'I':
                                 compiler_args.push_back("-I");
                                 compiler_args.push_back(optarg);

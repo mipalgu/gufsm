@@ -312,7 +312,7 @@ string MachineWrapper::stringByExpandingEnvironmentVariablesInString(string orig
         {
                 const char *value;
                 string env;
-                unsigned end;
+                size_t end;
                 if (pos > start)
                         expandedString += originalString.substr(start, pos-start);
                 if (originalString[++pos] == '{' && (end = originalString.find_first_of('}', pos+1)) != string::npos)

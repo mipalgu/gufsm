@@ -3,17 +3,19 @@
 #
 MODULE_BASE=clfsm
 
+.include "../../../../mk/prefs.mk"		# comes first
+
 .ifndef TARGET
 .if "${UNAME}" != "Linux"
 USE_LIBCPP=yes
-SPECIFIC_CFLAGS=-stdlib=libc++
+SPECIFIC_CPPFLAGS=-stdlib=libc++
 SPECIFIC_LDFLAGS=-stdlib=libc++
 .else
 SPECIFIC_LIBS+=-Wl,-R/usr/local/lib
 .endif
 .endif
 
-SPECIFIC_LIBS+=-L/usr/local/lib -lclfsm
+SPECIFIC_LIBS+=-L/usr/local/lib -lclfsm -ldl -lc++
 
 CC_SRCS+=clfsm_cc.cc
 CC_SRCS+=clfsm_machine.cc
@@ -42,7 +44,7 @@ HDRS+=stringConstants.h
 #CLANG_CXXFLAGS=-std=c++0x
 #TARGET_USE_CLANG=YES
 
-.include "../../../../mk/whiteboard.mk"	# required for the whiteboard
+.include "../../../../mk/whiteboard.mk"		# required for the whiteboard
 .include "../../../../mk/util.mk"		# required for gu_util
 
 

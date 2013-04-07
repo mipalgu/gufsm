@@ -7,6 +7,8 @@ MODULE_BASE=clfsm
 
 ALL_TARGETS=host-local robot-local
 
+.include "../../../mk/prefs.mk"		# comes first
+
 .ifndef TARGET
 .if "${UNAME}" != "Linux"
 USE_LIBCPP=yes
