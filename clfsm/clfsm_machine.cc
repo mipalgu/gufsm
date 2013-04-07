@@ -55,6 +55,7 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#include <cstdlib>
 #include <sstream>
 #include <fstream>
 #include <dispatch/dispatch.h>
