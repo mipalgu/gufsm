@@ -305,8 +305,8 @@ CLMachine *MachineWrapper::instantiate(int id, const char *machine_name)
 string MachineWrapper::stringByExpandingEnvironmentVariablesInString(string originalString)
 {
         string expandedString;
-        unsigned start = 0;
-        unsigned pos = originalString.find_first_of('$');
+        size_t start = 0;
+        size_t pos = originalString.find_first_of('$');
         while (pos != string::npos)
         {
                 const char *value;
@@ -319,9 +319,8 @@ string MachineWrapper::stringByExpandingEnvironmentVariablesInString(string orig
                         ++pos;
                         env = originalString.substr(pos, end++-pos);
                 }
-                else if ((end = originalString.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJLKMNOPQRSTUVWXYZ0123456789_", pos+1)) != string::npos)
+                else if ((end = originalString.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJLKMNOPQRSTUVWXYZ0123456789_", pos)) != string::npos)
                 {
-                        ++pos;
                         env = originalString.substr(pos, end-pos);
                         start = end;
                 }
