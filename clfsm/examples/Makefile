@@ -3,7 +3,7 @@
 #
 # Makefile for pre- and cross-compiling .machine files
 #
-MACHINES=PingPongCLFSM BackForwardsCLFSM SayPingPong LEDsPingPong
+MACHINES=PingPongCLFSM BackForwardsCLFSM SayPingPong LEDsPingPong SensorsTestingPingPong Safety_BatteryMonitor
 
 ALL_TARGETS=robot-local #host-local
 SOPREFIX=#empty
