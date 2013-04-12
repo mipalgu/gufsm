@@ -107,12 +107,13 @@ void Cc::teardown()
 }
 
 
+#ifdef USE_LIBCLANG_INTERNAL
 static void error_handler(void *cc, const std::string &message)
 {
         Cc *self = static_cast<Cc *>(cc);
         self->errorHandler(message);
 }
-
+#endif
 
 void Cc::errorHandler(const std::string &message)
 {

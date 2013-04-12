@@ -110,14 +110,14 @@ int main(int argc, char * const argv[])
         compiler_args.push_back("-std=c++11");    /// XXX: fix this
 
         int ch;
-        bool cflag = false;
-        while ((ch = getopt(argc, argv, "cgf:I:L:l:")) != -1)
+        //bool cflag = false;
+        while ((ch = getopt(argc, argv, "gf:I:L:l:")) != -1)
         {
                 switch (ch)
                 {
-                        case 'c':
-                                cflag = true;
-                                break;
+                                //case 'c':
+                                //cflag = true;
+                                //break;
                         case 'g':
                                 compiler_args.push_back("-g");
                                 linker_args.push_back("-g");
