@@ -10,27 +10,33 @@
 			<array>
 				<dict>
 					<key>controlPoint1X</key>
-					<real>173.64502364797073</real>
+					<real>148.7630676136628</real>
 					<key>controlPoint1Y</key>
-					<real>55.660521819090576</real>
+					<real>29.442117199637771</real>
 					<key>controlPoint2X</key>
-					<real>257.88597659871039</real>
+					<real>229.24274932848257</real>
 					<key>controlPoint2Y</key>
-					<real>60.414554198580575</real>
+					<real>30.534741634835868</real>
 					<key>dstPointX</key>
-					<real>298.6736289779933</real>
+					<real>251.53026398472522</real>
 					<key>dstPointY</key>
-					<real>67.552393364955037</real>
+					<real>53.246940016245674</real>
 					<key>srcPointX</key>
-					<real>133.08212152886705</real>
+					<real>124.24442835053266</real>
 					<key>srcPointY</key>
-					<real>63.981117125573377</real>
+					<real>49.72545010015584</real>
 				</dict>
 			</array>
+			<key>expanded</key>
+			<false/>
+			<key>h</key>
+			<real>50</real>
+			<key>w</key>
+			<real>100</real>
 			<key>x</key>
-			<real>89</real>
+			<real>89.546875</real>
 			<key>y</key>
-			<real>68</real>
+			<real>62.58984375</real>
 		</dict>
 		<key>Pong</key>
 		<dict>
@@ -38,27 +44,33 @@
 			<array>
 				<dict>
 					<key>controlPoint1X</key>
-					<real>257.98398538158642</real>
+					<real>214.96770466039158</real>
 					<key>controlPoint1Y</key>
-					<real>81.568294264416167</real>
+					<real>84.652331604053629</real>
 					<key>controlPoint2X</key>
-					<real>174.30438955712913</real>
+					<real>154.47418454559519</real>
 					<key>controlPoint2Y</key>
-					<real>77.322322633209808</real>
+					<real>83.942364104385589</real>
 					<key>dstPointX</key>
-					<real>133.47672639427776</real>
+					<real>129.59541282954905</real>
 					<key>dstPointY</key>
-					<real>71.041143685078822</real>
+					<real>71.448857432886214</real>
 					<key>srcPointX</key>
-					<real>298.6736289779933</real>
+					<real>240.95757649832706</real>
 					<key>srcPointY</key>
-					<real>74.447606635044963</real>
+					<real>74.67397738616657</real>
 				</dict>
 			</array>
+			<key>expanded</key>
+			<false/>
+			<key>h</key>
+			<real>50</real>
+			<key>w</key>
+			<real>100</real>
 			<key>x</key>
-			<real>343</real>
+			<real>283</real>
 			<key>y</key>
-			<real>71</real>
+			<real>67.45703125</real>
 		</dict>
 	</dict>
 </dict>

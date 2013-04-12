@@ -1,10 +1,10 @@
 //
-// State_Pong.h -- 2013-03-22 04:12:04 +0000
+// State_Pong.h -- 2013-04-12 20:03:03 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_State_Pong_h
-#define clfsm_State_Pong_h
+#ifndef clfsm_PingPongCLFSM_State_Pong_h
+#define clfsm_PingPongCLFSM_State_Pong_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,6 +14,8 @@ namespace FSM
 {
     namespace CLM
     {
+      namespace PingPongCLFSM
+      {
         namespace State
         {
             class Pong: public CLState
@@ -53,6 +55,7 @@ namespace FSM
 #                   include "State_Pong_Variables.h"
             };
         }
+      }
     }
 }
 

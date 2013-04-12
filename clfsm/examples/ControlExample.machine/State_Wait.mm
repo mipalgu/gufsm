@@ -1,5 +1,5 @@
 //
-// State_Wait.mm -- 2013-04-12 00:59:04 +0000
+// State_Wait.mm -- 2013-04-12 01:18:45 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
