@@ -55,7 +55,10 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#include <dispatch/dispatch.h>
 #include "FSMachineVector.h"
+#include "FSMAsynchronousSuspensibleMachine.h"
+#include "CLMachine.h"
 #include "clfsm_factory.h"
 #include "clfsm_vector_factory.h"
 
@@ -65,14 +68,45 @@
 using namespace std;
 using namespace FSM;
 
+static CLFSMVectorFactory *factory_singleton;
+
+int FSM::index_of_machine_named(const char *name)
+{
+        if (!factory_singleton) return CLError;
+        return factory_singleton->index_of_machine_named(name);
+}
+
+
+enum CLControlStatus FSM::control_machine_at_index(int index, enum CLControlStatus command)
+{
+        if (!factory_singleton) return CLError;
+        return factory_singleton->control_machine_at_index(index, command);
+}
+
+
+int FSM::number_of_machines(void)
+{
+        if (!factory_singleton) return CLError;
+        return int(factory_singleton->number_of_machines());
+}
+
+const char *FSM::name_of_machine_at_index(int index)
+{
+        if (!factory_singleton) return NULL;
+        return factory_singleton->name_of_machine_at_index(index);
+}
+
+
 CLFSMVectorFactory::CLFSMVectorFactory(Context *context, bool del): _context(context), _clmachines(), _clfactories(), _delete(del)
 {
+        if (!factory_singleton) factory_singleton = this;
         _fsms = new StateMachineVector(context);
 }
 
 
 CLFSMVectorFactory::~CLFSMVectorFactory()
 {
+        if (factory_singleton == this) factory_singleton = NULL;
         if (_delete) delete _fsms;
 }
 
@@ -107,6 +141,74 @@ SuspensibleMachine *CLFSMVectorFactory::addMachine(CLMachine *clm, int index, bo
 CLFSMFactory *CLFSMVectorFactory::machine_factory(CLMachine *clm, int index)
 {
         return new CLFSMFactory(_context, clm, index, _delete);
+}
+
+
+const char *CLFSMVectorFactory::name_of_machine_at_index(int i)
+{
+        int n = int(_clmachines.size());
+        if (i < 0 || i > n) return NULL;
+
+        return _clmachines[i]->machineName();
+}
+
+
+int CLFSMVectorFactory::index_of_machine_named(const char *machine_name)
+{
+        if (!machine_name) return CLError;
+
+        size_t n = _clmachines.size();
+        if (!machine_name) return int(n)-1;
+        for (size_t i = 0; i < n; i++)
+        {
+                if (strcmp(_clmachines[i]->machineName(), machine_name) == 0)
+                        return int(i);
+        }
+
+        string machine_name_with_extension(machine_name);
+        machine_name_with_extension += ".machine";
+        const char *name = machine_name_with_extension.c_str();
+        for (size_t i = 0; i < n; i++)
+        {
+                if (strcmp(_clmachines[i]->machineName(), name) == 0)
+                        return int(i);
+        }
+
+        return CLError;
+}
+
+#define MSTATUS(m)      ((m)->isSuspended() ? CLSuspend : CLStatus)
+
+enum CLControlStatus CLFSMVectorFactory::control_machine_at_index(int i, enum CLControlStatus command)
+{
+        int n = int(_clmachines.size());
+        if (i < 0 || i > n) return CLError;
+
+        AsynchronousSuspensibleMachine *m = static_cast<AsynchronousSuspensibleMachine *>(_fsms->machines()[i]);
+        enum CLControlStatus status = MSTATUS(m);
+        switch (command)
+        {
+                case CLStatus:
+                        break;
+                        
+                case CLSuspend:
+                        m->scheduleSuspend();
+                        break;
+                        
+                case CLResume:
+                        m->scheduleResume();
+                        break;
+                        
+                case CLRestart:
+                        m->scheduleRestart();
+                        break;
+
+                case CLError:
+                        status = CLError;
+                        break;
+        }
+
+        return status;
 }
 
 #pragma clang diagnostic pop

@@ -74,17 +74,48 @@ namespace FSM
 {
         class Machine;
 
+        enum CLControlStatus
+        {
+                CLError = -1,   ///< error indicator
+                CLStatus,       ///< check status only
+                CLSuspend,      ///< suspend the corresponding state machines
+                CLResume,       ///< resume the corresponding state machines
+                CLRestart       ///< restart the corresponding state machine
+        };
+
         long long start_time_for_current_state(const class Machine *machine);
         long long current_time_in_microseconds(void);
+        int number_of_machines(void);
+        const char *name_of_machine_at_index(int index = 0);
+        int index_of_machine_named(const char *machine_name);
+        enum CLControlStatus control_machine_at_index(int index, enum CLControlStatus command);
 }
 
 /*
  * Macros for making state machines more readable
  */
+#ifndef NO_CL_READABILITY_MACROS
+
 #define timeout(t)      (current_time_in_microseconds() > start_time_for_current_state((_m)->machineContext()) + (t))
 #define after(t)        (timeout((t) * 1000000.0L))
 #define after_ms(t)     (timeout((t) * 1000.0L))
 
+#define machine_name()  ((_m)->machineName())
+#define state_name()    ((_s)->name())
+
+#define suspend(m)      (control_machine_at_index(index_of_machine_named(m), CLSuspend) != CLError)
+#define resume(m)       (control_machine_at_index(index_of_machine_named(m), CLResume) != CLError)
+#define restart(m)      (control_machine_at_index(index_of_machine_named(m), CLRestart) != CLError)
+#define status(m)       (control_machine_at_index(index_of_machine_named(m), CLStatus))
+#define is_suspended(m) (status(m) == CLSuspend)
+#define is_running(m)   (status(m) != CLSuspend)
 #endif
 
 #pragma clang diagnostic pop
+
+#ifndef NO_CL_UNHYGIENIC_HEADERS
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wheader-hygiene"
+#endif
+
+#endif

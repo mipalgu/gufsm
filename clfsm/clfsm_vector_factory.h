@@ -83,6 +83,30 @@ namespace FSM
         class StateMachineVector;
         class Context;
 
+        enum CLControlStatus
+        {
+                CLError = -1,   ///< error indicator
+                CLStatus,       ///< check status only (running status when used as a return code)
+                CLSuspend,      ///< suspend the corresponding state machines
+                CLResume,       ///< resume the corresponding state machines
+                CLRestart       ///< restart the corresponding state machine
+        };
+
+        /// return the total number of machines in the factory singleton
+        int number_of_machines(void);
+
+        /// return the name of the machine in the factory singleton at the given index (NULL if the index is invalid)
+        const char *name_of_machine_at_index(int index = 0);
+
+        /// return the index of a machine with a given name in the factory singleton
+        int index_of_machine_named(const char *machine_name = NULL);
+
+        /// control the machine at the given index in the factory singleton
+        enum CLControlStatus control_machine_at_index(int index = 0, enum CLControlStatus command = CLStatus);
+
+        /**
+         * Finite State machine Vector Factory
+         */
         class CLFSMVectorFactory
         {
         protected:
@@ -110,6 +134,27 @@ namespace FSM
 
                 /// return the machine factory to use (override in subclasses)
                 virtual CLFSMFactory *machine_factory(CLMachine *clm, int index);
+
+                /// return the number of machines in the vector
+                size_t number_of_machines() const { return _clmachines.size(); }
+
+                /// return the name of the machine at the given index
+                const char *name_of_machine_at_index(int i = 0);
+
+                /**
+                 * return the index of the machine with the given name (-1 if not found)
+                 * @param machine_name  name of the machine to search for (NULL = last machine)
+                 * @return index of that machine or -1 if not found
+                 */
+                int index_of_machine_named(const char *machine_name = NULL);
+
+                /**
+                 * control the machine at a given index and return the status for that machine
+                 * @param index         number of the machine in question [0..n)
+                 * @param command       command to execute (CLSuspend, CLResume, CLRestart, CLStatus)
+                 * @return status of the machine or CLError in case of an error
+                 */
+                enum CLControlStatus control_machine_at_index(int index = 0, enum CLControlStatus command = CLStatus);
         };
 }
 
