@@ -102,6 +102,7 @@ namespace FSM
 
 #define machine_name()  ((_m)->machineName())
 #define state_name()    ((_s)->name())
+#define machine_index() index_of_machine_named(machine_name())
 
 #define suspend(m)      (control_machine_at_index(index_of_machine_named(m), CLSuspend) != CLError)
 #define resume(m)       (control_machine_at_index(index_of_machine_named(m), CLResume) != CLError)
@@ -109,6 +110,9 @@ namespace FSM
 #define status(m)       (control_machine_at_index(index_of_machine_named(m), CLStatus))
 #define is_suspended(m) (status(m) == CLSuspend)
 #define is_running(m)   (status(m) != CLSuspend)
+#define suspend_all()   do { \
+        int _n = number_of_machines(), _mi = machine_index(); \
+        for (int _i = 0; _i < _n; _i++) if (_i != _mi) control_machine_at_index(_i, CLSuspend); } while(0)
 #endif
 
 #pragma clang diagnostic pop
