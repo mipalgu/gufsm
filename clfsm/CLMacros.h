@@ -67,6 +67,7 @@
 #undef false
 #endif
 
+#pragma GCC diagnostic push
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
 
@@ -89,7 +90,6 @@ namespace FSM
         const char *name_of_machine_at_index(int index = 0);
         int index_of_machine_named(const char *machine_name);
         enum CLControlStatus control_machine_at_index(int index, enum CLControlStatus command);
-}
 
 /*
  * Macros for making state machines more readable
@@ -103,19 +103,22 @@ namespace FSM
 #define machine_name()  ((_m)->machineName())
 #define state_name()    ((_s)->name())
 #define machine_index() index_of_machine_named(machine_name())
+#define cs_machine_named(m,c)      control_machine_at_index(index_of_machine_named(m), (c))
 
-#define suspend(m)      (control_machine_at_index(index_of_machine_named(m), CLSuspend) != CLError)
-#define resume(m)       (control_machine_at_index(index_of_machine_named(m), CLResume) != CLError)
-#define restart(m)      (control_machine_at_index(index_of_machine_named(m), CLRestart) != CLError)
-#define status(m)       (control_machine_at_index(index_of_machine_named(m), CLStatus))
-#define is_suspended(m) (status(m) == CLSuspend)
-#define is_running(m)   (status(m) != CLSuspend)
+static inline enum CLControlStatus suspend(const char *m) { return cs_machine_named(m, CLSuspend); }
+static inline enum CLControlStatus resume(const char *m)  { return cs_machine_named(m, CLResume); }
+static inline enum CLControlStatus restart(const char *m) { return cs_machine_named(m, CLRestart); }
+static inline enum CLControlStatus status(const char *m)  { return cs_machine_named(m, CLStatus); }
 #define suspend_all()   do { \
         int _n = number_of_machines(), _mi = machine_index(); \
         for (int _i = 0; _i < _n; _i++) if (_i != _mi) control_machine_at_index(_i, CLSuspend); } while(0)
+#define is_suspended(m) (status(m) == CLSuspend)
+#define is_running(m)   (status(m) != CLSuspend)
 #endif
+}
 
 #pragma clang diagnostic pop
+#pragma GCC diagnostic pop
 
 #ifndef NO_CL_UNHYGIENIC_HEADERS
 #pragma clang diagnostic push
