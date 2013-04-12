@@ -1,5 +1,5 @@
 //
-// State_Suspend.h -- 2013-04-12 00:42:51 +0000
+// State_Suspend.h -- 2013-04-12 00:59:04 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -36,7 +36,7 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 2): CLTransition(toState) {}
+                    Transition_0(int toState = 3): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
@@ -44,7 +44,7 @@ namespace FSM
                 class Transition_1: public CLTransition
                 {
                 public:
-                    Transition_1(int toState = 3): CLTransition(toState) {}
+                    Transition_1(int toState = 2): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };

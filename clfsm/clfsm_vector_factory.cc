@@ -147,7 +147,7 @@ CLFSMFactory *CLFSMVectorFactory::machine_factory(CLMachine *clm, int index)
 const char *CLFSMVectorFactory::name_of_machine_at_index(int i)
 {
         int n = int(_clmachines.size());
-        if (i < 0 || i > n) return NULL;
+        if (i < 0 || i >= n) return NULL;
 
         return _clmachines[i]->machineName();
 }
@@ -182,7 +182,7 @@ int CLFSMVectorFactory::index_of_machine_named(const char *machine_name)
 enum CLControlStatus CLFSMVectorFactory::control_machine_at_index(int i, enum CLControlStatus command)
 {
         int n = int(_clmachines.size());
-        if (i < 0 || i > n) return CLError;
+        if (i < 0 || i >= n) return CLError;
 
         AsynchronousSuspensibleMachine *m = static_cast<AsynchronousSuspensibleMachine *>(_fsms->machines()[i]);
         enum CLControlStatus status = MSTATUS(m);
