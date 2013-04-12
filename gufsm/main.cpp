@@ -86,7 +86,7 @@ static __attribute__((__noreturn__)) void usage(const char *cmd)
 }
 
 
-int dump_kripke(ANTLRStateMachineVectorFactory &factory, vector<string> &machine_names)
+int dump_kripke(ANTLRStateMachineVectorFactory &factory, vector<string> &)
 {
         string kripke = factory.fsms()->kripkeInSVMformat();
         cout << kripke << endl;
@@ -94,7 +94,7 @@ int dump_kripke(ANTLRStateMachineVectorFactory &factory, vector<string> &machine
 }
 
 
-int block_schedule(ANTLRStateMachineVectorFactory &factory, vector<string> &machine_names)
+int block_schedule(ANTLRStateMachineVectorFactory &factory, vector<string> &)
 {
         factory.fsms()->scheduleExecuteOnQueue();
         
@@ -104,7 +104,7 @@ int block_schedule(ANTLRStateMachineVectorFactory &factory, vector<string> &mach
 }
 
 
-int factory_execute(ANTLRStateMachineVectorFactory &factory, vector<string> &machine_names)
+int factory_execute(ANTLRStateMachineVectorFactory &factory, vector<string> &)
 {
         factory.execute();                      // execute synchronously
         

@@ -116,7 +116,7 @@ namespace FSM
                 ANTLRMathsSingle(): ANTLRMaths<int>(0) {}
 
                 /** setting any parameter sets the content */
-                virtual void add_parameter(int index, long long value)
+                virtual void add_parameter(int, long long value)
                 {
                         setContent(static_cast<int>(value));
                 }
@@ -129,7 +129,7 @@ namespace FSM
         {
         public:
                 virtual const char *name(void) { return "abs"; }
-                virtual int evaluate(Machine *m = NULL)
+                virtual int evaluate(Machine * = NULL)
                 {
                         return abs(content());
                 }
@@ -142,7 +142,7 @@ namespace FSM
         {
         public:
                 virtual const char *name(void) { return "sign"; }
-                virtual int evaluate(Machine *m = NULL)
+                virtual int evaluate(Machine * = NULL)
                 {
                         int v = content();
                         return v == 0 ? 0 : ( v < 0 ? -1 : 1);
@@ -156,7 +156,7 @@ namespace FSM
         {
         public:
                 virtual const char *name(void) { return "random"; }
-                virtual int evaluate(Machine *m = NULL)
+                virtual int evaluate(Machine * = NULL)
                 {
                         return random();
                 }
@@ -169,7 +169,7 @@ namespace FSM
         {
         public:
                 virtual const char *name(void) { return "srandom"; }
-                virtual int evaluate(Machine *m = NULL)
+                virtual int evaluate(Machine * = NULL)
                 {
                         srand(content());
                         return random();
@@ -183,10 +183,10 @@ namespace FSM
         {
         public:
                 virtual const char *name(void) { return "sin"; }
-                virtual int evaluate(Machine *m = NULL)
+                virtual int evaluate(Machine * = NULL)
                 {
-                        float angle = content() * M_PI / 180.0;
-                        return sinf(angle) * FIXED_FACTOR;
+                        float angle = float(content() * M_PI / 180.0);
+                        return int(sinf(angle) * FIXED_FACTOR);
                 }
         };
 
@@ -197,10 +197,10 @@ namespace FSM
         {
         public:
                 virtual const char *name(void) { return "cos"; }
-                virtual int evaluate(Machine *m = NULL)
+                virtual int evaluate(Machine * = NULL)
                 {
-                        float angle = content() * M_PI / 180.0;
-                        return cosf(angle) * FIXED_FACTOR;
+                        float angle = float(content() * M_PI / 180.0);
+                        return int(cosf(angle) * FIXED_FACTOR);
                 }
         };
         
@@ -211,10 +211,10 @@ namespace FSM
         {
         public:
                 virtual const char *name(void) { return "tan"; }
-                virtual int evaluate(Machine *m = NULL)
+                virtual int evaluate(Machine * = NULL)
                 {
-                        float angle = content() * M_PI / 180.0;
-                        return tanf(angle) * FIXED_FACTOR;
+                        float angle = float(content() * M_PI / 180.0);
+                        return int(tanf(angle) * FIXED_FACTOR);
                 }
         };
 
@@ -225,10 +225,10 @@ namespace FSM
         {
         public:
                 virtual const char *name(void) { return "cot"; }
-                virtual int evaluate(Machine *m = NULL)
+                virtual int evaluate(Machine * = NULL)
                 {
-                        float angle = content() * M_PI / 180.0;
-                        return (1.0 / tanf(angle)) * FIXED_FACTOR;
+                        float angle = float(content() * M_PI / 180.0);
+                        return int((1.0 / tanf(angle)) * FIXED_FACTOR);
                 }
         };
 
@@ -239,10 +239,10 @@ namespace FSM
         {
         public:
                 virtual const char *name(void) { return "atan"; }
-                virtual int evaluate(Machine *m = NULL)
+                virtual int evaluate(Machine * = NULL)
                 {
                         float value = (float) content() / (float) FIXED_FACTOR;
-                        return atanf(value) * 180.0 / M_PI;
+                        return int(atanf(value) * 180.0 / M_PI);
                 }
         };
         
@@ -253,10 +253,10 @@ namespace FSM
         {
         public:
                 virtual const char *name(void) { return "asin"; }
-                virtual int evaluate(Machine *m = NULL)
+                virtual int evaluate(Machine * = NULL)
                 {
                         float value = (float) content() / (float) FIXED_FACTOR;
-                        return asinf(value) * 180.0 / M_PI;
+                        return int(asinf(value) * 180.0 / M_PI);
                 }
         };
 
@@ -267,10 +267,10 @@ namespace FSM
         {
         public:
                 virtual const char *name(void) { return "acos"; }
-                virtual int evaluate(Machine *m = NULL)
+                virtual int evaluate(Machine * = NULL)
                 {
                         float value = (float) content() / (float) FIXED_FACTOR;
-                        return acosf(value) * 180.0 / M_PI;
+                        return int(acosf(value) * 180.0 / M_PI);
                 }
         };
 
@@ -281,10 +281,10 @@ namespace FSM
         {
         public:
                 virtual const char *name(void) { return "log"; }
-                virtual int evaluate(Machine *m = NULL)
+                virtual int evaluate(Machine * = NULL)
                 {
                         float value = (float) content() / (float) FIXED_FACTOR;
-                        return logf(value) * FIXED_FACTOR;
+                        return int(logf(value) * FIXED_FACTOR);
                 }
         };
 
@@ -295,10 +295,10 @@ namespace FSM
         {
         public:
                 virtual const char *name(void) { return "ld"; }
-                virtual int evaluate(Machine *m = NULL)
+                virtual int evaluate(Machine * = NULL)
                 {
                         float value = (float) content() / (float) FIXED_FACTOR;
-                        return log2f(value) * FIXED_FACTOR;
+                        return int(log2f(value) * FIXED_FACTOR);
                 }
         };
 
@@ -309,10 +309,10 @@ namespace FSM
         {
         public:
                 virtual const char *name(void) { return "lg"; }
-                virtual int evaluate(Machine *m = NULL)
+                virtual int evaluate(Machine * = NULL)
                 {
                         float value = (float) content() / (float) FIXED_FACTOR;
-                        return log10f(value) * FIXED_FACTOR;
+                        return int(log10f(value) * FIXED_FACTOR);
                 }
         };
 
@@ -337,12 +337,12 @@ namespace FSM
                 ANTLRMathsVector(): ANTLRMaths<std::vector<int> >() {}
                 
                 /** setting any parameter sets the content */
-                virtual void add_parameter(int index, long long value)
+                virtual void add_parameter(int idx, long long value)
                 {
-                        if (index >= _content.size())
+                        if (idx >= _content.size())
                                 _content.push_back(value);
                         else
-                                _content[index] = value;
+                                _content[idx] = value;
                 }
         };
 
@@ -353,7 +353,7 @@ namespace FSM
         {
         public:
                 virtual const char *name(void) { return "min"; }
-                virtual int evaluate(Machine *m = NULL)
+                virtual int evaluate(Machine * = NULL)
                 {
                         if (!content().size()) return 0;
                         std::vector<int>::const_iterator i = content().begin();
@@ -371,7 +371,7 @@ namespace FSM
         {
         public:
                 virtual const char *name(void) { return "max"; }
-                virtual int evaluate(Machine *m = NULL)
+                virtual int evaluate(Machine * = NULL)
                 {
                         if (!content().size()) return 0;
                         std::vector<int>::const_iterator i = content().begin();
@@ -399,7 +399,7 @@ namespace FSM
         {
         public:
                 virtual const char *name(void) { return "avg"; }
-                virtual int evaluate(Machine *m = NULL)
+                virtual int evaluate(Machine * = NULL)
                 {
                         return vec_average(content());
                 }
@@ -412,7 +412,7 @@ namespace FSM
         {
         public:
                 virtual const char *name(void) { return "fta"; }
-                virtual int evaluate(Machine *m = NULL)
+                virtual int evaluate(Machine * = NULL)
                 {
                         int n = content().size();
                         if (n < 3) return vec_average(content());
@@ -434,13 +434,13 @@ namespace FSM
         {
         public:
                 virtual const char *name(void) { return "gavg"; }
-                virtual int evaluate(Machine *m = NULL)
+                virtual int evaluate(Machine * = NULL)
                 {
                         if (!content().size()) return 0;
                         double total = 1.0;
                         for (std::vector<int>::const_iterator i = content().begin(); i != content().end(); i++)
                                 total *= *i;
-                        return pow(total, 1.0 / content().size());
+                        return int(pow(total, 1.0 / content().size()));
                 }
         };
 		
@@ -451,9 +451,9 @@ namespace FSM
         {
         public:
                 virtual const char *name(void) { return "sqrt"; }
-                virtual int evaluate(Machine *m = NULL)
+                virtual int evaluate(Machine * = NULL)
                 {
-                        return sqrt(content());
+                        return int(sqrt(content()));
                 }
         };
 }

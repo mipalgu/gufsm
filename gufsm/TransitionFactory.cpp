@@ -75,7 +75,7 @@ using namespace std;
 
 static int
 exp_callback(void *context, const char *terminal, const char *content,
-             pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
+             pANTLR3_RECOGNIZER_SHARED_STATE, pANTLR3_BASE_TREE tree)
 {
         TransitionFactory *self = (TransitionFactory *) context;
         
@@ -136,8 +136,8 @@ transition_push(void *context, const char *terminal, const char *content,
 }
 
 static int
-transition_pop(void *context, const char *terminal, const char *content,
-             pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
+transition_pop(void *context, const char *, const char *,
+             pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE)
 {
         TransitionFactory *self = (TransitionFactory *) context;
         int s = self->state_id();
@@ -177,7 +177,7 @@ TransitionFactory::TransitionFactory(FSM::Machine *machine, const char *filename
                 set_error(true);
 }
 
-TransitionFactory::TransitionFactory(FSM::Machine *machine, const char *filename, bool noInit): _fsm(machine), _file(filename), _state_id(-1), _destination_id(-1), _error(false)
+TransitionFactory::TransitionFactory(FSM::Machine *machine, const char *filename, bool): _fsm(machine), _file(filename), _state_id(-1), _destination_id(-1), _error(false)
 {
 }
 

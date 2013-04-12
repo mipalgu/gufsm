@@ -386,9 +386,10 @@ int get_expr_tree(const char *transition,
                   pANTLR3_BASE_TREE * tree, 
                   pANTLR3_RECOGNIZER_SHARED_STATE * state) 
 {
+        (void) context;
         int rv = -1;
-        
-        if (!transition) { 
+
+        if (!transition) {
                 errno = EINVAL; 
                 return rv;
         }

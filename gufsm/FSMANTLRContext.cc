@@ -120,7 +120,7 @@ static int wbIntValue(Whiteboard *wb, const string &name)
                         return msg.getIntValue();
 
                 case WBMsg::TypeFloat:
-                        return msg.getFloatValue();
+                        return int(msg.getFloatValue());
 
                 case WBMsg::TypeBool:
                         return msg.getBoolValue();

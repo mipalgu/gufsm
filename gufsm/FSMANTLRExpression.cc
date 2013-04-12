@@ -74,6 +74,7 @@
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wshorten-64-to-32"
+#pragma clang diagnostic ignored "-Wexit-time-destructors"
 
 using namespace FSM;
 using namespace std;
@@ -503,10 +504,10 @@ void expression_extract_callback(void *context, const char *terminal, const char
         {
                 pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
                         tree->children->get(tree->children, i);
-                const char *terminal = getTString(state, t);
-                string content  = getContent(t);
+                terminal = getTString(state, t);
+                string c  = getContent(t);
 
-                expression_extract_callback(context, terminal, content.c_str(), state, t);
+                expression_extract_callback(context, terminal, c.c_str(), state, t);
         }
 }
 

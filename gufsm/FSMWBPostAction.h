@@ -82,9 +82,9 @@ namespace FSM
                 WBPostAction(std::string type, const C &content): ContentAction<C>(content), _type(type) {}
 
                 /** setting any parameter sets the context */
-                virtual void add_parameter(int index, long long value)
+                virtual void add_parameter(int idx, long long value)
                 {
-                        if (index) ContentAction<C>::setContent((C) value);
+                        if (idx) ContentAction<C>::setContent((C) value);
                         else _type = (const char *) value;
                 }
 
@@ -103,7 +103,7 @@ namespace FSM
         {
         public:
                 /** setting any parameter sets the message content */
-                virtual void add_parameter(int index, long long value)
+                virtual void add_parameter(int, long long value)
                 {
                         setContent((const char *) value);
                 }

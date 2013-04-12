@@ -103,7 +103,7 @@ struct StringFunction: public ContentAction<string>
                 evaluate(m);
         }
         /** setting any parameter sets the content */
-        virtual void add_parameter(int index, long long value)
+        virtual void add_parameter(int, long long value)
         {
                 setContent((const char *)value);
         }
@@ -140,12 +140,12 @@ struct SystemFunction: public ContentAction<string>
         {
                 evaluate(m);
         }
-        virtual int evaluate(Machine *m = NULL)
+        virtual int evaluate(Machine * = NULL)
         {
                 return system(_content.c_str());
         }
         /** setting any parameter sets the content */
-        virtual void add_parameter(int index, long long value)
+        virtual void add_parameter(int, long long value)
         {
                 setContent((const char *)value);
         }
@@ -160,13 +160,13 @@ struct ReadIntFunction: public ContentAction<string>
         }
 
         /** read the file passed as a parameter and interpret the content as an int */
-        virtual int evaluate(Machine *m = NULL)
+        virtual int evaluate(Machine * = NULL)
         {
                 return int_from_file(_content.c_str());
         }
 
         /** setting any parameter sets the content */
-        virtual void add_parameter(int index, long long value)
+        virtual void add_parameter(int, long long value)
         {
                 setContent((const char *)value);
         }
@@ -189,7 +189,7 @@ public:
         StateMachineVector *fsms() const { return _fsms; }
 
         /** suspend all state machines except for the current one */
-        virtual void performv(Machine *m, ActionStage s = STAGE_ON_ENTRY, int i = 0, va_list l = NULL)
+        virtual void performv(Machine *m, ActionStage = STAGE_ON_ENTRY, int = 0, va_list = NULL)
         {
                 _fsms->suspend();
                 if (m) static_cast<SuspensibleMachine*>(m)->resume();
@@ -269,7 +269,7 @@ class WBSuspendFunction: public PostBoolFunction
 public:
         WBSuspendFunction(std::string name = "suspend"): PostBoolFunction(name, false) {}
         
-        virtual void add_parameter(int index, long long value)
+        virtual void add_parameter(int, long long value)
         {
                 _type = string("suspend_") + (const char *) value;
                 PostBoolFunction::add_parameter(1, true);
@@ -282,7 +282,7 @@ class WBResumeFunction: public WBSuspendFunction
 public:
         WBResumeFunction(): WBSuspendFunction("resume") {}
         
-        virtual void add_parameter(int index, long long value)
+        virtual void add_parameter(int, long long value)
         {
                 _type = string("suspend_") + (const char *) value;
                 PostBoolFunction::add_parameter(1, false);
@@ -295,7 +295,7 @@ class WBRestartFunction: public PostStringFunction
 public:
         WBRestartFunction(std::string name = "restart"): PostStringFunction(name, "") {}
         
-        virtual void add_parameter(int index, long long value)
+        virtual void add_parameter(int, long long value)
         {
                 PostStringFunction::add_parameter(1, value);
         }
@@ -306,7 +306,7 @@ class WBSayFunction: public PostStringFunction
 public:
         WBSayFunction(std::string name = "Say"): PostStringFunction(name, "") {}
         
-        virtual void add_parameter(int index, long long value)
+        virtual void add_parameter(int, long long value)
         {
                 PostStringFunction::add_parameter(1, value);
         }
@@ -317,7 +317,7 @@ class WBSpeechFunction: public PostStringFunction
 public:
         WBSpeechFunction(std::string name = "Speech"): PostStringFunction(name, "") {}
         
-        virtual void add_parameter(int index, long long value)
+        virtual void add_parameter(int, long long value)
         {
                 PostStringFunction::add_parameter(1, value);
         }
@@ -338,7 +338,7 @@ public:
                 setContent("");
         }
         
-        virtual void add_parameter(int index, long long value)
+        virtual void add_parameter(int, long long value)
         {
                 PostStringFunction::add_parameter(1, value);
         }
@@ -356,7 +356,7 @@ public:
  */
 struct ProofFunction: public StringFunction
 {
-        virtual int evaluate(Machine *m = NULL)
+        virtual int evaluate(Machine * = NULL)
         {
                 if (!gucdlbridge) return -3;
                 return gucdlbridge->update_proofs("", _content);
@@ -366,7 +366,7 @@ struct ProofFunction: public StringFunction
 
 struct LoadTheoryFunction: public StringFunction
 {
-        virtual int evaluate(Machine *m = NULL)
+        virtual int evaluate(Machine * = NULL)
         {
                 if (!gucdlbridge) return -3;
                 return gucdlbridge->load_theory_file(_content);

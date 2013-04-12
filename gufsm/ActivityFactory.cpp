@@ -164,8 +164,8 @@ block_callback(void *context, const char *terminal, const char *content,
 }
 
 static int
-block_pop(void *context, const char *terminal, const char *content,
-        pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
+block_pop(void *context, const char *, const char *,
+        pANTLR3_RECOGNIZER_SHARED_STATE, pANTLR3_BASE_TREE)
 {
         ActivityFactory *self = (ActivityFactory *) context;
         Activity &activity = self->state()->activity();
@@ -200,7 +200,7 @@ block_pop(void *context, const char *terminal, const char *content,
 
 
 static int
-action_callback(void *context, const char *terminal, const char *content,
+action_callback(void *context, const char *terminal, const char *,
                 pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
 {
         //ActivityFactory *self = (ActivityFactory *) context;
@@ -229,7 +229,7 @@ action_callback(void *context, const char *terminal, const char *content,
 
 static int
 statename_callback(void *context, const char *terminal, const char *content,
-                   pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
+                   pANTLR3_RECOGNIZER_SHARED_STATE, pANTLR3_BASE_TREE)
 {
         ActivityFactory *self = (ActivityFactory *) context;
 
@@ -249,7 +249,7 @@ statename_callback(void *context, const char *terminal, const char *content,
 }
 
 static int
-state_push(void *context, const char *terminal, const char *content,
+state_push(void *context, const char *terminal, const char *,
            pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
 {
         ActivityFactory *self = (ActivityFactory *) context;
@@ -333,8 +333,8 @@ activity_push(void *context, const char *terminal, const char *content,
 }
 
 static int
-activity_pop(void *context, const char *terminal, const char *content,
-             pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
+activity_pop(void *context, const char *terminal, const char *,
+             pANTLR3_RECOGNIZER_SHARED_STATE, pANTLR3_BASE_TREE)
 {
         ActivityFactory *self = (ActivityFactory *) context;
         DBG(cout << "activity pop (" << terminal << ") content: " << content << endl);
@@ -357,7 +357,7 @@ ActivityFactory::ActivityFactory(FSM::Machine *machine, const char *filename, ma
                 set_error(true);
 }
 
-ActivityFactory::ActivityFactory(FSM::Machine *machine, const char *filename, map<std::string, Action *> *func, bool noInit) : 
+ActivityFactory::ActivityFactory(FSM::Machine *machine, const char *filename, map<std::string, Action *> *func, bool): 
 _fsm(machine), 
 _named_actions(func), 
 _file(filename), 

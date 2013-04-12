@@ -99,7 +99,7 @@ static inline string getContent(pANTLR3_BASE_TREE tree)
 }
 
 static int
-statement_callback(void *context, const char *terminal, const char *content,
+statement_callback(void *context, const char *terminal, const char *,
              pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
 {
         Machine *m = (Machine *) context;
@@ -182,7 +182,7 @@ statement_callback(void *context, const char *terminal, const char *content,
 }
 
 
-void ANTLRAction::performv(Machine *m, ActionStage stage, int x, va_list)
+void ANTLRAction::performv(Machine *m, ActionStage, int, va_list)
 {
 #ifdef DEBUG
         State *s = stage == STAGE_ON_EXIT ? m->previousState() : m->currentState();
@@ -196,7 +196,7 @@ void ANTLRAction::performv(Machine *m, ActionStage stage, int x, va_list)
 
 static int
 statement_print_pop_callback(void *context, const char *terminal, const char *content,
-                             pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
+                             pANTLR3_RECOGNIZER_SHARED_STATE, pANTLR3_BASE_TREE)
 {
         stringstream &ss = *(stringstream *)context;
         assert(terminal);                       /* must not be nil */
@@ -299,7 +299,7 @@ assignment_extract_callback(void *context, const char *terminal, const char *con
 
 
 static int
-statement_extract_callback(void *context, const char *terminal, const char *content,
+statement_extract_callback(void *context, const char *terminal, const char *,
                          pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
 {
         assert(terminal);                       /* must not be nil */
