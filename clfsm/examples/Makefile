@@ -3,7 +3,7 @@
 #
 # Makefile for pre- and cross-compiling .machine files
 #
-MACHINES=StateMachineStarter Safety_BatteryMonitor SMGameController SMButtonChest SMButtonLeftFoot SMButtonRightFoot SMRobotPosition 
+MACHINES=StateMachineStarter Safety_BatteryMonitor SMButtonChest SMButtonLeftFoot SMButtonRightFoot SMRobotPosition 
 
 ALL_TARGETS=robot-local #host-local
 SOPREFIX=#empty
