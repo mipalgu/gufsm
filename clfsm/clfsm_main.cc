@@ -194,8 +194,9 @@ int main(int argc, char * const argv[])
         signal(SIGSYS,  aborting_signal_handler);
         signal(SIGFPE,  aborting_signal_handler);
         signal(SIGXCPU, aborting_signal_handler);
-
+#ifdef SIGINFO
         signal(SIGINFO, print_backtrace);
+#endif
         signal(SIGTSTP, print_backtrace);
         signal(SIGHUP,  print_backtrace);
 
@@ -231,6 +232,8 @@ int main(int argc, char * const argv[])
                                 break;
                         case 'n':
                                 nonstop = true;
+                                DBG(cerr << "nonstop mode: sleeping 1 second before (re)starting" << endl);
+                                protected_usleep(1000000ULL);
                                 break;
                         case '?':
                         default:
