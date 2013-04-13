@@ -129,10 +129,14 @@ static void print_backtrace(int signum)
         FILE *logfile = fdopen(fn, "w");
         if (!logfile)
                 fprintf(stderr, "*** Cannot open '%s': %s", tmpname, strerror(errno));
+        guWhiteboard::QSay_t say;
         for (int i = 0; i < frames; ++i)
         {
-                if (logfile) fprintf(logfile,"%3.3d: %s\n", i, strs[i]);
-                fprintf(stderr, "%3.3d: %s\n", i, strs[i]);
+                char *function = strs[i];
+                char *state = strstr(function, "State");
+                if (state) say(state);
+                if (logfile) fprintf(logfile,"%3.3d: %s\n", i, function);
+                fprintf(stderr, "%3.3d: %s\n", i, function);
         }
         free(strs);
         if (logfile)
