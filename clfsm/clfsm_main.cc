@@ -57,7 +57,13 @@
  */
 #include <iostream>
 #include <sstream>
+#include <cstdlib>
+#include <cstdio>
+#include <cerrno>
 #include <unistd.h>
+#include <signal.h>
+#include <execinfo.h>
+#include <libgen.h>
 
 #include "gu_util.h"
 #include "FSMSuspensibleMachine.h"
@@ -65,6 +71,11 @@
 #include "clfsm_machine.h"
 #include "clfsm_wb_vector_factory.h"
 #include "gugenericwhiteboardobject.h"
+
+static const char *command;
+static int command_argc;
+static char * const *command_argv;
+static bool nonstop;
 
 using namespace std;
 using namespace FSM;
@@ -90,9 +101,71 @@ static CLFSMWBVectorFactory *createMachines(vector<MachineWrapper *> &machineWra
 }
 
 
+static void __attribute((noreturn)) aborting_signal_handler(int signum)
+{
+        guWhiteboard::QSay_t say;
+        stringstream ss;
+
+        if (signum == SIGTERM || signum == SIGQUIT || signum == SIGINT)
+                nonstop = false;
+
+        ss << "Caught signal " << signum << ": " << (nonstop ? "restarting ... " : "aborting ...") << endl;
+
+        say(ss.str());
+        cerr << ss.str();
+
+        abort();
+}
+
+
+static void print_backtrace(int signum)
+{
+        void *callstack[256];
+        int frames = backtrace(callstack, sizeof(callstack)/sizeof(callstack[0]));
+        char **strs = backtrace_symbols(callstack, frames);
+        char tmpname[256];
+        snprintf(tmpname, sizeof(tmpname), "/tmp/%s-XXX.log", basename((char *)command));
+        int fn = mkstemps(tmpname, 4);
+        FILE *logfile = fdopen(fn, "w");
+        if (!logfile)
+                fprintf(stderr, "*** Cannot open '%s': %s", tmpname, strerror(errno));
+        for (int i = 0; i < frames; ++i)
+        {
+                if (logfile) fprintf(logfile,"%3.3d: %s\n", i, strs[i]);
+                fprintf(stderr, "%3.3d: %s\n", i, strs[i]);
+        }
+        free(strs);
+        if (logfile)
+        {
+                fclose(logfile);
+                fprintf(stderr, "Log file written to '%s'\n", tmpname);
+        }
+        if (signum == SIGTSTP) kill(getpid(), SIGSTOP);
+}
+
+
+static void __attribute((noreturn)) backtrace_signal_handler(int signum)
+{
+        print_backtrace(signum);
+        signal(SIGABRT, SIG_DFL);
+        if (nonstop)
+        {
+                guWhiteboard::QSay_t say;
+                stringstream ss;
+                ss << "Starting ";
+                for (int i = 0; i < command_argc; i++)
+                        ss << command_argv[i];
+                say(ss.str());
+                execvp(command, command_argv);
+                fprintf(stderr, "*** Cannot re-run '%s': %s", command, strerror(errno));
+        }
+        abort();
+}
+
+
 static void usage(const char *cmd)
 {
-        cerr << "Usage: " << cmd << "[-c][-fPIC]{-I includedir}{-L linkdir}{-l lib}" << endl;
+        cerr << "Usage: " << cmd << "[-c][-fPIC]{-I includedir}{-L linkdir}{-l lib}[-n]" << endl;
 }
 
 
@@ -102,16 +175,33 @@ int main(int argc, char * const argv[])
         vector<string> machines;
         vector<string> compiler_args;
         vector<string> linker_args;
-/*
-        guWhiteboard::FSM::ControlStatus foo;
 
-        printf("foo:\t%p\nfoo[0]:\t%p\n", &foo, &foo.fsms()[0]);
-*/
+        command_argc = argc;
+        command_argv = argv;
+        command = argv[0];
+
+        signal(SIGABRT, backtrace_signal_handler);
+        signal(SIGIOT,  backtrace_signal_handler);
+
+        signal(SIGINT,  aborting_signal_handler);
+        signal(SIGTERM, aborting_signal_handler);
+        signal(SIGQUIT, aborting_signal_handler);
+        signal(SIGSEGV, aborting_signal_handler);
+        signal(SIGBUS,  aborting_signal_handler);
+        signal(SIGILL,  aborting_signal_handler);
+        signal(SIGSYS,  aborting_signal_handler);
+        signal(SIGFPE,  aborting_signal_handler);
+        signal(SIGXCPU, aborting_signal_handler);
+
+        signal(SIGINFO, print_backtrace);
+        signal(SIGTSTP, print_backtrace);
+        signal(SIGHUP,  print_backtrace);
+
         compiler_args.push_back("-std=c++11");    /// XXX: fix this
 
         int ch;
         //bool cflag = false;
-        while ((ch = getopt(argc, argv, "gf:I:L:l:")) != -1)
+        while ((ch = getopt(argc, argv, "gf:I:L:l:n")) != -1)
         {
                 switch (ch)
                 {
@@ -136,6 +226,9 @@ int main(int argc, char * const argv[])
                         case 'l':
                                 linker_args.push_back("-l");
                                 linker_args.push_back(optarg);
+                                break;
+                        case 'n':
+                                nonstop = true;
                                 break;
                         case '?':
                         default:
