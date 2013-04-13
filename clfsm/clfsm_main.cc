@@ -154,12 +154,10 @@ static void __attribute((noreturn)) backtrace_signal_handler(int signum)
         signal(SIGABRT, SIG_DFL);
         if (nonstop)
         {
-                guWhiteboard::QSay_t say;
-                stringstream ss;
-                ss << "Starting ";
+                cerr << "Starting ";
                 for (int i = 0; i < command_argc; i++)
-                        ss << command_argv[i];
-                say(ss.str());
+                        cerr << command_argv[i];
+                cerr << endl;
                 execvp(command, command_argv);
                 fprintf(stderr, "*** Cannot re-run '%s': %s", command, strerror(errno));
         }
