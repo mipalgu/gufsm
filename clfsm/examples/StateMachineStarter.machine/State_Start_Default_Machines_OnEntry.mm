@@ -8,5 +8,9 @@ say("Starting Machines");
  	resume("SMButtonLeftFoot"); 
  	resume("SMButtonRightFoot");
 
-nao_state = nao_state_ptr.get();
-fprintf(stderr, "Entry: %s\n", (char *)nao_state.description().c_str());
+
+
+
+#ifdef DEBUG
+fprintf(stderr, "State Starter: %s\n", state_name());
+#endif

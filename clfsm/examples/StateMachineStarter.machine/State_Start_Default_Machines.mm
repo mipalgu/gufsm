@@ -1,5 +1,5 @@
 //
-// State_Start_Default_Machines.mm -- 2013-04-15 05:28:08 +0000
+// State_Start_Default_Machines.mm -- 2013-04-15 06:32:41 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -17,7 +17,6 @@ using namespace State;
 Start_Default_Machines::Start_Default_Machines(const char *name): CLState(name, *new Start_Default_Machines::OnEntry, *new Start_Default_Machines::OnExit, *new Start_Default_Machines::Internal)
 {
 	_transitions[0] = new Transition_0();
-	_transitions[1] = new Transition_1();
 }
 
 Start_Default_Machines::~Start_Default_Machines()
@@ -27,7 +26,6 @@ Start_Default_Machines::~Start_Default_Machines()
 	delete &internalAction();
 
 	delete _transitions[0];
-	delete _transitions[1];
 }
 
 void Start_Default_Machines::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -59,16 +57,5 @@ bool Start_Default_Machines::Transition_0::check(CLMachine *_machine, CLState *_
 	return
 	(
 #		include "State_Start_Default_Machines_Transition_0.expr"
-	);
-}
-
-bool Start_Default_Machines::Transition_1::check(CLMachine *_machine, CLState *_state) const
-{
-#	include "StateMachineStarter_VarRefs.mm"
-#	include "State_Start_Default_Machines_VarRefs.mm"
-
-	return
-	(
-#		include "State_Start_Default_Machines_Transition_1.expr"
 	);
 }
