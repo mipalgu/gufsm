@@ -1,5 +1,5 @@
 //
-// StateMachineStarter.mm -- 2013-04-15 05:28:08 +0000
+// StateMachineStarter.mm -- 2013-04-15 06:32:41 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -11,6 +11,7 @@
 #include "State_Start_GC.h"
 #include "State_GC_Running.h"
 #include "State_Restart_FSMs.h"
+#include "State_Control_State.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -30,6 +31,7 @@ StateMachineStarter::StateMachineStarter(int mid, const char *name): CLMachine(m
 	_states[2] = new FSMStateMachineStarter::State::Start_GC;
 	_states[3] = new FSMStateMachineStarter::State::GC_Running;
 	_states[4] = new FSMStateMachineStarter::State::Restart_FSMs;
+	_states[5] = new FSMStateMachineStarter::State::Control_State;
 
 	setCurrentState(_states[0]);            // set initial state
 }
@@ -41,4 +43,5 @@ StateMachineStarter::~StateMachineStarter()
 	delete _states[2];
 	delete _states[3];
 	delete _states[4];
+	delete _states[5];
 }
