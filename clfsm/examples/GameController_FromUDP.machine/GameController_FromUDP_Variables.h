@@ -1,10 +1,6 @@
 //
-// GameController_FromUDP_Variables.h -- 2013-04-15 06:23:39 +0000
+// GameController_FromUDP_Variables.h -- 2013-04-15 08:04:58 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-SENSORS_LedsSensors	leds;	///< LED Change
-SENSORS_LedsSensors_t	leds_t;	///< LEDs WB Ptr
-SENSORS_BodySensors	body_sensors;	///< For reading the battery values
-SENSORS_BodySensors_t	body_sensors_t;	///< Body sensors wb ptr
-int	a;	///<
+UDPRN_t	aUDPReceiverNotificationType;	///< The UDP message is collected here

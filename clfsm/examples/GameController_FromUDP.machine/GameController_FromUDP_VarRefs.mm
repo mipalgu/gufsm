@@ -1,5 +1,5 @@
 //
-// GameController_FromUDP_VarRefs.mm -- 2013-04-15 06:23:39 +0000
+// GameController_FromUDP_VarRefs.mm -- 2013-04-15 08:04:58 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -9,10 +9,6 @@ GameController_FromUDP *_m = static_cast<GameController_FromUDP *>(_machine);
 #pragma clang diagnostic ignored "-Wunused-variable"
 #pragma clang diagnostic ignored "-Wshadow"
 
-SENSORS_LedsSensors	&leds = _m->leds;	///< LED Change
-SENSORS_LedsSensors_t	&leds_t = _m->leds_t;	///< LEDs WB Ptr
-SENSORS_BodySensors	&body_sensors = _m->body_sensors;	///< For reading the battery values
-SENSORS_BodySensors_t	&body_sensors_t = _m->body_sensors_t;	///< Body sensors wb ptr
-int	&a = _m->a;	///< 
+UDPRN_t	&aUDPReceiverNotificationType = _m->aUDPReceiverNotificationType;	///< The UDP message is collected here
 
 #pragma clang diagnostic pop

@@ -3,8 +3,7 @@
 #include <string>
 #include <cmath>
 #include "CLMacros.h"
-#include "typeClassDefs/SENSORS_LedsSensors.h"
-#include "typeClassDefs/SENSORS_BodySensors.h"
+#include "typeClassDefs/UDPReceiverNotification.h"
 #include "CLWhiteboard.h"
 
 
