@@ -1,5 +1,5 @@
 //
-// State_INIT.mm -- 2013-02-13 02:00:52 +0000
+// State_INIT.mm -- 2013-04-15 04:26:39 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -11,6 +11,7 @@
 
 using namespace FSM;
 using namespace CLM;
+using namespace FSMBackForwardsCLFSM;
 using namespace State;
 
 INIT::INIT(const char *name): CLState(name, *new INIT::OnEntry, *new INIT::OnExit, *new INIT::Internal)

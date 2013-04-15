@@ -1,5 +1,5 @@
 //
-// SMButtonChest.mm -- 2013-04-11 02:52:48 +0000
+// SMButtonChest.mm -- 2013-04-15 04:09:19 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -24,10 +24,10 @@ extern "C"
 
 SMButtonChest::SMButtonChest(int mid, const char *name): CLMachine(mid, name)
 {
-	_states[0] = new State::Init;
-	_states[1] = new State::Button_On;
-	_states[2] = new State::Button_Off;
-	_states[3] = new State::Wait_Release;
+	_states[0] = new FSMSMButtonChest::State::Init;
+	_states[1] = new FSMSMButtonChest::State::Button_On;
+	_states[2] = new FSMSMButtonChest::State::Button_Off;
+	_states[3] = new FSMSMButtonChest::State::Wait_Release;
 
 	setCurrentState(_states[0]);            // set initial state
 }

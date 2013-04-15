@@ -1,10 +1,10 @@
 //
-// State_Get_Data.h -- 2013-04-09 01:54:30 +0000
+// State_Get_Data.h -- 2013-04-15 04:13:39 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_State_Get_Data_h
-#define clfsm_State_Get_Data_h
+#ifndef clfsm_Safety_BatteryMonitor_State_Get_Data_h
+#define clfsm_Safety_BatteryMonitor_State_Get_Data_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,6 +14,8 @@ namespace FSM
 {
     namespace CLM
     {
+      namespace FSMSafety_BatteryMonitor
+      {
         namespace State
         {
             class Get_Data: public CLState
@@ -53,6 +55,7 @@ namespace FSM
 #                   include "State_Get_Data_Variables.h"
             };
         }
+      }
     }
 }
 

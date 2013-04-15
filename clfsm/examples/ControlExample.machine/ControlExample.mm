@@ -1,5 +1,5 @@
 //
-// ControlExample.mm -- 2013-04-12 01:18:45 +0000
+// ControlExample.mm -- 2013-04-15 04:08:33 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -28,14 +28,14 @@ extern "C"
 
 ControlExample::ControlExample(int mid, const char *name): CLMachine(mid, name)
 {
-	_states[0] = new State::Initial;
-	_states[1] = new State::Print_Name;
-	_states[2] = new State::Suspend;
-	_states[3] = new State::Resume;
-	_states[4] = new State::Suspend_2;
-	_states[5] = new State::Restart;
-	_states[6] = new State::Restart_Self;
-	_states[7] = new State::Wait;
+	_states[0] = new FSMControlExample::State::Initial;
+	_states[1] = new FSMControlExample::State::Print_Name;
+	_states[2] = new FSMControlExample::State::Suspend;
+	_states[3] = new FSMControlExample::State::Resume;
+	_states[4] = new FSMControlExample::State::Suspend_2;
+	_states[5] = new FSMControlExample::State::Restart;
+	_states[6] = new FSMControlExample::State::Restart_Self;
+	_states[7] = new FSMControlExample::State::Wait;
 
 	setCurrentState(_states[0]);            // set initial state
 }

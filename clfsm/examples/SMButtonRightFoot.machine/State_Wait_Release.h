@@ -1,10 +1,10 @@
 //
-// State_Wait_Release.h -- 2013-04-12 03:32:27 +0000
+// State_Wait_Release.h -- 2013-04-15 04:09:33 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_State_Wait_Release_h
-#define clfsm_State_Wait_Release_h
+#ifndef clfsm_SMButtonRightFoot_State_Wait_Release_h
+#define clfsm_SMButtonRightFoot_State_Wait_Release_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,6 +14,8 @@ namespace FSM
 {
     namespace CLM
     {
+      namespace FSMSMButtonRightFoot
+      {
         namespace State
         {
             class Wait_Release: public CLState
@@ -53,6 +55,7 @@ namespace FSM
 #                   include "State_Wait_Release_Variables.h"
             };
         }
+      }
     }
 }
 

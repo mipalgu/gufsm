@@ -1,10 +1,10 @@
 //
-// State_Ping.h -- 2013-04-06 21:41:28 +0000
+// State_Ping.h -- 2013-04-15 04:13:49 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_State_Ping_h
-#define clfsm_State_Ping_h
+#ifndef clfsm_SayPingPong_State_Ping_h
+#define clfsm_SayPingPong_State_Ping_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,6 +14,8 @@ namespace FSM
 {
     namespace CLM
     {
+      namespace FSMSayPingPong
+      {
         namespace State
         {
             class Ping: public CLState
@@ -53,6 +55,7 @@ namespace FSM
 #                   include "State_Ping_Variables.h"
             };
         }
+      }
     }
 }
 

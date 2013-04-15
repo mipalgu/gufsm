@@ -1,5 +1,5 @@
 //
-// State_Start_GC.mm -- 2013-04-12 03:22:15 +0000
+// State_Start_GC.mm -- 2013-04-15 04:09:50 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -11,6 +11,7 @@
 
 using namespace FSM;
 using namespace CLM;
+using namespace FSMStateMachineStarter;
 using namespace State;
 
 Start_GC::Start_GC(const char *name): CLState(name, *new Start_GC::OnEntry, *new Start_GC::OnExit, *new Start_GC::Internal)

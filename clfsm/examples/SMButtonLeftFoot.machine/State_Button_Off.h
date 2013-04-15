@@ -1,10 +1,10 @@
 //
-// State_Button_Off.h -- 2013-04-12 03:32:40 +0000
+// State_Button_Off.h -- 2013-04-15 04:09:36 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_State_Button_Off_h
-#define clfsm_State_Button_Off_h
+#ifndef clfsm_SMButtonLeftFoot_State_Button_Off_h
+#define clfsm_SMButtonLeftFoot_State_Button_Off_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,6 +14,8 @@ namespace FSM
 {
     namespace CLM
     {
+      namespace FSMSMButtonLeftFoot
+      {
         namespace State
         {
             class Button_Off: public CLState
@@ -53,6 +55,7 @@ namespace FSM
 #                   include "State_Button_Off_Variables.h"
             };
         }
+      }
     }
 }
 

@@ -1,5 +1,5 @@
 //
-// State_FallingRight.mm -- 2013-04-11 06:20:00 +0000
+// State_FallingRight.mm -- 2013-04-15 04:09:28 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -11,6 +11,7 @@
 
 using namespace FSM;
 using namespace CLM;
+using namespace FSMSMRobotPosition;
 using namespace State;
 
 FallingRight::FallingRight(const char *name): CLState(name, *new FallingRight::OnEntry, *new FallingRight::OnExit, *new FallingRight::Internal)

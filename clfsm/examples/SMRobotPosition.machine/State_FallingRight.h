@@ -1,10 +1,10 @@
 //
-// State_FallingRight.h -- 2013-04-11 06:20:00 +0000
+// State_FallingRight.h -- 2013-04-15 04:09:28 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_State_FallingRight_h
-#define clfsm_State_FallingRight_h
+#ifndef clfsm_SMRobotPosition_State_FallingRight_h
+#define clfsm_SMRobotPosition_State_FallingRight_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,6 +14,8 @@ namespace FSM
 {
     namespace CLM
     {
+      namespace FSMSMRobotPosition
+      {
         namespace State
         {
             class FallingRight: public CLState
@@ -53,6 +55,7 @@ namespace FSM
 #                   include "State_FallingRight_Variables.h"
             };
         }
+      }
     }
 }
 

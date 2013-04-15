@@ -1,5 +1,5 @@
 //
-// State_Restart_FSMs.mm -- 2013-04-12 03:22:15 +0000
+// State_Restart_FSMs.mm -- 2013-04-15 04:09:50 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -11,6 +11,7 @@
 
 using namespace FSM;
 using namespace CLM;
+using namespace FSMStateMachineStarter;
 using namespace State;
 
 Restart_FSMs::Restart_FSMs(const char *name): CLState(name, *new Restart_FSMs::OnEntry, *new Restart_FSMs::OnExit, *new Restart_FSMs::Internal)

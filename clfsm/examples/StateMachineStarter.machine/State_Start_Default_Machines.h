@@ -1,10 +1,10 @@
 //
-// State_Start_Default_Machines.h -- 2013-04-12 03:22:15 +0000
+// State_Start_Default_Machines.h -- 2013-04-15 04:09:50 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_State_Start_Default_Machines_h
-#define clfsm_State_Start_Default_Machines_h
+#ifndef clfsm_StateMachineStarter_State_Start_Default_Machines_h
+#define clfsm_StateMachineStarter_State_Start_Default_Machines_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,6 +14,8 @@ namespace FSM
 {
     namespace CLM
     {
+      namespace FSMStateMachineStarter
+      {
         namespace State
         {
             class Start_Default_Machines: public CLState
@@ -61,6 +63,7 @@ namespace FSM
 #                   include "State_Start_Default_Machines_Variables.h"
             };
         }
+      }
     }
 }
 
