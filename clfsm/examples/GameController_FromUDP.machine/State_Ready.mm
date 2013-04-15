@@ -1,5 +1,5 @@
 //
-// State_Ready.mm -- 2013-04-15 08:04:58 +0000
+// State_Ready.mm -- 2013-04-15 11:15:42 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -17,6 +17,7 @@ using namespace State;
 Ready::Ready(const char *name): CLState(name, *new Ready::OnEntry, *new Ready::OnExit, *new Ready::Internal)
 {
 	_transitions[0] = new Transition_0();
+	_transitions[1] = new Transition_1();
 }
 
 Ready::~Ready()
@@ -26,6 +27,7 @@ Ready::~Ready()
 	delete &internalAction();
 
 	delete _transitions[0];
+	delete _transitions[1];
 }
 
 void Ready::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -57,5 +59,16 @@ bool Ready::Transition_0::check(CLMachine *_machine, CLState *_state) const
 	return
 	(
 #		include "State_Ready_Transition_0.expr"
+	);
+}
+
+bool Ready::Transition_1::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "GameController_FromUDP_VarRefs.mm"
+#	include "State_Ready_VarRefs.mm"
+
+	return
+	(
+#		include "State_Ready_Transition_1.expr"
 	);
 }

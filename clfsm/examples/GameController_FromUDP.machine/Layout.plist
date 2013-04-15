@@ -4,6 +4,40 @@
 <dict>
 	<key>States</key>
 	<dict>
+		<key>Finished</key>
+		<dict>
+			<key>Transitions</key>
+			<array>
+				<dict>
+					<key>controlPoint1X</key>
+					<real>177.55896455534349</real>
+					<key>controlPoint1Y</key>
+					<real>302.224916120991</real>
+					<key>controlPoint2X</key>
+					<real>219.26439178999198</real>
+					<key>controlPoint2Y</key>
+					<real>162.87794031218104</real>
+					<key>dstPointX</key>
+					<real>276.58800506343005</real>
+					<key>dstPointY</key>
+					<real>134.79809929245121</real>
+					<key>srcPointX</key>
+					<real>127.96367915478142</real>
+					<key>srcPointY</key>
+					<real>342.40926352707407</real>
+				</dict>
+			</array>
+			<key>expanded</key>
+			<false/>
+			<key>h</key>
+			<real>50</real>
+			<key>w</key>
+			<real>100</real>
+			<key>x</key>
+			<real>92.984375</real>
+			<key>y</key>
+			<real>354.51171875</real>
+		</dict>
 		<key>Init</key>
 		<dict>
 			<key>Transitions</key>
@@ -72,6 +106,55 @@
 			<key>y</key>
 			<real>126</real>
 		</dict>
+		<key>Penalized</key>
+		<dict>
+			<key>Transitions</key>
+			<array/>
+			<key>expanded</key>
+			<false/>
+			<key>h</key>
+			<real>50</real>
+			<key>w</key>
+			<real>100</real>
+			<key>x</key>
+			<real>276.3671875</real>
+			<key>y</key>
+			<real>347.1640625</real>
+		</dict>
+		<key>Play</key>
+		<dict>
+			<key>Transitions</key>
+			<array>
+				<dict>
+					<key>controlPoint1X</key>
+					<real>220.86593326546591</real>
+					<key>controlPoint1Y</key>
+					<real>505.98018490476659</real>
+					<key>controlPoint2X</key>
+					<real>131.36688026435976</real>
+					<key>controlPoint2Y</key>
+					<real>424.39864936452926</real>
+					<key>dstPointX</key>
+					<real>110.24222584271128</real>
+					<key>dstPointY</key>
+					<real>373.47363498952524</real>
+					<key>srcPointX</key>
+					<real>273.79697493270311</real>
+					<key>srcPointY</key>
+					<real>521.40461168664865</real>
+				</dict>
+			</array>
+			<key>expanded</key>
+			<false/>
+			<key>h</key>
+			<real>50</real>
+			<key>w</key>
+			<real>100</real>
+			<key>x</key>
+			<real>317</real>
+			<key>y</key>
+			<real>527</real>
+		</dict>
 		<key>Ready</key>
 		<dict>
 			<key>Transitions</key>
@@ -94,6 +177,24 @@
 					<key>srcPointY</key>
 					<real>110.82152870514471</real>
 				</dict>
+				<dict>
+					<key>controlPoint1X</key>
+					<real>564.58834835932794</real>
+					<key>controlPoint1Y</key>
+					<real>230.37984459426582</real>
+					<key>controlPoint2X</key>
+					<real>676.52817868982754</real>
+					<key>controlPoint2Y</key>
+					<real>461.78799121858668</real>
+					<key>dstPointX</key>
+					<real>594.73918808609653</real>
+					<key>dstPointY</key>
+					<real>488.74040112133918</real>
+					<key>srcPointX</key>
+					<real>574.71058289683401</real>
+					<key>srcPointY</key>
+					<real>144.86135681816617</real>
+				</dict>
 			</array>
 			<key>expanded</key>
 			<false/>
@@ -105,6 +206,55 @@
 			<real>579.53125</real>
 			<key>y</key>
 			<real>125.27734375</real>
+		</dict>
+		<key>Set</key>
+		<dict>
+			<key>Transitions</key>
+			<array>
+				<dict>
+					<key>controlPoint1X</key>
+					<real>469.5989050281587</real>
+					<key>controlPoint1Y</key>
+					<real>501.23989448632892</real>
+					<key>controlPoint2X</key>
+					<real>396.41216931105737</real>
+					<key>controlPoint2Y</key>
+					<real>513.13963592873438</real>
+					<key>dstPointX</key>
+					<real>359.20085362237609</real>
+					<key>dstPointY</key>
+					<real>520.24754792127635</real>
+					<key>srcPointX</key>
+					<real>507.26223207174525</real>
+					<key>srcPointY</key>
+					<real>497.15599632596042</real>
+				</dict>
+			</array>
+			<key>expanded</key>
+			<false/>
+			<key>h</key>
+			<real>50</real>
+			<key>w</key>
+			<real>100</real>
+			<key>x</key>
+			<real>551.9921875</real>
+			<key>y</key>
+			<real>495.34765625</real>
+		</dict>
+		<key>State 6</key>
+		<dict>
+			<key>Transitions</key>
+			<array/>
+			<key>expanded</key>
+			<false/>
+			<key>h</key>
+			<real>50</real>
+			<key>w</key>
+			<real>100</real>
+			<key>x</key>
+			<real>92.984375</real>
+			<key>y</key>
+			<real>354.51171875</real>
 		</dict>
 	</dict>
 </dict>

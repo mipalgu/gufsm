@@ -1,5 +1,5 @@
 //
-// GameController_FromUDP.h -- 2013-04-15 08:04:58 +0000
+// GameController_FromUDP.h -- 2013-04-15 11:15:42 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -16,12 +16,12 @@ namespace FSM
     {
         class GameController_FromUDP: public CLMachine
         {
-            CLState *_states[3];
+            CLState *_states[8];
         public:
             GameController_FromUDP(int mid  = 0, const char *name = "GameController_FromUDP");
             virtual ~GameController_FromUDP();
             virtual CLState * const * states() const { return _states; }
-            virtual int numberOfStates() const { return 3; }
+            virtual int numberOfStates() const { return 8; }
 #           include "GameController_FromUDP_Variables.h"
         };
     }

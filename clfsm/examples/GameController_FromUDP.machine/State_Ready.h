@@ -1,5 +1,5 @@
 //
-// State_Ready.h -- 2013-04-15 08:04:58 +0000
+// State_Ready.h -- 2013-04-15 11:15:42 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -43,14 +43,22 @@ namespace FSM
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                CLTransition *_transitions[1];
+                class Transition_1: public CLTransition
+                {
+                public:
+                    Transition_1(int toState = 7): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                CLTransition *_transitions[2];
 
                 public:
                     Ready(const char *name = "Ready");
                     virtual ~Ready();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 1; }
+                    virtual int numberOfTransitions() const { return 2; }
 
 #                   include "State_Ready_Variables.h"
             };
