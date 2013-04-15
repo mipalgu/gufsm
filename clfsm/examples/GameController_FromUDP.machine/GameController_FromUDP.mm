@@ -1,5 +1,5 @@
 //
-// GameController_FromUDP.mm -- 2013-04-11 07:38:19 +0000
+// GameController_FromUDP.mm -- 2013-04-15 05:10:33 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -23,9 +23,9 @@ extern "C"
 
 GameController_FromUDP::GameController_FromUDP(int mid, const char *name): CLMachine(mid, name)
 {
-	_states[0] = new State::Init;
-	_states[1] = new State::Initial;
-	_states[2] = new State::Ready;
+	_states[0] = new FSMGameController_FromUDP::State::Init;
+	_states[1] = new FSMGameController_FromUDP::State::Initial;
+	_states[2] = new FSMGameController_FromUDP::State::Ready;
 
 	setCurrentState(_states[0]);            // set initial state
 }

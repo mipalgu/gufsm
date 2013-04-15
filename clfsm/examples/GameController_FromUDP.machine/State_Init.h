@@ -1,10 +1,10 @@
 //
-// State_Init.h -- 2013-04-11 07:38:19 +0000
+// State_Init.h -- 2013-04-15 05:10:33 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_State_Init_h
-#define clfsm_State_Init_h
+#ifndef clfsm_GameController_FromUDP_State_Init_h
+#define clfsm_GameController_FromUDP_State_Init_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,6 +14,8 @@ namespace FSM
 {
     namespace CLM
     {
+      namespace FSMGameController_FromUDP
+      {
         namespace State
         {
             class Init: public CLState
@@ -53,6 +55,7 @@ namespace FSM
 #                   include "State_Init_Variables.h"
             };
         }
+      }
     }
 }
 
