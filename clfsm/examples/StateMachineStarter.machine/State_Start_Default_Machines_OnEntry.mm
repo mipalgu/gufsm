@@ -9,3 +9,4 @@ say("Starting Machines");
  	resume("SMButtonRightFoot");
 
 nao_state = nao_state_ptr.get();
+fprintf(stderr, "Entry: %s\n", (char *)nao_state.description().c_str());

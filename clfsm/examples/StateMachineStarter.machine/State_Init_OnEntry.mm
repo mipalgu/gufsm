@@ -6,6 +6,7 @@
 //	extern wbStopFSMs;
 
 int player = getplayernumber();
+say("Player number");
 say(gu_ltos(player));
 
 suspend_all();
