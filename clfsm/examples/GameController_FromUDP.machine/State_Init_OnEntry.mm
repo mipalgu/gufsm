@@ -1,5 +1,5 @@
 {
 		using namespace std;
 
-  cerr << "Starting in INT " << stateName << endl;
+  cerr << "Starting in INT " << state_name() << endl;
 }

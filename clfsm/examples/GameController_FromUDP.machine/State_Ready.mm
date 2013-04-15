@@ -1,5 +1,5 @@
 //
-// State_Ready.mm -- 2013-04-11 07:38:19 +0000
+// State_Ready.mm -- 2013-04-15 05:10:33 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -11,6 +11,7 @@
 
 using namespace FSM;
 using namespace CLM;
+using namespace FSMGameController_FromUDP;
 using namespace State;
 
 Ready::Ready(const char *name): CLState(name, *new Ready::OnEntry, *new Ready::OnExit, *new Ready::Internal)
