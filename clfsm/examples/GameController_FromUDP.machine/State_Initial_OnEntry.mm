@@ -1,7 +1,13 @@
 {
    using namespace std;
 
-  cerr << "INITIAL " << state_name() << endl;
+	int myNumber = thePlayerNumberOnTheBack;																
+
+      cerr << "INITIAL " << state_name() << myNumber << endl;
+
+														
 		
 		QSay_t anUtterance = std::string("I'm in Initial");
+
+																																																																																
 													}

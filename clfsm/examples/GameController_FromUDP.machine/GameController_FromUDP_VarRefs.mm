@@ -1,5 +1,5 @@
 //
-// GameController_FromUDP_VarRefs.mm -- 2013-04-15 11:15:42 +0000
+// GameController_FromUDP_VarRefs.mm -- 2013-04-17 22:00:08 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -9,6 +9,8 @@ GameController_FromUDP *_m = static_cast<GameController_FromUDP *>(_machine);
 #pragma clang diagnostic ignored "-Wunused-variable"
 #pragma clang diagnostic ignored "-Wshadow"
 
+int	&myNumber = _m->myNumber;	///< 
+PlayerNumber_t	&thePlayerNumberOnTheBack = _m->thePlayerNumberOnTheBack;	///< 
 UDPRN_t	&aUDPReceiverNotificationType = _m->aUDPReceiverNotificationType;	///< The UDP message is collected here
 
 #pragma clang diagnostic pop

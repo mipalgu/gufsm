@@ -117,9 +117,9 @@
 			<key>w</key>
 			<real>100</real>
 			<key>x</key>
-			<real>276.3671875</real>
+			<real>301.95703125</real>
 			<key>y</key>
-			<real>347.1640625</real>
+			<real>340</real>
 		</dict>
 		<key>Play</key>
 		<dict>
@@ -142,6 +142,24 @@
 					<real>273.79697493270311</real>
 					<key>srcPointY</key>
 					<real>521.40461168664865</real>
+				</dict>
+				<dict>
+					<key>controlPoint1X</key>
+					<real>305.6931403218295</real>
+					<key>controlPoint1Y</key>
+					<real>471.50676083970552</real>
+					<key>controlPoint2X</key>
+					<real>349.03297989122217</real>
+					<key>controlPoint2Y</key>
+					<real>385.63793733987558</real>
+					<key>dstPointX</key>
+					<real>328.11609713942369</real>
+					<key>dstPointY</key>
+					<real>356.28723332622974</real>
+					<key>srcPointX</key>
+					<real>310.72161733362668</real>
+					<key>srcPointY</key>
+					<real>507.19561384860674</real>
 				</dict>
 			</array>
 			<key>expanded</key>
