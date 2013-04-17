@@ -1,5 +1,5 @@
 //
-// State_Ping.mm -- 2013-04-06 21:41:28 +0000
+// State_Ping.mm -- 2013-04-15 04:13:49 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -11,6 +11,7 @@
 
 using namespace FSM;
 using namespace CLM;
+using namespace FSMSayPingPong;
 using namespace State;
 
 Ping::Ping(const char *name): CLState(name, *new Ping::OnEntry, *new Ping::OnExit, *new Ping::Internal)

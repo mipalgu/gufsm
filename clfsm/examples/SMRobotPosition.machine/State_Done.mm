@@ -1,5 +1,5 @@
 //
-// State_Done.mm -- 2013-04-11 06:20:00 +0000
+// State_Done.mm -- 2013-04-15 06:10:09 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -11,6 +11,7 @@
 
 using namespace FSM;
 using namespace CLM;
+using namespace FSMSMRobotPosition;
 using namespace State;
 
 Done::Done(const char *name): CLState(name, *new Done::OnEntry, *new Done::OnExit, *new Done::Internal)

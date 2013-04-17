@@ -1,5 +1,5 @@
 //
-// State_Resume.mm -- 2013-04-12 01:18:45 +0000
+// State_Resume.mm -- 2013-04-15 04:08:33 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -11,6 +11,7 @@
 
 using namespace FSM;
 using namespace CLM;
+using namespace FSMControlExample;
 using namespace State;
 
 Resume::Resume(const char *name): CLState(name, *new Resume::OnEntry, *new Resume::OnExit, *new Resume::Internal)

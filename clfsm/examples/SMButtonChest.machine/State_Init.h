@@ -1,10 +1,10 @@
 //
-// State_Init.h -- 2013-04-11 02:52:48 +0000
+// State_Init.h -- 2013-04-15 06:29:07 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_State_Init_h
-#define clfsm_State_Init_h
+#ifndef clfsm_SMButtonChest_State_Init_h
+#define clfsm_SMButtonChest_State_Init_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,6 +14,8 @@ namespace FSM
 {
     namespace CLM
     {
+      namespace FSMSMButtonChest
+      {
         namespace State
         {
             class Init: public CLState
@@ -61,6 +63,7 @@ namespace FSM
 #                   include "State_Init_Variables.h"
             };
         }
+      }
     }
 }
 

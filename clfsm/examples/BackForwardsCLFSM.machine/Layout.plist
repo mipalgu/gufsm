@@ -10,13 +10,13 @@
 			<array>
 				<dict>
 					<key>controlPoint1X</key>
-					<real>0.0</real>
+					<real>-10.056336680768077</real>
 					<key>controlPoint1Y</key>
-					<real>0.0</real>
+					<real>-17.287859687163085</real>
 					<key>controlPoint2X</key>
-					<real>0.0</real>
+					<real>-13.118933735540509</real>
 					<key>controlPoint2Y</key>
-					<real>0.0</real>
+					<real>-15.096144462825521</real>
 					<key>dstPointX</key>
 					<real>0.0</real>
 					<key>dstPointY</key>
@@ -27,6 +27,12 @@
 					<real>0.0</real>
 				</dict>
 			</array>
+			<key>expanded</key>
+			<false/>
+			<key>h</key>
+			<real>50</real>
+			<key>w</key>
+			<real>100</real>
 			<key>x</key>
 			<real>89</real>
 			<key>y</key>
@@ -38,13 +44,13 @@
 			<array>
 				<dict>
 					<key>controlPoint1X</key>
-					<real>0.0</real>
+					<real>-13.118933735540509</real>
 					<key>controlPoint1Y</key>
-					<real>0.0</real>
+					<real>-15.096144462825521</real>
 					<key>controlPoint2X</key>
-					<real>0.0</real>
+					<real>-19.248532919195554</real>
 					<key>controlPoint2Y</key>
-					<real>0.0</real>
+					<real>-5.4308360736301893</real>
 					<key>dstPointX</key>
 					<real>0.0</real>
 					<key>dstPointY</key>
@@ -55,6 +61,12 @@
 					<real>0.0</real>
 				</dict>
 			</array>
+			<key>expanded</key>
+			<false/>
+			<key>h</key>
+			<real>50</real>
+			<key>w</key>
+			<real>100</real>
 			<key>x</key>
 			<real>350</real>
 			<key>y</key>
@@ -66,13 +78,13 @@
 			<array>
 				<dict>
 					<key>controlPoint1X</key>
-					<real>0.0</real>
+					<real>-19.248532919195554</real>
 					<key>controlPoint1Y</key>
-					<real>0.0</real>
+					<real>-5.4308360736301893</real>
 					<key>controlPoint2X</key>
-					<real>0.0</real>
+					<real>-13.118933735540509</real>
 					<key>controlPoint2Y</key>
-					<real>0.0</real>
+					<real>-15.096144462825521</real>
 					<key>dstPointX</key>
 					<real>0.0</real>
 					<key>dstPointY</key>
@@ -83,6 +95,12 @@
 					<real>0.0</real>
 				</dict>
 			</array>
+			<key>expanded</key>
+			<false/>
+			<key>h</key>
+			<real>50</real>
+			<key>w</key>
+			<real>100</real>
 			<key>x</key>
 			<real>630</real>
 			<key>y</key>
