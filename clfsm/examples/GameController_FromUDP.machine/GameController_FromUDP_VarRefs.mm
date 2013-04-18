@@ -1,5 +1,5 @@
 //
-// GameController_FromUDP_VarRefs.mm -- 2013-04-18 03:32:20 +0000
+// GameController_FromUDP_VarRefs.mm -- 2013-04-18 04:52:28 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -13,6 +13,7 @@ int	&myNumber = _m->myNumber;	///<
 PlayerNumber_t	&thePlayerNumberOnTheBack = _m->thePlayerNumberOnTheBack;	///< 
 UDPRN_t	&aUDPReceiverNotificationType = _m->aUDPReceiverNotificationType;	///< The UDP message is collected here
 int	&ourScore = _m->ourScore;	///< 
+int	&newScore = _m->newScore;	///< 
 int	&theirScore = _m->theirScore;	///< 
 
 #pragma clang diagnostic pop
