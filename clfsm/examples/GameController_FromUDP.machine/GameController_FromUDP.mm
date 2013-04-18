@@ -1,5 +1,5 @@
 //
-// GameController_FromUDP.mm -- 2013-04-17 22:00:08 +0000
+// GameController_FromUDP.mm -- 2013-04-18 00:02:40 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -11,7 +11,6 @@
 #include "State_Ready.h"
 #include "State_Play.h"
 #include "State_Penalized.h"
-#include "State_State 6.h"
 #include "State_Finished.h"
 #include "State_Set.h"
 
@@ -33,9 +32,8 @@ GameController_FromUDP::GameController_FromUDP(int mid, const char *name): CLMac
 	_states[2] = new FSMGameController_FromUDP::State::Ready;
 	_states[3] = new FSMGameController_FromUDP::State::Play;
 	_states[4] = new FSMGameController_FromUDP::State::Penalized;
-	_states[5] = new FSMGameController_FromUDP::State::State_6;
-	_states[6] = new FSMGameController_FromUDP::State::Finished;
-	_states[7] = new FSMGameController_FromUDP::State::Set;
+	_states[5] = new FSMGameController_FromUDP::State::Finished;
+	_states[6] = new FSMGameController_FromUDP::State::Set;
 
 	setCurrentState(_states[0]);            // set initial state
 }
@@ -49,5 +47,4 @@ GameController_FromUDP::~GameController_FromUDP()
 	delete _states[4];
 	delete _states[5];
 	delete _states[6];
-	delete _states[7];
 }
