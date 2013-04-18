@@ -1,7 +1,7 @@
 {
    using namespace std;
 
-	int myNumber = thePlayerNumberOnTheBack;																
+	myNumber = thePlayerNumberOnTheBack;																
 
       cerr << "INITIAL " << state_name() << myNumber << endl;
 
