@@ -1,5 +1,5 @@
 //
-// GameController_FromUDP.mm -- 2013-04-18 04:52:28 +0000
+// GameController_FromUDP.mm -- 2013-04-18 05:29:58 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -13,7 +13,7 @@
 #include "State_Penalized.h"
 #include "State_Finished.h"
 #include "State_Set.h"
-#include "State_OurGola.h"
+#include "State_OurGoal.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -35,7 +35,7 @@ GameController_FromUDP::GameController_FromUDP(int mid, const char *name): CLMac
 	_states[4] = new FSMGameController_FromUDP::State::Penalized;
 	_states[5] = new FSMGameController_FromUDP::State::Finished;
 	_states[6] = new FSMGameController_FromUDP::State::Set;
-	_states[7] = new FSMGameController_FromUDP::State::OurGola;
+	_states[7] = new FSMGameController_FromUDP::State::OurGoal;
 
 	setCurrentState(_states[0]);            // set initial state
 }
