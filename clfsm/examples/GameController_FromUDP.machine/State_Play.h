@@ -1,5 +1,5 @@
 //
-// State_Play.h -- 2013-04-18 05:29:58 +0000
+// State_Play.h -- 2013-04-21 23:42:51 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -59,14 +59,22 @@ namespace FSM
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                CLTransition *_transitions[3];
+                class Transition_3: public CLTransition
+                {
+                public:
+                    Transition_3(int toState = 2): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                CLTransition *_transitions[4];
 
                 public:
                     Play(const char *name = "Play");
                     virtual ~Play();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 3; }
+                    virtual int numberOfTransitions() const { return 4; }
 
 #                   include "State_Play_Variables.h"
             };

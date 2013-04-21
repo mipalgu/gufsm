@@ -1,5 +1,5 @@
 //
-// State_Play.mm -- 2013-04-18 05:29:58 +0000
+// State_Play.mm -- 2013-04-21 23:42:51 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -19,6 +19,7 @@ Play::Play(const char *name): CLState(name, *new Play::OnEntry, *new Play::OnExi
 	_transitions[0] = new Transition_0();
 	_transitions[1] = new Transition_1();
 	_transitions[2] = new Transition_2();
+	_transitions[3] = new Transition_3();
 }
 
 Play::~Play()
@@ -30,6 +31,7 @@ Play::~Play()
 	delete _transitions[0];
 	delete _transitions[1];
 	delete _transitions[2];
+	delete _transitions[3];
 }
 
 void Play::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -83,5 +85,16 @@ bool Play::Transition_2::check(CLMachine *_machine, CLState *_state) const
 	return
 	(
 #		include "State_Play_Transition_2.expr"
+	);
+}
+
+bool Play::Transition_3::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "GameController_FromUDP_VarRefs.mm"
+#	include "State_Play_VarRefs.mm"
+
+	return
+	(
+#		include "State_Play_Transition_3.expr"
 	);
 }
