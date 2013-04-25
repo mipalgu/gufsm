@@ -1,31 +1,25 @@
 <?xml version='1.0'?>
-<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
-<qfsmproject version="0.53" author="Qfsm">
-  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="Includes$&#xa;#include &lt;iostream>&#xa;#include &lt;Whiteboard.h>&#xa;#include &lt;WhiteboardConstants.h>&#xa;&#xa;&#xa;$Variables$&#xa;int&#x9;currentState;&#x9;// state no&#xa;guWhiteboard::Whiteboard *&#x9;wb;&#xa;" version="1" name="BackForwardsCLFSM" arrowtype="1" numbits="2" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+<!DOCTYPE qfsmproject SYSTEM "qfsm.dtd">
+<qfsmproject version="0.53" author="MiCASE">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="" version="1" name="BackForwardsCLFSM" arrowtype="1" numbits="2" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
-    <itransition ypos="68" endx="49" xpos="-11" endy="68"/>
-    <state pencolor="0" radius="40" description="Includes$&#xa;#include &lt;cstdlib>&#xa;#include &lt;unistd.h>&#xa;&#xa;$Variables$&#xa;const char *&#x9;stateName;&#x9;///&lt; name of the current state&#xa;&#xa;$OnEntry$&#xa;{&#xa;  using namespace std;&#xa;  using namespace guWhiteboard;&#xa;&#xa;  stateName = &quot;INIT&quot;;&#xa;  currentState = 0;&#xa;  cout &lt;&lt; stateName &lt;&lt; endl;&#xa;  wb= new Whiteboard();&#xa;&#xa;}&#xa;&#xa;$OnExit$&#xa;{&#xa;  sleep(1); // don't ever sleep (but this is just a test)!&#xa;}&#xa;&#xa;$Internal$&#xa;{&#xa;  using namespace std;&#xa;&#xa;  cerr &lt;&lt; &quot;Internal state executed for &quot; &lt;&lt; stateName &lt;&lt; endl;&#xa;  exit(EXIT_FAILURE);&#xa;}&#xa;" finalstate="0" moore_outputs="" ypos="68" code="0" xpos="89" linewidth="1">INIT</state>
-    <state pencolor="0" radius="40" description="Includes$&#xa;#include &lt;cstdlib>&#xa;#include &lt;unistd.h>&#xa;&#xa;$Variables$&#xa;const char *&#x9;stateName;&#x9;///&lt; name of the current state&#xa;&#xa;$OnEntry$&#xa;{&#xa;  using namespace std;&#xa;  using namespace guWhiteboard;&#xa;&#xa;  string strL = &quot;1,-50&quot;;&#xa;  string strR = &quot;0,-50&quot;;&#xa;  WBMsg msgL(strL);&#xa;  WBMsg msgR(strR);&#xa;&#xa;  stateName = &quot;Pong&quot;;&#xa;  currentState = 2;&#xa;  cout &lt;&lt; stateName &lt;&lt; endl;&#xa;  wb-> addMessage(kQSay,&quot;pong is back&quot;);&#xa;  wb-> addMessage(kDifferentialMotorPower,msgL);&#xa;  wb-> addMessage(kDifferentialMotorPower,msgR);&#xa;}&#xa;&#xa;$OnExit$&#xa;{&#xa;  sleep(3); // don't ever sleep (but this is just a test)!&#xa;}&#xa;&#xa;$Internal$&#xa;{&#xa;  using namespace std;&#xa;&#xa;  cerr &lt;&lt; &quot;Internal state executed for &quot; &lt;&lt; stateName &lt;&lt; endl;&#xa;  exit(EXIT_FAILURE);&#xa;}&#xa;" finalstate="0" moore_outputs="" ypos="79" code="1" xpos="630" linewidth="1">Pong</state>
-    <state pencolor="0" radius="40" description="Includes$&#xa;#include &lt;cstdlib>&#xa;#include &lt;unistd.h>&#xa;&#xa;$Variables$&#xa;const char *&#x9;stateName;&#x9;///&lt; name of the current state&#xa;&#xa;$OnEntry$&#xa;{&#xa;  using namespace std;&#xa;  using namespace guWhiteboard;&#xa;&#xa;  string strL = &quot;1,60&quot;;&#xa;  string strR = &quot;0,60&quot;;&#xa;  WBMsg msgL(strL);&#xa;  WBMsg msgR(strR);&#xa;&#xa;  stateName = &quot;Ping&quot;;&#xa;  currentState = 1;&#xa;  cout &lt;&lt; string( stateName ) &lt;&lt; endl;&#xa;  wb-> addMessage(kQSay,&quot;ping is forwards&quot;);&#xa;  wb-> addMessage(kDifferentialMotorPower, msgL);&#xa;  wb-> addMessage(kDifferentialMotorPower, msgR);&#xa;}&#xa;&#xa;$OnExit$&#xa;{&#xa;  sleep(3); // don't ever sleep (but this is just a test)!&#xa;}&#xa;&#xa;$Internal$&#xa;{&#xa;  using namespace std;&#xa;&#xa;  cerr &lt;&lt; &quot;Internal state executed for &quot; &lt;&lt; stateName &lt;&lt; endl;&#xa;  exit(EXIT_FAILURE);&#xa;}&#xa;" finalstate="0" moore_outputs="" ypos="179" code="2" xpos="350" linewidth="1">Ping</state>
-    <transition c1x="187.656319" c2y="136.651350" c1y="109.957285" description="" straight="1" type="2" ypos="83.26321971390398" endx="313.1905719997326" xpos="124.8891923002607" endy="163.3454156780472" c2x="250.423445">
-      <from>0</from>
-      <to>2</to>
-      <inputs default="0" any="0" invert="0">true</inputs>
-      <outputs></outputs>
+    <itransition xpos="90" ypos="90" endx="89" endy="68"/>
+    <state pencolor="0" linewidth="1" finalstate="0" moore_outputs="" radius="40" xpos="89" ypos="68" code="0" description="OnEntry$&#xa;{&#x0a;  using namespace std;&#x0a;  using namespace guWhiteboard;&#x0a;&#x0a;  stateName = &quot;INIT&quot;;&#x0a;  currentState = 0;&#x0a;  cout &lt;&lt; stateName &lt;&lt; endl;&#x0a;  wb= new Whiteboard();&#x0a;&#x0a;}&#xa;$OnExit$&#xa;{&#x0a;  sleep(1); // don&#x27;t ever sleep (but this is just a test)!&#x0a;}&#xa;$Internal$&#xa;{&#x0a;  using namespace std;&#x0a;&#x0a;  cerr &lt;&lt; &quot;Internal state executed for &quot; &lt;&lt; stateName &lt;&lt; endl;&#x0a;  exit(EXIT_FAILURE);&#x0a;}&#xa;">INIT</state>
+    <state pencolor="0" linewidth="1" finalstate="0" moore_outputs="" radius="40" xpos="630" ypos="79" code="1" description="OnEntry$&#xa;{&#x0a;  using namespace std;&#x0a;  using namespace guWhiteboard;&#x0a;&#x0a;  string strL = &quot;1,-50&quot;;&#x0a;  string strR = &quot;0,-50&quot;;&#x0a;  WBMsg msgL(strL);&#x0a;  WBMsg msgR(strR);&#x0a;&#x0a;  stateName = &quot;Pong&quot;;&#x0a;  currentState = 2;&#x0a;  cout &lt;&lt; stateName &lt;&lt; endl;&#x0a;  wb-&gt; addMessage(kQSay,&quot;pong is back&quot;);&#x0a;  wb-&gt; addMessage(kDifferentialMotorPower,msgL);&#x0a;  wb-&gt; addMessage(kDifferentialMotorPower,msgR);&#x0a;}&#xa;$OnExit$&#xa;{&#x0a;  sleep(3); // don&#x27;t ever sleep (but this is just a test)!&#x0a;}&#xa;$Internal$&#xa;{&#x0a;  using namespace std;&#x0a;&#x0a;  cerr &lt;&lt; &quot;Internal state executed for &quot; &lt;&lt; stateName &lt;&lt; endl;&#x0a;  exit(EXIT_FAILURE);&#x0a;}&#xa;">Pong</state>
+    <state pencolor="0" linewidth="1" finalstate="0" moore_outputs="" radius="40" xpos="350" ypos="179" code="2" description="OnEntry$&#xa;{&#x0a;  using namespace std;&#x0a;  using namespace guWhiteboard;&#x0a;&#x0a;  string strL = &quot;1,60&quot;;&#x0a;  string strR = &quot;0,60&quot;;&#x0a;  WBMsg msgL(strL);&#x0a;  WBMsg msgR(strR);&#x0a;&#x0a;  stateName = &quot;Ping&quot;;&#x0a;  currentState = 1;&#x0a;  cout &lt;&lt; string( stateName ) &lt;&lt; endl;&#x0a;  wb-&gt; addMessage(kQSay,&quot;ping is forwards&quot;);&#x0a;  wb-&gt; addMessage(kDifferentialMotorPower, msgL);&#x0a;  wb-&gt; addMessage(kDifferentialMotorPower, msgR);&#x0a;}&#xa;$OnExit$&#xa;{&#x0a;  sleep(3); // don&#x27;t ever sleep (but this is just a test)!&#x0a;}&#xa;$Internal$&#xa;{&#x0a;  using namespace std;&#x0a;&#x0a;  cerr &lt;&lt; &quot;Internal state executed for &quot; &lt;&lt; stateName &lt;&lt; endl;&#x0a;  exit(EXIT_FAILURE);&#x0a;}&#xa;">Ping</state>
+    <transition xpos="124" ypos="83" endx="313" endy="163" c1x="160.934" c1y="118.615" c2x="276.226" c2y="127.22" straight="0" type="2">
+      <from>0</from><to>2</to>
+      <inputs default="0" any="0" invert="0">true</inputs><outputs></outputs>
     </transition>
-    <transition c1x="563.988170" c2y="204.239410" c1y="101.753026" description="" straight="0" type="2" ypos="86.29018742253695" endx="389.6196909271101" xpos="590.669945749538" endy="184.5027348509875" c2x="419.810731">
-      <from>1</from>
-      <to>2</to>
-      <inputs default="0" any="0" invert="0">true</inputs>
-      <outputs></outputs>
+    <transition xpos="590" ypos="86" endx="389" endy="184" c1x="537.983" c1y="106.482" c2x="442.714" c2y="199.495" straight="0" type="2">
+      <from>1</from><to>2</to>
+      <inputs default="0" any="0" invert="0">true</inputs><outputs></outputs>
     </transition>
-    <transition c1x="400.930675" c2y="61.263325" c1y="127.455716" description="" straight="0" type="2" ypos="139.2087424555579" endx="590.5484472986118" xpos="345.9188453800572" endy="72.39886453331013" c2x="552.808960">
-      <from>2</from>
-      <to>1</to>
-      <inputs default="0" any="0" invert="0">true</inputs>
-      <outputs></outputs>
+    <transition xpos="345" ypos="139" endx="590" endy="72" c1x="341.478" c1y="75.5988" c2x="530.916" c2y="48.7357" straight="0" type="2">
+      <from>2</from><to>1</to>
+      <inputs default="0" any="0" invert="0">true</inputs><outputs></outputs>
     </transition>
   </machine>
 </qfsmproject>

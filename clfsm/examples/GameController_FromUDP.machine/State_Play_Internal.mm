@@ -1,0 +1,1 @@
+newScore=aUDPReceiverNotificationType.get().getOurScore();

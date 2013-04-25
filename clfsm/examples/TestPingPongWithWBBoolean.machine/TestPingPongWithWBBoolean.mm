@@ -1,5 +1,5 @@
 //
-// TestPingPongWithWBBoolean.mm -- 2013-03-27 07:36:57 +0000
+// TestPingPongWithWBBoolean.mm -- 2013-04-15 04:27:05 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -22,8 +22,8 @@ extern "C"
 
 TestPingPongWithWBBoolean::TestPingPongWithWBBoolean(int mid, const char *name): CLMachine(mid, name)
 {
-	_states[0] = new State::Ping;
-	_states[1] = new State::Pong;
+	_states[0] = new FSMTestPingPongWithWBBoolean::State::Ping;
+	_states[1] = new FSMTestPingPongWithWBBoolean::State::Pong;
 
 	setCurrentState(_states[0]);            // set initial state
 }

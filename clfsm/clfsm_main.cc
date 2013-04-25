@@ -103,7 +103,11 @@ static CLFSMWBVectorFactory *createMachines(vector<MachineWrapper *> &machineWra
 
 static void __attribute((noreturn)) aborting_signal_handler(int signum)
 {
+#ifdef DEBUG
         guWhiteboard::QSay_t say;
+#else
+        guWhiteboard::QSpeech_t say;
+#endif
         stringstream ss;
 
         if (signum == SIGTERM || signum == SIGQUIT || signum == SIGINT)
@@ -130,7 +134,11 @@ static void print_backtrace(int signum)
         FILE *logfile = fdopen(fn, "w");
         if (!logfile)
                 fprintf(stderr, "*** Cannot open '%s': %s", tmpname, strerror(errno));
+#ifdef DEBUG
         guWhiteboard::QSay_t say;
+#else
+        guWhiteboard::QSpeech_t say;
+#endif
         for (int i = 0; i < frames; ++i)
         {
                 char *function = strs[i];

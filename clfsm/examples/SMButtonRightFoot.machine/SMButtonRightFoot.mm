@@ -1,5 +1,5 @@
 //
-// SMButtonRightFoot.mm -- 2013-04-12 03:32:27 +0000
+// SMButtonRightFoot.mm -- 2013-04-15 05:00:03 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -24,10 +24,10 @@ extern "C"
 
 SMButtonRightFoot::SMButtonRightFoot(int mid, const char *name): CLMachine(mid, name)
 {
-	_states[0] = new State::Init;
-	_states[1] = new State::Button_On;
-	_states[2] = new State::Button_Off;
-	_states[3] = new State::Wait_Release;
+	_states[0] = new FSMSMButtonRightFoot::State::Init;
+	_states[1] = new FSMSMButtonRightFoot::State::Button_On;
+	_states[2] = new FSMSMButtonRightFoot::State::Button_Off;
+	_states[3] = new FSMSMButtonRightFoot::State::Wait_Release;
 
 	setCurrentState(_states[0]);            // set initial state
 }

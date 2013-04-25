@@ -1,10 +1,10 @@
 //
-// State_INIT.h -- 2013-02-13 02:00:52 +0000
+// State_INIT.h -- 2013-04-15 04:26:39 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_State_INIT_h
-#define clfsm_State_INIT_h
+#ifndef clfsm_BackForwardsCLFSM_State_INIT_h
+#define clfsm_BackForwardsCLFSM_State_INIT_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,6 +14,8 @@ namespace FSM
 {
     namespace CLM
     {
+      namespace FSMBackForwardsCLFSM
+      {
         namespace State
         {
             class INIT: public CLState
@@ -53,6 +55,7 @@ namespace FSM
 #                   include "State_INIT_Variables.h"
             };
         }
+      }
     }
 }
 

@@ -1,5 +1,5 @@
 //
-// SMRobotPosition.mm -- 2013-04-11 06:20:00 +0000
+// SMRobotPosition.mm -- 2013-04-15 06:10:09 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -29,15 +29,15 @@ extern "C"
 
 SMRobotPosition::SMRobotPosition(int mid, const char *name): CLMachine(mid, name)
 {
-	_states[0] = new State::Init;
-	_states[1] = new State::Delay;
-	_states[2] = new State::FallingLeft;
-	_states[3] = new State::Check;
-	_states[4] = new State::FallingRight;
-	_states[5] = new State::FallingBack;
-	_states[6] = new State::Forward;
-	_states[7] = new State::Done;
-	_states[8] = new State::StandingUp;
+	_states[0] = new FSMSMRobotPosition::State::Init;
+	_states[1] = new FSMSMRobotPosition::State::Delay;
+	_states[2] = new FSMSMRobotPosition::State::FallingLeft;
+	_states[3] = new FSMSMRobotPosition::State::Check;
+	_states[4] = new FSMSMRobotPosition::State::FallingRight;
+	_states[5] = new FSMSMRobotPosition::State::FallingBack;
+	_states[6] = new FSMSMRobotPosition::State::Forward;
+	_states[7] = new FSMSMRobotPosition::State::Done;
+	_states[8] = new FSMSMRobotPosition::State::StandingUp;
 
 	setCurrentState(_states[0]);            // set initial state
 }

@@ -1,10 +1,10 @@
 //
-// State_Restart_FSMs.h -- 2013-04-12 03:22:15 +0000
+// State_Restart_FSMs.h -- 2013-04-15 06:32:41 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_State_Restart_FSMs_h
-#define clfsm_State_Restart_FSMs_h
+#ifndef clfsm_StateMachineStarter_State_Restart_FSMs_h
+#define clfsm_StateMachineStarter_State_Restart_FSMs_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,6 +14,8 @@ namespace FSM
 {
     namespace CLM
     {
+      namespace FSMStateMachineStarter
+      {
         namespace State
         {
             class Restart_FSMs: public CLState
@@ -53,6 +55,7 @@ namespace FSM
 #                   include "State_Restart_FSMs_Variables.h"
             };
         }
+      }
     }
 }
 

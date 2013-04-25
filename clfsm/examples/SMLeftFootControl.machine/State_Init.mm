@@ -1,5 +1,5 @@
 //
-// State_Init.mm -- 2013-04-10 03:51:02 +0000
+// State_Init.mm -- 2013-04-15 04:17:52 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -11,6 +11,7 @@
 
 using namespace FSM;
 using namespace CLM;
+using namespace FSMSMLeftFootControl;
 using namespace State;
 
 Init::Init(const char *name): CLState(name, *new Init::OnEntry, *new Init::OnExit, *new Init::Internal)

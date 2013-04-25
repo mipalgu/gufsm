@@ -1,5 +1,5 @@
 //
-// StateMachineStarter.h -- 2013-04-12 03:22:15 +0000
+// StateMachineStarter.h -- 2013-04-15 06:32:41 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -16,12 +16,12 @@ namespace FSM
     {
         class StateMachineStarter: public CLMachine
         {
-            CLState *_states[5];
+            CLState *_states[6];
         public:
             StateMachineStarter(int mid  = 0, const char *name = "StateMachineStarter");
             virtual ~StateMachineStarter();
             virtual CLState * const * states() const { return _states; }
-            virtual int numberOfStates() const { return 5; }
+            virtual int numberOfStates() const { return 6; }
 #           include "StateMachineStarter_Variables.h"
         };
     }

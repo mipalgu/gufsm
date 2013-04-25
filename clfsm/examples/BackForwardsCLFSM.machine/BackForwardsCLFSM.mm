@@ -1,5 +1,5 @@
 //
-// BackForwardsCLFSM.mm -- 2013-02-13 02:00:52 +0000
+// BackForwardsCLFSM.mm -- 2013-04-15 04:26:39 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -23,9 +23,9 @@ extern "C"
 
 BackForwardsCLFSM::BackForwardsCLFSM(int mid, const char *name): CLMachine(mid, name)
 {
-	_states[0] = new State::INIT;
-	_states[1] = new State::Pong;
-	_states[2] = new State::Ping;
+	_states[0] = new FSMBackForwardsCLFSM::State::INIT;
+	_states[1] = new FSMBackForwardsCLFSM::State::Pong;
+	_states[2] = new FSMBackForwardsCLFSM::State::Ping;
 
 	setCurrentState(_states[0]);            // set initial state
 }

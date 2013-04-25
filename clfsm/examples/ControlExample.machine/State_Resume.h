@@ -1,10 +1,10 @@
 //
-// State_Resume.h -- 2013-04-12 01:18:45 +0000
+// State_Resume.h -- 2013-04-15 04:08:33 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_State_Resume_h
-#define clfsm_State_Resume_h
+#ifndef clfsm_ControlExample_State_Resume_h
+#define clfsm_ControlExample_State_Resume_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,6 +14,8 @@ namespace FSM
 {
     namespace CLM
     {
+      namespace FSMControlExample
+      {
         namespace State
         {
             class Resume: public CLState
@@ -61,6 +63,7 @@ namespace FSM
 #                   include "State_Resume_Variables.h"
             };
         }
+      }
     }
 }
 
