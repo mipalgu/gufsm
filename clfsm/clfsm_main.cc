@@ -125,6 +125,7 @@ static void __attribute((noreturn)) aborting_signal_handler(int signum)
 static void print_backtrace(int signum)
 {
         void *callstack[256];
+        int olderrno = errno;
         int frames = backtrace(callstack, sizeof(callstack)/sizeof(callstack[0]));
         char **strs = backtrace_symbols(callstack, frames);
         char tmpname[256];
@@ -153,6 +154,7 @@ static void print_backtrace(int signum)
                 fprintf(stderr, "Log file written to '%s'\n", tmpname);
         }
         if (signum == SIGTSTP) kill(getpid(), SIGSTOP);
+        errno = olderrno;
 }
 
 
