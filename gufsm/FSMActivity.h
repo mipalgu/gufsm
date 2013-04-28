@@ -128,13 +128,13 @@ namespace FSM
                                                         _onExitActions); }
 
                 /** activity description */
-                std::string description();
+                std::string description() const;
 
                 /** action stage description */
-                std::string description(ActionStage stage);
+                std::string description(ActionStage stage) const;
 
                 /** action vector description */
-                std::string description(const ActionVector &actions);
+                std::string description(const ActionVector &actions) const;
 };
 }
 

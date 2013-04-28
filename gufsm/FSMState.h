@@ -101,15 +101,21 @@ namespace FSM
                 /** get the state's activity */
                 Activity &activity() { return _activity; }
                 
+                /** get the state's activity as a const reference */
+                const Activity &activity() const { return _activity; }
+
                 /** get that state's transitions */
                 TransitionVector &transitions() { return _transitions; }
                 
+                /** get that state's transitions as a const reference */
+                const TransitionVector &transitions() const { return _transitions; }
+
                 /** add a transition */
                 void addTransition(Transition *t) { _transitions.push_back(t); }
                 /**
                  * printable state  description
                  */
-                virtual std::string description();
+                virtual std::string description() const;
         };
 }
 

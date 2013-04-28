@@ -87,14 +87,14 @@ void Activity::perform(Machine *m, ActionStage stage)
 
 using namespace std;
 
-string Activity::description()
+string Activity::description() const
 {
         return description(STAGE_ON_ENTRY) + description(STAGE_ON_EXIT) +
                 description(STAGE_INTERNAL);
 }
 
 
-string Activity::description(ActionStage stage)
+string Activity::description(ActionStage stage) const
 {
         stringstream ss;
         switch (stage)
@@ -120,7 +120,7 @@ string Activity::description(ActionStage stage)
 }
 
 
-string Activity::description(const ActionVector &actions)
+string Activity::description(const ActionVector &actions) const
 {
         string s;
         for (ActionVector::const_iterator it = actions.begin();

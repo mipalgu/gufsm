@@ -62,7 +62,7 @@
 using namespace FSM;
 using namespace std;
 
-string State::description()
+string State::description() const
 {
         stringstream ss;
 
