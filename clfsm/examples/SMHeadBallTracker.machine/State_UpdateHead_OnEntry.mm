@@ -3,6 +3,7 @@ body_sensors = body_sensors_ptr.get();
 
 int 	delay = 100000;
 
+
 // k4VGA 1280 x 960
 int guvision_width = 1280;
 int guvision_height = 960;
@@ -28,6 +29,7 @@ float body_relative_angle_y = body_sensors.HeadPitch_degrees() + (point_conv_to_
 #ifdef DEBUG
 fprintf(stderr, "Ball RR: %f\t%f\ty angle %d\tpitch %f\n", body_relative_angle_x, body_relative_angle_y, point_conv_to_cam_angle_y, body_sensors.HeadPitch_degrees());
 #endif
+
 
 
 head.GoToWithTime((int)body_relative_angle_x, (int)body_relative_angle_y, delay);
