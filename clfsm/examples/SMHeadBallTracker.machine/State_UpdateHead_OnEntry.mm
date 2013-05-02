@@ -1,7 +1,7 @@
 body_sensors = body_sensors_ptr.get();
 
 
-int 	delay = 100000;
+int 	delay = 80000;
 
 
 // k4VGA 1280 x 960
