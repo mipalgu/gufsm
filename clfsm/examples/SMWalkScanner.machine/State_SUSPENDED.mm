@@ -1,0 +1,48 @@
+//
+// State_SUSPENDED.mm -- 2013-05-02 08:32:26 +0000
+//
+// Automatically created through MiCASE -- do not change manually!
+//
+#include "SMWalkScanner_Includes.h"
+#include "SMWalkScanner.h"
+#include "State_SUSPENDED.h"
+
+#include "State_SUSPENDED_Includes.h"
+
+using namespace FSM;
+using namespace CLM;
+using namespace FSMSMWalkScanner;
+using namespace State;
+
+SUSPENDED::SUSPENDED(const char *name): CLState(name, *new SUSPENDED::OnEntry, *new SUSPENDED::OnExit, *new SUSPENDED::Internal)
+{
+}
+
+SUSPENDED::~SUSPENDED()
+{
+	delete &onEntryAction();
+	delete &onExitAction();
+	delete &internalAction();
+
+}
+
+void SUSPENDED::OnEntry::perform(CLMachine *_machine, CLState *_state) const
+{
+#	include "SMWalkScanner_VarRefs.mm"
+#	include "State_SUSPENDED_VarRefs.mm"
+#	include "State_SUSPENDED_OnEntry.mm"
+}
+
+void SUSPENDED::OnExit::perform(CLMachine *_machine, CLState *_state) const
+{
+#	include "SMWalkScanner_VarRefs.mm"
+#	include "State_SUSPENDED_VarRefs.mm"
+#	include "State_SUSPENDED_OnExit.mm"
+}
+
+void SUSPENDED::Internal::perform(CLMachine *_machine, CLState *_state) const
+{
+#	include "SMWalkScanner_VarRefs.mm"
+#	include "State_SUSPENDED_VarRefs.mm"
+#	include "State_SUSPENDED_Internal.mm"
+}
