@@ -1,1 +1,1 @@
-abs(ballAngle) < min_short_distance_angle
+fabs(ballAngle) < min_short_distance_angle

@@ -1,5 +1,5 @@
 //
-// SMBallFollower_VarRefs.mm -- 2013-05-02 08:33:30 +0000
+// SMBallFollower_VarRefs.mm -- 2013-05-07 00:51:36 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -18,5 +18,6 @@ FVOsighting_t	&ball_ptr = _m->ball_ptr;	///<
 int	&boundaryCloseFar = _m->boundaryCloseFar;	///< 
 SENSORS_TorsoJointSensors_t	&body_sensors_ptr = _m->body_sensors_ptr;	///< 
 SENSORS_TorsoJointSensors	&body_sensors = _m->body_sensors;	///< 
+WALK_Command_t	&walk_post = _m->walk_post;	///< 
 
 #pragma clang diagnostic pop
