@@ -24,5 +24,5 @@ int point_conv_to_cam_angle = -(ball_x/head_cam_ratio);
 
 
 
-ballAngle = body_sensors.HeadYaw_degrees() + point_conv_to_cam_angle;
+ballAngle = (float)RAD2DEG(body_sensors.HeadYaw()) + point_conv_to_cam_angle;
 fprintf(stderr, "Ball angle with yaw %f\n", ballAngle);
