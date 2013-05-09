@@ -1,5 +1,5 @@
 //
-// State_Loop_VarRefs.mm -- 2013-05-02 06:11:52 +0000
+// State_Loop_VarRefs.mm -- 2013-05-09 04:44:41 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
