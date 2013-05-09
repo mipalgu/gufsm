@@ -1,1 +1,1 @@
-body_ptr.get().InertialSensor_AngleX_degrees()<(-lateralAngle)
+RAD2DEG(body_ptr.get().InertialSensor_AngleX())<(-lateralAngle)
