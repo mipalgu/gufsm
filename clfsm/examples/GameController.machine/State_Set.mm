@@ -16,6 +16,8 @@ using namespace State;
 
 Set::Set(const char *name): CLState(name, *new Set::OnEntry, *new Set::OnExit, *new Set::Internal)
 {
+	_transitions[0] = new Transition_0();
+	_transitions[1] = new Transition_1();
 }
 
 Set::~Set()
@@ -24,6 +26,8 @@ Set::~Set()
 	delete &onExitAction();
 	delete &internalAction();
 
+	delete _transitions[0];
+	delete _transitions[1];
 }
 
 void Set::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -45,4 +49,26 @@ void Set::Internal::perform(CLMachine *_machine, CLState *_state) const
 #	include "GameController_VarRefs.mm"
 #	include "State_Set_VarRefs.mm"
 #	include "State_Set_Internal.mm"
+}
+
+bool Set::Transition_0::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "GameController_VarRefs.mm"
+#	include "State_Set_VarRefs.mm"
+
+	return
+	(
+#		include "State_Set_Transition_0.expr"
+	);
+}
+
+bool Set::Transition_1::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "GameController_VarRefs.mm"
+#	include "State_Set_VarRefs.mm"
+
+	return
+	(
+#		include "State_Set_Transition_1.expr"
+	);
 }

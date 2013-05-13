@@ -17,6 +17,7 @@ using namespace State;
 Finished::Finished(const char *name): CLState(name, *new Finished::OnEntry, *new Finished::OnExit, *new Finished::Internal)
 {
 	_transitions[0] = new Transition_0();
+	_transitions[1] = new Transition_1();
 }
 
 Finished::~Finished()
@@ -26,6 +27,7 @@ Finished::~Finished()
 	delete &internalAction();
 
 	delete _transitions[0];
+	delete _transitions[1];
 }
 
 void Finished::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -57,5 +59,16 @@ bool Finished::Transition_0::check(CLMachine *_machine, CLState *_state) const
 	return
 	(
 #		include "State_Finished_Transition_0.expr"
+	);
+}
+
+bool Finished::Transition_1::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "GameController_VarRefs.mm"
+#	include "State_Finished_VarRefs.mm"
+
+	return
+	(
+#		include "State_Finished_Transition_1.expr"
 	);
 }

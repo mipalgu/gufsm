@@ -18,6 +18,7 @@ Ready::Ready(const char *name): CLState(name, *new Ready::OnEntry, *new Ready::O
 {
 	_transitions[0] = new Transition_0();
 	_transitions[1] = new Transition_1();
+	_transitions[2] = new Transition_2();
 }
 
 Ready::~Ready()
@@ -28,6 +29,7 @@ Ready::~Ready()
 
 	delete _transitions[0];
 	delete _transitions[1];
+	delete _transitions[2];
 }
 
 void Ready::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -70,5 +72,16 @@ bool Ready::Transition_1::check(CLMachine *_machine, CLState *_state) const
 	return
 	(
 #		include "State_Ready_Transition_1.expr"
+	);
+}
+
+bool Ready::Transition_2::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "GameController_VarRefs.mm"
+#	include "State_Ready_VarRefs.mm"
+
+	return
+	(
+#		include "State_Ready_Transition_2.expr"
 	);
 }

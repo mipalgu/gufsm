@@ -2,4 +2,6 @@ say("GOAL, my pal!");
 
 gameState = aUDPReceiverNotificationType.get().theUDPGameState();
 
-  cerr << "PLAY " << state_name() << endl;
+using namespace std;
+
+  cerr << "OUR GOAL " << state_name() << endl;

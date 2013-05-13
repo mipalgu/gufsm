@@ -20,6 +20,7 @@ Play::Play(const char *name): CLState(name, *new Play::OnEntry, *new Play::OnExi
 	_transitions[1] = new Transition_1();
 	_transitions[2] = new Transition_2();
 	_transitions[3] = new Transition_3();
+	_transitions[4] = new Transition_4();
 }
 
 Play::~Play()
@@ -32,6 +33,7 @@ Play::~Play()
 	delete _transitions[1];
 	delete _transitions[2];
 	delete _transitions[3];
+	delete _transitions[4];
 }
 
 void Play::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -96,5 +98,16 @@ bool Play::Transition_3::check(CLMachine *_machine, CLState *_state) const
 	return
 	(
 #		include "State_Play_Transition_3.expr"
+	);
+}
+
+bool Play::Transition_4::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "GameController_VarRefs.mm"
+#	include "State_Play_VarRefs.mm"
+
+	return
+	(
+#		include "State_Play_Transition_4.expr"
 	);
 }
