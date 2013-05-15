@@ -95,6 +95,9 @@ namespace FSM
         /// return the total number of machines in the factory singleton
         int number_of_machines(void);
 
+        /// return a pointer to the machine at a given index in the vector
+        CLMachine *machine_at_index(unsigned index);
+
         /// return the name of the machine in the factory singleton at the given index (NULL if the index is invalid)
         const char *name_of_machine_at_index(int index = 0);
 
@@ -155,6 +158,22 @@ namespace FSM
                  * @return status of the machine or CLError in case of an error
                  */
                 enum CLControlStatus control_machine_at_index(int index = 0, enum CLControlStatus command = CLStatus);
+
+                /**
+                 * return the machine at a given index (const version)
+                 */
+                const CLMachine *machine_at_index(size_t index = 0) const
+                {
+                        return (index < _clmachines.size()) ? _clmachines[index] : NULL;
+                }
+
+                /**
+                 * return the machine at a given index
+                 */
+                CLMachine *machine_at_index(size_t index = 0)
+                {
+                        return (index < _clmachines.size()) ? _clmachines[index] : NULL;
+                }
         };
 }
 
