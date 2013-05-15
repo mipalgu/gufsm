@@ -1,5 +1,5 @@
 //
-// TestPingPongWithWBBoolean.mm -- 2013-04-15 04:27:05 +0000
+// TestPingPongWithWBBoolean.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -25,7 +25,7 @@ TestPingPongWithWBBoolean::TestPingPongWithWBBoolean(int mid, const char *name):
 	_states[0] = new FSMTestPingPongWithWBBoolean::State::Ping;
 	_states[1] = new FSMTestPingPongWithWBBoolean::State::Pong;
 
-	setCurrentState(_states[0]);            // set initial state
+	setInitialState(_states[0]);            // set initial state
 }
 
 TestPingPongWithWBBoolean::~TestPingPongWithWBBoolean()

@@ -1,5 +1,5 @@
 //
-// SMRobotPosition.mm -- 2013-05-09 04:51:47 +0000
+// SMRobotPosition.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -39,7 +39,7 @@ SMRobotPosition::SMRobotPosition(int mid, const char *name): CLMachine(mid, name
 	_states[7] = new FSMSMRobotPosition::State::Done;
 	_states[8] = new FSMSMRobotPosition::State::StandingUp;
 
-	setCurrentState(_states[0]);            // set initial state
+	setInitialState(_states[0]);            // set initial state
 }
 
 SMRobotPosition::~SMRobotPosition()

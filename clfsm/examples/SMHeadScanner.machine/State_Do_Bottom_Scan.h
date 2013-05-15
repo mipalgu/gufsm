@@ -1,5 +1,5 @@
 //
-// State_Do_Bottom_Scan.h -- 2013-04-26 03:55:22 +0000
+// State_Do_Bottom_Scan.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //

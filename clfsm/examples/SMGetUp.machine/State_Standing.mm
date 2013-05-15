@@ -1,5 +1,5 @@
 //
-// State_Standing.mm -- 2013-04-18 04:16:13 +0000
+// State_Standing.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //

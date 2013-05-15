@@ -1,5 +1,5 @@
 //
-// State_Back_GetUp.h -- 2013-04-18 04:16:13 +0000
+// State_Back_GetUp.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //

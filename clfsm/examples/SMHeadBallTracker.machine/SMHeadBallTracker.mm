@@ -30,7 +30,7 @@ SMHeadBallTracker::SMHeadBallTracker(int mid, const char *name): CLMachine(mid, 
 	_states[3] = new FSMSMHeadBallTracker::State::UpdateHead;
 
 	setSuspendState(_states[1]);            // set suspend state
-	setCurrentState(_states[0]);            // set initial state
+	setInitialState(_states[0]);            // set initial state
 }
 
 SMHeadBallTracker::~SMHeadBallTracker()

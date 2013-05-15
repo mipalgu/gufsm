@@ -1,5 +1,5 @@
 //
-// State_Button_Off.h -- 2013-04-15 05:00:30 +0000
+// State_Button_Off.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //

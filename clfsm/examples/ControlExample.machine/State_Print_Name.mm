@@ -1,5 +1,5 @@
 //
-// State_Print_Name.mm -- 2013-04-15 04:08:33 +0000
+// State_Print_Name.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //

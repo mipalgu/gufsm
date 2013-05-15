@@ -1,5 +1,5 @@
 //
-// LEDsPingPong.mm -- 2013-04-15 04:17:44 +0000
+// LEDsPingPong.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -25,7 +25,7 @@ LEDsPingPong::LEDsPingPong(int mid, const char *name): CLMachine(mid, name)
 	_states[0] = new FSMLEDsPingPong::State::Ping;
 	_states[1] = new FSMLEDsPingPong::State::Pong;
 
-	setCurrentState(_states[0]);            // set initial state
+	setInitialState(_states[0]);            // set initial state
 }
 
 LEDsPingPong::~LEDsPingPong()

@@ -1,5 +1,5 @@
 //
-// State_Penalized.mm -- 2013-05-13 01:36:21 +0000
+// State_Penalized.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //

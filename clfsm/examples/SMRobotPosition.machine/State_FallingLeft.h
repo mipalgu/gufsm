@@ -1,5 +1,5 @@
 //
-// State_FallingLeft.h -- 2013-05-09 04:51:47 +0000
+// State_FallingLeft.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //

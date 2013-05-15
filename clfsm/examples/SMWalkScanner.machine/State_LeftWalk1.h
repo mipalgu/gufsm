@@ -1,5 +1,5 @@
 //
-// State_LeftWalk1.h -- 2013-05-02 08:47:57 +0000
+// State_LeftWalk1.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //

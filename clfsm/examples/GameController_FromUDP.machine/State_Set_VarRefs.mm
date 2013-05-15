@@ -1,5 +1,5 @@
 //
-// State_Set_VarRefs.mm -- 2013-05-13 01:36:21 +0000
+// State_Set_VarRefs.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //

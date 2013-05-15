@@ -1,5 +1,5 @@
 //
-// StateMachineStarter.mm -- 2013-04-15 06:32:41 +0000
+// StateMachineStarter.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -33,7 +33,7 @@ StateMachineStarter::StateMachineStarter(int mid, const char *name): CLMachine(m
 	_states[4] = new FSMStateMachineStarter::State::Restart_FSMs;
 	_states[5] = new FSMStateMachineStarter::State::Control_State;
 
-	setCurrentState(_states[0]);            // set initial state
+	setInitialState(_states[0]);            // set initial state
 }
 
 StateMachineStarter::~StateMachineStarter()

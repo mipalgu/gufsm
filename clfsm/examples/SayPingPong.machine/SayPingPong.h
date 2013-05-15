@@ -1,5 +1,5 @@
 //
-// SayPingPong.h -- 2013-04-15 04:13:49 +0000
+// SayPingPong.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //

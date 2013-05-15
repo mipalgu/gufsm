@@ -1,5 +1,5 @@
 //
-// SMHeadScanner_VarRefs.mm -- 2013-04-26 03:55:22 +0000
+// SMHeadScanner_VarRefs.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //

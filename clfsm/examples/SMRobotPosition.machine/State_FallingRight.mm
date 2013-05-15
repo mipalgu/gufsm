@@ -1,5 +1,5 @@
 //
-// State_FallingRight.mm -- 2013-05-09 04:51:47 +0000
+// State_FallingRight.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //

@@ -1,5 +1,5 @@
 //
-// SMHeadScanner.h -- 2013-04-26 03:55:22 +0000
+// SMHeadScanner.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //

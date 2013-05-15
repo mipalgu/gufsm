@@ -1,5 +1,5 @@
 //
-// State_Restart_Self.h -- 2013-04-15 04:08:33 +0000
+// State_Restart_Self.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -35,6 +35,8 @@ namespace FSM
                     virtual void perform(CLMachine *, CLState *) const;
                 };
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wzero-length-array"
                 CLTransition *_transitions[0];
 
                 public:
@@ -52,3 +54,4 @@ namespace FSM
 }
 
 #endif
+#pragma clang diagnostic pop

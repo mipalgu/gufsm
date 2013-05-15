@@ -1,5 +1,5 @@
 //
-// GameController_FromUDP.mm -- 2013-05-13 01:36:21 +0000
+// GameController_FromUDP.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -37,7 +37,7 @@ GameController_FromUDP::GameController_FromUDP(int mid, const char *name): CLMac
 	_states[6] = new FSMGameController_FromUDP::State::Set;
 	_states[7] = new FSMGameController_FromUDP::State::OurGoal;
 
-	setCurrentState(_states[0]);            // set initial state
+	setInitialState(_states[0]);            // set initial state
 }
 
 GameController_FromUDP::~GameController_FromUDP()

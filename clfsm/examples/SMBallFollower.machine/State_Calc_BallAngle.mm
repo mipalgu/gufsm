@@ -1,5 +1,5 @@
 //
-// State_Calc_BallAngle.mm -- 2013-05-09 04:48:07 +0000
+// State_Calc_BallAngle.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //

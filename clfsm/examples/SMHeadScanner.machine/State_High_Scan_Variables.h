@@ -1,5 +1,5 @@
 //
-// State_High_Scan_Variables.h -- 2013-04-26 03:55:22 +0000
+// State_High_Scan_Variables.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //

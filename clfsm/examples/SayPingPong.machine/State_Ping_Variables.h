@@ -1,5 +1,5 @@
 //
-// State_Ping_Variables.h -- 2013-04-15 04:13:49 +0000
+// State_Ping_Variables.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //

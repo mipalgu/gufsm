@@ -1,5 +1,5 @@
 //
-// Safety_BatteryMonitor.mm -- 2013-04-15 04:13:39 +0000
+// Safety_BatteryMonitor.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -27,7 +27,7 @@ Safety_BatteryMonitor::Safety_BatteryMonitor(int mid, const char *name): CLMachi
 	_states[1] = new FSMSafety_BatteryMonitor::State::Get_Data;
 	_states[2] = new FSMSafety_BatteryMonitor::State::Wait_State;
 
-	setCurrentState(_states[0]);            // set initial state
+	setInitialState(_states[0]);            // set initial state
 }
 
 Safety_BatteryMonitor::~Safety_BatteryMonitor()

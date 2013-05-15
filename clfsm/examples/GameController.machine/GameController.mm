@@ -37,7 +37,7 @@ GameController::GameController(int mid, const char *name): CLMachine(mid, name)
 	_states[6] = new FSMGameController::State::Set;
 	_states[7] = new FSMGameController::State::OurGoal;
 
-	setCurrentState(_states[0]);            // set initial state
+	setInitialState(_states[0]);            // set initial state
 }
 
 GameController::~GameController()

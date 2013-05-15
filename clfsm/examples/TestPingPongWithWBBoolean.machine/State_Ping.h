@@ -1,5 +1,5 @@
 //
-// State_Ping.h -- 2013-04-15 04:27:05 +0000
+// State_Ping.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //

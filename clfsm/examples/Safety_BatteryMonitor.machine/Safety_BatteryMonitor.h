@@ -1,5 +1,5 @@
 //
-// Safety_BatteryMonitor.h -- 2013-04-15 04:13:39 +0000
+// Safety_BatteryMonitor.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //

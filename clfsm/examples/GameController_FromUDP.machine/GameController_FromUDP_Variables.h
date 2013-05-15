@@ -1,5 +1,5 @@
 //
-// GameController_FromUDP_Variables.h -- 2013-05-13 01:36:21 +0000
+// GameController_FromUDP_Variables.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
