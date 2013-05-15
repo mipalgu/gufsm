@@ -118,8 +118,8 @@ static inline enum CLControlStatus status(const char *m)  { return cs_machine_na
 #define is_suspended(m) (status(m) == CLSuspend)
 #define is_running(m)   (status(m) != CLSuspend)
 
-#define state_of(m)     machine_at_index(index_of_machine_named(m))->currentState())
-#define state_name_of(m)        std::string(state_of(m)->name())
+#define state_of(m)     (machine_at_index(unsigned(index_of_machine_named(m)))->machineContext()->currentState())
+#define state_name_of(m)        (state_of(m)->name())
 
 #endif // NO_CL_READABILITY_MACROS
 }

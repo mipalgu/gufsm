@@ -1,5 +1,5 @@
 //
-// PingPongCLFSM.mm -- 2013-04-12 20:59:24 +0000
+// PingPongCLFSM.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -25,7 +25,7 @@ PingPongCLFSM::PingPongCLFSM(int mid, const char *name): CLMachine(mid, name)
 	_states[0] = new FSMPingPongCLFSM::State::Ping;
 	_states[1] = new FSMPingPongCLFSM::State::Pong;
 
-	setCurrentState(_states[0]);            // set initial state
+	setInitialState(_states[0]);            // set initial state
 }
 
 PingPongCLFSM::~PingPongCLFSM()
