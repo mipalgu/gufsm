@@ -1,5 +1,5 @@
 //
-// State_DummyState_VarRefs.mm -- 2013-04-18 04:16:13 +0000
+// State_DummyState_VarRefs.mm -- 2013-05-14 05:44:30 +0000
 //
 // Automatically created through MiCASE -- do not change manually!
 //
