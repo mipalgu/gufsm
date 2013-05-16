@@ -17,6 +17,7 @@ using namespace State;
 Button_Off::Button_Off(const char *name): CLState(name, *new Button_Off::OnEntry, *new Button_Off::OnExit, *new Button_Off::Internal)
 {
 	_transitions[0] = new Transition_0();
+	_transitions[1] = new Transition_1();
 }
 
 Button_Off::~Button_Off()
@@ -26,6 +27,7 @@ Button_Off::~Button_Off()
 	delete &internalAction();
 
 	delete _transitions[0];
+	delete _transitions[1];
 }
 
 void Button_Off::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -57,5 +59,16 @@ bool Button_Off::Transition_0::check(CLMachine *_machine, CLState *_state) const
 	return
 	(
 #		include "State_Button_Off_Transition_0.expr"
+	);
+}
+
+bool Button_Off::Transition_1::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "SMButtonChest_VarRefs.mm"
+#	include "State_Button_Off_VarRefs.mm"
+
+	return
+	(
+#		include "State_Button_Off_Transition_1.expr"
 	);
 }

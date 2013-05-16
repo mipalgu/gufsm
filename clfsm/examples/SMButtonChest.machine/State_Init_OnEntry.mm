@@ -1,3 +1,2 @@
-#ifdef DEBUG
-fprintf(stderr, "State: %s\n", state_name());
-#endif
+body = body_ptr.get();
+DBG(cerr << "SMButtonChest state " << state_name() << endl);

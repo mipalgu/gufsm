@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string>
 #include <cmath>
+#include <gu_util.h>
 #include "CLMacros.h"
 #include "typeClassDefs/SENSORS_BodySensors.h"
 #include "typeClassDefs/SENSORS_LedsSensors.h"
@@ -10,4 +11,6 @@
 
 
 using namespace guWhiteboard;
+using namespace std;
+
 //#define DEBUG
