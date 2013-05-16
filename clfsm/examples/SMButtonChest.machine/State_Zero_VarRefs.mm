@@ -1,9 +1,9 @@
 //
-// State_Wait_Release_VarRefs.mm
+// State_Zero_VarRefs.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-Wait_Release *_s = static_cast<Wait_Release *>(_state);
+Zero *_s = static_cast<Zero *>(_state);
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"

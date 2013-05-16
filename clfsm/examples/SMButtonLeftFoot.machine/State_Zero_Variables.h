@@ -1,5 +1,5 @@
 //
-// State_Wait_Release_Variables.h
+// State_Zero_Variables.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //

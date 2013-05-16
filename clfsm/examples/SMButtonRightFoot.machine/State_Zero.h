@@ -1,10 +1,10 @@
 //
-// State_Wait_Release.h
+// State_Zero.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMButtonRightFoot_State_Wait_Release_h
-#define clfsm_SMButtonRightFoot_State_Wait_Release_h
+#ifndef clfsm_SMButtonRightFoot_State_Zero_h
+#define clfsm_SMButtonRightFoot_State_Zero_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class Wait_Release: public CLState
+            class Zero: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,7 +38,7 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 2): CLTransition(toState) {}
+                    Transition_0(int toState = 1): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
@@ -46,13 +46,13 @@ namespace FSM
                 CLTransition *_transitions[1];
 
                 public:
-                    Wait_Release(const char *name = "Wait_Release");
-                    virtual ~Wait_Release();
+                    Zero(const char *name = "Zero");
+                    virtual ~Zero();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
                     virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_Wait_Release_Variables.h"
+#                   include "State_Zero_Variables.h"
             };
         }
       }

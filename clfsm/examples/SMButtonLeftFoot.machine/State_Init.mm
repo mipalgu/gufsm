@@ -17,7 +17,6 @@ using namespace State;
 Init::Init(const char *name): CLState(name, *new Init::OnEntry, *new Init::OnExit, *new Init::Internal)
 {
 	_transitions[0] = new Transition_0();
-	_transitions[1] = new Transition_1();
 }
 
 Init::~Init()
@@ -27,7 +26,6 @@ Init::~Init()
 	delete &internalAction();
 
 	delete _transitions[0];
-	delete _transitions[1];
 }
 
 void Init::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -59,16 +57,5 @@ bool Init::Transition_0::check(CLMachine *_machine, CLState *_state) const
 	return
 	(
 #		include "State_Init_Transition_0.expr"
-	);
-}
-
-bool Init::Transition_1::check(CLMachine *_machine, CLState *_state) const
-{
-#	include "SMButtonLeftFoot_VarRefs.mm"
-#	include "State_Init_VarRefs.mm"
-
-	return
-	(
-#		include "State_Init_Transition_1.expr"
 	);
 }

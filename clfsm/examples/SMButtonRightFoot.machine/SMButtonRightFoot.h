@@ -16,12 +16,12 @@ namespace FSM
     {
         class SMButtonRightFoot: public CLMachine
         {
-            CLState *_states[4];
+            CLState *_states[5];
         public:
             SMButtonRightFoot(int mid  = 0, const char *name = "SMButtonRightFoot");
             virtual ~SMButtonRightFoot();
             virtual CLState * const * states() const { return _states; }
-            virtual int numberOfStates() const { return 4; }
+            virtual int numberOfStates() const { return 5; }
 #           include "SMButtonRightFoot_Variables.h"
         };
     }
