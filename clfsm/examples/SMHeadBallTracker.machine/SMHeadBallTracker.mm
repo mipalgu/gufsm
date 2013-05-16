@@ -1,5 +1,5 @@
 //
-// SMHeadBallTracker.mm -- 2013-05-09 04:44:41 +0000
+// SMHeadBallTracker.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -30,7 +30,7 @@ SMHeadBallTracker::SMHeadBallTracker(int mid, const char *name): CLMachine(mid, 
 	_states[3] = new FSMSMHeadBallTracker::State::UpdateHead;
 
 	setSuspendState(_states[1]);            // set suspend state
-	setCurrentState(_states[0]);            // set initial state
+	setInitialState(_states[0]);            // set initial state
 }
 
 SMHeadBallTracker::~SMHeadBallTracker()

@@ -1,5 +1,5 @@
 //
-// State_Wait_Release_VarRefs.mm -- 2013-04-15 05:00:03 +0000
+// State_Wait_Release_VarRefs.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //

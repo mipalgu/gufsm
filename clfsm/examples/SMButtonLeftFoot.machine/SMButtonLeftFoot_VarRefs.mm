@@ -1,5 +1,5 @@
 //
-// SMButtonLeftFoot_VarRefs.mm -- 2013-04-15 05:00:30 +0000
+// SMButtonLeftFoot_VarRefs.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //

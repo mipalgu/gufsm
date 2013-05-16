@@ -1,5 +1,5 @@
 //
-// State_OurGoal.mm -- 2013-04-21 23:58:10 +0000
+// State_OurGoal.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //

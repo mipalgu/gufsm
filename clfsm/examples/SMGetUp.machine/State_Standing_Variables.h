@@ -1,5 +1,5 @@
 //
-// State_Standing_Variables.h -- 2013-05-14 05:44:30 +0000
+// State_Standing_Variables.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //

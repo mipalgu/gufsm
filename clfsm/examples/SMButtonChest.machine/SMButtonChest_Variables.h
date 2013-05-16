@@ -1,5 +1,5 @@
 //
-// SMButtonChest_Variables.h -- 2013-04-15 06:29:07 +0000
+// SMButtonChest_Variables.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //

@@ -1,5 +1,5 @@
 //
-// SMGetUp_VarRefs.mm -- 2013-05-14 05:44:30 +0000
+// SMGetUp_VarRefs.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //

@@ -1,5 +1,5 @@
 //
-// State_Stop.h -- 2013-05-14 05:36:09 +0000
+// State_Stop.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -43,22 +43,14 @@ namespace FSM
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                class Transition_1: public CLTransition
-                {
-                public:
-                    Transition_1(int toState = 2): CLTransition(toState) {}
-
-                    virtual bool check(CLMachine *, CLState *) const;
-                };
-
-                CLTransition *_transitions[2];
+                CLTransition *_transitions[1];
 
                 public:
                     Stop(const char *name = "Stop");
                     virtual ~Stop();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 2; }
+                    virtual int numberOfTransitions() const { return 1; }
 
 #                   include "State_Stop_Variables.h"
             };

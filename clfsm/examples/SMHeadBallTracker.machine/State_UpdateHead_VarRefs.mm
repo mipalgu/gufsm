@@ -1,5 +1,5 @@
 //
-// State_UpdateHead_VarRefs.mm -- 2013-05-09 04:44:41 +0000
+// State_UpdateHead_VarRefs.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //

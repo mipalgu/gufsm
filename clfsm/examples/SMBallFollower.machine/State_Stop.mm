@@ -1,5 +1,5 @@
 //
-// State_Stop.mm -- 2013-05-14 05:36:09 +0000
+// State_Stop.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -17,7 +17,6 @@ using namespace State;
 Stop::Stop(const char *name): CLState(name, *new Stop::OnEntry, *new Stop::OnExit, *new Stop::Internal)
 {
 	_transitions[0] = new Transition_0();
-	_transitions[1] = new Transition_1();
 }
 
 Stop::~Stop()
@@ -27,7 +26,6 @@ Stop::~Stop()
 	delete &internalAction();
 
 	delete _transitions[0];
-	delete _transitions[1];
 }
 
 void Stop::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -59,16 +57,5 @@ bool Stop::Transition_0::check(CLMachine *_machine, CLState *_state) const
 	return
 	(
 #		include "State_Stop_Transition_0.expr"
-	);
-}
-
-bool Stop::Transition_1::check(CLMachine *_machine, CLState *_state) const
-{
-#	include "SMBallFollower_VarRefs.mm"
-#	include "State_Stop_VarRefs.mm"
-
-	return
-	(
-#		include "State_Stop_Transition_1.expr"
 	);
 }

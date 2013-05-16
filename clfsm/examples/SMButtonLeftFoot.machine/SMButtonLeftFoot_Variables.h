@@ -1,5 +1,5 @@
 //
-// SMButtonLeftFoot_Variables.h -- 2013-04-15 05:00:30 +0000
+// SMButtonLeftFoot_Variables.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //

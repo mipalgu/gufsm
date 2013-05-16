@@ -1,5 +1,5 @@
 //
-// SMButtonLeftFoot.mm -- 2013-04-15 05:00:30 +0000
+// SMButtonLeftFoot.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -29,7 +29,7 @@ SMButtonLeftFoot::SMButtonLeftFoot(int mid, const char *name): CLMachine(mid, na
 	_states[2] = new FSMSMButtonLeftFoot::State::Button_Off;
 	_states[3] = new FSMSMButtonLeftFoot::State::Wait_Release;
 
-	setCurrentState(_states[0]);            // set initial state
+	setInitialState(_states[0]);            // set initial state
 }
 
 SMButtonLeftFoot::~SMButtonLeftFoot()

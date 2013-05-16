@@ -1,5 +1,5 @@
 //
-// SMPlayer.mm -- 2013-05-01 07:49:36 +0000
+// SMPlayer.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -32,7 +32,7 @@ SMPlayer::SMPlayer(int mid, const char *name): CLMachine(mid, name)
 	_states[4] = new FSMSMPlayer::State::Kick;
 
 	setSuspendState(_states[1]);            // set suspend state
-	setCurrentState(_states[0]);            // set initial state
+	setInitialState(_states[0]);            // set initial state
 }
 
 SMPlayer::~SMPlayer()

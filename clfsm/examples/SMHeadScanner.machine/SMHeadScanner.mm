@@ -1,5 +1,5 @@
 //
-// SMHeadScanner.mm -- 2013-04-26 03:55:22 +0000
+// SMHeadScanner.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -44,7 +44,7 @@ SMHeadScanner::SMHeadScanner(int mid, const char *name): CLMachine(mid, name)
 	_states[10] = new FSMSMHeadScanner::State::Do_High_Scan;
 
 	setSuspendState(_states[3]);            // set suspend state
-	setCurrentState(_states[0]);            // set initial state
+	setInitialState(_states[0]);            // set initial state
 }
 
 SMHeadScanner::~SMHeadScanner()

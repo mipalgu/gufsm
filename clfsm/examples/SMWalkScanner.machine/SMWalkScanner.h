@@ -1,5 +1,5 @@
 //
-// SMWalkScanner.h -- 2013-05-02 08:47:57 +0000
+// SMWalkScanner.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //

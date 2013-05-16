@@ -1,5 +1,5 @@
 //
-// SMPlayer_VarRefs.mm -- 2013-05-01 07:49:36 +0000
+// SMPlayer_VarRefs.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //

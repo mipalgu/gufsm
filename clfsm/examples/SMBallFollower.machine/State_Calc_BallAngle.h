@@ -1,5 +1,5 @@
 //
-// State_Calc_BallAngle.h -- 2013-05-14 05:36:09 +0000
+// State_Calc_BallAngle.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //

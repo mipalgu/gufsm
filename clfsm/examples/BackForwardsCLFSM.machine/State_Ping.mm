@@ -1,5 +1,5 @@
 //
-// State_Ping.mm -- 2013-05-07 06:34:15 +0000
+// State_Ping.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //

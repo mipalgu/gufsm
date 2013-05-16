@@ -1,5 +1,5 @@
 //
-// State_StandingUp.h -- 2013-05-09 04:51:47 +0000
+// State_StandingUp.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //

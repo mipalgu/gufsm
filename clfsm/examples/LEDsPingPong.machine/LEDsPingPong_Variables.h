@@ -1,5 +1,5 @@
 //
-// LEDsPingPong_Variables.h -- 2013-04-15 04:17:44 +0000
+// LEDsPingPong_Variables.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //

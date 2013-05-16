@@ -1,5 +1,5 @@
 //
-// SMLeftFootControl_VarRefs.mm -- 2013-04-15 04:17:52 +0000
+// SMLeftFootControl_VarRefs.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //

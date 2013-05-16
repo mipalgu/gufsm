@@ -1,5 +1,5 @@
 //
-// State_Decide_Short.h -- 2013-05-14 05:36:09 +0000
+// State_Decide_Short.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -59,22 +59,14 @@ namespace FSM
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                class Transition_3: public CLTransition
-                {
-                public:
-                    Transition_3(int toState = 7): CLTransition(toState) {}
-
-                    virtual bool check(CLMachine *, CLState *) const;
-                };
-
-                CLTransition *_transitions[4];
+                CLTransition *_transitions[3];
 
                 public:
                     Decide_Short(const char *name = "Decide_Short");
                     virtual ~Decide_Short();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 4; }
+                    virtual int numberOfTransitions() const { return 3; }
 
 #                   include "State_Decide_Short_Variables.h"
             };

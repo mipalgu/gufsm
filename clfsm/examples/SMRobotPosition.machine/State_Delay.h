@@ -1,5 +1,5 @@
 //
-// State_Delay.h -- 2013-05-09 04:51:47 +0000
+// State_Delay.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //

@@ -1,5 +1,5 @@
 //
-// State_INIT_Variables.h -- 2013-05-07 06:34:15 +0000
+// State_INIT_Variables.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //

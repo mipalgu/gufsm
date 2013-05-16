@@ -1,5 +1,5 @@
 //
-// State_Start.h -- 2013-04-26 03:55:22 +0000
+// State_Start.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //

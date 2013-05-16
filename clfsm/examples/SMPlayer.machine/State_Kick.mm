@@ -1,5 +1,5 @@
 //
-// State_Kick.mm -- 2013-05-01 07:49:36 +0000
+// State_Kick.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //

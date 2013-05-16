@@ -87,7 +87,7 @@ CLFSMFactory::CLFSMFactory(Context *context, CLMachine *clm, int mid, bool del):
         State *initialState = NULL;
         State *suspendState = NULL;
         CLState * const *cl_states = clm->states();
-        const CLState * cl_initial = clm->currentState();
+        const CLState * cl_initial = clm->initialState();
         const CLState * cl_suspend = clm->suspendState();
         int n = clm->numberOfStates();
         State *states[n];

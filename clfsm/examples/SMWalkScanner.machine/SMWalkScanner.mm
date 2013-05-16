@@ -1,5 +1,5 @@
 //
-// SMWalkScanner.mm -- 2013-05-02 08:47:57 +0000
+// SMWalkScanner.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -48,7 +48,7 @@ SMWalkScanner::SMWalkScanner(int mid, const char *name): CLMachine(mid, name)
 	_states[12] = new FSMSMWalkScanner::State::SUSPENDED;
 
 	setSuspendState(_states[12]);            // set suspend state
-	setCurrentState(_states[0]);            // set initial state
+	setInitialState(_states[0]);            // set initial state
 }
 
 SMWalkScanner::~SMWalkScanner()

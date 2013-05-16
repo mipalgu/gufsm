@@ -1,5 +1,5 @@
 //
-// State_BACK.mm -- 2013-05-02 08:47:57 +0000
+// State_BACK.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //

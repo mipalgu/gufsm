@@ -1,5 +1,5 @@
 //
-// SayPingPong.mm -- 2013-04-15 04:13:49 +0000
+// SayPingPong.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -25,7 +25,7 @@ SayPingPong::SayPingPong(int mid, const char *name): CLMachine(mid, name)
 	_states[0] = new FSMSayPingPong::State::Ping;
 	_states[1] = new FSMSayPingPong::State::Pong;
 
-	setCurrentState(_states[0]);            // set initial state
+	setInitialState(_states[0]);            // set initial state
 }
 
 SayPingPong::~SayPingPong()

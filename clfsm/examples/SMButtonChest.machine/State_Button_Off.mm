@@ -1,5 +1,5 @@
 //
-// State_Button_Off.mm -- 2013-04-15 06:29:07 +0000
+// State_Button_Off.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //

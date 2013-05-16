@@ -1,5 +1,5 @@
 //
-// State_Decide_Short_VarRefs.mm -- 2013-05-14 05:36:09 +0000
+// State_Decide_Short_VarRefs.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //

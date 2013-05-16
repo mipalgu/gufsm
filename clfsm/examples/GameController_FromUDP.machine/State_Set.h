@@ -1,5 +1,5 @@
 //
-// State_Set.h -- 2013-04-21 23:58:10 +0000
+// State_Set.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //

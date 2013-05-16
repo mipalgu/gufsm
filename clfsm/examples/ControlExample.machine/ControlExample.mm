@@ -1,5 +1,5 @@
 //
-// ControlExample.mm -- 2013-04-15 04:08:33 +0000
+// ControlExample.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -37,7 +37,7 @@ ControlExample::ControlExample(int mid, const char *name): CLMachine(mid, name)
 	_states[6] = new FSMControlExample::State::Restart_Self;
 	_states[7] = new FSMControlExample::State::Wait;
 
-	setCurrentState(_states[0]);            // set initial state
+	setInitialState(_states[0]);            // set initial state
 }
 
 ControlExample::~ControlExample()

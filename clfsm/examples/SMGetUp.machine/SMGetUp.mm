@@ -1,5 +1,5 @@
 //
-// SMGetUp.mm -- 2013-05-14 05:44:30 +0000
+// SMGetUp.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -35,7 +35,7 @@ SMGetUp::SMGetUp(int mid, const char *name): CLMachine(mid, name)
 	_states[5] = new FSMSMGetUp::State::RollToSide;
 	_states[6] = new FSMSMGetUp::State::DummyState;
 
-	setCurrentState(_states[0]);            // set initial state
+	setInitialState(_states[0]);            // set initial state
 }
 
 SMGetUp::~SMGetUp()

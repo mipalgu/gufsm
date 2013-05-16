@@ -74,6 +74,8 @@
 namespace FSM
 {
         class Machine;
+        class CLMachine;
+        class CLState;
 
         enum CLControlStatus
         {
@@ -84,6 +86,7 @@ namespace FSM
                 CLRestart       ///< restart the corresponding state machine
         };
 
+        CLMachine *machine_at_index(unsigned index);
         long long start_time_for_current_state(const class Machine *machine);
         long long current_time_in_microseconds(void);
         int number_of_machines(void);
@@ -114,7 +117,11 @@ static inline enum CLControlStatus status(const char *m)  { return cs_machine_na
         for (int _i = 0; _i < _n; _i++) if (_i != _mi) control_machine_at_index(_i, CLSuspend); } while(0)
 #define is_suspended(m) (status(m) == CLSuspend)
 #define is_running(m)   (status(m) != CLSuspend)
-#endif
+
+#define state_of(m)     (machine_at_index(unsigned(index_of_machine_named(m)))->machineContext()->currentState())
+#define state_name_of(m)        (state_of(m)->name())
+
+#endif // NO_CL_READABILITY_MACROS
 }
 
 #pragma clang diagnostic pop

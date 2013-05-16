@@ -81,19 +81,19 @@ namespace FSM
         {
                 StateMachineVector      *_vectorContext;        ///< current vector
                 Machine                 *_machineContext;       ///< FSM context
-                CLState                 *_currentState;         ///< current state
+                CLState                 *_initialState;         ///< initial state
                 CLState                 *_suspendState;         ///< suspend state
                 const char              *_machineName;          ///< name of this machine
                 int                      _machineID;            ///< number of this machine
         public:
                 /** default constructor */
-                CLMachine(int mid = 0, const char *name = ""): _vectorContext(0), _machineContext(0), _currentState(0), _suspendState(0), _machineName(name), _machineID(mid) {}
+                CLMachine(int mid = 0, const char *name = ""): _vectorContext(0), _machineContext(0), _initialState(0), _suspendState(0), _machineName(name), _machineID(mid) {}
 
                 /** default destructor (subclass responsibility) */
                 virtual ~CLMachine() {}
 
                 /** access method for the current state the machine is in */
-                CLState *currentState() const { return _currentState; }
+                CLState *initialState() const { return _initialState; }
 
                 /** access method for the suspend state of the machine */
                 CLState *suspendState() const { return _suspendState; }
@@ -111,7 +111,7 @@ namespace FSM
                 int machineID() const { return _machineID; }
 
                 /** set the current state of this machine */
-                void setCurrentState(CLState *state) { _currentState = state; }
+                void setInitialState(CLState *state) { _initialState = state; }
 
                 /** set the suspend state of this machine */
                 void setSuspendState(CLState *state) { _suspendState = state; }

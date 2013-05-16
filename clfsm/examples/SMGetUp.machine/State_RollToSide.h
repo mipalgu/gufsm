@@ -1,5 +1,5 @@
 //
-// State_RollToSide.h -- 2013-05-14 05:44:30 +0000
+// State_RollToSide.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
