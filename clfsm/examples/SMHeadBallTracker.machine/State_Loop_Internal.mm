@@ -1,3 +1,3 @@
-filteredObjects = sigthing_ptr.get();
+filteredObjects = sightings_ptr.get();
 
 ball = filteredObjects.get_object();

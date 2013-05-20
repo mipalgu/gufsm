@@ -11,7 +11,6 @@ SMHeadScanner *_m = static_cast<SMHeadScanner *>(_machine);
 
 HAL_HeadTarget	&head = _m->head;	///< 
 HAL_HeadTarget_t	&head_ptr = _m->head_ptr;	///< 
-HeadSpeed::head_speed	&speed = _m->speed;	///< 
 int	&time = _m->time;	///< 
 int	&transition_time = _m->transition_time;	///< 
 

@@ -3,7 +3,7 @@
 #include <string>
 #include <cmath>
 #include "CLMacros.h"
-#include "typeClassDefs/FilteredVisionObject.h"
+#include "typeClassDefs/FilteredOneDimObjects.h"
 #include "typeClassDefs/SENSORS_TorsoJointSensors.h"
 #include "typeClassDefs/WALK_ControlStatus.h"
 

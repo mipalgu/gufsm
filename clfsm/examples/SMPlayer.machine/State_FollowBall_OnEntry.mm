@@ -2,4 +2,8 @@
 fprintf(stderr, "State: %s\n", state_name());
 #endif
 
-ball = ball_ptr.get();
+ball = sightings_ptr.get().get_object(FVOBall);
+
+
+restart("SMBallFollower");
+restart("SMHeadBallTracker");
