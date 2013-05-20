@@ -7,7 +7,7 @@ HAL_HeadTarget	head;	///<
 HAL_HeadTarget_t	head_ptr;	///< 
 int	time;	///< 
 FVOsighting_t	sigthing_ptr;	///< 
-FilteredVisionObjects	filteredObjects;	///< 
+FilteredOneDimObjects	filteredObjects;	///< 
 int	localization_frameCounter;	///< 
 SENSORS_TorsoJointSensors	body_sensors;	///< 
 SENSORS_TorsoJointSensors_t	body_sensors_ptr;	///< 
