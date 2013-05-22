@@ -1,1 +1,2 @@
-
+suspend("SMHeadScanner");
+suspend("SMWalkScanner");

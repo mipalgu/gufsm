@@ -3,5 +3,5 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-FVOsighting_t	ball_ptr;	///< 
+FVOsighting_t	sightings_ptr;	///< 
 FilteredVisionObject	ball;	///<

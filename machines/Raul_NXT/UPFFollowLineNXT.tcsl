@@ -1,0 +1,6 @@
+0 3 timeout(1000000)
+2 4 timeout(1000000)
+3 2 timeout(1000000)
+4 5 ~gunxtmotion_gunxt_nxtWalkIsRunning
+5 1 gudifferential_distanceSensorValue3<50
+5 2 gudifferential_distanceSensorValue3>100

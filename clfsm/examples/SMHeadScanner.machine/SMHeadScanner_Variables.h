@@ -5,6 +5,5 @@
 //
 HAL_HeadTarget	head;	///< 
 HAL_HeadTarget_t	head_ptr;	///< 
-HeadSpeed::head_speed	speed;	///< 
 int	time;	///< 
 int	transition_time;	///<

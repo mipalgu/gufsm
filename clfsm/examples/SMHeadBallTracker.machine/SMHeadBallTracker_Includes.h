@@ -4,7 +4,7 @@
 #include <cmath>
 #include "CLMacros.h"
 #include "typeClassDefs/HAL_HeadTarget.h"
-#include "typeClassDefs/FilteredVisionObject.h"
+#include "typeClassDefs/FilteredOneDimObjects.h"
 #include "typeClassDefs/SENSORS_TorsoJointSensors.h"
 
 #include "CLWhiteboard.h"

@@ -1,5 +1,5 @@
 #ifdef DEBUG
-fprintf(stderr, "State: %s\n", state_name());
+fprintf(stderr, "Suspend SMHeadScanner: %s\n", state_name());
 #endif
 
 head.Stop();

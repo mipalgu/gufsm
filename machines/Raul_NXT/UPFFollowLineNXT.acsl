@@ -1,0 +1,47 @@
+0	INITIAL
+OnEntry {
+  extern gudifferential_lightSensorValue4;
+  extern gunxtmotion_gunxt_nxtWalkIsRunning;
+  extern gudifferential_distanceSensorValue3;
+ }
+OnExit {}
+{}
+
+3	TURN_ON
+OnEntry {
+  print_state_name();
+  post("gudifferential_startDistanceSensor", "3");
+ }
+OnExit {}
+{}
+
+1	STOP
+OnEntry {
+  print_state_name();
+  post("gudifferential_stopDistanceSensor", "3");
+ }
+OnExit {}
+{}
+
+2	WALK
+OnEntry {
+  print_state_name();
+  post("gunxt_nxtWalk", "15,0,0");
+ }
+OnExit {}
+{}
+
+4	WAIT
+OnEntry{
+  print_state_name();
+ }
+OnExit{}
+{}
+
+5	SENSITY
+OnEntry{
+  print_state_name();
+ }
+OnExit{}
+{}
+
