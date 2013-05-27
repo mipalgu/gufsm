@@ -3,15 +3,15 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#include "GameController_Includes.h"
-#include "GameController.h"
+#include "SMGameController_Includes.h"
+#include "SMGameController.h"
 #include "State_Penalised.h"
 
 #include "State_Penalised_Includes.h"
 
 using namespace FSM;
 using namespace CLM;
-using namespace FSMGameController;
+using namespace FSMSMGameController;
 using namespace State;
 
 Penalised::Penalised(const char *name): CLState(name, *new Penalised::OnEntry, *new Penalised::OnExit, *new Penalised::Internal)
@@ -30,28 +30,28 @@ Penalised::~Penalised()
 
 void Penalised::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
-#	include "GameController_VarRefs.mm"
+#	include "SMGameController_VarRefs.mm"
 #	include "State_Penalised_VarRefs.mm"
 #	include "State_Penalised_OnEntry.mm"
 }
 
 void Penalised::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
-#	include "GameController_VarRefs.mm"
+#	include "SMGameController_VarRefs.mm"
 #	include "State_Penalised_VarRefs.mm"
 #	include "State_Penalised_OnExit.mm"
 }
 
 void Penalised::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
-#	include "GameController_VarRefs.mm"
+#	include "SMGameController_VarRefs.mm"
 #	include "State_Penalised_VarRefs.mm"
 #	include "State_Penalised_Internal.mm"
 }
 
 bool Penalised::Transition_0::check(CLMachine *_machine, CLState *_state) const
 {
-#	include "GameController_VarRefs.mm"
+#	include "SMGameController_VarRefs.mm"
 #	include "State_Penalised_VarRefs.mm"
 
 	return

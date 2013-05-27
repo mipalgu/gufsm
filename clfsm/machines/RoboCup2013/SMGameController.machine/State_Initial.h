@@ -1,10 +1,10 @@
 //
-// State_Penalised.h
+// State_Initial.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_GameController_State_Penalised_h
-#define clfsm_GameController_State_Penalised_h
+#ifndef clfsm_SMGameController_State_Initial_h
+#define clfsm_SMGameController_State_Initial_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,11 +14,11 @@ namespace FSM
 {
     namespace CLM
     {
-      namespace FSMGameController
+      namespace FSMSMGameController
       {
         namespace State
         {
-            class Penalised: public CLState
+            class Initial: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,21 +38,29 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 3): CLTransition(toState) {}
+                    Transition_0(int toState = 2): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                CLTransition *_transitions[1];
+                class Transition_1: public CLTransition
+                {
+                public:
+                    Transition_1(int toState = 5): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                CLTransition *_transitions[2];
 
                 public:
-                    Penalised(const char *name = "Penalised");
-                    virtual ~Penalised();
+                    Initial(const char *name = "Initial");
+                    virtual ~Initial();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 1; }
+                    virtual int numberOfTransitions() const { return 2; }
 
-#                   include "State_Penalised_Variables.h"
+#                   include "State_Initial_Variables.h"
             };
         }
       }

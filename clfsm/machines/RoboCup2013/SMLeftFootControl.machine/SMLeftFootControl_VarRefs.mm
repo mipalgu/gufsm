@@ -11,7 +11,5 @@ SMLeftFootControl *_m = static_cast<SMLeftFootControl *>(_machine);
 
 SENSORS_BodySensors	&body = _m->body;	///< 
 SENSORS_BodySensors_t	&body_ptr = _m->body_ptr;	///< 
-SENSORS_BodySensors	&body = _m->body;	///< 
-SENSORS_BodySensors_t	&body_ptr = _m->body_ptr;	///< 
 
 #pragma clang diagnostic pop

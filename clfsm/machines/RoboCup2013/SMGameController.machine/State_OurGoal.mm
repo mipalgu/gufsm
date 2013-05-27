@@ -3,15 +3,15 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#include "GameController_Includes.h"
-#include "GameController.h"
+#include "SMGameController_Includes.h"
+#include "SMGameController.h"
 #include "State_OurGoal.h"
 
 #include "State_OurGoal_Includes.h"
 
 using namespace FSM;
 using namespace CLM;
-using namespace FSMGameController;
+using namespace FSMSMGameController;
 using namespace State;
 
 OurGoal::OurGoal(const char *name): CLState(name, *new OurGoal::OnEntry, *new OurGoal::OnExit, *new OurGoal::Internal)
@@ -30,28 +30,28 @@ OurGoal::~OurGoal()
 
 void OurGoal::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
-#	include "GameController_VarRefs.mm"
+#	include "SMGameController_VarRefs.mm"
 #	include "State_OurGoal_VarRefs.mm"
 #	include "State_OurGoal_OnEntry.mm"
 }
 
 void OurGoal::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
-#	include "GameController_VarRefs.mm"
+#	include "SMGameController_VarRefs.mm"
 #	include "State_OurGoal_VarRefs.mm"
 #	include "State_OurGoal_OnExit.mm"
 }
 
 void OurGoal::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
-#	include "GameController_VarRefs.mm"
+#	include "SMGameController_VarRefs.mm"
 #	include "State_OurGoal_VarRefs.mm"
 #	include "State_OurGoal_Internal.mm"
 }
 
 bool OurGoal::Transition_0::check(CLMachine *_machine, CLState *_state) const
 {
-#	include "GameController_VarRefs.mm"
+#	include "SMGameController_VarRefs.mm"
 #	include "State_OurGoal_VarRefs.mm"
 
 	return

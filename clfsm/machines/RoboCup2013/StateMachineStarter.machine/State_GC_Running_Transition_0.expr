@@ -1,1 +1,1 @@
-nao_state.Left_Foot_Pressed() && nao_state.Chest_Pressed()
+nao_state.left_foot_pressed() && nao_state.chest_pressed()

@@ -3,8 +3,8 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_GameController_State_Play_h
-#define clfsm_GameController_State_Play_h
+#ifndef clfsm_SMGameController_State_Play_h
+#define clfsm_SMGameController_State_Play_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,7 +14,7 @@ namespace FSM
 {
     namespace CLM
     {
-      namespace FSMGameController
+      namespace FSMSMGameController
       {
         namespace State
         {

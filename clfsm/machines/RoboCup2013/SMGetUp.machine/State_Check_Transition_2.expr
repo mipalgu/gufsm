@@ -1,1 +1,1 @@
-nao_state.Stance() == FallenLeft || nao_state.Stance() == FallenRight
+nao_state.stance() == FallenLeft || nao_state.stance() == FallenRight

@@ -1,1 +1,1 @@
-nao_state.Stance() == FallenBack
+nao_state.stance() == FallenBack

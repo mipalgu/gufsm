@@ -1,10 +1,10 @@
 //
-// State_OurGoal.h
+// State_Set.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_GameController_State_OurGoal_h
-#define clfsm_GameController_State_OurGoal_h
+#ifndef clfsm_SMGameController_State_Set_h
+#define clfsm_SMGameController_State_Set_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,11 +14,11 @@ namespace FSM
 {
     namespace CLM
     {
-      namespace FSMGameController
+      namespace FSMSMGameController
       {
         namespace State
         {
-            class OurGoal: public CLState
+            class Set: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -43,16 +43,24 @@ namespace FSM
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                CLTransition *_transitions[1];
+                class Transition_1: public CLTransition
+                {
+                public:
+                    Transition_1(int toState = 3): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                CLTransition *_transitions[2];
 
                 public:
-                    OurGoal(const char *name = "OurGoal");
-                    virtual ~OurGoal();
+                    Set(const char *name = "Set");
+                    virtual ~Set();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 1; }
+                    virtual int numberOfTransitions() const { return 2; }
 
-#                   include "State_OurGoal_Variables.h"
+#                   include "State_Set_Variables.h"
             };
         }
       }

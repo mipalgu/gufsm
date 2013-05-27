@@ -3,15 +3,15 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#include "GameController_Includes.h"
-#include "GameController.h"
+#include "SMGameController_Includes.h"
+#include "SMGameController.h"
 #include "State_Play.h"
 
 #include "State_Play_Includes.h"
 
 using namespace FSM;
 using namespace CLM;
-using namespace FSMGameController;
+using namespace FSMSMGameController;
 using namespace State;
 
 Play::Play(const char *name): CLState(name, *new Play::OnEntry, *new Play::OnExit, *new Play::Internal)
@@ -38,28 +38,28 @@ Play::~Play()
 
 void Play::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
-#	include "GameController_VarRefs.mm"
+#	include "SMGameController_VarRefs.mm"
 #	include "State_Play_VarRefs.mm"
 #	include "State_Play_OnEntry.mm"
 }
 
 void Play::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
-#	include "GameController_VarRefs.mm"
+#	include "SMGameController_VarRefs.mm"
 #	include "State_Play_VarRefs.mm"
 #	include "State_Play_OnExit.mm"
 }
 
 void Play::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
-#	include "GameController_VarRefs.mm"
+#	include "SMGameController_VarRefs.mm"
 #	include "State_Play_VarRefs.mm"
 #	include "State_Play_Internal.mm"
 }
 
 bool Play::Transition_0::check(CLMachine *_machine, CLState *_state) const
 {
-#	include "GameController_VarRefs.mm"
+#	include "SMGameController_VarRefs.mm"
 #	include "State_Play_VarRefs.mm"
 
 	return
@@ -70,7 +70,7 @@ bool Play::Transition_0::check(CLMachine *_machine, CLState *_state) const
 
 bool Play::Transition_1::check(CLMachine *_machine, CLState *_state) const
 {
-#	include "GameController_VarRefs.mm"
+#	include "SMGameController_VarRefs.mm"
 #	include "State_Play_VarRefs.mm"
 
 	return
@@ -81,7 +81,7 @@ bool Play::Transition_1::check(CLMachine *_machine, CLState *_state) const
 
 bool Play::Transition_2::check(CLMachine *_machine, CLState *_state) const
 {
-#	include "GameController_VarRefs.mm"
+#	include "SMGameController_VarRefs.mm"
 #	include "State_Play_VarRefs.mm"
 
 	return
@@ -92,7 +92,7 @@ bool Play::Transition_2::check(CLMachine *_machine, CLState *_state) const
 
 bool Play::Transition_3::check(CLMachine *_machine, CLState *_state) const
 {
-#	include "GameController_VarRefs.mm"
+#	include "SMGameController_VarRefs.mm"
 #	include "State_Play_VarRefs.mm"
 
 	return
@@ -103,7 +103,7 @@ bool Play::Transition_3::check(CLMachine *_machine, CLState *_state) const
 
 bool Play::Transition_4::check(CLMachine *_machine, CLState *_state) const
 {
-#	include "GameController_VarRefs.mm"
+#	include "SMGameController_VarRefs.mm"
 #	include "State_Play_VarRefs.mm"
 
 	return

@@ -3,15 +3,15 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#include "GameController_Includes.h"
-#include "GameController.h"
+#include "SMGameController_Includes.h"
+#include "SMGameController.h"
 #include "State_Initial.h"
 
 #include "State_Initial_Includes.h"
 
 using namespace FSM;
 using namespace CLM;
-using namespace FSMGameController;
+using namespace FSMSMGameController;
 using namespace State;
 
 Initial::Initial(const char *name): CLState(name, *new Initial::OnEntry, *new Initial::OnExit, *new Initial::Internal)
@@ -32,28 +32,28 @@ Initial::~Initial()
 
 void Initial::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
-#	include "GameController_VarRefs.mm"
+#	include "SMGameController_VarRefs.mm"
 #	include "State_Initial_VarRefs.mm"
 #	include "State_Initial_OnEntry.mm"
 }
 
 void Initial::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
-#	include "GameController_VarRefs.mm"
+#	include "SMGameController_VarRefs.mm"
 #	include "State_Initial_VarRefs.mm"
 #	include "State_Initial_OnExit.mm"
 }
 
 void Initial::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
-#	include "GameController_VarRefs.mm"
+#	include "SMGameController_VarRefs.mm"
 #	include "State_Initial_VarRefs.mm"
 #	include "State_Initial_Internal.mm"
 }
 
 bool Initial::Transition_0::check(CLMachine *_machine, CLState *_state) const
 {
-#	include "GameController_VarRefs.mm"
+#	include "SMGameController_VarRefs.mm"
 #	include "State_Initial_VarRefs.mm"
 
 	return
@@ -64,7 +64,7 @@ bool Initial::Transition_0::check(CLMachine *_machine, CLState *_state) const
 
 bool Initial::Transition_1::check(CLMachine *_machine, CLState *_state) const
 {
-#	include "GameController_VarRefs.mm"
+#	include "SMGameController_VarRefs.mm"
 #	include "State_Initial_VarRefs.mm"
 
 	return
