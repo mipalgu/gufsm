@@ -75,14 +75,22 @@ namespace FSM
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                CLTransition *_transitions[5];
+                class Transition_5: public CLTransition
+                {
+                public:
+                    Transition_5(int toState = 4): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                CLTransition *_transitions[6];
 
                 public:
                     Play(const char *name = "Play");
                     virtual ~Play();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 5; }
+                    virtual int numberOfTransitions() const { return 6; }
 
 #                   include "State_Play_Variables.h"
             };

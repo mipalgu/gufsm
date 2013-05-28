@@ -6,5 +6,3 @@ using namespace std;
 	myNumber = thePlayerNumberOnTheBack;															
 
 isPenalised = aUDPReceiverNotificationType.get().amIPenalized(myNumber);
-
-suspend("SMPlayer");

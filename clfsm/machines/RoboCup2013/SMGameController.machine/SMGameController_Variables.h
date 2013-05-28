@@ -11,4 +11,6 @@ int	newScore;	///<
 int	theirScore;	///< 
 bool	isPenalised;	///< 
 guWhiteboard::GameState	gameState;	///< 
-QSay_t	say;	///<
+QSay_t	say;	///< 
+NAO_State	nao_state;	///< 
+NAO_State_t	nao_state_ptr;	///<

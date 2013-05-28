@@ -1,7 +1,7 @@
-{
-   using namespace std;
+using namespace std;
 
-  cerr << "Penalised " << state_name() << endl;
+cerr << "Penalised " << state_name() << endl;
 		
-		say("Penalised");
-													}
+say("Penalised");
+
+nao_state = nao_state_ptr.get();

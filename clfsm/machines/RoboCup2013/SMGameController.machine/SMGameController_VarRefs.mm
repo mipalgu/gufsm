@@ -18,5 +18,7 @@ int	&theirScore = _m->theirScore;	///<
 bool	&isPenalised = _m->isPenalised;	///< 
 guWhiteboard::GameState	&gameState = _m->gameState;	///< 
 QSay_t	&say = _m->say;	///< 
+NAO_State	&nao_state = _m->nao_state;	///< 
+NAO_State_t	&nao_state_ptr = _m->nao_state_ptr;	///< 
 
 #pragma clang diagnostic pop
