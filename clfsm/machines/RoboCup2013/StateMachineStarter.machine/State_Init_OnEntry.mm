@@ -4,8 +4,8 @@
 //	extern playerNumber;
 //	extern wbStartGameController;
 //	extern wbStopFSMs;
-
 int player = getplayernumber();
+spokeIP = false;
 say("Player number");
 say(gu_ltos(player));
 

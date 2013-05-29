@@ -12,5 +12,6 @@ StateMachineStarter *_m = static_cast<StateMachineStarter *>(_machine);
 NAO_State_t	&nao_state_ptr = _m->nao_state_ptr;	///< 
 NAO_State	&nao_state = _m->nao_state;	///< 
 QSay_t	&say = _m->say;	///< 
+bool	&spokeIP = _m->spokeIP;	///< 
 
 #pragma clang diagnostic pop

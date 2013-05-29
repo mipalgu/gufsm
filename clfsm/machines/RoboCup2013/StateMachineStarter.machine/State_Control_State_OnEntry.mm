@@ -1,4 +1,4 @@
-say("Ready");
+say("Starter Control");
 
 
 nao_state = nao_state_ptr.get();

@@ -5,4 +5,5 @@
 //
 NAO_State_t	nao_state_ptr;	///< 
 NAO_State	nao_state;	///< 
-QSay_t	say;	///<
+QSay_t	say;	///< 
+bool	spokeIP;	///<
