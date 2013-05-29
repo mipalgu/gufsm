@@ -15,6 +15,7 @@ UDPRN_t	&aUDPReceiverNotificationType = _m->aUDPReceiverNotificationType;	///< T
 int	&ourScore = _m->ourScore;	///< 
 int	&newScore = _m->newScore;	///< 
 int	&theirScore = _m->theirScore;	///< 
+bool	&penalisedThroughChestButton = _m->penalisedThroughChestButton;	///< 
 bool	&isPenalised = _m->isPenalised;	///< 
 guWhiteboard::GameState	&gameState = _m->gameState;	///< 
 QSay_t	&say = _m->say;	///< 

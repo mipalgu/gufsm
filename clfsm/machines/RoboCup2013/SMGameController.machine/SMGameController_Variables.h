@@ -9,6 +9,7 @@ UDPRN_t	aUDPReceiverNotificationType;	///< The UDP message is collected here
 int	ourScore;	///< 
 int	newScore;	///< 
 int	theirScore;	///< 
+bool	penalisedThroughChestButton;	///< 
 bool	isPenalised;	///< 
 guWhiteboard::GameState	gameState;	///< 
 QSay_t	say;	///< 

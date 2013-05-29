@@ -18,6 +18,7 @@ Finished::Finished(const char *name): CLState(name, *new Finished::OnEntry, *new
 {
 	_transitions[0] = new Transition_0();
 	_transitions[1] = new Transition_1();
+	_transitions[2] = new Transition_2();
 }
 
 Finished::~Finished()
@@ -28,6 +29,7 @@ Finished::~Finished()
 
 	delete _transitions[0];
 	delete _transitions[1];
+	delete _transitions[2];
 }
 
 void Finished::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -70,5 +72,16 @@ bool Finished::Transition_1::check(CLMachine *_machine, CLState *_state) const
 	return
 	(
 #		include "State_Finished_Transition_1.expr"
+	);
+}
+
+bool Finished::Transition_2::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "SMGameController_VarRefs.mm"
+#	include "State_Finished_VarRefs.mm"
+
+	return
+	(
+#		include "State_Finished_Transition_2.expr"
 	);
 }
