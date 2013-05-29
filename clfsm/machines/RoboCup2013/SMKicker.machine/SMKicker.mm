@@ -10,6 +10,8 @@
 #include "State_StartKickMotion.h"
 #include "State_SUSPENDED.h"
 #include "State_KickFinished.h"
+#include "State_StartPrepareHead.h"
+#include "State_HeadPrepared.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -28,6 +30,8 @@ SMKicker::SMKicker(int mid, const char *name): CLMachine(mid, name)
 	_states[1] = new FSMSMKicker::State::StartKickMotion;
 	_states[2] = new FSMSMKicker::State::SUSPENDED;
 	_states[3] = new FSMSMKicker::State::KickFinished;
+	_states[4] = new FSMSMKicker::State::StartPrepareHead;
+	_states[5] = new FSMSMKicker::State::HeadPrepared;
 
 	setSuspendState(_states[2]);            // set suspend state
 	setInitialState(_states[0]);            // set initial state
@@ -39,4 +43,6 @@ SMKicker::~SMKicker()
 	delete _states[1];
 	delete _states[2];
 	delete _states[3];
+	delete _states[4];
+	delete _states[5];
 }
