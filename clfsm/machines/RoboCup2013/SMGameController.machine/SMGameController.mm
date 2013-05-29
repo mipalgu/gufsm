@@ -15,6 +15,7 @@
 #include "State_Set.h"
 #include "State_OurGoal.h"
 #include "State_Wait_Unpenalise.h"
+#include "State_Wait_Chest_Release.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -38,6 +39,7 @@ SMGameController::SMGameController(int mid, const char *name): CLMachine(mid, na
 	_states[6] = new FSMSMGameController::State::Set;
 	_states[7] = new FSMSMGameController::State::OurGoal;
 	_states[8] = new FSMSMGameController::State::Wait_Unpenalise;
+	_states[9] = new FSMSMGameController::State::Wait_Chest_Release;
 
 	setInitialState(_states[0]);            // set initial state
 }
@@ -53,4 +55,5 @@ SMGameController::~SMGameController()
 	delete _states[6];
 	delete _states[7];
 	delete _states[8];
+	delete _states[9];
 }

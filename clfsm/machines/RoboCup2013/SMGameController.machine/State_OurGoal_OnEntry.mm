@@ -1,6 +1,6 @@
 say("GOAL, my pal!");
 
-gameState = aUDPReceiverNotificationType.get().theUDPGameState();
+gameState = aUDPReceiverNotificationType.get().theGSGameState();
 
 using namespace std;
 

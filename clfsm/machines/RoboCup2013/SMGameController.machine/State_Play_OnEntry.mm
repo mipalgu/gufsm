@@ -8,5 +8,5 @@
 		say("Play");
 														newScore=aUDPReceiverNotificationType.get().getOurScore();
 
-         gameState = aUDPReceiverNotificationType.get().theUDPGameState();
+gameState = aUDPReceiverNotificationType.get().theGSGameState();
 	}

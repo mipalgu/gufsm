@@ -5,5 +5,5 @@
 		
 		say("Game over");
 													}
-gameState = aUDPReceiverNotificationType.get().theUDPGameState();
+gameState = aUDPReceiverNotificationType.get().theGSGameState();
 isPenalised = aUDPReceiverNotificationType.get().amIPenalized(myNumber);
