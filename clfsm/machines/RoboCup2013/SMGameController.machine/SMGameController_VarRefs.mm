@@ -11,6 +11,8 @@ SMGameController *_m = static_cast<SMGameController *>(_machine);
 
 int	&myNumber = _m->myNumber;	///< 
 PlayerNumber_t	&thePlayerNumberOnTheBack = _m->thePlayerNumberOnTheBack;	///< 
+GCGameState_t	&postGS = _m->postGS;	///< 
+GCGameState	&smGameState = _m->smGameState;	///< 
 UDPRN_t	&aUDPReceiverNotificationType = _m->aUDPReceiverNotificationType;	///< The UDP message is collected here
 int	&ourScore = _m->ourScore;	///< 
 int	&newScore = _m->newScore;	///< 
@@ -21,5 +23,8 @@ GameState	&gameState = _m->gameState;	///<
 QSay_t	&say = _m->say;	///< 
 NAO_State	&nao_state = _m->nao_state;	///< 
 NAO_State_t	&nao_state_ptr = _m->nao_state_ptr;	///< 
+enum TeamColours	&kickoffTeam = _m->kickoffTeam;	///< 
+enum TeamColours	&ourTeamColour = _m->ourTeamColour;	///< 
+SENSORS_LedsSensors_t	&leds = _m->leds;	///< 
 
 #pragma clang diagnostic pop

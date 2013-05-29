@@ -1,5 +1,4 @@
-{
-   using namespace std;
+using namespace std;
 
 	myNumber = thePlayerNumberOnTheBack;															
 
@@ -7,5 +6,11 @@
 
 	say("I'm in Initial");
 
-gameState = aUDPReceiverNotificationType.get().theGSGameState();
-}
+smGameState = aUDPReceiverNotificationType.get();
+postGS(smGameState);
+gameState = smGameState.theGSGameState();
+
+SENSORS_LedsSensors ledValues = leds.get();
+ledValues.LEDsGroupChange(LFoot, ourTeamColour == TeamBlue ? Blue : Red);
+ledValues.LEDsGroupChange(RFoot, kickoffTeam == TeamBlue ? Blue : Red);
+leds.set(ledValues);

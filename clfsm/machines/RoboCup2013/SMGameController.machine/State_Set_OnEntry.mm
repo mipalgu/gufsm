@@ -5,5 +5,8 @@
 		
 		say("Set");
 
-gameState = aUDPReceiverNotificationType.get().theGSGameState();
+smGameState = aUDPReceiverNotificationType.get();
+postGS(smGameState);
+gameState = smGameState.theGSGameState();
+isPenalised = smGameState.amIPenalized(myNumber);
 													}

@@ -19,6 +19,8 @@ Initial::Initial(const char *name): CLState(name, *new Initial::OnEntry, *new In
 	_transitions[0] = new Transition_0();
 	_transitions[1] = new Transition_1();
 	_transitions[2] = new Transition_2();
+	_transitions[3] = new Transition_3();
+	_transitions[4] = new Transition_4();
 }
 
 Initial::~Initial()
@@ -30,6 +32,8 @@ Initial::~Initial()
 	delete _transitions[0];
 	delete _transitions[1];
 	delete _transitions[2];
+	delete _transitions[3];
+	delete _transitions[4];
 }
 
 void Initial::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -83,5 +87,27 @@ bool Initial::Transition_2::check(CLMachine *_machine, CLState *_state) const
 	return
 	(
 #		include "State_Initial_Transition_2.expr"
+	);
+}
+
+bool Initial::Transition_3::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "SMGameController_VarRefs.mm"
+#	include "State_Initial_VarRefs.mm"
+
+	return
+	(
+#		include "State_Initial_Transition_3.expr"
+	);
+}
+
+bool Initial::Transition_4::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "SMGameController_VarRefs.mm"
+#	include "State_Initial_VarRefs.mm"
+
+	return
+	(
+#		include "State_Initial_Transition_4.expr"
 	);
 }

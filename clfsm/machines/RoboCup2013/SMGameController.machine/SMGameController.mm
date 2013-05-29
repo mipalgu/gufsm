@@ -16,6 +16,8 @@
 #include "State_OurGoal.h"
 #include "State_Wait_Unpenalise.h"
 #include "State_Wait_Chest_Release.h"
+#include "State_ChangeKickoff.h"
+#include "State_ChangeTeam.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -40,6 +42,8 @@ SMGameController::SMGameController(int mid, const char *name): CLMachine(mid, na
 	_states[7] = new FSMSMGameController::State::OurGoal;
 	_states[8] = new FSMSMGameController::State::Wait_Unpenalise;
 	_states[9] = new FSMSMGameController::State::Wait_Chest_Release;
+	_states[10] = new FSMSMGameController::State::ChangeKickoff;
+	_states[11] = new FSMSMGameController::State::ChangeTeam;
 
 	setInitialState(_states[0]);            // set initial state
 }
@@ -56,4 +60,6 @@ SMGameController::~SMGameController()
 	delete _states[7];
 	delete _states[8];
 	delete _states[9];
+	delete _states[10];
+	delete _states[11];
 }

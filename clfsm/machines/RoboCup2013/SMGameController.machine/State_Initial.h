@@ -59,14 +59,30 @@ namespace FSM
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                CLTransition *_transitions[3];
+                class Transition_3: public CLTransition
+                {
+                public:
+                    Transition_3(int toState = 10): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                class Transition_4: public CLTransition
+                {
+                public:
+                    Transition_4(int toState = 11): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                CLTransition *_transitions[5];
 
                 public:
                     Initial(const char *name = "Initial");
                     virtual ~Initial();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 3; }
+                    virtual int numberOfTransitions() const { return 5; }
 
 #                   include "State_Initial_Variables.h"
             };
