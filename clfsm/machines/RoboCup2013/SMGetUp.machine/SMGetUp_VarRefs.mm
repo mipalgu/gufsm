@@ -13,5 +13,6 @@ MOTION_SDK_Status_t	&motion_status = _m->motion_status;	///<
 MOTION_SDK_Commands_t	&motion_ptr = _m->motion_ptr;	///< (null)
 NAO_State_t	&nao_state_ptr = _m->nao_state_ptr;	///< 
 NAO_State	&nao_state = _m->nao_state;	///< 
+WALK_Command_t	&walk_post = _m->walk_post;	///< 
 
 #pragma clang diagnostic pop

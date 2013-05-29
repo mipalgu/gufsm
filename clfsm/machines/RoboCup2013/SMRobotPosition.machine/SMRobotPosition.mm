@@ -15,6 +15,7 @@
 #include "State_Forward.h"
 #include "State_Done.h"
 #include "State_StandingUp.h"
+#include "State_WaitStandUp.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -38,6 +39,7 @@ SMRobotPosition::SMRobotPosition(int mid, const char *name): CLMachine(mid, name
 	_states[6] = new FSMSMRobotPosition::State::Forward;
 	_states[7] = new FSMSMRobotPosition::State::Done;
 	_states[8] = new FSMSMRobotPosition::State::StandingUp;
+	_states[9] = new FSMSMRobotPosition::State::WaitStandUp;
 
 	setInitialState(_states[0]);            // set initial state
 }
@@ -53,4 +55,5 @@ SMRobotPosition::~SMRobotPosition()
 	delete _states[6];
 	delete _states[7];
 	delete _states[8];
+	delete _states[9];
 }

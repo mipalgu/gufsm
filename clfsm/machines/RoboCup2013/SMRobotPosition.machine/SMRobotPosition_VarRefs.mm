@@ -15,5 +15,6 @@ int	&frontalAngle = _m->frontalAngle;	///<
 int	&lateralAngle = _m->lateralAngle;	///< 
 NAO_State_t	&NAO_State_ptr = _m->NAO_State_ptr;	///< 
 NAO_State	&NAO_State_value = _m->NAO_State_value;	///< 
+MOTION_SDK_Status_t	&motion_status = _m->motion_status;	///< 
 
 #pragma clang diagnostic pop

@@ -16,12 +16,12 @@ namespace FSM
     {
         class SMRobotPosition: public CLMachine
         {
-            CLState *_states[9];
+            CLState *_states[10];
         public:
             SMRobotPosition(int mid  = 0, const char *name = "SMRobotPosition");
             virtual ~SMRobotPosition();
             virtual CLState * const * states() const { return _states; }
-            virtual int numberOfStates() const { return 9; }
+            virtual int numberOfStates() const { return 10; }
 #           include "SMRobotPosition_Variables.h"
         };
     }

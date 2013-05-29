@@ -22,6 +22,7 @@ Play::Play(const char *name): CLState(name, *new Play::OnEntry, *new Play::OnExi
 	_transitions[3] = new Transition_3();
 	_transitions[4] = new Transition_4();
 	_transitions[5] = new Transition_5();
+	_transitions[6] = new Transition_6();
 }
 
 Play::~Play()
@@ -36,6 +37,7 @@ Play::~Play()
 	delete _transitions[3];
 	delete _transitions[4];
 	delete _transitions[5];
+	delete _transitions[6];
 }
 
 void Play::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -122,5 +124,16 @@ bool Play::Transition_5::check(CLMachine *_machine, CLState *_state) const
 	return
 	(
 #		include "State_Play_Transition_5.expr"
+	);
+}
+
+bool Play::Transition_6::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "SMGameController_VarRefs.mm"
+#	include "State_Play_VarRefs.mm"
+
+	return
+	(
+#		include "State_Play_Transition_6.expr"
 	);
 }

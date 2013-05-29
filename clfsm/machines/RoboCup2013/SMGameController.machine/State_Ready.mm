@@ -20,6 +20,7 @@ Ready::Ready(const char *name): CLState(name, *new Ready::OnEntry, *new Ready::O
 	_transitions[1] = new Transition_1();
 	_transitions[2] = new Transition_2();
 	_transitions[3] = new Transition_3();
+	_transitions[4] = new Transition_4();
 }
 
 Ready::~Ready()
@@ -32,6 +33,7 @@ Ready::~Ready()
 	delete _transitions[1];
 	delete _transitions[2];
 	delete _transitions[3];
+	delete _transitions[4];
 }
 
 void Ready::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -96,5 +98,16 @@ bool Ready::Transition_3::check(CLMachine *_machine, CLState *_state) const
 	return
 	(
 #		include "State_Ready_Transition_3.expr"
+	);
+}
+
+bool Ready::Transition_4::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "SMGameController_VarRefs.mm"
+#	include "State_Ready_VarRefs.mm"
+
+	return
+	(
+#		include "State_Ready_Transition_4.expr"
 	);
 }

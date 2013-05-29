@@ -6,6 +6,7 @@
 
 #include "typeClassDefs/MOTION_SDK_Interface.h"
 #include "typeClassDefs/NAO_State.h"
+#include "typeClassDefs/WALK_ControlStatus.h"
 
 #include "CLWhiteboard.h"
 

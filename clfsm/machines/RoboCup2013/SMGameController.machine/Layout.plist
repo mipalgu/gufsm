@@ -142,6 +142,74 @@
 			<key>y</key>
 			<real>525.0390625</real>
 		</dict>
+		<key>GetUpPlay</key>
+		<dict>
+			<key>Transitions</key>
+			<array>
+				<dict>
+					<key>controlPoint1X</key>
+					<real>480.18818009158855</real>
+					<key>controlPoint1Y</key>
+					<real>704.41335054618321</real>
+					<key>controlPoint2X</key>
+					<real>485.04978775608618</real>
+					<key>controlPoint2Y</key>
+					<real>710.96601616635985</real>
+					<key>dstPointX</key>
+					<real>504.41908383113656</real>
+					<key>dstPointY</key>
+					<real>705.98300808317993</real>
+					<key>srcPointX</key>
+					<real>460.28412467879207</real>
+					<key>srcPointY</key>
+					<real>702.45667527309161</real>
+				</dict>
+			</array>
+			<key>expanded</key>
+			<false/>
+			<key>h</key>
+			<real>50</real>
+			<key>w</key>
+			<real>100</real>
+			<key>x</key>
+			<real>415.3125</real>
+			<key>y</key>
+			<real>700.72265625</real>
+		</dict>
+		<key>GetUpReady</key>
+		<dict>
+			<key>Transitions</key>
+			<array>
+				<dict>
+					<key>controlPoint1X</key>
+					<real>625.5941077232934</real>
+					<key>controlPoint1Y</key>
+					<real>42.036817388080138</real>
+					<key>controlPoint2X</key>
+					<real>638.9058922767066</real>
+					<key>controlPoint2Y</key>
+					<real>34.963182611919883</real>
+					<key>dstPointX</key>
+					<real>658.78100234541228</real>
+					<key>dstPointY</key>
+					<real>32.731591305959938</real>
+					<key>srcPointX</key>
+					<real>605.71899765458772</real>
+					<key>srcPointY</key>
+					<real>44.268408694040069</real>
+				</dict>
+			</array>
+			<key>expanded</key>
+			<false/>
+			<key>h</key>
+			<real>50</real>
+			<key>w</key>
+			<real>100</real>
+			<key>x</key>
+			<real>560.8046875</real>
+			<key>y</key>
+			<real>46.5</real>
+		</dict>
 		<key>Init</key>
 		<dict>
 			<key>Transitions</key>
@@ -462,6 +530,24 @@
 					<key>srcPointY</key>
 					<real>602.33130520285658</real>
 				</dict>
+				<dict>
+					<key>controlPoint1X</key>
+					<real>438.49580993594685</real>
+					<key>controlPoint1Y</key>
+					<real>646.62254210954904</real>
+					<key>controlPoint2X</key>
+					<real>368.76304768750822</real>
+					<key>controlPoint2Y</key>
+					<real>670.10721801376758</real>
+					<key>dstPointX</key>
+					<real>384.23171589099007</real>
+					<key>dstPointY</key>
+					<real>686.11692071721222</real>
+					<key>srcPointX</key>
+					<real>453.55646714916611</real>
+					<key>srcPointY</key>
+					<real>630.22843094279165</real>
+				</dict>
 			</array>
 			<key>expanded</key>
 			<false/>
@@ -550,6 +636,24 @@
 					<key>srcPointY</key>
 					<real>130.49661198869663</real>
 				</dict>
+				<dict>
+					<key>controlPoint1X</key>
+					<real>757.75289569420897</real>
+					<key>controlPoint1Y</key>
+					<real>87.43599916107172</real>
+					<key>controlPoint2X</key>
+					<real>598.74710430579103</real>
+					<key>controlPoint2Y</key>
+					<real>79.06400083892828</real>
+					<key>dstPointX</key>
+					<real>587.13261067323992</real>
+					<key>dstPointY</key>
+					<real>62.78200041946414</real>
+					<key>srcPointX</key>
+					<real>769.36738932676008</real>
+					<key>srcPointY</key>
+					<real>103.71799958053586</real>
+				</dict>
 			</array>
 			<key>expanded</key>
 			<false/>
@@ -631,6 +735,74 @@
 			<real>889</real>
 			<key>y</key>
 			<real>568.5390625</real>
+		</dict>
+		<key>WaitPlay</key>
+		<dict>
+			<key>Transitions</key>
+			<array>
+				<dict>
+					<key>controlPoint1X</key>
+					<real>504.72109886287012</real>
+					<key>controlPoint1Y</key>
+					<real>671.15583374508674</real>
+					<key>controlPoint2X</key>
+					<real>491.78185945985894</real>
+					<key>controlPoint2Y</key>
+					<real>655.21230343492743</real>
+					<key>dstPointX</key>
+					<real>489.38744116451772</real>
+					<key>dstPointY</key>
+					<real>635.35615171746372</real>
+					<key>srcPointX</key>
+					<real>518.03768382814087</real>
+					<key>srcPointY</key>
+					<real>686.07791687254337</real>
+				</dict>
+			</array>
+			<key>expanded</key>
+			<false/>
+			<key>h</key>
+			<real>50</real>
+			<key>w</key>
+			<real>100</real>
+			<key>x</key>
+			<real>547.890625</real>
+			<key>y</key>
+			<real>700.8828125</real>
+		</dict>
+		<key>WaitReady</key>
+		<dict>
+			<key>Transitions</key>
+			<array>
+				<dict>
+					<key>controlPoint1X</key>
+					<real>754.66121051123082</real>
+					<key>controlPoint1Y</key>
+					<real>55.173243838710412</real>
+					<key>controlPoint2X</key>
+					<real>775.55330976882499</real>
+					<key>controlPoint2Y</key>
+					<real>81.929970233559999</real>
+					<key>dstPointX</key>
+					<real>781.69075291687886</real>
+					<key>dstPointY</key>
+					<real>100.96498511678</real>
+					<key>srcPointX</key>
+					<real>738.91929958469825</real>
+					<key>srcPointY</key>
+					<real>42.83662191935521</real>
+				</dict>
+			</array>
+			<key>expanded</key>
+			<false/>
+			<key>h</key>
+			<real>50</real>
+			<key>w</key>
+			<real>100</real>
+			<key>x</key>
+			<real>703.62109375</real>
+			<key>y</key>
+			<real>30.55078125</real>
 		</dict>
 		<key>Wait_Chest_Release</key>
 		<dict>
