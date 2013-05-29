@@ -7,5 +7,5 @@
 
 	say("I'm in Initial");
 
-	gameState = aUDPReceiverNotificationType.get().theUDPGameState();
+gameState = aUDPReceiverNotificationType.get().theGSGameState();
 }

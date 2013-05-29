@@ -11,7 +11,7 @@ int	newScore;	///<
 int	theirScore;	///< 
 bool	penalisedThroughChestButton;	///< 
 bool	isPenalised;	///< 
-guWhiteboard::GameState	gameState;	///< 
+GameState	gameState;	///< 
 QSay_t	say;	///< 
 NAO_State	nao_state;	///< 
 NAO_State_t	nao_state_ptr;	///<

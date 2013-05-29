@@ -3,7 +3,7 @@
 #include <string>
 #include <cmath>
 #include "CLMacros.h"
-#include "typeClassDefs/UDPReceiverNotification.h"
+#include "typeClassDefs/GCGameState.h"
 #include "typeClassDefs/NAO_State.h"
 #include "CLWhiteboard.h"
 

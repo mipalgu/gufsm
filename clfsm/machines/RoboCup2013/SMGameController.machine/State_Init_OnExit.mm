@@ -1,2 +1,2 @@
-gameState = aUDPReceiverNotificationType.get().theUDPGameState();
+gameState = aUDPReceiverNotificationType.get().theGSGameState();
 nao_state = nao_state_ptr.get();
