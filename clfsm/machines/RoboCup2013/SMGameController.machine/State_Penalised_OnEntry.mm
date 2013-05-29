@@ -1,8 +1,12 @@
-using namespace std;
+SENSORS_LedsSensors ledValues = leds.get();
+ledValues.LEDsGroupChange(Chest, Red);
+ledValues.LEDsGroupChange(LFoot, ourTeamColour == TeamBlue ? Blue : Red);
+ledValues.LEDsGroupChange(RFoot, kickoffTeam == TeamBlue ? Blue : Red);
+leds.set(ledValues);
 
 cerr << "Penalised " << state_name() << endl;
 		
-say("Penalised");
+say("Paynalised");
 
 penalisedThroughChestButton = nao_state.chest_pressed() > 0;
 

@@ -1,6 +1,10 @@
-using namespace std;
+restart("SMPlayer");
 
-	restart("SMPlayer");
+SENSORS_LedsSensors ledValues = leds.get();
+ledValues.LEDsGroupChange(Chest, Green);
+ledValues.LEDsGroupChange(LFoot, ourTeamColour == TeamBlue ? Blue : Red);
+ledValues.LEDsGroupChange(RFoot, kickoffTeam == TeamBlue ? Blue : Red);
+leds.set(ledValues);
 
   cerr << "PLAY " << state_name() << endl;
 		

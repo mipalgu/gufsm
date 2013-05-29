@@ -2,7 +2,7 @@ using namespace std;
 
 	myNumber = thePlayerNumberOnTheBack;															
 
-    cerr << "INITIAL " << state_name() << myNumber << endl;
+    cerr << state_name() << " player " << myNumber << endl;
 
 	say("I'm in Initial");
 
@@ -11,7 +11,7 @@ postGS(smGameState);
 gameState = smGameState.theGSGameState();
 
 SENSORS_LedsSensors ledValues = leds.get();
-ledValues.LEDsGroupChange(Chest, ourTeamColour == TeamBlue ? Blue : Red);
+ledValues.LEDsGroupChange(Chest, Off);
 ledValues.LEDsGroupChange(LFoot, ourTeamColour == TeamBlue ? Blue : Red);
 ledValues.LEDsGroupChange(RFoot, kickoffTeam == TeamBlue ? Blue : Red);
 leds.set(ledValues);
