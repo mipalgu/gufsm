@@ -5,4 +5,4 @@ if (penalisedThroughUDPReceiver) penalisedThroughChestButton = false;   // allow
 
 nao_state = nao_state_ptr.get();
 
-DBG(cerr << "penalised is " << isPenalised << " with chest button " << penalisedThroughChestButton << " and UDP " << penalisedThroughUDPReceiver);
+DBG(cerr << "pen " << isPenalised << " with chest button " << penalisedThroughChestButton << " and UDP " << penalisedThroughUDPReceiver << endl);

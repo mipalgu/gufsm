@@ -3,4 +3,4 @@ DBG(cerr << "enter penalised " << isPenalised << " with chest button " << nao_st
 isPenalised = true;
 nao_state = nao_state_ptr.get();
 
-DBG(cerr << "done enter penalised " << isPenalised << " with chest button " << nao_state.chest_pressed() << " and UDP " << aUDPReceiverNotificationType.get().amIPenalized(myNumber));
+cerr << "done enter penalised " << isPenalised << " with chest button " << nao_state.chest_pressed() << " and UDP " << aUDPReceiverNotificationType.get().amIPenalized(myNumber);

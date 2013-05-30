@@ -15,5 +15,5 @@ smGameState = aUDPReceiverNotificationType.get();
 smGameState.set_theGSGameState(Playing);
 postGS(smGameState);
 gameState = smGameState.theGSGameState();
-isPenalised = smGameState.amIPenalized(myNumber);
+isPenalised = smGameState.amIPenalized(myNumber) && smGameState.myPenaltyIs(myNumber) != ManualButtonPenalty;
 														newScore=smGameState.getOurScore();
