@@ -1,0 +1,2 @@
+motion_status.get().motion_player() 
+!= Motions::OFF
