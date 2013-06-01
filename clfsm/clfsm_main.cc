@@ -181,12 +181,16 @@ static void usage(const char *cmd)
         cerr << "Usage: " << cmd << "[-c][-fPIC]{-I includedir}{-L linkdir}{-l lib}[-n]" << endl;
 }
 
+static bool debug_internal_states = false;
 
 static bool print_machine_and_state(void *context, SuspensibleMachine *machine, int machine_number)
 {
         vector<string> *machines = static_cast<vector<string>*>(context);
 
-        fprintf(stderr, "m%3d s%3d - %-40.40s - %s\n", machine_number, machine->indexOfState(), machines->at(machine_number).c_str(), machine->currentState()->name().c_str());
+        if (machine->previousState() != machine->currentState())
+                fprintf(stderr, "%sm%3d s%3d - %-40.40s - %s\n",  debug_internal_states ? "\n" : "", machine_number, machine->indexOfState(), machines->at(machine_number).c_str(), machine->currentState()->name().c_str());
+        else if (debug_internal_states)
+                fprintf(stderr, "%d/%d ", machine_number, machine->indexOfState());
 
         return true;
 }
@@ -277,6 +281,7 @@ int main(int argc, char * const argv[])
 
         CLFSMWBVectorFactory *factory = createMachines(machineWrappers, machines, compiler_args, linker_args);
         factory->postMachineStatus();
+        debug_internal_states = debug;
         factory->fsms()->execute(visitor, &machines);
         delete factory;
 
