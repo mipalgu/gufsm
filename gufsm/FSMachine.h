@@ -147,7 +147,7 @@ namespace FSM
 
                 timeval _state_time;    ///< state start time
                 timeval _actty_time;    ///< internal activity start time
-		
+
                 int _id;                /// unique id of machine
 		bool _beingMonitored;   /**<  has someone asked for this machine to send
 		                         *    debugging information over the whiteboard. */
@@ -216,7 +216,17 @@ namespace FSM
 
                 /** set the preceding state */
                 void setPreviousState(State *s) { _previousState = s; }
-		
+
+                /** return the index of the given state (default: current state) */
+                int indexOfState(const State *s = NULL) const
+                {
+                        if (s == NULL) s = _currentState;
+                        int i = 0;
+                        for (StateVector::const_iterator it = _states.begin(); it != _states.end(); it++, i++)
+                                if (s == *it) return i;
+                        return -1;
+                }
+
 		/** is this machine being monitored? **/
 		bool isBeingMonitored() const { return _beingMonitored; }
 		

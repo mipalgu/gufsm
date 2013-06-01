@@ -129,8 +129,9 @@ SuspensibleMachine *StateMachineVector::addMachine(SuspensibleMachine *m, int in
 }
 
 
-bool StateMachineVector::executeOnce()
+bool StateMachineVector::executeOnce(visitor_f should_execute_machine, void *context)
 {
+        int machine_no = 0;
         bool fired = false;
 
         setAccepting(true);
@@ -139,6 +140,11 @@ bool StateMachineVector::executeOnce()
              it != machines().end(); it++)
         {
                 SuspensibleMachine *m = *it;
+
+                if (should_execute_machine != NULL &&
+                    !should_execute_machine(context, m, machine_no++))
+                        continue;
+
                 bool mfire = false;
                 bool a = !m->executeOnce(&mfire);
                 setAccepting(a && accepting());
@@ -226,11 +232,12 @@ bool StateMachineVector::executeOnceOnQueue(dispatch_queue_t queue)
 }
 
 
-void StateMachineVector::execute()
+void StateMachineVector::execute(visitor_f should_execute_machine, void *context)
 {
         do
         {
-                if (!executeOnce() && _no_transition_fired)
+                if (!executeOnce(should_execute_machine, context) &&
+                    _no_transition_fired)
                         _no_transition_fired(_idle_timeout);
         }
         while (!accepting());

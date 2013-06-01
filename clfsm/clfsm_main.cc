@@ -66,6 +66,7 @@
 #include <libgen.h>
 
 #include "gu_util.h"
+#include "FSMState.h"
 #include "FSMSuspensibleMachine.h"
 #include "FSMachineVector.h"
 #include "clfsm_machine.h"
@@ -181,6 +182,15 @@ static void usage(const char *cmd)
 }
 
 
+static bool print_machine_and_state(void *context, SuspensibleMachine *machine, int machine_number)
+{
+        vector<string> *machines = static_cast<vector<string>*>(context);
+
+        fprintf(stderr, "m%3.3d s%3.3d - %-40.40s - %s\n", machine_number, machine->indexOfState(), machines->at(machine_number).c_str(), machine->currentState()->name().c_str());
+
+        return true;
+}
+
 int main(int argc, char * const argv[])
 {
         vector<MachineWrapper *> machineWrappers;
@@ -213,14 +223,14 @@ int main(int argc, char * const argv[])
         compiler_args.push_back("-std=c++11");    /// XXX: fix this
 
         int ch;
-        //bool cflag = false;
-        while ((ch = getopt(argc, argv, "gf:I:L:l:n")) != -1)
+        bool debug = false, verbose = false;
+        while ((ch = getopt(argc, argv, "dgf:I:L:l:nv")) != -1)
         {
                 switch (ch)
                 {
-                                //case 'c':
-                                //cflag = true;
-                                //break;
+                        case 'd':
+                                debug = true;
+                                break;
                         case 'g':
                                 compiler_args.push_back("-g");
                                 linker_args.push_back("-g");
@@ -245,6 +255,9 @@ int main(int argc, char * const argv[])
                                 DBG(cerr << "nonstop mode: sleeping 1 second before (re)starting" << endl);
                                 protected_usleep(1000000ULL);
                                 break;
+                        case 'v':
+                                verbose = true;
+                                break;
                         case '?':
                         default:
                                 usage(argv[0]);
@@ -259,9 +272,12 @@ int main(int argc, char * const argv[])
         if (!compiler_args.size()) compiler_args = MachineWrapper::default_compiler_args();
         if (!linker_args.size())   linker_args   = MachineWrapper::default_linker_args();
 
+        visitor_f visitor = NULL;
+        if (verbose) visitor = print_machine_and_state;
+
         CLFSMWBVectorFactory *factory = createMachines(machineWrappers, machines, compiler_args, linker_args);
         factory->postMachineStatus();
-        factory->fsms()->execute();
+        factory->fsms()->execute(visitor, &machines);
         delete factory;
 
         for (vector<MachineWrapper *>::const_iterator it = machineWrappers.begin(); it != machineWrappers.end(); it++)

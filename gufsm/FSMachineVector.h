@@ -87,7 +87,8 @@ namespace FSM
         typedef std::vector<SuspensibleMachine *> MachineVector;
         typedef MachineVector::iterator MachineIterator;
         typedef void (*idle_f)(useconds_t timeout);
-        
+        typedef bool (*visitor_f)(void *context, SuspensibleMachine *machine, int machine_number);
+
         typedef std::vector<KripkeFreezePointOfMachine> KripkeFreezePointVector; // single freeze point across all machines
 
         struct KripkeState
@@ -181,7 +182,15 @@ namespace FSM
                  * execute one iteration of the current state of each machine
                  * @return true if any transition fired on any machine
                  */
-                virtual bool executeOnce();
+                virtual bool executeOnce() { return executeOnce(NULL); }
+
+                /**
+                 * execute one iteration of the current state of each machine
+                 * with a given visitor for each machine
+                 * @param should_execute_machine visitor that returns whether machine should be executed in this round
+                 * @return true if any transition fired on any machine
+                 */
+                virtual bool executeOnce(visitor_f should_execute_machine, void *context = NULL);
 
                 /**
                  * synchronously execute once on a specific dispatch queue
@@ -191,8 +200,13 @@ namespace FSM
                 /**
                  * execute until accepting state is encountered
                  */
-                virtual void execute();
-                
+                virtual void execute() { execute(NULL); }
+
+                /**
+                 * execute until accepting state is encountered
+                 */
+                virtual void execute(visitor_f should_execute_machine, void *context = NULL);
+
                 /**
                  * asynchronously schedule execute on a specific dispatch queue until
                  * accepting state is encountered
