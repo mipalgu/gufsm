@@ -186,7 +186,7 @@ static bool print_machine_and_state(void *context, SuspensibleMachine *machine, 
 {
         vector<string> *machines = static_cast<vector<string>*>(context);
 
-        fprintf(stderr, "m%3.3d s%3.3d - %-40.40s - %s\n", machine_number, machine->indexOfState(), machines->at(machine_number).c_str(), machine->currentState()->name().c_str());
+        fprintf(stderr, "m%3d s%3d - %-40.40s - %s\n", machine_number, machine->indexOfState(), machines->at(machine_number).c_str(), machine->currentState()->name().c_str());
 
         return true;
 }
