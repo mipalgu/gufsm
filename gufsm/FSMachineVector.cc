@@ -263,7 +263,7 @@ struct spawn_queue_param
         exit(EXIT_SUCCESS);
 }
 
-static void spawn_execute_once_on_queue(void *p)
+ __attribute__((__noreturn__)) static void spawn_execute_once_on_queue(void *p)
 {
         spawn_queue_param *par = (spawn_queue_param *) p;
         par->self->do_spawn_once_on_queue(par->queue);

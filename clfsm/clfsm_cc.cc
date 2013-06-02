@@ -59,7 +59,16 @@
 #include <cstdlib>
 #include <cstdio>
 #include <cerrno>
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-macros"
+#undef __block
+#define __block _xblock
 #include <unistd.h>
+#undef __block
+#define __block __attribute__((__blocks__(byref)))
+#pragma clang diagnostic pop
+
 #include <sys/wait.h>
 #include <vector>
 #include <gu_util.h>

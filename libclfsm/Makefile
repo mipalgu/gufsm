@@ -7,15 +7,7 @@ MODULE_BASE=clfsm
 
 ALL_TARGETS=host-local robot-local
 
-.include "../../../mk/prefs.mk"		# comes first
-
-.ifndef TARGET
-.if "${UNAME}" != "Linux"
-USE_LIBCPP=yes
-SPECIFIC_CFLAGS=-stdlib=libc++
-SPECIFIC_LDFLAGS=-stdlib=libc++
-.endif
-.endif
+.include "../../../mk/libcxx.mk"	# use C++11 and libc++
 
 SPECIFIC_LDFLAGS+=-Wl,-rpath -Wl,/usr/local/lib
 

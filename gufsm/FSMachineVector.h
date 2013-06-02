@@ -58,8 +58,12 @@
 #ifndef gufsm_FSMachineVector_h
 #define gufsm_FSMachineVector_h
 
-#include <unistd.h>
 #include <dispatch/dispatch.h>
+#undef __block
+#define __block _xblock
+#include <unistd.h>
+#undef __block
+#define __block __attribute__((__blocks__(byref)))
 #include <vector>
 #include <string>
 #include <list>

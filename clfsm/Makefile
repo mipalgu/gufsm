@@ -11,7 +11,7 @@ host: build-host
 
 robot: build-robot
 
-.include "../../../mk/prefs.mk"		# comes first!
+.include "../../../mk/libcxx.mk"	# use C++11 and libc++
 
 build-host:
 	mkdir -p ${BUILDDIR}
