@@ -280,6 +280,9 @@ CLMachine *MachineWrapper::instantiate(int id, const char *machine_name)
                 string shared_path = binaryDirectory() + "/" + _name + ".so";
                 if (!(_shared_object = dlopen(shared_path.c_str(), RTLD_NOW|RTLD_GLOBAL)))
                 {
+                        const char *error = dlerror();
+                        if (error) cerr << error << endl;
+
                         const vector<string> *cmdline_compiler_args = _compiler_args;
                         const vector<string> *linker_args = _linker_args;
                         vector<string> compiler_args = cmdline_compiler_args ? *cmdline_compiler_args : default_compiler_args();
@@ -291,7 +294,15 @@ CLMachine *MachineWrapper::instantiate(int id, const char *machine_name)
                         compile(compiler_args, *linker_args);
 
                         if (!(_shared_object = dlopen(shared_path.c_str(), RTLD_NOW|RTLD_GLOBAL)))
+                        {
+                                if (!error)
+                                {
+                                        error = dlerror();
+                                        if (error) cerr << error << endl;
+                                        else cerr << "Unkown error!" << endl;
+                                }
                                 return NULL;
+                        }
                 }
         }
         if (!_factory)
