@@ -7,10 +7,10 @@
 #include "SMPlayer.h"
 
 #include "State_Init.h"
-#include "State_SUSPENDED.h"
 #include "State_FollowBall.h"
 #include "State_SeekBall.h"
 #include "State_Kick.h"
+#include "State_SUSPENDED.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -26,12 +26,12 @@ extern "C"
 SMPlayer::SMPlayer(int mid, const char *name): CLMachine(mid, name)
 {
 	_states[0] = new FSMSMPlayer::State::Init;
-	_states[1] = new FSMSMPlayer::State::SUSPENDED;
-	_states[2] = new FSMSMPlayer::State::FollowBall;
-	_states[3] = new FSMSMPlayer::State::SeekBall;
-	_states[4] = new FSMSMPlayer::State::Kick;
+	_states[1] = new FSMSMPlayer::State::FollowBall;
+	_states[2] = new FSMSMPlayer::State::SeekBall;
+	_states[3] = new FSMSMPlayer::State::Kick;
+	_states[4] = new FSMSMPlayer::State::SUSPENDED;
 
-	setSuspendState(_states[1]);            // set suspend state
+	setSuspendState(_states[4]);            // set suspend state
 	setInitialState(_states[0]);            // set initial state
 }
 

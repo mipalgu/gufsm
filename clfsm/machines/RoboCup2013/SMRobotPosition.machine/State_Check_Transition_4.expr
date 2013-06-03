@@ -1,2 +1,1 @@
-after(1) && motion_status.get().motion_player()
-== Motions::OFF
+NAO_State_ptr.get().stance() != Standing

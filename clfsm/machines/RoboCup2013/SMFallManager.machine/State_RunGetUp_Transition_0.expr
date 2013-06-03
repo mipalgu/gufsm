@@ -1,1 +1,1 @@
-is_suspended("SMGetUp")
+after(1) && is_suspended("SMGetUp")

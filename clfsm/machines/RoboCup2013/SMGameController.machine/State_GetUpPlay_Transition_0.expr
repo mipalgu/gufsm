@@ -1,1 +1,1 @@
-nao_state.stance() == Standing
+after(1) && is_suspended("SMFallManager")

@@ -1,9 +1,9 @@
 //
-// State_WaitPlay_VarRefs.mm
+// State_WalkEngineStance_VarRefs.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-WaitPlay *_s = static_cast<WaitPlay *>(_state);
+WalkEngineStance *_s = static_cast<WalkEngineStance *>(_state);
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"

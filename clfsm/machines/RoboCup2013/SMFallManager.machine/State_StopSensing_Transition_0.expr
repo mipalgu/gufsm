@@ -1,1 +1,1 @@
-is_suspended("SMRobotPosition")
+after_ms(30) && is_suspended("SMRobotPosition")
