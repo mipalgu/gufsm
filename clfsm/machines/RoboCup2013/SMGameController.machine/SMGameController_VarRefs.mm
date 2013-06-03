@@ -26,5 +26,7 @@ NAO_State_t	&nao_state_ptr = _m->nao_state_ptr;	///<
 enum TeamColours	&kickoffTeam = _m->kickoffTeam;	///< 
 enum TeamColours	&ourTeamColour = _m->ourTeamColour;	///< 
 SENSORS_LedsSensors_t	&leds = _m->leds;	///< 
+MOTION_SDK_Commands_t	&motion_ptr = _m->motion_ptr;	///< 
+MOTION_SDK_Status_t	&motion_status = _m->motion_status;	///< 
 
 #pragma clang diagnostic pop

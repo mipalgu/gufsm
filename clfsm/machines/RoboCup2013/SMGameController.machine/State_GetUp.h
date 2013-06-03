@@ -1,10 +1,10 @@
 //
-// State_Finished.h
+// State_GetUp.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMGameController_State_Finished_h
-#define clfsm_SMGameController_State_Finished_h
+#ifndef clfsm_SMGameController_State_GetUp_h
+#define clfsm_SMGameController_State_GetUp_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class Finished: public CLState
+            class GetUp: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,37 +38,21 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 14): CLTransition(toState) {}
+                    Transition_0(int toState = 15): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                class Transition_1: public CLTransition
-                {
-                public:
-                    Transition_1(int toState = 3): CLTransition(toState) {}
-
-                    virtual bool check(CLMachine *, CLState *) const;
-                };
-
-                class Transition_2: public CLTransition
-                {
-                public:
-                    Transition_2(int toState = 4): CLTransition(toState) {}
-
-                    virtual bool check(CLMachine *, CLState *) const;
-                };
-
-                CLTransition *_transitions[3];
+                CLTransition *_transitions[1];
 
                 public:
-                    Finished(const char *name = "Finished");
-                    virtual ~Finished();
+                    GetUp(const char *name = "GetUp");
+                    virtual ~GetUp();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 3; }
+                    virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_Finished_Variables.h"
+#                   include "State_GetUp_Variables.h"
             };
         }
       }
