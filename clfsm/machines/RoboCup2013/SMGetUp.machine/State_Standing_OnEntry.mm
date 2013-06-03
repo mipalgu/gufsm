@@ -1,1 +1,0 @@
-fprintf(stderr, "Standing\n");

@@ -1,10 +1,10 @@
 //
-// State_DummyState.h
+// State_RunGetUp.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMGetUp_State_DummyState_h
-#define clfsm_SMGetUp_State_DummyState_h
+#ifndef clfsm_SMFallManager_State_RunGetUp_h
+#define clfsm_SMFallManager_State_RunGetUp_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,11 +14,11 @@ namespace FSM
 {
     namespace CLM
     {
-      namespace FSMSMGetUp
+      namespace FSMSMFallManager
       {
         namespace State
         {
-            class DummyState: public CLState
+            class RunGetUp: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,7 +38,7 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 1): CLTransition(toState) {}
+                    Transition_0(int toState = 2): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
@@ -46,13 +46,13 @@ namespace FSM
                 CLTransition *_transitions[1];
 
                 public:
-                    DummyState(const char *name = "DummyState");
-                    virtual ~DummyState();
+                    RunGetUp(const char *name = "RunGetUp");
+                    virtual ~RunGetUp();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
                     virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_DummyState_Variables.h"
+#                   include "State_RunGetUp_Variables.h"
             };
         }
       }

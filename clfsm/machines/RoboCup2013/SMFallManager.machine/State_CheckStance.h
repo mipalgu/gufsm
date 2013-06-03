@@ -1,10 +1,10 @@
 //
-// State_Standing.h
+// State_CheckStance.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMGetUp_State_Standing_h
-#define clfsm_SMGetUp_State_Standing_h
+#ifndef clfsm_SMFallManager_State_CheckStance_h
+#define clfsm_SMFallManager_State_CheckStance_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,11 +14,11 @@ namespace FSM
 {
     namespace CLM
     {
-      namespace FSMSMGetUp
+      namespace FSMSMFallManager
       {
         namespace State
         {
-            class Standing: public CLState
+            class CheckStance: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,21 +38,29 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 6): CLTransition(toState) {}
+                    Transition_0(int toState = 0): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                CLTransition *_transitions[1];
+                class Transition_1: public CLTransition
+                {
+                public:
+                    Transition_1(int toState = 3): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                CLTransition *_transitions[2];
 
                 public:
-                    Standing(const char *name = "Standing");
-                    virtual ~Standing();
+                    CheckStance(const char *name = "CheckStance");
+                    virtual ~CheckStance();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 1; }
+                    virtual int numberOfTransitions() const { return 2; }
 
-#                   include "State_Standing_Variables.h"
+#                   include "State_CheckStance_Variables.h"
             };
         }
       }

@@ -1,10 +1,10 @@
 //
-// State_Front_GetUp.h
+// State_ResumeSensing.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMGetUp_State_Front_GetUp_h
-#define clfsm_SMGetUp_State_Front_GetUp_h
+#ifndef clfsm_SMFallManager_State_ResumeSensing_h
+#define clfsm_SMFallManager_State_ResumeSensing_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,11 +14,11 @@ namespace FSM
 {
     namespace CLM
     {
-      namespace FSMSMGetUp
+      namespace FSMSMFallManager
       {
         namespace State
         {
-            class Front_GetUp: public CLState
+            class ResumeSensing: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,7 +38,7 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 6): CLTransition(toState) {}
+                    Transition_0(int toState = 4): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
@@ -46,13 +46,13 @@ namespace FSM
                 CLTransition *_transitions[1];
 
                 public:
-                    Front_GetUp(const char *name = "Front_GetUp");
-                    virtual ~Front_GetUp();
+                    ResumeSensing(const char *name = "ResumeSensing");
+                    virtual ~ResumeSensing();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
                     virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_Front_GetUp_Variables.h"
+#                   include "State_ResumeSensing_Variables.h"
             };
         }
       }
