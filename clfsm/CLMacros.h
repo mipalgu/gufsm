@@ -115,6 +115,7 @@ static inline enum CLControlStatus status(const char *m)  { return cs_machine_na
 #define suspend_all()   do { \
         int _n = number_of_machines(), _mi = machine_index(); \
         for (int _i = 0; _i < _n; _i++) if (_i != _mi) control_machine_at_index(_i, CLSuspend); } while(0)
+#define suspend_self() control_machine_at_index(machine_index(), CLSuspend)
 #define is_suspended(m) (status(m) == CLSuspend)
 #define is_running(m)   (status(m) != CLSuspend)
 
