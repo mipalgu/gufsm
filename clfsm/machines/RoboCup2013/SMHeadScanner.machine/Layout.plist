@@ -10,53 +10,55 @@
 			<array>
 				<dict>
 					<key>controlPoint1X</key>
-					<real>487.95940019822154</real>
+					<real>387.99151407199344</real>
 					<key>controlPoint1Y</key>
-					<real>86.824020498468997</real>
+					<real>53.812845254366934</real>
 					<key>controlPoint2X</key>
-					<real>658.93793753633906</real>
+					<real>453.97735940374446</real>
 					<key>controlPoint2Y</key>
-					<real>111.12602933722169</real>
+					<real>73.904246078337479</real>
 					<key>dstPointX</key>
-					<real>744.33488648957155</real>
+					<real>539.33488648957155</real>
 					<key>dstPointY</key>
-					<real>124.00596281784701</real>
+					<real>86.962994067847006</real>
 					<key>srcPointX</key>
-					<real>402.22370726042851</real>
+					<real>302.26667601042851</real>
 					<key>srcPointY</key>
-					<real>76.435443432152994</real>
+					<real>43.435443432152994</real>
 				</dict>
 			</array>
 			<key>bgColour</key>
-			<data>
-			YnBsaXN0MDDUAQIDBAUGFRZYJHZlcnNpb25YJG9iamVjdHNZJGFy
-			Y2hpdmVyVCR0b3ASAAGGoKMHCA9VJG51bGzTCQoLDA0OV05TV2hp
-			dGVcTlNDb2xvclNwYWNlViRjbGFzc0IxABADgALSEBESE1okY2xh
-			c3NuYW1lWCRjbGFzc2VzV05TQ29sb3KiEhRYTlNPYmplY3RfEA9O
-			U0tleWVkQXJjaGl2ZXLRFxhUcm9vdIABCBEaIy0yNztBSFBdZGdp
-			a3B7hIyPmKqtsgAAAAAAAAEBAAAAAAAAABkAAAAAAAAAAAAAAAAA
-			AAC0
-			</data>
+			<dict>
+				<key>alpha</key>
+				<real>1</real>
+				<key>blue</key>
+				<real>1</real>
+				<key>green</key>
+				<real>1</real>
+				<key>red</key>
+				<real>1</real>
+			</dict>
 			<key>expanded</key>
 			<false/>
 			<key>h</key>
 			<real>50</real>
 			<key>strokeColour</key>
-			<data>
-			YnBsaXN0MDDUAQIDBAUGFRZYJHZlcnNpb25YJG9iamVjdHNZJGFy
-			Y2hpdmVyVCR0b3ASAAGGoKMHCA9VJG51bGzTCQoLDA0OV05TV2hp
-			dGVcTlNDb2xvclNwYWNlViRjbGFzc0IwABADgALSEBESE1okY2xh
-			c3NuYW1lWCRjbGFzc2VzV05TQ29sb3KiEhRYTlNPYmplY3RfEA9O
-			U0tleWVkQXJjaGl2ZXLRFxhUcm9vdIABCBEaIy0yNztBSFBdZGdp
-			a3B7hIyPmKqtsgAAAAAAAAEBAAAAAAAAABkAAAAAAAAAAAAAAAAA
-			AAC0
-			</data>
+			<dict>
+				<key>alpha</key>
+				<real>1</real>
+				<key>blue</key>
+				<real>0.0</real>
+				<key>green</key>
+				<real>0.0</real>
+				<key>red</key>
+				<real>0.0</real>
+			</dict>
 			<key>w</key>
 			<real>100</real>
 			<key>x</key>
-			<real>356.95703125</real>
+			<real>258</real>
 			<key>y</key>
-			<real>74</real>
+			<real>41</real>
 		</dict>
 		<key>Do_Bottom_Scan</key>
 		<dict>
@@ -64,53 +66,55 @@
 			<array>
 				<dict>
 					<key>controlPoint1X</key>
-					<real>658.35283999834871</real>
+					<real>453.32814692785041</real>
 					<key>controlPoint1Y</key>
-					<real>140.22887191698047</real>
+					<real>103.00165360716167</real>
 					<key>controlPoint2X</key>
-					<real>488.31585184645701</real>
+					<real>388.31770081471768</real>
 					<key>controlPoint2Y</key>
-					<real>176.82863497505721</real>
+					<real>143.8283518383862</real>
 					<key>dstPointX</key>
-					<real>402.48148807588512</real>
+					<real>302.48148807588512</real>
 					<key>dstPointY</key>
-					<real>189.97264427635122</real>
+					<real>156.97264427635122</real>
 					<key>srcPointX</key>
-					<real>744.51851192411493</real>
+					<real>539.51851192411493</real>
 					<key>srcPointY</key>
-					<real>129.46876197364881</real>
+					<real>92.42579322364881</real>
 				</dict>
 			</array>
 			<key>bgColour</key>
-			<data>
-			YnBsaXN0MDDUAQIDBAUGFRZYJHZlcnNpb25YJG9iamVjdHNZJGFy
-			Y2hpdmVyVCR0b3ASAAGGoKMHCA9VJG51bGzTCQoLDA0OV05TV2hp
-			dGVcTlNDb2xvclNwYWNlViRjbGFzc0IxABADgALSEBESE1okY2xh
-			c3NuYW1lWCRjbGFzc2VzV05TQ29sb3KiEhRYTlNPYmplY3RfEA9O
-			U0tleWVkQXJjaGl2ZXLRFxhUcm9vdIABCBEaIy0yNztBSFBdZGdp
-			a3B7hIyPmKqtsgAAAAAAAAEBAAAAAAAAABkAAAAAAAAAAAAAAAAA
-			AAC0
-			</data>
+			<dict>
+				<key>alpha</key>
+				<real>1</real>
+				<key>blue</key>
+				<real>1</real>
+				<key>green</key>
+				<real>1</real>
+				<key>red</key>
+				<real>1</real>
+			</dict>
 			<key>expanded</key>
 			<false/>
 			<key>h</key>
 			<real>50</real>
 			<key>strokeColour</key>
-			<data>
-			YnBsaXN0MDDUAQIDBAUGFRZYJHZlcnNpb25YJG9iamVjdHNZJGFy
-			Y2hpdmVyVCR0b3ASAAGGoKMHCA9VJG51bGzTCQoLDA0OV05TV2hp
-			dGVcTlNDb2xvclNwYWNlViRjbGFzc0IwABADgALSEBESE1okY2xh
-			c3NuYW1lWCRjbGFzc2VzV05TQ29sb3KiEhRYTlNPYmplY3RfEA9O
-			U0tleWVkQXJjaGl2ZXLRFxhUcm9vdIABCBEaIy0yNztBSFBdZGdp
-			a3B7hIyPmKqtsgAAAAAAAAEBAAAAAAAAABkAAAAAAAAAAAAAAAAA
-			AAC0
-			</data>
+			<dict>
+				<key>alpha</key>
+				<real>1</real>
+				<key>blue</key>
+				<real>0.0</real>
+				<key>green</key>
+				<real>0.0</real>
+				<key>red</key>
+				<real>0.0</real>
+			</dict>
 			<key>w</key>
 			<real>100</real>
 			<key>x</key>
-			<real>789</real>
+			<real>585</real>
 			<key>y</key>
-			<real>127.04296875</real>
+			<real>90</real>
 		</dict>
 		<key>Do_High_Scan</key>
 		<dict>
@@ -118,53 +122,55 @@
 			<array>
 				<dict>
 					<key>controlPoint1X</key>
-					<real>684.81243236273372</real>
+					<real>479.77346747792649</real>
 					<key>controlPoint1Y</key>
-					<real>758.2175415744789</real>
+					<real>721.30526941061783</real>
 					<key>controlPoint2X</key>
-					<real>22.936871140463722</real>
+					<real>20.837189951628588</real>
 					<key>controlPoint2Y</key>
-					<real>339.35557836781425</real>
+					<real>338.66572463218699</real>
 					<key>dstPointX</key>
-					<real>98.51853826059525</real>
+					<real>98.75681951059525</real>
 					<key>dstPointY</key>
-					<real>157.55077490546998</real>
+					<real>157.74608740546998</real>
 					<key>srcPointX</key>
-					<real>764.73365972375211</real>
+					<real>559.73365972375211</real>
 					<key>srcPointY</key>
-					<real>578.27818405715198</real>
+					<real>541.27818405715198</real>
 				</dict>
 			</array>
 			<key>bgColour</key>
-			<data>
-			YnBsaXN0MDDUAQIDBAUGFRZYJHZlcnNpb25YJG9iamVjdHNZJGFy
-			Y2hpdmVyVCR0b3ASAAGGoKMHCA9VJG51bGzTCQoLDA0OV05TV2hp
-			dGVcTlNDb2xvclNwYWNlViRjbGFzc0IxABADgALSEBESE1okY2xh
-			c3NuYW1lWCRjbGFzc2VzV05TQ29sb3KiEhRYTlNPYmplY3RfEA9O
-			U0tleWVkQXJjaGl2ZXLRFxhUcm9vdIABCBEaIy0yNztBSFBdZGdp
-			a3B7hIyPmKqtsgAAAAAAAAEBAAAAAAAAABkAAAAAAAAAAAAAAAAA
-			AAC0
-			</data>
+			<dict>
+				<key>alpha</key>
+				<real>1</real>
+				<key>blue</key>
+				<real>1</real>
+				<key>green</key>
+				<real>1</real>
+				<key>red</key>
+				<real>1</real>
+			</dict>
 			<key>expanded</key>
 			<false/>
 			<key>h</key>
 			<real>50</real>
 			<key>strokeColour</key>
-			<data>
-			YnBsaXN0MDDUAQIDBAUGFRZYJHZlcnNpb25YJG9iamVjdHNZJGFy
-			Y2hpdmVyVCR0b3ASAAGGoKMHCA9VJG51bGzTCQoLDA0OV05TV2hp
-			dGVcTlNDb2xvclNwYWNlViRjbGFzc0IwABADgALSEBESE1okY2xh
-			c3NuYW1lWCRjbGFzc2VzV05TQ29sb3KiEhRYTlNPYmplY3RfEA9O
-			U0tleWVkQXJjaGl2ZXLRFxhUcm9vdIABCBEaIy0yNztBSFBdZGdp
-			a3B7hIyPmKqtsgAAAAAAAAEBAAAAAAAAABkAAAAAAAAAAAAAAAAA
-			AAC0
-			</data>
+			<dict>
+				<key>alpha</key>
+				<real>1</real>
+				<key>blue</key>
+				<real>0.0</real>
+				<key>green</key>
+				<real>0.0</real>
+				<key>red</key>
+				<real>0.0</real>
+			</dict>
 			<key>w</key>
 			<real>100</real>
 			<key>x</key>
-			<real>783</real>
+			<real>579</real>
 			<key>y</key>
-			<real>560</real>
+			<real>523</real>
 		</dict>
 		<key>Do_Low_Scan</key>
 		<dict>
@@ -172,53 +178,55 @@
 			<array>
 				<dict>
 					<key>controlPoint1X</key>
-					<real>661.74523529516091</real>
+					<real>456.71206214094923</real>
 					<key>controlPoint1Y</key>
-					<real>272.65029182847593</real>
+					<real>235.63317585345516</real>
 					<key>controlPoint2X</key>
-					<real>490.18628674008448</real>
+					<real>390.13498178711097</real>
 					<key>controlPoint2Y</key>
-					<real>311.24248517932187</real>
+					<real>278.02281461737516</real>
 					<key>dstPointX</key>
-					<real>404.23271392522071</real>
+					<real>304.23271392522071</real>
 					<key>dstPointY</key>
-					<real>329.76385959570911</real>
+					<real>296.72089084570911</real>
 					<key>srcPointX</key>
-					<real>748.20869232477924</real>
+					<real>543.16572357477924</real>
 					<key>srcPointY</key>
-					<real>256.67754665429089</real>
+					<real>219.67754665429089</real>
 				</dict>
 			</array>
 			<key>bgColour</key>
-			<data>
-			YnBsaXN0MDDUAQIDBAUGFRZYJHZlcnNpb25YJG9iamVjdHNZJGFy
-			Y2hpdmVyVCR0b3ASAAGGoKMHCA9VJG51bGzTCQoLDA0OV05TV2hp
-			dGVcTlNDb2xvclNwYWNlViRjbGFzc0IxABADgALSEBESE1okY2xh
-			c3NuYW1lWCRjbGFzc2VzV05TQ29sb3KiEhRYTlNPYmplY3RfEA9O
-			U0tleWVkQXJjaGl2ZXLRFxhUcm9vdIABCBEaIy0yNztBSFBdZGdp
-			a3B7hIyPmKqtsgAAAAAAAAEBAAAAAAAAABkAAAAAAAAAAAAAAAAA
-			AAC0
-			</data>
+			<dict>
+				<key>alpha</key>
+				<real>1</real>
+				<key>blue</key>
+				<real>1</real>
+				<key>green</key>
+				<real>1</real>
+				<key>red</key>
+				<real>1</real>
+			</dict>
 			<key>expanded</key>
 			<false/>
 			<key>h</key>
 			<real>50</real>
 			<key>strokeColour</key>
-			<data>
-			YnBsaXN0MDDUAQIDBAUGFRZYJHZlcnNpb25YJG9iamVjdHNZJGFy
-			Y2hpdmVyVCR0b3ASAAGGoKMHCA9VJG51bGzTCQoLDA0OV05TV2hp
-			dGVcTlNDb2xvclNwYWNlViRjbGFzc0IwABADgALSEBESE1okY2xh
-			c3NuYW1lWCRjbGFzc2VzV05TQ29sb3KiEhRYTlNPYmplY3RfEA9O
-			U0tleWVkQXJjaGl2ZXLRFxhUcm9vdIABCBEaIy0yNztBSFBdZGdp
-			a3B7hIyPmKqtsgAAAAAAAAEBAAAAAAAAABkAAAAAAAAAAAAAAAAA
-			AAC0
-			</data>
+			<dict>
+				<key>alpha</key>
+				<real>1</real>
+				<key>blue</key>
+				<real>0.0</real>
+				<key>green</key>
+				<real>0.0</real>
+				<key>red</key>
+				<real>0.0</real>
+			</dict>
 			<key>w</key>
 			<real>100</real>
 			<key>x</key>
-			<real>793.04296875</real>
+			<real>589</real>
 			<key>y</key>
-			<real>253</real>
+			<real>216</real>
 		</dict>
 		<key>Do_Mid_Scan</key>
 		<dict>
@@ -226,53 +234,55 @@
 			<array>
 				<dict>
 					<key>controlPoint1X</key>
-					<real>666.97200327954374</real>
+					<real>462.01453300972321</real>
 					<key>controlPoint1Y</key>
-					<real>408.13798073560497</real>
+					<real>371.37980131857591</real>
 					<key>controlPoint2X</key>
-					<real>495.95779750701627</real>
+					<real>395.98977919347334</real>
 					<key>controlPoint2Y</key>
-					<real>432.17617369930929</real>
+					<real>399.18736476097877</real>
 					<key>dstPointX</key>
-					<real>410.22370726042851</real>
+					<real>310.26667601042851</real>
 					<key>dstPointY</key>
-					<real>442.56455656784698</real>
+					<real>409.56455656784698</real>
 					<key>srcPointX</key>
-					<real>752.33488648957155</real>
+					<real>547.33488648957155</real>
 					<key>srcPointY</key>
-					<real>395.04481843215302</real>
+					<real>358.09169343215302</real>
 				</dict>
 			</array>
 			<key>bgColour</key>
-			<data>
-			YnBsaXN0MDDUAQIDBAUGFRZYJHZlcnNpb25YJG9iamVjdHNZJGFy
-			Y2hpdmVyVCR0b3ASAAGGoKMHCA9VJG51bGzTCQoLDA0OV05TV2hp
-			dGVcTlNDb2xvclNwYWNlViRjbGFzc0IxABADgALSEBESE1okY2xh
-			c3NuYW1lWCRjbGFzc2VzV05TQ29sb3KiEhRYTlNPYmplY3RfEA9O
-			U0tleWVkQXJjaGl2ZXLRFxhUcm9vdIABCBEaIy0yNztBSFBdZGdp
-			a3B7hIyPmKqtsgAAAAAAAAEBAAAAAAAAABkAAAAAAAAAAAAAAAAA
-			AAC0
-			</data>
+			<dict>
+				<key>alpha</key>
+				<real>1</real>
+				<key>blue</key>
+				<real>1</real>
+				<key>green</key>
+				<real>1</real>
+				<key>red</key>
+				<real>1</real>
+			</dict>
 			<key>expanded</key>
 			<false/>
 			<key>h</key>
 			<real>50</real>
 			<key>strokeColour</key>
-			<data>
-			YnBsaXN0MDDUAQIDBAUGFRZYJHZlcnNpb25YJG9iamVjdHNZJGFy
-			Y2hpdmVyVCR0b3ASAAGGoKMHCA9VJG51bGzTCQoLDA0OV05TV2hp
-			dGVcTlNDb2xvclNwYWNlViRjbGFzc0IwABADgALSEBESE1okY2xh
-			c3NuYW1lWCRjbGFzc2VzV05TQ29sb3KiEhRYTlNPYmplY3RfEA9O
-			U0tleWVkQXJjaGl2ZXLRFxhUcm9vdIABCBEaIy0yNztBSFBdZGdp
-			a3B7hIyPmKqtsgAAAAAAAAEBAAAAAAAAABkAAAAAAAAAAAAAAAAA
-			AAC0
-			</data>
+			<dict>
+				<key>alpha</key>
+				<real>1</real>
+				<key>blue</key>
+				<real>0.0</real>
+				<key>green</key>
+				<real>0.0</real>
+				<key>red</key>
+				<real>0.0</real>
+			</dict>
 			<key>w</key>
 			<real>100</real>
 			<key>x</key>
-			<real>797</real>
+			<real>593</real>
 			<key>y</key>
-			<real>391.953125</real>
+			<real>355</real>
 		</dict>
 		<key>High_Scan</key>
 		<dict>
@@ -280,53 +290,55 @@
 			<array>
 				<dict>
 					<key>controlPoint1X</key>
-					<real>496.96303258543804</real>
+					<real>397.00013456644552</real>
 					<key>controlPoint1Y</key>
-					<real>468.88568907338043</real>
+					<real>435.86556816620765</real>
 					<key>controlPoint2X</key>
-					<real>673.8201480164729</real>
+					<real>468.82833590047539</real>
 					<key>controlPoint2Y</key>
-					<real>624.17453841825386</real>
+					<real>587.16862838994473</real>
 					<key>dstPointX</key>
-					<real>746.51215258688626</real>
+					<real>541.51215258688626</real>
 					<key>dstPointY</key>
-					<real>571.70532845770174</real>
+					<real>534.70532845770174</real>
 					<key>srcPointX</key>
-					<real>409.45620925293258</real>
+					<real>309.49917800293258</real>
 					<key>srcPointY</key>
-					<real>449.39976100712767</real>
+					<real>416.39976100712767</real>
 				</dict>
 			</array>
 			<key>bgColour</key>
-			<data>
-			YnBsaXN0MDDUAQIDBAUGFRZYJHZlcnNpb25YJG9iamVjdHNZJGFy
-			Y2hpdmVyVCR0b3ASAAGGoKMHCA9VJG51bGzTCQoLDA0OV05TV2hp
-			dGVcTlNDb2xvclNwYWNlViRjbGFzc0IxABADgALSEBESE1okY2xh
-			c3NuYW1lWCRjbGFzc2VzV05TQ29sb3KiEhRYTlNPYmplY3RfEA9O
-			U0tleWVkQXJjaGl2ZXLRFxhUcm9vdIABCBEaIy0yNztBSFBdZGdp
-			a3B7hIyPmKqtsgAAAAAAAAEBAAAAAAAAABkAAAAAAAAAAAAAAAAA
-			AAC0
-			</data>
+			<dict>
+				<key>alpha</key>
+				<real>1</real>
+				<key>blue</key>
+				<real>1</real>
+				<key>green</key>
+				<real>1</real>
+				<key>red</key>
+				<real>1</real>
+			</dict>
 			<key>expanded</key>
 			<false/>
 			<key>h</key>
 			<real>50</real>
 			<key>strokeColour</key>
-			<data>
-			YnBsaXN0MDDUAQIDBAUGFRZYJHZlcnNpb25YJG9iamVjdHNZJGFy
-			Y2hpdmVyVCR0b3ASAAGGoKMHCA9VJG51bGzTCQoLDA0OV05TV2hp
-			dGVcTlNDb2xvclNwYWNlViRjbGFzc0IwABADgALSEBESE1okY2xh
-			c3NuYW1lWCRjbGFzc2VzV05TQ29sb3KiEhRYTlNPYmplY3RfEA9O
-			U0tleWVkQXJjaGl2ZXLRFxhUcm9vdIABCBEaIy0yNztBSFBdZGdp
-			a3B7hIyPmKqtsgAAAAAAAAEBAAAAAAAAABkAAAAAAAAAAAAAAAAA
-			AAC0
-			</data>
+			<dict>
+				<key>alpha</key>
+				<real>1</real>
+				<key>blue</key>
+				<real>0.0</real>
+				<key>green</key>
+				<real>0.0</real>
+				<key>red</key>
+				<real>0.0</real>
+			</dict>
 			<key>w</key>
 			<real>100</real>
 			<key>x</key>
-			<real>364.95703125</real>
+			<real>266</real>
 			<key>y</key>
-			<real>445</real>
+			<real>412</real>
 		</dict>
 		<key>Init</key>
 		<dict>
@@ -334,47 +346,49 @@
 			<array>
 				<dict>
 					<key>controlPoint1X</key>
-					<real>98.695349765845961</real>
+					<real>98.890943497321302</real>
 					<key>controlPoint1Y</key>
-					<real>82.474094719687997</real>
+					<real>82.611382361856414</real>
 					<key>controlPoint2X</key>
-					<real>80.877198214670187</real>
+					<real>81.140793762871951</real>
 					<key>controlPoint2Y</key>
-					<real>102.05366600008391</real>
+					<real>102.23616678396813</real>
 					<key>dstPointX</key>
-					<real>89.921185661764696</real>
+					<real>90.159466911764696</real>
 					<key>dstPointY</key>
-					<real>119.89200367647059</real>
+					<real>120.08731617647059</real>
 					<key>srcPointX</key>
-					<real>87.73506433823529</real>
+					<real>87.77803308823529</real>
 					<key>srcPointY</key>
-					<real>65.74471507352942</real>
+					<real>65.98299632352942</real>
 				</dict>
 			</array>
 			<key>bgColour</key>
-			<data>
-			YnBsaXN0MDDUAQIDBAUGFRZYJHZlcnNpb25YJG9iamVjdHNZJGFy
-			Y2hpdmVyVCR0b3ASAAGGoKMHCA9VJG51bGzTCQoLDA0OV05TV2hp
-			dGVcTlNDb2xvclNwYWNlViRjbGFzc0IxABADgALSEBESE1okY2xh
-			c3NuYW1lWCRjbGFzc2VzV05TQ29sb3KiEhRYTlNPYmplY3RfEA9O
-			U0tleWVkQXJjaGl2ZXLRFxhUcm9vdIABCBEaIy0yNztBSFBdZGdp
-			a3B7hIyPmKqtsgAAAAAAAAEBAAAAAAAAABkAAAAAAAAAAAAAAAAA
-			AAC0
-			</data>
+			<dict>
+				<key>alpha</key>
+				<real>1</real>
+				<key>blue</key>
+				<real>1</real>
+				<key>green</key>
+				<real>1</real>
+				<key>red</key>
+				<real>1</real>
+			</dict>
 			<key>expanded</key>
 			<false/>
 			<key>h</key>
 			<real>50</real>
 			<key>strokeColour</key>
-			<data>
-			YnBsaXN0MDDUAQIDBAUGFRZYJHZlcnNpb25YJG9iamVjdHNZJGFy
-			Y2hpdmVyVCR0b3ASAAGGoKMHCA9VJG51bGzTCQoLDA0OV05TV2hp
-			dGVcTlNDb2xvclNwYWNlViRjbGFzc0IwABADgALSEBESE1okY2xh
-			c3NuYW1lWCRjbGFzc2VzV05TQ29sb3KiEhRYTlNPYmplY3RfEA9O
-			U0tleWVkQXJjaGl2ZXLRFxhUcm9vdIABCBEaIy0yNztBSFBdZGdp
-			a3B7hIyPmKqtsgAAAAAAAAEBAAAAAAAAABkAAAAAAAAAAAAAAAAA
-			AAC0
-			</data>
+			<dict>
+				<key>alpha</key>
+				<real>1</real>
+				<key>blue</key>
+				<real>0.0</real>
+				<key>green</key>
+				<real>0.0</real>
+				<key>red</key>
+				<real>0.0</real>
+			</dict>
 			<key>w</key>
 			<real>100</real>
 			<key>x</key>
@@ -388,53 +402,55 @@
 			<array>
 				<dict>
 					<key>controlPoint1X</key>
-					<real>489.16022335635023</real>
+					<real>389.14971219599465</real>
 					<key>controlPoint1Y</key>
-					<real>207.67513036210528</real>
+					<real>174.67368054688382</real>
 					<key>controlPoint2X</key>
-					<real>661.26129495207203</real>
+					<real>456.22734004324525</real>
 					<key>controlPoint2Y</key>
-					<real>238.46995508023019</real>
+					<real>201.48240183571809</real>
 					<key>dstPointX</key>
-					<real>747.86345543404366</real>
+					<real>542.82048668404366</real>
 					<key>dstPointY</key>
-					<real>250.26725205725938</real>
+					<real>213.26725205725938</real>
 					<key>srcPointX</key>
-					<real>402.57795081595634</real>
+					<real>302.57795081595634</real>
 					<key>srcPointY</key>
-					<real>195.73274794274062</real>
+					<real>162.73274794274062</real>
 				</dict>
 			</array>
 			<key>bgColour</key>
-			<data>
-			YnBsaXN0MDDUAQIDBAUGFRZYJHZlcnNpb25YJG9iamVjdHNZJGFy
-			Y2hpdmVyVCR0b3ASAAGGoKMHCA9VJG51bGzTCQoLDA0OV05TV2hp
-			dGVcTlNDb2xvclNwYWNlViRjbGFzc0IxABADgALSEBESE1okY2xh
-			c3NuYW1lWCRjbGFzc2VzV05TQ29sb3KiEhRYTlNPYmplY3RfEA9O
-			U0tleWVkQXJjaGl2ZXLRFxhUcm9vdIABCBEaIy0yNztBSFBdZGdp
-			a3B7hIyPmKqtsgAAAAAAAAEBAAAAAAAAABkAAAAAAAAAAAAAAAAA
-			AAC0
-			</data>
+			<dict>
+				<key>alpha</key>
+				<real>1</real>
+				<key>blue</key>
+				<real>1</real>
+				<key>green</key>
+				<real>1</real>
+				<key>red</key>
+				<real>1</real>
+			</dict>
 			<key>expanded</key>
 			<false/>
 			<key>h</key>
 			<real>50</real>
 			<key>strokeColour</key>
-			<data>
-			YnBsaXN0MDDUAQIDBAUGFRZYJHZlcnNpb25YJG9iamVjdHNZJGFy
-			Y2hpdmVyVCR0b3ASAAGGoKMHCA9VJG51bGzTCQoLDA0OV05TV2hp
-			dGVcTlNDb2xvclNwYWNlViRjbGFzc0IwABADgALSEBESE1okY2xh
-			c3NuYW1lWCRjbGFzc2VzV05TQ29sb3KiEhRYTlNPYmplY3RfEA9O
-			U0tleWVkQXJjaGl2ZXLRFxhUcm9vdIABCBEaIy0yNztBSFBdZGdp
-			a3B7hIyPmKqtsgAAAAAAAAEBAAAAAAAAABkAAAAAAAAAAAAAAAAA
-			AAC0
-			</data>
+			<dict>
+				<key>alpha</key>
+				<real>1</real>
+				<key>blue</key>
+				<real>0.0</real>
+				<key>green</key>
+				<real>0.0</real>
+				<key>red</key>
+				<real>0.0</real>
+			</dict>
 			<key>w</key>
 			<real>100</real>
 			<key>x</key>
-			<real>358</real>
+			<real>259</real>
 			<key>y</key>
-			<real>193</real>
+			<real>160</real>
 		</dict>
 		<key>Mid_Scan</key>
 		<dict>
@@ -442,82 +458,86 @@
 			<array>
 				<dict>
 					<key>controlPoint1X</key>
-					<real>492.11223972211997</real>
+					<real>392.1350751654432</real>
 					<key>controlPoint1Y</key>
-					<real>345.22114527892717</real>
+					<real>311.99087022444991</real>
 					<key>controlPoint2X</key>
-					<real>664.86485663267172</real>
+					<real>459.84078303827857</real>
 					<key>controlPoint2Y</key>
-					<real>381.05142508635379</real>
+					<real>344.3028405661488</real>
 					<key>dstPointX</key>
-					<real>752.39118638596301</real>
+					<real>547.39118638596301</real>
 					<key>dstPointY</key>
-					<real>389.97798807946691</real>
+					<real>353.02486307946691</real>
 					<key>srcPointX</key>
-					<real>404.60881361403699</real>
+					<real>304.60881361403699</real>
 					<key>srcPointY</key>
-					<real>336.07279317053309</real>
+					<real>303.02982442053309</real>
 				</dict>
 			</array>
 			<key>bgColour</key>
-			<data>
-			YnBsaXN0MDDUAQIDBAUGFRZYJHZlcnNpb25YJG9iamVjdHNZJGFy
-			Y2hpdmVyVCR0b3ASAAGGoKMHCA9VJG51bGzTCQoLDA0OV05TV2hp
-			dGVcTlNDb2xvclNwYWNlViRjbGFzc0IxABADgALSEBESE1okY2xh
-			c3NuYW1lWCRjbGFzc2VzV05TQ29sb3KiEhRYTlNPYmplY3RfEA9O
-			U0tleWVkQXJjaGl2ZXLRFxhUcm9vdIABCBEaIy0yNztBSFBdZGdp
-			a3B7hIyPmKqtsgAAAAAAAAEBAAAAAAAAABkAAAAAAAAAAAAAAAAA
-			AAC0
-			</data>
+			<dict>
+				<key>alpha</key>
+				<real>1</real>
+				<key>blue</key>
+				<real>1</real>
+				<key>green</key>
+				<real>1</real>
+				<key>red</key>
+				<real>1</real>
+			</dict>
 			<key>expanded</key>
 			<false/>
 			<key>h</key>
 			<real>50</real>
 			<key>strokeColour</key>
-			<data>
-			YnBsaXN0MDDUAQIDBAUGFRZYJHZlcnNpb25YJG9iamVjdHNZJGFy
-			Y2hpdmVyVCR0b3ASAAGGoKMHCA9VJG51bGzTCQoLDA0OV05TV2hp
-			dGVcTlNDb2xvclNwYWNlViRjbGFzc0IwABADgALSEBESE1okY2xh
-			c3NuYW1lWCRjbGFzc2VzV05TQ29sb3KiEhRYTlNPYmplY3RfEA9O
-			U0tleWVkQXJjaGl2ZXLRFxhUcm9vdIABCBEaIy0yNztBSFBdZGdp
-			a3B7hIyPmKqtsgAAAAAAAAEBAAAAAAAAABkAAAAAAAAAAAAAAAAA
-			AAC0
-			</data>
+			<dict>
+				<key>alpha</key>
+				<real>1</real>
+				<key>blue</key>
+				<real>0.0</real>
+				<key>green</key>
+				<real>0.0</real>
+				<key>red</key>
+				<real>0.0</real>
+			</dict>
 			<key>w</key>
 			<real>100</real>
 			<key>x</key>
-			<real>360</real>
+			<real>261</real>
 			<key>y</key>
-			<real>334.04296875</real>
+			<real>301</real>
 		</dict>
 		<key>SUSPENDED</key>
 		<dict>
 			<key>Transitions</key>
 			<array/>
 			<key>bgColour</key>
-			<data>
-			YnBsaXN0MDDUAQIDBAUGFRZYJHZlcnNpb25YJG9iamVjdHNZJGFy
-			Y2hpdmVyVCR0b3ASAAGGoKMHCA9VJG51bGzTCQoLDA0OV05TV2hp
-			dGVcTlNDb2xvclNwYWNlViRjbGFzc0IxABADgALSEBESE1okY2xh
-			c3NuYW1lWCRjbGFzc2VzV05TQ29sb3KiEhRYTlNPYmplY3RfEA9O
-			U0tleWVkQXJjaGl2ZXLRFxhUcm9vdIABCBEaIy0yNztBSFBdZGdp
-			a3B7hIyPmKqtsgAAAAAAAAEBAAAAAAAAABkAAAAAAAAAAAAAAAAA
-			AAC0
-			</data>
+			<dict>
+				<key>alpha</key>
+				<real>1</real>
+				<key>blue</key>
+				<real>1</real>
+				<key>green</key>
+				<real>1</real>
+				<key>red</key>
+				<real>1</real>
+			</dict>
 			<key>expanded</key>
 			<false/>
 			<key>h</key>
 			<real>50</real>
 			<key>strokeColour</key>
-			<data>
-			YnBsaXN0MDDUAQIDBAUGFRZYJHZlcnNpb25YJG9iamVjdHNZJGFy
-			Y2hpdmVyVCR0b3ASAAGGoKMHCA9VJG51bGzTCQoLDA0OV05TV2hp
-			dGVcTlNDb2xvclNwYWNlViRjbGFzc0IwABADgALSEBESE1okY2xh
-			c3NuYW1lWCRjbGFzc2VzV05TQ29sb3KiEhRYTlNPYmplY3RfEA9O
-			U0tleWVkQXJjaGl2ZXLRFxhUcm9vdIABCBEaIy0yNztBSFBdZGdp
-			a3B7hIyPmKqtsgAAAAAAAAEBAAAAAAAAABkAAAAAAAAAAAAAAAAA
-			AAC0
-			</data>
+			<dict>
+				<key>alpha</key>
+				<real>1</real>
+				<key>blue</key>
+				<real>0.0</real>
+				<key>green</key>
+				<real>0.0</real>
+				<key>red</key>
+				<real>0.0</real>
+			</dict>
 			<key>w</key>
 			<real>100</real>
 			<key>x</key>
@@ -531,47 +551,49 @@
 			<array>
 				<dict>
 					<key>controlPoint1X</key>
-					<real>192.23556143205613</real>
+					<real>192.21344978295042</real>
 					<key>controlPoint1Y</key>
-					<real>113.80291514498731</real>
+					<real>113.36705347169917</real>
 					<key>controlPoint2X</key>
-					<real>273.7157654416622</real>
+					<real>173.7152164060617</real>
 					<key>controlPoint2Y</key>
-					<real>90.617635425647933</real>
+					<real>57.641154427293941</real>
 					<key>dstPointX</key>
-					<real>314.17734819836642</real>
+					<real>214.22031694836642</real>
 					<key>dstPointY</key>
-					<real>79.316037406418758</real>
+					<real>46.316037406418758</real>
 					<key>srcPointX</key>
-					<real>154.47890180163361</real>
+					<real>154.71718305163361</real>
 					<key>srcPointY</key>
-					<real>132.22302509358124</real>
+					<real>132.41833759358124</real>
 				</dict>
 			</array>
 			<key>bgColour</key>
-			<data>
-			YnBsaXN0MDDUAQIDBAUGFRZYJHZlcnNpb25YJG9iamVjdHNZJGFy
-			Y2hpdmVyVCR0b3ASAAGGoKMHCA9VJG51bGzTCQoLDA0OV05TV2hp
-			dGVcTlNDb2xvclNwYWNlViRjbGFzc0IxABADgALSEBESE1okY2xh
-			c3NuYW1lWCRjbGFzc2VzV05TQ29sb3KiEhRYTlNPYmplY3RfEA9O
-			U0tleWVkQXJjaGl2ZXLRFxhUcm9vdIABCBEaIy0yNztBSFBdZGdp
-			a3B7hIyPmKqtsgAAAAAAAAEBAAAAAAAAABkAAAAAAAAAAAAAAAAA
-			AAC0
-			</data>
+			<dict>
+				<key>alpha</key>
+				<real>1</real>
+				<key>blue</key>
+				<real>1</real>
+				<key>green</key>
+				<real>1</real>
+				<key>red</key>
+				<real>1</real>
+			</dict>
 			<key>expanded</key>
 			<false/>
 			<key>h</key>
 			<real>50</real>
 			<key>strokeColour</key>
-			<data>
-			YnBsaXN0MDDUAQIDBAUGFRZYJHZlcnNpb25YJG9iamVjdHNZJGFy
-			Y2hpdmVyVCR0b3ASAAGGoKMHCA9VJG51bGzTCQoLDA0OV05TV2hp
-			dGVcTlNDb2xvclNwYWNlViRjbGFzc0IwABADgALSEBESE1okY2xh
-			c3NuYW1lWCRjbGFzc2VzV05TQ29sb3KiEhRYTlNPYmplY3RfEA9O
-			U0tleWVkQXJjaGl2ZXLRFxhUcm9vdIABCBEaIy0yNztBSFBdZGdp
-			a3B7hIyPmKqtsgAAAAAAAAEBAAAAAAAAABkAAAAAAAAAAAAAAAAA
-			AAC0
-			</data>
+			<dict>
+				<key>alpha</key>
+				<real>1</real>
+				<key>blue</key>
+				<real>0.0</real>
+				<key>green</key>
+				<real>0.0</real>
+				<key>red</key>
+				<real>0.0</real>
+			</dict>
 			<key>w</key>
 			<real>100</real>
 			<key>x</key>
