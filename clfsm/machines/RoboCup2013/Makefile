@@ -7,4 +7,6 @@ MACHINES=StateMachineStarter SMGameController SMFallManager SMBallFollower SMBut
 
 .include "../../../../../mk/fsm.mk"	# comes first: required for compiling state machines
 
+SPECIFIC_CPPFLAGS+=-fblocks
+
 .include "../../../../../mk/mipal.mk"	# comes last!

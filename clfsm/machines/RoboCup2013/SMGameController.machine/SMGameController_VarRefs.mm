@@ -28,5 +28,6 @@ enum TeamColours	&ourTeamColour = _m->ourTeamColour;	///<
 SENSORS_LedsSensors_t	&leds = _m->leds;	///< 
 MOTION_SDK_Commands_t	&motion_ptr = _m->motion_ptr;	///< 
 MOTION_SDK_Status_t	&motion_status = _m->motion_status;	///< 
+WALK_Command_t	&walk_post = _m->walk_post;	///< 
 
 #pragma clang diagnostic pop

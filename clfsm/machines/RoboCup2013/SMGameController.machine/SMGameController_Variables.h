@@ -21,4 +21,5 @@ enum TeamColours	kickoffTeam;	///<
 enum TeamColours	ourTeamColour;	///< 
 SENSORS_LedsSensors_t	leds;	///< 
 MOTION_SDK_Commands_t	motion_ptr;	///< 
-MOTION_SDK_Status_t	motion_status;	///<
+MOTION_SDK_Status_t	motion_status;	///< 
+WALK_Command_t	walk_post;	///<
