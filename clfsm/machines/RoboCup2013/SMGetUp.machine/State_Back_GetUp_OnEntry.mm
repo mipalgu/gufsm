@@ -9,3 +9,6 @@ motion.set_motion_player_mask(true);
 
 
 motion_ptr.set(motion);
+
+
+say("Getup Back");

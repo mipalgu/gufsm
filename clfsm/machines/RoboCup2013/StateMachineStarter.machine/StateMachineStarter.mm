@@ -9,10 +9,10 @@
 #include "State_Init.h"
 #include "State_Start_Default_Machines.h"
 #include "State_Start_GC.h"
-#include "State_GC_Running.h"
 #include "State_Restart_FSMs.h"
 #include "State_Control_State.h"
 #include "State_Say_IP.h"
+#include "State_Alt_Test_State.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -30,10 +30,10 @@ StateMachineStarter::StateMachineStarter(int mid, const char *name): CLMachine(m
 	_states[0] = new FSMStateMachineStarter::State::Init;
 	_states[1] = new FSMStateMachineStarter::State::Start_Default_Machines;
 	_states[2] = new FSMStateMachineStarter::State::Start_GC;
-	_states[3] = new FSMStateMachineStarter::State::GC_Running;
-	_states[4] = new FSMStateMachineStarter::State::Restart_FSMs;
-	_states[5] = new FSMStateMachineStarter::State::Control_State;
-	_states[6] = new FSMStateMachineStarter::State::Say_IP;
+	_states[3] = new FSMStateMachineStarter::State::Restart_FSMs;
+	_states[4] = new FSMStateMachineStarter::State::Control_State;
+	_states[5] = new FSMStateMachineStarter::State::Say_IP;
+	_states[6] = new FSMStateMachineStarter::State::Alt_Test_State;
 
 	setInitialState(_states[0]);            // set initial state
 }

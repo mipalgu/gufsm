@@ -7,4 +7,5 @@ NAO_State_t	nao_state_ptr;	///<
 NAO_State	nao_state;	///< 
 QSay_t	say;	///< 
 bool	spokeIP;	///< 
-int	clfsm_delay;	///<
+int	clfsm_delay;	///< 
+bool	in_test_state;	///<
