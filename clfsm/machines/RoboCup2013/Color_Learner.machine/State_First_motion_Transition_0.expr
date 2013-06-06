@@ -1,0 +1,1 @@
+after_ms(20) && motion_status_get().motion_player() == Motions::OFF
