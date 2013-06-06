@@ -3,7 +3,7 @@
 #
 # Makefile for pre- and cross-compiling .machine files
 #
-MACHINES=PingPongCLFSM
+MACHINES=PingPongCLFSM SMHeadGoalTracker SMHeadScannerGoal SMPlayerGoal SMWalkScannerGoal SMPlayerGoal
 
 .include "../../../../mk/fsm.mk"	# comes first: required for compiling state machines
 
