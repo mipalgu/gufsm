@@ -1,1 +1,2 @@
-system("/home/nao/OpenChallenge/java/jdk1.7.0_21/bin/java -classpath weka.jar:. ColorLearner");
+//system("java -classpath ~/OpenChallenge/java/weka.jar:. ~/OpenChallenge/java/ColorLearner");
+system("java -classpath ~/OpenChallenge/java/ HelloWorld");

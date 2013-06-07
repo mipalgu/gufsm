@@ -1,1 +1,1 @@
-a==89 && (control = 5)==5
+file_exists("~/OpenChallenge/java/RepeatSecondStep") && (control = 5)==5
