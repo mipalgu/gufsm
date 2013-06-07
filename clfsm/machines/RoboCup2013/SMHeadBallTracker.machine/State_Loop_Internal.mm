@@ -1,3 +1,1 @@
-filteredObjects = sightings_ptr.get();
-
-ball = filteredObjects.get_object();
+ball = ball_on_whiteboard();

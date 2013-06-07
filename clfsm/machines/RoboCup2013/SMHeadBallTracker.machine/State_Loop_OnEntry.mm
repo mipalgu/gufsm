@@ -2,8 +2,6 @@
 fprintf(stderr, "State: %s\n", state_name());
 #endif
 
-filteredObjects = sightings_ptr.get();
-
-ball = filteredObjects.get_object();
+ball = ball_on_whiteboard();
 
 localization_frameCounter = ball.frameCounter();
