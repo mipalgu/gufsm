@@ -8,7 +8,7 @@ int	localization_update_counter;	///<
 int	min_long_distance_angle;	///< 
 int	min_short_distance_angle;	///< 
 FilteredVisionObject	ball;	///< 
-FVOsighting_t	sightings_ptr;	///< 
+FilteredBallSighting_t	sightings_ptr;	///< 
 int	boundaryCloseFar;	///< 
 SENSORS_TorsoJointSensors_t	body_sensors_ptr;	///< 
 SENSORS_TorsoJointSensors	body_sensors;	///< 

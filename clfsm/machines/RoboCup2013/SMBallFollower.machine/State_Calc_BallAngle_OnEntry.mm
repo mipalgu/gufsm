@@ -2,7 +2,7 @@
 fprintf(stderr, "State: %s\n", state_name());
 #endif
 
-ball = sightings_ptr.get().get_object(FVOBall);
+ball = sightings_ptr.get();
 body_sensors = body_sensors_ptr.get(); //need the head yaw
 
 
