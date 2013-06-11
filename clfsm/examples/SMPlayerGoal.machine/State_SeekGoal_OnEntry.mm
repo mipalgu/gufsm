@@ -4,10 +4,11 @@ fprintf(stderr, "State: %s\n", state_name());
 
 leftGoalPost = sightings_ptr.get().get_object(FVOGoalPostLeft);
 rightGoalPost = sightings_ptr.get().get_object(FVOGoalPostRight);
-crossBarGoalPost = sightings_ptr.get().get_object(FVOGoalCrossBar);
+crossBar = sightings_ptr.get().get_object(FVOGoalCrossBar);
 genericGoalPost = sightings_ptr.get().get_object(FVOGoalPost);
 
 
+speak("Seek");
 
 restart("SMHeadScannerGoal");
 //restart("SMWalkScannerGoal");

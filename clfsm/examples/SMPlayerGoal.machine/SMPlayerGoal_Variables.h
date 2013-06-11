@@ -3,8 +3,9 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-FVOsighting_t	sightings_ptr;	///< 
+FilteredGoalSighting_t	sightings_ptr;	///< 
 FilteredVisionObject	leftGoalPost;	///< 
 FilteredVisionObject	rightGoalPost;	///< 
-FilteredVisionObject	crossBarGoalPost;	///< 
-FilteredVisionObject	genericGoalPost;	///<
+FilteredVisionObject	crossBar;	///< 
+FilteredVisionObject	genericGoalPost;	///< 
+QSay_t	speak;	///<

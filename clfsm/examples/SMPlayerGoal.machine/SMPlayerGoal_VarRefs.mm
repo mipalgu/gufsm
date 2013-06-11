@@ -9,10 +9,11 @@ SMPlayerGoal *_m = static_cast<SMPlayerGoal *>(_machine);
 #pragma clang diagnostic ignored "-Wunused-variable"
 #pragma clang diagnostic ignored "-Wshadow"
 
-FVOsighting_t	&sightings_ptr = _m->sightings_ptr;	///< 
+FilteredGoalSighting_t	&sightings_ptr = _m->sightings_ptr;	///< 
 FilteredVisionObject	&leftGoalPost = _m->leftGoalPost;	///< 
 FilteredVisionObject	&rightGoalPost = _m->rightGoalPost;	///< 
-FilteredVisionObject	&crossBarGoalPost = _m->crossBarGoalPost;	///< 
+FilteredVisionObject	&crossBar = _m->crossBar;	///< 
 FilteredVisionObject	&genericGoalPost = _m->genericGoalPost;	///< 
+QSay_t	&speak = _m->speak;	///< 
 
 #pragma clang diagnostic pop

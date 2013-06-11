@@ -1,3 +1,1 @@
-filteredObjects = sightings_ptr.get();
-
-crossBar = filteredObjects.get_object(FVOGoalCrossBar);
+crossBar = sightings_ptr.get().get_object(FVOGoalCrossBar);

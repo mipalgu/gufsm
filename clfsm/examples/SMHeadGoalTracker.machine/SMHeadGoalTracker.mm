@@ -29,6 +29,7 @@ SMHeadGoalTracker::SMHeadGoalTracker(int mid, const char *name): CLMachine(mid, 
 	_states[2] = new FSMSMHeadGoalTracker::State::Update_Head;
 	_states[3] = new FSMSMHeadGoalTracker::State::SUSPENDED;
 
+	setSuspendState(_states[3]);            // set suspend state
 	setInitialState(_states[0]);            // set initial state
 }
 
