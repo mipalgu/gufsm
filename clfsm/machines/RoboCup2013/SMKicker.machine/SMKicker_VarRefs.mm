@@ -1,9 +1,9 @@
 //
-// SMKicker3_VarRefs.mm
+// SMKicker_VarRefs.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-SMKicker3 *_m = static_cast<SMKicker3 *>(_machine);
+SMKicker *_m = static_cast<SMKicker *>(_machine);
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"

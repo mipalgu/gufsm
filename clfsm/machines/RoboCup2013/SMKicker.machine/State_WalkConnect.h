@@ -3,8 +3,8 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMKicker3_State_WalkConnect_h
-#define clfsm_SMKicker3_State_WalkConnect_h
+#ifndef clfsm_SMKicker_State_WalkConnect_h
+#define clfsm_SMKicker_State_WalkConnect_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,7 +14,7 @@ namespace FSM
 {
     namespace CLM
     {
-      namespace FSMSMKicker3
+      namespace FSMSMKicker
       {
         namespace State
         {

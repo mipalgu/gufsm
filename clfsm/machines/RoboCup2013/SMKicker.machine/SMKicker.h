@@ -1,10 +1,10 @@
 //
-// SMKicker3.h
+// SMKicker.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef __clfsm__SMKicker3__
-#define __clfsm__SMKicker3__
+#ifndef __clfsm__SMKicker__
+#define __clfsm__SMKicker__
 
 #include "CLMachine.h"
 
@@ -14,22 +14,22 @@ namespace FSM
 
     namespace CLM
     {
-        class SMKicker3: public CLMachine
+        class SMKicker: public CLMachine
         {
             CLState *_states[6];
         public:
-            SMKicker3(int mid  = 0, const char *name = "SMKicker3");
-            virtual ~SMKicker3();
+            SMKicker(int mid  = 0, const char *name = "SMKicker");
+            virtual ~SMKicker();
             virtual CLState * const * states() const { return _states; }
             virtual int numberOfStates() const { return 6; }
-#           include "SMKicker3_Variables.h"
+#           include "SMKicker_Variables.h"
         };
     }
 }
 
 extern "C"
 {
-    FSM::CLM::SMKicker3 *CLM_Create_SMKicker3(int mid, const char *name);
+    FSM::CLM::SMKicker *CLM_Create_SMKicker(int mid, const char *name);
 }
 
-#endif // defined(__gufsm__SMKicker3__)
+#endif // defined(__gufsm__SMKicker__)

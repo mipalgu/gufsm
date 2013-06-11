@@ -1,5 +1,5 @@
 //
-// SMKicker3_Variables.h
+// SMKicker_Variables.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
