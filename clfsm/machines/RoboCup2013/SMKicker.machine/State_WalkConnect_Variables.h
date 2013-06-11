@@ -1,5 +1,5 @@
 //
-// State_KickFinished_Variables.h
+// State_WalkConnect_Variables.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //

@@ -9,8 +9,8 @@ SMKicker *_m = static_cast<SMKicker *>(_machine);
 #pragma clang diagnostic ignored "-Wunused-variable"
 #pragma clang diagnostic ignored "-Wshadow"
 
-WALK_Command_t	&wb_WalkInterface = _m->wb_WalkInterface;	///< 
-MOTION_SDK_Commands_t	&wb_MotionCommand = _m->wb_MotionCommand;	///< 
-MOTION_SDK_Status_t	&wb_MotionStatus = _m->wb_MotionStatus;	///< 
+MOTION_SDK_Commands_t	&motion_ptr = _m->motion_ptr;	///< 
+WALK_Command_t	&walk_post = _m->walk_post;	///< 
+MOTION_SDK_Status_t	&motion_status = _m->motion_status;	///< 
 
 #pragma clang diagnostic pop

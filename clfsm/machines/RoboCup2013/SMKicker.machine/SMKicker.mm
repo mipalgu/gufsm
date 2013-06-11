@@ -6,12 +6,12 @@
 #include "SMKicker_Includes.h"
 #include "SMKicker.h"
 
-#include "State_Disable_DCM.h"
-#include "State_StartKickMotion.h"
+#include "State_Init.h"
 #include "State_SUSPENDED.h"
-#include "State_KickFinished.h"
-#include "State_StartPrepareHead.h"
-#include "State_HeadPrepared.h"
+#include "State_KickLeft.h"
+#include "State_KickRight.h"
+#include "State_WalkConnect.h"
+#include "State_FInishKick.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -26,14 +26,13 @@ extern "C"
 
 SMKicker::SMKicker(int mid, const char *name): CLMachine(mid, name)
 {
-	_states[0] = new FSMSMKicker::State::Disable_DCM;
-	_states[1] = new FSMSMKicker::State::StartKickMotion;
-	_states[2] = new FSMSMKicker::State::SUSPENDED;
-	_states[3] = new FSMSMKicker::State::KickFinished;
-	_states[4] = new FSMSMKicker::State::StartPrepareHead;
-	_states[5] = new FSMSMKicker::State::HeadPrepared;
+	_states[0] = new FSMSMKicker::State::Init;
+	_states[1] = new FSMSMKicker::State::SUSPENDED;
+	_states[2] = new FSMSMKicker::State::KickLeft;
+	_states[3] = new FSMSMKicker::State::KickRight;
+	_states[4] = new FSMSMKicker::State::WalkConnect;
+	_states[5] = new FSMSMKicker::State::FInishKick;
 
-	setSuspendState(_states[2]);            // set suspend state
 	setInitialState(_states[0]);            // set initial state
 }
 

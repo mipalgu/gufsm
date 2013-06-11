@@ -1,5 +1,5 @@
 //
-// State_Disable_DCM_Variables.h
+// State_KickLeft_Variables.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //

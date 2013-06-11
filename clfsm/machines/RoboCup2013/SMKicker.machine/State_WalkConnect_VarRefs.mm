@@ -1,9 +1,9 @@
 //
-// State_StartKickMotion_VarRefs.mm
+// State_WalkConnect_VarRefs.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-StartKickMotion *_s = static_cast<StartKickMotion *>(_state);
+WalkConnect *_s = static_cast<WalkConnect *>(_state);
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"

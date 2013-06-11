@@ -1,10 +1,10 @@
 //
-// State_Disable_DCM.h
+// State_KickLeft.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMKicker_State_Disable_DCM_h
-#define clfsm_SMKicker_State_Disable_DCM_h
+#ifndef clfsm_SMKicker_State_KickLeft_h
+#define clfsm_SMKicker_State_KickLeft_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class Disable_DCM: public CLState
+            class KickLeft: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,7 +38,7 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 4): CLTransition(toState) {}
+                    Transition_0(int toState = 5): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
@@ -46,13 +46,13 @@ namespace FSM
                 CLTransition *_transitions[1];
 
                 public:
-                    Disable_DCM(const char *name = "Disable_DCM");
-                    virtual ~Disable_DCM();
+                    KickLeft(const char *name = "KickLeft");
+                    virtual ~KickLeft();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
                     virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_Disable_DCM_Variables.h"
+#                   include "State_KickLeft_Variables.h"
             };
         }
       }

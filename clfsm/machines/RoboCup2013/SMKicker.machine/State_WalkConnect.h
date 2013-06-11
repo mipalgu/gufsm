@@ -1,10 +1,10 @@
 //
-// State_StartKickMotion.h
+// State_WalkConnect.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMKicker_State_StartKickMotion_h
-#define clfsm_SMKicker_State_StartKickMotion_h
+#ifndef clfsm_SMKicker_State_WalkConnect_h
+#define clfsm_SMKicker_State_WalkConnect_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class StartKickMotion: public CLState
+            class WalkConnect: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,7 +38,7 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 3): CLTransition(toState) {}
+                    Transition_0(int toState = 1): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
@@ -46,13 +46,13 @@ namespace FSM
                 CLTransition *_transitions[1];
 
                 public:
-                    StartKickMotion(const char *name = "StartKickMotion");
-                    virtual ~StartKickMotion();
+                    WalkConnect(const char *name = "WalkConnect");
+                    virtual ~WalkConnect();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
                     virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_StartKickMotion_Variables.h"
+#                   include "State_WalkConnect_Variables.h"
             };
         }
       }

@@ -1,10 +1,10 @@
 //
-// State_KickFinished.h
+// State_FInishKick.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMKicker_State_KickFinished_h
-#define clfsm_SMKicker_State_KickFinished_h
+#ifndef clfsm_SMKicker_State_FInishKick_h
+#define clfsm_SMKicker_State_FInishKick_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class KickFinished: public CLState
+            class FInishKick: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -35,18 +35,24 @@ namespace FSM
                     virtual void perform(CLMachine *, CLState *) const;
                 };
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wzero-length-array"
-                CLTransition *_transitions[0];
+                class Transition_0: public CLTransition
+                {
+                public:
+                    Transition_0(int toState = 4): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                CLTransition *_transitions[1];
 
                 public:
-                    KickFinished(const char *name = "KickFinished");
-                    virtual ~KickFinished();
+                    FInishKick(const char *name = "FInishKick");
+                    virtual ~FInishKick();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 0; }
+                    virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_KickFinished_Variables.h"
+#                   include "State_FInishKick_Variables.h"
             };
         }
       }
@@ -54,4 +60,3 @@ namespace FSM
 }
 
 #endif
-#pragma clang diagnostic pop
