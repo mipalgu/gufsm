@@ -1,3 +1,5 @@
+#include "stringConstants.h"
+
 /* This cosntants label freze points of computation for which we identify a Kripke state as the state of computaiton at the frezze point*/
 
 /* Breakpoint the happens after the OnExit of the previos state and Before
