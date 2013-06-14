@@ -16,7 +16,7 @@ int vert_fov = 48;
 int ball_x = genericPost.x();
 int ball_y = genericPost.y();
 int ball_d = genericPost.distance();
-float angle = RAD2DEG(genericPost.horizontal_angle());
+float angle = float(RAD2DEG(genericPost.horizontal_angle()));
 
 
 //Work out yaw

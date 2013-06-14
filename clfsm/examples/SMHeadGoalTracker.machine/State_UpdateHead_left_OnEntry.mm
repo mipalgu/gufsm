@@ -16,7 +16,7 @@ int vert_fov = 48;
 int ball_x = leftPost.x() + 10;
 int ball_y = leftPost.y();
 int ball_d = leftPost.distance();
-float angle = RAD2DEG(leftPost.horizontal_angle());
+float angle = float(RAD2DEG(leftPost.horizontal_angle()));
 
 
 //Work out yaw

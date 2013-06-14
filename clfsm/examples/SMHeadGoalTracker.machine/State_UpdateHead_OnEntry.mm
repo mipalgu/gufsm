@@ -14,7 +14,7 @@ int vert_fov = 48;
 int ball_x = crossBar.x();
 int ball_y = crossBar.y();
 int ball_d = crossBar.distance();
-float angle = RAD2DEG(crossBar.horizontal_angle());
+float angle = float(RAD2DEG(crossBar.horizontal_angle()));
 
 //Work out yaw
 /*int head_cam_ratio = guvision_width/horiz_fov;

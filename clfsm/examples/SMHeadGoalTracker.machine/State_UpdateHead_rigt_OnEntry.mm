@@ -17,7 +17,7 @@ int vert_fov = 48;
 int ball_x = rightPost.x() - 10;
 int ball_y = rightPost.y();
 int ball_d = rightPost.distance();
-float angle = RAD2DEG(rightPost.horizontal_angle());
+float angle = float(RAD2DEG(rightPost.horizontal_angle()));
 
 //Work out yaw
 int head_cam_ratio = guvision_width/horiz_fov;
