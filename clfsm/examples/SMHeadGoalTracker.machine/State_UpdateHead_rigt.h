@@ -1,10 +1,10 @@
 //
-// State_Loop.h
+// State_UpdateHead_rigt.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMHeadGoalTracker_State_Loop_h
-#define clfsm_SMHeadGoalTracker_State_Loop_h
+#ifndef clfsm_SMHeadGoalTracker_State_UpdateHead_rigt_h
+#define clfsm_SMHeadGoalTracker_State_UpdateHead_rigt_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class Loop: public CLState
+            class UpdateHead_rigt: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,7 +38,7 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 2): CLTransition(toState) {}
+                    Transition_0(int toState = 6): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
@@ -46,13 +46,13 @@ namespace FSM
                 CLTransition *_transitions[1];
 
                 public:
-                    Loop(const char *name = "Loop");
-                    virtual ~Loop();
+                    UpdateHead_rigt(const char *name = "UpdateHead_rigt");
+                    virtual ~UpdateHead_rigt();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
                     virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_Loop_Variables.h"
+#                   include "State_UpdateHead_rigt_Variables.h"
             };
         }
       }

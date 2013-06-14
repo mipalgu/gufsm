@@ -1,10 +1,10 @@
 //
-// State_Init.h
+// State_Dummy.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMHeadGoalTracker_State_Init_h
-#define clfsm_SMHeadGoalTracker_State_Init_h
+#ifndef clfsm_SMHeadGoalTracker_State_Dummy_h
+#define clfsm_SMHeadGoalTracker_State_Dummy_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class Init: public CLState
+            class Dummy: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,7 +38,7 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 2): CLTransition(toState) {}
+                    Transition_0(int toState = 7): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
@@ -46,37 +46,21 @@ namespace FSM
                 class Transition_1: public CLTransition
                 {
                 public:
-                    Transition_1(int toState = 3): CLTransition(toState) {}
+                    Transition_1(int toState = 0): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                class Transition_2: public CLTransition
-                {
-                public:
-                    Transition_2(int toState = 4): CLTransition(toState) {}
-
-                    virtual bool check(CLMachine *, CLState *) const;
-                };
-
-                class Transition_3: public CLTransition
-                {
-                public:
-                    Transition_3(int toState = 5): CLTransition(toState) {}
-
-                    virtual bool check(CLMachine *, CLState *) const;
-                };
-
-                CLTransition *_transitions[4];
+                CLTransition *_transitions[2];
 
                 public:
-                    Init(const char *name = "Init");
-                    virtual ~Init();
+                    Dummy(const char *name = "Dummy");
+                    virtual ~Dummy();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 4; }
+                    virtual int numberOfTransitions() const { return 2; }
 
-#                   include "State_Init_Variables.h"
+#                   include "State_Dummy_Variables.h"
             };
         }
       }

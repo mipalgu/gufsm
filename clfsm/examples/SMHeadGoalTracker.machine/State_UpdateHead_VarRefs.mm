@@ -1,9 +1,9 @@
 //
-// State_Update_Head_VarRefs.mm
+// State_UpdateHead_VarRefs.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-Update_Head *_s = static_cast<Update_Head *>(_state);
+UpdateHead *_s = static_cast<UpdateHead *>(_state);
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"
