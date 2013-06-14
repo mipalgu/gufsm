@@ -16,12 +16,12 @@ namespace FSM
     {
         class Color_Learner: public CLMachine
         {
-            CLState *_states[8];
+            CLState *_states[10];
         public:
             Color_Learner(int mid  = 0, const char *name = "Color_Learner");
             virtual ~Color_Learner();
             virtual CLState * const * states() const { return _states; }
-            virtual int numberOfStates() const { return 8; }
+            virtual int numberOfStates() const { return 10; }
 #           include "Color_Learner_Variables.h"
         };
     }

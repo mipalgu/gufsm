@@ -17,7 +17,6 @@ using namespace State;
 Build_classifier::Build_classifier(const char *name): CLState(name, *new Build_classifier::OnEntry, *new Build_classifier::OnExit, *new Build_classifier::Internal)
 {
 	_transitions[0] = new Transition_0();
-	_transitions[1] = new Transition_1();
 }
 
 Build_classifier::~Build_classifier()
@@ -27,7 +26,6 @@ Build_classifier::~Build_classifier()
 	delete &internalAction();
 
 	delete _transitions[0];
-	delete _transitions[1];
 }
 
 void Build_classifier::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -59,16 +57,5 @@ bool Build_classifier::Transition_0::check(CLMachine *_machine, CLState *_state)
 	return
 	(
 #		include "State_Build_classifier_Transition_0.expr"
-	);
-}
-
-bool Build_classifier::Transition_1::check(CLMachine *_machine, CLState *_state) const
-{
-#	include "Color_Learner_VarRefs.mm"
-#	include "State_Build_classifier_VarRefs.mm"
-
-	return
-	(
-#		include "State_Build_classifier_Transition_1.expr"
 	);
 }

@@ -20,5 +20,7 @@ HAL_HeadTarget	&head = _m->head;	///<
 HAL_HeadTarget_t	&head_ptr = _m->head_ptr;	///< 
 Vision_Status_t	&vision_status = _m->vision_status;	///< 
 int	&control = _m->control;	///< 
+std::string	&filename_dlc = _m->filename_dlc;	///< 
+QSay_t	&say = _m->say;	///< 
 
 #pragma clang diagnostic pop

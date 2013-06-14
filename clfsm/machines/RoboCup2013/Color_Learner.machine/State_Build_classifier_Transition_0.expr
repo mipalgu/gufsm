@@ -1,1 +1,1 @@
-file_exists("~/OpenChallenge/java/RepeatFirstStep") && (control = 4)==4
+file_exists((char *) filename_dlc.c_str())

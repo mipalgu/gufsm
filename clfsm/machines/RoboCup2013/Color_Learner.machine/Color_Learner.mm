@@ -14,6 +14,8 @@
 #include "State_Second_shot.h"
 #include "State_Build_classifier.h"
 #include "State_Classifier_result.h"
+#include "State_Third_head.h"
+#include "State_Third_shot.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -36,6 +38,8 @@ Color_Learner::Color_Learner(int mid, const char *name): CLMachine(mid, name)
 	_states[5] = new FSMColor_Learner::State::Second_shot;
 	_states[6] = new FSMColor_Learner::State::Build_classifier;
 	_states[7] = new FSMColor_Learner::State::Classifier_result;
+	_states[8] = new FSMColor_Learner::State::Third_head;
+	_states[9] = new FSMColor_Learner::State::Third_shot;
 
 	setInitialState(_states[0]);            // set initial state
 }
@@ -50,4 +54,6 @@ Color_Learner::~Color_Learner()
 	delete _states[5];
 	delete _states[6];
 	delete _states[7];
+	delete _states[8];
+	delete _states[9];
 }
