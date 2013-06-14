@@ -11,6 +11,7 @@ vision.set_activatePipeline(OpenChallenge);
 vision.set_pipelineRunning(true);
 vision.set_streamingSource(Normal);
 vision.set_openChallengeStep(0);
+vision.set_resolution(VGA);
 vision_ptr.set(vision);
 
 vision = VisionControlStatus();

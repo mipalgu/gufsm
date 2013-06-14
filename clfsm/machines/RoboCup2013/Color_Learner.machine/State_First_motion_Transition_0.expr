@@ -1,1 +1,1 @@
-after_ms(2020) && false/*&& motion_status.get().motion_player() == Motions::OFF*/
+after_ms(2020) && true/*&& motion_status.get().motion_player() == Motions::OFF*/

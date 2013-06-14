@@ -17,6 +17,7 @@ using namespace State;
 First_motion::First_motion(const char *name): CLState(name, *new First_motion::OnEntry, *new First_motion::OnExit, *new First_motion::Internal)
 {
 	_transitions[0] = new Transition_0();
+	_transitions[1] = new Transition_1();
 }
 
 First_motion::~First_motion()
@@ -26,6 +27,7 @@ First_motion::~First_motion()
 	delete &internalAction();
 
 	delete _transitions[0];
+	delete _transitions[1];
 }
 
 void First_motion::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -57,5 +59,16 @@ bool First_motion::Transition_0::check(CLMachine *_machine, CLState *_state) con
 	return
 	(
 #		include "State_First_motion_Transition_0.expr"
+	);
+}
+
+bool First_motion::Transition_1::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "Color_Learner_VarRefs.mm"
+#	include "State_First_motion_VarRefs.mm"
+
+	return
+	(
+#		include "State_First_motion_Transition_1.expr"
 	);
 }
