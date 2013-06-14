@@ -1,7 +1,7 @@
 body_sensors = body_sensors_ptr.get();
 
 
-int 	delay = 80000;
+int 	delay = 50000;
 
 
 // k4VGA 1280 x 960
@@ -32,5 +32,5 @@ fprintf(stderr, "Ball RR: %f\t%f\ty angle %d\tpitch %f\n", body_relative_angle_x
 
 
 
-head.GoToWithTime((int)body_relative_angle_x, (int)body_relative_angle_y, delay);
+head.GoToWithTime((int)body_relative_angle_x, -(int)body_relative_angle_y, delay);
 head_ptr.set(head);
