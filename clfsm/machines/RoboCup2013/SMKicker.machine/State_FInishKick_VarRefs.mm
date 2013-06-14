@@ -1,9 +1,9 @@
 //
-// State_FInishKick_VarRefs.mm
+// State_FinishKick_VarRefs.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-FInishKick *_s = static_cast<FInishKick *>(_state);
+FinishKick *_s = static_cast<FinishKick *>(_state);
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"

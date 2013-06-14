@@ -1,6 +1,11 @@
+Dummy_Init
 Init
-SUSPENDED
 KickLeft
 KickRight
 WalkConnect
-FInishKick
+FinishKick
+SUSPENDED
+Wait
+Stop_Walk
+Walk_Disconnect
+Give_Up

@@ -12,5 +12,7 @@ SMKicker *_m = static_cast<SMKicker *>(_machine);
 MOTION_SDK_Commands_t	&motion_ptr = _m->motion_ptr;	///< 
 WALK_Command_t	&walk_post = _m->walk_post;	///< 
 MOTION_SDK_Status_t	&motion_status = _m->motion_status;	///< 
+FilteredBallSighting_t	&ball_ptr = _m->ball_ptr;	///< 
+FilteredVisionObject	&ball = _m->ball;	///< 
 
 #pragma clang diagnostic pop

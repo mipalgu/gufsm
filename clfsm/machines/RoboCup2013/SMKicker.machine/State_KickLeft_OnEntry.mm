@@ -1,6 +1,3 @@
-walk_post(WALK_ControlStatus(WALK_Disconnect));
-
-
 MOTION_SDK_Interface motion;
 
 
