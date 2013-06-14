@@ -13,5 +13,6 @@ HAL_HeadTarget	&head = _m->head;	///<
 HAL_HeadTarget_t	&head_ptr = _m->head_ptr;	///< 
 int	&time = _m->time;	///< 
 int	&transition_time = _m->transition_time;	///< 
+Vision_Control_t	&vision_ptr = _m->vision_ptr;	///< 
 
 #pragma clang diagnostic pop

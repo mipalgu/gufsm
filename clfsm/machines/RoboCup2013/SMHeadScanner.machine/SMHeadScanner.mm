@@ -8,13 +8,11 @@
 
 #include "State_Init.h"
 #include "State_Bottom_Scan.h"
-#include "State_Low_Scan.h"
 #include "State_SUSPENDED.h"
 #include "State_Mid_Scan.h"
 #include "State_High_Scan.h"
 #include "State_Start.h"
 #include "State_Do_Bottom_Scan.h"
-#include "State_Do_Low_Scan.h"
 #include "State_Do_Mid_Scan.h"
 #include "State_Do_High_Scan.h"
 
@@ -33,17 +31,15 @@ SMHeadScanner::SMHeadScanner(int mid, const char *name): CLMachine(mid, name)
 {
 	_states[0] = new FSMSMHeadScanner::State::Init;
 	_states[1] = new FSMSMHeadScanner::State::Bottom_Scan;
-	_states[2] = new FSMSMHeadScanner::State::Low_Scan;
-	_states[3] = new FSMSMHeadScanner::State::SUSPENDED;
-	_states[4] = new FSMSMHeadScanner::State::Mid_Scan;
-	_states[5] = new FSMSMHeadScanner::State::High_Scan;
-	_states[6] = new FSMSMHeadScanner::State::Start;
-	_states[7] = new FSMSMHeadScanner::State::Do_Bottom_Scan;
-	_states[8] = new FSMSMHeadScanner::State::Do_Low_Scan;
-	_states[9] = new FSMSMHeadScanner::State::Do_Mid_Scan;
-	_states[10] = new FSMSMHeadScanner::State::Do_High_Scan;
+	_states[2] = new FSMSMHeadScanner::State::SUSPENDED;
+	_states[3] = new FSMSMHeadScanner::State::Mid_Scan;
+	_states[4] = new FSMSMHeadScanner::State::High_Scan;
+	_states[5] = new FSMSMHeadScanner::State::Start;
+	_states[6] = new FSMSMHeadScanner::State::Do_Bottom_Scan;
+	_states[7] = new FSMSMHeadScanner::State::Do_Mid_Scan;
+	_states[8] = new FSMSMHeadScanner::State::Do_High_Scan;
 
-	setSuspendState(_states[3]);            // set suspend state
+	setSuspendState(_states[2]);            // set suspend state
 	setInitialState(_states[0]);            // set initial state
 }
 
@@ -58,6 +54,4 @@ SMHeadScanner::~SMHeadScanner()
 	delete _states[6];
 	delete _states[7];
 	delete _states[8];
-	delete _states[9];
-	delete _states[10];
 }
