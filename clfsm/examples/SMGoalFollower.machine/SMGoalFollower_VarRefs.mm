@@ -9,7 +9,7 @@ SMGoalFollower *_m = static_cast<SMGoalFollower *>(_machine);
 #pragma clang diagnostic ignored "-Wunused-variable"
 #pragma clang diagnostic ignored "-Wshadow"
 
-float	&ballAngle = _m->ballAngle;	///< 
+float	&goalAngle = _m->goalAngle;	///< 
 int	&localization_update_counter = _m->localization_update_counter;	///< 
 int	&min_long_distance_angle = _m->min_long_distance_angle;	///< 
 int	&min_short_distance_angle = _m->min_short_distance_angle;	///< 

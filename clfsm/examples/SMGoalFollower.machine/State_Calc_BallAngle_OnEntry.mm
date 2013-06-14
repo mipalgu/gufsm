@@ -11,6 +11,6 @@ int horiz_fov = 61;
 int vert_fov = 48;
 	
 
-ballAngle = (float)(body_sensors.HeadYaw());
+goalAngle = (float)(body_sensors.HeadYaw());
 
-fprintf(stderr, "Ball angle with yaw %f\n", ballAngle);
+fprintf(stderr, "Goal angle with yaw %f\n", goalAngle);
