@@ -38,19 +38,43 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 1): CLTransition(toState) {}
+                    Transition_0(int toState = 2): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                CLTransition *_transitions[1];
+                class Transition_1: public CLTransition
+                {
+                public:
+                    Transition_1(int toState = 3): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                class Transition_2: public CLTransition
+                {
+                public:
+                    Transition_2(int toState = 4): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                class Transition_3: public CLTransition
+                {
+                public:
+                    Transition_3(int toState = 5): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                CLTransition *_transitions[4];
 
                 public:
                     Init(const char *name = "Init");
                     virtual ~Init();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 1; }
+                    virtual int numberOfTransitions() const { return 4; }
 
 #                   include "State_Init_Variables.h"
             };

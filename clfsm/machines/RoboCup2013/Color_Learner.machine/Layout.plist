@@ -175,6 +175,24 @@
 					<key>srcPointY</key>
 					<real>141.36183993563844</real>
 				</dict>
+				<dict>
+					<key>controlPoint1X</key>
+					<real>466.86072782761158</real>
+					<key>controlPoint1Y</key>
+					<real>190.79074571975886</real>
+					<key>controlPoint2X</key>
+					<real>727.31133981182688</real>
+					<key>controlPoint2Y</key>
+					<real>292.4918507656181</real>
+					<key>dstPointX</key>
+					<real>840.26987726395578</real>
+					<key>dstPointY</key>
+					<real>372.44531555595279</real>
+					<key>srcPointX</key>
+					<real>340.18912633675257</real>
+					<key>srcPointY</key>
+					<real>135.05482291368787</real>
+				</dict>
 			</array>
 			<key>bgColour</key>
 			<dict>
@@ -237,9 +255,9 @@
 					<key>controlPoint1Y</key>
 					<real>342.47952498502502</real>
 					<key>controlPoint2X</key>
-					<real>397.95703125</real>
+					<real>471.22237844424581</real>
 					<key>controlPoint2Y</key>
-					<real>199.37109375</real>
+					<real>202.52047501497492</real>
 					<key>dstPointX</key>
 					<real>533.07141014430817</real>
 					<key>dstPointY</key>
@@ -401,9 +419,9 @@
 			<array>
 				<dict>
 					<key>controlPoint1X</key>
-					<real>508.80078125</real>
+					<real>659.60897206449795</real>
 					<key>controlPoint1Y</key>
-					<real>395.484375</real>
+					<real>347.91725181702452</real>
 					<key>controlPoint2X</key>
 					<real>615.39102793550205</real>
 					<key>controlPoint2Y</key>
@@ -419,21 +437,21 @@
 				</dict>
 				<dict>
 					<key>controlPoint1X</key>
-					<real>660.7578125</real>
+					<real>774.52512072709669</real>
 					<key>controlPoint1Y</key>
-					<real>350.37109375</real>
+					<real>419.61304790613281</real>
 					<key>controlPoint2X</key>
-					<real>809.83793267315059</real>
+					<real>812.47487927290331</real>
 					<key>controlPoint2Y</key>
-					<real>371.46123687883477</real>
+					<real>395.38695209386719</real>
 					<key>dstPointX</key>
-					<real>831.83282548090449</real>
+					<real>833.68282097668282</real>
 					<key>dstPointY</key>
-					<real>378.01683573363806</real>
+					<real>389.41824993771365</real>
 					<key>srcPointX</key>
-					<real>753.63756111703037</real>
+					<real>753.31717902331718</real>
 					<key>srcPointY</key>
-					<real>426.1158960839067</real>
+					<real>425.58175006228635</real>
 				</dict>
 			</array>
 			<key>bgColour</key>
@@ -475,21 +493,21 @@
 			<array>
 				<dict>
 					<key>controlPoint1X</key>
-					<real>875.58272136054802</real>
+					<real>874.47762949962203</real>
 					<key>controlPoint1Y</key>
-					<real>344.00950966884545</real>
+					<real>344.03012899401233</real>
 					<key>controlPoint2X</key>
-					<real>885.52801822025492</real>
+					<real>875.52237050037775</real>
 					<key>controlPoint2Y</key>
-					<real>320.25000437992435</real>
+					<real>320.96987100598767</real>
 					<key>dstPointX</key>
-					<real>881.67324338325341</real>
+					<real>874.74625650026155</real>
 					<key>dstPointY</key>
-					<real>300.62500218996217</real>
+					<real>300.98493550299384</real>
 					<key>srcPointX</key>
-					<real>876.01880709576403</real>
+					<real>875.25374349973833</real>
 					<key>srcPointY</key>
-					<real>364.00475483442273</real>
+					<real>364.01506449700616</real>
 				</dict>
 			</array>
 			<key>bgColour</key>
@@ -531,21 +549,21 @@
 			<array>
 				<dict>
 					<key>controlPoint1X</key>
-					<real>683.68359375</real>
+					<real>773.47038966773403</real>
 					<key>controlPoint1Y</key>
-					<real>298.328125</real>
+					<real>242.4155347213661</real>
 					<key>controlPoint2X</key>
-					<real>664.45676479759072</real>
+					<real>664.52961033226597</real>
 					<key>controlPoint2Y</key>
-					<real>165.70222383606961</real>
+					<real>165.58446527863393</real>
 					<key>dstPointX</key>
-					<real>605.21877640468654</real>
+					<real>605.24922359499624</real>
 					<key>dstPointY</key>
-					<real>135.97128505057839</real>
+					<real>135.94427190999915</real>
 					<key>srcPointX</key>
-					<real>832.74749679185607</real>
+					<real>832.75077640500376</real>
 					<key>srcPointY</key>
-					<real>272.05864389572929</real>
+					<real>272.05572809000085</real>
 				</dict>
 			</array>
 			<key>bgColour</key>

@@ -1,10 +1,10 @@
 //
-// State_Update_Head.h
+// State_UpdateHead_generic.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMHeadGoalTracker_State_Update_Head_h
-#define clfsm_SMHeadGoalTracker_State_Update_Head_h
+#ifndef clfsm_SMHeadGoalTracker_State_UpdateHead_generic_h
+#define clfsm_SMHeadGoalTracker_State_UpdateHead_generic_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class Update_Head: public CLState
+            class UpdateHead_generic: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,7 +38,7 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 1): CLTransition(toState) {}
+                    Transition_0(int toState = 6): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
@@ -46,13 +46,13 @@ namespace FSM
                 CLTransition *_transitions[1];
 
                 public:
-                    Update_Head(const char *name = "Update_Head");
-                    virtual ~Update_Head();
+                    UpdateHead_generic(const char *name = "UpdateHead_generic");
+                    virtual ~UpdateHead_generic();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
                     virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_Update_Head_Variables.h"
+#                   include "State_UpdateHead_generic_Variables.h"
             };
         }
       }

@@ -3,7 +3,7 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-float	ballAngle;	///< 
+float	goalAngle;	///< 
 int	localization_update_counter;	///< 
 int	min_long_distance_angle;	///< 
 int	min_short_distance_angle;	///< 

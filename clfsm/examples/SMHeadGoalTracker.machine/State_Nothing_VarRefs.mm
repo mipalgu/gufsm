@@ -1,9 +1,9 @@
 //
-// State_Loop_VarRefs.mm
+// State_Nothing_VarRefs.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-Loop *_s = static_cast<Loop *>(_state);
+Nothing *_s = static_cast<Nothing *>(_state);
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"
