@@ -19,5 +19,6 @@ int	&boundaryCloseFar = _m->boundaryCloseFar;	///<
 SENSORS_TorsoJointSensors_t	&body_sensors_ptr = _m->body_sensors_ptr;	///< 
 SENSORS_TorsoJointSensors	&body_sensors = _m->body_sensors;	///< 
 WALK_Command_t	&walk_post = _m->walk_post;	///< 
+int	&limiter = _m->limiter;	///< 
 
 #pragma clang diagnostic pop

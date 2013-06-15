@@ -1,3 +1,3 @@
 ball = sightings_ptr.get();
 
-ballAngle = ball.horizontal_angle();
+ballAngle = RAD2DEG(ball.horizontal_angle());

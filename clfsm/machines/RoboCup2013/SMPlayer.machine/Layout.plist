@@ -84,21 +84,21 @@
 			<array>
 				<dict>
 					<key>controlPoint1X</key>
-					<real>109.57585009419363</real>
+					<real>94</real>
 					<key>controlPoint1Y</key>
-					<real>265.62493603751597</real>
+					<real>142.5</real>
 					<key>controlPoint2X</key>
-					<real>283.75436649572271</real>
+					<real>93.999999999999986</real>
 					<key>controlPoint2Y</key>
-					<real>325.47974514434782</real>
+					<real>217.5</real>
 					<key>dstPointX</key>
-					<real>354.74830586199505</real>
+					<real>93.999999999999986</real>
 					<key>dstPointY</key>
-					<real>326.67020690505774</real>
+					<real>255</real>
 					<key>srcPointX</key>
-					<real>103.10256183660577</real>
+					<real>94</real>
 					<key>srcPointY</key>
-					<real>194.91671045463318</real>
+					<real>105</real>
 				</dict>
 			</array>
 			<key>bgColour</key>
@@ -130,9 +130,9 @@
 			<key>w</key>
 			<real>100</real>
 			<key>x</key>
-			<real>99</real>
+			<real>94</real>
 			<key>y</key>
-			<real>175</real>
+			<real>84.6953125</real>
 		</dict>
 		<key>Kick</key>
 		<dict>
@@ -282,6 +282,62 @@
 			<real>398.3046875</real>
 			<key>y</key>
 			<real>172.91796875</real>
+		</dict>
+		<key>Walk_Halt</key>
+		<dict>
+			<key>Transitions</key>
+			<array>
+				<dict>
+					<key>controlPoint1X</key>
+					<real>192.81628919573643</real>
+					<key>controlPoint1Y</key>
+					<real>287.64570071129498</real>
+					<key>controlPoint2X</key>
+					<real>300.18371080426357</real>
+					<key>controlPoint2Y</key>
+					<real>314.35429928870502</real>
+					<key>dstPointX</key>
+					<real>354.64009657269145</real>
+					<key>dstPointY</key>
+					<real>323.63866669840428</real>
+					<key>srcPointX</key>
+					<real>138.35990342730858</real>
+					<key>srcPointY</key>
+					<real>278.36133330159572</real>
+				</dict>
+			</array>
+			<key>bgColour</key>
+			<dict>
+				<key>alpha</key>
+				<real>1</real>
+				<key>blue</key>
+				<real>1</real>
+				<key>green</key>
+				<real>1</real>
+				<key>red</key>
+				<real>1</real>
+			</dict>
+			<key>expanded</key>
+			<false/>
+			<key>h</key>
+			<real>50</real>
+			<key>strokeColour</key>
+			<dict>
+				<key>alpha</key>
+				<real>1</real>
+				<key>blue</key>
+				<real>0.0</real>
+				<key>green</key>
+				<real>0.0</real>
+				<key>red</key>
+				<real>0.0</real>
+			</dict>
+			<key>w</key>
+			<real>100</real>
+			<key>x</key>
+			<real>94.04296875</real>
+			<key>y</key>
+			<real>275</real>
 		</dict>
 	</dict>
 	<key>Version</key>

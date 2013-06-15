@@ -6,4 +6,6 @@ ballAngle = 0;
 localization_update_counter = 0;
 min_long_distance_angle = 10;
 min_short_distance_angle = 10;
-boundaryCloseFar = 30; //cm
+boundaryCloseFar = 50; //cm
+
+limiter = 4;
