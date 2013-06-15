@@ -1,10 +1,10 @@
 //
-// State_FinishKick.h
+// State_StartSpinPlayers.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMKicker_State_FinishKick_h
-#define clfsm_SMKicker_State_FinishKick_h
+#ifndef clfsm_SMReady_State_StartSpinPlayers_h
+#define clfsm_SMReady_State_StartSpinPlayers_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,11 +14,11 @@ namespace FSM
 {
     namespace CLM
     {
-      namespace FSMSMKicker
+      namespace FSMSMReady
       {
         namespace State
         {
-            class FinishKick: public CLState
+            class StartSpinPlayers: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,29 +38,21 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 4): CLTransition(toState) {}
+                    Transition_0(int toState = 8): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                class Transition_1: public CLTransition
-                {
-                public:
-                    Transition_1(int toState = 9): CLTransition(toState) {}
-
-                    virtual bool check(CLMachine *, CLState *) const;
-                };
-
-                CLTransition *_transitions[2];
+                CLTransition *_transitions[1];
 
                 public:
-                    FinishKick(const char *name = "FinishKick");
-                    virtual ~FinishKick();
+                    StartSpinPlayers(const char *name = "StartSpinPlayers");
+                    virtual ~StartSpinPlayers();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 2; }
+                    virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_FinishKick_Variables.h"
+#                   include "State_StartSpinPlayers_Variables.h"
             };
         }
       }

@@ -9,7 +9,7 @@ playerNumber = wb_player_number();
 status = walk_status();
 
 headDelayInUS = 250000;
-headAngleX = M_PI/2 - atan(goal_centre / (player_spacing * (float(playerNumber)/2 + 0.5)));
+headAngleX = M_PI/2 - atan(goal_centre / (    ((player_spacing * playerNumber) + player_spacing) /2.0)   );
 
 if (playerNumber % 2 == 0) headAngleX = -headAngleX;
 
