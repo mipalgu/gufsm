@@ -8,9 +8,7 @@
 #include "typeClassDefs/SENSORS_TorsoJointSensors.h"
 #include "typeClassDefs/Vision_Objects.h"
 
-
 #include "CLWhiteboard.h"
-
 
 using namespace guWhiteboard;
 

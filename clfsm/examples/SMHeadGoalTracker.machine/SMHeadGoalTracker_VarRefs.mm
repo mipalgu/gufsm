@@ -29,5 +29,6 @@ int	&vert_fov = _m->vert_fov;	///<
 int	&horiz_fov = _m->horiz_fov;	///< 
 int	&guvision_height = _m->guvision_height;	///< 
 int	&guvision_width = _m->guvision_width;	///< 
+float	&angle = _m->angle;	///< 
 
 #pragma clang diagnostic pop

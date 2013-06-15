@@ -22,4 +22,5 @@ VisionObjects	theObjects;	///<
 int	vert_fov;	///< 
 int	horiz_fov;	///< 
 int	guvision_height;	///< 
-int	guvision_width;	///<
+int	guvision_width;	///< 
+float	angle;	///<
