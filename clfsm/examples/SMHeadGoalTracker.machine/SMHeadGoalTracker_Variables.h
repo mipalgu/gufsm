@@ -18,4 +18,8 @@ FilteredVisionObject	genericPost;	///<
 FilteredVisionObject	crossBar;	///< 
 int	delay;	///< 
 Vision_Objects_t	theObjectp;	///< 
-VisionObjects	theObjects;	///<
+VisionObjects	theObjects;	///< 
+int	vert_fov;	///< 
+int	horiz_fov;	///< 
+int	guvision_height;	///< 
+int	guvision_width;	///<

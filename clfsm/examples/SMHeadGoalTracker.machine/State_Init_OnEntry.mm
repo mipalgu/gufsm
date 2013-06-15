@@ -5,6 +5,12 @@ fprintf(stderr, "State: %s\n", state_name());
 time = 100000;
 delay = 250000;
 
+guvision_width = 1280;
+guvision_height = 960;
+
+horiz_fov = 61;
+vert_fov = 48;
+
 
 crossBar = sightings_ptr.get().get_object(FVOGoalCrossBar);
 rightPost = sightings_ptr.get().get_object(FVOGoalPostRight);
@@ -16,4 +22,3 @@ std::cout << "CROSS VISIBLE: " << crossBar.isVisible() << std::endl;
 std::cout << "RIGHT VISIBLE: " << rightPost.isVisible() << std::endl;
 std::cout << "LEFT VISIBLE: " << leftPost.isVisible() << std::endl;
 std::cout << "GENERIC VISIBLE: " << genericPost.isVisible() << std::endl;
-std::cout << "10" << std::endl;

@@ -3,7 +3,7 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-int	transition_time;	///< 
-int	time;	///< 
 HAL_HeadTarget	head;	///< 
-HAL_HeadTarget_t	head_ptr;	///<
+HAL_HeadTarget_t	head_ptr;	///< 
+int	time;	///< 
+int	transition_time;	///<
