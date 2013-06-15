@@ -12,4 +12,5 @@ FilteredBallSighting_t	sightings_ptr;	///<
 int	boundaryCloseFar;	///< 
 SENSORS_TorsoJointSensors_t	body_sensors_ptr;	///< 
 SENSORS_TorsoJointSensors	body_sensors;	///< 
-WALK_Command_t	walk_post;	///<
+WALK_Command_t	walk_post;	///< 
+int	limiter;	///<
