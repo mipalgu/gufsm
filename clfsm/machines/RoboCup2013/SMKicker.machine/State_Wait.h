@@ -1,10 +1,10 @@
 //
-// State_Low_Scan.h
+// State_Wait.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMHeadScanner_State_Low_Scan_h
-#define clfsm_SMHeadScanner_State_Low_Scan_h
+#ifndef clfsm_SMKicker_State_Wait_h
+#define clfsm_SMKicker_State_Wait_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,11 +14,11 @@ namespace FSM
 {
     namespace CLM
     {
-      namespace FSMSMHeadScanner
+      namespace FSMSMKicker
       {
         namespace State
         {
-            class Low_Scan: public CLState
+            class Wait: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,21 +38,29 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 8): CLTransition(toState) {}
+                    Transition_0(int toState = 4): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                CLTransition *_transitions[1];
+                class Transition_1: public CLTransition
+                {
+                public:
+                    Transition_1(int toState = 10): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                CLTransition *_transitions[2];
 
                 public:
-                    Low_Scan(const char *name = "Low_Scan");
-                    virtual ~Low_Scan();
+                    Wait(const char *name = "Wait");
+                    virtual ~Wait();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 1; }
+                    virtual int numberOfTransitions() const { return 2; }
 
-#                   include "State_Low_Scan_Variables.h"
+#                   include "State_Wait_Variables.h"
             };
         }
       }

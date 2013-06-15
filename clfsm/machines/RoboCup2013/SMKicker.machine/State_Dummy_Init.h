@@ -1,10 +1,10 @@
 //
-// State_Do_Low_Scan.h
+// State_Dummy_Init.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMHeadScanner_State_Do_Low_Scan_h
-#define clfsm_SMHeadScanner_State_Do_Low_Scan_h
+#ifndef clfsm_SMKicker_State_Dummy_Init_h
+#define clfsm_SMKicker_State_Dummy_Init_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,11 +14,11 @@ namespace FSM
 {
     namespace CLM
     {
-      namespace FSMSMHeadScanner
+      namespace FSMSMKicker
       {
         namespace State
         {
-            class Do_Low_Scan: public CLState
+            class Dummy_Init: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,7 +38,7 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 4): CLTransition(toState) {}
+                    Transition_0(int toState = 8): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
@@ -46,13 +46,13 @@ namespace FSM
                 CLTransition *_transitions[1];
 
                 public:
-                    Do_Low_Scan(const char *name = "Do_Low_Scan");
-                    virtual ~Do_Low_Scan();
+                    Dummy_Init(const char *name = "Dummy_Init");
+                    virtual ~Dummy_Init();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
                     virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_Do_Low_Scan_Variables.h"
+#                   include "State_Dummy_Init_Variables.h"
             };
         }
       }

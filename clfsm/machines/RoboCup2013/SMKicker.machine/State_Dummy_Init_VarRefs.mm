@@ -1,9 +1,9 @@
 //
-// State_Do_Low_Scan_VarRefs.mm
+// State_Dummy_Init_VarRefs.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-Do_Low_Scan *_s = static_cast<Do_Low_Scan *>(_state);
+Dummy_Init *_s = static_cast<Dummy_Init *>(_state);
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"

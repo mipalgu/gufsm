@@ -1,61 +1,74 @@
 //
-// State_FInishKick.mm
+// State_FinishKick.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
 #include "SMKicker_Includes.h"
 #include "SMKicker.h"
-#include "State_FInishKick.h"
+#include "State_FinishKick.h"
 
-#include "State_FInishKick_Includes.h"
+#include "State_FinishKick_Includes.h"
 
 using namespace FSM;
 using namespace CLM;
 using namespace FSMSMKicker;
 using namespace State;
 
-FInishKick::FInishKick(const char *name): CLState(name, *new FInishKick::OnEntry, *new FInishKick::OnExit, *new FInishKick::Internal)
+FinishKick::FinishKick(const char *name): CLState(name, *new FinishKick::OnEntry, *new FinishKick::OnExit, *new FinishKick::Internal)
 {
 	_transitions[0] = new Transition_0();
+	_transitions[1] = new Transition_1();
 }
 
-FInishKick::~FInishKick()
+FinishKick::~FinishKick()
 {
 	delete &onEntryAction();
 	delete &onExitAction();
 	delete &internalAction();
 
 	delete _transitions[0];
+	delete _transitions[1];
 }
 
-void FInishKick::OnEntry::perform(CLMachine *_machine, CLState *_state) const
+void FinishKick::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
-#	include "State_FInishKick_VarRefs.mm"
-#	include "State_FInishKick_OnEntry.mm"
+#	include "State_FinishKick_VarRefs.mm"
+#	include "State_FinishKick_OnEntry.mm"
 }
 
-void FInishKick::OnExit::perform(CLMachine *_machine, CLState *_state) const
+void FinishKick::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
-#	include "State_FInishKick_VarRefs.mm"
-#	include "State_FInishKick_OnExit.mm"
+#	include "State_FinishKick_VarRefs.mm"
+#	include "State_FinishKick_OnExit.mm"
 }
 
-void FInishKick::Internal::perform(CLMachine *_machine, CLState *_state) const
+void FinishKick::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
-#	include "State_FInishKick_VarRefs.mm"
-#	include "State_FInishKick_Internal.mm"
+#	include "State_FinishKick_VarRefs.mm"
+#	include "State_FinishKick_Internal.mm"
 }
 
-bool FInishKick::Transition_0::check(CLMachine *_machine, CLState *_state) const
+bool FinishKick::Transition_0::check(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
-#	include "State_FInishKick_VarRefs.mm"
+#	include "State_FinishKick_VarRefs.mm"
 
 	return
 	(
-#		include "State_FInishKick_Transition_0.expr"
+#		include "State_FinishKick_Transition_0.expr"
+	);
+}
+
+bool FinishKick::Transition_1::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "SMKicker_VarRefs.mm"
+#	include "State_FinishKick_VarRefs.mm"
+
+	return
+	(
+#		include "State_FinishKick_Transition_1.expr"
 	);
 }
