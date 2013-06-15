@@ -2,4 +2,4 @@
 fprintf(stderr, "State: %s\n", state_name());
 #endif
 
-walk_post(WALK_ControlStatus(WALK_Run, fmax(5*ball.distance()/limiter, 30), 0, 0, 100));
+walk_post(WALK_ControlStatus(WALK_Run, (float)fmax((float)5*(float)ball.distance()/(float)limiter, 30.0f), 0, 0, 100));

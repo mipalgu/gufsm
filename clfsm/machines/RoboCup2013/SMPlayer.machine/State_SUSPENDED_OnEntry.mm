@@ -12,7 +12,6 @@ fprintf(stderr, "SMPlayer State: %s\n", state_name());
 WALK_Status_t walk_status;
 if(walk_status.get().controlStatus() != WALK_Disconnected)
 {
-	WALK_Command_t walk_post;
 	walk_post(WALK_Stop);
 }
 HAL_HeadTarget_t head_ptr;
