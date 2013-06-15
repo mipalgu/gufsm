@@ -9,9 +9,9 @@ SMHeadScannerGoal *_m = static_cast<SMHeadScannerGoal *>(_machine);
 #pragma clang diagnostic ignored "-Wunused-variable"
 #pragma clang diagnostic ignored "-Wshadow"
 
-int	&transition_time = _m->transition_time;	///< 
-int	&time = _m->time;	///< 
 HAL_HeadTarget	&head = _m->head;	///< 
 HAL_HeadTarget_t	&head_ptr = _m->head_ptr;	///< 
+int	&time = _m->time;	///< 
+int	&transition_time = _m->transition_time;	///< 
 
 #pragma clang diagnostic pop

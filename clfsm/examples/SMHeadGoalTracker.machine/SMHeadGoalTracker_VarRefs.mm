@@ -25,5 +25,9 @@ FilteredVisionObject	&crossBar = _m->crossBar;	///<
 int	&delay = _m->delay;	///< 
 Vision_Objects_t	&theObjectp = _m->theObjectp;	///< 
 VisionObjects	&theObjects = _m->theObjects;	///< 
+int	&vert_fov = _m->vert_fov;	///< 
+int	&horiz_fov = _m->horiz_fov;	///< 
+int	&guvision_height = _m->guvision_height;	///< 
+int	&guvision_width = _m->guvision_width;	///< 
 
 #pragma clang diagnostic pop
