@@ -1,1 +1,1 @@
-is_suspended("SMKicker")
+is_suspended("SMKicker") && after(1)

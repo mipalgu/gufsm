@@ -4,5 +4,3 @@ fprintf(stderr, "State: %s\n", state_name());
 
 
 restart("SMKicker");
-QSay_t say;
-say("Player says kick");
