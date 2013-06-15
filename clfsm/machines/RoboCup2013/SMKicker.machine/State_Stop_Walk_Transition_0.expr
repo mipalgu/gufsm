@@ -1,1 +1,1 @@
-walk_post.get().controlStatus() == WALK_Stop
+walk_post.get().controlStatus() == WALK_Stop && after(2)

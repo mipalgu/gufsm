@@ -1,16 +1,13 @@
 //
-// SMPlayer_VarRefs.mm
+// State_Walk_Halt_VarRefs.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-SMPlayer *_m = static_cast<SMPlayer *>(_machine);
+Walk_Halt *_s = static_cast<Walk_Halt *>(_state);
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"
 #pragma clang diagnostic ignored "-Wshadow"
 
-FilteredBallSighting_t	&sightings_ptr = _m->sightings_ptr;	///< 
-FilteredVisionObject	&ball = _m->ball;	///< 
-WALK_Command_t	&walk_post = _m->walk_post;	///< 
 
 #pragma clang diagnostic pop
