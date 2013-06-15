@@ -1,16 +1,8 @@
-head.Stop();
-head_ptr.set(head);
-
 theObjects = theObjectp.get();
 WbGoalPostInfo* lp = theObjects.LeftGoalPost();
 WbGoalPostInfo* rp = theObjects.RightGoalPost();
 
+visionSeesLP = (NULL != lp);
+visionSeesRP = (NULL != rp);
 
-if(NULL != lp)
-	visionSeesLP = true;
-else visionSeesLP = false;
-if(NULL != rp)
-	visionSeesRP = true;
-else visionSeesRP = false;
-
-std::cout << visionSeesLP << "-" << visionSeesRP << std::endl;
+std::cout << "LP: " << visionSeesLP << "- RP: " << visionSeesRP << std::endl;
