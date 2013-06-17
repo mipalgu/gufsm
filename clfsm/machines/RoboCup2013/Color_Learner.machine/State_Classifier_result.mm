@@ -16,6 +16,7 @@ using namespace State;
 
 Classifier_result::Classifier_result(const char *name): CLState(name, *new Classifier_result::OnEntry, *new Classifier_result::OnExit, *new Classifier_result::Internal)
 {
+	_transitions[0] = new Transition_0();
 }
 
 Classifier_result::~Classifier_result()
@@ -24,6 +25,7 @@ Classifier_result::~Classifier_result()
 	delete &onExitAction();
 	delete &internalAction();
 
+	delete _transitions[0];
 }
 
 void Classifier_result::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -45,4 +47,15 @@ void Classifier_result::Internal::perform(CLMachine *_machine, CLState *_state) 
 #	include "Color_Learner_VarRefs.mm"
 #	include "State_Classifier_result_VarRefs.mm"
 #	include "State_Classifier_result_Internal.mm"
+}
+
+bool Classifier_result::Transition_0::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "Color_Learner_VarRefs.mm"
+#	include "State_Classifier_result_VarRefs.mm"
+
+	return
+	(
+#		include "State_Classifier_result_Transition_0.expr"
+	);
 }

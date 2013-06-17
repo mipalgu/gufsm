@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include "CLMacros.h"
 #include "Vision_Control.h"
+#include "WALK_ControlStatus.h"
 #include "MOTION_SDK_Interface.h"
 #include "HAL_HeadTarget.h"
 #include "SENSORS_LedsSensors.h"

@@ -22,5 +22,6 @@ Vision_Status_t	&vision_status = _m->vision_status;	///<
 int	&control = _m->control;	///< 
 std::string	&filename_dlc = _m->filename_dlc;	///< 
 QSay_t	&say = _m->say;	///< 
+WALK_Command_t	&walk_post = _m->walk_post;	///< 
 
 #pragma clang diagnostic pop

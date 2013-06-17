@@ -15,4 +15,5 @@ HAL_HeadTarget_t	head_ptr;	///<
 Vision_Status_t	vision_status;	///< 
 int	control;	///< 
 std::string	filename_dlc;	///< 
-QSay_t	say;	///<
+QSay_t	say;	///< 
+WALK_Command_t	walk_post;	///<
