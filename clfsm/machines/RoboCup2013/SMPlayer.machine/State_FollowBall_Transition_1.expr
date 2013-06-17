@@ -1,1 +1,1 @@
-ball.distance()<9
+ball.distance()<9 && ball.isVisible()

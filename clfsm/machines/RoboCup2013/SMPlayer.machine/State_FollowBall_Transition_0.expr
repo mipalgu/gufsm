@@ -1,1 +1,1 @@
-!ball.isVisible()
+!ball.isVisible() && after_ms(20)

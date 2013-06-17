@@ -1,10 +1,10 @@
 //
-// State_Main.h
+// State_Decide.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMWalkScanner_State_Main_h
-#define clfsm_SMWalkScanner_State_Main_h
+#ifndef clfsm_SMWalkScanner_State_Decide_h
+#define clfsm_SMWalkScanner_State_Decide_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class Main: public CLState
+            class Decide: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,21 +38,29 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 7): CLTransition(toState) {}
+                    Transition_0(int toState = 2): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                CLTransition *_transitions[1];
+                class Transition_1: public CLTransition
+                {
+                public:
+                    Transition_1(int toState = 3): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                CLTransition *_transitions[2];
 
                 public:
-                    Main(const char *name = "Main");
-                    virtual ~Main();
+                    Decide(const char *name = "Decide");
+                    virtual ~Decide();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 1; }
+                    virtual int numberOfTransitions() const { return 2; }
 
-#                   include "State_Main_Variables.h"
+#                   include "State_Decide_Variables.h"
             };
         }
       }
