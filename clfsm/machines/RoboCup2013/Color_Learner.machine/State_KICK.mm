@@ -16,7 +16,6 @@ using namespace State;
 
 KICK::KICK(const char *name): CLState(name, *new KICK::OnEntry, *new KICK::OnExit, *new KICK::Internal)
 {
-	_transitions[0] = new Transition_0();
 }
 
 KICK::~KICK()
@@ -25,7 +24,6 @@ KICK::~KICK()
 	delete &onExitAction();
 	delete &internalAction();
 
-	delete _transitions[0];
 }
 
 void KICK::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -47,15 +45,4 @@ void KICK::Internal::perform(CLMachine *_machine, CLState *_state) const
 #	include "Color_Learner_VarRefs.mm"
 #	include "State_KICK_VarRefs.mm"
 #	include "State_KICK_Internal.mm"
-}
-
-bool KICK::Transition_0::check(CLMachine *_machine, CLState *_state) const
-{
-#	include "Color_Learner_VarRefs.mm"
-#	include "State_KICK_VarRefs.mm"
-
-	return
-	(
-#		include "State_KICK_Transition_0.expr"
-	);
 }

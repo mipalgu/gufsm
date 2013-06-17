@@ -1,7 +1,7 @@
 say("Starting color learner");
 
 //suspend("Color_Learner_Kick");
-suspend_all();
+//suspend_all();
 
 leds = leds_t.get();	
 leds.LEDsGroupChange(Ears, Off);		

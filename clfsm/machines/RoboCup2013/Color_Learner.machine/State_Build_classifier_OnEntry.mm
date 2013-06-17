@@ -4,11 +4,6 @@ say("Building the classifier");
 //system("java -classpath ~/OpenChallenge/java/ HelloWorld");
 
 
-if(file_exists((char *) filename_dlc.c_str()))
-{
-	remove( (char *) filename_dlc.c_str() );
-}
-
 std::string java_comp = "javac -classpath ";
 java_comp += getenv("HOME");
 java_comp += "/data/OpenChallenge/weka.jar ";
