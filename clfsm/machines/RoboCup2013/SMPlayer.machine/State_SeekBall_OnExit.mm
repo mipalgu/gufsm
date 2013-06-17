@@ -1,2 +1,1 @@
-suspend("SMHeadScanner");
-suspend("SMWalkScanner");
+suspend("SMSeeker");

@@ -1,8 +1,8 @@
 ball = sightings_ptr.get();
 
 
-restart("SMSeeker");
-
+restart("SMHeadScanner");
+//restart("SMWalkScanner");
 
 QSay_t say;
 say("Seek");

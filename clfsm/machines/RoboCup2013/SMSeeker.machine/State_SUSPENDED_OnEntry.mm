@@ -1,7 +1,6 @@
-suspend("SMSeeker");
-suspend("SMBallFollower");
-suspend("SMHeadBallTracker");
-suspend("SMKicker");
+suspend("SMHeadScanner");
+suspend("SMWalkScanner");
+
 
 WALK_Status_t walk_status;
 if(walk_status.get().controlStatus() != WALK_Disconnected)
