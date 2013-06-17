@@ -1,3 +1,7 @@
+#include <stdlib.h>
+#include <time.h>
+
+
 #include <typeClassDefs/Vision_Control.h>
 #include <typeClassDefs/WALK_ControlStatus.h>
 #include <gu_util.h>

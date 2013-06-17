@@ -10,6 +10,3 @@
 
 
 using namespace guWhiteboard;
-
-
-#define DEBUG

@@ -16,12 +16,12 @@ namespace FSM
     {
         class SMWalkScanner: public CLMachine
         {
-            CLState *_states[13];
+            CLState *_states[9];
         public:
             SMWalkScanner(int mid  = 0, const char *name = "SMWalkScanner");
             virtual ~SMWalkScanner();
             virtual CLState * const * states() const { return _states; }
-            virtual int numberOfStates() const { return 13; }
+            virtual int numberOfStates() const { return 9; }
 #           include "SMWalkScanner_Variables.h"
         };
     }
