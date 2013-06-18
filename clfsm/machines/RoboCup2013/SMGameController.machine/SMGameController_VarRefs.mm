@@ -29,5 +29,8 @@ SENSORS_LedsSensors_t	&leds = _m->leds;	///<
 MOTION_SDK_Commands_t	&motion_ptr = _m->motion_ptr;	///< 
 MOTION_SDK_Status_t	&motion_status = _m->motion_status;	///< 
 WALK_Command_t	&walk_post = _m->walk_post;	///< 
+WALK_Status_t	&walk_status = _m->walk_status;	///< 
+WALK_ControlStatus	&controlstatus = _m->controlstatus;	///< 
+float	&odo_forward = _m->odo_forward;	///< 
 
 #pragma clang diagnostic pop
