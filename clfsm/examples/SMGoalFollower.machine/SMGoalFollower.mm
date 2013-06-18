@@ -12,6 +12,7 @@
 #include "State_Calc_BallAngle.h"
 #include "State_Decide_Long.h"
 #include "State_SUSPENDED.h"
+#include "State_Goal_Approach.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -32,6 +33,7 @@ SMGoalFollower::SMGoalFollower(int mid, const char *name): CLMachine(mid, name)
 	_states[3] = new FSMSMGoalFollower::State::Calc_BallAngle;
 	_states[4] = new FSMSMGoalFollower::State::Decide_Long;
 	_states[5] = new FSMSMGoalFollower::State::SUSPENDED;
+	_states[6] = new FSMSMGoalFollower::State::Goal_Approach;
 
 	setSuspendState(_states[5]);            // set suspend state
 	setInitialState(_states[0]);            // set initial state
@@ -45,4 +47,5 @@ SMGoalFollower::~SMGoalFollower()
 	delete _states[3];
 	delete _states[4];
 	delete _states[5];
+	delete _states[6];
 }

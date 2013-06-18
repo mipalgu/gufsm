@@ -5,11 +5,9 @@
 //
 HAL_HeadTarget	head;	///< 
 HAL_HeadTarget_t	head_ptr;	///< 
-int	time;	///< 
 bool	visionSeesLP;	///< 
 bool	visionSeesRP;	///< 
 FilteredGoalSighting_t	sightings_ptr;	///< 
-int	localization_frameCounter;	///< 
 SENSORS_TorsoJointSensors	body_sensors;	///< 
 SENSORS_TorsoJointSensors_t	body_sensors_ptr;	///< 
 FilteredVisionObject	rightPost;	///< 

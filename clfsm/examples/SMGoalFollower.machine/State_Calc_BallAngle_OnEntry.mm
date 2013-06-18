@@ -1,16 +1,8 @@
-#ifdef DEBUG
-fprintf(stderr, "State: %s\n", state_name());
-#endif
-
 body_sensors = body_sensors_ptr.get(); //need the head yaw
-
-// k4VGA 1280 x 960
-int guvision_width = 1280;
-int guvision_height = 960;
-int horiz_fov = 61;
-int vert_fov = 48;
-	
 
 goalAngle = (float)(body_sensors.HeadYaw());
 
-fprintf(stderr, "Goal angle with yaw %f\n", goalAngle);
+std::cout << "GOAL ANGLE WITH YAW: " << goalAngle << std::endl;
+
+rightPost = sightings_ptr.get().get_object(FVOGoalPostRight);
+leftPost = sightings_ptr.get().get_object(FVOGoalPostLeft);
