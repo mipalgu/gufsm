@@ -6,7 +6,7 @@ leds.set(ledValues);
 
 cerr << "Penalised " << state_name() << endl;
 		
-say("Paynalised");
+say("Pennalised");
 
 penalisedThroughChestButton = nao_state.chest_pressed() > 0;
 
