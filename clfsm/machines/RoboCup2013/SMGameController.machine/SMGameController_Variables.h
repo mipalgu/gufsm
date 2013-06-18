@@ -25,4 +25,5 @@ MOTION_SDK_Status_t	motion_status;	///<
 WALK_Command_t	walk_post;	///< 
 WALK_Status_t	walk_status;	///< 
 WALK_ControlStatus	controlstatus;	///< 
-float	odo_forward;	///<
+float	odo_forward;	///< 
+float	odo_start;	///<

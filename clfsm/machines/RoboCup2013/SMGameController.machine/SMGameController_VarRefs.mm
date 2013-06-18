@@ -32,5 +32,6 @@ WALK_Command_t	&walk_post = _m->walk_post;	///<
 WALK_Status_t	&walk_status = _m->walk_status;	///< 
 WALK_ControlStatus	&controlstatus = _m->controlstatus;	///< 
 float	&odo_forward = _m->odo_forward;	///< 
+float	&odo_start = _m->odo_start;	///< 
 
 #pragma clang diagnostic pop
