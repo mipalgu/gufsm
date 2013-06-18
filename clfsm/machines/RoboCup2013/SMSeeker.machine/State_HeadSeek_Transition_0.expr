@@ -1,1 +1,1 @@
-after(5)
+is_suspended("SMHeadScanner") && after(1)
