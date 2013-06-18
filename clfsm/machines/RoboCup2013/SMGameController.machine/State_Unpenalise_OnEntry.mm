@@ -7,3 +7,10 @@ walk_post(WALK_Ready); protected_msleep(15); walk_post(WALK_ControlStatus(WALK_R
 
 controlstatus = walk_status();
 odo_forward = controlstatus.odometry().forward;
+odo_start = odo_forward;
+
+SENSORS_LedsSensors ledValues = leds.get();
+ledValues.LEDsGroupChange(Chest, Green);
+ledValues.LEDsGroupChange(LFoot, ourTeamColour == TeamBlue ? Blue : Red);
+ledValues.LEDsGroupChange(RFoot, kickoffTeam == TeamBlue ? Blue : Red);
+leds.set(ledValues);
