@@ -1,8 +1,3 @@
-#ifdef DEBUG
-fprintf(stderr, "State: %s\n", state_name());
-#endif
-
-time = 100000;
 delay = 200000;
 
 guvision_width = 1280;
