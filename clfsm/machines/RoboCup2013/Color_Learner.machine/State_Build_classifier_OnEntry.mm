@@ -3,6 +3,9 @@ say("Building the classifier");
 //system("java -classpath ~/OpenChallenge/java/weka.jar:. ~/OpenChallenge/java/ColorLearner");
 //system("java -classpath ~/OpenChallenge/java/ HelloWorld");
 
+motion.set_head_stiffness(false);
+motion.set_head_stiffness_mask(true);
+motion_ptr.set(motion);
 
 std::string java_comp = "javac -classpath ";
 java_comp += getenv("HOME");

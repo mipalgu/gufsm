@@ -1,10 +1,10 @@
 //
-// State_Second_shot.h
+// State_First_empty.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_Color_Learner_State_Second_shot_h
-#define clfsm_Color_Learner_State_Second_shot_h
+#ifndef clfsm_Color_Learner_State_First_empty_h
+#define clfsm_Color_Learner_State_First_empty_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class Second_shot: public CLState
+            class First_empty: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,37 +38,21 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 6): CLTransition(toState) {}
+                    Transition_0(int toState = 2): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                class Transition_1: public CLTransition
-                {
-                public:
-                    Transition_1(int toState = 8): CLTransition(toState) {}
-
-                    virtual bool check(CLMachine *, CLState *) const;
-                };
-
-                class Transition_2: public CLTransition
-                {
-                public:
-                    Transition_2(int toState = 12): CLTransition(toState) {}
-
-                    virtual bool check(CLMachine *, CLState *) const;
-                };
-
-                CLTransition *_transitions[3];
+                CLTransition *_transitions[1];
 
                 public:
-                    Second_shot(const char *name = "Second_shot");
-                    virtual ~Second_shot();
+                    First_empty(const char *name = "First_empty");
+                    virtual ~First_empty();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 3; }
+                    virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_Second_shot_Variables.h"
+#                   include "State_First_empty_Variables.h"
             };
         }
       }

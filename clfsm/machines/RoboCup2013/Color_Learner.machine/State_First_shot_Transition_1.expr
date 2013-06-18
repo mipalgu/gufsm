@@ -1,1 +1,1 @@
-vision_status.get().openChallengeStep()==2 && control == 4
+vision_status.get().openChallengeStep()==2 && false

@@ -1,1 +1,1 @@
-after_ms(2020)
+after_ms(30) && head_ptr.get().head_stopped()

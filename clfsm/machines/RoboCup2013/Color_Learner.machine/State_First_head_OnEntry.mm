@@ -1,7 +1,4 @@
-fprintf(stderr, "Comenso\n");
-
-fflush(stderr);
-sleep(1);
+say("First shot");
 
 head.GoToWithTime(0,PITCH_LIMIT_POS, 1000);
 head_ptr.set(head);
