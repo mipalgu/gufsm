@@ -64,6 +64,7 @@
 #include <signal.h>
 #include <execinfo.h>
 #include <libgen.h>
+#include <sys/stat.h>
 
 #include "gu_util.h"
 #include "FSMState.h"
@@ -271,7 +272,22 @@ int main(int argc, char * const argv[])
         argc -= optind;
         argv += optind;
 
-        while (argc--) machines.push_back(*argv++);
+        while (argc--)
+        {
+                struct stat s;
+                string machine(*argv++);
+                if (stat(machine.c_str(), &s) < 0)
+                {
+                        string machine_with_extension = machine + ".machine";
+                        if (stat(machine_with_extension.c_str(), &s) < 0)
+                        {
+                                perror(machine.c_str());
+                                continue;
+                        }
+                        machine = machine_with_extension;
+                }
+                machines.push_back(machine);
+        }
 
         if (!compiler_args.size()) compiler_args = MachineWrapper::default_compiler_args();
         if (!linker_args.size())   linker_args   = MachineWrapper::default_linker_args();
