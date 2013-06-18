@@ -18,6 +18,7 @@ First_shot::First_shot(const char *name): CLState(name, *new First_shot::OnEntry
 {
 	_transitions[0] = new Transition_0();
 	_transitions[1] = new Transition_1();
+	_transitions[2] = new Transition_2();
 }
 
 First_shot::~First_shot()
@@ -28,6 +29,7 @@ First_shot::~First_shot()
 
 	delete _transitions[0];
 	delete _transitions[1];
+	delete _transitions[2];
 }
 
 void First_shot::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -70,5 +72,16 @@ bool First_shot::Transition_1::check(CLMachine *_machine, CLState *_state) const
 	return
 	(
 #		include "State_First_shot_Transition_1.expr"
+	);
+}
+
+bool First_shot::Transition_2::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "Color_Learner_VarRefs.mm"
+#	include "State_First_shot_VarRefs.mm"
+
+	return
+	(
+#		include "State_First_shot_Transition_2.expr"
 	);
 }

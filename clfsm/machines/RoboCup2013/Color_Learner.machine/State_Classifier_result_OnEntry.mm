@@ -1,5 +1,6 @@
 say("Colors learnt OH YEAH");
 
+vision = VisionControlStatus();
 vision.set_activatePipeline(Soccer);
 vision.set_pipelineRunning(true);
 vision.set_streamingSource(Classified);

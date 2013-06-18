@@ -9,12 +9,11 @@ motion_ptr.set(motion);
 
 vision.set_selectedCamera(Top);
 vision.set_activatePipeline(OpenChallenge);
-vision.set_pipelineRunning(true);
 vision.set_streamingSource(Normal);
 vision.set_openChallengeStep(0);
 vision.set_resolution(VGA);
+vision.set_pipelineRunning(false);
+//vision.set_pipelineRunning(true);
 vision_ptr.set(vision);
 
 vision = VisionControlStatus();
-
-control = 1;

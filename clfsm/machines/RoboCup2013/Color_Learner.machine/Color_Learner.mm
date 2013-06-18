@@ -16,9 +16,9 @@
 #include "State_Classifier_result.h"
 #include "State_Third_head.h"
 #include "State_Third_shot.h"
-#include "State_KICK.h"
 #include "State_SUSPENDED.h"
-#include "State_PREPARE_TO_KICK.h"
+#include "State_First_empty.h"
+#include "State_Second_empty.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -43,11 +43,11 @@ Color_Learner::Color_Learner(int mid, const char *name): CLMachine(mid, name)
 	_states[7] = new FSMColor_Learner::State::Classifier_result;
 	_states[8] = new FSMColor_Learner::State::Third_head;
 	_states[9] = new FSMColor_Learner::State::Third_shot;
-	_states[10] = new FSMColor_Learner::State::KICK;
-	_states[11] = new FSMColor_Learner::State::SUSPENDED;
-	_states[12] = new FSMColor_Learner::State::PREPARE_TO_KICK;
+	_states[10] = new FSMColor_Learner::State::SUSPENDED;
+	_states[11] = new FSMColor_Learner::State::First_empty;
+	_states[12] = new FSMColor_Learner::State::Second_empty;
 
-	setSuspendState(_states[11]);            // set suspend state
+	setSuspendState(_states[10]);            // set suspend state
 	setInitialState(_states[0]);            // set initial state
 }
 
