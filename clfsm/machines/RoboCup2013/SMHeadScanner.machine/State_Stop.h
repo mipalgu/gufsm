@@ -3,8 +3,8 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMWalkScanner_State_Stop_h
-#define clfsm_SMWalkScanner_State_Stop_h
+#ifndef clfsm_SMHeadScanner_State_Stop_h
+#define clfsm_SMHeadScanner_State_Stop_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,7 +14,7 @@ namespace FSM
 {
     namespace CLM
     {
-      namespace FSMSMWalkScanner
+      namespace FSMSMHeadScanner
       {
         namespace State
         {

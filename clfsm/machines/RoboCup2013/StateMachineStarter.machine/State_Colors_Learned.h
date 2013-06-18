@@ -1,10 +1,10 @@
 //
-// State_Do_High_Scan.h
+// State_Colors_Learned.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMHeadScanner_State_Do_High_Scan_h
-#define clfsm_SMHeadScanner_State_Do_High_Scan_h
+#ifndef clfsm_StateMachineStarter_State_Colors_Learned_h
+#define clfsm_StateMachineStarter_State_Colors_Learned_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,11 +14,11 @@ namespace FSM
 {
     namespace CLM
     {
-      namespace FSMSMHeadScanner
+      namespace FSMStateMachineStarter
       {
         namespace State
         {
-            class Do_High_Scan: public CLState
+            class Colors_Learned: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,21 +38,29 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 9): CLTransition(toState) {}
+                    Transition_0(int toState = 6): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                CLTransition *_transitions[1];
+                class Transition_1: public CLTransition
+                {
+                public:
+                    Transition_1(int toState = 2): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                CLTransition *_transitions[2];
 
                 public:
-                    Do_High_Scan(const char *name = "Do_High_Scan");
-                    virtual ~Do_High_Scan();
+                    Colors_Learned(const char *name = "Colors_Learned");
+                    virtual ~Colors_Learned();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 1; }
+                    virtual int numberOfTransitions() const { return 2; }
 
-#                   include "State_Do_High_Scan_Variables.h"
+#                   include "State_Colors_Learned_Variables.h"
             };
         }
       }
