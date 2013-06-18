@@ -9,3 +9,5 @@ min_short_distance_angle = 10;
 boundaryCloseFar = 60; //cm
 
 limiter = 4.0f;
+
+large_turn = 50;

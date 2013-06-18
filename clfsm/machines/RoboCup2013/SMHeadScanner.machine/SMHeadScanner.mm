@@ -16,6 +16,7 @@
 #include "State_Do_Mid_Scan.h"
 #include "State_Do_High_Scan.h"
 #include "State_Stop.h"
+#include "State_SuspendSelf.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -40,6 +41,7 @@ SMHeadScanner::SMHeadScanner(int mid, const char *name): CLMachine(mid, name)
 	_states[7] = new FSMSMHeadScanner::State::Do_Mid_Scan;
 	_states[8] = new FSMSMHeadScanner::State::Do_High_Scan;
 	_states[9] = new FSMSMHeadScanner::State::Stop;
+	_states[10] = new FSMSMHeadScanner::State::SuspendSelf;
 
 	setSuspendState(_states[2]);            // set suspend state
 	setInitialState(_states[0]);            // set initial state
@@ -57,4 +59,5 @@ SMHeadScanner::~SMHeadScanner()
 	delete _states[7];
 	delete _states[8];
 	delete _states[9];
+	delete _states[10];
 }
