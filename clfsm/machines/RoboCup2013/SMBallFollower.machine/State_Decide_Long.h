@@ -46,27 +46,19 @@ namespace FSM
                 class Transition_1: public CLTransition
                 {
                 public:
-                    Transition_1(int toState = 6): CLTransition(toState) {}
+                    Transition_1(int toState = 5): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                class Transition_2: public CLTransition
-                {
-                public:
-                    Transition_2(int toState = 5): CLTransition(toState) {}
-
-                    virtual bool check(CLMachine *, CLState *) const;
-                };
-
-                CLTransition *_transitions[3];
+                CLTransition *_transitions[2];
 
                 public:
                     Decide_Long(const char *name = "Decide_Long");
                     virtual ~Decide_Long();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 3; }
+                    virtual int numberOfTransitions() const { return 2; }
 
 #                   include "State_Decide_Long_Variables.h"
             };

@@ -1,6 +1,8 @@
-#ifdef DEBUG
-fprintf(stderr, "State: %s\n", state_name());
-#endif
+QSay_t say;
+char str[4];
+str[0] = (char)ball.distance();
+str[1] = (char)NULL;
 
+say(std::string(str));
 
 restart("SMKicker");

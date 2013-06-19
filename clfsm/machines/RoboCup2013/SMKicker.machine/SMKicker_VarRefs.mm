@@ -14,5 +14,8 @@ WALK_Command_t	&walk_post = _m->walk_post;	///<
 MOTION_SDK_Status_t	&motion_status = _m->motion_status;	///< 
 FilteredBallSighting_t	&ball_ptr = _m->ball_ptr;	///< 
 FilteredVisionObject	&ball = _m->ball;	///< 
+TopParticles_t	&particles_ptr = _m->particles_ptr;	///< 
+TopParticles	&particles = _m->particles;	///< 
+bool	&facingMySide = _m->facingMySide;	///< 
 
 #pragma clang diagnostic pop

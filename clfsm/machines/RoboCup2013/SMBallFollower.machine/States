@@ -3,10 +3,8 @@ Walk_Forward
 Stop
 Calc_BallAngle
 Decide_Long
-Long_Left
-Long_Right
+Long_Turn
 Decide_Short
-Turn_Left
 Short_Straight
-Turn_Right
+Turn
 SUSPENDED

@@ -17,6 +17,11 @@
 #include "State_Walk_Disconnect.h"
 #include "State_Give_Up.h"
 #include "State_FinishKick.h"
+#include "State_PassRight.h"
+#include "State_PassLeft.h"
+#include "State_KickGoal.h"
+#include "State_AvoidGoal.h"
+#include "State_DecideHeading.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -42,6 +47,11 @@ SMKicker::SMKicker(int mid, const char *name): CLMachine(mid, name)
 	_states[8] = new FSMSMKicker::State::Walk_Disconnect;
 	_states[9] = new FSMSMKicker::State::Give_Up;
 	_states[10] = new FSMSMKicker::State::FinishKick;
+	_states[11] = new FSMSMKicker::State::PassRight;
+	_states[12] = new FSMSMKicker::State::PassLeft;
+	_states[13] = new FSMSMKicker::State::KickGoal;
+	_states[14] = new FSMSMKicker::State::AvoidGoal;
+	_states[15] = new FSMSMKicker::State::DecideHeading;
 
 	setInitialState(_states[0]);            // set initial state
 }
@@ -59,4 +69,9 @@ SMKicker::~SMKicker()
 	delete _states[8];
 	delete _states[9];
 	delete _states[10];
+	delete _states[11];
+	delete _states[12];
+	delete _states[13];
+	delete _states[14];
+	delete _states[15];
 }
