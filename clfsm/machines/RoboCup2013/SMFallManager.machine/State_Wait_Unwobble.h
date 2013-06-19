@@ -1,10 +1,10 @@
 //
-// State_WalkEngineStance.h
+// State_Wait_Unwobble.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMFallManager_State_WalkEngineStance_h
-#define clfsm_SMFallManager_State_WalkEngineStance_h
+#ifndef clfsm_SMFallManager_State_Wait_Unwobble_h
+#define clfsm_SMFallManager_State_Wait_Unwobble_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class WalkEngineStance: public CLState
+            class Wait_Unwobble: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,7 +38,7 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 6): CLTransition(toState) {}
+                    Transition_0(int toState = 3): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
@@ -46,13 +46,13 @@ namespace FSM
                 CLTransition *_transitions[1];
 
                 public:
-                    WalkEngineStance(const char *name = "WalkEngineStance");
-                    virtual ~WalkEngineStance();
+                    Wait_Unwobble(const char *name = "Wait_Unwobble");
+                    virtual ~Wait_Unwobble();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
                     virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_WalkEngineStance_Variables.h"
+#                   include "State_Wait_Unwobble_Variables.h"
             };
         }
       }

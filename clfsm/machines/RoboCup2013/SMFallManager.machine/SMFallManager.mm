@@ -12,6 +12,7 @@
 #include "State_SUSPENDED.h"
 #include "State_CheckStance.h"
 #include "State_WalkEngineStance.h"
+#include "State_Wait_Unwobble.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -32,6 +33,7 @@ SMFallManager::SMFallManager(int mid, const char *name): CLMachine(mid, name)
 	_states[3] = new FSMSMFallManager::State::SUSPENDED;
 	_states[4] = new FSMSMFallManager::State::CheckStance;
 	_states[5] = new FSMSMFallManager::State::WalkEngineStance;
+	_states[6] = new FSMSMFallManager::State::Wait_Unwobble;
 
 	setSuspendState(_states[3]);            // set suspend state
 	setInitialState(_states[0]);            // set initial state
@@ -45,4 +47,5 @@ SMFallManager::~SMFallManager()
 	delete _states[3];
 	delete _states[4];
 	delete _states[5];
+	delete _states[6];
 }
