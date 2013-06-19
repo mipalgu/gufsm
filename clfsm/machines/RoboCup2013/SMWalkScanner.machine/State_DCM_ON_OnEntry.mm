@@ -1,1 +1,1 @@
-walk_post(WALK_Ready);		// engage DCM
+//walk_post(WALK_Ready);		// engage DCM
