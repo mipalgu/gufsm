@@ -1,6 +1,3 @@
-#ifdef DEBUG
-fprintf(stderr, "Suspend SMHeadScanner: %s\n", state_name());
-#endif
-
+head = HAL_HeadTarget();
 head.Stop();
 head_ptr.set(head);
