@@ -35,16 +35,38 @@ namespace FSM
                     virtual void perform(CLMachine *, CLState *) const;
                 };
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wzero-length-array"
-                CLTransition *_transitions[0];
+                class Transition_0: public CLTransition
+                {
+                public:
+                    Transition_0(int toState = 5): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                class Transition_1: public CLTransition
+                {
+                public:
+                    Transition_1(int toState = 6): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                class Transition_2: public CLTransition
+                {
+                public:
+                    Transition_2(int toState = 1): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                CLTransition *_transitions[3];
 
                 public:
                     TryToSave(const char *name = "TryToSave");
                     virtual ~TryToSave();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 0; }
+                    virtual int numberOfTransitions() const { return 3; }
 
 #                   include "State_TryToSave_Variables.h"
             };
@@ -54,4 +76,3 @@ namespace FSM
 }
 
 #endif
-#pragma clang diagnostic pop
