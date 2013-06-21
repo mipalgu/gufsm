@@ -16,12 +16,12 @@ namespace FSM
     {
         class SMReady: public CLMachine
         {
-            CLState *_states[10];
+            CLState *_states[11];
         public:
             SMReady(int mid  = 0, const char *name = "SMReady");
             virtual ~SMReady();
             virtual CLState * const * states() const { return _states; }
-            virtual int numberOfStates() const { return 10; }
+            virtual int numberOfStates() const { return 11; }
 #           include "SMReady_Variables.h"
         };
     }

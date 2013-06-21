@@ -16,6 +16,7 @@ using namespace State;
 
 StopTurning::StopTurning(const char *name): CLState(name, *new StopTurning::OnEntry, *new StopTurning::OnExit, *new StopTurning::Internal)
 {
+	_transitions[0] = new Transition_0();
 }
 
 StopTurning::~StopTurning()
@@ -24,6 +25,7 @@ StopTurning::~StopTurning()
 	delete &onExitAction();
 	delete &internalAction();
 
+	delete _transitions[0];
 }
 
 void StopTurning::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -45,4 +47,15 @@ void StopTurning::Internal::perform(CLMachine *_machine, CLState *_state) const
 #	include "SMReady_VarRefs.mm"
 #	include "State_StopTurning_VarRefs.mm"
 #	include "State_StopTurning_Internal.mm"
+}
+
+bool StopTurning::Transition_0::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "SMReady_VarRefs.mm"
+#	include "State_StopTurning_VarRefs.mm"
+
+	return
+	(
+#		include "State_StopTurning_Transition_0.expr"
+	);
 }

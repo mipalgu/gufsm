@@ -16,6 +16,7 @@
 #include "State_StartSpinGoalie.h"
 #include "State_StopTurning.h"
 #include "State_StartSpinPlayers.h"
+#include "State_GoToLine.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -40,6 +41,7 @@ SMReady::SMReady(int mid, const char *name): CLMachine(mid, name)
 	_states[7] = new FSMSMReady::State::StartSpinGoalie;
 	_states[8] = new FSMSMReady::State::StopTurning;
 	_states[9] = new FSMSMReady::State::StartSpinPlayers;
+	_states[10] = new FSMSMReady::State::GoToLine;
 
 	setSuspendState(_states[1]);            // set suspend state
 	setInitialState(_states[0]);            // set initial state
@@ -57,4 +59,5 @@ SMReady::~SMReady()
 	delete _states[7];
 	delete _states[8];
 	delete _states[9];
+	delete _states[10];
 }
