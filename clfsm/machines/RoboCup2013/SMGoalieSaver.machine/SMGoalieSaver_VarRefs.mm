@@ -13,8 +13,9 @@ vec2	&previousPos = _m->previousPos;	///<
 std::vector<vec2>	&ballDifferences = _m->ballDifferences;	///< The last x differences we have found
 unsigned long	&historySize = _m->historySize;	///< 
 unsigned long	&headIndex = _m->headIndex;	///< Index of the 'head' of the ballDifferences array.
-int	&dd = _m->dd;	///< Change in distance.
 FilteredVisionObject	&ball_info = _m->ball_info;	///< 
 FilteredBallSighting_t	&wbSighting = _m->wbSighting;	///< 
+int	&interceptX = _m->interceptX;	///< What side of the robot the ball will be on if it comes in line with it.
+vec2	&currentPos = _m->currentPos;	///< 
 
 #pragma clang diagnostic pop

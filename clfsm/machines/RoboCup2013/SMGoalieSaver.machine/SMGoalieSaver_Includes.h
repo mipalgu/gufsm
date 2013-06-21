@@ -2,6 +2,7 @@
 #include <cmath>
 #include <vector>
 #include "CLMacros.h"
+#include <ctime>
 #include "typeClassDefs/FilteredOneDimObjects.h"
 #include "CLWhiteboard.h"
 
