@@ -1,5 +1,7 @@
 using namespace std;
 
+numberOfPenalties = 0;
+
 nao_state = nao_state_ptr.get();
 
   cerr << "Starting in " << state_name() << " with chest button " << nao_state.chest_pressed() << endl;

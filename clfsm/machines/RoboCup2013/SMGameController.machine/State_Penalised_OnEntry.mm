@@ -1,3 +1,5 @@
+numberOfPenalties++;
+
 SENSORS_LedsSensors ledValues = leds.get();
 ledValues.LEDsGroupChange(Chest, Red);
 ledValues.LEDsGroupChange(LFoot, ourTeamColour == TeamBlue ? Blue : Red);

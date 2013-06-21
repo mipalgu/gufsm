@@ -16,12 +16,12 @@ namespace FSM
     {
         class SMGameController: public CLMachine
         {
-            CLState *_states[17];
+            CLState *_states[18];
         public:
             SMGameController(int mid  = 0, const char *name = "SMGameController");
             virtual ~SMGameController();
             virtual CLState * const * states() const { return _states; }
-            virtual int numberOfStates() const { return 17; }
+            virtual int numberOfStates() const { return 18; }
 #           include "SMGameController_Variables.h"
         };
     }

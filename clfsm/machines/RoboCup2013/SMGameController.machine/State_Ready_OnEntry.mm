@@ -4,8 +4,8 @@ ledValues.LEDsGroupChange(LFoot, ourTeamColour == TeamBlue ? Blue : Red);
 ledValues.LEDsGroupChange(RFoot, kickoffTeam == TeamBlue ? Blue : Red);
 leds.set(ledValues);
 
-  cerr << "READY " << state_name() << endl;
-		
+  DBG(cerr << "READY " << state_name() << endl);
+	
    say("Ready");																											ourScore=aUDPReceiverNotificationType.get().getOurScore();
 
 													cerr << "Our score " << ourScore<< endl;

@@ -26,4 +26,6 @@ WALK_Command_t	walk_post;	///<
 WALK_Status_t	walk_status;	///< 
 WALK_ControlStatus	controlstatus;	///< 
 float	odo_forward;	///< 
-float	odo_start;	///<
+float	odo_start;	///< 
+int	numberOfPenalties;	///< 
+PF_ControlStatus_Modes_t	resetParticleFilter;	///<

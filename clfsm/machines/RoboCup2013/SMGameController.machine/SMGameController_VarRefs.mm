@@ -33,5 +33,7 @@ WALK_Status_t	&walk_status = _m->walk_status;	///<
 WALK_ControlStatus	&controlstatus = _m->controlstatus;	///< 
 float	&odo_forward = _m->odo_forward;	///< 
 float	&odo_start = _m->odo_start;	///< 
+int	&numberOfPenalties = _m->numberOfPenalties;	///< 
+PF_ControlStatus_Modes_t	&resetParticleFilter = _m->resetParticleFilter;	///< 
 
 #pragma clang diagnostic pop
