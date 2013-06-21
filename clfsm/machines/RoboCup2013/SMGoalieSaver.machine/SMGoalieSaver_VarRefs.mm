@@ -17,5 +17,6 @@ FilteredVisionObject	&ball_info = _m->ball_info;	///<
 FilteredBallSighting_t	&wbSighting = _m->wbSighting;	///< 
 int	&interceptX = _m->interceptX;	///< What side of the robot the ball will be on if it comes in line with it.
 vec2	&currentPos = _m->currentPos;	///< 
+vec2	&averageDiff = _m->averageDiff;	///< Average difference vector for ball position.
 
 #pragma clang diagnostic pop
