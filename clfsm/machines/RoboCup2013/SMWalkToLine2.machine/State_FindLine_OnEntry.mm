@@ -8,7 +8,7 @@ for(VisionObjectTypes::object i = VisionObjectTypes::Line1; i<VisionObjectTypes:
 	short m1 = line->start.y;
 	short m2 =    line->end.y;
 	short y = std::max(m1, m2);
-	if(y > lineY && fabs(line->Gradiant()) < 0.4) {
+	if(y > lineY && fabs(line->Gradiant()) < 1.0) {
 		lineY = y;
 	}
 }
