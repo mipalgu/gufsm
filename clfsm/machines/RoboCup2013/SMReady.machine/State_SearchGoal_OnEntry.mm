@@ -1,4 +1,4 @@
-restart("SMHeadGoalTracker");
+restart("SMHeadScannerGoal");
 
 theObjects = theObjectp.get();
 WbGoalPostInfo* lp = theObjects.LeftGoalPost();
