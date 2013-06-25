@@ -1,4 +1,5 @@
 // Find X for when Y=0.
-float m = averageDiff.x / averageDiff.y;
-int changeX = (int)(previousPos.x * m);
+float m = (float)averageDiff.x / (float)averageDiff.y;
+float changeX = previousPos.x * m;
 interceptX = previousPos.x + changeX;
+printf("interceptX:%f grad:%f\n", interceptX, m);

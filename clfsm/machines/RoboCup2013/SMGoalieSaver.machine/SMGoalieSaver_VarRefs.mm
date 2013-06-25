@@ -15,9 +15,11 @@ unsigned long	&historySize = _m->historySize;	///<
 unsigned long	&headIndex = _m->headIndex;	///< Index of the 'head' of the ballDifferences array.
 FilteredVisionObject	&ball_info = _m->ball_info;	///< 
 FilteredBallSighting_t	&wbSighting = _m->wbSighting;	///< 
-int	&interceptX = _m->interceptX;	///< What side of the robot the ball will be on if it comes in line with it.
+float	&interceptX = _m->interceptX;	///< What side of the robot the ball will be on if it comes in line with it.
 vec2	&currentPos = _m->currentPos;	///< 
 vec2	&averageDiff = _m->averageDiff;	///< Average difference vector for ball position.
 MOTION_SDK_Commands_t	&wbMotion = _m->wbMotion;	///< 
+MOTION_SDK_Status_t	&wbMotionStatus = _m->wbMotionStatus;	///< 
+bool	&constantDirection = _m->constantDirection;	///< Has the ball been moving in a direction over the past few differences.
 
 #pragma clang diagnostic pop

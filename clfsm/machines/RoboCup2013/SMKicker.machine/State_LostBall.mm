@@ -16,6 +16,7 @@ using namespace State;
 
 LostBall::LostBall(const char *name): CLState(name, *new LostBall::OnEntry, *new LostBall::OnExit, *new LostBall::Internal)
 {
+	_transitions[0] = new Transition_0();
 }
 
 LostBall::~LostBall()
@@ -24,6 +25,7 @@ LostBall::~LostBall()
 	delete &onExitAction();
 	delete &internalAction();
 
+	delete _transitions[0];
 }
 
 void LostBall::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -45,4 +47,15 @@ void LostBall::Internal::perform(CLMachine *_machine, CLState *_state) const
 #	include "SMKicker_VarRefs.mm"
 #	include "State_LostBall_VarRefs.mm"
 #	include "State_LostBall_Internal.mm"
+}
+
+bool LostBall::Transition_0::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "SMKicker_VarRefs.mm"
+#	include "State_LostBall_VarRefs.mm"
+
+	return
+	(
+#		include "State_LostBall_Transition_0.expr"
+	);
 }

@@ -1,1 +1,1 @@
-after(20) && !ball.isVisible()
+!ball.isVisible()

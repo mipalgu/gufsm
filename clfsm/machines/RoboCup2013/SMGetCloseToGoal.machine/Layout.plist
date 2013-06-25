@@ -10,9 +10,15 @@
 			<array>
 				<dict>
 					<key>controlPoint1X</key>
+<<<<<<< HEAD:posix/gufsm/clfsm/machines/RoboCup2013/SMGoalie.machine/Layout.plist
+					<real>532.7890625</real>
+					<key>controlPoint1Y</key>
+					<real>177.9140625</real>
+=======
 					<real>319.8314902340307</real>
 					<key>controlPoint1Y</key>
 					<real>256.14586101690168</real>
+>>>>>>> 8aee5b4e53f336667f85b0b2965f4f3e273d5b58:posix/gufsm/clfsm/machines/RoboCup2013/SMGetCloseToGoal.machine/Layout.plist
 					<key>controlPoint2X</key>
 					<real>357.72609563205384</real>
 					<key>controlPoint2Y</key>
