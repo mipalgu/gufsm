@@ -1,10 +1,10 @@
 //
-// State_StopTurning.h
+// State_Asses.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMReady_State_StopTurning_h
-#define clfsm_SMReady_State_StopTurning_h
+#ifndef clfsm_SMReady_State_Asses_h
+#define clfsm_SMReady_State_Asses_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class StopTurning: public CLState
+            class Asses: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,21 +38,37 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 11): CLTransition(toState) {}
+                    Transition_0(int toState = 13): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                CLTransition *_transitions[1];
+                class Transition_1: public CLTransition
+                {
+                public:
+                    Transition_1(int toState = 16): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                class Transition_2: public CLTransition
+                {
+                public:
+                    Transition_2(int toState = 17): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                CLTransition *_transitions[3];
 
                 public:
-                    StopTurning(const char *name = "StopTurning");
-                    virtual ~StopTurning();
+                    Asses(const char *name = "Asses");
+                    virtual ~Asses();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 1; }
+                    virtual int numberOfTransitions() const { return 3; }
 
-#                   include "State_StopTurning_Variables.h"
+#                   include "State_Asses_Variables.h"
             };
         }
       }

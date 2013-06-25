@@ -22,4 +22,9 @@ float	walkStartOdometry;	///<
 int	headDelayInUS;	///< 
 double	headAngleX;	///< 
 int	playerNumber;	///< 
-PlayerNumber_t	wb_player_number;	///<
+PlayerNumber_t	wb_player_number;	///< 
+bool	visionSeesRP;	///< 
+bool	visionSeesLP;	///< 
+float	theHeadYaw;	///< 
+Vision_Objects_t	theObjectp;	///< 
+VisionObjects	theObjects;	///<

@@ -1,10 +1,10 @@
 //
-// State_StopTurning.h
+// State_HeadAlignedWithGoal.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMReady_State_StopTurning_h
-#define clfsm_SMReady_State_StopTurning_h
+#ifndef clfsm_SMReady_State_HeadAlignedWithGoal_h
+#define clfsm_SMReady_State_HeadAlignedWithGoal_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class StopTurning: public CLState
+            class HeadAlignedWithGoal: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,7 +38,7 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 11): CLTransition(toState) {}
+                    Transition_0(int toState = 10): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
@@ -46,13 +46,13 @@ namespace FSM
                 CLTransition *_transitions[1];
 
                 public:
-                    StopTurning(const char *name = "StopTurning");
-                    virtual ~StopTurning();
+                    HeadAlignedWithGoal(const char *name = "HeadAlignedWithGoal");
+                    virtual ~HeadAlignedWithGoal();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
                     virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_StopTurning_Variables.h"
+#                   include "State_HeadAlignedWithGoal_Variables.h"
             };
         }
       }

@@ -1,4 +1,5 @@
 suspend("SMHeadGoalTracker");
+suspend("SMHeadScannerGoal");
 
 if(walk_status.get().controlStatus() != WALK_Disconnected)
 {
