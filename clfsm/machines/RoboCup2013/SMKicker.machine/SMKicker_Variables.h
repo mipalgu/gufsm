@@ -10,4 +10,13 @@ FilteredBallSighting_t	ball_ptr;	///<
 FilteredVisionObject	ball;	///< 
 TopParticles_t	particles_ptr;	///< 
 TopParticles	particles;	///< 
-bool	facingMySide;	///<
+bool	facingMySide;	///< 
+Vision_Control_t	vision_ptr;	///< 
+Vision_Status_t	vision_status_ptr;	///< 
+VisionCamera	start_cam;	///< 
+FilteredVisionObject	goal;	///< 
+HAL_HeadTarget_t	head_ptr;	///< 
+float	start_pitch;	///< 
+SENSORS_TorsoJointSensors_t	head_pitch_ptr;	///< 
+float	start_yaw;	///< 
+FilteredVisionObjectType	goal_index;	///<

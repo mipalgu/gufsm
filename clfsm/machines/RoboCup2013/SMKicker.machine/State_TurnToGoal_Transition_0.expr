@@ -1,0 +1,1 @@
+!goal.isVisible() || fabs(goal.horizontal_angle()) < 20 || after(5)

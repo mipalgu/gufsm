@@ -1,10 +1,10 @@
 //
-// State_Init.h
+// State_Button_On.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMKicker_State_Init_h
-#define clfsm_SMKicker_State_Init_h
+#ifndef clfsm_StopMotionRecorder_State_Button_On_h
+#define clfsm_StopMotionRecorder_State_Button_On_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,11 +14,11 @@ namespace FSM
 {
     namespace CLM
     {
-      namespace FSMSMKicker
+      namespace FSMStopMotionRecorder
       {
         namespace State
         {
-            class Init: public CLState
+            class Button_On: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,21 +38,29 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 15): CLTransition(toState) {}
+                    Transition_0(int toState = 3): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                CLTransition *_transitions[1];
+                class Transition_1: public CLTransition
+                {
+                public:
+                    Transition_1(int toState = 2): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                CLTransition *_transitions[2];
 
                 public:
-                    Init(const char *name = "Init");
-                    virtual ~Init();
+                    Button_On(const char *name = "Button_On");
+                    virtual ~Button_On();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 1; }
+                    virtual int numberOfTransitions() const { return 2; }
 
-#                   include "State_Init_Variables.h"
+#                   include "State_Button_On_Variables.h"
             };
         }
       }

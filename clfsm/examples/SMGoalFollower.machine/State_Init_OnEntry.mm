@@ -7,4 +7,4 @@ horiz_fov = 61;
 vert_fov = 48;
 
 minCrossBarDistance = 200;
-minPostDistance = 100;
+minPostDistance = 150;

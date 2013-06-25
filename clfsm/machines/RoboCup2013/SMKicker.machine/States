@@ -1,5 +1,4 @@
 Dummy_Init
-Init
 KickLeft
 KickRight
 WalkConnect
@@ -14,3 +13,8 @@ PassLeft
 KickGoal
 AvoidGoal
 DecideHeading
+TopCamSwitch
+RevertCamera
+CheckGoal
+TurnToGoal
+Stop
