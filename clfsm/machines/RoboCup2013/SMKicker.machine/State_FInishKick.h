@@ -35,30 +35,16 @@ namespace FSM
                     virtual void perform(CLMachine *, CLState *) const;
                 };
 
-                class Transition_0: public CLTransition
-                {
-                public:
-                    Transition_0(int toState = 4): CLTransition(toState) {}
-
-                    virtual bool check(CLMachine *, CLState *) const;
-                };
-
-                class Transition_1: public CLTransition
-                {
-                public:
-                    Transition_1(int toState = 9): CLTransition(toState) {}
-
-                    virtual bool check(CLMachine *, CLState *) const;
-                };
-
-                CLTransition *_transitions[2];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wzero-length-array"
+                CLTransition *_transitions[0];
 
                 public:
                     FinishKick(const char *name = "FinishKick");
                     virtual ~FinishKick();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 2; }
+                    virtual int numberOfTransitions() const { return 0; }
 
 #                   include "State_FinishKick_Variables.h"
             };
@@ -68,3 +54,4 @@ namespace FSM
 }
 
 #endif
+#pragma clang diagnostic pop

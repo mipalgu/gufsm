@@ -7,7 +7,6 @@
 #include "SMKicker.h"
 
 #include "State_Dummy_Init.h"
-#include "State_Init.h"
 #include "State_KickLeft.h"
 #include "State_KickRight.h"
 #include "State_WalkConnect.h"
@@ -22,6 +21,11 @@
 #include "State_KickGoal.h"
 #include "State_AvoidGoal.h"
 #include "State_DecideHeading.h"
+#include "State_TopCamSwitch.h"
+#include "State_RevertCamera.h"
+#include "State_CheckGoal.h"
+#include "State_TurnToGoal.h"
+#include "State_Stop.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -37,21 +41,25 @@ extern "C"
 SMKicker::SMKicker(int mid, const char *name): CLMachine(mid, name)
 {
 	_states[0] = new FSMSMKicker::State::Dummy_Init;
-	_states[1] = new FSMSMKicker::State::Init;
-	_states[2] = new FSMSMKicker::State::KickLeft;
-	_states[3] = new FSMSMKicker::State::KickRight;
-	_states[4] = new FSMSMKicker::State::WalkConnect;
-	_states[5] = new FSMSMKicker::State::SUSPENDED;
-	_states[6] = new FSMSMKicker::State::Wait;
-	_states[7] = new FSMSMKicker::State::Stop_Walk;
-	_states[8] = new FSMSMKicker::State::Walk_Disconnect;
-	_states[9] = new FSMSMKicker::State::Give_Up;
-	_states[10] = new FSMSMKicker::State::FinishKick;
-	_states[11] = new FSMSMKicker::State::PassRight;
-	_states[12] = new FSMSMKicker::State::PassLeft;
-	_states[13] = new FSMSMKicker::State::KickGoal;
-	_states[14] = new FSMSMKicker::State::AvoidGoal;
-	_states[15] = new FSMSMKicker::State::DecideHeading;
+	_states[1] = new FSMSMKicker::State::KickLeft;
+	_states[2] = new FSMSMKicker::State::KickRight;
+	_states[3] = new FSMSMKicker::State::WalkConnect;
+	_states[4] = new FSMSMKicker::State::SUSPENDED;
+	_states[5] = new FSMSMKicker::State::Wait;
+	_states[6] = new FSMSMKicker::State::Stop_Walk;
+	_states[7] = new FSMSMKicker::State::Walk_Disconnect;
+	_states[8] = new FSMSMKicker::State::Give_Up;
+	_states[9] = new FSMSMKicker::State::FinishKick;
+	_states[10] = new FSMSMKicker::State::PassRight;
+	_states[11] = new FSMSMKicker::State::PassLeft;
+	_states[12] = new FSMSMKicker::State::KickGoal;
+	_states[13] = new FSMSMKicker::State::AvoidGoal;
+	_states[14] = new FSMSMKicker::State::DecideHeading;
+	_states[15] = new FSMSMKicker::State::TopCamSwitch;
+	_states[16] = new FSMSMKicker::State::RevertCamera;
+	_states[17] = new FSMSMKicker::State::CheckGoal;
+	_states[18] = new FSMSMKicker::State::TurnToGoal;
+	_states[19] = new FSMSMKicker::State::Stop;
 
 	setInitialState(_states[0]);            // set initial state
 }
@@ -74,4 +82,8 @@ SMKicker::~SMKicker()
 	delete _states[13];
 	delete _states[14];
 	delete _states[15];
+	delete _states[16];
+	delete _states[17];
+	delete _states[18];
+	delete _states[19];
 }

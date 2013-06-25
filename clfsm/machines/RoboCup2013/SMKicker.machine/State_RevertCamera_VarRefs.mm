@@ -1,9 +1,9 @@
 //
-// State_Init_VarRefs.mm
+// State_RevertCamera_VarRefs.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-Init *_s = static_cast<Init *>(_state);
+RevertCamera *_s = static_cast<RevertCamera *>(_state);
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"
