@@ -17,6 +17,8 @@
 #include "State_SaveFinished.h"
 #include "State_HoldPos.h"
 #include "State_StartKneel.h"
+#include "State_Stabalize.h"
+#include "State_FoundConstDir.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -42,6 +44,8 @@ SMGoalieSaver::SMGoalieSaver(int mid, const char *name): CLMachine(mid, name)
 	_states[8] = new FSMSMGoalieSaver::State::SaveFinished;
 	_states[9] = new FSMSMGoalieSaver::State::HoldPos;
 	_states[10] = new FSMSMGoalieSaver::State::StartKneel;
+	_states[11] = new FSMSMGoalieSaver::State::Stabalize;
+	_states[12] = new FSMSMGoalieSaver::State::FoundConstDir;
 
 	setSuspendState(_states[4]);            // set suspend state
 	setInitialState(_states[0]);            // set initial state
@@ -60,4 +64,6 @@ SMGoalieSaver::~SMGoalieSaver()
 	delete _states[8];
 	delete _states[9];
 	delete _states[10];
+	delete _states[11];
+	delete _states[12];
 }
