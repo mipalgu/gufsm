@@ -1,2 +1,0 @@
-suspend("SMHeadBallTracker");
-suspend("SMGoalieSaver");

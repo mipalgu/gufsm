@@ -17,6 +17,13 @@
 #include "State_StopTurning.h"
 #include "State_StartSpinPlayers.h"
 #include "State_GoToLine.h"
+#include "State_SearchGoal.h"
+#include "State_Restart_GoalTrackerMachine.h"
+#include "State_SlowSpinLeft.h"
+#include "State_Asses.h"
+#include "State_Continue.h"
+#include "State_HeadAlignedWithGoal.h"
+#include "State_SlowSpinRight.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -42,6 +49,13 @@ SMReady::SMReady(int mid, const char *name): CLMachine(mid, name)
 	_states[8] = new FSMSMReady::State::StopTurning;
 	_states[9] = new FSMSMReady::State::StartSpinPlayers;
 	_states[10] = new FSMSMReady::State::GoToLine;
+	_states[11] = new FSMSMReady::State::SearchGoal;
+	_states[12] = new FSMSMReady::State::Restart_GoalTrackerMachine;
+	_states[13] = new FSMSMReady::State::SlowSpinLeft;
+	_states[14] = new FSMSMReady::State::Asses;
+	_states[15] = new FSMSMReady::State::Continue;
+	_states[16] = new FSMSMReady::State::HeadAlignedWithGoal;
+	_states[17] = new FSMSMReady::State::SlowSpinRight;
 
 	setSuspendState(_states[1]);            // set suspend state
 	setInitialState(_states[0]);            // set initial state
@@ -60,4 +74,11 @@ SMReady::~SMReady()
 	delete _states[8];
 	delete _states[9];
 	delete _states[10];
+	delete _states[11];
+	delete _states[12];
+	delete _states[13];
+	delete _states[14];
+	delete _states[15];
+	delete _states[16];
+	delete _states[17];
 }

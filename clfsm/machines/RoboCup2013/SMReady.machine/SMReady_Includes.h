@@ -7,6 +7,7 @@
 #include "typeClassDefs/SENSORS_TorsoJointSensors.h"
 #include "typeClassDefs/WALK_ControlStatus.h"
 #include "typeClassDefs/HAL_HeadTarget.h"
+#include "typeClassDefs/Vision_Objects.h"
 
 
 

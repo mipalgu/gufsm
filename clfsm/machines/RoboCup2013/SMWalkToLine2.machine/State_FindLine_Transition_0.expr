@@ -1,1 +1,1 @@
-!foundLine || lineY < LINE_Y_DIST
+(!foundLine || lineY < LINE_Y_DIST) && (lineM1 < (RES-20)  && lineM2 < (RES-20))
