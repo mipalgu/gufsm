@@ -7,5 +7,5 @@ using namespace guWhiteboard;
 #include <WALK_ControlStatus.h>
 #include <HAL_HeadTarget.h>
 #include <MOTION_SDK_Interface.h>
-#define LINE_Y_DIST 350
+#define LINE_Y_DIST 700
 #define RES 960
