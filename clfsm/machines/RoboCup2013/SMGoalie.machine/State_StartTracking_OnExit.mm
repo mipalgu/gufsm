@@ -1,1 +1,2 @@
 suspend("SMHeadBallTracker");
+suspend("SMGoalieSaver");
