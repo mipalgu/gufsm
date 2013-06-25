@@ -1,1 +1,1 @@
-after_ms(20) &&  wbMotion.get().motion_player() == Motions::OFF
+after_ms(20) &&  wbMotionStatus.get().motion_player() == Motions::OFF

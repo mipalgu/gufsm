@@ -21,20 +21,51 @@ diff.y = currentPos.y - previousPos.y;
 headIndex = (unsigned long)((int)(headIndex + 1) % (int)historySize);
 ballDifferences[headIndex] = diff;
 
-// Calculate an average distance from previous distances.
-unsigned long back1Index = (headIndex - 1) % historySize;
-unsigned long back2Index = (headIndex - 2) % historySize;
-int sumX = ballDifferences[headIndex].x + ballDifferences[back1Index].x +
-           ballDifferences[back2Index].x;
-int sumY = ballDifferences[headIndex].y + ballDifferences[back1Index].y +
-           ballDifferences[back2Index].y;
-
-averageDiff.x = (int)(sumX / 3.0);
-averageDiff.y = (int)(sumY / 3.0);
-
 averageDiff = diff; // Bypass average.
 
-printf("distance:%d angle:%f difference x:%d y:%d\n", currentDist, currentAngle, 
-                                                      averageDiff.x, averageDiff.y);
+//printf("distance:%d angle:%f difference x:%d y:%d\n", currentDist, currentAngle, 
+//                                                      averageDiff.x, averageDiff.y);
 
-//printf("|\n");
+// Decided whether to identify the ball as moving in a direction, only if the
+// past three differences have been in the same direction.
+bool diff1X, diff1Y, diff2X, diff2Y;
+vec2 diff1, diff2, diff3;
+
+diff1 = ballDifferences[headIndex];
+diff2 = ballDifferences[(headIndex - 1) % historySize];
+diff3 = ballDifferences[(headIndex - 2) % historySize];
+
+// Change three vectors of integers effectively into three vectors of 1-bit directions.
+if (diff1.x > 0) diff1.x = 1;
+else if (diff1.x == 0) diff1.x = 0;
+else diff1.x = -1;
+if (diff1.y > 0) diff1.y = 1;
+else if (diff1.y == 0) diff1.y = 0;
+else diff1.y = -1;
+
+if (diff2.x > 0) diff2.x = 1;
+else if (diff2.x == 0) diff2.x = 0;
+else diff2.x = -1;
+if (diff2.y > 0) diff2.y = 1;
+else if (diff2.y == 0) diff2.y = 0;
+else diff2.y = -1;
+
+if (diff3.x > 0) diff3.x = 1;
+else if (diff3.x == 0) diff3.x = 0;
+else diff3.x = -1;
+if (diff3.y > 0) diff3.y = 1;
+else if (diff3.y == 0) diff3.y = 0;
+else diff3.y = -1;
+
+
+//printf("diff1--x:%d y:%d diff2--x:%d y:%d\n", diff1.x, diff1.y, diff2.x, diff2.y);
+
+if (diff1.x == diff2.x &&
+    diff1.y == diff2.y &&
+    diff2.x == diff3.x &&
+    diff2.y == diff3.y &&
+    (diff1.x != 0 || diff1.y != 0 ||
+     diff2.x != 0 || diff2.y != 0))
+{
+	constantDirection = true;
+}

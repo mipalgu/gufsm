@@ -1,1 +1,1 @@
-walk_post(WALK_ControlStatus(WALK_Stop));
+walk_post(WALK_Stop);

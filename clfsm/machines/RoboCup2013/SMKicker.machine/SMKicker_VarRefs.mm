@@ -10,6 +10,7 @@ SMKicker *_m = static_cast<SMKicker *>(_machine);
 #pragma clang diagnostic ignored "-Wshadow"
 
 MOTION_SDK_Commands_t	&motion_ptr = _m->motion_ptr;	///< 
+WALK_Status_t	&walk_status = _m->walk_status;	///< 
 WALK_Command_t	&walk_post = _m->walk_post;	///< 
 MOTION_SDK_Status_t	&motion_status = _m->motion_status;	///< 
 FilteredBallSighting_t	&ball_ptr = _m->ball_ptr;	///< 
