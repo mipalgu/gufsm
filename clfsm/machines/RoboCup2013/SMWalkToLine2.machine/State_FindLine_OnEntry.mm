@@ -16,6 +16,8 @@ for(VisionObjectTypes::object i = VisionObjectTypes::Line1; i<VisionObjectTypes:
 		lineIndex = i;
 		lineM1 = m1;
 		lineM2 = m2;
+
+		std::cout << "lineM1: " << lineM1 << " - " << "lineM2: " << lineM2 << std::endl;
 		std::cout << "selected\n";
 	}
 }
