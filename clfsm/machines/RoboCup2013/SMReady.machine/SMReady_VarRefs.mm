@@ -29,5 +29,10 @@ int	&headDelayInUS = _m->headDelayInUS;	///<
 double	&headAngleX = _m->headAngleX;	///< 
 int	&playerNumber = _m->playerNumber;	///< 
 PlayerNumber_t	&wb_player_number = _m->wb_player_number;	///< 
+bool	&visionSeesRP = _m->visionSeesRP;	///< 
+bool	&visionSeesLP = _m->visionSeesLP;	///< 
+float	&theHeadYaw = _m->theHeadYaw;	///< 
+Vision_Objects_t	&theObjectp = _m->theObjectp;	///< 
+VisionObjects	&theObjects = _m->theObjects;	///< 
 
 #pragma clang diagnostic pop

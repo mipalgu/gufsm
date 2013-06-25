@@ -1,8 +1,5 @@
-#ifdef DEBUG
-fprintf(stderr, "SMPlayer State: %s\n", state_name());
-#endif
-
 suspend("SMHeadGoalTracker");
+suspend("SMHeadScannerGoal");
 
 if(walk_status.get().controlStatus() != WALK_Disconnected)
 {
@@ -12,3 +9,7 @@ if(walk_status.get().controlStatus() != WALK_Disconnected)
 
 head.Stop();
 head_ptr.set(head);
+
+#ifdef DEBUG
+fprintf(stderr, "SMPlayer State: %s\n", state_name());
+#endif

@@ -5,7 +5,7 @@ fprintf(stderr, "State: %s\n", state_name());
 double player_spacing = 100.0;
 double goal_centre = 300.0;
 
-playerNumber = wb_player_number();
+playerNumber = wb_player_number.get();
 status = walk_status();
 
 headDelayInUS = 250000;

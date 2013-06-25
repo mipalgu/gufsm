@@ -9,4 +9,6 @@ MOTION_SDK_Commands_t	motion_ptr;	///<
 Vision_Control_t	vision_ptr;	///< 
 bool	foundLine;	///< 
 WALK_Command_t	walk_ptr;	///< 
-HAL_HeadTarget_t	head_ptr;	///<
+HAL_HeadTarget_t	head_ptr;	///< 
+short	lineM1;	///< 
+short	lineM2;	///<

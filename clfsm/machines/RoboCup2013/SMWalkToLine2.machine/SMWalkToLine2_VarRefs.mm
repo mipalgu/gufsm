@@ -16,5 +16,7 @@ Vision_Control_t	&vision_ptr = _m->vision_ptr;	///<
 bool	&foundLine = _m->foundLine;	///< 
 WALK_Command_t	&walk_ptr = _m->walk_ptr;	///< 
 HAL_HeadTarget_t	&head_ptr = _m->head_ptr;	///< 
+short	&lineM1 = _m->lineM1;	///< 
+short	&lineM2 = _m->lineM2;	///< 
 
 #pragma clang diagnostic pop
