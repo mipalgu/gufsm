@@ -13,6 +13,7 @@
 #include "State_Decide_Long.h"
 #include "State_SUSPENDED.h"
 #include "State_Goal_Approach.h"
+#include "State_Check_Line.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -34,6 +35,7 @@ SMGoalFollower::SMGoalFollower(int mid, const char *name): CLMachine(mid, name)
 	_states[4] = new FSMSMGoalFollower::State::Decide_Long;
 	_states[5] = new FSMSMGoalFollower::State::SUSPENDED;
 	_states[6] = new FSMSMGoalFollower::State::Goal_Approach;
+	_states[7] = new FSMSMGoalFollower::State::Check_Line;
 
 	setSuspendState(_states[5]);            // set suspend state
 	setInitialState(_states[0]);            // set initial state
@@ -48,4 +50,5 @@ SMGoalFollower::~SMGoalFollower()
 	delete _states[4];
 	delete _states[5];
 	delete _states[6];
+	delete _states[7];
 }
