@@ -12,3 +12,4 @@ FilteredBallSighting_t	wbSighting;	///<
 int	interceptX;	///< What side of the robot the ball will be on if it comes in line with it.
 vec2	currentPos;	///< 
 vec2	averageDiff;	///< Average difference vector for ball position.
+MOTION_SDK_Commands_t	wbMotion;	///<

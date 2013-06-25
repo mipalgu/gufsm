@@ -17,5 +17,14 @@ FilteredVisionObject	&ball = _m->ball;	///<
 TopParticles_t	&particles_ptr = _m->particles_ptr;	///< 
 TopParticles	&particles = _m->particles;	///< 
 bool	&facingMySide = _m->facingMySide;	///< 
+Vision_Control_t	&vision_ptr = _m->vision_ptr;	///< 
+Vision_Status_t	&vision_status_ptr = _m->vision_status_ptr;	///< 
+VisionCamera	&start_cam = _m->start_cam;	///< 
+FilteredVisionObject	&goal = _m->goal;	///< 
+HAL_HeadTarget_t	&head_ptr = _m->head_ptr;	///< 
+float	&start_pitch = _m->start_pitch;	///< 
+SENSORS_TorsoJointSensors_t	&head_pitch_ptr = _m->head_pitch_ptr;	///< 
+float	&start_yaw = _m->start_yaw;	///< 
+FilteredVisionObjectType	&goal_index = _m->goal_index;	///< 
 
 #pragma clang diagnostic pop

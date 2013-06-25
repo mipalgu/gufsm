@@ -18,5 +18,6 @@ FilteredBallSighting_t	&wbSighting = _m->wbSighting;	///<
 int	&interceptX = _m->interceptX;	///< What side of the robot the ball will be on if it comes in line with it.
 vec2	&currentPos = _m->currentPos;	///< 
 vec2	&averageDiff = _m->averageDiff;	///< Average difference vector for ball position.
+MOTION_SDK_Commands_t	&wbMotion = _m->wbMotion;	///< 
 
 #pragma clang diagnostic pop

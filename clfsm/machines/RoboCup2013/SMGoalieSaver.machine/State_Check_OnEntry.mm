@@ -32,7 +32,9 @@ int sumY = ballDifferences[headIndex].y + ballDifferences[back1Index].y +
 averageDiff.x = (int)(sumX / 3.0);
 averageDiff.y = (int)(sumY / 3.0);
 
-//printf("distance:%d angle:%f difference x:%d y:%d\n", currentDist, currentAngle, 
-//                                                      averageDiff.x, averageDiff.y);
+averageDiff = diff; // Bypass average.
 
-printf("|\n");
+printf("distance:%d angle:%f difference x:%d y:%d\n", currentDist, currentAngle, 
+                                                      averageDiff.x, averageDiff.y);
+
+//printf("|\n");
