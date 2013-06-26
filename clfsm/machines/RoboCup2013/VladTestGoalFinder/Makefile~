@@ -1,0 +1,13 @@
+#
+#	$Id: 8fb9e0c7bc4a170178f0b5567d915d0935f95370 $
+#
+# Makefile for pre- and cross-compiling .machine files
+#
+
+MACHINES=StateMachineStarter SMGameController SMFallManager SMBallFollower SMButtonChest SMButtonLeftFoot SMButtonRightFoot SMGetUp SMHeadBallTracker SMHeadScanner SMLeftFootControl SMPlayer SMKicker SMRobotPosition SMWalkScanner Safety_BatteryMonitor SMSeeker SMReady Color_Learner SMHeadScannerGoal SMHeadGoalTracker SMGetCloseToGoal
+
+.include "../../../../../mk/fsm.mk"	# comes first: required for compiling state machines
+
+SPECIFIC_CPPFLAGS+=-fblocks
+
+.include "../../../../../mk/mipal.mk"	# comes last!
