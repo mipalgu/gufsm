@@ -35,16 +35,22 @@ namespace FSM
                     virtual void perform(CLMachine *, CLState *) const;
                 };
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wzero-length-array"
-                CLTransition *_transitions[0];
+                class Transition_0: public CLTransition
+                {
+                public:
+                    Transition_0(int toState = 8): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                CLTransition *_transitions[1];
 
                 public:
                     OurHalfFacingUp(const char *name = "OurHalfFacingUp");
                     virtual ~OurHalfFacingUp();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 0; }
+                    virtual int numberOfTransitions() const { return 1; }
 
 #                   include "State_OurHalfFacingUp_Variables.h"
             };
@@ -54,4 +60,3 @@ namespace FSM
 }
 
 #endif
-#pragma clang diagnostic pop

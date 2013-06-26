@@ -14,6 +14,7 @@
 #include "State_ReadHeadingAgain.h"
 #include "State_CallFindGoal.h"
 #include "State_OurHalfFacingUp.h"
+#include "State_DirectlyLookingAtAGoal.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -36,6 +37,7 @@ SMReadyFromAnywhere::SMReadyFromAnywhere(int mid, const char *name): CLMachine(m
 	_states[5] = new FSMSMReadyFromAnywhere::State::ReadHeadingAgain;
 	_states[6] = new FSMSMReadyFromAnywhere::State::CallFindGoal;
 	_states[7] = new FSMSMReadyFromAnywhere::State::OurHalfFacingUp;
+	_states[8] = new FSMSMReadyFromAnywhere::State::DirectlyLookingAtAGoal;
 
 	setSuspendState(_states[1]);            // set suspend state
 	setInitialState(_states[0]);            // set initial state
@@ -51,4 +53,5 @@ SMReadyFromAnywhere::~SMReadyFromAnywhere()
 	delete _states[5];
 	delete _states[6];
 	delete _states[7];
+	delete _states[8];
 }
