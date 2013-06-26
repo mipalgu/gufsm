@@ -1,9 +1,9 @@
 //
-// State_Asses_VarRefs.mm
+// State_checkDistanceRightPost_VarRefs.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-Asses *_s = static_cast<Asses *>(_state);
+checkDistanceRightPost *_s = static_cast<checkDistanceRightPost *>(_state);
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"
