@@ -4,4 +4,4 @@ heading = top_particle.heading();
 
 
 
-ourHalf = (top_particles.y() < 0);
+ourHalf = (top_particle.y() < 0);

@@ -2,6 +2,6 @@
 fprintf(stderr, "State: %s\n", state_name());
 #endif
 
-outHalf=false;
+ourHalf=false;
 
 suspend("SMFindGoalOnSpot");
