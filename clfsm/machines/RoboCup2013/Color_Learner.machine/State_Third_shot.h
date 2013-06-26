@@ -43,14 +43,22 @@ namespace FSM
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                CLTransition *_transitions[1];
+                class Transition_1: public CLTransition
+                {
+                public:
+                    Transition_1(int toState = 13): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                CLTransition *_transitions[2];
 
                 public:
                     Third_shot(const char *name = "Third_shot");
                     virtual ~Third_shot();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 1; }
+                    virtual int numberOfTransitions() const { return 2; }
 
 #                   include "State_Third_shot_Variables.h"
             };

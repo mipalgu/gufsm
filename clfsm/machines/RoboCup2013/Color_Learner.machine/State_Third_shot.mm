@@ -17,6 +17,7 @@ using namespace State;
 Third_shot::Third_shot(const char *name): CLState(name, *new Third_shot::OnEntry, *new Third_shot::OnExit, *new Third_shot::Internal)
 {
 	_transitions[0] = new Transition_0();
+	_transitions[1] = new Transition_1();
 }
 
 Third_shot::~Third_shot()
@@ -26,6 +27,7 @@ Third_shot::~Third_shot()
 	delete &internalAction();
 
 	delete _transitions[0];
+	delete _transitions[1];
 }
 
 void Third_shot::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -57,5 +59,16 @@ bool Third_shot::Transition_0::check(CLMachine *_machine, CLState *_state) const
 	return
 	(
 #		include "State_Third_shot_Transition_0.expr"
+	);
+}
+
+bool Third_shot::Transition_1::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "Color_Learner_VarRefs.mm"
+#	include "State_Third_shot_VarRefs.mm"
+
+	return
+	(
+#		include "State_Third_shot_Transition_1.expr"
 	);
 }

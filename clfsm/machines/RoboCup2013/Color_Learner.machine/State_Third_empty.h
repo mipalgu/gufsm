@@ -1,10 +1,10 @@
 //
-// State_PREPARE_TO_KICK.h
+// State_Third_empty.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_Color_Learner_State_PREPARE_TO_KICK_h
-#define clfsm_Color_Learner_State_PREPARE_TO_KICK_h
+#ifndef clfsm_Color_Learner_State_Third_empty_h
+#define clfsm_Color_Learner_State_Third_empty_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class PREPARE_TO_KICK: public CLState
+            class Third_empty: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,7 +38,7 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 10): CLTransition(toState) {}
+                    Transition_0(int toState = 9): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
@@ -46,13 +46,13 @@ namespace FSM
                 CLTransition *_transitions[1];
 
                 public:
-                    PREPARE_TO_KICK(const char *name = "PREPARE_TO_KICK");
-                    virtual ~PREPARE_TO_KICK();
+                    Third_empty(const char *name = "Third_empty");
+                    virtual ~Third_empty();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
                     virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_PREPARE_TO_KICK_Variables.h"
+#                   include "State_Third_empty_Variables.h"
             };
         }
       }

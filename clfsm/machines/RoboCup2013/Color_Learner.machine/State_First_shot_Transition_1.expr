@@ -1,1 +1,1 @@
-vision_status.get().openChallengeStep()==2 && false
+vision_status.get().openChallengeStep()==10 && after_ms(50)

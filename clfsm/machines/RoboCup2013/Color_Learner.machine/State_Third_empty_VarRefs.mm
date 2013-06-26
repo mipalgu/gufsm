@@ -1,9 +1,9 @@
 //
-// State_KICK_VarRefs.mm
+// State_Third_empty_VarRefs.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-KICK *_s = static_cast<KICK *>(_state);
+Third_empty *_s = static_cast<Third_empty *>(_state);
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"
