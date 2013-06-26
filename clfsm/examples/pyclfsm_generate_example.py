@@ -75,8 +75,8 @@ def main(output):
     sm.set_initial_state(ping)
     ping.transition_to(pong, expression=ping_expression)
     pong.transition_to(ping, expression=pong_expression)
-    visitor = Visitor(output)
-    visitor.visit(sm)
+    visitor = Visitor(sm)
+    visitor.generate(output)
 
 if __name__ == '__main__':
     import sys

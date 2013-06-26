@@ -1,0 +1,2 @@
+(ball_info.isVisible() && 
+after_ms(20)) || is_suspended("SMHeadScanner")

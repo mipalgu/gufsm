@@ -18,9 +18,14 @@ def mkdir_p(path):
 
 class Visitor(object):
 
-    def __init__(self, output):
-        self.output = os.path.abspath(output)
+    def __init__(self, statemachine):
+        self.statemachine = statemachine
+
+    def generate(self, output='.'):
+        self.output = os.path.abspath(os.path.join(output, self.statemachine.name + '.machine'))
+        print 'Generating CLFSM code in %s' % self.output
         mkdir_p(self.output)
+        self.visit(self.statemachine)
 
     def visit(self, node, *args, **kwargs):
         meth = None
@@ -104,13 +109,6 @@ class Visitor(object):
 
         for visited_state in visited_states:
             with open(os.path.join(self.output,
-                'State_%s.h' % visited_state.name), 'w') as f:
-                data = visited_state.TEMPLATE_HEADER % {
-                    'name': visited_state.name, 'state_machine': node.name,
-                    'num_states': len(visited_states)}
-                f.write(data)
-
-            with open(os.path.join(self.output,
                 'State_%s_Includes.h' % visited_state.name), 'w') as f:
                 data = visited_state.includes
                 f.write(data)
@@ -132,6 +130,7 @@ class Visitor(object):
 
             create_transitions = ''
             transitions_code = ''
+            transitions_definition = ''
 
             for i, transition in enumerate(visited_state.transitions):
                 with open(os.path.join(self.output,
@@ -146,6 +145,18 @@ class Visitor(object):
                 transitions_code += visited_state.TEMPLATE_TRANSITION_CODE % {
                     'name': visited_state.name,
                     'transition_number': i, 'state_machine': node.name}
+                transitions_definition += visited_state.TEMPLATE_TRANSITION_DEFINITION % {
+                    'transition_number': i,
+                    'target_state_number': visited_states.index(transition.destination)}
+
+            with open(os.path.join(self.output,
+                'State_%s.h' % visited_state.name), 'w') as f:
+                data = visited_state.TEMPLATE_HEADER % {
+                    'name': visited_state.name, 'state_machine': node.name,
+                    'num_states': len(visited_states),
+                    'transitions_definition': transitions_definition,
+                    'num_transitions': len(visited_state.transitions)}
+                f.write(data)
 
             with open(os.path.join(self.output,
                 'State_%s.mm' % visited_state.name), 'w') as f:
@@ -213,6 +224,17 @@ class State(Node):
 #pragma clang diagnostic pop
 '''
 
+    TEMPLATE_TRANSITION_DEFINITION = '''
+                class Transition_%(transition_number)d: public CLTransition
+                {
+                public:
+                    Transition_%(transition_number)d(int toState = %(target_state_number)d): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+'''
+
+
     TEMPLATE_HEADER = '''//
 // State_%(name)s.h
 //
@@ -250,15 +272,9 @@ namespace FSM
                     virtual void perform(CLMachine *, CLState *) const;
                 };
 
-                class Transition_0: public CLTransition
-                {
-                public:
-                    Transition_0(int toState = 1): CLTransition(toState) {}
+%(transitions_definition)s
 
-                    virtual bool check(CLMachine *, CLState *) const;
-                };
-
-                CLTransition *_transitions[1];
+                CLTransition *_transitions[%(num_transitions)d];
 
                 public:
                     %(name)s(const char *name = "%(name)s");
@@ -400,7 +416,7 @@ namespace FSM
     {
         class %(state_machine)s: public CLMachine
         {
-            CLState *_states[2];
+            CLState *_states[%(num_states)d];
         public:
             %(state_machine)s(int mid=0, const char *name="%(state_machine)s");
             virtual ~%(state_machine)s();
