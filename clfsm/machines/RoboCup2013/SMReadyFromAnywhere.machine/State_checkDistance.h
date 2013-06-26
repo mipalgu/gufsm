@@ -43,14 +43,30 @@ namespace FSM
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                CLTransition *_transitions[1];
+                class Transition_1: public CLTransition
+                {
+                public:
+                    Transition_1(int toState = 18): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                class Transition_2: public CLTransition
+                {
+                public:
+                    Transition_2(int toState = 15): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                CLTransition *_transitions[3];
 
                 public:
                     checkDistance(const char *name = "checkDistance");
                     virtual ~checkDistance();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 1; }
+                    virtual int numberOfTransitions() const { return 3; }
 
 #                   include "State_checkDistance_Variables.h"
             };

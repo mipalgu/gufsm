@@ -17,6 +17,7 @@ using namespace State;
 readDistance::readDistance(const char *name): CLState(name, *new readDistance::OnEntry, *new readDistance::OnExit, *new readDistance::Internal)
 {
 	_transitions[0] = new Transition_0();
+	_transitions[1] = new Transition_1();
 }
 
 readDistance::~readDistance()
@@ -26,6 +27,7 @@ readDistance::~readDistance()
 	delete &internalAction();
 
 	delete _transitions[0];
+	delete _transitions[1];
 }
 
 void readDistance::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -57,5 +59,16 @@ bool readDistance::Transition_0::check(CLMachine *_machine, CLState *_state) con
 	return
 	(
 #		include "State_readDistance_Transition_0.expr"
+	);
+}
+
+bool readDistance::Transition_1::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "SMReadyFromAnywhere_VarRefs.mm"
+#	include "State_readDistance_VarRefs.mm"
+
+	return
+	(
+#		include "State_readDistance_Transition_1.expr"
 	);
 }

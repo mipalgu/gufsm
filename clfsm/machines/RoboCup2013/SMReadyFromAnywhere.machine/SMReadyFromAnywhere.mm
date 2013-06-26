@@ -24,6 +24,7 @@
 #include "State_readDistance.h"
 #include "State_checkDistance.h"
 #include "State_StopWalkAllTheWay.h"
+#include "State_checkDistanceRightPost.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -56,6 +57,7 @@ SMReadyFromAnywhere::SMReadyFromAnywhere(int mid, const char *name): CLMachine(m
 	_states[15] = new FSMSMReadyFromAnywhere::State::readDistance;
 	_states[16] = new FSMSMReadyFromAnywhere::State::checkDistance;
 	_states[17] = new FSMSMReadyFromAnywhere::State::StopWalkAllTheWay;
+	_states[18] = new FSMSMReadyFromAnywhere::State::checkDistanceRightPost;
 
 	setSuspendState(_states[1]);            // set suspend state
 	setInitialState(_states[0]);            // set initial state
@@ -81,4 +83,5 @@ SMReadyFromAnywhere::~SMReadyFromAnywhere()
 	delete _states[15];
 	delete _states[16];
 	delete _states[17];
+	delete _states[18];
 }
