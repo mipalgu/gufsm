@@ -1,3 +1,8 @@
+MOTION_SDK_Interface motion;
+motion.set_head_stiffness(true);
+motion.set_head_stiffness_mask(true);
+motion_ptr.set(motion);
+
 restart("SMHeadScannerGoal");
 
 //theObjects = theObjectp.get();
