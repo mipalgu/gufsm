@@ -16,12 +16,12 @@ namespace FSM
     {
         class SMBallFollower: public CLMachine
         {
-            CLState *_states[10];
+            CLState *_states[11];
         public:
             SMBallFollower(int mid  = 0, const char *name = "SMBallFollower");
             virtual ~SMBallFollower();
             virtual CLState * const * states() const { return _states; }
-            virtual int numberOfStates() const { return 10; }
+            virtual int numberOfStates() const { return 11; }
 #           include "SMBallFollower_Variables.h"
         };
     }
