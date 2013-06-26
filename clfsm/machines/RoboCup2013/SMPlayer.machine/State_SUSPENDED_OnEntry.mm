@@ -3,7 +3,6 @@ suspend("SMBallFollower");
 suspend("SMHeadBallTracker");
 suspend("SMKicker");
 
-WALK_Status_t walk_status;
 if(walk_status.get().controlStatus() != WALK_Disconnected)
 {
 	walk_post(WALK_Stop);
