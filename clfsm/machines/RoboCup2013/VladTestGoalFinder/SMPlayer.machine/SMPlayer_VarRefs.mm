@@ -12,8 +12,7 @@ SMPlayer *_m = static_cast<SMPlayer *>(_machine);
 float	&ballAngle = _m->ballAngle;	///< 
 int	&min_long_distance_angle = _m->min_long_distance_angle;	///< 
 int	&min_short_distance_angle = _m->min_short_distance_angle;	///< 
-FilteredVisionObject	&rightPost = _m->rightPost;	///< 
-FilteredVisionObject	&leftPost = _m->leftPost;	///< 
+FilteredVisionObject	&crossBar = _m->crossBar;	///< 
 FilteredGoalSighting_t	&sightings_ptr = _m->sightings_ptr;	///< 
 int	&boundaryCloseFar = _m->boundaryCloseFar;	///< 
 SENSORS_TorsoJointSensors_t	&body_sensors_ptr = _m->body_sensors_ptr;	///< 
@@ -35,6 +34,12 @@ bool	&visionSeesLP = _m->visionSeesLP;	///<
 float	&theHeadYaw = _m->theHeadYaw;	///< 
 Vision_Objects_t	&theObjectp = _m->theObjectp;	///< 
 VisionObjects	&theObjects = _m->theObjects;	///< 
-MOTION_SDK_Commands_t	&motion_ptr = _m->motion_ptr;	///< 
+float	&targetHeading = _m->targetHeading;	///< 
+float	&angle = _m->angle;	///< 
+float	&heading = _m->heading;	///< 
+TopParticles_t	&particles = _m->particles;	///< 
+bool	&ourHalf = _m->ourHalf;	///< 
+FilteredVisionObject	&leftPost = _m->leftPost;	///< 
+FilteredVisionObject	&rightPost = _m->rightPost;	///< 
 
 #pragma clang diagnostic pop

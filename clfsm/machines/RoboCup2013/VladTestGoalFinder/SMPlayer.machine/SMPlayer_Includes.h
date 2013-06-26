@@ -8,8 +8,7 @@
 #include "typeClassDefs/WALK_ControlStatus.h"
 #include "typeClassDefs/HAL_HeadTarget.h"
 #include "typeClassDefs/Vision_Objects.h"
-#include "typeClassDefs/MOTION_SDK_Interface.h"
-
+#include "typeClassDefs/PARTICLE_TopPositions.h"
 
 
 #include "CLWhiteboard.h"

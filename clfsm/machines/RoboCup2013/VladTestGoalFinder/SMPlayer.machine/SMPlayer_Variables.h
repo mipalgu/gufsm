@@ -6,8 +6,7 @@
 float	ballAngle;	///< 
 int	min_long_distance_angle;	///< 
 int	min_short_distance_angle;	///< 
-FilteredVisionObject	rightPost;	///< 
-FilteredVisionObject	leftPost;	///< 
+FilteredVisionObject	crossBar;	///< 
 FilteredGoalSighting_t	sightings_ptr;	///< 
 int	boundaryCloseFar;	///< 
 SENSORS_TorsoJointSensors_t	body_sensors_ptr;	///< 
@@ -29,4 +28,10 @@ bool	visionSeesLP;	///<
 float	theHeadYaw;	///< 
 Vision_Objects_t	theObjectp;	///< 
 VisionObjects	theObjects;	///< 
-MOTION_SDK_Commands_t	motion_ptr;	///<
+float	targetHeading;	///< 
+float	angle;	///< 
+float	heading;	///< 
+TopParticles_t	particles;	///< 
+bool	ourHalf;	///< 
+FilteredVisionObject	leftPost;	///< 
+FilteredVisionObject	rightPost;	///<
