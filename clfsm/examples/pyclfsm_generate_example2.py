@@ -1,10 +1,10 @@
 import errno
 import os
 
-from pyclfsm import State, StateMachine, Variable, Visitor
+from pyclfsm import State, StateMachine, StateVariable, StateMachineVariable, Visitor
 
 def main(output):
-    state_machine_variables = [Variable('int', 'currentState', 'state no')]
+    state_machine_variables = [StateMachineVariable('int', 'currentState', 'state no')]
 
     state_machine_includes = '''#include <iostream>
 #include <cmath>
@@ -36,7 +36,7 @@ def main(output):
 }
 '''
 
-    one_variables = [Variable('const char *', 'stateName', 'name of the current state')]
+    one_variables = [StateVariable('const char *', 'stateName', 'name of the current state')]
 
     one_expression_0 = 'after(1) && (rand() % 10 == 1)'
     one_expression_1 = 'after(1)'
@@ -64,7 +64,7 @@ def main(output):
 }
 '''
 
-    two_variables = [Variable('const char *', 'stateName', 'name of the current state')]
+    two_variables = [StateVariable('const char *', 'stateName', 'name of the current state')]
 
     two_expression = 'after_ms(500)'
 
@@ -91,7 +91,7 @@ def main(output):
 }
 '''
 
-    three_variables = [Variable('const char *', 'stateName', 'name of the current state')]
+    three_variables = [StateVariable('const char *', 'stateName', 'name of the current state')]
 
     three_expression = 'after_ms(500)'
 
