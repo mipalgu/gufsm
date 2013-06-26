@@ -56,7 +56,7 @@ namespace FSM
                     }
 
                     virtual int numberOfTransitions() const {
-                        return 2;
+                        return 1;
                     }
 
 #                   include "State_Pong_Variables.h"
