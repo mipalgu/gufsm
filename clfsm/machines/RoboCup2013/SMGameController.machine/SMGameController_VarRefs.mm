@@ -35,5 +35,6 @@ float	&odo_forward = _m->odo_forward;	///<
 float	&odo_start = _m->odo_start;	///< 
 int	&numberOfPenalties = _m->numberOfPenalties;	///< 
 PF_ControlStatus_Modes_t	&resetParticleFilter = _m->resetParticleFilter;	///< 
+bool	&readyFromInitial = _m->readyFromInitial;	///< 
 
 #pragma clang diagnostic pop

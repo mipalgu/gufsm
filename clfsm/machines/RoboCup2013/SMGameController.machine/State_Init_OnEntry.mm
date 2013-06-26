@@ -1,6 +1,7 @@
 using namespace std;
 
 numberOfPenalties = 0;
+readyFromInitial=false;
 
 nao_state = nao_state_ptr.get();
 

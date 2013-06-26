@@ -28,4 +28,5 @@ WALK_ControlStatus	controlstatus;	///<
 float	odo_forward;	///< 
 float	odo_start;	///< 
 int	numberOfPenalties;	///< 
-PF_ControlStatus_Modes_t	resetParticleFilter;	///<
+PF_ControlStatus_Modes_t	resetParticleFilter;	///< 
+bool	readyFromInitial;	///<
