@@ -1,5 +1,5 @@
 //
-// State_Accurate_Right_Variables.h
+// State_GettingClose_Variables.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //

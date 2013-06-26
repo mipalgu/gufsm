@@ -1,9 +1,9 @@
 //
-// State_Accurate_Right_VarRefs.mm
+// State_GettingClose_VarRefs.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-Accurate_Right *_s = static_cast<Accurate_Right *>(_state);
+GettingClose *_s = static_cast<GettingClose *>(_state);
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"

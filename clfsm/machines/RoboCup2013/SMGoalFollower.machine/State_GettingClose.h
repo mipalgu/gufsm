@@ -1,10 +1,10 @@
 //
-// State_Stop_acurating.h
+// State_GettingClose.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMGoalFollower_State_Stop_acurating_h
-#define clfsm_SMGoalFollower_State_Stop_acurating_h
+#ifndef clfsm_SMGoalFollower_State_GettingClose_h
+#define clfsm_SMGoalFollower_State_GettingClose_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class Stop_acurating: public CLState
+            class GettingClose: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -35,24 +35,18 @@ namespace FSM
                     virtual void perform(CLMachine *, CLState *) const;
                 };
 
-                class Transition_0: public CLTransition
-                {
-                public:
-                    Transition_0(int toState = 6): CLTransition(toState) {}
-
-                    virtual bool check(CLMachine *, CLState *) const;
-                };
-
-                CLTransition *_transitions[1];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wzero-length-array"
+                CLTransition *_transitions[0];
 
                 public:
-                    Stop_acurating(const char *name = "Stop_acurating");
-                    virtual ~Stop_acurating();
+                    GettingClose(const char *name = "GettingClose");
+                    virtual ~GettingClose();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 1; }
+                    virtual int numberOfTransitions() const { return 0; }
 
-#                   include "State_Stop_acurating_Variables.h"
+#                   include "State_GettingClose_Variables.h"
             };
         }
       }
@@ -60,3 +54,4 @@ namespace FSM
 }
 
 #endif
+#pragma clang diagnostic pop

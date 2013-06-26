@@ -1,10 +1,10 @@
 //
-// State_Accurate_Right.h
+// State_Approaching.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMGoalFollower_State_Accurate_Right_h
-#define clfsm_SMGoalFollower_State_Accurate_Right_h
+#ifndef clfsm_SMGoalFollower_State_Approaching_h
+#define clfsm_SMGoalFollower_State_Approaching_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class Accurate_Right: public CLState
+            class Approaching: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -46,13 +46,13 @@ namespace FSM
                 CLTransition *_transitions[1];
 
                 public:
-                    Accurate_Right(const char *name = "Accurate_Right");
-                    virtual ~Accurate_Right();
+                    Approaching(const char *name = "Approaching");
+                    virtual ~Approaching();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
                     virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_Accurate_Right_Variables.h"
+#                   include "State_Approaching_Variables.h"
             };
         }
       }
