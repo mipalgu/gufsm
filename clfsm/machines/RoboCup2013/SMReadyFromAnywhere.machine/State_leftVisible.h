@@ -1,10 +1,10 @@
 //
-// State_DetermineOurHalf.h
+// State_leftVisible.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMReadyFromAnywhere_State_DetermineOurHalf_h
-#define clfsm_SMReadyFromAnywhere_State_DetermineOurHalf_h
+#ifndef clfsm_SMReadyFromAnywhere_State_leftVisible_h
+#define clfsm_SMReadyFromAnywhere_State_leftVisible_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class DetermineOurHalf: public CLState
+            class leftVisible: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,7 +38,7 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 3): CLTransition(toState) {}
+                    Transition_0(int toState = 11): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
@@ -46,7 +46,7 @@ namespace FSM
                 class Transition_1: public CLTransition
                 {
                 public:
-                    Transition_1(int toState = 9): CLTransition(toState) {}
+                    Transition_1(int toState = 14): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
@@ -54,13 +54,13 @@ namespace FSM
                 CLTransition *_transitions[2];
 
                 public:
-                    DetermineOurHalf(const char *name = "DetermineOurHalf");
-                    virtual ~DetermineOurHalf();
+                    leftVisible(const char *name = "leftVisible");
+                    virtual ~leftVisible();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
                     virtual int numberOfTransitions() const { return 2; }
 
-#                   include "State_DetermineOurHalf_Variables.h"
+#                   include "State_leftVisible_Variables.h"
             };
         }
       }

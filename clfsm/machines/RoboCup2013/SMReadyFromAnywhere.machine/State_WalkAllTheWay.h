@@ -1,10 +1,10 @@
 //
-// State_DetermineOurHalf.h
+// State_WalkAllTheWay.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMReadyFromAnywhere_State_DetermineOurHalf_h
-#define clfsm_SMReadyFromAnywhere_State_DetermineOurHalf_h
+#ifndef clfsm_SMReadyFromAnywhere_State_WalkAllTheWay_h
+#define clfsm_SMReadyFromAnywhere_State_WalkAllTheWay_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class DetermineOurHalf: public CLState
+            class WalkAllTheWay: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,29 +38,21 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 3): CLTransition(toState) {}
+                    Transition_0(int toState = 15): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                class Transition_1: public CLTransition
-                {
-                public:
-                    Transition_1(int toState = 9): CLTransition(toState) {}
-
-                    virtual bool check(CLMachine *, CLState *) const;
-                };
-
-                CLTransition *_transitions[2];
+                CLTransition *_transitions[1];
 
                 public:
-                    DetermineOurHalf(const char *name = "DetermineOurHalf");
-                    virtual ~DetermineOurHalf();
+                    WalkAllTheWay(const char *name = "WalkAllTheWay");
+                    virtual ~WalkAllTheWay();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 2; }
+                    virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_DetermineOurHalf_Variables.h"
+#                   include "State_WalkAllTheWay_Variables.h"
             };
         }
       }

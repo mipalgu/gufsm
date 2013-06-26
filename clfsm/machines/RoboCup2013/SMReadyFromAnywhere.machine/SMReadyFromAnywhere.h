@@ -16,12 +16,12 @@ namespace FSM
     {
         class SMReadyFromAnywhere: public CLMachine
         {
-            CLState *_states[9];
+            CLState *_states[18];
         public:
             SMReadyFromAnywhere(int mid  = 0, const char *name = "SMReadyFromAnywhere");
             virtual ~SMReadyFromAnywhere();
             virtual CLState * const * states() const { return _states; }
-            virtual int numberOfStates() const { return 9; }
+            virtual int numberOfStates() const { return 18; }
 #           include "SMReadyFromAnywhere_Variables.h"
         };
     }

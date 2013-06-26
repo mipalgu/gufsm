@@ -39,5 +39,7 @@ float	&angle = _m->angle;	///<
 float	&heading = _m->heading;	///< 
 TopParticles_t	&particles = _m->particles;	///< 
 bool	&ourHalf = _m->ourHalf;	///< 
+FilteredVisionObject	&leftPost = _m->leftPost;	///< 
+FilteredVisionObject	&rightPost = _m->rightPost;	///< 
 
 #pragma clang diagnostic pop

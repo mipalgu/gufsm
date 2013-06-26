@@ -1,10 +1,10 @@
 //
-// State_DetermineOurHalf.h
+// State_CheckHowFarIsTheGoal.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMReadyFromAnywhere_State_DetermineOurHalf_h
-#define clfsm_SMReadyFromAnywhere_State_DetermineOurHalf_h
+#ifndef clfsm_SMReadyFromAnywhere_State_CheckHowFarIsTheGoal_h
+#define clfsm_SMReadyFromAnywhere_State_CheckHowFarIsTheGoal_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class DetermineOurHalf: public CLState
+            class CheckHowFarIsTheGoal: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,7 +38,7 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 3): CLTransition(toState) {}
+                    Transition_0(int toState = 12): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
@@ -46,7 +46,7 @@ namespace FSM
                 class Transition_1: public CLTransition
                 {
                 public:
-                    Transition_1(int toState = 9): CLTransition(toState) {}
+                    Transition_1(int toState = 13): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
@@ -54,13 +54,13 @@ namespace FSM
                 CLTransition *_transitions[2];
 
                 public:
-                    DetermineOurHalf(const char *name = "DetermineOurHalf");
-                    virtual ~DetermineOurHalf();
+                    CheckHowFarIsTheGoal(const char *name = "CheckHowFarIsTheGoal");
+                    virtual ~CheckHowFarIsTheGoal();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
                     virtual int numberOfTransitions() const { return 2; }
 
-#                   include "State_DetermineOurHalf_Variables.h"
+#                   include "State_CheckHowFarIsTheGoal_Variables.h"
             };
         }
       }
