@@ -32,13 +32,13 @@
 					<key>controlPoint1Y</key>
 					<real>115.218777653419</real>
 					<key>controlPoint2X</key>
-					<real>387.45161785576153</real>
+					<real>625.45161785576147</real>
 					<key>controlPoint2Y</key>
-					<real>100.99912784950206</real>
+					<real>40.999127849502059</real>
 					<key>dstPointX</key>
-					<real>414.42994786819133</real>
+					<real>652.42994786819133</real>
 					<key>dstPointY</key>
-					<real>69.700142498267184</real>
+					<real>9.7001424982671836</real>
 					<key>srcPointX</key>
 					<real>257.24343927932591</real>
 					<key>srcPointY</key>
@@ -84,9 +84,9 @@
 			<array>
 				<dict>
 					<key>controlPoint1X</key>
-					<real>359.39926985906351</real>
+					<real>597.39926985906345</real>
 					<key>controlPoint1Y</key>
-					<real>16.790074660997096</real>
+					<real>-43.209925339002908</real>
 					<key>controlPoint2X</key>
 					<real>205.41212492740428</real>
 					<key>controlPoint2Y</key>
@@ -96,9 +96,9 @@
 					<key>dstPointY</key>
 					<real>101.85602350382794</real>
 					<key>srcPointX</key>
-					<real>401.10755016001082</real>
+					<real>639.10755016001076</real>
 					<key>srcPointY</key>
-					<real>44.303979197179686</real>
+					<real>-15.696020802820314</real>
 				</dict>
 			</array>
 			<key>bgColour</key>
@@ -130,9 +130,9 @@
 			<key>w</key>
 			<real>100</real>
 			<key>x</key>
-			<real>441</real>
+			<real>678.66015625</real>
 			<key>y</key>
-			<real>56</real>
+			<real>-4.00390625</real>
 		</dict>
 		<key>FoundConstDir</key>
 		<dict>
