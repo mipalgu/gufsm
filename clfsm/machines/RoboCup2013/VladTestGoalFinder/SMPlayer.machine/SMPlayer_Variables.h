@@ -28,4 +28,5 @@ bool	visionSeesRP;	///<
 bool	visionSeesLP;	///< 
 float	theHeadYaw;	///< 
 Vision_Objects_t	theObjectp;	///< 
-VisionObjects	theObjects;	///<
+VisionObjects	theObjects;	///< 
+MOTION_SDK_Commands_t	motion_ptr;	///<
