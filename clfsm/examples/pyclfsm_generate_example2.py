@@ -14,7 +14,6 @@ def main(output):
     one_includes = '''#include <cstdlib>
 #include <Whiteboard.h>
 #include <WhiteboardConstants.h>
-#include <unistd.h>
 '''
 
     one_internal = '''{
@@ -43,7 +42,6 @@ def main(output):
     one_expression_1 = 'after(1)'
 
     two_includes = '''#include <cstdlib>
-#include <unistd.h>
 '''
 
     two_internal = '''{
@@ -71,7 +69,6 @@ def main(output):
     two_expression = 'after_ms(500)'
 
     three_includes = '''#include <cstdlib>
-#include <unistd.h>
 '''
 
     three_internal = '''{
