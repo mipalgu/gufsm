@@ -1,5 +1,4 @@
 walk_post(WALK_ControlStatus(WALK_Stop));
 
 
-rightPost = sightings_ptr.get().get_object(FVOGoalPostRight);
-leftPost = sightings_ptr.get().get_object(FVOGoalPostLeft);
+restart("SMWalkToLine2");

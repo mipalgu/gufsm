@@ -17,7 +17,6 @@ using namespace State;
 Goal_Approach::Goal_Approach(const char *name): CLState(name, *new Goal_Approach::OnEntry, *new Goal_Approach::OnExit, *new Goal_Approach::Internal)
 {
 	_transitions[0] = new Transition_0();
-	_transitions[1] = new Transition_1();
 }
 
 Goal_Approach::~Goal_Approach()
@@ -27,7 +26,6 @@ Goal_Approach::~Goal_Approach()
 	delete &internalAction();
 
 	delete _transitions[0];
-	delete _transitions[1];
 }
 
 void Goal_Approach::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -59,16 +57,5 @@ bool Goal_Approach::Transition_0::check(CLMachine *_machine, CLState *_state) co
 	return
 	(
 #		include "State_Goal_Approach_Transition_0.expr"
-	);
-}
-
-bool Goal_Approach::Transition_1::check(CLMachine *_machine, CLState *_state) const
-{
-#	include "SMGoalFollower_VarRefs.mm"
-#	include "State_Goal_Approach_VarRefs.mm"
-
-	return
-	(
-#		include "State_Goal_Approach_Transition_1.expr"
 	);
 }

@@ -1,1 +1,1 @@
-walk_post(WALK_ControlStatus(WALK_Run, 0, -50, 0, 100));
+walk_post(WALK_ControlStatus(WALK_Run, 0, -100, 0, 100));
