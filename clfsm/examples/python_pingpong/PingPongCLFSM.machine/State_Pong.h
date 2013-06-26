@@ -55,9 +55,7 @@ namespace FSM
                         return _transitions;
                     }
 
-                    virtual int numberOfTransitions() const {
-                        return 2;
-                    }
+                    virtual int numberOfTransitions() const { return 1; }
 
 #                   include "State_Pong_Variables.h"
             };
