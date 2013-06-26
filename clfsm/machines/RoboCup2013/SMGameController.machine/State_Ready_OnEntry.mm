@@ -17,4 +17,7 @@ isPenalised = smGameState.amIPenalized(myNumber);
 
 nao_state = nao_state_ptr.get();
 
-restart("SMReady");
+if (readyFromInitial)
+	restart("SMReadyFromInitial");
+else
+	restart("SMReadyFromAnywhere");

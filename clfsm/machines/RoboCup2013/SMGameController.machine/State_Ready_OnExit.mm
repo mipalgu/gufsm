@@ -1,1 +1,3 @@
-suspend("SMReady");
+suspend("SMReadyFromAnywhere");
+suspend("SMReadyFromInitial");
+readyFromInitial=false;
