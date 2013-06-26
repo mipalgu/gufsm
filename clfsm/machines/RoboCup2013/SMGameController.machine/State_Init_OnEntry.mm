@@ -1,5 +1,6 @@
 using namespace std;
 
+trustUDP = true;
 numberOfPenalties = 0;
 readyFromInitial=false;
 

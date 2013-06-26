@@ -1,1 +1,1 @@
-
+restart("SMFindGoalOnSpot");

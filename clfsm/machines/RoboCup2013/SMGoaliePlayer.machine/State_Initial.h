@@ -1,10 +1,10 @@
 //
-// State_Start.h
+// State_Initial.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMPlayer_State_Start_h
-#define clfsm_SMPlayer_State_Start_h
+#ifndef clfsm_SMGoaliePlayer_State_Initial_h
+#define clfsm_SMGoaliePlayer_State_Initial_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,11 +14,11 @@ namespace FSM
 {
     namespace CLM
     {
-      namespace FSMSMPlayer
+      namespace FSMSMGoaliePlayer
       {
         namespace State
         {
-            class Start: public CLState
+            class Initial: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,7 +38,7 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 1): CLTransition(toState) {}
+                    Transition_0(int toState = 3): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
@@ -46,13 +46,13 @@ namespace FSM
                 CLTransition *_transitions[1];
 
                 public:
-                    Start(const char *name = "Start");
-                    virtual ~Start();
+                    Initial(const char *name = "Initial");
+                    virtual ~Initial();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
                     virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_Start_Variables.h"
+#                   include "State_Initial_Variables.h"
             };
         }
       }
