@@ -21,8 +21,8 @@ class Visitor(object):
     def __init__(self, statemachine):
         self.statemachine = statemachine
 
-    def generate(self):
-        self.output = os.path.abspath(self.statemachine.name + '.machine')
+    def generate(self, output='.'):
+        self.output = os.path.abspath(os.path.join(output, self.statemachine.name + '.machine'))
         print 'Generating CLFSM code in %s' % self.output
         mkdir_p(self.output)
         self.visit(self.statemachine)
