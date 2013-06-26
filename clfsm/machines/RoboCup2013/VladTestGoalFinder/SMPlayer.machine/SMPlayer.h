@@ -16,12 +16,12 @@ namespace FSM
     {
         class SMPlayer: public CLMachine
         {
-            CLState *_states[19];
+            CLState *_states[11];
         public:
             SMPlayer(int mid  = 0, const char *name = "SMPlayer");
             virtual ~SMPlayer();
             virtual CLState * const * states() const { return _states; }
-            virtual int numberOfStates() const { return 19; }
+            virtual int numberOfStates() const { return 11; }
 #           include "SMPlayer_Variables.h"
         };
     }

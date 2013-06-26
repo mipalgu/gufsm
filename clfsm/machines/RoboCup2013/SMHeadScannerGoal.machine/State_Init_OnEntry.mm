@@ -1,4 +1,4 @@
-fprintf(stderr, " Head Goal Scanner State: %s\n", state_name());
+fprintf(stderr, " %s %s\n", machine_name(), state_name());
 
 
 time = 1000000;
