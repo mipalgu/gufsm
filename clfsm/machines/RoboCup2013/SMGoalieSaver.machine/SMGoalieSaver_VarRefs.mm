@@ -21,5 +21,7 @@ vec2	&averageDiff = _m->averageDiff;	///< Average difference vector for ball pos
 MOTION_SDK_Commands_t	&wbMotion = _m->wbMotion;	///< 
 MOTION_SDK_Status_t	&wbMotionStatus = _m->wbMotionStatus;	///< 
 bool	&constantDirection = _m->constantDirection;	///< Has the ball been moving in a direction over the past few differences.
+WALK_Status_t	&walk_status = _m->walk_status;	///< 
+WALK_Command_t	&walk_post = _m->walk_post;	///< 
 
 #pragma clang diagnostic pop
