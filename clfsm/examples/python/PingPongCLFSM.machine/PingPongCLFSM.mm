@@ -32,7 +32,7 @@ PingPongCLFSM::PingPongCLFSM(int mid, const char *name): CLMachine(mid,
 
 PingPongCLFSM::~PingPongCLFSM()
 {
-        _delete states[0];
-        _delete states[1];
+        delete _states[0];
+        delete _states[1];
 
 }
