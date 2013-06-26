@@ -1,14 +1,15 @@
 //
-// State_Two_VarRefs.mm
+// SMGoaliePlayer_VarRefs.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-Two *_s = static_cast<Two *>(_state);
+SMGoaliePlayer *_m = static_cast<SMGoaliePlayer *>(_machine);
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"
 #pragma clang diagnostic ignored "-Wshadow"
 
-const char *	&stateName = _s->stateName;	///< name of the current state
+FilteredBallSighting_t	&wbSighting = _m->wbSighting;	///< 
+FilteredVisionObject	&ball_info = _m->ball_info;	///< 
 
 #pragma clang diagnostic pop
