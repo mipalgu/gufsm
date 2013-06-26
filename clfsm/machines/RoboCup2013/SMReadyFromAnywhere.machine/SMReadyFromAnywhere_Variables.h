@@ -32,4 +32,6 @@ float	targetHeading;	///<
 float	angle;	///< 
 float	heading;	///< 
 TopParticles_t	particles;	///< 
-bool	ourHalf;	///<
+bool	ourHalf;	///< 
+FilteredVisionObject	leftPost;	///< 
+FilteredVisionObject	rightPost;	///<

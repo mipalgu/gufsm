@@ -15,6 +15,15 @@
 #include "State_CallFindGoal.h"
 #include "State_OurHalfFacingUp.h"
 #include "State_DirectlyLookingAtAGoal.h"
+#include "State_StartFindingOurGoal.h"
+#include "State_CheckHowFarIsTheGoal.h"
+#include "State_TooCloseSpinAround.h"
+#include "State_leftVisible.h"
+#include "State_rightVisible.h"
+#include "State_WalkAllTheWay.h"
+#include "State_readDistance.h"
+#include "State_checkDistance.h"
+#include "State_StopWalkAllTheWay.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -38,6 +47,15 @@ SMReadyFromAnywhere::SMReadyFromAnywhere(int mid, const char *name): CLMachine(m
 	_states[6] = new FSMSMReadyFromAnywhere::State::CallFindGoal;
 	_states[7] = new FSMSMReadyFromAnywhere::State::OurHalfFacingUp;
 	_states[8] = new FSMSMReadyFromAnywhere::State::DirectlyLookingAtAGoal;
+	_states[9] = new FSMSMReadyFromAnywhere::State::StartFindingOurGoal;
+	_states[10] = new FSMSMReadyFromAnywhere::State::CheckHowFarIsTheGoal;
+	_states[11] = new FSMSMReadyFromAnywhere::State::TooCloseSpinAround;
+	_states[12] = new FSMSMReadyFromAnywhere::State::leftVisible;
+	_states[13] = new FSMSMReadyFromAnywhere::State::rightVisible;
+	_states[14] = new FSMSMReadyFromAnywhere::State::WalkAllTheWay;
+	_states[15] = new FSMSMReadyFromAnywhere::State::readDistance;
+	_states[16] = new FSMSMReadyFromAnywhere::State::checkDistance;
+	_states[17] = new FSMSMReadyFromAnywhere::State::StopWalkAllTheWay;
 
 	setSuspendState(_states[1]);            // set suspend state
 	setInitialState(_states[0]);            // set initial state
@@ -54,4 +72,13 @@ SMReadyFromAnywhere::~SMReadyFromAnywhere()
 	delete _states[6];
 	delete _states[7];
 	delete _states[8];
+	delete _states[9];
+	delete _states[10];
+	delete _states[11];
+	delete _states[12];
+	delete _states[13];
+	delete _states[14];
+	delete _states[15];
+	delete _states[16];
+	delete _states[17];
 }
