@@ -19,6 +19,7 @@
 #include "State_SUSPENDED.h"
 #include "State_First_empty.h"
 #include "State_Second_empty.h"
+#include "State_Third_empty.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -46,6 +47,7 @@ Color_Learner::Color_Learner(int mid, const char *name): CLMachine(mid, name)
 	_states[10] = new FSMColor_Learner::State::SUSPENDED;
 	_states[11] = new FSMColor_Learner::State::First_empty;
 	_states[12] = new FSMColor_Learner::State::Second_empty;
+	_states[13] = new FSMColor_Learner::State::Third_empty;
 
 	setSuspendState(_states[10]);            // set suspend state
 	setInitialState(_states[0]);            // set initial state
@@ -66,4 +68,5 @@ Color_Learner::~Color_Learner()
 	delete _states[10];
 	delete _states[11];
 	delete _states[12];
+	delete _states[13];
 }
