@@ -27,6 +27,7 @@
 #include "State_TurnToGoal.h"
 #include "State_Stop.h"
 #include "State_LostBall.h"
+#include "State_ExtraDelay.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -62,6 +63,7 @@ SMKicker::SMKicker(int mid, const char *name): CLMachine(mid, name)
 	_states[18] = new FSMSMKicker::State::TurnToGoal;
 	_states[19] = new FSMSMKicker::State::Stop;
 	_states[20] = new FSMSMKicker::State::LostBall;
+	_states[21] = new FSMSMKicker::State::ExtraDelay;
 
 	setInitialState(_states[0]);            // set initial state
 }
@@ -89,4 +91,5 @@ SMKicker::~SMKicker()
 	delete _states[18];
 	delete _states[19];
 	delete _states[20];
+	delete _states[21];
 }

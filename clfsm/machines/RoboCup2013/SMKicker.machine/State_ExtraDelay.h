@@ -1,10 +1,10 @@
 //
-// State_SUSPENDED.h
+// State_ExtraDelay.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMPlayer_State_SUSPENDED_h
-#define clfsm_SMPlayer_State_SUSPENDED_h
+#ifndef clfsm_SMKicker_State_ExtraDelay_h
+#define clfsm_SMKicker_State_ExtraDelay_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,11 +14,11 @@ namespace FSM
 {
     namespace CLM
     {
-      namespace FSMSMPlayer
+      namespace FSMSMKicker
       {
         namespace State
         {
-            class SUSPENDED: public CLState
+            class ExtraDelay: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -35,18 +35,24 @@ namespace FSM
                     virtual void perform(CLMachine *, CLState *) const;
                 };
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wzero-length-array"
-                CLTransition *_transitions[0];
+                class Transition_0: public CLTransition
+                {
+                public:
+                    Transition_0(int toState = 9): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                CLTransition *_transitions[1];
 
                 public:
-                    SUSPENDED(const char *name = "SUSPENDED");
-                    virtual ~SUSPENDED();
+                    ExtraDelay(const char *name = "ExtraDelay");
+                    virtual ~ExtraDelay();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 0; }
+                    virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_SUSPENDED_Variables.h"
+#                   include "State_ExtraDelay_Variables.h"
             };
         }
       }
@@ -54,4 +60,3 @@ namespace FSM
 }
 
 #endif
-#pragma clang diagnostic pop
