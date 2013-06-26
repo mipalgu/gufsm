@@ -24,8 +24,8 @@ extern "C"
 
 PingPongCLFSM::PingPongCLFSM(int mid, const char *name): CLMachine(mid,
     name) {
-        _states[%(i)d] = new FSM%(state_machine)s::State::Ping;
-        _states[%(i)d] = new FSM%(state_machine)s::State::Pong;
+        _states[0] = new FSMPingPongCLFSM::State::Ping;
+        _states[1] = new FSMPingPongCLFSM::State::Pong;
 
         setInitialState(_states[0]);            // set initial state
 }

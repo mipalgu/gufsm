@@ -16,7 +16,7 @@ using namespace State;
 
 Ping::Ping(const char *name): CLState(name, *new Ping::OnEntry,
     *new Ping::OnExit, *new Ping::Internal) {
-        _transitions[%(transition_number)d] = new Transition_%(transition_number)d();
+        _transitions[0] = new Transition_0();
 
 }
 

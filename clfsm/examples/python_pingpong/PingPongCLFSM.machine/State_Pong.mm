@@ -16,7 +16,7 @@ using namespace State;
 
 Pong::Pong(const char *name): CLState(name, *new Pong::OnEntry,
     *new Pong::OnExit, *new Pong::Internal) {
-        _transitions[%(transition_number)d] = new Transition_%(transition_number)d();
+        _transitions[0] = new Transition_0();
 
 }
 
