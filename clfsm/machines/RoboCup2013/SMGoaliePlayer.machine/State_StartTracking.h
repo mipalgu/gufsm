@@ -3,8 +3,8 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMPlayer_State_StartTracking_h
-#define clfsm_SMPlayer_State_StartTracking_h
+#ifndef clfsm_SMGoaliePlayer_State_StartTracking_h
+#define clfsm_SMGoaliePlayer_State_StartTracking_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,7 +14,7 @@ namespace FSM
 {
     namespace CLM
     {
-      namespace FSMSMPlayer
+      namespace FSMSMGoaliePlayer
       {
         namespace State
         {
