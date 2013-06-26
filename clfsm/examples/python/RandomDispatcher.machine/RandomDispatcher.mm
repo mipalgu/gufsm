@@ -34,8 +34,8 @@ RandomDispatcher::RandomDispatcher(int mid, const char *name): CLMachine(mid,
 
 RandomDispatcher::~RandomDispatcher()
 {
-        _delete states[0];
-        _delete states[1];
-        _delete states[2];
+        delete _states[0];
+        delete _states[1];
+        delete _states[2];
 
 }
