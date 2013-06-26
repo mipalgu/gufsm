@@ -21,5 +21,7 @@ SENSORS_TorsoJointSensors	&body_sensors = _m->body_sensors;	///<
 WALK_Command_t	&walk_post = _m->walk_post;	///< 
 float	&limiter = _m->limiter;	///< 
 int	&large_turn = _m->large_turn;	///< 
+Vision_Control_t	&vision_ptr = _m->vision_ptr;	///< 
+Vision_Status_t	&vision_status = _m->vision_status;	///< 
 
 #pragma clang diagnostic pop

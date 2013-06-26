@@ -21,8 +21,8 @@ class Visitor(object):
     def __init__(self, statemachine):
         self.statemachine = statemachine
 
-    def generate(self):
-        self.output = os.path.abspath(self.statemachine.name + '.machine')
+    def generate(self, output='.'):
+        self.output = os.path.abspath(os.path.join(output, self.statemachine.name + '.machine'))
         print 'Generating CLFSM code in %s' % self.output
         mkdir_p(self.output)
         self.visit(self.statemachine)
@@ -69,17 +69,22 @@ class Visitor(object):
             f.write(data)
 
         with open(os.path.join(self.output, node.name + '.mm'), 'w') as f:
-            create_states = ''
+            include_states_template = '#include "State_%s.h"\n'
+            create_states_template = '        _states[%(i)d] = '
+            create_states_template += 'new FSM%(state_machine)s::State'
+            create_states_template += '::%(state_name)s;\n'
+            delete_states_template = '        _delete states[%d];\n'
+
             include_states = ''
+            create_states = ''
             delete_states = ''
+
             for i, state in enumerate(visited_states):
-                include_states += '#include "State_%s.h"\n' % state.name
-                create_states += '        _states[%(i)d] = '
-                create_states += 'new FSM%(state_machine)s::State'
-                create_states += '::%(state_name)s;\n' % {
+                include_states += include_states_template % state.name
+                create_states += create_states_template % {
                     'i': i, 'state_machine': node.name,
                     'state_name': state.name}
-                delete_states += '        _delete states[%d];\n' % i
+                delete_states += delete_states_template % i
 
             data = node.TEMPLATE_MM % {'state_machine': node.name,
                 'include_states': include_states,
@@ -128,6 +133,11 @@ class Visitor(object):
                 data = visited_state.on_exit
                 f.write(data)
 
+            create_transitions_template = '        _transitions['
+            create_transitions_template += '%(transition_number)d] = new '
+            create_transitions_template += 'Transition_%(transition_number)d();'
+            create_transitions_template += '\n'
+ 
             create_transitions = ''
             transitions_code = ''
             transitions_definition = ''
@@ -138,10 +148,7 @@ class Visitor(object):
                         'w') as f:
                     data = transition.expression
                     f.write(data + '\n')
-                create_transitions += '        _transitions['
-                create_transitions += '%(transition_number)d] = new '
-                create_transitions += 'Transition_%(transition_number)d();'
-                create_transitions += '\n' % {'transition_number': i}
+                create_transitions += create_transitions_template % {'transition_number': i}
                 transitions_code += visited_state.TEMPLATE_TRANSITION_CODE % {
                     'name': visited_state.name,
                     'transition_number': i, 'state_machine': node.name}

@@ -7,6 +7,8 @@
 #include "typeClassDefs/FilteredOneDimObjects.h"
 #include "typeClassDefs/SENSORS_TorsoJointSensors.h"
 #include "typeClassDefs/WALK_ControlStatus.h"
+#include "typeClassDefs/Vision_Control.h"
+#include "typeClassDefs/HAL_HeadTarget.h"
 
 
 #include "CLWhiteboard.h"

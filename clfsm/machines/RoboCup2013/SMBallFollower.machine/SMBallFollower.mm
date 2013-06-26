@@ -16,6 +16,7 @@
 #include "State_Short_Straight.h"
 #include "State_Turn.h"
 #include "State_SUSPENDED.h"
+#include "State_TopCamSwitch.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -40,6 +41,7 @@ SMBallFollower::SMBallFollower(int mid, const char *name): CLMachine(mid, name)
 	_states[7] = new FSMSMBallFollower::State::Short_Straight;
 	_states[8] = new FSMSMBallFollower::State::Turn;
 	_states[9] = new FSMSMBallFollower::State::SUSPENDED;
+	_states[10] = new FSMSMBallFollower::State::TopCamSwitch;
 
 	setSuspendState(_states[9]);            // set suspend state
 	setInitialState(_states[0]);            // set initial state
@@ -57,4 +59,5 @@ SMBallFollower::~SMBallFollower()
 	delete _states[7];
 	delete _states[8];
 	delete _states[9];
+	delete _states[10];
 }

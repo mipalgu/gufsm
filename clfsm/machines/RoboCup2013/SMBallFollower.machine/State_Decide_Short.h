@@ -51,14 +51,22 @@ namespace FSM
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                CLTransition *_transitions[2];
+                class Transition_2: public CLTransition
+                {
+                public:
+                    Transition_2(int toState = 10): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                CLTransition *_transitions[3];
 
                 public:
                     Decide_Short(const char *name = "Decide_Short");
                     virtual ~Decide_Short();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 2; }
+                    virtual int numberOfTransitions() const { return 3; }
 
 #                   include "State_Decide_Short_Variables.h"
             };
