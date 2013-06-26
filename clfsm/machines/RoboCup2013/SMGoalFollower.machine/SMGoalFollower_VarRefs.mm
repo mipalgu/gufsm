@@ -26,8 +26,6 @@ int	&vert_fov = _m->vert_fov;	///<
 int	&minCrossBarDistance = _m->minCrossBarDistance;	///< 
 int	&minPostDistance = _m->minPostDistance;	///< 
 FilteredVisionObject	&crossBar = _m->crossBar;	///< 
-WALK_Status_t	&walk_status = _m->walk_status;	///< 
-WALK_ControlStatus	&status = _m->status;	///< 
 float	&angle = _m->angle;	///< 
 
 #pragma clang diagnostic pop

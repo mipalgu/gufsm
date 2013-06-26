@@ -7,5 +7,3 @@ WbGoalPostInfo* rp = theObjects.RightGoalPost();
 
 visionSeesLP = (NULL != lp);
 visionSeesRP = (NULL != rp);
-
-std::cout << "LP: " << visionSeesLP << "- RP: " << visionSeesRP << std::endl;
