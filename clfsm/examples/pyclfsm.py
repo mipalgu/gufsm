@@ -73,7 +73,7 @@ class Visitor(object):
             create_states_template = '        _states[%(i)d] = '
             create_states_template += 'new FSM%(state_machine)s::State'
             create_states_template += '::%(state_name)s;\n'
-            delete_states_template = '        _delete states[%d];\n'
+            delete_states_template = '        delete _states[%d];\n'
 
             include_states = ''
             create_states = ''
