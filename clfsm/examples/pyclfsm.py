@@ -291,9 +291,7 @@ namespace FSM
                         return _transitions;
                     }
 
-                    virtual int numberOfTransitions() const {
-                        return %(num_transitions)d;
-                    }
+                    virtual int numberOfTransitions() const { return %(num_transitions)d; }
 
 #                   include "State_%(name)s_Variables.h"
             };
