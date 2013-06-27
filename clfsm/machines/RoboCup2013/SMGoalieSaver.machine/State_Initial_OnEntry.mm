@@ -12,4 +12,3 @@ for (unsigned long i = 0; i < historySize; i++)
 }
 
 suspend("SMFindGoalOnSpot");
-suspend("SMKicker");

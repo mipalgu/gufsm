@@ -11,5 +11,6 @@ SMPlayer1 *_m = static_cast<SMPlayer1 *>(_machine);
 
 FilteredBallSighting_t	&wbSighting = _m->wbSighting;	///< 
 FilteredVisionObject	&ball_info = _m->ball_info;	///< 
+QSay_t	&say = _m->say;	///< 
 
 #pragma clang diagnostic pop
