@@ -1,10 +1,10 @@
 //
-// State_StartKneel.h
+// State_NoDCM.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMGoalieSaver_State_StartKneel_h
-#define clfsm_SMGoalieSaver_State_StartKneel_h
+#ifndef clfsm_SMGoalieSaver_State_NoDCM_h
+#define clfsm_SMGoalieSaver_State_NoDCM_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class StartKneel: public CLState
+            class NoDCM: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,7 +38,7 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 1): CLTransition(toState) {}
+                    Transition_0(int toState = 13): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
@@ -46,13 +46,13 @@ namespace FSM
                 CLTransition *_transitions[1];
 
                 public:
-                    StartKneel(const char *name = "StartKneel");
-                    virtual ~StartKneel();
+                    NoDCM(const char *name = "NoDCM");
+                    virtual ~NoDCM();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
                     virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_StartKneel_Variables.h"
+#                   include "State_NoDCM_Variables.h"
             };
         }
       }

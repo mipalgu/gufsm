@@ -1,10 +1,10 @@
 //
-// State_StartKneel.h
+// State_Kneel.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMGoalieSaver_State_StartKneel_h
-#define clfsm_SMGoalieSaver_State_StartKneel_h
+#ifndef clfsm_SMGoalieSaver_State_Kneel_h
+#define clfsm_SMGoalieSaver_State_Kneel_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class StartKneel: public CLState
+            class Kneel: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -46,13 +46,13 @@ namespace FSM
                 CLTransition *_transitions[1];
 
                 public:
-                    StartKneel(const char *name = "StartKneel");
-                    virtual ~StartKneel();
+                    Kneel(const char *name = "Kneel");
+                    virtual ~Kneel();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
                     virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_StartKneel_Variables.h"
+#                   include "State_Kneel_Variables.h"
             };
         }
       }

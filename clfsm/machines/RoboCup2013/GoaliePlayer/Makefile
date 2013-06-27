@@ -4,7 +4,7 @@
 # Makefile for pre- and cross-compiling .machine files
 #
 
-MACHINES=SMPlayer
+MACHINES=SMPlayer 
 
 .include "../../../../../../mk/fsm.mk"	# comes first: required for compiling state machines
 

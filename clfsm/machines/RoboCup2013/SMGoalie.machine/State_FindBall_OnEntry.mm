@@ -1,1 +1,0 @@
-restart("SMHeadScanner");

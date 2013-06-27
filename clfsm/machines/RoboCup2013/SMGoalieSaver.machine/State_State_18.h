@@ -1,10 +1,10 @@
 //
-// State_StartKneel.h
+// State_State_18.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMGoalieSaver_State_StartKneel_h
-#define clfsm_SMGoalieSaver_State_StartKneel_h
+#ifndef clfsm_SMGoalieSaver_State_State_18_h
+#define clfsm_SMGoalieSaver_State_State_18_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class StartKneel: public CLState
+            class State_18: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -35,24 +35,18 @@ namespace FSM
                     virtual void perform(CLMachine *, CLState *) const;
                 };
 
-                class Transition_0: public CLTransition
-                {
-                public:
-                    Transition_0(int toState = 1): CLTransition(toState) {}
-
-                    virtual bool check(CLMachine *, CLState *) const;
-                };
-
-                CLTransition *_transitions[1];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wzero-length-array"
+                CLTransition *_transitions[0];
 
                 public:
-                    StartKneel(const char *name = "StartKneel");
-                    virtual ~StartKneel();
+                    State_18(const char *name = "State_18");
+                    virtual ~State_18();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 1; }
+                    virtual int numberOfTransitions() const { return 0; }
 
-#                   include "State_StartKneel_Variables.h"
+#                   include "State_State_18_Variables.h"
             };
         }
       }
@@ -60,3 +54,4 @@ namespace FSM
 }
 
 #endif
+#pragma clang diagnostic pop
