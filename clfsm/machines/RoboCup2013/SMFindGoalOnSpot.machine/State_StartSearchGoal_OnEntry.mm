@@ -1,9 +1,12 @@
+stateCount=0;
 MOTION_SDK_Interface motion;
 motion.set_head_stiffness(true);
 motion.set_head_stiffness_mask(true);
 motion_ptr.set(motion);
 
 restart("SMHeadScannerGoal");
+walk_post(WALK_Stop);
+
 
 
 

@@ -1,3 +1,4 @@
+stateCount=0;
 suspend("SMHeadGoalTracker");
 
 
