@@ -6,3 +6,5 @@ isPenalised = smGameState.amIPenalized(myNumber) && smGameState.myPenaltyIs(myNu
 nao_state = nao_state_ptr.get();
 
 if (!trustUDP) trustUDP = gameState == Playing;
+
+stateCount++;

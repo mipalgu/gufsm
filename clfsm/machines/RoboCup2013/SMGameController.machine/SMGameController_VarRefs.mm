@@ -37,5 +37,6 @@ int	&numberOfPenalties = _m->numberOfPenalties;	///<
 PF_ControlStatus_Modes_t	&resetParticleFilter = _m->resetParticleFilter;	///< 
 bool	&trustUDP = _m->trustUDP;	///< 
 bool	&readyFromInitial = _m->readyFromInitial;	///< 
+int	&stateCount = _m->stateCount;	///< 
 
 #pragma clang diagnostic pop
