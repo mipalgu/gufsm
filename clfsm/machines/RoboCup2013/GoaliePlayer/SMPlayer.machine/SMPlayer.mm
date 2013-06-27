@@ -6,6 +6,7 @@
 #include "SMPlayer_Includes.h"
 #include "SMPlayer.h"
 
+#include "State_Initial.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -20,11 +21,12 @@ extern "C"
 
 SMPlayer::SMPlayer(int mid, const char *name): CLMachine(mid, name)
 {
+	_states[0] = new FSMSMPlayer::State::Initial;
 
-	setSuspendState(_states[9223372036854775807]);            // set suspend state
 	setInitialState(_states[0]);            // set initial state
 }
 
 SMPlayer::~SMPlayer()
 {
+	delete _states[0];
 }
