@@ -24,6 +24,8 @@
 #include "State_WalkStance.h"
 #include "State_Unpenalise.h"
 #include "State_ReadyFromInitial.h"
+#include "State_SUSPENDED.h"
+#include "State_PenalisedStance.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -56,7 +58,10 @@ SMGameController::SMGameController(int mid, const char *name): CLMachine(mid, na
 	_states[15] = new FSMSMGameController::State::WalkStance;
 	_states[16] = new FSMSMGameController::State::Unpenalise;
 	_states[17] = new FSMSMGameController::State::ReadyFromInitial;
+	_states[18] = new FSMSMGameController::State::SUSPENDED;
+	_states[19] = new FSMSMGameController::State::PenalisedStance;
 
+	setSuspendState(_states[18]);            // set suspend state
 	setInitialState(_states[0]);            // set initial state
 }
 
@@ -80,4 +85,6 @@ SMGameController::~SMGameController()
 	delete _states[15];
 	delete _states[16];
 	delete _states[17];
+	delete _states[18];
+	delete _states[19];
 }
