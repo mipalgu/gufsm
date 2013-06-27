@@ -18,6 +18,8 @@ smGameState.set_theGSGameState(Playing);
 postGS(smGameState);
 gameState = smGameState.theGSGameState();
 isPenalised = smGameState.amIPenalized(myNumber) && smGameState.myPenaltyIs(myNumber) != ManualButtonPenalty;
-														newScore=smGameState.getOurScore();
+if (!trustUDP) isPenalised = false;
+
+		newScore=smGameState.getOurScore();
 
 nao_state = nao_state_ptr.get();
