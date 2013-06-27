@@ -1,1 +1,1 @@
-after_ms(100)
+!(leftPost.isVisible() ||rightPost.isVisible())
