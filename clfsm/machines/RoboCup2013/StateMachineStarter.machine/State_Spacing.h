@@ -1,10 +1,10 @@
 //
-// State_Colors_Learned.h
+// State_Spacing.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_StateMachineStarter_State_Colors_Learned_h
-#define clfsm_StateMachineStarter_State_Colors_Learned_h
+#ifndef clfsm_StateMachineStarter_State_Spacing_h
+#define clfsm_StateMachineStarter_State_Spacing_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class Colors_Learned: public CLState
+            class Spacing: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,29 +38,21 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 6): CLTransition(toState) {}
+                    Transition_0(int toState = 3): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                class Transition_1: public CLTransition
-                {
-                public:
-                    Transition_1(int toState = 2): CLTransition(toState) {}
-
-                    virtual bool check(CLMachine *, CLState *) const;
-                };
-
-                CLTransition *_transitions[2];
+                CLTransition *_transitions[1];
 
                 public:
-                    Colors_Learned(const char *name = "Colors_Learned");
-                    virtual ~Colors_Learned();
+                    Spacing(const char *name = "Spacing");
+                    virtual ~Spacing();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 2; }
+                    virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_Colors_Learned_Variables.h"
+#                   include "State_Spacing_Variables.h"
             };
         }
       }

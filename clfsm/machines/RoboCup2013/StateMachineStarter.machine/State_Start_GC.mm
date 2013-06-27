@@ -16,6 +16,7 @@ using namespace State;
 
 Start_GC::Start_GC(const char *name): CLState(name, *new Start_GC::OnEntry, *new Start_GC::OnExit, *new Start_GC::Internal)
 {
+	_transitions[0] = new Transition_0();
 }
 
 Start_GC::~Start_GC()
@@ -24,6 +25,7 @@ Start_GC::~Start_GC()
 	delete &onExitAction();
 	delete &internalAction();
 
+	delete _transitions[0];
 }
 
 void Start_GC::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -45,4 +47,15 @@ void Start_GC::Internal::perform(CLMachine *_machine, CLState *_state) const
 #	include "StateMachineStarter_VarRefs.mm"
 #	include "State_Start_GC_VarRefs.mm"
 #	include "State_Start_GC_Internal.mm"
+}
+
+bool Start_GC::Transition_0::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "StateMachineStarter_VarRefs.mm"
+#	include "State_Start_GC_VarRefs.mm"
+
+	return
+	(
+#		include "State_Start_GC_Transition_0.expr"
+	);
 }

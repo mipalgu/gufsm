@@ -1,1 +1,1 @@
-
+suspend("SMGameController");

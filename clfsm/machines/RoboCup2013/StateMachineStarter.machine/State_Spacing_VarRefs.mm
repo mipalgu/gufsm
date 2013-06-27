@@ -1,9 +1,9 @@
 //
-// State_Colors_Learned_VarRefs.mm
+// State_Spacing_VarRefs.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-Colors_Learned *_s = static_cast<Colors_Learned *>(_state);
+Spacing *_s = static_cast<Spacing *>(_state);
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"
