@@ -13,5 +13,6 @@ FilteredBallSighting_t	&sightings_ptr = _m->sightings_ptr;	///<
 FilteredVisionObject	&ball = _m->ball;	///< 
 WALK_Command_t	&walk_post = _m->walk_post;	///< 
 WALK_Status_t	&walk_status = _m->walk_status;	///< 
+bool	&waitForStop = _m->waitForStop;	///< 
 
 #pragma clang diagnostic pop

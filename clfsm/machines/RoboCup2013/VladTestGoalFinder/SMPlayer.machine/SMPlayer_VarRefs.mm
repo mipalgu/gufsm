@@ -37,5 +37,6 @@ Vision_Objects_t	&theObjectp = _m->theObjectp;	///<
 VisionObjects	&theObjects = _m->theObjects;	///< 
 MOTION_SDK_Commands_t	&motion_ptr = _m->motion_ptr;	///< 
 int	&stateCount = _m->stateCount;	///< 
+int	&spinCount = _m->spinCount;	///< 
 
 #pragma clang diagnostic pop

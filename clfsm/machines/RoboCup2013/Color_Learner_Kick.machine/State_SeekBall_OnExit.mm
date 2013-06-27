@@ -1,2 +1,0 @@
-suspend("SMHeadScanner");
-suspend("SMWalkScanner");

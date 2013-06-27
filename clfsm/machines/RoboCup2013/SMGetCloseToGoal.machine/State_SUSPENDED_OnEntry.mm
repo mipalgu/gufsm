@@ -1,7 +1,8 @@
-suspend("SMHeadScanner");
-suspend("SMWalkScanner");
-suspend("SMBallFollower");
-suspend("SMHeadBallTracker");
+suspend("SMHeadScannerGoal");
+suspend("SMGoalFollower");
+suspend("SMHeadGoalTracker");
+
+
 
 #ifdef DEBUG
 fprintf(stderr, "SMPlayer State: %s\n", state_name());
