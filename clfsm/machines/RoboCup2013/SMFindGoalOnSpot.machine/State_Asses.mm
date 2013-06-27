@@ -18,6 +18,8 @@ Asses::Asses(const char *name): CLState(name, *new Asses::OnEntry, *new Asses::O
 {
 	_transitions[0] = new Transition_0();
 	_transitions[1] = new Transition_1();
+	_transitions[2] = new Transition_2();
+	_transitions[3] = new Transition_3();
 }
 
 Asses::~Asses()
@@ -28,6 +30,8 @@ Asses::~Asses()
 
 	delete _transitions[0];
 	delete _transitions[1];
+	delete _transitions[2];
+	delete _transitions[3];
 }
 
 void Asses::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -70,5 +74,27 @@ bool Asses::Transition_1::check(CLMachine *_machine, CLState *_state) const
 	return
 	(
 #		include "State_Asses_Transition_1.expr"
+	);
+}
+
+bool Asses::Transition_2::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "SMFindGoalOnSpot_VarRefs.mm"
+#	include "State_Asses_VarRefs.mm"
+
+	return
+	(
+#		include "State_Asses_Transition_2.expr"
+	);
+}
+
+bool Asses::Transition_3::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "SMFindGoalOnSpot_VarRefs.mm"
+#	include "State_Asses_VarRefs.mm"
+
+	return
+	(
+#		include "State_Asses_Transition_3.expr"
 	);
 }
