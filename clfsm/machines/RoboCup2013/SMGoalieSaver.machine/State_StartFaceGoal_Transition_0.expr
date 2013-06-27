@@ -1,1 +1,1 @@
-is_suspended("SMFindGoalOnSpot")
+is_suspended("SMFindGoalOnSpot") && after_ms(200)

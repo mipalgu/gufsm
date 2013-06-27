@@ -15,3 +15,6 @@ vec2	averageDiff;	///< Average difference vector for ball position.
 MOTION_SDK_Commands_t	wbMotion;	///< 
 MOTION_SDK_Status_t	wbMotionStatus;	///< 
 bool	constantDirection;	///< Has the ball been moving in a direction over the past few differences.
+WALK_Status_t	walk_status;	///< 
+WALK_Command_t	walk_post;	///< 
+Vision_Control_t	wbVisionControl;	///< Select camera for StartFaceGoal to function.

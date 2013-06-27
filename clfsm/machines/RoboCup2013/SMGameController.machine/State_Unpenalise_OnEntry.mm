@@ -1,7 +1,7 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
 
-walk_post(WALK_Ready); protected_msleep(15); walk_post(WALK_ControlStatus(WALK_Run, 100, 0, 0, 100)); // engage DCM, walk a metre XXX: stalls all machines!
+walk_post(WALK_Ready); protected_msleep(15); walk_post(WALK_ControlStatus(WALK_Run, 85, 0, 0, 85)); // engage DCM, walk a metre XXX: stalls all machines!
 
 #pragma clang diagnostic pop
 

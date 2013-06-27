@@ -6,9 +6,13 @@ SUSPENDED
 SaveLeft
 SaveRight
 Waiting
-SaveFinished
-HoldPos
 StartKneel
-Stabalize
 FoundConstDir
 StartFaceGoal
+Stand
+NoDCM
+Kneel
+DCMPose
+KickBall
+FollowBall
+GoToGoal

@@ -1,1 +1,1 @@
-nao_state.chest_pressed()
+stateCount && nao_state.chest_pressed()

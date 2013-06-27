@@ -1,1 +1,1 @@
-fabs(currentOdometry - walkStartOdometry) > (float)DEG2RAD(25.0f)
+fabs(currentOdometry - walkStartOdometry) > (float)DEG2RAD(25.0f) && stateCount
