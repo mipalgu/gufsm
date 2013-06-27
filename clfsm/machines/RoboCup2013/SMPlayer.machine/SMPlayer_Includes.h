@@ -13,5 +13,7 @@
 
 using namespace guWhiteboard;
 
+using namespace std;
+
 
 //#define DEBUG
