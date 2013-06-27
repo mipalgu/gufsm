@@ -8,3 +8,4 @@ vert_fov = 48;
 
 minCrossBarDistance = 200;
 minPostDistance = 100;
+suspend("SMWalkToLine2");
