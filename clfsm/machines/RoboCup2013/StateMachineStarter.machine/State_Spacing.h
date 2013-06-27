@@ -1,10 +1,10 @@
 //
-// State_Start_GC.h
+// State_Spacing.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_StateMachineStarter_State_Start_GC_h
-#define clfsm_StateMachineStarter_State_Start_GC_h
+#ifndef clfsm_StateMachineStarter_State_Spacing_h
+#define clfsm_StateMachineStarter_State_Spacing_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class Start_GC: public CLState
+            class Spacing: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,7 +38,7 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 8): CLTransition(toState) {}
+                    Transition_0(int toState = 3): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
@@ -46,13 +46,13 @@ namespace FSM
                 CLTransition *_transitions[1];
 
                 public:
-                    Start_GC(const char *name = "Start_GC");
-                    virtual ~Start_GC();
+                    Spacing(const char *name = "Spacing");
+                    virtual ~Spacing();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
                     virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_Start_GC_Variables.h"
+#                   include "State_Spacing_Variables.h"
             };
         }
       }
