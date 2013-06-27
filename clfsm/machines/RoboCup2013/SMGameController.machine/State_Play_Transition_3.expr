@@ -1,2 +1,2 @@
-gameState == Ready
+stateCount && gameState == Ready
 && trustUDP

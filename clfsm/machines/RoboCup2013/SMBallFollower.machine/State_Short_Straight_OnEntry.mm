@@ -1,1 +1,4 @@
-walk_post(WALK_ControlStatus(WALK_Run, float(fminf(20.0f+7.0f*float(ball.distance())/float(limiter), 50.0f)), 0, 0, 50));
+float wantedSpeed = float(fminf(20.0f+7.0f*float(ball.distance())/float(limiter), 50.0f));
+forwardSpeed = 0.5f*forwardSpeed + 0.5f*wantedSpeed;
+
+walk_post(WALK_ControlStatus(WALK_Run, forwardSpeed, 0, 0, 50));

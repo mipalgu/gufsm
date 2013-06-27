@@ -16,4 +16,6 @@ WALK_Command_t	walk_post;	///<
 float	limiter;	///< 
 int	large_turn;	///< 
 Vision_Control_t	vision_ptr;	///< 
-Vision_Status_t	vision_status;	///<
+Vision_Status_t	vision_status;	///< 
+float	forwardSpeed;	///< 
+bool	shortDistanceToBall;	///<

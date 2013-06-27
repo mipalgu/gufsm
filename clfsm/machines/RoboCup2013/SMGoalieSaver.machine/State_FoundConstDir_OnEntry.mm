@@ -10,3 +10,5 @@ averageDiff.x = (int)((diff1.x + diff2.x + diff3.x) / 2);
 averageDiff.y = (int)((diff1.y + diff2.y + diff3.y) / 2);
 
 printf("averageY: %d\n", averageDiff.y);
+
+ball_info = wbSighting.get();

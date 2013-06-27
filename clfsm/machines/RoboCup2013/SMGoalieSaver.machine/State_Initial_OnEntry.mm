@@ -10,3 +10,6 @@ for (unsigned long i = 0; i < historySize; i++)
 	v.y = 0;
 	ballDifferences[i] = v;
 }
+
+suspend("SMFindGoalOnSpot");
+suspend("SMKicker");
