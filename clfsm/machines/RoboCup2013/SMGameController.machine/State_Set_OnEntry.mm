@@ -1,3 +1,5 @@
+stateCount = 0;
+
 SENSORS_LedsSensors ledValues = leds.get();
 ledValues.LEDsGroupChange(Chest, Yellow);
 ledValues.LEDsGroupChange(LFoot, ourTeamColour == TeamBlue ? Blue : Red);

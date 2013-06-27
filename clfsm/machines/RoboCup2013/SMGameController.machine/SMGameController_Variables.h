@@ -30,4 +30,5 @@ float	odo_start;	///<
 int	numberOfPenalties;	///< 
 PF_ControlStatus_Modes_t	resetParticleFilter;	///< 
 bool	trustUDP;	///< 
-bool	readyFromInitial;	///<
+bool	readyFromInitial;	///< 
+int	stateCount;	///<

@@ -1,3 +1,4 @@
+stateCount = 0;
 numberOfPenalties++;
 
 SENSORS_LedsSensors ledValues = leds.get();

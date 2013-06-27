@@ -1,3 +1,5 @@
+stateCount = 0;
+
 restart("SMPlayer");
 
 SENSORS_LedsSensors ledValues = leds.get();
