@@ -13,10 +13,5 @@ FilteredBallSighting_t	&sightings_ptr = _m->sightings_ptr;	///<
 FilteredVisionObject	&ball = _m->ball;	///< 
 WALK_Command_t	&walk_post = _m->walk_post;	///< 
 WALK_Status_t	&walk_status = _m->walk_status;	///< 
-std::string	&playerMachineName = _m->playerMachineName;	///< 
-int	&playerMachine = _m->playerMachine;	///< 
-int	&playerNumber = _m->playerNumber;	///< 
-PlayerNumber_t	&wb_playerNumber = _m->wb_playerNumber;	///< 
-int	&stateCount = _m->stateCount;	///< 
 
 #pragma clang diagnostic pop

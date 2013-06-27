@@ -13,7 +13,6 @@
 #include "State_SUSPENDED.h"
 #include "State_Walk_Halt.h"
 #include "State_Checker.h"
-#include "State_StartPlayerX.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -35,7 +34,6 @@ SMPlayer::SMPlayer(int mid, const char *name): CLMachine(mid, name)
 	_states[4] = new FSMSMPlayer::State::SUSPENDED;
 	_states[5] = new FSMSMPlayer::State::Walk_Halt;
 	_states[6] = new FSMSMPlayer::State::Checker;
-	_states[7] = new FSMSMPlayer::State::StartPlayerX;
 
 	setSuspendState(_states[4]);            // set suspend state
 	setInitialState(_states[0]);            // set initial state
@@ -50,5 +48,4 @@ SMPlayer::~SMPlayer()
 	delete _states[4];
 	delete _states[5];
 	delete _states[6];
-	delete _states[7];
 }
