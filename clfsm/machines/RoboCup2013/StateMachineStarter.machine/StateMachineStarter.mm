@@ -13,7 +13,7 @@
 #include "State_Control_State.h"
 #include "State_Say_IP.h"
 #include "State_Alt_Test_State.h"
-#include "State_Colors_Learned.h"
+#include "State_Spacing.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -35,7 +35,7 @@ StateMachineStarter::StateMachineStarter(int mid, const char *name): CLMachine(m
 	_states[4] = new FSMStateMachineStarter::State::Control_State;
 	_states[5] = new FSMStateMachineStarter::State::Say_IP;
 	_states[6] = new FSMStateMachineStarter::State::Alt_Test_State;
-	_states[7] = new FSMStateMachineStarter::State::Colors_Learned;
+	_states[7] = new FSMStateMachineStarter::State::Spacing;
 
 	setInitialState(_states[0]);            // set initial state
 }

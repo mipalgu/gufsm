@@ -1,10 +1,10 @@
 //
-// State_Colors_Learned.h
+// State_PenalisedStance.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_StateMachineStarter_State_Colors_Learned_h
-#define clfsm_StateMachineStarter_State_Colors_Learned_h
+#ifndef clfsm_SMGameController_State_PenalisedStance_h
+#define clfsm_SMGameController_State_PenalisedStance_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,11 +14,11 @@ namespace FSM
 {
     namespace CLM
     {
-      namespace FSMStateMachineStarter
+      namespace FSMSMGameController
       {
         namespace State
         {
-            class Colors_Learned: public CLState
+            class PenalisedStance: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,29 +38,21 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 6): CLTransition(toState) {}
+                    Transition_0(int toState = 4): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                class Transition_1: public CLTransition
-                {
-                public:
-                    Transition_1(int toState = 2): CLTransition(toState) {}
-
-                    virtual bool check(CLMachine *, CLState *) const;
-                };
-
-                CLTransition *_transitions[2];
+                CLTransition *_transitions[1];
 
                 public:
-                    Colors_Learned(const char *name = "Colors_Learned");
-                    virtual ~Colors_Learned();
+                    PenalisedStance(const char *name = "PenalisedStance");
+                    virtual ~PenalisedStance();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 2; }
+                    virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_Colors_Learned_Variables.h"
+#                   include "State_PenalisedStance_Variables.h"
             };
         }
       }

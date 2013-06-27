@@ -1,10 +1,10 @@
 //
-// State_Start_GC.h
+// State_SUSPENDED.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_StateMachineStarter_State_Start_GC_h
-#define clfsm_StateMachineStarter_State_Start_GC_h
+#ifndef clfsm_SMGameController_State_SUSPENDED_h
+#define clfsm_SMGameController_State_SUSPENDED_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,11 +14,11 @@ namespace FSM
 {
     namespace CLM
     {
-      namespace FSMStateMachineStarter
+      namespace FSMSMGameController
       {
         namespace State
         {
-            class Start_GC: public CLState
+            class SUSPENDED: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -35,24 +35,18 @@ namespace FSM
                     virtual void perform(CLMachine *, CLState *) const;
                 };
 
-                class Transition_0: public CLTransition
-                {
-                public:
-                    Transition_0(int toState = 7): CLTransition(toState) {}
-
-                    virtual bool check(CLMachine *, CLState *) const;
-                };
-
-                CLTransition *_transitions[1];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wzero-length-array"
+                CLTransition *_transitions[0];
 
                 public:
-                    Start_GC(const char *name = "Start_GC");
-                    virtual ~Start_GC();
+                    SUSPENDED(const char *name = "SUSPENDED");
+                    virtual ~SUSPENDED();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 1; }
+                    virtual int numberOfTransitions() const { return 0; }
 
-#                   include "State_Start_GC_Variables.h"
+#                   include "State_SUSPENDED_Variables.h"
             };
         }
       }
@@ -60,3 +54,4 @@ namespace FSM
 }
 
 #endif
+#pragma clang diagnostic pop
