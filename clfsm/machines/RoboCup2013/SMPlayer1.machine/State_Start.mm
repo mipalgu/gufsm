@@ -3,15 +3,15 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#include "SMGoaliePlayer_Includes.h"
-#include "SMGoaliePlayer.h"
+#include "SMPlayer1_Includes.h"
+#include "SMPlayer1.h"
 #include "State_Start.h"
 
 #include "State_Start_Includes.h"
 
 using namespace FSM;
 using namespace CLM;
-using namespace FSMSMGoaliePlayer;
+using namespace FSMSMPlayer1;
 using namespace State;
 
 Start::Start(const char *name): CLState(name, *new Start::OnEntry, *new Start::OnExit, *new Start::Internal)
@@ -30,28 +30,28 @@ Start::~Start()
 
 void Start::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
-#	include "SMGoaliePlayer_VarRefs.mm"
+#	include "SMPlayer1_VarRefs.mm"
 #	include "State_Start_VarRefs.mm"
 #	include "State_Start_OnEntry.mm"
 }
 
 void Start::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
-#	include "SMGoaliePlayer_VarRefs.mm"
+#	include "SMPlayer1_VarRefs.mm"
 #	include "State_Start_VarRefs.mm"
 #	include "State_Start_OnExit.mm"
 }
 
 void Start::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
-#	include "SMGoaliePlayer_VarRefs.mm"
+#	include "SMPlayer1_VarRefs.mm"
 #	include "State_Start_VarRefs.mm"
 #	include "State_Start_Internal.mm"
 }
 
 bool Start::Transition_0::check(CLMachine *_machine, CLState *_state) const
 {
-#	include "SMGoaliePlayer_VarRefs.mm"
+#	include "SMPlayer1_VarRefs.mm"
 #	include "State_Start_VarRefs.mm"
 
 	return

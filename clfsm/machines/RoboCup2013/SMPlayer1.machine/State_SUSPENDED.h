@@ -1,10 +1,10 @@
 //
-// State_Initial.h
+// State_SUSPENDED.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMGoaliePlayer_State_Initial_h
-#define clfsm_SMGoaliePlayer_State_Initial_h
+#ifndef clfsm_SMPlayer1_State_SUSPENDED_h
+#define clfsm_SMPlayer1_State_SUSPENDED_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,11 +14,11 @@ namespace FSM
 {
     namespace CLM
     {
-      namespace FSMSMGoaliePlayer
+      namespace FSMSMPlayer1
       {
         namespace State
         {
-            class Initial: public CLState
+            class SUSPENDED: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -35,24 +35,18 @@ namespace FSM
                     virtual void perform(CLMachine *, CLState *) const;
                 };
 
-                class Transition_0: public CLTransition
-                {
-                public:
-                    Transition_0(int toState = 3): CLTransition(toState) {}
-
-                    virtual bool check(CLMachine *, CLState *) const;
-                };
-
-                CLTransition *_transitions[1];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wzero-length-array"
+                CLTransition *_transitions[0];
 
                 public:
-                    Initial(const char *name = "Initial");
-                    virtual ~Initial();
+                    SUSPENDED(const char *name = "SUSPENDED");
+                    virtual ~SUSPENDED();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 1; }
+                    virtual int numberOfTransitions() const { return 0; }
 
-#                   include "State_Initial_Variables.h"
+#                   include "State_SUSPENDED_Variables.h"
             };
         }
       }
@@ -60,3 +54,4 @@ namespace FSM
 }
 
 #endif
+#pragma clang diagnostic pop

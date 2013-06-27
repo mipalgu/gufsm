@@ -1,10 +1,10 @@
 //
-// State_Start.h
+// State_FindBall.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMGoaliePlayer_State_Start_h
-#define clfsm_SMGoaliePlayer_State_Start_h
+#ifndef clfsm_SMPlayer1_State_FindBall_h
+#define clfsm_SMPlayer1_State_FindBall_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,11 +14,11 @@ namespace FSM
 {
     namespace CLM
     {
-      namespace FSMSMGoaliePlayer
+      namespace FSMSMPlayer1
       {
         namespace State
         {
-            class Start: public CLState
+            class FindBall: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -46,13 +46,13 @@ namespace FSM
                 CLTransition *_transitions[1];
 
                 public:
-                    Start(const char *name = "Start");
-                    virtual ~Start();
+                    FindBall(const char *name = "FindBall");
+                    virtual ~FindBall();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
                     virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_Start_Variables.h"
+#                   include "State_FindBall_Variables.h"
             };
         }
       }

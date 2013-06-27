@@ -1,10 +1,10 @@
 //
-// State_StartTracking.h
+// State_Start.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMGoaliePlayer_State_StartTracking_h
-#define clfsm_SMGoaliePlayer_State_StartTracking_h
+#ifndef clfsm_SMPlayer1_State_Start_h
+#define clfsm_SMPlayer1_State_Start_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,11 +14,11 @@ namespace FSM
 {
     namespace CLM
     {
-      namespace FSMSMGoaliePlayer
+      namespace FSMSMPlayer1
       {
         namespace State
         {
-            class StartTracking: public CLState
+            class Start: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,7 +38,7 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 2): CLTransition(toState) {}
+                    Transition_0(int toState = 1): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
@@ -46,13 +46,13 @@ namespace FSM
                 CLTransition *_transitions[1];
 
                 public:
-                    StartTracking(const char *name = "StartTracking");
-                    virtual ~StartTracking();
+                    Start(const char *name = "Start");
+                    virtual ~Start();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
                     virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_StartTracking_Variables.h"
+#                   include "State_Start_Variables.h"
             };
         }
       }

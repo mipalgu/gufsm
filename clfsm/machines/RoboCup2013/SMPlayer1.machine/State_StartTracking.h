@@ -1,10 +1,10 @@
 //
-// State_SUSPENDED.h
+// State_StartTracking.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMGoaliePlayer_State_SUSPENDED_h
-#define clfsm_SMGoaliePlayer_State_SUSPENDED_h
+#ifndef clfsm_SMPlayer1_State_StartTracking_h
+#define clfsm_SMPlayer1_State_StartTracking_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,11 +14,11 @@ namespace FSM
 {
     namespace CLM
     {
-      namespace FSMSMGoaliePlayer
+      namespace FSMSMPlayer1
       {
         namespace State
         {
-            class SUSPENDED: public CLState
+            class StartTracking: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -35,18 +35,24 @@ namespace FSM
                     virtual void perform(CLMachine *, CLState *) const;
                 };
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wzero-length-array"
-                CLTransition *_transitions[0];
+                class Transition_0: public CLTransition
+                {
+                public:
+                    Transition_0(int toState = 2): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                CLTransition *_transitions[1];
 
                 public:
-                    SUSPENDED(const char *name = "SUSPENDED");
-                    virtual ~SUSPENDED();
+                    StartTracking(const char *name = "StartTracking");
+                    virtual ~StartTracking();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 0; }
+                    virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_SUSPENDED_Variables.h"
+#                   include "State_StartTracking_Variables.h"
             };
         }
       }
@@ -54,4 +60,3 @@ namespace FSM
 }
 
 #endif
-#pragma clang diagnostic pop

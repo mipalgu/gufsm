@@ -3,15 +3,15 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#include "SMGoaliePlayer_Includes.h"
-#include "SMGoaliePlayer.h"
+#include "SMPlayer1_Includes.h"
+#include "SMPlayer1.h"
 #include "State_StartTracking.h"
 
 #include "State_StartTracking_Includes.h"
 
 using namespace FSM;
 using namespace CLM;
-using namespace FSMSMGoaliePlayer;
+using namespace FSMSMPlayer1;
 using namespace State;
 
 StartTracking::StartTracking(const char *name): CLState(name, *new StartTracking::OnEntry, *new StartTracking::OnExit, *new StartTracking::Internal)
@@ -30,28 +30,28 @@ StartTracking::~StartTracking()
 
 void StartTracking::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
-#	include "SMGoaliePlayer_VarRefs.mm"
+#	include "SMPlayer1_VarRefs.mm"
 #	include "State_StartTracking_VarRefs.mm"
 #	include "State_StartTracking_OnEntry.mm"
 }
 
 void StartTracking::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
-#	include "SMGoaliePlayer_VarRefs.mm"
+#	include "SMPlayer1_VarRefs.mm"
 #	include "State_StartTracking_VarRefs.mm"
 #	include "State_StartTracking_OnExit.mm"
 }
 
 void StartTracking::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
-#	include "SMGoaliePlayer_VarRefs.mm"
+#	include "SMPlayer1_VarRefs.mm"
 #	include "State_StartTracking_VarRefs.mm"
 #	include "State_StartTracking_Internal.mm"
 }
 
 bool StartTracking::Transition_0::check(CLMachine *_machine, CLState *_state) const
 {
-#	include "SMGoaliePlayer_VarRefs.mm"
+#	include "SMPlayer1_VarRefs.mm"
 #	include "State_StartTracking_VarRefs.mm"
 
 	return

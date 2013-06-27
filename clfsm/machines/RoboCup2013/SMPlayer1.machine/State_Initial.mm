@@ -3,15 +3,15 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#include "SMGoaliePlayer_Includes.h"
-#include "SMGoaliePlayer.h"
+#include "SMPlayer1_Includes.h"
+#include "SMPlayer1.h"
 #include "State_Initial.h"
 
 #include "State_Initial_Includes.h"
 
 using namespace FSM;
 using namespace CLM;
-using namespace FSMSMGoaliePlayer;
+using namespace FSMSMPlayer1;
 using namespace State;
 
 Initial::Initial(const char *name): CLState(name, *new Initial::OnEntry, *new Initial::OnExit, *new Initial::Internal)
@@ -30,28 +30,28 @@ Initial::~Initial()
 
 void Initial::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
-#	include "SMGoaliePlayer_VarRefs.mm"
+#	include "SMPlayer1_VarRefs.mm"
 #	include "State_Initial_VarRefs.mm"
 #	include "State_Initial_OnEntry.mm"
 }
 
 void Initial::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
-#	include "SMGoaliePlayer_VarRefs.mm"
+#	include "SMPlayer1_VarRefs.mm"
 #	include "State_Initial_VarRefs.mm"
 #	include "State_Initial_OnExit.mm"
 }
 
 void Initial::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
-#	include "SMGoaliePlayer_VarRefs.mm"
+#	include "SMPlayer1_VarRefs.mm"
 #	include "State_Initial_VarRefs.mm"
 #	include "State_Initial_Internal.mm"
 }
 
 bool Initial::Transition_0::check(CLMachine *_machine, CLState *_state) const
 {
-#	include "SMGoaliePlayer_VarRefs.mm"
+#	include "SMPlayer1_VarRefs.mm"
 #	include "State_Initial_VarRefs.mm"
 
 	return

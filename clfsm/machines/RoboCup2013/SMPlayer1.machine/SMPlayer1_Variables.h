@@ -1,5 +1,5 @@
 //
-// SMGoaliePlayer_Variables.h
+// SMPlayer1_Variables.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
