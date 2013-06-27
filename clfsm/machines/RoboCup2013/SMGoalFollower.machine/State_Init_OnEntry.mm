@@ -6,5 +6,5 @@ guvision_height = 960;
 horiz_fov = 61;
 vert_fov = 48;
 
-minCrossBarDistance = 250;
+minCrossBarDistance = 200;
 minPostDistance = 100;

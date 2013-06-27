@@ -16,12 +16,12 @@ namespace FSM
     {
         class SMKicker: public CLMachine
         {
-            CLState *_states[21];
+            CLState *_states[22];
         public:
             SMKicker(int mid  = 0, const char *name = "SMKicker");
             virtual ~SMKicker();
             virtual CLState * const * states() const { return _states; }
-            virtual int numberOfStates() const { return 21; }
+            virtual int numberOfStates() const { return 22; }
 #           include "SMKicker_Variables.h"
         };
     }

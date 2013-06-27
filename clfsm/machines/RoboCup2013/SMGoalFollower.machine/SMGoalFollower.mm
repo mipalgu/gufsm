@@ -13,9 +13,8 @@
 #include "State_Decide_Long.h"
 #include "State_SUSPENDED.h"
 #include "State_Goal_Approach.h"
-#include "State_Accurate_Right.h"
-#include "State_Stop_acurating.h"
-#include "State_Accurate_Left.h"
+#include "State_Approaching.h"
+#include "State_GettingClose.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -37,9 +36,8 @@ SMGoalFollower::SMGoalFollower(int mid, const char *name): CLMachine(mid, name)
 	_states[4] = new FSMSMGoalFollower::State::Decide_Long;
 	_states[5] = new FSMSMGoalFollower::State::SUSPENDED;
 	_states[6] = new FSMSMGoalFollower::State::Goal_Approach;
-	_states[7] = new FSMSMGoalFollower::State::Accurate_Right;
-	_states[8] = new FSMSMGoalFollower::State::Stop_acurating;
-	_states[9] = new FSMSMGoalFollower::State::Accurate_Left;
+	_states[7] = new FSMSMGoalFollower::State::Approaching;
+	_states[8] = new FSMSMGoalFollower::State::GettingClose;
 
 	setSuspendState(_states[5]);            // set suspend state
 	setInitialState(_states[0]);            // set initial state
@@ -56,5 +54,4 @@ SMGoalFollower::~SMGoalFollower()
 	delete _states[6];
 	delete _states[7];
 	delete _states[8];
-	delete _states[9];
 }

@@ -1,14 +1,8 @@
-suspend("SMHeadGoalTracker");
-suspend("SMHeadScannerGoal");
-
-if(walk_status.get().controlStatus() != WALK_Disconnected)
-{
-	walk_post(WALK_Stop);
-}
+suspend("SMFindGoalOnSpot");
+suspend("SMGetCloseToGoal");
 
 
-head.Stop();
-head_ptr.set(head);
+
 
 #ifdef DEBUG
 fprintf(stderr, "SMPlayer State: %s\n", state_name());

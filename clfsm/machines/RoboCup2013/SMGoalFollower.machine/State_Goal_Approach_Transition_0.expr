@@ -1,1 +1,1 @@
-(rightPost.distance() > leftPost.distance()+10)
+is_suspended("SMWalkToLine2") && after(1)

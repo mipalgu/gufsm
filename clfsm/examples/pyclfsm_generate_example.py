@@ -1,10 +1,10 @@
 import errno
 import os
 
-from pyclfsm import State, StateMachine, Variable, Visitor
+from pyclfsm import State, StateMachine, StateVariable, StateMachineVariable, Visitor
 
 def main(output):
-    state_machine_variables = [Variable('int', 'currentState', 'state no')]
+    state_machine_variables = [StateMachineVariable('int', 'currentState', 'state no')]
 
     state_machine_includes = '''#include <iostream>
 #include <cmath>
@@ -37,7 +37,7 @@ def main(output):
 }
 '''
 
-    ping_variables = [Variable('const char *', 'stateName', 'name of the current state')]
+    ping_variables = [StateVariable('const char *', 'stateName', 'name of the current state')]
 
     pong_includes = '''#include <cstdlib>
 #include <unistd.h>
@@ -63,7 +63,7 @@ def main(output):
 }
 '''
 
-    pong_variables = [Variable('const char *', 'stateName', 'name of the current state')]
+    pong_variables = [StateVariable('const char *', 'stateName', 'name of the current state')]
 
     ping_expression = 'after(1)'
 

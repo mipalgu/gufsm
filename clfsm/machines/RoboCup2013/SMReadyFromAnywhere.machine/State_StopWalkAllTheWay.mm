@@ -16,6 +16,7 @@ using namespace State;
 
 StopWalkAllTheWay::StopWalkAllTheWay(const char *name): CLState(name, *new StopWalkAllTheWay::OnEntry, *new StopWalkAllTheWay::OnExit, *new StopWalkAllTheWay::Internal)
 {
+	_transitions[0] = new Transition_0();
 }
 
 StopWalkAllTheWay::~StopWalkAllTheWay()
@@ -24,6 +25,7 @@ StopWalkAllTheWay::~StopWalkAllTheWay()
 	delete &onExitAction();
 	delete &internalAction();
 
+	delete _transitions[0];
 }
 
 void StopWalkAllTheWay::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -45,4 +47,15 @@ void StopWalkAllTheWay::Internal::perform(CLMachine *_machine, CLState *_state) 
 #	include "SMReadyFromAnywhere_VarRefs.mm"
 #	include "State_StopWalkAllTheWay_VarRefs.mm"
 #	include "State_StopWalkAllTheWay_Internal.mm"
+}
+
+bool StopWalkAllTheWay::Transition_0::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "SMReadyFromAnywhere_VarRefs.mm"
+#	include "State_StopWalkAllTheWay_VarRefs.mm"
+
+	return
+	(
+#		include "State_StopWalkAllTheWay_Transition_0.expr"
+	);
 }

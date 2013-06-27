@@ -571,7 +571,7 @@ extern "C"
         self.states.append(state)
 
 
-class Variable(object):
+class StateMachineVariable(object):
 
     def __init__(self, type_, name, doc):
         self.type_ = type_
@@ -584,4 +584,20 @@ class Variable(object):
 
     def generate_reference(self):
         return '%(type_)s\t&%(name)s = _m->%(name)s;\t///< %(doc)s' % {
+            'type_': self.type_, 'name': self.name, 'doc': self.doc}
+
+
+class StateVariable(object):
+
+    def __init__(self, type_, name, doc):
+        self.type_ = type_
+        self.name = name
+        self.doc = doc
+
+    def generate_definition(self):
+        return '%(type_)s\t%(name)s;\t///< %(doc)s' % {
+            'type_': self.type_, 'name': self.name, 'doc': self.doc}
+
+    def generate_reference(self):
+        return '%(type_)s\t&%(name)s = _s->%(name)s;\t///< %(doc)s' % {
             'type_': self.type_, 'name': self.name, 'doc': self.doc}

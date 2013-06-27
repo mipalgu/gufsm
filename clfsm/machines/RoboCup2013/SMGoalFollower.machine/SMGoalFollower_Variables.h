@@ -20,6 +20,4 @@ int	vert_fov;	///<
 int	minCrossBarDistance;	///< 
 int	minPostDistance;	///< 
 FilteredVisionObject	crossBar;	///< 
-WALK_Status_t	walk_status;	///< 
-WALK_ControlStatus	status;	///< 
 float	angle;	///<
