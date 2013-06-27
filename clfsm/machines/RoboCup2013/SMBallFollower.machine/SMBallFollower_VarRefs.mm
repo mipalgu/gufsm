@@ -23,5 +23,7 @@ float	&limiter = _m->limiter;	///<
 int	&large_turn = _m->large_turn;	///< 
 Vision_Control_t	&vision_ptr = _m->vision_ptr;	///< 
 Vision_Status_t	&vision_status = _m->vision_status;	///< 
+float	&forwardSpeed = _m->forwardSpeed;	///< 
+bool	&shortDistanceToBall = _m->shortDistanceToBall;	///< 
 
 #pragma clang diagnostic pop
