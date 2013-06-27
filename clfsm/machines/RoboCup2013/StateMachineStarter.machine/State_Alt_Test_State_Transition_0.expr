@@ -1,1 +1,1 @@
-after_ms(3000) && is_suspended("Color_Learner")
+nao_state.chest_pressed() && nao_state.left_foot_pressed() && nao_state.right_foot_pressed()
