@@ -16,6 +16,7 @@ using namespace State;
 
 StartPlayerX::StartPlayerX(const char *name): CLState(name, *new StartPlayerX::OnEntry, *new StartPlayerX::OnExit, *new StartPlayerX::Internal)
 {
+	_transitions[0] = new Transition_0();
 }
 
 StartPlayerX::~StartPlayerX()
@@ -24,6 +25,7 @@ StartPlayerX::~StartPlayerX()
 	delete &onExitAction();
 	delete &internalAction();
 
+	delete _transitions[0];
 }
 
 void StartPlayerX::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -45,4 +47,15 @@ void StartPlayerX::Internal::perform(CLMachine *_machine, CLState *_state) const
 #	include "SMPlayer_VarRefs.mm"
 #	include "State_StartPlayerX_VarRefs.mm"
 #	include "State_StartPlayerX_Internal.mm"
+}
+
+bool StartPlayerX::Transition_0::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "SMPlayer_VarRefs.mm"
+#	include "State_StartPlayerX_VarRefs.mm"
+
+	return
+	(
+#		include "State_StartPlayerX_Transition_0.expr"
+	);
 }
