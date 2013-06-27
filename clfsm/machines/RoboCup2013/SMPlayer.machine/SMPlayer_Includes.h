@@ -1,5 +1,4 @@
 #include <iostream>
-#include <sstream>
 #include <stdio.h>
 #include <string>
 #include <cmath>
@@ -12,8 +11,6 @@
 
 
 using namespace guWhiteboard;
-
-using namespace std;
 
 
 //#define DEBUG
