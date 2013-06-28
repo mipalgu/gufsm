@@ -17,6 +17,7 @@ using namespace State;
 FocusOnGoal::FocusOnGoal(const char *name): CLState(name, *new FocusOnGoal::OnEntry, *new FocusOnGoal::OnExit, *new FocusOnGoal::Internal)
 {
 	_transitions[0] = new Transition_0();
+	_transitions[1] = new Transition_1();
 }
 
 FocusOnGoal::~FocusOnGoal()
@@ -26,6 +27,7 @@ FocusOnGoal::~FocusOnGoal()
 	delete &internalAction();
 
 	delete _transitions[0];
+	delete _transitions[1];
 }
 
 void FocusOnGoal::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -57,5 +59,16 @@ bool FocusOnGoal::Transition_0::check(CLMachine *_machine, CLState *_state) cons
 	return
 	(
 #		include "State_FocusOnGoal_Transition_0.expr"
+	);
+}
+
+bool FocusOnGoal::Transition_1::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "SMSeeker_VarRefs.mm"
+#	include "State_FocusOnGoal_VarRefs.mm"
+
+	return
+	(
+#		include "State_FocusOnGoal_Transition_1.expr"
 	);
 }

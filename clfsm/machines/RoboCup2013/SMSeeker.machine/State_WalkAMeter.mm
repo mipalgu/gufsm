@@ -16,6 +16,7 @@ using namespace State;
 
 WalkAMeter::WalkAMeter(const char *name): CLState(name, *new WalkAMeter::OnEntry, *new WalkAMeter::OnExit, *new WalkAMeter::Internal)
 {
+	_transitions[0] = new Transition_0();
 }
 
 WalkAMeter::~WalkAMeter()
@@ -24,6 +25,7 @@ WalkAMeter::~WalkAMeter()
 	delete &onExitAction();
 	delete &internalAction();
 
+	delete _transitions[0];
 }
 
 void WalkAMeter::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -45,4 +47,15 @@ void WalkAMeter::Internal::perform(CLMachine *_machine, CLState *_state) const
 #	include "SMSeeker_VarRefs.mm"
 #	include "State_WalkAMeter_VarRefs.mm"
 #	include "State_WalkAMeter_Internal.mm"
+}
+
+bool WalkAMeter::Transition_0::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "SMSeeker_VarRefs.mm"
+#	include "State_WalkAMeter_VarRefs.mm"
+
+	return
+	(
+#		include "State_WalkAMeter_Transition_0.expr"
+	);
 }
