@@ -13,4 +13,4 @@ limiter = 4.0f;
 large_turn = 50;
 
 shortDistanceToBall = false;
-forwardSpeed = 100.0;
+forwardSpeed = 85.0;
