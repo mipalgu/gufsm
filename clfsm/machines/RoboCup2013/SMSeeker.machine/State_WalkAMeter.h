@@ -1,10 +1,10 @@
 //
-// State_Walk_Halt.h
+// State_WalkAMeter.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMSeeker_State_Walk_Halt_h
-#define clfsm_SMSeeker_State_Walk_Halt_h
+#ifndef clfsm_SMSeeker_State_WalkAMeter_h
+#define clfsm_SMSeeker_State_WalkAMeter_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class Walk_Halt: public CLState
+            class WalkAMeter: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -40,13 +40,13 @@ namespace FSM
                 CLTransition *_transitions[0];
 
                 public:
-                    Walk_Halt(const char *name = "Walk_Halt");
-                    virtual ~Walk_Halt();
+                    WalkAMeter(const char *name = "WalkAMeter");
+                    virtual ~WalkAMeter();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
                     virtual int numberOfTransitions() const { return 0; }
 
-#                   include "State_Walk_Halt_Variables.h"
+#                   include "State_WalkAMeter_Variables.h"
             };
         }
       }

@@ -1,1 +1,3 @@
 restart("SMWalkScanner");
+
+spinCount++;

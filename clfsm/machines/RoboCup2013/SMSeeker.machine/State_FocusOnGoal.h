@@ -1,10 +1,10 @@
 //
-// State_Walk_Halt.h
+// State_FocusOnGoal.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMSeeker_State_Walk_Halt_h
-#define clfsm_SMSeeker_State_Walk_Halt_h
+#ifndef clfsm_SMSeeker_State_FocusOnGoal_h
+#define clfsm_SMSeeker_State_FocusOnGoal_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class Walk_Halt: public CLState
+            class FocusOnGoal: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -35,18 +35,24 @@ namespace FSM
                     virtual void perform(CLMachine *, CLState *) const;
                 };
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wzero-length-array"
-                CLTransition *_transitions[0];
+                class Transition_0: public CLTransition
+                {
+                public:
+                    Transition_0(int toState = 6): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                CLTransition *_transitions[1];
 
                 public:
-                    Walk_Halt(const char *name = "Walk_Halt");
-                    virtual ~Walk_Halt();
+                    FocusOnGoal(const char *name = "FocusOnGoal");
+                    virtual ~FocusOnGoal();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 0; }
+                    virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_Walk_Halt_Variables.h"
+#                   include "State_FocusOnGoal_Variables.h"
             };
         }
       }
@@ -54,4 +60,3 @@ namespace FSM
 }
 
 #endif
-#pragma clang diagnostic pop
