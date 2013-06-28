@@ -1,2 +1,2 @@
 suspend("SMHeadScannerGoal");
-//suspend("SMWalkScanner");
+suspend("SMWalkScanner");

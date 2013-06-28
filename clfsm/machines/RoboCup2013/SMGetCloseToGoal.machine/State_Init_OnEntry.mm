@@ -1,5 +1,5 @@
 suspend("SMHeadScannerGoal");
-//suspend("SMWalkScanner");
+suspend("SMWalkScanner");
 suspend("SMGoalFollower");
 suspend("SMHeadGoalTracker");
 suspend("SMWalkToLine2");

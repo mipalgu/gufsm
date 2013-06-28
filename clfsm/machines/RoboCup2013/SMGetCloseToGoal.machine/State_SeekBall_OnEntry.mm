@@ -5,4 +5,4 @@ genericPost = sightings_ptr.get().get_object(FVOGoalPost);
 
 
 restart("SMHeadScannerGoal");
-//restart("SMWalkScanner");
+restart("SMWalkScanner");
