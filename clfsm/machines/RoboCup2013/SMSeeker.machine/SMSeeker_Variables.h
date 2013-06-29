@@ -13,4 +13,5 @@ FilteredVisionObject	goal;	///<
 WALK_ControlStatus	controlstatus;	///< 
 float	odo_turn;	///< 
 float	odo_start;	///< 
-float	odo_diff;	///<
+float	odo_diff;	///< 
+int	playerNumber;	///<

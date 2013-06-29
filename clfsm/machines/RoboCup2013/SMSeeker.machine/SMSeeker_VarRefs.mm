@@ -20,5 +20,6 @@ WALK_ControlStatus	&controlstatus = _m->controlstatus;	///<
 float	&odo_turn = _m->odo_turn;	///< 
 float	&odo_start = _m->odo_start;	///< 
 float	&odo_diff = _m->odo_diff;	///< 
+int	&playerNumber = _m->playerNumber;	///< 
 
 #pragma clang diagnostic pop
