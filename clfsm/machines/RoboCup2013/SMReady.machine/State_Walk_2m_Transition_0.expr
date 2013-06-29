@@ -1,0 +1,1 @@
+(currentOdometry - walkStartOdometry) > 2000.0
