@@ -16,6 +16,7 @@ using namespace State;
 
 DirectlyLookingAtAGoal::DirectlyLookingAtAGoal(const char *name): CLState(name, *new DirectlyLookingAtAGoal::OnEntry, *new DirectlyLookingAtAGoal::OnExit, *new DirectlyLookingAtAGoal::Internal)
 {
+	_transitions[0] = new Transition_0();
 }
 
 DirectlyLookingAtAGoal::~DirectlyLookingAtAGoal()
@@ -24,6 +25,7 @@ DirectlyLookingAtAGoal::~DirectlyLookingAtAGoal()
 	delete &onExitAction();
 	delete &internalAction();
 
+	delete _transitions[0];
 }
 
 void DirectlyLookingAtAGoal::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -45,4 +47,15 @@ void DirectlyLookingAtAGoal::Internal::perform(CLMachine *_machine, CLState *_st
 #	include "SMReadyFromAnywhere_VarRefs.mm"
 #	include "State_DirectlyLookingAtAGoal_VarRefs.mm"
 #	include "State_DirectlyLookingAtAGoal_Internal.mm"
+}
+
+bool DirectlyLookingAtAGoal::Transition_0::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "SMReadyFromAnywhere_VarRefs.mm"
+#	include "State_DirectlyLookingAtAGoal_VarRefs.mm"
+
+	return
+	(
+#		include "State_DirectlyLookingAtAGoal_Transition_0.expr"
+	);
 }
