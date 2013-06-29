@@ -8,4 +8,9 @@ FilteredVisionObject	ball;	///<
 WALK_Command_t	walk_post;	///< 
 WALK_Status_t	walk_status;	///< 
 int	stateCount;	///< 
-int	spinCount;	///<
+int	spinCount;	///< 
+FilteredVisionObject	goal;	///< 
+WALK_ControlStatus	controlstatus;	///< 
+float	odo_turn;	///< 
+float	odo_start;	///< 
+float	odo_diff;	///<

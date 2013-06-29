@@ -15,5 +15,10 @@ WALK_Command_t	&walk_post = _m->walk_post;	///<
 WALK_Status_t	&walk_status = _m->walk_status;	///< 
 int	&stateCount = _m->stateCount;	///< 
 int	&spinCount = _m->spinCount;	///< 
+FilteredVisionObject	&goal = _m->goal;	///< 
+WALK_ControlStatus	&controlstatus = _m->controlstatus;	///< 
+float	&odo_turn = _m->odo_turn;	///< 
+float	&odo_start = _m->odo_start;	///< 
+float	&odo_diff = _m->odo_diff;	///< 
 
 #pragma clang diagnostic pop

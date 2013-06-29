@@ -13,6 +13,7 @@
 #include "State_WalkSeek.h"
 #include "State_FocusOnGoal.h"
 #include "State_WalkAMeter.h"
+#include "State_Turn180.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -34,6 +35,7 @@ SMSeeker::SMSeeker(int mid, const char *name): CLMachine(mid, name)
 	_states[4] = new FSMSMSeeker::State::WalkSeek;
 	_states[5] = new FSMSMSeeker::State::FocusOnGoal;
 	_states[6] = new FSMSMSeeker::State::WalkAMeter;
+	_states[7] = new FSMSMSeeker::State::Turn180;
 
 	setSuspendState(_states[2]);            // set suspend state
 	setInitialState(_states[0]);            // set initial state
@@ -48,4 +50,5 @@ SMSeeker::~SMSeeker()
 	delete _states[4];
 	delete _states[5];
 	delete _states[6];
+	delete _states[7];
 }

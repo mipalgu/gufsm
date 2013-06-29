@@ -1,10 +1,10 @@
 //
-// State_FocusOnGoal.h
+// State_Turn180.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMSeeker_State_FocusOnGoal_h
-#define clfsm_SMSeeker_State_FocusOnGoal_h
+#ifndef clfsm_SMSeeker_State_Turn180_h
+#define clfsm_SMSeeker_State_Turn180_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class FocusOnGoal: public CLState
+            class Turn180: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -43,32 +43,16 @@ namespace FSM
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                class Transition_1: public CLTransition
-                {
-                public:
-                    Transition_1(int toState = 4): CLTransition(toState) {}
-
-                    virtual bool check(CLMachine *, CLState *) const;
-                };
-
-                class Transition_2: public CLTransition
-                {
-                public:
-                    Transition_2(int toState = 7): CLTransition(toState) {}
-
-                    virtual bool check(CLMachine *, CLState *) const;
-                };
-
-                CLTransition *_transitions[3];
+                CLTransition *_transitions[1];
 
                 public:
-                    FocusOnGoal(const char *name = "FocusOnGoal");
-                    virtual ~FocusOnGoal();
+                    Turn180(const char *name = "Turn180");
+                    virtual ~Turn180();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 3; }
+                    virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_FocusOnGoal_Variables.h"
+#                   include "State_Turn180_Variables.h"
             };
         }
       }
