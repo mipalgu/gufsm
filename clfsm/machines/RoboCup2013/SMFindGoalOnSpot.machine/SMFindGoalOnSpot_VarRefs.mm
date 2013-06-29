@@ -34,6 +34,7 @@ bool	&visionSeesRP = _m->visionSeesRP;	///<
 bool	&visionSeesLP = _m->visionSeesLP;	///< 
 float	&theHeadYaw = _m->theHeadYaw;	///< 
 Vision_Objects_t	&theObjectp = _m->theObjectp;	///< 
+Vision_Control_t	&vision_ptr = _m->vision_ptr;	///< 
 VisionObjects	&theObjects = _m->theObjects;	///< 
 MOTION_SDK_Commands_t	&motion_ptr = _m->motion_ptr;	///< 
 int	&stateCount = _m->stateCount;	///< 
