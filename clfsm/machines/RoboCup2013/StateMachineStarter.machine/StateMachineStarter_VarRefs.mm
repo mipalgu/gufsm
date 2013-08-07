@@ -15,5 +15,6 @@ QSay_t	&say = _m->say;	///<
 bool	&spokeIP = _m->spokeIP;	///< 
 int	&clfsm_delay = _m->clfsm_delay;	///< 
 bool	&in_test_state = _m->in_test_state;	///< 
+string	&main_machine = _m->main_machine;	///< 
 
 #pragma clang diagnostic pop
