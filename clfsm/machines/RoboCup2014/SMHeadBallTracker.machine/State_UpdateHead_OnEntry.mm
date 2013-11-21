@@ -12,6 +12,8 @@ int ball_x = ball.x();
 int ball_y = ball.y();
 int ball_d = ball.distance();
 
+fprintf(stderr, "Ball: x %d y %d diet %d\n", ball_x, ball_y, ball_d);
+
 //Work out pitch
 int vert_head_cam_ratio = guvision_height/vert_fov;
 int point_conv_to_cam_angle_y = ball_y/vert_head_cam_ratio;
