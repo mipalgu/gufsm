@@ -20,18 +20,11 @@ isPenalised = smGameState.amIPenalized(myNumber);
 walk_post(WALK_ControlStatus(WALK_Disconnect));
 protected_usleep(30000);
 
-MOTION_SDK_Interface motion;
-motion.set_body_stiffness(true);
-motion.set_body_stiffness_mask(true);
-motion.set_motion_player(Motions::kneel);
-motion.set_motion_player_mask(true);
+MOTION_Commands motion;
+motion.GoToStance(Motions::Standing_stance, Motions::Kneeling_stance);
 motion_ptr.set(motion);
 
 protected_usleep(2000000);
 
-MOTION_SDK_Interface motion2;
-motion2.set_body_stiffness(false);
-motion2.set_body_stiffness_mask(true);
-motion2.set_head_stiffness(false);
-motion2.set_head_stiffness_mask(true);
+MOTION_Commands motion2(false, false, true);
 motion_ptr.set(motion2);

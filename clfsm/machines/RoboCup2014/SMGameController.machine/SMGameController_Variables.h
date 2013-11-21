@@ -20,8 +20,8 @@ NAO_State_t	nao_state_ptr;	///<
 enum TeamColours	kickoffTeam;	///< 
 enum TeamColours	ourTeamColour;	///< 
 SENSORS_LedsSensors_t	leds;	///< 
-MOTION_SDK_Commands_t	motion_ptr;	///< 
-MOTION_SDK_Status_t	motion_status;	///< 
+MOTION_Commands_t	motion_ptr;	///< 
+MOTION_Status_t	motion_status;	///< 
 WALK_Command_t	walk_post;	///< 
 WALK_Status_t	walk_status;	///< 
 WALK_ControlStatus	controlstatus;	///< 
