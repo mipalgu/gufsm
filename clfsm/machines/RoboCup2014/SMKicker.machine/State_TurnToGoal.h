@@ -38,7 +38,7 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 19): CLTransition(toState) {}
+                    Transition_0(int toState = 18): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };

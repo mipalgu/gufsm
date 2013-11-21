@@ -1,11 +1,5 @@
-MOTION_SDK_Interface motion;
+MOTION_Commands motion;
 
-
-motion.set_body_stiffness(true);
-motion.set_body_stiffness_mask(true);
-
-motion.set_motion_player(Motions::pass_ball_right);
-motion.set_motion_player_mask(true);
-
+motion.DoAction(Motions::Standing_stance, Motions::Standing_rightpass);
 
 motion_ptr.set(motion);

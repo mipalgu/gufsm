@@ -8,5 +8,4 @@ SENSORS_BodySensors_t	body_ptr;	///<
 int	frontalAngle;	///< 
 int	lateralAngle;	///< 
 NAO_State_t	NAO_State_ptr;	///< 
-NAO_State	NAO_State_value;	///< 
-MOTION_SDK_Status_t	motion_status;	///<
+NAO_State	NAO_State_value;	///<
