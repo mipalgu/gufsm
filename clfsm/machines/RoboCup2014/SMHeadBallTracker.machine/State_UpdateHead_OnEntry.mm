@@ -19,5 +19,5 @@ int vert_head_cam_ratio = guvision_height/vert_fov;
 int point_conv_to_cam_angle_y = ball_y/vert_head_cam_ratio;
 double body_relative_angle_y = RAD2DEG(body_sensors.HeadPitch()) + (point_conv_to_cam_angle_y);
 
-head.GoToWithTime_rad(ball.horizontal_angle()/10, (float)DEG2RAD(body_relative_angle_y)/10, 10000);
+head.GoToWithTime_rad(ball.horizontal_angle()/10, (float)DEG2RAD(body_relative_angle_y)/10, 20000);
 head_ptr.set(head);
