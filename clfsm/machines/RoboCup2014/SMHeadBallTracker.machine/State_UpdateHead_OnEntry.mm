@@ -11,8 +11,8 @@ int guvision_height = 960;
 int horiz_fov = 61;
 int vert_fov = 48;
 	
-int ball_x = v.ball().position.x;
-int ball_y = v.ball().position.y;
+int ball_x = v.ball()->position.x;
+int ball_y = v.ball()->position.y;
 
 
 //Work out yaw
