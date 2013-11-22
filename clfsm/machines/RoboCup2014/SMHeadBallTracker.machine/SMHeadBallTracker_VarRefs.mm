@@ -12,10 +12,10 @@ SMHeadBallTracker *_m = static_cast<SMHeadBallTracker *>(_machine);
 HAL_HeadTarget	&head = _m->head;	///< 
 HAL_HeadTarget_t	&head_ptr = _m->head_ptr;	///< 
 int	&time = _m->time;	///< 
-FilteredBallSighting_t	&ball_on_whiteboard = _m->ball_on_whiteboard;	///< 
-int	&localization_frameCounter = _m->localization_frameCounter;	///< 
+int	&counter = _m->counter;	///< 
 SENSORS_TorsoJointSensors	&body_sensors = _m->body_sensors;	///< 
 SENSORS_TorsoJointSensors_t	&body_sensors_ptr = _m->body_sensors_ptr;	///< 
-FilteredVisionObject	&ball = _m->ball;	///< 
+Vision_Objects_t	&v_t = _m->v_t;	///< 
+Vision_Objects	&v = _m->v;	///< 
 
 #pragma clang diagnostic pop

@@ -2,6 +2,6 @@
 fprintf(stderr, "State: %s\n", state_name());
 #endif
 
-ball = ball_on_whiteboard();
+v = v_t.get();
 
-localization_frameCounter = ball.frameCounter();
+counter = v.FrameNumber();

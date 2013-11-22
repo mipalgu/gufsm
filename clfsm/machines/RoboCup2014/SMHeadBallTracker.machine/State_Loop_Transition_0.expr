@@ -1,1 +1,1 @@
-localization_frameCounter != ball.frameCounter() && ball.isVisible()
+counter != v.FrameNumber() && v.ball()

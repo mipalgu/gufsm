@@ -1,1 +1,1 @@
-ball = ball_on_whiteboard();
+v = v_t.get();
