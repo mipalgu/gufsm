@@ -11,6 +11,3 @@ boundaryCloseFar = 60; //cm
 limiter = 4.0f;
 
 large_turn = 50;
-
-shortDistanceToBall = false;
-forwardSpeed = 85.0;
