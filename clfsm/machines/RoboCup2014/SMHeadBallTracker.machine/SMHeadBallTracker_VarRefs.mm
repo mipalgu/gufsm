@@ -16,6 +16,6 @@ int	&counter = _m->counter;	///<
 SENSORS_TorsoJointSensors	&body_sensors = _m->body_sensors;	///< 
 SENSORS_TorsoJointSensors_t	&body_sensors_ptr = _m->body_sensors_ptr;	///< 
 Vision_Objects_t	&v_t = _m->v_t;	///< 
-Vision_Objects	&v = _m->v;	///< 
+VisionObjects	&v = _m->v;	///< 
 
 #pragma clang diagnostic pop
