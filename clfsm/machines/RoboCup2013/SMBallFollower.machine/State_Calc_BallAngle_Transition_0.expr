@@ -1,0 +1,2 @@
+!shortDistanceToBall &&
+ball.distance() > boundaryCloseFar
