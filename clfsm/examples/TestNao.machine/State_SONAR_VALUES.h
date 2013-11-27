@@ -1,10 +1,10 @@
 //
-// State_FOLLOW_LINE.h
+// State_SONAR_VALUES.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_TestNao_State_FOLLOW_LINE_h
-#define clfsm_TestNao_State_FOLLOW_LINE_h
+#ifndef clfsm_TestNao_State_SONAR_VALUES_h
+#define clfsm_TestNao_State_SONAR_VALUES_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class FOLLOW_LINE: public CLState
+            class SONAR_VALUES: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -46,13 +46,13 @@ namespace FSM
                 CLTransition *_transitions[1];
 
                 public:
-                    FOLLOW_LINE(const char *name = "FOLLOW_LINE");
-                    virtual ~FOLLOW_LINE();
+                    SONAR_VALUES(const char *name = "SONAR_VALUES");
+                    virtual ~SONAR_VALUES();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
                     virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_FOLLOW_LINE_Variables.h"
+#                   include "State_SONAR_VALUES_Variables.h"
             };
         }
       }

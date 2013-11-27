@@ -7,7 +7,7 @@
 #include "TestNao.h"
 
 #include "State_INITIAL.h"
-#include "State_FOLLOW_LINE.h"
+#include "State_SONAR_VALUES.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -23,7 +23,7 @@ extern "C"
 TestNao::TestNao(int mid, const char *name): CLMachine(mid, name)
 {
 	_states[0] = new FSMTestNao::State::INITIAL;
-	_states[1] = new FSMTestNao::State::FOLLOW_LINE;
+	_states[1] = new FSMTestNao::State::SONAR_VALUES;
 
 	setInitialState(_states[0]);            // set initial state
 }
