@@ -12,5 +12,7 @@ TestNao *_m = static_cast<TestNao *>(_machine);
 QSay_t	&say = _m->say;	///< 
 SENSORS_SonarSensors_t	&sensorHandler = _m->sensorHandler;	///< 
 SENSORS_SonarSensors	&sensorValues = _m->sensorValues;	///< 
+MOTION_Status_t	&motion_status_handler = _m->motion_status_handler;	///< 
+MOTION_Commands_t	&motion_ptr = _m->motion_ptr;	///< 
 
 #pragma clang diagnostic pop
