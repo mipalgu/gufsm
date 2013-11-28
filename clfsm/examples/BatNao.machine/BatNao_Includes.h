@@ -7,6 +7,7 @@
 #include "typeClassDefs/SENSORS_SonarSensors.h"
 #include "typeClassDefs/MOTION_Interface.h"
 #include "typeClassDefs/WALK_ControlStatus.h"
+#include "typeClassDefs/NAO_State.h"
 
 using namespace guWhiteboard;
 

@@ -4,6 +4,7 @@
 # Makefile for pre- and cross-compiling .machine files
 #
 
+#MACHINES=SMButtonChest 
 MACHINES=StateMachineStarter SMGameController SMFallManager SMBallFollower SMButtonChest SMButtonLeftFoot SMButtonRightFoot SMGetUp SMHeadBallTracker SMHeadScanner SMLeftFootControl SMPlayer SMKicker SMRobotPosition SMWalkScanner Safety_BatteryMonitor SMSeeker SMSet 
 
 .include "../../../../../mk/fsm.mk"	# comes first: required for compiling state machines

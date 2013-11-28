@@ -2,6 +2,7 @@
 fprintf(stderr, "STATE: %s\n", state_name());
 #endif
 say("Game Over");
+suspend("SMButtonChest");
 
 walk_post(WALK_ControlStatus(WALK_Disconnect));
 protected_usleep(30000);
