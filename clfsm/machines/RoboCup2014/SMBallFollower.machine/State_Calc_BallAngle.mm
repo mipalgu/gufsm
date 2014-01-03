@@ -14,13 +14,13 @@ using namespace CLM;
 using namespace FSMSMBallFollower;
 using namespace State;
 
-Calc_BallAngle::Calc_BallAngle(const char *name): CLState(name, *new Calc_BallAngle::OnEntry, *new Calc_BallAngle::OnExit, *new Calc_BallAngle::Internal)
+(null)::(null)(const char *name): CLState(name, *new (null)::OnEntry, *new (null)::OnExit, *new (null)::Internal)
 {
 	_transitions[0] = new Transition_0();
 	_transitions[1] = new Transition_1();
 }
 
-Calc_BallAngle::~Calc_BallAngle()
+(null)::~(null)()
 {
 	delete &onEntryAction();
 	delete &onExitAction();
@@ -30,28 +30,28 @@ Calc_BallAngle::~Calc_BallAngle()
 	delete _transitions[1];
 }
 
-void Calc_BallAngle::OnEntry::perform(CLMachine *_machine, CLState *_state) const
+void (null)::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_Calc_BallAngle_VarRefs.mm"
 #	include "State_Calc_BallAngle_OnEntry.mm"
 }
 
-void Calc_BallAngle::OnExit::perform(CLMachine *_machine, CLState *_state) const
+void (null)::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_Calc_BallAngle_VarRefs.mm"
 #	include "State_Calc_BallAngle_OnExit.mm"
 }
 
-void Calc_BallAngle::Internal::perform(CLMachine *_machine, CLState *_state) const
+void (null)::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_Calc_BallAngle_VarRefs.mm"
 #	include "State_Calc_BallAngle_Internal.mm"
 }
 
-bool Calc_BallAngle::Transition_0::check(CLMachine *_machine, CLState *_state) const
+bool (null)::Transition_0::check(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_Calc_BallAngle_VarRefs.mm"
@@ -62,7 +62,7 @@ bool Calc_BallAngle::Transition_0::check(CLMachine *_machine, CLState *_state) c
 	);
 }
 
-bool Calc_BallAngle::Transition_1::check(CLMachine *_machine, CLState *_state) const
+bool (null)::Transition_1::check(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_Calc_BallAngle_VarRefs.mm"

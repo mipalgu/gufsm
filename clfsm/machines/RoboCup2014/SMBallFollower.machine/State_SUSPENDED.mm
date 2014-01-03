@@ -14,11 +14,11 @@ using namespace CLM;
 using namespace FSMSMBallFollower;
 using namespace State;
 
-SUSPENDED::SUSPENDED(const char *name): CLState(name, *new SUSPENDED::OnEntry, *new SUSPENDED::OnExit, *new SUSPENDED::Internal)
+(null)::(null)(const char *name): CLState(name, *new (null)::OnEntry, *new (null)::OnExit, *new (null)::Internal)
 {
 }
 
-SUSPENDED::~SUSPENDED()
+(null)::~(null)()
 {
 	delete &onEntryAction();
 	delete &onExitAction();
@@ -26,21 +26,21 @@ SUSPENDED::~SUSPENDED()
 
 }
 
-void SUSPENDED::OnEntry::perform(CLMachine *_machine, CLState *_state) const
+void (null)::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_SUSPENDED_VarRefs.mm"
 #	include "State_SUSPENDED_OnEntry.mm"
 }
 
-void SUSPENDED::OnExit::perform(CLMachine *_machine, CLState *_state) const
+void (null)::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_SUSPENDED_VarRefs.mm"
 #	include "State_SUSPENDED_OnExit.mm"
 }
 
-void SUSPENDED::Internal::perform(CLMachine *_machine, CLState *_state) const
+void (null)::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_SUSPENDED_VarRefs.mm"

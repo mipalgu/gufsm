@@ -14,12 +14,12 @@ using namespace CLM;
 using namespace FSMSMBallFollower;
 using namespace State;
 
-Short_Straight::Short_Straight(const char *name): CLState(name, *new Short_Straight::OnEntry, *new Short_Straight::OnExit, *new Short_Straight::Internal)
+(null)::(null)(const char *name): CLState(name, *new (null)::OnEntry, *new (null)::OnExit, *new (null)::Internal)
 {
 	_transitions[0] = new Transition_0();
 }
 
-Short_Straight::~Short_Straight()
+(null)::~(null)()
 {
 	delete &onEntryAction();
 	delete &onExitAction();
@@ -28,28 +28,28 @@ Short_Straight::~Short_Straight()
 	delete _transitions[0];
 }
 
-void Short_Straight::OnEntry::perform(CLMachine *_machine, CLState *_state) const
+void (null)::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_Short_Straight_VarRefs.mm"
 #	include "State_Short_Straight_OnEntry.mm"
 }
 
-void Short_Straight::OnExit::perform(CLMachine *_machine, CLState *_state) const
+void (null)::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_Short_Straight_VarRefs.mm"
 #	include "State_Short_Straight_OnExit.mm"
 }
 
-void Short_Straight::Internal::perform(CLMachine *_machine, CLState *_state) const
+void (null)::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_Short_Straight_VarRefs.mm"
 #	include "State_Short_Straight_Internal.mm"
 }
 
-bool Short_Straight::Transition_0::check(CLMachine *_machine, CLState *_state) const
+bool (null)::Transition_0::check(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_Short_Straight_VarRefs.mm"

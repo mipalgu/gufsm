@@ -3,7 +3,7 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-Decide_Long *_s = static_cast<Decide_Long *>(_state);
+(null) *_s = static_cast<(null) *>(_state);
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"

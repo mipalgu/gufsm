@@ -16,7 +16,6 @@
 #include "State_Short_Straight.h"
 #include "State_Turn.h"
 #include "State_SUSPENDED.h"
-#include "State_TopCamSwitch.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -31,17 +30,16 @@ extern "C"
 
 SMBallFollower::SMBallFollower(int mid, const char *name): CLMachine(mid, name)
 {
-	_states[0] = new FSMSMBallFollower::State::Init;
-	_states[1] = new FSMSMBallFollower::State::Walk_Forward;
-	_states[2] = new FSMSMBallFollower::State::Stop;
-	_states[3] = new FSMSMBallFollower::State::Calc_BallAngle;
-	_states[4] = new FSMSMBallFollower::State::Decide_Long;
-	_states[5] = new FSMSMBallFollower::State::Long_Turn;
-	_states[6] = new FSMSMBallFollower::State::Decide_Short;
-	_states[7] = new FSMSMBallFollower::State::Short_Straight;
-	_states[8] = new FSMSMBallFollower::State::Turn;
-	_states[9] = new FSMSMBallFollower::State::SUSPENDED;
-	_states[10] = new FSMSMBallFollower::State::TopCamSwitch;
+	_states[0] = new FSMSMBallFollower::State::(null);
+	_states[1] = new FSMSMBallFollower::State::(null);
+	_states[2] = new FSMSMBallFollower::State::(null);
+	_states[3] = new FSMSMBallFollower::State::(null);
+	_states[4] = new FSMSMBallFollower::State::(null);
+	_states[5] = new FSMSMBallFollower::State::(null);
+	_states[6] = new FSMSMBallFollower::State::(null);
+	_states[7] = new FSMSMBallFollower::State::(null);
+	_states[8] = new FSMSMBallFollower::State::(null);
+	_states[9] = new FSMSMBallFollower::State::(null);
 
 	setSuspendState(_states[9]);            // set suspend state
 	setInitialState(_states[0]);            // set initial state
@@ -59,5 +57,4 @@ SMBallFollower::~SMBallFollower()
 	delete _states[7];
 	delete _states[8];
 	delete _states[9];
-	delete _states[10];
 }

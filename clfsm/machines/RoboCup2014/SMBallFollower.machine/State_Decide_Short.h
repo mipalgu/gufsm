@@ -3,8 +3,8 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMBallFollower_State_Decide_Short_h
-#define clfsm_SMBallFollower_State_Decide_Short_h
+#ifndef clfsm_SMBallFollower_State_(null)_h
+#define clfsm_SMBallFollower_State_(null)_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class Decide_Short: public CLState
+            class (null): public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -51,22 +51,14 @@ namespace FSM
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                class Transition_2: public CLTransition
-                {
-                public:
-                    Transition_2(int toState = 10): CLTransition(toState) {}
-
-                    virtual bool check(CLMachine *, CLState *) const;
-                };
-
-                CLTransition *_transitions[3];
+                CLTransition *_transitions[2];
 
                 public:
-                    Decide_Short(const char *name = "Decide_Short");
-                    virtual ~Decide_Short();
+                    (null)(const char *name = "Decide_Short");
+                    virtual ~(null)();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 3; }
+                    virtual int numberOfTransitions() const { return 2; }
 
 #                   include "State_Decide_Short_Variables.h"
             };

@@ -14,13 +14,13 @@ using namespace CLM;
 using namespace FSMSMBallFollower;
 using namespace State;
 
-Decide_Long::Decide_Long(const char *name): CLState(name, *new Decide_Long::OnEntry, *new Decide_Long::OnExit, *new Decide_Long::Internal)
+(null)::(null)(const char *name): CLState(name, *new (null)::OnEntry, *new (null)::OnExit, *new (null)::Internal)
 {
 	_transitions[0] = new Transition_0();
 	_transitions[1] = new Transition_1();
 }
 
-Decide_Long::~Decide_Long()
+(null)::~(null)()
 {
 	delete &onEntryAction();
 	delete &onExitAction();
@@ -30,28 +30,28 @@ Decide_Long::~Decide_Long()
 	delete _transitions[1];
 }
 
-void Decide_Long::OnEntry::perform(CLMachine *_machine, CLState *_state) const
+void (null)::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_Decide_Long_VarRefs.mm"
 #	include "State_Decide_Long_OnEntry.mm"
 }
 
-void Decide_Long::OnExit::perform(CLMachine *_machine, CLState *_state) const
+void (null)::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_Decide_Long_VarRefs.mm"
 #	include "State_Decide_Long_OnExit.mm"
 }
 
-void Decide_Long::Internal::perform(CLMachine *_machine, CLState *_state) const
+void (null)::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_Decide_Long_VarRefs.mm"
 #	include "State_Decide_Long_Internal.mm"
 }
 
-bool Decide_Long::Transition_0::check(CLMachine *_machine, CLState *_state) const
+bool (null)::Transition_0::check(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_Decide_Long_VarRefs.mm"
@@ -62,7 +62,7 @@ bool Decide_Long::Transition_0::check(CLMachine *_machine, CLState *_state) cons
 	);
 }
 
-bool Decide_Long::Transition_1::check(CLMachine *_machine, CLState *_state) const
+bool (null)::Transition_1::check(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_Decide_Long_VarRefs.mm"

@@ -14,14 +14,13 @@ using namespace CLM;
 using namespace FSMSMBallFollower;
 using namespace State;
 
-Decide_Short::Decide_Short(const char *name): CLState(name, *new Decide_Short::OnEntry, *new Decide_Short::OnExit, *new Decide_Short::Internal)
+(null)::(null)(const char *name): CLState(name, *new (null)::OnEntry, *new (null)::OnExit, *new (null)::Internal)
 {
 	_transitions[0] = new Transition_0();
 	_transitions[1] = new Transition_1();
-	_transitions[2] = new Transition_2();
 }
 
-Decide_Short::~Decide_Short()
+(null)::~(null)()
 {
 	delete &onEntryAction();
 	delete &onExitAction();
@@ -29,31 +28,30 @@ Decide_Short::~Decide_Short()
 
 	delete _transitions[0];
 	delete _transitions[1];
-	delete _transitions[2];
 }
 
-void Decide_Short::OnEntry::perform(CLMachine *_machine, CLState *_state) const
+void (null)::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_Decide_Short_VarRefs.mm"
 #	include "State_Decide_Short_OnEntry.mm"
 }
 
-void Decide_Short::OnExit::perform(CLMachine *_machine, CLState *_state) const
+void (null)::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_Decide_Short_VarRefs.mm"
 #	include "State_Decide_Short_OnExit.mm"
 }
 
-void Decide_Short::Internal::perform(CLMachine *_machine, CLState *_state) const
+void (null)::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_Decide_Short_VarRefs.mm"
 #	include "State_Decide_Short_Internal.mm"
 }
 
-bool Decide_Short::Transition_0::check(CLMachine *_machine, CLState *_state) const
+bool (null)::Transition_0::check(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_Decide_Short_VarRefs.mm"
@@ -64,7 +62,7 @@ bool Decide_Short::Transition_0::check(CLMachine *_machine, CLState *_state) con
 	);
 }
 
-bool Decide_Short::Transition_1::check(CLMachine *_machine, CLState *_state) const
+bool (null)::Transition_1::check(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_Decide_Short_VarRefs.mm"
@@ -72,16 +70,5 @@ bool Decide_Short::Transition_1::check(CLMachine *_machine, CLState *_state) con
 	return
 	(
 #		include "State_Decide_Short_Transition_1.expr"
-	);
-}
-
-bool Decide_Short::Transition_2::check(CLMachine *_machine, CLState *_state) const
-{
-#	include "SMBallFollower_VarRefs.mm"
-#	include "State_Decide_Short_VarRefs.mm"
-
-	return
-	(
-#		include "State_Decide_Short_Transition_2.expr"
 	);
 }

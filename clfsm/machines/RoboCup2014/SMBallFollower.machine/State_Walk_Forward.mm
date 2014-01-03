@@ -14,12 +14,12 @@ using namespace CLM;
 using namespace FSMSMBallFollower;
 using namespace State;
 
-Walk_Forward::Walk_Forward(const char *name): CLState(name, *new Walk_Forward::OnEntry, *new Walk_Forward::OnExit, *new Walk_Forward::Internal)
+(null)::(null)(const char *name): CLState(name, *new (null)::OnEntry, *new (null)::OnExit, *new (null)::Internal)
 {
 	_transitions[0] = new Transition_0();
 }
 
-Walk_Forward::~Walk_Forward()
+(null)::~(null)()
 {
 	delete &onEntryAction();
 	delete &onExitAction();
@@ -28,28 +28,28 @@ Walk_Forward::~Walk_Forward()
 	delete _transitions[0];
 }
 
-void Walk_Forward::OnEntry::perform(CLMachine *_machine, CLState *_state) const
+void (null)::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_Walk_Forward_VarRefs.mm"
 #	include "State_Walk_Forward_OnEntry.mm"
 }
 
-void Walk_Forward::OnExit::perform(CLMachine *_machine, CLState *_state) const
+void (null)::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_Walk_Forward_VarRefs.mm"
 #	include "State_Walk_Forward_OnExit.mm"
 }
 
-void Walk_Forward::Internal::perform(CLMachine *_machine, CLState *_state) const
+void (null)::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_Walk_Forward_VarRefs.mm"
 #	include "State_Walk_Forward_Internal.mm"
 }
 
-bool Walk_Forward::Transition_0::check(CLMachine *_machine, CLState *_state) const
+bool (null)::Transition_0::check(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_Walk_Forward_VarRefs.mm"

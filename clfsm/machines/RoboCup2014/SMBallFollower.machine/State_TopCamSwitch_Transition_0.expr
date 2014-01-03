@@ -1,1 +1,0 @@
-vision_status.get().selectedCamera() == Bottom || after(2)

@@ -14,12 +14,12 @@ using namespace CLM;
 using namespace FSMSMBallFollower;
 using namespace State;
 
-Turn::Turn(const char *name): CLState(name, *new Turn::OnEntry, *new Turn::OnExit, *new Turn::Internal)
+(null)::(null)(const char *name): CLState(name, *new (null)::OnEntry, *new (null)::OnExit, *new (null)::Internal)
 {
 	_transitions[0] = new Transition_0();
 }
 
-Turn::~Turn()
+(null)::~(null)()
 {
 	delete &onEntryAction();
 	delete &onExitAction();
@@ -28,28 +28,28 @@ Turn::~Turn()
 	delete _transitions[0];
 }
 
-void Turn::OnEntry::perform(CLMachine *_machine, CLState *_state) const
+void (null)::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_Turn_VarRefs.mm"
 #	include "State_Turn_OnEntry.mm"
 }
 
-void Turn::OnExit::perform(CLMachine *_machine, CLState *_state) const
+void (null)::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_Turn_VarRefs.mm"
 #	include "State_Turn_OnExit.mm"
 }
 
-void Turn::Internal::perform(CLMachine *_machine, CLState *_state) const
+void (null)::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_Turn_VarRefs.mm"
 #	include "State_Turn_Internal.mm"
 }
 
-bool Turn::Transition_0::check(CLMachine *_machine, CLState *_state) const
+bool (null)::Transition_0::check(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_Turn_VarRefs.mm"
