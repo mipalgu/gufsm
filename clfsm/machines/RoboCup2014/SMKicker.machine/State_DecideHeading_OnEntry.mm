@@ -1,3 +1,5 @@
+fprintf(stderr, "decide\n");
+
 ball = ball_ptr.get();
 
 
