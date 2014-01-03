@@ -3,7 +3,7 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-Do_Bottom_Scan *_s = static_cast<Do_Bottom_Scan *>(_state);
+(null) *_s = static_cast<(null) *>(_state);
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"

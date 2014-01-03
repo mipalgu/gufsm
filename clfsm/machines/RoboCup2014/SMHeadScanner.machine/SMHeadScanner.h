@@ -16,12 +16,12 @@ namespace FSM
     {
         class SMHeadScanner: public CLMachine
         {
-            CLState *_states[11];
+            CLState *_states[7];
         public:
             SMHeadScanner(int mid  = 0, const char *name = "SMHeadScanner");
             virtual ~SMHeadScanner();
             virtual CLState * const * states() const { return _states; }
-            virtual int numberOfStates() const { return 11; }
+            virtual int numberOfStates() const { return 7; }
 #           include "SMHeadScanner_Variables.h"
         };
     }
