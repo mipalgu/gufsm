@@ -3,7 +3,7 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-Dummy_Init *_s = static_cast<Dummy_Init *>(_state);
+(null) *_s = static_cast<(null) *>(_state);
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"

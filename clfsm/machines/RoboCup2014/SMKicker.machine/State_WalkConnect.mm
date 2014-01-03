@@ -14,12 +14,12 @@ using namespace CLM;
 using namespace FSMSMKicker;
 using namespace State;
 
-WalkConnect::WalkConnect(const char *name): CLState(name, *new WalkConnect::OnEntry, *new WalkConnect::OnExit, *new WalkConnect::Internal)
+(null)::(null)(const char *name): CLState(name, *new (null)::OnEntry, *new (null)::OnExit, *new (null)::Internal)
 {
 	_transitions[0] = new Transition_0();
 }
 
-WalkConnect::~WalkConnect()
+(null)::~(null)()
 {
 	delete &onEntryAction();
 	delete &onExitAction();
@@ -28,28 +28,28 @@ WalkConnect::~WalkConnect()
 	delete _transitions[0];
 }
 
-void WalkConnect::OnEntry::perform(CLMachine *_machine, CLState *_state) const
+void (null)::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_WalkConnect_VarRefs.mm"
 #	include "State_WalkConnect_OnEntry.mm"
 }
 
-void WalkConnect::OnExit::perform(CLMachine *_machine, CLState *_state) const
+void (null)::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_WalkConnect_VarRefs.mm"
 #	include "State_WalkConnect_OnExit.mm"
 }
 
-void WalkConnect::Internal::perform(CLMachine *_machine, CLState *_state) const
+void (null)::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_WalkConnect_VarRefs.mm"
 #	include "State_WalkConnect_Internal.mm"
 }
 
-bool WalkConnect::Transition_0::check(CLMachine *_machine, CLState *_state) const
+bool (null)::Transition_0::check(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_WalkConnect_VarRefs.mm"

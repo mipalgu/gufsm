@@ -1,10 +1,10 @@
 //
-// State_TopCamSwitch.h
+// State_DisconnectWalk.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMKicker_State_TopCamSwitch_h
-#define clfsm_SMKicker_State_TopCamSwitch_h
+#ifndef clfsm_SMKicker_State_(null)_h
+#define clfsm_SMKicker_State_(null)_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class TopCamSwitch: public CLState
+            class (null): public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,7 +38,7 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 16): CLTransition(toState) {}
+                    Transition_0(int toState = 11): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
@@ -46,13 +46,13 @@ namespace FSM
                 CLTransition *_transitions[1];
 
                 public:
-                    TopCamSwitch(const char *name = "TopCamSwitch");
-                    virtual ~TopCamSwitch();
+                    (null)(const char *name = "DisconnectWalk");
+                    virtual ~(null)();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
                     virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_TopCamSwitch_Variables.h"
+#                   include "State_DisconnectWalk_Variables.h"
             };
         }
       }

@@ -14,14 +14,14 @@ using namespace CLM;
 using namespace FSMSMKicker;
 using namespace State;
 
-KickGoal::KickGoal(const char *name): CLState(name, *new KickGoal::OnEntry, *new KickGoal::OnExit, *new KickGoal::Internal)
+(null)::(null)(const char *name): CLState(name, *new (null)::OnEntry, *new (null)::OnExit, *new (null)::Internal)
 {
 	_transitions[0] = new Transition_0();
 	_transitions[1] = new Transition_1();
 	_transitions[2] = new Transition_2();
 }
 
-KickGoal::~KickGoal()
+(null)::~(null)()
 {
 	delete &onEntryAction();
 	delete &onExitAction();
@@ -32,28 +32,28 @@ KickGoal::~KickGoal()
 	delete _transitions[2];
 }
 
-void KickGoal::OnEntry::perform(CLMachine *_machine, CLState *_state) const
+void (null)::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_KickGoal_VarRefs.mm"
 #	include "State_KickGoal_OnEntry.mm"
 }
 
-void KickGoal::OnExit::perform(CLMachine *_machine, CLState *_state) const
+void (null)::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_KickGoal_VarRefs.mm"
 #	include "State_KickGoal_OnExit.mm"
 }
 
-void KickGoal::Internal::perform(CLMachine *_machine, CLState *_state) const
+void (null)::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_KickGoal_VarRefs.mm"
 #	include "State_KickGoal_Internal.mm"
 }
 
-bool KickGoal::Transition_0::check(CLMachine *_machine, CLState *_state) const
+bool (null)::Transition_0::check(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_KickGoal_VarRefs.mm"
@@ -64,7 +64,7 @@ bool KickGoal::Transition_0::check(CLMachine *_machine, CLState *_state) const
 	);
 }
 
-bool KickGoal::Transition_1::check(CLMachine *_machine, CLState *_state) const
+bool (null)::Transition_1::check(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_KickGoal_VarRefs.mm"
@@ -75,7 +75,7 @@ bool KickGoal::Transition_1::check(CLMachine *_machine, CLState *_state) const
 	);
 }
 
-bool KickGoal::Transition_2::check(CLMachine *_machine, CLState *_state) const
+bool (null)::Transition_2::check(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_KickGoal_VarRefs.mm"

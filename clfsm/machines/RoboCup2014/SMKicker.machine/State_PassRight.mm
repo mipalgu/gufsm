@@ -14,12 +14,12 @@ using namespace CLM;
 using namespace FSMSMKicker;
 using namespace State;
 
-PassRight::PassRight(const char *name): CLState(name, *new PassRight::OnEntry, *new PassRight::OnExit, *new PassRight::Internal)
+(null)::(null)(const char *name): CLState(name, *new (null)::OnEntry, *new (null)::OnExit, *new (null)::Internal)
 {
 	_transitions[0] = new Transition_0();
 }
 
-PassRight::~PassRight()
+(null)::~(null)()
 {
 	delete &onEntryAction();
 	delete &onExitAction();
@@ -28,28 +28,28 @@ PassRight::~PassRight()
 	delete _transitions[0];
 }
 
-void PassRight::OnEntry::perform(CLMachine *_machine, CLState *_state) const
+void (null)::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_PassRight_VarRefs.mm"
 #	include "State_PassRight_OnEntry.mm"
 }
 
-void PassRight::OnExit::perform(CLMachine *_machine, CLState *_state) const
+void (null)::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_PassRight_VarRefs.mm"
 #	include "State_PassRight_OnExit.mm"
 }
 
-void PassRight::Internal::perform(CLMachine *_machine, CLState *_state) const
+void (null)::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_PassRight_VarRefs.mm"
 #	include "State_PassRight_Internal.mm"
 }
 
-bool PassRight::Transition_0::check(CLMachine *_machine, CLState *_state) const
+bool (null)::Transition_0::check(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_PassRight_VarRefs.mm"

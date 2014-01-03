@@ -14,13 +14,13 @@ using namespace CLM;
 using namespace FSMSMKicker;
 using namespace State;
 
-AvoidGoal::AvoidGoal(const char *name): CLState(name, *new AvoidGoal::OnEntry, *new AvoidGoal::OnExit, *new AvoidGoal::Internal)
+(null)::(null)(const char *name): CLState(name, *new (null)::OnEntry, *new (null)::OnExit, *new (null)::Internal)
 {
 	_transitions[0] = new Transition_0();
 	_transitions[1] = new Transition_1();
 }
 
-AvoidGoal::~AvoidGoal()
+(null)::~(null)()
 {
 	delete &onEntryAction();
 	delete &onExitAction();
@@ -30,28 +30,28 @@ AvoidGoal::~AvoidGoal()
 	delete _transitions[1];
 }
 
-void AvoidGoal::OnEntry::perform(CLMachine *_machine, CLState *_state) const
+void (null)::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_AvoidGoal_VarRefs.mm"
 #	include "State_AvoidGoal_OnEntry.mm"
 }
 
-void AvoidGoal::OnExit::perform(CLMachine *_machine, CLState *_state) const
+void (null)::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_AvoidGoal_VarRefs.mm"
 #	include "State_AvoidGoal_OnExit.mm"
 }
 
-void AvoidGoal::Internal::perform(CLMachine *_machine, CLState *_state) const
+void (null)::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_AvoidGoal_VarRefs.mm"
 #	include "State_AvoidGoal_Internal.mm"
 }
 
-bool AvoidGoal::Transition_0::check(CLMachine *_machine, CLState *_state) const
+bool (null)::Transition_0::check(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_AvoidGoal_VarRefs.mm"
@@ -62,7 +62,7 @@ bool AvoidGoal::Transition_0::check(CLMachine *_machine, CLState *_state) const
 	);
 }
 
-bool AvoidGoal::Transition_1::check(CLMachine *_machine, CLState *_state) const
+bool (null)::Transition_1::check(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_AvoidGoal_VarRefs.mm"

@@ -1,5 +1,5 @@
 //
-// State_RevertCamera_Variables.h
+// State_DisconnectWalk_Variables.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //

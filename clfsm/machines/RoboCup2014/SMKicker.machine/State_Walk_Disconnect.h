@@ -3,8 +3,8 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMKicker_State_Walk_Disconnect_h
-#define clfsm_SMKicker_State_Walk_Disconnect_h
+#ifndef clfsm_SMKicker_State_(null)_h
+#define clfsm_SMKicker_State_(null)_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class Walk_Disconnect: public CLState
+            class (null): public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -54,8 +54,8 @@ namespace FSM
                 CLTransition *_transitions[2];
 
                 public:
-                    Walk_Disconnect(const char *name = "Walk_Disconnect");
-                    virtual ~Walk_Disconnect();
+                    (null)(const char *name = "Walk_Disconnect");
+                    virtual ~(null)();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
                     virtual int numberOfTransitions() const { return 2; }

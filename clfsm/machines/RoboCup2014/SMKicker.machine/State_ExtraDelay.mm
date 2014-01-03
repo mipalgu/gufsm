@@ -14,12 +14,12 @@ using namespace CLM;
 using namespace FSMSMKicker;
 using namespace State;
 
-ExtraDelay::ExtraDelay(const char *name): CLState(name, *new ExtraDelay::OnEntry, *new ExtraDelay::OnExit, *new ExtraDelay::Internal)
+(null)::(null)(const char *name): CLState(name, *new (null)::OnEntry, *new (null)::OnExit, *new (null)::Internal)
 {
 	_transitions[0] = new Transition_0();
 }
 
-ExtraDelay::~ExtraDelay()
+(null)::~(null)()
 {
 	delete &onEntryAction();
 	delete &onExitAction();
@@ -28,28 +28,28 @@ ExtraDelay::~ExtraDelay()
 	delete _transitions[0];
 }
 
-void ExtraDelay::OnEntry::perform(CLMachine *_machine, CLState *_state) const
+void (null)::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_ExtraDelay_VarRefs.mm"
 #	include "State_ExtraDelay_OnEntry.mm"
 }
 
-void ExtraDelay::OnExit::perform(CLMachine *_machine, CLState *_state) const
+void (null)::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_ExtraDelay_VarRefs.mm"
 #	include "State_ExtraDelay_OnExit.mm"
 }
 
-void ExtraDelay::Internal::perform(CLMachine *_machine, CLState *_state) const
+void (null)::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_ExtraDelay_VarRefs.mm"
 #	include "State_ExtraDelay_Internal.mm"
 }
 
-bool ExtraDelay::Transition_0::check(CLMachine *_machine, CLState *_state) const
+bool (null)::Transition_0::check(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_ExtraDelay_VarRefs.mm"
