@@ -14,12 +14,12 @@ using namespace CLM;
 using namespace FSMSMHeadScanner;
 using namespace State;
 
-(null)::(null)(const char *name): CLState(name, *new (null)::OnEntry, *new (null)::OnExit, *new (null)::Internal)
+Do_Bottom_Scan::Do_Bottom_Scan(const char *name): CLState(name, *new Do_Bottom_Scan::OnEntry, *new Do_Bottom_Scan::OnExit, *new Do_Bottom_Scan::Internal)
 {
 	_transitions[0] = new Transition_0();
 }
 
-(null)::~(null)()
+Do_Bottom_Scan::~Do_Bottom_Scan()
 {
 	delete &onEntryAction();
 	delete &onExitAction();
@@ -28,28 +28,28 @@ using namespace State;
 	delete _transitions[0];
 }
 
-void (null)::OnEntry::perform(CLMachine *_machine, CLState *_state) const
+void Do_Bottom_Scan::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMHeadScanner_VarRefs.mm"
 #	include "State_Do_Bottom_Scan_VarRefs.mm"
 #	include "State_Do_Bottom_Scan_OnEntry.mm"
 }
 
-void (null)::OnExit::perform(CLMachine *_machine, CLState *_state) const
+void Do_Bottom_Scan::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMHeadScanner_VarRefs.mm"
 #	include "State_Do_Bottom_Scan_VarRefs.mm"
 #	include "State_Do_Bottom_Scan_OnExit.mm"
 }
 
-void (null)::Internal::perform(CLMachine *_machine, CLState *_state) const
+void Do_Bottom_Scan::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMHeadScanner_VarRefs.mm"
 #	include "State_Do_Bottom_Scan_VarRefs.mm"
 #	include "State_Do_Bottom_Scan_Internal.mm"
 }
 
-bool (null)::Transition_0::check(CLMachine *_machine, CLState *_state) const
+bool Do_Bottom_Scan::Transition_0::check(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMHeadScanner_VarRefs.mm"
 #	include "State_Do_Bottom_Scan_VarRefs.mm"

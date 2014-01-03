@@ -14,12 +14,12 @@ using namespace CLM;
 using namespace FSMSMKicker;
 using namespace State;
 
-(null)::(null)(const char *name): CLState(name, *new (null)::OnEntry, *new (null)::OnExit, *new (null)::Internal)
+Give_Up::Give_Up(const char *name): CLState(name, *new Give_Up::OnEntry, *new Give_Up::OnExit, *new Give_Up::Internal)
 {
 	_transitions[0] = new Transition_0();
 }
 
-(null)::~(null)()
+Give_Up::~Give_Up()
 {
 	delete &onEntryAction();
 	delete &onExitAction();
@@ -28,28 +28,28 @@ using namespace State;
 	delete _transitions[0];
 }
 
-void (null)::OnEntry::perform(CLMachine *_machine, CLState *_state) const
+void Give_Up::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_Give_Up_VarRefs.mm"
 #	include "State_Give_Up_OnEntry.mm"
 }
 
-void (null)::OnExit::perform(CLMachine *_machine, CLState *_state) const
+void Give_Up::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_Give_Up_VarRefs.mm"
 #	include "State_Give_Up_OnExit.mm"
 }
 
-void (null)::Internal::perform(CLMachine *_machine, CLState *_state) const
+void Give_Up::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_Give_Up_VarRefs.mm"
 #	include "State_Give_Up_Internal.mm"
 }
 
-bool (null)::Transition_0::check(CLMachine *_machine, CLState *_state) const
+bool Give_Up::Transition_0::check(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_Give_Up_VarRefs.mm"

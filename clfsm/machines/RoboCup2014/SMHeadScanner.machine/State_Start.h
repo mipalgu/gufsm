@@ -3,8 +3,8 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMHeadScanner_State_(null)_h
-#define clfsm_SMHeadScanner_State_(null)_h
+#ifndef clfsm_SMHeadScanner_State_Start_h
+#define clfsm_SMHeadScanner_State_Start_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class (null): public CLState
+            class Start: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -46,8 +46,8 @@ namespace FSM
                 CLTransition *_transitions[1];
 
                 public:
-                    (null)(const char *name = "Start");
-                    virtual ~(null)();
+                    Start(const char *name = "Start");
+                    virtual ~Start();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
                     virtual int numberOfTransitions() const { return 1; }

@@ -40,26 +40,26 @@ extern "C"
 
 SMKicker::SMKicker(int mid, const char *name): CLMachine(mid, name)
 {
-	_states[0] = new FSMSMKicker::State::(null);
-	_states[1] = new FSMSMKicker::State::(null);
-	_states[2] = new FSMSMKicker::State::(null);
-	_states[3] = new FSMSMKicker::State::(null);
-	_states[4] = new FSMSMKicker::State::(null);
-	_states[5] = new FSMSMKicker::State::(null);
-	_states[6] = new FSMSMKicker::State::(null);
-	_states[7] = new FSMSMKicker::State::(null);
-	_states[8] = new FSMSMKicker::State::(null);
-	_states[9] = new FSMSMKicker::State::(null);
-	_states[10] = new FSMSMKicker::State::(null);
-	_states[11] = new FSMSMKicker::State::(null);
-	_states[12] = new FSMSMKicker::State::(null);
-	_states[13] = new FSMSMKicker::State::(null);
-	_states[14] = new FSMSMKicker::State::(null);
-	_states[15] = new FSMSMKicker::State::(null);
-	_states[16] = new FSMSMKicker::State::(null);
-	_states[17] = new FSMSMKicker::State::(null);
-	_states[18] = new FSMSMKicker::State::(null);
-	_states[19] = new FSMSMKicker::State::(null);
+	_states[0] = new FSMSMKicker::State::Dummy_Init;
+	_states[1] = new FSMSMKicker::State::KickLeft;
+	_states[2] = new FSMSMKicker::State::KickRight;
+	_states[3] = new FSMSMKicker::State::WalkConnect;
+	_states[4] = new FSMSMKicker::State::SUSPENDED;
+	_states[5] = new FSMSMKicker::State::Wait;
+	_states[6] = new FSMSMKicker::State::Stop_Walk;
+	_states[7] = new FSMSMKicker::State::Walk_Disconnect;
+	_states[8] = new FSMSMKicker::State::Give_Up;
+	_states[9] = new FSMSMKicker::State::PassRight;
+	_states[10] = new FSMSMKicker::State::PassLeft;
+	_states[11] = new FSMSMKicker::State::KickGoal;
+	_states[12] = new FSMSMKicker::State::AvoidGoal;
+	_states[13] = new FSMSMKicker::State::DecideHeading;
+	_states[14] = new FSMSMKicker::State::DisconnectWalk;
+	_states[15] = new FSMSMKicker::State::CheckGoal;
+	_states[16] = new FSMSMKicker::State::TurnToGoal;
+	_states[17] = new FSMSMKicker::State::Stop;
+	_states[18] = new FSMSMKicker::State::LostBall;
+	_states[19] = new FSMSMKicker::State::ExtraDelay;
 
 	setInitialState(_states[0]);            // set initial state
 }

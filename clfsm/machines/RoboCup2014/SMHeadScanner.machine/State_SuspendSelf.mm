@@ -14,11 +14,11 @@ using namespace CLM;
 using namespace FSMSMHeadScanner;
 using namespace State;
 
-(null)::(null)(const char *name): CLState(name, *new (null)::OnEntry, *new (null)::OnExit, *new (null)::Internal)
+SuspendSelf::SuspendSelf(const char *name): CLState(name, *new SuspendSelf::OnEntry, *new SuspendSelf::OnExit, *new SuspendSelf::Internal)
 {
 }
 
-(null)::~(null)()
+SuspendSelf::~SuspendSelf()
 {
 	delete &onEntryAction();
 	delete &onExitAction();
@@ -26,21 +26,21 @@ using namespace State;
 
 }
 
-void (null)::OnEntry::perform(CLMachine *_machine, CLState *_state) const
+void SuspendSelf::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMHeadScanner_VarRefs.mm"
 #	include "State_SuspendSelf_VarRefs.mm"
 #	include "State_SuspendSelf_OnEntry.mm"
 }
 
-void (null)::OnExit::perform(CLMachine *_machine, CLState *_state) const
+void SuspendSelf::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMHeadScanner_VarRefs.mm"
 #	include "State_SuspendSelf_VarRefs.mm"
 #	include "State_SuspendSelf_OnExit.mm"
 }
 
-void (null)::Internal::perform(CLMachine *_machine, CLState *_state) const
+void SuspendSelf::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMHeadScanner_VarRefs.mm"
 #	include "State_SuspendSelf_VarRefs.mm"

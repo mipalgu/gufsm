@@ -27,13 +27,13 @@ extern "C"
 
 SMHeadScanner::SMHeadScanner(int mid, const char *name): CLMachine(mid, name)
 {
-	_states[0] = new FSMSMHeadScanner::State::(null);
-	_states[1] = new FSMSMHeadScanner::State::(null);
-	_states[2] = new FSMSMHeadScanner::State::(null);
-	_states[3] = new FSMSMHeadScanner::State::(null);
-	_states[4] = new FSMSMHeadScanner::State::(null);
-	_states[5] = new FSMSMHeadScanner::State::(null);
-	_states[6] = new FSMSMHeadScanner::State::(null);
+	_states[0] = new FSMSMHeadScanner::State::Init;
+	_states[1] = new FSMSMHeadScanner::State::Bottom_Scan;
+	_states[2] = new FSMSMHeadScanner::State::SUSPENDED;
+	_states[3] = new FSMSMHeadScanner::State::Start;
+	_states[4] = new FSMSMHeadScanner::State::Do_Bottom_Scan;
+	_states[5] = new FSMSMHeadScanner::State::Stop;
+	_states[6] = new FSMSMHeadScanner::State::SuspendSelf;
 
 	setSuspendState(_states[2]);            // set suspend state
 	setInitialState(_states[0]);            // set initial state

@@ -3,8 +3,8 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMKicker_State_(null)_h
-#define clfsm_SMKicker_State_(null)_h
+#ifndef clfsm_SMKicker_State_KickGoal_h
+#define clfsm_SMKicker_State_KickGoal_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class (null): public CLState
+            class KickGoal: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -62,8 +62,8 @@ namespace FSM
                 CLTransition *_transitions[3];
 
                 public:
-                    (null)(const char *name = "KickGoal");
-                    virtual ~(null)();
+                    KickGoal(const char *name = "KickGoal");
+                    virtual ~KickGoal();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
                     virtual int numberOfTransitions() const { return 3; }

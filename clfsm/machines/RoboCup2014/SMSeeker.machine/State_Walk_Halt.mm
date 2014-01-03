@@ -14,12 +14,12 @@ using namespace CLM;
 using namespace FSMSMSeeker;
 using namespace State;
 
-(null)::(null)(const char *name): CLState(name, *new (null)::OnEntry, *new (null)::OnExit, *new (null)::Internal)
+Walk_Halt::Walk_Halt(const char *name): CLState(name, *new Walk_Halt::OnEntry, *new Walk_Halt::OnExit, *new Walk_Halt::Internal)
 {
 	_transitions[0] = new Transition_0();
 }
 
-(null)::~(null)()
+Walk_Halt::~Walk_Halt()
 {
 	delete &onEntryAction();
 	delete &onExitAction();
@@ -28,28 +28,28 @@ using namespace State;
 	delete _transitions[0];
 }
 
-void (null)::OnEntry::perform(CLMachine *_machine, CLState *_state) const
+void Walk_Halt::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMSeeker_VarRefs.mm"
 #	include "State_Walk_Halt_VarRefs.mm"
 #	include "State_Walk_Halt_OnEntry.mm"
 }
 
-void (null)::OnExit::perform(CLMachine *_machine, CLState *_state) const
+void Walk_Halt::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMSeeker_VarRefs.mm"
 #	include "State_Walk_Halt_VarRefs.mm"
 #	include "State_Walk_Halt_OnExit.mm"
 }
 
-void (null)::Internal::perform(CLMachine *_machine, CLState *_state) const
+void Walk_Halt::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMSeeker_VarRefs.mm"
 #	include "State_Walk_Halt_VarRefs.mm"
 #	include "State_Walk_Halt_Internal.mm"
 }
 
-bool (null)::Transition_0::check(CLMachine *_machine, CLState *_state) const
+bool Walk_Halt::Transition_0::check(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMSeeker_VarRefs.mm"
 #	include "State_Walk_Halt_VarRefs.mm"

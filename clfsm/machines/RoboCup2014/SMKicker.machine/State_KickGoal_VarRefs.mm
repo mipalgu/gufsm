@@ -3,7 +3,7 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-(null) *_s = static_cast<(null) *>(_state);
+KickGoal *_s = static_cast<KickGoal *>(_state);
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"

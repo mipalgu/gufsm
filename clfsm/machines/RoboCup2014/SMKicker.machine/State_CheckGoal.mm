@@ -14,13 +14,13 @@ using namespace CLM;
 using namespace FSMSMKicker;
 using namespace State;
 
-(null)::(null)(const char *name): CLState(name, *new (null)::OnEntry, *new (null)::OnExit, *new (null)::Internal)
+CheckGoal::CheckGoal(const char *name): CLState(name, *new CheckGoal::OnEntry, *new CheckGoal::OnExit, *new CheckGoal::Internal)
 {
 	_transitions[0] = new Transition_0();
 	_transitions[1] = new Transition_1();
 }
 
-(null)::~(null)()
+CheckGoal::~CheckGoal()
 {
 	delete &onEntryAction();
 	delete &onExitAction();
@@ -30,28 +30,28 @@ using namespace State;
 	delete _transitions[1];
 }
 
-void (null)::OnEntry::perform(CLMachine *_machine, CLState *_state) const
+void CheckGoal::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_CheckGoal_VarRefs.mm"
 #	include "State_CheckGoal_OnEntry.mm"
 }
 
-void (null)::OnExit::perform(CLMachine *_machine, CLState *_state) const
+void CheckGoal::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_CheckGoal_VarRefs.mm"
 #	include "State_CheckGoal_OnExit.mm"
 }
 
-void (null)::Internal::perform(CLMachine *_machine, CLState *_state) const
+void CheckGoal::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_CheckGoal_VarRefs.mm"
 #	include "State_CheckGoal_Internal.mm"
 }
 
-bool (null)::Transition_0::check(CLMachine *_machine, CLState *_state) const
+bool CheckGoal::Transition_0::check(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_CheckGoal_VarRefs.mm"
@@ -62,7 +62,7 @@ bool (null)::Transition_0::check(CLMachine *_machine, CLState *_state) const
 	);
 }
 
-bool (null)::Transition_1::check(CLMachine *_machine, CLState *_state) const
+bool CheckGoal::Transition_1::check(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_CheckGoal_VarRefs.mm"

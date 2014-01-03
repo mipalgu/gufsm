@@ -14,13 +14,13 @@ using namespace CLM;
 using namespace FSMSMKicker;
 using namespace State;
 
-(null)::(null)(const char *name): CLState(name, *new (null)::OnEntry, *new (null)::OnExit, *new (null)::Internal)
+DecideHeading::DecideHeading(const char *name): CLState(name, *new DecideHeading::OnEntry, *new DecideHeading::OnExit, *new DecideHeading::Internal)
 {
 	_transitions[0] = new Transition_0();
 	_transitions[1] = new Transition_1();
 }
 
-(null)::~(null)()
+DecideHeading::~DecideHeading()
 {
 	delete &onEntryAction();
 	delete &onExitAction();
@@ -30,28 +30,28 @@ using namespace State;
 	delete _transitions[1];
 }
 
-void (null)::OnEntry::perform(CLMachine *_machine, CLState *_state) const
+void DecideHeading::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_DecideHeading_VarRefs.mm"
 #	include "State_DecideHeading_OnEntry.mm"
 }
 
-void (null)::OnExit::perform(CLMachine *_machine, CLState *_state) const
+void DecideHeading::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_DecideHeading_VarRefs.mm"
 #	include "State_DecideHeading_OnExit.mm"
 }
 
-void (null)::Internal::perform(CLMachine *_machine, CLState *_state) const
+void DecideHeading::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_DecideHeading_VarRefs.mm"
 #	include "State_DecideHeading_Internal.mm"
 }
 
-bool (null)::Transition_0::check(CLMachine *_machine, CLState *_state) const
+bool DecideHeading::Transition_0::check(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_DecideHeading_VarRefs.mm"
@@ -62,7 +62,7 @@ bool (null)::Transition_0::check(CLMachine *_machine, CLState *_state) const
 	);
 }
 
-bool (null)::Transition_1::check(CLMachine *_machine, CLState *_state) const
+bool DecideHeading::Transition_1::check(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMKicker_VarRefs.mm"
 #	include "State_DecideHeading_VarRefs.mm"

@@ -3,7 +3,7 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-(null) *_s = static_cast<(null) *>(_state);
+Walk_Disconnect *_s = static_cast<Walk_Disconnect *>(_state);
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"

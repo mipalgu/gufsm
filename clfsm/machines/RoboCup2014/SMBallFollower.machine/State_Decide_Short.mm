@@ -14,13 +14,13 @@ using namespace CLM;
 using namespace FSMSMBallFollower;
 using namespace State;
 
-(null)::(null)(const char *name): CLState(name, *new (null)::OnEntry, *new (null)::OnExit, *new (null)::Internal)
+Decide_Short::Decide_Short(const char *name): CLState(name, *new Decide_Short::OnEntry, *new Decide_Short::OnExit, *new Decide_Short::Internal)
 {
 	_transitions[0] = new Transition_0();
 	_transitions[1] = new Transition_1();
 }
 
-(null)::~(null)()
+Decide_Short::~Decide_Short()
 {
 	delete &onEntryAction();
 	delete &onExitAction();
@@ -30,28 +30,28 @@ using namespace State;
 	delete _transitions[1];
 }
 
-void (null)::OnEntry::perform(CLMachine *_machine, CLState *_state) const
+void Decide_Short::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_Decide_Short_VarRefs.mm"
 #	include "State_Decide_Short_OnEntry.mm"
 }
 
-void (null)::OnExit::perform(CLMachine *_machine, CLState *_state) const
+void Decide_Short::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_Decide_Short_VarRefs.mm"
 #	include "State_Decide_Short_OnExit.mm"
 }
 
-void (null)::Internal::perform(CLMachine *_machine, CLState *_state) const
+void Decide_Short::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_Decide_Short_VarRefs.mm"
 #	include "State_Decide_Short_Internal.mm"
 }
 
-bool (null)::Transition_0::check(CLMachine *_machine, CLState *_state) const
+bool Decide_Short::Transition_0::check(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_Decide_Short_VarRefs.mm"
@@ -62,7 +62,7 @@ bool (null)::Transition_0::check(CLMachine *_machine, CLState *_state) const
 	);
 }
 
-bool (null)::Transition_1::check(CLMachine *_machine, CLState *_state) const
+bool Decide_Short::Transition_1::check(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMBallFollower_VarRefs.mm"
 #	include "State_Decide_Short_VarRefs.mm"

@@ -3,7 +3,7 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-(null) *_s = static_cast<(null) *>(_state);
+Long_Turn *_s = static_cast<Long_Turn *>(_state);
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"

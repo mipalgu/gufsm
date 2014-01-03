@@ -14,12 +14,12 @@ using namespace CLM;
 using namespace FSMSMHeadScanner;
 using namespace State;
 
-(null)::(null)(const char *name): CLState(name, *new (null)::OnEntry, *new (null)::OnExit, *new (null)::Internal)
+Start::Start(const char *name): CLState(name, *new Start::OnEntry, *new Start::OnExit, *new Start::Internal)
 {
 	_transitions[0] = new Transition_0();
 }
 
-(null)::~(null)()
+Start::~Start()
 {
 	delete &onEntryAction();
 	delete &onExitAction();
@@ -28,28 +28,28 @@ using namespace State;
 	delete _transitions[0];
 }
 
-void (null)::OnEntry::perform(CLMachine *_machine, CLState *_state) const
+void Start::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMHeadScanner_VarRefs.mm"
 #	include "State_Start_VarRefs.mm"
 #	include "State_Start_OnEntry.mm"
 }
 
-void (null)::OnExit::perform(CLMachine *_machine, CLState *_state) const
+void Start::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMHeadScanner_VarRefs.mm"
 #	include "State_Start_VarRefs.mm"
 #	include "State_Start_OnExit.mm"
 }
 
-void (null)::Internal::perform(CLMachine *_machine, CLState *_state) const
+void Start::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMHeadScanner_VarRefs.mm"
 #	include "State_Start_VarRefs.mm"
 #	include "State_Start_Internal.mm"
 }
 
-bool (null)::Transition_0::check(CLMachine *_machine, CLState *_state) const
+bool Start::Transition_0::check(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMHeadScanner_VarRefs.mm"
 #	include "State_Start_VarRefs.mm"

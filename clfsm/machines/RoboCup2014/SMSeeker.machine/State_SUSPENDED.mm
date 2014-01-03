@@ -14,11 +14,11 @@ using namespace CLM;
 using namespace FSMSMSeeker;
 using namespace State;
 
-(null)::(null)(const char *name): CLState(name, *new (null)::OnEntry, *new (null)::OnExit, *new (null)::Internal)
+SUSPENDED::SUSPENDED(const char *name): CLState(name, *new SUSPENDED::OnEntry, *new SUSPENDED::OnExit, *new SUSPENDED::Internal)
 {
 }
 
-(null)::~(null)()
+SUSPENDED::~SUSPENDED()
 {
 	delete &onEntryAction();
 	delete &onExitAction();
@@ -26,21 +26,21 @@ using namespace State;
 
 }
 
-void (null)::OnEntry::perform(CLMachine *_machine, CLState *_state) const
+void SUSPENDED::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMSeeker_VarRefs.mm"
 #	include "State_SUSPENDED_VarRefs.mm"
 #	include "State_SUSPENDED_OnEntry.mm"
 }
 
-void (null)::OnExit::perform(CLMachine *_machine, CLState *_state) const
+void SUSPENDED::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMSeeker_VarRefs.mm"
 #	include "State_SUSPENDED_VarRefs.mm"
 #	include "State_SUSPENDED_OnExit.mm"
 }
 
-void (null)::Internal::perform(CLMachine *_machine, CLState *_state) const
+void SUSPENDED::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMSeeker_VarRefs.mm"
 #	include "State_SUSPENDED_VarRefs.mm"
