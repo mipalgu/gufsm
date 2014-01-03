@@ -18,6 +18,7 @@ DecideHeading::DecideHeading(const char *name): CLState(name, *new DecideHeading
 {
 	_transitions[0] = new Transition_0();
 	_transitions[1] = new Transition_1();
+	_transitions[2] = new Transition_2();
 }
 
 DecideHeading::~DecideHeading()
@@ -28,6 +29,7 @@ DecideHeading::~DecideHeading()
 
 	delete _transitions[0];
 	delete _transitions[1];
+	delete _transitions[2];
 }
 
 void DecideHeading::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -70,5 +72,16 @@ bool DecideHeading::Transition_1::check(CLMachine *_machine, CLState *_state) co
 	return
 	(
 #		include "State_DecideHeading_Transition_1.expr"
+	);
+}
+
+bool DecideHeading::Transition_2::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "SMKicker_VarRefs.mm"
+#	include "State_DecideHeading_VarRefs.mm"
+
+	return
+	(
+#		include "State_DecideHeading_Transition_2.expr"
 	);
 }
