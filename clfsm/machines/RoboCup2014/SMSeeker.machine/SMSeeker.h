@@ -16,12 +16,12 @@ namespace FSM
     {
         class SMSeeker: public CLMachine
         {
-            CLState *_states[8];
+            CLState *_states[5];
         public:
             SMSeeker(int mid  = 0, const char *name = "SMSeeker");
             virtual ~SMSeeker();
             virtual CLState * const * states() const { return _states; }
-            virtual int numberOfStates() const { return 8; }
+            virtual int numberOfStates() const { return 5; }
 #           include "SMSeeker_Variables.h"
         };
     }

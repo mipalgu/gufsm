@@ -14,12 +14,12 @@ using namespace CLM;
 using namespace FSMSMSeeker;
 using namespace State;
 
-WalkSeek::WalkSeek(const char *name): CLState(name, *new WalkSeek::OnEntry, *new WalkSeek::OnExit, *new WalkSeek::Internal)
+(null)::(null)(const char *name): CLState(name, *new (null)::OnEntry, *new (null)::OnExit, *new (null)::Internal)
 {
 	_transitions[0] = new Transition_0();
 }
 
-WalkSeek::~WalkSeek()
+(null)::~(null)()
 {
 	delete &onEntryAction();
 	delete &onExitAction();
@@ -28,28 +28,28 @@ WalkSeek::~WalkSeek()
 	delete _transitions[0];
 }
 
-void WalkSeek::OnEntry::perform(CLMachine *_machine, CLState *_state) const
+void (null)::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMSeeker_VarRefs.mm"
 #	include "State_WalkSeek_VarRefs.mm"
 #	include "State_WalkSeek_OnEntry.mm"
 }
 
-void WalkSeek::OnExit::perform(CLMachine *_machine, CLState *_state) const
+void (null)::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMSeeker_VarRefs.mm"
 #	include "State_WalkSeek_VarRefs.mm"
 #	include "State_WalkSeek_OnExit.mm"
 }
 
-void WalkSeek::Internal::perform(CLMachine *_machine, CLState *_state) const
+void (null)::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMSeeker_VarRefs.mm"
 #	include "State_WalkSeek_VarRefs.mm"
 #	include "State_WalkSeek_Internal.mm"
 }
 
-bool WalkSeek::Transition_0::check(CLMachine *_machine, CLState *_state) const
+bool (null)::Transition_0::check(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMSeeker_VarRefs.mm"
 #	include "State_WalkSeek_VarRefs.mm"

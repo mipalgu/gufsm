@@ -3,8 +3,8 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMSeeker_State_WalkSeek_h
-#define clfsm_SMSeeker_State_WalkSeek_h
+#ifndef clfsm_SMSeeker_State_(null)_h
+#define clfsm_SMSeeker_State_(null)_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class WalkSeek: public CLState
+            class (null): public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -46,8 +46,8 @@ namespace FSM
                 CLTransition *_transitions[1];
 
                 public:
-                    WalkSeek(const char *name = "WalkSeek");
-                    virtual ~WalkSeek();
+                    (null)(const char *name = "WalkSeek");
+                    virtual ~(null)();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
                     virtual int numberOfTransitions() const { return 1; }

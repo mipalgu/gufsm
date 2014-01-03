@@ -3,8 +3,8 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMSeeker_State_HeadSeek_h
-#define clfsm_SMSeeker_State_HeadSeek_h
+#ifndef clfsm_SMSeeker_State_(null)_h
+#define clfsm_SMSeeker_State_(null)_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class HeadSeek: public CLState
+            class (null): public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,27 +38,19 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 5): CLTransition(toState) {}
+                    Transition_0(int toState = 4): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                class Transition_1: public CLTransition
-                {
-                public:
-                    Transition_1(int toState = 4): CLTransition(toState) {}
-
-                    virtual bool check(CLMachine *, CLState *) const;
-                };
-
-                CLTransition *_transitions[2];
+                CLTransition *_transitions[1];
 
                 public:
-                    HeadSeek(const char *name = "HeadSeek");
-                    virtual ~HeadSeek();
+                    (null)(const char *name = "HeadSeek");
+                    virtual ~(null)();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 2; }
+                    virtual int numberOfTransitions() const { return 1; }
 
 #                   include "State_HeadSeek_Variables.h"
             };

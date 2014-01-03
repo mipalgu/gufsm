@@ -1,1 +1,1 @@
-spinCount >= 4
+is_suspended("SMHeadScanner") && after(1)

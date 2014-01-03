@@ -14,44 +14,42 @@ using namespace CLM;
 using namespace FSMSMSeeker;
 using namespace State;
 
-HeadSeek::HeadSeek(const char *name): CLState(name, *new HeadSeek::OnEntry, *new HeadSeek::OnExit, *new HeadSeek::Internal)
+(null)::(null)(const char *name): CLState(name, *new (null)::OnEntry, *new (null)::OnExit, *new (null)::Internal)
 {
 	_transitions[0] = new Transition_0();
-	_transitions[1] = new Transition_1();
 }
 
-HeadSeek::~HeadSeek()
+(null)::~(null)()
 {
 	delete &onEntryAction();
 	delete &onExitAction();
 	delete &internalAction();
 
 	delete _transitions[0];
-	delete _transitions[1];
 }
 
-void HeadSeek::OnEntry::perform(CLMachine *_machine, CLState *_state) const
+void (null)::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMSeeker_VarRefs.mm"
 #	include "State_HeadSeek_VarRefs.mm"
 #	include "State_HeadSeek_OnEntry.mm"
 }
 
-void HeadSeek::OnExit::perform(CLMachine *_machine, CLState *_state) const
+void (null)::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMSeeker_VarRefs.mm"
 #	include "State_HeadSeek_VarRefs.mm"
 #	include "State_HeadSeek_OnExit.mm"
 }
 
-void HeadSeek::Internal::perform(CLMachine *_machine, CLState *_state) const
+void (null)::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMSeeker_VarRefs.mm"
 #	include "State_HeadSeek_VarRefs.mm"
 #	include "State_HeadSeek_Internal.mm"
 }
 
-bool HeadSeek::Transition_0::check(CLMachine *_machine, CLState *_state) const
+bool (null)::Transition_0::check(CLMachine *_machine, CLState *_state) const
 {
 #	include "SMSeeker_VarRefs.mm"
 #	include "State_HeadSeek_VarRefs.mm"
@@ -59,16 +57,5 @@ bool HeadSeek::Transition_0::check(CLMachine *_machine, CLState *_state) const
 	return
 	(
 #		include "State_HeadSeek_Transition_0.expr"
-	);
-}
-
-bool HeadSeek::Transition_1::check(CLMachine *_machine, CLState *_state) const
-{
-#	include "SMSeeker_VarRefs.mm"
-#	include "State_HeadSeek_VarRefs.mm"
-
-	return
-	(
-#		include "State_HeadSeek_Transition_1.expr"
 	);
 }
