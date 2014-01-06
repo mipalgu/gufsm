@@ -1,3 +1,5 @@
+fprintf(stderr, "Howdy Heading");
+
 ball = ball_ptr.get();
 
 
