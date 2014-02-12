@@ -18,6 +18,7 @@ Standing::Standing(const char *name): CLState(name, *new Standing::OnEntry, *new
 {
 	_transitions[0] = new Transition_0();
 	_transitions[1] = new Transition_1();
+	_transitions[2] = new Transition_2();
 }
 
 Standing::~Standing()
@@ -28,6 +29,7 @@ Standing::~Standing()
 
 	delete _transitions[0];
 	delete _transitions[1];
+	delete _transitions[2];
 }
 
 void Standing::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -70,5 +72,16 @@ bool Standing::Transition_1::check(CLMachine *_machine, CLState *_state) const
 	return
 	(
 #		include "State_Standing_Transition_1.expr"
+	);
+}
+
+bool Standing::Transition_2::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "SMTeleoperationController_VarRefs.mm"
+#	include "State_Standing_VarRefs.mm"
+
+	return
+	(
+#		include "State_Standing_Transition_2.expr"
 	);
 }

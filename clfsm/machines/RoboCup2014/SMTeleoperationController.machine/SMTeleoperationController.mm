@@ -15,6 +15,7 @@
 #include "State_Walk.h"
 #include "State_Disconnect.h"
 #include "State_Stop.h"
+#include "State_Action.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -38,6 +39,7 @@ SMTeleoperationController::SMTeleoperationController(int mid, const char *name):
 	_states[6] = new FSMSMTeleoperationController::State::Walk;
 	_states[7] = new FSMSMTeleoperationController::State::Disconnect;
 	_states[8] = new FSMSMTeleoperationController::State::Stop;
+	_states[9] = new FSMSMTeleoperationController::State::Action;
 
 	setInitialState(_states[0]);            // set initial state
 }
@@ -53,4 +55,5 @@ SMTeleoperationController::~SMTeleoperationController()
 	delete _states[6];
 	delete _states[7];
 	delete _states[8];
+	delete _states[9];
 }
