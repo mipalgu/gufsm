@@ -1,9 +1,9 @@
 //
-// State_ActionStance_VarRefs.mm
+// State_Connected_VarRefs.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-ActionStance *_s = static_cast<ActionStance *>(_state);
+Connected *_s = static_cast<Connected *>(_state);
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"

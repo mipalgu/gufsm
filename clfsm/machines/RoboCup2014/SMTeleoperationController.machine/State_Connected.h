@@ -1,10 +1,10 @@
 //
-// State_ActionStance.h
+// State_Connected.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMTeleoperationController_State_ActionStance_h
-#define clfsm_SMTeleoperationController_State_ActionStance_h
+#ifndef clfsm_SMTeleoperationController_State_Connected_h
+#define clfsm_SMTeleoperationController_State_Connected_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class ActionStance: public CLState
+            class Connected: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,21 +38,29 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 4): CLTransition(toState) {}
+                    Transition_0(int toState = 2): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                CLTransition *_transitions[1];
+                class Transition_1: public CLTransition
+                {
+                public:
+                    Transition_1(int toState = 10): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                CLTransition *_transitions[2];
 
                 public:
-                    ActionStance(const char *name = "ActionStance");
-                    virtual ~ActionStance();
+                    Connected(const char *name = "Connected");
+                    virtual ~Connected();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 1; }
+                    virtual int numberOfTransitions() const { return 2; }
 
-#                   include "State_ActionStance_Variables.h"
+#                   include "State_Connected_Variables.h"
             };
         }
       }

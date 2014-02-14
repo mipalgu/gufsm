@@ -16,5 +16,7 @@ TeleoperationControlStatus	&localControl = _m->localControl;	///<
 MOTION_Commands_t*	&motionPtr = _m->motionPtr;	///< 
 WALK_Command_t*	&walkPtr = _m->walkPtr;	///< 
 WALK_Status_t*	&walkStatus = _m->walkStatus;	///< 
+TeleoperationConnection_t*	&connectionPtr = _m->connectionPtr;	///< 
+int	&currentConnection = _m->currentConnection;	///< 
 
 #pragma clang diagnostic pop

@@ -1,0 +1,1 @@
+currentConnection != connectionPtr->get()

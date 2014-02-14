@@ -9,4 +9,6 @@ TeleoperationControlStatus	remoteControl;	///<
 TeleoperationControlStatus	localControl;	///< 
 MOTION_Commands_t*	motionPtr;	///< 
 WALK_Command_t*	walkPtr;	///< 
-WALK_Status_t*	walkStatus;	///<
+WALK_Status_t*	walkStatus;	///< 
+TeleoperationConnection_t*	connectionPtr;	///< 
+int	currentConnection;	///<
