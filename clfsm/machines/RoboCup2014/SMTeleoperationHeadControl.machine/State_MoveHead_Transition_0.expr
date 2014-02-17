@@ -1,1 +1,1 @@
-remoteControl.headPitch() == currentPitch && remoteControl.headYaw() == currentYaw && after(10)
+true

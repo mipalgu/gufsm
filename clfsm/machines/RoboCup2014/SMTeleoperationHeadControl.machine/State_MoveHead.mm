@@ -17,7 +17,6 @@ using namespace State;
 MoveHead::MoveHead(const char *name): CLState(name, *new MoveHead::OnEntry, *new MoveHead::OnExit, *new MoveHead::Internal)
 {
 	_transitions[0] = new Transition_0();
-	_transitions[1] = new Transition_1();
 }
 
 MoveHead::~MoveHead()
@@ -27,7 +26,6 @@ MoveHead::~MoveHead()
 	delete &internalAction();
 
 	delete _transitions[0];
-	delete _transitions[1];
 }
 
 void MoveHead::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -59,16 +57,5 @@ bool MoveHead::Transition_0::check(CLMachine *_machine, CLState *_state) const
 	return
 	(
 #		include "State_MoveHead_Transition_0.expr"
-	);
-}
-
-bool MoveHead::Transition_1::check(CLMachine *_machine, CLState *_state) const
-{
-#	include "SMTeleoperationHeadControl_VarRefs.mm"
-#	include "State_MoveHead_VarRefs.mm"
-
-	return
-	(
-#		include "State_MoveHead_Transition_1.expr"
 	);
 }

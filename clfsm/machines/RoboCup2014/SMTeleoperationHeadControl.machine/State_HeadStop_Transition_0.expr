@@ -1,1 +1,1 @@
-remoteControl.headPitch() != currentPitch || remoteControl.headYaw() != currentYaw
+(remoteControl.headPitch() != currentPitch || remoteControl.headYaw() != currentYaw) && after_ms(100)

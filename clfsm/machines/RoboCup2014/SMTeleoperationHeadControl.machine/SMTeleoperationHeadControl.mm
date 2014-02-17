@@ -10,7 +10,6 @@
 #include "State_SUSPENDED.h"
 #include "State_HeadStop.h"
 #include "State_MoveHead.h"
-#include "State_Dummy.h"
 #include "State_Walking.h"
 
 using namespace FSM;
@@ -30,8 +29,7 @@ SMTeleoperationHeadControl::SMTeleoperationHeadControl(int mid, const char *name
 	_states[1] = new FSMSMTeleoperationHeadControl::State::SUSPENDED;
 	_states[2] = new FSMSMTeleoperationHeadControl::State::HeadStop;
 	_states[3] = new FSMSMTeleoperationHeadControl::State::MoveHead;
-	_states[4] = new FSMSMTeleoperationHeadControl::State::Dummy;
-	_states[5] = new FSMSMTeleoperationHeadControl::State::Walking;
+	_states[4] = new FSMSMTeleoperationHeadControl::State::Walking;
 
 	setInitialState(_states[0]);            // set initial state
 }
@@ -43,5 +41,4 @@ SMTeleoperationHeadControl::~SMTeleoperationHeadControl()
 	delete _states[2];
 	delete _states[3];
 	delete _states[4];
-	delete _states[5];
 }
