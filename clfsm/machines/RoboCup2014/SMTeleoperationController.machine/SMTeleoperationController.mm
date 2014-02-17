@@ -18,6 +18,7 @@
 #include "State_Action.h"
 #include "State_Connect.h"
 #include "State_Connected.h"
+#include "State_StartHeadTracking.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -44,6 +45,7 @@ SMTeleoperationController::SMTeleoperationController(int mid, const char *name):
 	_states[9] = new FSMSMTeleoperationController::State::Action;
 	_states[10] = new FSMSMTeleoperationController::State::Connect;
 	_states[11] = new FSMSMTeleoperationController::State::Connected;
+	_states[12] = new FSMSMTeleoperationController::State::StartHeadTracking;
 
 	setInitialState(_states[0]);            // set initial state
 }
@@ -62,4 +64,5 @@ SMTeleoperationController::~SMTeleoperationController()
 	delete _states[9];
 	delete _states[10];
 	delete _states[11];
+	delete _states[12];
 }

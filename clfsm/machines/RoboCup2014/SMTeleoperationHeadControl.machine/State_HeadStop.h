@@ -1,10 +1,10 @@
 //
-// State_Connected.h
+// State_HeadStop.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMTeleoperationController_State_Connected_h
-#define clfsm_SMTeleoperationController_State_Connected_h
+#ifndef clfsm_SMTeleoperationHeadControl_State_HeadStop_h
+#define clfsm_SMTeleoperationHeadControl_State_HeadStop_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,11 +14,11 @@ namespace FSM
 {
     namespace CLM
     {
-      namespace FSMSMTeleoperationController
+      namespace FSMSMTeleoperationHeadControl
       {
         namespace State
         {
-            class Connected: public CLState
+            class HeadStop: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,7 +38,7 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 12): CLTransition(toState) {}
+                    Transition_0(int toState = 3): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
@@ -46,7 +46,7 @@ namespace FSM
                 class Transition_1: public CLTransition
                 {
                 public:
-                    Transition_1(int toState = 10): CLTransition(toState) {}
+                    Transition_1(int toState = 5): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
@@ -54,13 +54,13 @@ namespace FSM
                 CLTransition *_transitions[2];
 
                 public:
-                    Connected(const char *name = "Connected");
-                    virtual ~Connected();
+                    HeadStop(const char *name = "HeadStop");
+                    virtual ~HeadStop();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
                     virtual int numberOfTransitions() const { return 2; }
 
-#                   include "State_Connected_Variables.h"
+#                   include "State_HeadStop_Variables.h"
             };
         }
       }

@@ -1,1 +1,2 @@
 //suspend("SMFallManager");
+suspend("SMTeleoperationHeadControl");

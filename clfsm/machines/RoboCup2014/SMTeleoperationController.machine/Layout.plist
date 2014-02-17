@@ -10,7 +10,7 @@
 	    <array>
 		<dict>
 		    <key>controlPoint1X</key>
-		    <real>89.52792324224606</real>
+		    <real>89.52792324224608</real>
 		    <key>controlPoint1Y</key>
 		    <real>673.5287501419472</real>
 		    <key>controlPoint2X</key>
@@ -78,21 +78,21 @@
 	    <array>
 		<dict>
 		    <key>controlPoint1X</key>
-		    <real>173.5336785622993</real>
+		    <real>374.7749647330597</real>
 		    <key>controlPoint1Y</key>
-		    <real>141.0135010386998</real>
+		    <real>238.4053684889514</real>
 		    <key>controlPoint2X</key>
-		    <real>711.3793110814067</real>
+		    <real>504.5963711808993</real>
 		    <key>controlPoint2Y</key>
-		    <real>274.5693267353044</real>
+		    <real>326.1754147623425</real>
 		    <key>dstPointX</key>
-		    <real>634.2338074789154</real>
+		    <real>547.3474955478849</real>
 		    <key>dstPointY</key>
-		    <real>322.4527427644371</real>
+		    <real>331.5193053082158</real>
 		    <key>srcPointX</key>
-		    <real>90.93596017383652</real>
+		    <real>414.5039969405979</real>
 		    <key>srcPointY</key>
-		    <real>103.3058469917929</real>
+		    <real>221.73744118349</real>
 		</dict>
 	    </array>
 	    <key>bgColour</key>
@@ -130,15 +130,15 @@
 	    <key>w</key>
 	    <real>100</real>
 	    <key>x</key>
-	    <real>314</real>
+	    <real>456</real>
 	    <key>y</key>
-	    <real>239</real>
+	    <real>214</real>
 	    <key>zoomedInternalHeight</key>
-	    <real>264</real>
+	    <real>0</real>
 	    <key>zoomedOnEntryHeight</key>
-	    <real>264</real>
+	    <real>0</real>
 	    <key>zoomedOnExitHeight</key>
-	    <real>264</real>
+	    <real>0</real>
 	</dict>
 	<key>Connected</key>
 	<dict>
@@ -146,39 +146,39 @@
 	    <array>
 		<dict>
 		    <key>controlPoint1X</key>
-		    <real>671.3044092300165</real>
+		    <real>683.5360311657473</real>
 		    <key>controlPoint1Y</key>
-		    <real>469.3825290688073</real>
+		    <real>504.6492864886836</real>
 		    <key>controlPoint2X</key>
-		    <real>795.4528077524673</real>
+		    <real>-20.96618100204148</real>
 		    <key>controlPoint2Y</key>
-		    <real>339.4550163054201</real>
+		    <real>158.9553489168181</real>
 		    <key>dstPointX</key>
-		    <real>833.0693451495144</real>
+		    <real>108.8391333651555</real>
 		    <key>dstPointY</key>
-		    <real>464.843474295577</real>
+		    <real>266.9036259559801</real>
 		    <key>srcPointX</key>
-		    <real>615.263885513257</real>
+		    <real>611.263885513257</real>
 		    <key>srcPointY</key>
-		    <real>351.0747567778708</real>
+		    <real>352.0747567778708</real>
 		</dict>
 		<dict>
 		    <key>controlPoint1X</key>
-		    <real>453.5465329317129</real>
+		    <real>677.7030349617384</real>
 		    <key>controlPoint1Y</key>
-		    <real>330.446535383746</real>
+		    <real>306.3579554838852</real>
 		    <key>controlPoint2X</key>
-		    <real>68.42916837377265</real>
+		    <real>527.8301006562681</real>
 		    <key>controlPoint2Y</key>
-		    <real>211.5002805859353</real>
+		    <real>172.5936643996131</real>
 		    <key>dstPointX</key>
-		    <real>55.82026328304954</real>
+		    <real>488.5862068965517</real>
 		    <key>dstPointY</key>
-		    <real>114.8320082237244</real>
+		    <real>200.2068965517241</real>
 		    <key>srcPointX</key>
-		    <real>551.0106295029237</real>
+		    <real>631.3506184880509</real>
 		    <key>srcPointY</key>
-		    <real>332.5653200918157</real>
+		    <real>324.2979821408212</real>
 		</dict>
 	    </array>
 	    <key>bgColour</key>
@@ -216,15 +216,15 @@
 	    <key>w</key>
 	    <real>100</real>
 	    <key>x</key>
-	    <real>596</real>
+	    <real>592</real>
 	    <key>y</key>
-	    <real>333</real>
+	    <real>334</real>
 	    <key>zoomedInternalHeight</key>
-	    <real>264</real>
+	    <real>0</real>
 	    <key>zoomedOnEntryHeight</key>
-	    <real>264</real>
+	    <real>0</real>
 	    <key>zoomedOnExitHeight</key>
-	    <real>264</real>
+	    <real>0</real>
 	</dict>
 	<key>Disconnect</key>
 	<dict>
@@ -300,21 +300,21 @@
 	    <array>
 		<dict>
 		    <key>controlPoint1X</key>
-		    <real>162.5005066902211</real>
+		    <real>241.2493708347207</real>
 		    <key>controlPoint1Y</key>
-		    <real>298.7476195982798</real>
+		    <real>182.125036211263</real>
 		    <key>controlPoint2X</key>
-		    <real>-103.8441450239716</real>
+		    <real>380.8698532802242</real>
 		    <key>controlPoint2Y</key>
-		    <real>81.65756722293381</real>
+		    <real>156.5475228098879</real>
 		    <key>dstPointX</key>
-		    <real>5.238869277805179</real>
+		    <real>424.1801948466053</real>
 		    <key>dstPointY</key>
-		    <real>92.9420169782899</real>
+		    <real>199.857864376269</real>
 		    <key>srcPointX</key>
-		    <real>143.7103528638061</real>
+		    <real>180.5761737291625</real>
 		    <key>srcPointY</key>
-		    <real>190.7042350963935</real>
+		    <real>173.7384680106653</real>
 		</dict>
 	    </array>
 	    <key>bgColour</key>
@@ -356,11 +356,11 @@
 	    <key>y</key>
 	    <real>171</real>
 	    <key>zoomedInternalHeight</key>
-	    <real>264</real>
+	    <real>0</real>
 	    <key>zoomedOnEntryHeight</key>
-	    <real>264</real>
+	    <real>0</real>
 	    <key>zoomedOnExitHeight</key>
-	    <real>264</real>
+	    <real>0</real>
 	</dict>
 	<key>SUSPENDED</key>
 	<dict>
@@ -379,7 +379,7 @@
 		<real>0.24</real>
 	    </dict>
 	    <key>expanded</key>
-	    <false/>
+	    <true/>
 	    <key>h</key>
 	    <real>50</real>
 	    <key>internalHeight</key>
@@ -402,15 +402,15 @@
 	    <key>w</key>
 	    <real>100</real>
 	    <key>x</key>
-	    <real>259</real>
+	    <real>262</real>
 	    <key>y</key>
-	    <real>149</real>
+	    <real>77</real>
 	    <key>zoomedInternalHeight</key>
-	    <real>0</real>
+	    <real>264</real>
 	    <key>zoomedOnEntryHeight</key>
-	    <real>0</real>
+	    <real>264</real>
 	    <key>zoomedOnExitHeight</key>
-	    <real>0</real>
+	    <real>264</real>
 	</dict>
 	<key>Sit</key>
 	<dict>
@@ -418,13 +418,13 @@
 	    <array>
 		<dict>
 		    <key>controlPoint1X</key>
-		    <real>502.2549583314049</real>
+		    <real>518.1208236543735</real>
 		    <key>controlPoint1Y</key>
-		    <real>478.5091375278787</real>
+		    <real>477.6317624869772</real>
 		    <key>controlPoint2X</key>
-		    <real>730.4559024483336</real>
+		    <real>715.7023093906686</real>
 		    <key>controlPoint2Y</key>
-		    <real>447.067127888186</real>
+		    <real>441.1656906651199</real>
 		    <key>dstPointX</key>
 		    <real>804.2185489101633</real>
 		    <key>dstPointY</key>
@@ -486,13 +486,13 @@
 	    <array>
 		<dict>
 		    <key>controlPoint1X</key>
-		    <real>755.3051528153004</real>
+		    <real>744.996836054522</real>
 		    <key>controlPoint1Y</key>
-		    <real>524.693142313214</real>
+		    <real>530.7594438611349</real>
 		    <key>controlPoint2X</key>
-		    <real>725.715145637859</real>
+		    <real>737.2760222824656</real>
 		    <key>controlPoint2Y</key>
-		    <real>731.4252165921001</real>
+		    <real>728.3580452374085</real>
 		    <key>dstPointX</key>
 		    <real>667.4952701037801</real>
 		    <key>dstPointY</key>
@@ -713,6 +713,74 @@
 	    <real>297</real>
 	    <key>y</key>
 	    <real>721</real>
+	    <key>zoomedInternalHeight</key>
+	    <real>0</real>
+	    <key>zoomedOnEntryHeight</key>
+	    <real>0</real>
+	    <key>zoomedOnExitHeight</key>
+	    <real>0</real>
+	</dict>
+	<key>StartHeadTracking</key>
+	<dict>
+	    <key>Transitions</key>
+	    <array>
+		<dict>
+		    <key>controlPoint1X</key>
+		    <real>-77.18789188145047</real>
+		    <key>controlPoint1Y</key>
+		    <real>163.3330724971052</real>
+		    <key>controlPoint2X</key>
+		    <real>1044.818020400765</real>
+		    <key>controlPoint2Y</key>
+		    <real>302.8596491288984</real>
+		    <key>dstPointX</key>
+		    <real>877.8198051533947</real>
+		    <key>dstPointY</key>
+		    <real>469.857864376269</real>
+		    <key>srcPointX</key>
+		    <real>112.6671675193004</real>
+		    <key>srcPointY</key>
+		    <real>303.803226663574</real>
+		</dict>
+	    </array>
+	    <key>bgColour</key>
+	    <dict>
+		<key>alpha</key>
+		<real>1</real>
+		<key>blue</key>
+		<real>1</real>
+		<key>green</key>
+		<real>1</real>
+		<key>red</key>
+		<real>1</real>
+	    </dict>
+	    <key>expanded</key>
+	    <false/>
+	    <key>h</key>
+	    <real>50</real>
+	    <key>internalHeight</key>
+	    <real>0</real>
+	    <key>onEntryHeight</key>
+	    <real>0</real>
+	    <key>onExitHeight</key>
+	    <real>0</real>
+	    <key>strokeColour</key>
+	    <dict>
+		<key>alpha</key>
+		<real>1</real>
+		<key>blue</key>
+		<real>0</real>
+		<key>green</key>
+		<real>0</real>
+		<key>red</key>
+		<real>0</real>
+	    </dict>
+	    <key>w</key>
+	    <real>100</real>
+	    <key>x</key>
+	    <real>983</real>
+	    <key>y</key>
+	    <real>590</real>
 	    <key>zoomedInternalHeight</key>
 	    <real>0</real>
 	    <key>zoomedOnEntryHeight</key>
