@@ -5,7 +5,7 @@
 #
 
 #MACHINES=SMButtonChest 
-MACHINES=StateMachineStarter SMGameController SMFallManager SMBallFollower SMButtonChest SMButtonLeftFoot SMButtonRightFoot SMGetUp SMHeadBallTracker SMHeadScanner SMLeftFootControl SMPlayer SMKicker SMRobotPosition SMWalkScanner Safety_BatteryMonitor SMSeeker SMSet SMLeapController SMTeleoperationController SMTeleoperationHeadControl 
+MACHINES=StateMachineStarter SMGameController SMFallManager SMBallFollower SMButtonChest SMButtonLeftFoot SMButtonRightFoot SMGetUp SMHeadBallTracker SMHeadScanner SMLeftFootControl SMPlayer SMKicker SMRobotPosition SMWalkScanner Safety_BatteryMonitor SMSeeker SMSet SMLeapController SMTeleoperationController SMTeleoperationHeadControl SMTeleoperation
 
 .include "../../../../../mk/fsm.mk"	# comes first: required for compiling state machines
 

@@ -16,12 +16,12 @@ namespace FSM
     {
         class SMTeleoperationController: public CLMachine
         {
-            CLState *_states[13];
+            CLState *_states[4];
         public:
             SMTeleoperationController(int mid  = 0, const char *name = "SMTeleoperationController");
             virtual ~SMTeleoperationController();
             virtual CLState * const * states() const { return _states; }
-            virtual int numberOfStates() const { return 13; }
+            virtual int numberOfStates() const { return 4; }
 #           include "SMTeleoperationController_Variables.h"
         };
     }

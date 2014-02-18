@@ -1,2 +1,2 @@
-suspend("SMFallManager");
 suspend("SMTeleoperation");
+restart("SMFallManager");

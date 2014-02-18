@@ -1,10 +1,10 @@
 //
-// State_Init.h
+// State_SUSPENDED.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMTeleoperationController_State_Init_h
-#define clfsm_SMTeleoperationController_State_Init_h
+#ifndef clfsm_SMTeleoperation_State_SUSPENDED_h
+#define clfsm_SMTeleoperation_State_SUSPENDED_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,11 +14,11 @@ namespace FSM
 {
     namespace CLM
     {
-      namespace FSMSMTeleoperationController
+      namespace FSMSMTeleoperation
       {
         namespace State
         {
-            class Init: public CLState
+            class SUSPENDED: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -35,24 +35,18 @@ namespace FSM
                     virtual void perform(CLMachine *, CLState *) const;
                 };
 
-                class Transition_0: public CLTransition
-                {
-                public:
-                    Transition_0(int toState = 3): CLTransition(toState) {}
-
-                    virtual bool check(CLMachine *, CLState *) const;
-                };
-
-                CLTransition *_transitions[1];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wzero-length-array"
+                CLTransition *_transitions[0];
 
                 public:
-                    Init(const char *name = "Init");
-                    virtual ~Init();
+                    SUSPENDED(const char *name = "SUSPENDED");
+                    virtual ~SUSPENDED();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 1; }
+                    virtual int numberOfTransitions() const { return 0; }
 
-#                   include "State_Init_Variables.h"
+#                   include "State_SUSPENDED_Variables.h"
             };
         }
       }
@@ -60,3 +54,4 @@ namespace FSM
 }
 
 #endif
+#pragma clang diagnostic pop

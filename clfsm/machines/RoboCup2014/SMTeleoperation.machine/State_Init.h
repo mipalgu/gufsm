@@ -3,8 +3,8 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMTeleoperationController_State_Init_h
-#define clfsm_SMTeleoperationController_State_Init_h
+#ifndef clfsm_SMTeleoperation_State_Init_h
+#define clfsm_SMTeleoperation_State_Init_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,7 +14,7 @@ namespace FSM
 {
     namespace CLM
     {
-      namespace FSMSMTeleoperationController
+      namespace FSMSMTeleoperation
       {
         namespace State
         {
@@ -38,7 +38,7 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 3): CLTransition(toState) {}
+                    Transition_0(int toState = 10): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
