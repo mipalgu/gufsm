@@ -17,6 +17,7 @@ using namespace State;
 Sitting::Sitting(const char *name): CLState(name, *new Sitting::OnEntry, *new Sitting::OnExit, *new Sitting::Internal)
 {
 	_transitions[0] = new Transition_0();
+	_transitions[1] = new Transition_1();
 }
 
 Sitting::~Sitting()
@@ -26,6 +27,7 @@ Sitting::~Sitting()
 	delete &internalAction();
 
 	delete _transitions[0];
+	delete _transitions[1];
 }
 
 void Sitting::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -57,5 +59,16 @@ bool Sitting::Transition_0::check(CLMachine *_machine, CLState *_state) const
 	return
 	(
 #		include "State_Sitting_Transition_0.expr"
+	);
+}
+
+bool Sitting::Transition_1::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "SMTeleoperation_VarRefs.mm"
+#	include "State_Sitting_VarRefs.mm"
+
+	return
+	(
+#		include "State_Sitting_Transition_1.expr"
 	);
 }

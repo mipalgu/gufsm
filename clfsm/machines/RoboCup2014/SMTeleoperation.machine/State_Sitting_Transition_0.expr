@@ -1,1 +1,1 @@
-remoteControl.stance() == Motions::Standing_stance
+!remoteControl.connected()

@@ -1,1 +1,1 @@
-remoteControl.stance() == Motions::Kneeling_stance
+!remoteControl.connected()
