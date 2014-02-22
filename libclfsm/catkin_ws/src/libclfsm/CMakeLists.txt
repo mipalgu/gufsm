@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(gusimplewhiteboard)
+project(libclfsm)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -78,7 +78,7 @@ find_package(Threads REQUIRED COMPONENTS system)
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
   INCLUDE_DIRS include
-  LIBRARIES gusimplewhiteboard
+  LIBRARIES libclfsm
 #  CATKIN_DEPENDS other_catkin_pkg
 #  DEPENDS system_lib
 )
@@ -89,28 +89,41 @@ catkin_package(
 
 set(CMAKE_C_FLAGS "-std=c99")
 set(CMAKE_CXX_FLAGS "-std=c++11 -stdlib=libc++")
-set(CMAKE_SHARED_LINKER_FLAGS "-stdlib=libc++")
+set(CMAKE_SHARED_LINKER_FLAGS "-stdlib=libc++ -Wl,-rpath -Wl,/usr/local/lib")
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(include)
 
 ## Declare a cpp library
-add_library(gusimplewhiteboard
-   src/gusimplewhiteboard.c
-   src/gugenericwhiteboardobject.cpp
-   src/guwhiteboardtypelist_c_typestrings_generated.c
+add_library(libclfsm
+src/stringConstants.c
+src/CLActionAction.cc
+src/CLTransitionExpression.cc
+src/FSMAction.cc
+src/FSMActivity.cc
+src/FSMExpression.cc
+src/FSMFactory.cc
+src/FSMState.cc
+src/FSMSuspensibleMachine.cc
+src/FSMTransition.cc
+src/FSMAsynchronousSuspensibleMachine.cc
+src/FSMachine.cc
+src/FSMachineVector.cc
+src/clfsm_factory.cc
+src/clfsm_vector_factory.cc
+src/clfsm_wb_vector_factory.cc
 )
 
 ## Declare a cpp executable
-# add_executable(gusimplewhiteboard_node src/gusimplewhiteboard_node.cpp)
+# add_executable(libclfsm_node src/libclfsm_node.cpp)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
-# add_dependencies(gusimplewhiteboard_node gusimplewhiteboard_generate_messages_cpp)
+# add_dependencies(libclfsm_node libclfsm_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(gusimplewhiteboard ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(libclfsm ${CMAKE_THREAD_LIBS_INIT})
 
 #############
 ## Install ##
@@ -127,7 +140,7 @@ target_link_libraries(gusimplewhiteboard ${CMAKE_THREAD_LIBS_INIT})
 # )
 
 ## Mark executables and/or libraries for installation
-# install(TARGETS gusimplewhiteboard gusimplewhiteboard_node
+# install(TARGETS libclfsm libclfsm_node
 #   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
@@ -152,7 +165,7 @@ target_link_libraries(gusimplewhiteboard ${CMAKE_THREAD_LIBS_INIT})
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_gusimplewhiteboard.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_libclfsm.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
