@@ -12,6 +12,7 @@ host: build-host
 robot: build-robot
 
 .include "../../../mk/libcxx.mk"	# use C++11 and libc++
+.include "../../../mk/whiteboard.mk"	# not really using wb, but for catkin
 
 build-host:
 	mkdir -p ${BUILDDIR}
@@ -38,15 +39,15 @@ clean: catkin-clean
 
 catkin:
 	$Emkdir -p ${CATKIN_DIR}/src
-	$Emkdir -p ${CATKIN_DIR}/include
+	$Emkdir -p ${CATKIN_DIR}/include/typeClassDefs
 	$Ecp -p ../gufsm/*.c* ${CATKIN_DIR}/src
 	$Ecp -p ../gufsm/*.h ${CATKIN_DIR}/include
 	$Ecp -p *.c* *.h ${CATKIN_DIR}/src
 	$Ecp -p *.h ${CATKIN_DIR}/include
-	#$Ecp -p ${WB_DIR}/typeClassDefs/FSM_Control.h ${CATKIN_DIR}/include/typeClassDefs
-#.for hdr in ${NEW_WHITEBOARD_HDRS} ${WHITEBOARD_PRIVATE_HDRS} WBFunctor.h WBMsg.h
-	#$Ecp -p ${WB_DIR}/${hdr} ${CATKIN_DIR}/include
-#.endfor
+	$Ecp -p ${WB_DIR}/typeClassDefs/FSM_Control.h ${CATKIN_DIR}/include/typeClassDefs
+.for hdr in ${NEW_WHITEBOARD_HDRS} ${WHITEBOARD_PRIVATE_HDRS} WBFunctor.h WBMsg.h
+	$Ecp -p ${WB_DIR}/${hdr} ${CATKIN_DIR}/include
+.endfor
 	$Ecp -p ${COMMON_DIR}/gu_util.h ${CATKIN_DIR}/include
 	$Eecho done.
 
