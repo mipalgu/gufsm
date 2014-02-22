@@ -62,8 +62,6 @@
 #include <string>
 #include <sys/time.h>
 
-#include "ExecComStruct.h"
-
 #ifdef bool
 #undef bool
 #endif

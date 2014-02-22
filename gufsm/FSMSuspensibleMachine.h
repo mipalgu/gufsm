@@ -59,7 +59,6 @@
 #define gufsm_FSMSuspensibleMachine_h
 
 #include "FSMachine.h"
-#include "ExecComStruct.h"
 
 #ifdef bool
 #undef bool
