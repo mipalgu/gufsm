@@ -4,7 +4,7 @@ project(libclfsm)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED)
+find_package(catkin REQUIRED COMPONENTS gusimplewhiteboard)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -79,7 +79,7 @@ find_package(Threads REQUIRED COMPONENTS system)
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES libclfsm
-#  CATKIN_DEPENDS other_catkin_pkg
+  CATKIN_DEPENDS gusimplewhiteboard
 #  DEPENDS system_lib
 )
 
@@ -113,6 +113,7 @@ src/FSMachineVector.cc
 src/clfsm_factory.cc
 src/clfsm_vector_factory.cc
 src/clfsm_wb_vector_factory.cc
+src/gu_util.cpp
 )
 
 ## Declare a cpp executable
@@ -123,7 +124,7 @@ src/clfsm_wb_vector_factory.cc
 # add_dependencies(libclfsm_node libclfsm_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(libclfsm ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(libclfsm gusimplewhiteboard ${CMAKE_THREAD_LIBS_INIT})
 
 #############
 ## Install ##

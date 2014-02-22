@@ -53,6 +53,7 @@ catkin:
 	$Ecp -p ${WB_DIR}/${hdr} ${CATKIN_DIR}/include
 .endfor
 	$Ecp -p ${COMMON_DIR}/gu_util.h ${CATKIN_DIR}/include
+	$Ecp -p ${COMMON_DIR}/gu_util.cpp ${CATKIN_DIR}/src
 	$Eecho done.
 
 catkin-clean:
