@@ -34,4 +34,28 @@ install:
 .endfor
 .endif
 
+CATKIN_WS=${SRCDIR}/catkin_ws
+CATKIN_DIR=${CATKIN_WS}/src/${SOPREFIX}${BIN_BASE}
+
+clean: catkin-clean
+
+catkin:
+	$Emkdir -p ${CATKIN_DIR}/src
+	$Emkdir -p ${CATKIN_DIR}/include
+.for src in ${C_SRCS} ${CC_SRCS}
+	$Ecp -p ${SRCDIR}/${src} ${CATKIN_DIR}/src
+.endfor
+.for hdr in ${HDRS} ${INSTHDRS}
+	$Ecp -p ${SRCDIR}/${hdr} ${CATKIN_DIR}/include
+.endfor
+	$Ecp -p ${COMMON_DIR}/gu_util.h ${CATKIN_DIR}/include
+	$Eecho done.
+
+catkin-clean:
+	rm -rf ${CATKIN_DIR}/src
+	rm -rf ${CATKIN_DIR}/include
+	rm -rf ${CATKIN_WS}/build
+	rm -rf ${CATKIN_WS}/devel
+	rm -rf ${CATKIN_WS}/src/CMakeLists.txt
+
 .include "../../../mk/mipal.mk"		# comes last!
