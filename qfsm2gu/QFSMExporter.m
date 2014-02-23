@@ -139,11 +139,18 @@
         if ([stateName length])
                 [aString appendFormat: @"%@\n", stateName];
         if ([description length])
+        {
 #ifdef GNUSTEP_BASE_VERSION
-                [aString appendFormat: @"%@\n", [description gtm_stringByUnescapingFromHTML]];
-#else
-                [aString appendFormat: @"%@\n", description];
+                description = [description gtm_stringByUnescapingFromHTML];
 #endif
+                description = [description stringByReplacingOccurrencesOfString: @"OnEntry$\n" withString: @"OnEntry "];
+                description = [description stringByReplacingOccurrencesOfString: @"$OnExit$\n" withString: @"OnExit "];
+                description = [description stringByReplacingOccurrencesOfString: @"$Internal$\n{" withString: @"{"];
+                description = [description stringByReplacingOccurrencesOfString: @"$Internal$\n\n" withString: @"{}\n"];
+
+                [aString appendFormat: @"%@\n", description];
+        }
+
         if ([stateID isEqualToString: initialStateID])
                 initialStateIndex = [states count];
 
