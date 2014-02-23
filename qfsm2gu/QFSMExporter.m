@@ -147,6 +147,8 @@
                 description = [description stringByReplacingOccurrencesOfString: @"$OnExit$\n" withString: @"OnExit "];
                 description = [description stringByReplacingOccurrencesOfString: @"$Internal$\n{" withString: @"{"];
                 description = [description stringByReplacingOccurrencesOfString: @"$Internal$\n\n" withString: @"{}\n"];
+                description = [description stringByReplacingOccurrencesOfString: @"$Internal$\n" withString: @"{}\n"];
+                description = [description stringByReplacingOccurrencesOfString: @"$Internal$" withString: @"{}\n"];
 
                 [aString appendFormat: @"%@\n", description];
         }
