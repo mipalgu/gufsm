@@ -3,7 +3,7 @@
 //  qfsm2gu
 //
 //  Created by Rene Hexel on 18/03/11.
-//  Copyright 2011 Rene Hexel. All rights reserved.
+//  Copyright 2011-2014 Rene Hexel. All rights reserved.
 //
 
 #import "QFSMElement.h"
@@ -16,7 +16,7 @@
 @synthesize subElements;
 @synthesize attributes;
 
-- initWithAttributes: (NSDictionary *) attr
+- (instancetype) initWithAttributes: (NSDictionary *) attr
 {
         if (!(self = [super init]))
                 return nil;
@@ -30,23 +30,23 @@
 
 - (void) dealloc
 {
-        [subElements release];
-        [attributes release];
-        [name release];
+        [self.subElements release];
+        [self.attributes release];
+        [self.name release];
 
         [super dealloc];
 }
 
 
-- content
+- (id) content
 {
-        return [attributes valueForKey: name];
+        return [self.attributes valueForKey: self.name];
 }
 
 
 - (QFSMElement *) subElementNamed: (NSString *) subName
 {
-        for (QFSMElement *element in subElements)
+        for (QFSMElement *element in self.subElements)
         {
                 if ([element.name isEqualToString: subName])
                         return element;

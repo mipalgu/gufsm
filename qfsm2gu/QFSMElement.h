@@ -3,28 +3,20 @@
 //  qfsm2gu
 //
 //  Created by Rene Hexel on 18/03/11.
-//  Copyright 2011 Rene Hexel. All rights reserved.
+//  Copyright 2011-2014 Rene Hexel. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-
 @interface QFSMElement: NSObject
-{
-        QFSMElement             *parent;
-        
-        NSString                *name;
-        NSMutableArray          *subElements;
-        NSMutableDictionary     *attributes;
-}
 
-@property (assign) QFSMElement *parent;
-@property (copy) NSString *name;
-@property (retain) NSMutableArray *subElements;
-@property (retain) NSMutableDictionary *attributes;
+@property (nonatomic, assign) QFSMElement *parent;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, retain) NSMutableArray *subElements;
+@property (nonatomic, retain) NSMutableDictionary *attributes;
 
-- initWithAttributes: (NSDictionary *) attr;
-- content;
+- (instancetype) initWithAttributes: (NSDictionary *) attr;
+- (id) content;
 - (QFSMElement *) subElementNamed: (NSString *) subName;
 
 @end

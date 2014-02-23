@@ -10,6 +10,15 @@
 #import "NSString+MixedCase.h"
 #import "NSMutableArray+Stack.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-interface-ivars"
+#pragma clang diagnostic ignored "-Wmissing-method-return-type"
+#pragma clang diagnostic ignored "-Wimplicit-atomic-properties"
+#pragma clang diagnostic ignored "-Wdirect-ivar-access"
+#pragma clang diagnostic ignored "-Wunused-parameter"
+#pragma clang diagnostic ignored "-Wselector"
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+
 @implementation QFSMParser
 
 @synthesize delegate = _delegate;
@@ -226,3 +235,5 @@ didStartElement: (NSString *) elementName
 
 
 @end
+
+#pragma clang diagnostic pop

@@ -3,7 +3,7 @@
 //  GUWhiteboardViewer
 //
 //  Created by Rene Hexel on 19/03/10.
-//  Copyright 2010 Rene Hexel. All rights reserved.
+//  Copyright 2010-2014 Rene Hexel. All rights reserved.
 //
 #import <Foundation/Foundation.h>
 #import "NSString+MixedCase.h"
@@ -19,7 +19,7 @@
 			stringByAppendingString: [self substringFromIndex: 1]];
 
 	}
-	@catch (NSException * e)
+	@catch (NSException *)
 	{
 	}
 
@@ -35,7 +35,7 @@
 			stringByAppendingString: [self substringFromIndex: 1]];
 		
 	}
-	@catch (NSException * e)
+	@catch (NSException *)
 	{
 	}
 	

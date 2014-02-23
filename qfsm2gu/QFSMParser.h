@@ -18,6 +18,10 @@
 @end
 #endif
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-interface-ivars"
+#pragma clang diagnostic ignored "-Wmissing-method-return-type"
+#pragma clang diagnostic ignored "-Wimplicit-atomic-properties"
 
 @interface QFSMParser: NSObject <NSXMLParserDelegate>
 {
@@ -54,3 +58,5 @@
 
 
 @end
+
+#pragma clang diagnostic pop

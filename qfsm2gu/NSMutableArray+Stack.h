@@ -3,8 +3,11 @@
 //  GUWhiteboardViewer
 //
 //  Created by Rene Hexel on 19/03/10.
-//  Copyright 2010 Rene Hexel. All rights reserved.
+//  Copyright 2010-2014 Rene Hexel. All rights reserved.
 //
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wmissing-method-return-type"
 
 @interface NSMutableArray (StackAdditions)
 
@@ -13,3 +16,5 @@
 - peek;
 
 @end
+
+#pragma clang diagnostic pop
