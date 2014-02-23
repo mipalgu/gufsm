@@ -3,13 +3,15 @@
 //  qfsm2gu
 //
 //  Created by Rene Hexel on 18/03/11.
-//  Copyright 2011 Rene Hexel. All rights reserved.
+//  Copyright 2011-2014 Rene Hexel. All rights reserved.
 //
 #import <Foundation/Foundation.h>
 #import "QFSMExporter.h"
 
 int main (int argc, const char *argv[])
 {
+        (void) argc;
+        (void) argv;
         NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
         NSUInteger count = 0;
 

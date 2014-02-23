@@ -3,7 +3,7 @@
 //  qfsm2gu
 //
 //  Created by Rene Hexel on 18/03/11.
-//  Copyright 2011 Rene Hexel. All rights reserved.
+//  Copyright 2011-2014 Rene Hexel. All rights reserved.
 //
 #import "syntax_check.h"
 
@@ -15,6 +15,12 @@
 #ifdef GNUSTEP_BASE_VERSION
 #include "GTMNSString+HTML.h"
 #endif
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-interface-ivars"
+#pragma clang diagnostic ignored "-Wmissing-method-return-type"
+#pragma clang diagnostic ignored "-Wimplicit-atomic-properties"
+#pragma clang diagnostic ignored "-Wdirect-ivar-access"
 
 @interface QFSMKeyValue: NSObject
 {
@@ -287,3 +293,6 @@
 
 
 @end
+
+
+#pragma clang diagnostic pop

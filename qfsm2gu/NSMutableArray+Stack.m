@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "NSMutableArray+Stack.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wmissing-method-return-type"
 
 @implementation NSMutableArray (StackAdditions)
 
@@ -48,3 +50,5 @@
 }
 
 @end
+
+#pragma clang diagnostic pop
