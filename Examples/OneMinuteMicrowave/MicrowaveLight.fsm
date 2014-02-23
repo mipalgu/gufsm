@@ -1,24 +1,20 @@
 <?xml version='1.0'?>
-<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
-<qfsmproject version="0.53" author="Qfsm">
-  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vladimir Estivill-Castro" description="" version="1" name="MicrowaveEngine" arrowtype="1" numbits="2" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="2">
+<!DOCTYPE qfsmproject SYSTEM "qfsm.dtd">
+<qfsmproject version="0.53" author="MiCASE">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="" version="1" name="MicrowaveLight" arrowtype="1" numbits="2" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
-    <itransition ypos="120" endx="145" xpos="85" endy="120"/>
-    <state pencolor="0" radius="40" description="OnEntry{  light=0; post(&quot;LEDS&quot;,&quot;Face Off&quot;);}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="120" code="2" xpos="185" linewidth="1">NOTSHINELIGHT</state>
-    <state pencolor="0" radius="40" description="OnEntry {light=1; post (&quot;LEDS&quot;,&quot;Face Blue&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="119" code="0" xpos="456" linewidth="1">SHINELIGHT</state>
-    <transition c1x="283.0023959767341" c2y="98.3639027502269" c1y="95.61634932045212" description="" straight="1" type="2" ypos="92.86879589067735" endx="420.2229123600034" xpos="214.3921377850995" endy="101.1114561800017" c2x="351.6126541683687">
-      <from>2</from>
-      <to>0</to>
-      <inputs default="0" any="0" invert="0">doorOpen||timeLeft</inputs>
-      <outputs></outputs>
+    <itransition xpos="90" ypos="90" endx="185" endy="120"/>
+    <state pencolor="0" linewidth="1" finalstate="0" moore_outputs="" radius="38" xpos="185" ypos="120" code="0" description="OnEntry$&#xa;{  light=0; post(&quot;LEDS&quot;,&quot;Face Off&quot;);}&#xa;$OnExit$&#xa;{  light=0; post(&quot;LEDS&quot;,&quot;Face Off&quot;);}&#xa;$Internal$&#xa;{}&#xa;">NOTSHINELIGHT</state>
+    <state pencolor="0" linewidth="1" finalstate="0" moore_outputs="" radius="40" xpos="456" ypos="119" code="1" description="OnEntry$&#xa;{light=1; post (&quot;LEDS&quot;,&quot;Face Blue&quot;);}&#xa;$OnExit$&#xa;{light=1; post (&quot;LEDS&quot;,&quot;Face Blue&quot;);}&#xa;$Internal$&#xa;{}&#xa;">SHINELIGHT</state>
+    <transition xpos="212" ypos="91" endx="420" endy="101" c1x="281" c1y="94" c2x="351" c2y="98" straight="0" type="2">
+      <from>0</from><to>1</to>
+      <inputs default="0" any="0" invert="0">doorOpen||timeLeft</inputs><outputs></outputs>
     </transition>
-    <transition c1x="353.2339317934772" c2y="144.955808027096" c1y="142.9614617467648" description="" straight="1" type="2" ypos="140.9671154664335" endx="214.5582337565332" xpos="422.5717808119491" endy="146.9501543074273" c2x="283.8960827750052">
-      <from>0</from>
-      <to>2</to>
-      <inputs default="0" any="0" invert="0">!doorOpen&amp;&amp;!timeLeft</inputs>
-      <outputs></outputs>
+    <transition xpos="422" ypos="140" endx="212" endy="145" c1x="353" c1y="142" c2x="281" c2y="143" straight="0" type="2">
+      <from>1</from><to>0</to>
+      <inputs default="0" any="0" invert="0">!doorOpen&amp;&amp;!timeLeft</inputs><outputs></outputs>
     </transition>
   </machine>
 </qfsmproject>

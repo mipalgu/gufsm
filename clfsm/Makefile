@@ -12,14 +12,17 @@ host: build-host
 robot: build-robot
 
 .include "../../../mk/libcxx.mk"	# use C++11 and libc++
+.include "../../../mk/whiteboard.mk"	# not really using wb, but for catkin
 
-build-host:
+copy-stuff:
 	mkdir -p ${BUILDDIR}
 	rm -rf ${BUILDDIR}/${BUILDDIR}
 	cp -p ../gufsm/*.c*  ../gufsm/*.h ${BUILDDIR}
 	cp -p *.c* *.h ${BUILDDIR}
 	cp -p Makefile.in ${BUILDDIR}/Makefile
 	cd ${BUILDDIR} && ln -s . ${BUILDDIR}
+
+build-host: copy-stuff
 	cd ${BUILDDIR} && ${MAKE} host
 
 build-robot:
@@ -30,5 +33,9 @@ build-robot:
 	cp -p Makefile.in ${DEFAULT_TARGET_BUILDDIR}/Makefile
 	cd ${DEFAULT_TARGET_BUILDDIR} && ln -s . ${DEFAULT_TARGET_BUILDDIR}
 	cd ${DEFAULT_TARGET_BUILDDIR} && ${MAKE} robot
+
+do-catkin: copy-stuff
+	cd ${BUILDDIR} && ln -fs ${CATKIN_TEMPLATE} ${BUILDDIR}
+	cd ${BUILDDIR} && ${MAKE} catkin
 
 .include "../../../mk/mipal.mk"		# comes last!

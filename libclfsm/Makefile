@@ -7,17 +7,24 @@ MODULE_BASE=clfsm
 
 ALL_TARGETS=host-local robot-local
 
+CATKIN_BASE=libclfsm
+CATKIN_COMPILE_UTIL=YES
+
 .include "../../../mk/libcxx.mk"	# use C++11 and libc++
 
 SPECIFIC_LDFLAGS+=-Wl,-rpath -Wl,/usr/local/lib
 
 C_SRCS=stringConstants.c
 CC_SRCS=CLActionAction.cc CLTransitionExpression.cc FSMAction.cc FSMActivity.cc FSMExpression.cc FSMFactory.cc FSMState.cc FSMSuspensibleMachine.cc FSMTransition.cc FSMAsynchronousSuspensibleMachine.cc FSMachine.cc FSMachineVector.cc clfsm_factory.cc clfsm_vector_factory.cc clfsm_wb_vector_factory.cc
-HDRS=CLAction.h CLActionAction.h CLTransitionExpression.h FSMAction.h FSMActivity.h FSMExpression.h FSMFactory.h FSMState.h FSMSuspensibleMachine.h FSMTransition.h FSMAsynchronousSuspensibleMachine.h FSMachine.h FSMachineVector.h clfsm_factory.h CLTransition.h clfsm_vector_factory.h clfsm_wb_vector_factory.h stringConstants.h
+HDRS=CLAction.h CLActionAction.h CLTransitionExpression.h FSMAction.h FSMActivity.h FSMExpression.h FSMFactory.h FSMState.h FSMSuspensibleMachine.h FSMTransition.h FSMAsynchronousSuspensibleMachine.h FSMachine.h FSMachineVector.h clfsm_factory.h CLTransition.h CLMachine.h CLState.h clfsm_vector_factory.h clfsm_wb_vector_factory.h stringConstants.h
 INSTHDRS=CLMacros.h CLWhiteboard.h
 
 .include "../../../mk/whiteboard.mk"	# required for whiteboard clients
 .include "../../../mk/util.mk"		# required for GU utility functions
+
+.for hdr in WBFunctor.h WBMsg.h
+CATKIN_HDRS+=${WB_DIR}/${hdr}
+.endfor
 
 .if ${LOCAL} != _LOCAL
 host: host-local
@@ -33,5 +40,9 @@ install:
 	install -m 0644 ${hdr} /usr/local/include/clfsm
 .endfor
 .endif
+
+pre-catkin:
+	$Emkdir -p ${CATKIN_DIR}/include/typeClassDefs
+	$Ecp -p ${WB_DIR}/typeClassDefs/FSM_Control.h ${CATKIN_DIR}/include/typeClassDefs
 
 .include "../../../mk/mipal.mk"		# comes last!
