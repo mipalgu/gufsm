@@ -94,6 +94,8 @@ set(CMAKE_SHARED_LINKER_FLAGS "-stdlib=libc++ -Wl,-rpath -Wl,/usr/local/lib")
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(include)
+include_directories(${gusimplewhiteboard_INCLUDE_DIRS})
+include_directories(${libclfsm_INCLUDE_DIRS})
 
 ## Declare a cpp executable
 add_executable(clfsm

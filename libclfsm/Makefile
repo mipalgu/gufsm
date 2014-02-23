@@ -7,6 +7,9 @@ MODULE_BASE=clfsm
 
 ALL_TARGETS=host-local robot-local
 
+CATKIN_BASE=libclfsm
+CATKIN_COMPILE_UTIL=YES
+
 .include "../../../mk/libcxx.mk"	# use C++11 and libc++
 
 SPECIFIC_LDFLAGS+=-Wl,-rpath -Wl,/usr/local/lib
@@ -18,6 +21,10 @@ INSTHDRS=CLMacros.h CLWhiteboard.h
 
 .include "../../../mk/whiteboard.mk"	# required for whiteboard clients
 .include "../../../mk/util.mk"		# required for GU utility functions
+
+.for hdr in WBFunctor.h WBMsg.h
+CATKIN_HDRS+=${WB_DIR}/${hdr}
+.endfor
 
 .if ${LOCAL} != _LOCAL
 host: host-local
@@ -34,33 +41,8 @@ install:
 .endfor
 .endif
 
-CATKIN_WS=${SRCDIR}/catkin_ws
-CATKIN_DIR=${CATKIN_WS}/src/${SOPREFIX}${BIN_BASE}
-
-clean: catkin-clean
-
-catkin:
-	$Emkdir -p ${CATKIN_DIR}/src
+pre-catkin:
 	$Emkdir -p ${CATKIN_DIR}/include/typeClassDefs
-.for src in ${C_SRCS} ${CC_SRCS}
-	$Ecp -p ${SRCDIR}/${src} ${CATKIN_DIR}/src
-.endfor
-.for hdr in ${HDRS} ${INSTHDRS}
-	$Ecp -p ${SRCDIR}/${hdr} ${CATKIN_DIR}/include
-.endfor
 	$Ecp -p ${WB_DIR}/typeClassDefs/FSM_Control.h ${CATKIN_DIR}/include/typeClassDefs
-.for hdr in ${NEW_WHITEBOARD_HDRS} ${WHITEBOARD_PRIVATE_HDRS} WBFunctor.h WBMsg.h
-	$Ecp -p ${WB_DIR}/${hdr} ${CATKIN_DIR}/include
-.endfor
-	$Ecp -p ${COMMON_DIR}/gu_util.h ${CATKIN_DIR}/include
-	$Ecp -p ${COMMON_DIR}/gu_util.cpp ${CATKIN_DIR}/src
-	$Eecho done.
-
-catkin-clean:
-	rm -rf ${CATKIN_DIR}/src
-	rm -rf ${CATKIN_DIR}/include
-	rm -rf ${CATKIN_WS}/build
-	rm -rf ${CATKIN_WS}/devel
-	rm -rf ${CATKIN_WS}/src/CMakeLists.txt
 
 .include "../../../mk/mipal.mk"		# comes last!

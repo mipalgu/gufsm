@@ -37,15 +37,18 @@ HDRS+=FSMTransition.h
 HDRS+=FSMFactory.h
 HDRS+=FSMachineVector.h
 HDRS+=clfsm_vector_factory.h
+HDRS+=clfsm_wb_vector_factory.h
 HDRS+=clfsm_factory.h
 HDRS+=clfsm_machine.h
+HDRS+=clfsm_cc_delegate.h
+HDRS+=clfsm_cc.h
 HDRS+=stringConstants.h
-
-#CLANG_CXXFLAGS=-std=c++0x
-#TARGET_USE_CLANG=YES
 
 .include "../../../../mk/whiteboard.mk"		# required for the whiteboard
 .include "../../../../mk/util.mk"		# required for gu_util
 
+pre-catkin:
+	$Emkdir -p ${CATKIN_DIR}/include/typeClassDefs
+	$Ecp -p ${WB_DIR}/typeClassDefs/FSM_Control.h ${CATKIN_DIR}/include/typeClassDefs
 
 .include "../../../../mk/mipal.mk"
