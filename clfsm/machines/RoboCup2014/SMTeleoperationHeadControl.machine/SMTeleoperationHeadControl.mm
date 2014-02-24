@@ -11,6 +11,7 @@
 #include "State_HeadStop.h"
 #include "State_MoveHead.h"
 #include "State_Walking.h"
+#include "State_HeadStandBy.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -30,6 +31,7 @@ SMTeleoperationHeadControl::SMTeleoperationHeadControl(int mid, const char *name
 	_states[2] = new FSMSMTeleoperationHeadControl::State::HeadStop;
 	_states[3] = new FSMSMTeleoperationHeadControl::State::MoveHead;
 	_states[4] = new FSMSMTeleoperationHeadControl::State::Walking;
+	_states[5] = new FSMSMTeleoperationHeadControl::State::HeadStandBy;
 
 	setInitialState(_states[0]);            // set initial state
 }
@@ -41,4 +43,5 @@ SMTeleoperationHeadControl::~SMTeleoperationHeadControl()
 	delete _states[2];
 	delete _states[3];
 	delete _states[4];
+	delete _states[5];
 }

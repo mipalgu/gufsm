@@ -13,7 +13,7 @@ TeleoperationControlStatus_t*	&remoteControlPtr = _m->remoteControlPtr;	///<
 TeleoperationControlStatus	&remoteControl = _m->remoteControl;	///< 
 HAL_HeadTarget_t*	&headPtr = _m->headPtr;	///< 
 MOTION_Commands_t*	&motionPtr = _m->motionPtr;	///< 
-int	&currentYaw = _m->currentYaw;	///< 
-int	&currentPitch = _m->currentPitch;	///< 
+float	&currentYaw = _m->currentYaw;	///< 
+float	&currentPitch = _m->currentPitch;	///< 
 
 #pragma clang diagnostic pop
