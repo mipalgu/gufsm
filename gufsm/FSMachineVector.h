@@ -102,6 +102,10 @@ namespace FSM
                 int whose_turn;         // current machine's turn (id)
 
                 KripkeState(unsigned long long v, KripkeFreezePointVector *f, int w=0): variable_combination(v), freeze_point(f), whose_turn(w) {}
+                KripkeState(const KripkeState &other): variable_combination(other.variable_combination), freeze_point(other.freeze_point), whose_turn(other.whose_turn)
+                {
+                       DBG( std::cout << "Freeze point " << (unsigned long) freeze_point << std::endl);
+                }
                 KripkeState &operator=(const KripkeState &other)
                 {
                         variable_combination = other.variable_combination;

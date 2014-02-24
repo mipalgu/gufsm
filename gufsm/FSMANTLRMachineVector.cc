@@ -82,7 +82,7 @@
 
 #define NO_SELF
 const int LOW_RANGE = 0;
-const int HIGH_RANGE = 1;
+//const int HIGH_RANGE = 1;
 
 using namespace FSM;
 using namespace std;
