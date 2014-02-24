@@ -32,16 +32,24 @@ namespace FSM
 					{
 						virtual void perform(CLMachine *, CLState *) const;
 					};
+					class Transition_0: public CLTransition
+					{
+						public:
+						Transition_0(int toState = 1): CLTransition(toState) {}
+
+						virtual bool check(CLMachine *, CLState *) const;
+					};
+
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wzero-length-array"
-				CLTransition *_transitions[0];
+				CLTransition *_transitions[1];
 				public:
 					BUTTON_RELEASED(const char *name = "BUTTON_RELEASED");
 					virtual ~BUTTON_RELEASED();
 
 					virtual CLTransition * const *transitions() const { return _transitions; }
-					virtual int numberOfTransitions() const { return 0; }
+					virtual int numberOfTransitions() const { return 1; }
 
 #					include "State_BUTTON_RELEASED_Variables.h"
 #pragma clang diagnostic pop
