@@ -1,10 +1,10 @@
 //
-//State_MOTOR_NXT_ON.h
+//State_INITIAL.h
 //
 //Automatically created through MiEditCLFSM -- do not change manually!
 //
-#ifndef __clfsm__MotorNXT_State_MOTOR_NXT_ON_h__
-#define __clfsm__MotorNXT_State_MOTOR_NXT_ON_h__
+#ifndef __clfsm__MotorNXT_State_INITIAL_h__
+#define __clfsm__MotorNXT_State_INITIAL_h__
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
 		{
 			namespace State
 			{
-				class MOTOR_NXT_ON: public CLState
+				class INITIAL: public CLState
 				{
 					class OnEntry: public CLAction
 					{
@@ -45,17 +45,17 @@ namespace FSM
 #pragma clang diagnostic ignored "-Wzero-length-array"
 				CLTransition *_transitions[1];
 				public:
-					MOTOR_NXT_ON(const char *name = "MOTOR_NXT_ON");
-					virtual ~MOTOR_NXT_ON();
+					INITIAL(const char *name = "INITIAL");
+					virtual ~INITIAL();
 
 					virtual CLTransition * const *transitions() const { return _transitions; }
 					virtual int numberOfTransitions() const { return 1; }
 
-#					include "State_MOTOR_NXT_ON_Variables.h"
+#					include "State_INITIAL_Variables.h"
 #pragma clang diagnostic pop
 				};
 			}
 		}
 	}
 }
-#endif // defined(__gufsm__MotorNXT_State_MOTOR_NXT_ON__)
+#endif // defined(__gufsm__MotorNXT_State_INITIAL__)

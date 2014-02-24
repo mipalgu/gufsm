@@ -1,9 +1,9 @@
 //
-//State_MOTOR_NXT_ON_VarRefs.mm
+//State_INITIAL_VarRefs.mm
 //
 //Automatically created through MiEditCLFSM -- do not change manually!
 //
-MOTOR_NXT_ON *_s = static_cast<MOTOR_NXT_ON *>(_state);
+INITIAL *_s = static_cast<INITIAL *>(_state);
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"

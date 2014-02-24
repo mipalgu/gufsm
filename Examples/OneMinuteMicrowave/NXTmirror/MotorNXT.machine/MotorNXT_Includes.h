@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <stdio.h>
 #include <string>
@@ -12,6 +13,5 @@
 using namespace guWhiteboard;
 
 
-//#define DEBUG
-
+#define DEBUG
 
