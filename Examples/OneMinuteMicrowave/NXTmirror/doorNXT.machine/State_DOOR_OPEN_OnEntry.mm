@@ -4,8 +4,7 @@ fprintf(stderr,"STATE: %s\n",state_name());
 
  wb.addMessage("doorOpen", WBMsg(true), true);
 
-WEBOTS_NXT_bridge theInfo= touch_data_ptr.get();
-if ( (TOUCH==theInfo.theInstruction()  )&& (theInfo.firstParameter()==RIGHT_TOUCH_SENSOR))
-     doorOpen= !theInfo.secondParameter();
-else
-     doorOpen=true;
+WEBOTS_NXT_bumper theInfo= touch_data_ptr.get();
+doorOpen= !(theInfo.get_object(RIGHT_TOUCH_SENSOR)).secondParameter();
+
+     
