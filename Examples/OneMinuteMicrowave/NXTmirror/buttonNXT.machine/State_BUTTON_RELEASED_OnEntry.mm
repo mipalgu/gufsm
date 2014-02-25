@@ -5,8 +5,6 @@ fprintf(stderr,"STATE: %s\n",state_name());
 
  wb.addMessage("buttonPushed", WBMsg(false), true);
 
-WEBOTS_NXT_bridge theInfo= touch_data_ptr.get();
-if ( (TOUCH==theInfo.theInstruction()  )&& (theInfo.firstParameter()==LEFT_TOUCH_SENSOR))
-     pressed= theInfo.secondParameter();
-else
-     pressed=false;
+
+WEBOTS_NXT_bumper theInfo= touch_data_ptr.get();
+pressed= (theInfo.get_object(LEFT_TOUCH_SENSOR)).secondParameter();
