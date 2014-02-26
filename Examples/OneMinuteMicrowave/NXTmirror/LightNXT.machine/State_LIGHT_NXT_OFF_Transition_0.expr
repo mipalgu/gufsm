@@ -1,1 +1,1 @@
-1==lightSignal && after_ms(30) 
+otherMotorSpeedFound && 1==lightSignal && after_ms(30)   

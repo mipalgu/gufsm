@@ -1,1 +1,2 @@
-0==motorSignal && after_ms(30)
+otherMotorSpeedFound && 0==motorSignal && after_ms(30) 
+
