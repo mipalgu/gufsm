@@ -1,2 +1,1 @@
-otherMotorSpeedFound && 1==motorSignal && after_ms(30)  
-
+ 1==motorSignal && after_ms(30)   
