@@ -7,5 +7,3 @@ guWhiteboard::Whiteboard	wb;	///<
 Print_t	print_ptr;	///<
 WEBOTS_NXT_bridge_t	a_Command_Handler;	///<
 int	lightSignal;	///<
-WEBOTS_NXT_bridge_t	a_Info_Handler;	///<
-bool	otherMotorSpeedFound;	///<
