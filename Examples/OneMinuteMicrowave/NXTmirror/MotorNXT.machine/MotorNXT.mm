@@ -1,7 +1,7 @@
 //
-//MotorNXT.mm
+// MotorNXT.mm
 //
-//Automatically created through MiEditCLFSM -- do not change manually!
+// Automatically created through MiCASE -- do not change manually!
 //
 #include "MotorNXT_Includes.h"
 #include "MotorNXT.h"
@@ -12,6 +12,7 @@
 
 using namespace FSM;
 using namespace CLM;
+
 extern "C"
 {
 	MotorNXT *CLM_Create_MotorNXT(int mid, const char *name)
@@ -22,9 +23,9 @@ extern "C"
 
 MotorNXT::MotorNXT(int mid, const char *name): CLMachine(mid, name)
 {
-	_states[0]  = new FSMMotorNXT::State:: INITIAL;
-	_states[1]  = new FSMMotorNXT::State:: MOTOR_NXT_OFF;
-	_states[2]  = new FSMMotorNXT::State:: MOTOR_NXT_ON;
+	_states[0] = new FSMMotorNXT::State::INITIAL;
+	_states[1] = new FSMMotorNXT::State::MOTOR_NXT_OFF;
+	_states[2] = new FSMMotorNXT::State::MOTOR_NXT_ON;
 
 	setInitialState(_states[0]);            // set initial state
 }

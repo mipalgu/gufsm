@@ -1,7 +1,7 @@
 //
-//State_POST_BUTTON_PRESSED_VarRefs.mm
+// State_POST_BUTTON_PRESSED_VarRefs.mm
 //
-//Automatically created through MiEditCLFSM -- do not change manually!
+// Automatically created through MiCASE -- do not change manually!
 //
 POST_BUTTON_PRESSED *_s = static_cast<POST_BUTTON_PRESSED *>(_state);
 

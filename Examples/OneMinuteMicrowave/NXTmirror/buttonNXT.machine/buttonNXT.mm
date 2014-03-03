@@ -1,7 +1,7 @@
 //
-//buttonNXT.mm
+// buttonNXT.mm
 //
-//Automatically created through MiEditCLFSM -- do not change manually!
+// Automatically created through MiCASE -- do not change manually!
 //
 #include "buttonNXT_Includes.h"
 #include "buttonNXT.h"
@@ -12,6 +12,7 @@
 
 using namespace FSM;
 using namespace CLM;
+
 extern "C"
 {
 	buttonNXT *CLM_Create_buttonNXT(int mid, const char *name)
@@ -22,9 +23,9 @@ extern "C"
 
 buttonNXT::buttonNXT(int mid, const char *name): CLMachine(mid, name)
 {
-	_states[0]  = new FSMbuttonNXT::State:: INITIAL;
-	_states[1]  = new FSMbuttonNXT::State:: POST_BUTTON_PRESSED;
-	_states[2]  = new FSMbuttonNXT::State:: BUTTON_RELEASED;
+	_states[0] = new FSMbuttonNXT::State::INITIAL;
+	_states[1] = new FSMbuttonNXT::State::POST_BUTTON_PRESSED;
+	_states[2] = new FSMbuttonNXT::State::BUTTON_RELEASED;
 
 	setInitialState(_states[0]);            // set initial state
 }

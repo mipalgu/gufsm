@@ -1,12 +1,12 @@
 //
-//State_LIGHT_NXT_OFF.mm
+// State_LIGHT_NXT_OFF.mm
 //
-//Automatically created through MiEditCLFSM -- do not change manually!
+// Automatically created through MiCASE -- do not change manually!
 //
 #include "LightNXT_Includes.h"
 #include "LightNXT.h"
-
 #include "State_LIGHT_NXT_OFF.h"
+
 #include "State_LIGHT_NXT_OFF_Includes.h"
 
 using namespace FSM;
@@ -14,7 +14,7 @@ using namespace CLM;
 using namespace FSMLightNXT;
 using namespace State;
 
-LIGHT_NXT_OFF::LIGHT_NXT_OFF(const char *name):CLState(name, *new LIGHT_NXT_OFF::OnEntry,*new LIGHT_NXT_OFF::OnExit, *new LIGHT_NXT_OFF::Internal)
+LIGHT_NXT_OFF::LIGHT_NXT_OFF(const char *name): CLState(name, *new LIGHT_NXT_OFF::OnEntry, *new LIGHT_NXT_OFF::OnExit, *new LIGHT_NXT_OFF::Internal)
 {
 	_transitions[0] = new Transition_0();
 }
@@ -25,6 +25,7 @@ LIGHT_NXT_OFF::~LIGHT_NXT_OFF()
 	delete &onExitAction();
 	delete &internalAction();
 
+	delete _transitions[0];
 }
 
 void LIGHT_NXT_OFF::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -55,8 +56,6 @@ bool LIGHT_NXT_OFF::Transition_0::check(CLMachine *_machine, CLState *_state) co
 
 	return
 	(
-#			include "State_LIGHT_NXT_OFF_Transition_0.expr"
+#		include "State_LIGHT_NXT_OFF_Transition_0.expr"
 	);
 }
-
-

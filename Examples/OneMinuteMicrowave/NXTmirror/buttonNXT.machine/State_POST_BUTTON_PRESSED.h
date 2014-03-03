@@ -1,10 +1,10 @@
 //
-//State_POST_BUTTON_PRESSED.h
+// State_POST_BUTTON_PRESSED.h
 //
-//Automatically created through MiEditCLFSM -- do not change manually!
+// Automatically created through MiCASE -- do not change manually!
 //
-#ifndef __clfsm__buttonNXT_State_POST_BUTTON_PRESSED_h__
-#define __clfsm__buttonNXT_State_POST_BUTTON_PRESSED_h__
+#ifndef clfsm_buttonNXT_State_POST_BUTTON_PRESSED_h
+#define clfsm_buttonNXT_State_POST_BUTTON_PRESSED_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -12,50 +12,51 @@
 
 namespace FSM
 {
-	namespace CLM
-	{
-		namespace FSMbuttonNXT
-		{
-			namespace State
-			{
-				class POST_BUTTON_PRESSED: public CLState
-				{
-					class OnEntry: public CLAction
-					{
-						virtual void perform(CLMachine *, CLState *) const;
-					};
-					class OnExit: public CLAction
-					{
-						virtual void perform(CLMachine *, CLState *) const;
-					};
-					class Internal: public CLAction
-					{
-						virtual void perform(CLMachine *, CLState *) const;
-					};
-					class Transition_0: public CLTransition
-					{
-						public:
-						Transition_0(int toState = 2): CLTransition(toState) {}
+    namespace CLM
+    {
+      namespace FSMbuttonNXT
+      {
+        namespace State
+        {
+            class POST_BUTTON_PRESSED: public CLState
+            {
+                class OnEntry: public CLAction
+                {
+                    virtual void perform(CLMachine *, CLState *) const;
+                };
 
-						virtual bool check(CLMachine *, CLState *) const;
-					};
+                class OnExit: public CLAction
+                {
+                    virtual void perform(CLMachine *, CLState *) const;
+                };
 
+                class Internal: public CLAction
+                {
+                    virtual void perform(CLMachine *, CLState *) const;
+                };
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wzero-length-array"
-				CLTransition *_transitions[1];
-				public:
-					POST_BUTTON_PRESSED(const char *name = "POST_BUTTON_PRESSED");
-					virtual ~POST_BUTTON_PRESSED();
+                class Transition_0: public CLTransition
+                {
+                public:
+                    Transition_0(int toState = 2): CLTransition(toState) {}
 
-					virtual CLTransition * const *transitions() const { return _transitions; }
-					virtual int numberOfTransitions() const { return 1; }
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
 
-#					include "State_POST_BUTTON_PRESSED_Variables.h"
-#pragma clang diagnostic pop
-				};
-			}
-		}
-	}
+                CLTransition *_transitions[1];
+
+                public:
+                    POST_BUTTON_PRESSED(const char *name = "POST_BUTTON_PRESSED");
+                    virtual ~POST_BUTTON_PRESSED();
+
+                    virtual CLTransition * const *transitions() const { return _transitions; }
+                    virtual int numberOfTransitions() const { return 1; }
+
+#                   include "State_POST_BUTTON_PRESSED_Variables.h"
+            };
+        }
+      }
+    }
 }
-#endif // defined(__gufsm__buttonNXT_State_POST_BUTTON_PRESSED__)
+
+#endif

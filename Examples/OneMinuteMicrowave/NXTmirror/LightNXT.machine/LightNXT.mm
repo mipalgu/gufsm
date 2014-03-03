@@ -1,7 +1,7 @@
 //
-//LightNXT.mm
+// LightNXT.mm
 //
-//Automatically created through MiEditCLFSM -- do not change manually!
+// Automatically created through MiCASE -- do not change manually!
 //
 #include "LightNXT_Includes.h"
 #include "LightNXT.h"
@@ -12,6 +12,7 @@
 
 using namespace FSM;
 using namespace CLM;
+
 extern "C"
 {
 	LightNXT *CLM_Create_LightNXT(int mid, const char *name)
@@ -22,9 +23,9 @@ extern "C"
 
 LightNXT::LightNXT(int mid, const char *name): CLMachine(mid, name)
 {
-	_states[0]  = new FSMLightNXT::State:: INITIAL;
-	_states[1]  = new FSMLightNXT::State:: LIGHT_NXT_OFF;
-	_states[2]  = new FSMLightNXT::State:: LIGHT_NXT_ON;
+	_states[0] = new FSMLightNXT::State::INITIAL;
+	_states[1] = new FSMLightNXT::State::LIGHT_NXT_OFF;
+	_states[2] = new FSMLightNXT::State::LIGHT_NXT_ON;
 
 	setInitialState(_states[0]);            // set initial state
 }

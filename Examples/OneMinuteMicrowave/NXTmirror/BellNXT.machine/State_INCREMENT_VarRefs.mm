@@ -1,7 +1,7 @@
 //
-//State_INCREMENT_VarRefs.mm
+// State_INCREMENT_VarRefs.mm
 //
-//Automatically created through MiEditCLFSM -- do not change manually!
+// Automatically created through MiCASE -- do not change manually!
 //
 INCREMENT *_s = static_cast<INCREMENT *>(_state);
 

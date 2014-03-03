@@ -1,7 +1,7 @@
 //
-//State_LIGHT_NXT_OFF_VarRefs.mm
+// State_LIGHT_NXT_OFF_VarRefs.mm
 //
-//Automatically created through MiEditCLFSM -- do not change manually!
+// Automatically created through MiCASE -- do not change manually!
 //
 LIGHT_NXT_OFF *_s = static_cast<LIGHT_NXT_OFF *>(_state);
 

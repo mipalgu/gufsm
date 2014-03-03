@@ -1,4 +1,3 @@
-
 #ifdef DEBUG
 fprintf(stderr,"STATE: %s\n",state_name()); 
 #endif
@@ -8,4 +7,3 @@ a_Command_Handler.set(a_SensorStart);
 
 srand (time(NULL));
 iSecret = rand() % 2 ;
- 

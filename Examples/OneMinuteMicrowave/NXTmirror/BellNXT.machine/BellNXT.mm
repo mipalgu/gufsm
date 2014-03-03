@@ -1,7 +1,7 @@
 //
-//BellNXT.mm
+// BellNXT.mm
 //
-//Automatically created through MiEditCLFSM -- do not change manually!
+// Automatically created through MiCASE -- do not change manually!
 //
 #include "BellNXT_Includes.h"
 #include "BellNXT.h"
@@ -12,6 +12,7 @@
 
 using namespace FSM;
 using namespace CLM;
+
 extern "C"
 {
 	BellNXT *CLM_Create_BellNXT(int mid, const char *name)
@@ -22,9 +23,9 @@ extern "C"
 
 BellNXT::BellNXT(int mid, const char *name): CLMachine(mid, name)
 {
-	_states[0]  = new FSMBellNXT::State:: INITIAL;
-	_states[1]  = new FSMBellNXT::State:: PLAY_ITH_NOTE;
-	_states[2]  = new FSMBellNXT::State:: INCREMENT;
+	_states[0] = new FSMBellNXT::State::INITIAL;
+	_states[1] = new FSMBellNXT::State::PLAY_ITH_NOTE;
+	_states[2] = new FSMBellNXT::State::INCREMENT;
 
 	setInitialState(_states[0]);            // set initial state
 }

@@ -1,7 +1,7 @@
 //
-//doorNXT.mm
+// doorNXT.mm
 //
-//Automatically created through MiEditCLFSM -- do not change manually!
+// Automatically created through MiCASE -- do not change manually!
 //
 #include "doorNXT_Includes.h"
 #include "doorNXT.h"
@@ -12,6 +12,7 @@
 
 using namespace FSM;
 using namespace CLM;
+
 extern "C"
 {
 	doorNXT *CLM_Create_doorNXT(int mid, const char *name)
@@ -22,9 +23,9 @@ extern "C"
 
 doorNXT::doorNXT(int mid, const char *name): CLMachine(mid, name)
 {
-	_states[0]  = new FSMdoorNXT::State:: INITIAL;
-	_states[1]  = new FSMdoorNXT::State:: DOOR_OPEN;
-	_states[2]  = new FSMdoorNXT::State:: DOOR_CLOSED;
+	_states[0] = new FSMdoorNXT::State::INITIAL;
+	_states[1] = new FSMdoorNXT::State::DOOR_OPEN;
+	_states[2] = new FSMdoorNXT::State::DOOR_CLOSED;
 
 	setInitialState(_states[0]);            // set initial state
 }

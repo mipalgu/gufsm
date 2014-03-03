@@ -1,12 +1,12 @@
 //
-//State_DOOR_CLOSED.mm
+// State_DOOR_CLOSED.mm
 //
-//Automatically created through MiEditCLFSM -- do not change manually!
+// Automatically created through MiCASE -- do not change manually!
 //
 #include "doorNXT_Includes.h"
 #include "doorNXT.h"
-
 #include "State_DOOR_CLOSED.h"
+
 #include "State_DOOR_CLOSED_Includes.h"
 
 using namespace FSM;
@@ -14,7 +14,7 @@ using namespace CLM;
 using namespace FSMdoorNXT;
 using namespace State;
 
-DOOR_CLOSED::DOOR_CLOSED(const char *name):CLState(name, *new DOOR_CLOSED::OnEntry,*new DOOR_CLOSED::OnExit, *new DOOR_CLOSED::Internal)
+DOOR_CLOSED::DOOR_CLOSED(const char *name): CLState(name, *new DOOR_CLOSED::OnEntry, *new DOOR_CLOSED::OnExit, *new DOOR_CLOSED::Internal)
 {
 	_transitions[0] = new Transition_0();
 }
@@ -25,6 +25,7 @@ DOOR_CLOSED::~DOOR_CLOSED()
 	delete &onExitAction();
 	delete &internalAction();
 
+	delete _transitions[0];
 }
 
 void DOOR_CLOSED::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -55,8 +56,6 @@ bool DOOR_CLOSED::Transition_0::check(CLMachine *_machine, CLState *_state) cons
 
 	return
 	(
-#			include "State_DOOR_CLOSED_Transition_0.expr"
+#		include "State_DOOR_CLOSED_Transition_0.expr"
 	);
 }
-
-

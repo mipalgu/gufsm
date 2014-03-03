@@ -1,7 +1,7 @@
 //
-//State_PLAY_ITH_NOTE_VarRefs.mm
+// State_PLAY_ITH_NOTE_VarRefs.mm
 //
-//Automatically created through MiEditCLFSM -- do not change manually!
+// Automatically created through MiCASE -- do not change manually!
 //
 PLAY_ITH_NOTE *_s = static_cast<PLAY_ITH_NOTE *>(_state);
 
