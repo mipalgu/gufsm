@@ -3,7 +3,7 @@ print_ptr("MOTOR_OFF");
 fprintf(stderr,"STATE: %s\n",state_name()); 
 #endif
 
-    WEBOTS_NXT_bridge  thetMotorCommand(0,ONE_MOTOR_SETTING, 0, LEFT_MOTOR_DIFFERENTIAL,false);
+    WEBOTS_NXT_bridge  thetMotorCommand(0,ONE_MOTOR_SETTING, LEFT_MOTOR_DIFFERENTIAL,0,false);
     //post the speed
     a_Command_Handler.set(thetMotorCommand);
 

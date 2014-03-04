@@ -1,12 +1,12 @@
 //
-// State_PLAY_ITH_NOTE.mm
+//State_PLAY_ITH_NOTE.mm
 //
-// Automatically created through MiCASE -- do not change manually!
+//Automatically created through MiEditCLFSM -- do not change manually!
 //
 #include "BellNXT_Includes.h"
 #include "BellNXT.h"
-#include "State_PLAY_ITH_NOTE.h"
 
+#include "State_PLAY_ITH_NOTE.h"
 #include "State_PLAY_ITH_NOTE_Includes.h"
 
 using namespace FSM;
@@ -14,7 +14,7 @@ using namespace CLM;
 using namespace FSMBellNXT;
 using namespace State;
 
-PLAY_ITH_NOTE::PLAY_ITH_NOTE(const char *name): CLState(name, *new PLAY_ITH_NOTE::OnEntry, *new PLAY_ITH_NOTE::OnExit, *new PLAY_ITH_NOTE::Internal)
+PLAY_ITH_NOTE::PLAY_ITH_NOTE(const char *name):CLState(name, *new PLAY_ITH_NOTE::OnEntry,*new PLAY_ITH_NOTE::OnExit, *new PLAY_ITH_NOTE::Internal)
 {
 	_transitions[0] = new Transition_0();
 }
@@ -25,7 +25,6 @@ PLAY_ITH_NOTE::~PLAY_ITH_NOTE()
 	delete &onExitAction();
 	delete &internalAction();
 
-	delete _transitions[0];
 }
 
 void PLAY_ITH_NOTE::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -56,6 +55,8 @@ bool PLAY_ITH_NOTE::Transition_0::check(CLMachine *_machine, CLState *_state) co
 
 	return
 	(
-#		include "State_PLAY_ITH_NOTE_Transition_0.expr"
+#			include "State_PLAY_ITH_NOTE_Transition_0.expr"
 	);
 }
+
+

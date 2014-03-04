@@ -1,5 +1,5 @@
 #ifdef DEBUG
-print_ptr("PLAY_A_NOTE");
+print_ptr("INITIAL");
 #endif
 
 C = 523;
