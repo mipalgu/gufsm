@@ -2,7 +2,7 @@
 print_ptr("LIGHT_OFF");
 #endif
 
- WEBOTS_NXT_bridge  thetMotorCommand(0,ONE_MOTOR_SETTING, 0, RIGHT_MOTOR_DIFFERENTIAL,false);
+ WEBOTS_NXT_bridge  thetMotorCommand(0,ONE_MOTOR_SETTING,  RIGHT_MOTOR_DIFFERENTIAL,0,false);
     //post the speed
     a_Command_Handler.set(thetMotorCommand);
 
