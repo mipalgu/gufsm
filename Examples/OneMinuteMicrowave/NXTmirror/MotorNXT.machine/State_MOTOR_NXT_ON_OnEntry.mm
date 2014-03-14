@@ -2,8 +2,11 @@
 print_ptr("MOTOR_ON"); fprintf(stderr,"STATE: %s\n",state_name()); 
 #endif
  
- WEBOTS_NXT_bridge  thetMotorCommand(0,ONE_MOTOR_SETTING, LEFT_MOTOR_DIFFERENTIAL,50,false);
-    //post the speed
+   //post the speed
+    WEBOTS_NXT_bridge_t  thetStatusCommand_ptr;
+    int other_speed = (thetStatusCommand_ptr.get() ).secondParameter();
+
+    WEBOTS_NXT_bridge  thetMotorCommand(0,MOVE_MOTORS, 50,other_speed,false);
     a_Command_Handler.set(thetMotorCommand);
 
 WBMsg test =wb.getMessage("motor");

@@ -2,8 +2,11 @@
 print_ptr("LIGHT_ON");
 #endif
 
- WEBOTS_NXT_bridge  thetMotorCommand(0,ONE_MOTOR_SETTING,  RIGHT_MOTOR_DIFFERENTIAL,50,false);
-    //post the speed
+  //post the light off
+    WEBOTS_NXT_bridge_t  thetStatusCommand_ptr;
+    int other_speed = (thetStatusCommand_ptr.get() ).firstParameter();
+
+    WEBOTS_NXT_bridge  thetMotorCommand(0,MOVE_MOTORS,other_speed,50,false);
     a_Command_Handler.set(thetMotorCommand);
 
 WBMsg test =wb.getMessage("light");
