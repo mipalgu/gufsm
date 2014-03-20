@@ -1,31 +1,25 @@
 <?xml version='1.0'?>
-<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
-<qfsmproject version="0.53" author="Qfsm">
-  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vladimir Estivill-Castro" description="" version="1" name="MicrowaveEngine" arrowtype="1" numbits="2" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="2">
+<!DOCTYPE qfsmproject SYSTEM "qfsm.dtd">
+<qfsmproject version="0.53" author="MiCASE">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="" version="1" name="MicrowaveBell.fsm" arrowtype="1" numbits="2" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="2" numout="0" initialstate="0">
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
-    <itransition ypos="121" endx="138" xpos="78" endy="121"/>
-    <state pencolor="0" radius="40" description="OnEntry{  sound=0;}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="121" code="2" xpos="178" linewidth="1">OFF</state>
-    <state pencolor="0" radius="40" description="OnEntry {}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="110" code="0" xpos="463" linewidth="1">ARMED</state>
-    <state pencolor="0" radius="40" description="OnEntry{ sound=1; post(&quot;QSay&quot;,&quot;DIIIIING, DIIIING&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="304" code="1" xpos="328" linewidth="1">RINGING</state>
-    <transition c1x="280.6690626434008" c2y="92.69723608356021" c1y="93.28301598711877" description="" straight="1" type="2" ypos="93.86879589067735" endx="427.2229123600034" xpos="207.3921377850995" endy="92.11145618000164" c2x="353.9459875017021">
-      <from>2</from>
-      <to>0</to>
-      <inputs default="0" any="0" invert="0">timeLeft</inputs>
-      <outputs></outputs>
+    <itransition xpos="90" ypos="90" endx="157.521" endy="107.664"/>
+    <state pencolor="0" linewidth="1" finalstate="0" moore_outputs="" radius="40" xpos="157.521" ypos="107.664" code="0" description="OnEntry$&#xa;{  sound=0;}&#xa;$OnExit$&#xa;{  sound=0;}&#xa;$Internal$&#xa;{}&#xa;" expanded="0">OFF</state>
+    <state pencolor="0" linewidth="1" finalstate="0" moore_outputs="" radius="40" xpos="407.509" ypos="99.4569" code="1" description="OnEntry$&#xa;{}&#xa;$OnExit$&#xa;{}&#xa;$Internal$&#xa;{}&#xa;" expanded="0">ARMED</state>
+    <state pencolor="0" linewidth="1" finalstate="0" moore_outputs="" radius="142" xpos="455" ypos="495" code="2" description="OnEntry$&#xa;{ sound=1; post(&quot;QSay&quot;,&quot;DIIIIING, DIIIING&quot;);}&#xa;$OnExit$&#xa;{ sound=1; post(&quot;QSay&quot;,&quot;DIIIIING, DIIIING&quot;);}&#xa;$Internal$&#xa;{}&#xa;" expanded="1">RINGING</state>
+    <transition xpos="202.497" ypos="107.008" endx="362.534" endy="100.113" c1x="247.519" c1y="105.53" c2x="317.511" c2y="101.591" straight="0" type="2">
+      <from>0</from><to>1</to>
+      <inputs default="0" any="0" invert="0">timeLeft</inputs><outputs></outputs>
     </transition>
-    <transition c1x="401.3736388910423" c2y="222.510133529908" c1y="177.2386244981708" description="" straight="1" type="2" ypos="131.9671154664335" endx="344.9773550492288" xpos="429.5717808119491" endy="267.7816425616453" c2x="373.1754969701356">
-      <from>0</from>
-      <to>1</to>
-      <inputs default="0" any="0" invert="0">!timeLeft</inputs>
-      <outputs></outputs>
+    <transition xpos="374" ypos="120" endx="328" endy="409" c1x="346" c1y="166" c2x="357" c2y="364" straight="0" type="2">
+      <from>1</from><to>2</to>
+      <inputs default="0" any="0" invert="0">!timeLeft</inputs><outputs></outputs>
     </transition>
-    <transition c1x="267.7422615678565" c2y="195.1782118140962" c1y="233.7974413711283" description="" straight="1" type="2" ypos="272.4166709281604" endx="196.3182635869724" xpos="303.4542605582986" endy="156.5589822570641" c2x="232.0302625774145">
-      <from>1</from>
-      <to>2</to>
-      <inputs default="0" any="0" invert="0">1</inputs>
-      <outputs></outputs>
+    <transition xpos="287" ypos="414" endx="176" endy="143" c1x="251" c1y="375" c2x="212" c2y="182" straight="0" type="2">
+      <from>2</from><to>0</to>
+      <inputs default="0" any="0" invert="0">1</inputs><outputs></outputs>
     </transition>
   </machine>
 </qfsmproject>
