@@ -2,7 +2,7 @@
  *  FSMTest.mm
  *  
  *  Created by René Hexel on 23/09/11.
- *  Copyright (c) 2011 Rene Hexel.
+ *  Copyright (c) 2011, 2014 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -103,21 +103,21 @@ class WBCallbackTest
 public:
         WBCallbackTest(Whiteboard *w, FSMTest *t): wb(w), self(t)
         {
-                Whiteboard::WBResult result = Whiteboard::WBResult::METHOD_OK;
+                Whiteboard::WBResult result = Whiteboard::METHOD_OK;
                 
                 wb->subscribeToMessage(kUpdateProof, WB_BIND(WBCallbackTest::wb_callback), result);
 
-                STAssertEquals(result, Whiteboard::WBResult::METHOD_OK, @"Callback subscription unexpectedly failed");
+                STAssertEquals(result, Whiteboard::METHOD_OK, @"Callback subscription unexpectedly failed");
                 
         }
 
         virtual ~WBCallbackTest()
         {
-                Whiteboard::WBResult result = Whiteboard::WBResult::METHOD_OK;
+                Whiteboard::WBResult result = Whiteboard::METHOD_OK;
 
                 wb->unsubscribeToMessage(kUpdateProof, result);
 
-                STAssertEquals(result, Whiteboard::WBResult::METHOD_OK, @"Unsubscription unexpectedly failed");
+                STAssertEquals(result, Whiteboard::METHOD_OK, @"Unsubscription unexpectedly failed");
         }
 
         void wb_callback(string dataName, WBMsg *msg)
@@ -206,12 +206,12 @@ public:
 
         wbPredicate = new WBPredicate("WBTest", false, context);
         wbPredicate->setValue(false);   // clear any old WB content
-        wbTransition = new Transition(state[1], state[2], wbPredicate);
+        wbTransition = new Transition(state[1], state[2], (WBExpression *) wbPredicate);
 
         state[1]->addTransition(wbTransition);
 
         wbQueryPredicate = new WBQueryPredicate("WBTest", true, context);
-        wbqTransition = new Transition(state[2], state[3], wbQueryPredicate);
+        wbqTransition = new Transition(state[2], state[3], (WBExpression *) wbQueryPredicate);
 
         state[2]->addTransition(wbqTransition);
 
@@ -261,7 +261,7 @@ public:
         STAssertTrue(cont, @"State machine should not be done yet");
         STAssertEquals(fsm->currentState(), state[1], @"Unexpected second state");
         STAssertEquals(fsm->previousState(), state[1], @"Unexpected previous state");
-        static_cast<WBPredicate *>(wbTransition->expression())->setValue(true);
+        static_cast<WBPredicate *>((WBExpression *)wbTransition->expression())->setValue(true);
         cont = fsm->executeOnce();
         STAssertTrue(cont, @"State machine should not be done yet");
         STAssertEquals(fsm->currentState(), state[2], @"Unexpected current state");
@@ -454,7 +454,7 @@ public:
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC);
         dispatch_after(popTime, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0),
                        ^{
-                               static_cast<WBPredicate *>(wbTransition->expression())->setValue(trueOrFalse);
+                               static_cast<WBPredicate *>((WBExpression *)wbTransition->expression())->setValue(trueOrFalse);
                        });
 }
 

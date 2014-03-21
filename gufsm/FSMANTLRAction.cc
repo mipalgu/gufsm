@@ -182,7 +182,11 @@ statement_callback(void *context, const char *terminal, const char *,
 }
 
 
+#ifdef DEBUG
+void ANTLRAction::performv(Machine *m, ActionStage stage, int x, va_list)
+#else
 void ANTLRAction::performv(Machine *m, ActionStage, int, va_list)
+#endif
 {
 #ifdef DEBUG
         State *s = stage == STAGE_ON_EXIT ? m->previousState() : m->currentState();
@@ -191,7 +195,7 @@ void ANTLRAction::performv(Machine *m, ActionStage, int, va_list)
              << "): " << x << endl);
 #endif
         walk_parse_children(antlr_state(), content(), statement_callback, NULL, NULL, m);
-};
+}
 
 
 static int

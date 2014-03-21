@@ -200,7 +200,7 @@ block_pop(void *context, const char *, const char *,
 
 
 static int
-action_callback(void *context, const char *terminal, const char *,
+action_callback(void *context, const char *terminal, const char *content,
                 pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
 {
         //ActivityFactory *self = (ActivityFactory *) context;
@@ -222,7 +222,9 @@ action_callback(void *context, const char *terminal, const char *,
 
         DBG(cerr << "Ignoring unexpected action block token '" << terminal <<
             "' with content '" << content << "'" << endl);
-        
+ 
+        (void) content;
+
         return 1;
 }
 
@@ -249,7 +251,7 @@ statename_callback(void *context, const char *terminal, const char *content,
 }
 
 static int
-state_push(void *context, const char *terminal, const char *,
+state_push(void *context, const char *terminal, const char *content,
            pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
 {
         ActivityFactory *self = (ActivityFactory *) context;
@@ -290,7 +292,9 @@ state_push(void *context, const char *terminal, const char *,
         
         DBG(cerr << "Ignoring unexpected state token '" << terminal <<
             "' with content '" << content << "'" << endl);
-        
+
+        (void) content;
+
         return 1;
 }
 
@@ -333,13 +337,15 @@ activity_push(void *context, const char *terminal, const char *content,
 }
 
 static int
-activity_pop(void *context, const char *terminal, const char *,
+activity_pop(void *context, const char *terminal, const char *content,
              pANTLR3_RECOGNIZER_SHARED_STATE, pANTLR3_BASE_TREE)
 {
         ActivityFactory *self = (ActivityFactory *) context;
         DBG(cout << "activity pop (" << terminal << ") content: " << content << endl);
         if (string("K_INT") == terminal)  /* popping a state id? */
                 self->fsm()->addState(self->state());
+
+        (void) content;
 
         return 1;
 }

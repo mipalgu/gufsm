@@ -2,7 +2,7 @@
  *  FSMWBPredicate.cpp
  *  
  *  Created by Rene Hexel on 18/10/11.
- *  Copyright (c) 2011 Rene Hexel.
+ *  Copyright (c) 2011, 2014 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -63,6 +63,30 @@
 using namespace std;
 using namespace FSM;
 using namespace guWhiteboard;
+
+void WBExpression::post(string type, const WBMsg &msg)
+{
+        _wb->addMessage(type, msg);
+}
+
+
+void WBExpression::postString(string type, string content)
+{
+        post(type, WBMsg(content));
+}
+
+
+void WBExpression::postInt(string type, int content)
+{
+        post(type, WBMsg(content));
+}
+
+
+void WBExpression::postBool(string type, bool content)
+{
+        post(type, WBMsg(content));
+}
+
 
 int WBPredicate::evaluate(WBMsg &msg)
 {
