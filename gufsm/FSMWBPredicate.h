@@ -2,7 +2,7 @@
  *  FSMWBPredicate.h
  *  
  *  Created by René Hexel on 18/10/11.
- *  Copyright (c) 2011 Rene Hexel.
+ *  Copyright (c) 2011, 2014 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -110,16 +110,16 @@ namespace FSM
                 void setWhiteboard(guWhiteboard::Whiteboard *wb) { _wb = wb; }
 
                 /** post to the Whiteboard */
-                void post(std::string type, const WBMsg &msg) { _wb->addMessage(type, msg); }
+                void post(std::string type, const WBMsg &msg);
 
                 /** post a string to the whiteboard */
-                void postString(std::string type, std::string content) { post(type, WBMsg(content)); }
+                void postString(std::string type, std::string content);
 
                 /** post an int to the whiteboard */
-                void postInt(std::string type, int content) { post(type, WBMsg(content)); }
+                void postInt(std::string type, int content);
                 
                 /** post a bool to the whiteboard */
-                void postBool(std::string type, bool content) { post(type, WBMsg(content)); }
+                void postBool(std::string type, bool content);
         };
 
         /**
