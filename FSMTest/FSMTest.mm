@@ -1,4 +1,6 @@
-/*
+^{
+        <#code#>
+}/*
  *  FSMTest.mm
  *  
  *  Created by René Hexel on 23/09/11.
@@ -60,6 +62,13 @@
 #include "Whiteboard.h"
 
 #import "FSMTest.h"
+
+#if !defined(WHITEBOARD_OLD_H) && !defined(_BOOST_WHITEBOARD_H_)
+namespace guWhiteboard
+{
+        static const char *kUpdateProof = "updateProofsForOutput";
+}
+#endif
 
 static const char *state_names[5] =
 {

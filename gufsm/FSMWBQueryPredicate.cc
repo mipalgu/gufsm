@@ -61,6 +61,14 @@
 #include "FSMWBQueryPredicate.h"
 #include "FSMWBContext.h"
 
+#if !defined(WHITEBOARD_OLD_H) && !defined(_BOOST_WHITEBOARD_H_)
+namespace guWhiteboard
+{
+        static const char *kUpdateProof = "updateProofsForOutput";
+}
+#endif
+
+
 using namespace std;
 using namespace FSM;
 using namespace guWhiteboard;
