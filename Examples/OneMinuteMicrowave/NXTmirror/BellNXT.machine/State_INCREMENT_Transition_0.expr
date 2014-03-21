@@ -1,1 +1,1 @@
-currentNote>=song.size()
+currentNote>=song.size()  && after_ms(250)  
