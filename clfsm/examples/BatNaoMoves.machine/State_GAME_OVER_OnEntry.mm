@@ -2,7 +2,9 @@
 fprintf(stderr, "STATE: %s\n", state_name());
 #endif
 say("Game Over");
-suspend("SMButtonChest");
+//suspend("SMButtonChest");
+nao_state = nao_state_ptr.get();
+
 
 walk_post(WALK_ControlStatus(WALK_Disconnect));
 protected_usleep(30000);

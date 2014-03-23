@@ -16,6 +16,7 @@ using namespace State;
 
 END::END(const char *name): CLState(name, *new END::OnEntry, *new END::OnExit, *new END::Internal)
 {
+	_transitions[0] = new Transition_0();
 }
 
 END::~END()
@@ -24,6 +25,7 @@ END::~END()
 	delete &onExitAction();
 	delete &internalAction();
 
+	delete _transitions[0];
 }
 
 void END::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -45,4 +47,15 @@ void END::Internal::perform(CLMachine *_machine, CLState *_state) const
 #	include "BatNaoMoves_VarRefs.mm"
 #	include "State_END_VarRefs.mm"
 #	include "State_END_Internal.mm"
+}
+
+bool END::Transition_0::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "BatNaoMoves_VarRefs.mm"
+#	include "State_END_VarRefs.mm"
+
+	return
+	(
+#		include "State_END_Transition_0.expr"
+	);
 }
