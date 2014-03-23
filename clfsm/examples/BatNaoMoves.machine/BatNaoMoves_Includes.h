@@ -12,3 +12,6 @@
 using namespace guWhiteboard;
 
 #define DEBUG
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
