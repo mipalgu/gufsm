@@ -2,7 +2,6 @@
 fprintf(stderr, "STATE: %s\n", state_name());
 #endif
 say("Game Over");
-//suspend("SMButtonChest");
 nao_state = nao_state_ptr.get();
 
 
