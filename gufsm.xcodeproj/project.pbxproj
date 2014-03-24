@@ -178,6 +178,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F11F952018E0234900E17493 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F1284D0214A6CAA800C0247E /* gusimplewhiteboard.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F19FA36B18DFE6280095B87D;
+			remoteInfo = simplewhiteboardtest_mk;
+		};
 		F1284D1E14A6CAA800C0247E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F1284D0214A6CAA800C0247E /* gusimplewhiteboard.xcodeproj */;
@@ -426,10 +433,8 @@
 		F12B41F0147DBC7D00FF4A6B /* GameControllerFSM.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = GameControllerFSM.jpg; sourceTree = "<group>"; };
 		F12B41F1147DBC7D00FF4A6B /* GameControllerFSM.uxf */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GameControllerFSM.uxf; sourceTree = "<group>"; };
 		F12B41F2147DBC7D00FF4A6B /* GNUmakefile */ = {isa = PBXFileReference; lastKnownFileType = text; path = GNUmakefile; sourceTree = "<group>"; };
-		F12B41F3147DBC7D00FF4A6B /* guGameController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = guGameController.cpp; sourceTree = "<group>"; };
 		F12B41F4147DBC7D00FF4A6B /* gurobocupplayerparsing.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = gurobocupplayerparsing.cpp; sourceTree = "<group>"; };
 		F12B41F5147DBC7D00FF4A6B /* gurobocupplayerparsing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gurobocupplayerparsing.h; sourceTree = "<group>"; };
-		F12B41F6147DBC7D00FF4A6B /* guGameController.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = guGameController.xcodeproj; sourceTree = "<group>"; };
 		F12B41F7147DBC7D00FF4A6B /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		F12B41F8147DBC7D00FF4A6B /* TGameController.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = TGameController.txt; sourceTree = "<group>"; };
 		F12B41FB147DBC7D00FF4A6B /* Placer.fsm */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Placer.fsm; sourceTree = "<group>"; };
@@ -1118,6 +1123,7 @@
 				F1B5AB8E1555F8B1000B770D /* guobjcwhiteboardTests.octest */,
 				F1B5AB901555F8B1000B770D /* libgusimplewhiteboardios.a */,
 				F1EB446718DC4CE200433261 /* guudpwhiteboard */,
+				F11F952118E0234900E17493 /* SimpleWhiteboardTest.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1182,10 +1188,8 @@
 				F12B41F0147DBC7D00FF4A6B /* GameControllerFSM.jpg */,
 				F12B41F1147DBC7D00FF4A6B /* GameControllerFSM.uxf */,
 				F12B41F2147DBC7D00FF4A6B /* GNUmakefile */,
-				F12B41F3147DBC7D00FF4A6B /* guGameController.cpp */,
 				F12B41F4147DBC7D00FF4A6B /* gurobocupplayerparsing.cpp */,
 				F12B41F5147DBC7D00FF4A6B /* gurobocupplayerparsing.h */,
-				F12B41F6147DBC7D00FF4A6B /* guGameController.xcodeproj */,
 				F12B41F7147DBC7D00FF4A6B /* Makefile */,
 				F12B41F8147DBC7D00FF4A6B /* TGameController.txt */,
 			);
@@ -1273,13 +1277,6 @@
 				F12B423D147DC38B00FF4A6B /* TransitionsParser.g */,
 			);
 			path = LANGUAGE;
-			sourceTree = "<group>";
-		};
-		F12B41F9147DBC7D00FF4A6B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		F155F66815C3A78A008F5637 /* simplecc */ = {
@@ -2288,10 +2285,6 @@
 					ProjectRef = F15A2C5714CF81F400D88624 /* gucdlmodule.xcodeproj */;
 				},
 				{
-					ProductGroup = F12B41F9147DBC7D00FF4A6B /* Products */;
-					ProjectRef = F12B41F6147DBC7D00FF4A6B /* guGameController.xcodeproj */;
-				},
-				{
 					ProductGroup = F1284D0314A6CAA800C0247E /* Products */;
 					ProjectRef = F1284D0214A6CAA800C0247E /* gusimplewhiteboard.xcodeproj */;
 				},
@@ -2313,6 +2306,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		F11F952118E0234900E17493 /* SimpleWhiteboardTest.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SimpleWhiteboardTest.bundle;
+			remoteRef = F11F952018E0234900E17493 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		F1284D1F14A6CAA800C0247E /* libgusimplewhiteboard.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
