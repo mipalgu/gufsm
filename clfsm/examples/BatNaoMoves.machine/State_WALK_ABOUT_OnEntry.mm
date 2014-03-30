@@ -4,6 +4,8 @@ fprintf(stderr, "STATE: %s\n", state_name());
 
 nao_state = nao_state_ptr.get();
 
+motion_ptr.set(MOTION_Commands(true,true,true));
+
 walk_post(WALK_Ready); protected_msleep(15);
 walk_post(WALK_ControlStatus(WALK_Run, 35, 0, 0, 5));
 
