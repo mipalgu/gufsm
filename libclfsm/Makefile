@@ -31,10 +31,12 @@ host: host-local
 	echo "Use 'make host-local' instead of 'make host'"
 
 install:
-	mkdir -p -m 0755 /usr/local/include/clfsm
-	mkdir -p -m 0755 /usr/local/lib
+	mkdir -p -m 0755 ${DESTDIR}${PREFIX:Q}/include/clfsm
+	mkdir -p -m 0755 ${DESTDIR}${PREFIX:Q}/lib
+	[ ! -e /usr/bin/install_name_tool ] || \
+	  /usr/bin/install_name_tool -id ${PREFIX:Q}/${OUTFILE_LOCAL:Q} ${BUILDDIR}-local/*${SOEXT}*
 	cd ${BUILDDIR}-local && \
-	install -m 0755 *${SOEXT}* /usr/local/lib
+	install -m 0755 *${SOEXT}* ${DESTDIR}${PREFIX:Q}/lib
 .for hdr in ${INSTHDRS}
 	cd ${SRCDIR}/../clfsm && \
 	install -m 0644 ${hdr} /usr/local/include/clfsm
