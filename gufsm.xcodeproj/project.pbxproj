@@ -6,6 +6,22 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		F1D9C3CD18EE3ED600593DD3 /* clfsm_ROS */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = F1D9C3CE18EE3ED600593DD3 /* Build configuration list for PBXAggregateTarget "clfsm_ROS" */;
+			buildPhases = (
+				F1D9C3D518EE3EF600593DD3 /* ShellScript */,
+			);
+			dependencies = (
+				F1D9C3D218EE3EE900593DD3 /* PBXTargetDependency */,
+				F1D9C3D418EE3EE900593DD3 /* PBXTargetDependency */,
+			);
+			name = clfsm_ROS;
+			productName = clfsm_ROS;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		E1144EB61585E21600C3C113 /* SimpleCLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = E1144EB41585E21600C3C113 /* SimpleCLexer.c */; };
 		E1144EB71585E21600C3C113 /* SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E1144EB51585E21600C3C113 /* SimpleCParser.c */; };
@@ -289,6 +305,34 @@
 			proxyType = 1;
 			remoteGlobalIDString = F1D5758C1627948900976A23;
 			remoteInfo = libclfsm;
+		};
+		F1D9C3B618EE3AD900593DD3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F1284D0214A6CAA800C0247E /* gusimplewhiteboard.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F1ED584118E7C93F00864A87;
+			remoteInfo = wbperf;
+		};
+		F1D9C3B818EE3AD900593DD3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F1284D0214A6CAA800C0247E /* gusimplewhiteboard.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F1ED58A418E7EF1400864A87;
+			remoteInfo = wbPerfTests;
+		};
+		F1D9C3D118EE3EE900593DD3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F16CC2F1142C0C01001F788B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F1D9C3BD18EE3B8C00593DD3;
+			remoteInfo = libclfsm_catkin;
+		};
+		F1D9C3D318EE3EE900593DD3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F16CC2F1142C0C01001F788B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F1D9C3C118EE3C2800593DD3;
+			remoteInfo = clfsm_catkin;
 		};
 		F1EB446618DC4CE200433261 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1124,6 +1168,8 @@
 				F1B5AB901555F8B1000B770D /* libgusimplewhiteboardios.a */,
 				F1EB446718DC4CE200433261 /* guudpwhiteboard */,
 				F11F952118E0234900E17493 /* SimpleWhiteboardTest.bundle */,
+				F1D9C3B718EE3AD900593DD3 /* wbperf */,
+				F1D9C3B918EE3AD900593DD3 /* wbPerfTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2148,6 +2194,65 @@
 		};
 /* End PBXHeadersBuildPhase section */
 
+/* Begin PBXLegacyTarget section */
+		F1D9C39D18EE3AD900593DD3 /* libclfsm_mk */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "clean host-local analyse";
+			buildConfigurationList = F1D9C3BC18EE3AD900593DD3 /* Build configuration list for PBXLegacyTarget "libclfsm_mk" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/local/bin/bmake;
+			buildWorkingDirectory = "$(SRCROOT)/libclfsm";
+			dependencies = (
+			);
+			name = libclfsm_mk;
+			passBuildSettingsInEnvironment = 1;
+			productName = libclfsm_mk;
+		};
+		F1D9C3BD18EE3B8C00593DD3 /* libclfsm_catkin */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "clean catkin";
+			buildConfigurationList = F1D9C3BE18EE3B8C00593DD3 /* Build configuration list for PBXLegacyTarget "libclfsm_catkin" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/local/bin/bmake;
+			buildWorkingDirectory = "$(SRCROOT)/libclfsm";
+			dependencies = (
+			);
+			name = libclfsm_catkin;
+			passBuildSettingsInEnvironment = 1;
+			productName = libclfsm_mk;
+		};
+		F1D9C3C118EE3C2800593DD3 /* clfsm_catkin */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "clean catkin";
+			buildConfigurationList = F1D9C3C218EE3C2800593DD3 /* Build configuration list for PBXLegacyTarget "clfsm_catkin" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/local/bin/bmake;
+			buildWorkingDirectory = "$(SRCROOT)/clfsm";
+			dependencies = (
+			);
+			name = clfsm_catkin;
+			passBuildSettingsInEnvironment = 1;
+			productName = libclfsm_mk;
+		};
+		F1D9C3C518EE3C8900593DD3 /* clfsm_mk */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "clean host analyse E=";
+			buildConfigurationList = F1D9C3C618EE3C8900593DD3 /* Build configuration list for PBXLegacyTarget "clfsm_mk" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/local/bin/bmake;
+			buildWorkingDirectory = "$(SRCROOT)/clfsm";
+			dependencies = (
+			);
+			name = clfsm_mk;
+			passBuildSettingsInEnvironment = 1;
+			productName = libclfsm_mk;
+		};
+/* End PBXLegacyTarget section */
+
 /* Begin PBXNativeTarget section */
 		E11CABD814BD243900A1019A /* fsmWbDependencyDump */ = {
 			isa = PBXNativeTarget;
@@ -2301,6 +2406,11 @@
 				F155F66515C3A78A008F5637 /* simplecc */,
 				F1A517CB15C91BDC00348C25 /* clfsm */,
 				F1D5758C1627948900976A23 /* libclfsm */,
+				F1D9C39D18EE3AD900593DD3 /* libclfsm_mk */,
+				F1D9C3BD18EE3B8C00593DD3 /* libclfsm_catkin */,
+				F1D9C3C118EE3C2800593DD3 /* clfsm_catkin */,
+				F1D9C3C518EE3C8900593DD3 /* clfsm_mk */,
+				F1D9C3CD18EE3ED600593DD3 /* clfsm_ROS */,
 			);
 		};
 /* End PBXProject section */
@@ -2411,6 +2521,20 @@
 			remoteRef = F1B5AB8F1555F8B1000B770D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		F1D9C3B718EE3AD900593DD3 /* wbperf */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = wbperf;
+			remoteRef = F1D9C3B618EE3AD900593DD3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F1D9C3B918EE3AD900593DD3 /* wbPerfTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = wbPerfTests.octest;
+			remoteRef = F1D9C3B818EE3AD900593DD3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		F1EB446718DC4CE200433261 /* guudpwhiteboard */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.executable";
@@ -2484,6 +2608,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		F1D9C3D518EE3EF600593DD3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"${SRCROOT}/../../../ros/catkin_ws\"\n. /opt/local/setup.sh\ncatkin_make libclfsm clfsm\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -2686,6 +2823,16 @@
 			isa = PBXTargetDependency;
 			target = F1D5758C1627948900976A23 /* libclfsm */;
 			targetProxy = F1D575B2162797B600976A23 /* PBXContainerItemProxy */;
+		};
+		F1D9C3D218EE3EE900593DD3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F1D9C3BD18EE3B8C00593DD3 /* libclfsm_catkin */;
+			targetProxy = F1D9C3D118EE3EE900593DD3 /* PBXContainerItemProxy */;
+		};
+		F1D9C3D418EE3EE900593DD3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F1D9C3C118EE3C2800593DD3 /* clfsm_catkin */;
+			targetProxy = F1D9C3D318EE3EE900593DD3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2962,6 +3109,196 @@
 			};
 			name = Release;
 		};
+		F1D9C39E18EE3AD900593DD3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				DEBUGGING_SYMBOLS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F1D9C39F18EE3AD900593DD3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F1D9C3BF18EE3B8C00593DD3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				DEBUGGING_SYMBOLS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = catkin;
+			};
+			name = Debug;
+		};
+		F1D9C3C018EE3B8C00593DD3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = catkin;
+			};
+			name = Release;
+		};
+		F1D9C3C318EE3C2800593DD3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				DEBUGGING_SYMBOLS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = clfsm_catkin;
+			};
+			name = Debug;
+		};
+		F1D9C3C418EE3C2800593DD3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = clfsm_catkin;
+			};
+			name = Release;
+		};
+		F1D9C3C718EE3C8900593DD3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				DEBUGGING_SYMBOLS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = clfsm_mk;
+			};
+			name = Debug;
+		};
+		F1D9C3C818EE3C8900593DD3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = clfsm_mk;
+			};
+			name = Release;
+		};
+		F1D9C3CF18EE3ED600593DD3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F1D9C3D018EE3ED600593DD3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -3027,6 +3364,49 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		F1D9C3BC18EE3AD900593DD3 /* Build configuration list for PBXLegacyTarget "libclfsm_mk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1D9C39E18EE3AD900593DD3 /* Debug */,
+				F1D9C39F18EE3AD900593DD3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F1D9C3BE18EE3B8C00593DD3 /* Build configuration list for PBXLegacyTarget "libclfsm_catkin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1D9C3BF18EE3B8C00593DD3 /* Debug */,
+				F1D9C3C018EE3B8C00593DD3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F1D9C3C218EE3C2800593DD3 /* Build configuration list for PBXLegacyTarget "clfsm_catkin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1D9C3C318EE3C2800593DD3 /* Debug */,
+				F1D9C3C418EE3C2800593DD3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F1D9C3C618EE3C8900593DD3 /* Build configuration list for PBXLegacyTarget "clfsm_mk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1D9C3C718EE3C8900593DD3 /* Debug */,
+				F1D9C3C818EE3C8900593DD3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F1D9C3CE18EE3ED600593DD3 /* Build configuration list for PBXAggregateTarget "clfsm_ROS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1D9C3CF18EE3ED600593DD3 /* Debug */,
+				F1D9C3D018EE3ED600593DD3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
