@@ -152,6 +152,11 @@
 		F1A3DF6D142D3BFE0060F293 /* FSMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30B142C0CDE001F788B /* FSMachine.cc */; };
 		F1A3DF6E142D3BFF0060F293 /* FSMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30B142C0CDE001F788B /* FSMachine.cc */; };
 		F1A517D215C91BDC00348C25 /* clfsm.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1A517D115C91BDC00348C25 /* clfsm.1 */; };
+		F1A854F118EF3F0500DCB83E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F16CC31C142C2AD9001F788B /* SenTestingKit.framework */; };
+		F1A854F718EF3F0500DCB83E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1A854F518EF3F0500DCB83E /* InfoPlist.strings */; };
+		F1A854F918EF3F0500DCB83E /* libclfsmTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A854F818EF3F0500DCB83E /* libclfsmTests.m */; };
+		F1A8551918EF3F8F00DCB83E /* CLTransitionExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F170781D15F95B830058AECD /* CLTransitionExpression.cc */; };
+		F1A8551C18EF3FC400DCB83E /* libclfsm.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F1D5758D1627948900976A23 /* libclfsm.dylib */; };
 		F1A9E7D2147F76C200C852FC /* ActivityFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CC147F76C200C852FC /* ActivityFactory.cpp */; };
 		F1A9E7D3147F76C200C852FC /* ActivityFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CC147F76C200C852FC /* ActivityFactory.cpp */; };
 		F1A9E7D4147F76C200C852FC /* parser_walk.c in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CE147F76C200C852FC /* parser_walk.c */; };
@@ -299,6 +304,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = F1D9C39018EE363B00593DD3;
 			remoteInfo = catkin;
+		};
+		F1A854FB18EF3F0500DCB83E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F16CC2F1142C0C01001F788B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F1D5758C1627948900976A23;
+			remoteInfo = libclfsm;
 		};
 		F1B5AB8B1555F8B1000B770D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1017,6 +1029,11 @@
 		F1A5180B15C9514A00348C25 /* PingPong.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PingPong.mm; sourceTree = "<group>"; };
 		F1A5180C15C9514A00348C25 /* PingPong.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = PingPong.h; sourceTree = "<group>"; };
 		F1A5180E15C9577000348C25 /* PingPong_Variables.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PingPong_Variables.h; sourceTree = "<group>"; };
+		F1A854F018EF3F0500DCB83E /* libclfsmTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = libclfsmTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1A854F418EF3F0500DCB83E /* libclfsmTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "libclfsmTests-Info.plist"; sourceTree = "<group>"; };
+		F1A854F618EF3F0500DCB83E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F1A854F818EF3F0500DCB83E /* libclfsmTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = libclfsmTests.m; sourceTree = "<group>"; };
+		F1A854FA18EF3F0500DCB83E /* libclfsmTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "libclfsmTests-Prefix.pch"; sourceTree = "<group>"; };
 		F1A9E7CC147F76C200C852FC /* ActivityFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ActivityFactory.cpp; sourceTree = "<group>"; };
 		F1A9E7CD147F76C200C852FC /* ActivityFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityFactory.h; sourceTree = "<group>"; };
 		F1A9E7CE147F76C200C852FC /* parser_walk.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = parser_walk.c; sourceTree = "<group>"; };
@@ -1094,6 +1111,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1D575B4162797CB00976A23 /* libclfsm.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1A854ED18EF3F0500DCB83E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1A8551C18EF3FC400DCB83E /* libclfsm.dylib in Frameworks */,
+				F1A854F118EF3F0500DCB83E /* SenTestingKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1733,6 +1759,7 @@
 				F155F66815C3A78A008F5637 /* simplecc */,
 				F1A517CE15C91BDC00348C25 /* clfsm */,
 				F1D5758E1627948900976A23 /* libclfsm */,
+				F1A854F218EF3F0500DCB83E /* libclfsmTests */,
 				F16CC31B142C2AD9001F788B /* Frameworks */,
 				F16CC2FB142C0C01001F788B /* Products */,
 				F15A2BF014CF81F400D88624 /* cdl */,
@@ -1748,6 +1775,7 @@
 				F155F66615C3A78A008F5637 /* simplecc */,
 				F1A517CC15C91BDC00348C25 /* clfsm */,
 				F1D5758D1627948900976A23 /* libclfsm.dylib */,
+				F1A854F018EF3F0500DCB83E /* libclfsmTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2187,6 +2215,25 @@
 			path = PingPong.machine;
 			sourceTree = "<group>";
 		};
+		F1A854F218EF3F0500DCB83E /* libclfsmTests */ = {
+			isa = PBXGroup;
+			children = (
+				F1A854F818EF3F0500DCB83E /* libclfsmTests.m */,
+				F1A854F318EF3F0500DCB83E /* Supporting Files */,
+			);
+			path = libclfsmTests;
+			sourceTree = "<group>";
+		};
+		F1A854F318EF3F0500DCB83E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F1A854F418EF3F0500DCB83E /* libclfsmTests-Info.plist */,
+				F1A854F518EF3F0500DCB83E /* InfoPlist.strings */,
+				F1A854FA18EF3F0500DCB83E /* libclfsmTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		F1D5758E1627948900976A23 /* libclfsm */ = {
 			isa = PBXGroup;
 			children = (
@@ -2367,6 +2414,24 @@
 			productReference = F1A517CC15C91BDC00348C25 /* clfsm */;
 			productType = "com.apple.product-type.tool";
 		};
+		F1A854EF18EF3F0500DCB83E /* libclfsmTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F1A8551618EF3F0500DCB83E /* Build configuration list for PBXNativeTarget "libclfsmTests" */;
+			buildPhases = (
+				F1A854EC18EF3F0500DCB83E /* Sources */,
+				F1A854ED18EF3F0500DCB83E /* Frameworks */,
+				F1A854EE18EF3F0500DCB83E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F1A854FC18EF3F0500DCB83E /* PBXTargetDependency */,
+			);
+			name = libclfsmTests;
+			productName = libclfsmTests;
+			productReference = F1A854F018EF3F0500DCB83E /* libclfsmTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 		F1D5758C1627948900976A23 /* libclfsm */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F1D575971627948900976A23 /* Build configuration list for PBXNativeTarget "libclfsm" */;
@@ -2392,7 +2457,12 @@
 			attributes = {
 				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0510;
-				ORGANIZATIONNAME = ICT;
+				ORGANIZATIONNAME = MiPal;
+				TargetAttributes = {
+					F1A854EF18EF3F0500DCB83E = {
+						TestTargetID = F1D5758C1627948900976A23;
+					};
+				};
 			};
 			buildConfigurationList = F16CC2F4142C0C01001F788B /* Build configuration list for PBXProject "gufsm" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -2435,6 +2505,7 @@
 				F1D9C3C118EE3C2800593DD3 /* clfsm_catkin */,
 				F1D9C3C518EE3C8900593DD3 /* clfsm_mk */,
 				F1D9C3CD18EE3ED600593DD3 /* clfsm_ROS */,
+				F1A854EF18EF3F0500DCB83E /* libclfsmTests */,
 			);
 		};
 /* End PBXProject section */
@@ -2580,6 +2651,14 @@
 				F12B4241147DC38B00FF4A6B /* TransitionsParser.g in Resources */,
 				F1284D1414A6CAA800C0247E /* InfoPlist.strings in Resources */,
 				F1284D1514A6CAA800C0247E /* SimpleWhiteboardTest-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1A854EE18EF3F0500DCB83E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1A854F718EF3F0500DCB83E /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2811,6 +2890,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F1A854EC18EF3F0500DCB83E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1A854F918EF3F0500DCB83E /* libclfsmTests.m in Sources */,
+				F1A8551918EF3F8F00DCB83E /* CLTransitionExpression.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F1D575891627948900976A23 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2858,6 +2946,11 @@
 			name = catkin;
 			targetProxy = F1A2C6EB18EF38DA003531D4 /* PBXContainerItemProxy */;
 		};
+		F1A854FC18EF3F0500DCB83E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F1D5758C1627948900976A23 /* libclfsm */;
+			targetProxy = F1A854FB18EF3F0500DCB83E /* PBXContainerItemProxy */;
+		};
 		F1D575B3162797B600976A23 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F1D5758C1627948900976A23 /* libclfsm */;
@@ -2888,6 +2981,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				F16CC328142C2AD9001F788B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F1A854F518EF3F0500DCB83E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1A854F618EF3F0500DCB83E /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -3117,6 +3218,71 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F1A854FD18EF3F0500DCB83E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "libclfsmTests/libclfsmTests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "libclfsmTests/libclfsmTests-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_CFLAGS = (
+					"-Wno-auto-import",
+					"$(inherited)",
+					"-Wno-objc-interface-ivars",
+					"-Wno-gnu-zero-variadic-macro-arguments",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		F1A854FE18EF3F0500DCB83E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "libclfsmTests/libclfsmTests-Prefix.pch";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "libclfsmTests/libclfsmTests-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_CFLAGS = (
+					"-Wno-auto-import",
+					"$(inherited)",
+					"-Wno-objc-interface-ivars",
+					"-Wno-gnu-zero-variadic-macro-arguments",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
@@ -3394,6 +3560,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		F1A8551618EF3F0500DCB83E /* Build configuration list for PBXNativeTarget "libclfsmTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1A854FD18EF3F0500DCB83E /* Debug */,
+				F1A854FE18EF3F0500DCB83E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		F1D575971627948900976A23 /* Build configuration list for PBXNativeTarget "libclfsm" */ = {
 			isa = XCConfigurationList;
