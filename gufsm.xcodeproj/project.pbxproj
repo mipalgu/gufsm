@@ -14,6 +14,7 @@
 				F1D9C3D518EE3EF600593DD3 /* ShellScript */,
 			);
 			dependencies = (
+				F1A2C6EC18EF38DA003531D4 /* PBXTargetDependency */,
 				F1D9C3D218EE3EE900593DD3 /* PBXTargetDependency */,
 				F1D9C3D418EE3EE900593DD3 /* PBXTargetDependency */,
 			);
@@ -277,6 +278,27 @@
 			proxyType = 2;
 			remoteGlobalIDString = F1731F6E118237E0000A9314;
 			remoteInfo = testcdl;
+		};
+		F1A2C6E718EF38A1003531D4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F1284D0214A6CAA800C0247E /* gusimplewhiteboard.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F1D9C39018EE363B00593DD3;
+			remoteInfo = catkin;
+		};
+		F1A2C6E918EF38B7003531D4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F16CC2F1142C0C01001F788B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F1D9C3BD18EE3B8C00593DD3;
+			remoteInfo = libclfsm_catkin;
+		};
+		F1A2C6EB18EF38DA003531D4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F1284D0214A6CAA800C0247E /* gusimplewhiteboard.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F1D9C39018EE363B00593DD3;
+			remoteInfo = catkin;
 		};
 		F1B5AB8B1555F8B1000B770D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -2197,7 +2219,7 @@
 /* Begin PBXLegacyTarget section */
 		F1D9C39D18EE3AD900593DD3 /* libclfsm_mk */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "clean host-local analyse";
+			buildArgumentsString = "host-local analyse";
 			buildConfigurationList = F1D9C3BC18EE3AD900593DD3 /* Build configuration list for PBXLegacyTarget "libclfsm_mk" */;
 			buildPhases = (
 			);
@@ -2218,6 +2240,7 @@
 			buildToolPath = /usr/local/bin/bmake;
 			buildWorkingDirectory = "$(SRCROOT)/libclfsm";
 			dependencies = (
+				F1A2C6E818EF38A1003531D4 /* PBXTargetDependency */,
 			);
 			name = libclfsm_catkin;
 			passBuildSettingsInEnvironment = 1;
@@ -2232,6 +2255,7 @@
 			buildToolPath = /usr/local/bin/bmake;
 			buildWorkingDirectory = "$(SRCROOT)/clfsm";
 			dependencies = (
+				F1A2C6EA18EF38B7003531D4 /* PBXTargetDependency */,
 			);
 			name = clfsm_catkin;
 			passBuildSettingsInEnvironment = 1;
@@ -2239,7 +2263,7 @@
 		};
 		F1D9C3C518EE3C8900593DD3 /* clfsm_mk */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "clean host analyse E=";
+			buildArgumentsString = "host analyse E=";
 			buildConfigurationList = F1D9C3C618EE3C8900593DD3 /* Build configuration list for PBXLegacyTarget "clfsm_mk" */;
 			buildPhases = (
 			);
@@ -2819,6 +2843,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F1A2C6E818EF38A1003531D4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = catkin;
+			targetProxy = F1A2C6E718EF38A1003531D4 /* PBXContainerItemProxy */;
+		};
+		F1A2C6EA18EF38B7003531D4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F1D9C3BD18EE3B8C00593DD3 /* libclfsm_catkin */;
+			targetProxy = F1A2C6E918EF38B7003531D4 /* PBXContainerItemProxy */;
+		};
+		F1A2C6EC18EF38DA003531D4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = catkin;
+			targetProxy = F1A2C6EB18EF38DA003531D4 /* PBXContainerItemProxy */;
+		};
 		F1D575B3162797B600976A23 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F1D5758C1627948900976A23 /* libclfsm */;
@@ -3372,6 +3411,7 @@
 				F1D9C39F18EE3AD900593DD3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F1D9C3BE18EE3B8C00593DD3 /* Build configuration list for PBXLegacyTarget "libclfsm_catkin" */ = {
 			isa = XCConfigurationList;
@@ -3407,6 +3447,7 @@
 				F1D9C3D018EE3ED600593DD3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
