@@ -2211,7 +2211,7 @@
 		};
 		F1D9C3BD18EE3B8C00593DD3 /* libclfsm_catkin */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "clean catkin";
+			buildArgumentsString = catkin;
 			buildConfigurationList = F1D9C3BE18EE3B8C00593DD3 /* Build configuration list for PBXLegacyTarget "libclfsm_catkin" */;
 			buildPhases = (
 			);
@@ -2225,7 +2225,7 @@
 		};
 		F1D9C3C118EE3C2800593DD3 /* clfsm_catkin */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "clean catkin";
+			buildArgumentsString = catkin;
 			buildConfigurationList = F1D9C3C218EE3C2800593DD3 /* Build configuration list for PBXLegacyTarget "clfsm_catkin" */;
 			buildPhases = (
 			);
