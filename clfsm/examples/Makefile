@@ -5,7 +5,8 @@
 #
 #MACHINES=PingPongCLFSM SMHeadGoalTracker SMHeadScannerGoal SMPlayerGoal SMWalkScannerGoal SMPlayerGoal TestNao
 #MACHINES=TestNao BatNaoMoves
-MACHINES=BatNaoMoves
+#MACHINES=BatNaoMoves
+MACHINES=BallTracker
 
 .include "../../../../mk/fsm.mk"	# comes first: required for compiling state machines
 

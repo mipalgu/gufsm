@@ -154,7 +154,7 @@
 		F1A517D215C91BDC00348C25 /* clfsm.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1A517D115C91BDC00348C25 /* clfsm.1 */; };
 		F1A854F118EF3F0500DCB83E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F16CC31C142C2AD9001F788B /* SenTestingKit.framework */; };
 		F1A854F718EF3F0500DCB83E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1A854F518EF3F0500DCB83E /* InfoPlist.strings */; };
-		F1A854F918EF3F0500DCB83E /* libclfsmTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A854F818EF3F0500DCB83E /* libclfsmTests.m */; };
+		F1A854F918EF3F0500DCB83E /* libclfsmTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1A854F818EF3F0500DCB83E /* libclfsmTests.mm */; };
 		F1A8551918EF3F8F00DCB83E /* CLTransitionExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F170781D15F95B830058AECD /* CLTransitionExpression.cc */; };
 		F1A8551C18EF3FC400DCB83E /* libclfsm.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F1D5758D1627948900976A23 /* libclfsm.dylib */; };
 		F1A9E7D2147F76C200C852FC /* ActivityFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CC147F76C200C852FC /* ActivityFactory.cpp */; };
@@ -191,6 +191,7 @@
 		F1D575B4162797CB00976A23 /* libclfsm.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F1D5758D1627948900976A23 /* libclfsm.dylib */; };
 		F1D575B5162798B600976A23 /* clfsm_vector_factory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F11144FB15F98447005953C1 /* clfsm_vector_factory.cc */; };
 		F1D575B6162798C900976A23 /* clfsm_factory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F12EAE5415F6F48A002DB436 /* clfsm_factory.cc */; };
+		F1D7CC2518EFF66A00DDB67C /* libclfsm_tests.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1D7CC2318EFF66A00DDB67C /* libclfsm_tests.cc */; };
 		F1D962B415F7236300EB0B30 /* FSMANTLRMachineFactory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1D962B315F7236300EB0B30 /* FSMANTLRMachineFactory.cc */; };
 		F1DF55911584274B0097A438 /* FSMVectorRunner.cc in Sources */ = {isa = PBXBuildFile; fileRef = F13BA40E1579E92500929C9C /* FSMVectorRunner.cc */; };
 		F1DF55921584274C0097A438 /* FSMVectorRunner.cc in Sources */ = {isa = PBXBuildFile; fileRef = F13BA40E1579E92500929C9C /* FSMVectorRunner.cc */; };
@@ -1032,7 +1033,7 @@
 		F1A854F018EF3F0500DCB83E /* libclfsmTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = libclfsmTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1A854F418EF3F0500DCB83E /* libclfsmTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "libclfsmTests-Info.plist"; sourceTree = "<group>"; };
 		F1A854F618EF3F0500DCB83E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F1A854F818EF3F0500DCB83E /* libclfsmTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = libclfsmTests.m; sourceTree = "<group>"; };
+		F1A854F818EF3F0500DCB83E /* libclfsmTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = libclfsmTests.mm; sourceTree = "<group>"; };
 		F1A854FA18EF3F0500DCB83E /* libclfsmTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "libclfsmTests-Prefix.pch"; sourceTree = "<group>"; };
 		F1A9E7CC147F76C200C852FC /* ActivityFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ActivityFactory.cpp; sourceTree = "<group>"; };
 		F1A9E7CD147F76C200C852FC /* ActivityFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityFactory.h; sourceTree = "<group>"; };
@@ -1061,6 +1062,8 @@
 		F1D126F21609382400E526BE /* clfsm_cc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clfsm_cc.h; sourceTree = "<group>"; };
 		F1D5758D1627948900976A23 /* libclfsm.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libclfsm.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1D575B71627B9E400976A23 /* clfsm_main.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = clfsm_main.cc; sourceTree = "<group>"; };
+		F1D7CC2318EFF66A00DDB67C /* libclfsm_tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = libclfsm_tests.cc; sourceTree = "<group>"; };
+		F1D7CC2418EFF66A00DDB67C /* libclfsm_tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libclfsm_tests.h; sourceTree = "<group>"; };
 		F1D962B015F722D400EB0B30 /* FSMANTLRVectorFactory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRVectorFactory.cc; sourceTree = "<group>"; };
 		F1D962B115F7231300EB0B30 /* FSMANTLRMachineFactory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRMachineFactory.cc; sourceTree = "<group>"; };
 		F1D962B315F7236300EB0B30 /* FSMANTLRMachineFactory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRMachineFactory.cc; sourceTree = "<group>"; };
@@ -2218,7 +2221,9 @@
 		F1A854F218EF3F0500DCB83E /* libclfsmTests */ = {
 			isa = PBXGroup;
 			children = (
-				F1A854F818EF3F0500DCB83E /* libclfsmTests.m */,
+				F1A854F818EF3F0500DCB83E /* libclfsmTests.mm */,
+				F1D7CC2318EFF66A00DDB67C /* libclfsm_tests.cc */,
+				F1D7CC2418EFF66A00DDB67C /* libclfsm_tests.h */,
 				F1A854F318EF3F0500DCB83E /* Supporting Files */,
 			);
 			path = libclfsmTests;
@@ -2894,7 +2899,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1A854F918EF3F0500DCB83E /* libclfsmTests.m in Sources */,
+				F1A854F918EF3F0500DCB83E /* libclfsmTests.mm in Sources */,
+				F1D7CC2518EFF66A00DDB67C /* libclfsm_tests.cc in Sources */,
 				F1A8551918EF3F8F00DCB83E /* CLTransitionExpression.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3244,12 +3250,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "libclfsmTests/libclfsmTests-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				OTHER_CFLAGS = (
-					"-Wno-auto-import",
-					"$(inherited)",
-					"-Wno-objc-interface-ivars",
-					"-Wno-gnu-zero-variadic-macro-arguments",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -3275,12 +3275,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "libclfsmTests/libclfsmTests-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				OTHER_CFLAGS = (
-					"-Wno-auto-import",
-					"$(inherited)",
-					"-Wno-objc-interface-ivars",
-					"-Wno-gnu-zero-variadic-macro-arguments",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -3568,6 +3562,7 @@
 				F1A854FE18EF3F0500DCB83E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F1D575971627948900976A23 /* Build configuration list for PBXNativeTarget "libclfsm" */ = {
 			isa = XCConfigurationList;
