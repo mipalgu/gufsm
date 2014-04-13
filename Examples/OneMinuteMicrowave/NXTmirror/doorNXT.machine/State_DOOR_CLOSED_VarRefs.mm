@@ -1,7 +1,7 @@
 //
-//State_DOOR_CLOSED_VarRefs.mm
+// State_DOOR_CLOSED_VarRefs.mm
 //
-//Automatically created through MiEditCLFSM -- do not change manually!
+// Automatically created through MiCASE -- do not change manually!
 //
 DOOR_CLOSED *_s = static_cast<DOOR_CLOSED *>(_state);
 
