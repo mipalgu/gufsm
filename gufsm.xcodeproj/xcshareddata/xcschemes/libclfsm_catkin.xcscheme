@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F1D5758C1627948900976A23"
-               BuildableName = "libclfsm.dylib"
-               BlueprintName = "libclfsm"
+               BlueprintIdentifier = "F1D9C3BD18EE3B8C00593DD3"
+               BuildableName = "libclfsm_catkin"
+               BlueprintName = "libclfsm_catkin"
                ReferencedContainer = "container:gufsm.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,16 +28,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F1A854EF18EF3F0500DCB83E"
-               BuildableName = "libclfsmTests.octest"
-               BlueprintName = "libclfsmTests"
-               ReferencedContainer = "container:gufsm.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

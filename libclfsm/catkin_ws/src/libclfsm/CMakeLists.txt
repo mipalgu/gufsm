@@ -116,6 +116,7 @@ src/clfsm_vector_factory.cc
 src/clfsm_wb_vector_factory.cc
 src/gu_util.cpp
 )
+set_target_properties(libclfsm PROPERTIES OUTPUT_NAME clfsm)
 
 ## Declare a cpp executable
 # add_executable(libclfsm_node src/libclfsm_node.cpp)
@@ -142,18 +143,18 @@ target_link_libraries(libclfsm gusimplewhiteboard ${CMAKE_THREAD_LIBS_INIT})
 # )
 
 ## Mark executables and/or libraries for installation
-# install(TARGETS libclfsm libclfsm_node
-#   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-#   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-#   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-# )
+install(TARGETS libclfsm
+   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+ )
 
 ## Mark cpp header files for installation
-# install(DIRECTORY include/${PROJECT_NAME}/
-#   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-#   FILES_MATCHING PATTERN "*.h"
-#   PATTERN ".svn" EXCLUDE
-# )
+install(DIRECTORY include/
+   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+   FILES_MATCHING PATTERN "*.h"
+   PATTERN ".svn" EXCLUDE
+ )
 
 ## Mark other files for installation (e.g. launch and bag files, etc.)
 # install(FILES
@@ -167,7 +168,7 @@ target_link_libraries(libclfsm gusimplewhiteboard ${CMAKE_THREAD_LIBS_INIT})
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_libclfsm.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_clfsm.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

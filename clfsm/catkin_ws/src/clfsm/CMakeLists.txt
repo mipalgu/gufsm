@@ -126,11 +126,11 @@ target_link_libraries(clfsm libclfsm gusimplewhiteboard ${CMAKE_THREAD_LIBS_INIT
 # )
 
 ## Mark executables and/or libraries for installation
-# install(TARGETS clfsm clfsm_node
-#   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-#   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-#   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-# )
+install(TARGETS clfsm
+   ARCHIVE DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
+   LIBRARY DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
+   RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
+ )
 
 ## Mark cpp header files for installation
 # install(DIRECTORY include/${PROJECT_NAME}/

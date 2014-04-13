@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F1D5758C1627948900976A23"
-               BuildableName = "libclfsm.dylib"
-               BlueprintName = "libclfsm"
+               BlueprintIdentifier = "F1A517CB15C91BDC00348C25"
+               BuildableName = "clfsm"
+               BlueprintName = "clfsm"
                ReferencedContainer = "container:gufsm.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,17 +28,16 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F1A854EF18EF3F0500DCB83E"
-               BuildableName = "libclfsmTests.octest"
-               BlueprintName = "libclfsmTests"
-               ReferencedContainer = "container:gufsm.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "F1A517CB15C91BDC00348C25"
+            BuildableName = "clfsm"
+            BlueprintName = "clfsm"
+            ReferencedContainer = "container:gufsm.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -49,6 +48,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "F1A517CB15C91BDC00348C25"
+            BuildableName = "clfsm"
+            BlueprintName = "clfsm"
+            ReferencedContainer = "container:gufsm.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -58,6 +66,15 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
+      <BuildableProductRunnable>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "F1A517CB15C91BDC00348C25"
+            BuildableName = "clfsm"
+            BlueprintName = "clfsm"
+            ReferencedContainer = "container:gufsm.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

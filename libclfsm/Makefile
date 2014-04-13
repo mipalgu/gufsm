@@ -26,6 +26,8 @@ INSTHDRS=CLMacros.h CLWhiteboard.h
 CATKIN_HDRS+=${WB_DIR}/${hdr}
 .endfor
 
+CATKIN_HDRS+=${INSTHDRS}
+
 .if ${LOCAL} != _LOCAL
 host: host-local
 	echo "Use 'make host-local' instead of 'make host'"
