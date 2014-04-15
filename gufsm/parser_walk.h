@@ -2,7 +2,7 @@
  *  parser_walk.h
  *  
  *  Created by René Hexel on 21/08/11.
- *  Copyright (c) 2011 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2011, 2014 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -57,9 +57,11 @@
 #ifndef _PARSER_WALK_H_
 #define _PARSER_WALK_H_
 
-#include <stdbool.h>
 #include <antlr3.h>
 #include "SimpleCLexer.h"
+#undef true
+#undef false
+#include <stdbool.h>
 
 /**
  * This is the callback function that gets invoked on every single token
