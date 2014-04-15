@@ -239,7 +239,7 @@ string ANTLRMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                 /*
                  * while there are further transitions to go, evaluate them
                  */
-                if (tid < m->numberOfTransitionsInCurrentState())
+                if (tid < static_cast<int>(m->numberOfTransitionsInCurrentState()))
                 {
                         bool result = m->evaluateTransitionWithIndex(tid);
                         ///* place values in next*/
@@ -326,7 +326,7 @@ string ANTLRMachineVector:: kripkeToString(KripkeState &s, size_t n, string **na
 
         ss << (derived? next : "") << "turn " << (derived? ")" : "" )<< " = " << s.whose_turn << " & ";
 
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < static_cast<int>(n); i++)
         {
                 unsigned long long j = (PATERN_BITS << (i*BITS)); /*shifted left as much as i blocks of BITS */
 
@@ -342,7 +342,7 @@ void ANTLRMachineVector:: kripkeToANTLRContext (KripkeState &s, size_t n, string
 {
         ANTLRContext* antrlContext = (ANTLRContext *) context();
 
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < static_cast<int>(n); i++)
         {
 
                 unsigned long long j = 0;   /* a block of BITS set to 1 */
@@ -363,7 +363,7 @@ unsigned long long ANTLRMachineVector:: ANTLRContextToVariableCombination(size_t
         unsigned long long j = 0;
         unsigned long long binary_value;
 
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < static_cast<int>(n); i++)
         {
                 binary_value = PATERN_BITS & antrlContext->value(*names[i]);
                 j |= (binary_value << (i*BITS));
@@ -376,7 +376,7 @@ unsigned long long ANTLRMachineVector::AllToExtVariableCombination(unsigned long
 {
         unsigned long long j = 0;
         int k = 0;                                      // ext var offset
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < static_cast<int>(n); i++)
         {
                 const string &name = *names[i];
 
@@ -397,7 +397,7 @@ unsigned long long ANTLRMachineVector::AllToExtVariableCombination(unsigned long
 unsigned long long ANTLRMachineVector::extVarToKripke(unsigned long long all_vars, unsigned long long ext, const vector<int> &ext_offsets)
 {
         size_t n = ext_offsets.size();
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < static_cast<int>(n); i++)
                 if (ext & (1ULL << i ))  // ext is a combiantion of single bits
                         all_vars |= (1ULL << (ext_offsets[i]*BITS) );
                 else
@@ -441,7 +441,7 @@ string ANTLRMachineVector::kripkeInSVMformat()
         // range of the variable turn */
         ss << "turn : {" ;
 
-        for (int i=0; i < machines().size() -1; i++)
+        for (int i=0; i < static_cast<int>(machines().size())-1; i++)
         {  ss << i <<"," ;
         }
         ss << machines().size() -1 << "};\n" << std::endl;
@@ -498,6 +498,7 @@ string ANTLRMachineVector::kripkeInSVMformat()
                         SuspensibleMachine *m = *it;
                         KripkeFreezePointOfMachine freezePoint;
                         freezePoint.machine=m;
+                        (void)freezePoint;  // really?
 
                         pcKripkeValue.push_back(m->localKripkeStateNames() [indexesPerFSM[i]]);
                         i++;
@@ -583,7 +584,7 @@ string ANTLRMachineVector::kripkeInSVMformat()
 
 
         }
-        assert(i == n);
+        assert(i == static_cast<int>(n));
         assert(totalBits < 64); // memory word is a limit
 
         list<KripkeState> kstates;
@@ -592,7 +593,7 @@ string ANTLRMachineVector::kripkeInSVMformat()
         {
                 unsigned long long regularPack =0;
                 int positionInCombiantion=0;
-                for (int varNumber=0; varNumber<n; varNumber++)
+                for (int varNumber=0; varNumber < static_cast<int>(n); varNumber++)
                 {
                         if (_typeBoolMask & (1ULL << varNumber))
                                 //copyBit
@@ -625,7 +626,7 @@ string ANTLRMachineVector::kripkeInSVMformat()
         /* Write the closing ESAC  */
         ss << "esac"  << std::endl;
 
-        for (i = 0; i < n; i++)
+        for (int i = 0; i < static_cast<int>(n); i++)
                 delete names[i];
 
         return ss.str();

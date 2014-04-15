@@ -183,7 +183,7 @@ int ANTLRStateMachineVectorFactory::index_of_machine_named(string machine_name)
                         break;
                 i++;
         }
-        if (fsms()->machines().size() <= i) return -1;
+        if (static_cast<int>(fsms()->machines().size()) <= i) return -1;
 
         return i;
 }

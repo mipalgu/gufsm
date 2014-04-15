@@ -2,7 +2,7 @@
  *  FSMachineVector.cc
  *  
  *  Created by René Hexel on 22/11/11.
- *  Copyright (c) 2011-2013 Rene Hexel.
+ *  Copyright (c) 2011, 2012, 2013, 2014 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -174,6 +174,7 @@ int main (int argc, char * const argv[])
         argc -= optind;
         argv += optind;
 
+        (void) want_cdl;
         vector<string> machine_names;
 
         while (argc-- > 0)

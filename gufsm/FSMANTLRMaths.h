@@ -339,7 +339,7 @@ namespace FSM
                 /** setting any parameter sets the content */
                 virtual void add_parameter(int idx, long long value)
                 {
-                        if (idx >= _content.size())
+                        if (idx >= static_cast<int>(_content.size()))
                                 _content.push_back(value);
                         else
                                 _content[idx] = value;

@@ -183,7 +183,7 @@ namespace FSM
 		bool name_is_internal_variable(const std::string &name)
 		{
 			return name.substr(0, 1) == "M" &&
-			       name.find("$$") != -1;
+			       static_cast<int>(name.find("$$")) != -1;
 			
 		}
                 
