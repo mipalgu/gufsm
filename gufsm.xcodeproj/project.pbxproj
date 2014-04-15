@@ -2269,6 +2269,20 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXLegacyTarget section */
+		F186708318FCB54E00A11587 /* gufsm_mk */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = host;
+			buildConfigurationList = F186708418FCB54E00A11587 /* Build configuration list for PBXLegacyTarget "gufsm_mk" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/local/bin/bmake;
+			buildWorkingDirectory = "$(SRCROOT)/gufsm";
+			dependencies = (
+			);
+			name = gufsm_mk;
+			passBuildSettingsInEnvironment = 1;
+			productName = libclfsm_mk;
+		};
 		F1D9C39D18EE3AD900593DD3 /* libclfsm_mk */ = {
 			isa = PBXLegacyTarget;
 			buildArgumentsString = "host-local analyse";
@@ -2500,6 +2514,7 @@
 			projectRoot = "";
 			targets = (
 				F16CC2F9142C0C01001F788B /* gufsm */,
+				F186708318FCB54E00A11587 /* gufsm_mk */,
 				F16CC319142C2AD9001F788B /* FSMTest */,
 				E11CABD814BD243900A1019A /* fsmWbDependencyDump */,
 				F155F66515C3A78A008F5637 /* simplecc */,
@@ -3203,6 +3218,50 @@
 			};
 			name = Release;
 		};
+		F186708518FCB54E00A11587 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				DEBUGGING_SYMBOLS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "libclfsm_mk copy";
+			};
+			name = Debug;
+		};
+		F186708618FCB54E00A11587 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "libclfsm_mk copy";
+			};
+			name = Release;
+		};
 		F1A517D315C91BDC00348C25 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -3542,6 +3601,15 @@
 			buildConfigurations = (
 				F16CC32F142C2AD9001F788B /* Debug */,
 				F16CC330142C2AD9001F788B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F186708418FCB54E00A11587 /* Build configuration list for PBXLegacyTarget "gufsm_mk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F186708518FCB54E00A11587 /* Debug */,
+				F186708618FCB54E00A11587 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
