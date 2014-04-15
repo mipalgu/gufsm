@@ -3,7 +3,7 @@
  *  gufsm
  *
  *  Created by Rene Hexel on 3/08/12.
- *  Copyright (c) 2012, 2013 Rene Hexel and Vlad Estivill-Castro.
+ *  Copyright (c) 2012, 2013, 2014 Rene Hexel and Vlad Estivill-Castro.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -626,7 +626,7 @@ string ANTLRMachineVector::kripkeInSVMformat()
         /* Write the closing ESAC  */
         ss << "esac"  << std::endl;
 
-        for (int i = 0; i < static_cast<int>(n); i++)
+        for (i = 0; i < static_cast<int>(n); i++)
                 delete names[i];
 
         return ss.str();
