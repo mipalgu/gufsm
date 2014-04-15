@@ -2727,8 +2727,8 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "cd \"${SRCROOT}/../../../ros/catkin_ws\"\n. /opt/local/setup.sh\ncatkin_make libclfsm clfsm\n";
+			shellPath = /bin/bash;
+			shellScript = "cd \"${SRCROOT}/../../../ros/catkin_ws\"\n. /opt/local/setup.bash\necho '**** BUILDING libclfsm and clfsm ****'\ncatkin_make libclfsm clfsm\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
