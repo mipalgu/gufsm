@@ -4,15 +4,20 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>qfsm2gu.xcscheme</key>
+		<key>Lqfsm2gu.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>76</integer>
+			<integer>26</integer>
+		</dict>
+		<key>qfsm2gu.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>25</integer>
 		</dict>
 		<key>syntax_checker.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>84</integer>
+			<integer>85</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -23,6 +28,11 @@
 			<true/>
 		</dict>
 		<key>F1AE8BAC1332ADF800E8F7AB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F1FABD4A19026F23001AD476</key>
 		<dict>
 			<key>primary</key>
 			<true/>
