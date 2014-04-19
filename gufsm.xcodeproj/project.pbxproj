@@ -2341,6 +2341,48 @@
 			passBuildSettingsInEnvironment = 1;
 			productName = libclfsm_mk;
 		};
+		F1FABCA719026B1E001AD476 /* Lclfsm */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = clfsm;
+			buildConfigurationList = F1FABCC419026B1E001AD476 /* Build configuration list for PBXLegacyTarget "Lclfsm" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/local/bin/jenkinsmon;
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = Lclfsm;
+			passBuildSettingsInEnvironment = 0;
+			productName = Lclfsm;
+		};
+		F1FABCC519026B39001AD476 /* Lgufsm */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = gufsm;
+			buildConfigurationList = F1FABCC619026B39001AD476 /* Build configuration list for PBXLegacyTarget "Lgufsm" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/local/bin/jenkinsmon;
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = Lgufsm;
+			passBuildSettingsInEnvironment = 0;
+			productName = Lgufsm;
+		};
+		F1FABCC919026B4C001AD476 /* Llibclfsm */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = libclfsm;
+			buildConfigurationList = F1FABCCA19026B4C001AD476 /* Build configuration list for PBXLegacyTarget "Llibclfsm" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/local/bin/jenkinsmon;
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = Llibclfsm;
+			passBuildSettingsInEnvironment = 0;
+			productName = Llibclfsm;
+		};
 /* End PBXLegacyTarget section */
 
 /* Begin PBXNativeTarget section */
@@ -2526,6 +2568,9 @@
 				F1D9C3C518EE3C8900593DD3 /* clfsm_mk */,
 				F1D9C3CD18EE3ED600593DD3 /* clfsm_ROS */,
 				F1A854EF18EF3F0500DCB83E /* libclfsmTests */,
+				F1FABCA719026B1E001AD476 /* Lclfsm */,
+				F1FABCC519026B39001AD476 /* Lgufsm */,
+				F1FABCC919026B4C001AD476 /* Llibclfsm */,
 			);
 		};
 /* End PBXProject section */
@@ -3557,6 +3602,138 @@
 			};
 			name = Release;
 		};
+		F1FABCA819026B1E001AD476 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				DEBUGGING_SYMBOLS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F1FABCA919026B1E001AD476 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F1FABCC719026B39001AD476 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				DEBUGGING_SYMBOLS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F1FABCC819026B39001AD476 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F1FABCCB19026B4C001AD476 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				DEBUGGING_SYMBOLS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F1FABCCC19026B4C001AD476 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -3685,6 +3862,30 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		F1FABCC419026B1E001AD476 /* Build configuration list for PBXLegacyTarget "Lclfsm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1FABCA819026B1E001AD476 /* Debug */,
+				F1FABCA919026B1E001AD476 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F1FABCC619026B39001AD476 /* Build configuration list for PBXLegacyTarget "Lgufsm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1FABCC719026B39001AD476 /* Debug */,
+				F1FABCC819026B39001AD476 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F1FABCCA19026B4C001AD476 /* Build configuration list for PBXLegacyTarget "Llibclfsm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1FABCCB19026B4C001AD476 /* Debug */,
+				F1FABCCC19026B4C001AD476 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
