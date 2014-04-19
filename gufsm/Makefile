@@ -65,7 +65,7 @@ ANTLR_GRAMMARS=SimpleCLexer.g
 #CLANG_CXXFLAGS=-std=c++0x
 #TARGET_USE_CLANG=YES
 
-#.include "../../../mk/boost.mk"		# required for boost
+.include "../../../mk/libcxx.mk"	# needs to come first
 .include "../../../mk/antlr.mk"		# required for grammar parsing
 .include "../../../mk/whiteboard.mk"	# required for the whiteboard
 .include "../../../mk/cdlengine.mk"	# required for the whiteboard
