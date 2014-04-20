@@ -3870,6 +3870,7 @@
 				F1FABCA919026B1E001AD476 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F1FABCC619026B39001AD476 /* Build configuration list for PBXLegacyTarget "Lgufsm" */ = {
 			isa = XCConfigurationList;
@@ -3878,6 +3879,7 @@
 				F1FABCC819026B39001AD476 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F1FABCCA19026B4C001AD476 /* Build configuration list for PBXLegacyTarget "Llibclfsm" */ = {
 			isa = XCConfigurationList;
@@ -3886,6 +3888,7 @@
 				F1FABCCC19026B4C001AD476 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
