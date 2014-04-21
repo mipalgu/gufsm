@@ -8,8 +8,8 @@ find_package(catkin REQUIRED COMPONENTS gusimplewhiteboard libclfsm)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
-find_package(Threads REQUIRED COMPONENTS system)
-
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+find_package(LibDispatch REQUIRED)
 
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
@@ -109,7 +109,7 @@ add_executable(clfsm
 # add_dependencies(clfsm_node clfsm_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(clfsm libclfsm gusimplewhiteboard ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(clfsm libclfsm gusimplewhiteboard ${CMAKE_DL_LIBS} ${LIBDISPATCH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 
 #############
 ## Install ##
@@ -126,11 +126,11 @@ target_link_libraries(clfsm libclfsm gusimplewhiteboard ${CMAKE_THREAD_LIBS_INIT
 # )
 
 ## Mark executables and/or libraries for installation
-install(TARGETS clfsm
-   ARCHIVE DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
-   LIBRARY DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
-   RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
- )
+# install(TARGETS clfsm clfsm_node
+#   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+#   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+#   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+# )
 
 ## Mark cpp header files for installation
 # install(DIRECTORY include/${PROJECT_NAME}/

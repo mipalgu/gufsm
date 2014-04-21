@@ -8,8 +8,8 @@ find_package(catkin REQUIRED COMPONENTS gusimplewhiteboard)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
-find_package(Threads REQUIRED COMPONENTS system)
-
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+find_package(LibDispatch REQUIRED)
 
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
@@ -116,7 +116,6 @@ src/clfsm_vector_factory.cc
 src/clfsm_wb_vector_factory.cc
 src/gu_util.cpp
 )
-set_target_properties(libclfsm PROPERTIES OUTPUT_NAME clfsm)
 
 ## Declare a cpp executable
 # add_executable(libclfsm_node src/libclfsm_node.cpp)
@@ -126,7 +125,7 @@ set_target_properties(libclfsm PROPERTIES OUTPUT_NAME clfsm)
 # add_dependencies(libclfsm_node libclfsm_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(libclfsm gusimplewhiteboard ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(libclfsm gusimplewhiteboard ${LIBDISPATCH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 
 #############
 ## Install ##
@@ -143,18 +142,18 @@ target_link_libraries(libclfsm gusimplewhiteboard ${CMAKE_THREAD_LIBS_INIT})
 # )
 
 ## Mark executables and/or libraries for installation
-install(TARGETS libclfsm
-   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
- )
+# install(TARGETS libclfsm libclfsm_node
+#   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+#   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+#   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+# )
 
 ## Mark cpp header files for installation
-install(DIRECTORY include/
-   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-   FILES_MATCHING PATTERN "*.h"
-   PATTERN ".svn" EXCLUDE
- )
+# install(DIRECTORY include/${PROJECT_NAME}/
+#   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+#   FILES_MATCHING PATTERN "*.h"
+#   PATTERN ".svn" EXCLUDE
+# )
 
 ## Mark other files for installation (e.g. launch and bag files, etc.)
 # install(FILES
@@ -168,7 +167,7 @@ install(DIRECTORY include/
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_clfsm.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_libclfsm.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
