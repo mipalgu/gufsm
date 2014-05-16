@@ -1,1 +1,1 @@
-nao_state.chest_pressed() || (sonarLeft < 21) || (sonarRight < 21)
+after_ms(500)  && ( sonarLeft > 50 )
