@@ -7,7 +7,7 @@ nao_state = nao_state_ptr.get();
 motion_ptr.set(MOTION_Commands(true,true,true));
 
 walk_post(WALK_Ready); protected_msleep(15);
-walk_post(WALK_ControlStatus(WALK_Run, 35, 0, 0, 5));
+walk_post(WALK_ControlStatus(WALK_Run, 60, 0, 0, 60));
 
 sensorValues=sensorHandler.get();
 sonarLeft = int ( sensorValues.sonar(Sonar::Left0));
