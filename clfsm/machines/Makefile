@@ -15,7 +15,10 @@ DEMO_DIR=DemoMachines
 
 all-machines:
 .for pfix in DEFAULT ROBOCUP DEMO
-	cd ${${pfix}_DIR:Q} &&				\
-	${MAKE} ${MAKEFLAGS} MACHINES=${${pfix}_MACHINES:Q}
+	cd ${${pfix}_DIR:Q} 
+#	${MAKE} ${MAKEFLAGS} 
+	${MAKE} install-local ${MAKEFLAGS} 
+	#for some reason 'cd && make' was not returning me to the top level directory
+	cd .. 
 .endfor
 
