@@ -8,4 +8,4 @@ NAO_State	nao_state;	///<
 QSay_t	say;	///< 
 int	clfsm_delay;	///< 
 string	main_machine;	///< 
-int machine_index;	///<;	///<
+int	machine_index;	///<

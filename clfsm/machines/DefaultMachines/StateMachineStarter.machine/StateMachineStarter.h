@@ -16,12 +16,12 @@ namespace FSM
     {
         class StateMachineStarter: public CLMachine
         {
-            CLState *_states[10];
+            CLState *_states[11];
         public:
             StateMachineStarter(int mid  = 0, const char *name = "StateMachineStarter");
             virtual ~StateMachineStarter();
             virtual CLState * const * states() const { return _states; }
-            virtual int numberOfStates() const { return 10; }
+            virtual int numberOfStates() const { return 11; }
 #           include "StateMachineStarter_Variables.h"
         };
     }

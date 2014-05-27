@@ -12,10 +12,11 @@
 #include "State_Restart_FSMs.h"
 #include "State_Control_State.h"
 #include "State_Spacing.h"
-#include "State_HelpMessage_2.h"
+#include "State_HelpMessage.h"
 #include "State_PickMachine.h"
 #include "State_IncIndex.h"
 #include "State_DecIndex.h"
+#include "State_Wait.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -36,10 +37,11 @@ StateMachineStarter::StateMachineStarter(int mid, const char *name): CLMachine(m
 	_states[3] = new FSMStateMachineStarter::State::Restart_FSMs;
 	_states[4] = new FSMStateMachineStarter::State::Control_State;
 	_states[5] = new FSMStateMachineStarter::State::Spacing;
-	_states[6] = new FSMStateMachineStarter::State::HelpMessage_2;
+	_states[6] = new FSMStateMachineStarter::State::HelpMessage;
 	_states[7] = new FSMStateMachineStarter::State::PickMachine;
 	_states[8] = new FSMStateMachineStarter::State::IncIndex;
 	_states[9] = new FSMStateMachineStarter::State::DecIndex;
+	_states[10] = new FSMStateMachineStarter::State::Wait;
 
 	setInitialState(_states[0]);            // set initial state
 }
@@ -56,4 +58,5 @@ StateMachineStarter::~StateMachineStarter()
 	delete _states[7];
 	delete _states[8];
 	delete _states[9];
+	delete _states[10];
 }

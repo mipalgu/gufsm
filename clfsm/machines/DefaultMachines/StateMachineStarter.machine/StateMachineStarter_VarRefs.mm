@@ -13,7 +13,7 @@ NAO_State_t	&nao_state_ptr = _m->nao_state_ptr;	///<
 NAO_State	&nao_state = _m->nao_state;	///< 
 QSay_t	&say = _m->say;	///< 
 int	&clfsm_delay = _m->clfsm_delay;	///< 
-int	&machine_index = _m->machine_index;	///< 
 string	&main_machine = _m->main_machine;	///< 
+int	&machine_index = _m->machine_index;	///< 
 
 #pragma clang diagnostic pop
