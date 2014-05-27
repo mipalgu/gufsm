@@ -3,12 +3,19 @@
 #
 # Makefile for pre- and cross-compiling .machine files
 #
+ALL_TARGETS=all-machines
 
-#MACHINES=SMButtonChest 
-MACHINES=StateMachineStarter SMGameController SMFallManager SMBallFollower SMButtonChest SMButtonLeftFoot SMButtonRightFoot SMGetUp SMHeadBallTracker SMHeadScanner SMLeftFootControl SMPlayer SMKicker SMRobotPosition SMWalkScanner Safety_BatteryMonitor SMSeeker SMSet SMLeapController SMTeleoperationController SMTeleoperationHeadControl SMTeleoperation
+ROBOCUP_YEAR=2014
 
-.include "../../../../../mk/fsm.mk"	# comes first: required for compiling state machines
+DEFAULT_DIR=DefaultMachines
+ROBOCUP_DIR=RoboCup${ROBOCUP_YEAR}
+DEMO_DIR=DemoMachines
 
-SPECIFIC_CPPFLAGS+=-fblocks
+.include "../../../../mk/mipal.mk"	# comes last!
 
-.include "../../../../../mk/mipal.mk"	# comes last!
+all-machines:
+.for pfix in DEFAULT ROBOCUP DEMO
+	cd ${${pfix}_DIR:Q} &&				\
+	${MAKE} ${MAKEFLAGS} MACHINES=${${pfix}_MACHINES:Q}
+.endfor
+
