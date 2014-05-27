@@ -1,10 +1,10 @@
 //
-// State_Alt_Test_State.h
+// State_DecIndex.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_StateMachineStarter_State_Alt_Test_State_h
-#define clfsm_StateMachineStarter_State_Alt_Test_State_h
+#ifndef clfsm_StateMachineStarter_State_DecIndex_h
+#define clfsm_StateMachineStarter_State_DecIndex_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class Alt_Test_State: public CLState
+            class DecIndex: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -46,13 +46,13 @@ namespace FSM
                 CLTransition *_transitions[1];
 
                 public:
-                    Alt_Test_State(const char *name = "Alt_Test_State");
-                    virtual ~Alt_Test_State();
+                    DecIndex(const char *name = "DecIndex");
+                    virtual ~DecIndex();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
                     virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_Alt_Test_State_Variables.h"
+#                   include "State_DecIndex_Variables.h"
             };
         }
       }

@@ -1,7 +1,4 @@
-say("Starter Control");
+say("Starter Control. Press The Chest For Help");
 
 
 nao_state = nao_state_ptr.get();
-
-
-in_test_state = false;

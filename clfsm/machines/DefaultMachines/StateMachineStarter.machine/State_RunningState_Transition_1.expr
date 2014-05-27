@@ -1,0 +1,1 @@
+after_ms(20) && is_suspended(main_machine.c_str())

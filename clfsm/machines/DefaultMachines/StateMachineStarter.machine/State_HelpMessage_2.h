@@ -1,10 +1,10 @@
 //
-// State_Say_IP.h
+// State_HelpMessage_2.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_StateMachineStarter_State_Say_IP_h
-#define clfsm_StateMachineStarter_State_Say_IP_h
+#ifndef clfsm_StateMachineStarter_State_HelpMessage_2_h
+#define clfsm_StateMachineStarter_State_HelpMessage_2_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class Say_IP: public CLState
+            class HelpMessage_2: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -43,24 +43,16 @@ namespace FSM
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                class Transition_1: public CLTransition
-                {
-                public:
-                    Transition_1(int toState = 6): CLTransition(toState) {}
-
-                    virtual bool check(CLMachine *, CLState *) const;
-                };
-
-                CLTransition *_transitions[2];
+                CLTransition *_transitions[1];
 
                 public:
-                    Say_IP(const char *name = "Say_IP");
-                    virtual ~Say_IP();
+                    HelpMessage_2(const char *name = "HelpMessage_2");
+                    virtual ~HelpMessage_2();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 2; }
+                    virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_Say_IP_Variables.h"
+#                   include "State_HelpMessage_2_Variables.h"
             };
         }
       }

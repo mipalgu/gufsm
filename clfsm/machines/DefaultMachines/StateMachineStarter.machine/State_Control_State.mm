@@ -18,7 +18,6 @@ Control_State::Control_State(const char *name): CLState(name, *new Control_State
 {
 	_transitions[0] = new Transition_0();
 	_transitions[1] = new Transition_1();
-	_transitions[2] = new Transition_2();
 }
 
 Control_State::~Control_State()
@@ -29,7 +28,6 @@ Control_State::~Control_State()
 
 	delete _transitions[0];
 	delete _transitions[1];
-	delete _transitions[2];
 }
 
 void Control_State::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -72,16 +70,5 @@ bool Control_State::Transition_1::check(CLMachine *_machine, CLState *_state) co
 	return
 	(
 #		include "State_Control_State_Transition_1.expr"
-	);
-}
-
-bool Control_State::Transition_2::check(CLMachine *_machine, CLState *_state) const
-{
-#	include "StateMachineStarter_VarRefs.mm"
-#	include "State_Control_State_VarRefs.mm"
-
-	return
-	(
-#		include "State_Control_State_Transition_2.expr"
 	);
 }
