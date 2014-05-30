@@ -26,6 +26,7 @@ TestSuspend::TestSuspend(int mid, const char *name): CLMachine(mid, name)
 	_states[1]  = new FSMTestSuspend::State:: OTHER;
 	_states[2]  = new FSMTestSuspend::State:: SUSPENDED;
 
+	setSuspendState(_states[2]); // set suspended state
 	setInitialState(_states[0]);            // set initial state
 }
 
