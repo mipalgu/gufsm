@@ -80,11 +80,15 @@ void CLFSMWBVectorFactory::whiteboard_fsm_control(WBTypes, FSMControlStatus &con
                 case guWhiteboard::FSMStatus:
                         postMachineStatus();
                         break;
+                // TODO
                 case guWhiteboard::FSMSuspend:
+                        suspendMachines(controlMsg);
                         break;
                 case guWhiteboard::FSMResume:
+                        resumeMachines(controlMsg);
                         break;
                 case guWhiteboard::FSMRestart:
+                        restartMachines(controlMsg);
                         break;
         }
 }
