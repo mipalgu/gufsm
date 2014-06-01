@@ -8,6 +8,6 @@
 #MACHINES=BatNaoMoves BatManController FallManager RobotPosition GetUp ButtonChest
 MACHINES=PingPongCLFSM RobotPosition BatNaoMoves SMButtonChest
 
-.include "${GUNAO_DIR}/mk/fsm.mk"	# comes first: required for compiling state machines
+.include "../../../../mk/fsm.mk"	# comes first: required for compiling state machines
 
-.include "${GUNAO_DIR}/mk/mipal.mk"	# comes last!
+.include "../../../../mk/mipal.mk"	# comes last!
