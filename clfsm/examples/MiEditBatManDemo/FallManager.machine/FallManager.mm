@@ -33,6 +33,7 @@ FallManager::FallManager(int mid, const char *name): CLMachine(mid, name)
 	_states[4] = new FSMFallManager::State::RunGetUp;
 	_states[5] = new FSMFallManager::State::SUSPENDED;
 
+	setSuspendState(_states[5]);            // set suspend state
 	setInitialState(_states[0]);            // set initial state
 }
 
