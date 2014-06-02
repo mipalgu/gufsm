@@ -1,10 +1,10 @@
 //
-// State_CheckStance.h
+// State_FINISH_FALLING.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_FallManager_State_CheckStance_h
-#define clfsm_FallManager_State_CheckStance_h
+#ifndef clfsm_FallManager_State_FINISH_FALLING_h
+#define clfsm_FallManager_State_FINISH_FALLING_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class CheckStance: public CLState
+            class FINISH_FALLING: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,29 +38,21 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 3): CLTransition(toState) {}
+                    Transition_0(int toState = 4): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                class Transition_1: public CLTransition
-                {
-                public:
-                    Transition_1(int toState = 6): CLTransition(toState) {}
-
-                    virtual bool check(CLMachine *, CLState *) const;
-                };
-
-                CLTransition *_transitions[2];
+                CLTransition *_transitions[1];
 
                 public:
-                    CheckStance(const char *name = "CheckStance");
-                    virtual ~CheckStance();
+                    FINISH_FALLING(const char *name = "FINISH_FALLING");
+                    virtual ~FINISH_FALLING();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 2; }
+                    virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_CheckStance_Variables.h"
+#                   include "State_FINISH_FALLING_Variables.h"
             };
         }
       }

@@ -16,12 +16,12 @@ namespace FSM
     {
         class FallManager: public CLMachine
         {
-            CLState *_states[6];
+            CLState *_states[7];
         public:
             FallManager(int mid  = 0, const char *name = "FallManager");
             virtual ~FallManager();
             virtual CLState * const * states() const { return _states; }
-            virtual int numberOfStates() const { return 6; }
+            virtual int numberOfStates() const { return 7; }
 #           include "FallManager_Variables.h"
         };
     }

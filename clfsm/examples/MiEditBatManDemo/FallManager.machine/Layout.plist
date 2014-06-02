@@ -10,24 +10,6 @@
 			<array>
 				<dict>
 					<key>controlPoint1X</key>
-					<real>355.43437743655073</real>
-					<key>controlPoint1Y</key>
-					<real>235.41435519438286</real>
-					<key>controlPoint2X</key>
-					<real>438.125</real>
-					<key>controlPoint2Y</key>
-					<real>221.29366727577664</real>
-					<key>dstPointX</key>
-					<real>438.125</real>
-					<key>dstPointY</key>
-					<real>190</real>
-					<key>srcPointX</key>
-					<real>325.88512949411353</real>
-					<key>srcPointY</key>
-					<real>245.71656649115715</real>
-				</dict>
-				<dict>
-					<key>controlPoint1X</key>
 					<real>108.24609375</real>
 					<key>controlPoint1Y</key>
 					<real>412.66126741784797</real>
@@ -43,6 +25,24 @@
 					<real>108.24609375</real>
 					<key>srcPointY</key>
 					<real>385.30078125</real>
+				</dict>
+				<dict>
+					<key>controlPoint1X</key>
+					<real>361.59220136247643</real>
+					<key>controlPoint1Y</key>
+					<real>233.83616016668554</real>
+					<key>controlPoint2X</key>
+					<real>347.49708688384669</real>
+					<key>controlPoint2Y</key>
+					<real>126.09156955660571</real>
+					<key>dstPointX</key>
+					<real>378.65045193910419</real>
+					<key>dstPointY</key>
+					<real>105.15556670780173</real>
+					<key>srcPointX</key>
+					<real>325.88512949411353</real>
+					<key>srcPointY</key>
+					<real>245.71656649115715</real>
 				</dict>
 			</array>
 			<key>bgColour</key>
@@ -83,6 +83,74 @@
 			<real>188.5</real>
 			<key>y</key>
 			<real>308.95703125</real>
+			<key>zoomedInternalHeight</key>
+			<real>0.0</real>
+			<key>zoomedOnEntryHeight</key>
+			<real>0.0</real>
+			<key>zoomedOnExitHeight</key>
+			<real>0.0</real>
+		</dict>
+		<key>FINISH_FALLING</key>
+		<dict>
+			<key>Transitions</key>
+			<array>
+				<dict>
+					<key>controlPoint1X</key>
+					<real>480.99424304786697</real>
+					<key>controlPoint1Y</key>
+					<real>93.46764050592887</real>
+					<key>controlPoint2X</key>
+					<real>590</real>
+					<key>controlPoint2Y</key>
+					<real>99.4140625</real>
+					<key>dstPointX</key>
+					<real>610</real>
+					<key>dstPointY</key>
+					<real>99.4140625</real>
+					<key>srcPointX</key>
+					<real>460.99601441775405</real>
+					<key>srcPointY</key>
+					<real>93.733820252964435</real>
+				</dict>
+			</array>
+			<key>bgColour</key>
+			<dict>
+				<key>alpha</key>
+				<real>1</real>
+				<key>blue</key>
+				<real>1</real>
+				<key>green</key>
+				<real>1</real>
+				<key>red</key>
+				<real>1</real>
+			</dict>
+			<key>expanded</key>
+			<false/>
+			<key>h</key>
+			<real>50</real>
+			<key>internalHeight</key>
+			<real>0.0</real>
+			<key>onEntryHeight</key>
+			<real>0.0</real>
+			<key>onExitHeight</key>
+			<real>0.0</real>
+			<key>strokeColour</key>
+			<dict>
+				<key>alpha</key>
+				<real>1</real>
+				<key>blue</key>
+				<real>0.0</real>
+				<key>green</key>
+				<real>0.0</real>
+				<key>red</key>
+				<real>0.0</real>
+			</dict>
+			<key>w</key>
+			<real>100</real>
+			<key>x</key>
+			<real>415.73046875</real>
+			<key>y</key>
+			<real>93.8046875</real>
 			<key>zoomedInternalHeight</key>
 			<real>0.0</real>
 			<key>zoomedOnEntryHeight</key>
@@ -232,9 +300,9 @@
 			<array>
 				<dict>
 					<key>controlPoint1X</key>
-					<real>514.15234375</real>
+					<real>756.15234375</real>
 					<key>controlPoint1Y</key>
-					<real>221.03544147854683</real>
+					<real>225.03544147854683</real>
 					<key>controlPoint2X</key>
 					<real>603.72895688722394</real>
 					<key>controlPoint2Y</key>
@@ -244,9 +312,9 @@
 					<key>dstPointY</key>
 					<real>297.73692866160434</real>
 					<key>srcPointX</key>
-					<real>514.15234375</real>
+					<real>756.15234375</real>
 					<key>srcPointY</key>
-					<real>190</real>
+					<real>194</real>
 				</dict>
 			</array>
 			<key>bgColour</key>
@@ -284,9 +352,9 @@
 			<key>w</key>
 			<real>189</real>
 			<key>x</key>
-			<real>457.5</real>
+			<real>699.5</real>
 			<key>y</key>
-			<real>113</real>
+			<real>117</real>
 			<key>zoomedInternalHeight</key>
 			<real>0.0</real>
 			<key>zoomedOnEntryHeight</key>
