@@ -5,4 +5,5 @@
 //
 NAO_State_t	nao_state_ptr;	///< 
 NAO_State	state;	///< 
-int	stability;	///<
+int	stability;	///< 
+QSay_t	say;	///<
