@@ -92,6 +92,8 @@ namespace FSM
         /** return the current time in microseconds */
         extern long long current_time_in_microseconds(void);
 
+        extern int debugSuspends;              ///< debug suspend/resume/restart
+
         class Context
         {
         public:

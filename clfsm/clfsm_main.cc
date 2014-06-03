@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 12/10/12.
- *  Copyright (c) 2012, 2013 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2013, 2014 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -179,7 +179,7 @@ static void __attribute((noreturn)) backtrace_signal_handler(int signum)
 
 static void usage(const char *cmd)
 {
-        cerr << "Usage: " << cmd << "[-c][-fPIC]{-I includedir}{-L linkdir}{-l lib}[-n]" << endl;
+        cerr << "Usage: " << cmd << "[-c][-d][-fPIC]{-I includedir}{-L linkdir}{-l lib}[-n][-s][-v]" << endl;
 }
 
 static bool debug_internal_states = false;
@@ -228,13 +228,13 @@ int main(int argc, char * const argv[])
         compiler_args.push_back("-std=c++11");    /// XXX: fix this
 
         int ch;
-        bool debug = false, verbose = false;
-        while ((ch = getopt(argc, argv, "dgf:I:L:l:nv")) != -1)
+        int debug = 0, verbose = 0;
+        while ((ch = getopt(argc, argv, "dgf:I:L:l:nsv")) != -1)
         {
                 switch (ch)
                 {
                         case 'd':
-                                debug = true;
+                                debug++;
                                 break;
                         case 'g':
                                 compiler_args.push_back("-g");
@@ -260,8 +260,11 @@ int main(int argc, char * const argv[])
                                 DBG(cerr << "nonstop mode: sleeping 1 second before (re)starting" << endl);
                                 protected_usleep(1000000ULL);
                                 break;
+                        case 's':
+                                FSM::debugSuspends++;
+                                break;
                         case 'v':
-                                verbose = true;
+                                verbose++;
                                 break;
                         case '?':
                         default:

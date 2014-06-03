@@ -2,7 +2,7 @@
  *  FSMSuspensibleMachine.cc
  *  
  *  Created by René Hexel on 24/09/11.
- *  Copyright (c) 2011 Rene Hexel.
+ *  Copyright (c) 2011-2014 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -79,6 +79,8 @@ void SuspensibleMachine::setSuspendState(State *s, bool del)
 
 void SuspensibleMachine::suspend()
 {
+        using namespace std;
+
         if (!_suspendState)
         {
                 _suspendState = new State(-1, "Suspended");
@@ -91,25 +93,39 @@ void SuspensibleMachine::suspend()
         {
                 _resumeState = currentState();
                 setPreviousState(_resumeState);
+                if (debugSuspends)
+                    cerr << "Suspend " << id() << ": " << previousState()->name() << " -> " << currentState()->name() << endl;
         }
+        else if (debugSuspends > 1)
+            cerr << "Suspend " << id() << ": " << previousState()->name() << " -> " << currentState()->name() << " (re-suspend)" << endl;
+
         setCurrentState(_suspendState);
 }
 
 
 void SuspensibleMachine::resume()
 {
+        using namespace std;
+
         State *curr = currentState();
 
         /*
          * only do anything if suspended
          */
         if (curr != _suspendState)
+        {
+                if (debugSuspends > 1)
+                        cerr << "Resume " << id() << ": " << currentState()->name() << " -> " << currentState()->name() << " (re-resume)" << endl;
                 return;
+        }
 
         State *prev = _resumeState;
         if (!prev || prev == _suspendState) prev = states()[0];
 
-        setPreviousState(currentState());
+        setPreviousState(curr);
         setCurrentState(prev);
+
+        if (debugSuspends)
+                cerr << "Resume " << id() << ": " << curr->name() << " -> " << prev->name() << (prev == states()[0] ? " (initial)" : "") << endl;
 }
 

@@ -2,7 +2,7 @@
  *  FSMachine.cc
  *  
  *  Created by René Hexel on 23/09/11.
- *  Copyright (c) 2011, 2013 Rene Hexel.
+ *  Copyright (c) 2011, 2013, 2014 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -78,6 +78,8 @@
 #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
 
 using namespace FSM;
+
+int FSM::debugSuspends;              ///< debug suspend/resume/restart
 
 int Machine::currentStateID() const
 {
@@ -169,7 +171,12 @@ bool Machine::executeOnce(bool *fired)
 
 State *Machine::restart(State *initialState)
 {
+        using namespace std;
+
         State *oldState = _currentState;
+
+        if (debugSuspends)
+            cerr << "Restart " << id() << ": " << oldState->name() << " -> " << (initialState ? initialState->name() : states()[0]->name()) << (initialState ? "" : " (default)") << endl;
 
         initialise();
         if (initialState) _currentState = initialState;

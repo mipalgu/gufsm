@@ -2,7 +2,7 @@
  *  FSMSuspensibleMachine.h
  *  
  *  Created by René Hexel on 24/09/11.
- *  Copyright (c) 2011 Rene Hexel.
+ *  Copyright (c) 2011-2014 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -79,9 +79,9 @@ namespace FSM
 
         class SuspensibleMachine: public Machine
         {
-                State *_suspendState;           /// the suspend state
-                State *_resumeState;            /// state to resume to
-                bool _deleteSuspendState;       /// should delete in destructor?
+                State *_suspendState;           ///< the suspend state
+                State *_resumeState;            ///< state to resume to
+                bool _deleteSuspendState;       ///< should delete in destructor?
         public:
                 /** constructor */
                 SuspensibleMachine(State *initialState = NULL, 
