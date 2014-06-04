@@ -96,6 +96,14 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "$(SRCROOT)/clfsm/examples/SayPingPong.machine"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "$(SRCROOT)/clfsm/examples/TestSuspend.machine"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "$(SRCROOT)/clfsm/examples/SLEEPER.machine"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument

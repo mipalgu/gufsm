@@ -57,6 +57,7 @@
  */
 #include <iostream>
 #include <Whiteboard.h>
+#include <cassert>
 #include "FSMWBSubMachine.h"
 #include "FSMWBContext.h"
 #include "FSMState.h"
@@ -88,8 +89,14 @@ WBSubMachine::WBSubMachine(const string &mname, State *initialState,
         /*
          * subscribe to suspend/resume/restart type messages
          */
+        Whiteboard *wb = ctx ? ctx->whiteboard() : NULL;
+        if (!wb)
+        {
+            cerr << "No whiteboard in context -- not subscribing!" << endl;
+            return;
+        }
+
         string wb_name = "suspend";
-        Whiteboard *wb = ctx->whiteboard();
         Whiteboard::WBResult r;
         wb->subscribeToMessage(wb_name, WB_BIND(WBSubMachine::wb_suspend), r);
 	if (r != Whiteboard::METHOD_OK)

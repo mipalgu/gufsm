@@ -170,7 +170,7 @@ string ANTLRMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
         { /*evaluate the expresion */
                 vector<int> ext_offs;
                 unsigned long long vars=s.variable_combination;
-                unsigned long long ext_comb = AllToExtVariableCombination(vars, n, names, ext_offs);
+                unsigned long long ext_comb; /* =  */ AllToExtVariableCombination(vars, n, names, ext_offs);
                 size_t num_ext = ext_offs.size();
                 /// external are always BOOLEAN
                 unsigned long long n_comb = (1ULL << (num_ext));
