@@ -1,0 +1,1 @@
+nao_state.stance() == FallenLeft || nao_state.stance() == FallenRight

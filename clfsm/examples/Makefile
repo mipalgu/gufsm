@@ -6,8 +6,12 @@
 #MACHINES=PingPongCLFSM SMHeadGoalTracker SMHeadScannerGoal SMPlayerGoal SMWalkScannerGoal SMPlayerGoal TestNao
 #MACHINES=TestNao BatNaoMoves
 #MACHINES=BatNaoMoves BatManController FallManager RobotPosition GetUp ButtonChest
+<<<<<<< HEAD
+MACHINES=PingPongCLFSM EpuckFollowsLine
+=======
 MACHINES=PingPongCLFSM RobotPosition BatNaoMoves SMButtonChest
+>>>>>>> 87e8d3f025002c1bf6eca248fada2b5f148f9ff7
 
-.include "${GUNAO_DIR}/mk/fsm.mk"	# comes first: required for compiling state machines
+.include "../../../../mk/fsm.mk"	# comes first: required for compiling state machines
 
-.include "${GUNAO_DIR}/mk/mipal.mk"	# comes last!
+.include "../../../../mk/mipal.mk"	# comes last!

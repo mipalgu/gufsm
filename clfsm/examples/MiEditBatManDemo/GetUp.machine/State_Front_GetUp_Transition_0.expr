@@ -1,0 +1,1 @@
+after_ms(20) && !motion_status.get().isRunning()

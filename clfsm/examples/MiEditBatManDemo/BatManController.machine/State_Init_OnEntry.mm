@@ -1,0 +1,2 @@
+suspend("FallManager");
+suspend("BatNaoMoves");
