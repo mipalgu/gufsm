@@ -463,6 +463,9 @@
 		E11FB99914BD4793009C778E /* gusimplewhiteboard.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gusimplewhiteboard.c; path = ../../gusimplewhiteboard/gusimplewhiteboard.c; sourceTree = "<group>"; };
 		E11FB99A14BD4793009C778E /* Whiteboard.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Whiteboard.cc; path = ../../gusimplewhiteboard/Whiteboard.cc; sourceTree = "<group>"; };
 		E11FB99B14BD4793009C778E /* WhiteboardConstants.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WhiteboardConstants.cc; path = ../../gusimplewhiteboard/WhiteboardConstants.cc; sourceTree = "<group>"; };
+		F104D05519451CDC00511628 /* FindLibDispatch.cmake */ = {isa = PBXFileReference; lastKnownFileType = text; path = FindLibDispatch.cmake; sourceTree = "<group>"; };
+		F104D05619451CDC00511628 /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
+		F104D05719451CDC00511628 /* package.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = package.xml; sourceTree = "<group>"; };
 		F10833091626997A00D6C789 /* clfsm_machine.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = clfsm_machine.cc; sourceTree = "<group>"; };
 		F108330A1626997A00D6C789 /* clfsm_machine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clfsm_machine.h; sourceTree = "<group>"; };
 		F11144FB15F98447005953C1 /* clfsm_vector_factory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = clfsm_vector_factory.cc; sourceTree = "<group>"; };
@@ -1174,6 +1177,40 @@
 				E11CABDE14BD243900A1019A /* fsmWbDependencyDump.1 */,
 			);
 			path = fsmWbDependencyDump;
+			sourceTree = "<group>";
+		};
+		F104D05119451CDC00511628 /* catkin_ws */ = {
+			isa = PBXGroup;
+			children = (
+				F104D05219451CDC00511628 /* src */,
+			);
+			path = catkin_ws;
+			sourceTree = "<group>";
+		};
+		F104D05219451CDC00511628 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				F104D05319451CDC00511628 /* libclfsm */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		F104D05319451CDC00511628 /* libclfsm */ = {
+			isa = PBXGroup;
+			children = (
+				F104D05419451CDC00511628 /* cmake */,
+				F104D05619451CDC00511628 /* CMakeLists.txt */,
+				F104D05719451CDC00511628 /* package.xml */,
+			);
+			path = libclfsm;
+			sourceTree = "<group>";
+		};
+		F104D05419451CDC00511628 /* cmake */ = {
+			isa = PBXGroup;
+			children = (
+				F104D05519451CDC00511628 /* FindLibDispatch.cmake */,
+			);
+			path = cmake;
 			sourceTree = "<group>";
 		};
 		F1284CFF14A6CAA800C0247E /* gusimplewhiteboard */ = {
@@ -2242,6 +2279,7 @@
 		F1D5758E1627948900976A23 /* libclfsm */ = {
 			isa = PBXGroup;
 			children = (
+				F104D05119451CDC00511628 /* catkin_ws */,
 				F1D5758F1627948900976A23 /* Supporting Files */,
 			);
 			path = libclfsm;
@@ -2593,7 +2631,7 @@
 		F1284D2114A6CAA800C0247E /* SimpleWhiteboardTest.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = SimpleWhiteboardTest.octest;
+			path = SimpleWhiteboardTest.xctest;
 			remoteRef = F1284D2014A6CAA800C0247E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
