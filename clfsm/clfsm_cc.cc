@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 19/09/12.
- *  Copyright (c) 2012, 2013 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2013-2014 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -156,11 +156,11 @@ bool Cc::compile(vector<string> args, const char *argv0)
                         ssize_t n = args.size();
                         vector<char *> exec_args;
                         exec_args.reserve(n+2);
-                        exec_args[0] = (char *) argv0;
+                        exec_args[0] = const_cast<char *>(argv0);
                         DBG(cout << argv0 << " ");
                         for (int i = 0; i < n; i++)
                         {
-                                exec_args[i+1] = (char *) args[i].c_str();
+                                exec_args[i+1] = const_cast<char *>(args[i].c_str());
                                 DBG(cout << args[i] << " ");
                         }
                         DBG(cout << endl);
