@@ -10,6 +10,8 @@ ALL_TARGETS=do-build
 ALL_TARGETS=host
 .endif
 
+NO_OBJC_ARC= #defined -- don't use ARC atm
+
 UTIL_DIR=${GUNAO_DIR}/posix/guwhiteboard/objc/Classes
 CPPFLAGS=-I${UTIL_DIR}
 
