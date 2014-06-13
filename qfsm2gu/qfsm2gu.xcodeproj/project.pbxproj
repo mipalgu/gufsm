@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		C3F7B94E15356F6E004945B6 /* NSMutableArray+Stack.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F7B94B15356F6E004945B6 /* NSMutableArray+Stack.m */; };
 		C3F7B94F15356F6E004945B6 /* NSString+MixedCase.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F7B94D15356F6E004945B6 /* NSString+MixedCase.m */; };
-		E17009871495DE1900700118 /* ActionsContainer_SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E17009771495DE1900700118 /* ActionsContainer_SimpleCParser.c */; };
-		E17009881495DE1900700118 /* ActionsContainerParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E170097A1495DE1900700118 /* ActionsContainerParser.c */; };
-		E17009891495DE1900700118 /* SimpleCLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = E170097C1495DE1900700118 /* SimpleCLexer.c */; };
-		E170098A1495DE1900700118 /* SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E170097F1495DE1900700118 /* SimpleCParser.c */; };
-		E170098B1495DE1900700118 /* TransitionContainer_SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E17009821495DE1900700118 /* TransitionContainer_SimpleCParser.c */; };
-		E170098C1495DE1900700118 /* TransitionContainerParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E17009851495DE1900700118 /* TransitionContainerParser.c */; };
+		E17009871495DE1900700118 /* ActionsContainer_SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E17009771495DE1900700118 /* ActionsContainer_SimpleCParser.c */; settings = {COMPILER_FLAGS = "-Werror -Wno-unused-function -Wno-parentheses -Wno-unused-variable -Wno-tautological-compare -Wno-documentation-unknown-command -Wno-documentation"; }; };
+		E17009881495DE1900700118 /* ActionsContainerParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E170097A1495DE1900700118 /* ActionsContainerParser.c */; settings = {COMPILER_FLAGS = "-Werror -Wno-unused-function -Wno-parentheses -Wno-unused-variable -Wno-tautological-compare -Wno-documentation-unknown-command -Wno-documentation"; }; };
+		E17009891495DE1900700118 /* SimpleCLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = E170097C1495DE1900700118 /* SimpleCLexer.c */; settings = {COMPILER_FLAGS = "-Werror -Wno-unused-function -Wno-parentheses -Wno-unused-variable -Wno-tautological-compare -Wno-documentation-unknown-command -Wno-documentation"; }; };
+		E170098A1495DE1900700118 /* SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E170097F1495DE1900700118 /* SimpleCParser.c */; settings = {COMPILER_FLAGS = "-Werror -Wno-unused-function -Wno-parentheses -Wno-unused-variable -Wno-tautological-compare -Wno-documentation-unknown-command -Wno-documentation"; }; };
+		E170098B1495DE1900700118 /* TransitionContainer_SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E17009821495DE1900700118 /* TransitionContainer_SimpleCParser.c */; settings = {COMPILER_FLAGS = "-Werror -Wno-unused-function -Wno-parentheses -Wno-unused-variable -Wno-tautological-compare -Wno-documentation-unknown-command -Wno-documentation"; }; };
+		E170098C1495DE1900700118 /* TransitionContainerParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E17009851495DE1900700118 /* TransitionContainerParser.c */; settings = {COMPILER_FLAGS = "-Werror -Wno-unused-function -Wno-parentheses -Wno-unused-variable -Wno-tautological-compare -Wno-documentation-unknown-command -Wno-documentation"; }; };
 		F1084F7D1411DFA8004806EA /* syntax_check.c in Sources */ = {isa = PBXBuildFile; fileRef = F1084F7C1411DFA8004806EA /* syntax_check.c */; };
 		F1084FB11411EA08004806EA /* libantlr3c.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1084FB01411EA08004806EA /* libantlr3c.a */; };
 		F1AE8BB21332ADF800E8F7AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1AE8BB11332ADF800E8F7AB /* Foundation.framework */; };
@@ -285,7 +285,7 @@
 		F1AE8BA41332ADF800E8F7AB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = ICT;
 			};
 			buildConfigurationList = F1AE8BA71332ADF800E8F7AB /* Build configuration list for PBXProject "qfsm2gu" */;
@@ -400,7 +400,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COPY_PHASE_STRIP = NO;
 				EXECUTABLE_PREFIX = lib;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -419,7 +418,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				EXECUTABLE_PREFIX = lib;
@@ -433,7 +431,12 @@
 		F1AE8BB91332ADF800E8F7AB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
@@ -441,6 +444,9 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"\"/usr/local/include\"",
@@ -459,11 +465,19 @@
 		F1AE8BBA1332ADF800E8F7AB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"\"/usr/local/include\"",
@@ -617,6 +631,7 @@
 				F1FABD4C19026F23001AD476 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
