@@ -2,7 +2,7 @@
  *  FSMActivity.cc
  *
  *  Created by René Hexel on 23/09/11.
- *  Copyright (c) 2011 Rene Hexel.
+ *  Copyright (c) 2011, 2014 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -112,7 +112,7 @@ string Activity::description(ActionStage stage) const
                         << endl;
                         break;
                 default:
-                        ss << "<invalid stage " << (int) stage << ">"
+                        ss << "<invalid stage " << static_cast<int>(stage) << ">"
                            << endl;
         }
 

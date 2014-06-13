@@ -2,7 +2,7 @@
  *  FSMachineVector.cc
  *  
  *  Created by René Hexel on 22/11/11.
- *  Copyright (c) 2011, 2013 Rene Hexel.
+ *  Copyright (c) 2011, 2013-2014 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -81,7 +81,7 @@ StateMachineVector::StateMachineVector(Context *ctx, useconds_t timeout,
         _context(ctx), _machines(), _idle_timeout(timeout), _accepting(false)
 {
         stringstream ss;
-        ss << "dispatch_queue_" << (long long) this;
+        ss << "dispatch_queue_" << reinterpret_cast<long long>(this);
 
         _queue = dispatch_queue_create(ss.str().c_str(), NULL);
 
@@ -92,7 +92,7 @@ StateMachineVector::StateMachineVector(Context *ctx, useconds_t timeout,
 
 SuspensibleMachine *StateMachineVector::addMachine(SuspensibleMachine *m, int index, bool resume)
 {
-        int size = (int) machines().size();
+        int size = static_cast<int>(machines().size());
         int mid = index;
         if (mid < 0|| mid > size) mid = size;
 

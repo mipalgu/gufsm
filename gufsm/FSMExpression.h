@@ -2,7 +2,7 @@
  *  FSMExpression.h
  *  
  *  Created by René Hexel on 23/09/11.
- *  Copyright (c) 2011, 2013 Rene Hexel.
+ *  Copyright (c) 2011, 2013-2014 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -97,7 +97,7 @@ namespace FSM
                 virtual std::string description()
                 {
                         std::stringstream ss;
-                        ss << "Abstract Expression " << (long) this;
+                        ss << "Abstract Expression " << reinterpret_cast<long>(this);
                         return ss.str();
                 }
                 /** add a parameter (abstract method, does nothing) */

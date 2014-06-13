@@ -207,7 +207,7 @@ string Machine::description() const
              it != const_states().end(); it++)
         {
                 State *s = *it;
-                ss << "State " << i++ << " (" << (long) s <<  "): " << s->description() << endl;
+                ss << "State " << i++ << " (" << reinterpret_cast<long>(s) <<  "): " << s->description() << endl;
         }
         return ss.str();
 }
@@ -220,7 +220,7 @@ string Machine::kripkeInSVMformat()
              it != states().end(); it++)
         {
                 State *s = *it;
-                ss << "State " << i++ << " (" << (long) s <<  "): " << s->description() << endl;
+                ss << "State " << i++ << " (" << reinterpret_cast<long>(s) <<  "): " << s->description() << endl;
         }
         
         return ss.str();
