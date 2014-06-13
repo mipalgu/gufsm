@@ -173,7 +173,7 @@ didStartElement: (NSString *) elementName
         id delegate = _delegate;
 
 	if ([delegate respondsToSelector: sel])
-		[delegate performSelector: sel withObject: self];		
+		[delegate performSelector: sel withObject: self];
 	if ([self respondsToSelector: sel])
 		[self performSelector: sel withObject: self];
 }
