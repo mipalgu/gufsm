@@ -3,7 +3,7 @@
 //  qfsm2gu
 //
 //  Created by Rene Hexel on 18/03/11.
-//  Copyright 2011 Rene Hexel. All rights reserved.
+//  Copyright 2011, 2014 Rene Hexel. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -24,27 +24,14 @@
 #pragma clang diagnostic ignored "-Wimplicit-atomic-properties"
 
 @interface QFSMParser: NSObject <NSXMLParserDelegate>
-{
-@private
-        id                       _delegate;
 
-	NSMutableArray          *_stack;
-        NSMutableString         *_currentParsedCharacterData;
-        QFSMElement             *_currentElement;    // context specific
-
-        NSXMLParser             *_parser;
-        NSError                 *_error;
-
-	BOOL isAccumulatingParsedCharacterData;
-}
-
-@property (assign) id delegate;
-@property (retain) NSXMLParser *parser;
-@property (retain) NSMutableString *currentParsedCharacterData;
-@property (retain) QFSMElement *currentElement;
-@property (retain) NSMutableArray *stack;
-@property (retain) NSError *error;
-@property (nonatomic, assign) BOOL accumulatingParsedCharacterData;
+@property (weak) id delegate;
+@property (strong) NSXMLParser *parser;
+@property (strong) NSMutableString *currentParsedCharacterData;
+@property (strong) QFSMElement *currentElement;
+@property (strong) NSMutableArray *stack;
+@property (strong) NSError *error;
+@property (nonatomic, getter=isAccumulatingParsedCharacterData) BOOL accumulatingParsedCharacterData;
 
 - initWithContentsOfURL: (NSURL *) url;
 

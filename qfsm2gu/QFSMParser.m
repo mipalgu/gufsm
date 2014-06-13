@@ -3,7 +3,7 @@
 //  qfsm2gu
 //
 //  Created by Rene Hexel on 18/03/11.
-//  Copyright 2011 Rene Hexel. All rights reserved.
+//  Copyright 2011, 2014 Rene Hexel. All rights reserved.
 //
 #import "QFSMParser.h"
 #import "QFSMElement.h"
@@ -18,6 +18,7 @@
 #pragma clang diagnostic ignored "-Wunused-parameter"
 #pragma clang diagnostic ignored "-Wselector"
 #pragma clang diagnostic ignored "-Wundeclared-selector"
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
 
 @implementation QFSMParser
 
@@ -43,16 +44,6 @@
 }
 
 
-- (void) dealloc
-{
-        [_currentParsedCharacterData release];
-        [_currentElement release];
-        [_error release];
-        [_parser release];
-        [_stack release];
-
-        [super dealloc];
-}
 
 
 - (void) parse
@@ -69,21 +60,20 @@
 
 - (void) parseXMLData: (NSData *) data
 {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	@autoreleasepool {
 #ifdef DEBUG
 	NSLog(@"received: '%@'", [[[NSString alloc] initWithData: data
 							encoding: NSUTF8StringEncoding]
 				  autorelease]);
 #endif
-	NSXMLParser *parser = [[NSXMLParser alloc] initWithData: data];
-	[parser setDelegate: self];
-	[parser setShouldProcessNamespaces: YES];
+		NSXMLParser *parser = [[NSXMLParser alloc] initWithData: data];
+		[parser setDelegate: self];
+		[parser setShouldProcessNamespaces: YES];
 
         [self setParser: parser];
         [self parse];
 
-	[parser release];
-	[pool release];
+	}
 }
 
 
@@ -97,9 +87,10 @@ didStartElement: (NSString *) elementName
 {
 	NSString *selectorString = [NSString stringWithFormat: @"start%@:attributes:",
 				    [elementName capitalizedMixedCaseString]];
+        id delegate = _delegate;
 	SEL sel = NSSelectorFromString(selectorString);
-	if ([_delegate respondsToSelector: sel])
-		[_delegate performSelector: sel
+	if ([delegate respondsToSelector: sel])
+		[delegate performSelector: sel
                                 withObject: parser
                                 withObject: attributes];
 	else if ([self respondsToSelector: sel])
@@ -132,9 +123,10 @@ didStartElement: (NSString *) elementName
 {
 	NSString *selectorString = [NSString stringWithFormat: @"end%@:attributes:",
 				    [elementName capitalizedMixedCaseString]];
+        id delegate = _delegate;
 	SEL sel = NSSelectorFromString(selectorString);
-	if ([_delegate respondsToSelector: sel])
-		[_delegate performSelector: sel
+	if ([delegate respondsToSelector: sel])
+		[delegate performSelector: sel
                                 withObject: parser
                                 withObject: qName];
 	else if ([self respondsToSelector: sel])
@@ -153,10 +145,10 @@ didStartElement: (NSString *) elementName
 			[self.currentElement.attributes setValue: parsedData
                                                           forKey: elementName];
 			[self restoreContext];
-			[parsedData release];
 
-                        if (self.currentElement.parent)
-                                self.currentElement = self.currentElement.parent;
+                        QFSMElement *parent = self.currentElement.parent;
+                        if (parent)
+                                self.currentElement = parent;
 		}
 	}
 }
@@ -178,9 +170,10 @@ didStartElement: (NSString *) elementName
 - (void) parserDidEndDocument: (NSXMLParser *) parser
 {
 	SEL sel = @selector(parsingFinished:);
-        
-	if ([_delegate respondsToSelector: sel])
-		[_delegate performSelector: sel withObject: self];		
+        id delegate = _delegate;
+
+	if ([delegate respondsToSelector: sel])
+		[delegate performSelector: sel withObject: self];		
 	if ([self respondsToSelector: sel])
 		[self performSelector: sel withObject: self];
 }
@@ -215,7 +208,7 @@ didStartElement: (NSString *) elementName
 {
 	[[_stack push: [NSNumber numberWithBool:
 		       self.accumulatingParsedCharacterData]]
-	 push: [[self.currentParsedCharacterData copy] autorelease]];
+	 push: [self.currentParsedCharacterData copy]];
 	
 	self.accumulatingParsedCharacterData = YES;
 	[self.currentParsedCharacterData setString: @""];

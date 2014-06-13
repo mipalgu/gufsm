@@ -8,15 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-missing-property-synthesis"
+
 @interface QFSMElement: NSObject
 
-@property (nonatomic, assign) QFSMElement *parent;
+@property (nonatomic, weak) QFSMElement *parent;
 @property (nonatomic, copy) NSString *name;
-@property (nonatomic, retain) NSMutableArray *subElements;
-@property (nonatomic, retain) NSMutableDictionary *attributes;
+@property (nonatomic, strong) NSMutableArray *subElements;
+@property (nonatomic, strong) NSMutableDictionary *attributes;
 
 - (instancetype) initWithAttributes: (NSDictionary *) attr;
 - (id) content;
 - (QFSMElement *) subElementNamed: (NSString *) subName;
 
 @end
+
+#pragma clang diagnostic pop

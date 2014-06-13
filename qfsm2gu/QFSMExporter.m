@@ -21,12 +21,12 @@
 #pragma clang diagnostic ignored "-Wmissing-method-return-type"
 #pragma clang diagnostic ignored "-Wimplicit-atomic-properties"
 #pragma clang diagnostic ignored "-Wdirect-ivar-access"
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+#pragma clang diagnostic ignored "-Wobjc-missing-property-synthesis"
+
 
 @interface QFSMKeyValue: NSObject
-{
-        NSString *key;
-        NSString *value;
-}
+
 @property (copy) NSString *key;
 @property (copy) NSString *value;
 
@@ -38,14 +38,13 @@
 
 
 @implementation QFSMKeyValue
-@synthesize key, value;
 
 + QFSMValue: (NSString *) v forKey: (NSString *) k
 {
         QFSMKeyValue *q = [[QFSMKeyValue alloc] init];
         q.key = k;
         q.value = v;
-        return [q autorelease];
+        return q;
 }
 
 
@@ -56,7 +55,7 @@
         for (NSUInteger i = 0; i < n; i++)
         {
                 QFSMKeyValue *element = [array objectAtIndex: i];
-                if ([key compare: element.key] == NSOrderedAscending)
+                if ([_key compare: element.key] == NSOrderedAscending)
                         return i;
         }
 
@@ -66,17 +65,10 @@
 
 - (NSString *) description
 {
-        return value ? value : @"";
+        return _value ? _value : @"";
 }
 
 
-- (void) dealloc
-{
-        [key release];
-        [value release];
-
-        [super dealloc];
-}
 
 @end
 
@@ -105,24 +97,14 @@
         self.outputTFile = [NSString stringWithFormat: @"%@.tcsl",
                             [inputFileName
                              stringByDeletingPathExtension]];
-        parser = [[QFSMParser alloc] initWithContentsOfURL: 
+        _parser = [[QFSMParser alloc] initWithContentsOfURL: 
                   [NSURL fileURLWithPath: fileName]];
-        parser.delegate = self;
+        _parser.delegate = self;
 
         return self;
 }
 
 
-- (void) dealloc
-{
-        [parser release];
-        [outputTFile release];
-        [outputAFile release];
-        [inputFileName release];
-        [initialStateID release];
-
-        [super dealloc];
-}
 
 
 - (void) exportState: (QFSMElement *) currentElement
@@ -154,9 +136,9 @@
         }
 
         if ([stateID isEqualToString: initialStateID])
-                initialStateIndex = [states count];
+                _initialStateIndex = [_states count];
 
-        [states addObject: aString];
+        [_states addObject: aString];
 
         /*
          * parse state and print out any errors
@@ -188,14 +170,14 @@
                               [to intValue], to];
         QFSMKeyValue *tuple = [QFSMKeyValue QFSMValue: tString
                                                forKey: orderKey];
-        NSUInteger index = [tuple orderedIndexInArray: transitions];
+        NSUInteger index = [tuple orderedIndexInArray: _transitions];
 
-        NSUInteger n = [transitions count];
+        NSUInteger n = [_transitions count];
         if ([orderKey length] && index < n)
-                [transitions insertObject: tuple
+                [_transitions insertObject: tuple
                                   atIndex: index];
         else
-                [transitions addObject: tuple];
+                [_transitions addObject: tuple];
 
         if (![from length])
                 fprintf(stderr, "Warning: %s transition %lu has no source state: '%s'\n",
@@ -217,84 +199,83 @@
 
 - exportMachine: (QFSMElement *) machine
 {
-        NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+        @autoreleasepool {
 
-        for (QFSMElement *currentElement in machine.subElements)
-        {
-                SEL sel = NSSelectorFromString([NSString stringWithFormat:
-                                                @"export%@:",
-                                               [currentElement.name
-                                                capitalizedMixedCaseString]]);
-                if (sel && [self respondsToSelector: sel])
-                        [self performSelector: sel
-                                   withObject: currentElement];
+                for (QFSMElement *currentElement in machine.subElements)
+                {
+                        SEL sel = NSSelectorFromString([NSString stringWithFormat:
+                                                        @"export%@:",
+                                                       [currentElement.name
+                                                        capitalizedMixedCaseString]]);
+                        if (sel && [self respondsToSelector: sel])
+                                [self performSelector: sel
+                                           withObject: currentElement];
 #ifdef DEBUG
-                else NSLog(@"Ignoring machine element '%@'", currentElement.name);
+                        else NSLog(@"Ignoring machine element '%@'", currentElement.name);
 #endif
+                }
+
+
+                return self;
         }
-
-        [pool drain];
-
-        return self;
 }
 
 
 - export
 {
-        [parser parse];
+        [_parser parse];
 
         int count = 0;
-        for (QFSMElement *machine in parser.currentElement.subElements)
+        for (QFSMElement *machine in _parser.currentElement.subElements)
         {
-                NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+                @autoreleasepool {
 
-                states      = [NSMutableArray arrayWithCapacity: 256];
-                transitions = [NSMutableArray arrayWithCapacity: 1024];
+                        _states      = [NSMutableArray arrayWithCapacity: 256];
+                        _transitions = [NSMutableArray arrayWithCapacity: 1024];
 
-                self.initialStateID = [machine.attributes objectForKey: @"initialstate"];
+                        self.initialStateID = [machine.attributes objectForKey: @"initialstate"];
 
-                if ([self exportMachine: machine])
-                {
-                        NSError *error = nil;
-                        NSString *initialState = [[states objectAtIndex:
-                                                   initialStateIndex] retain];
-                        [states removeObjectAtIndex: initialStateIndex];
-                        [states insertObject: initialState atIndex: 0];
-                        [initialState release];
+                        if ([self exportMachine: machine])
+                        {
+                                NSError *error = nil;
+                                NSString *initialState = [_states objectAtIndex:
+                                                           _initialStateIndex];
+                                [_states removeObjectAtIndex:_initialStateIndex];
+                               [ _states insertObject: initialState atIndex: 0];
 
-                        NSString *content = [[states componentsJoinedByString:@"\n"]
-                                             stringByAppendingString: @"\n"];
+                                NSString *content = [[_states componentsJoinedByString:@"\n"]
+                                                     stringByAppendingString: @"\n"];
         
-                        if (![content writeToFile: outputAFile
-                                       atomically: YES
-                                         encoding: NSUTF8StringEncoding
-                                            error: &error])
-                        {
-                                NSLog(@"Error writing '%@': %@", outputAFile,
-                                      [error localizedFailureReason]);
+                                if (![content writeToFile: outputAFile
+                                               atomically: YES
+                                                 encoding: NSUTF8StringEncoding
+                                                    error: &error])
+                                {
+                                        NSLog(@"Error writing '%@': %@", outputAFile,
+                                              [error localizedFailureReason]);
+                                }
+
+                                content = [[_transitions componentsJoinedByString:@"\n"]
+                                           stringByAppendingString: @"\n"];
+
+                                if (![content writeToFile: outputTFile
+                                               atomically: YES
+                                                 encoding: NSUTF8StringEncoding
+                                                    error: &error])
+                                {
+                                        NSLog(@"Error writing '%@': %@", outputTFile,
+                                              [error localizedFailureReason]);
+                                }
                         }
 
-                        content = [[transitions componentsJoinedByString:@"\n"]
-                                   stringByAppendingString: @"\n"];
-
-                        if (![content writeToFile: outputTFile
-                                       atomically: YES
-                                         encoding: NSUTF8StringEncoding
-                                            error: &error])
-                        {
-                                NSLog(@"Error writing '%@': %@", outputTFile,
-                                      [error localizedFailureReason]);
-                        }
+                        count++;
+                        self.outputAFile = [NSString stringWithFormat: @"A%@-%d.txt",
+                                            [inputFileName stringByDeletingPathExtension],
+                                            count];
+                        self.outputTFile = [NSString stringWithFormat: @"T%@-%d.txt",
+                                            [inputFileName stringByDeletingPathExtension],
+                                            count];
                 }
-
-                count++;
-                self.outputAFile = [NSString stringWithFormat: @"A%@-%d.txt",
-                                    [inputFileName stringByDeletingPathExtension],
-                                    count];
-                self.outputTFile = [NSString stringWithFormat: @"T%@-%d.txt",
-                                    [inputFileName stringByDeletingPathExtension],
-                                    count];
-                [pool drain];
         }
 
         return self;

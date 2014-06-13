@@ -3,7 +3,7 @@
 //  GUWhiteboardViewer
 //
 //  Created by Rene Hexel on 19/03/10.
-//  Copyright 2010 Rene Hexel. All rights reserved.
+//  Copyright 2010, 2014 Rene Hexel. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -24,9 +24,9 @@
 {
 	@try
 	{
-		id object = [[self lastObject] retain];
+		id object = [self lastObject];
 		[self removeLastObject];
-		return [object autorelease];
+		return object;
 	}
 	@catch (NSException *)
 	{

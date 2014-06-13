@@ -14,24 +14,19 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wobjc-interface-ivars"
 #pragma clang diagnostic ignored "-Wmissing-method-return-type"
+#pragma clang diagnostic ignored "-Wobjc-missing-property-synthesis"
 
 @interface QFSMExporter: NSObject
-{
-        NSString *inputFileName;
-        NSString *outputAFile;
-        NSString *outputTFile;
 
-        NSMutableArray *transitions;
-        NSMutableArray *states;
-        NSString *initialStateID;
-        NSUInteger initialStateIndex;
-
-        QFSMParser *parser;
-}
-
+@property (strong) QFSMParser *parser;
 @property (copy) NSString *inputFileName;
 @property (copy) NSString *outputAFile;
 @property (copy) NSString *outputTFile;
+
+@property NSUInteger initialStateIndex;
+
+@property (strong) NSMutableArray *transitions;
+@property (strong) NSMutableArray *states;
 
 - initWithContentsOfFile: (NSString *) fileName;
 - export;

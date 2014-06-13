@@ -10,7 +10,6 @@ ALL_TARGETS=do-build
 ALL_TARGETS=host
 .endif
 
-NO_OBJC_ARC=yes
 ANALYSE_INCLUDE_C_SRCS=yes
 
 UTIL_DIR=${GUNAO_DIR}/posix/guwhiteboard/objc/Classes

@@ -69,8 +69,8 @@
 
 - (NSString *) trimmedSingleLineString
 {
-        NSMutableCharacterSet *cs = [[[NSCharacterSet newlineCharacterSet]
-                                      mutableCopy] autorelease];
+        NSMutableCharacterSet *cs = [[NSCharacterSet newlineCharacterSet]
+                                      mutableCopy];
         [cs formUnionWithCharacterSet: [NSCharacterSet
                                         characterSetWithCharactersInString:
                                         @"\t"]];

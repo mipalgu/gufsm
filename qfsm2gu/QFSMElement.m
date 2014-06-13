@@ -11,30 +11,15 @@
 
 @implementation QFSMElement
 
-@synthesize parent;
-@synthesize name;
-@synthesize subElements;
-@synthesize attributes;
-
 - (instancetype) initWithAttributes: (NSDictionary *) attr
 {
         if (!(self = [super init]))
                 return nil;
 
         self.subElements = [NSMutableArray arrayWithCapacity: 256];
-        attributes = [attr mutableCopy];
+        _attributes = [attr mutableCopy];
 
         return self;
-}
-
-
-- (void) dealloc
-{
-        [self.subElements release];
-        [self.attributes release];
-        [self.name release];
-
-        [super dealloc];
 }
 
 
