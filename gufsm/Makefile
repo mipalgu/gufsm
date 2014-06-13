@@ -75,3 +75,5 @@ SPECIFIC_CPPFLAGS+=${CDL_CPPFLAGS} 	# for CDL includes
 SPECIFIC_CPPFLAGS+=-DMONITORING_MODE_ON
 
 .include "../../../mk/mipal.mk"
+
+analyse: ${ANTLR_OBJS}
