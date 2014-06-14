@@ -62,9 +62,9 @@
 {
 	@autoreleasepool {
 #ifdef DEBUG
-	NSLog(@"received: '%@'", [[[NSString alloc] initWithData: data
+	NSLog(@"received: '%@'", [[NSString alloc] initWithData: data
 							encoding: NSUTF8StringEncoding]
-				  autorelease]);
+				  );
 #endif
 		NSXMLParser *parser = [[NSXMLParser alloc] initWithData: data];
 		[parser setDelegate: self];
