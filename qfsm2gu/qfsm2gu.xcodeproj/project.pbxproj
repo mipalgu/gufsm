@@ -6,6 +6,21 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		F134EAF5194BE1BA00B561CB /* syntaxchecker */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = F134EAF6194BE1BA00B561CB /* Build configuration list for PBXAggregateTarget "syntaxchecker" */;
+			buildPhases = (
+				F134EAF9194BE1C700B561CB /* Compile Parser */,
+				F134EAFA194BE22C00B561CB /* Copy Reachover Sources */,
+			);
+			dependencies = (
+			);
+			name = syntaxchecker;
+			productName = syntaxchecker;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		C3F7B94E15356F6E004945B6 /* NSMutableArray+Stack.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F7B94B15356F6E004945B6 /* NSMutableArray+Stack.m */; };
 		C3F7B94F15356F6E004945B6 /* NSString+MixedCase.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F7B94D15356F6E004945B6 /* NSString+MixedCase.m */; };
@@ -25,12 +40,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F1084F961411E94C004806EA /* PBXContainerItemProxy */ = {
+		F134EAFB194BE29100B561CB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F1AE8BA41332ADF800E8F7AB /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = F1084F8C1411E83B004806EA;
-			remoteInfo = syntax_checker;
+			remoteGlobalIDString = F134EAF5194BE1BA00B561CB;
+			remoteInfo = syntaxchecker;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -73,7 +88,6 @@
 		E17009861495DE1900700118 /* TransitionContainerParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransitionContainerParser.h; path = build.host/TransitionContainerParser.h; sourceTree = SOURCE_ROOT; };
 		F1084F7C1411DFA8004806EA /* syntax_check.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = syntax_check.c; sourceTree = "<group>"; };
 		F1084F831411E482004806EA /* syntax_check.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = syntax_check.h; sourceTree = "<group>"; };
-		F1084F8D1411E83B004806EA /* libsyntax_checker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsyntax_checker.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1084FB01411EA08004806EA /* libantlr3c.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libantlr3c.a; path = ../../../../../../../../../../../usr/local/lib/libantlr3c.a; sourceTree = "<group>"; };
 		F1AE8BAD1332ADF800E8F7AB /* qfsm2gu */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = qfsm2gu; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1AE8BB11332ADF800E8F7AB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -89,13 +103,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		F1084F8A1411E83B004806EA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F1AE8BAA1332ADF800E8F7AB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -158,7 +165,6 @@
 			isa = PBXGroup;
 			children = (
 				F1AE8BAD1332ADF800E8F7AB /* qfsm2gu */,
-				F1084F8D1411E83B004806EA /* libsyntax_checker.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -213,16 +219,6 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		F1084F8B1411E83B004806EA /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXLegacyTarget section */
 		F1FABD4A19026F23001AD476 /* Lqfsm2gu */ = {
 			isa = PBXLegacyTarget;
@@ -241,25 +237,6 @@
 /* End PBXLegacyTarget section */
 
 /* Begin PBXNativeTarget section */
-		F1084F8C1411E83B004806EA /* syntax_checker */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F1084F8E1411E83B004806EA /* Build configuration list for PBXNativeTarget "syntax_checker" */;
-			buildPhases = (
-				F1084F891411E83B004806EA /* Sources */,
-				F1084F8A1411E83B004806EA /* Frameworks */,
-				F1084F8B1411E83B004806EA /* Headers */,
-				F1084F911411E84F004806EA /* ShellScript */,
-				F16CE5BA1499A96B00721D53 /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = syntax_checker;
-			productName = syntax_checker;
-			productReference = F1084F8D1411E83B004806EA /* libsyntax_checker.a */;
-			productType = "com.apple.product-type.library.static";
-		};
 		F1AE8BAC1332ADF800E8F7AB /* qfsm2gu */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F1AE8BBB1332ADF800E8F7AB /* Build configuration list for PBXNativeTarget "qfsm2gu" */;
@@ -272,7 +249,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				F1084F971411E94C004806EA /* PBXTargetDependency */,
+				F134EAFC194BE29100B561CB /* PBXTargetDependency */,
 			);
 			name = qfsm2gu;
 			productName = qfsm2gu;
@@ -301,7 +278,7 @@
 			projectRoot = "";
 			targets = (
 				F1AE8BAC1332ADF800E8F7AB /* qfsm2gu */,
-				F1084F8C1411E83B004806EA /* syntax_checker */,
+				F134EAF5194BE1BA00B561CB /* syntaxchecker */,
 				F1FABD4A19026F23001AD476 /* Lqfsm2gu */,
 			);
 		};
@@ -321,7 +298,7 @@
 			shellPath = /bin/sh;
 			shellScript = "";
 		};
-		F1084F911411E84F004806EA /* ShellScript */ = {
+		F134EAF9194BE1C700B561CB /* Compile Parser */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -332,39 +309,30 @@
 				"$(SRCROOT)/../LANGUAGE/TransitionContainer.g",
 				"$(SRCROOT)/../LANGUAGE/ActionsContainer.g",
 			);
+			name = "Compile Parser";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "cd ${SRCROOT}\nout=\"${SRCROOT}/build.host\"\nmkdir -p \"$out\"\nfor ((i=0; i < SCRIPT_INPUT_FILE_COUNT ; i++)); do\n    inputFile=`eval echo '$SCRIPT_INPUT_FILE_'$i`\n    outputFile=\"$out\"/`basename \"$inputFile\" | sed 's/.g$/.tokens/'`\n\n    if [ ! $outputFile -nt $inputFile ]; then\n        java -classpath /usr/local/share/java/antlr-3.4-complete.jar org.antlr.Tool -language C -o \"$out\" \"$inputFile\" 2>&1 | sed 's/warning\\([^:]*\\): \\([^ ]*\\): \\(.*\\)$/\\2: warning: \\3 \\1/' 1>&2\n    fi\ndone\n";
+			shellScript = "cd ${SRCROOT}\nout=\"${SRCROOT}/build.host\"\nmkdir -p \"$out\"\nfor ((i=0; i < SCRIPT_INPUT_FILE_COUNT ; i++)); do\ninputFile=`eval echo '$SCRIPT_INPUT_FILE_'$i`\noutputFile=\"$out\"/`basename \"$inputFile\" | sed 's/.g$/.tokens/'`\n\nif [ ! $outputFile -nt $inputFile ]; then\njava -classpath /usr/local/share/java/antlr-3.4-complete.jar org.antlr.Tool -language C -o \"$out\" \"$inputFile\" 2>&1 | sed 's/warning\\([^:]*\\): \\([^ ]*\\): \\(.*\\)$/\\2: warning: \\3 \\1/' 1>&2\nfi\ndone\n";
 		};
-		F16CE5BA1499A96B00721D53 /* ShellScript */ = {
+		F134EAFA194BE22C00B561CB /* Copy Reachover Sources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"NSString+MixedCase.h",
-				"NSString+MixedCase.m",
-				"NSMutableArray+Stack.h",
-				"NSMutableArray+Stack.m",
 			);
+			name = "Copy Reachover Sources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd ${SRCROOT}\nout=\"${SRCROOT}/build.host\"\nmkdir -p \"$out\"\nUTIL_DIR=${GUNAO_DIR}/posix/guwhiteboard/objc/Classes\nfor ((i=0; i < SCRIPT_INPUT_FILE_COUNT ; i++)); do\n    inputFile=`eval echo '$SCRIPT_INPUT_FILE_'$i`\n    ln -s ${UTIL_DIR}/${inputFile} \"$out\" >/dev/null 2>&1 || true\ndone\n";
+			shellScript = "cd ${SRCROOT}\nout=\"${SRCROOT}/build.host\"\nmkdir -p \"$out\"\nUTIL_DIR=${GUNAO_DIR}/posix/guwhiteboard/objc/Classes\nfor ((i=0; i < SCRIPT_INPUT_FILE_COUNT ; i++)); do\ninputFile=`eval echo '$SCRIPT_INPUT_FILE_'$i`\nln -s ${UTIL_DIR}/${inputFile} \"$out\" >/dev/null 2>&1 || true\ndone\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		F1084F891411E83B004806EA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F1AE8BA91332ADF800E8F7AB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -388,40 +356,24 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F1084F971411E94C004806EA /* PBXTargetDependency */ = {
+		F134EAFC194BE29100B561CB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F1084F8C1411E83B004806EA /* syntax_checker */;
-			targetProxy = F1084F961411E94C004806EA /* PBXContainerItemProxy */;
+			target = F134EAF5194BE1BA00B561CB /* syntaxchecker */;
+			targetProxy = F134EAFB194BE29100B561CB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		F1084F8F1411E83B004806EA /* Debug */ = {
+		F134EAF7194BE1BA00B561CB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				EXECUTABLE_PREFIX = lib;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		F1084F901411E83B004806EA /* Release */ = {
+		F134EAF8194BE1BA00B561CB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				EXECUTABLE_PREFIX = lib;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -597,14 +549,13 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F1084F8E1411E83B004806EA /* Build configuration list for PBXNativeTarget "syntax_checker" */ = {
+		F134EAF6194BE1BA00B561CB /* Build configuration list for PBXAggregateTarget "syntaxchecker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F1084F8F1411E83B004806EA /* Debug */,
-				F1084F901411E83B004806EA /* Release */,
+				F134EAF7194BE1BA00B561CB /* Debug */,
+				F134EAF8194BE1BA00B561CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
 		};
 		F1AE8BA71332ADF800E8F7AB /* Build configuration list for PBXProject "qfsm2gu" */ = {
 			isa = XCConfigurationList;

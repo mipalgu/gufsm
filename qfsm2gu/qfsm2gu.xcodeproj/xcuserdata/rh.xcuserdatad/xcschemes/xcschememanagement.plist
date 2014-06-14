@@ -7,14 +7,14 @@
 		<key>Lqfsm2gu.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>39</integer>
+			<integer>40</integer>
 		</dict>
 		<key>qfsm2gu.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>36</integer>
 		</dict>
-		<key>syntax_checker.xcscheme_^#shared#^_</key>
+		<key>syntaxchecker.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>37</integer>
@@ -23,6 +23,21 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>F1084F8C1411E83B004806EA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F134EAEC194BE10100B561CB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F134EAF1194BE16400B561CB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F134EAF5194BE1BA00B561CB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
