@@ -104,7 +104,7 @@ void CLFSMWBVectorFactory::postMachineStatus()
 {
         FSMControlStatus status;
 
-        status.fsms().reset();
+        status.reset();
 
         int i = 0;
         for (MachineVector::const_iterator it = fsms()->machines().begin(); it != fsms()->machines().end(); it++, i++)
@@ -112,9 +112,9 @@ void CLFSMWBVectorFactory::postMachineStatus()
                 if (i >= int(CONTROLSTATUS_NUM_FSMS-1))
                         break;
                 const SuspensibleMachine *machine = *it;
-                status.fsms().set(i, machine->isSuspended());
+                status.set(i, machine->isSuspended());
         }
-        status.fsms().set(i);           // set the high bit to 1
+        status.set(i);                  // set the high bit to 1
 
         wbstatus().set(status);         // post to whiteboard
 }
@@ -124,7 +124,7 @@ void CLFSMWBVectorFactory::suspendMachines(guWhiteboard::FSMControlStatus &suspe
 {
         FSMControlStatus status;
         
-        status.fsms().reset();
+        status.reset();
 
         int i = 0;
         for (MachineVector::iterator it = fsms()->machines().begin(); it != fsms()->machines().end(); it++, i++)
@@ -132,14 +132,14 @@ void CLFSMWBVectorFactory::suspendMachines(guWhiteboard::FSMControlStatus &suspe
                 if (i >= int(CONTROLSTATUS_NUM_FSMS-1))
                         break;
                 AsynchronousSuspensibleMachine *machine = static_cast<AsynchronousSuspensibleMachine *>(*it);
-                if (suspendControl.fsms()[i])
+                if (suspendControl.get(i))
                 {
                         machine->scheduleSuspend();
-                        status.fsms().set(i);
+                        status.get(i);
                 }
-                else status.fsms().set(i, machine->isSuspended());
+                else status.set(i, machine->isSuspended());
         }
-        status.fsms().set(i);           // set the high bit to 1
+        status.set(i);                  // set the high bit to 1
         
         wbstatus().set(status);         // post to whiteboard
 }
@@ -149,7 +149,7 @@ void CLFSMWBVectorFactory::resumeMachines(guWhiteboard::FSMControlStatus &resume
 {
         FSMControlStatus status;
 
-        status.fsms().reset();
+        status.reset();
         
         int i = 0;
         for (MachineVector::iterator it = fsms()->machines().begin(); it != fsms()->machines().end(); it++, i++)
@@ -157,14 +157,14 @@ void CLFSMWBVectorFactory::resumeMachines(guWhiteboard::FSMControlStatus &resume
                 if (i >= int(CONTROLSTATUS_NUM_FSMS-1))
                         break;
                 AsynchronousSuspensibleMachine *machine = static_cast<AsynchronousSuspensibleMachine *>(*it);
-                if (resumeControl.fsms()[i])
+                if (resumeControl.get(i))
                 {
                         machine->scheduleResume();
-                        status.fsms().reset(i);
+                        status.clr(i);
                 }
-                else status.fsms().set(i, machine->isSuspended());
+                else status.set(i, machine->isSuspended());
         }
-        status.fsms().set(i);           // set the high bit to 1
+        status.set(i);                  // set the high bit to 1
 
         wbstatus().set(status);         // post to whiteboard
 }
@@ -174,7 +174,7 @@ void CLFSMWBVectorFactory::restartMachines(guWhiteboard::FSMControlStatus &resum
 {
         FSMControlStatus status;
         
-        status.fsms().reset();
+        status.reset();
         
         int i = 0;
         for (MachineVector::iterator it = fsms()->machines().begin(); it != fsms()->machines().end(); it++, i++)
@@ -182,14 +182,14 @@ void CLFSMWBVectorFactory::restartMachines(guWhiteboard::FSMControlStatus &resum
                 if (i >= int(CONTROLSTATUS_NUM_FSMS-1))
                         break;
                 AsynchronousSuspensibleMachine *machine = static_cast<AsynchronousSuspensibleMachine *>(*it);
-                if (resumeControl.fsms()[i])
+                if (resumeControl.get(i))
                 {
                         machine->scheduleRestart();
-                        status.fsms().reset(i);
+                        status.clr(i);
                 }
-                else status.fsms().set(i, machine->isSuspended());
+                else status.set(i, machine->isSuspended());
         }
-        status.fsms().set(i);           // set the high bit to 1
+        status.set(i);                  // set the high bit to 1
         
         wbstatus().set(status);         // post to whiteboard
 }
