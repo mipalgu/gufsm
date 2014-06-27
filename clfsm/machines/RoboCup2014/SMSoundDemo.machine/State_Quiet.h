@@ -54,7 +54,7 @@ namespace FSM
                 class Transition_2: public CLTransition
                 {
                 public:
-                    Transition_2(int toState = 3): CLTransition(toState) {}
+                    Transition_2(int toState = 4): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
@@ -62,7 +62,7 @@ namespace FSM
                 class Transition_3: public CLTransition
                 {
                 public:
-                    Transition_3(int toState = 3): CLTransition(toState) {}
+                    Transition_3(int toState = 4): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
@@ -70,27 +70,19 @@ namespace FSM
                 class Transition_4: public CLTransition
                 {
                 public:
-                    Transition_4(int toState = 4): CLTransition(toState) {}
+                    Transition_4(int toState = 3): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                class Transition_5: public CLTransition
-                {
-                public:
-                    Transition_5(int toState = 4): CLTransition(toState) {}
-
-                    virtual bool check(CLMachine *, CLState *) const;
-                };
-
-                CLTransition *_transitions[6];
+                CLTransition *_transitions[5];
 
                 public:
                     Quiet(const char *name = "Quiet");
                     virtual ~Quiet();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 6; }
+                    virtual int numberOfTransitions() const { return 5; }
 
 #                   include "State_Quiet_Variables.h"
             };

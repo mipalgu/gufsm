@@ -1,7 +1,5 @@
-fft.rms().right()  > 500 &&
-((fft.frequencies(0).right() > 198.0 &&
-fft.frequencies(0).right() < 204.0) ||
-(fft.frequencies(1).right() > 318.0 &&
-fft.frequencies(1).right() < 324.0) ||
-(fft.frequencies(2).right() > 318.0 &&
-fft.frequencies(2).right() < 324.0))
+(fft.rms().right()  > 500 || fft.rms().left()  > 500) &&
+fft.frequencies(0).right() > 318.0 &&
+fft.frequencies(0).right() < 324.0 &&
+fft.frequencies(0).left() > 318.0 &&
+fft.frequencies(0).left() < 324.0
