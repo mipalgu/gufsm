@@ -21,7 +21,6 @@ Quiet::Quiet(const char *name): CLState(name, *new Quiet::OnEntry, *new Quiet::O
 	_transitions[2] = new Transition_2();
 	_transitions[3] = new Transition_3();
 	_transitions[4] = new Transition_4();
-	_transitions[5] = new Transition_5();
 }
 
 Quiet::~Quiet()
@@ -35,7 +34,6 @@ Quiet::~Quiet()
 	delete _transitions[2];
 	delete _transitions[3];
 	delete _transitions[4];
-	delete _transitions[5];
 }
 
 void Quiet::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -111,16 +109,5 @@ bool Quiet::Transition_4::check(CLMachine *_machine, CLState *_state) const
 	return
 	(
 #		include "State_Quiet_Transition_4.expr"
-	);
-}
-
-bool Quiet::Transition_5::check(CLMachine *_machine, CLState *_state) const
-{
-#	include "SMSoundDemo_VarRefs.mm"
-#	include "State_Quiet_VarRefs.mm"
-
-	return
-	(
-#		include "State_Quiet_Transition_5.expr"
 	);
 }
