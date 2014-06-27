@@ -1,0 +1,3 @@
+fft.rms().left()  > 2000 &&
+fft.frequencies(0).left() > 2800.0 &&
+fft.frequencies(0).left() < 4000.0
