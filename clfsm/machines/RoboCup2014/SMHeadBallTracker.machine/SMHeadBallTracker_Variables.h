@@ -9,5 +9,5 @@ int	time;	///<
 int	counter;	///< 
 SENSORS_TorsoJointSensors	body_sensors;	///< 
 SENSORS_TorsoJointSensors_t	body_sensors_ptr;	///< 
-Vision_Objects_t	v_t;	///< 
-VisionObjects	v;	///<
+VisionBall_t	v_t;	///< 
+VisionBall	v;	///<

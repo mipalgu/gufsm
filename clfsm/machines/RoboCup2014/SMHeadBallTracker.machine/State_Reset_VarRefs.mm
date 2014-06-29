@@ -1,5 +1,5 @@
 //
-// State_SUSPENDED_VarRefs.mm
+// State_Reset_VarRefs.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -7,7 +7,7 @@
 #pragma clang diagnostic ignored "-Wunused-variable"
 #pragma clang diagnostic ignored "-Wshadow"
 
-SUSPENDED *_s = static_cast<SUSPENDED *>(_state);
+Reset *_s = static_cast<Reset *>(_state);
 
 
 #pragma clang diagnostic pop

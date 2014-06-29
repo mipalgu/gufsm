@@ -17,6 +17,7 @@ using namespace State;
 UpdateHead::UpdateHead(const char *name): CLState(name, *new UpdateHead::OnEntry, *new UpdateHead::OnExit, *new UpdateHead::Internal)
 {
 	_transitions[0] = new Transition_0();
+	_transitions[1] = new Transition_1();
 }
 
 UpdateHead::~UpdateHead()
@@ -26,6 +27,7 @@ UpdateHead::~UpdateHead()
 	delete &internalAction();
 
 	delete _transitions[0];
+	delete _transitions[1];
 }
 
 void UpdateHead::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -57,5 +59,16 @@ bool UpdateHead::Transition_0::check(CLMachine *_machine, CLState *_state) const
 	return
 	(
 #		include "State_UpdateHead_Transition_0.expr"
+	);
+}
+
+bool UpdateHead::Transition_1::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "SMHeadBallTracker_VarRefs.mm"
+#	include "State_UpdateHead_VarRefs.mm"
+
+	return
+	(
+#		include "State_UpdateHead_Transition_1.expr"
 	);
 }

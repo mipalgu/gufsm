@@ -3,7 +3,7 @@ fprintf(stderr, "State: %s\n", state_name());
 #endif
 
 time = 100000;
-counter = 0;
+counter = v_t.get().frameNumber();
 
 	/*
 	extern BallDistance;

@@ -1,1 +1,1 @@
-counter != v.FrameNumber() && v.ball()
+counter != v.frameNumber() && (v.topVisible() || v.bottomVisible())
