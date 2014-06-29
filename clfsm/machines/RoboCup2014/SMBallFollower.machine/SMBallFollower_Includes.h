@@ -5,6 +5,7 @@
 #include "CLMacros.h"
 #include <gu_util.h>
 #include "typeClassDefs/FilteredOneDimObjects.h"
+#include "typeClassDefs/FilteredArrayOneDimBall.h"
 #include "typeClassDefs/SENSORS_TorsoJointSensors.h"
 #include "typeClassDefs/WALK_ControlStatus.h"
 #include "typeClassDefs/Vision_Control.h"

@@ -7,7 +7,8 @@ float	ballAngle;	///<
 int	localization_update_counter;	///< 
 int	min_long_distance_angle;	///< 
 int	min_short_distance_angle;	///< 
-FilteredVisionObject	ball;	///< 
+FilteredOneDimObject	ball;	///< 
+FilteredArrayOneDimBall	ball_array;	///< 
 FilteredBallSighting_t	sightings_ptr;	///< 
 int	boundaryCloseFar;	///< 
 SENSORS_TorsoJointSensors_t	body_sensors_ptr;	///< 
