@@ -3,11 +3,11 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-PickMachine *_s = static_cast<PickMachine *>(_state);
-
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"
 #pragma clang diagnostic ignored "-Wshadow"
+
+PickMachine *_s = static_cast<PickMachine *>(_state);
 
 
 #pragma clang diagnostic pop

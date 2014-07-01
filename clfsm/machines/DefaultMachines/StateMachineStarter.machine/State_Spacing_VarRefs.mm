@@ -3,11 +3,11 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-Spacing *_s = static_cast<Spacing *>(_state);
-
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"
 #pragma clang diagnostic ignored "-Wshadow"
+
+Spacing *_s = static_cast<Spacing *>(_state);
 
 
 #pragma clang diagnostic pop
