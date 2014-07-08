@@ -6,6 +6,7 @@
 #include "typeClassDefs/HAL_HeadTarget.h"
 #include "typeClassDefs/VisionBall.h"
 #include "typeClassDefs/SENSORS_TorsoJointSensors.h"
+#include "typeClassDefs/Vision_Control.h"
 
 #include "CLWhiteboard.h"
 

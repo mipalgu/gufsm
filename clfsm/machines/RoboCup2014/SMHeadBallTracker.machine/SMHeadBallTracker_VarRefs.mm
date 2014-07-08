@@ -17,5 +17,7 @@ SENSORS_TorsoJointSensors	&body_sensors = _m->body_sensors;	///<
 SENSORS_TorsoJointSensors_t	&body_sensors_ptr = _m->body_sensors_ptr;	///< 
 VisionBall_t	&v_t = _m->v_t;	///< 
 VisionBall	&v = _m->v;	///< 
+Vision_Status_t	&vs_t = _m->vs_t;	///< 
+VisionControlStatus	&vs = _m->vs;	///< 
 
 #pragma clang diagnostic pop

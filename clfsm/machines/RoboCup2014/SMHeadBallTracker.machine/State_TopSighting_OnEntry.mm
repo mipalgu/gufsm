@@ -1,18 +1,19 @@
-/*body_sensors = body_sensors_ptr.get();
+body_sensors = body_sensors_ptr.get();
 
 
 int 	delay = 150000;
 
+vs = vs_t.get();
 
 // k4VGA 1280 x 960
-int guvision_width = 1280;
-int guvision_height = 960;
+int guvision_width = vs.resolution().width();
+int guvision_height = vs.resolution().height();
 
 int horiz_fov = 61;
 int vert_fov = 48;
 	
-int ball_x = v.ball()->position.x;
-int ball_y = v.ball()->position.y;
+int ball_x = v.bottomBall().x();
+int ball_y = v.bottomBall().y();
 
 
 //Work out yaw
@@ -32,4 +33,4 @@ fprintf(stderr, "Ball RR: %f\t%f\ty angle %d\tpitch %f\n", body_relative_angle_x
 
 
 head.GoToWithTime((int)body_relative_angle_x, (int)body_relative_angle_y, delay);
-head_ptr.set(head);*/
+head_ptr.set(head);

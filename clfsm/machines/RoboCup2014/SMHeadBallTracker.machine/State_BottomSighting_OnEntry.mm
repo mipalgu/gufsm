@@ -3,10 +3,11 @@ body_sensors = body_sensors_ptr.get();
 
 int 	delay = 150000;
 
+vs = vs_t.get();
 
 // k4VGA 1280 x 960
-int guvision_width = 1280;
-int guvision_height = 960;
+int guvision_width = vs.resolution().width();
+int guvision_height = vs.resolution().height();
 
 int horiz_fov = 61;
 int vert_fov = 48;

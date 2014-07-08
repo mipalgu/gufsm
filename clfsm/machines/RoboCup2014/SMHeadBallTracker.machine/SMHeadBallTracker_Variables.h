@@ -10,4 +10,6 @@ int	counter;	///<
 SENSORS_TorsoJointSensors	body_sensors;	///< 
 SENSORS_TorsoJointSensors_t	body_sensors_ptr;	///< 
 VisionBall_t	v_t;	///< 
-VisionBall	v;	///<
+VisionBall	v;	///< 
+Vision_Status_t	vs_t;	///< 
+VisionControlStatus	vs;	///<
