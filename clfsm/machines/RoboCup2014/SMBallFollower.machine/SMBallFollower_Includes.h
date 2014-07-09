@@ -16,3 +16,8 @@
 
 
 using namespace guWhiteboard;
+
+#define B1 ball_array.get_object(FVOBallTop)
+#define B2 ball_array.get_object(FVOBallBottom)
+
+#define BALL (B1.frameCounter() < B2.frameCounter() ? B1 : B2)
