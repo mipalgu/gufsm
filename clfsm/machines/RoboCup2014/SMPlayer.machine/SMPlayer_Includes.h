@@ -14,7 +14,7 @@ using namespace guWhiteboard;
 
 #define B1 ball_array.get_object(FVOBallTop)
 #define B2 ball_array.get_object(FVOBallBottom)
-#define BAD_BALL 30 //3 sec - kalman filter value
+#define BAD_BALL 10 //1 sec - kalman filter value
 
 #define VISIBLE (B1.frameCounter() < BAD_BALL || B2.frameCounter() < BAD_BALL)
 #define BALL (B1.frameCounter() < B2.frameCounter() ? B1 : B2)
