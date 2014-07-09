@@ -1,1 +1,1 @@
-ball = ball_ptr.get();
+ball_array = ball_ptr.get();

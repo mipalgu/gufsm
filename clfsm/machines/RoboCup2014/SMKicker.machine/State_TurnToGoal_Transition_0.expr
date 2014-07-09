@@ -1,1 +1,0 @@
-!goal.isVisible() || fabs((float)RAD2DEG(goal.horizontal_angle())) < 10 || after(7)

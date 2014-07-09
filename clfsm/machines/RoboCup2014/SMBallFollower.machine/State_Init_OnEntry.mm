@@ -8,6 +8,6 @@ min_long_distance_angle = 10;
 min_short_distance_angle = 10;
 boundaryCloseFar = 60; //cm
 
-limiter = 2.0f;
+limiter = 4.0f;
 
 large_turn = 50;

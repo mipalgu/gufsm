@@ -20,4 +20,4 @@ VisionGoals	goal;	///<
 HAL_HeadTarget_t	head_ptr;	///< 
 float	start_pitch;	///< 
 SENSORS_TorsoJointSensors_t	head_pitch_ptr;	///< 
-float	start_yaw;	///< 
+float	start_yaw;	///<

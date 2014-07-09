@@ -51,22 +51,14 @@ namespace FSM
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                class Transition_2: public CLTransition
-                {
-                public:
-                    Transition_2(int toState = 18): CLTransition(toState) {}
-
-                    virtual bool check(CLMachine *, CLState *) const;
-                };
-
-                CLTransition *_transitions[3];
+                CLTransition *_transitions[2];
 
                 public:
                     KickGoal(const char *name = "KickGoal");
                     virtual ~KickGoal();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 3; }
+                    virtual int numberOfTransitions() const { return 2; }
 
 #                   include "State_KickGoal_Variables.h"
             };

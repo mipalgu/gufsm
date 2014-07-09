@@ -3,11 +3,11 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-SMKicker *_m = static_cast<SMKicker *>(_machine);
-
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"
 #pragma clang diagnostic ignored "-Wshadow"
+
+SMKicker *_m = static_cast<SMKicker *>(_machine);
 
 MOTION_Commands_t	&motion_ptr = _m->motion_ptr;	///< 
 WALK_Status_t	&walk_status = _m->walk_status;	///< 

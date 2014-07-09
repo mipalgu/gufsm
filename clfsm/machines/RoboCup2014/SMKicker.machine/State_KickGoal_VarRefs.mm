@@ -3,11 +3,11 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-KickGoal *_s = static_cast<KickGoal *>(_state);
-
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"
 #pragma clang diagnostic ignored "-Wshadow"
+
+KickGoal *_s = static_cast<KickGoal *>(_state);
 
 
 #pragma clang diagnostic pop

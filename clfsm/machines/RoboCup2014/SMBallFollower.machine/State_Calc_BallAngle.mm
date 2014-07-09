@@ -17,7 +17,6 @@ using namespace State;
 Calc_BallAngle::Calc_BallAngle(const char *name): CLState(name, *new Calc_BallAngle::OnEntry, *new Calc_BallAngle::OnExit, *new Calc_BallAngle::Internal)
 {
 	_transitions[0] = new Transition_0();
-	_transitions[1] = new Transition_1();
 }
 
 Calc_BallAngle::~Calc_BallAngle()
@@ -27,7 +26,6 @@ Calc_BallAngle::~Calc_BallAngle()
 	delete &internalAction();
 
 	delete _transitions[0];
-	delete _transitions[1];
 }
 
 void Calc_BallAngle::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -59,16 +57,5 @@ bool Calc_BallAngle::Transition_0::check(CLMachine *_machine, CLState *_state) c
 	return
 	(
 #		include "State_Calc_BallAngle_Transition_0.expr"
-	);
-}
-
-bool Calc_BallAngle::Transition_1::check(CLMachine *_machine, CLState *_state) const
-{
-#	include "SMBallFollower_VarRefs.mm"
-#	include "State_Calc_BallAngle_VarRefs.mm"
-
-	return
-	(
-#		include "State_Calc_BallAngle_Transition_1.expr"
 	);
 }

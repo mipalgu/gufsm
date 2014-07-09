@@ -1,1 +1,1 @@
-after(5)
+walk_status.get().controlStatus() == WALK_Disconnected

@@ -18,7 +18,6 @@ KickGoal::KickGoal(const char *name): CLState(name, *new KickGoal::OnEntry, *new
 {
 	_transitions[0] = new Transition_0();
 	_transitions[1] = new Transition_1();
-	_transitions[2] = new Transition_2();
 }
 
 KickGoal::~KickGoal()
@@ -29,7 +28,6 @@ KickGoal::~KickGoal()
 
 	delete _transitions[0];
 	delete _transitions[1];
-	delete _transitions[2];
 }
 
 void KickGoal::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -72,16 +70,5 @@ bool KickGoal::Transition_1::check(CLMachine *_machine, CLState *_state) const
 	return
 	(
 #		include "State_KickGoal_Transition_1.expr"
-	);
-}
-
-bool KickGoal::Transition_2::check(CLMachine *_machine, CLState *_state) const
-{
-#	include "SMKicker_VarRefs.mm"
-#	include "State_KickGoal_VarRefs.mm"
-
-	return
-	(
-#		include "State_KickGoal_Transition_2.expr"
 	);
 }
