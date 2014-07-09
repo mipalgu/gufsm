@@ -1,1 +1,1 @@
-ball = sightings_ptr.get();
+ball_array = sightings_ptr.get();

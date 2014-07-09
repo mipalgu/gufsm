@@ -4,6 +4,7 @@
 // Automatically created through MiCASE -- do not change manually!
 //
 FilteredBallSighting_t	sightings_ptr;	///< 
-FilteredVisionObject	ball;	///< 
+FilteredArrayOneDimBall	ball_array;	///< 
+FilteredOneDimObject	ball;	///< 
 WALK_Command_t	walk_post;	///< 
 WALK_Status_t	walk_status;	///<
