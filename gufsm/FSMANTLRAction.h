@@ -2,7 +2,7 @@
  *  Action.h
  *
  *  Created by René Hexel on 23/09/11.
- *  Copyright (c) 2011 Rene Hexel.
+ *  Copyright (c) 2011, 2014 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -60,7 +60,9 @@
 
 extern "C"
 {
+#define __block antlr_block
 #include <antlr3.h>
+#undef __block
 #undef false
 #undef true
 }
