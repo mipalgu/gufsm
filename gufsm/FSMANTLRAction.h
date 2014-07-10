@@ -58,16 +58,23 @@
 #ifndef gufsm_FSMANTLRAction_h
 #define gufsm_FSMANTLRAction_h
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-macros"
+
 extern "C"
 {
+#undef __block
 #define __block antlr_block
 #include <antlr3.h>
 #undef __block
+#define __block __attribute__((__blocks__(byref)))
 #undef false
 #undef true
 }
 #include <string>
 #include "FSMAction.h"
+
+#pragma clang diagnostic pop
 
 namespace FSM
 {
