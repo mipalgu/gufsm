@@ -58,9 +58,16 @@
 #ifndef gufsm_FSANTLRContext_h
 #define gufsm_FSANTLRContext_h
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-macros"
+
 extern "C"
 {
+#undef __block
+#define __block antlr_block
 #include <antlr3.h>
+#undef __block
+#define __block __attribute__((__blocks__(byref)))
 #undef false
 #undef true
 }
@@ -69,6 +76,8 @@ extern "C"
 #include <sstream>
 #include<iostream>
 #include "FSMWBContext.h"
+
+#pragma clang diagnostic pop
 
 #ifdef bool
 #undef bool

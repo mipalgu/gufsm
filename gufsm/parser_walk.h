@@ -57,11 +57,22 @@
 #ifndef _PARSER_WALK_H_
 #define _PARSER_WALK_H_
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-macros"
+
+#undef __block
+#define __block antlr_block
 #include <antlr3.h>
+#undef __block
+#define __block __attribute__((__blocks__(byref)))
+#undef false
+#undef true
 #include "SimpleCLexer.h"
 #undef true
 #undef false
 #include <stdbool.h>
+
+#pragma clang diagnostic push
 
 /**
  * This is the callback function that gets invoked on every single token
