@@ -1,0 +1,7 @@
+(fft.rms().right()  > level || fft.rms().left()  > level) &&
+fft.frequencies(0).right() > hi-5 &&
+fft.frequencies(0).right() < hi+5 &&
+fft.frequencies(0).left() > hi-5 &&
+fft.frequencies(0).left() < hi+5 &&
+fft.fsk().hi_percentage() > 55.0 &&
+fft.fsk().hi_percentage() < 75.0

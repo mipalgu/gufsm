@@ -1,0 +1,2 @@
+fft.rms().left() < 5000 &&
+fft.rms().right() < 5000
