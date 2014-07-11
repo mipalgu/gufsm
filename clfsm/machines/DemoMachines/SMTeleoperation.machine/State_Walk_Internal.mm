@@ -1,5 +1,5 @@
 remoteControl=remoteControlPtr->get();
-if(currentFoward != remoteControl.fowardWalkSpeed() || currentTurn != remoteControl.turnWalkSpeed()) {
+if(fabs(currentFoward - remoteControl.fowardWalkSpeed()) > 0.01 || fabs(currentTurn - remoteControl.turnWalkSpeed()) > 0.01) {
 	WALK_ControlStatus walk;
 	walk.set_controlStatus(WALK_Run);
 	walk.set_power(100);
