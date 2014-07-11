@@ -1,1 +1,1 @@
-(remoteControl.headPitch() != currentPitch || remoteControl.headYaw() != currentYaw) && after_ms(100)
+(fabs(remoteControl.headPitch() - currentPitch) > 0.01 || fabs(remoteControl.headYaw() - currentYaw) > 0.01) && after_ms(100)
