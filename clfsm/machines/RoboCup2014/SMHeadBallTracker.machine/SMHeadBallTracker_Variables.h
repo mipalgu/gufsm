@@ -6,7 +6,7 @@
 HAL_HeadTarget	head;	///< 
 HAL_HeadTarget_t	head_ptr;	///< 
 int	time;	///< 
-int	counter;	///< 
+unsigned long	counter;	///< 
 SENSORS_TorsoJointSensors	body_sensors;	///< 
 SENSORS_TorsoJointSensors_t	body_sensors_ptr;	///< 
 VisionBall_t	v_t;	///< 
