@@ -1,7 +1,7 @@
-fft.rms().right()  > level &&
-((fft.frequencies(0).right() > lo-5 &&
-fft.frequencies(0).right() < lo+5) ||
-(fft.frequencies(1).right() > hi-5 &&
-fft.frequencies(1).right() < hi+5) ||
-(fft.frequencies(2).right() > hi-5 &&
-fft.frequencies(2).right() < hi+5))
+fft.rms().left()  > level &&
+((fft.frequencies(0).left() > lo-5 &&
+fft.frequencies(0).left() < lo+5) ||
+(fft.frequencies(1).left() > hi-5 &&
+fft.frequencies(1).left() < hi+5) ||
+(fft.frequencies(2).left() > hi-5 &&
+fft.frequencies(2).left() < hi+5))

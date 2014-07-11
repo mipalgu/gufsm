@@ -14,6 +14,8 @@
 #include "State_Initial.h"
 #include "State_Retry.h"
 #include "State_Extra_Time.h"
+#include "State_CheckWhisle.h"
+#include "State_ShortWhistle.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -36,6 +38,8 @@ SMSoundDemo::SMSoundDemo(int mid, const char *name): CLMachine(mid, name)
 	_states[5] = new FSMSMSoundDemo::State::Initial;
 	_states[6] = new FSMSMSoundDemo::State::Retry;
 	_states[7] = new FSMSMSoundDemo::State::Extra_Time;
+	_states[8] = new FSMSMSoundDemo::State::CheckWhisle;
+	_states[9] = new FSMSMSoundDemo::State::ShortWhistle;
 
 	setInitialState(_states[0]);            // set initial state
 }
@@ -50,4 +54,6 @@ SMSoundDemo::~SMSoundDemo()
 	delete _states[5];
 	delete _states[6];
 	delete _states[7];
+	delete _states[8];
+	delete _states[9];
 }

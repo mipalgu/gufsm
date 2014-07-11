@@ -16,12 +16,12 @@ namespace FSM
     {
         class SMSoundDemo: public CLMachine
         {
-            CLState *_states[8];
+            CLState *_states[10];
         public:
             SMSoundDemo(int mid  = 0, const char *name = "SMSoundDemo");
             virtual ~SMSoundDemo();
             virtual CLState * const * states() const { return _states; }
-            virtual int numberOfStates() const { return 8; }
+            virtual int numberOfStates() const { return 10; }
 #           include "SMSoundDemo_Variables.h"
         };
     }
