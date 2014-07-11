@@ -11,5 +11,6 @@ SMSoundDemo *_m = static_cast<SMSoundDemo *>(_machine);
 
 FFTStatus	&fft = _m->fft;	///< last read FFT data
 FFTStatus_t	&wbfft = _m->wbfft;	///< FFT analysis data from whiteboard
+int16_t	&level = _m->level;	///< RMS threshold
 
 #pragma clang diagnostic pop

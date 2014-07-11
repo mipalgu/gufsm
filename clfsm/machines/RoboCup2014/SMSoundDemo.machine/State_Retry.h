@@ -1,10 +1,10 @@
 //
-// State_InitialPseudoState.h
+// State_Retry.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMSoundDemo_State_InitialPseudoState_h
-#define clfsm_SMSoundDemo_State_InitialPseudoState_h
+#ifndef clfsm_SMSoundDemo_State_Retry_h
+#define clfsm_SMSoundDemo_State_Retry_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class InitialPseudoState: public CLState
+            class Retry: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -46,13 +46,13 @@ namespace FSM
                 CLTransition *_transitions[1];
 
                 public:
-                    InitialPseudoState(const char *name = "InitialPseudoState");
-                    virtual ~InitialPseudoState();
+                    Retry(const char *name = "Retry");
+                    virtual ~Retry();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
                     virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_InitialPseudoState_Variables.h"
+#                   include "State_Retry_Variables.h"
             };
         }
       }

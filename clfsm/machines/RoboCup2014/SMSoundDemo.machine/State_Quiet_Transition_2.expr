@@ -1,4 +1,4 @@
-fft.rms().right()  > 500 &&
+fft.rms().right()  > level &&
 ((fft.frequencies(0).right() > 198.0 &&
 fft.frequencies(0).right() < 204.0) ||
 (fft.frequencies(1).right() > 318.0 &&

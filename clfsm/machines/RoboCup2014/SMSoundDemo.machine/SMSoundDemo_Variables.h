@@ -5,3 +5,4 @@
 //
 FFTStatus	fft;	///< last read FFT data
 FFTStatus_t	wbfft;	///< FFT analysis data from whiteboard
+int16_t	level;	///< RMS threshold
