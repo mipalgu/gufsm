@@ -1,7 +1,0 @@
-(fft.rms().right()  > 500 || fft.rms().left()  > 500) &&
-fft.frequencies(0).right() > 318.0 &&
-fft.frequencies(0).right() < 324.0 &&
-fft.frequencies(0).left() > 318.0 &&
-fft.frequencies(0).left() < 324.0 &&
-fft.fsk().hi_percentage() > 55.0 &&
-fft.fsk().hi_percentage() < 75.0
