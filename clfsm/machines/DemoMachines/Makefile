@@ -4,7 +4,7 @@
 # Makefile for pre- and cross-compiling .machine files
 #
 
-DEMO_MACHINES=SMLeapController SMTeleoperationController SMTeleoperationHeadControl SMTeleoperation BatNaoMoves StopMotionRecorder
+DEMO_MACHINES=SMLeapController SMSoundDemo SMTeleoperationController SMTeleoperationHeadControl SMTeleoperation BatNaoMoves StopMotionRecorder
 
 
 MACHINES?=${DEMO_MACHINES}
