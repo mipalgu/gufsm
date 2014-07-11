@@ -7,7 +7,7 @@ if(machine_index < 0)
 if(machine_index > s)
 	machine_index = 0;
 
-main_machine = ms.at(machine_index);
+main_machine = ms.at((unsigned)machine_index);
 
 std::string n = main_machine;
 
