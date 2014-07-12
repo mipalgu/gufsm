@@ -14,8 +14,8 @@ int vert_fov = 48;
 	
 //int ball_x = v.bottomBall().x();
 //int ball_y = v.bottomBall().y();
-int ball_x = fba.get_object(FVOBallBottom).x();
-int ball_y = fba.get_object(FVOBallBottom).y();
+int ball_x = BALL.x();
+int ball_y = BALL.y();
 
 //Work out yaw
 int head_cam_ratio = guvision_width/horiz_fov;

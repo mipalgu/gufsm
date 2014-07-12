@@ -19,4 +19,6 @@ using namespace guWhiteboard;
 #define B1 ball_array.get_object(FVOBallTop)
 #define B2 ball_array.get_object(FVOBallBottom)
 
-#define BALL (B1.frameCounter() < B2.frameCounter() ? B1 : B2)
+#define NUM_SIGHTINGS 20 //check the last x num of sightings 
+#define BALL (B1.ratioOfSightings(NUM_SIGHTINGS) > B2.ratioOfSightings(NUM_SIGHTINGS) ? B1 : B2)
+

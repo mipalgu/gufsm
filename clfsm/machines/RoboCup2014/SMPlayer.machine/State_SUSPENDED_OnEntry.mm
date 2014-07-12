@@ -13,3 +13,10 @@ HAL_HeadTarget_t head_ptr;
 HAL_HeadTarget head;
 head.Stop();
 head_ptr.set(head);
+
+SENSORS_LedsSensors l = SENSORS_LedsSensors_t().get(); 
+l.LEDsGroupChange(LEye, Off);  
+SENSORS_LedsSensors_t l_p; 
+l_p.set(l);
+
+
