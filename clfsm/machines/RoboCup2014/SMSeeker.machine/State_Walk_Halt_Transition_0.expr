@@ -1,1 +1,1 @@
-(walk_status.get().controlStatus() == WALK_Stop && after_ms(20)) || after(5)
+after(1)
