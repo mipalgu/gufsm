@@ -23,7 +23,7 @@ using namespace guWhiteboard;
 #define VISIBLE (VIS(B1) || VIS(B2))
 
 #define BALL (B1.ratioOfSightings(NUM_SIGHTINGS) > B2.ratioOfSightings(NUM_SIGHTINGS) ? B1 : B2)
-#define KICK_DIST 8
+#define KICK_DIST 15
 
 #define LED_UPDATE SENSORS_LedsSensors l = SENSORS_LedsSensors_t().get(); \
 			l.LEDsGroupChange(LEye, VISIBLE ? Green : Blue);  \
