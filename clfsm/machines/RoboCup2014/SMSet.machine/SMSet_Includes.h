@@ -14,10 +14,14 @@ using namespace guWhiteboard;
 
 #define B1 ball_array.get_object(FVOBallTop)
 #define B2 ball_array.get_object(FVOBallBottom)
-#define BAD_BALL 10 //1 sec - kalman filter value
 
-#define VISIBLE (B1.frameCounter() < BAD_BALL || B2.frameCounter() < BAD_BALL)
-#define BALL (B1.frameCounter() < B2.frameCounter() ? B1 : B2)
+#define NUM_SIGHTINGS 20 //check the last x num of sightings 
+#define SIGHTINGS_PERCENTAGE 50 //percent of sightings in the last NUM_SIGHTINGS needed for VISIBLE to be true
+#define VIS_PERCENT(b) (b.ratioOfSightings(NUM_SIGHTINGS)*100/NUM_SIGHTINGS)
+#define VIS(b) (VIS_PERCENT(b) > SIGHTINGS_PERCENTAGE)
+#define VISIBLE (VIS(B1) || VIS(B2))
+
+#define BALL (B1.ratioOfSightings(NUM_SIGHTINGS) > B2.ratioOfSightings(NUM_SIGHTINGS) ? B1 : B2)
 
 
 //#define DEBUG
