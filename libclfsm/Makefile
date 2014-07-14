@@ -47,6 +47,8 @@ install:
 
 pre-catkin:
 	$Emkdir -p ${CATKIN_DIR}/include/typeClassDefs
-	$Ecp -p ${WB_DIR}/typeClassDefs/FSM_Control.h ${CATKIN_DIR}/include/typeClassDefs
+.for hfile in FSM_Control.h FSMControlStatus.h wb_fsm_control_status.h
+	$Ecp -p ${WB_DIR}/typeClassDefs/${hfile} ${CATKIN_DIR}/include/typeClassDefs
+.endfor
 
 .include "../../../mk/mipal.mk"		# comes last!
