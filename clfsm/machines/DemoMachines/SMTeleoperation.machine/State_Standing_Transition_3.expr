@@ -1,1 +1,1 @@
-remoteControl.new_action()
+remoteControl.fowardWalkSpeed() != 0 || remoteControl.turnWalkSpeed() != 0.0f
