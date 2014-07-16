@@ -16,12 +16,12 @@ namespace FSM
     {
         class SMHeadBallTracker: public CLMachine
         {
-            CLState *_states[7];
+            CLState *_states[4];
         public:
             SMHeadBallTracker(int mid  = 0, const char *name = "SMHeadBallTracker");
             virtual ~SMHeadBallTracker();
             virtual CLState * const * states() const { return _states; }
-            virtual int numberOfStates() const { return 7; }
+            virtual int numberOfStates() const { return 4; }
 #           include "SMHeadBallTracker_Variables.h"
         };
     }

@@ -14,5 +14,12 @@
 
 using namespace guWhiteboard;
 
+#define B1 fba.get_object(FVOBallTop)
+#define B2 fba.get_object(FVOBallBottom)
+
+#define NUM_SIGHTINGS 20 //check the last x num of sightings 
+
+#define BALL (B1.ratioOfSightings(NUM_SIGHTINGS) > B2.ratioOfSightings(NUM_SIGHTINGS) ? B1 : B2)
+
 
 //#define DEBUG

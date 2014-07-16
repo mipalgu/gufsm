@@ -20,6 +20,7 @@
 #include "State_Connected.h"
 #include "State_StartHeadTracking.h"
 #include "State_Restart.h"
+#include "State_ReadyConnect.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -48,6 +49,7 @@ SMTeleoperation::SMTeleoperation(int mid, const char *name): CLMachine(mid, name
 	_states[11] = new FSMSMTeleoperation::State::Connected;
 	_states[12] = new FSMSMTeleoperation::State::StartHeadTracking;
 	_states[13] = new FSMSMTeleoperation::State::Restart;
+	_states[14] = new FSMSMTeleoperation::State::ReadyConnect;
 
 	setInitialState(_states[0]);            // set initial state
 }
@@ -68,4 +70,5 @@ SMTeleoperation::~SMTeleoperation()
 	delete _states[11];
 	delete _states[12];
 	delete _states[13];
+	delete _states[14];
 }

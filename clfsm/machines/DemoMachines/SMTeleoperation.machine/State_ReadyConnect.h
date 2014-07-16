@@ -1,10 +1,10 @@
 //
-// State_UpdateHead.h
+// State_ReadyConnect.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMHeadBallTracker_State_UpdateHead_h
-#define clfsm_SMHeadBallTracker_State_UpdateHead_h
+#ifndef clfsm_SMTeleoperation_State_ReadyConnect_h
+#define clfsm_SMTeleoperation_State_ReadyConnect_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,11 +14,11 @@ namespace FSM
 {
     namespace CLM
     {
-      namespace FSMSMHeadBallTracker
+      namespace FSMSMTeleoperation
       {
         namespace State
         {
-            class UpdateHead: public CLState
+            class ReadyConnect: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -43,24 +43,16 @@ namespace FSM
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                class Transition_1: public CLTransition
-                {
-                public:
-                    Transition_1(int toState = 5): CLTransition(toState) {}
-
-                    virtual bool check(CLMachine *, CLState *) const;
-                };
-
-                CLTransition *_transitions[2];
+                CLTransition *_transitions[1];
 
                 public:
-                    UpdateHead(const char *name = "UpdateHead");
-                    virtual ~UpdateHead();
+                    ReadyConnect(const char *name = "ReadyConnect");
+                    virtual ~ReadyConnect();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 2; }
+                    virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_UpdateHead_Variables.h"
+#                   include "State_ReadyConnect_Variables.h"
             };
         }
       }

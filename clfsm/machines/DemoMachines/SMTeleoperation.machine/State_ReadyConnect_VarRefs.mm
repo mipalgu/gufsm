@@ -1,5 +1,5 @@
 //
-// State_Reset_VarRefs.mm
+// State_ReadyConnect_VarRefs.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -7,7 +7,7 @@
 #pragma clang diagnostic ignored "-Wunused-variable"
 #pragma clang diagnostic ignored "-Wshadow"
 
-Reset *_s = static_cast<Reset *>(_state);
+ReadyConnect *_s = static_cast<ReadyConnect *>(_state);
 
 
 #pragma clang diagnostic pop

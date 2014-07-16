@@ -1,7 +1,7 @@
 body_sensors = body_sensors_ptr.get();
 
 
-int 	delay = 150000;
+int 	delay = 100000;
 
 vs = vs_t.get();
 
@@ -14,8 +14,8 @@ int vert_fov = 48;
 	
 //int ball_x = v.bottomBall().x();
 //int ball_y = v.bottomBall().y();
-int ball_x = fba.get_object(FVOBallBottom).x();
-int ball_y = fba.get_object(FVOBallBottom).y();
+int ball_x = BALL.x();
+int ball_y = BALL.y();
 
 //Work out yaw
 int head_cam_ratio = guvision_width/horiz_fov;
@@ -25,7 +25,7 @@ double body_relative_angle_x = RAD2DEG(body_sensors.HeadYaw()) + point_conv_to_c
 //Work out pitch
 int vert_head_cam_ratio = guvision_height/vert_fov;
 int point_conv_to_cam_angle_y = ball_y/vert_head_cam_ratio;
-double body_relative_angle_y = RAD2DEG(body_sensors.HeadPitch()) + (point_conv_to_cam_angle_y);
+double body_relative_angle_y = 24; //RAD2DEG(body_sensors.HeadPitch()) + (point_conv_to_cam_angle_y);
 
 #ifdef DEBUG
 fprintf(stderr, "Ball RR: %f\t%f\ty angle %d\tpitch %f\n", body_relative_angle_x, body_relative_angle_y, point_conv_to_cam_angle_y, RAD2DEG(body_sensors.HeadPitch()));
