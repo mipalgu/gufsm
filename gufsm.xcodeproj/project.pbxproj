@@ -1250,7 +1250,7 @@
 			isa = PBXGroup;
 			children = (
 				F1284D1F14A6CAA800C0247E /* libgusimplewhiteboard.a */,
-				F1284D2114A6CAA800C0247E /* SimpleWhiteboardTest.octest */,
+				F1284D2114A6CAA800C0247E /* SimpleWhiteboardTest.xctest */,
 				F1B5AB8C1555F8B1000B770D /* libguobjcwhiteboard.a */,
 				F1B5AB8E1555F8B1000B770D /* guobjcwhiteboardTests.octest */,
 				F1B5AB901555F8B1000B770D /* libgusimplewhiteboardios.a */,
@@ -2321,6 +2321,48 @@
 			passBuildSettingsInEnvironment = 1;
 			productName = libclfsm_mk;
 		};
+		F1B0073819772F9D008C131B /* LFSMS_DefaultMachines */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = LFSMS_DefaultMachines;
+			buildConfigurationList = F1B0075719772F9D008C131B /* Build configuration list for PBXLegacyTarget "LFSMS_DefaultMachines" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/local/bin/jenkinsmon;
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = LFSMS_DefaultMachines;
+			passBuildSettingsInEnvironment = 0;
+			productName = LFSMS_DefaultMachines;
+		};
+		F1B0075819772FD2008C131B /* LFSMS_DemoMachines */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = LFSMS_DemoMachines;
+			buildConfigurationList = F1B0075919772FD2008C131B /* Build configuration list for PBXLegacyTarget "LFSMS_DemoMachines" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/local/bin/jenkinsmon;
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = LFSMS_DemoMachines;
+			passBuildSettingsInEnvironment = 0;
+			productName = LFSMS_DemoMachines;
+		};
+		F1B0075C19772FFA008C131B /* LFSMS_Robocup2014 */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = LFSMS_Robocup2014;
+			buildConfigurationList = F1B0075D19772FFA008C131B /* Build configuration list for PBXLegacyTarget "LFSMS_Robocup2014" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/local/bin/jenkinsmon;
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = LFSMS_Robocup2014;
+			passBuildSettingsInEnvironment = 0;
+			productName = LFSMS_Robocup2014;
+		};
 		F1D9C39D18EE3AD900593DD3 /* libclfsm_mk */ = {
 			isa = PBXLegacyTarget;
 			buildArgumentsString = "host-local analyse";
@@ -2609,6 +2651,9 @@
 				F1FABCA719026B1E001AD476 /* Lclfsm */,
 				F1FABCC519026B39001AD476 /* Lgufsm */,
 				F1FABCC919026B4C001AD476 /* Llibclfsm */,
+				F1B0073819772F9D008C131B /* LFSMS_DefaultMachines */,
+				F1B0075819772FD2008C131B /* LFSMS_DemoMachines */,
+				F1B0075C19772FFA008C131B /* LFSMS_Robocup2014 */,
 			);
 		};
 /* End PBXProject section */
@@ -2628,7 +2673,7 @@
 			remoteRef = F1284D1E14A6CAA800C0247E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		F1284D2114A6CAA800C0247E /* SimpleWhiteboardTest.octest */ = {
+		F1284D2114A6CAA800C0247E /* SimpleWhiteboardTest.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = SimpleWhiteboardTest.xctest;
@@ -3422,6 +3467,138 @@
 			};
 			name = Release;
 		};
+		F1B0073919772F9D008C131B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				DEBUGGING_SYMBOLS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F1B0073A19772F9D008C131B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F1B0075A19772FD2008C131B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				DEBUGGING_SYMBOLS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F1B0075B19772FD2008C131B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F1B0075E19772FFA008C131B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				DEBUGGING_SYMBOLS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F1B0075F19772FFA008C131B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		F1D575981627948900976A23 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -3846,6 +4023,30 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		F1B0075719772F9D008C131B /* Build configuration list for PBXLegacyTarget "LFSMS_DefaultMachines" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1B0073919772F9D008C131B /* Debug */,
+				F1B0073A19772F9D008C131B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F1B0075919772FD2008C131B /* Build configuration list for PBXLegacyTarget "LFSMS_DemoMachines" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1B0075A19772FD2008C131B /* Debug */,
+				F1B0075B19772FD2008C131B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F1B0075D19772FFA008C131B /* Build configuration list for PBXLegacyTarget "LFSMS_Robocup2014" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1B0075E19772FFA008C131B /* Debug */,
+				F1B0075F19772FFA008C131B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		F1D575971627948900976A23 /* Build configuration list for PBXNativeTarget "libclfsm" */ = {
 			isa = XCConfigurationList;
