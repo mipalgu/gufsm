@@ -2323,7 +2323,7 @@
 		};
 		F1B0073819772F9D008C131B /* LFSMS_DefaultMachines */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = LFSMS_DefaultMachines;
+			buildArgumentsString = FSMS_DefaultMachines;
 			buildConfigurationList = F1B0075719772F9D008C131B /* Build configuration list for PBXLegacyTarget "LFSMS_DefaultMachines" */;
 			buildPhases = (
 			);
@@ -2337,7 +2337,7 @@
 		};
 		F1B0075819772FD2008C131B /* LFSMS_DemoMachines */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = LFSMS_DemoMachines;
+			buildArgumentsString = FSMS_DemoMachines;
 			buildConfigurationList = F1B0075919772FD2008C131B /* Build configuration list for PBXLegacyTarget "LFSMS_DemoMachines" */;
 			buildPhases = (
 			);
@@ -2351,7 +2351,7 @@
 		};
 		F1B0075C19772FFA008C131B /* LFSMS_Robocup2014 */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = LFSMS_Robocup2014;
+			buildArgumentsString = FSMS_Robocup2014;
 			buildConfigurationList = F1B0075D19772FFA008C131B /* Build configuration list for PBXLegacyTarget "LFSMS_Robocup2014" */;
 			buildPhases = (
 			);
@@ -4031,6 +4031,7 @@
 				F1B0073A19772F9D008C131B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F1B0075919772FD2008C131B /* Build configuration list for PBXLegacyTarget "LFSMS_DemoMachines" */ = {
 			isa = XCConfigurationList;
@@ -4039,6 +4040,7 @@
 				F1B0075B19772FD2008C131B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F1B0075D19772FFA008C131B /* Build configuration list for PBXLegacyTarget "LFSMS_Robocup2014" */ = {
 			isa = XCConfigurationList;
@@ -4047,6 +4049,7 @@
 				F1B0075F19772FFA008C131B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F1D575971627948900976A23 /* Build configuration list for PBXNativeTarget "libclfsm" */ = {
 			isa = XCConfigurationList;
