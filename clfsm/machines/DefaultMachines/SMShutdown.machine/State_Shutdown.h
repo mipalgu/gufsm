@@ -1,10 +1,10 @@
 //
-// State_Init.h
+// State_Shutdown.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMSayIP_State_Init_h
-#define clfsm_SMSayIP_State_Init_h
+#ifndef clfsm_SMShutdown_State_Shutdown_h
+#define clfsm_SMShutdown_State_Shutdown_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,11 +14,11 @@ namespace FSM
 {
     namespace CLM
     {
-      namespace FSMSMSayIP
+      namespace FSMSMShutdown
       {
         namespace State
         {
-            class Init: public CLState
+            class Shutdown: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -38,7 +38,7 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 2): CLTransition(toState) {}
+                    Transition_0(int toState = 1): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };
@@ -46,13 +46,13 @@ namespace FSM
                 CLTransition *_transitions[1];
 
                 public:
-                    Init(const char *name = "Init");
-                    virtual ~Init();
+                    Shutdown(const char *name = "Shutdown");
+                    virtual ~Shutdown();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
                     virtual int numberOfTransitions() const { return 1; }
 
-#                   include "State_Init_Variables.h"
+#                   include "State_Shutdown_Variables.h"
             };
         }
       }

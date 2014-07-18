@@ -3,8 +3,8 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_SMSayIP_State_Init_h
-#define clfsm_SMSayIP_State_Init_h
+#ifndef clfsm_SMShutdown_State_Init_h
+#define clfsm_SMShutdown_State_Init_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -14,7 +14,7 @@ namespace FSM
 {
     namespace CLM
     {
-      namespace FSMSMSayIP
+      namespace FSMSMShutdown
       {
         namespace State
         {

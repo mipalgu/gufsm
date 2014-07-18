@@ -8,6 +8,7 @@
 
 #include "State_Init.h"
 #include "State_SUSPENDED.h"
+#include "State_Say.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -24,6 +25,7 @@ SMSayIP::SMSayIP(int mid, const char *name): CLMachine(mid, name)
 {
 	_states[0] = new FSMSMSayIP::State::Init;
 	_states[1] = new FSMSMSayIP::State::SUSPENDED;
+	_states[2] = new FSMSMSayIP::State::Say;
 
 	setSuspendState(_states[1]);            // set suspend state
 	setInitialState(_states[0]);            // set initial state
@@ -33,4 +35,5 @@ SMSayIP::~SMSayIP()
 {
 	delete _states[0];
 	delete _states[1];
+	delete _states[2];
 }

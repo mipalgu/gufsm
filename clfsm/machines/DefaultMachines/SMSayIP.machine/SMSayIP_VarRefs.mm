@@ -3,11 +3,11 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-SMSayIP *_m = static_cast<SMSayIP *>(_machine);
-
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"
 #pragma clang diagnostic ignored "-Wshadow"
+
+SMSayIP *_m = static_cast<SMSayIP *>(_machine);
 
 SENSORS_BodySensors	&body = _m->body;	///< 
 SENSORS_BodySensors_t	&body_ptr = _m->body_ptr;	///< 

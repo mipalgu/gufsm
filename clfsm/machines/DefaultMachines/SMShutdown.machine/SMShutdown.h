@@ -1,10 +1,10 @@
 //
-// SMSayIP.h
+// SMShutdown.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef __clfsm__SMSayIP__
-#define __clfsm__SMSayIP__
+#ifndef __clfsm__SMShutdown__
+#define __clfsm__SMShutdown__
 
 #include "CLMachine.h"
 
@@ -14,22 +14,22 @@ namespace FSM
 
     namespace CLM
     {
-        class SMSayIP: public CLMachine
+        class SMShutdown: public CLMachine
         {
             CLState *_states[3];
         public:
-            SMSayIP(int mid  = 0, const char *name = "SMSayIP");
-            virtual ~SMSayIP();
+            SMShutdown(int mid  = 0, const char *name = "SMShutdown");
+            virtual ~SMShutdown();
             virtual CLState * const * states() const { return _states; }
             virtual int numberOfStates() const { return 3; }
-#           include "SMSayIP_Variables.h"
+#           include "SMShutdown_Variables.h"
         };
     }
 }
 
 extern "C"
 {
-    FSM::CLM::SMSayIP *CLM_Create_SMSayIP(int mid, const char *name);
+    FSM::CLM::SMShutdown *CLM_Create_SMShutdown(int mid, const char *name);
 }
 
-#endif // defined(__gufsm__SMSayIP__)
+#endif // defined(__gufsm__SMShutdown__)

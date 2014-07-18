@@ -4,7 +4,7 @@
 # Makefile for pre- and cross-compiling .machine files
 #
 
-DEFAULT_MACHINES=StateMachineStarter SMFallManager SMButtonChest SMButtonLeftFoot SMButtonRightFoot SMGetUp SMRobotPosition Safety_BatteryMonitor 
+DEFAULT_MACHINES=StateMachineStarter SMFallManager SMButtonChest SMButtonLeftFoot SMButtonRightFoot SMGetUp SMRobotPosition Safety_BatteryMonitor SMSayIP SMShutdown 
 
 
 MACHINES?=${DEFAULT_MACHINES}
