@@ -1,4 +1,4 @@
-main_machine = string_from_file("/home/nao/data/state_starter.conf");
+std::string main_machine = string_from_file("/home/nao/data/state_starter.conf");
 std::vector<std::string> ms = components_of_string_separated(main_machine);
 int s = (int)ms.size() - 1;
 
@@ -9,12 +9,12 @@ if(machine_index > s)
 
 main_machine = ms.at((unsigned)machine_index);
 
-std::string n = main_machine;
-
-//just gets rid of the SM prefix, this makes speech output sound better
-if(n.find(std::string("SM"), 0) != std::string::npos)
-	n.erase(n.begin(), n.begin()+2); 
-
-say(n.c_str());
+machine = main_machine;
+name = main_machine;
+if(machine.find(std::string(","), 0) != std::string::npos)
+	machine.erase(machine.begin()+machine.find(std::string(","), 0), machine.end()); 
+if(name.find(std::string(","), 0) != std::string::npos)
+	name.erase(name.begin(), name.begin()+name.find(std::string(","), 0)+1); 
+say(name.c_str());
 
 nao_state = nao_state_ptr.get();

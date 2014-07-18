@@ -1,1 +1,1 @@
-suspend(main_machine.c_str());
+suspend(machine.c_str());

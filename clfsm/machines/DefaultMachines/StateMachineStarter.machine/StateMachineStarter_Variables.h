@@ -7,5 +7,6 @@ NAO_State_t	nao_state_ptr;	///<
 NAO_State	nao_state;	///< 
 QSay_t	say;	///< 
 int	clfsm_delay;	///< 
-string	main_machine;	///< 
+string	machine;	///< 
+string	name;	///< 
 int	machine_index;	///<
