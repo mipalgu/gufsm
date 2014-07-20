@@ -8,5 +8,5 @@ NAO_State	nao_state;	///<
 QSay_t	say;	///< 
 int	clfsm_delay;	///< 
 string	machine;	///< 
-string	name;	///< 
+string	mname;	///< 
 int	machine_index;	///<
