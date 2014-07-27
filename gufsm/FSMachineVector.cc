@@ -194,7 +194,7 @@ struct spawn_context
 
 static void spawn_execute_once(void *p)
 {
-        spawn_context *c = (spawn_context *) p;
+        spawn_context *c = static_cast<spawn_context *>(p);
         c->a = !c->m->executeOnce(&c->f);
 }
 #endif
@@ -265,7 +265,7 @@ struct spawn_queue_param
 
  __attribute__((__noreturn__)) static void spawn_execute_once_on_queue(void *p)
 {
-        spawn_queue_param *par = (spawn_queue_param *) p;
+        spawn_queue_param *par = static_cast<spawn_queue_param *>(p);
         par->self->do_spawn_once_on_queue(par->queue);
 }
 #endif
