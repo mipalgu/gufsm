@@ -110,7 +110,7 @@ namespace FSM
                  * @param deletewb delete wb pointer when destructed (only relevant if wb is non-NULL, otherwise the whiteboard will always be deleted in the destructor
                  */
                 ANTLRContext(guWhiteboard::Whiteboard *wb = NULL, bool deletewb = false): WBContext(wb, deletewb), _variables() {}
-                ANTLRContext(const ANTLRContext &orig): _variables(((ANTLRContext &)orig).variables()) {}
+                ANTLRContext(const ANTLRContext &orig): _variables((const_cast<ANTLRContext &>(orig)).variables()) {}
 
                 /** variable getter */
                 std::map<std::string, int> &variables() { return _variables; }

@@ -241,7 +241,7 @@ namespace FSM
                 virtual const char *name(void) { return "atan"; }
                 virtual int evaluate(Machine * = NULL)
                 {
-                        float value = (float) content() / (float) FIXED_FACTOR;
+                        float value = float(content()) / float(FIXED_FACTOR);
                         return int(atanf(value) * 180.0 / M_PI);
                 }
         };
@@ -255,7 +255,7 @@ namespace FSM
                 virtual const char *name(void) { return "asin"; }
                 virtual int evaluate(Machine * = NULL)
                 {
-                        float value = (float) content() / (float) FIXED_FACTOR;
+                    float value = float(content()) / float(FIXED_FACTOR);
                         return int(asinf(value) * 180.0 / M_PI);
                 }
         };
@@ -269,7 +269,7 @@ namespace FSM
                 virtual const char *name(void) { return "acos"; }
                 virtual int evaluate(Machine * = NULL)
                 {
-                        float value = (float) content() / (float) FIXED_FACTOR;
+                    float value = float(content()) / float(FIXED_FACTOR);
                         return int(acosf(value) * 180.0 / M_PI);
                 }
         };
@@ -283,7 +283,7 @@ namespace FSM
                 virtual const char *name(void) { return "log"; }
                 virtual int evaluate(Machine * = NULL)
                 {
-                        float value = (float) content() / (float) FIXED_FACTOR;
+                    float value = float(content()) / float(FIXED_FACTOR);
                         return int(logf(value) * FIXED_FACTOR);
                 }
         };
@@ -297,7 +297,7 @@ namespace FSM
                 virtual const char *name(void) { return "ld"; }
                 virtual int evaluate(Machine * = NULL)
                 {
-                        float value = (float) content() / (float) FIXED_FACTOR;
+                    float value = float(content()) / float(FIXED_FACTOR);
                         return int(log2f(value) * FIXED_FACTOR);
                 }
         };
@@ -311,7 +311,7 @@ namespace FSM
                 virtual const char *name(void) { return "lg"; }
                 virtual int evaluate(Machine * = NULL)
                 {
-                        float value = (float) content() / (float) FIXED_FACTOR;
+                    float value = float(content()) / float(FIXED_FACTOR);
                         return int(log10f(value) * FIXED_FACTOR);
                 }
         };
@@ -322,7 +322,7 @@ namespace FSM
                 /** print the content of this action */
                 virtual void performv(Machine *, ActionStage, int, va_list)
                 {
-                        double value = (double) content() / (double) FIXED_FACTOR;
+                        double value = double(content()) / double(FIXED_FACTOR);
                         std::cout << value << std::endl;
                 }
         };
