@@ -2,7 +2,7 @@
  *  ActivityFactory.cpp
  *  
  *  Created by René Hexel on 28/08/11.
- *  Copyright (c) 2011 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2011, 2014 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -82,19 +82,19 @@ static inline ANTLR3_UINT32 getType(pANTLR3_BASE_TREE tree)
 	if  (tree->isNilNode(tree) == ANTLR3_TRUE)
                 return 0;
         
-	return	((pANTLR3_COMMON_TREE)(tree->super))->token->getType(((pANTLR3_COMMON_TREE)(tree->super))->token);
+	return	(pANTLR3_COMMON_TREE(tree->super))->token->getType((pANTLR3_COMMON_TREE(tree->super))->token);
 }
 
 static inline const char *getTString(pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
 {
-        return (const char *) state->tokenNames[getType(tree)];
+        return reinterpret_cast<const char *>(state->tokenNames[getType(tree)]);
 }
 
 static inline const char *getContent(pANTLR3_BASE_TREE tree)
 {
         pANTLR3_STRING s = tree->toString(tree);
         if (!s) return NULL;
-        const char *rv = gu_strdup((const char *) s->chars);
+        const char *rv = gu_strdup(reinterpret_cast<const char *>(s->chars));
         s->factory->destroy(s->factory, s);
         return rv;
 }
@@ -104,9 +104,9 @@ static int
 block_callback(void *context, const char *terminal, const char *content,
             pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
 {
-        ActivityFactory *self = (ActivityFactory *) context;
+        ActivityFactory *self = static_cast<ActivityFactory *>(context);
         Machine *fsm = self->fsm();
-        ANTLRContext *antlr_context = (ANTLRContext *) fsm->context();
+        ANTLRContext *antlr_context = static_cast<ANTLRContext *>(fsm->context());
 
         DBG(cout << __FUNCTION__ << "(" << terminal << ", " << content << ")" <<
             endl);
@@ -120,10 +120,8 @@ block_callback(void *context, const char *terminal, const char *content,
         {
                 assert(n == 2);
                 
-                pANTLR3_BASE_TREE t1 = (pANTLR3_BASE_TREE)
-                        tree->children->get(tree->children, 0);
-                pANTLR3_BASE_TREE t2 = (pANTLR3_BASE_TREE)
-                        tree->children->get(tree->children, 1);
+                pANTLR3_BASE_TREE t1 = pANTLR3_BASE_TREE(tree->children->get(tree->children, 0));
+                pANTLR3_BASE_TREE t2 = pANTLR3_BASE_TREE(tree->children->get(tree->children, 1));
 
                 assert(!tree->isNilNode(t1));
                 assert(!tree->isNilNode(t2));
@@ -167,7 +165,7 @@ static int
 block_pop(void *context, const char *, const char *,
         pANTLR3_RECOGNIZER_SHARED_STATE, pANTLR3_BASE_TREE)
 {
-        ActivityFactory *self = (ActivityFactory *) context;
+        ActivityFactory *self = static_cast<ActivityFactory *>(context);
         Activity &activity = self->state()->activity();
         FSM::ANTLRAction *action = self->action();
 
@@ -203,7 +201,7 @@ static int
 action_callback(void *context, const char *terminal, const char *content,
                 pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
 {
-        //ActivityFactory *self = (ActivityFactory *) context;
+    //        ActivityFactory *self = static_cast<ActivityFactory *>(context);
 
         DBG(cout << __FUNCTION__ << "(" << terminal << ", " << content << ")" <<
             endl);
@@ -233,7 +231,7 @@ static int
 statename_callback(void *context, const char *terminal, const char *content,
                    pANTLR3_RECOGNIZER_SHARED_STATE, pANTLR3_BASE_TREE)
 {
-        ActivityFactory *self = (ActivityFactory *) context;
+        ActivityFactory *self = static_cast<ActivityFactory *>(context);
 
         assert(terminal);                       /* must not be nil */
 
@@ -254,7 +252,7 @@ static int
 state_push(void *context, const char *terminal, const char *content,
            pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
 {
-        ActivityFactory *self = (ActivityFactory *) context;
+        ActivityFactory *self = static_cast<ActivityFactory *>(context);
 
         assert(terminal);                       /* must not be nil */
 
@@ -303,7 +301,7 @@ static int
 activity_push(void *context, const char *terminal, const char *content,
               pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
 {
-        ActivityFactory *self = (ActivityFactory *) context;
+        ActivityFactory *self = static_cast<ActivityFactory *>(context);
 
         if (!terminal) return 1;        /* ignore root push */
 
@@ -340,7 +338,7 @@ static int
 activity_pop(void *context, const char *terminal, const char *content,
              pANTLR3_RECOGNIZER_SHARED_STATE, pANTLR3_BASE_TREE)
 {
-        ActivityFactory *self = (ActivityFactory *) context;
+        ActivityFactory *self = static_cast<ActivityFactory *>(context);
         DBG(cout << "activity pop (" << terminal << ") content: " << content << endl);
         if (string("K_INT") == terminal)  /* popping a state id? */
                 self->fsm()->addState(self->state());

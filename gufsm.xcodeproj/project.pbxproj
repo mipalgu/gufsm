@@ -444,13 +444,13 @@
 		E11FB98614BD4793009C778E /* FSMWBQueryPredicate.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMWBQueryPredicate.cc; path = ../gufsm/FSMWBQueryPredicate.cc; sourceTree = "<group>"; };
 		E11FB98714BD4793009C778E /* FSMachineVector.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMachineVector.cc; path = ../gufsm/FSMachineVector.cc; sourceTree = "<group>"; };
 		E11FB98814BD4793009C778E /* FSMWBSubMachine.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMWBSubMachine.cc; path = ../gufsm/FSMWBSubMachine.cc; sourceTree = "<group>"; };
-		E11FB98914BD4793009C778E /* ActivityFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ActivityFactory.cpp; path = ../gufsm/ActivityFactory.cpp; sourceTree = "<group>"; };
+		E11FB98914BD4793009C778E /* ActivityFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 8; lastKnownFileType = sourcecode.cpp.cpp; name = ActivityFactory.cpp; path = ../gufsm/ActivityFactory.cpp; sourceTree = "<group>"; };
 		E11FB98A14BD4793009C778E /* parser_walk.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = parser_walk.c; path = ../gufsm/parser_walk.c; sourceTree = "<group>"; };
 		E11FB98B14BD4793009C778E /* FSMVectorFactory.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMVectorFactory.cc; path = ../gufsm/FSMVectorFactory.cc; sourceTree = "<group>"; };
 		E11FB98C14BD4793009C778E /* FSMWBSubMachineFactory.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMWBSubMachineFactory.cc; path = ../gufsm/FSMWBSubMachineFactory.cc; sourceTree = "<group>"; };
 		E11FB98D14BD4793009C778E /* FSMANTLRAction.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMANTLRAction.cc; path = ../gufsm/FSMANTLRAction.cc; sourceTree = "<group>"; };
-		E11FB98E14BD4793009C778E /* FSMANTLRExpression.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMANTLRExpression.cc; path = ../gufsm/FSMANTLRExpression.cc; sourceTree = "<group>"; };
-		E11FB98F14BD4793009C778E /* TransitionFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TransitionFactory.cpp; path = ../gufsm/TransitionFactory.cpp; sourceTree = "<group>"; };
+		E11FB98E14BD4793009C778E /* FSMANTLRExpression.cc */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 8; lastKnownFileType = sourcecode.cpp.cpp; name = FSMANTLRExpression.cc; path = ../gufsm/FSMANTLRExpression.cc; sourceTree = "<group>"; };
+		E11FB98F14BD4793009C778E /* TransitionFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 8; lastKnownFileType = sourcecode.cpp.cpp; name = TransitionFactory.cpp; path = ../gufsm/TransitionFactory.cpp; sourceTree = "<group>"; };
 		E11FB99014BD4793009C778E /* FSMTransition.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMTransition.cc; path = ../gufsm/FSMTransition.cc; sourceTree = "<group>"; };
 		E11FB99114BD4793009C778E /* stringConstants.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = stringConstants.c; path = ../gufsm/stringConstants.c; sourceTree = "<group>"; };
 		E11FB99214BD4793009C778E /* FSMANTLRContext.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMANTLRContext.cc; path = ../gufsm/FSMANTLRContext.cc; sourceTree = "<group>"; };
@@ -950,7 +950,7 @@
 		F18AD00615CB656B00492118 /* CLTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLTransition.h; sourceTree = "<group>"; };
 		F18AD00715CB6C8C00492118 /* State_Ping_Transition_0.expr */ = {isa = PBXFileReference; lastKnownFileType = text; path = State_Ping_Transition_0.expr; sourceTree = "<group>"; };
 		F18AD00915CB6F6D00492118 /* State_Pong_Transition_0.expr */ = {isa = PBXFileReference; lastKnownFileType = text; path = State_Pong_Transition_0.expr; sourceTree = "<group>"; };
-		F18AD00A15CBA63800492118 /* FSMANTLRMachineVector.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRMachineVector.cc; sourceTree = "<group>"; };
+		F18AD00A15CBA63800492118 /* FSMANTLRMachineVector.cc */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 8; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRMachineVector.cc; sourceTree = "<group>"; };
 		F18AD00B15CBA63800492118 /* FSMANTLRMachineVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMANTLRMachineVector.h; sourceTree = "<group>"; };
 		F191E602142D99150014AF84 /* FSMachine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMachine.h; sourceTree = "<group>"; };
 		F191E603142D9A2D0014AF84 /* FSMSuspensibleMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMSuspensibleMachine.h; sourceTree = "<group>"; };
@@ -2535,7 +2535,7 @@
 			name = FSMTest;
 			productName = FSMTest;
 			productReference = F16CC31A142C2AD9001F788B /* FSMTest.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 		F1A517CB15C91BDC00348C25 /* clfsm */ = {
 			isa = PBXNativeTarget;
@@ -2571,7 +2571,7 @@
 			name = libclfsmTests;
 			productName = libclfsmTests;
 			productReference = F1A854F018EF3F0500DCB83E /* libclfsmTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 		F1D5758C1627948900976A23 /* libclfsm */ = {
 			isa = PBXNativeTarget;

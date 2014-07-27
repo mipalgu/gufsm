@@ -340,7 +340,7 @@ string ANTLRMachineVector:: kripkeToString(KripkeState &s, size_t n, string **na
 
 void ANTLRMachineVector:: kripkeToANTLRContext (KripkeState &s, size_t n, string **names)
 {
-        ANTLRContext* antrlContext = (ANTLRContext *) context();
+        ANTLRContext* antrlContext = static_cast<ANTLRContext *>(context());
 
         for (int i = 0; i < static_cast<int>(n); i++)
         {
@@ -350,7 +350,7 @@ void ANTLRMachineVector:: kripkeToANTLRContext (KripkeState &s, size_t n, string
                 j = (PATERN_BITS << (i*BITS)); /*shifted left as much as i blocks of BITS */
 
                 unsigned long long value=(s.variable_combination & j) >> (i*BITS);
-                antrlContext->set_variable(*names[i],(int) value);
+                antrlContext->set_variable(*names[i], int(value));
         }
         //ss << "pc="<< descriptionSMVformat (*s.freeze_point);
 
@@ -358,7 +358,7 @@ void ANTLRMachineVector:: kripkeToANTLRContext (KripkeState &s, size_t n, string
 
 unsigned long long ANTLRMachineVector:: ANTLRContextToVariableCombination(size_t n, string **names)
 {
-        ANTLRContext* antrlContext = (ANTLRContext *) context();
+        ANTLRContext* antrlContext = static_cast<ANTLRContext *>(context());
 
         unsigned long long j = 0;
         unsigned long long binary_value;
@@ -409,7 +409,7 @@ unsigned long long ANTLRMachineVector::extVarToKripke(unsigned long long all_var
 string ANTLRMachineVector::kripkeInSVMformat()
 {
         stringstream ss;
-        ANTLRContext *antlr_context = (ANTLRContext *) context();
+        ANTLRContext* antlr_context = static_cast<ANTLRContext *>(context());
 
         /* Write the preamble */
 
@@ -470,7 +470,7 @@ string ANTLRMachineVector::kripkeInSVMformat()
         {
                 SuspensibleMachine *m = *it;
                 m->localKripkeStateNames(true);
-                maxIndexesPerFSM[i]=(int)m->sizeLocalKripkeStateNames()-1;
+                maxIndexesPerFSM[i]= int(m->sizeLocalKripkeStateNames())-1;
                 indexesPerFSM[i]=0;
 
                 i++; // increment the Machine coutner

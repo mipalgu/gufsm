@@ -2,7 +2,7 @@
  *  TransitionFactory.cpp
  *  
  *  Created by René Hexel on 2/09/11.
- *  Copyright (c) 2011, 2013 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2011, 2013, 2014 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -77,7 +77,7 @@ static int
 exp_callback(void *context, const char *terminal, const char *content,
              pANTLR3_RECOGNIZER_SHARED_STATE, pANTLR3_BASE_TREE tree)
 {
-        TransitionFactory *self = (TransitionFactory *) context;
+        TransitionFactory *self = static_cast<TransitionFactory *>(context);
         
         assert(terminal);                       /* must not be nil */
 
@@ -106,7 +106,7 @@ static int
 transition_push(void *context, const char *terminal, const char *content,
               pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
 {
-        TransitionFactory *self = (TransitionFactory *) context;
+        TransitionFactory *self = static_cast<TransitionFactory *>(context);
 
         if (!terminal) return 1;        /* ignore root push */
 
@@ -139,7 +139,7 @@ static int
 transition_pop(void *context, const char *, const char *,
              pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE)
 {
-        TransitionFactory *self = (TransitionFactory *) context;
+        TransitionFactory *self = static_cast<TransitionFactory *>(context);
         int s = self->state_id();
 
         if (s == -1) return 1;                  // skip
@@ -151,7 +151,7 @@ transition_pop(void *context, const char *, const char *,
 
         if (source && target)
         {
-                ANTLRExpression *e = new ANTLRExpression(state, (pANTLR3_BASE_TREE) self->expr_tree());
+                ANTLRExpression *e = new ANTLRExpression(state, pANTLR3_BASE_TREE(self->expr_tree()));
                 e->set_global_variables(self->fsm());
                 Transition *t = new Transition(source, target, e);
                 if (!t)

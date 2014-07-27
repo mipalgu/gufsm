@@ -2,7 +2,7 @@
  *  FSMExpression.cc
  *  
  *  Created by René Hexel on 26/09/11.
- *  Copyright (c) 2011-2013 Rene Hexel.
+ *  Copyright (c) 2011-2014 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -97,20 +97,20 @@ static inline ANTLR3_UINT32 getType(pANTLR3_BASE_TREE tree)
 	if  (tree->isNilNode(tree) == ANTLR3_TRUE)
                 return 0;
         
-	return	((pANTLR3_COMMON_TREE)(tree->super))->token->getType(((pANTLR3_COMMON_TREE)(tree->super))->token);
+	return	(pANTLR3_COMMON_TREE(tree->super))->token->getType((pANTLR3_COMMON_TREE(tree->super))->token);
 }
 
 
 static inline const char *getTString(pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
 {
-        return (const char *) state->tokenNames[getType(tree)];
+        return reinterpret_cast<const char *>(state->tokenNames[getType(tree)]);
 }
 
 static inline string getContent(pANTLR3_BASE_TREE tree)
 {
         pANTLR3_STRING s = tree->toString(tree);
         if (!s) return NULL;
-        string rv = (const char *) s->chars;
+        string rv = reinterpret_cast<const char *>(s->chars);
         s->factory->destroy(s->factory, s);
         return rv;
 }
@@ -120,7 +120,7 @@ long long evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
                   pANTLR3_BASE_TREE tree,
                   Machine *m)
 {
-        ANTLRContext *context = (ANTLRContext *) m->context();
+        ANTLRContext *context = static_cast<ANTLRContext *>(m->context());
         ANTLR3_UINT32 n = tree->children ? tree->children->size(tree->children) : 0;
         const char *terminal = getTString(state, tree);
         string content  = getContent(tree);
@@ -131,8 +131,7 @@ long long evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
                 for (ANTLR3_UINT32 i = 0; i < n; i++)
                         
                 {
-                        pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
-                                tree->children->get(tree->children, i);
+                        pANTLR3_BASE_TREE t = pANTLR3_BASE_TREE(tree->children->get(tree->children, i));
                         result += evaluate_node(state, t, m);
                 }
                 return result;
@@ -140,12 +139,11 @@ long long evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
         if (string("K_MINUS") == terminal)
         {
                 assert(n > 0);
-                pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
-                        tree->children->get(tree->children, 0);
+                pANTLR3_BASE_TREE t = pANTLR3_BASE_TREE(tree->children->get(tree->children, 0));
                 int result = evaluate_node(state, t, m);
                 if (n>1) for (ANTLR3_UINT32 i = 1; i < n; i++)
                 {
-                        t = (pANTLR3_BASE_TREE) tree->children->get(tree->children, i);
+                        t = pANTLR3_BASE_TREE(tree->children->get(tree->children, i));
                         result -= evaluate_node(state, t, m);
                 }
                 else result = -result;
@@ -156,8 +154,7 @@ long long evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
                 int result = 1;
                 for (ANTLR3_UINT32 i = 0; i < n; i++)
                 {
-                        pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
-                        tree->children->get(tree->children, i);
+                        pANTLR3_BASE_TREE t = pANTLR3_BASE_TREE(tree->children->get(tree->children, i));
                         result *= evaluate_node(state, t, m);
                 }
                 return result;
@@ -165,11 +162,11 @@ long long evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
         if (string("K_DIV") == terminal)
         {
                 assert(n > 0);
-                pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE) tree->children->get(tree->children, 0);
+                pANTLR3_BASE_TREE t = pANTLR3_BASE_TREE(tree->children->get(tree->children, 0));
                 int result = evaluate_node(state, t, m);
                 for (ANTLR3_UINT32 i = 1; i < n; i++)
                 {
-                        t = (pANTLR3_BASE_TREE) tree->children->get(tree->children, i);
+                        t = pANTLR3_BASE_TREE(tree->children->get(tree->children, i));
                         int d = evaluate_node(state, t, m);
                         if (d) result /= d;
                         else result = INT_MAX;
@@ -181,8 +178,7 @@ long long evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
                 int result = 1;
                 for (ANTLR3_UINT32 i = 0; i < n; i++)
                 {
-                        pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
-                                tree->children->get(tree->children, i);
+                        pANTLR3_BASE_TREE t = pANTLR3_BASE_TREE(tree->children->get(tree->children, i));
                         result = result && evaluate_node(state, t, m);
                 }
                 return result;
@@ -192,8 +188,7 @@ long long evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
                 int result = 0;
                 for (ANTLR3_UINT32 i = 0; i < n; i++)
                 {
-                        pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
-                        tree->children->get(tree->children, i);
+                        pANTLR3_BASE_TREE t = pANTLR3_BASE_TREE(tree->children->get(tree->children, i));
                         result = result || evaluate_node(state, t, m);
                 }
                 return result;
@@ -201,43 +196,37 @@ long long evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
         if (string("K_NOT") == terminal)
         {
                 assert(n == 1);
-                pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
-                        tree->children->get(tree->children, 0);
+                pANTLR3_BASE_TREE t = pANTLR3_BASE_TREE(tree->children->get(tree->children, 0));
                 return !evaluate_node(state, t, m);
         }
         if (string("K_EQEQ") == terminal)
         {
                 assert(n == 2);
-                pANTLR3_BASE_TREE t1 = (pANTLR3_BASE_TREE)
-                tree->children->get(tree->children, 0);
-                pANTLR3_BASE_TREE t2 = (pANTLR3_BASE_TREE)
-                tree->children->get(tree->children, 1);
+                pANTLR3_BASE_TREE t1 = pANTLR3_BASE_TREE(tree->children->get(tree->children, 0));
+                pANTLR3_BASE_TREE t2 = pANTLR3_BASE_TREE(tree->children->get(tree->children, 1));
                 return evaluate_node(state, t1, m) == evaluate_node(state, t2, m);
         }
         if (string("K_NEQ") == terminal)
         {
                 assert(n == 2);
-                pANTLR3_BASE_TREE t1 = (pANTLR3_BASE_TREE)
-                tree->children->get(tree->children, 0);
-                pANTLR3_BASE_TREE t2 = (pANTLR3_BASE_TREE)
+                pANTLR3_BASE_TREE t1 = pANTLR3_BASE_TREE(tree->children->get(tree->children, 0));
+                pANTLR3_BASE_TREE t2 = pANTLR3_BASE_TREE(tree->children->get(tree->children, 1));
                 tree->children->get(tree->children, 1);
                 return evaluate_node(state, t1, m) != evaluate_node(state, t2, m);
         }
         if (string("K_LT") == terminal)
         {
                 assert(n == 2);
-                pANTLR3_BASE_TREE t1 = (pANTLR3_BASE_TREE)
-                tree->children->get(tree->children, 0);
-                pANTLR3_BASE_TREE t2 = (pANTLR3_BASE_TREE)
+                pANTLR3_BASE_TREE t1 = pANTLR3_BASE_TREE(tree->children->get(tree->children, 0));
+                pANTLR3_BASE_TREE t2 = pANTLR3_BASE_TREE(tree->children->get(tree->children, 1));
                 tree->children->get(tree->children, 1);
                 return evaluate_node(state, t1, m) < evaluate_node(state, t2, m);
         }
         if (string("K_GT") == terminal)
         {
                 assert(n == 2);
-                pANTLR3_BASE_TREE t1 = (pANTLR3_BASE_TREE)
-                tree->children->get(tree->children, 0);
-                pANTLR3_BASE_TREE t2 = (pANTLR3_BASE_TREE)
+                pANTLR3_BASE_TREE t1 = pANTLR3_BASE_TREE(tree->children->get(tree->children, 0));
+                pANTLR3_BASE_TREE t2 = pANTLR3_BASE_TREE(tree->children->get(tree->children, 1));
                 tree->children->get(tree->children, 1);
                 return evaluate_node(state, t1, m) > evaluate_node(state, t2, m);
         }
@@ -245,7 +234,7 @@ long long evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
          * leaf node
          */
         if (string("STRING_LITERAL") == terminal)
-                return (long long) string_guts(content.c_str());
+                return reinterpret_cast<long long>(string_guts(content.c_str()));
 
         if (string("K_INT") == terminal)
                 return atoi(content.c_str());
@@ -277,9 +266,8 @@ long long evaluate_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
         long long result = 0LL;
         for (ANTLR3_UINT32 i = 0; i < n; i++)
         {
-                pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
-                   tree->children->get(tree->children, i);
-                
+                pANTLR3_BASE_TREE t = pANTLR3_BASE_TREE(tree->children->get(tree->children, i));
+
                 result = evaluate_node(state, t, m);
                 func_expr->add_parameter(i, result);
         }
@@ -298,10 +286,9 @@ int evaluate_children(pANTLR3_RECOGNIZER_SHARED_STATE state,
         int result = 0;
         for (ANTLR3_UINT32 i = 0; i < n; i++)
         {
-                pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
-                tree->children->get(tree->children, i);
-                
-                result = (int) evaluate_node(state, t, m);
+                pANTLR3_BASE_TREE t = pANTLR3_BASE_TREE(tree->children->get(tree->children, i));
+
+                result = int(evaluate_node(state, t, m));
         }
         
         return result;
@@ -320,7 +307,7 @@ int ANTLRExpression::evaluate(pANTLR3_RECOGNIZER_SHARED_STATE state,
                               pANTLR3_BASE_TREE tree,
                               Machine *m)
 {
-        return (int) evaluate_node(state, tree, m);
+        return int(evaluate_node(state, tree, m));
 }
 
 
@@ -345,8 +332,7 @@ void print_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
                         
                 {
                         ss << "+( ";
-                        pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
-                                tree->children->get(tree->children, i);
+                        pANTLR3_BASE_TREE t = pANTLR3_BASE_TREE(tree->children->get(tree->children, i));
                         print_node(state, t, ss);
                         if (i < n-1) ss << ", ";
                 }
@@ -359,8 +345,7 @@ void print_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
                 for (ANTLR3_UINT32 i = 0; i < n; i++)
                         
                 {
-                        pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
-                                tree->children->get(tree->children, i);
+                        pANTLR3_BASE_TREE t = pANTLR3_BASE_TREE(tree->children->get(tree->children, i));
                         print_node(state, t, ss);
                         if (i < n-1) ss << ", ";
                 }
@@ -372,8 +357,7 @@ void print_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
         {
                 assert(n == 1);
                 ss << "!";
-                pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
-                        tree->children->get(tree->children, 0);
+                pANTLR3_BASE_TREE t = pANTLR3_BASE_TREE(tree->children->get(tree->children, 0));
                 print_node(state, t, ss);
                 return;
         }
@@ -382,12 +366,10 @@ void print_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
         {
                 ss << "( ";
                 assert(n == 2);
-                pANTLR3_BASE_TREE t1 = (pANTLR3_BASE_TREE)
-                        tree->children->get(tree->children, 0);
+                pANTLR3_BASE_TREE t1 = pANTLR3_BASE_TREE(tree->children->get(tree->children, 0));
                 print_node(state, t1, ss);
                 ss << " == ";
-                pANTLR3_BASE_TREE t2 = (pANTLR3_BASE_TREE)
-                        tree->children->get(tree->children, 1);
+                pANTLR3_BASE_TREE t2 = pANTLR3_BASE_TREE(tree->children->get(tree->children, 1));
                 print_node(state, t2, ss);
                 ss << " ) ";
                 return;
@@ -397,12 +379,10 @@ void print_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
         {
                 ss << "( ";
                 assert(n == 2);
-                pANTLR3_BASE_TREE t1 = (pANTLR3_BASE_TREE)
-                        tree->children->get(tree->children, 0);
+                pANTLR3_BASE_TREE t1 = pANTLR3_BASE_TREE(tree->children->get(tree->children, 0));
                 print_node(state, t1, ss);
                 ss << " << ";
-                pANTLR3_BASE_TREE t2 = (pANTLR3_BASE_TREE)
-                        tree->children->get(tree->children, 1);
+                pANTLR3_BASE_TREE t2 = pANTLR3_BASE_TREE(tree->children->get(tree->children, 1));
                 print_node(state, t2, ss);
                 ss << " ) ";
                 return;
@@ -412,12 +392,10 @@ void print_node(pANTLR3_RECOGNIZER_SHARED_STATE state,
         {
                 ss << "( ";
                 assert(n == 2);
-                pANTLR3_BASE_TREE t1 = (pANTLR3_BASE_TREE)
-                tree->children->get(tree->children, 0);
+                pANTLR3_BASE_TREE t1 = pANTLR3_BASE_TREE(tree->children->get(tree->children, 0));
                 print_node(state, t1, ss);
                 ss << " || ";
-                pANTLR3_BASE_TREE t2 = (pANTLR3_BASE_TREE)
-                tree->children->get(tree->children, 1);
+                pANTLR3_BASE_TREE t2 = pANTLR3_BASE_TREE(tree->children->get(tree->children, 1));
                 print_node(state, t2, ss);
                 ss << " ) ";
                 return;
@@ -458,9 +436,7 @@ void print_children(pANTLR3_RECOGNIZER_SHARED_STATE state,
         
         for (ANTLR3_UINT32 i = 0; i < n; i++)
         {
-                pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
-                        tree->children->get(tree->children, i);
-                
+                pANTLR3_BASE_TREE t = pANTLR3_BASE_TREE(tree->children->get(tree->children, i));
                 print_node(state, t, ss);
         }
 }
@@ -484,8 +460,8 @@ static
 void expression_extract_callback(void *context, const char *terminal, const char *content,
                                 pANTLR3_RECOGNIZER_SHARED_STATE state, pANTLR3_BASE_TREE tree)
 {
-        Machine *m = (Machine *) context;
-        ANTLRContext *antlr_context = (ANTLRContext *) m->context();
+        Machine *m = static_cast<Machine *>(context);
+        ANTLRContext *antlr_context = static_cast<ANTLRContext *>(m->context());
         ANTLR3_UINT32 n = tree->children ? tree->children->size(tree->children) : 0;
 
         /*
@@ -502,8 +478,7 @@ void expression_extract_callback(void *context, const char *terminal, const char
 
         for (ANTLR3_UINT32 i = 0; i < n; i++)
         {
-                pANTLR3_BASE_TREE t = (pANTLR3_BASE_TREE)
-                        tree->children->get(tree->children, i);
+                pANTLR3_BASE_TREE t = pANTLR3_BASE_TREE(tree->children->get(tree->children, i));
                 terminal = getTString(state, t);
                 string c  = getContent(t);
 
