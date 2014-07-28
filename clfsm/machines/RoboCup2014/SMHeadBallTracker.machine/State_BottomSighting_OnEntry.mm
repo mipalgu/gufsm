@@ -33,5 +33,5 @@ fprintf(stderr, "Ball RR: %f\t%f\ty angle %d\tpitch %f\n", body_relative_angle_x
 
 
 
-head.GoToWithTime((int)body_relative_angle_x, (int)body_relative_angle_y, delay);
+head.GoToWithTime(static_cast<int>(body_relative_angle_x), static_cast<int>(body_relative_angle_y), delay);
 head_ptr.set(head);
