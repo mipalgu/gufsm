@@ -43,7 +43,7 @@ int main (int argc, char *argv[])
         
         for (NSString *arg in [[NSProcessInfo processInfo] arguments])
         {
-            if (count++ < optind) continue;      // skip argv[0] and args
+            if (count++ < (NSUInteger)optind) continue;      // skip argv[0] and args
             
             QFSMExporter *exporter = [[QFSMExporter alloc]
                                       initWithContentsOfFile: arg];
