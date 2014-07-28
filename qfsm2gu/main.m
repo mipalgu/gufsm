@@ -6,28 +6,54 @@
 //  Copyright 2011-2014 Rene Hexel. All rights reserved.
 //
 #import <Foundation/Foundation.h>
+#import <unistd.h>
+#import <stdbool.h>
+#import <stdlib.h>
 #import "QFSMExporter.h"
 
-int main (int argc, const char *argv[])
+static inline void usage(const char *cmd)
 {
-        (void) argc;
-        (void) argv;
-        @autoreleasepool {
-                NSUInteger count = 0;
+    fprintf(stderr, "Usage: %s [-v] {qfsm_files}\n", cmd);
+}
 
-                for (NSString *arg in [[NSProcessInfo processInfo] arguments])
-                {
-                        if (!count++) continue;         // skip argv[0]
 
-                        @autoreleasepool {
-                                QFSMExporter *exporter = [[QFSMExporter alloc]
-                                                          initWithContentsOfFile: arg];
-                                [exporter export];
-                        }
-                }
-
+int main (int argc, char *argv[])
+{
+    int ch;
+    bool verbose = false;
+    while ((ch = getopt(argc, argv, "v")) != -1)
+    {
+        switch (ch)
+        {
+            case 'v':
+                verbose = true;
+                break;
+            case '?':
+            default:
+                usage(argv[0]);
+                exit(EXIT_FAILURE);
         }
+    }
+    argc -= optind;
+    argv += optind;
 
-        return EXIT_SUCCESS;
+    @autoreleasepool
+    {
+        NSUInteger count = 0;
+        
+        for (NSString *arg in [[NSProcessInfo processInfo] arguments])
+        {
+            if (count++ < optind) continue;      // skip argv[0] and args
+            
+            QFSMExporter *exporter = [[QFSMExporter alloc]
+                                      initWithContentsOfFile: arg];
+            if (verbose) printf("%s ... ", arg.UTF8String);
+            [exporter export];
+            if (verbose) puts("done.");
+        }
+        
+    }
+    
+    return EXIT_SUCCESS;
 }
 
