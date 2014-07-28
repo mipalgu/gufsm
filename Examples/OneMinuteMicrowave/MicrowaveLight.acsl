@@ -1,0 +1,16 @@
+0	NOTSHINELIGHT
+OnEntry$
+{  light=0; post("LEDS","Face Off");}
+$OnExit$
+{  light=0; post("LEDS","Face Off");}
+$Internal$
+{}
+
+1	SHINELIGHT
+OnEntry$
+{light=1; post ("LEDS","Face Blue");}
+$OnExit$
+{light=1; post ("LEDS","Face Blue");}
+$Internal$
+{}
+

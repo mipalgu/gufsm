@@ -1,0 +1,2 @@
+0 1 doorOpen||timeLeft
+1 0 !doorOpen&&!timeLeft

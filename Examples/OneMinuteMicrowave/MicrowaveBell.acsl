@@ -1,0 +1,24 @@
+0	OFF
+OnEntry$
+{  sound=0;}
+$OnExit$
+{  sound=0;}
+$Internal$
+{}
+
+1	ARMED
+OnEntry$
+{}
+$OnExit$
+{}
+$Internal$
+{}
+
+2	RINGING
+OnEntry$
+{ sound=1; post("QSay","DIIIIING, DIIIING");}
+$OnExit$
+{ sound=1; post("QSay","DIIIIING, DIIIING");}
+$Internal$
+{}
+
