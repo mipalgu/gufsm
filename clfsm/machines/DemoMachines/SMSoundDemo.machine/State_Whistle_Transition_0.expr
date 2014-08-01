@@ -1,3 +1,0 @@
-fft.rms().left() < 5000 &&
-fft.rms().right() < 5000 &&
-after_ms(20) && !motion_status.get().isRunning()

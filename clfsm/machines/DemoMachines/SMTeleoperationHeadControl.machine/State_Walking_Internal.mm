@@ -1,1 +1,0 @@
-remoteControl=remoteControlPtr->get();

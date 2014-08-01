@@ -1,2 +1,0 @@
-suspend("SMTeleoperation");
-restart("SMFallManager");

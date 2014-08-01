@@ -1,1 +1,0 @@
-walk_status.get().controlStatus() == WALK_Stop && after(1)
