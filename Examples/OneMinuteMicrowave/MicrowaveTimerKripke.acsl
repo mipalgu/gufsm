@@ -1,0 +1,21 @@
+1	INIT
+OnEntry{ int currentTime; extern  buttonPushed; extern doorOpen; currentTime=0;
+   }
+OnExit {}
+{}
+
+2	TEST
+OnEntry {  timeLeft = 0 < currentTime; }
+OnExit{}
+{ }
+
+3	ADD_TIME
+OnEntry {currentTime=3+currentTime;}
+OnExit{timeLeft=1;}
+{}
+
+4	DECREMENT
+OnEntry { currentTime=currentTime-1; print_state_name(); }
+OnExit{}
+{}
+

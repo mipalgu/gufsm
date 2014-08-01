@@ -1,2 +1,0 @@
-suspend("SMGetUp");
-restart("SMRobotPosition");

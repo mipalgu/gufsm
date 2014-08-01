@@ -1,1 +1,0 @@
-(currentOdometry - walkStartOdometry) > M_PI/4.0

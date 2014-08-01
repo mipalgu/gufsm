@@ -1,1 +1,0 @@
-after_ms(100) && wbMotionStatus.get().motion_player() == Motions::OFF

@@ -1,2 +1,0 @@
-suspend("SMBallFollower");
-suspend("SMHeadBallTracker");

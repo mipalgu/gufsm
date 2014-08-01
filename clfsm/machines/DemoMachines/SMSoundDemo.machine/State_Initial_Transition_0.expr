@@ -1,3 +1,0 @@
-fft.rms().right() &&
-fft.fsk().lo_freq() == lo &&
-fft.fsk().hi_freq() == hi

@@ -1,1 +1,0 @@
-foundLine=false;
