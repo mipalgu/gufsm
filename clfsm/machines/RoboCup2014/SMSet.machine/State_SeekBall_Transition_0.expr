@@ -1,0 +1,1 @@
+(is_suspended("SMHeadScanner") && after(1)) || VISIBLE
