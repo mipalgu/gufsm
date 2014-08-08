@@ -71,6 +71,7 @@
 #include "FSMState.h"
 #include "FSMSuspensibleMachine.h"
 #include "FSMachineVector.h"
+#include "CLMachine.h"
 #include "clfsm_machine.h"
 #include "clfsm_wb_vector_factory.h"
 #include "gugenericwhiteboardobject.h"
@@ -87,11 +88,11 @@ static string bumpedName(string name)
 {
     size_t len = name.size();
     if (!len || !isdigit(name[len-1]))
-        return oldName + ".0";
-    while (--len && isdigit(name[len-1])
+        return name + ".0";
+    while (--len && isdigit(name[len-1]))
            ;
     int i = atoi(name.c_str()+len);
-    sstream ss;
+    stringstream ss;
     ss << name.substr(0, len) << ++i;
 
     return ss.str();
