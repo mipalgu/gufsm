@@ -84,6 +84,11 @@ static bool nonstop;
 using namespace std;
 using namespace FSM;
 
+struct clfsm_context {
+    vector<string> *machineFiles;       /// pointer to vector of file names
+    CLFSMWBVectorFactory *factory;      /// machine factory that was used
+};
+
 static string bumpedName(string name)
 {
     size_t len = name.size();
@@ -215,12 +220,14 @@ static void usage(const char *cmd)
 
 static bool debug_internal_states = false;
 
-static bool print_machine_and_state(void *context, SuspensibleMachine *machine, int machine_number)
+static bool print_machine_and_state(void *ctx, SuspensibleMachine *machine, int machine_number)
 {
-        vector<string> *machines = static_cast<vector<string>*>(context);
+        struct clfsm_context *context = static_cast<struct clfsm_context *>(ctx);
+        CLFSMWBVectorFactory *factory = context->factory;
+        const char *machineName = factory->name_of_machine_at_index(machine_number);
 
         if (machine->previousState() != machine->currentState())
-                fprintf(stderr, "%sm%3d s%3d - %-40.40s - %s\n",  debug_internal_states ? "\n" : "", machine_number, machine->indexOfState(), machines->at(machine_number).c_str(), machine->currentState()->name().c_str());
+                fprintf(stderr, "%sm%3d s%3d - %-30.30s / %-20.20s - %s\n",  debug_internal_states ? "\n" : "", machine_number, machine->indexOfState(), context->machineFiles->at(machine_number).c_str(), machineName, machine->currentState()->name().c_str());
         else if (debug_internal_states)
                 fprintf(stderr, "%d/%d ", machine_number, machine->indexOfState());
 
@@ -330,9 +337,10 @@ int main(int argc, char * const argv[])
         if (verbose) visitor = print_machine_and_state;
 
         CLFSMWBVectorFactory *factory = createMachines(machineWrappers, machines, compiler_args, linker_args);
+        struct clfsm_context context = { &machines, factory };
         factory->postMachineStatus();
         debug_internal_states = debug;
-        factory->fsms()->execute(visitor, &machines);
+        factory->fsms()->execute(visitor, &context);
         delete factory;
 
         for (vector<MachineWrapper *>::const_iterator it = machineWrappers.begin(); it != machineWrappers.end(); it++)
