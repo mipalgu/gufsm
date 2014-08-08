@@ -60,6 +60,7 @@
 #include <cstdlib>
 #include <cstdio>
 #include <cerrno>
+#include <cctype>
 #include <unistd.h>
 #include <signal.h>
 #include <execinfo.h>
@@ -82,6 +83,21 @@ static bool nonstop;
 using namespace std;
 using namespace FSM;
 
+static string bumpedName(string name)
+{
+    size_t len = name.size();
+    if (!len || !isdigit(name[len-1]))
+        return oldName + ".0";
+    while (--len && isdigit(name[len-1])
+           ;
+    int i = atoi(name.c_str()+len);
+    sstream ss;
+    ss << name.substr(0, len) << ++i;
+
+    return ss.str();
+}
+
+
 static CLFSMWBVectorFactory *createMachines(vector<MachineWrapper *> &machineWrappers, const vector<string> &machines, const vector<string> &compiler_args, const vector<string> &linker_args)
 {
         CLFSMWBVectorFactory *factory = new CLFSMWBVectorFactory();
@@ -94,7 +110,21 @@ static CLFSMWBVectorFactory *createMachines(vector<MachineWrapper *> &machineWra
                 machineWrapper.setCompilerArgs(compiler_args);
                 machineWrapper.setLinkerArgs(linker_args);
                 CLMachine *clm = machineWrapper.instantiate(i, machine.c_str());
-                if (clm) factory->addMachine(clm);
+                if (clm)
+                {
+                    string name = machineWrapper.name();
+                    /*
+                     * Bump name if not unique
+                     */
+                    if (factory->index_of_machine_named(name.c_str()) != CLError)
+                    {
+                        while (factory->index_of_machine_named(name.c_str()) != CLError)
+                            name = bumpedName(name);
+                        machineWrapper.setName(name);
+                        clm->setMachineName(name.c_str());
+                    }
+                    factory->addMachine(clm);
+                }
                 else cerr << "Could not add machine " << i << ": '" << machine << "'" << endl;
                 i++;
         }
