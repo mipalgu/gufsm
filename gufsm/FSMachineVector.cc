@@ -129,6 +129,24 @@ SuspensibleMachine *StateMachineVector::addMachine(SuspensibleMachine *m, int in
 }
 
 
+bool StateMachineVector::removeMachineAtIndex(int index, bool del)
+{
+        int size = static_cast<int>(machines().size());
+        int mid = index;
+        if (mid < 0 || mid >= size) mid = size-1;
+        if (!size) return false;
+
+        SuspensibleMachine *m = _machines[index];
+        if (!m) return false;
+
+        _machines[index] = NULL;
+
+        if (del) delete m;
+
+        return true;
+}
+
+
 bool StateMachineVector::executeOnce(visitor_f should_execute_machine, void *context)
 {
         int machine_no = 0;
@@ -141,8 +159,7 @@ bool StateMachineVector::executeOnce(visitor_f should_execute_machine, void *con
         {
                 SuspensibleMachine *m = *it;
 
-                if (should_execute_machine != NULL &&
-                    !should_execute_machine(context, m, machine_no++))
+                if (!m || (should_execute_machine != NULL && !should_execute_machine(context, m, machine_no++)))
                         continue;
 
                 bool mfire = false;
@@ -160,8 +177,8 @@ void StateMachineVector::suspend()
         for (MachineVector::iterator it = machines().begin();
              it != machines().end(); it++)
         {
-                SuspensibleMachine * m = *it;
-                m->suspend();
+                SuspensibleMachine *m = *it;
+                if (m) m->suspend();
         }
 }
 
@@ -170,8 +187,8 @@ void StateMachineVector::resume()
         for (MachineVector::iterator it = machines().begin();
              it != machines().end(); it++)
         {
-                SuspensibleMachine * m = *it;
-                m->resume();
+                SuspensibleMachine *m = *it;
+                if (m) m->resume();
         }
 }
 
@@ -180,8 +197,8 @@ void StateMachineVector::scheduleSuspend()
         for (MachineVector::iterator it = machines().begin();
              it != machines().end(); it++)
         {
-                SuspensibleMachine * m = *it;
-                m->scheduleSuspend();
+                SuspensibleMachine *m = *it;
+                if (m) m->scheduleSuspend();
         }
 }
 
@@ -211,6 +228,7 @@ bool StateMachineVector::executeOnceOnQueue(dispatch_queue_t queue)
              it != machines().end(); it++)
         {
                 SuspensibleMachine *m = *it;
+                if (!m) continue;               // ignore unloaded machines
                 if (m->isSuspended() && !m->scheduledForResume() && !m->scheduledForRestart())
                         setAccepting(false);    // a suspended machine is never accepting
                 else
@@ -305,7 +323,7 @@ void StateMachineVector::initialise()
              it != machines().end(); it++)
         {
                 SuspensibleMachine *m = *it;
-                m->initialise();
+                if (m) m->initialise();
         }
 }
 
@@ -316,7 +334,7 @@ void StateMachineVector::restart()
              it != machines().end(); it++)
         {
                 SuspensibleMachine *m = *it;
-                m->restart();
+                if (m) m->restart();
         }
 }
 
@@ -330,7 +348,7 @@ string StateMachineVector::description()
         {
                 SuspensibleMachine *m = *it;
                 ss << "\nVector Machine " << i++ << ":\n" <<
-                m->description() << endl;
+                (m ? m->description() : string("<unloaded>")) << endl;
         }
         return ss.str();
 }

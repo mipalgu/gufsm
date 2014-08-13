@@ -171,6 +171,14 @@ namespace FSM
                  */
                 SuspensibleMachine *addMachine(SuspensibleMachine *m = NULL, int index=-1, bool resume=false);
 
+                /**
+                 * Remove a machine at a given index (-1 = end)
+                 * @param index         index of machine to remove (-1 to remove the last machine)
+                 * @param del           true if the machine should be deallocated (deleted from memory)
+                 * @return              true if successful, false if not
+                 */
+                bool removeMachineAtIndex(int index = -1, bool del = true);
+
                 /** context getter */
                 Context *context() { return _context; }
                 
