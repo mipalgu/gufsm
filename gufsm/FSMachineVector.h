@@ -160,6 +160,9 @@ namespace FSM
                 /** machines getter method */
                 MachineVector &machines() { return _machines; }
                 
+                /** const machines getter method */
+                const MachineVector &machines() const { return _machines; }
+
                 /** machines setter method */
                 void setMachines(const MachineVector &mv) { _machines = mv; }
                 
@@ -186,7 +189,7 @@ namespace FSM
                 void setContext(Context *ctx = NULL) { _context = ctx; }
                 
                 /** accepting state getter */
-                bool accepting() { return _accepting; }
+                bool accepting() const { return _accepting; }
                 
                 /** accepting state setter */
                 void setAccepting(bool accept = true) { _accepting = accept; }
@@ -239,7 +242,7 @@ namespace FSM
                  * subclass responsibility:
                  * print the Kripke structure in svm format 
                  */
-                virtual std::string kripkeInSVMformat() { return ""; }
+                virtual std::string kripkeInSVMformat() const { return ""; }
 
                 /**
                  * restart all state machines from their initial state
@@ -264,7 +267,7 @@ namespace FSM
                 /**
                  * printable state machine vector description
                  */
-                virtual std::string description();
+                virtual std::string description() const;
                 
                 /** 
                  * subclass responsibility: serialise a Kripke Gobal vector in smv format

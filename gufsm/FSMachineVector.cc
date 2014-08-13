@@ -339,11 +339,11 @@ void StateMachineVector::restart()
 }
 
 
-string StateMachineVector::description()
+string StateMachineVector::description() const
 {
         stringstream ss;
         int i = 0;
-        for (MachineVector::iterator it = machines().begin();
+        for (MachineVector::const_iterator it = machines().begin();
              it != machines().end(); it++)
         {
                 SuspensibleMachine *m = *it;
