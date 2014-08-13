@@ -136,10 +136,10 @@ bool StateMachineVector::removeMachineAtIndex(int index, bool del)
         if (mid < 0 || mid >= size) mid = size-1;
         if (!size) return false;
 
-        SuspensibleMachine *m = _machines[index];
+        SuspensibleMachine *m = _machines[mid];
         if (!m) return false;
 
-        _machines[index] = NULL;
+        _machines[mid] = NULL;
 
         if (del) delete m;
 
