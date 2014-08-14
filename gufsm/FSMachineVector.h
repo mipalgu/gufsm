@@ -242,7 +242,7 @@ namespace FSM
                  * subclass responsibility:
                  * print the Kripke structure in svm format 
                  */
-                virtual std::string kripkeInSVMformat() const { return ""; }
+                virtual std::string kripkeInSVMformat() { return ""; }
 
                 /**
                  * restart all state machines from their initial state
