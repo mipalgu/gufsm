@@ -6,16 +6,16 @@ MAN=${BIN}
 
 .ifdef GNUSTEP_MAKEFILES
 ALL_TARGETS=do-build
+SPECIFIC_LIBS+=-lgnustep-base -lobjc
 .else
 ALL_TARGETS=host
+SPECIFIC_LIBS+=-framework Foundation
 .endif
 
 ANALYSE_INCLUDE_C_SRCS=yes
 
 UTIL_DIR=${GUNAO_DIR}/posix/guwhiteboard/objc/Classes
 CPPFLAGS=-I${UTIL_DIR}
-
-SPECIFIC_LIBS+=-framework Foundation
 
 C_SRCS=syntax_check.c
 UTIL_SRCS=NSString+MixedCase.m NSMutableArray+Stack.m

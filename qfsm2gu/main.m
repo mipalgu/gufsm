@@ -5,6 +5,24 @@
 //  Created by Rene Hexel on 18/03/11.
 //  Copyright 2011-2014 Rene Hexel. All rights reserved.
 //
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-macros"
+
+#ifndef _POSIX_SOURCE
+#define _POSIX_SOURCE 200112L
+#endif
+#ifndef _XOPEN_SOURCE
+#define _XOPEN_SOURCE
+#endif
+#ifdef __APPLE__
+#ifndef _DARWIN_C_SOURCE
+#define _DARWIN_C_SOURCE 200112L
+#ifndef __DARWIN_C_LEVEL
+#define __DARWIN_C_LEVEL 200112L
+#endif
+#endif
+#endif
+
 #import <Foundation/Foundation.h>
 #import <unistd.h>
 #import <stdbool.h>
@@ -57,3 +75,4 @@ int main (int argc, char *argv[])
     return EXIT_SUCCESS;
 }
 
+#pragma clang diagnostic pop
