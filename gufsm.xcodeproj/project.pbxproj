@@ -63,8 +63,6 @@
 		E11FB9B614BD4793009C778E /* TransitionContainer_SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E11FB99714BD4793009C778E /* TransitionContainer_SimpleCParser.c */; };
 		E11FB9B714BD4793009C778E /* TransitionContainerParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E11FB99814BD4793009C778E /* TransitionContainerParser.c */; };
 		E11FB9B814BD4793009C778E /* gusimplewhiteboard.c in Sources */ = {isa = PBXBuildFile; fileRef = E11FB99914BD4793009C778E /* gusimplewhiteboard.c */; };
-		E11FB9B914BD4793009C778E /* Whiteboard.cc in Sources */ = {isa = PBXBuildFile; fileRef = E11FB99A14BD4793009C778E /* Whiteboard.cc */; };
-		E11FB9BA14BD4793009C778E /* WhiteboardConstants.cc in Sources */ = {isa = PBXBuildFile; fileRef = E11FB99B14BD4793009C778E /* WhiteboardConstants.cc */; };
 		F108330B1626997A00D6C789 /* clfsm_machine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F10833091626997A00D6C789 /* clfsm_machine.cc */; };
 		F1199D6014302767003853BF /* FSMExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1199D5F14302767003853BF /* FSMExpression.cc */; };
 		F1199D6114302767003853BF /* FSMExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1199D5F14302767003853BF /* FSMExpression.cc */; };
@@ -72,10 +70,6 @@
 		F1284D1314A6CAA800C0247E /* gusimplewhiteboard.c in Sources */ = {isa = PBXBuildFile; fileRef = F1284D0014A6CAA800C0247E /* gusimplewhiteboard.c */; };
 		F1284D1414A6CAA800C0247E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1284D0614A6CAA800C0247E /* InfoPlist.strings */; };
 		F1284D1514A6CAA800C0247E /* SimpleWhiteboardTest-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1284D0814A6CAA800C0247E /* SimpleWhiteboardTest-Info.plist */; };
-		F1284D1814A6CAA800C0247E /* Whiteboard.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1284D0E14A6CAA800C0247E /* Whiteboard.cc */; };
-		F1284D1914A6CAA800C0247E /* Whiteboard.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1284D0E14A6CAA800C0247E /* Whiteboard.cc */; };
-		F1284D1A14A6CAA800C0247E /* WhiteboardConstants.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1284D1014A6CAA800C0247E /* WhiteboardConstants.cc */; };
-		F1284D1B14A6CAA800C0247E /* WhiteboardConstants.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1284D1014A6CAA800C0247E /* WhiteboardConstants.cc */; };
 		F12B423E147DC38B00FF4A6B /* ActionsParser.g in Resources */ = {isa = PBXBuildFile; fileRef = F12B423A147DC38B00FF4A6B /* ActionsParser.g */; };
 		F12B423F147DC38B00FF4A6B /* SMCommon.g in Resources */ = {isa = PBXBuildFile; fileRef = F12B423B147DC38B00FF4A6B /* SMCommon.g */; };
 		F12B4240147DC38B00FF4A6B /* SMLexer.g in Resources */ = {isa = PBXBuildFile; fileRef = F12B423C147DC38B00FF4A6B /* SMLexer.g */; };
@@ -186,8 +180,6 @@
 		F1D575AD1627968300976A23 /* FSMachineVector.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1AFCD28147B56FA00C975DC /* FSMachineVector.cc */; };
 		F1D575AE162796F600976A23 /* gu_util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F192CCC4144D27C200FF8526 /* gu_util.cpp */; };
 		F1D575AF1627975F00976A23 /* gusimplewhiteboard.c in Sources */ = {isa = PBXBuildFile; fileRef = F1284D0014A6CAA800C0247E /* gusimplewhiteboard.c */; };
-		F1D575B01627976500976A23 /* Whiteboard.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1284D0E14A6CAA800C0247E /* Whiteboard.cc */; };
-		F1D575B11627976800976A23 /* WhiteboardConstants.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1284D1014A6CAA800C0247E /* WhiteboardConstants.cc */; };
 		F1D575B4162797CB00976A23 /* libclfsm.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F1D5758D1627948900976A23 /* libclfsm.dylib */; };
 		F1D575B5162798B600976A23 /* clfsm_vector_factory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F11144FB15F98447005953C1 /* clfsm_vector_factory.cc */; };
 		F1D575B6162798C900976A23 /* clfsm_factory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F12EAE5415F6F48A002DB436 /* clfsm_factory.cc */; };
@@ -2910,8 +2902,6 @@
 				E11FB9B614BD4793009C778E /* TransitionContainer_SimpleCParser.c in Sources */,
 				E11FB9B714BD4793009C778E /* TransitionContainerParser.c in Sources */,
 				E11FB9B814BD4793009C778E /* gusimplewhiteboard.c in Sources */,
-				E11FB9B914BD4793009C778E /* Whiteboard.cc in Sources */,
-				E11FB9BA14BD4793009C778E /* WhiteboardConstants.cc in Sources */,
 				F18AD00E15CBA63800492118 /* FSMANTLRMachineVector.cc in Sources */,
 				F139CAE715F6E24600C3C62D /* FSMANTLRVectorFactory.cc in Sources */,
 			);
@@ -2962,8 +2952,6 @@
 				F14EB9C01491B86600ED85D7 /* FSMANTLRContext.cc in Sources */,
 				F139CAE615F6E24600C3C62D /* FSMANTLRVectorFactory.cc in Sources */,
 				F1284D1214A6CAA800C0247E /* gusimplewhiteboard.c in Sources */,
-				F1284D1814A6CAA800C0247E /* Whiteboard.cc in Sources */,
-				F1284D1A14A6CAA800C0247E /* WhiteboardConstants.cc in Sources */,
 				F15A2CF814CF843700D88624 /* claus.c in Sources */,
 				F15A2CF914CF843700D88624 /* defeas.c in Sources */,
 				F15A2CFA14CF843700D88624 /* oset.c in Sources */,
@@ -3008,8 +2996,6 @@
 				F12DCCE714830A9E00461AD6 /* TransitionFactory.cpp in Sources */,
 				F14EB9C11491B86600ED85D7 /* FSMANTLRContext.cc in Sources */,
 				F1284D1314A6CAA800C0247E /* gusimplewhiteboard.c in Sources */,
-				F1284D1914A6CAA800C0247E /* Whiteboard.cc in Sources */,
-				F1284D1B14A6CAA800C0247E /* WhiteboardConstants.cc in Sources */,
 				F15A2D0114CF843800D88624 /* claus.c in Sources */,
 				F15A2D0214CF843800D88624 /* defeas.c in Sources */,
 				F15A2D0314CF843800D88624 /* oset.c in Sources */,
@@ -3066,8 +3052,6 @@
 				F1D575AD1627968300976A23 /* FSMachineVector.cc in Sources */,
 				F1D575AE162796F600976A23 /* gu_util.cpp in Sources */,
 				F1D575AF1627975F00976A23 /* gusimplewhiteboard.c in Sources */,
-				F1D575B01627976500976A23 /* Whiteboard.cc in Sources */,
-				F1D575B11627976800976A23 /* WhiteboardConstants.cc in Sources */,
 				F1D575B5162798B600976A23 /* clfsm_vector_factory.cc in Sources */,
 				F1D575B6162798C900976A23 /* clfsm_factory.cc in Sources */,
 				F15755A116FC0EA700C6EBA1 /* guwhiteboardtypelist_c_typestrings_generated.c in Sources */,
