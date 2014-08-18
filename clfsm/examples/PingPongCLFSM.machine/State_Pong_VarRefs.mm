@@ -3,11 +3,11 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-Pong *_s = static_cast<Pong *>(_state);
-
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"
 #pragma clang diagnostic ignored "-Wshadow"
+
+Pong *_s = static_cast<Pong *>(_state);
 
 const char *	&stateName = _s->stateName;	///< name of the current state
 
