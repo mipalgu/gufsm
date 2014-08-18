@@ -56,7 +56,6 @@ HDRS+=TransitionFactory.h
 HDRS+=parser_walk.h
 HDRS+=stringConstants.h
 
-WHITEBOARD_PRIVATE_CCS=WhiteboardConstants.cc
 
 ANTLR_COMBINED=TransitionContainer.g ActionsContainer.g
 ANTLR_INCLUDES=SimpleCParser.g
