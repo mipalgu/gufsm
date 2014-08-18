@@ -66,6 +66,7 @@ ANTLR_GRAMMARS=SimpleCLexer.g
 
 .include "../../../mk/libcxx.mk"	# needs to come first
 .include "../../../mk/antlr.mk"		# required for grammar parsing
+USE_OLD_WHITEBOARD=yes
 .include "../../../mk/whiteboard.mk"	# required for the whiteboard
 .include "../../../mk/cdlengine.mk"	# required for the whiteboard
 .include "../../../mk/util.mk"		# required for gu_util
