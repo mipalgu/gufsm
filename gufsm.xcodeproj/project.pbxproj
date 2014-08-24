@@ -1044,6 +1044,7 @@
 		F1AFCD2C147B573700C975DC /* FSMachineVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMachineVector.h; sourceTree = "<group>"; };
 		F1AFCD2D147B8F4200C975DC /* FSMWBSubMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMWBSubMachine.h; sourceTree = "<group>"; };
 		F1AFCD2E147B8F7800C975DC /* FSMWBSubMachine.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMWBSubMachine.cc; sourceTree = "<group>"; };
+		F1C5AAE419A993E200CA955A /* CLMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLMacros.h; sourceTree = "<group>"; };
 		F1C7CE5D16FFE48300D5D843 /* clfsm_wb_vector_factory.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = clfsm_wb_vector_factory.cc; sourceTree = "<group>"; };
 		F1C7CE5E16FFE48300D5D843 /* clfsm_wb_vector_factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clfsm_wb_vector_factory.h; sourceTree = "<group>"; };
 		F1D126E9160937B400E526BE /* CLAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLAction.h; sourceTree = "<group>"; };
@@ -2177,10 +2178,11 @@
 		F1A517CE15C91BDC00348C25 /* clfsm */ = {
 			isa = PBXGroup;
 			children = (
-				F1D126E9160937B400E526BE /* CLAction.h */,
-				F1D126EA160937B400E526BE /* CLTransition.h */,
-				F1D126EB160937B400E526BE /* CLState.h */,
+				F1C5AAE419A993E200CA955A /* CLMacros.h */,
 				F1D126EC160937B400E526BE /* CLMachine.h */,
+				F1D126E9160937B400E526BE /* CLAction.h */,
+				F1D126EB160937B400E526BE /* CLState.h */,
+				F1D126EA160937B400E526BE /* CLTransition.h */,
 				F1D126ED160937B400E526BE /* CLTransitionExpression.h */,
 				F1D126EE160937B400E526BE /* CLActionAction.cc */,
 				F1D126EF160937B400E526BE /* CLActionAction.h */,
