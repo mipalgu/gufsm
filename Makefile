@@ -5,8 +5,6 @@
 #
 SUBDIRS=gufsm
 
-SUBDIR_TARGETS=clean host robot doc
-
 ALL_TARGETS=show-all-dependencies
 S?=
 
