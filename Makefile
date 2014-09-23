@@ -3,8 +3,6 @@
 #
 # Global Makefile
 #
-SUBDIRS=gufsm
-
 ALL_TARGETS=show-all-dependencies
 S?=
 
