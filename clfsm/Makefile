@@ -11,8 +11,8 @@ host: build-host
 
 robot: build-robot
 
-.include "../../../mk/libcxx.mk"	# use C++11 and libc++
-.include "../../../mk/whiteboard.mk"	# not really using wb, but for catkin
+.include "../../../mk/c++11.mk"         # use C++11
+.include "../../../mk/whiteboard.mk"	# not really, but for catkin
 
 copy-stuff:
 	mkdir -p ${BUILDDIR}

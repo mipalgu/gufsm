@@ -10,7 +10,7 @@ ALL_TARGETS=host-local robot-local
 CATKIN_BASE=libclfsm
 CATKIN_COMPILE_UTIL=YES
 
-.include "../../../mk/libcxx.mk"	# use C++11 and libc++
+.include "../../../mk/c++11.mk"	# use C++11
 
 SPECIFIC_LDFLAGS+=-Wl,-rpath -Wl,/usr/local/lib
 

@@ -3,13 +3,13 @@
 #
 MODULE_BASE=clfsm
 
-.include "../../../../mk/libcxx.mk"	# use C++11 and libc++
+.include "../../../../mk/c++11.mk"	# use C++11
 
 .ifndef TARGET
 .if "${UNAME}" != "Linux"
-USE_LIBCPP=yes
-SPECIFIC_CPPFLAGS=-stdlib=libc++
-SPECIFIC_LDFLAGS=-stdlib=libc++
+#USE_LIBCPP=yes
+#SPECIFIC_CPPFLAGS=-stdlib=libc++
+#SPECIFIC_LDFLAGS=-stdlib=libc++
 .else
 SPECIFIC_LIBS+=-Wl,-R/usr/local/lib
 .endif
