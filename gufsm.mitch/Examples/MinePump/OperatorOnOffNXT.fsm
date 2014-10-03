@@ -1,0 +1,45 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vlad Estivill-Castro" description="" version="1" name="FSM" arrowtype="1" numbits="3" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="159" endx="150" xpos="90" endy="159"/>
+    <state pencolor="0" radius="40" description="OnEntry { extern gunxt_valueTouchSensor4;&#xa; operatorButtonOn=0;&#xa;  post(&quot;gunxt_startTouchSensor&quot;,&quot;4&quot;);&#xa;   print_state_name(); &#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="159" code="0" xpos="190" linewidth="1">FALSEINIT</state>
+    <state pencolor="0" radius="40" description="OnEntry {operatorButtonOn=1; &#xa;  print_state_name();}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="91" code="1" xpos="677" linewidth="1">PowerOn</state>
+    <state pencolor="0" radius="40" description="OnEntry {operatorButtonOn=0; print_state_name(); &#xa;   }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="410" code="2" xpos="370" linewidth="1">PowerOff</state>
+    <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="415" code="3" xpos="727" linewidth="1">Wait</state>
+    <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="113" code="4" xpos="376" linewidth="1">Wait</state>
+    <transition c1x="255.9455787215159" c2y="319.4858468052213" c1y="255.2429234026106" description="" straight="1" type="2" ypos="191" endx="339.8367361645477" xpos="214" endy="383.7287702078319" c2x="297.8911574430318">
+      <from>0</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="698.555647113917" c2y="293.4173290560648" c1y="211.6964884419248" description="" straight="1" type="2" ypos="129.9756478277848" endx="723.6781808058504" xpos="685.9943802679503" endy="375.1381696702048" c2x="711.1169139598837">
+      <from>1</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">gunxt_valueTouchSensor4</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="371.2642660093115" c2y="225.3184913123091" c1y="297.6868890695043" description="" straight="1" type="2" ypos="370.0552868266996" endx="377.9975046777557" xpos="367.8976466750894" endy="152.9500935551138" c2x="374.6308853435336">
+      <from>2</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">gunxt_valueTouchSensor4</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="594.1496187012747" c2y="419.4233167183289" c1y="417.7243103750154" description="" straight="1" type="2" ypos="416.025304031702" endx="408.4225705765825" xpos="687.0131427636207" endy="421.1223230616423" c2x="501.2860946389286">
+      <from>3</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">!gunxt_valueTouchSensor4</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="489.8296937993033" c2y="102.6850543020963" c1y="105.6928902914463" description="" straight="1" type="2" ypos="108.7007262807963" endx="637.9525175926419" xpos="415.768281902634" endy="99.67721831274628" c2x="563.8911056959726">
+      <from>4</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">!gunxt_valueTouchSensor4</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>

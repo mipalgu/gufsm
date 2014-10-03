@@ -1,0 +1,19 @@
+1	PLACED|OnEntry Speech: Placed/
+13	StepForward|OnEntry Speech: Forward; NaoWalk: walk 1 0 0 0.75;/ C++: msleep(100);
+14	StepBackward|OnEntry Speech: Backward; NaoWalk: walk -1 0 0 .75;/ C++: msleep(100);
+4	Spin|OnEntry Speech: Spin; NaoWalk: walk 0 2 0;/
+5	Duration|OnEntry C++: sleep(1); / OnExit NaoWalk: walk 0 0 0;/
+6	Judge|OnEntry Speech: Judge; NaoWalk: walk 0 0 0; C++: sleep(1);/OnExit NaoWalk: walk 0 0 0;/
+18	Sweep|OnEntry Speech: sweep; NaoHeadMoveTo: -90 0 0.3; C++: msleep(200);/ C++: msleep(100);
+2	MoveHead|OnEntry NaoHeadPositionChange: 15 0 0.3;/ C++: msleep(50);
+9	Evaluate|C++: msleep(200);
+10	ReachedMax|C++: msleep(50);
+11	Rotate|OnEntry Holding_Stiffness: 1; C++: msleep(200); NaoMotion_rotateToHeadPosition: now;  C++: msleep(2000);/ C++: msleep(500);
+0	Evaluate|C++: msleep(200);
+3	Rotate|OnEntry Holding_Stiffness: 1;  NaoWalkToDist: walk 0 0 140;/ C++: msleep(200);/ C++: msleep(100);
+17	CenterGoal|OnEntry NaoHeadPositionChange: -20 0 0.3;/ C++: msleep(50);
+16	Evaluate|C++: msleep(350);
+19	FoundGoal|
+8	CheckMiddle|
+12	FoundOtherGoal|OnEntry Holding_Stiffness: 1;  NaoWalkToDist: walk 0 0 155;/ C++: msleep(200);/ C++: msleep(100);
+7	PLACING|OnEntry Holding_Stiffness: 1; guvision_selectCamera: 0; NaoMotionPlayer: play get_up_anywhere; NaoWalk: walk 0 0 0; guvision_runVisionPipeline: now; C++: msleep(500);/

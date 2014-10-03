@@ -1,0 +1,31 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vlad Estivill-Castro" description="" version="1" name="FSM" arrowtype="1" numbits="2" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="108" endx="120" xpos="60" endy="108"/>
+    <state pencolor="0" radius="40" description="OnEntry { extern gunxt_valueTouchSensor2;&#xa; post(&quot;gunxt_startTouchSensor&quot;,&quot;2&quot;); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="108" code="0" xpos="160" linewidth="1">FALSEINIT</state>
+    <state pencolor="0" radius="40" description="OnEntry {sensorAtBottomActive=0;  print_state_name();&#xa;   }&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="116" code="1" xpos="706" linewidth="1">IndicatingPressAwayFromBottom</state>
+    <state pencolor="0" radius="40" description="OnEntry {sensorAtBottomActive=1;print_state_name();&#xa;   }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="297" code="3" xpos="304" linewidth="1">IndicatingPressAtBottom</state>
+    <transition c1x="217.3886436839711" c2y="224.3277850226774" c1y="180.468378585014" description="" straight="1" type="2" ypos="136.6089721473506" endx="276.2543325173652" xpos="187.955799267274" endy="268.1871914603408" c2x="246.8214881006681">
+      <from>0</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="572.4472867802497" c2y="262.8093890112483" c1y="207.6548809959232" description="" straight="1" type="2" ypos="152.5003729805981" endx="338.0663326681818" xpos="689.6377638362836" endy="317.9638970265734" c2x="455.2568097242157">
+      <from>1</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">gunxt_valueTouchSensor2</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="414.3526842293621" c2y="175.9042284046614" c1y="218.4558320584067" description="" straight="1" type="2" ypos="261.007435712152" endx="669.959933209636" xpos="286.5490597392252" endy="133.352624750916" c2x="542.1563087194991">
+      <from>3</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">!gunxt_valueTouchSensor2</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>

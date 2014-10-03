@@ -1,0 +1,447 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F10B04D314007EBF00860F9E /* grammar_test.c in Sources */ = {isa = PBXBuildFile; fileRef = F10B04D214007EBF00860F9E /* grammar_test.c */; };
+		F11BD26C1400A1A500EB1B4A /* libactions_parser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F11BD25D14009A6800EB1B4A /* libactions_parser.a */; };
+		F1B4C01B1400A8840066D497 /* parse_actions.c in Sources */ = {isa = PBXBuildFile; fileRef = F1B4C01A1400A8840066D497 /* parse_actions.c */; };
+		F1B4C01F1400C2B00066D497 /* libantlr3c.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1B4C01E1400C2B00066D497 /* libantlr3c.a */; };
+		F1B4C0221400C41F0066D497 /* parse_transitions.c in Sources */ = {isa = PBXBuildFile; fileRef = F1B4C0201400C41F0066D497 /* parse_transitions.c */; };
+		F1EA6F1614085A1000E5E5D8 /* ActionsParser_SMCommon.c in Sources */ = {isa = PBXBuildFile; fileRef = F1EA6F0614085A1000E5E5D8 /* ActionsParser_SMCommon.c */; };
+		F1EA6F1714085A1000E5E5D8 /* ActionsParser.c in Sources */ = {isa = PBXBuildFile; fileRef = F1EA6F0814085A1000E5E5D8 /* ActionsParser.c */; };
+		F1EA6F1814085A1000E5E5D8 /* SMCommon.c in Sources */ = {isa = PBXBuildFile; fileRef = F1EA6F0B14085A1000E5E5D8 /* SMCommon.c */; };
+		F1EA6F1914085A1000E5E5D8 /* SMLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = F1EA6F0E14085A1000E5E5D8 /* SMLexer.c */; };
+		F1EA6F1A14085A1000E5E5D8 /* TransitionsParser_SMCommon.c in Sources */ = {isa = PBXBuildFile; fileRef = F1EA6F1114085A1000E5E5D8 /* TransitionsParser_SMCommon.c */; };
+		F1EA6F1B14085A1000E5E5D8 /* TransitionsParser.c in Sources */ = {isa = PBXBuildFile; fileRef = F1EA6F1314085A1000E5E5D8 /* TransitionsParser.c */; };
+		F1EA6F1C14085A2800E5E5D8 /* ActionsParser_SMCommon.c in Sources */ = {isa = PBXBuildFile; fileRef = F1EA6F0614085A1000E5E5D8 /* ActionsParser_SMCommon.c */; };
+		F1EA6F1D14085A2800E5E5D8 /* ActionsParser.c in Sources */ = {isa = PBXBuildFile; fileRef = F1EA6F0814085A1000E5E5D8 /* ActionsParser.c */; };
+		F1EA6F1E14085A2800E5E5D8 /* SMCommon.c in Sources */ = {isa = PBXBuildFile; fileRef = F1EA6F0B14085A1000E5E5D8 /* SMCommon.c */; };
+		F1EA6F1F14085A2800E5E5D8 /* SMLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = F1EA6F0E14085A1000E5E5D8 /* SMLexer.c */; };
+		F1EA6F2014085A2800E5E5D8 /* TransitionsParser_SMCommon.c in Sources */ = {isa = PBXBuildFile; fileRef = F1EA6F1114085A1000E5E5D8 /* TransitionsParser_SMCommon.c */; };
+		F1EA6F2114085A2800E5E5D8 /* TransitionsParser.c in Sources */ = {isa = PBXBuildFile; fileRef = F1EA6F1314085A1000E5E5D8 /* TransitionsParser.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		F10B04DD1400810400860F9E /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.g";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+				"${BUILT_PRODUCTS_DIR}/../antlr/${INPUT_FILE_BASE}.tokens",
+				"${BUILT_PRODUCTS_DIR}/../antlr/${INPUT_FILE_BASE}_actions.c",
+				"${BUILT_PRODUCTS_DIR}/../antlr/${INPUT_FILE_BASE}_actions.h",
+				"${BUILT_PRODUCTS_DIR}/../antlr/${INPUT_FILE_BASE}Lexer.c",
+				"${BUILT_PRODUCTS_DIR}/../antlr/${INPUT_FILE_BASE}Lexer.h",
+				"${BUILT_PRODUCTS_DIR}/../antlr/${INPUT_FILE_BASE}Parser.c",
+				"${BUILT_PRODUCTS_DIR}/../antlr/${INPUT_FILE_BASE}Parser.h",
+			);
+			script = "#!/bin/sh\ncd ${SRCROOT} && exec java -jar /opt/local/share/java/antlr.jar -o ${BUILT_PRODUCTS_DIR}/../antlr \"${INPUT_FILE_BASE}.g\"";
+		};
+/* End PBXBuildRule section */
+
+/* Begin PBXContainerItemProxy section */
+		F11BD26A1400A12200EB1B4A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F10B04B714007E1B00860F9E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F11BD25C14009A6800EB1B4A;
+			remoteInfo = actions_parser;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F10B04BE14007E1C00860F9E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		F10B04C014007E1C00860F9E /* grammar_test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = grammar_test; sourceTree = BUILT_PRODUCTS_DIR; };
+		F10B04D214007EBF00860F9E /* grammar_test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = grammar_test.c; sourceTree = "<group>"; };
+		F10B04D81400801200860F9E /* SMCommon.g */ = {isa = PBXFileReference; lastKnownFileType = text; path = SMCommon.g; sourceTree = "<group>"; };
+		F10B04D91400801200860F9E /* SMLexer.g */ = {isa = PBXFileReference; lastKnownFileType = text; path = SMLexer.g; sourceTree = "<group>"; };
+		F11BD25D14009A6800EB1B4A /* libactions_parser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libactions_parser.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1B4C01A1400A8840066D497 /* parse_actions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = parse_actions.c; sourceTree = "<group>"; };
+		F1B4C01D1400A9280066D497 /* parse_actions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parse_actions.h; sourceTree = "<group>"; };
+		F1B4C01E1400C2B00066D497 /* libantlr3c.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libantlr3c.a; path = ../../../../../../../../../../../usr/local/lib/libantlr3c.a; sourceTree = "<group>"; };
+		F1B4C0201400C41F0066D497 /* parse_transitions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = parse_transitions.c; sourceTree = "<group>"; };
+		F1B4C0211400C41F0066D497 /* parse_transitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parse_transitions.h; sourceTree = "<group>"; };
+		F1EA6F041408580E00E5E5D8 /* ActionsParser.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ActionsParser.g; sourceTree = "<group>"; };
+		F1EA6F051408580E00E5E5D8 /* TransitionsParser.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TransitionsParser.g; sourceTree = "<group>"; };
+		F1EA6F0614085A1000E5E5D8 /* ActionsParser_SMCommon.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ActionsParser_SMCommon.c; path = "../../../../../../../../../../../../../Users/rh/Library/Developer/Xcode/DerivedData/grammar_test-boaxrysffzgwowcjfebdzaeoyoyf/Build/Products/antlr/ActionsParser_SMCommon.c"; sourceTree = "<group>"; };
+		F1EA6F0714085A1000E5E5D8 /* ActionsParser_SMCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionsParser_SMCommon.h; path = "../../../../../../../../../../../../../Users/rh/Library/Developer/Xcode/DerivedData/grammar_test-boaxrysffzgwowcjfebdzaeoyoyf/Build/Products/antlr/ActionsParser_SMCommon.h"; sourceTree = "<group>"; };
+		F1EA6F0814085A1000E5E5D8 /* ActionsParser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ActionsParser.c; path = "../../../../../../../../../../../../../Users/rh/Library/Developer/Xcode/DerivedData/grammar_test-boaxrysffzgwowcjfebdzaeoyoyf/Build/Products/antlr/ActionsParser.c"; sourceTree = "<group>"; };
+		F1EA6F0914085A1000E5E5D8 /* ActionsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionsParser.h; path = "../../../../../../../../../../../../../Users/rh/Library/Developer/Xcode/DerivedData/grammar_test-boaxrysffzgwowcjfebdzaeoyoyf/Build/Products/antlr/ActionsParser.h"; sourceTree = "<group>"; };
+		F1EA6F0A14085A1000E5E5D8 /* ActionsParser.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ActionsParser.tokens; path = "../../../../../../../../../../../../../Users/rh/Library/Developer/Xcode/DerivedData/grammar_test-boaxrysffzgwowcjfebdzaeoyoyf/Build/Products/antlr/ActionsParser.tokens"; sourceTree = "<group>"; };
+		F1EA6F0B14085A1000E5E5D8 /* SMCommon.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = SMCommon.c; path = "../../../../../../../../../../../../../Users/rh/Library/Developer/Xcode/DerivedData/grammar_test-boaxrysffzgwowcjfebdzaeoyoyf/Build/Products/antlr/SMCommon.c"; sourceTree = "<group>"; };
+		F1EA6F0C14085A1000E5E5D8 /* SMCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMCommon.h; path = "../../../../../../../../../../../../../Users/rh/Library/Developer/Xcode/DerivedData/grammar_test-boaxrysffzgwowcjfebdzaeoyoyf/Build/Products/antlr/SMCommon.h"; sourceTree = "<group>"; };
+		F1EA6F0D14085A1000E5E5D8 /* SMCommon.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SMCommon.tokens; path = "../../../../../../../../../../../../../Users/rh/Library/Developer/Xcode/DerivedData/grammar_test-boaxrysffzgwowcjfebdzaeoyoyf/Build/Products/antlr/SMCommon.tokens"; sourceTree = "<group>"; };
+		F1EA6F0E14085A1000E5E5D8 /* SMLexer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = SMLexer.c; path = "../../../../../../../../../../../../../Users/rh/Library/Developer/Xcode/DerivedData/grammar_test-boaxrysffzgwowcjfebdzaeoyoyf/Build/Products/antlr/SMLexer.c"; sourceTree = "<group>"; };
+		F1EA6F0F14085A1000E5E5D8 /* SMLexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMLexer.h; path = "../../../../../../../../../../../../../Users/rh/Library/Developer/Xcode/DerivedData/grammar_test-boaxrysffzgwowcjfebdzaeoyoyf/Build/Products/antlr/SMLexer.h"; sourceTree = "<group>"; };
+		F1EA6F1014085A1000E5E5D8 /* SMLexer.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SMLexer.tokens; path = "../../../../../../../../../../../../../Users/rh/Library/Developer/Xcode/DerivedData/grammar_test-boaxrysffzgwowcjfebdzaeoyoyf/Build/Products/antlr/SMLexer.tokens"; sourceTree = "<group>"; };
+		F1EA6F1114085A1000E5E5D8 /* TransitionsParser_SMCommon.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = TransitionsParser_SMCommon.c; path = "../../../../../../../../../../../../../Users/rh/Library/Developer/Xcode/DerivedData/grammar_test-boaxrysffzgwowcjfebdzaeoyoyf/Build/Products/antlr/TransitionsParser_SMCommon.c"; sourceTree = "<group>"; };
+		F1EA6F1214085A1000E5E5D8 /* TransitionsParser_SMCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransitionsParser_SMCommon.h; path = "../../../../../../../../../../../../../Users/rh/Library/Developer/Xcode/DerivedData/grammar_test-boaxrysffzgwowcjfebdzaeoyoyf/Build/Products/antlr/TransitionsParser_SMCommon.h"; sourceTree = "<group>"; };
+		F1EA6F1314085A1000E5E5D8 /* TransitionsParser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = TransitionsParser.c; path = "../../../../../../../../../../../../../Users/rh/Library/Developer/Xcode/DerivedData/grammar_test-boaxrysffzgwowcjfebdzaeoyoyf/Build/Products/antlr/TransitionsParser.c"; sourceTree = "<group>"; };
+		F1EA6F1414085A1000E5E5D8 /* TransitionsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransitionsParser.h; path = "../../../../../../../../../../../../../Users/rh/Library/Developer/Xcode/DerivedData/grammar_test-boaxrysffzgwowcjfebdzaeoyoyf/Build/Products/antlr/TransitionsParser.h"; sourceTree = "<group>"; };
+		F1EA6F1514085A1000E5E5D8 /* TransitionsParser.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TransitionsParser.tokens; path = "../../../../../../../../../../../../../Users/rh/Library/Developer/Xcode/DerivedData/grammar_test-boaxrysffzgwowcjfebdzaeoyoyf/Build/Products/antlr/TransitionsParser.tokens"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F10B04BD14007E1C00860F9E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F11BD26C1400A1A500EB1B4A /* libactions_parser.a in Frameworks */,
+				F1B4C01F1400C2B00066D497 /* libantlr3c.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F11BD25A14009A6800EB1B4A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F10B04B514007E1B00860F9E = {
+			isa = PBXGroup;
+			children = (
+				F1B4C01E1400C2B00066D497 /* libantlr3c.a */,
+				F10B04D414007FB600860F9E /* Source */,
+				F10B04D514007FCD00860F9E /* Grammars */,
+				F10B04C114007E1C00860F9E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F10B04C114007E1C00860F9E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F10B04C014007E1C00860F9E /* grammar_test */,
+				F11BD25D14009A6800EB1B4A /* libactions_parser.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F10B04D414007FB600860F9E /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				F10B04D214007EBF00860F9E /* grammar_test.c */,
+				F1B4C01A1400A8840066D497 /* parse_actions.c */,
+				F1B4C01D1400A9280066D497 /* parse_actions.h */,
+				F1B4C0201400C41F0066D497 /* parse_transitions.c */,
+				F1B4C0211400C41F0066D497 /* parse_transitions.h */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		F10B04D514007FCD00860F9E /* Grammars */ = {
+			isa = PBXGroup;
+			children = (
+				F1EA6F041408580E00E5E5D8 /* ActionsParser.g */,
+				F1EA6F051408580E00E5E5D8 /* TransitionsParser.g */,
+				F10B04D81400801200860F9E /* SMCommon.g */,
+				F10B04D91400801200860F9E /* SMLexer.g */,
+				F10B04DC1400804C00860F9E /* Derived Sources */,
+			);
+			name = Grammars;
+			sourceTree = "<group>";
+		};
+		F10B04DC1400804C00860F9E /* Derived Sources */ = {
+			isa = PBXGroup;
+			children = (
+				F1EA6F0614085A1000E5E5D8 /* ActionsParser_SMCommon.c */,
+				F1EA6F0714085A1000E5E5D8 /* ActionsParser_SMCommon.h */,
+				F1EA6F0814085A1000E5E5D8 /* ActionsParser.c */,
+				F1EA6F0914085A1000E5E5D8 /* ActionsParser.h */,
+				F1EA6F0A14085A1000E5E5D8 /* ActionsParser.tokens */,
+				F1EA6F0B14085A1000E5E5D8 /* SMCommon.c */,
+				F1EA6F0C14085A1000E5E5D8 /* SMCommon.h */,
+				F1EA6F0D14085A1000E5E5D8 /* SMCommon.tokens */,
+				F1EA6F0E14085A1000E5E5D8 /* SMLexer.c */,
+				F1EA6F0F14085A1000E5E5D8 /* SMLexer.h */,
+				F1EA6F1014085A1000E5E5D8 /* SMLexer.tokens */,
+				F1EA6F1114085A1000E5E5D8 /* TransitionsParser_SMCommon.c */,
+				F1EA6F1214085A1000E5E5D8 /* TransitionsParser_SMCommon.h */,
+				F1EA6F1314085A1000E5E5D8 /* TransitionsParser.c */,
+				F1EA6F1414085A1000E5E5D8 /* TransitionsParser.h */,
+				F1EA6F1514085A1000E5E5D8 /* TransitionsParser.tokens */,
+			);
+			name = "Derived Sources";
+			path = ../antlr;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		F11BD25B14009A6800EB1B4A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		F10B04BF14007E1C00860F9E /* grammar_test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F10B04CA14007E1C00860F9E /* Build configuration list for PBXNativeTarget "grammar_test" */;
+			buildPhases = (
+				F10B04BC14007E1C00860F9E /* Sources */,
+				F10B04BD14007E1C00860F9E /* Frameworks */,
+				F10B04BE14007E1C00860F9E /* CopyFiles */,
+			);
+			buildRules = (
+				F10B04DD1400810400860F9E /* PBXBuildRule */,
+			);
+			dependencies = (
+				F11BD26B1400A12200EB1B4A /* PBXTargetDependency */,
+			);
+			name = grammar_test;
+			productName = grammar_test;
+			productReference = F10B04C014007E1C00860F9E /* grammar_test */;
+			productType = "com.apple.product-type.tool";
+		};
+		F11BD25C14009A6800EB1B4A /* actions_parser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F11BD25E14009A6800EB1B4A /* Build configuration list for PBXNativeTarget "actions_parser" */;
+			buildPhases = (
+				F11BD26114009A8100EB1B4A /* ShellScript */,
+				F11BD25914009A6800EB1B4A /* Sources */,
+				F11BD25A14009A6800EB1B4A /* Frameworks */,
+				F11BD25B14009A6800EB1B4A /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = actions_parser;
+			productName = actions_parser;
+			productReference = F11BD25D14009A6800EB1B4A /* libactions_parser.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F10B04B714007E1B00860F9E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = ICT;
+			};
+			buildConfigurationList = F10B04BA14007E1B00860F9E /* Build configuration list for PBXProject "grammar_test" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F10B04B514007E1B00860F9E;
+			productRefGroup = F10B04C114007E1C00860F9E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F10B04BF14007E1C00860F9E /* grammar_test */,
+				F11BD25C14009A6800EB1B4A /* actions_parser */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F11BD26114009A8100EB1B4A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/SMLexer.g",
+				"$(SRCROOT)/SMCommon.g",
+				"$(SRCROOT)/TransitionsParser.g",
+				"$(SRCROOT)/ActionsParser.g",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "cd ${SRCROOT}\nout=\"${BUILT_PRODUCTS_DIR}/../antlr\"\nmkdir -p \"$out\"\nfor ((i=0; i < SCRIPT_INPUT_FILE_COUNT ; i++)); do\n    inputFile=`eval echo '$SCRIPT_INPUT_FILE_'$i`\n    outputFile=\"$out\"/`basename \"$inputFile\" | sed 's/.g$/.tokens/'`\n\n    if [ ! $outputFile -nt $inputFile ]; then\n        java -classpath /usr/local/share/java/antlr-3.4-complete.jar org.antlr.Tool -language C -o \"$out\" \"$inputFile\" 2>&1 | sed 's/warning\\([^:]*\\): \\([^ ]*\\): \\(.*\\)$/\\2: warning: \\3 \\1/' 1>&2\n    fi\ndone\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F10B04BC14007E1C00860F9E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F10B04D314007EBF00860F9E /* grammar_test.c in Sources */,
+				F1B4C01B1400A8840066D497 /* parse_actions.c in Sources */,
+				F1B4C0221400C41F0066D497 /* parse_transitions.c in Sources */,
+				F1EA6F1614085A1000E5E5D8 /* ActionsParser_SMCommon.c in Sources */,
+				F1EA6F1714085A1000E5E5D8 /* ActionsParser.c in Sources */,
+				F1EA6F1814085A1000E5E5D8 /* SMCommon.c in Sources */,
+				F1EA6F1914085A1000E5E5D8 /* SMLexer.c in Sources */,
+				F1EA6F1A14085A1000E5E5D8 /* TransitionsParser_SMCommon.c in Sources */,
+				F1EA6F1B14085A1000E5E5D8 /* TransitionsParser.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F11BD25914009A6800EB1B4A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1EA6F1C14085A2800E5E5D8 /* ActionsParser_SMCommon.c in Sources */,
+				F1EA6F1D14085A2800E5E5D8 /* ActionsParser.c in Sources */,
+				F1EA6F1E14085A2800E5E5D8 /* SMCommon.c in Sources */,
+				F1EA6F1F14085A2800E5E5D8 /* SMLexer.c in Sources */,
+				F1EA6F2014085A2800E5E5D8 /* TransitionsParser_SMCommon.c in Sources */,
+				F1EA6F2114085A2800E5E5D8 /* TransitionsParser.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F11BD26B1400A12200EB1B4A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F11BD25C14009A6800EB1B4A /* actions_parser */;
+			targetProxy = F11BD26A1400A12200EB1B4A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		F10B04C814007E1C00860F9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/opt/local/include,
+					"${BUILT_PRODUCTS_DIR}/../antlr",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		F10B04C914007E1C00860F9E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/opt/local/include,
+					"${BUILT_PRODUCTS_DIR}/../antlr",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		F10B04CB14007E1C00860F9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F10B04CC14007E1C00860F9E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F11BD25F14009A6800EB1B4A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F11BD26014009A6800EB1B4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F10B04BA14007E1B00860F9E /* Build configuration list for PBXProject "grammar_test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F10B04C814007E1C00860F9E /* Debug */,
+				F10B04C914007E1C00860F9E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F10B04CA14007E1C00860F9E /* Build configuration list for PBXNativeTarget "grammar_test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F10B04CB14007E1C00860F9E /* Debug */,
+				F10B04CC14007E1C00860F9E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F11BD25E14009A6800EB1B4A /* Build configuration list for PBXNativeTarget "actions_parser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F11BD25F14009A6800EB1B4A /* Debug */,
+				F11BD26014009A6800EB1B4A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F10B04B714007E1B00860F9E /* Project object */;
+}

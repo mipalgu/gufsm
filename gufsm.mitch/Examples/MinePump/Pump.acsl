@@ -1,0 +1,14 @@
+2	NOT_RUNNING
+OnEntry{ extern highWaterSensorOn;  extern lowWaterSensorOn;
+ extern operatorButtonOn; 
+ extern supervisorButtonOn;
+ extern methaneSensorHigh; motor=0;
+ post("QSay","stop"); }
+OnExit {}
+{}
+
+0	RUNNING
+OnEntry {motor=1;  post("QSay","on");  }
+OnExit{}
+{}
+

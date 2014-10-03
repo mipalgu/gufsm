@@ -1,0 +1,83 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vladimir Estivill-Castro" description="" version="1" name="FSM" arrowtype="1" numbits="3" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="440" endx="510" xpos="450" endy="440"/>
+    <state pencolor="0" radius="40" description="OnEntry  {  extern  buttonHeldPressed; extern airOnLine; extern blockageInLine;  motor=0; fireTimeBeeper=0;   beeperStartSignal=0;   dossageInterrupted=0;    print_state_name();  suspend(&quot;PumpStarter&quot;);   &#xa; }&#xa;OnExit{ }&#xa;{ }" finalstate="0" moore_outputs="" ypos="440" code="0" xpos="550" linewidth="1">PUMP_OFF_NO_POWER</state>
+    <state pencolor="0" radius="40" description="OnEntry {print_state_name(); motor=1;}&#xa;OnExit {motor=0; suspend(&quot;PumpStarter&quot;); }&#xa;{ }" finalstate="0" moore_outputs="" ypos="178" code="1" xpos="857" linewidth="1">TEST_RUNNING</state>
+    <state pencolor="0" radius="40" description="OnEntry {dossageInterrupted=1;   print_state_name();  recalcualtion=timeLeft; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="120" code="2" xpos="550" linewidth="1">RECALCULATING</state>
+    <state pencolor="0" radius="40" description="OnEntry {fireTimeBeeper=1;  dossageInterrupted=0 ; timeLeft=0;    print_state_name();   print_int(motor);  }&#xa;OnExit {}&#xa;{} &#xa;" finalstate="0" moore_outputs="" ypos="308" code="3" xpos="562" linewidth="1">DOSAGE_COMPLETE</state>
+    <state pencolor="0" radius="40" description="OnEntry {    print_state_name();  aborted=0; fireTimeBeeper=0;   beeperStartSignal=0;   }&#xa;OnExit{ }&#xa;{} &#xa;" finalstate="0" moore_outputs="" ypos="80" code="4" xpos="300" linewidth="1">PUMP_WITH_POWER</state>
+    <state pencolor="0" radius="40" description="OnEntry {print_state_name();   beeperStartSignal=1;  restart(&quot;PumpStarter&quot;); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="50" code="5" xpos="860" linewidth="1">INVOKE_STARTER</state>
+    <state pencolor="0" radius="40" description="OnEntry { dossageInterrupted=0 ; timeLeft=0;    print_state_name();     }&#xa;OnExit {}&#xa;{} &#xa;" finalstate="0" moore_outputs="" ypos="217" code="6" xpos="579" linewidth="1">DOSAGE_ABORTED</state>
+    <transition c1x="450.240449719355" c2y="216.8276996416803" c1y="314.5134078838906" description="" straight="1" type="2" ypos="412.199116126101" endx="308.2404192419937" xpos="521.2404649580355" endy="119.14199139947" c2x="379.2404344806744">
+      <from>0</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">batteriesConnected</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="752.4959339129505" c2y="149.4995769282885" c1y="180.0244578882789" description="" straight="1" type="2" ypos="210.5493388482694" endx="589.9868572363793" xpos="833.7504722512361" endy="118.974695968298" c2x="671.2413955746649">
+      <from>1</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">airOnLine||volumeEmpty||blockageInLine</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="768.256929143264" c2y="273.61133484404" c1y="245.6255160302264" description="" straight="1" type="2" ypos="217.6396972164129" endx="601.4842191099034" xpos="851.6432841599442" endy="301.5971536578535" c2x="684.8705741265836">
+      <from>1</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">(timeLeft&lt;1)&amp;&amp;!aborted</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="774.1212944283619" c2y="370.0062077036355" c1y="293.4364559150567" description="" straight="1" type="2" ypos="216.8667041264779" endx="589.4557569532858" xpos="866.4540631659" endy="446.5759594922143" c2x="681.7885256908239">
+      <from>1</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">!batteriesConnected</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="776.6062256441805" c2y="211.1829486879256" c1y="214.5845527310198" description="" straight="1" type="2" ypos="217.9861567741139" endx="617.9232114996004" xpos="855.9477327164707" endy="207.7813446448315" c2x="697.2647185718905">
+      <from>1</from>
+      <to>6</to>
+      <inputs default="0" any="0" invert="0">aborted</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="454.8142759678519" c2y="81.74818463762973" c1y="93.45801086768422" description="" straight="1" type="2" ypos="105.1678370977387" endx="338.739717303874" xpos="512.8515552998408" endy="70.03835840757526" c2x="396.7769966358629">
+      <from>2</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="463.6274604594531" c2y="167.1755019411726" c1y="224.1877400468929" description="" straight="1" type="2" ypos="281.1999781526133" endx="326.2712297921681" xpos="532.3055757930955" endy="110.1632638354522" c2x="394.9493451258106">
+      <from>3</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="491.4683786602669" c2y="48.85079762714018" c1y="49.75018533320671" description="" straight="1" type="2" ypos="50.64957303927323" endx="820.0524934609365" xpos="327.1763212599322" endy="47.95140992107366" c2x="655.7604360606017">
+      <from>4</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">normalCharge&amp;&amp;!airOnLine&amp;&amp;!blockageInLine&amp;&amp;volumeNormal&amp;&amp;buttonHeldPressed</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="287.8450414877452" c2y="374.5820406195043" c1y="246.2864043006509" description="" straight="0" type="2" ypos="106.9907679817974" endx="511.5774294234175" xpos="270.4788475199091" endy="428.8776769383577" c2x="370.2112354555813">
+      <from>4</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">!batteriesConnected</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="858.8312426634483" c2y="122.2403509552817" c1y="106.07868165701" description="" straight="1" type="2" ypos="89.91701235873833" endx="851.3431457505076" xpos="862.5752911199186" endy="138.4020202535534" c2x="855.0871942069779">
+      <from>5</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">timeout(3000000)&amp;&amp;!buttonHeldPressed</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="476.9508057023422" c2y="126.8562626008225" c1y="160.1979350573744" description="" straight="1" type="2" ypos="193.5396075139262" endx="337.6477868304683" xpos="546.6023151382792" endy="93.51459014427067" c2x="407.2992962664052">
+      <from>6</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>

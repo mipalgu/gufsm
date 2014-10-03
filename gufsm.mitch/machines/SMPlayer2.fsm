@@ -1,0 +1,349 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="A Game Controller developed with QFSM.&#xa;This graphically replicates revision 1190 of&#xa;AGameController.txt and&#xa;TGameController.txt&#xa;from the repository" version="1" name="GameController" arrowtype="1" numbits="6" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="2" numout="0" initialstate="7">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="20" endx="53.54941819905149" xpos="28" endy="143.527140916879"/>
+    <state pencolor="1163776" radius="40" description="OnEntry { post(&quot;NaoMotionPlayer&quot;, &quot;play get_up_anywhere&quot;); &#xa;                post(&quot;SpeechOutput&quot;, &quot;On&quot;); &#xa;                post(&quot;guvision_runVisionPipeline&quot;, &quot;On&quot;); &#xa;                post(&quot;guvision_selectCamera&quot;, &quot;1&quot;); &#xa;                msleep(200); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="160" code="7" xpos="90" linewidth="1">INITIALIZE</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;NaoMotionPlayer&quot;, &quot;play left_kick&quot;); &#xa;               post(&quot;Speech&quot;, &quot;Kick Left&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="89" code="4" xpos="1353" linewidth="1">KickLeftBall</state>
+    <state pencolor="1163776" radius="40" description="OnEntry  { post(&quot;ALBallInfo&quot;, &quot;On&quot;);&#xa;                post(&quot;guvision_runVisionPipeline&quot;, &quot;On&quot;); &#xa;                post(&quot;guvision_selectCamera&quot;, &quot;1&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="60" code="1" xpos="227" linewidth="1">LowerCameraOn</state>
+    <state pencolor="1163776" radius="40" description="OnEntry { post(&quot;guvision_selectCamera&quot;, &quot;1&quot;); &#xa;               post(&quot;NaoHeadMoveTo&quot;, &quot;0 10 0.5&quot;); &#xa;               post(&quot;Speech&quot;, &quot;WOW&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="100" code="0" xpos="630" linewidth="1">WOW</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;NaoMotionPlayer&quot;, &quot;play right_kick&quot;); &#xa;               post(&quot;Speech&quot;, &quot;Kick Right&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="212" code="3" xpos="1353" linewidth="1">KickRighttBall</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;NaoMotionEmergencyStop&quot;, &quot;stop ALBallFollowerBottomCam&quot;); &#xa;               post(&quot;Speech&quot;, &quot;Maybe Kicking&quot;); &#xa;               post(&quot;guvision_selectCamera&quot;, &quot;0&quot;); &#xa;               msleep(300); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="580" code="5" xpos="749" linewidth="1">IsItAhead</state>
+    <state pencolor="1163776" radius="40" description="OnEntry { restart(&quot; SMBallFinder&quot;);  &#xa;               msleep(100); }&#xa;OnExit {   suspend(&quot;SMBallFinder&quot;); &#xa;               post(&quot;NaoWalk&quot;, &quot;walk 0 0 0&quot;); }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="253" code="6" xpos="198" linewidth="1">NoBall</state>
+    <state pencolor="1163776" radius="40" description="OnEntry { post(&quot;NaoHeadMoveTo&quot;, &quot;0 10 0.5&quot;); &#xa;               post(&quot;Speech&quot;, &quot;Lost&quot;); &#xa;               post(&quot;guvision_selectCamera&quot;, &quot;1&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="681" code="8" xpos="80" linewidth="1">NeckStraight</state>
+    <state pencolor="1163776" radius="40" description="OnEntry { post(&quot;NaoHeadMoveTo&quot;, &quot;0 -7 0.5&quot;); &#xa;               post(&quot;guvision_selectCamera&quot;, &quot;0&quot;); &#xa;               sleep(2); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="362" code="9" xpos="980" linewidth="1">CheckGoal</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;NaoMotionPlayer&quot;, &quot;play pass_ball_left&quot;); &#xa;               post(&quot;Speech&quot;, &quot;Pass&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="385" code="10" xpos="1430" linewidth="1">PassLeftBall</state>
+    <state pencolor="1163776" radius="40" description="OnEntry  { post(&quot;NaoMotion_stepLeft&quot;, &quot;0.04 0 0&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="433" code="11" xpos="547" linewidth="1">MiniLeftStep</state>
+    <state pencolor="1163776" radius="40" description="OnEntry { post(&quot;NaoHeadMoveTo&quot;, &quot;0 -7 0.5&quot;);&#xa;               post(&quot;guvision_selectCamera&quot;, &quot;0&quot;); &#xa;               sleep(2); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="495" code="12" xpos="993" linewidth="1">CheckGoal</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;NaoMotionPlayer&quot;, &quot;play pass_ball_right&quot;); &#xa;               post(&quot;Speech&quot;, &quot;Pass&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="650" code="13" xpos="1430" linewidth="1">PassRightBall</state>
+    <state pencolor="1163776" radius="40" description="OnEntry { post(&quot;NaoMotion_stepRight&quot;, &quot;0.04 0 0&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="305" code="14" xpos="579" linewidth="1">MiniRightStep</state>
+    <state pencolor="1163776" radius="40" description="OnEntry { post(&quot;NaoMotion_stepRight&quot;, &quot;0.04 0 0&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="386" code="16" xpos="690" linewidth="1">MiniRightStep</state>
+    <state pencolor="1163776" radius="40" description="OnEntry { post(&quot;NaoMotion_stepLeft&quot;, &quot;0.04 0 0&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="392" code="17" xpos="820" linewidth="1">MiniLeftStep</state>
+    <state pencolor="1163776" radius="40" description="OnEntry { post(&quot;NaoMotion_stepLeft&quot;, &quot;0.04 0 0&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="270" code="20" xpos="692" linewidth="1">MiniLeftStep</state>
+    <state pencolor="1163776" radius="40" description="OnEntry { post(&quot;NaoMotion_stepRight&quot;, &quot;0.04 0 0&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="270" code="19" xpos="842" linewidth="1">MiniRightStep</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;guvision_stopVisionPipeline&quot;, &quot;Off&quot;); &#xa;               post(&quot;NaoMotionPlayer&quot;, &quot;play ALBallFollowerBottomCam&quot;); }&#xa;OnExit {   msleep(500); }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="550" code="15" xpos="580" linewidth="1">FollowBallCloser</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;guvision_runVisionPipeline&quot;, &quot;On&quot;); &#xa;               msleep(500); }&#xa;OnExit {  post(&quot;guvision_selectCamera&quot;, &quot;1&quot;); }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="769" code="2" xpos="561" linewidth="1">Ensure</state>
+    <state pencolor="0" radius="40" description="OnEntry { msleep(500); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="90" code="18" xpos="1132" linewidth="1">Ensure</state>
+    <state pencolor="0" radius="40" description="OnEntry { msleep(500); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="196" code="21" xpos="1143" linewidth="1">Ensure</state>
+    <state pencolor="0" radius="40" description="OnEntry { msleep(500); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="330" code="22" xpos="1199" linewidth="1">Ensure</state>
+    <state pencolor="0" radius="40" description="OnEntry { msleep(500); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="558" code="23" xpos="1220" linewidth="1">Ensure</state>
+    <state pencolor="0" radius="40" description="OnEntry { msleep(500); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="189" code="25" xpos="507" linewidth="1">Ensure</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;guvision_stopVisionPipeline&quot;, &quot;Off&quot;); &#xa;               post(&quot;NaoMotionPlayer&quot;, &quot;play ALBallFollowerTopCam&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="584" code="24" xpos="186" linewidth="1">FollowBall</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;NaoHeadMoveTo&quot;, &quot;0 15 0.3&quot;); &#xa;               post(&quot;guvision_selectCamera&quot;, &quot;1&quot;); &#xa;               msleep(200); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="698" code="26" xpos="306" linewidth="1">EnsureNeckAdjustment</state>
+    <state pencolor="1163776" radius="40" description="OnEntry  { post(&quot;ALBallInfo&quot;, &quot;On&quot;); &#xa;                 post(&quot;guvision_selectCamera&quot;, &quot;0&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="459" code="27" xpos="251" linewidth="1">UpperCameraOn</state>
+    <state pencolor="1163776" radius="40" description="OnEntry { post(&quot;NaoWalkToDist&quot;, &quot;walk 0 0.04 0&quot;); &#xa;               sleep(2); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="648" code="28" xpos="1006" linewidth="1">LineUp</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;NaoMotionPlayer&quot;, &quot;play ALBallFollowerBottomCam&quot;); }&#xa;OnExit {  msleep(500); }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="220" code="29" xpos="390" linewidth="1">StartAL</state>
+    <state pencolor="0" radius="40" description="OnEntry  { post(&quot;NaoMotionEmergencyStop&quot;, &quot;stop ALBallFollowerBottomCam&quot;);&#xa;                post(&quot;Speech&quot;, &quot;Shake&quot;); &#xa;                msleep(300);&#xa;                post(&quot;NaoMotionEmergencyStop&quot;, &quot;stop&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="372" code="30" xpos="411" linewidth="1">StopAL</state>
+    <state pencolor="1163776" radius="40" description="OnEntry { post(&quot;NaoWalkToDist&quot;, &quot;walk 0 0.07 0&quot;); &#xa;               msleep(200); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="571" code="31" xpos="366" linewidth="1">Shake</state>
+    <state pencolor="0" radius="40" description="OnEntry  { post(&quot;NaoMotionEmergencyStop&quot;, &quot;stop ALBallFollowerBottomCam&quot;); &#xa;                post(&quot;Speech&quot;, &quot;Stop&quot;); &#xa;                msleep(300);&#xa;                post(&quot;NaoMotionEmergencyStop&quot;, &quot;stop&quot;); }&#xa;OnExit {    post(&quot;guvision_selectCamera&quot;, &quot;0&quot;); }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="770" code="32" xpos="799" linewidth="1">StopAL</state>
+    <transition c1x="148.4267269967362" c2y="99.74402909278871" c1y="134.3692046803695" description="" straight="1" type="2" ypos="168.9943802679503" endx="187.328885334639" xpos="128.9756478277848" endy="65.11885350520791" c2x="167.8778061656876">
+      <from>7</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">~get_up_anywhereIsRunning</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1265.991305194491" c2y="90.70800673196821" c1y="89.3136601390258" description="" straight="1" type="2" ypos="87.9193135460834" endx="1171.9447131733" xpos="1313.014601205086" endy="92.10235332491061" c2x="1218.968009183895">
+      <from>4</from>
+      <to>18</to>
+      <inputs default="0" any="0" invert="0">left_kickIsRunning</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1266.295570500384" c2y="103.4554622161666" c1y="102.2242630428912" description="" straight="1" type="2" ypos="100.9930638696159" endx="1169.206208853253" xpos="1314.84025132395" endy="104.6866613894419" c2x="1217.750889676819">
+      <from>4</from>
+      <to>18</to>
+      <inputs default="0" any="0" invert="0">timeout(5000)</inputs>
+      <outputs>4</outputs>
+    </transition>
+    <transition c1x="80.97374236358098" c2y="467.6979385227424" c1y="270.0180330331527" description="" straight="0" type="2" ypos="99.3381275435629" endx="66.41422144889773" xpos="219.7535028209226" endy="643.3778440123322" c2x="39.19398190623936">
+      <from>1</from>
+      <to>8</to>
+      <inputs default="0" any="0" invert="0">~BallIsVisible</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="291.5044940778358" c2y="155.0919196590847" c1y="122.1838393181693" description="" straight="1" type="2" ypos="89.27575897725401" endx="366" xpos="254.2567411167537" endy="188" c2x="328.7522470389179">
+      <from>1</from>
+      <to>29</to>
+      <inputs default="0" any="0" invert="0">BallIsVisible</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="490.864365991919" c2y="57.28906692031737" c1y="63.73970718965671" description="" straight="1" type="2" ypos="70.19034745899603" endx="265.936686733343" xpos="603.328205621207" endy="50.83842665097805" c2x="378.400526362631">
+      <from>0</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">timeout(500)</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1270.599793347763" c2y="201.5659257981925" c1y="201.1396364192652" description="" straight="1" type="2" ypos="200.713347040338" endx="1182.548620168991" xpos="1314.625379937149" endy="201.9922151771197" c2x="1226.574206758377">
+      <from>3</from>
+      <to>21</to>
+      <inputs default="0" any="0" invert="0">right_kickIsRunning</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1275.767586119228" c2y="222.2405353860053" c1y="230.9824420180384" description="" straight="1" type="2" ypos="239.7243486500715" endx="1178.969403549832" xpos="1324.166677403926" endy="213.4986287539722" c2x="1227.36849483453">
+      <from>3</from>
+      <to>21</to>
+      <inputs default="0" any="0" invert="0">timeout(5000)</inputs>
+      <outputs>4</outputs>
+    </transition>
+    <transition c1x="842.7185585313121" c2y="504.2518243304178" c1y="533.3492061951089" description="" straight="1" type="2" ypos="562.4465880598" endx="958.2702743150217" xpos="784.9427006394573" endy="475.1544424657267" c2x="900.4944164231669">
+      <from>5</from>
+      <to>12</to>
+      <inputs default="0" any="0" invert="0">headIsRight</inputs>
+      <outputs>2</outputs>
+    </transition>
+    <transition c1x="825.5582081846603" c2y="439.9290112374501" c1y="491.2834689217033" description="" straight="1" type="2" ypos="542.6379266059566" endx="950.1036272526536" xpos="763.2854986506636" endy="388.5745535531968" c2x="887.8309177186569">
+      <from>5</from>
+      <to>9</to>
+      <inputs default="0" any="0" invert="0">headIsLeft</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="844.9867791659217" c2y="624.9571662556378" c1y="612.3506935169866" description="" straight="1" type="2" ypos="599.7442207783354" endx="967.3854642788693" xpos="783.7874366094478" endy="637.563638994289" c2x="906.1861217223955">
+      <from>5</from>
+      <to>28</to>
+      <inputs default="0" any="0" invert="0">headIsCentered</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="728.5688292054812" c2y="463.1800723752088" c1y="501.8621577109615" description="" straight="1" type="2" ypos="540.5442430467142" endx="700.8584066008723" xpos="742.4240405077857" endy="424.4979870394561" c2x="714.7136179031768">
+      <from>5</from>
+      <to>16</to>
+      <inputs default="0" any="0" invert="0">headIsTooFarLeft</inputs>
+      <outputs>5</outputs>
+    </transition>
+    <transition c1x="774.4701477886966" c2y="467.743725982116" c1y="504.1166036844767" description="" straight="1" type="2" ypos="540.4894813868373" endx="812.9334374882491" xpos="755.2385029389204" endy="431.3708482797554" c2x="793.7017926384729">
+      <from>5</from>
+      <to>17</to>
+      <inputs default="0" any="0" invert="0">headIsTooFarRight</inputs>
+      <outputs>4</outputs>
+    </transition>
+    <transition c1x="830.6358215958469" c2y="686.0541270083737" c1y="625.9904334368107" description="" straight="0" type="2" ypos="619.9267398652477" endx="802.0678599553895" xpos="751.4198024160756" endy="730.1178205799367" c2x="836.8518407756183">
+      <from>5</from>
+      <to>32</to>
+      <inputs default="0" any="0" invert="0">ALBallFollowerBottomCamIsRunning</inputs>
+      <outputs>6</outputs>
+    </transition>
+    <transition c1x="215.7856006961044" c2y="135.6584935413669" c1y="174.4515720772111" description="" straight="1" type="2" ypos="213.2446506130553" endx="242.5222800023253" xpos="202.4172610429939" endy="96.86541500552262" c2x="229.1539403492148">
+      <from>6</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">BallIsVisible</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="235.6722255465898" c2y="361.8554028858802" c1y="301.3075178346777" description="" straight="1" type="2" ypos="240.7596327834752" endx="234.8543917369483" xpos="236.0811424514106" endy="422.4032879370827" c2x="235.2633086417691">
+      <from>6</from>
+      <to>27</to>
+      <inputs default="0" any="0" invert="0">~SMBallFinderIsRunning</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="126.693089042432" c2y="404.8904874247384" c1y="527.1195436845258" description="" straight="1" type="2" ypos="649.3485999443133" endx="171.163467041235" xpos="104.4579000430306" endy="282.6614311649508" c2x="148.9282780418335">
+      <from>8</from>
+      <to>6</to>
+      <inputs default="0" any="0" invert="0">TRUE</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1138.384654841079" c2y="386.4847447995285" c1y="385.8671362741464" description="" straight="1" type="2" ypos="385.2495277487643" endx="1390.0552868267" xpos="1012.549338848269" endy="387.1023533249106" c2x="1264.21997083389">
+      <from>9</from>
+      <to>10</to>
+      <inputs default="0" any="0" invert="0">MineIsVisible</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1146.404984883574" c2y="211.7835705554389" c1y="299.3475473529581" description="" straight="0" type="2" ypos="360.9477327164707" endx="1319.717988226486" xpos="1019.986156774114" endy="111.1880078490091" c2x="1254.474277896451">
+      <from>9</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">~MineIsVisible</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1360.708458499367" c2y="316.218833223539" c1y="327.2603916249719" description="" straight="0" type="2" ypos="352.1452013730684" endx="1223.652330466324" xpos="1407.184167620186" endy="298.4997999596964" c2x="1267.706981718719">
+      <from>10</from>
+      <to>22</to>
+      <inputs default="0" any="0" invert="0">pass_ball_leftIsRunning</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1341.442963066583" c2y="346.4656886344721" c1y="358.389513622515" description="" straight="1" type="2" ypos="370.313338610558" endx="1238.741306906256" xpos="1392.793791146747" endy="334.5418636464292" c2x="1290.09213498642">
+      <from>10</from>
+      <to>22</to>
+      <inputs default="0" any="0" invert="0">timeout(5000)</inputs>
+      <outputs>4</outputs>
+    </transition>
+    <transition c1x="541.0248625682584" c2y="364.6195154904051" c1y="386.9052067326878" description="" straight="1" type="2" ypos="409.1908979749705" endx="593.3591631723548" xpos="514.8577122662102" endy="342.3338242481224" c2x="567.1920128703066">
+      <from>11</from>
+      <to>14</to>
+      <inputs default="0" any="0" invert="0">~IsWalking</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1152.18037727083" c2y="604.5857169221481" c1y="551.3267884387687" description="" straight="1" type="2" ypos="498.0678599553895" endx="1390.776772972363" xpos="1032.882179420063" endy="657.8446454055273" c2x="1271.478575121596">
+      <from>12</from>
+      <to>13</to>
+      <inputs default="0" any="0" invert="0">MineIsVisible</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1178.189519120998" c2y="384.2369588045253" c1y="424.6330666234865" description="" straight="0" type="2" ypos="470.7966692986575" endx="1344.00561973205" xpos="1024.846487764924" endy="250.9756478277849" c2x="1344.051076954523">
+      <from>12</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">~MineIsVisible</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1380.401086569693" c2y="522.3252025964746" c1y="589.9994626426117" description="" straight="0" type="2" ypos="611.1332958735221" endx="1239.845557534273" xpos="1420.5459368341" endy="523.2702743150214" c2x="1264.752578754413">
+      <from>13</from>
+      <to>23</to>
+      <inputs default="0" any="0" invert="0">pass_ball_rightIsRunning</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1346.938218121766" c2y="592.0116635836047" c1y="616.6377058430537" description="" straight="1" type="2" ypos="641.2637481025026" endx="1258.883288342932" xpos="1390.965683011183" endy="567.3856213241557" c2x="1302.910753232349">
+      <from>13</from>
+      <to>23</to>
+      <inputs default="0" any="0" invert="0">timeout(5000)</inputs>
+      <outputs>4</outputs>
+    </transition>
+    <transition c1x="543.9113369838818" c2y="237.3362306339442" c1y="258.811684278334" description="" straight="1" type="2" ypos="280.2871379227238" endx="536.6394780574393" xpos="547.5472664471031" endy="215.8607769895544" c2x="540.2754075206606">
+      <from>14</from>
+      <to>25</to>
+      <inputs default="0" any="0" invert="0">IsWalking</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="628.4251310987113" c2y="428.1858751832639" c1y="409.7020278430597" description="" straight="1" type="2" ypos="391.2181805028555" endx="584.5917369395374" xpos="650.3418281782982" endy="446.6697225234682" c2x="606.5084340191244">
+      <from>16</from>
+      <to>11</to>
+      <inputs default="0" any="0" invert="0">~IsWalking</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="861.3903058213234" c2y="330.3340228799656" c1y="358.0477599705226" description="" straight="1" type="2" ypos="385.7614970610796" endx="865.1498802376449" xpos="859.5105186131627" endy="302.6202857894087" c2x="863.2700930294842">
+      <from>17</from>
+      <to>19</to>
+      <inputs default="0" any="0" invert="0">~IsWalking</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="617.6060483482159" c2y="217.9652665088402" c1y="238.8927672688272" description="" straight="1" type="2" ypos="259.8202680288142" endx="546.1841080256596" xpos="653.3170185094941" endy="197.0377657488532" c2x="581.8950781869378">
+      <from>20</from>
+      <to>25</to>
+      <inputs default="0" any="0" invert="0">IsWalking</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="779.0081173907384" c2y="272.9981267559834" c1y="267.0018732440166" description="" straight="1" type="2" ypos="261.0056197320497" endx="730.9756478277848" xpos="803.0243521722152" endy="278.9943802679503" c2x="754.9918826092616">
+      <from>19</from>
+      <to>20</to>
+      <inputs default="0" any="0" invert="0">~IsWalking</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="579.7448472727688" c2y="682.4335753878197" c1y="635.8088417067396" description="" straight="1" type="2" ypos="589.1841080256596" endx="563.1590103205999" xpos="588.0377657488532" endy="729.0583090688997" c2x="571.4519287966843">
+      <from>15</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">ALBallFollowerBottomCamIsRunning</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="425.2021631465429" c2y="821.2316486990867" c1y="811.40076080751" description="" straight="0" type="2" ypos="772.0678599553895" endx="69.14159339912774" xpos="521.1178205799367" endy="719.4979870394561" c2x="54.4280991122769">
+      <from>2</from>
+      <to>8</to>
+      <inputs default="0" any="0" invert="0">~ALBallFollowerBottomCamIsRunning</inputs>
+      <outputs>2</outputs>
+    </transition>
+    <transition c1x="640.8220872501818" c2y="752.5947742326791" c1y="760.5963755924904" description="" straight="0" type="2" ypos="764.5827389570061" endx="759.0552868266996" xpos="600.7553493869448" endy="767.8976466750895" c2x="677.6045693469039">
+      <from>2</from>
+      <to>32</to>
+      <inputs default="0" any="0" invert="0">BallIsCloserXV</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="986.789232197729" c2y="19.39602330909791" c1y="-27.60428364610365" description="" straight="0" type="2" ypos="70.15444246572629" endx="648.8235294117648" xpos="1097.270274315022" endy="64.7058823529412" c2x="841.8673847553156">
+      <from>18</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">~left_kickIsRunning</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="990.4813138219038" c2y="31.39643059404463" c1y="91.236371816936" description="" straight="0" type="2" ypos="161.1991125660554" endx="661.0445600046506" xpos="1123.279497120765" endy="74.77629499622137" c2x="846.9283791274499">
+      <from>21</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">~right_kickIsRunning</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="986.5242908791804" c2y="51.71903326384239" c1y="133.1151902519037" description="" straight="0" type="2" ypos="300.9194738980075" endx="669.869161924587" xpos="1171.535058681451" endy="96.76736524935781" c2x="877.0546512523949">
+      <from>22</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">~pass_ball_leftIsRunning</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1052.855149735593" c2y="66.05492828145287" c1y="335.8661667690895" description="" straight="0" type="2" ypos="521.4475380551897" endx="668.1597486760502" xpos="1203.754461357862" endy="111.9930638696158" c2x="864.9070212201395">
+      <from>23</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">~pass_ball_rightIsRunning</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="401.4920614785714" c2y="103.4946714609428" c1y="139.9227804101346" description="" straight="1" type="2" ypos="176.3508893593265" endx="266.3708482797554" xpos="469.0526680779794" endy="67.06656251175092" c2x="333.9314548791634">
+      <from>25</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">~IsWalking</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="239.8499625987209" c2y="698.2331297000912" c1y="620.3565907382928" description="" straight="0" type="2" ypos="617.0990309756703" endx="266.2087424555579" xpos="208.4600567334906" endy="693.9188453800572" c2x="202.4429947361875">
+      <from>24</from>
+      <to>26</to>
+      <inputs default="0" any="0" invert="0">~ALBallFollowerTopCamIsRunning</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="413.3384600270075" c2y="650.9361269334909" c1y="673.8296200766788" description="" straight="0" type="2" ypos="680.5238414905235" endx="395.6841057100455" xpos="341.9803263430399" endy="597.8114503187508" c2x="432.3254239676065">
+      <from>26</from>
+      <to>31</to>
+      <inputs default="0" any="0" invert="0">~ALBallFollowerTopCamIsRunning</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="229.1313443554072" c2y="537.1268724462469" c1y="516.5249746846619" description="" straight="1" type="2" ypos="495.9230769230769" endx="216.1632638354522" xpos="235.6153846153846" endy="557.7287702078319" c2x="222.6473040954297">
+      <from>27</from>
+      <to>24</to>
+      <inputs default="0" any="0" invert="0">BallIsVisible</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="209.5675286751761" c2y="344.9166468525165" c1y="397.3775367517473" description="" straight="1" type="2" ypos="449.8384266509781" endx="204.5759594922143" xpos="212.063313266657" endy="292.4557569532857" c2x="207.0717440836952">
+      <from>27</from>
+      <to>6</to>
+      <inputs default="0" any="0" invert="0">~BallIsVisible</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="985.5157003610448" c2y="557.9932886928864" c1y="584.6395036272404" description="" straight="1" type="2" ypos="611.2857185615943" endx="976.2999931379716" xpos="990.1235539725814" endy="531.3470737585325" c2x="980.9078467495082">
+      <from>28</from>
+      <to>12</to>
+      <inputs default="0" any="0" invert="0">timeout(1000)</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="320.7327720091032" c2y="145.6773295381898" c1y="195.3852555265478" description="" straight="1" type="2" ypos="245.0931815149058" endx="244.4986287539722" xpos="358.8498436366687" endy="95.96940354983187" c2x="282.6157003815377">
+      <from>29</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">~BallIsVisible</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="399.5190551770959" c2y="308.153111457728" c1y="283.7619798687417" description="" straight="1" type="2" ypos="259.3708482797554" endx="404.4240405077857" xpos="397.066562511751" endy="332.5442430467143" c2x="401.9715478424408">
+      <from>29</from>
+      <to>30</to>
+      <inputs default="0" any="0" invert="0">ALBallFollowerBottomCamIsRunning</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="409.0403089752263" c2y="496.9671145081044" c1y="454.1689813939299" description="" straight="1" type="2" ypos="411.3708482797554" endx="390.987801902177" xpos="418.066562511751" endy="539.7652476222788" c2x="400.0140554387017">
+      <from>30</from>
+      <to>31</to>
+      <inputs default="0" any="0" invert="0">~ALBallFollowerBottomCamIsRunning</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="357.9761513046782" c2y="437.2998802478195" c1y="485.8997536336108" description="" straight="1" type="2" ypos="534.4996270194019" endx="374.6529262414675" xpos="349.6377638362836" endy="388.7000068620284" c2x="366.3145387730729">
+      <from>31</from>
+      <to>30</to>
+      <inputs default="0" any="0" invert="0">timeout(1000)</inputs>
+      <outputs>6</outputs>
+    </transition>
+    <transition c1x="449.4811904686539" c2y="558.898955012005" c1y="570.9460094408104" description="" straight="1" type="2" ypos="582.9930638696158" endx="540.1240740538612" xpos="404.1597486760502" endy="546.8519005831996" c2x="494.8026322612575">
+      <from>31</from>
+      <to>15</to>
+      <inputs default="0" any="0" invert="0">~ALBallFollowerBottomCamIsRunning</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="765.3914891041504" c2y="659.0403804769414" c1y="698.2895034094408" description="" straight="1" type="2" ypos="737.5386263419402" endx="744.9188453800572" xpos="775.627810966197" endy="619.791257544442" c2x="755.1551672421037">
+      <from>32</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">timeout(100)</inputs>
+      <outputs>6</outputs>
+    </transition>
+    <transition c1x="749.6109066238455" c2y="660.7057543991094" c1y="708.5955821274194" description="" straight="1" type="2" ypos="756.4854098557294" endx="726.1282935324731" xpos="761.3522131695318" endy="612.8159266707995" c2x="737.8696000781594">
+      <from>32</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">~ALBallFollowerBottomCamIsRunning</inputs>
+      <outputs>1</outputs>
+    </transition>
+  </machine>
+</qfsmproject>

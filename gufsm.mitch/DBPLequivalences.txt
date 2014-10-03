@@ -1,0 +1,3 @@
+add == buttonPushed && ! doorOpen
+cook == !doorOpen && timeLeft
+lightOn doorOpen || timeLeft

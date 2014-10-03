@@ -1,0 +1,24 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vladimir Estivill-Castro" description="" version="1" name="MicrowaveEngine" arrowtype="1" numbits="2" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="2">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="120" endx="120" xpos="60" endy="120"/>
+    <state pencolor="0" radius="40" description="OnEntry{  &#xa;  post(&quot;gunxt_stopMotor&quot;,&quot;A&quot;); print_state_name();&#xa;  }&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="120" code="2" xpos="160" linewidth="1">NOT_RUNNING</state>
+    <state pencolor="0" radius="40" description="OnEntry {post(&quot;gunxt_runForwardMotor&quot;,&quot;A,100&quot;);  print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="114" code="0" xpos="725" linewidth="1">RUNNING</state>
+    <transition c1x="349.3056665608043" c2y="81.0375527849021" c1y="81.51007434875062" description="" straight="1" type="2" ypos="81.98259591259915" endx="703.0431590899128" xpos="172.4369202962501" endy="80.56503122105357" c2x="526.1744128253586">
+      <from>2</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">!methaneSensorHigh&amp;&amp;!indicateOff&amp;&amp;(indicateOn||(!lowWaterSensorOn&amp;&amp;(highWaterSensorOn||operatorButtonOn)))</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="525.9646446953475" c2y="147.9778314052589" c1y="144.9316535688374" description="" straight="1" type="2" ypos="141.8854757324158" endx="185.2489772183374" xpos="696.3224784338526" endy="151.0240092416805" c2x="355.6068109568425">
+      <from>0</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">methaneSensorHigh||indicateOff||(lowWaterSensorOn&amp;&amp;!indicateOn)||(!highWaterSensorOn&amp;&amp;!operatorButtonOn&amp;&amp;!indicateOn)</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>

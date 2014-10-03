@@ -1,0 +1,31 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vlad Estivill-Castro" description="" version="1" name="Consumer" arrowtype="1" numbits="2" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="109.4212962962963" endx="25.74074074074076" xpos="-34.25925925925924" endy="109.4212962962963"/>
+    <state pencolor="0" radius="40" description="OnEntry { extern data; int thisData;&#xa;          post(&quot;Say&quot;,&quot;Consumer Started&quot;); }&#xa;OnExit { }&#xa;{}" finalstate="0" moore_outputs="" ypos="109.4212962962963" code="0" xpos="65.74074074074076" linewidth="1">Start</state>
+    <state pencolor="0" radius="40" description="OnEntry{ thisData = data;&#xa;  post_int(&quot;Say&quot;,thisData);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="110" code="1" xpos="280" linewidth="1">Consume</state>
+    <state pencolor="0" radius="40" description="OnEntry {}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="299.6759259259259" code="2" xpos="291.5277777777778" linewidth="1">Throtle</state>
+    <transition c1x="150.5627029506543" c2y="106.2697160849017" c1y="107.1052729804014" description="" straight="1" type="2" ypos="107.9408298759011" endx="240.26144066914" xpos="105.7133340914114" endy="105.434159189402" c2x="195.4120718098971">
+      <from>0</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="216.2795172781365" c2y="231.5037749811711" c1y="181.9854192017121" description="" straight="0" type="2" ypos="134.3372617462854" endx="262.1356399926784" xpos="248.2557455483233" endy="272.5447218166033" c2x="227.4389290006278">
+      <from>1</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="349.0714439706161" c2y="154.1383848424309" c1y="229.8856167767631" description="" straight="0" type="2" ypos="272.8644756071751" endx="317.3338242481224" xpos="321.2118834878233" endy="124.3591631723548" c2x="340.2753135098839">
+      <from>2</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>

@@ -1,0 +1,13 @@
+15	Duration|C++: msleep(100);
+8	StepLeft|OnEntry NaoHeadPositionChange: 15 0 0.3;/C++: msleep(100);
+9	StepRight|OnEntry NaoHeadPositionChange: -20 0 0.3;/C++: msleep(100);
+0	Duration|C++: msleep(100);
+2	CorrectRight|OnEntry NaoHeadPositionChange: -10 0 0.3;/C++: msleep(100);
+3	CorrectLeft|OnEntry NaoHeadPositionChange: 15 0 0.3;/C++: msleep(100);
+4	Duration|OnEntry C++: msleep(100); /
+6	Duration|C++: msleep(100);
+10	Duration|C++: msleep(100);
+5	BallTracker|C++: msleep(100);
+1	PLACED|
+11	DoubleCheck|OnEntry C++: msleep(500);/
+7	PLACING|OnEntry guvision_runVisionPipeline: now;/ C++: msleep(50);

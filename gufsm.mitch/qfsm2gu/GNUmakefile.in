@@ -1,0 +1,30 @@
+include $(GNUSTEP_MAKEFILES)/common.make
+
+TOOL_NAME = qfsm2gu
+
+UTIL_SRCS=NSString+MixedCase.m NSMutableArray+Stack.m
+qfsm2gu_OBJC_FILES      = QFSMElement.m QFSMExporter.m QFSMParser.m main.m
+qfsm2gu_OBJC_FILES     += GTMNSString+HTML.m
+qfsm2gu_OBJC_FILES     += ${UTIL_SRCS}
+qfsm2gu_C_FILES      	= syntax_check.c
+qfsm2gu_C_FILES        += ActionsContainerParser.c
+qfsm2gu_C_FILES        += ActionsContainer_SimpleCParser.c
+qfsm2gu_C_FILES        += SimpleCLexer.c
+qfsm2gu_C_FILES        += TransitionContainerParser.c
+qfsm2gu_C_FILES        += TransitionContainer_SimpleCParser.c
+#qfsm2gu_C_FILES        += ActionsContainerLexer.c
+#qfsm2gu_C_FILES        += SimpleCParser.c
+#qfsm2gu_C_FILES        += TransitionContainerLexer.c
+qfsm2gu_HEADER_FILES    = QFSMElement.h QFSMExporter.h QFSMParser.h
+qfsm2gu_HEADER_FILES   += GTMNSString+HTML.h GTMDefines.h
+ADDITIONAL_CPPFLAGS  = -std=c99 -Wall -Wno-import -fobjc-arc
+ADDITIONAL_CPPFLAGS += -D_BSD_SOURCE -D__USE_BSD -D_POSIX_SOURCE
+ADDITIONAL_OBJCFLAGS+= OBJCINC -Wno-idiomatic-parentheses
+ADDITIONAL_LDFLAGS  += BSDLIB
+ADDITIONAL_TOOL_LIBS+= -L/usr/local/lib -Wl,-R/usr/local/lib -lantlr3c
+
+DOCUMENT_NAME= Documentation
+
+Documentation_AGSDOC_FILES = AI2Document.h AI2Document.m
+
+include $(GNUSTEP_MAKEFILES)/tool.make

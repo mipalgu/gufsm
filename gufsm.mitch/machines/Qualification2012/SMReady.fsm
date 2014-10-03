@@ -1,0 +1,119 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="A Game Controller developed with QFSM.&#xa;This graphically replicates revision 1190 of&#xa;AGameController.txt and&#xa;TGameController.txt&#xa;from the repository" version="1" name="GameController" arrowtype="1" numbits="4" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="2" numout="0" initialstate="7">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="90" endx="72.5494181990515" xpos="0" endy="123.527140916879"/>
+    <state pencolor="959488" radius="40" description="OnEntry { print_state_name();  goaliePlacing=0; forwardPlacing=0;  defenderPlacing=0;  interiorPlacing=0;&#xa; post(&quot;guvision_runVisionPipeline&quot;,&quot;now&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;&#xa;" finalstate="0" moore_outputs="" ypos="140" code="7" xpos="109" linewidth="1">START</state>
+    <state pencolor="14615040" radius="40" description="OnEntry { print_state_name(); &#xa; post(&quot;suspend&quot;,&quot;VladGoliePlacer&quot;); &#xa; post(&quot;suspend&quot;,&quot;VladForwardPlacer&quot;);&#xa; post(&quot;suspend&quot;,&quot;VladDefenderPlacer&quot;);&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="90" code="8" xpos="1079" linewidth="1">READYEND</state>
+    <state pencolor="0" radius="40" description="OnEntry { print_state_name();  post(&quot;restart&quot;,&quot;VladGoliePlacer&quot;); }&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="93" code="9" xpos="543" linewidth="1">STARTGOLIE</state>
+    <state pencolor="0" radius="40" description="OnEntry{print_state_name(); &#xa; goaliePlacing=0; forwardPlacing=0;  defenderPlacing=0; interiorPlacing=0; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="86" code="15" xpos="891" linewidth="1">ONSET</state>
+    <state pencolor="0" radius="40" description="OnEntry{ print_state_name();  post(&quot;restart&quot;,&quot;VladForwardPlacer&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="210" code="1" xpos="549" linewidth="1">STARTATTACKER</state>
+    <state pencolor="0" radius="40" description="OnEntry{forwardPlacing=1; post(&quot;QSay&quot;,&quot;I'm&quot;); post_int(&quot;QSay&quot;, playerNumber); post(&quot;QSay&quot;, &quot;Player&quot;); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="196" code="0" xpos="360" linewidth="1">INDICATEFORWARD</state>
+    <state pencolor="0" radius="40" description="OnEntry{goaliePlacing=1; post(&quot;QSay&quot;,&quot;I'm ONE; Golie&quot;); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="84" code="2" xpos="340" linewidth="1">INDICATEGOLIE</state>
+    <state pencolor="0" radius="40" description="OnEntry{defenderPlacing=1; post(&quot;QSay&quot;,&quot;I'm&quot;); post_int(&quot;QSay&quot;, playerNumber); post(&quot;QSay&quot;, &quot;Defender&quot;); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="450" code="3" xpos="372" linewidth="1">INDICATEDEFENDER</state>
+    <state pencolor="0" radius="40" description="OnEntry{ print_state_name();  post(&quot;restart&quot;,&quot;VladDefenderPlacer&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="463" code="4" xpos="671" linewidth="1">STARTDEFENDER</state>
+    <state pencolor="0" radius="40" description="OnEntry{ print_state_name();  post(&quot;restart&quot;,&quot;VladInteriorPlacer&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="355" code="5" xpos="597" linewidth="1">STARTINTERIOR</state>
+    <state pencolor="0" radius="40" description="OnEntry{interiorPlacing=1; post(&quot;QSay&quot;,&quot;I'm&quot;); post_int(&quot;QSay&quot;, playerNumber); post(&quot;QSay&quot;, &quot;Interior&quot;); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="365" code="6" xpos="356" linewidth="1">INDICATEINTERIOR</state>
+    <state pencolor="0" radius="40" description="OnEntry{defenderPlacing=1; post(&quot;Speech&quot;,&quot;I'm&quot;); post_int(&quot;Speech&quot;, playerNumber); post(&quot;NaoMotionPlayer&quot;,&quot;Greeting&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="578" code="10" xpos="365" linewidth="1">INDICATEDEFENDER</state>
+    <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="593" code="11" xpos="658" linewidth="1">WAIT</state>
+    <transition c1x="198.3507895769404" c2y="94.38644653053683" c1y="111.348852553288" description="" straight="1" type="2" ypos="128.3112585760392" endx="300.5442430467143" xpos="147.2540628420535" endy="77.42404050778565" c2x="249.4475163118274">
+      <from>7</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">playerNumber==1</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="184.3046445440516" c2y="355.2835194783086" c1y="267.6336014683682" description="" straight="1" type="2" ypos="179.9836834584278" endx="332.6291517202446" xpos="110.1423909559551" endy="442.933437488249" c2x="258.4668981321481">
+      <from>7</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">playerNumber==4</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="204.9764703456738" c2y="174.0974132251822" c1y="163.8835678743252" description="" straight="1" type="2" ypos="153.6697225234682" endx="321.7459371579465" xpos="146.5917369395375" endy="184.3112585760392" c2x="263.3612037518102">
+      <from>7</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">playerNumber==2</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="200.6272383784484" c2y="282.3248501676911" c1y="224.6375022375592" description="" straight="1" type="2" ypos="166.9501543074273" endx="324.7652476222788" xpos="138.5582337565332" endy="340.012198097823" c2x="262.6962430003636">
+      <from>7</from>
+      <to>6</to>
+      <inputs default="0" any="0" invert="0">playerNumber==3</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="174.5653481510005" c2y="432.8180242362938" c1y="305.5245922925859" description="" straight="1" type="2" ypos="178.231160348878" endx="329.2229123600034" xpos="97.23656604649908" endy="560.1114561800017" c2x="251.8941302555019">
+      <from>7</from>
+      <to>10</to>
+      <inputs default="0" any="0" invert="0">playerNumber==5</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="671.995449057522" c2y="87.74401347525443" c1y="93.90528799350271" description="set received from Game Controller" straight="1" type="2" ypos="100.066562511751" endx="851.2446506130552" xpos="582.3708482797554" endy="81.58273895700614" c2x="761.6200498352886">
+      <from>9</from>
+      <to>15</to>
+      <inputs default="0" any="0" invert="0">setReceived</inputs>
+      <outputs>2</outputs>
+    </transition>
+    <transition c1x="954.2167327810718" c2y="77.00029056070645" c1y="101.059244206305" description="" straight="1" type="2" ypos="125.1181978519036" endx="1063.944918121762" xpos="899.3526401107267" endy="52.94133691510786" c2x="1009.080825451417">
+      <from>15</from>
+      <to>8</to>
+      <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="679.7390741247135" c2y="145.1345337533874" c1y="177.5672668766937" description="set received from Game Controller" straight="1" type="2" ypos="210" endx="861.2172223741404" xpos="589" endy="112.7018006300811" c2x="770.4781482494269">
+      <from>1</from>
+      <to>15</to>
+      <inputs default="0" any="0" invert="0">setReceived</inputs>
+      <outputs>2</outputs>
+    </transition>
+    <transition c1x="435.6374267321294" c2y="210.8889535694205" c1y="208.1564772971404" description="" straight="1" type="2" ypos="205.4240010248602" endx="509.1642717412918" xpos="398.8740042275482" endy="213.6214298417007" c2x="472.4008492367106">
+      <from>0</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="420.6202488137854" c2y="93.73774463709663" c1y="92.31647895359325" description="" straight="1" type="2" ypos="90.89521327008987" endx="503.0583090688997" xpos="379.4012186862282" endy="95.1590103206" c2x="461.8392789413425">
+      <from>2</from>
+      <to>9</to>
+      <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="484.8608383629614" c2y="460.027051539981" c1y="457.0541030799619" description="" straight="1" type="2" ypos="454.0811546199428" endx="631" xpos="411.7912575444421" endy="463" c2x="557.9304191814807">
+      <from>3</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="764.7376790266252" c2y="234.5305899690525" c1y="347.6857898242263" description="set received from Game Controller" straight="1" type="2" ypos="460.8409896794" endx="872.3296552176751" xpos="710.9416909311003" endy="121.3753901138788" c2x="818.5336671221502">
+      <from>4</from>
+      <to>15</to>
+      <inputs default="0" any="0" invert="0">setReceived</inputs>
+      <outputs>2</outputs>
+    </transition>
+    <transition c1x="712.080396226087" c2y="193.8609769374148" c1y="273.8901452417491" description="set received from Game Controller" straight="1" type="2" ypos="353.9193135460834" endx="862.270391088433" xpos="636.9853987949141" endy="113.8318086330805" c2x="787.1753936572601">
+      <from>5</from>
+      <to>15</to>
+      <inputs default="0" any="0" invert="0">setReceived</inputs>
+      <outputs>2</outputs>
+    </transition>
+    <transition c1x="449.6997976250995" c2y="362.0832563842368" c1y="360.7132010673722" description="" straight="1" type="2" ypos="359.3431457505076" endx="557.9034333824053" xpos="395.5979797464466" endy="363.4533117011015" c2x="503.8016155037524">
+      <from>6</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="474.7926021403334" c2y="590.5583477428053" c1y="590.2757058062105" description="" straight="1" type="2" ypos="589.9930638696158" endx="618.0583090688997" xpos="403.1597486760502" endy="590.8409896794" c2x="546.4254556046166">
+      <from>10</from>
+      <to>11</to>
+      <inputs default="0" any="0" invert="0">NaoMotionPlayerIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="815.46644475301" c2y="274.7379227506254" c1y="424.9246894653136" description="" straight="1" type="2" ypos="575.1114561800017" endx="1058.845158979037" xpos="693.7770876399966" endy="124.5511560359373" c2x="937.1558018660236">
+      <from>11</from>
+      <to>8</to>
+      <inputs default="0" any="0" invert="0">~NaoMotionPlayerIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>

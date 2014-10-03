@@ -1,0 +1,8 @@
+15	Duration|OnEntry C++: msleep(1000); /
+8	SayLeft|OnEntry Speech: Left; /
+9	SayRight|OnEntry Speech: right; /
+11	Centered|OnEntry Speech: mid; /
+1	SayFarRight|OnEntry Speech: far far right; /
+0	SayFarLeft|OnEntry Speech: far far left; /
+10	Touched|OnEnrtry: Speech t;/
+7	Start|

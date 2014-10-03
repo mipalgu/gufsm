@@ -1,0 +1,4 @@
+0	BackGetUp|OnEntry Speech: getting up from from back; NaoMotionPlayer: play get_up_from_back_lie_down;/
+1	FrontGetUp|OnEntry Speech: getting up from from front; NaoMotionPlayer: play get_up_from_front_lie_down ;/
+2	SideToLieDown|OnEntry Speech: To normal lie down; NaoMotionPlayer: play side_to_lie_down ;/
+7	PLACING|OnEntry NaoMotionPlayer: play stiffness_on; NaoWalk: walk 0 0 0;/

@@ -1,0 +1,38 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.52" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="" description="" version="" name="TestMovement" arrowtype="1" numbits="2" statefontweight="50" statefont="Helvetica" numin="1" transfontsize="8" transfontweight="50" type="0" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames>i_0</inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="210" endx="130" xpos="70" endy="210"/>
+    <state pencolor="0" radius="40" description="OnEntry { extern gunxtmotion_gunxt_nxtWalkIsRunning; print_state_name(); &#xa; post(&quot;gunxt_nxtWalk&quot;,&quot;0,0,45&quot;);}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="210" code="0" xpos="170" linewidth="1">INIT</state>
+    <state pencolor="0" radius="40" description="OnEntry { print_state_name();&#xa; post(&quot;gunxt_nxtWalk&quot;,&quot;0,0,-45&quot;);}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="208,48" code="1" xpos="880" linewidth="1">BACWARD</state>
+    <state pencolor="0" radius="40" description="OnEntry { print_state_name();&#xa; }&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="121,2" code="2" xpos="529,1999999999999" linewidth="1">WAIT</state>
+    <state pencolor="0" radius="40" description="OnEntry { print_state_name();&#xa; }&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="381,2" code="3" xpos="530" linewidth="1">WAIT</state>
+    <transition c1x="303,0690724158615" c2y="148,4249200745142" c1y="178,3106005699793" description="" straight="1" type="1" ypos="208,1962810654444" endx="489,2885936857356" xpos="209,9593117809244" endy="118,5392395790491" c2x="396,1788330507985">
+      <from>0</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">gunxtmotion_gunxt_nxtWalkIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="752,2511153958496" c2y="321,7726113896677" c1y="274,1086567328363" description="" straight="1" type="1" ypos="226,444702076005" endx="568,231160348878" xpos="844,2610929193354" endy="369,436566046499" c2x="660,2411378723638">
+      <from>1</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">gunxtmotion_gunxt_nxtWalkIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="658,96747308742" c2y="177,0769638028972" c1y="153,967321341153" description="" straight="1" type="1" ypos="130,8576788794088" endx="840,8691985726038" xpos="568,0166103448281" endy="200,1866062646414" c2x="749,9183358300119">
+      <from>2</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">~gunxtmotion_gunxt_nxtWalkIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="397,3618935707303" c2y="275,0489267936597" c1y="319,5180233702185" description="" straight="1" type="1" ypos="363,9871199467773" endx="204,2997170285018" xpos="493,8929818418445" endy="230,579830217101" c2x="300,830805299616">
+      <from>3</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">~gunxtmotion_gunxt_nxtWalkIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>

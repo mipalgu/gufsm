@@ -1,0 +1,15 @@
+0	OFF
+OnEntry {  sound=0; }
+OnExit {  sound=0; }
+{}
+
+1	ARMED
+OnEntry {}
+OnExit {}
+{}
+
+2	RINGING
+OnEntry { sound=1; post("QSay","DIIIIING, DIIIING"); }
+OnExit { sound=1; post("QSay","DIIIIING, DIIIING"); }
+{}
+

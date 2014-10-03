@@ -1,0 +1,4 @@
+0	BackGetUp|OnEntry SMBallFinder: Off; Speech: getting up from back; NaoMotionPlayer: play get_up_from_back_lie_down; C++: msleep(1000);/
+1	FrontGetUp|OnEntry SMBallFinder: Off; Speech: getting up from front; NaoMotionPlayer: play get_up_from_front_lie_down; C++: msleep(1000);/
+2	SideToLieDown|OnEntry SMBallFinder: Off; Speech: Lying down now; NaoMotionPlayer: play side_to_lie_down; C++: msleep(200);/
+7	Up|OnEntry SMBallFinder: Off; NaoMotionPlayer: stop now; Say: about to get up; C++: msleep(1000); /

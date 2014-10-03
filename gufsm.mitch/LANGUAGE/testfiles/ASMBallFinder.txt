@@ -1,0 +1,9 @@
+8	SpinLeft|OnEntry Speech: Left; NaoWalk: walk 0 2 0;/
+5	DurationTrackerOff|OnEntry  C++: msleep(1500); / OnExit NaoWalk: walk 0 0 0;
+6	StepBack|OnEntry Speech: Back; NaoWalk: walk -1 0 0;/
+10	Duration|OnEntry  C++: msleep(2000); /
+11	Duration|OnEntry  C++: msleep(2000); /
+1	SpinRight|OnEntry Speech: Right; NaoWalk: walk 0 -2 0;/
+0	StepBack|OnEntry Speech: Back; NaoWalk: walk -1 0 0;/
+3	Duration|OnEntry  C++: msleep(1500); /
+7	SEARCHING|

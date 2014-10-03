@@ -1,0 +1,133 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene, Carl" description="" version="1" name="Safety_BatteryMonitor" arrowtype="1" numbits="5" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="80" endx="51" xpos="-9" endy="80"/>
+    <state pencolor="12124415" radius="40" description="OnEntry {&#xa;&#x9;int batteryCycledLEDs;&#xa;&#x9;int oldRoundedbatteryPercentage;&#xa;&#x9;int roundedbatteryPercentage;&#xa;&#x9;extern Battery_Charge;&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="80" code="0" xpos="91" linewidth="1">Init</state>
+    <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;batteryCycledLEDs = 0;&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="79" code="10" xpos="910" linewidth="1">WaitForData</state>
+    <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;oldRoundedbatteryPercentage = roundedbatteryPercentage;&#xa;&#x9;roundedbatteryPercentage = Battery_Charge/10;&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="79" code="13" xpos="1290" linewidth="1">UpdateBattery</state>
+    <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;postv(&quot;leds_groupChange&quot;, 1, roundedbatteryPercentage); &#x9;&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="283" code="16" xpos="1114" linewidth="1">UpdateLEDS</state>
+    <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;postv(&quot;leds_groupChange&quot;, 1, 10); &#x9;&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="635" code="3" xpos="1168" linewidth="1">FlashWarning</state>
+    <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;batteryCycledLEDs = batteryCycledLEDs + 1;&#x9;&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="302" code="2" xpos="345" linewidth="1">AddLED</state>
+    <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;postv(&quot;leds_groupChange&quot;, 1, 10); &#x9;&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="660" code="7" xpos="887" linewidth="1">Flash2</state>
+    <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;postv(&quot;leds_groupChange&quot;, 1, 10); &#x9;&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="451" code="15" xpos="620" linewidth="1">Flash3</state>
+    <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;postv(&quot;leds_groupChange&quot;, 1, 0); &#x9;&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="644" code="9" xpos="1005" linewidth="1">FlashOff</state>
+    <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;postv(&quot;leds_groupChange&quot;, 1, 0); &#x9;&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="650" code="14" xpos="719" linewidth="1">FlashOff2</state>
+    <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;postv(&quot;leds_groupChange&quot;, 1, 0); &#x9;&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="452" code="11" xpos="457" linewidth="1">FlashOff3</state>
+    <state pencolor="0" radius="40" description="OnEntry {  &#xa;&#x9;postv(&quot;leds_groupChange&quot;, 1, batteryCycledLEDs); &#x9;&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="191" code="6" xpos="500" linewidth="1">UpdateSpin</state>
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="308" code="4" xpos="650" linewidth="1">Wait</state>
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="410" code="8" xpos="1129" linewidth="1">CheckDirection</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;post(&quot;QSay&quot;, &quot;Power levels critical, shutdown imminent, save me masters&quot;);&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="515" code="1" xpos="842" linewidth="1">VerbalWarning</state>
+    <transition c1x="149.999956" c2y="79.072039" c1y="79.927961" description="" straight="1" type="2" ypos="79.95238098787719" endx="871.0000290714252" xpos="129.9999709285749" endy="79.04761901212281" c2x="851.000044">
+      <from>0</from>
+      <to>10</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="969.000000" c2y="79.000000" c1y="79.000000" description="" straight="1" type="2" ypos="79" endx="1251" xpos="949" endy="79" c2x="1231.000000">
+      <from>10</from>
+      <to>13</to>
+      <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="1251.459238" c2y="238.327753" c1y="123.672247" description="" straight="1" type="2" ypos="108.5291124379883" endx="1139.476097005323" xpos="1264.523902994677" endy="253.4708875620117" c2x="1152.540762">
+      <from>13</from>
+      <to>16</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="1072.280700" c2y="120.719300" c1y="241.280700" description="" straight="1" type="2" ypos="255.4228355337247" endx="937.5771644662753" xpos="1086.422835533725" endy="106.5771644662753" c2x="951.719300">
+      <from>16</from>
+      <to>10</to>
+      <inputs default="0" any="0" invert="0">oldRoundedbatteryPercentage==roundedbatteryPercentage</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="1120.920401" c2y="351.407270" c1y="341.592730" description="" straight="1" type="2" ypos="321.7307878420779" endx="1124.425497498967" xpos="1118.574502501033" endy="371.2692121579221" c2x="1122.079599">
+      <from>16</from>
+      <to>8</to>
+      <inputs default="0" any="0" invert="0">oldRoundedbatteryPercentage!=roundedbatteryPercentage</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="1109.089731" c2y="640.747286" c1y="638.252714" description="" straight="1" type="2" ypos="637.1500992603293" endx="1043.94068660374" xpos="1129.05931339626" endy="641.8499007396707" c2x="1063.910269">
+      <from>3</from>
+      <to>9</to>
+      <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="392.968418" c2y="225.351577" c1y="267.648423" description="" straight="1" type="2" ypos="279.2930253721918" endx="468.2920624566643" xpos="376.7079375433357" endy="213.7069746278081" c2x="452.031582">
+      <from>2</from>
+      <to>6</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="828.104244" c2y="653.505700" c1y="656.494300" description="" straight="1" type="2" ypos="657.6826730406156" endx="757.9310929176579" xpos="848.0689070823421" endy="652.3173269593844" c2x="777.895756">
+      <from>7</from>
+      <to>14</to>
+      <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="561.001110" c2y="451.638044" c1y="451.361956" description="" straight="1" type="2" ypos="451.2392593011207" endx="495.9992660826691" xpos="581.0007339173309" endy="451.7607406988793" c2x="515.998890">
+      <from>15</from>
+      <to>11</to>
+      <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="946.535007" c2y="652.072543" c1y="651.927457" description="" straight="1" type="2" ypos="649.2401832459695" endx="925.6463514390254" xpos="966.3536485609746" endy="654.7598167540305" c2x="945.464993">
+      <from>9</from>
+      <to>7</to>
+      <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="692.720631" c2y="503.824187" c1y="597.175813" description="" straight="1" type="2" ypos="615.0823170121575" endx="637.3711086220925" xpos="701.6288913779075" endy="485.9176829878425" c2x="646.279369">
+      <from>14</from>
+      <to>15</to>
+      <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="421.700935" c2y="349.275533" c1y="404.724467" description="" straight="1" type="2" ypos="420.7500713389697" endx="368.3332800669027" xpos="433.6667199330973" endy="333.2499286610303" c2x="380.299065">
+      <from>11</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">timeout(500000)</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="546.521636" c2y="271.713124" c1y="227.286876" description="" straight="1" type="2" ypos="214.9862401490612" endx="619.2484100653062" xpos="530.7515899346938" endy="284.0137598509388" c2x="603.478364">
+      <from>6</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">timeout(100000)</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="746.351133" c2y="163.440222" c1y="223.492014" description="" straight="1" type="2" ypos="283.543805279267" endx="878.295040435816" xpos="680.3791793796605" endy="103.3884304339877" c2x="812.323087">
+      <from>4</from>
+      <to>10</to>
+      <inputs default="0" any="0" invert="0">(batteryCycledLEDs==roundedbatteryPercentage) || ((roundedbatteryPercentage==0) &amp;&amp; (batteryCycledLEDs==10))</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="591.011413" c2y="303.160431" c1y="306.839569" description="" straight="1" type="2" ypos="307.2329352951264" endx="383.9924558310776" xpos="611.0075441689224" endy="302.7670647048736" c2x="403.988587">
+      <from>4</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">batteryCycledLEDs!=roundedbatteryPercentage</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="1073.591752" c2y="494.728690" c1y="430.271310" description="" straight="1" type="2" ypos="423.3996797192777" endx="878.6257912326926" xpos="1092.374208767307" endy="501.6003202807223" c2x="897.408248">
+      <from>8</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">((oldRoundedbatteryPercentage>roundedbatteryPercentage) &amp;&amp; (roundedbatteryPercentage&lt;1))</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="1139.076417" c2y="576.866827" c1y="468.133173" description="" straight="1" type="2" ypos="448.427012795586" endx="1161.339317782099" xpos="1135.660682217901" endy="596.5729872044139" c2x="1157.923583">
+      <from>8</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">!((oldRoundedbatteryPercentage>roundedbatteryPercentage) &amp;&amp; (roundedbatteryPercentage&lt;1))</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="897.368041" c2y="614.619126" c1y="535.380874" description="" straight="1" type="2" ypos="528.4721031663343" endx="1131.400786398125" xpos="878.5992136018747" endy="621.5278968336657" c2x="1112.631959">
+      <from>1</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs>3</outputs>
+    </transition>
+  </machine>
+</qfsmproject>

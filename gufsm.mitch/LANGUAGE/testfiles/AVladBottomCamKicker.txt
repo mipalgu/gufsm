@@ -1,0 +1,29 @@
+4	KickLeftBall|OnEntry NaoMotionPlayer: play left_kick;  Speech: Kick Left;/
+1	HeadTrackerOn|OnEntry  ALBallInfo: On; guvision_selectCamera: 1;/
+0	WOW|OnEntry guvision_selectCamera: 1; NaoHeadMoveTo: 0 10 0.5; Speech: WOW; C++: msleep(500);/
+3	KickRighttBall|OnEntry NaoMotionPlayer: play right_kick;  Speech: Kick Right;/
+5	IsItAhead|OnEntry NaoMotionPlayer: stop ALBallFollowerBottomCam;
+6	NoBall|OnEntry  VladBallFinder: On; /OnExit VladBallFinder: Off; NaoWalk: walk 0 0 0;/
+8	NeckStraight|OnEntry NaoHeadMoveTo: 0 10 0.5; Speech: Lost; guvision_selectCamera: 1; /
+9	CheckGoal|OnEntry NaoHeadMoveTo: 0 10 0.5;guvision_selectCamera: 0; C++: sleep(3); /
+10	PassLeftBall|OnEntry NaoMotionPlayer: play pass_ball_left; Speech: Pass;/
+11	MiniLeftStep|OnEntry  NaoMotion_stepLeft: 0.04 0 0;/
+12	CheckGoal|OnEntry NaoHeadMoveTo: 0 10 0.5;guvision_selectCamera: 0; C++: sleep(3); /
+13	PassRightBall|OnEntry NaoMotionPlayer: play pass_ball_right; Speech: Pass;/
+14	MiniRightStep|OnEntry  NaoMotion_stepRight: 0.04 0 0;/
+16	MiniRightStep|OnEntry  NaoMotion_stepRight: 0.04 0 0;/
+17	MiniLeftStep|OnEntry  NaoMotion_stepLeft: 0.04 0 0;/
+20	MiniLeftStep|OnEntry  NaoMotion_stepLeft: 0.04 0 0;/
+19	MiniRightStep|OnEntry  NaoMotion_stepRight: 0.04 0 0;/
+15	StartAL|OnEntry  NaoMotionPlayer: play ALBallFollowerBottomCam;/OnExit C++: msleep(500);/
+2	Ensure|OnEntry C++: msleep(500);/OnExit guvision_selectCamera: 0;/
+18	Ensure|OnEntry C++: msleep(500);/
+21	Ensure|OnEntry C++: msleep(500);/
+22	Ensure|OnEntry C++: msleep(500);/
+23	Ensure|OnEntry C++: msleep(500);/
+24	Ensure|OnEntry C++: msleep(500);/
+25	Ensure|OnEntry C++: msleep(500);/
+26	StopAL|OnEntry   NaoMotionEmergencyStop: stop ALBallFollowerBottomCam; Speech: Shake; C++: msleep(300);/NaoMotionEmergencyStop: stop;/
+28	FollowBallCloser|OnEntry  NaoMotionPlayer: play ALBallFollowerBottomCam;/OnExit C++: msleep(500);/
+29	Shake|OnEntry NaoWalkToDist: walk 0 0.1 0; C++: msleep(200); /
+7	INITIALIZE|OnEntry NaoMotionPlayer: play get_up_anywhere; guvision_runVisionPipeline: On; guvision_selectCamera: 1; C++: sleep(2);/

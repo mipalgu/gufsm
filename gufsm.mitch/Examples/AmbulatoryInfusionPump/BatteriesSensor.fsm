@@ -1,0 +1,24 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vladimir Estivill-Castro" description="" version="1" name="BatteriesCharge" arrowtype="1" numbits="1" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="100" endx="160" xpos="100" endy="100"/>
+    <state pencolor="0" radius="40" description="OnEntry { extern batteriesSensorLow; normalCharge=1;  print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="100" code="0" xpos="200" linewidth="1">INDICATING_NORMAL_CHARGE</state>
+    <state pencolor="0" radius="40" description="OnEntry {normalCharge=0;   print_state_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="101" code="1" xpos="550" linewidth="1">INDICATING_LOW_CHARGE</state>
+    <transition c1x="326.7764617241669" c2y="77.3648119386835" c1y="76.43894210951341" description="" straight="1" type="2" ypos="75.51307228034332" endx="517.0714885633878" xpos="231.6289483045565" endy="78.29068176785358" c2x="421.9239751437774">
+      <from>0</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">batteriesSensorLow</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="420.5643081708034" c2y="124.2299286735511" c1y="122.7553668680434" description="" straight="1" type="2" ypos="121.2808050625357" endx="230.6476617250317" xpos="515.5226313936892" endy="125.7044904790588" c2x="325.6059849479176">
+      <from>1</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">!batteriesSensorLow</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>

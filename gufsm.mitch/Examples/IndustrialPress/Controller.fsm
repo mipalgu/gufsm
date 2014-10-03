@@ -1,0 +1,44 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vlad Estivill-Castro" description="" version="1" name="FSM" arrowtype="1" numbits="2" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="164" endx="151" xpos="91" endy="164"/>
+    <state pencolor="0" radius="40" description="OnEntry { low=1; signalMotorOn=0; print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="164" code="0" xpos="191" linewidth="1">PressClosed</state>
+    <state pencolor="0" radius="40" description="OnEntry {signalMotorOn=1; print_state_name();}&#xa;OnExit {}&#xa;{}" finalstate="0" moore_outputs="" ypos="159" code="1" xpos="423" linewidth="1">OpeningPress</state>
+    <state pencolor="0" radius="40" description="OnEntry{print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="147" code="2" xpos="703" linewidth="1">Open</state>
+    <state pencolor="0" radius="40" description="OnEntry{signalMotorOn=0;print_state_name();}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="371" code="3" xpos="536" linewidth="1">Closing</state>
+    <transition c1x="271.0571755165724" c2y="123.0661420912034" c1y="124.3623439200206" description="" straight="1" type="2" ypos="125.6585457488379" endx="408.3739051030802" xpos="202.3988107233185" endy="121.7699402623861" c2x="339.7155403098263">
+      <from>0</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">PowerOn</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="525.8928142012007" c2y="134.3419007535152" c1y="135.4539874733673" description="" straight="1" type="2" ypos="136.5660741932194" endx="665.4449473645357" xpos="456.1167476195333" endy="133.2298140336631" c2x="595.6688807828682">
+      <from>1</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">sensorAtTopActive</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="638.8278557240728" c2y="294.5021733660755" c1y="233.2343389423229" description="" straight="1" type="2" ypos="171.9665045185702" endx="572.9871239389886" xpos="671.748221616615" endy="355.7700077898282" c2x="605.9074898315307">
+      <from>2</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">buttonPushed</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="536.5295726197309" c2y="211.3092159556921" c1y="272.3156220835015" description="" straight="0" type="2" ypos="339.322028211311" endx="430.435666724194" xpos="511.5765255674992" endy="198.3028098278827" c2x="493.4826196719624">
+      <from>3</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">sensorAtBottomActive</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="419.6577730546043" c2y="250.8959970641075" c1y="318.1090126377092" description="" straight="0" type="2" ypos="339.322028211311" endx="412.8202680288143" xpos="511.5765255674992" endy="197.6829814905059" c2x="381.7390205417092">
+      <from>3</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">!buttonPushed &amp;&amp; !low</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>

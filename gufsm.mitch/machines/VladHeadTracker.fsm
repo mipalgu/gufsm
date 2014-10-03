@@ -1,0 +1,76 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vladimir Estivill-Castro" description="" version="1" name="VladHeadTracker" arrowtype="1" numbits="3" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="110" endx="201" xpos="141" endy="110"/>
+    <state pencolor="0" radius="40" description="OnEntry{int period; int dx; int dy; period=1000;  dx=5;  dy=5; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="110" code="0" xpos="241" linewidth="1">Centered</state>
+    <state pencolor="0" radius="40" description="OnEntry{postv(&quot;NaoHeadRel&quot;,0,dy,5);&#xa; guvision_opencv_ballInfo1_y=0;&#xa; post(&quot;Speech&quot;,&quot;Down&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="110" code="1" xpos="719" linewidth="1">BitDown</state>
+    <state pencolor="0" radius="40" description="OnEntry{postv(&quot;NaoHeadRel&quot;,0,-dy,5);&#xa; guvision_opencv_ballInfo1_y=0;&#xa; post(&quot;Speech&quot;,&quot;up&quot;);&#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="40" code="2" xpos="529" linewidth="1">BitUp</state>
+    <state pencolor="0" radius="40" description="OnEntry{postv(&quot;NaoHeadRel&quot;,dx,0,5);&#xa; guvision_opencv_ballInfo1_x=0;&#xa; post(&quot;Speech&quot;,&quot;Left&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="394" code="3" xpos="790" linewidth="1">BitLeft</state>
+    <state pencolor="0" radius="40" description="OnEntry{postv(&quot;NaoHeadRel&quot;,-dx,0,5);&#xa; guvision_opencv_ballInfo1_x=0; &#xa; post(&quot;Speech&quot;,&quot;Right&quot;);}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="548" code="4" xpos="725" linewidth="1">BitRight</state>
+    <state pencolor="0" radius="40" description="OnEntry{}&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="229" code="5" xpos="799" linewidth="1">Centered</state>
+    <transition c1x="327.524919" c2y="54.226319" c1y="36.204722" description="" straight="0" type="2" ypos="94.18312524675974" endx="489.0947868630807" xpos="277.7399846630386" endy="37.24791633538487" c2x="398.309853">
+      <from>0</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">guvision_opencv_ballInfo1_y&lt;-4</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="397.084027" c2y="110.301239" c1y="81.980680" description="" straight="0" type="2" ypos="113.6214298417007" endx="682.2341987992777" xpos="280.8357282587082" endy="94.24322805683329" c2x="594.741249">
+      <from>0</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">4&lt;guvision_opencv_ballInfo1_y</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="440.040095" c2y="186.552381" c1y="152.447619" description="" straight="1" type="2" ypos="118.3428566018073" endx="759.8797144217775" xpos="280.1202855782225" endy="220.6571433981927" c2x="599.959905">
+      <from>0</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">timeout(period)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="752.733587" c2y="177.991391" c1y="160.178711" description="" straight="1" type="2" ypos="142.3660314561158" endx="776.6834086059964" xpos="740.7586766091534" endy="195.8040703014197" c2x="764.708498">
+      <from>1</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">timeout(period)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="629.376938" c2y="158.162681" c1y="110.263856" description="" straight="1" type="2" ypos="62.36503143016981" endx="766.2307231792383" xpos="560.9500449002426" endy="206.0615062254669" c2x="697.803830">
+      <from>2</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">timeout(period)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="595.749532" c2y="210.946048" c1y="293.513419" description="" straight="1" type="2" ypos="376.080789695754" endx="276.5277950777575" xpos="755.3603997991864" endy="128.3786772351241" c2x="436.138663">
+      <from>3</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">timeout(period)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="585.095781" c2y="233.330552" c1y="456.285713" description="" straight="0" type="2" ypos="527.2408746303295" endx="259.6703447823249" xpos="690.8084993911308" endy="145.3753901138788" c2x="336.383063">
+      <from>4</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">timeout(period)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="795.786595" c2y="335.087573" c1y="287.912427" description="" straight="1" type="2" ypos="268.9406283172378" endx="792.1241152332349" xpos="796.8214202736052" endy="355.0578873906931" c2x="793.213405">
+      <from>5</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">guvision_opencv_ballInfo1_x&lt;-4</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="785.667506" c2y="490.526140" c1y="286.473860" description="" straight="1" type="2" ypos="267.9653289026979" endx="733.8130046405319" xpos="789.9610208815058" endy="510.0088043198695" c2x="738.332494">
+      <from>5</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">4&lt;guvision_opencv_ballInfo1_y</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="599.959905" c2y="152.447619" c1y="186.552381" description="" straight="1" type="2" ypos="220.6571433981927" endx="280.1202855782225" xpos="759.8797144217775" endy="118.3428566018073" c2x="440.040095">
+      <from>5</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">timeout(period)</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>

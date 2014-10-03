@@ -1,0 +1,25 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM "qfsm.dtd">
+<qfsmproject version="0.53" author="MiCASE">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="" version="1" name="MicrowaveBell" arrowtype="1" numbits="2" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="2" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition xpos="90" ypos="90" endx="157.521" endy="107.664"/>
+    <state pencolor="0" linewidth="1" finalstate="0" moore_outputs="" radius="40" xpos="157.521" ypos="107.664" code="0" description="OnEntry$&#xa;{  sound=0;}&#xa;$OnExit$&#xa;{  sound=0;}&#xa;$Internal$&#xa;{}&#xa;" expanded="0">OFF</state>
+    <state pencolor="0" linewidth="1" finalstate="0" moore_outputs="" radius="40" xpos="407.509" ypos="99.4569" code="1" description="OnEntry$&#xa;{}&#xa;$OnExit$&#xa;{}&#xa;$Internal$&#xa;{}&#xa;" expanded="0">ARMED</state>
+    <state pencolor="0" linewidth="1" finalstate="0" moore_outputs="" radius="140" xpos="455" ypos="495" code="2" description="OnEntry$&#xa;{ sound=1; post(&quot;QSay&quot;,&quot;DIIIIING, DIIIING&quot;);}&#xa;$OnExit$&#xa;{ sound=1; post(&quot;QSay&quot;,&quot;DIIIIING, DIIIING&quot;);}&#xa;$Internal$&#xa;{}&#xa;" expanded="1">RINGING</state>
+    <transition xpos="202.479" ypos="107.336" endx="362.491" endy="96.5431" c1x="247.479" c1y="105.336" c2x="317.491" c2y="97.5431" straight="0" type="2">
+      <from>0</from><to>1</to>
+      <inputs default="0" any="0" invert="0">timeLeft</inputs><outputs></outputs>
+    </transition>
+    <transition xpos="374.491" ypos="116.543" endx="328" endy="406.5" c1x="346.491" c1y="162.543" c2x="357" c2y="361.5" straight="0" type="2">
+      <from>1</from><to>2</to>
+      <inputs default="0" any="0" invert="0">!timeLeft</inputs><outputs></outputs>
+    </transition>
+    <transition xpos="287" ypos="411.5" endx="176.479" endy="143.336" c1x="251" c1y="372.5" c2x="212.479" c2y="182.336" straight="0" type="2">
+      <from>2</from><to>0</to>
+      <inputs default="0" any="0" invert="0">1</inputs><outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>

@@ -1,0 +1,20 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM "qfsm.dtd">
+<qfsmproject version="0.53" author="MiCASE">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="" version="1" name="PingPongCLFSM" arrowtype="1" numbits="2" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition xpos="90" ypos="90" endx="89" endy="68"/>
+    <state pencolor="0" linewidth="1" finalstate="0" moore_outputs="" radius="40" xpos="89" ypos="68" code="0" description="OnEntry$&#xa;{&#x0a;  using namespace std;&#x0a;&#x0a;  stateName = &quot;Ping&quot;;&#x0a;  currentState = 0;&#x0a;  cout &lt;&lt; stateName &lt;&lt; endl;&#x0a;}&#xa;$OnExit$&#xa;{&#x0a;  sleep(1); // don&#x27;t ever sleep (but this is just a test)!&#x0a;}&#xa;$Internal$&#xa;{&#x0a;  using namespace std;&#x0a;&#x0a;  cerr &lt;&lt; &quot;Internal state executed for &quot; &lt;&lt; stateName &lt;&lt; endl;&#x0a;  exit(EXIT_FAILURE);&#x0a;}&#xa;">Ping</state>
+    <state pencolor="0" linewidth="1" finalstate="0" moore_outputs="" radius="40" xpos="287" ypos="68.9531" code="1" description="OnEntry$&#xa;{&#x0a;  using namespace std;&#x0a;&#x0a;  stateName = &quot;Pong&quot;;&#x0a;  currentState = 1;&#x0a;  cout &lt;&lt; stateName &lt;&lt; endl;&#x0a;}&#xa;$OnExit$&#xa;{&#x0a;  sleep(1); // don&#x27;t ever sleep (but this is just a test)!&#x0a;}&#xa;$Internal$&#xa;{&#x0a;  using namespace std;&#x0a;&#x0a;  cerr &lt;&lt; &quot;Internal state executed for &quot; &lt;&lt; stateName &lt;&lt; endl;&#x0a;  exit(EXIT_FAILURE);&#x0a;}&#xa;">Pong</state>
+    <transition xpos="128" ypos="60" endx="247" endy="62" c1x="167.734" c1y="41.6614" c2x="206.281" c2y="45.967" straight="0" type="2">
+      <from>0</from><to>1</to>
+      <inputs default="0" any="0" invert="0">true</inputs><outputs></outputs>
+    </transition>
+    <transition xpos="247" ypos="76" endx="128" endy="74" c1x="206.281" c1y="92.033" c2x="169.354" c2y="88.3148" straight="0" type="2">
+      <from>1</from><to>0</to>
+      <inputs default="0" any="0" invert="0">true</inputs><outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>

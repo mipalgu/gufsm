@@ -1,0 +1,140 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene, Carl" description="" version="1" name="SMBallFollowerCarl" arrowtype="1" numbits="6" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="440" endx="118" xpos="58" endy="440"/>
+    <state pencolor="12124415" radius="40" description="OnEntry { &#xa;         int fullSpeed;&#xa;         int currentSpeed; int durationFactor; int minMiliseconds; int duration;&#x9;&#xa;&#x9;int loopCounter; int maxLoop;&#xa;&#x9;extern NaoIsRunning;&#xa;&#x9;extern sensors_postJoints_Frequency;&#xa;&#x9;extern gunaomotion_naoMotionPlayerIsRunnig;&#xa;&#x9;fullSpeed=100;&#xa;&#x9;currentSpeed=fullSpeed; maxLoop=6; loopCounter=1;durationFactor=  8;  minMiliseconds=500000;&#xa;&#x9;duration=durationFactor*minMiliseconds;&#xa;&#x9;post_int(&quot;gunaomotion_holdingStiffness&quot;,100);&#xa; }&#xa;OnExit { &#xa;&#x9;post(&quot;guvision_runVisionPipeline&quot;, &quot;now&quot;);&#xa;&#x9;post(&quot;sensors_postJoints&quot;, &quot;On&quot;);&#xa;&#x9;sensors_postJoints_Frequency=2;&#xa;  }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="440" code="0" xpos="158" linewidth="1">INIT</state>
+    <state pencolor="0" radius="40" description="OnEntry {  print_state_name(); loopCounter=loopCounter+1;&#xa;&#x9; currentSpeed=fullSpeed  /  max(1,maxLoop-loopCounter) ;&#xa;&#x9;durationFactor = max(durationFactor,loopCounter/2); &#xa;&#x9;duration=durationFactor*minMiliseconds;&#xa;&#x9;print_int(duration);&#xa;&#x9;print_int(currentSpeed);&#xa; }&#xa;OnExit { &#xa;&#x9;&#xa; }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="77" code="18" xpos="537" linewidth="1">Main</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;print_state_name();&#xa;&#x9;postv(&quot;gunaowalk_walk&quot;,0, 0,-25, currentSpeed);&#xa;&#x9;post(&quot;Speech&quot;, &quot;Left&quot;);&#xa; }&#xa;OnExit { &#xa;&#x9;&#xa; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="312" code="19" xpos="1052" linewidth="1">LeftWalk</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa; }&#xa;OnExit { &#xa; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="87" code="21" xpos="1726" linewidth="1">Continue</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;print_state_name();&#xa;&#x9;postv(&quot;gunaowalk_walk&quot;,currentSpeed, 0, 0, 100);&#xa;&#x9;post(&quot;Speech&quot;, &quot;Go&quot;);&#xa; }&#xa;OnExit { &#xa; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="248" code="23" xpos="1262" linewidth="1">Forward</state>
+    <state pencolor="0" radius="40" description="OnEntry {   }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="452" code="27" xpos="401" linewidth="1">WAIT_FOR_STOP</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;print_state_name();&#xa;&#x9;post(&quot;gunaowalk_stop&quot;, &quot;Please&quot;);&#xa;&#x9;post(&quot;Speech&quot;, &quot;STOP&quot;);&#xa; }&#xa;OnExit { &#xa; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="292" code="34" xpos="396" linewidth="1">STOP</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;print_state_name();&#xa;&#x9;postv(&quot;gunaowalk_walk&quot;,-currentSpeed, 0, 0, 100);&#xa;&#x9;post(&quot;Speech&quot;, &quot;back&quot;);&#xa; }&#xa;OnExit { &#xa; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="217" code="3" xpos="573" linewidth="1">BACK</state>
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="228" code="6" xpos="809" linewidth="1">ALTERNATE</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;print_state_name();&#xa;&#x9;postv(&quot;gunaowalk_walk&quot;,0, 0,25, currentSpeed);&#xa;&#x9;post(&quot;Speech&quot;, &quot;Right&quot;);&#xa; }&#xa;OnExit { &#xa;&#x9;&#xa; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="172" code="1" xpos="1040" linewidth="1">RightWalk</state>
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="249" code="4" xpos="1441" linewidth="1">ALTERNATE</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;print_state_name();&#xa;&#x9;postv(&quot;gunaowalk_walk&quot;,0, 0,25, currentSpeed);&#xa;&#x9;post(&quot;Speech&quot;, &quot;Right&quot;);&#xa; }&#xa;OnExit { &#xa;&#x9;&#xa; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="360" code="7" xpos="1619" linewidth="1">RightWalk</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;print_state_name();&#xa;&#x9;postv(&quot;gunaowalk_walk&quot;,0, 0,-25, currentSpeed);&#xa;&#x9;post(&quot;Speech&quot;, &quot;Left&quot;);&#xa; }&#xa;OnExit { &#xa;&#x9;&#xa; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="187" code="2" xpos="1611" linewidth="1">LeftWalk</state>
+    <state pencolor="0" radius="40" description="OnEntry { print_state_name();&#xa;&#x9;gunaomotion_naoMotionPlayerIsRunning=1;&#xa;&#x9;post(&quot;gunaomotion_naoMotionPlayer&quot;, &quot;dcm_from_getup&quot;);&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="242" code="5" xpos="95" linewidth="1">DCM_READY_STAND</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa;&#x9;post(&quot;gunaowalk_ready&quot;, &quot;now&quot;);&#xa; }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="85" code="8" xpos="247" linewidth="1">DCM_ON</state>
+    <state pencolor="0" radius="40" description="OnEntry { &#xa;&#x9;print_state_name();&#xa;&#x9;post(&quot;gunaowalk_disconnect&quot;, &quot;Please&quot;);&#xa;&#x9;post(&quot;Speech&quot;, &quot;Suspend&quot;);&#xa; }&#xa;OnExit { &#xa; }&#xa;{ }" finalstate="0" moore_outputs="" ypos="643" code="10" xpos="225" linewidth="1">Suspend</state>
+    <transition c1x="133.159420" c2y="321.023319" c1y="361.929607" description="" straight="1" type="2" ypos="402.8358945794828" endx="107.1281462910779" xpos="146.1750573661991" endy="280.1170312005305" c2x="120.143783">
+      <from>0</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">timeout(100000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="552.237534" c2y="157.742925" c1y="136.257075" description="" straight="1" type="2" ypos="114.7712243712771" endx="563.2873994473858" xpos="546.7126005526142" endy="179.2287756287229" c2x="557.762466">
+      <from>18</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="482.870780" c2y="209.462537" c1y="159.537463" description="" straight="1" type="2" ypos="109.6123900032843" endx="417.3876604207586" xpos="515.6123395792415" endy="259.3876099967157" c2x="450.129220">
+      <from>18</from>
+      <to>34</to>
+      <inputs default="0" any="0" invert="0">loopCounter>maxLoop</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1134.435325" c2y="273.123147" c1y="286.876853" description="" straight="1" type="2" ypos="300.6305597630964" endx="1224.69402422266" xpos="1089.30597577734" endy="259.3694402369036" c2x="1179.564675">
+      <from>19</from>
+      <to>23</to>
+      <inputs default="0" any="0" invert="0">timeout(duration)</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="1316.667126" c2y="80.442665" c1y="83.557335" description="" straight="1" type="2" ypos="86.67200487187104" endx="575.9986207345327" xpos="1687.001379265467" endy="77.32799512812896" c2x="946.332874">
+      <from>21</from>
+      <to>18</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="1334.666464" c2y="248.594042" c1y="248.405958" description="" straight="1" type="2" ypos="248.2178736950783" endx="1402.000608580992" xpos="1300.999391419008" endy="248.7821263049217" c2x="1368.333536">
+      <from>23</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">timeout(duration)</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="307.015822" c2y="444.641194" c1y="447.358806" description="" straight="1" type="2" ypos="450.0764181198853" endx="196.952533072324" xpos="362.047466927676" endy="441.9235818801147" c2x="251.984178">
+      <from>27</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">!NaoIsRunning</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="398.072718" c2y="385.673010" c1y="358.326990" description="" straight="1" type="2" ypos="330.980970967396" endx="399.7818446572689" xpos="397.2181553427311" endy="413.019029032604" c2x="398.927282">
+      <from>34</from>
+      <to>27</to>
+      <inputs default="0" any="0" invert="0">timeout(duration)</inputs>
+      <outputs>2</outputs>
+    </transition>
+    <transition c1x="664.652568" c2y="223.728058" c1y="221.271942" description="" straight="1" type="2" ypos="218.8158252329649" endx="770.0422950018443" xpos="611.9577049981557" endy="226.1841747670351" c2x="717.347432">
+      <from>3</from>
+      <to>6</to>
+      <inputs default="0" any="0" invert="0">timeout(duration)</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="902.286621" c2y="279.752773" c1y="260.247227" description="" straight="1" type="2" ypos="240.7416813049878" endx="1015.140136224857" xpos="845.8598637751434" endy="299.2583186950122" c2x="958.713379">
+      <from>6</from>
+      <to>19</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs>5</outputs>
+    </transition>
+    <transition c1x="898.634051" c2y="193.729467" c1y="206.270533" description="" straight="1" type="2" ypos="218.8115990007613" endx="1002.097845878141" xpos="846.9021541218594" endy="181.1884009992387" c2x="950.365949">
+      <from>6</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">loopCounter==2*(loopCounter/2)</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1126.299239" c2y="218.456117" c1y="201.543883" description="" straight="1" type="2" ypos="184.6316503525234" endx="1225.102284496576" xpos="1076.897715503424" endy="235.3683496474766" c2x="1175.700761">
+      <from>1</from>
+      <to>23</to>
+      <inputs default="0" any="0" invert="0">timeout(duration)</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="1509.879781" c2y="212.120861" c1y="223.879139" description="" straight="1" type="2" ypos="235.6374165410726" endx="1574.36065825778" xpos="1477.63934174222" endy="200.3625834589274" c2x="1542.120219">
+      <from>4</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">loopCounter==2*(loopCounter/2)</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1511.364269" c2y="316.121158" c1y="292.878842" description="" straight="1" type="2" ypos="269.6365252476858" endx="1585.907193746954" xpos="1474.092806253046" endy="339.3634747523142" c2x="1548.635731">
+      <from>4</from>
+      <to>7</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs>5</outputs>
+    </transition>
+    <transition c1x="1659.410544" c2y="190.103538" c1y="256.896462" description="" straight="1" type="2" ypos="323.689386660451" endx="1711.768367665451" xpos="1633.231632334549" endy="123.310613339549" c2x="1685.589456">
+      <from>7</from>
+      <to>21</to>
+      <inputs default="0" any="0" invert="0">timeout(duration)</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="1659.143205" c2y="128.863657" c1y="145.136343" description="" straight="1" type="2" ypos="161.4090301179333" endx="1696.570384635623" xpos="1640.429615364377" endy="112.5909698820667" c2x="1677.856795">
+      <from>2</from>
+      <to>21</to>
+      <inputs default="0" any="0" invert="0">timeout(duration)</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="128.054644" c2y="119.618516" c1y="193.128838" description="" straight="1" type="2" ypos="208.8670087021137" endx="215.4191701534104" xpos="117.4099283277343" endy="107.8834260153666" c2x="199.223873">
+      <from>5</from>
+      <to>8</to>
+      <inputs default="0" any="0" invert="0">~gunaomotion_naoMotionPlayerIsRunning</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="142.776127" c2y="133.871162" c1y="207.381484" description="" straight="1" type="2" ypos="218.5298194714188" endx="225.1503198804591" xpos="127.3905947144508" endy="117.3046665154392" c2x="213.945356">
+      <from>5</from>
+      <to>8</to>
+      <inputs default="0" any="0" invert="0">timeout(2000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="356.661723" c2y="80.025151" c1y="81.974849" description="" straight="1" type="2" ypos="83.92454706241553" endx="498.0148310125628" xpos="285.9851689874372" endy="78.07545293758447" c2x="427.338277">
+      <from>8</from>
+      <to>18</to>
+      <inputs default="0" any="0" invert="0">timeout(300000)</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>

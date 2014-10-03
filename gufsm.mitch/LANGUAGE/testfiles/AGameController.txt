@@ -1,0 +1,21 @@
+1	FINISHED|OnEntry Say: Game over; LEDS: ChestBoard Off; LEDS: Feet Off; LEDS: Ears Off; LEDS:Face Green;  NaoMotionPlayer:play sit_from_kneel_or_stand; guvision_stopVisionPipeline: stop;/ OnExit robotFallenInfo: Off;/
+2	PLAYING|OnEntry NaoWalk: walk 0 0 0; robotFallenInfo: On; Say: go; LEDS: ChestBoard Green;  LEDS: RFoot Off; C++: postTeamI_AmPlaying; SMPlayer: On;/ OnExit SMHeadBallTracker: Off; SMPlayer: Off;/ LEDS: ChestBoard Green; SMPlayer: On; C++: msleep(1000);
+3	PENALIZED|OnEntry robotFallenInfo: Off; Say:penalised; LEDS: ChestBoard Red; NaoMotionEmergencyStop: stop; LEDS: RFoot Off; LEDS: Ears Off; LEDS: Face Yellow; SMGoalie: Off; SMPlayer: Off; C++: sleep(2);/ OnExit LEDS: ChestBoard Green; NaoWalk: walk 1 0 0; C++: msleep(14000); NaoWalk: walk 0 0 0; / SMGoalie: Off; SMPlayer: Off; LEDS: ChestBoard Red; C++: msleep(500);
+4	SET|OnEntry robotFallenInfo: On; Say: set; LEDS: ChestBoard Yellow; NaoWalk: walk 0 0 0; ALBallTracker: On; C++: postTeamI_AmPlayingAndShallWeKickOff;/ OnExit SMSet: Off; ALBallTracker: Off;/ SMSet: On; C++: msleep(1000);
+5	READY|OnEntry robotFallenInfo: On; guvision_runVisionPipeline: start; Say:ready; LEDS: ChestBoard Blue; C++: postTeamI_AmPlayingAndShallWeKickOff; / OnExit SMPlacer: Off; NaoWalk: walk 0 0 0; / SMPlacer: On; C++: msleep(1000);
+6	CHANGE_TEAM|OnEntry QSay: change side;  C++:  swapTeamI_AmPlaying;/
+8	CHANGE_KICK_OFF|OnEntry QSay:change kick off;   C++: swapKickOff;/
+10	ForcedToRedKickOff|OnEntry QSay: Reds kick; C++: setKickOffToRed;/
+9	ForcedToBlueKickOff|OnEntry QSay: Blues kick; C++: setKickOffToBlue;/
+11	WeScore|OnEntry SMPlayer: Off; QSay: GOOOOO OO OO AL MYY PAAAL; C++: setTheirKickOn;/
+12	TheyScore|OnEntry SMPlayer: Off; NaoMotionPlayer: play kneel; C++:  setOurKickOff; Speech:ooh; /
+0	Pause|OnEntry C++: msleep(800);/
+18	GetUp|OnEntry SMGetUp: On;/ OnExit SMGetUp: Off;/
+13	GetUp|OnEntry SMGetUp: On;/ OnExit SMGetUp: Off;/
+14	GetUp|OnEntry SMGetUp: On; Speech:getting up; SMPlayer: Off;/ OnExit SMGetUp: Off; Speech:I am up; /
+15	PENALIZED1|OnEntry robotFallenInfo: Off; Say: manual placing; LEDS: ChestBoard Red; NaoMotionEmergencyStop: stop; LEDS: RFoot Off; LEDS: Ears Off; LEDS: Face Yellow; SMPlayer: Off; C++: sleep(2);/ OnExit LEDS: ChestBoard Green;/ LEDS: ChestBoard Red; C++: msleep(500);
+16	FIRST_PLAYER|OnEntry robotFallenInfo: On; Say: playing; LEDS: ChestBoard Green;  LEDS: RFoot Off; C++: postTeamI_AmPlaying; SMPlayer: On; / OnExit SMHeadBallTracker: Off; SMPlayer: Off; / LEDS: ChestBoard Green; SMPlayer: On; C++: msleep(1000);
+17	Us|OnEntry QSay: GOOOOO OO OO AL MYY PAAAL; SMGoalie: Off; C++: setTheirKickOn;/
+19	Them|OnEntry NaoMotionPlayer: play kneel; SMGoalie: Off; C++:  setOurKickOff; Speech:ooh/
+20	GetUp|OnEntry SMGetUp: On; Speech:getting up; SMGoalie: Off;/ OnExit SMGetUp: Off; Speech:I am up; /
+7	INITIAL|OnEntry  NaoMotionPlayer:play get_up_anywhere; LEDS: ChestBoard Off; C++: sayTeamI_AmPlayingAndShallWeKickOff; /

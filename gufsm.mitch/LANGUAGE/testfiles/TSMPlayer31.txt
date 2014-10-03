@@ -1,0 +1,7 @@
+7	TRUE	13
+13	BallIsVisible	16
+13	~BallIsVisible	14
+14	BallIsVisible	13
+14	~BallIsVisible	15
+15	TRUE	14
+16	~IsWalking	22

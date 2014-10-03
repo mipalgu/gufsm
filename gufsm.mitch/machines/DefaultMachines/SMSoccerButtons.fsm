@@ -1,0 +1,243 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="A Game Controller developed with QFSM.&#xa;This graphically replicates revision 1190 of&#xa;AGameController.txt and&#xa;TGameController.txt&#xa;from the repository" version="1" name="SMSoccerButtons" arrowtype="1" numbits="5" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="7">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="440" endx="93.5494181990515" xpos="18" endy="453.527140916879"/>
+    <state pencolor="959488" radius="40" description="OnEntry { &#xa;  extern LFoot_Bumper_Left;&#xa;  extern LFoot_Bumper_Right;&#xa;  extern RFoot_Bumper_Left;&#xa;  extern RFoot_Bumper_Right;&#xa;  extern ChestBoard_Button;&#xa;  extern leftFootBumpPressed;&#xa; extern rightFootBumpPressed;&#xa; extern shortChestButtonPressed;&#xa;  int counterLeft;&#xa;  int counterRight;&#xa;  int counterChest;&#xa;  int maxCycles;&#xa;  maxCycles=10;&#xa; counterLeft=0;&#xa; counterRight=0; &#xa; counterChest=0;&#xa; leftFootBumpPressed=0;&#xa;  rightFootBumpPressed=0;&#xa; shortChestButtonPressed=0;&#xa; post(&quot;sensors_postSensors&quot;,&quot;On&quot;);&#xa; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="470" code="7" xpos="130" linewidth="1">SetUp</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa;   post(&quot;Speech&quot;, &quot;left on&quot;); &#xa;   post_int(&quot;leftFootBumpPressed&quot;,1); &#xa;   counterLeft = maxCycles; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="271" code="6" xpos="549" linewidth="1">LEFT_FOOT_ON</state>
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="525" code="5" xpos="1044" linewidth="1">IS_TIME_LEFT</state>
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="195" code="9" xpos="273" linewidth="1">LEFT_IS_FREE</state>
+    <state pencolor="0" radius="40" description="OnEntry {}&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="71" code="10" xpos="856" linewidth="1">RIGHT_IS_FREE</state>
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="222" code="15" xpos="1254" linewidth="1">CHEST_IS_FREE</state>
+    <state pencolor="0" radius="40" description="OnEntry { print_sate_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="49" code="18" xpos="512" linewidth="1">STEP</state>
+    <state pencolor="0" radius="40" description="OnEntry {counterLeft=counterLeft-1;  }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="59" code="16" xpos="279" linewidth="1">DECREMENT_LEFT</state>
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="389" code="19" xpos="249" linewidth="1">INITIAL</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;Speech&quot;, &quot;left off&quot;); &#xa; leftFootBumpPressed=0;   }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="627" code="11" xpos="920" linewidth="1">PostLeftBumper</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa;   post(&quot;Speech&quot;, &quot;right on&quot;); &#xa;   post_int(&quot;rightFootBumpPressed&quot;,1); &#xa;   counterRight = maxCycles; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="280" code="17" xpos="876" linewidth="1">RIGHT_FOOT_ON</state>
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="261" code="21" xpos="376" linewidth="1">TEST_FLAG</state>
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="178" code="1" xpos="718" linewidth="1">TEST_FLAG</state>
+    <state pencolor="0" radius="40" description="OnEntry { print_sate_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="166" code="20" xpos="1026" linewidth="1">STEP</state>
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="524" code="3" xpos="783" linewidth="1">IS_TIME_RIGHT</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;Speech&quot;, &quot;right off&quot;); &#xa; rightFootBumpPressed=0;   }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="618" code="8" xpos="674" linewidth="1">PostRightBumper</state>
+    <state pencolor="0" radius="40" description="OnEntry {counterRight=counterRight-1;    }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="40" code="0" xpos="1084" linewidth="1">DECREMENT_RIGHT</state>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa;   post(&quot;Speech&quot;, &quot;chest on&quot;); &#xa;   post_int(&quot;shortChestButtonPressed&quot;,1); &#xa;   counterChest = maxCycles; }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="377" code="23" xpos="1186" linewidth="1">CHEST_ON</state>
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="317" code="12" xpos="1028" linewidth="1">TEST_FLAG</state>
+    <state pencolor="0" radius="40" description="OnEntry { print_sate_name(); }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="529" code="14" xpos="1270" linewidth="1">STEP</state>
+    <state pencolor="0" radius="40" description="OnEntry {counterChest=counterChest-1;    }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="366" code="2" xpos="1315" linewidth="1">DECREMENT_CHEST</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;Speech&quot;, &quot;chest off&quot;); &#xa; shortChestButtonPressed=0;   }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="618" code="4" xpos="425" linewidth="1">PostChest</state>
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }" finalstate="0" moore_outputs="" ypos="471" code="13" xpos="552" linewidth="1">IS_TIME_CHEST</state>
+    <transition c1x="180.137795" c2y="423.690096" c1y="435.872594" description="" straight="1" type="2" ypos="448.055090648989" endx="215.9332799902461" xpos="162.24005200951" endy="411.5075993343702" c2x="198.035537">
+      <from>7</from>
+      <to>19</to>
+      <inputs default="0" any="0" invert="0">timeout(1000000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="534.584279" c2y="136.480717" c1y="184.505677" description="" straight="1" type="2" ypos="231.5442430467143" endx="518.5759594922143" xpos="542.4240405077857" endy="88.45575695328574" c2x="526.580119">
+      <from>6</from>
+      <to>18</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="998.434909" c2y="589.519038" c1y="562.480962" description="" straight="1" type="2" ypos="549.7755510256956" endx="950.1192973253553" xpos="1013.880702674645" endy="602.2244489743044" c2x="965.565091">
+      <from>5</from>
+      <to>11</to>
+      <inputs default="0" any="0" invert="0">leftFootBumpPressed&amp;&amp;(!(counterLeft>0))</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="985.000433" c2y="524.226052" c1y="524.773948" description="" straight="1" type="2" ypos="524.8505758093953" endx="821.9997137478118" xpos="1005.000286252188" endy="524.1494241906047" c2x="841.999567">
+      <from>5</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">!(leftFootBumpPressed&amp;&amp;(!(counterLeft>0)))</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="275.587664" c2y="117.653710" c1y="136.346290" description="" straight="1" type="2" ypos="155.0388706024975" endx="277.237008997169" xpos="274.762991002831" endy="98.96112939750248" c2x="276.412336">
+      <from>9</from>
+      <to>16</to>
+      <inputs default="0" any="0" invert="0">counterLeft>0</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="364.044934" c2y="104.617408" c1y="139.382592" description="" straight="1" type="2" ypos="174.1477770487352" endx="477.8651966756692" xpos="307.1348033243308" endy="69.85222295126482" c2x="420.955066">
+      <from>9</from>
+      <to>18</to>
+      <inputs default="0" any="0" invert="0">!(counterLeft>0)</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="945.211773" c2y="52.129671" c1y="58.870329" description="" straight="1" type="2" ypos="65.61098727808945" endx="1044.364680625948" xpos="895.6353193740518" endy="45.38901272191055" c2x="994.788227">
+      <from>10</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">counterRight>0</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="907.503665" c2y="137.218540" c1y="99.781460" description="" straight="1" type="2" ypos="90.51285430659769" endx="991.9552041966467" xpos="890.9177392854906" endy="146.9749670510673" c2x="974.496335">
+      <from>10</from>
+      <to>20</to>
+      <inputs default="0" any="0" invert="0">!(counterRight>0)</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1279.274057" c2y="305.415861" c1y="281.663348" description="" straight="1" type="2" ypos="257.9108353201147" endx="1299.397713999095" xpos="1269.212228850882" endy="329.1683740306516" c2x="1289.335886">
+      <from>15</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">counterChest>0</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1257.070751" c2y="470.079965" c1y="280.920035" description="" straight="1" type="2" ypos="260.9471415773438" endx="1267.970181546458" xpos="1256.029818453542" endy="490.0528584226562" c2x="1266.929249">
+      <from>15</from>
+      <to>14</to>
+      <inputs default="0" any="0" invert="0">!(counterChest>0)</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="651.653576" c2y="42.428000" c1y="42.286363" description="" straight="0" type="2" ypos="44.7007262807963" endx="833.1282935324731" xpos="551.7682819026339" endy="38.18407332920053" c2x="763.964422">
+      <from>18</from>
+      <to>10</to>
+      <inputs default="0" any="0" invert="0">!(RFoot_Bumper_Left||RFoot_Bumper_Right)</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="557.442919" c2y="99.475048" c1y="116.159725" description="" straight="0" type="2" ypos="85.81323673833897" endx="701.0226449507712" xpos="527.6456256137941" endy="141.7816425616452" c2x="675.623544">
+      <from>18</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">RFoot_Bumper_Left||RFoot_Bumper_Right</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="369.987737" c2y="52.905053" c1y="55.094947" description="" straight="1" type="2" ypos="57.28484073216145" endx="472.0367890593618" xpos="318.9632109406382" endy="50.71515926783855" c2x="421.012263">
+      <from>16</from>
+      <to>18</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="324.137493" c2y="304.471770" c1y="356.820272" description="" straight="0" type="2" ypos="406.8885438199983" endx="337.931655289578" xpos="284.7770876399966" endy="273.2801111969104" c2x="278.753941">
+      <from>19</from>
+      <to>21</to>
+      <inputs default="0" any="0" invert="0">LFoot_Bumper_Left||LFoot_Bumper_Right</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="223.878053" c2y="252.489664" c1y="295.081866" description="" straight="0" type="2" ypos="351.2615944139548" endx="241.2256866809121" xpos="235.7405601994976" endy="219.2980043028319" c2x="205.047972">
+      <from>19</from>
+      <to>9</to>
+      <inputs default="0" any="0" invert="0">!(LFoot_Bumper_Left||LFoot_Bumper_Right)</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="872.841339" c2y="559.455052" c1y="591.544948" description="" straight="1" type="2" ypos="603.5636098874" endx="814.1726742274387" xpos="888.8273257725613" endy="547.4363901126" c2x="830.158661">
+      <from>11</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="922.973569" c2y="201.699913" c1y="244.300087" description="" straight="1" type="2" ypos="256.4017525661912" endx="994.949674429199" xpos="907.050325570801" endy="189.5982474338088" c2x="979.026431">
+      <from>17</from>
+      <to>20</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="428.172759" c2y="131.169819" c1y="179.671875" description="" straight="1" type="2" ypos="227.3322367093729" endx="490.4018122286544" xpos="397.5981877713456" endy="82.66776329062705" c2x="459.287286">
+      <from>21</from>
+      <to>18</to>
+      <inputs default="0" any="0" invert="0">leftFootBumpPressed</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="446.977781" c2y="266.897238" c1y="265.102762" description="" straight="1" type="2" ypos="263.3082856748393" endx="509.0666578252793" xpos="415.9333421747207" endy="268.6917143251607" c2x="478.022219">
+      <from>21</from>
+      <to>6</to>
+      <inputs default="0" any="0" invert="0">!leftFootBumpPressed</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="776.955271" c2y="168.296959" c1y="175.703041" description="" straight="1" type="2" ypos="176.4816714264944" endx="987.0295666133558" xpos="756.9704333866442" endy="167.5183285735056" c2x="967.044729">
+      <from>1</from>
+      <to>20</to>
+      <inputs default="0" any="0" invert="0">rightFootBumpPressed</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="767.568280" c2y="248.000224" c1y="209.999776" description="" straight="1" type="2" ypos="199.1523940229483" endx="843.2345269056291" xpos="750.7654730943709" endy="258.8476059770517" c2x="826.431720">
+      <from>1</from>
+      <to>17</to>
+      <inputs default="0" any="0" invert="0">!rightFootBumpPressed</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1008.878230" c2y="255.846882" c1y="236.882330" description="" straight="0" type="2" ypos="203.3338242481224" endx="1021.424040507786" xpos="1011.640836827645" endy="277.5442430467143" c2x="998.349818">
+      <from>20</from>
+      <to>12</to>
+      <inputs default="0" any="0" invert="0">ChestBoard_Button</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1113.317646" c2y="159.757949" c1y="200.718452" description="" straight="0" type="2" ypos="202.1699458698396" endx="1251.651119121941" xpos="1043.080252216313" endy="182.0690250730001" c2x="1195.093095">
+      <from>20</from>
+      <to>15</to>
+      <inputs default="0" any="0" invert="0">!ChestBoard_Button</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="725.494183" c2y="484.193975" c1y="510.806025" description="" straight="1" type="2" ypos="515.2785586480312" endx="590.0123198548072" xpos="744.9876801451928" endy="479.7214413519687" c2x="609.505817">
+      <from>3</from>
+      <to>13</to>
+      <inputs default="0" any="0" invert="0">!(rightFootBumpPressed&amp;&amp;(!(counterRight>0)))</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="738.319803" c2y="579.468454" c1y="562.531546" description="" straight="1" type="2" ypos="549.470004846568" endx="703.5343673220842" xpos="753.4656326779158" endy="592.529995153432" c2x="718.680197">
+      <from>3</from>
+      <to>8</to>
+      <inputs default="0" any="0" invert="0">rightFootBumpPressed&amp;&amp;(!(counterRight>0))</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="636.320333" c2y="516.400911" c1y="572.599089" description="" straight="1" type="2" ypos="587.9892286347164" endx="576.906898684113" xpos="649.093101315887" endy="501.0107713652837" c2x="589.679667">
+      <from>8</from>
+      <to>13</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1059.329527" c2y="112.405525" c1y="93.594475" description="" straight="1" type="2" ypos="76.33523744589378" endx="1042.307600615597" xpos="1067.274255778874" endy="130.5731434902536" c2x="1050.670473">
+      <from>0</from>
+      <to>20</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1214.537481" c2y="477.360749" c1y="428.639251" description="" straight="1" type="2" ypos="411.1344198821315" endx="1251.136241644085" xpos="1204.863758355915" endy="494.8655801178685" c2x="1241.462519">
+      <from>23</from>
+      <to>14</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1072.379297" c2y="490.122269" c1y="355.877731" description="" straight="1" type="2" ypos="342.6988393424358" endx="1240.664532448729" xpos="1057.335467551271" endy="503.3011606575642" c2x="1225.620703">
+      <from>12</from>
+      <to>14</to>
+      <inputs default="0" any="0" invert="0">shortChestButtonPressed</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1083.156867" c2y="356.054354" c1y="337.945646" description="" straight="1" type="2" ypos="330.8454267149351" endx="1149.540376317338" xpos="1064.459623682662" endy="363.1545732850649" c2x="1130.843133">
+      <from>12</from>
+      <to>23</to>
+      <inputs default="0" any="0" invert="0">!shortChestButtonPressed</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1211.009239" c2y="526.044084" c1y="527.955916" description="" straight="1" type="2" ypos="528.3098426037051" endx="1082.993892890661" xpos="1231.006107109339" endy="525.6901573962949" c2x="1102.990761">
+      <from>14</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">timeout(100000)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="1299.299009" c2y="472.127521" c1y="422.872479" description="" straight="1" type="2" ypos="404.5576129354882" endx="1280.378621273279" xpos="1304.355260232534" endy="491.406327387899" c2x="1285.700991">
+      <from>2</from>
+      <to>14</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="358.614570" c2y="476.169378" c1y="531.623503" description="" straight="1" type="2" ypos="587.0776276118175" endx="273.3750421691641" xpos="401.234333885065" endy="420.7152537314692" c2x="315.994806">
+      <from>4</from>
+      <to>19</to>
+      <inputs default="0" any="0" invert="0">1</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="513.428521" c2y="573.354272" c1y="515.645728" description="" straight="1" type="2" ypos="500.5115827310165" endx="450.4964014070686" xpos="526.5035985929313" endy="588.4884172689835" c2x="463.571479">
+      <from>13</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">shortChestButtonPressed &amp;&amp; (! (counterChest>0))</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="438.773163" c2y="419.903476" c1y="440.357754" description="" straight="1" type="2" ypos="460.8120311949921" endx="287.6110637638199" xpos="514.3542128302756" endy="399.4491987743671" c2x="363.192113">
+      <from>13</from>
+      <to>19</to>
+      <inputs default="0" any="0" invert="0">!(shortChestButtonPressed&amp;&amp;(!(counterChest>0)))</inputs>
+      <outputs>1</outputs>
+    </transition>
+  </machine>
+</qfsmproject>

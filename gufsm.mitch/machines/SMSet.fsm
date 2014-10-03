@@ -1,0 +1,120 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Rene Hexel" description="A Game Controller developed with QFSM.&#xa;This graphically replicates revision 1190 of&#xa;AGameController.txt and&#xa;TGameController.txt&#xa;from the repository" version="1" name="GameController" arrowtype="1" numbits="4" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="2" numout="0" initialstate="7">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="79" endx="102.5494181990515" xpos="112" endy="198.527140916879"/>
+    <state pencolor="959488" radius="40" description="OnEntry { post(&quot;Speech&quot;, &quot;Placing&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="215" code="7" xpos="139" linewidth="1">PLACING</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;NaoHeadPositionChange&quot;, &quot;3 0 0.3&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="240" code="8" xpos="370" linewidth="1">CorrectLeft</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;NaoHeadPositionChange&quot;, &quot;-3 0 0.3&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="357" code="9" xpos="350" linewidth="1">CorrectRight</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;NaoHeadMoveTo&quot;, &quot;0 25 0.5&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="579" code="1" xpos="201" linewidth="1">NoLandmark</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;NaoHeadPositionChange&quot;, &quot;0 3 0.3&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="250" code="2" xpos="814" linewidth="1">CorrectUp</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;NaoHeadPositionChange&quot;, &quot;0 -3 0.3&quot;); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="375" code="3" xpos="821" linewidth="1">CorrectDown</state>
+    <state pencolor="0" radius="40" description="OnEntry { msleep(500); }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="270" code="5" xpos="1138" linewidth="1">Duration</state>
+    <state pencolor="0" radius="40" description="OnEntry { }&#xa;OnExit { }&#xa;{ }&#xa;" finalstate="0" moore_outputs="" ypos="325" code="6" xpos="660" linewidth="1">LRCENTERED</state>
+    <transition c1x="229.0478456049308" c2y="235.1600187555065" c1y="228.1012367261122" description="" straight="1" type="2" ypos="221.0424546967178" endx="330.0615858717835" xpos="178.5409754715044" endy="242.2188007849009" c2x="279.5547157383571">
+      <from>7</from>
+      <to>8</to>
+      <inputs default="0" any="0" invert="0">BallIsLeft</inputs>
+      <outputs>2</outputs>
+    </transition>
+    <transition c1x="220.732483508924" c2y="313.2367279027896" c1y="271.6324661261792" description="" straight="1" type="2" ypos="230.0282043495687" endx="310.0583090688997" xpos="176.0695707289362" endy="354.8409896794" c2x="265.3953962889119">
+      <from>7</from>
+      <to>9</to>
+      <inputs default="0" any="0" invert="0">BallIsRight</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="211.9778367990238" c2y="502.4089544459333" c1y="531.3965138555234" description="" straight="0" type="2" ypos="246.3244338999318" endx="653.7614970610796" xpos="163.8752857440635" endy="364.5105186131628" c2x="658.9861443223381">
+      <from>7</from>
+      <to>6</to>
+      <inputs default="0" any="0" invert="0">BallIsLRCenter</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="141.782131208818" c2y="466.6735659526222" c1y="360.5222071161888" description="" straight="1" type="2" ypos="254.3708482797554" endx="161.4795186499559" xpos="131.933437488249" endy="572.8249247890556" c2x="151.630824929387">
+      <from>7</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">~BallIsVisible</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="480.813329933358" c2y="287.7896251085044" c1y="264.4074645701032" description="" straight="1" type="2" ypos="241.025304031702" endx="622.4662753273157" xpos="409.9868572363793" endy="311.1717856469057" c2x="551.6398026303368">
+      <from>8</from>
+      <to>6</to>
+      <inputs default="0" any="0" invert="0">TRUE</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="465.9820893278271" c2y="345.3258685505987" c1y="356.6573568332469" description="" straight="1" type="2" ypos="367.9888451158951" endx="621.0243521722152" xpos="388.4609579056329" endy="333.9943802679504" c2x="543.5032207500211">
+      <from>9</from>
+      <to>6</to>
+      <inputs default="0" any="0" invert="0">TRUE</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="31.5448743547048" c2y="341.9440823596486" c1y="554.5684348285513" description="" straight="0" type="2" ypos="617.7465546417618" endx="124.3133386105581" xpos="191.0649859892918" endy="252.2062088532529" c2x="142.7507170570009">
+      <from>1</from>
+      <to>7</to>
+      <inputs default="0" any="0" invert="0">BallIsVisible</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="558.7358717338203" c2y="52.00877338866357" c1y="90.24426375171001" description="" straight="0" type="2" ypos="223.6598156852593" endx="148.4240010248602" xpos="783.8969322117249" endy="176.1259957724518" c2x="279.4078462635539">
+      <from>2</from>
+      <to>7</to>
+      <inputs default="0" any="0" invert="0">BallIsVisible</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="935.3410970169215" c2y="265.0592888705897" c1y="258.0699876622531" description="" straight="1" type="2" ypos="251.0806864539166" endx="1098.052493460936" xpos="853.9853987949141" endy="272.0485900789263" c2x="1016.696795238929">
+      <from>2</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">~BallIsVisible</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="946.794052923843" c2y="327.5956294973515" c1y="350.2735197092126" description="" straight="1" type="2" ypos="372.9514099210737" endx="1118.487145693402" xpos="860.9475065390635" endy="304.9177392854904" c2x="1032.640599308623">
+      <from>3</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">~BallIsVisible</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="477.4498945512879" c2y="471.4079841046657" c1y="637.6796049903472" description="" straight="0" type="2" ypos="415" endx="145.0822873701576" xpos="821.0000011111111" endy="254.5348679060247" c2x="147.4135770764564">
+      <from>3</from>
+      <to>7</to>
+      <inputs default="0" any="0" invert="0">BallIsVisible</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="935.5569277485818" c2y="24.02191615228432" c1y="32.39644021744158" description="" straight="0" type="2" ypos="247.811992150991" endx="137.974695968298" xpos="1104.717988226486" endy="175.0131427636207" c2x="266.3825422318519">
+      <from>5</from>
+      <to>7</to>
+      <inputs default="0" any="0" invert="0">BallIsVisible</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="1047.114532548433" c2y="605.4863395655909" c1y="453.9384141282165" description="" straight="0" type="2" ypos="309.9384141282165" endx="235.3941897536293" xpos="1135.781199215099" endy="599.4215501662176" c2x="437.9506648993863">
+      <from>5</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">~BallIsVisible</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="722.4601645433912" c2y="367.8493648729824" c1y="357.6308697905754" description="" straight="1" type="2" ypos="347.4123747081684" endx="781.1178205799367" xpos="693.1313365251185" endy="378.0678599553895" c2x="751.788992561664">
+      <from>6</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">BallIsUp</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="722.7096846256539" c2y="267.5795009887065" c1y="288.6747543892674" description="" straight="1" type="2" ypos="309.7700077898282" endx="774.1548059989848" xpos="696.9871239389886" endy="246.4842475881457" c2x="748.4322453123194">
+      <from>6</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">BallIsDown</inputs>
+      <outputs>3</outputs>
+    </transition>
+    <transition c1x="431.1513184416301" c2y="104.873116198641" c1y="149.8739049845339" description="" straight="0" type="2" ypos="287.0526680779794" endx="158.3474444676049" xpos="647.3508893593265" endy="179.9903385824292" c2x="350.3312897062987">
+      <from>6</from>
+      <to>7</to>
+      <inputs default="0" any="0" invert="0">BallIsUDCenter</inputs>
+      <outputs>1</outputs>
+    </transition>
+    <transition c1x="835.3420330916455" c2y="306.6123813758471" c1y="318.3494770076308" description="" straight="1" type="2" ypos="330.0865726394146" endx="1106.675566100068" xpos="699.6752665874341" endy="294.8752857440633" c2x="971.0087995958568">
+      <from>6</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">~BallIsVisible</inputs>
+      <outputs>3</outputs>
+    </transition>
+  </machine>
+</qfsmproject>

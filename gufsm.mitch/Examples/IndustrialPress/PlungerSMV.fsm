@@ -1,0 +1,70 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.53" author="Qfsm">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="Vlad Estivill-Castro" description="" version="1" name="PlungerSMV" arrowtype="1" numbits="3" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="3" numout="0" initialstate="0">
+    <outputnames_moore></outputnames_moore>
+    <inputnames></inputnames>
+    <outputnames></outputnames>
+    <itransition ypos="101" endx="100" xpos="40" endy="101"/>
+    <state pencolor="0" radius="40" description="OnEntry {&#xa;  extern sensorAtBottomActive;&#xa;  extern sensorAtTopActive; &#xa;  plungerRising=0;&#xa;  post(&quot;QSay&quot;, &quot;Plunger at the bottom!&quot;);  print_state_name(); &#xa; }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="101" code="0" xpos="140" linewidth="1">PLUNGER_AT_BOTTOM</state>
+    <state pencolor="0" radius="40" description="OnEntry { plungerRising=1; post(&quot;QSay&quot;, &quot;Plunger rising, below point of no return!&quot;);  print_state_name();}&#xa;OnExit{  plungerRising=0; }&#xa;{}" finalstate="0" moore_outputs="" ypos="103.3333333333333" code="1" xpos="436.6666666666667" linewidth="1">PLUNGER_RISING_BELOW_PONR</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;QSay&quot;, &quot;Plunger falling fast!&quot;) ;  print_state_name(); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="92.5" code="2" xpos="651.6666666666666" linewidth="1">PLUNGER_FALLING_FAST</state>
+    <state pencolor="0" radius="40" description="OnEntry {  plungerRising=1;  post(&quot;QSay&quot;, &quot;Plunger rising, above point of no return!&quot;);print_state_name(); }&#xa;OnExit{  plungerRising=0; }&#xa;{}" finalstate="0" moore_outputs="" ypos="232.5" code="3" xpos="311.6666666666667" linewidth="1">PLUNGER_RISING_ABOVE_PONR</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;QSay&quot;, &quot;Plunger falling slowly!&quot;); print_state_name(); }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="224.1666666666667" code="4" xpos="579.1666666666667" linewidth="1">PLUNGER_FALLING_SLOW</state>
+    <state pencolor="0" radius="40" description="OnEntry { post(&quot;QSay&quot;, &quot;Plunger At Top!&quot;); print_state_name();  }&#xa;OnExit{}&#xa;{}" finalstate="0" moore_outputs="" ypos="345" code="5" xpos="460" linewidth="1">PLUNGER_AT_TOP</state>
+    <transition c1x="252.2213806573315" c2y="102.4057522772584" c1y="101.9275810560749" description="" straight="1" type="2" ypos="101.4494098348913" endx="396.669191361339" xpos="179.9974753053278" endy="102.883923498442" c2x="324.4452860093352">
+      <from>0</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">motorOn &amp;&amp; sensorAtBottomActive</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="521.6497727628024" c2y="96.78209449321612" c1y="99.05123884011715" description="" straight="1" type="2" ypos="101.3203831870182" endx="611.7173483782597" xpos="476.6159849550737" endy="94.51295014631508" c2x="566.683560570531">
+      <from>1</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">!motorOn</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="385.7277142997859" c2y="179.8630825542232" c1y="155.9702507791101" description="" straight="1" type="2" ypos="132.0774190039969" endx="339.4835237673088" xpos="408.8498095660245" endy="203.7559143293363" c2x="362.6056190335474">
+      <from>1</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">!low</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="498.283869" c2y="30.137993" c1y="23.735077" description="" straight="0" type="2" ypos="55.83216141166303" endx="156.8184405113579" xpos="635.6832498461096" endy="64.70757573864877" c2x="287.551155">
+      <from>2</from>
+      <to>0</to>
+      <inputs default="0" any="0" invert="0">sensorAtBottomActive</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="413.1602014555854" c2y="247.3596116756673" c1y="254.3070549909994" description="" straight="0" type="2" ypos="231.2544983063316" endx="539.1860622999108" xpos="351.6472710334227" endy="225.4121683603351" c2x="476.6731318777481">
+      <from>3</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">!motorOn</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="371.7346522694487" c2y="299.4428199080023" c1y="278.0571800919977" description="" straight="1" type="2" ypos="256.671540275993" endx="428.129376524987" xpos="343.5372901416796" endy="320.828459724007" c2x="399.9320143972179">
+      <from>3</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">sensorAtTopActive</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="478.6731318777481" c2y="193.3070549909994" c1y="194.3596116756673" description="" straight="0" type="2" ypos="225.4121683603351" endx="351.6472710334227" xpos="539.1860622999108" endy="231.2544983063316" c2x="412.1602014555854">
+      <from>4</from>
+      <to>3</to>
+      <inputs default="0" any="0" invert="0">motorOn</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="609.764591337741" c2y="148.0686448049396" c1y="168.5980218617271" description="" straight="1" type="2" ypos="189.1273989185147" endx="632.3728926534437" xpos="598.4604406798896" endy="127.539267748152" c2x="621.0687419955924">
+      <from>4</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">low</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="509.0846140385372" c2y="273.9377788036449" c1y="295.2288878630217" description="" straight="1" type="2" ypos="316.5199969223985" endx="551.0794912177219" xpos="488.0871754489449" endy="252.6466697442681" c2x="530.0820526281295">
+      <from>5</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">!motorOn</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>

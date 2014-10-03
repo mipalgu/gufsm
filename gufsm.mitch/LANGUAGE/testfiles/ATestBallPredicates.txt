@@ -1,0 +1,10 @@
+8	SaytLeft|OnEntry Speech: left;/
+9	SayRight|OnEntry Speech: right;/
+2	SayDown|OnEntry Speech: down;/
+3	SayUp|OnEntry Speech: up;/
+5	Duration|OnEntry C++: msleep(500); /
+6	FirstSleep|OnEntry C++: sleep (2);/
+0	SayLRCentered|OnEntry Speech: center;/
+4	SayLevel|OnEntry Speech: level;/
+1	Restart|
+7	PLACING|
