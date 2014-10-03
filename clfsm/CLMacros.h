@@ -96,9 +96,10 @@ namespace FSM
         const char *name_of_machine_at_index(int index = 0);
         int index_of_machine_named(const char *machine_name);
         enum CLControlStatus control_machine_at_index(int index, enum CLControlStatus command);
-extern "C" {
-        SuspensibleMachine *loadAndAddMachineAtPath(const std::string machine);
-}
+
+        SuspensibleMachine* loadAndAddMachine(const std::string machine);
+
+
 /*
  * Macros for making state machines more readable
  */
@@ -127,7 +128,7 @@ static inline enum CLControlStatus status(const char *m)  { return cs_machine_na
 #define state_of(m)     (machine_at_index(unsigned(index_of_machine_named(m)))->machineContext()->currentState())
 #define state_name_of(m)        (state_of(m)->name())
 
-#define loadMachine(m)  loadAndAddMachineAtPath(m)
+#define loadMachine(m)  (loadAndAddMachine(m))
 
 #endif // NO_CL_READABILITY_MACROS
 }

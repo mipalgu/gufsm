@@ -56,8 +56,15 @@
  *
  */
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wweak-vtables"
+#pragma clang diagnostic ignored "-Wpadded"
+#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+
+
  #include <vector>
  #include <string>
+
 
 namespace FSM
 {
@@ -66,8 +73,10 @@ namespace FSM
 	class SuspensibleMachine;
 	class CLMachine;
 
-FSM::SuspensibleMachine *loadAndAddMachine(const std::string machine);
-FSM::SuspensibleMachine *loadAndAddMachineAtPath(const std::string machine, 
+	SuspensibleMachine *loadAndAddMachine(const std::string machine);
+
+
+	SuspensibleMachine *loadAndAddMachineAtPath(const std::string machine, 
 													std::vector<std::string> compiler_args = std::vector<std::string>(),
 													std::vector<std::string> linker_args = std::vector<std::string>());
 
@@ -98,3 +107,5 @@ FSM::SuspensibleMachine *loadAndAddMachineAtPath(const std::string machine,
 
 	};
 }
+
+#pragma clang diagnostic pop

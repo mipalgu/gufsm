@@ -64,75 +64,76 @@
 
 using namespace FSM;
 
-/// The loader singleton object
-static CLFSMMachineLoader *loader_singleton;
 
-/// Loads a machine into the vector given its name
-FSM::SuspensibleMachine *FSM::loadAndAddMachineAtPath(const std::string machine, 
+	/// The loader singleton object
+	static CLFSMMachineLoader *loader_singleton;
+
+	/// Loads a machine into the vector given its name
+	SuspensibleMachine *FSM::loadAndAddMachineAtPath(const std::string machine, 
 													std::vector<std::string> compiler_args,
 													std::vector<std::string> linker_args)
-{
-	if (!loader_singleton) return NULL;
-	else return loader_singleton->loadAndAddMachineAtPath(machine, compiler_args, linker_args);
-}
-
-FSM::SuspensibleMachine *FSM::loadAndAddMachine(const std::string machine)
-{
-	return loadAndAddMachineAtPath(machine);
-}
-
-
-static std::string bumpedName(std::string name)
-{
-    size_t len = name.size();
-    if (!len || !isdigit(name[len-1]))
-        return name + ".0";
-    while (--len && isdigit(name[len-1]))
-           ;
-    int i = atoi(name.c_str()+len);
-    std::stringstream ss;
-    ss << name.substr(0, len) << ++i;
-
-    return ss.str();
-}
-
-CLFSMMachineLoader::CLFSMMachineLoader(CLFSMWBVectorFactory* factory)
-{
-	if (!loader_singleton) loader_singleton = this;
-	_vector_factory = factory;
-}
-
-SuspensibleMachine* CLFSMMachineLoader::loadAndAddMachineAtPath(const std::string machine, 
-													std::vector<std::string> compiler_args,
-													std::vector<std::string> linker_args)
-{
-	if (compiler_args.empty()) compiler_args = MachineWrapper::default_compiler_args();
-	if (linker_args.empty()) linker_args = MachineWrapper::default_linker_args();
-
-	MachineWrapper *wrapper = new MachineWrapper(machine);
-	wrapper->setCompilerArgs(compiler_args);
-	wrapper->setLinkerArgs(linker_args);	
-
-	//Use the next available space as the id for now
-	int id = _vector_factory->number_of_machines();
-
-	CLMachine *clm = wrapper->instantiate(id, machine.c_str());
-	if (clm)
 	{
-		std::string name = wrapper->name();
-		if (_vector_factory->index_of_machine_named(name.c_str()) != CLError)
-        {
-            while (_vector_factory->index_of_machine_named(name.c_str()) != CLError)
-                name = bumpedName(name);
-            wrapper->setName(name);
-            clm->setMachineName(name.c_str());
-        }
-        _machineWrappers.push_back(wrapper);
-        return _vector_factory->addMachine(clm);
+		if (!loader_singleton) return NULL;
+		else return loader_singleton->loadAndAddMachineAtPath(machine, compiler_args, linker_args);
 	}
-	else std::cerr << "Could not add machine " << id << ": '" << machine << "'" << std::endl;
 
-	return NULL;
-}
+	SuspensibleMachine *FSM::loadAndAddMachine(const std::string machine)
+	{
+		return loadAndAddMachineAtPath(machine);
+	}
+
+
+	static std::string bumpedName(std::string name)
+	{
+		size_t len = name.size();
+		if (!len || !isdigit(name[len-1]))
+		    return name + ".0";
+		while (--len && isdigit(name[len-1]))
+		       ;
+		int i = atoi(name.c_str()+len);
+		std::stringstream ss;
+		ss << name.substr(0, len) << ++i;
+
+		return ss.str();
+	}
+
+	CLFSMMachineLoader::CLFSMMachineLoader(CLFSMWBVectorFactory* factory)
+	{
+		if (!loader_singleton) loader_singleton = this;
+		_vector_factory = factory;
+	}
+
+	SuspensibleMachine* CLFSMMachineLoader::loadAndAddMachineAtPath(const std::string machine, 
+													std::vector<std::string> compiler_args,
+													std::vector<std::string> linker_args)
+	{
+		if (compiler_args.empty()) compiler_args = MachineWrapper::default_compiler_args();
+		if (linker_args.empty()) linker_args = MachineWrapper::default_linker_args();
+
+		MachineWrapper *wrapper = new MachineWrapper(machine);
+		wrapper->setCompilerArgs(compiler_args);
+		wrapper->setLinkerArgs(linker_args);	
+
+		//Use the next available space as the id for now
+		int id = _vector_factory->number_of_machines();
+
+		CLMachine *clm = wrapper->instantiate(id, machine.c_str());
+		if (clm)
+		{
+			std::string name = wrapper->name();
+			if (_vector_factory->index_of_machine_named(name.c_str()) != CLError)
+		    {
+		        while (_vector_factory->index_of_machine_named(name.c_str()) != CLError)
+		            name = bumpedName(name);
+		        wrapper->setName(name);
+		        clm->setMachineName(name.c_str());
+		    }
+		    _machineWrappers.push_back(wrapper);
+		    return _vector_factory->addMachine(clm);
+		}
+		else std::cerr << "Could not add machine " << id << ": '" << machine << "'" << std::endl;
+
+		return NULL;
+	}
 
 
