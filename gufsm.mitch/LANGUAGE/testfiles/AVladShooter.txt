@@ -1,7 +1,0 @@
-4	KickLeftBall|OnEntry NaoMotionPlayer: play left_kick; guvision_runVisionPipeline: On; Speech: Left;/
-2	CheckDistance|OnEntry Speech: Aiming For Goal;/OnExit ALBallTracker:Off; /
-1	STANDING|OnEntry  ALBallInfo: On; ALBallTracker: Head On; Speech: Tracking;/
-0	WOW|OnEntry  guvision_pipelineStop: stop; NaoHeadMoveTo: 0 10 0.5; Speech: WOW; C++: sleep(2);/
-3	KickRighttBall|OnEntry NaoMotionPlayer: play right_kick; guvision_runVisionPipeline: On; Speech: Kicking;/
-5	WhichSide|
-7	INITIALIZE|OnEntry NaoMotionPlayer: play get_up_anywhere; guvision_stopVisionPipeline: Off; guvision_selectCamera: 1; C++: sleep(2);/

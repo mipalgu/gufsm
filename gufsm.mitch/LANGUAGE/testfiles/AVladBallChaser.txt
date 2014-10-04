@@ -1,8 +1,0 @@
-8	SayLeft|OnEntry Speech: Left; NaoWalk: walk 0.5 0.5 0;/
-9	SayRight|OnEntry Speech: Right; NaoWalk: walk 0.5 -0.5 0;/
-1	Placed|OnEntry Speech: Placed; NaoWalk: walk 0 0 0;/
-5	Duration|OnEntry C++: msleep(500); /
-0	SayMid|OnEntry Speech: Mid; NaoWalk: walk 1 1 0;/
-2	SayFarLeft|OnEntry Speech: Far Left; NaoWalk: walk 0 1 0;/
-3	SayFarRight|OnEntry Speech: Far Right; NaoWalk: walk 0 -1 0;/
-7	PLACING|OnEntry ALBallInfo: On; ALBallTracker: Head On;/

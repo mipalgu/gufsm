@@ -1,9 +1,0 @@
-5	TRUE	7
-5	ObstacleRight	8
-5	ObstacleLeft	9
-7	ObstacleIsArising	10
-8	TRUE	7
-9	TRUE	7
-10	ObstacleRight	8
-10	ObstacleLeft	9
-10	ObstacleAhead	5

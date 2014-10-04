@@ -1,1 +1,0 @@
-(leftPost.distance() < minPostDistance) || (rightPost.distance() < minPostDistance)

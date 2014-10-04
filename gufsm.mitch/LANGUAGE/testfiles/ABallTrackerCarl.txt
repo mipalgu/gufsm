@@ -1,4 +1,0 @@
-0	FollowBall|OnEntry NaoMotionPlayer: play ALBallFollower; BallVisible: false;guvision_stopVisionPipeline: on;/
-4	KickBall|OnEntry NaoMotionPlayer: play left_kick;; guvision_runVisionPipeline: on;/
-1	Seek|OnEntry guvision_runVisionPipelineOnce: on;/
-7	PLACING|OnEntry NaoMotionPlayer: play stiffness_on;/

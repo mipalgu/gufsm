@@ -1,1 +1,0 @@
-loadMachine("CLFSMPingPong.machine");

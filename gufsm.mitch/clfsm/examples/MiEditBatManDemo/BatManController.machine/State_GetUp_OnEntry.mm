@@ -1,2 +1,0 @@
-suspend("BatNaoMoves");
-restart("FallManager");

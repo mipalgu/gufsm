@@ -1,7 +1,0 @@
-1	PLACED|
-13	StepForward|OnEntry NaoHeadPositionChange: 0 -2.5 0.3;  LEDS: Face Blue; Say: Forward; NaoWalkToDist: walk .2 0 0;/ C++: msleep(100);
-2	CheckGoal|OnEntry C++: sleep(1);/ C++: msleep(100);
-4	DoubleCheck|OnEntry C++: sleep(1);/ C++: msleep(100);
-5	ThirdCheck|OnEntry C++: sleep(1);/ C++: msleep(100);
-0	Rotate|OnEntry LEDS: Face Yellow; NaoWalk: walk 0 0 0; Holding_Stiffness: 1;  Speech: Yay I found it;   C++: msleep(200);  NaoWalkToDist: walk 0 0 180;/ C++: msleep(200);
-7	PLACING|OnEntry QSay: Starting; Holding_Stiffness: 1; guvision_selectCamera: 0; NaoMotionPlayer: play get_up_anywhere; NaoWalk: walk 0 0 0; guvision_runVisionPipeline: now; C++: msleep(500);/

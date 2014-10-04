@@ -1,1 +1,0 @@
-after_ms(40000)&& ! motion_status_handler.get().isRunning()

@@ -1,2 +1,0 @@
-suspend("SMGoalFollower");
-suspend("SMHeadGoalTracker");

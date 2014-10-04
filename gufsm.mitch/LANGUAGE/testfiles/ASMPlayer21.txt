@@ -1,9 +1,0 @@
-13	WaitForMyGoal|C++: msleep(100);
-14	SeekMyGoal|OnEntry SMMyGoalSeeker: On; C++: msleep(100);/ OnExit SMMyGoalSeeker: Off;/
-15	Delay|C++: msleep(200);
-16	RotateToMyGoal|OnEntry NaoMotion_rotateToHeadPosition: ;/  OnExit NaoWalk: walk 0 0 0; /
-17	FindMyGoalDistance|C++: msleep(200);
-18	WalkForward|OnEntry NaoWalk: walk 1 0 0;/
-20	WalkBackward|OnEntry NaoWalk: walk -1 0 0;/
-22	PLACED|OnEntry NaoWalk: walk 0 0 0;/
-7	PLACING|OnEntry     Holding_Stiffness: 1;     guvision_runVisionPipeline: running;     C++: msleep(100);     guvision_selectCamera: 0; / OnExit NaoHeadMoveTo: 0 0 .15;/

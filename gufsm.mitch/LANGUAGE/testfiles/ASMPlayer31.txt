@@ -1,6 +1,0 @@
-13	WaitForBall|C++: msleep(100);
-14	SeekBall|OnEntry SMHeadBallSeeker: On; C++: msleep(100);/ OnExit SMHeadBallSeeker: Off;/
-15	Delay|C++: msleep(400);
-16	RotateToBall|OnEntry NaoMotion_rotateToHeadPosition: ;/
-22	PLACED|OnEntry NaoWalk: walk 0 0 0;/
-7	PLACING|OnEntry     Holding_Stiffness: 1;     guvision_runVisionPipeline: running;     C++: msleep(100);     guvision_selectCamera: 0; / OnExit NaoHeadMoveTo: 0 0 .15;/

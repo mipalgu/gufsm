@@ -1,6 +1,0 @@
-0	DisableArms|OnEntry  NaoWalk: DisableArm;/
-1	SpreadArms|OnEntry  NaoWalk: SpreadArm;/
-2	WalkForTenCM|OnEntry  NaoWalkToDist: walk 0.1 0 0;/
-3	EnableArm|OnEntry  NaoWalk: EnableArm;/
-4	PLACED|
-7	PLACING|OnEntry  Holding_Stiffness: 1;/

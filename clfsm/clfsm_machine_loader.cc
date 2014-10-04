@@ -56,6 +56,7 @@
  *
  */
 
+ #include <iostream>
  
  #include "clfsm_machine_loader.h"
  #include "clfsm_wb_vector_factory.h"
@@ -129,7 +130,9 @@ using namespace FSM;
 		        clm->setMachineName(name.c_str());
 		    }
 		    _machineWrappers.push_back(wrapper);
-		    return _vector_factory->addMachine(clm);
+		    SuspensibleMachine* m = _vector_factory->addMachine(clm);
+		    std::cout << "Machine added" << std::endl;
+		    return m;
 		}
 		else std::cerr << "Could not add machine " << id << ": '" << machine << "'" << std::endl;
 

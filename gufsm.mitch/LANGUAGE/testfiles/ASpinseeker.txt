@@ -1,7 +1,0 @@
-1	PLACED|OnEntry Speech: Placed; NaoWalk: walk 0 0 0;/
-13	StartOut|OnEntry Speech: Spin; NaoWalk: walk 0 2 0;/
-15	Long|OnEntry C++: sleep(2); / OnExit NaoWalk: walk 0 0 0;/
-0	Spin|OnEntry Speech: Spin; NaoWalk: walk 0 2 0;/
-2	Duration|OnEntry C++: sleep(1); / OnExit NaoWalk: walk 0 0 0;/
-3	Judge|OnEntry Speech: Judge; NaoWalk: walk 0 0 0; C++: sleep(1); / OnExit NaoWalk: walk 0 0 0;/
-7	PLACING|OnEntry NaoWalk: walk 0 0 0; /

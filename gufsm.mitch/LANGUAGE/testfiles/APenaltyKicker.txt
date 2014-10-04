@@ -1,8 +1,0 @@
-4	TopCamBallFollowerOn|OnEntry NaoMotionPlayer: play TopCamALBallFollower; BallVisible: false;/
-5	SwapToBottomCam|OnEntry guvision_selectCamera: 1;/
-6	BottomCamBallFollowerOn|OnEntry NaoMotionPlayer: play BottomCamALBallFollower;/
-3	LeftKick|OnEntry NaoMotionPlayer: play left_kick;/
-1	LeftOrRight|OnEntry NaoMotionPlayer: stop BottomCamALBallFollower;/
-2	RightKick|OnEntry NaoMotionPlayer: play right_kick;/
-11	Seek|OnEntry guvision_runVisionPipelineOnce: on;/
-7	PLACING|OnEntry NaoMotionPlayer: play stiffness_on;/

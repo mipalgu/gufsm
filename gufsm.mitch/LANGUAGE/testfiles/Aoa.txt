@@ -1,5 +1,0 @@
-8	TurnLeft|OnEntry NaoWalk: walk 0 2 0; Speech: turning left; /
-9	TurnRight|OnEntry NaoWalk: walk 0 -2 0; Speech: turning right; /
-10	EminentColision|OnEntry Speech: i am thinking;/
-5	Stop|OnEntry Speech: i cant pass;/
-7	PLACING|
