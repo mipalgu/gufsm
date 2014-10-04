@@ -12,6 +12,7 @@ CATKIN_COMPILE_UTIL=YES
 
 .include "../../../mk/c++11.mk"	# use C++11
 
+CPPFLAGS+=-g
 SPECIFIC_LDFLAGS+=-Wl,-rpath -Wl,/usr/local/lib
 
 C_SRCS=stringConstants.c

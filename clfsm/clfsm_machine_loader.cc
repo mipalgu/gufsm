@@ -108,8 +108,8 @@ using namespace FSM;
 													std::vector<std::string> compiler_args,
 													std::vector<std::string> linker_args)
 	{
-		if (compiler_args.empty()) compiler_args = MachineWrapper::default_compiler_args();
-		if (linker_args.empty()) linker_args = MachineWrapper::default_linker_args();
+		//if (compiler_args.empty()) compiler_args = MachineWrapper::default_compiler_args();
+		//if (linker_args.empty()) linker_args = MachineWrapper::default_linker_args();
 
 		MachineWrapper *wrapper = new MachineWrapper(machine);
 		wrapper->setCompilerArgs(compiler_args);
@@ -130,6 +130,7 @@ using namespace FSM;
 		        clm->setMachineName(name.c_str());
 		    }
 		    _machineWrappers.push_back(wrapper);
+		    std::cout << "Machine " << wrapper->name() << " added" << std::endl; //MITCHDEBUG
 		    return _vector_factory->addMachine(clm);
 		    
 		}

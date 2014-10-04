@@ -17,6 +17,8 @@ SPECIFIC_LIBS+=-Wl,-R/usr/local/lib
 
 SPECIFIC_LIBS+=-L/usr/local/lib -lclfsm -ldl
 
+CPPFLAGS+=-g
+
 CC_SRCS+=clfsm_main.cc
 HDRS+=CLActionAction.h
 HDRS+=CLTransitionExpression.h

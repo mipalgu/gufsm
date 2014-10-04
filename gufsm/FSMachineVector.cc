@@ -154,19 +154,18 @@ bool StateMachineVector::executeOnce(visitor_f should_execute_machine, void *con
 
         setAccepting(true);
 
-        for (MachineVector::iterator it = machines().begin();
-             it != machines().end(); it++)
+        for (unsigned long it = 0;
+             it < machines().size(); it++)
         {
-                SuspensibleMachine *m = *it;
+            SuspensibleMachine *m = machines()[it];
+            if (!m || (should_execute_machine != NULL && !should_execute_machine(context, m, machine_no++)))
+                    continue;
 
-                if (!m || (should_execute_machine != NULL && !should_execute_machine(context, m, machine_no++)))
-                        continue;
+            bool mfire = false;
+            bool a = !m->executeOnce(&mfire);
+            setAccepting(a && accepting());
 
-                bool mfire = false;
-                bool a = !m->executeOnce(&mfire);
-                setAccepting(a && accepting());
-
-                if (mfire) fired = true;
+            if (mfire) fired = true;
         }
 
         return fired;
