@@ -130,9 +130,8 @@ using namespace FSM;
 		        clm->setMachineName(name.c_str());
 		    }
 		    _machineWrappers.push_back(wrapper);
-		    SuspensibleMachine* m = _vector_factory->addMachine(clm);
-		    std::cout << "Machine added" << std::endl;
-		    return m;
+		    return _vector_factory->addMachine(clm);
+		    
 		}
 		else std::cerr << "Could not add machine " << id << ": '" << machine << "'" << std::endl;
 

@@ -92,7 +92,6 @@ struct clfsm_context {
 
 static CLFSMWBVectorFactory *createMachines(vector<MachineWrapper *> &machineWrappers, const vector<string> &machines, const vector<string> &compiler_args, const vector<string> &linker_args)
 {
-    std::cout << "Creating Machines" << std::endl;
     CLFSMWBVectorFactory *factory = new CLFSMWBVectorFactory();
     CLFSMMachineLoader *loader = new CLFSMMachineLoader(factory);
     for (vector<string>::const_iterator it = machines.begin(); it != machines.end(); it++)
@@ -101,7 +100,7 @@ static CLFSMWBVectorFactory *createMachines(vector<MachineWrapper *> &machineWra
             FSM::loadAndAddMachineAtPath(machine, compiler_args, linker_args);
 
     }
-    machineWrappers = loader->machineWrappers();
+    machineWrappers = loader->machineWrappers(); 
     return factory;
 }
 
