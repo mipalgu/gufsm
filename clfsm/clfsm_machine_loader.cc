@@ -69,6 +69,10 @@ using namespace FSM;
 	/// The loader singleton object
 	static CLFSMMachineLoader *loader_singleton;
 
+
+
+	/* ---- Global Access Methods ---- */
+
 	/// Loads a machine into the vector given its name
 	SuspensibleMachine *FSM::loadAndAddMachineAtPath(const std::string machine, 
 													std::vector<std::string> compiler_args,
@@ -83,7 +87,22 @@ using namespace FSM;
 		return loadAndAddMachineAtPath(machine);
 	}
 
+	CLFSMMachineLoader::CLFSMMachineLoader()
+	{
+		if (!loader_singleton) loader_singleton = this;
+		_vector_factory = new CLFSMWBVectorFactory();
+	}
 
+	/// Gets the loader singleton
+	CLFSMMachineLoader* CLFSMMachineLoader::getMachineLoaderSingleton()
+	{
+		if (!loader_singleton) loader_singleton = new CLFSMMachineLoader();
+		return loader_singleton;
+	}
+
+	/* ---- Instance methods ---- */
+
+	
 	static std::string bumpedName(std::string name)
 	{
 		size_t len = name.size();
@@ -96,12 +115,6 @@ using namespace FSM;
 		ss << name.substr(0, len) << ++i;
 
 		return ss.str();
-	}
-
-	CLFSMMachineLoader::CLFSMMachineLoader(CLFSMWBVectorFactory* factory)
-	{
-		if (!loader_singleton) loader_singleton = this;
-		_vector_factory = factory;
 	}
 
 	SuspensibleMachine* CLFSMMachineLoader::loadAndAddMachineAtPath(const std::string machine, 
@@ -130,13 +143,25 @@ using namespace FSM;
 		        clm->setMachineName(name.c_str());
 		    }
 		    _machineWrappers.push_back(wrapper);
-		    std::cout << "Machine " << wrapper->name() << " added" << std::endl; //MITCHDEBUG
+
 		    return _vector_factory->addMachine(clm);
 		    
 		}
 		else std::cerr << "Could not add machine " << id << ": '" << machine << "'" << std::endl;
 
 		return NULL;
+	}
+
+	/// Vector factory getter
+	CLFSMWBVectorFactory *CLFSMMachineLoader::vector_factory()
+	{
+		return _vector_factory;
+	}
+
+	///Machine Wrapper getter
+	std::vector<MachineWrapper *> CLFSMMachineLoader::machineWrappers()
+	{
+		return _machineWrappers;
 	}
 
 

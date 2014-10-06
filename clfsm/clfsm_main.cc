@@ -86,14 +86,12 @@ using namespace std;
 using namespace FSM;
 
 struct clfsm_context {
-    vector<string> *machineFiles;       /// pointer to vector of file names
-    CLFSMWBVectorFactory *factory;      /// machine factory that was used
+    CLFSMMachineLoader* loader;
 };
 
 static CLFSMWBVectorFactory *createMachines(vector<MachineWrapper *> &machineWrappers, const vector<string> &machines, const vector<string> &compiler_args, const vector<string> &linker_args)
 {
-    CLFSMWBVectorFactory *factory = new CLFSMWBVectorFactory();
-    CLFSMMachineLoader *loader = new CLFSMMachineLoader(factory);
+    CLFSMMachineLoader *loader = CLFSMMachineLoader::getMachineLoaderSingleton();
     for (vector<string>::const_iterator it = machines.begin(); it != machines.end(); it++)
     {
             const string &machine = *it;
@@ -101,7 +99,7 @@ static CLFSMWBVectorFactory *createMachines(vector<MachineWrapper *> &machineWra
 
     }
     machineWrappers = loader->machineWrappers(); 
-    return factory;
+    return loader->vector_factory();
 }
 
 
@@ -189,11 +187,12 @@ static bool debug_internal_states = false;
 static bool print_machine_and_state(void *ctx, SuspensibleMachine *machine, int machine_number)
 {
         struct clfsm_context *context = static_cast<struct clfsm_context *>(ctx);
-        CLFSMWBVectorFactory *factory = context->factory;
+        CLFSMWBVectorFactory *factory = context->loader->vector_factory();
         const char *machineName = factory->name_of_machine_at_index(machine_number);
+        const char* path = context->loader->machineWrappers().at(machine_number)->path();
 
         if (machine->previousState() != machine->currentState())
-                fprintf(stderr, "%sm%3d s%3d - %-30.30s / %-20.20s - %s\n",  debug_internal_states ? "\n" : "", machine_number, machine->indexOfState(), context->machineFiles->at(machine_number).c_str(), machineName, machine->currentState()->name().c_str());
+                fprintf(stderr, "%sm%3d s%3d - %-30.30s / %-20.20s - %s\n",  debug_internal_states ? "\n" : "", machine_number, machine->indexOfState(), path, machineName, machine->currentState()->name().c_str());
         else if (debug_internal_states)
                 fprintf(stderr, "%d/%d ", machine_number, machine->indexOfState());
 
@@ -303,7 +302,7 @@ int main(int argc, char * const argv[])
         if (verbose) visitor = print_machine_and_state;
 
         CLFSMWBVectorFactory *factory = createMachines(machineWrappers, machines, compiler_args, linker_args);
-        struct clfsm_context context = { &machines, factory };
+        struct clfsm_context context = { CLFSMMachineLoader::getMachineLoaderSingleton() };
         factory->postMachineStatus();
         debug_internal_states = debug;
         factory->fsms()->execute(visitor, &context);

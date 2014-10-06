@@ -73,14 +73,9 @@ namespace FSM
 	class SuspensibleMachine;
 	class CLMachine;
 
-	SuspensibleMachine *loadAndAddMachine(const std::string machine);
+	
 
-
-	SuspensibleMachine *loadAndAddMachineAtPath(const std::string machine, 
-													std::vector<std::string> compiler_args = std::vector<std::string>(),
-													std::vector<std::string> linker_args = std::vector<std::string>());
-
-
+	/* Instance methods */
 	class CLFSMMachineLoader
 	{
 	private:
@@ -90,9 +85,12 @@ namespace FSM
 		/// The vector of machine wrappers
 		std::vector<MachineWrapper *> _machineWrappers;
 
+		///Private constructor for the singleton
+		CLFSMMachineLoader();
 
 	public:				
-			CLFSMMachineLoader(CLFSMWBVectorFactory *vector_factory);
+			static CLFSMMachineLoader* getMachineLoaderSingleton();
+
 			~CLFSMMachineLoader();
 
 			SuspensibleMachine *loadAndAddMachineAtPath(const std::string machine, 
@@ -100,12 +98,22 @@ namespace FSM
 													std::vector<std::string> linker_args = std::vector<std::string>());
 
 			/// Vector factory getter
-			CLFSMWBVectorFactory *vector_factory() const { return _vector_factory; }
+			CLFSMWBVectorFactory *vector_factory();
 
 			///Machine Wrapper getter
-			std::vector<MachineWrapper *> machineWrappers() const { return _machineWrappers; }
+			std::vector<MachineWrapper *> machineWrappers();
 
 	};
+
+	/* Global methods */
+	SuspensibleMachine *loadAndAddMachine(const std::string machine);
+
+
+	SuspensibleMachine *loadAndAddMachineAtPath(const std::string machine, 
+													std::vector<std::string> compiler_args = std::vector<std::string>(),
+													std::vector<std::string> linker_args = std::vector<std::string>());
+
+	
 }
 
 #pragma clang diagnostic pop
