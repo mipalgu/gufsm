@@ -100,6 +100,8 @@ using namespace FSM;
 		return loader_singleton;
 	}
 
+
+
 	/* ---- Instance methods ---- */
 
 	
@@ -121,9 +123,6 @@ using namespace FSM;
 													std::vector<std::string> compiler_args,
 													std::vector<std::string> linker_args)
 	{
-		//if (compiler_args.empty()) compiler_args = MachineWrapper::default_compiler_args();
-		//if (linker_args.empty()) linker_args = MachineWrapper::default_linker_args();
-
 		MachineWrapper *wrapper = new MachineWrapper(machine);
 		wrapper->setCompilerArgs(compiler_args);
 		wrapper->setLinkerArgs(linker_args);	
