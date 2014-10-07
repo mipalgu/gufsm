@@ -127,7 +127,7 @@ using namespace FSM;
 		wrapper->setCompilerArgs(compiler_args);
 		wrapper->setLinkerArgs(linker_args);	
 
-		//Use the next available space as the id for now
+		//Leave ids as unique
 		int id = _vector_factory->number_of_machines();
 
 		CLMachine *clm = wrapper->instantiate(id, machine.c_str());
@@ -141,7 +141,11 @@ using namespace FSM;
 		        wrapper->setName(name);
 		        clm->setMachineName(name.c_str());
 		    }
-		    _machineWrappers.push_back(wrapper);
+		    int index = findIndexForNewMachine(machine);
+		    if (index == CLError) 
+	    		_machineWrappers.push_back(wrapper);
+	    	else 
+	    		_machineWrappers[index] = wrapper;
 
 		    return _vector_factory->addMachine(clm);
 		    
@@ -151,16 +155,18 @@ using namespace FSM;
 		return NULL;
 	}
 
-	/// Vector factory getter
-	CLFSMWBVectorFactory *CLFSMMachineLoader::vector_factory()
+	int CLFSMMachineLoader::findIndexForNewMachine(const std::string machinePath)
 	{
-		return _vector_factory;
+		size_t i;
+		for (i = 0; i < _machineNames.size(); i++)
+		{
+			const std::string* pathAtIndex = _machineNames.at(i);
+			if (machinePath.compare(*pathAtIndex) == 0 &&
+					_machineWrappers.at(i) == NULL)
+			{
+				return i;
+			}
+		}
+
+		return CLError;
 	}
-
-	///Machine Wrapper getter
-	std::vector<MachineWrapper *> CLFSMMachineLoader::machineWrappers()
-	{
-		return _machineWrappers;
-	}
-
-

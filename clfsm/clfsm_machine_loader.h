@@ -85,8 +85,13 @@ namespace FSM
 		/// The vector of machine wrappers
 		std::vector<MachineWrapper *> _machineWrappers;
 
+		/// The vector of machine paths
+		std::vector<std::string *> _machineNames;
+
 		///Private constructor for the singleton
 		CLFSMMachineLoader();
+
+		int findIndexForNewMachine(const std::string machinePath);
 
 	public:				
 			static CLFSMMachineLoader* getMachineLoaderSingleton();
@@ -98,10 +103,10 @@ namespace FSM
 													std::vector<std::string> linker_args = std::vector<std::string>());
 
 			/// Vector factory getter
-			CLFSMWBVectorFactory *vector_factory();
+			CLFSMWBVectorFactory *vector_factory() const { return _vector_factory; }
 
 			///Machine Wrapper getter
-			std::vector<MachineWrapper *> machineWrappers();
+			std::vector<MachineWrapper *> machineWrappers() const { return _machineWrappers; }
 
 	};
 
