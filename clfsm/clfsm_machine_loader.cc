@@ -57,7 +57,7 @@
  */
 
  #include <iostream>
- 
+
  #include "clfsm_machine_loader.h"
  #include "clfsm_wb_vector_factory.h"
  #include "clfsm_machine.h"
@@ -74,7 +74,7 @@ using namespace FSM;
 	/* ---- Global Access Methods ---- */
 
 	/// Loads a machine into the vector given its name
-	SuspensibleMachine *FSM::loadAndAddMachineAtPath(const std::string machine, 
+	SuspensibleMachine *FSM::loadAndAddMachineAtPath(const std::string machine,
 													std::vector<std::string> compiler_args,
 													std::vector<std::string> linker_args)
 	{
@@ -87,11 +87,11 @@ using namespace FSM;
 		return loadAndAddMachineAtPath(machine);
 	}
 
-	CLFSMMachineLoader::CLFSMMachineLoader()
-	{
-		if (!loader_singleton) loader_singleton = this;
-		_vector_factory = new CLFSMWBVectorFactory();
-	}
+  void FSM::unloadMachineAtIndex(int index)
+  {
+      index;
+  }
+
 
 	/// Gets the loader singleton
 	CLFSMMachineLoader* CLFSMMachineLoader::getMachineLoaderSingleton()
@@ -102,9 +102,16 @@ using namespace FSM;
 
 
 
+
+
 	/* ---- Instance methods ---- */
 
-	
+  CLFSMMachineLoader::CLFSMMachineLoader()
+  {
+    if (!loader_singleton) loader_singleton = this;
+    _vector_factory = new CLFSMWBVectorFactory();
+  }
+
 	static std::string bumpedName(std::string name)
 	{
 		size_t len = name.size();
@@ -119,13 +126,13 @@ using namespace FSM;
 		return ss.str();
 	}
 
-	SuspensibleMachine* CLFSMMachineLoader::loadAndAddMachineAtPath(const std::string machine, 
+	SuspensibleMachine* CLFSMMachineLoader::loadAndAddMachineAtPath(const std::string machine,
 													std::vector<std::string> compiler_args,
 													std::vector<std::string> linker_args)
 	{
 		MachineWrapper *wrapper = new MachineWrapper(machine);
 		wrapper->setCompilerArgs(compiler_args);
-		wrapper->setLinkerArgs(linker_args);	
+		wrapper->setLinkerArgs(linker_args);
 
 		//Leave ids as unique
 		int id = _vector_factory->number_of_machines();
@@ -142,13 +149,13 @@ using namespace FSM;
 		        clm->setMachineName(name.c_str());
 		    }
 		    int index = findIndexForNewMachine(machine);
-		    if (index == CLError) 
+		    if (index == CLError)
 	    		_machineWrappers.push_back(wrapper);
-	    	else 
+	    	else
 	    		_machineWrappers[index] = wrapper;
 
 		    return _vector_factory->addMachine(clm);
-		    
+
 		}
 		else std::cerr << "Could not add machine " << id << ": '" << machine << "'" << std::endl;
 

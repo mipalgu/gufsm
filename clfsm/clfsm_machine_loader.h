@@ -73,7 +73,7 @@ namespace FSM
 	class SuspensibleMachine;
 	class CLMachine;
 
-	
+
 
 	/* Instance methods */
 	class CLFSMMachineLoader
@@ -93,14 +93,13 @@ namespace FSM
 
 		int findIndexForNewMachine(const std::string machinePath);
 
-	public:				
+	public:
 			static CLFSMMachineLoader* getMachineLoaderSingleton();
 
 			~CLFSMMachineLoader();
 
-			SuspensibleMachine *loadAndAddMachineAtPath(const std::string machine, 
-													std::vector<std::string> compiler_args = std::vector<std::string>(),
-													std::vector<std::string> linker_args = std::vector<std::string>());
+            SuspensibleMachine *loadAndAddMachineAtPath(const std::string machine,                      std::vector<std::string> compiler_args = std::vector<std::string>(),
+std::vector<std::string> linker_args = std::vector<std::string>());
 
 			/// Vector factory getter
 			CLFSMWBVectorFactory *vector_factory() const { return _vector_factory; }
@@ -114,11 +113,12 @@ namespace FSM
 	SuspensibleMachine *loadAndAddMachine(const std::string machine);
 
 
-	SuspensibleMachine *loadAndAddMachineAtPath(const std::string machine, 
-													std::vector<std::string> compiler_args = std::vector<std::string>(),
-													std::vector<std::string> linker_args = std::vector<std::string>());
+	SuspensibleMachine *loadAndAddMachineAtPath(const std::string machine,
+			             std::vector<std::string> compiler_args = std::vector<std::string>(),
+			             std::vector<std::string> linker_args = std::vector<std::string>());
 
-	
+    /// Unloads the machine at the given index
+	void unloadMachineAtIndex(int index);
 }
 
 #pragma clang diagnostic pop
