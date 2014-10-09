@@ -89,7 +89,7 @@ using namespace FSM;
 
   void FSM::unloadMachineAtIndex(int index)
   {
-      std::cout << "Unloading machine at index " << index << std::endl;
+      std::cout << "Unloading machine at index " << index << std::endl; //MITCHDEBUG
       index;
   }
 
@@ -151,11 +151,18 @@ using namespace FSM;
 		    }
 		    int index = findIndexForNewMachine(machine);
 		    if (index == CLError)
-	    		_machineWrappers.push_back(wrapper);
+            {
+                _machineWrappers.push_back(wrapper);
+                _machinePaths.push_back(&machine);
+            }
 	    	else
-	    		_machineWrappers[index] = wrapper;
+            {
+                //Machine path already in vector - don't add again
+                _machineWrappers[index] = wrapper;
+            }
 
-		    return _vector_factory->addMachine(clm);
+            printf("Adding machine named %s at index %i\n", wrapper->name(), index); //MITCHDEBUG
+		    return _vector_factory->addMachine(clm, index);
 
 		}
 		else std::cerr << "Could not add machine " << id << ": '" << machine << "'" << std::endl;
@@ -163,18 +170,20 @@ using namespace FSM;
 		return NULL;
 	}
 
+
 	int CLFSMMachineLoader::findIndexForNewMachine(const std::string machinePath)
 	{
 		size_t i;
-		for (i = 0; i < _machineNames.size(); i++)
+		for (i = 0; i < _machinePaths.size(); i++)
 		{
-			const std::string* pathAtIndex = _machineNames.at(i);
+			const std::string* pathAtIndex = _machinePaths.at(i);
 			if (machinePath.compare(*pathAtIndex) == 0 &&
 					_machineWrappers.at(i) == NULL)
 			{
+                std::cout << "Empty spot for machine path " << machinePath << "found at index " << i << std::endl; //MITCHDEBUG
 				return i;
 			}
 		}
-
+        std::cout << "No empty spot found for machine path " << machinePath << std::endl;
 		return CLError;
 	}
