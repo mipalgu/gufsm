@@ -75,6 +75,7 @@
 #include "clfsm_machine.h"
 #include "clfsm_wb_vector_factory.h"
 #include "gugenericwhiteboardobject.h"
+#include "clfsm_visitors.h"
 
 static const char *command;
 static int command_argc;
@@ -215,7 +216,7 @@ static void __attribute((noreturn)) backtrace_signal_handler(int signum)
 
 static void usage(const char *cmd)
 {
-        cerr << "Usage: " << cmd << "[-c][-d][-fPIC]{-I includedir}{-L linkdir}{-l lib}[-n][-s][-v]" << endl;
+        cerr << "Usage: " << cmd << "[-c][-d][-fPIC]{-I includedir}{-L linkdir}{-l lib}[-n][-s][-t][-v]" << endl;
 }
 
 static bool debug_internal_states = false;
@@ -266,8 +267,9 @@ int main(int argc, char * const argv[])
         compiler_args.push_back("-std=c++11");    /// XXX: fix this
 
         int ch;
-        int debug = 0, verbose = 0;
-        while ((ch = getopt(argc, argv, "dgf:I:L:l:nsv")) != -1)
+        int debug = 0, verbose = 0, timer = 0;
+    
+        while ((ch = getopt(argc, argv, "dgf:I:L:l:nstv")) != -1)
         {
                 switch (ch)
                 {
@@ -300,6 +302,9 @@ int main(int argc, char * const argv[])
                                 break;
                         case 's':
                                 FSM::debugSuspends++;
+                                break;
+                        case 't':
+                                timer = 1;
                                 break;
                         case 'v':
                                 verbose++;
@@ -335,6 +340,7 @@ int main(int argc, char * const argv[])
 
         visitor_f visitor = NULL;
         if (verbose) visitor = print_machine_and_state;
+        if (timer) visitor = CLFSMExecutionTimer::timer_visitor;
 
         CLFSMWBVectorFactory *factory = createMachines(machineWrappers, machines, compiler_args, linker_args);
         struct clfsm_context context = { &machines, factory };
