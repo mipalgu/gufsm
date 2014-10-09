@@ -1,10 +1,10 @@
 //
-// State_AddMachine.h
+// State_UnloadMachine.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_AddMachineTest_State_AddMachine_h
-#define clfsm_AddMachineTest_State_AddMachine_h
+#ifndef clfsm_AddMachineTest_State_UnloadMachine_h
+#define clfsm_AddMachineTest_State_UnloadMachine_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class AddMachine: public CLState
+            class UnloadMachine: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -35,24 +35,18 @@ namespace FSM
                     virtual void perform(CLMachine *, CLState *) const;
                 };
 
-                class Transition_0: public CLTransition
-                {
-                public:
-                    Transition_0(int toState = 3): CLTransition(toState) {}
-
-                    virtual bool check(CLMachine *, CLState *) const;
-                };
-
-                CLTransition *_transitions[1];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wzero-length-array"
+                CLTransition *_transitions[0];
 
                 public:
-                    AddMachine(const char *name = "AddMachine");
-                    virtual ~AddMachine();
+                    UnloadMachine(const char *name = "UnloadMachine");
+                    virtual ~UnloadMachine();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 1; }
+                    virtual int numberOfTransitions() const { return 0; }
 
-#                   include "State_AddMachine_Variables.h"
+#                   include "State_UnloadMachine_Variables.h"
             };
         }
       }
@@ -60,3 +54,4 @@ namespace FSM
 }
 
 #endif
+#pragma clang diagnostic pop

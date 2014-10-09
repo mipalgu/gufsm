@@ -9,6 +9,7 @@
 #include "State_InitialPseudoState.h"
 #include "State_Initial.h"
 #include "State_AddMachine.h"
+#include "State_UnloadMachine.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -26,6 +27,7 @@ AddMachineTest::AddMachineTest(int mid, const char *name): CLMachine(mid, name)
 	_states[0] = new FSMAddMachineTest::State::InitialPseudoState;
 	_states[1] = new FSMAddMachineTest::State::Initial;
 	_states[2] = new FSMAddMachineTest::State::AddMachine;
+	_states[3] = new FSMAddMachineTest::State::UnloadMachine;
 
 	setInitialState(_states[0]);            // set initial state
 }
@@ -35,4 +37,5 @@ AddMachineTest::~AddMachineTest()
 	delete _states[0];
 	delete _states[1];
 	delete _states[2];
+	delete _states[3];
 }

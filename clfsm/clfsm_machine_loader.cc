@@ -89,6 +89,7 @@ using namespace FSM;
 
   void FSM::unloadMachineAtIndex(int index)
   {
+      std::cout << "Unloading machine at index " << index << std::endl;
       index;
   }
 

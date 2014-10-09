@@ -78,7 +78,7 @@ namespace FSM
         class Machine;
         class CLMachine;
         class CLState;
-        class SuspensibleMachine;        
+        class SuspensibleMachine;
 
         enum CLControlStatus
         {
@@ -98,7 +98,7 @@ namespace FSM
         enum CLControlStatus control_machine_at_index(int index, enum CLControlStatus command);
 
         SuspensibleMachine* loadAndAddMachine(const std::string machine);
-
+        void unloadMachineAtIndex(int index);
 
 /*
  * Macros for making state machines more readable
@@ -129,6 +129,7 @@ static inline enum CLControlStatus status(const char *m)  { return cs_machine_na
 #define state_name_of(m)        (state_of(m)->name())
 
 #define loadMachine(m)  (loadAndAddMachine(m))
+#define unloadMachine(i) (unloadMachineAtIndex(i))
 
 #endif // NO_CL_READABILITY_MACROS
 }

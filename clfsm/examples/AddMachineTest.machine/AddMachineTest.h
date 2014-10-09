@@ -16,12 +16,12 @@ namespace FSM
     {
         class AddMachineTest: public CLMachine
         {
-            CLState *_states[3];
+            CLState *_states[4];
         public:
             AddMachineTest(int mid  = 0, const char *name = "AddMachineTest");
             virtual ~AddMachineTest();
             virtual CLState * const * states() const { return _states; }
-            virtual int numberOfStates() const { return 3; }
+            virtual int numberOfStates() const { return 4; }
 #           include "AddMachineTest_Variables.h"
         };
     }
