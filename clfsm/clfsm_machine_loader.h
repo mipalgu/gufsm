@@ -1,6 +1,7 @@
 /*
  *  clfsm_machine_loader.h
  *  clfsm
+ *  A class for the loading and unloading of state machines.
  *
  *  Created by Mitch Wenman on 28/09/14.
  *  Copyright (c) 2012 Mitch Wenman. All rights reserved.

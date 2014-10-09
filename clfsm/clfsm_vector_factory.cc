@@ -144,6 +144,11 @@ SuspensibleMachine *CLFSMVectorFactory::addMachine(CLMachine *clm, int index, bo
         return m;
 }
 
+void CLFSMVectorFactory::removeMachineAtIndex(int index)
+{
+    index++;
+    index--;    
+}
 
 CLFSMFactory *CLFSMVectorFactory::machine_factory(CLMachine *clm, int index)
 {
@@ -197,15 +202,15 @@ enum CLControlStatus CLFSMVectorFactory::control_machine_at_index(int i, enum CL
         {
                 case CLStatus:
                         break;
-                        
+
                 case CLSuspend:
                         m->scheduleSuspend();
                         break;
-                        
+
                 case CLResume:
                         m->scheduleResume();
                         break;
-                        
+
                 case CLRestart:
                         m->scheduleRestart();
                         break;
