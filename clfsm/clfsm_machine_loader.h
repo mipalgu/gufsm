@@ -103,7 +103,9 @@ namespace FSM
             SuspensibleMachine *loadAndAddMachineAtPath(const std::string machine,                      std::vector<std::string> compiler_args = std::vector<std::string>(),
 std::vector<std::string> linker_args = std::vector<std::string>());
 
-			/// Vector factory getter
+			void unloadMachineAtIndex(int index);
+
+            /// Vector factory getter
 			CLFSMWBVectorFactory *vector_factory() const { return _vector_factory; }
 
 			///Machine Wrapper getter

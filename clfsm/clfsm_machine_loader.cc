@@ -90,7 +90,8 @@ using namespace FSM;
   void FSM::unloadMachineAtIndex(int index)
   {
       std::cout << "Unloading machine at index " << index << std::endl; //MITCHDEBUG
-      index;
+      CLFSMMachineLoader *loader = CLFSMMachineLoader::getMachineLoaderSingleton();
+      loader->unloadMachineAtIndex(index);
   }
 
 
@@ -157,8 +158,8 @@ using namespace FSM;
             }
 	    	else
             {
-                //Machine path already in vector - don't add again
                 _machineWrappers[index] = wrapper;
+                _machinePaths.push_back(&machine);
             }
 
             printf("Adding machine named %s at index %i\n", wrapper->name(), index); //MITCHDEBUG
@@ -169,6 +170,20 @@ using namespace FSM;
 
 		return NULL;
 	}
+
+    void CLFSMMachineLoader::unloadMachineAtIndex(int index)
+    {
+        int numWrappers = int(_machineWrappers.size());
+        if (index >= 0 && index < numWrappers)
+        {
+            bool success = _vector_factory->removeMachineAtIndex(index);
+            if (!success) std::cerr << "Could not remove machine " << std::endl; //MITCHDEBUG
+            else std::cout << "Remove Machine: Success" << std::endl;
+            MachineWrapper* wrapper = _machineWrappers.at(index);
+            delete wrapper;
+            _machineWrappers[index] = NULL;
+        }
+    }
 
 
 	int CLFSMMachineLoader::findIndexForNewMachine(const std::string machinePath)

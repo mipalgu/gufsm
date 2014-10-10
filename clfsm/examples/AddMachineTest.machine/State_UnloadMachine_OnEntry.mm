@@ -1,2 +1,2 @@
-int index = machine_index();
+int index = 2;
 unloadMachine(index);
