@@ -1,6 +1,6 @@
 /*
  *  FSMachineVector.cc
- *  
+ *
  *  Created by René Hexel on 22/11/11.
  *  Copyright (c) 2011, 2013-2014 Rene Hexel.
  *  All rights reserved.
@@ -132,14 +132,13 @@ SuspensibleMachine *StateMachineVector::addMachine(SuspensibleMachine *m, int in
 bool StateMachineVector::removeMachineAtIndex(int index, bool del)
 {
         int size = static_cast<int>(machines().size());
-        int mid = index;
-        if (mid < 0 || mid >= size) mid = size-1;
+        if (index < 0 || index >= size) index = size-1;
         if (!size) return false;
 
-        SuspensibleMachine *m = _machines[mid];
+        SuspensibleMachine *m = _machines[index];
         if (!m) return false;
 
-        _machines[mid] = NULL;
+        _machines[index] = NULL;
 
         if (del) delete m;
 
@@ -244,7 +243,7 @@ bool StateMachineVector::executeOnceOnQueue(dispatch_queue_t queue)
 
                         if (f) fired = true;
                 }
-        }        
+        }
         return fired;
 }
 

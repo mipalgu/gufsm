@@ -1,2 +1,2 @@
-int index = 2;
+int index = 1;
 unloadMachine(index);
