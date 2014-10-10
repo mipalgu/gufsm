@@ -146,7 +146,14 @@ SuspensibleMachine *CLFSMVectorFactory::addMachine(CLMachine *clm, int index, bo
 
 bool CLFSMVectorFactory::removeMachineAtIndex(int index)
 {
-
+    //Check index first
+    int numMachines = int(_clmachines.size());
+    if (!(index < numMachines && index >= 0))
+        return false;
+    //Delete clmachine
+    delete _clmachines.at(index);
+    //Delete suspensible machine from StateMachineVector
+    return _fsms->removeMachineAtIndex(index, true);
 }
 
 CLFSMFactory *CLFSMVectorFactory::machine_factory(CLMachine *clm, int index)
