@@ -144,10 +144,9 @@ SuspensibleMachine *CLFSMVectorFactory::addMachine(CLMachine *clm, int index, bo
         return m;
 }
 
-void CLFSMVectorFactory::removeMachineAtIndex(int index)
+bool CLFSMVectorFactory::removeMachineAtIndex(int index)
 {
-    index++;
-    index--;    
+
 }
 
 CLFSMFactory *CLFSMVectorFactory::machine_factory(CLMachine *clm, int index)
