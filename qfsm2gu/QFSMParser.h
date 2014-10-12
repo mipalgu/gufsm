@@ -28,6 +28,7 @@
 @property (weak) id delegate;
 @property (strong) NSXMLParser *parser;
 @property (strong) NSMutableString *currentParsedCharacterData;
+@property (strong) QFSMElement *rootElement;
 @property (strong) QFSMElement *currentElement;
 @property (strong) NSMutableArray *stack;
 @property (strong) NSError *error;
