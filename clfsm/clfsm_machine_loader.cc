@@ -171,19 +171,19 @@ using namespace FSM;
 		return NULL;
 	}
 
-    void CLFSMMachineLoader::unloadMachineAtIndex(int index)
-    {
-        int numWrappers = int(_machineWrappers.size());
-        if (index >= 0 && index < numWrappers)
-        {
-            bool success = _vector_factory->removeMachineAtIndex(index);
-            if (!success) std::cerr << "Could not remove machine " << std::endl; //MITCHDEBUG
-            else std::cout << "Remove Machine: Success" << std::endl;
-            MachineWrapper* wrapper = _machineWrappers.at(index);
-            delete wrapper;
-            _machineWrappers[index] = NULL;
-        }
-    }
+  void CLFSMMachineLoader::unloadMachineAtIndex(int index)
+  {
+      int numWrappers = int(_machineWrappers.size());
+      if (index >= 0 && index < numWrappers)
+      {
+          bool success = _vector_factory->removeMachineAtIndex(index);
+          if (!success) std::cerr << "Could not remove machine " << std::endl; //MITCHDEBUG
+          else std::cout << "Remove Machine: Success" << std::endl;
+          MachineWrapper* wrapper = _machineWrappers.at(index);
+          delete wrapper;
+          _machineWrappers[index] = NULL;
+      }
+  }
 
 
 	int CLFSMMachineLoader::findIndexForNewMachine(const std::string machinePath)
