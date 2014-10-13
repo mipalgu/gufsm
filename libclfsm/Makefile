@@ -4,6 +4,7 @@
 # Makefile for libclfsm
 #
 MODULE_BASE=clfsm
+CI_NAME=libclfsm
 
 ALL_TARGETS=host-local robot-local
 
