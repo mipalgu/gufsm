@@ -89,7 +89,6 @@ using namespace FSM;
 
   void FSM::unloadMachineAtIndex(int index)
   {
-      std::cout << "Unloading machine at index " << index << std::endl; //MITCHDEBUG
       CLFSMMachineLoader *loader = CLFSMMachineLoader::getMachineLoaderSingleton();
       loader->unloadMachineAtIndex(index);
   }
@@ -162,7 +161,6 @@ using namespace FSM;
                 _machinePaths.push_back(&machine);
             }
 
-            printf("Adding machine named %s at index %i\n", wrapper->name(), index); //MITCHDEBUG
 		    return _vector_factory->addMachine(clm, index);
 
 		}
@@ -177,28 +175,29 @@ using namespace FSM;
       if (index >= 0 && index < numWrappers)
       {
           bool success = _vector_factory->removeMachineAtIndex(index);
-          if (!success) std::cerr << "Could not remove machine " << std::endl; //MITCHDEBUG
-          else std::cout << "Remove Machine: Success" << std::endl;
-          MachineWrapper* wrapper = _machineWrappers.at(index);
-          delete wrapper;
-          _machineWrappers[index] = NULL;
+          if (success)
+          {
+              MachineWrapper* wrapper = _machineWrappers.at(index);
+              delete wrapper;
+              _machineWrappers[index] = NULL;
+          }
+
       }
   }
 
 
 	int CLFSMMachineLoader::findIndexForNewMachine(const std::string machinePath)
 	{
-		size_t i;
-		for (i = 0; i < _machinePaths.size(); i++)
-		{
-			const std::string* pathAtIndex = _machinePaths.at(i);
-			if (machinePath.compare(*pathAtIndex) == 0 &&
-					_machineWrappers.at(i) == NULL)
-			{
-                std::cout << "Empty spot for machine path " << machinePath << "found at index " << i << std::endl; //MITCHDEBUG
-				return i;
-			}
-		}
-        std::cout << "No empty spot found for machine path " << machinePath << std::endl;
-		return CLError;
+  		size_t i;
+  		for (i = 0; i < _machinePaths.size(); i++)
+  		{
+          const std::string* pathAtIndex = _machinePaths.at(i);
+  		    if (machinePath.compare(*pathAtIndex) == 0 &&
+  				_machineWrappers.at(i) == NULL)
+  	      {
+  	         return i;
+  		    }
+  		}
+      std::cout << "No empty spot found for machine path " << machinePath << std::endl;
+  		return CLError;
 	}
