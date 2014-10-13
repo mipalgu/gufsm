@@ -187,9 +187,9 @@ static bool debug_internal_states = false;
 static bool print_machine_and_state(void *ctx, SuspensibleMachine *machine, int machine_number)
 {
         struct clfsm_context *context = static_cast<struct clfsm_context *>(ctx);
-        CLFSMWBVectorFactory *factory = context->loader->vector_factory(); factory;
-        const char *machineName = factory->name_of_machine_at_index(machine_number);
-        const char* path = context->loader->machineWrappers().at(machine_number)->path();
+        MachineWrapper* wrapper = context->loader->machineWrappers().at(machine_number);
+        const char *machineName = wrapper->name();
+        const char* path = wrapper->path();
 
         if (machine->previousState() != machine->currentState())
                 fprintf(stderr, "%sm%3d s%3d - %-30.30s / %-20.20s - %s\n",  debug_internal_states ? "\n" : "", machine_number, machine->indexOfState(), path, machineName, machine->currentState()->name().c_str());
@@ -282,6 +282,7 @@ int main(int argc, char * const argv[])
         {
                 struct stat s;
                 string machine(*argv++);
+                std::cout << "Machine in main: " << machine.c_str() << std::endl; //MITCHDEBUG
                 if (stat(machine.c_str(), &s) < 0)
                 {
                         string machine_with_extension = machine + ".machine";

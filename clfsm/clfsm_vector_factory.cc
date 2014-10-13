@@ -146,15 +146,15 @@ SuspensibleMachine *CLFSMVectorFactory::addMachine(CLMachine *clm, int index, bo
 
 bool CLFSMVectorFactory::removeMachineAtIndex(int index)
 {
-    //Check index first
-    int numMachines = int(_clmachines.size());
-    if (!(index < numMachines && index >= 0))
-        return false;
-    //Delete clmachine
-    delete _clmachines.at(index);
-    _clmachines[index] = NULL;
-    //Delete suspensible machine from StateMachineVector
-    return _fsms->removeMachineAtIndex(index, true);
+        //Check index first
+        int numMachines = int(_clmachines.size());
+        if (!(index < numMachines && index >= 0))
+            return false;
+        //Delete clmachine
+        delete _clmachines.at(index);
+        _clmachines[index] = NULL;
+        //Delete suspensible machine from StateMachineVector
+        return _fsms->removeMachineAtIndex(index, true);
 }
 
 CLFSMFactory *CLFSMVectorFactory::machine_factory(CLMachine *clm, int index)
@@ -180,6 +180,7 @@ int CLFSMVectorFactory::index_of_machine_named(const char *machine_name)
         if (!machine_name) return int(n)-1;
         for (size_t i = 0; i < n; i++)
         {
+                std::cout << "Comparing to " << _clmachines[i]->machineName() << std::endl;
                 if (strcmp(_clmachines[i]->machineName(), machine_name) == 0)
                         return int(i);
         }

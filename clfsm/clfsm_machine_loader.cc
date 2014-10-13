@@ -107,11 +107,11 @@ using namespace FSM;
 
 	/* ---- Instance methods ---- */
 
-  CLFSMMachineLoader::CLFSMMachineLoader()
-  {
-    if (!loader_singleton) loader_singleton = this;
-    _vector_factory = new CLFSMWBVectorFactory();
-  }
+    CLFSMMachineLoader::CLFSMMachineLoader()
+    {
+        if (!loader_singleton) loader_singleton = this;
+        _vector_factory = new CLFSMWBVectorFactory();
+    }
 
 	static std::string bumpedName(std::string name)
 	{
@@ -160,7 +160,7 @@ using namespace FSM;
                 _machineWrappers[index] = wrapper;
                 _machinePaths.push_back(&machine);
             }
-
+            std::cout << "Added machine named: " << clm->machineName() << std::endl;
 		    return _vector_factory->addMachine(clm, index);
 
 		}
