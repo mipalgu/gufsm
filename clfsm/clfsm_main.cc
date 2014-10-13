@@ -98,7 +98,7 @@ static CLFSMWBVectorFactory *createMachines(vector<MachineWrapper *> &machineWra
             FSM::loadAndAddMachineAtPath(machine, compiler_args, linker_args);
 
     }
-    machineWrappers = loader->machineWrappers(); 
+    machineWrappers = loader->machineWrappers();
     return loader->vector_factory();
 }
 
@@ -187,7 +187,7 @@ static bool debug_internal_states = false;
 static bool print_machine_and_state(void *ctx, SuspensibleMachine *machine, int machine_number)
 {
         struct clfsm_context *context = static_cast<struct clfsm_context *>(ctx);
-        CLFSMWBVectorFactory *factory = context->loader->vector_factory();
+        CLFSMWBVectorFactory *factory = context->loader->vector_factory(); factory;
         const char *machineName = factory->name_of_machine_at_index(machine_number);
         const char* path = context->loader->machineWrappers().at(machine_number)->path();
 

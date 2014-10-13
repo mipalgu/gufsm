@@ -11,6 +11,7 @@
 #include "State_AddMachine.h"
 #include "State_UnloadMachine.h"
 #include "State_AddSecondMachine.h"
+#include "State_AddThirdMachine.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -30,6 +31,7 @@ AddMachineTest::AddMachineTest(int mid, const char *name): CLMachine(mid, name)
 	_states[2] = new FSMAddMachineTest::State::AddMachine;
 	_states[3] = new FSMAddMachineTest::State::UnloadMachine;
 	_states[4] = new FSMAddMachineTest::State::AddSecondMachine;
+	_states[5] = new FSMAddMachineTest::State::AddThirdMachine;
 
 	setInitialState(_states[0]);            // set initial state
 }
@@ -41,4 +43,5 @@ AddMachineTest::~AddMachineTest()
 	delete _states[2];
 	delete _states[3];
 	delete _states[4];
+	delete _states[5];
 }

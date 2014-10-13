@@ -148,7 +148,7 @@ bool StateMachineVector::removeMachineAtIndex(int index, bool del)
 
 bool StateMachineVector::executeOnce(visitor_f should_execute_machine, void *context)
 {
-        int machine_no = 0;
+        //int machine_no = 0;
         bool fired = false;
 
         setAccepting(true);
@@ -157,7 +157,7 @@ bool StateMachineVector::executeOnce(visitor_f should_execute_machine, void *con
              it < machines().size(); it++)
         {
             SuspensibleMachine *m = machines()[it];
-            if (!m || (should_execute_machine != NULL && !should_execute_machine(context, m, machine_no++)))
+            if (!m || (should_execute_machine != NULL && !should_execute_machine(context, m, int(it))))
                     continue;
 
             bool mfire = false;
