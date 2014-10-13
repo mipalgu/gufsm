@@ -106,7 +106,9 @@ didStartElement: (NSString *) elementName
                 QFSMElement *element = [[QFSMElement alloc]
                                         initWithAttributes: attributes];
                 element.name = elementName;
-                element.parent = self.currentElement;
+                if (!(element.parent = self.currentElement) && !self.rootElement)
+                    self.rootElement = element;
+
                 [self.currentElement.subElements addObject: element];
 
                 self.currentElement = element;
