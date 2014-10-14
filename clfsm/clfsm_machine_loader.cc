@@ -158,7 +158,6 @@ using namespace FSM;
 	    	else
             {
                 _machineWrappers[index] = wrapper;
-                _machinePaths.push_back(&machine);
             }
             std::cout << "Added machine named: " << clm->machineName() << std::endl;
 		    return _vector_factory->addMachine(clm, index);
