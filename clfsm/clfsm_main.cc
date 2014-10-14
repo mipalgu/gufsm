@@ -282,7 +282,6 @@ int main(int argc, char * const argv[])
         {
                 struct stat s;
                 string machine(*argv++);
-                std::cout << "Machine in main: " << machine.c_str() << std::endl; //MITCHDEBUG
                 if (stat(machine.c_str(), &s) < 0)
                 {
                         string machine_with_extension = machine + ".machine";
