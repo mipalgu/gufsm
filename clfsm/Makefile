@@ -3,7 +3,7 @@
 #
 # clfsm Makefile
 #
-ALL_TARGETS=host robot
+ALL_TARGETS=build-host build-robot do-catkin
 
 all: all-real
 

@@ -120,6 +120,7 @@ void CLFSMWBVectorFactory::suspendMachines(guWhiteboard::FSMControlStatus &suspe
         FSMControlStatus status;
 
         status.reset();
+        status.set_command(FSMControlType::FSMSuspend);
 
         int i = 0;
         for (MachineVector::iterator it = fsms()->machines().begin(); it != fsms()->machines().end(); it++, i++)
@@ -130,7 +131,7 @@ void CLFSMWBVectorFactory::suspendMachines(guWhiteboard::FSMControlStatus &suspe
                 if (suspendControl.get(i))
                 {
                         machine->scheduleSuspend();
-                        status.get(i);
+                        status.set(i);
                 }
                 else status.set(i, machine->isSuspended());
         }
@@ -145,6 +146,7 @@ void CLFSMWBVectorFactory::resumeMachines(guWhiteboard::FSMControlStatus &resume
         FSMControlStatus status;
 
         status.reset();
+        status.set_command(FSMControlType::FSMSuspend);
 
         int i = 0;
         for (MachineVector::iterator it = fsms()->machines().begin(); it != fsms()->machines().end(); it++, i++)
@@ -170,6 +172,7 @@ void CLFSMWBVectorFactory::restartMachines(guWhiteboard::FSMControlStatus &resum
         FSMControlStatus status;
 
         status.reset();
+        status.set_command(FSMControlType::FSMSuspend);
 
         int i = 0;
         for (MachineVector::iterator it = fsms()->machines().begin(); it != fsms()->machines().end(); it++, i++)
