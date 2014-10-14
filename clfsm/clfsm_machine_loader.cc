@@ -188,16 +188,16 @@ using namespace FSM;
 
 	int CLFSMMachineLoader::findIndexForNewMachine(const std::string machinePath)
 	{
-  		size_t i;
-  		for (i = 0; i < _machinePaths.size(); i++)
-  		{
-          const std::string* pathAtIndex = _machinePaths.at(i);
-  		    if (machinePath.compare(*pathAtIndex) == 0 &&
-  				_machineWrappers.at(i) == NULL)
-  	      {
-  	         return i;
-  		    }
-  		}
-      std::cout << "No empty spot found for machine path " << machinePath << std::endl;
+        size_t i;
+        for (i = 0; i < _machinePaths.size(); i++)
+        {
+            const std::string* pathAtIndex = _machinePaths.at(i);
+            if (machinePath.compare(*pathAtIndex) == 0 &&
+        		_machineWrappers.at(i) == NULL)
+            {
+             return i;
+            }
+        }
+        std::cout << "No empty spot found for machine path " << machinePath << std::endl;
   		return CLError;
 	}
