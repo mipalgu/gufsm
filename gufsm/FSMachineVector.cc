@@ -163,7 +163,7 @@ bool StateMachineVector::executeOnce(visitor_f should_execute_machine, void *con
                         continue;
 
                 bool mfire = false;
-                bool a = !m->executeOnce(&
+                bool a = !m->executeOnce(&mfire);
                 setAccepting(a && accepting());
 
                 if (mfire) fired = true;
