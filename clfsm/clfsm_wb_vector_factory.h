@@ -100,16 +100,16 @@ namespace FSM
                  * @param[in] deleteOnDestruction       Delete non-NULL wbcontext on destruction
                  */
                 CLFSMWBVectorFactory(FSM::Context *wbcontext = NULL, bool deleteOnDestruction = false);
-                
+
                 /** context getter */
                 FSM::Context *context() { return (FSM::Context *)(_context); }
-                
+
                 /** context setter */
                 void setContext(FSM::Context *context) { _context = (FSM::Context *) context; }
-                
+
                 /** whiteboard watcher getter */
                 whiteboard_watcher &watcher() { return _watcher; }
-                
+
                 /** status getter */
                 guWhiteboard::FSM_Status_t &wbstatus() { return _wbstatus; }
 
@@ -120,7 +120,7 @@ namespace FSM
                  * whiteboard callback for control message
                  */
                 void whiteboard_fsm_control(guWhiteboard::WBTypes t, guWhiteboard::FSMControlStatus &controlMsg);
-                
+
                 /**
                  * whiteboard callback for names message
                  */
@@ -128,21 +128,27 @@ namespace FSM
 
                 /// post the status of all machines on the whiteboard
                 void postMachineStatus();
-                
+
                 /// suspend the machines whose bits are 1
                 void suspendMachines(guWhiteboard::FSMControlStatus &suspendControl);
-                
+
                 /// resume the machines whose bits are 1
                 void resumeMachines(guWhiteboard::FSMControlStatus &resumeControl);
-                
+
                 /// restart the machines whose bits are 1
                 void restartMachines(guWhiteboard::FSMControlStatus &restartControl);
 
                 /// post the names of the current machines on the whiteboard
                 void postMachineNames();
 
+//                /// post the names of the current machines on the whiteboard leveraging the whiteboard_fsm_names callback
+//                void newPostMachineNames();
+
                 /// post one packet of names starting from the given index
-                uint16_t postMachineNamesFromIndex(uint16_t index);
+//                uint16_t postMachineNamesFromIndex(uint16_t index);
+//                uint16_t postMachineNamesFromIndex(guWhiteboard::FSMNames &namesReq);
+                guWhiteboard::FSMNames* postMachineNamesFromIndex(guWhiteboard::FSMNames &namesReq);
+
         };
 }
 #pragma clang diagnostic pop

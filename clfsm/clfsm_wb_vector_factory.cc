@@ -68,6 +68,7 @@ using namespace std;
 CLFSMWBVectorFactory::CLFSMWBVectorFactory(Context *context, bool deleteOnDestruction): CLFSMVectorFactory(context, deleteOnDestruction), _watcher(),  _wbstatus()
 {
         SUBSCRIBE(&watcher(), FSM_Control, FSM::CLFSMWBVectorFactory, FSM::CLFSMWBVectorFactory::whiteboard_fsm_control);
+        SUBSCRIBE(&watcher(), FSM_Names, FSM::CLFSMWBVectorFactory, FSM::CLFSMWBVectorFactory::whiteboard_fsm_names);
 }
 
 
@@ -94,12 +95,6 @@ void CLFSMWBVectorFactory::whiteboard_fsm_control(WBTypes, FSMControlStatus &con
 }
 
 
-void CLFSMWBVectorFactory::whiteboard_fsm_names(WBTypes, FSMNames &namesReq)
-{
-        postMachineNamesFromIndex(namesReq.startoffs());
-}
-
-
 void CLFSMWBVectorFactory::postMachineStatus()
 {
         FSMControlStatus status;
@@ -123,7 +118,7 @@ void CLFSMWBVectorFactory::postMachineStatus()
 void CLFSMWBVectorFactory::suspendMachines(guWhiteboard::FSMControlStatus &suspendControl)
 {
         FSMControlStatus status;
-        
+
         status.reset();
 
         int i = 0;
@@ -140,7 +135,7 @@ void CLFSMWBVectorFactory::suspendMachines(guWhiteboard::FSMControlStatus &suspe
                 else status.set(i, machine->isSuspended());
         }
         status.set(i);                  // set the high bit to 1
-        
+
         wbstatus().set(status);         // post to whiteboard
 }
 
@@ -150,7 +145,7 @@ void CLFSMWBVectorFactory::resumeMachines(guWhiteboard::FSMControlStatus &resume
         FSMControlStatus status;
 
         status.reset();
-        
+
         int i = 0;
         for (MachineVector::iterator it = fsms()->machines().begin(); it != fsms()->machines().end(); it++, i++)
         {
@@ -173,9 +168,9 @@ void CLFSMWBVectorFactory::resumeMachines(guWhiteboard::FSMControlStatus &resume
 void CLFSMWBVectorFactory::restartMachines(guWhiteboard::FSMControlStatus &resumeControl)
 {
         FSMControlStatus status;
-        
+
         status.reset();
-        
+
         int i = 0;
         for (MachineVector::iterator it = fsms()->machines().begin(); it != fsms()->machines().end(); it++, i++)
         {
@@ -190,8 +185,14 @@ void CLFSMWBVectorFactory::restartMachines(guWhiteboard::FSMControlStatus &resum
                 else status.set(i, machine->isSuspended());
         }
         status.set(i);                  // set the high bit to 1
-        
+
         wbstatus().set(status);         // post to whiteboard
+}
+
+
+void CLFSMWBVectorFactory::whiteboard_fsm_names(WBTypes, FSMNames &namesReq)
+{
+        postMachineNamesFromIndex(namesReq);
 }
 
 #pragma clang diagnostic push
@@ -201,44 +202,49 @@ void CLFSMWBVectorFactory::postMachineNames()
 {
         int n = int(fsms()->machines().size());
         int postCount = 0;
-        int16_t index = -1;
-        for (uint16_t oldIndex = 0; index < n; index = postMachineNamesFromIndex(oldIndex))
+        FSMNames name_info("");
+        name_info.set_startoffs(0);
+        while ( name_info.startoffs() < n)
         {
-                if (index == oldIndex) break;
+                postMachineNamesFromIndex(name_info);
+                *name_info.names()='\0';
                 if (postCount) protected_msleep(20);
                 if ((++postCount % GU_SIMPLE_WHITEBOARD_GENERATIONS) == 0)
                         protected_msleep(80);
-                oldIndex = index;
         }
 }
 
-#pragma clang diagnostic pop
 
-
-uint16_t CLFSMWBVectorFactory::postMachineNamesFromIndex(uint16_t index)
+FSMNames* CLFSMWBVectorFactory::postMachineNamesFromIndex(FSMNames &namesReq)
 {
-        FSMNames name_info;
+        char *currentName = namesReq.names();
+        if (*currentName == 0) {
 
-        name_info.set_startoffs(index);
-        char *currentName = name_info.names();
+                uint16_t index = namesReq.startoffs();
 
-        int n = int(_clmachines.size());
-        while (index < n)
-        {
-                CLMachine *machine = _clmachines[index];
-                const char *machine_name = machine->machineName();
-                int len = int(strlen(machine_name));
-                if (!machine_name || len >= name_info.available_space(currentName))
-                        break;
-                strcpy(currentName, machine_name);
-                currentName += len;
-                *currentName++ = '\0';
-                index++;
+                int n = int(_clmachines.size());
+                if (index >= n) {
+                        namesReq.set_startoffs(static_cast<uint16_t> (n-1));
+                        index = namesReq.startoffs();
+                }
+                while (index < n)
+                {
+                        CLMachine *machine = _clmachines[index];
+                        const char *machine_name = machine->machineName();
+                        int len = int(strlen(machine_name));
+                        if (!machine_name || len >= namesReq.available_space(currentName))
+                                break;
+                        strcpy(currentName, machine_name);
+                        currentName += len;
+                        *currentName++ = '\0';
+                        index++;
+                }
+                if (namesReq.available_space(currentName)) *currentName = '\0';
+
+//                if (*namesReq.names() != '\0') {
+                        wbfsmnames().set(namesReq);
+//                }
+                namesReq.set_startoffs(index);
         }
-        if (name_info.available_space(currentName)) *currentName = '\0';
-
-        wbfsmnames().set(name_info);
-
-        return index;
+        return &namesReq;
 }
-

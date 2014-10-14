@@ -128,6 +128,8 @@ static CLFSMWBVectorFactory *createMachines(vector<MachineWrapper *> &machineWra
                             name = bumpedName(name);
                         machineWrapper.setName(name);
                         clm->setMachineName(name.c_str());
+                    } else {
+                        clm->setMachineName(machineWrapper.name()); // set name without .machine extension
                     }
                     factory->addMachine(clm);
                 }
@@ -216,6 +218,15 @@ static void __attribute((noreturn)) backtrace_signal_handler(int signum)
 static void usage(const char *cmd)
 {
         cerr << "Usage: " << cmd << "[-c][-d][-fPIC]{-I includedir}{-L linkdir}{-l lib}[-n][-s][-v]" << endl;
+        cerr << "[-c] = Compile only flag, don't execute machine." << endl;
+        cerr << "[-fPIC] = To generate Position Independent Code, required by some machines." << endl;
+        cerr << "[-I includedir] = Directories to include during compilation." << endl;
+        cerr << "[-L linkdir] = Directories to include during linking." << endl;
+        cerr << "[-l lib] = Libraries to include during linking." << endl;
+        cerr << "[-n] = Restart CLFSM after SIGABRT or SIGIOT signals." << endl;
+        cerr << "[-s] = Turns on debugging output when machine is suspended." << endl;
+        cerr << "[-v] = Verbose; output MachineID, State, and name of machine." << endl;
+        cerr << "[-d] = Output debug information (requires Verbose switch)." << endl;
 }
 
 static bool debug_internal_states = false;
@@ -227,7 +238,13 @@ static bool print_machine_and_state(void *ctx, SuspensibleMachine *machine, int 
         const char *machineName = factory->name_of_machine_at_index(machine_number);
 
         if (machine->previousState() != machine->currentState())
-                fprintf(stderr, "%sm%3d s%3d - %-30.30s / %-20.20s - %s\n",  debug_internal_states ? "\n" : "", machine_number, machine->indexOfState(), context->machineFiles->at(machine_number).c_str(), machineName, machine->currentState()->name().c_str());
+                fprintf(stderr, "%sm%3d s%3d - %-30.30s / %-30.30s - %s\n", \
+                        debug_internal_states ? "\n" : "", \
+                        machine_number, \
+                        machine->indexOfState(), \
+                        context->machineFiles->at(machine_number).c_str(), \
+                        machineName, \
+                        machine->currentState()->name().c_str());
         else if (debug_internal_states)
                 fprintf(stderr, "%d/%d ", machine_number, machine->indexOfState());
 
@@ -266,11 +283,15 @@ int main(int argc, char * const argv[])
         compiler_args.push_back("-std=c++11");    /// XXX: fix this
 
         int ch;
+        bool compileOnly = false;
         int debug = 0, verbose = 0;
-        while ((ch = getopt(argc, argv, "dgf:I:L:l:nsv")) != -1)
+        while ((ch = getopt(argc, argv, "cdgf:I:L:l:nsv")) != -1)
         {
                 switch (ch)
                 {
+                        case 'c':
+                                compileOnly = true;
+                                break;
                         case 'd':
                                 debug++;
                                 break;
@@ -335,16 +356,18 @@ int main(int argc, char * const argv[])
 
         visitor_f visitor = NULL;
         if (verbose) visitor = print_machine_and_state;
-
         CLFSMWBVectorFactory *factory = createMachines(machineWrappers, machines, compiler_args, linker_args);
-        struct clfsm_context context = { &machines, factory };
-        factory->postMachineStatus();
-        debug_internal_states = debug;
-        factory->fsms()->execute(visitor, &context);
-        delete factory;
 
-        for (vector<MachineWrapper *>::const_iterator it = machineWrappers.begin(); it != machineWrappers.end(); it++)
-                if (*it) delete *it;
+        if (!compileOnly) {
+                struct clfsm_context context = { &machines, factory };
+                factory->postMachineStatus();
+                debug_internal_states = debug;
+                factory->fsms()->execute(visitor, &context);
+                delete factory;
+
+                for (vector<MachineWrapper *>::const_iterator it = machineWrappers.begin(); it != machineWrappers.end(); it++)
+                        if (*it) delete *it;
+        }
 
         return EXIT_SUCCESS;
 }
