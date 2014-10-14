@@ -87,7 +87,10 @@ namespace FSM
 		std::vector<MachineWrapper *> _machineWrappers;
 
 		/// The vector of machine paths
-		std::vector<const std::string *> _machinePaths;
+		std::vector<const std::string> _machinePaths;
+
+        /// The vector of machine names - retained for CLMachine
+        std::vector<const std::string> _machineNames;
 
 		///Private constructor for the singleton
 		CLFSMMachineLoader();

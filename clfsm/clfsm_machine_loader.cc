@@ -141,24 +141,27 @@ using namespace FSM;
 		CLMachine *clm = wrapper->instantiate(id, machine.c_str());
 		if (clm)
 		{
-			std::string name = wrapper->name();
+			std::string name = std::string(wrapper->name());
 			if (_vector_factory->index_of_machine_named(name.c_str()) != CLError)
 		    {
 		        while (_vector_factory->index_of_machine_named(name.c_str()) != CLError)
 		            name = bumpedName(name);
-		        wrapper->setName(name);
-		        clm->setMachineName(name.c_str());
+                wrapper->setName(name);
+                clm->setMachineName(name.c_str());
 		    }
-		    int index = findIndexForNewMachine(machine);
+            int index = findIndexForNewMachine(machine);
+
 		    if (index == CLError)
             {
                 _machineWrappers.push_back(wrapper);
-                _machinePaths.push_back(&machine);
+                _machinePaths.push_back(machine);
+                _machineNames.push_back(name);
             }
 	    	else
             {
                 _machineWrappers[index] = wrapper;
             }
+
             std::cout << "Added machine named: " << clm->machineName() << std::endl;
 		    return _vector_factory->addMachine(clm, index);
 
@@ -190,11 +193,11 @@ using namespace FSM;
         size_t i;
         for (i = 0; i < _machinePaths.size(); i++)
         {
-            const std::string* pathAtIndex = _machinePaths.at(i);
-            if (machinePath.compare(*pathAtIndex) == 0 &&
+            const std::string pathAtIndex = _machinePaths.at(i);
+            if (machinePath.compare(pathAtIndex) == 0 &&
         		_machineWrappers.at(i) == NULL)
             {
-             return i;
+                return i;
             }
         }
         std::cout << "No empty spot found for machine path " << machinePath << std::endl;
