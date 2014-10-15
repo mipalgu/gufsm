@@ -61,6 +61,7 @@
 #include <cstdio>
 #include <cerrno>
 #include <cctype>
+//#include <stdio.h>
 #include <unistd.h>
 #include <signal.h>
 #include <execinfo.h>
@@ -80,9 +81,11 @@ static const char *command;
 static int command_argc;
 static char * const *command_argv;
 static bool nonstop;
+static FILE* fStateMsgOutput;
 
 using namespace std;
 using namespace FSM;
+
 
 struct clfsm_context {
     vector<string> *machineFiles;       /// pointer to vector of file names
@@ -219,12 +222,12 @@ static void usage(const char *cmd)
 {
         cerr << "Usage: " << cmd << "[-c][-d][-fPIC]{-I includedir}{-L linkdir}{-l lib}[-n][-s][-v]" << endl;
         cerr << "[-c] = Compile only flag, don't execute machine." << endl;
-        cerr << "[-fPIC] = To generate Position Independent Code, required by some machines." << endl;
-        cerr << "[-I includedir] = Directories to include during compilation." << endl;
-        cerr << "[-L linkdir] = Directories to include during linking." << endl;
-        cerr << "[-l lib] = Libraries to include during linking." << endl;
+        cerr << "[-f] = compiler specific flags (eg. 'PIC' To generate Position Independent Code)." << endl;
+        cerr << "{-I includedir} = Directory to include during compilation. Use repeatedly for multiple directories." << endl;
+        cerr << "{-L linkdir} = Directory to include during linking. Use repeatedly for multiple directories." << endl;
+        cerr << "{-l lib} = Library to include during linking. Use repeatedly for multiple libraries." << endl;
         cerr << "[-n] = Restart CLFSM after SIGABRT or SIGIOT signals." << endl;
-        cerr << "[-s] = Turns on debugging output when machine is suspended." << endl;
+        cerr << "[-s] = Outputs information about machine suspenions and resumes." << endl;
         cerr << "[-v] = Verbose; output MachineID, State, and name of machine." << endl;
         cerr << "[-d] = Output debug information (requires Verbose switch)." << endl;
 }
@@ -238,7 +241,7 @@ static bool print_machine_and_state(void *ctx, SuspensibleMachine *machine, int 
         const char *machineName = factory->name_of_machine_at_index(machine_number);
 
         if (machine->previousState() != machine->currentState())
-                fprintf(stderr, "%sm%3d s%3d - %-30.30s / %-30.30s - %s\n", \
+                fprintf(fStateMsgOutput, "%sm%3d s%3d - %-30.30s / %-30.30s - %s\n", \
                         debug_internal_states ? "\n" : "", \
                         machine_number, \
                         machine->indexOfState(), \
@@ -246,13 +249,15 @@ static bool print_machine_and_state(void *ctx, SuspensibleMachine *machine, int 
                         machineName, \
                         machine->currentState()->name().c_str());
         else if (debug_internal_states)
-                fprintf(stderr, "%d/%d ", machine_number, machine->indexOfState());
+                fprintf(fStateMsgOutput, "%d/%d ", machine_number, machine->indexOfState());
 
         return true;
 }
 
+
 int main(int argc, char * const argv[])
 {
+        fStateMsgOutput = stderr;
         vector<MachineWrapper *> machineWrappers;
         vector<string> machines;
         vector<string> compiler_args;
