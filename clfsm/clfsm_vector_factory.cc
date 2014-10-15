@@ -180,7 +180,6 @@ int CLFSMVectorFactory::index_of_machine_named(const char *machine_name)
         if (!machine_name) return int(n)-1;
         for (size_t i = 0; i < n; i++)
         {
-                std::cout << "Comparing to " << _clmachines[i]->machineName() << std::endl; //MITCHDEBUG
                 if (strcmp(_clmachines[i]->machineName(), machine_name) == 0)
                         return int(i);
         }
