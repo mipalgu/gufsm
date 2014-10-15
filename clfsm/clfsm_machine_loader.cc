@@ -57,6 +57,7 @@
  */
 
  #include <iostream>
+ #include <string.h>
 
  #include "clfsm_machine_loader.h"
  #include "clfsm_wb_vector_factory.h"
@@ -134,34 +135,37 @@ using namespace FSM;
 		MachineWrapper *wrapper = new MachineWrapper(machine);
 		wrapper->setCompilerArgs(compiler_args);
 		wrapper->setLinkerArgs(linker_args);
-
 		//Leave ids as unique
 		int id = _vector_factory->number_of_machines();
 
 		CLMachine *clm = wrapper->instantiate(id, machine.c_str());
 		if (clm)
 		{
-			std::string name = std::string(wrapper->name());
+			std::string name = wrapper->name();
 			if (_vector_factory->index_of_machine_named(name.c_str()) != CLError)
 		    {
 		        while (_vector_factory->index_of_machine_named(name.c_str()) != CLError)
 		            name = bumpedName(name);
                 wrapper->setName(name);
-                clm->setMachineName(name.c_str());
 		    }
             int index = findIndexForNewMachine(machine);
+
+            //Create c string to retain for CLMachine
+            char* c_name = new char[strlen(name.c_str()) + 1];
 
 		    if (index == CLError)
             {
                 _machineWrappers.push_back(wrapper);
                 _machinePaths.push_back(machine);
-                _machineNames.push_back(name);
+                _machineNames.push_back(c_name);
             }
 	    	else
             {
                 _machineWrappers[index] = wrapper;
+                _machineNames[index] = c_name;
             }
-
+            strcpy(c_name, name.c_str());
+            clm->setMachineName(c_name);
             std::cout << "Added machine named: " << clm->machineName() << std::endl;
 		    return _vector_factory->addMachine(clm, index);
 
@@ -200,6 +204,6 @@ using namespace FSM;
                 return i;
             }
         }
-        std::cout << "No empty spot found for machine path " << machinePath << std::endl;
+        //std::cout << "No empty spot found for machine path " << machinePath << std::endl; //MITCHDEBUG
   		return CLError;
 	}
