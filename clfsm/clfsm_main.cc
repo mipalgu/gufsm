@@ -367,7 +367,7 @@ int main(int argc, char * const argv[])
                 struct clfsm_context context = { &machines, factory };
                 factory->postMachineStatus();
                 debug_internal_states = debug;
-                factory->fsms()->execute(visitor, &context);
+                factory->execute(visitor, &context);
                 delete factory;
 
                 for (vector<MachineWrapper *>::const_iterator it = machineWrappers.begin(); it != machineWrappers.end(); it++)
