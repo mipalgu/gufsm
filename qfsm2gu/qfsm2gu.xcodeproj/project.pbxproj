@@ -220,6 +220,19 @@
 /* End PBXGroup section */
 
 /* Begin PBXLegacyTarget section */
+		F19EFBA619EE3C6300F9554D /* qfsm2gu_mk */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = F19EFBA919EE3C6300F9554D /* Build configuration list for PBXLegacyTarget "qfsm2gu_mk" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/local/bin/bmake;
+			dependencies = (
+			);
+			name = qfsm2gu_mk;
+			passBuildSettingsInEnvironment = 1;
+			productName = qfsm2gu_mk;
+		};
 		F1FABD4A19026F23001AD476 /* Lqfsm2gu */ = {
 			isa = PBXLegacyTarget;
 			buildArgumentsString = qfsm2gu;
@@ -264,6 +277,11 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = ICT;
+				TargetAttributes = {
+					F19EFBA619EE3C6300F9554D = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
 			};
 			buildConfigurationList = F1AE8BA71332ADF800E8F7AB /* Build configuration list for PBXProject "qfsm2gu" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -280,6 +298,7 @@
 				F1AE8BAC1332ADF800E8F7AB /* qfsm2gu */,
 				F134EAF5194BE1BA00B561CB /* syntaxchecker */,
 				F1FABD4A19026F23001AD476 /* Lqfsm2gu */,
+				F19EFBA619EE3C6300F9554D /* qfsm2gu_mk */,
 			);
 		};
 /* End PBXProject section */
@@ -374,6 +393,62 @@
 		F134EAF8194BE1BA00B561CB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F19EFBA719EE3C6300F9554D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F19EFBA819EE3C6300F9554D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -554,6 +629,15 @@
 			buildConfigurations = (
 				F134EAF7194BE1BA00B561CB /* Debug */,
 				F134EAF8194BE1BA00B561CB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F19EFBA919EE3C6300F9554D /* Build configuration list for PBXLegacyTarget "qfsm2gu_mk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F19EFBA719EE3C6300F9554D /* Debug */,
+				F19EFBA819EE3C6300F9554D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
