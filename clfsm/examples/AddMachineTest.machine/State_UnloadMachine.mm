@@ -16,6 +16,7 @@ using namespace State;
 
 UnloadMachine::UnloadMachine(const char *name): CLState(name, *new UnloadMachine::OnEntry, *new UnloadMachine::OnExit, *new UnloadMachine::Internal)
 {
+	_transitions[0] = new Transition_0();
 }
 
 UnloadMachine::~UnloadMachine()
@@ -24,6 +25,7 @@ UnloadMachine::~UnloadMachine()
 	delete &onExitAction();
 	delete &internalAction();
 
+	delete _transitions[0];
 }
 
 void UnloadMachine::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -45,4 +47,15 @@ void UnloadMachine::Internal::perform(CLMachine *_machine, CLState *_state) cons
 #	include "AddMachineTest_VarRefs.mm"
 #	include "State_UnloadMachine_VarRefs.mm"
 #	include "State_UnloadMachine_Internal.mm"
+}
+
+bool UnloadMachine::Transition_0::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "AddMachineTest_VarRefs.mm"
+#	include "State_UnloadMachine_VarRefs.mm"
+
+	return
+	(
+#		include "State_UnloadMachine_Transition_0.expr"
+	);
 }

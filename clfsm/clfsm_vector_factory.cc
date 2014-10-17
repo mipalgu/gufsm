@@ -151,7 +151,8 @@ bool CLFSMVectorFactory::removeMachineAtIndex(int index)
         if (!(index < numMachines && index >= 0))
             return false;
         //Delete clmachine
-        delete _clmachines.at(index);
+        delete _clfactories[index];
+        _clfactories[index] = NULL;
         _clmachines[index] = NULL;
         //Delete suspensible machine from StateMachineVector
         return _fsms->removeMachineAtIndex(index, true);
