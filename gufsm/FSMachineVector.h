@@ -1,6 +1,6 @@
 /*
  *  FSMachineVector.h
- *  
+ *
  *  Created by René Hexel on 22/11/11.
  *  Copyright (c) 2011, 2013 Rene Hexel.
  *  All rights reserved.
@@ -115,7 +115,7 @@ namespace FSM
                         return *this;
                 }
                 bool operator==(const struct KripkeState &other) const
-                {       
+                {
                         if (variable_combination != other.variable_combination ||
                         whose_turn != other.whose_turn)
                                 return false;
@@ -159,13 +159,13 @@ namespace FSM
 
                 /** machines getter method */
                 MachineVector &machines() { return _machines; }
-                
+
                 /** const machines getter method */
                 const MachineVector &machines() const { return _machines; }
 
                 /** machines setter method */
                 void setMachines(const MachineVector &mv) { _machines = mv; }
-                
+
                 /**
                  * add a machine at a given index (-1 = end)
                  * @param m             state machine to add (NULL to create a new one)
@@ -184,16 +184,16 @@ namespace FSM
 
                 /** context getter */
                 Context *context() { return _context; }
-                
+
                 /** context setter */
                 void setContext(Context *ctx = NULL) { _context = ctx; }
-                
+
                 /** accepting state getter */
                 bool accepting() const { return _accepting; }
-                
+
                 /** accepting state setter */
                 void setAccepting(bool accept = true) { _accepting = accept; }
-                
+
                 /** put all state machines into their initial state */
                 virtual void initialise();
 
@@ -209,13 +209,13 @@ namespace FSM
                  * @param should_execute_machine visitor that returns whether machine should be executed in this round
                  * @return true if any transition fired on any machine
                  */
-                virtual bool executeOnce(visitor_f should_execute_machine, void *context = NULL);
+                virtual bool executeOnce(visitor_f should_execute_machine, void *context = NULL, visitor_f accepting_action = NULL);
 
                 /**
                  * synchronously execute once on a specific dispatch queue
                  */
                 virtual bool executeOnceOnQueue(dispatch_queue_t queue = NULL);
-                
+
                 /**
                  * execute until accepting state is encountered
                  */
@@ -224,14 +224,14 @@ namespace FSM
                 /**
                  * execute until accepting state is encountered
                  */
-                virtual void execute(visitor_f should_execute_machine, void *context = NULL);
+                virtual void execute(visitor_f should_execute_machine, void *context = NULL, visitor_f accepting_action = NULL);
 
                 /**
                  * asynchronously schedule execute on a specific dispatch queue until
                  * accepting state is encountered
                  */
                 virtual void scheduleExecuteOnQueue(dispatch_queue_t queue = NULL);
- 
+
                 /**
                  * execute dedicated function if no transition fired --
                  * sleeps for _idle_timeout by default
@@ -240,7 +240,7 @@ namespace FSM
 
                 /**
                  * subclass responsibility:
-                 * print the Kripke structure in svm format 
+                 * print the Kripke structure in svm format
                  */
                 virtual std::string kripkeInSVMformat() { return ""; }
 
@@ -248,12 +248,12 @@ namespace FSM
                  * restart all state machines from their initial state
                  */
                 virtual void restart();
-                
+
                 /**
                  * call suspend() on all state machines.
                  */
                 virtual void suspend();
-                
+
                 /**
                  * call resume() on all state machines.
                  */
@@ -268,8 +268,8 @@ namespace FSM
                  * printable state machine vector description
                  */
                 virtual std::string description() const;
-                
-                /** 
+
+                /**
                  * subclass responsibility: serialise a Kripke Gobal vector in smv format
                  */
                 std::string descriptionSMVformat(KripkeFreezePointVector &) { return ""; }

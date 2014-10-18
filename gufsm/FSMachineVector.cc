@@ -146,7 +146,7 @@ bool StateMachineVector::removeMachineAtIndex(int index, bool del)
 }
 
 
-bool StateMachineVector::executeOnce(visitor_f should_execute_machine, void *context)
+bool StateMachineVector::executeOnce(visitor_f should_execute_machine, void *context, visitor_f accepting_action)
 {
         //int machine_no = 0;
         bool fired = false;
@@ -248,7 +248,7 @@ bool StateMachineVector::executeOnceOnQueue(dispatch_queue_t queue)
 }
 
 
-void StateMachineVector::execute(visitor_f should_execute_machine, void *context)
+void StateMachineVector::execute(visitor_f should_execute_machine, void *context, visitor_f accepting_action)
 {
         do
         {
