@@ -151,7 +151,7 @@ bool CLFSMVectorFactory::removeMachineAtIndex(int index)
         if (!(index < numMachines && index >= 0))
             return false;
         //Delete clmachine
-        delete _clfactories[index];
+        delete _clmachines[index];
         _clfactories[index] = NULL;
         _clmachines[index] = NULL;
         //Delete suspensible machine from StateMachineVector
@@ -169,7 +169,9 @@ const char *CLFSMVectorFactory::name_of_machine_at_index(int i)
         int n = int(_clmachines.size());
         if (i < 0 || i >= n) return NULL;
 
-        return _clmachines[i]->machineName();
+        CLMachine* clm = _clmachines[i];
+        if (!clm) return NULL;
+        return clm->machineName();
 }
 
 
@@ -181,7 +183,8 @@ int CLFSMVectorFactory::index_of_machine_named(const char *machine_name)
         if (!machine_name) return int(n)-1;
         for (size_t i = 0; i < n; i++)
         {
-                if (strcmp(_clmachines[i]->machineName(), machine_name) == 0)
+                CLMachine* clm = _clmachines[i];
+                if (clm && strcmp(clm->machineName(), machine_name) == 0)
                         return int(i);
         }
 
@@ -190,7 +193,8 @@ int CLFSMVectorFactory::index_of_machine_named(const char *machine_name)
         const char *name = machine_name_with_extension.c_str();
         for (size_t i = 0; i < n; i++)
         {
-                if (strcmp(_clmachines[i]->machineName(), name) == 0)
+                CLMachine* clm = _clmachines[i];
+                if (clm && strcmp(clm->machineName(), name) == 0)
                         return int(i);
         }
 
