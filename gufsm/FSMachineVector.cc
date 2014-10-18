@@ -163,7 +163,8 @@ bool StateMachineVector::executeOnce(visitor_f should_execute_machine, void *con
             bool mfire = false;
             bool a = !m->executeOnce(&mfire);
             setAccepting(a && accepting());
-
+            if (a && accepting_action)
+                accepting_action(context, m, int(it)); //Execute function if machine in accepting state
             if (mfire) fired = true;
         }
 
@@ -252,7 +253,7 @@ void StateMachineVector::execute(visitor_f should_execute_machine, void *context
 {
         do
         {
-                if (!executeOnce(should_execute_machine, context) &&
+                if (!executeOnce(should_execute_machine, context, accepting_action) &&
                     _no_transition_fired)
                         _no_transition_fired(_idle_timeout);
         }

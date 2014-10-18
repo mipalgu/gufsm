@@ -199,6 +199,13 @@ static bool print_machine_and_state(void *ctx, SuspensibleMachine *machine, int 
         return true;
 }
 
+static bool unloadMachineIfAccepting(void *ctx, SuspensibleMachine* machine, int machine_number)
+{
+        std::cout << "Machine number " << machine_number << " in accepting state" << std::endl;
+        ctx; machine; machine_number;
+        return true;
+}
+
 int main(int argc, char * const argv[])
 {
         vector<MachineWrapper *> machineWrappers;
@@ -300,12 +307,13 @@ int main(int argc, char * const argv[])
 
         visitor_f visitor = NULL;
         if (verbose) visitor = print_machine_and_state;
+        visitor_f accept_action = unloadMachineIfAccepting;
 
         CLFSMWBVectorFactory *factory = createMachines(machineWrappers, machines, compiler_args, linker_args);
         struct clfsm_context context = { CLFSMMachineLoader::getMachineLoaderSingleton() };
         factory->postMachineStatus();
         debug_internal_states = debug;
-        factory->fsms()->execute(visitor, &context);
+        factory->fsms()->execute(visitor, &context, accept_action);
         delete factory;
 
         for (vector<MachineWrapper *>::const_iterator it = machineWrappers.begin(); it != machineWrappers.end(); it++)
