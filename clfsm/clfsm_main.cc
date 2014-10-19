@@ -201,8 +201,11 @@ static bool print_machine_and_state(void *ctx, SuspensibleMachine *machine, int 
 
 static bool unloadMachineIfAccepting(void *ctx, SuspensibleMachine* machine, int machine_number)
 {
+        struct clfsm_context *context = static_cast<struct clfsm_context *>(ctx);
+        CLFSMMachineLoader *loader = context->loader;
+        loader->unloadMachineAtIndex(machine_number);
         std::cout << "Machine number " << machine_number << " in accepting state" << std::endl;
-        ctx; machine; machine_number;
+        machine; ///XXX: Just to get it to compile
         return true;
 }
 
