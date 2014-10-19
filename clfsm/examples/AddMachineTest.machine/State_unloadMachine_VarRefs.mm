@@ -1,5 +1,5 @@
 //
-// State_AddSecondMachine_VarRefs.mm
+// State_unloadMachine_VarRefs.mm
 //
 // Automatically created through MiCASE -- do not change manually!
 //
@@ -7,7 +7,7 @@
 #pragma clang diagnostic ignored "-Wunused-variable"
 #pragma clang diagnostic ignored "-Wshadow"
 
-AddSecondMachine *_s = static_cast<AddSecondMachine *>(_state);
+unloadMachine *_s = static_cast<unloadMachine *>(_state);
 
 
 #pragma clang diagnostic pop

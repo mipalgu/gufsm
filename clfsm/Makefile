@@ -14,6 +14,8 @@ robot: build-robot
 .include "../../../mk/c++11.mk"         # use C++11
 .include "../../../mk/whiteboard.mk"	# not really, but for catkin
 
+CPPFLAGS+=-g -O0
+
 copy-stuff:
 	mkdir -p ${BUILDDIR}
 	rm -rf ${BUILDDIR}/${BUILDDIR}

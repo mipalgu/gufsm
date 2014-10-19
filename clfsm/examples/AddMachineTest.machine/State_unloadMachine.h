@@ -1,10 +1,10 @@
 //
-// State_AddSecondMachine.h
+// State_unloadMachine.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_AddMachineTest_State_AddSecondMachine_h
-#define clfsm_AddMachineTest_State_AddSecondMachine_h
+#ifndef clfsm_AddMachineTest_State_unloadMachine_h
+#define clfsm_AddMachineTest_State_unloadMachine_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class AddSecondMachine: public CLState
+            class unloadMachine: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -43,16 +43,24 @@ namespace FSM
                     virtual bool check(CLMachine *, CLState *) const;
                 };
 
-                CLTransition *_transitions[1];
+                class Transition_1: public CLTransition
+                {
+                public:
+                    Transition_1(int toState = 3): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                CLTransition *_transitions[2];
 
                 public:
-                    AddSecondMachine(const char *name = "AddSecondMachine");
-                    virtual ~AddSecondMachine();
+                    unloadMachine(const char *name = "unloadMachine");
+                    virtual ~unloadMachine();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 1; }
+                    virtual int numberOfTransitions() const { return 2; }
 
-#                   include "State_AddSecondMachine_Variables.h"
+#                   include "State_unloadMachine_Variables.h"
             };
         }
       }
