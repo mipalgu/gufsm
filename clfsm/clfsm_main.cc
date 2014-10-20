@@ -61,6 +61,7 @@
 #include <cstdio>
 #include <cerrno>
 #include <cctype>
+//#include <stdio.h>
 #include <unistd.h>
 #include <signal.h>
 #include <execinfo.h>
@@ -81,9 +82,11 @@ static const char *command;
 static int command_argc;
 static char * const *command_argv;
 static bool nonstop;
+static FILE* fStateMsgOutput;
 
 using namespace std;
 using namespace FSM;
+
 
 struct clfsm_context {
     vector<string> *machineFiles;       /// pointer to vector of file names
@@ -129,6 +132,8 @@ static CLFSMWBVectorFactory *createMachines(vector<MachineWrapper *> &machineWra
                             name = bumpedName(name);
                         machineWrapper.setName(name);
                         clm->setMachineName(name.c_str());
+                    } else {
+                        clm->setMachineName(machineWrapper.name()); // set name without .machine extension
                     }
                     factory->addMachine(clm);
                 }
@@ -216,7 +221,16 @@ static void __attribute((noreturn)) backtrace_signal_handler(int signum)
 
 static void usage(const char *cmd)
 {
-        cerr << "Usage: " << cmd << "[-c][-d][-fPIC]{-I includedir}{-L linkdir}{-l lib}[-n][-s][-t][-v]" << endl;
+        cerr << "Usage: " << cmd << "[-c][-d][-fPIC]{-I includedir}{-L linkdir}{-l lib}[-n][-s][-v]" << endl;
+        cerr << "[-c] = Compile only flag, don't execute machine." << endl;
+        cerr << "[-f] = compiler specific flags (eg. 'PIC' To generate Position Independent Code)." << endl;
+        cerr << "{-I includedir} = Directory to include during compilation. Use repeatedly for multiple directories." << endl;
+        cerr << "{-L linkdir} = Directory to include during linking. Use repeatedly for multiple directories." << endl;
+        cerr << "{-l lib} = Library to include during linking. Use repeatedly for multiple libraries." << endl;
+        cerr << "[-n] = Restart CLFSM after SIGABRT or SIGIOT signals." << endl;
+        cerr << "[-s] = Outputs information about machine suspenions and resumes." << endl;
+        cerr << "[-v] = Verbose; output MachineID, State, and name of machine." << endl;
+        cerr << "[-d] = Output debug information (requires Verbose switch)." << endl;
 }
 
 static bool debug_internal_states = false;
@@ -228,15 +242,23 @@ static bool print_machine_and_state(void *ctx, SuspensibleMachine *machine, int 
         const char *machineName = factory->name_of_machine_at_index(machine_number);
 
         if (machine->previousState() != machine->currentState())
-                fprintf(stderr, "%sm%3d s%3d - %-30.30s / %-20.20s - %s\n",  debug_internal_states ? "\n" : "", machine_number, machine->indexOfState(), context->machineFiles->at(machine_number).c_str(), machineName, machine->currentState()->name().c_str());
+                fprintf(fStateMsgOutput, "%sm%3d s%3d - %-30.30s / %-30.30s - %s\n", \
+                        debug_internal_states ? "\n" : "", \
+                        machine_number, \
+                        machine->indexOfState(), \
+                        context->machineFiles->at(machine_number).c_str(), \
+                        machineName, \
+                        machine->currentState()->name().c_str());
         else if (debug_internal_states)
-                fprintf(stderr, "%d/%d ", machine_number, machine->indexOfState());
+                fprintf(fStateMsgOutput, "%d/%d ", machine_number, machine->indexOfState());
 
         return true;
 }
 
+
 int main(int argc, char * const argv[])
 {
+        fStateMsgOutput = stderr;
         vector<MachineWrapper *> machineWrappers;
         vector<string> machines;
         vector<string> compiler_args;
@@ -267,12 +289,15 @@ int main(int argc, char * const argv[])
         compiler_args.push_back("-std=c++11");    /// XXX: fix this
 
         int ch;
-        int debug = 0, verbose = 0, timer = 0;
-    
-        while ((ch = getopt(argc, argv, "dgf:I:L:l:nstv")) != -1)
+        bool compileOnly = false;
+        int debug = 0, verbose = 0;
+        while ((ch = getopt(argc, argv, "cdgf:I:L:l:nsv")) != -1)
         {
                 switch (ch)
                 {
+                        case 'c':
+                                compileOnly = true;
+                                break;
                         case 'd':
                                 debug++;
                                 break;
@@ -340,17 +365,18 @@ int main(int argc, char * const argv[])
 
         visitor_f visitor = NULL;
         if (verbose) visitor = print_machine_and_state;
-        if (timer) visitor = CLFSMExecutionTimer::timer_visitor;
-
         CLFSMWBVectorFactory *factory = createMachines(machineWrappers, machines, compiler_args, linker_args);
-        struct clfsm_context context = { &machines, factory };
-        factory->postMachineStatus();
-        debug_internal_states = debug;
-        factory->fsms()->execute(visitor, &context);
-        delete factory;
 
-        for (vector<MachineWrapper *>::const_iterator it = machineWrappers.begin(); it != machineWrappers.end(); it++)
-                if (*it) delete *it;
+        if (!compileOnly) {
+                struct clfsm_context context = { &machines, factory };
+                factory->postMachineStatus();
+                debug_internal_states = debug;
+                factory->execute(visitor, &context);
+                delete factory;
+
+                for (vector<MachineWrapper *>::const_iterator it = machineWrappers.begin(); it != machineWrappers.end(); it++)
+                        if (*it) delete *it;
+        }
 
         return EXIT_SUCCESS;
 }

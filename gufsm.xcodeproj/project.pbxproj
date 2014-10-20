@@ -573,7 +573,7 @@
 		F12DCDD71484BAD100461AD6 /* FSMTransition.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMTransition.cc; sourceTree = "<group>"; };
 		F12EAE5415F6F48A002DB436 /* clfsm_factory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = clfsm_factory.cc; sourceTree = "<group>"; };
 		F12EAE5815F6F4C3002DB436 /* clfsm_factory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = clfsm_factory.h; sourceTree = "<group>"; };
-		F12EAE5915F6F4C3002DB436 /* clfsm_vector_factory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = clfsm_vector_factory.h; sourceTree = "<group>"; };
+		F12EAE5915F6F4C3002DB436 /* clfsm_vector_factory.h */ = {isa = PBXFileReference; indentWidth = 8; lastKnownFileType = sourcecode.c.h; path = clfsm_vector_factory.h; sourceTree = "<group>"; };
 		F12EAE5A15F6F993002DB436 /* FSMFactory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FSMFactory.cc; sourceTree = "<group>"; };
 		F12EAE5B15F6F993002DB436 /* FSMFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMFactory.h; sourceTree = "<group>"; };
 		F12EAE6015F6FDAE002DB436 /* FSMFactory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FSMFactory.cc; sourceTree = "<group>"; };

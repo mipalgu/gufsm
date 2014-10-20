@@ -22,6 +22,9 @@
 #pragma clang diagnostic ignored "-Wobjc-interface-ivars"
 #pragma clang diagnostic ignored "-Wmissing-method-return-type"
 #pragma clang diagnostic ignored "-Wimplicit-atomic-properties"
+#pragma clang diagnostic ignored "-Wobjc-missing-property-synthesis"
+#pragma clang diagnostic ignored "-Wreceiver-is-weak"
+#pragma clang diagnostic ignored "-Warc-repeated-use-of-weak"
 
 @interface QFSMParser: NSObject <NSXMLParserDelegate>
 

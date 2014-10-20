@@ -174,6 +174,41 @@ namespace FSM
                 {
                         return (index < _clmachines.size()) ? _clmachines[index] : NULL;
                 }
+
+                /**
+                 * execute one iteration of the current state of each machine
+                 * @return true if any transition fired on any machine
+                 */
+                virtual bool executeOnce() { return executeOnce(NULL); }
+
+                /**
+                 * execute one iteration of the current state of each machine
+                 * with a given visitor for each machine
+                 * @param should_execute_machine visitor that returns whether machine should be executed in this round
+                 * @return true if any transition fired on any machine
+                 */
+                virtual bool executeOnce(visitor_f should_execute_machine, void *context = NULL)
+                {
+                        return fsms()->executeOnce(should_execute_machine, context);
+                }
+
+                /**
+                 * execute until accepting state is encountered
+                 */
+                virtual void execute() { execute(NULL); }
+                
+                /**
+                 * execute until accepting state is encountered
+                 */
+                virtual void execute(visitor_f should_execute_machine, void *context = NULL)
+                {
+                        do
+                        {
+                                if (!executeOnce(should_execute_machine, context))
+                                        fsms()->noTransitionFired();
+                        }
+                        while (!fsms()->accepting());
+                }
         };
 }
 
