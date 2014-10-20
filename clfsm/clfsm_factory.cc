@@ -191,6 +191,9 @@ CLFSMFactory::~CLFSMFactory()
                         Expression *expression = transition->expression();
 
                         delete expression; //This fails but don't know why
+                                           //Should be a CLTransitionExpression
+                                           //Object is created in createTransitions method of this class
+                                           
                         delete transition;
                         //delete cltransition;
                 }
@@ -210,6 +213,8 @@ CLFSMFactory::~CLFSMFactory()
         }
 
         delete _clm; //This invokes the CLState Destructor again
+        //Now ~FSMFactory is called, which destroys the SuspensibleMachine
+        //This will cause problems later on in StateMachineVector
 }
 
 #pragma clang diagnostic pop
