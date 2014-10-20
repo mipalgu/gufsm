@@ -180,21 +180,21 @@ CLFSMFactory::~CLFSMFactory()
         {
                 std::cout << "Deleting state " << i << std::endl;
                 CLState *clstate = _clm->state(i);
-                //State *state = machine()->states()[i];
+                State *state = machine()->states()[i];
 
                 //CLTransition * const *cl_transitions = clstate->transitions();
                 int m = clstate->numberOfTransitions();
                 for (int j = 0; j < m; j++)
                 {
                         //CLTransition *cltransition = cl_transitions[j]; //The CLState destructor deletes all transitions
-                        //Transition *transition = state->transitions()[j];
-                        //Expression *expression = transition->expression();
+                        Transition *transition = state->transitions()[j];
+                        Expression *expression = transition->expression();
 
-                        //delete expression; //This fails but don't know why
-                        //delete transition;
+                        delete expression; //This fails but don't know why
+                        delete transition;
                         //delete cltransition;
                 }
-                /*
+
                 for (ActionVector::iterator j = state->activity().onEntryActions().begin(); j !=  state->activity().onEntryActions().end(); j++)
                         delete *j;
 
@@ -203,13 +203,13 @@ CLFSMFactory::~CLFSMFactory()
 
                 for (ActionVector::iterator j = state->activity().internalActions().begin(); j !=  state->activity().internalActions().end(); j++)
                         delete *j;
-                */
-                //delete state;
+
+                delete state;
                 //delete clstate; //This deletes the transition again
 
         }
 
-        delete _clm; //This invokes the CL Destructor again
+        delete _clm; //This invokes the CLState Destructor again
 }
 
 #pragma clang diagnostic pop
