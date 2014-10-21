@@ -93,6 +93,8 @@ namespace FSM
                 whiteboard_watcher _watcher;            ///< whiteboard watcher to manage subscriptions
                 guWhiteboard::FSM_Status_t _wbstatus;   ///< current whiteboard status of machines
                 guWhiteboard::FSM_Names_t _wbfsmnames;  ///< fsm name information on the whiteboard
+                guWhiteboard::FSM_States_t _wbfsmStates;   ///< buffered state status, used to limit WB publications.
+                guWhiteboard::FSMState fsmCurrStates;
         public:
                 /**
                  * Designated constructor.
@@ -116,6 +118,8 @@ namespace FSM
                 /** names getter */
                 guWhiteboard::FSM_Names_t &wbfsmnames() { return _wbfsmnames; }
 
+                /** state getter */
+                guWhiteboard::FSM_States_t &wbfsmstates() { return _wbfsmStates; }
                 /**
                  * whiteboard callback for control message
                  */
@@ -141,14 +145,16 @@ namespace FSM
                 /// post the names of the current machines on the whiteboard
                 void postMachineNames();
 
-//                /// post the names of the current machines on the whiteboard leveraging the whiteboard_fsm_names callback
-//                void newPostMachineNames();
-
                 /// post one packet of names starting from the given index
-//                uint16_t postMachineNamesFromIndex(uint16_t index);
-//                uint16_t postMachineNamesFromIndex(guWhiteboard::FSMNames &namesReq);
                 guWhiteboard::FSMNames* postMachineNamesFromIndex(guWhiteboard::FSMNames &namesReq);
 
+                /**
+                 * execute one iteration of the current state of each machine
+                 * with a given visitor for each machine
+                 * @param should_execute_machine visitor that returns whether machine should be executed in this round
+                 * @return true if any transition fired on any machine
+                 */
+                virtual bool executeOnce(visitor_f should_execute_machine, void *context);
         };
 }
 #pragma clang diagnostic pop
