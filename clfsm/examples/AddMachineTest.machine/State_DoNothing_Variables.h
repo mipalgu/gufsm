@@ -1,5 +1,5 @@
 //
-// State_unloadMachine_Variables.h
+// State_DoNothing_Variables.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
