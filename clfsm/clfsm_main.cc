@@ -317,10 +317,9 @@ int main(int argc, char * const argv[])
         factory->postMachineStatus();
         debug_internal_states = debug;
         factory->fsms()->execute(visitor, &context, accept_action);
-        delete factory;
 
-        for (vector<MachineWrapper *>::const_iterator it = machineWrappers.begin(); it != machineWrappers.end(); it++)
-                if (*it) delete *it;
+
+        delete CLFSMMachineLoader::getMachineLoaderSingleton();
 
         return EXIT_SUCCESS;
 }
