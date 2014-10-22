@@ -244,10 +244,33 @@ FSMNames* CLFSMWBVectorFactory::postMachineNamesFromIndex(FSMNames &namesReq)
                 }
                 if (namesReq.available_space(currentName)) *currentName = '\0';
 
-//                if (*namesReq.names() != '\0') {
-                        wbfsmnames().set(namesReq);
-//                }
+                wbfsmnames().set(namesReq);
+
                 namesReq.set_startoffs(index);
         }
+
         return &namesReq;
+}
+
+
+bool CLFSMWBVectorFactory::executeOnce(visitor_f should_execute_machine, void *context = NULL)
+{
+        bool needToSend = false;
+        uint8_t machineID = 0;
+        for (MachineVector::iterator it = fsms()->machines().begin(); it != fsms()->machines().end(); it++) {
+                SuspensibleMachine *m = *it;
+                uint8_t stateIndex = static_cast<uint8_t>(m->indexOfState());
+                uint8_t prevState = fsmCurrStates.getStateForMachineID(machineID);
+                if (stateIndex != prevState)
+                {
+                        fsmCurrStates.setStateForMachineID(machineID, stateIndex);
+                        needToSend = true;
+                }
+                machineID++;
+        }
+        if (needToSend)
+        {
+                wbfsmstates().set(fsmCurrStates);
+        }
+        return fsms()->executeOnce(should_execute_machine, context);
 }

@@ -228,7 +228,7 @@ static void usage(const char *cmd)
         cerr << "{-L linkdir} = Directory to include during linking. Use repeatedly for multiple directories." << endl;
         cerr << "{-l lib} = Library to include during linking. Use repeatedly for multiple libraries." << endl;
         cerr << "[-n] = Restart CLFSM after SIGABRT or SIGIOT signals." << endl;
-        cerr << "[-s] = Outputs information about machine suspenions and resumes." << endl;
+        cerr << "[-s] = Outputs information about machine suspensions and resumes." << endl;
         cerr << "[-v] = Verbose; output MachineID, State, and name of machine." << endl;
         cerr << "[-d] = Output debug information (requires Verbose switch)." << endl;
 }
