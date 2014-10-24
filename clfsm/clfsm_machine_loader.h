@@ -57,12 +57,6 @@
  *
  */
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wweak-vtables"
-#pragma clang diagnostic ignored "-Wpadded"
-#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
-
-
  #include <vector>
  #include <string>
 
@@ -108,7 +102,7 @@ namespace FSM
                              std::vector<std::string> compiler_args = std::vector<std::string>(),
                              std::vector<std::string> linker_args = std::vector<std::string>());
 
-		void unloadMachineAtIndex(int index);
+		bool unloadMachineAtIndex(int index);
 
         /// Vector factory getter
 		CLFSMWBVectorFactory *vector_factory() const { return _vector_factory; }
@@ -119,6 +113,7 @@ namespace FSM
 	};
 
 	/* Global methods */
+    /// Used for CLMacros
 	SuspensibleMachine *loadAndAddMachine(const std::string machine);
 
 
@@ -126,8 +121,6 @@ namespace FSM
 			             std::vector<std::string> compiler_args = std::vector<std::string>(),
 			             std::vector<std::string> linker_args = std::vector<std::string>());
 
-    /// Unloads the machine at the given index
-	void unloadMachineAtIndex(int index);
+    /// Unloads the machine at the given index. Returns true if succeeds
+	bool unloadMachineAtIndex(int index);
 }
-
-#pragma clang diagnostic pop

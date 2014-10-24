@@ -90,10 +90,11 @@ SuspensibleMachine *FSM::loadAndAddMachine(const std::string machine)
 	return loadAndAddMachineAtPath(machine);
 }
 
-void FSM::unloadMachineAtIndex(int index)
+bool FSM::unloadMachineAtIndex(int index)
 {
-    if (loader_singleton)
-        loader_singleton->unloadMachineAtIndex(index);
+    if (!loader_singleton)
+        return false;
+    return loader_singleton->unloadMachineAtIndex(index);
 }
 
 
@@ -187,7 +188,7 @@ SuspensibleMachine* CLFSMMachineLoader::loadAndAddMachineAtPath(const std::strin
 	return NULL;
 }
 
-void CLFSMMachineLoader::unloadMachineAtIndex(int index)
+bool CLFSMMachineLoader::unloadMachineAtIndex(int index)
 {
   int numWrappers = int(_machineWrappers.size());
   if (index >= 0 && index < numWrappers)
@@ -198,9 +199,12 @@ void CLFSMMachineLoader::unloadMachineAtIndex(int index)
           MachineWrapper* wrapper = _machineWrappers.at(index);
           delete wrapper;
           _machineWrappers[index] = NULL;
+
+          return true;
       }
 
   }
+  return false;
 }
 
 
@@ -216,6 +220,5 @@ int CLFSMMachineLoader::findIndexForNewMachine(const std::string machinePath)
             return i;
         }
     }
-    //std::cout << "No empty spot found for machine path " << machinePath << std::endl; //MITCHDEBUG
-		return CLError;
+	return CLError;
 }

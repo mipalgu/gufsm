@@ -98,7 +98,7 @@ namespace FSM
         enum CLControlStatus control_machine_at_index(int index, enum CLControlStatus command);
 
         SuspensibleMachine* loadAndAddMachine(const std::string machine);
-        void unloadMachineAtIndex(int index);
+        bool unloadMachineAtIndex(int index);
 
 /*
  * Macros for making state machines more readable
