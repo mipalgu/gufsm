@@ -79,8 +79,10 @@ SuspensibleMachine *FSM::loadAndAddMachineAtPath(const std::string machine,
 												std::vector<std::string> compiler_args,
 												std::vector<std::string> linker_args)
 {
-	if (!loader_singleton) return NULL;
-	else return loader_singleton->loadAndAddMachineAtPath(machine, compiler_args, linker_args);
+	if (!loader_singleton)
+        return NULL;
+    else
+        return loader_singleton->loadAndAddMachineAtPath(machine, compiler_args, linker_args);
 }
 
 SuspensibleMachine *FSM::loadAndAddMachine(const std::string machine)
@@ -90,8 +92,8 @@ SuspensibleMachine *FSM::loadAndAddMachine(const std::string machine)
 
 void FSM::unloadMachineAtIndex(int index)
 {
-    CLFSMMachineLoader *loader = CLFSMMachineLoader::getMachineLoaderSingleton();
-    loader->unloadMachineAtIndex(index);
+    if (loader_singleton)
+        loader_singleton->unloadMachineAtIndex(index);
 }
 
 

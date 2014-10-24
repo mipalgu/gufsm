@@ -99,20 +99,22 @@ namespace FSM
 
 
 	public:
-			static CLFSMMachineLoader* getMachineLoaderSingleton();
+		static CLFSMMachineLoader* getMachineLoaderSingleton();
 
-			~CLFSMMachineLoader();
+		~CLFSMMachineLoader();
 
-            SuspensibleMachine *loadAndAddMachineAtPath(const std::string machine,                      std::vector<std::string> compiler_args = std::vector<std::string>(),
-std::vector<std::string> linker_args = std::vector<std::string>());
+        SuspensibleMachine *loadAndAddMachineAtPath(
+                             const std::string machine,
+                             std::vector<std::string> compiler_args = std::vector<std::string>(),
+                             std::vector<std::string> linker_args = std::vector<std::string>());
 
-			void unloadMachineAtIndex(int index);
+		void unloadMachineAtIndex(int index);
 
-            /// Vector factory getter
-			CLFSMWBVectorFactory *vector_factory() const { return _vector_factory; }
+        /// Vector factory getter
+		CLFSMWBVectorFactory *vector_factory() const { return _vector_factory; }
 
-			///Machine Wrapper getter
-			std::vector<MachineWrapper *> machineWrappers() const { return _machineWrappers; }
+		///Machine Wrapper getter
+		std::vector<MachineWrapper *> machineWrappers() const { return _machineWrappers; }
 
 	};
 
