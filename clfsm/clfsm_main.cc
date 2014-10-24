@@ -241,8 +241,8 @@ int main(int argc, char * const argv[])
         compiler_args.push_back("-std=c++11");    /// XXX: fix this
 
         int ch;
-        int debug = 0, verbose = 0;
-        while ((ch = getopt(argc, argv, "dgf:I:L:l:nsv")) != -1)
+        int debug = 0, verbose = 0, noUnloadIfAccepting = 0;
+        while ((ch = getopt(argc, argv, "dgf:I:L:l:nsvu")) != -1)
         {
                 switch (ch)
                 {
@@ -279,6 +279,9 @@ int main(int argc, char * const argv[])
                         case 'v':
                                 verbose++;
                                 break;
+                        case 'u':
+                                noUnloadIfAccepting++;
+                                break;
                         case '?':
                         default:
                                 usage(argv[0]);
@@ -309,8 +312,9 @@ int main(int argc, char * const argv[])
         if (!linker_args.size())   linker_args   = MachineWrapper::default_linker_args();
 
         visitor_f visitor = NULL;
+        visitor_f accept_action = NULL; //Used to unload machines when in accepting state
         if (verbose) visitor = print_machine_and_state;
-        visitor_f accept_action = unloadMachineIfAccepting;
+        if (!noUnloadIfAccepting) accept_action = unloadMachineIfAccepting;
 
         CLFSMWBVectorFactory *factory = createMachines(machineWrappers, machines, compiler_args, linker_args);
         struct clfsm_context context = { CLFSMMachineLoader::getMachineLoaderSingleton() };
