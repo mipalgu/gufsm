@@ -179,7 +179,6 @@ SuspensibleMachine* CLFSMMachineLoader::loadAndAddMachineAtPath(const std::strin
         }
         strcpy(c_name, name.c_str());
         clm->setMachineName(c_name);
-        std::cout << "Added machine named: " << clm->machineName() << std::endl;
 	    return _vector_factory->addMachine(clm, index);
 
 	}
