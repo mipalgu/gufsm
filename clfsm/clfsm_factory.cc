@@ -176,9 +176,8 @@ CLFSMFactory::~CLFSMFactory()
         /*
          * tear down each state
          */
-        for (int i = 1; i < n; i++)
+        for (int i = 1; i < n; i++) ///XXX: Starts at 1 to avoid segfault. 
         {
-                std::cout << "Deleting state " << i << std::endl;
                 CLState *clstate = _clm->state(i);
                 State *state = machine()->states()[i];
 
