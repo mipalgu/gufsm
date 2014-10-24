@@ -151,11 +151,11 @@ bool CLFSMVectorFactory::removeMachineAtIndex(int index)
         if (!(index < numMachines && index >= 0))
             return false;
         //Delete clmachine
-        delete _clfactories[index]; //XXX:
+        delete _clfactories[index]; //XXX:Problems in CLFSMFactory destructor
         _clfactories[index] = NULL;
         _clmachines[index] = NULL;
         //Delete suspensible machine from StateMachineVector
-        return _fsms->removeMachineAtIndex(index, false); //Machine is already deleted by ~Factory() {FSMFactory.cc} 
+        return _fsms->removeMachineAtIndex(index, false); //false-Machine is already deleted by ~Factory() {FSMFactory.cc}
 }
 
 CLFSMFactory *CLFSMVectorFactory::machine_factory(CLMachine *clm, int index)
