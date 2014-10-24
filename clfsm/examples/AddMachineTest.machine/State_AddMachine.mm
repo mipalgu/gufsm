@@ -17,7 +17,6 @@ using namespace State;
 AddMachine::AddMachine(const char *name): CLState(name, *new AddMachine::OnEntry, *new AddMachine::OnExit, *new AddMachine::Internal)
 {
 	_transitions[0] = new Transition_0();
-	_transitions[1] = new Transition_1();
 }
 
 AddMachine::~AddMachine()
@@ -27,7 +26,6 @@ AddMachine::~AddMachine()
 	delete &internalAction();
 
 	delete _transitions[0];
-	delete _transitions[1];
 }
 
 void AddMachine::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -59,16 +57,5 @@ bool AddMachine::Transition_0::check(CLMachine *_machine, CLState *_state) const
 	return
 	(
 #		include "State_AddMachine_Transition_0.expr"
-	);
-}
-
-bool AddMachine::Transition_1::check(CLMachine *_machine, CLState *_state) const
-{
-#	include "AddMachineTest_VarRefs.mm"
-#	include "State_AddMachine_VarRefs.mm"
-
-	return
-	(
-#		include "State_AddMachine_Transition_1.expr"
 	);
 }

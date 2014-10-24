@@ -1,5 +1,5 @@
 //
-// State_DoNothing_Variables.h
+// State_AddAnotherMachine_Variables.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //

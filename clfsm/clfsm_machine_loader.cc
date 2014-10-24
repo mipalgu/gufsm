@@ -149,9 +149,9 @@ SuspensibleMachine* CLFSMMachineLoader::loadAndAddMachineAtPath(const std::strin
 	MachineWrapper *wrapper = new MachineWrapper(machine);
 	wrapper->setCompilerArgs(compiler_args);
 	wrapper->setLinkerArgs(linker_args);
-	//Leave ids as unique
-	int id = _vector_factory->number_of_machines();
 
+	//Leave ids as unique - Not reusing based on index position
+	int id = _vector_factory->number_of_machines();
 	CLMachine *clm = wrapper->instantiate(id, machine.c_str());
 	if (clm)
 	{

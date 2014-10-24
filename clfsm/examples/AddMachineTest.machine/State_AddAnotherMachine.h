@@ -1,10 +1,10 @@
 //
-// State_DoNothing.h
+// State_AddAnotherMachine.h
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_AddMachineTest_State_DoNothing_h
-#define clfsm_AddMachineTest_State_DoNothing_h
+#ifndef clfsm_AddMachineTest_State_AddAnotherMachine_h
+#define clfsm_AddMachineTest_State_AddAnotherMachine_h
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
       {
         namespace State
         {
-            class DoNothing: public CLState
+            class AddAnotherMachine: public CLState
             {
                 class OnEntry: public CLAction
                 {
@@ -35,24 +35,18 @@ namespace FSM
                     virtual void perform(CLMachine *, CLState *) const;
                 };
 
-                class Transition_0: public CLTransition
-                {
-                public:
-                    Transition_0(int toState = 2): CLTransition(toState) {}
-
-                    virtual bool check(CLMachine *, CLState *) const;
-                };
-
-                CLTransition *_transitions[1];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wzero-length-array"
+                CLTransition *_transitions[0];
 
                 public:
-                    DoNothing(const char *name = "DoNothing");
-                    virtual ~DoNothing();
+                    AddAnotherMachine(const char *name = "AddAnotherMachine");
+                    virtual ~AddAnotherMachine();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 1; }
+                    virtual int numberOfTransitions() const { return 0; }
 
-#                   include "State_DoNothing_Variables.h"
+#                   include "State_AddAnotherMachine_Variables.h"
             };
         }
       }
@@ -60,3 +54,4 @@ namespace FSM
 }
 
 #endif
+#pragma clang diagnostic pop

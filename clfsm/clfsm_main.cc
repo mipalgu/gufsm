@@ -89,16 +89,14 @@ struct clfsm_context {
     CLFSMMachineLoader* loader;
 };
 
-static CLFSMWBVectorFactory *createMachines(vector<MachineWrapper *> &machineWrappers, const vector<string> &machines, const vector<string> &compiler_args, const vector<string> &linker_args)
+static CLFSMWBVectorFactory *createMachines(const vector<string> &machines, const vector<string> &compiler_args, const vector<string> &linker_args)
 {
     CLFSMMachineLoader *loader = CLFSMMachineLoader::getMachineLoaderSingleton();
     for (vector<string>::const_iterator it = machines.begin(); it != machines.end(); it++)
     {
             const string &machine = *it;
             FSM::loadAndAddMachineAtPath(machine, compiler_args, linker_args);
-
     }
-    machineWrappers = loader->machineWrappers();
     return loader->vector_factory();
 }
 
@@ -204,14 +202,13 @@ static bool unloadMachineIfAccepting(void *ctx, SuspensibleMachine* machine, int
         struct clfsm_context *context = static_cast<struct clfsm_context *>(ctx);
         CLFSMMachineLoader *loader = context->loader;
         loader->unloadMachineAtIndex(machine_number);
-        std::cout << "Machine number " << machine_number << " in accepting state" << std::endl;
-        machine; ///XXX: Just to get it to compile
+        machine; ///XXX: Just to get it to compile.
+                 ///     Consider creating new function type
         return true;
 }
 
 int main(int argc, char * const argv[])
 {
-        vector<MachineWrapper *> machineWrappers;
         vector<string> machines;
         vector<string> compiler_args;
         vector<string> linker_args;
@@ -316,7 +313,7 @@ int main(int argc, char * const argv[])
         if (verbose) visitor = print_machine_and_state;
         if (!noUnloadIfAccepting) accept_action = unloadMachineIfAccepting;
 
-        CLFSMWBVectorFactory *factory = createMachines(machineWrappers, machines, compiler_args, linker_args);
+        CLFSMWBVectorFactory *factory = createMachines(machines, compiler_args, linker_args);
         struct clfsm_context context = { CLFSMMachineLoader::getMachineLoaderSingleton() };
         factory->postMachineStatus();
         debug_internal_states = debug;
