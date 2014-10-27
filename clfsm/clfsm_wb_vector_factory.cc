@@ -112,7 +112,8 @@ void CLFSMWBVectorFactory::postMachineStatus()
                 if (i >= int(CONTROLSTATUS_NUM_FSMS-1))
                         break;
                 const SuspensibleMachine *machine = *it;
-                status.set(i, machine->isSuspended());
+                if (machine)
+                    status.set(i, machine->isSuspended());
         }
         status.set(i);                  // set the high bit to 1
 
@@ -123,7 +124,7 @@ void CLFSMWBVectorFactory::postMachineStatus()
 void CLFSMWBVectorFactory::suspendMachines(guWhiteboard::FSMControlStatus &suspendControl)
 {
         FSMControlStatus status;
-        
+
         status.reset();
 
         int i = 0;
@@ -132,6 +133,8 @@ void CLFSMWBVectorFactory::suspendMachines(guWhiteboard::FSMControlStatus &suspe
                 if (i >= int(CONTROLSTATUS_NUM_FSMS-1))
                         break;
                 AsynchronousSuspensibleMachine *machine = static_cast<AsynchronousSuspensibleMachine *>(*it);
+                if (!machine)
+                        continue;
                 if (suspendControl.get(i))
                 {
                         machine->scheduleSuspend();
@@ -140,7 +143,7 @@ void CLFSMWBVectorFactory::suspendMachines(guWhiteboard::FSMControlStatus &suspe
                 else status.set(i, machine->isSuspended());
         }
         status.set(i);                  // set the high bit to 1
-        
+
         wbstatus().set(status);         // post to whiteboard
 }
 
@@ -150,13 +153,15 @@ void CLFSMWBVectorFactory::resumeMachines(guWhiteboard::FSMControlStatus &resume
         FSMControlStatus status;
 
         status.reset();
-        
+
         int i = 0;
         for (MachineVector::iterator it = fsms()->machines().begin(); it != fsms()->machines().end(); it++, i++)
         {
                 if (i >= int(CONTROLSTATUS_NUM_FSMS-1))
                         break;
                 AsynchronousSuspensibleMachine *machine = static_cast<AsynchronousSuspensibleMachine *>(*it);
+                if (!machine)
+                        continue;
                 if (resumeControl.get(i))
                 {
                         machine->scheduleResume();
@@ -173,15 +178,17 @@ void CLFSMWBVectorFactory::resumeMachines(guWhiteboard::FSMControlStatus &resume
 void CLFSMWBVectorFactory::restartMachines(guWhiteboard::FSMControlStatus &resumeControl)
 {
         FSMControlStatus status;
-        
+
         status.reset();
-        
+
         int i = 0;
         for (MachineVector::iterator it = fsms()->machines().begin(); it != fsms()->machines().end(); it++, i++)
         {
                 if (i >= int(CONTROLSTATUS_NUM_FSMS-1))
                         break;
                 AsynchronousSuspensibleMachine *machine = static_cast<AsynchronousSuspensibleMachine *>(*it);
+                if (!machine)
+                        continue;
                 if (resumeControl.get(i))
                 {
                         machine->scheduleRestart();
@@ -190,7 +197,7 @@ void CLFSMWBVectorFactory::restartMachines(guWhiteboard::FSMControlStatus &resum
                 else status.set(i, machine->isSuspended());
         }
         status.set(i);                  // set the high bit to 1
-        
+
         wbstatus().set(status);         // post to whiteboard
 }
 
@@ -226,6 +233,8 @@ uint16_t CLFSMWBVectorFactory::postMachineNamesFromIndex(uint16_t index)
         while (index < n)
         {
                 CLMachine *machine = _clmachines[index];
+                if (!machine)
+                    continue;
                 const char *machine_name = machine->machineName();
                 int len = int(strlen(machine_name));
                 if (!machine_name || len >= name_info.available_space(currentName))
@@ -241,4 +250,3 @@ uint16_t CLFSMWBVectorFactory::postMachineNamesFromIndex(uint16_t index)
 
         return index;
 }
-
