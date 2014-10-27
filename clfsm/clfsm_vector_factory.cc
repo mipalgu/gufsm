@@ -207,7 +207,7 @@ enum CLControlStatus CLFSMVectorFactory::control_machine_at_index(int i, enum CL
 {
         int n = int(_clmachines.size());
         if (i < 0 || i >= n) return CLError;
-
+        if (!_fsms->machines()[i]) return CLError; //Check for deleted machine
         AsynchronousSuspensibleMachine *m = static_cast<AsynchronousSuspensibleMachine *>(_fsms->machines()[i]);
         enum CLControlStatus status = MSTATUS(m);
         switch (command)
