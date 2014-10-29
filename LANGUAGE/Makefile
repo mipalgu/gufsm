@@ -13,8 +13,8 @@ ANTLR_SRCS=
 #ANTLR_SRCS=TransitionContainer.g ActionsContainer.g
 #ANTLR_SRCS=Java.g
 ANTLR_COMBINED=TransitionContainer.g ActionsContainer.g
-ANTLR_INCLUDES=SimpleCParser.g SimpleCLexer.g
-ANTLR_GRAMMARS=
+ANTLR_INCLUDES=SimpleCParser.g
+ANTLR_GRAMMARS=SimpleCLexer.g
 
 TEX_MAIN=grammar_doc.tex
 TEX_MODS=transitions.tex actions.tex
