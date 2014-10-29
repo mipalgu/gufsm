@@ -5,12 +5,14 @@
 //  Created by René Hexel on 21/08/11.
 //  Copyright (c) 2011 Rene Hexel. All rights reserved.
 //
+#include "parse_actions.h"
+#include "parse_transitions.h"
+
 #include <stdio.h>
 #include <string.h>
 #include <libgen.h>
 #include <errno.h>
 
-#include "parse_actions.h"
 #include "ActionsContainerParser.h"
 #include "ActionsContainerLexer.h"
 
@@ -31,7 +33,7 @@ parse_actions(const char *filename, bool verbose)
                 return -1;
         }
 
-        pActionsContainerLexer lexer = ActionsContainerLexerNew(input);
+        pTransitionContainerLexer lexer = TransitionContainerLexerNew(input);
 
         if (!lexer)
         {

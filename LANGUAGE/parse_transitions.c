@@ -5,12 +5,14 @@
 //  Created by René Hexel on 21/08/11.
 //  Copyright (c) 2011 Rene Hexel. All rights reserved.
 //
+#include "parse_actions.h"
+#include "parse_transitions.h"
+
 #include <stdio.h>
 #include <string.h>
 #include <libgen.h>
 #include <errno.h>
 
-#include "parse_transitions.h"
 #include "TransitionContainerParser.h"
 #include "TransitionContainerLexer.h"
 
