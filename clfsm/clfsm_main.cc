@@ -76,7 +76,6 @@
 #include "clfsm_machine.h"
 #include "clfsm_wb_vector_factory.h"
 #include "gugenericwhiteboardobject.h"
-#include "clfsm_visitors.h"
 
 static const char *command;
 static int command_argc;
@@ -327,9 +326,6 @@ int main(int argc, char * const argv[])
                                 break;
                         case 's':
                                 FSM::debugSuspends++;
-                                break;
-                        case 't':
-                                timer = 1;
                                 break;
                         case 'v':
                                 verbose++;
