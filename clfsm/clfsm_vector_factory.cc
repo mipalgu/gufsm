@@ -149,7 +149,7 @@ bool CLFSMVectorFactory::removeMachineAtIndex(int index)
         //Check index first
         int numMachines = int(_clmachines.size());
         if (!(index < numMachines && index >= 0))
-            return false;
+                return false;
         //Delete clmachine
         delete _clfactories[index]; //XXX:Problems in CLFSMFactory destructor
         _clfactories[index] = NULL;

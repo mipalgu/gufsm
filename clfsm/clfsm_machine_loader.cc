@@ -1,6 +1,7 @@
 /*
  *  clfsm_machine_loader.cc
  *  clfsm
+ *  An interface for the loading and unloading of state machines.
  *
  *  Created by Mitch Wenman on 28/09/14.
  *  Copyright (c) 2012 Mitch Wenman. All rights reserved.
@@ -76,13 +77,13 @@ static CLFSMMachineLoader *loader_singleton;
 
 /// Loads a machine into the vector given its name
 SuspensibleMachine *FSM::loadAndAddMachineAtPath(const std::string machine,
-												std::vector<std::string> compiler_args,
-												std::vector<std::string> linker_args)
+                                                std::vector<std::string> compiler_args,
+                                                std::vector<std::string> linker_args)
 {
 	if (!loader_singleton)
-        return NULL;
-    else
-        return loader_singleton->loadAndAddMachineAtPath(machine, compiler_args, linker_args);
+                return NULL;
+        else
+                return loader_singleton->loadAndAddMachineAtPath(machine, compiler_args, linker_args);
 }
 
 SuspensibleMachine *FSM::loadAndAddMachine(const std::string machine)
@@ -93,7 +94,7 @@ SuspensibleMachine *FSM::loadAndAddMachine(const std::string machine)
 bool FSM::unloadMachineAtIndex(int index)
 {
     if (!loader_singleton)
-        return false;
+            return false;
     return loader_singleton->unloadMachineAtIndex(index);
 }
 
@@ -155,32 +156,32 @@ SuspensibleMachine* CLFSMMachineLoader::loadAndAddMachineAtPath(const std::strin
 	CLMachine *clm = wrapper->instantiate(id, machine.c_str());
 	if (clm)
 	{
-		std::string name = wrapper->name();
-		if (_vector_factory->index_of_machine_named(name.c_str()) != CLError)
-	    {
-	        while (_vector_factory->index_of_machine_named(name.c_str()) != CLError)
-	            name = bumpedName(name);
-            wrapper->setName(name);
-	    }
-        int index = findIndexForNewMachine(machine);
+                std::string name = wrapper->name();
+                if (_vector_factory->index_of_machine_named(name.c_str()) != CLError)
+                {
+                        while (_vector_factory->index_of_machine_named(name.c_str()) != CLError)
+                               name = bumpedName(name);
+                        wrapper->setName(name);
+                }
+                int index = findIndexForNewMachine(machine);
 
-        //Create c string to retain for CLMachine
-        char* c_name = new char[strlen(name.c_str()) + 1];
+                //Create c string to retain for CLMachine
+                char* c_name = new char[strlen(name.c_str()) + 1];
 
-	    if (index == CLError)
-        {
-            _machineWrappers.push_back(wrapper);
-            _machinePaths.push_back(machine);
-            _machineNames.push_back(c_name);
-        }
-    	else
-        {
-            _machineWrappers[index] = wrapper;
-            _machineNames[index] = c_name;
-        }
-        strcpy(c_name, name.c_str());
-        clm->setMachineName(c_name);
-	    return _vector_factory->addMachine(clm, index);
+                if (index == CLError)
+                {
+                    _machineWrappers.push_back(wrapper);
+                    _machinePaths.push_back(machine);
+                    _machineNames.push_back(c_name);
+                }
+            	else
+                {
+                    _machineWrappers[index] = wrapper;
+                    _machineNames[index] = c_name;
+                }
+                strcpy(c_name, name.c_str());
+                clm->setMachineName(c_name);
+                return _vector_factory->addMachine(clm, index);
 
 	}
 	else std::cerr << "Could not add machine " << id << ": '" << machine << "'" << std::endl;
@@ -190,35 +191,35 @@ SuspensibleMachine* CLFSMMachineLoader::loadAndAddMachineAtPath(const std::strin
 
 bool CLFSMMachineLoader::unloadMachineAtIndex(int index)
 {
-  int numWrappers = int(_machineWrappers.size());
-  if (index >= 0 && index < numWrappers)
-  {
-      bool success = _vector_factory->removeMachineAtIndex(index);
-      if (success)
-      {
-          MachineWrapper* wrapper = _machineWrappers.at(index);
-          delete wrapper;
-          _machineWrappers[index] = NULL;
+          int numWrappers = int(_machineWrappers.size());
+          if (index >= 0 && index < numWrappers)
+          {
+                bool success = _vector_factory->removeMachineAtIndex(index);
+                if (success)
+                {
+                        MachineWrapper* wrapper = _machineWrappers.at(index);
+                        delete wrapper;
+                        _machineWrappers[index] = NULL;
 
-          return true;
-      }
+                        return true;
+                }
 
-  }
-  return false;
+          }
+          return false;
 }
 
 
 int CLFSMMachineLoader::findIndexForNewMachine(const std::string machinePath)
 {
-    size_t i;
-    for (i = 0; i < _machinePaths.size(); i++)
-    {
-        const std::string pathAtIndex = _machinePaths.at(i);
-        if (machinePath.compare(pathAtIndex) == 0 &&
-    		_machineWrappers.at(i) == NULL)
+        size_t i;
+        for (i = 0; i < _machinePaths.size(); i++)
         {
-            return i;
+                const std::string pathAtIndex = _machinePaths.at(i);
+                if (machinePath.compare(pathAtIndex) == 0 &&
+                		_machineWrappers.at(i) == NULL)
+                {
+                    return i;
+                }
         }
-    }
-	return CLError;
+        return CLError;
 }

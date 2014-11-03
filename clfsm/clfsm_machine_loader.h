@@ -1,7 +1,7 @@
 /*
  *  clfsm_machine_loader.h
  *  clfsm
- *  A class for the loading and unloading of state machines.
+ *  An interface for the loading and unloading of state machines.
  *
  *  Created by Mitch Wenman on 28/09/14.
  *  Copyright (c) 2012 Mitch Wenman. All rights reserved.
@@ -83,12 +83,14 @@ namespace FSM
 		/// The vector of machine paths
 		std::vector<std::string> _machinePaths;
 
-        /// The vector of machine names - retained for CLMachine
-        std::vector<char *> _machineNames;
+                /// The vector of machine names - retained for CLMachine
+                std::vector<char *> _machineNames;
 
 		///Private constructor for the singleton
 		CLFSMMachineLoader();
 
+                /// Finds an open spot for the machine type in the vector
+                /// Returns CLERROR if no spot is available.
 		int findIndexForNewMachine(const std::string machinePath);
 
 
@@ -97,14 +99,18 @@ namespace FSM
 
 		~CLFSMMachineLoader();
 
-        SuspensibleMachine *loadAndAddMachineAtPath(
+                /// Loads the machine's shared object and inserts it into the
+                /// execution queue.
+                SuspensibleMachine *loadAndAddMachineAtPath(
                              const std::string machine,
                              std::vector<std::string> compiler_args = std::vector<std::string>(),
                              std::vector<std::string> linker_args = std::vector<std::string>());
 
+                /// Unloads the machine at the given index.
+                /// Returns true if successful, otherwise false.
 		bool unloadMachineAtIndex(int index);
 
-        /// Vector factory getter
+                /// Vector factory getter
 		CLFSMWBVectorFactory *vector_factory() const { return _vector_factory; }
 
 		///Machine Wrapper getter
@@ -112,15 +118,16 @@ namespace FSM
 
 	};
 
-	/* Global methods */
-    /// Used for CLMacros
+	/* Global FSM:: methods */
+
+        /// Simplified method for CLMacros
 	SuspensibleMachine *loadAndAddMachine(const std::string machine);
 
-
+        /// Calls the singleton instance method of the same name.
 	SuspensibleMachine *loadAndAddMachineAtPath(const std::string machine,
 			             std::vector<std::string> compiler_args = std::vector<std::string>(),
 			             std::vector<std::string> linker_args = std::vector<std::string>());
 
-    /// Unloads the machine at the given index. Returns true if succeeds
+        /// Unloads the machine at the given index. Returns true if successful.
 	bool unloadMachineAtIndex(int index);
 }
