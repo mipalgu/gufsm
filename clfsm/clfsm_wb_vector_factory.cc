@@ -205,7 +205,7 @@ void CLFSMWBVectorFactory::postMachineNames()
 {
         int n = int(fsms()->machines().size());
         int postCount = 0;
-        FSMNames name_info("");
+        FSMNames name_info;
         name_info.set_startoffs(0);
         while ( name_info.startoffs() < n)
         {
