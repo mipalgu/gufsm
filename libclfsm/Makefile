@@ -48,7 +48,7 @@ install:
 
 pre-catkin:
 	$Emkdir -p ${CATKIN_DIR}/include/typeClassDefs
-.for hfile in FSM_Control.h FSMControlStatus.h wb_fsm_control_status.h
+.for hfile in FSM_Control.h FSMControlStatus.h wb_fsm_control_status.h wb_fsm_state_status.h
 	$Ecp -p ${WB_DIR}/typeClassDefs/${hfile} ${CATKIN_DIR}/include/typeClassDefs
 .endfor
 
