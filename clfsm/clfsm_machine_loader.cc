@@ -93,16 +93,17 @@ SuspensibleMachine *FSM::loadAndAddMachine(const std::string machine)
 
 bool FSM::unloadMachineAtIndex(int index)
 {
-    if (!loader_singleton)
-            return false;
-    return loader_singleton->unloadMachineAtIndex(index);
+        if (!loader_singleton)
+                return false;
+        return loader_singleton->unloadMachineAtIndex(index);
 }
 
 
 /// Gets the loader singleton
 CLFSMMachineLoader* CLFSMMachineLoader::getMachineLoaderSingleton()
 {
-	if (!loader_singleton) loader_singleton = new CLFSMMachineLoader();
+	if (!loader_singleton)
+                loader_singleton = new CLFSMMachineLoader();
 	return loader_singleton;
 }
 
@@ -114,33 +115,34 @@ CLFSMMachineLoader* CLFSMMachineLoader::getMachineLoaderSingleton()
 
 CLFSMMachineLoader::CLFSMMachineLoader()
 {
-    if (!loader_singleton) loader_singleton = this;
-    _vector_factory = new CLFSMWBVectorFactory();
+        if (!loader_singleton)
+                loader_singleton = this;
+        _vector_factory = new CLFSMWBVectorFactory();
 }
 
 CLFSMMachineLoader::~CLFSMMachineLoader()
 {
-    //Delete all machine wrapper pointers
-    for (std::vector<MachineWrapper *>::const_iterator it = _machineWrappers.begin(); it != _machineWrappers.end(); it++)
-            if (*it) delete *it;
+        //Delete all machine wrapper pointers
+        for (std::vector<MachineWrapper *>::const_iterator it = _machineWrappers.begin(); it != _machineWrappers.end(); it++)
+                if (*it) delete *it;
 
-    delete _vector_factory;
+        delete _vector_factory;
 
 }
 
 
 static std::string bumpedName(std::string name)
 {
-	size_t len = name.size();
-	if (!len || !isdigit(name[len-1]))
-	    return name + ".0";
-	while (--len && isdigit(name[len-1]))
-	       ;
-	int i = atoi(name.c_str()+len);
-	std::stringstream ss;
-	ss << name.substr(0, len) << ++i;
+        size_t len = name.size();
+        if (!len || !isdigit(name[len-1]))
+                return name + ".0";
+        while (--len && isdigit(name[len-1]))
+                ;
+        int i = atoi(name.c_str()+len);
+        std::stringstream ss;
+        ss << name.substr(0, len) << ++i;
 
-	return ss.str();
+        return ss.str();
 }
 
 SuspensibleMachine* CLFSMMachineLoader::loadAndAddMachineAtPath(const std::string machine,
