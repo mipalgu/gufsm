@@ -40,24 +40,16 @@ namespace FSM
 						virtual bool check(CLMachine *, CLState *) const;
 					};
 
-					class Transition_1: public CLTransition
-					{
-						public:
-						Transition_1(int toState = 2): CLTransition(toState) {}
-
-						virtual bool check(CLMachine *, CLState *) const;
-					};
-
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wzero-length-array"
-				CLTransition *_transitions[2];
+				CLTransition *_transitions[1];
 				public:
 					TURN_ON_ENCODERS(const char *name = "TURN_ON_ENCODERS");
 					virtual ~TURN_ON_ENCODERS();
 
 					virtual CLTransition * const *transitions() const { return _transitions; }
-					virtual int numberOfTransitions() const { return 2; }
+					virtual int numberOfTransitions() const { return 1; }
 
 #					include "State_TURN_ON_ENCODERS_Variables.h"
 #pragma clang diagnostic pop

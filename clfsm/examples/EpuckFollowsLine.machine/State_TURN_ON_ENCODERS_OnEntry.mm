@@ -1,6 +1,7 @@
 #ifdef DEBUG
-std::string stateName("STATE: "); stateName+=state_name(); print_ptr(stateName);
-fprintf(stderr, "STATE: %s\n", state_name());
+std::string stateName("STATE: ");
+stateName+=state_name();
+print_ptr(stateName);
 #endif
 WEBOTS_NXT_bridge commandLeft(robotID,ROTATION_ENCODER,LEFT_MOTOR_DIFFERENTIAL,1);
 WEBOTS_NXT_bridge commandRight(robotID,ROTATION_ENCODER,RIGHT_MOTOR_DIFFERENTIAL,1);

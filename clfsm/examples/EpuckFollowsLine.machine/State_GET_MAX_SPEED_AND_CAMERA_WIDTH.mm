@@ -16,7 +16,7 @@ using namespace State;
 
 GET_MAX_SPEED_AND_CAMERA_WIDTH::GET_MAX_SPEED_AND_CAMERA_WIDTH(const char *name):CLState(name, *new GET_MAX_SPEED_AND_CAMERA_WIDTH::OnEntry,*new GET_MAX_SPEED_AND_CAMERA_WIDTH::OnExit, *new GET_MAX_SPEED_AND_CAMERA_WIDTH::Internal)
 {
-
+	_transitions[0] = new Transition_0();
 }
 
 GET_MAX_SPEED_AND_CAMERA_WIDTH::~GET_MAX_SPEED_AND_CAMERA_WIDTH()
@@ -48,5 +48,15 @@ void GET_MAX_SPEED_AND_CAMERA_WIDTH::Internal::perform(CLMachine *_machine, CLSt
 #	include "State_GET_MAX_SPEED_AND_CAMERA_WIDTH_Internal.mm"
 }
 
+bool GET_MAX_SPEED_AND_CAMERA_WIDTH::Transition_0::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "EpuckFollowsLine_VarRefs.mm"
+#	include "State_GET_MAX_SPEED_AND_CAMERA_WIDTH_VarRefs.mm"
+
+	return
+	(
+#			include "State_GET_MAX_SPEED_AND_CAMERA_WIDTH_Transition_0.expr"
+	);
+}
 
 

@@ -16,12 +16,12 @@ namespace FSM
 	{
 		class EpuckFollowsLine: public CLMachine
 		{
-			CLState *_states[3];
+			CLState *_states[5];
 			public:
 			EpuckFollowsLine(int mid  = 0, const char *name = "EpuckFollowsLine");
 			virtual ~EpuckFollowsLine();
 			virtual CLState * const * states() const { return _states; }
-			virtual int numberOfStates() const { return 3; }
+			virtual int numberOfStates() const { return 5; }
 #			include "EpuckFollowsLine_Variables.h"
 		};
 	}
