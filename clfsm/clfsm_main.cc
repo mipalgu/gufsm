@@ -62,11 +62,19 @@
 #include <cerrno>
 #include <cctype>
 //#include <stdio.h>
+#ifdef __block
+//#define block_defined
+#undef __block
+#endif
 #include <unistd.h>
 #include <signal.h>
 #include <execinfo.h>
 #include <libgen.h>
 #include <sys/stat.h>
+
+//#ifdef block_defined
+//#define __block __attribute__((__blocks__(byref)))
+//#endif
 
 #include "gu_util.h"
 #include "FSMState.h"
