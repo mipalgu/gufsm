@@ -33,7 +33,7 @@ CATKIN_HDRS+=${INSTHDRS}
 host: host-local
 	echo "Use 'make host-local' instead of 'make host'"
 
-install:
+upload-robot:
 	mkdir -p -m 0755 ${DESTDIR}${PREFIX:Q}/include/clfsm
 	mkdir -p -m 0755 ${DESTDIR}${PREFIX:Q}/lib
 	[ ! -e /usr/bin/install_name_tool ] || \
