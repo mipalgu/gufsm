@@ -57,15 +57,17 @@
  */
 #include <iostream>
 #include <sstream>
-#include <cstdlib>
 #include <cstdio>
 #include <cerrno>
 #include <cctype>
+
 //#include <stdio.h>
 #ifdef __block
 //#define block_defined
 #undef __block
 #endif
+
+#include <stdlib.h>                     // C++ stdlib instead of cstdlib.
 #include <unistd.h>
 #include <signal.h>
 #include <execinfo.h>
@@ -85,15 +87,19 @@
 #include "clfsm_wb_vector_factory.h"
 #include "gugenericwhiteboardobject.h"
 
+// Visitors and Support Objects
+#include "clfsm_visitors.h"
+#include "clfsm_visitorsupport.h"
+
 static const char *command;
 static int command_argc;
 static char * const *command_argv;
 static bool nonstop;
+static bool time_state_execution;
 static FILE* fStateMsgOutput;
 
 using namespace std;
 using namespace FSM;
-
 
 struct clfsm_context {
     vector<string> *machineFiles;       /// pointer to vector of file names
@@ -106,281 +112,333 @@ static string bumpedName(string name)
     if (!len || !isdigit(name[len-1]))
         return name + ".0";
     while (--len && isdigit(name[len-1]))
-           ;
+        ;
     int i = atoi(name.c_str()+len);
     stringstream ss;
     ss << name.substr(0, len) << ++i;
-
+    
     return ss.str();
 }
 
 
 static CLFSMWBVectorFactory *createMachines(vector<MachineWrapper *> &machineWrappers, const vector<string> &machines, const vector<string> &compiler_args, const vector<string> &linker_args)
 {
-        CLFSMWBVectorFactory *factory = new CLFSMWBVectorFactory();
-        int i = 0;
-        for (vector<string>::const_iterator it = machines.begin(); it != machines.end(); it++)
+    CLFSMWBVectorFactory *factory = new CLFSMWBVectorFactory();
+    int i = 0;
+    for (vector<string>::const_iterator it = machines.begin(); it != machines.end(); it++)
+    {
+        const string &machine = *it;
+        machineWrappers.push_back(new MachineWrapper(machine));
+        MachineWrapper &machineWrapper = *machineWrappers[i];
+        machineWrapper.setCompilerArgs(compiler_args);
+        machineWrapper.setLinkerArgs(linker_args);
+        CLMachine *clm = machineWrapper.instantiate(i, machine.c_str());
+        if (clm)
         {
-                const string &machine = *it;
-                machineWrappers.push_back(new MachineWrapper(machine));
-                MachineWrapper &machineWrapper = *machineWrappers[i];
-                machineWrapper.setCompilerArgs(compiler_args);
-                machineWrapper.setLinkerArgs(linker_args);
-                CLMachine *clm = machineWrapper.instantiate(i, machine.c_str());
-                if (clm)
-                {
-                    string name = machineWrapper.name();
-                    /*
-                     * Bump name if not unique
-                     */
-                    if (factory->index_of_machine_named(name.c_str()) != CLError)
-                    {
-                        while (factory->index_of_machine_named(name.c_str()) != CLError)
-                            name = bumpedName(name);
-                        machineWrapper.setName(name);
-                        clm->setMachineName(name.c_str());
-                    } else {
-                        clm->setMachineName(machineWrapper.name()); // set name without .machine extension
-                    }
-                    factory->addMachine(clm);
-                }
-                else cerr << "Could not add machine " << i << ": '" << machine << "'" << endl;
-                i++;
+            string name = machineWrapper.name();
+            /*
+             * Bump name if not unique
+             */
+            if (factory->index_of_machine_named(name.c_str()) != CLError)
+            {
+                while (factory->index_of_machine_named(name.c_str()) != CLError)
+                    name = bumpedName(name);
+                machineWrapper.setName(name);
+                clm->setMachineName(name.c_str());
+            } else {
+                clm->setMachineName(machineWrapper.name()); // set name without .machine extension
+            }
+            factory->addMachine(clm);
         }
-
-        return factory;
+        else
+        {
+            cerr << "Could not add machine " << i << ": '" << machine << "'" << endl;
+        }
+        
+        i++;
+    }
+    
+    return factory;
 }
 
 
 static void __attribute((noreturn)) aborting_signal_handler(int signum)
 {
 #ifdef DEBUG
-        guWhiteboard::QSay_t say;
+    guWhiteboard::QSay_t say;
 #else
-        guWhiteboard::QSpeech_t say;
+    guWhiteboard::QSpeech_t say;
 #endif
-        stringstream ss;
-
-        if (signum == SIGTERM || signum == SIGQUIT || signum == SIGINT)
-                nonstop = false;
-
-        ss << "Caught signal " << signum << ": " << (nonstop ? "restarting ... " : "aborting ...") << endl;
-
-        say(ss.str());
-        cerr << ss.str();
-
-        abort();
+    stringstream ss;
+    
+    if (signum == SIGTERM || signum == SIGQUIT || signum == SIGINT)
+        nonstop = false;
+    
+    ss << "Caught signal " << signum << ": " << (nonstop ? "restarting ... " : "aborting ...") << endl;
+    
+    say(ss.str());
+    cerr << ss.str();
+    
+    if (time_state_execution)
+    {
+        CLFSMVisitorsExecution::print_results_stderr();
+    }
+    
+    abort();
 }
 
 
 static void print_backtrace(int signum)
 {
-        void *callstack[256];
-        int olderrno = errno;
-        int frames = backtrace(callstack, sizeof(callstack)/sizeof(callstack[0]));
-        char **strs = backtrace_symbols(callstack, frames);
-        char tmpname[256];
-        snprintf(tmpname, sizeof(tmpname), "/tmp/%s-XXX.log", basename((char *)command));
-        int fn = mkstemps(tmpname, 4);
-        FILE *logfile = fdopen(fn, "w");
-        if (!logfile)
-                fprintf(stderr, "*** Cannot open '%s': %s", tmpname, strerror(errno));
+    void *callstack[256];
+    int olderrno = errno;
+    int frames = backtrace(callstack, sizeof(callstack)/sizeof(callstack[0]));
+    char **strs = backtrace_symbols(callstack, frames);
+    char tmpname[256];
+    snprintf(tmpname, sizeof(tmpname), "/tmp/%s-XXX.log", basename((char *)command));
+    int fn = mkstemps(tmpname, 4);
+    FILE *logfile = fdopen(fn, "w");
+    if (!logfile)
+    {
+        fprintf(stderr, "*** Cannot open '%s': %s", tmpname, strerror(errno));
+    }
+    
 #ifdef DEBUG
-        guWhiteboard::QSay_t say;
+    guWhiteboard::QSay_t say;
 #else
-        guWhiteboard::QSpeech_t say;
+    guWhiteboard::QSpeech_t say;
 #endif
-        for (int i = 0; i < frames; ++i)
-        {
-                char *function = strs[i];
-                char *state = strstr(function, "State");
-                if (state) say(state);
-                if (logfile) fprintf(logfile,"%3.3d: %s\n", i, function);
-                fprintf(stderr, "%3.3d: %s\n", i, function);
-        }
-        free(strs);
-        if (logfile)
-        {
-                fclose(logfile);
-                fprintf(stderr, "Log file written to '%s'\n", tmpname);
-        }
-        if (signum == SIGTSTP) kill(getpid(), SIGSTOP);
-        errno = olderrno;
+    for (int i = 0; i < frames; ++i)
+    {
+        char *function = strs[i];
+        char *state = strstr(function, "State");
+        if (state) say(state);
+        if (logfile) fprintf(logfile,"%3.3d: %s\n", i, function);
+        fprintf(stderr, "%3.3d: %s\n", i, function);
+    }
+    
+    free(strs);
+    if (logfile)
+    {
+        fclose(logfile);
+        fprintf(stderr, "Log file written to '%s'\n", tmpname);
+    }
+    
+    if (signum == SIGTSTP) kill(getpid(), SIGSTOP);
+    errno = olderrno;
 }
 
 
 static void __attribute((noreturn)) backtrace_signal_handler(int signum)
 {
-        print_backtrace(signum);
-        signal(SIGABRT, SIG_DFL);
-        if (nonstop)
-        {
-                cerr << "Starting \"";
-                for (int i = 0; i < command_argc; i++)
-                        cerr << " " << command_argv[i];
-                cerr << "\"" <<	 endl;
-                execvp(command, command_argv);
-                fprintf(stderr, "*** Cannot re-run '%s': %s", command, strerror(errno));
-        }
-        abort();
+    print_backtrace(signum);
+    signal(SIGABRT, SIG_DFL);
+    if (nonstop)
+    {
+        cerr << "Starting \"";
+        for (int i = 0; i < command_argc; i++)
+            cerr << " " << command_argv[i];
+        cerr << "\"" <<	 endl;
+        execvp(command, command_argv);
+        fprintf(stderr, "*** Cannot re-run '%s': %s", command, strerror(errno));
+    }
+    
+    abort();
 }
 
 
 static void usage(const char *cmd)
 {
-        cerr << "Usage: " << cmd << "[-c][-d][-fPIC]{-I includedir}{-L linkdir}{-l lib}[-n][-s][-v]" << endl;
-        cerr << "[-c] = Compile only flag, don't execute machine." << endl;
-        cerr << "[-f] = compiler specific flags (eg. 'PIC' To generate Position Independent Code)." << endl;
-        cerr << "{-I includedir} = Directory to include during compilation. Use repeatedly for multiple directories." << endl;
-        cerr << "{-L linkdir} = Directory to include during linking. Use repeatedly for multiple directories." << endl;
-        cerr << "{-l lib} = Library to include during linking. Use repeatedly for multiple libraries." << endl;
-        cerr << "[-n] = Restart CLFSM after SIGABRT or SIGIOT signals." << endl;
-        cerr << "[-s] = Outputs information about machine suspensions and resumes." << endl;
-        cerr << "[-v] = Verbose; output MachineID, State, and name of machine." << endl;
-        cerr << "[-d] = Output debug information (requires Verbose switch)." << endl;
+    cerr << "Usage: " << cmd << "[-c][-d][-fPIC][-i]{-I includedir}{-L linkdir}{-l lib}[-n][-s][-t][-v]" << endl;
+    cerr << "[-c] = Compile only flag, don't execute machine." << endl;
+    cerr << "[-f] = compiler specific flags (eg. 'PIC' To generate Position Independent Code)." << endl;
+    cerr << "[-i] = Maximum number of interations / number of times to run a state machine." << endl;
+    cerr << "{-I includedir} = Directory to include during compilation. Use repeatedly for multiple directories." << endl;
+    cerr << "{-L linkdir} = Directory to include during linking. Use repeatedly for multiple directories." << endl;
+    cerr << "{-l lib} = Library to include during linking. Use repeatedly for multiple libraries." << endl;
+    cerr << "[-n] = Restart CLFSM after SIGABRT or SIGIOT signals." << endl;
+    cerr << "[-s] = Outputs information about machine suspensions and resumes." << endl;
+    cerr << "[-t] = Time execution of machine states." << endl;
+    cerr << "[-v] = Verbose; output MachineID, State, and name of machine." << endl;
+    cerr << "[-d] = Output debug information (requires Verbose switch)." << endl;
 }
 
 static bool debug_internal_states = false;
 
 static bool print_machine_and_state(void *ctx, SuspensibleMachine *machine, int machine_number)
 {
-        struct clfsm_context *context = static_cast<struct clfsm_context *>(ctx);
-        CLFSMWBVectorFactory *factory = context->factory;
-        const char *machineName = factory->name_of_machine_at_index(machine_number);
-
-        if (machine->previousState() != machine->currentState())
-                fprintf(fStateMsgOutput, "%sm%3d s%3d - %-30.30s / %-30.30s - %s\n", \
-                        debug_internal_states ? "\n" : "", \
-                        machine_number, \
-                        machine->indexOfState(), \
-                        context->machineFiles->at(machine_number).c_str(), \
-                        machineName, \
-                        machine->currentState()->name().c_str());
-        else if (debug_internal_states)
-                fprintf(fStateMsgOutput, "%d/%d ", machine_number, machine->indexOfState());
-
-        return true;
+    struct clfsm_context *context = static_cast<struct clfsm_context *>(ctx);
+    CLFSMWBVectorFactory *factory = context->factory;
+    const char *machineName = factory->name_of_machine_at_index(machine_number);
+    
+    if (machine->previousState() != machine->currentState())
+    {
+        fprintf(fStateMsgOutput, "%sm%3d s%3d - %-30.30s / %-30.30s - %s\n", \
+                debug_internal_states ? "\n" : "", \
+                machine_number, \
+                machine->indexOfState(), \
+                context->machineFiles->at(machine_number).c_str(), \
+                machineName, \
+                machine->currentState()->name().c_str());
+    }
+    else if (debug_internal_states)
+    {
+        fprintf(fStateMsgOutput, "%d/%d ", machine_number, machine->indexOfState());
+    }
+    
+    return true;
 }
 
 
 int main(int argc, char * const argv[])
 {
-        fStateMsgOutput = stderr;
-        vector<MachineWrapper *> machineWrappers;
-        vector<string> machines;
-        vector<string> compiler_args;
-        vector<string> linker_args;
-
-        command_argc = argc;
-        command_argv = argv;
-        command = argv[0];
-
-        signal(SIGABRT, backtrace_signal_handler);
-        signal(SIGIOT,  backtrace_signal_handler);
-
-        signal(SIGINT,  aborting_signal_handler);
-        signal(SIGTERM, aborting_signal_handler);
-        signal(SIGQUIT, aborting_signal_handler);
-        signal(SIGSEGV, aborting_signal_handler);
-        signal(SIGBUS,  aborting_signal_handler);
-        signal(SIGILL,  aborting_signal_handler);
-        signal(SIGSYS,  aborting_signal_handler);
-        signal(SIGFPE,  aborting_signal_handler);
-        signal(SIGXCPU, aborting_signal_handler);
+    fStateMsgOutput = stderr;
+    vector<MachineWrapper *> machineWrappers;
+    vector<string> machines;
+    vector<string> compiler_args;
+    vector<string> linker_args;
+    
+    command_argc = argc;
+    command_argv = argv;
+    command = argv[0];
+    
+    signal(SIGABRT, backtrace_signal_handler);
+    signal(SIGIOT,  backtrace_signal_handler);
+    
+    signal(SIGINT,  aborting_signal_handler);
+    signal(SIGTERM, aborting_signal_handler);
+    signal(SIGQUIT, aborting_signal_handler);
+    signal(SIGSEGV, aborting_signal_handler);
+    signal(SIGBUS,  aborting_signal_handler);
+    signal(SIGILL,  aborting_signal_handler);
+    signal(SIGSYS,  aborting_signal_handler);
+    signal(SIGFPE,  aborting_signal_handler);
+    signal(SIGXCPU, aborting_signal_handler);
 #ifdef SIGINFO
-        signal(SIGINFO, print_backtrace);
+    signal(SIGINFO, print_backtrace);
 #endif
-        signal(SIGTSTP, print_backtrace);
-        signal(SIGHUP,  print_backtrace);
-
-        compiler_args.push_back("-std=c++11");    /// XXX: fix this
-
-        int ch;
-        bool compileOnly = false;
-        int debug = 0, verbose = 0;
-        while ((ch = getopt(argc, argv, "cdgf:I:L:l:nsv")) != -1)
+    signal(SIGTSTP, print_backtrace);
+    signal(SIGHUP,  print_backtrace);
+    
+    compiler_args.push_back("-std=c++11");    /// XXX: fix this
+    
+    int ch;
+    bool compileOnly = false;
+    int debug = 0, verbose = 0;
+    
+    while ((ch = getopt(argc, argv, "cdgfI:L:l:nstv")) != -1)
+    {
+        switch (ch)
         {
-                switch (ch)
-                {
-                        case 'c':
-                                compileOnly = true;
-                                break;
-                        case 'd':
-                                debug++;
-                                break;
-                        case 'g':
-                                compiler_args.push_back("-g");
-                                linker_args.push_back("-g");
-                                break;
-                        case 'f':
-                                compiler_args.push_back(string("-f")+optarg);
-				break;
-                        case 'I':
-                                compiler_args.push_back("-I");
-                                compiler_args.push_back(optarg);
-                                break;
-                        case 'L':
-                                linker_args.push_back("-L");
-                                linker_args.push_back(optarg);
-                                break;
-                        case 'l':
-                                linker_args.push_back("-l");
-                                linker_args.push_back(optarg);
-                                break;
-                        case 'n':
-                                nonstop = true;
-                                DBG(cerr << "nonstop mode: sleeping 1 second before (re)starting" << endl);
-                                protected_usleep(1000000ULL);
-                                break;
-                        case 's':
-                                FSM::debugSuspends++;
-                                break;
-                        case 'v':
-                                verbose++;
-                                break;
-                        case '?':
-                        default:
-                                usage(argv[0]);
-                                exit(EXIT_FAILURE);
-                }
+            case 'c':
+                compileOnly = true;
+                break;
+            case 'd':
+                debug++;
+                break;
+            case 'g':
+                compiler_args.push_back("-g");
+                linker_args.push_back("-g");
+                break;
+            case 'f':
+                compiler_args.push_back(string("-f")+optarg);
+                break;
+            case 'I':
+                compiler_args.push_back("-I");
+                compiler_args.push_back(optarg);
+                break;
+            case 'L':
+                linker_args.push_back("-L");
+                linker_args.push_back(optarg);
+                break;
+            case 'l':
+                linker_args.push_back("-l");
+                linker_args.push_back(optarg);
+                break;
+            case 'n':
+                nonstop = true;
+                DBG(cerr << "nonstop mode: sleeping 1 second before (re)starting" << endl);
+                protected_usleep(1000000ULL);
+                break;
+            case 's':
+                FSM::debugSuspends++;
+                break;
+            case 't': // Timer Flag
+                time_state_execution = true;
+                break;
+            case 'v':
+                verbose++;
+                break;
+            case '?':
+            default:
+                usage(argv[0]);
+                exit(EXIT_FAILURE);
         }
-        argc -= optind;
-        argv += optind;
-
-        while (argc--)
+    }
+    argc -= optind;
+    argv += optind;
+    
+    while (argc--)
+    {
+        struct stat s;
+        string machine(*argv++);
+        if (stat(machine.c_str(), &s) < 0)
         {
-                struct stat s;
-                string machine(*argv++);
-                if (stat(machine.c_str(), &s) < 0)
-                {
-                        string machine_with_extension = machine + ".machine";
-                        if (stat(machine_with_extension.c_str(), &s) < 0)
-                        {
-                                perror(machine.c_str());
-                                continue;
-                        }
-                        machine = machine_with_extension;
-                }
-                machines.push_back(machine);
+            string machine_with_extension = machine + ".machine";
+            if (stat(machine_with_extension.c_str(), &s) < 0)
+            {
+                perror(machine.c_str());
+                continue;
+            }
+            machine = machine_with_extension;
         }
-
-        if (!compiler_args.size()) compiler_args = MachineWrapper::default_compiler_args();
-        if (!linker_args.size())   linker_args   = MachineWrapper::default_linker_args();
-
-        visitor_f visitor = NULL;
-        if (verbose) visitor = print_machine_and_state;
-        CLFSMWBVectorFactory *factory = createMachines(machineWrappers, machines, compiler_args, linker_args);
-
-        if (!compileOnly) {
-                struct clfsm_context context = { &machines, factory };
-                factory->postMachineStatus();
-                debug_internal_states = debug;
-                factory->execute(visitor, &context);
-                delete factory;
-
-                for (vector<MachineWrapper *>::const_iterator it = machineWrappers.begin(); it != machineWrappers.end(); it++)
-                        if (*it) delete *it;
+        machines.push_back(machine);
+    }
+    
+    if (!compiler_args.size())
+    {
+        compiler_args = MachineWrapper::default_compiler_args();
+    }
+    
+    if (!linker_args.size())
+    {
+        linker_args   = MachineWrapper::default_linker_args();
+    }
+    
+    visitor_f visitor = NULL;
+    
+    if (verbose)
+    {
+        visitor = print_machine_and_state;
+    }
+    
+    if (time_state_execution)
+    {
+        visitor = CLFSMVisitorsExecution::time_state_execution;
+    }
+    
+    CLFSMWBVectorFactory *factory = createMachines(machineWrappers, machines, compiler_args, linker_args);
+    
+    if (!compileOnly)
+    {
+        struct clfsm_context context = { &machines, factory };
+        factory->postMachineStatus();
+        debug_internal_states = debug;
+        factory->execute(visitor, &context);
+        delete factory;
+        
+        for (vector<MachineWrapper *>::const_iterator it = machineWrappers.begin(); it != machineWrappers.end(); it++)
+        {
+            if (*it) delete *it;
         }
-
-        return EXIT_SUCCESS;
+    }
+    
+    
+    // Print Execution Results
+    if (time_state_execution)
+    {
+        CLFSMVisitorsExecution::print_results_stderr();
+    }
+    
+    return EXIT_SUCCESS;
 }
