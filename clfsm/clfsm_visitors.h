@@ -69,8 +69,6 @@
 
 namespace FSM
 {
-    using namespace std;
-
     class CLMachine;
     class CLState;
     class SuspensibleMachine;
@@ -80,7 +78,7 @@ namespace FSM
     class CLFSMVisitorsExecution
     {
         /* Execution resuls for each State */
-        static vector<CLFSMStateExecutionTime> execution_results;
+        static std::vector<CLFSMStateExecutionTime> execution_results;
     public:
         /* Visitor Function for Timing the Execution of Each State */
         static bool time_state_execution(void *context, SuspensibleMachine *machine, int machine_number);
@@ -89,13 +87,13 @@ namespace FSM
         static void print_results_stderr();
     private:
         /* Insert State Execution Time
-         * If the the state is already in the set, it adds an additional timing.
+         * If the the state is already in the collection, it adds an additional timing.
          * Otherwise it adds a new CLFSMStateExecutionTime object into the set, along with an initial
          * timing.
          * @param string stateName
          * @param double time
          */
-        static void insertTime(string stateName, double time);
+        static void insertTime(std::string stateName, double time);
     };
 }
 

@@ -113,7 +113,7 @@ void CLFSMVisitorsExecution::print_results_stderr()
  * @param string stateName
  * @param double time
  */
-void CLFSMVisitorsExecution::insertTime(string stateName, double time)
+void CLFSMVisitorsExecution::insertTime(std::string stateName, double time)
 {
     // find_if lambda YAY!
     std::vector<CLFSMStateExecutionTime>::iterator it =
@@ -136,7 +136,7 @@ void CLFSMVisitorsExecution::insertTime(string stateName, double time)
     }
 }
 
-/* Initialze Static Collection */
+/* Init Static Collection */
 std::vector<CLFSMStateExecutionTime> CLFSMVisitorsExecution::execution_results;
 
 #pragma clang diagnostic pop
