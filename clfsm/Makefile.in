@@ -19,6 +19,8 @@ SPECIFIC_LIBS+=-L/usr/local/lib -lclfsm -ldl
 
 CC_SRCS+=clfsm_cc.cc
 CC_SRCS+=clfsm_machine.cc
+CC_SRCS+=clfsm_visitorsupport.cc
+CC_SRCS+=clfsm_visitors.cc
 CC_SRCS+=clfsm_main.cc
 HDRS+=CLActionAction.h
 HDRS+=CLTransitionExpression.h
@@ -42,6 +44,8 @@ HDRS+=clfsm_factory.h
 HDRS+=clfsm_machine.h
 HDRS+=clfsm_cc_delegate.h
 HDRS+=clfsm_cc.h
+HDRS+=clfsm_visitorsupport.h
+HDRS+=clfsm_visitors.h
 HDRS+=stringConstants.h
 
 .include "../../../../mk/whiteboard.mk"		# required for the whiteboard
