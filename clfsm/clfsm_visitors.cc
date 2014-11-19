@@ -87,7 +87,6 @@ bool CLFSMVisitorsExecution::time_state_execution(void *ctx,
         CLFSMTimer timer;
         machine->executeOnce();
         double t = timer.elapsed();
-        
         insertTime(stateName, t);
     }
 
@@ -100,10 +99,10 @@ void CLFSMVisitorsExecution::print_results_stderr()
     std::cerr << "#####   START EXECUTION RESULTS   ##### " << std::endl;
     std::cerr << "StateName BestCase WorstCase AverageCase Iterations"
         << std::endl;
-    for (std::vector<CLFSMStateExecutionTime>::const_iterator it =
+    for (std::vector<CLFSMStateExecutionTimeContainer>::const_iterator it =
             execution_results.begin(); it != execution_results.end(); it++)
     {
-        CLFSMStateExecutionTime t = *it;
+        CLFSMStateExecutionTimeContainer t = *it;
         std::cerr << t.getResults() << std::endl;
     }
     std::cerr << "#####   END EXECUTION RESULTS     ##### " << std::endl;
@@ -119,9 +118,9 @@ void CLFSMVisitorsExecution::print_results_stderr()
 void CLFSMVisitorsExecution::insertTime(std::string stateName, double time)
 {
     // find_if lambda YAY!
-    std::vector<CLFSMStateExecutionTime>::iterator it =
+    std::vector<CLFSMStateExecutionTimeContainer>::iterator it =
         find_if(execution_results.begin(), execution_results.end(),
-                [&stateName](const CLFSMStateExecutionTime &t)
+                [&stateName](const CLFSMStateExecutionTimeContainer &t)
     {
         return t.getStateName() == stateName;
     });
@@ -132,13 +131,13 @@ void CLFSMVisitorsExecution::insertTime(std::string stateName, double time)
     }
     else
     {
-        CLFSMStateExecutionTime t = CLFSMStateExecutionTime(stateName);
+        CLFSMStateExecutionTimeContainer t = CLFSMStateExecutionTimeContainer(stateName);
         t.insertExecutionTime(time);
         execution_results.push_back(t);
     }
 }
 
 /* Init Static Collection */
-std::vector<CLFSMStateExecutionTime> CLFSMVisitorsExecution::execution_results;
+std::vector<CLFSMStateExecutionTimeContainer> CLFSMVisitorsExecution::execution_results;
 
 #pragma clang diagnostic pop

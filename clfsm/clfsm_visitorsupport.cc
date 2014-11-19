@@ -63,7 +63,7 @@
 using namespace FSM;
 
 /* Constructor */
-CLFSMStateExecutionTime::CLFSMStateExecutionTime(std::string stateName) {
+CLFSMStateExecutionTimeContainer::CLFSMStateExecutionTimeContainer(std::string stateName) {
     _sorted = false;
     _stateName = stateName;
 }
@@ -72,7 +72,7 @@ CLFSMStateExecutionTime::CLFSMStateExecutionTime(std::string stateName) {
  * StateName BestTime WorstTime AverageTime Iterations
  * Values are white-space seperated.
  */
-std::string CLFSMStateExecutionTime::getResults()
+std::string CLFSMStateExecutionTimeContainer::getResults()
 {
     // C++ really needs a string.format. This is just stupid!
     return this->getStateName() + " " + std::to_string(this->getBestTime())
@@ -82,7 +82,7 @@ std::string CLFSMStateExecutionTime::getResults()
 }
 
 /* Query executionTimes for Best Execution Time */
-double CLFSMStateExecutionTime::getBestTime() {
+double CLFSMStateExecutionTimeContainer::getBestTime() {
     if (!this->_sorted) {
         sortExecutionTimes();
     }
@@ -91,7 +91,7 @@ double CLFSMStateExecutionTime::getBestTime() {
 }
 
 /* Query executionTimes for Worst Execution Time */
-double CLFSMStateExecutionTime::getWorstTime() {
+double CLFSMStateExecutionTimeContainer::getWorstTime() {
     if (!this->_sorted) {
         sortExecutionTimes();
     }
@@ -100,14 +100,14 @@ double CLFSMStateExecutionTime::getWorstTime() {
 }
 
 /* Average out Execution Times */
-double CLFSMStateExecutionTime::getAverageTime() {
+double CLFSMStateExecutionTimeContainer::getAverageTime() {
     return std::accumulate(this->_executionTimes.begin(),
                            this->_executionTimes.end(), 0.0)
                             / static_cast<double>(this->_executionTimes.size());
 }
 
 /* Insert execution time into Collection */
-void CLFSMStateExecutionTime::insertExecutionTime(double time) {
+void CLFSMStateExecutionTimeContainer::insertExecutionTime(double time) {
     // Debug
     // std::cerr << this->getStateName() << ": " << time << std::endl;
     
@@ -119,7 +119,7 @@ void CLFSMStateExecutionTime::insertExecutionTime(double time) {
 }
 
 /* Sort internal execution time vector. Sets sorted flag. */
-void CLFSMStateExecutionTime::sortExecutionTimes() {
+void CLFSMStateExecutionTimeContainer::sortExecutionTimes() {
     
     // Use the standard sort comparer.
     // Can repalce with faster sorting alg, at a later date (if needed).

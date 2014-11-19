@@ -68,15 +68,17 @@
 
 namespace FSM
 {
-    
-    class CLFSMStateExecutionTime
+    /* Container class for Execution Time Vector and State Information.
+     * Used as part of ClFSMExecutionVisitor funcationality. 
+     */
+    class CLFSMStateExecutionTimeContainer
     {
         std::vector<double> _executionTimes;
         std::string _stateName;
         bool _sorted;
     public:
         /* Constructor */
-        CLFSMStateExecutionTime(std::string stateName);
+        CLFSMStateExecutionTimeContainer(std::string stateName);
         
         /* Getter for stateName */
         std::string getStateName() const { return _stateName; }
@@ -100,17 +102,17 @@ namespace FSM
         void insertExecutionTime(double time);
         
         /* Relational operators for Execution Time Object */
-        bool operator==(const CLFSMStateExecutionTime &rhs) const
+        bool operator==(const CLFSMStateExecutionTimeContainer &rhs) const
         {
             return this->getStateName() == rhs.getStateName();
         }
         
-        bool operator<(const CLFSMStateExecutionTime &rhs) const
+        bool operator<(const CLFSMStateExecutionTimeContainer &rhs) const
         {
             return this->getStateName() < rhs.getStateName();
         }
         
-        bool operator>(const CLFSMStateExecutionTime &rhs) const
+        bool operator>(const CLFSMStateExecutionTimeContainer &rhs) const
         {
             return this->getStateName() > rhs.getStateName();
         }
@@ -121,7 +123,10 @@ namespace FSM
     };
     
     
-    /* See: https://gist.github.com/gongzhitaao/7062087#file-timer-c-11-cpp */
+    /* CLFSMTimer is a simple high-resolution timing class. 
+     * For original implementation see reference:
+     * @ref https://gist.github.com/gongzhitaao/7062087#file-timer-c-11-cpp
+     */
     class CLFSMTimer
     {
     public:

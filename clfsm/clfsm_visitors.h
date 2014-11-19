@@ -78,7 +78,7 @@ namespace FSM
     class CLFSMVisitorsExecution
     {
         /* Execution resuls for each State */
-        static std::vector<CLFSMStateExecutionTime> execution_results;
+        static std::vector<CLFSMStateExecutionTimeContainer> execution_results;
     public:
         /* Visitor Function for Timing the Execution of Each State */
         static bool time_state_execution(void *context, SuspensibleMachine *machine, int machine_number);
