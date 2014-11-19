@@ -125,18 +125,18 @@ namespace FSM
     class CLFSMTimer
     {
     public:
-        CLFSMTimer() : beg_(clock_::now()) {}
-        void reset() { beg_ = clock_::now(); }
+        CLFSMTimer() : _beg(clock_::now()) {}
+        void reset() { _beg = clock_::now(); }
         double elapsed() const
         {
-            return std::chrono::duration_cast<second_>
-            (clock_::now() - beg_).count();
+            return std::chrono::duration_cast<_second>
+            (clock_::now() - _beg).count();
         }
         
     private:
         typedef std::chrono::high_resolution_clock clock_;
-        typedef std::chrono::duration<double, std::ratio<1> > second_;
-        std::chrono::time_point<clock_> beg_;
+        typedef std::chrono::duration<double, std::ratio<1> > _second;
+        std::chrono::time_point<clock_> _beg;
     };
 }
 
