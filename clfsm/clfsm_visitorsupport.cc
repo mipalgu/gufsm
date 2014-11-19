@@ -66,7 +66,6 @@ using namespace FSM;
 CLFSMStateExecutionTime::CLFSMStateExecutionTime(std::string stateName) {
     _sorted = false;
     _stateName = stateName;
-    _executionTimes = std::vector<double>();
 }
 
 /* Returns a string in the following format:
@@ -114,6 +113,9 @@ void CLFSMStateExecutionTime::insertExecutionTime(double time) {
     
     this->_executionTimes.push_back(time);
     this->_sorted = false;
+    
+//    fprintf(stderr, "State: %s Addr: %p Size:%lu\n", this->getStateName().c_str(), this, this->_executionTimes.size());
+    
 }
 
 /* Sort internal execution time vector. Sets sorted flag. */

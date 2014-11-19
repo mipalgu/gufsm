@@ -82,12 +82,15 @@ bool CLFSMVisitorsExecution::time_state_execution(void *ctx,
 {
     std::string stateName = machine->currentState()->name();
     
-    CLFSMTimer timer;
-    machine->executeOnce();
-    double t = timer.elapsed();
-    
-    insertTime(stateName, t);
-    
+    if (machine->previousState() != machine->currentState())
+    {
+        CLFSMTimer timer;
+        machine->executeOnce();
+        double t = timer.elapsed();
+        
+        insertTime(stateName, t);
+    }
+
     return true;
 }
 
@@ -125,8 +128,7 @@ void CLFSMVisitorsExecution::insertTime(std::string stateName, double time)
     
     if (it != execution_results.end())
     {
-        CLFSMStateExecutionTime t = *it;
-        t.insertExecutionTime(time);
+        it->insertExecutionTime(time);
     }
     else
     {
