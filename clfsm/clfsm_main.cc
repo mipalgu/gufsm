@@ -249,10 +249,9 @@ static void __attribute((noreturn)) backtrace_signal_handler(int signum)
 
 static void usage(const char *cmd)
 {
-    cerr << "Usage: " << cmd << "[-c][-d][-fPIC][-i]{-I includedir}{-L linkdir}{-l lib}[-n][-s][-t][-v]" << endl;
+    cerr << "Usage: " << cmd << "[-c][-d][-fPIC]{-I includedir}{-L linkdir}{-l lib}[-n][-s][-t][-v]" << endl;
     cerr << "[-c] = Compile only flag, don't execute machine." << endl;
     cerr << "[-f] = compiler specific flags (eg. 'PIC' To generate Position Independent Code)." << endl;
-    cerr << "[-i] = Maximum number of interations / number of times to run a state machine." << endl;
     cerr << "{-I includedir} = Directory to include during compilation. Use repeatedly for multiple directories." << endl;
     cerr << "{-L linkdir} = Directory to include during linking. Use repeatedly for multiple directories." << endl;
     cerr << "{-l lib} = Library to include during linking. Use repeatedly for multiple libraries." << endl;
