@@ -113,8 +113,8 @@ void CLFSMVisitorsExecution::print_results_stderr()
  * If the the state is already in the set, it adds an additional timing.
  * Otherwise it adds a new CLFSMStateExecutionTime object into the set, 
  * along with an initial timing. 
- * @param string stateName
- * @param double time
+ * @param name of the State for which a execution time is recorded.
+ * @param execution time in seconds. 
  */
 void CLFSMVisitorsExecution::insertTime(std::string stateName, double time)
 {
