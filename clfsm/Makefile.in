@@ -3,6 +3,8 @@
 #
 MODULE_BASE=clfsm
 
+DONT_COMPLAIN_ABOUT_TEST_TARGET=yes	## test target is defined elsewhere
+
 .include "../../../../mk/c++11.mk"	# use C++11
 
 .ifndef TARGET
@@ -56,5 +58,8 @@ pre-catkin:
 .for hfile in FSM_Control.h FSMControlStatus.h wb_fsm_control_status.h wb_fsm_state_status.h
 	$Ecp -p ${WB_DIR}/typeClassDefs/${hfile} ${CATKIN_DIR}/include/typeClassDefs
 .endfor
+
+test:
+	$Eecho ""				# nothing to see here, move on
 
 .include "../../../../mk/mipal.mk"

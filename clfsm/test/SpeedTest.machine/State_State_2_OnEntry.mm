@@ -1,1 +1,1 @@
-std::cout << "done." << std::endl;
+std::cout << "SpeedTest passed." << std::endl;
