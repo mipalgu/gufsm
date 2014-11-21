@@ -46,6 +46,20 @@ upload-robot:
 .endfor
 .endif
 
+install: host-local
+	mkdir -p -m 0755 /usr/local/include/clfsm
+	mkdir -p -m 0755 /usr/local/lib
+	cd ${BUILDDIR}-local && \
+	install -m 0755 *${SOEXT}* /usr/local/lib
+.for hdr in ${INSTHDRS}
+	cd ${SRCDIR} && \
+	if [ -d ${hdr:Q} ]; then \
+	  cp -pR ${hdr:Q} /usr/local/include/clfsm;\
+	else \
+	  install -m 0644 ${hdr} /usr/local/include/clfsm;\
+	fi
+.endfor
+
 pre-catkin:
 	$Emkdir -p ${CATKIN_DIR}/include/typeClassDefs
 .for hfile in FSM_Control.h FSMControlStatus.h wb_fsm_control_status.h wb_fsm_state_status.h
