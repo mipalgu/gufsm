@@ -55,6 +55,7 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#include <algorithm>    // std::find_if
 
 #include "clfsm_visitors.h"
 #include "clfsm_visitorsupport.h"

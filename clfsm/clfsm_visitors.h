@@ -64,6 +64,7 @@
 
 #include <stdio.h>
 #include <set>
+#include <vector>
 
 #include "clfsm_visitorsupport.h"
 
