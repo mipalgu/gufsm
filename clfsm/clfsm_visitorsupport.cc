@@ -55,8 +55,9 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-
-#include <numeric> // Accumlate
+#include <numeric>      // Accumlate
+#include <algorithm>    // std::sort
+#include <string>       // std::to_string
 
 #include "clfsm_visitorsupport.h"
 
