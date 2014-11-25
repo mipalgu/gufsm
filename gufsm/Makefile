@@ -64,7 +64,7 @@ ANTLR_GRAMMARS=SimpleCLexer.g
 #CLANG_CXXFLAGS=-std=c++0x
 #TARGET_USE_CLANG=YES
 
-.include "../../../mk/libcxx.mk"	# needs to come first
+.include "../../../mk/c++11.mk"	# needs to come first
 .include "../../../mk/antlr.mk"		# required for grammar parsing
 USE_OLD_WHITEBOARD=yes
 .include "../../../mk/whiteboard.mk"	# required for the whiteboard
