@@ -87,12 +87,16 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
+            argument = "-t"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "$(SRCROOT)/clfsm/examples/PingPong.machine"
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "$(SRCROOT)/clfsm/examples/PingPongCLFSM.machine"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "$(SRCROOT)/clfsm/examples/SayPingPong.machine"
@@ -100,11 +104,11 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "$(SRCROOT)/clfsm/examples/TestSuspend.machine"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "$(SRCROOT)/clfsm/examples/SLEEPER.machine"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "/Users/rh/Desktop/PingPongCLFSM.machine"

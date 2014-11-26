@@ -3,7 +3,10 @@
 #
 # clfsm Makefile
 #
-ALL_TARGETS=build-host build-robot do-catkin
+ALL_TARGETS=build-host do-catkin
+
+DONT_COMPLAIN_ABOUT_TEST_TARGET=yes	## test target is defined below
+TEST_MACHINES=SpeedTest			## machines to run for testing
 
 all: all-real
 
@@ -37,5 +40,18 @@ build-robot:
 do-catkin: copy-stuff
 	cd ${BUILDDIR} && ln -fs ${CATKIN_TEMPLATE} ${BUILDDIR}
 	cd ${BUILDDIR} && ${MAKE} catkin
+
+test: build-host
+.for machine in ${TEST_MACHINES}
+#	$Ecd ${PWD:Q}/test && ${MAKE} host-local MACHINES=${machine} && \
+	${PWD:Q}/${BUILDDIR}/clfsm ${machine}
+.endfor
+
+clean: clean-test
+
+clean-test:
+.for machine in ${TEST_MACHINES}
+	$Ecd ${PWD:Q}/test && ${MAKE} clean
+.endfor
 
 .include "../../../mk/mipal.mk"		# comes last!
