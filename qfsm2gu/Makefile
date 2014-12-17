@@ -13,6 +13,8 @@ SPECIFIC_LIBS+=-framework Foundation
 .endif
 
 ANALYSE_INCLUDE_C_SRCS=yes
+DOC_HDRS=qfsm2gu.md
+CI_SERVER_DOC_SUBDIR=utils
 
 UTIL_DIR=${GUNAO_DIR}/posix/guwhiteboard/objc/Classes
 CPPFLAGS=-I${UTIL_DIR}
