@@ -8,7 +8,7 @@ MAN=${BIN}
 ALL_TARGETS=do-build
 SPECIFIC_LIBS+=-lgnustep-base -lobjc
 .else
-ALL_TARGETS=host
+ALL_TARGETS=host doc
 SPECIFIC_LIBS+=-framework Foundation
 .endif
 
