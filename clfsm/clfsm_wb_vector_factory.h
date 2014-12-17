@@ -152,6 +152,7 @@ namespace FSM
                  * execute one iteration of the current state of each machine
                  * with a given visitor for each machine
                  * @param should_execute_machine visitor that returns whether machine should be executed in this round
+                 * @param context pointer to a user-defined context (such as a whiteboard context for the wb singleton)
                  * @return true if any transition fired on any machine
                  */
                 virtual bool executeOnce(visitor_f should_execute_machine, void *context);
