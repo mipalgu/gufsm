@@ -4,6 +4,7 @@
 MODULE_BASE=clfsm
 
 DONT_COMPLAIN_ABOUT_TEST_TARGET=yes	## test target is defined elsewhere
+CI_SERVER_DOC_SUBDIR=utils
 
 .include "../../../../mk/c++11.mk"	# use C++11
 
