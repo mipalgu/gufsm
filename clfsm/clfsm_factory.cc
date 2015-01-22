@@ -110,11 +110,12 @@ CLFSMFactory::CLFSMFactory(Context *context, CLMachine *clm, int mid, bool del):
          */
         createMachine(clm, context, initialState, mid, clm->machineName());
         SuspensibleMachine *fsm = machine();
+        const int initialStateID = initialState ? initialState->stateID() : -1;
         for (int i = 0; i < n; i++)
         {
                 CLState *clstate = cl_states[i];
                 State *state = states[i];
-                fsm->addState(state);
+                if (state->stateID() != initialStateID) fsm->addState(state);
                 createActions(clm, clstate, state);
                 createTransitions(clm, clstate, state, states);
         }
