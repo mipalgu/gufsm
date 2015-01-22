@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 5/08/12.
- *  Copyright (c) 2012, 2013, 2014 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2013, 2014, 2015 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
