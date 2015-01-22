@@ -114,16 +114,7 @@ CLFSMFactory::CLFSMFactory(Context *context, CLMachine *clm, int mid, bool del):
         {
                 CLState *clstate = cl_states[i];
                 State *state = states[i];
-                bool alreadyAdded = false;
-                for (StateVector::const_iterator aState = machine()->states().begin(); aState != machine()->states().end(); aState++) {
-                    if ((*aState)->stateID() == state->stateID()) {
-                        alreadyAdded = true;
-                        break;
-                    }
-                }
-                if (!alreadyAdded) {
-                    fsm->addState(state);
-                }
+                fsm->addState(state);
                 createActions(clm, clstate, state);
                 createTransitions(clm, clstate, state, states);
         }
