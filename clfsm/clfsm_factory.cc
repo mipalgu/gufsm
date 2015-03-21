@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 5/08/12.
- *  Copyright (c) 2012, 2013, 2014 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2013, 2014, 2015 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -110,20 +110,12 @@ CLFSMFactory::CLFSMFactory(Context *context, CLMachine *clm, int mid, bool del):
          */
         createMachine(clm, context, initialState, mid, clm->machineName());
         SuspensibleMachine *fsm = machine();
+        const int initialStateID = initialState ? initialState->stateID() : -1;
         for (int i = 0; i < n; i++)
         {
                 CLState *clstate = cl_states[i];
                 State *state = states[i];
-                bool alreadyAdded = false;
-                for (StateVector::const_iterator aState = machine()->states().begin(); aState != machine()->states().end(); aState++) {
-                    if ((*aState)->stateID() == state->stateID()) {
-                        alreadyAdded = true;
-                        break;
-                    }
-                }
-                if (!alreadyAdded) {
-                    fsm->addState(state);
-                }
+                if (state->stateID() != initialStateID) fsm->addState(state);
                 createActions(clm, clstate, state);
                 createTransitions(clm, clstate, state, states);
         }
