@@ -1,0 +1,65 @@
+#
+#	$Id$
+#
+MODULE_BASE=clfsm
+
+DONT_COMPLAIN_ABOUT_TEST_TARGET=yes	## test target is defined elsewhere
+
+.include "../../../../mk/c++11.mk"	# use C++11
+
+.ifndef TARGET
+.if "${UNAME}" != "Linux"
+#USE_LIBCPP=yes
+#SPECIFIC_CPPFLAGS=-stdlib=libc++
+#SPECIFIC_LDFLAGS=-stdlib=libc++
+.else
+SPECIFIC_LIBS+=-Wl,-R/usr/local/lib
+.endif
+.endif
+
+SPECIFIC_LIBS+=-L/usr/local/lib -lclfsm -ldl
+
+CC_SRCS+=clfsm_cc.cc
+CC_SRCS+=clfsm_machine.cc
+CC_SRCS+=clfsm_visitorsupport.cc
+CC_SRCS+=clfsm_visitors.cc
+CC_SRCS+=clfsm_main.cc
+HDRS+=CLActionAction.h
+HDRS+=CLTransitionExpression.h
+HDRS+=FSM.h
+HDRS+=FSMAction.h
+HDRS+=FSMActivity.h
+HDRS+=FSMExpression.h
+HDRS+=FSMWBPredicate.h
+HDRS+=FSMWBQueryPredicate.h
+HDRS+=FSMWBContext.h
+HDRS+=FSMachine.h
+HDRS+=FSMState.h
+HDRS+=FSMSuspensibleMachine.h
+HDRS+=FSMWBSubMachine.h
+HDRS+=FSMTransition.h
+HDRS+=FSMFactory.h
+HDRS+=FSMachineVector.h
+HDRS+=clfsm_vector_factory.h
+HDRS+=clfsm_wb_vector_factory.h
+HDRS+=clfsm_factory.h
+HDRS+=clfsm_machine.h
+HDRS+=clfsm_cc_delegate.h
+HDRS+=clfsm_cc.h
+HDRS+=clfsm_visitorsupport.h
+HDRS+=clfsm_visitors.h
+HDRS+=stringConstants.h
+
+.include "../../../../mk/whiteboard.mk"		# required for the whiteboard
+.include "../../../../mk/util.mk"		# required for gu_util
+
+pre-catkin:
+	$Emkdir -p ${CATKIN_DIR}/include/typeClassDefs
+.for hfile in FSM_Control.h FSMControlStatus.h wb_fsm_control_status.h wb_fsm_state_status.h
+	$Ecp -p ${WB_DIR}/typeClassDefs/${hfile} ${CATKIN_DIR}/include/typeClassDefs
+.endfor
+
+test:
+	$Eecho ""				# nothing to see here, move on
+
+.include "../../../../mk/mipal.mk"
