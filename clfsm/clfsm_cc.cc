@@ -62,6 +62,8 @@
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-macros"
+#pragma clang diagnostic ignored "-Wreserved-id-macro"
+
 #undef __block
 #define __block _xblock
 #include <unistd.h>

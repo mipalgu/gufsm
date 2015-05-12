@@ -55,8 +55,8 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef __gufsm__clfsm_machine__
-#define __gufsm__clfsm_machine__
+#ifndef gufsm__clfsm_machine__
+#define gufsm__clfsm_machine__
 
 #include <string>
 #include <vector>
@@ -141,4 +141,4 @@ namespace FSM
         };
 }
 
-#endif /* defined(__gufsm__clfsm_machine__) */
+#endif /* defined gufsm__clfsm_machine__) */

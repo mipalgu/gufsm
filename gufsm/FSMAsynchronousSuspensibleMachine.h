@@ -3,7 +3,7 @@
  *  gufsm
  *
  *  Created by Rene Hexel on 25/03/13.
- *  Copyright (c) 2013 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2013, 2015 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -55,8 +55,8 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef __gufsm__FSMAsynchronousSuspensibleMachine__
-#define __gufsm__FSMAsynchronousSuspensibleMachine__
+#ifndef gufsm__FSMAsynchronousSuspensibleMachine__
+#define gufsm__FSMAsynchronousSuspensibleMachine__
 
 #include "FSMSuspensibleMachine.h"
 
@@ -126,4 +126,4 @@ namespace FSM
         };
 }
 
-#endif /* defined(__gufsm__FSMAsynchronousSuspensibleMachine__) */
+#endif /* defined gufsm__FSMAsynchronousSuspensibleMachine__) */

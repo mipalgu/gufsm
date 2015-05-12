@@ -2,7 +2,7 @@
  *  CLMacros.h
  *
  *  Created by René Hexel on 23/03/13.
- *  Copyright (c) 2013 Rene Hexel.
+ *  Copyright (c) 2013, 2015 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,8 +55,8 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef _CLMacros_h
-#define _CLMacros_h
+#ifndef CLMacros_h_
+#define CLMacros_h_
 
 #ifdef bool
 #undef bool
@@ -133,4 +133,4 @@ static inline enum CLControlStatus status(const char *m)  { return cs_machine_na
 #pragma clang diagnostic ignored "-Wheader-hygiene"
 #endif
 
-#endif
+#endif // CLMacros_h_

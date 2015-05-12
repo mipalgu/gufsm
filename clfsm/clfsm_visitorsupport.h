@@ -56,8 +56,8 @@
  *
  */
 
-#ifndef __gufsm__clfsm_visitorsupport__
-#define __gufsm__clfsm_visitorsupport__
+#ifndef gufsm__clfsm_visitorsupport__
+#define gufsm__clfsm_visitorsupport__
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wpadded"
@@ -147,4 +147,4 @@ namespace FSM
 
 #pragma clang diagnostic pop
 
-#endif /* defined(__gufsm__clfsm_visitorsupport__) */
+#endif /* defined gufsm__clfsm_visitorsupport__) */

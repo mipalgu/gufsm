@@ -3,11 +3,11 @@
 //  gufsm
 //
 //  Created by Rene Hexel on 5/04/2014.
-//  Copyright (c) 2014 Rene Hexel. All rights reserved.
+//  Copyright (c) 2014, 2015 Rene Hexel. All rights reserved.
 //
 
-#ifndef __gufsm__libclfsm_tests__
-#define __gufsm__libclfsm_tests__
+#ifndef gufsm__libclfsm_tests__
+#define gufsm__libclfsm_tests__
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wglobal-constructors"
@@ -102,6 +102,6 @@ namespace
 //    ::testing::InitGoogleTest(&argc, argv);
 //    return RUN_ALL_TESTS();
 //}
-#endif /* defined(__gufsm__libclfsm_tests__) */
+#endif /* defined gufsm__libclfsm_tests__) */
 
 #pragma clang diagnostic pop

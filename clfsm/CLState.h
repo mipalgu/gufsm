@@ -55,8 +55,8 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef __clfsm__CLState__
-#define __clfsm__CLState__
+#ifndef clfsm__CLState__
+#define clfsm__CLState__
 
 #include "CLAction.h"
 
@@ -126,4 +126,4 @@ namespace FSM
 
 #pragma clang diagnostic pop
 
-#endif /* defined(__gufsm__CLState__) */
+#endif /* defined gufsm__CLState__) */

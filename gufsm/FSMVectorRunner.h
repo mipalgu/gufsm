@@ -2,7 +2,7 @@
  *  FSMVectorRunner.h
  *  
  *  Created by René Hexel on 31/05/12.
- *  Copyright (c) 2012 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2015 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -54,8 +54,8 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef _FSMVectorRunner_h
-#define _FSMVectorRunner_h
+#ifndef FSMVectorRunner_h
+#define FSMVectorRunner_h
 
 #include <vector>
 #include <string>
@@ -65,4 +65,4 @@ typedef int (*machine_runner_f)(FSM::ANTLRStateMachineVectorFactory &factory, st
 
 int run_machine_vector(FSM::ANTLRStateMachineVectorFactory &factory, std::vector<std::string> &machine_names, machine_runner_f execute, bool verbose = false);
 
-#endif
+#endif // FSMVectorRunner_h

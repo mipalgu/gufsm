@@ -3,10 +3,11 @@
 //  qfsm2gu
 //
 //  Created by Rene Hexel on 18/03/11.
-//  Copyright 2011-2014 Rene Hexel. All rights reserved.
+//  Copyright 2011, 2012, 2013, 2014, 12015 Rene Hexel. All rights reserved.
 //
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-macros"
+#pragma clang diagnostic ignored "-Wreserved-id-macro"
 
 #ifndef _POSIX_SOURCE
 #define _POSIX_SOURCE 200112L

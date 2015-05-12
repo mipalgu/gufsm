@@ -55,8 +55,8 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef ____clfsm_factory__
-#define ____clfsm_factory__
+#ifndef clfsm_factory__
+#define clfsm_factory__
 
 #include "FSMFactory.h"
 
@@ -107,4 +107,4 @@ namespace FSM
 
 #pragma clang diagnostic pop
 
-#endif /* defined(____clfsm_factory__) */
+#endif /* defined clfsm_factory__) */
