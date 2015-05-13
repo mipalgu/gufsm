@@ -56,8 +56,8 @@
  *
  */
 
-#ifndef clfsm_wb_vector_factory__
-#define clfsm_wb_vector_factory__
+#ifndef clfsm_wb_vector_factory_
+#define clfsm_wb_vector_factory_
 
 #include "clfsm_vector_factory.h"
 #include "typeClassDefs/FSM_Control.h"
@@ -160,4 +160,4 @@ namespace FSM
 }
 #pragma clang diagnostic pop
 
-#endif /* defined clfsm_wb_vector_factory__) */
+#endif /* defined clfsm_wb_vector_factory_ */

@@ -55,8 +55,8 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef clfsm__CLAction__
-#define clfsm__CLAction__
+#ifndef clfsm_CLAction_
+#define clfsm_CLAction_
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wweak-vtables"
@@ -79,4 +79,4 @@ namespace FSM
 
 #pragma clang diagnostic pop
 
-#endif /* defined gufsm__CLAction__) */
+#endif /* defined gufsm_CLAction_) */

@@ -6,8 +6,8 @@
 //  Copyright (c) 2014, 2015 Rene Hexel. All rights reserved.
 //
 
-#ifndef gufsm__libclfsm_tests__
-#define gufsm__libclfsm_tests__
+#ifndef gufsm_libclfsm_tests_
+#define gufsm_libclfsm_tests_
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wglobal-constructors"
@@ -102,6 +102,6 @@ namespace
 //    ::testing::InitGoogleTest(&argc, argv);
 //    return RUN_ALL_TESTS();
 //}
-#endif /* defined gufsm__libclfsm_tests__) */
+#endif /* defined gufsm_libclfsm_tests_ */
 
 #pragma clang diagnostic pop

@@ -55,8 +55,8 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef gufsm__FSMAsynchronousSuspensibleMachine__
-#define gufsm__FSMAsynchronousSuspensibleMachine__
+#ifndef gufsm_FSMAsynchronousSuspensibleMachine_
+#define gufsm_FSMAsynchronousSuspensibleMachine_
 
 #include "FSMSuspensibleMachine.h"
 
@@ -126,4 +126,4 @@ namespace FSM
         };
 }
 
-#endif /* defined gufsm__FSMAsynchronousSuspensibleMachine__) */
+#endif /* defined gufsm_FSMAsynchronousSuspensibleMachine_ */

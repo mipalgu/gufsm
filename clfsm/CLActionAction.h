@@ -55,8 +55,8 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef CLActionAction__
-#define CLActionAction__
+#ifndef CLActionAction_
+#define CLActionAction_
 
 #include "CLAction.h"
 #include "FSMAction.h"
@@ -99,4 +99,4 @@ namespace FSM
 
 #pragma clang diagnostic pop
 
-#endif /* defined CLActionAction__) */
+#endif /* defined CLActionAction_) */
