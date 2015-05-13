@@ -3,7 +3,7 @@
  *  gufsm
  *
  *  Created by Rene Hexel on 3/08/12.
- *  Copyright (c) 2012, 2013, 2014 Rene Hexel and Vlad Estivill-Castro.
+ *  Copyright (c) 2012, 2013, 2014, 2015 Rene Hexel and Vlad Estivill-Castro.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,8 +56,8 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef __gufsm__FSMANTLRMachineVector__
-#define __gufsm__FSMANTLRMachineVector__
+#ifndef gufsm__FSMANTLRMachineVector__
+#define gufsm__FSMANTLRMachineVector__
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wshorten-64-to-32"
@@ -112,4 +112,4 @@ namespace FSM
 
 #pragma clang diagnostic pop
 
-#endif /* defined(__gufsm__FSMANTLRMachineVector__) */
+#endif /* defined gufsm__FSMANTLRMachineVector__) */

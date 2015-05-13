@@ -58,6 +58,9 @@
 #ifndef gufsm_FSMachineVector_h
 #define gufsm_FSMachineVector_h
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wreserved-id-macro"
+
 #include <dispatch/dispatch.h>
 #undef __block
 #define __block _xblock
@@ -81,7 +84,6 @@
 #undef false
 #endif
 
-#pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wpadded"
 #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
 #pragma clang diagnostic ignored "-Wunused-parameter"

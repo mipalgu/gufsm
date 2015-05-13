@@ -2,7 +2,7 @@
  *  FSMANTLRMaths.h
  *
  *  Created by René Hexel on 29/12/11.
- *  Copyright (c) 2011 Rene Hexel.
+ *  Copyright (c) 2011, 2015 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,8 +55,8 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef _FSMANTLRMaths_h
-#define _FSMANTLRMaths_h
+#ifndef FSMANTLRMaths_h
+#define FSMANTLRMaths_h
 #endif
 
 #ifndef COMPLEX_CONTENT_ACTION
@@ -460,4 +460,4 @@ namespace FSM
 
 #pragma clang diagnostic push
 
-#endif // _FSMANTLRMaths_h
+#endif // FSMANTLRMaths_h
