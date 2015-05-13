@@ -56,8 +56,8 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef gufsm__FSMANTLRMachineVector__
-#define gufsm__FSMANTLRMachineVector__
+#ifndef gufsm_FSMANTLRMachineVector_
+#define gufsm_FSMANTLRMachineVector_
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wshorten-64-to-32"
@@ -65,6 +65,7 @@
 #pragma clang diagnostic ignored "-Wpadded"
 #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
 #pragma clang diagnostic ignored "-Wunused-parameter"
+#pragma clang diagnostic ignored "-Wreserved-id-macro"
 
 #include "FSMachineVector.h"
 
@@ -112,4 +113,4 @@ namespace FSM
 
 #pragma clang diagnostic pop
 
-#endif /* defined gufsm__FSMANTLRMachineVector__) */
+#endif /* defined gufsm_FSMANTLRMachineVector_) */

@@ -60,6 +60,7 @@
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-macros"
+#pragma clang diagnostic ignored "-Wreserved-id-macro"
 
 extern "C"
 {
