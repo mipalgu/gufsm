@@ -3,11 +3,11 @@
 //  gufsm
 //
 //  Created by Rene Hexel on 28/07/12.
-//  Copyright (c) 2012 Rene Hexel. All rights reserved.
+//  Copyright (c) 2012, 2015 Rene Hexel. All rights reserved.
 //
 
-#ifndef __gufsm__simplec_lexer__
-#define __gufsm__simplec_lexer__
+#ifndef gufsm_simplec_lexer_
+#define gufsm_simplec_lexer_
 
 #include <string>
 #include <fstream>
@@ -86,4 +86,4 @@ namespace SimpleC
                 int get_token();                /// get the next token from the input stream
         };
 }
-#endif /* defined(__gufsm__simplec_lexer__) */
+#endif /* defined gufsm_simplec_lexer_ */

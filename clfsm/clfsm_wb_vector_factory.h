@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 25/03/13.
- *  Copyright (c) 2013 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2013, 2015 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -56,8 +56,8 @@
  *
  */
 
-#ifndef ____clfsm_wb_vector_factory__
-#define ____clfsm_wb_vector_factory__
+#ifndef clfsm_wb_vector_factory_
+#define clfsm_wb_vector_factory_
 
 #include "clfsm_vector_factory.h"
 #include "typeClassDefs/FSM_Control.h"
@@ -160,4 +160,4 @@ namespace FSM
 }
 #pragma clang diagnostic pop
 
-#endif /* defined(____clfsm_wb_vector_factory__) */
+#endif /* defined clfsm_wb_vector_factory_ */

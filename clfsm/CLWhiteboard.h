@@ -2,7 +2,7 @@
  *  CLWhiteboard.h
  *
  *  Created by René Hexel on 23/03/13.
- *  Copyright (c) 2013 Rene Hexel.
+ *  Copyright (c) 2013, 2015 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,8 +55,8 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef _CLWhiteboard_h
-#define _CLWhiteboard_h
+#ifndef CLWhiteboard_h
+#define CLWhiteboard_h
 
 #include <guwhiteboardtypelist_generated.h>
 #include <gugenericwhiteboardobject.h>

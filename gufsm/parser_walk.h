@@ -2,7 +2,7 @@
  *  parser_walk.h
  *  
  *  Created by René Hexel on 21/08/11.
- *  Copyright (c) 2011, 2014 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2011, 2014, 2015 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -54,11 +54,12 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef _PARSER_WALK_H_
-#define _PARSER_WALK_H_
+#ifndef PARSER_WALK_H_
+#define PARSER_WALK_H_
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-macros"
+#pragma clang diagnostic ignored "-Wreserved-id-macro"
 
 #undef __block
 #define __block antlr_block
@@ -180,4 +181,4 @@ pANTLR3_COMMON_TOKEN_STREAM open_string_stream(const char *string,
                                                pANTLR3_INPUT_STREAM *inputRef, 
                                                pSimpleCLexer *lexerRef);
 
-#endif // _PARSER_WALK_H_
+#endif // PARSER_WALK_H_
