@@ -103,6 +103,7 @@ namespace FSM
 #define after(t)        (timeout((t) * 1000000.0L))
 #define after_ms(t)     (timeout((t) * 1000.0L))
 
+#define machine_id()    ((_m)->machineID())
 #define machine_name()  ((_m)->machineName())
 #define state_name()    ((_s)->name())
 #define machine_index() index_of_machine_named(machine_name())
@@ -112,9 +113,14 @@ static inline enum CLControlStatus suspend(const char *m) { return cs_machine_na
 static inline enum CLControlStatus resume(const char *m)  { return cs_machine_named(m, CLResume); }
 static inline enum CLControlStatus restart(const char *m) { return cs_machine_named(m, CLRestart); }
 static inline enum CLControlStatus status(const char *m)  { return cs_machine_named(m, CLStatus); }
-#define suspend_all()   do { \
-        int _n = number_of_machines(), _mi = machine_index(); \
-        for (int _i = 0; _i < _n; _i++) if (_i != _mi) control_machine_at_index(_i, CLSuspend); } while(0)
+#define suspend_all()   \
+    do { \
+        int _n = number_of_machines(); \
+        for (int _i = 0; _i < _n; _i++) { \
+            const CLMachine * const _m_ = machine_at_index(i); \
+            if (_m != _m_) control_machine_at_index(_i, CLSuspend); \
+        } \
+    } while(0)
 #define suspend_self() control_machine_at_index(machine_index(), CLSuspend)
 #define is_suspended(m) (status(m) == CLSuspend)
 #define is_running(m)   (status(m) != CLSuspend)
