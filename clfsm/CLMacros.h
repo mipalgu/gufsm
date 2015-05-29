@@ -117,7 +117,7 @@ static inline enum CLControlStatus status(const char *m)  { return cs_machine_na
     do { \
         int _n = number_of_machines(); \
         for (int _i = 0; _i < _n; _i++) { \
-            const CLMachine * const _m_ = machine_at_index(_i); \
+            const CLMachine * const _m_ = machine_at_index(unsigned(_i)); \
             if (_m != _m_) control_machine_at_index(_i, CLSuspend); \
         } \
     } while(0)
