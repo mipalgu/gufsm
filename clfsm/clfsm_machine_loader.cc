@@ -146,8 +146,8 @@ static std::string bumpedName(std::string name)
 }
 
 SuspensibleMachine* CLFSMMachineLoader::loadAndAddMachineAtPath(const std::string machine,
-												std::vector<std::string> compiler_args,
-												std::vector<std::string> linker_args)
+								std::vector<std::string> compiler_args,
+								std::vector<std::string> linker_args)
 {
 	MachineWrapper *wrapper = new MachineWrapper(machine);
 	wrapper->setCompilerArgs(compiler_args);
