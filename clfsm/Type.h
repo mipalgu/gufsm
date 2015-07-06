@@ -7,11 +7,15 @@ namespace FSM
 {
     class Type
     {
+        private:
+            const std::string _name;
+
         public:
-            std::string name;  
+            Type(const std::string typeName) : _name(typeName) {};
 
             virtual ~Type() {};
 
+            const std::string name() { return _name ;};
     };
 }
 
