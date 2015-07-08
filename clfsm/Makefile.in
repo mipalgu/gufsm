@@ -44,8 +44,7 @@ HDRS+=clfsm_cc_delegate.h
 HDRS+=clfsm_cc.h
 HDRS+=stringConstants.h
 HDRS+=clfsm_machine_loader.h
-HDRS+=IMachineStorage.h
-HDRS+=CLMachineRetriever.h
+HDRS+=CLReflectIncludes.h
 
 .include "../../../../mk/whiteboard.mk"		# required for the whiteboard
 .include "../../../../mk/util.mk"		# required for gu_util
