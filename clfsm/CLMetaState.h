@@ -1,27 +1,21 @@
-#ifndef METAMACHINE_H
-#define METAMACHINE_H
+#ifndef CLMETASTATE_H
+#define CLMETASTATE_H
 
-#include <string>
+#include "CLMetaMachine.h"
 
 namespace FSM
 {
     namespace CLReflect
     {
-        class CLMetaMachine
+        class CLMetaState
         {
             private:
                 std::string _name;
 
             public:
-                CLMetaMachine() {};
-
                 std::string getName() const { return _name };
-
-
-
         };
     }
 }
-
 
 #endif

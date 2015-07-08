@@ -17,7 +17,7 @@ SPECIFIC_LIBS+=-Wl,-R/usr/local/lib
 
 SPECIFIC_LIBS+=-L/usr/local/lib -lclfsm -ldl
 
-CPPFLAGS+=-g 
+CPPFLAGS+=-g
 
 CC_SRCS+=clfsm_main.cc
 HDRS+=CLActionAction.h
@@ -44,6 +44,8 @@ HDRS+=clfsm_cc_delegate.h
 HDRS+=clfsm_cc.h
 HDRS+=stringConstants.h
 HDRS+=clfsm_machine_loader.h
+HDRS+=IMachineStorage.h
+HDRS+=CLMachineRetriever.h
 
 .include "../../../../mk/whiteboard.mk"		# required for the whiteboard
 .include "../../../../mk/util.mk"		# required for gu_util
