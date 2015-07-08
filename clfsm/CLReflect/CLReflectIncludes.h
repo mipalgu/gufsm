@@ -1,5 +1,7 @@
 // Interfaces
 #include "IMachineStorage.h"
+#include "IMetaMachineRegister.h"
+#include "IMetaMachineStorage.h"
 #include "CLMachineRetriever.h"
 
 // Meta machine storage
