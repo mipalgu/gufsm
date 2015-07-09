@@ -15,5 +15,5 @@ CLReflectionSystem* CLReflectionSystem::getInstance()
 
 void CLReflectionSystem::registerMachine(std::shared_ptr<CLMetaMachine> machine)
 {
-    machine = machine; //XXX: stub
+    _metaStore.registerMachine(machine);
 }

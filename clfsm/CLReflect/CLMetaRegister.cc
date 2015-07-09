@@ -2,21 +2,22 @@
 
 using namespace CLReflect;
 
-CLMetaMachine CLMetaRegister::getMetaMachineWithName(std::string name)
+std::shared_ptr<CLMetaMachine> CLMetaRegister::getMetaMachineWithName(std::string name)
 {
     name = name; //XXX: stub
-    CLMetaMachine machine = CLMetaMachine();
+    std::shared_ptr<CLMetaMachine> machine(new CLMetaMachine);
     return machine;
 }
 
-CLMetaMachine CLMetaRegister::getMetaMachineOfType(std::string type)
+std::shared_ptr<CLMetaMachine> CLMetaRegister::getMetaMachineOfType(std::string type)
 {
     type = type; //XXX: stub method
-    CLMetaMachine machine = CLMetaMachine();
+    std::shared_ptr<CLMetaMachine> machine(new CLMetaMachine);
     return machine;
 }
 
 void CLMetaRegister::registerMachine(std::shared_ptr<CLMetaMachine> machine)
 {
-    machine = machine;
+    std::string machName = machine->getName();
+    _metaRegistry[machName] = machine;
 }

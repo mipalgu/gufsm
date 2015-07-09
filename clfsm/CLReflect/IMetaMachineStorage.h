@@ -13,9 +13,9 @@ namespace CLReflect
     class IMetaMachineStorage
     {
     public:
-        virtual CLMetaMachine getMetaMachineWithName(std::string name) = 0;
+        virtual std::shared_ptr<CLMetaMachine> getMetaMachineWithName(std::string name) = 0;
 
-        virtual CLMetaMachine getMetaMachineOfType(std::string type) = 0;
+        virtual std::shared_ptr<CLMetaMachine> getMetaMachineOfType(std::string type) = 0;
 
         virtual ~IMetaMachineStorage() {}
     };
