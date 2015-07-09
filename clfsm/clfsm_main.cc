@@ -77,6 +77,9 @@
 #include "gugenericwhiteboardobject.h"
 #include "clfsm_machine_loader.h"
 
+#include "CLReflectionSystem.h"
+#include "CLMachineRetriever.h"
+
 static const char *command;
 static int command_argc;
 static char * const *command_argv;
@@ -100,6 +103,11 @@ static CLFSMWBVectorFactory *createMachines(const vector<string> &machines, cons
     return loader->vector_factory();
 }
 
+static void initReflection()
+{
+    FSM::CLReflect::CLMachineRetriever retriever(void);
+
+}
 
 static void __attribute((noreturn)) aborting_signal_handler(int signum)
 {
@@ -312,7 +320,7 @@ int main(int argc, char * const argv[])
         visitor_f accept_action = NULL; //Used to unload machines when in accepting state
         if (verbose) visitor = print_machine_and_state;
         if (!noUnloadIfAccepting) accept_action = unloadMachineIfAccepting;
-
+        initReflection();
         CLFSMWBVectorFactory *factory = createMachines(machines, compiler_args, linker_args);
         struct clfsm_context context = { CLFSMMachineLoader::getMachineLoaderSingleton() };
         factory->postMachineStatus();

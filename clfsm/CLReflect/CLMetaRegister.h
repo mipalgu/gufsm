@@ -12,11 +12,15 @@ namespace FSM
         class CLMetaRegister : IMetaMachineRegister, IMetaMachineStorage
         {
         public:
-            shared_ptr<CLMetaMachine> getMetaMachineWithName(std::string name);
+            CLMetaRegister();
 
-            shared_ptr<CLMetaMachine> getMetaMachineOfType(std::string type);
+            virtual ~CLMetaRegister() {}
 
-            void register(shared_ptr<CLMetaMachine> machine);
+            CLMetaMachine getMetaMachineWithName(std::string name);
+
+            CLMetaMachine getMetaMachineOfType(std::string type);
+
+            void registerMachine(std::shared_ptr<CLMetaMachine> machine);
 
         };
     }

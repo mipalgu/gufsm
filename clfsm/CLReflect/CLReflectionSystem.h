@@ -3,7 +3,7 @@
 
 #include "IMachineStorage.h"
 #include "IMetaMachineRegister.h"
-#include "IMetaRegister.h"
+#include "CLMetaRegister.h"
 
 #include <memory>
 
@@ -22,18 +22,20 @@ namespace FSM
             //! Private constructor for the singleton pattern
             CLReflectionSystem();
 
-            IMachineStorage _machineStore;
+            std::shared_ptr<IMachineStorage> _machineStore;
 
-            IMetaRegister _metaStore;
+            CLMetaRegister _metaStore;
 
         public:
+            virtual ~CLReflectionSystem();
+
             //! Singleton getter
             CLReflectionSystem* getInstance();
 
             //! IMetaMachineRegister interface method
-            virtual void register(shared_ptr<CLMetaMachine> machine);
+            virtual void registerMachine(std::shared_ptr<CLMetaMachine> machine);
 
-            void setMachineStorage(IMachineStorage store) { _machineStore = store }
+            void setMachineStorage(std::shared_ptr<IMachineStorage> store) { _machineStore = store; }
 
 
 

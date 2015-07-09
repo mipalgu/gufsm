@@ -13,9 +13,10 @@ namespace FSM
         //! An Interface for the retrieval of meta machines
         class IMetaMachineStorage
         {
-            virtual shared_ptr<CLMetaMachine> getMetaMachineWithName(std::string name) = 0;
+        public:
+            virtual CLMetaMachine getMetaMachineWithName(std::string name) = 0;
 
-            virtual shared_ptr<CLMetaMachine> getMetaMachineOfType(std::string type) = 0;
+            virtual CLMetaMachine getMetaMachineOfType(std::string type) = 0;
 
             virtual ~IMetaMachineStorage() {}
         };

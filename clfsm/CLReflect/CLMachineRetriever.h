@@ -10,6 +10,11 @@ namespace FSM
         //! Mediates between between CLReflect and CLFSM
         class CLMachineRetriever : public IMachineStorage
         {
+        public:
+            CLMachineRetriever() {}
+
+            virtual ~CLMachineRetriever() {}
+
             CLMachine* getMachineByName(const std::string name);
         };
     }

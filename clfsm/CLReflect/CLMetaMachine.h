@@ -1,5 +1,5 @@
-#ifndef METAMACHINE_H
-#define METAMACHINE_H
+#ifndef CLMETAMACHINE_H
+#define CLMETAMACHINE_H
 
 #include <string>
 
@@ -13,9 +13,9 @@ namespace FSM
                 std::string _name;
 
             public:
-                CLMetaMachine() {};
+                CLMetaMachine() {}
 
-                std::string getName() const { return _name };
+                std::string getName() const { return _name; }
 
 
 
