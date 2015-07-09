@@ -66,6 +66,7 @@
 #include <execinfo.h>
 #include <libgen.h>
 #include <sys/stat.h>
+#include <memory>
 
 #include "gu_util.h"
 #include "FSMState.h"
@@ -105,7 +106,9 @@ static CLFSMWBVectorFactory *createMachines(const vector<string> &machines, cons
 
 static void initReflection()
 {
-    FSM::CLReflect::CLMachineRetriever retriever(void);
+    std::shared_ptr<CLReflect::CLMachineRetriever> retriever(new CLReflect::CLMachineRetriever());
+    CLReflect::CLReflectionSystem* reflectionSystem = CLReflect::CLReflectionSystem::getInstance();
+    reflectionSystem->setMachineStorage(retriever);
 
 }
 

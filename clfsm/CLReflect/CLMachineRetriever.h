@@ -3,21 +3,19 @@
 
 #include "IMachineStorage.h"
 
-namespace FSM
+namespace CLReflect
 {
-    namespace CLReflect
+    //! Mediates between between CLReflect and CLFSM
+    class CLMachineRetriever : public IMachineStorage
     {
-        //! Mediates between between CLReflect and CLFSM
-        class CLMachineRetriever : public IMachineStorage
-        {
-        public:
-            CLMachineRetriever() {}
+    public:
+        CLMachineRetriever() {}
 
-            virtual ~CLMachineRetriever() {}
+        virtual ~CLMachineRetriever() {}
 
-            CLMachine* getMachineByName(const std::string name);
-        };
-    }
+        FSM::CLMachine* getMachineByName(const std::string name);
+    };
 }
+
 
 #endif

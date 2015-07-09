@@ -6,22 +6,18 @@
 
 #include "CLMachine.h"
 
-namespace FSM
+namespace CLReflect
 {
-    namespace CLReflect
+    //! An interface for retrieving machine instances.
+    class IMachineStorage
     {
-        //! An interface for retrieving machine instances.
-        class IMachineStorage
-        {
-            public:
-                virtual CLMachine* getMachineByName(const std::string name) = 0;
+        public:
+            virtual FSM::CLMachine* getMachineByName(const std::string name) = 0;
 
-            protected:
-                virtual ~IMachineStorage() {}
+        protected:
+            virtual ~IMachineStorage() {}
 
-        };
-    }
-
+    };
 }
 
 #endif

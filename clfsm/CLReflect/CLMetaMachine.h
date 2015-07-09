@@ -3,25 +3,24 @@
 
 #include <string>
 
-namespace FSM
+
+namespace CLReflect
 {
-    namespace CLReflect
+    class CLMetaMachine
     {
-        class CLMetaMachine
-        {
-            private:
-                std::string _name;
+        private:
+            std::string _name;
 
-            public:
-                CLMetaMachine() {}
+        public:
+            CLMetaMachine() {}
 
-                std::string getName() const { return _name; }
+            std::string getName() const { return _name; }
 
 
 
-        };
-    }
+    };
 }
+
 
 
 #endif

@@ -3,6 +3,8 @@
 #include "IMetaMachineRegister.h"
 #include "IMetaMachineStorage.h"
 
+//Reflection system C++ API
+#include "CLReflectionSystem.h"
 
 //Machine storage
 #include "CLMetaRegister.h"

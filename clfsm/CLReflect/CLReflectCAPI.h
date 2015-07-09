@@ -3,16 +3,14 @@
 
 #include "CLReflectCTypes.h"
 
-namespace FSM
+namespace CLReflect
 {
-    namespace CLReflect
+    extern "C"
     {
-        extern "C"
-        {
-            int getPropertiesForMachine(const char *machineName,
-                                clproperty_t* propertyBuffer, int bufferLen);
-        }
+        int getPropertiesForMachine(const char *machineName,
+                            clproperty_t* propertyBuffer, int bufferLen);
     }
 }
+
 
 #endif

@@ -4,26 +4,24 @@
 #include "IMetaMachineRegister.h"
 #include "IMetaMachineStorage.h"
 
-namespace FSM
+namespace CLReflect
 {
-    namespace CLReflect
+    //! A class to store and retrieve meta machines
+    class CLMetaRegister : IMetaMachineRegister, IMetaMachineStorage
     {
-        //! A class to store and retrieve meta machines
-        class CLMetaRegister : IMetaMachineRegister, IMetaMachineStorage
-        {
-        public:
-            CLMetaRegister();
+    public:
+        CLMetaRegister() {}
 
-            virtual ~CLMetaRegister() {}
+        virtual ~CLMetaRegister() {}
 
-            CLMetaMachine getMetaMachineWithName(std::string name);
+        CLMetaMachine getMetaMachineWithName(std::string name);
 
-            CLMetaMachine getMetaMachineOfType(std::string type);
+        CLMetaMachine getMetaMachineOfType(std::string type);
 
-            void registerMachine(std::shared_ptr<CLMetaMachine> machine);
+        void registerMachine(std::shared_ptr<CLMetaMachine> machine);
 
-        };
-    }
+    };
 }
+
 
 #endif

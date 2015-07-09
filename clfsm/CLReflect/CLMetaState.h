@@ -3,19 +3,17 @@
 
 #include "CLMetaMachine.h"
 
-namespace FSM
+namespace CLReflect
 {
-    namespace CLReflect
+    class CLMetaState
     {
-        class CLMetaState
-        {
-            private:
-                std::string _name;
+        private:
+            std::string _name;
 
-            public:
-                std::string getName() const { return _name };
-        };
-    }
+        public:
+            std::string getName() const { return _name };
+    };
 }
+
 
 #endif

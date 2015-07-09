@@ -5,19 +5,17 @@
 
 #include <memory>
 
-namespace FSM
+namespace CLReflect
 {
-    namespace CLReflect
+    //! An interface that registers a meta machine with CLReflect
+    class IMetaMachineRegister
     {
-        //! An interface that registers a meta machine with CLReflect
-        class IMetaMachineRegister
-        {
-            public:
-                virtual void registerMachine(std::shared_ptr<CLMetaMachine> m) = 0;
+        public:
+            virtual void registerMachine(std::shared_ptr<CLMetaMachine> m) = 0;
 
-                virtual ~IMetaMachineRegister() {}
-        };
-    }
+            virtual ~IMetaMachineRegister() {}
+    };
 }
+
 
 #endif
