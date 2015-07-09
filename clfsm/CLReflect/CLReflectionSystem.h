@@ -3,7 +3,7 @@
 
 #include "IMachineStorage.h"
 #include "IMetaMachineRegister.h"
-#include "IMetaMachineStorage.h"
+#include "IMetaRegister.h"
 
 #include <memory>
 
@@ -23,6 +23,8 @@ namespace FSM
             CLReflectionSystem();
 
             IMachineStorage _machineStore;
+
+            IMetaRegister _metaStore;
 
         public:
             //! Singleton getter
