@@ -3,6 +3,7 @@
 
 #include "CLMetaMachine.h"
 #include <string>
+#include <memory>
 
 namespace FSM
 {
@@ -12,7 +13,7 @@ namespace FSM
         class IMetaMachineRegister
         {
             public:
-                virtual void register(CLMetaMachine *machine) = 0;
+                virtual void register(shared_ptr<CLMetaMachine> machine) = 0;
 
                 virtual ~IMetaMachineRegister() {}
         };
