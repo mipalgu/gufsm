@@ -16,6 +16,8 @@ namespace CLReflect
 
             std::string getName() const { return _name; }
 
+            void setName(std::string newName) { _name = newName; }
+
 
 
     };
