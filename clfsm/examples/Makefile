@@ -3,7 +3,7 @@
 #
 # Makefile for pre- and cross-compiling .machine files
 #
-MACHINES=PingPongCLFSM AddMachineTest
+MACHINES=PingPongCLFSM
 
 .include "../../../../mk/fsm.mk"	# comes first: required for compiling state machines
 
