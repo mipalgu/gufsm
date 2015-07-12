@@ -16,6 +16,9 @@ namespace CLReflect
 
         //! Registers a metamachine with the reflection system.
         void registerMachine(std::shared_ptr<CLMetaMachine> machine);
+
+        //! Gets a meta-machine with a given name
+        std::shared_ptr<CLMetaMachine> getMetaMachineWithName(std::string name);
     }
 }
 
