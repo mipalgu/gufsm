@@ -22,25 +22,17 @@ namespace CLReflect
 
         std::shared_ptr<IMachineStorage> _machineStore;
 
-        CLMetaRegister _metaStore;
+        std::shared_ptr<CLMetaRegister> _metaStore;
 
     public:
-        //virtual ~CLReflectionSystem() {}
-
         //! Singleton getter
         static CLReflectionSystem* getInstance();
-
-        void registerMachine(std::shared_ptr<CLMetaMachine> machine);
 
         void setMachineStorage(std::shared_ptr<IMachineStorage> store) { _machineStore = store; }
 
         std::shared_ptr<IMachineStorage> getMachineStore() { return _machineStore; }
 
-        CLMetaRegister getMetaStore() { return _metaStore; }
-
-        std::shared_ptr<CLMetaMachine> getMetaMachineWithName(std::string name);
-
-        std::shared_ptr<CLMetaMachine> getMetaMachineOfType(std::string type);
+        std::shared_ptr<CLMetaRegister> getMetaStore() { return _metaStore; }
 
     };
 }
