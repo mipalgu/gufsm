@@ -24,7 +24,7 @@ namespace CLReflect
         void registerMachine(std::shared_ptr<CLMetaMachine> machine);
 
     private:
-        std::map<std::string, std::shared_ptr<CLMetaMachine>> _metaRegistry;
+        std::map< std::string, std::shared_ptr<CLMetaMachine> > _metaRegistry;
 
     };
 }

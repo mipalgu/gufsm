@@ -4,9 +4,10 @@ using namespace CLReflect;
 
 std::shared_ptr<CLMetaMachine> CLMetaRegister::getMetaMachineWithName(std::string name)
 {
-    name = name; //XXX: stub
-    std::shared_ptr<CLMetaMachine> machine(new CLMetaMachine);
-    return machine;
+    if (_metaRegistry.count(name) == 1)
+        return _metaRegistry[name];
+    else
+        return std::shared_ptr<CLMetaMachine>(NULL);
 }
 
 std::shared_ptr<CLMetaMachine> CLMetaRegister::getMetaMachineOfType(std::string type)

@@ -1,5 +1,6 @@
 {
   using namespace std;
+  using namespace CLReflect;
 
         static int count = 0;
 
