@@ -14,13 +14,13 @@ using namespace CLM;
 
 extern "C"
 {
-	PingPongCLFSM *CLM_Create_PingPongCLFSM_META(int mid, const char *name)
+	PingPongCLFSM_META *CLM_Create_PingPongCLFSM_META(int mid, const char *name)
 	{
-		return new PingPongCLFSM(mid, name);
+		return new PingPongCLFSM_META(mid, name);
 	}
 }
 
-PingPongCLFSM::PingPongCLFSM(int mid, const char *name): CLMachine(mid, name)
+PingPongCLFSM_META::PingPongCLFSM_META(int mid, const char *name): CLMachine(mid, name)
 {
 	_states[0] = new FSMPingPongCLFSM::State::Ping;
 	_states[1] = new FSMPingPongCLFSM::State::Pong;
@@ -28,7 +28,7 @@ PingPongCLFSM::PingPongCLFSM(int mid, const char *name): CLMachine(mid, name)
 	setInitialState(_states[0]);            // set initial state
 }
 
-PingPongCLFSM::~PingPongCLFSM()
+PingPongCLFSM_META::~PingPongCLFSM_META()
 {
 	delete _states[0];
 	delete _states[1];

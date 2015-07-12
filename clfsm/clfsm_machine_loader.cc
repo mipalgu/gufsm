@@ -195,7 +195,6 @@ SuspensibleMachine* CLFSMMachineLoader::loadAndAddMachineAtPath(const std::strin
                     reflectSys->registerMachine(metaMachine);
                 }
 
-
                 return _vector_factory->addMachine(clm, index);
 
 	}
