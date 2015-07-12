@@ -10,9 +10,12 @@ namespace CLReflect
     {
         protected:
             std::string _name;
+            std::string _type;
 
         public:
             CLMetaMachine() {}
+
+            std::string getType() const { return _type; }
 
             std::string getName() const { return _name; }
 
