@@ -3,6 +3,8 @@
 
 #include "CLMetaMachine.h"
 
+#include <string>
+
 namespace CLReflect
 {
     class CLMetaState
@@ -11,7 +13,7 @@ namespace CLReflect
             std::string _name;
 
         public:
-            std::string getName() const { return _name };
+            std::string getName() const { return _name; }
     };
 }
 

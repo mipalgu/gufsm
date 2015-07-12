@@ -11,9 +11,11 @@
 #include "CLMetaRegister.h"
 #include "CLMachineRetriever.h"
 
-// Meta machines
+// Meta machines (type system)
 #include "CLMetaMachine.h"
 #include "CLMetaState.h"
+#include "CLMetaProperty.h"
+#include "CLBoundProperty.h"
 
 // C type definitions
 #include "CLReflectCAPI.h"

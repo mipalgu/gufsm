@@ -1,27 +1,34 @@
 #ifndef CLMETAMACHINE_H
 #define CLMETAMACHINE_H
 
-#include <string>
+#include "CLMetaState.h"
+#include "CLMetaProperty.h"
 
+#include <string>
+#include <map>
+#include <memory>
 
 namespace CLReflect
 {
     class CLMetaMachine
     {
-        protected:
-            std::string _name;
-            std::string _type;
+    protected:
+        std::string _name;
+        std::string _type;
 
-        public:
-            CLMetaMachine() {}
+        std::map<std::string, std::shared_ptr<CLMetaProperty> > _properties;
+        std::map<std::string, std::shared_ptr<CLMetaState> > _states;
 
-            std::string getType() const { return _type; }
+    public:
+        CLMetaMachine() = default;
 
-            std::string getName() const { return _name; }
+        std::string getType() const { return _type; }
 
-            void setName(std::string newName) { _name = newName; }
+        std::string getName() const { return _name; }
 
+        void setName(std::string newName) { _name = newName; }
 
+        std::shared_ptr<CLMetaProperty> getProperty(std::string propertyName);
 
     };
 }
