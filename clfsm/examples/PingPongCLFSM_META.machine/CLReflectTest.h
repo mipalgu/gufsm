@@ -3,7 +3,7 @@
 class PingPongCLFSM_META_Reflect : public CLReflect::CLMetaMachine
 {
     public:
-        PingPongCLFSM_META_Reflect() { _name = "PingPongCLFSM_META"; }
+        PingPongCLFSM_META_Reflect();
 };
 
 extern "C"
