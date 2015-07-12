@@ -4,6 +4,7 @@
 #include "IMetaMachineStorage.h"
 
 //Reflection system C++ API
+#include "CLReflect_API.h"
 #include "CLReflectionSystem.h"
 
 //Machine storage

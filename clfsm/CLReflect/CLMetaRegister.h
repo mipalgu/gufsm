@@ -10,12 +10,10 @@
 namespace CLReflect
 {
     //! A class to store and retrieve meta machines
-    class CLMetaRegister : IMetaMachineRegister, IMetaMachineStorage
+    class CLMetaRegister : public IMetaMachineRegister, public IMetaMachineStorage
     {
     public:
         CLMetaRegister() {}
-
-        virtual ~CLMetaRegister() {}
 
         std::shared_ptr<CLMetaMachine> getMetaMachineWithName(std::string name);
 

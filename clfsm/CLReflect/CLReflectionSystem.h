@@ -9,7 +9,7 @@
 
 namespace CLReflect
 {
-    //! The C++ API for CLReflect
+    //! The CLReflect system.
     /*!
         Implemented as a singleton since it needs to hold references
         to the CLFSM machine storage and meta machine register
@@ -25,7 +25,7 @@ namespace CLReflect
         CLMetaRegister _metaStore;
 
     public:
-        virtual ~CLReflectionSystem() {}
+        //virtual ~CLReflectionSystem() {}
 
         //! Singleton getter
         static CLReflectionSystem* getInstance();

@@ -17,6 +17,10 @@ namespace CLReflect
 
         virtual std::shared_ptr<CLMetaMachine> getMetaMachineOfType(std::string type) = 0;
 
+        IMetaMachineStorage() = default;
+        IMetaMachineStorage(IMetaMachineStorage const &) = default;
+
+    protected:
         virtual ~IMetaMachineStorage() {}
     };
 }

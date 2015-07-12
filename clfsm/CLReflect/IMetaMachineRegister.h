@@ -13,6 +13,10 @@ namespace CLReflect
         public:
             virtual void registerMachine(std::shared_ptr<CLMetaMachine> m) = 0;
 
+            IMetaMachineRegister() = default;
+            IMetaMachineRegister(IMetaMachineRegister const &) = default;
+
+        protected:
             virtual ~IMetaMachineRegister() {}
     };
 }

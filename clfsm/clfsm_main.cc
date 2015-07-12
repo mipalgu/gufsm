@@ -78,7 +78,7 @@
 #include "gugenericwhiteboardobject.h"
 #include "clfsm_machine_loader.h"
 
-#include "CLReflectionSystem.h"
+#include "CLReflect_API.h"
 #include "CLMachineRetriever.h"
 
 static const char *command;
@@ -107,8 +107,7 @@ static CLFSMWBVectorFactory *createMachines(const vector<string> &machines, cons
 static void initReflection()
 {
     std::shared_ptr<CLReflect::CLMachineRetriever> retriever(new CLReflect::CLMachineRetriever());
-    CLReflect::CLReflectionSystem* reflectionSystem = CLReflect::CLReflectionSystem::getInstance();
-    reflectionSystem->setMachineStorage(retriever);
+    CLReflect::API::initialise(retriever);
 
 }
 
