@@ -7,11 +7,10 @@ namespace CLReflect
     class CLBoundProperty
     {
     protected:
-        virtual ~CLBoundProperty() = default;
+        virtual ~CLBoundProperty() {}
 
     public:
-        CLBoundProperty() = default;
-        CLBoundProperty(CLBoundProperty const &) = default;
+        CLBoundProperty() {}
     };
 }
 

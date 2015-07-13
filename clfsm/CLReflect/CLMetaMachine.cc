@@ -10,3 +10,8 @@ shared_ptr<CLMetaProperty> CLMetaMachine::getProperty(std::string propertyName)
     else
         return shared_ptr<CLMetaProperty>(NULL);
 }
+
+void CLMetaMachine::addState(std::shared_ptr<CLMetaState> newState)
+{
+    _states[newState->getName()] = newState;
+}

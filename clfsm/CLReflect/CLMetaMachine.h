@@ -20,8 +20,8 @@ namespace CLReflect
         std::map<std::string, std::shared_ptr<CLMetaState> > _states;
 
     public:
-        CLMetaMachine() = default;
-        
+        CLMetaMachine() {}
+
         CLMetaMachine(std::string name, std::string type) :
             _name(name), _type(type) {}
 
@@ -32,6 +32,8 @@ namespace CLReflect
         void setName(std::string newName) { _name = newName; }
 
         std::shared_ptr<CLMetaProperty> getProperty(std::string propertyName);
+
+        void addState(std::shared_ptr<CLMetaState>);
 
     };
 }

@@ -17,7 +17,7 @@ namespace CLReflect
             std::map< std::string, std::shared_ptr<CLMetaProperty> > _properties;
 
     public:
-        CLMetaState() = default;
+        CLMetaState() {}
         CLMetaState(std::string name) : _name(name) {}
 
         std::string getName() const { return _name; }

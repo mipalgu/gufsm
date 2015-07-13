@@ -19,7 +19,7 @@ namespace CLReflect
         //! The name of the property
         std::string _name;
 
-        virtual ~CLMetaProperty() = default;
+        virtual ~CLMetaProperty() {}
 
     public:
         std::string getType() { return _type; }
@@ -28,8 +28,8 @@ namespace CLReflect
 
         virtual std::shared_ptr<CLBoundProperty> bind(FSM::CLMachine* machineInstance) = 0;
 
-        CLMetaProperty() = default;
-        CLMetaProperty(CLMetaProperty const &) = default;
+        CLMetaProperty() {}
+        
     };
 }
 
