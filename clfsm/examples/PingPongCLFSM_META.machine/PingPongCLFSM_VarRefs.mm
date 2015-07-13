@@ -9,6 +9,4 @@
 
 PingPongCLFSM_META *_m = static_cast<PingPongCLFSM_META *>(_machine);
 
-int	&currentState = _m->currentState;	///< state no
-
 #pragma clang diagnostic pop

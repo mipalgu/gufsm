@@ -3,6 +3,12 @@
 using namespace std;
 using namespace CLReflect;
 
+void CLMetaMachine::addProperty(std::shared_ptr<CLMetaProperty> newProperty)
+{
+    string name = newProperty->getName();
+    _properties[name] = newProperty;
+}
+
 shared_ptr<CLMetaProperty> CLMetaMachine::getProperty(std::string propertyName)
 {
     if (_properties.count(propertyName) == 1)
