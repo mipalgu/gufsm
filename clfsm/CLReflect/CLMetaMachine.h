@@ -7,6 +7,7 @@
 #include <string>
 #include <map>
 #include <memory>
+#include <vector>
 
 namespace CLReflect
 {
@@ -33,7 +34,9 @@ namespace CLReflect
 
         std::shared_ptr<CLMetaProperty> getProperty(std::string propertyName);
 
-        void addState(std::shared_ptr<CLMetaState>);
+        void addState(std::shared_ptr<CLMetaState> newState);
+
+        std::vector< std::shared_ptr<CLMetaState> > getStates();
 
     };
 }

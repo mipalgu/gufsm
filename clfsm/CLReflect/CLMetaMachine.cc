@@ -15,3 +15,14 @@ void CLMetaMachine::addState(std::shared_ptr<CLMetaState> newState)
 {
     _states[newState->getName()] = newState;
 }
+
+vector< shared_ptr<CLMetaState> > CLMetaMachine::getStates()
+{
+    vector<std::shared_ptr<CLMetaState> > allStates;
+    for (map<string, shared_ptr<CLMetaState> >::iterator it = _states.begin();
+            it != _states.end(); it++)
+    {
+        allStates.push_back(it->second);
+    }
+    return allStates;
+}
