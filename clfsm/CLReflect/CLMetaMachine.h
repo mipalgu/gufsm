@@ -13,7 +13,7 @@ namespace CLReflect
 {
     class CLMetaMachine
     {
-    private:
+    protected:
         std::string _name;
         std::string _type;
 

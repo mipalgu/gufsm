@@ -11,7 +11,7 @@ namespace CLReflect
 {
     class CLMetaState
     {
-    private:
+    protected:
             std::string _name;
 
             std::map< std::string, std::shared_ptr<CLMetaProperty> > _properties;

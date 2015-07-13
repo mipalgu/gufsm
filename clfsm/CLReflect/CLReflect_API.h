@@ -25,7 +25,7 @@ namespace CLReflect
         //! Gets a meta-machine with a given name
         std::shared_ptr<CLMetaMachine> getMetaMachineWithName(std::string name);
 
-        //! Gets the states for the
+        //! Gets the states for the machine
         std::vector< std::shared_ptr<CLMetaState> > getStatesForMetaMachine(std::string name);
 
         //! Gets the required state from the given machine.

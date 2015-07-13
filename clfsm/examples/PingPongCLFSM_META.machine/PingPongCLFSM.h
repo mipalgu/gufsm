@@ -18,7 +18,7 @@ namespace FSM
         {
             CLState *_states[2];
         public:
-            PingPongCLFSM_META(int mid  = 0, const char *name = "PingPongCLFSM");
+            PingPongCLFSM_META(int mid  = 0, const char *name = "PingPongCLFSM_META");
             virtual ~PingPongCLFSM_META();
             virtual CLState * const * states() const { return _states; }
             virtual int numberOfStates() const { return 2; }
