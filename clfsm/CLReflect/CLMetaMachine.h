@@ -12,7 +12,7 @@ namespace CLReflect
 {
     class CLMetaMachine
     {
-    protected:
+    private:
         std::string _name;
         std::string _type;
 
@@ -21,6 +21,9 @@ namespace CLReflect
 
     public:
         CLMetaMachine() = default;
+        
+        CLMetaMachine(std::string name, std::string type) :
+            _name(name), _type(type) {}
 
         std::string getType() const { return _type; }
 
