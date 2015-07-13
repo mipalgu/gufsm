@@ -13,7 +13,11 @@ namespace CLReflect
 
         virtual ~CLMachineRetriever() {}
 
+        // ----- INTERFACE METHODS -------//
+
         FSM::CLMachine* getMachineByName(const std::string name);
+
+        std::string getCurrentStateName(const std::string machineName);
     };
 }
 

@@ -14,6 +14,8 @@ namespace CLReflect
         public:
             virtual FSM::CLMachine* getMachineByName(const std::string name) = 0;
 
+            virtual std::string getCurrentStateName(const std::string machineName) = 0;
+
         protected:
             virtual ~IMachineStorage() {}
 

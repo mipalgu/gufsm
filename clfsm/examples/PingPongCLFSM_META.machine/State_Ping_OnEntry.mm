@@ -11,8 +11,7 @@
   shared_ptr<CLReflect::CLMetaMachine> thisMetaMachine = CLReflect::API::getMetaMachineWithName("PingPongCLFSM_META");
   if (thisMetaMachine)
   {
-      cout << "Metamachine name: " << thisMetaMachine->getName() << std::endl;
-      vector<shared_ptr<CLMetaState> > states = thisMetaMachine->getStates();
+      vector<shared_ptr<CLMetaState> > states = CLReflect::API::getStatesForMetaMachine("PingPongCLFSM_META");
       cout << "Number of States: " << states.size() << endl;
       for (vector<shared_ptr<CLMetaState> >::iterator it = states.begin();
             it != states.end(); it++)

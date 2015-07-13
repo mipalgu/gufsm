@@ -14,4 +14,9 @@ namespace CLReflect
             machine = FSM::machine_at_index(index);
         return machine;
     }
+
+    string CLMachineRetriever::getCurrentStateName(const string machineName)
+    {
+        return string(machineName);
+    }
 }
