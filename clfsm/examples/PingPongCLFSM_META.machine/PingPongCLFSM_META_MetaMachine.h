@@ -1,6 +1,12 @@
 #include "CLMetaMachine.h"
 
-extern "C"
+namespace FSM
 {
-    CLReflect::CLMetaMachine* Create();
+    namespace PingPongCLFSM_META_namespace
+    {
+        extern "C"
+        {
+            CLReflect::CLMetaMachine* Create();
+        }
+    }
 }

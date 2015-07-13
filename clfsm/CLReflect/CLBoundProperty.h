@@ -10,13 +10,13 @@ namespace CLReflect
     {
     protected:
         virtual ~CLBoundProperty() {}
-
+        
     public:
         CLBoundProperty() {}
 
-        virtual void setValue(std::string) = 0;
+        //virtual void setValue(std::string) = 0;
 
-        virtual std::string getValue(std::string) = 0;
+        //virtual std::string getValue(std::string) = 0;
 
     };
 }

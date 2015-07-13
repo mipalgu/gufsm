@@ -13,11 +13,12 @@ namespace CLReflect
     class CLMetaProperty
     {
     protected:
-        //! The property data type
-        std::string _type;
 
         //! The name of the property
         std::string _name;
+
+        //! The property data type
+        std::string _type;
 
         virtual ~CLMetaProperty() {}
 
@@ -29,7 +30,8 @@ namespace CLReflect
         virtual std::shared_ptr<CLBoundProperty> bind(FSM::CLMachine* machineInstance) = 0;
 
         CLMetaProperty() {}
-        
+        CLMetaProperty(std::string name, std::string type) : _name(name), _type(type) {}
+
     };
 }
 
