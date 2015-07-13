@@ -16,6 +16,14 @@ void CLMetaMachine::addState(std::shared_ptr<CLMetaState> newState)
     _states[newState->getName()] = newState;
 }
 
+std::shared_ptr<CLMetaState> CLMetaMachine::getState(std::string stateName)
+{
+    if (_states.count(stateName) == 1)
+        return _states[stateName];
+    else
+        return shared_ptr<CLMetaState>(NULL);
+}
+
 vector< shared_ptr<CLMetaState> > CLMetaMachine::getStates()
 {
     vector<std::shared_ptr<CLMetaState> > allStates;

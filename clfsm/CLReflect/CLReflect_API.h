@@ -28,10 +28,12 @@ namespace CLReflect
         //! Gets the states for the
         std::vector< std::shared_ptr<CLMetaState> > getStatesForMetaMachine(std::string name);
 
+        //! Gets the required state from the given machine.
+        std::shared_ptr<CLMetaState> getStateFromMachine(std::string stateName, std::string machineName);
         // --------------------- Execution ---------------------//
 
         //! Gets the currently executing state of the given machine
-        std::shared_ptr<CLMetaState> getCurrentStateDefintion(std::string machineName);
+        std::shared_ptr<CLMetaState> getCurrentStateDefinition(std::string machineName);
 
     }
 }

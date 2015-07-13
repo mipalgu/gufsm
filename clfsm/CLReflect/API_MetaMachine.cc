@@ -23,3 +23,13 @@ vector< shared_ptr<CLMetaState> > API::getStatesForMetaMachine(string name)
         states = machine->getStates();
     return states;
 }
+
+//! Gets the required state from the given machine.
+shared_ptr<CLMetaState> API::getStateFromMachine(string stateName, string machineName)
+{
+    shared_ptr<CLMetaMachine> machine = API::getMetaMachineWithName(machineName);
+    if (machine)
+        return machine->getState(stateName);
+
+    return shared_ptr<CLMetaState>(NULL);
+}

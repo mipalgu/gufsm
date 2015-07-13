@@ -36,6 +36,8 @@ namespace CLReflect
 
         void addState(std::shared_ptr<CLMetaState> newState);
 
+        std::shared_ptr<CLMetaState> getState(std::string stateName);
+
         std::vector< std::shared_ptr<CLMetaState> > getStates();
 
     };
