@@ -22,6 +22,8 @@ namespace CLReflect
 
         std::string getName() const { return _name; }
 
+        void addProperty(std::shared_ptr<CLMetaProperty> newProperty);
+
         std::shared_ptr<CLMetaProperty> getProperty(std::string propertyName);
 
 
