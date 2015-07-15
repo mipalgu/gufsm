@@ -5,7 +5,7 @@
 #include <string>
 
 
-#include "PingPongCLFSM.h"
+#include "PingPongCLFSM_META.h"
 #include "State_Ping.h"
 #include "CLMetaProperty.h"
 #include "CLBoundProperty.h"

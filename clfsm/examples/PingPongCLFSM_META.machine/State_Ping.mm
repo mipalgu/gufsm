@@ -3,8 +3,8 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#include "PingPongCLFSM_Includes.h"
-#include "PingPongCLFSM.h"
+#include "PingPongCLFSM_META_Includes.h"
+#include "PingPongCLFSM_META.h"
 #include "State_Ping.h"
 
 #include "State_Ping_Includes.h"
@@ -30,28 +30,28 @@ Ping::~Ping()
 
 void Ping::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
-#	include "PingPongCLFSM_VarRefs.mm"
+#	include "PingPongCLFSM_META_VarRefs.mm"
 #	include "State_Ping_VarRefs.mm"
 #	include "State_Ping_OnEntry.mm"
 }
 
 void Ping::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
-#	include "PingPongCLFSM_VarRefs.mm"
+#	include "PingPongCLFSM_META_VarRefs.mm"
 #	include "State_Ping_VarRefs.mm"
 #	include "State_Ping_OnExit.mm"
 }
 
 void Ping::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
-#	include "PingPongCLFSM_VarRefs.mm"
+#	include "PingPongCLFSM_META_VarRefs.mm"
 #	include "State_Ping_VarRefs.mm"
 #	include "State_Ping_Internal.mm"
 }
 
 bool Ping::Transition_0::check(CLMachine *_machine, CLState *_state) const
 {
-#	include "PingPongCLFSM_VarRefs.mm"
+#	include "PingPongCLFSM_META_VarRefs.mm"
 #	include "State_Ping_VarRefs.mm"
 
 	return

@@ -3,8 +3,8 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#include "PingPongCLFSM_Includes.h"
-#include "PingPongCLFSM.h"
+#include "PingPongCLFSM_META_Includes.h"
+#include "PingPongCLFSM_META.h"
 #include "State_Pong.h"
 
 #include "State_Pong_Includes.h"
@@ -30,28 +30,28 @@ Pong::~Pong()
 
 void Pong::OnEntry::perform(CLMachine *_machine, CLState *_state) const
 {
-#	include "PingPongCLFSM_VarRefs.mm"
+#	include "PingPongCLFSM_META_VarRefs.mm"
 #	include "State_Pong_VarRefs.mm"
 #	include "State_Pong_OnEntry.mm"
 }
 
 void Pong::OnExit::perform(CLMachine *_machine, CLState *_state) const
 {
-#	include "PingPongCLFSM_VarRefs.mm"
+#	include "PingPongCLFSM_META_VarRefs.mm"
 #	include "State_Pong_VarRefs.mm"
 #	include "State_Pong_OnExit.mm"
 }
 
 void Pong::Internal::perform(CLMachine *_machine, CLState *_state) const
 {
-#	include "PingPongCLFSM_VarRefs.mm"
+#	include "PingPongCLFSM_META_VarRefs.mm"
 #	include "State_Pong_VarRefs.mm"
 #	include "State_Pong_Internal.mm"
 }
 
 bool Pong::Transition_0::check(CLMachine *_machine, CLState *_state) const
 {
-#	include "PingPongCLFSM_VarRefs.mm"
+#	include "PingPongCLFSM_META_VarRefs.mm"
 #	include "State_Pong_VarRefs.mm"
 
 	return

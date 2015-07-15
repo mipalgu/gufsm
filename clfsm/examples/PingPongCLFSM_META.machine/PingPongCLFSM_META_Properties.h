@@ -4,7 +4,7 @@
 #include <memory>
 #include <string>
 
-#include "PingPongCLFSM.h"
+#include "PingPongCLFSM_META.h"
 #include "CLMetaProperty.h"
 #include "CLBoundProperty.h"
 

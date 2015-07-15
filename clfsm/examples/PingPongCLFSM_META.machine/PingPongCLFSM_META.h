@@ -22,7 +22,7 @@ namespace FSM
             virtual ~PingPongCLFSM_META();
             virtual CLState * const * states() const { return _states; }
             virtual int numberOfStates() const { return 2; }
-#           include "PingPongCLFSM_Variables.h"
+#           include "PingPongCLFSM_META_Variables.h"
         };
     }
 }

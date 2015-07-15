@@ -3,8 +3,8 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#include "PingPongCLFSM_Includes.h"
-#include "PingPongCLFSM.h"
+#include "PingPongCLFSM_META_Includes.h"
+#include "PingPongCLFSM_META.h"
 
 #include "State_Ping.h"
 #include "State_Pong.h"
