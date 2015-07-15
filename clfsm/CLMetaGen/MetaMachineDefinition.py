@@ -35,7 +35,7 @@ class MetaMachineDefinition:
         for line in stateFile:
             stateNames.append(line.rstrip('\n'))
         stateFile.close()
-        for index,state in enumerate(stateNames):
+        for index, state in enumerate(stateNames):
             self.states.append(State(self.machinePath, state, self.name, index))
 
     def parseProperties(self):
@@ -52,7 +52,7 @@ class MetaMachineDefinition:
 
 
 class State:
-    def __init__(self, path, name, machine. index):
+    def __init__(self, path, name, machine, index):
         self.path = path
         self.name = name
         self.machine = machine
