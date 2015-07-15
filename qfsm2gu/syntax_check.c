@@ -80,8 +80,11 @@ static pANTLR3_COMMON_TOKEN_STREAM
 open_string_stream(const char *string, const char *n,
                    pANTLR3_INPUT_STREAM *inputRef, pSimpleCLexer *lexerRef)
 {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wcast-qual"
         pANTLR3_UINT8 data = (pANTLR3_UINT8) string;
         pANTLR3_UINT8 name = (pANTLR3_UINT8) n;
+#pragma clang diagnostic pop
         pANTLR3_INPUT_STREAM input = antlr3StringStreamNew(data, ANTLR3_ENC_UTF8,
                                         (ANTLR3_UINT32) strlen(string), name);
         if (!input)
