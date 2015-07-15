@@ -1,51 +1,99 @@
 #Defines a meta machine
+import os
 
 class MetaMachineDefinition:
+    def __init__(self, machinePath, name):
+        self.machinePath = machinePath
+        self.name = name
+        self.includes = []
+        self.properties = []
+        self.states = []
+        self.parseIncludes()
+        self.parseStates()
+        self.parseProperties()
+        print [p.__dict__ for p in self.states]
 
-    def getIncludes(self):
-        return self.includes
 
-    def getStates(self):
-        return self.states
+    def parseIncludes(self):
+        '''
+        Get include paths for the machine
+        '''
+        includeFileName = self.name + "_Includes.h"
+        includeFilePath = os.path.join(self.machinePath, includeFileName)
+        includeFile = open(includeFilePath)
+        for line in includeFile:
+            self.includes.append(line.rstrip('\n'))
+        includeFile.close()
 
-    def getProperties(self):
-        return self.properties
+    def parseStates(self):
+        '''
+        Parse and populate state objects in self.states for each machine state
+        '''
+        statePath = os.path.join(self.machinePath, "States")
+        stateFile = open(statePath)
+        stateNames = []
+        for line in stateFile:
+            stateNames.append(line.rstrip('\n'))
+        stateFile.close()
+        for state in stateNames:
+            self.states.append(State(self.machinePath, state, self.name))
+
+    def parseProperties(self):
+        propertiesPath = os.path.join(self.machinePath, self.name + '_Variables.h')
+        propertyFile = open(propertiesPath)
+        for line in propertyFile:
+            if line[:2] != r'//':
+                tokens = line.split("\t")
+                dataType = tokens[0]
+                varName = tokens[1].rstrip(';')
+                self.properties.append(MachineProperty(varName, dataType, self.name))
+        propertyFile.close()
+
+
 
 class State:
+    def __init__(self, path, name, machine):
+        self.path = path
+        self.name = name
+        self.machine = machine
+        self.includes = []
+        self.properties = []
+        self.parseIncludes()
+        self.parseProperties()
 
-    def getIncludes(self):
-        return self.includes
+    def parseIncludes(self):
+        includePath = os.path.join(self.path, 'State_' + self.name + '_Includes.h')
+        includeFile = open(includePath)
+        for line in includeFile:
+            self.includes.append(line.rstrip('\n'))
+        includeFile.close()
 
-    def getName(self):
-        return self.name
-
-    def getIndex(self):
+    def parseIndex(self):
         return self.index
 
-    def getProperties(self):
-        return self.properties
+    def parseProperties(self):
+        propertiesPath = os.path.join(self.path, 'State_' + self.name + '_Variables.h')
+        propertyFile = open(propertiesPath)
+        for line in propertyFile:
+            if line[:2] != r'//':
+                tokens = line.split("\t")
+                dataType = tokens[0]
+                varName = tokens[1].rstrip(';')
+                self.properties.append(StateProperty(varName, dataType, self.machine, self.name))
+        propertyFile.close()
 
 class MachineProperty:
 
-    def getType(self):
-        return self.type
+    def __init__(self, name, dataType, machineName):
+        self.name = name
+        self.dataType = dataType
+        self.machineName = machineName
 
-    def getName(self):
-        return self.name
-
-    def getMachine(self):
-        return self.machineName
 
 class StateProperty:
 
-    def getType(self):
-        return self.type
-
-    def getName(self):
-        return self.name
-
-    def getMachine(self):
-        return self.machineName
-
-    def getState(self):
-        return self.state
+    def __init__(self, name, dataType, machineName, stateName):
+        self.name = name
+        self.dataType = dataType
+        self.machineName = machineName
+        self.stateName = stateName
