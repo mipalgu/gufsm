@@ -16,7 +16,7 @@ class MetaFileWriter:
 
     def generateHeader(self):
         # Includes
-        cpp = CppFile("Machine_Header_Test.h")
+        cpp = CppFile(self.machineDef.name + '_MetaMachine.h')
         cpp(MetaFileWriter.DO_NOT_MODIFY)
         for h in MetaFileWriter.headerIncludes:
             with cpp.subs(includeFile = h):
