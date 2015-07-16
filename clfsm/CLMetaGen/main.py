@@ -1,5 +1,5 @@
 import sys, re, os
-from CLParser import *
+from Parser import *
 from MetaMachineDefinition import *
 
 # Get machine path and name
@@ -14,8 +14,6 @@ else:
     print "Exiting..."
     exit()
 
-# Setup parser
-parser = CLParser(machinePath, machineName)
+# Setup parser and create metamachine defintion
+parser = Parser(machinePath, machineName)
 metaMachineDef = parser.parse()
-
-# Get metamachine definition

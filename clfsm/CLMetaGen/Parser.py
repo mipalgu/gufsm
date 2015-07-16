@@ -1,7 +1,7 @@
 # Parses the directory and creates a machine definition
 from MetaMachineDefinition import *
 
-class CLParser:
+class Parser:
 
     def __init__(self, path, machineName):
         self._path = path
