@@ -2,6 +2,7 @@ import sys, re, os
 from Parser import *
 from MetaMachineDefinition import *
 from MetaFileWriter import *
+from MachinePropertyFileWriter import *
 
 # Get machine path and name
 machinePath = sys.argv[1]
@@ -22,3 +23,7 @@ metaMachineDef = parser.parse()
 # Write main header and implementation file
 mainFileWriter = MetaFileWriter(metaMachineDef)
 mainFileWriter.write()
+
+#Write machine property writer
+machPropWriter = MachinePropertyFileWriter(metaMachineDef)
+machPropWriter.write()
