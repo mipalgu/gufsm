@@ -1,6 +1,7 @@
 import sys, re, os
 from Parser import *
 from MetaMachineDefinition import *
+from MetaFileWriter import *
 
 # Get machine path and name
 machinePath = sys.argv[1]
@@ -17,3 +18,7 @@ else:
 # Setup parser and create metamachine defintion
 parser = Parser(machinePath, machineName)
 metaMachineDef = parser.parse()
+
+# Write main header and implementation file
+mainFileWriter = MetaFileWriter(metaMachineDef)
+mainFileWriter.write()
