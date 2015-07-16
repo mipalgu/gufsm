@@ -9,3 +9,4 @@ class CLParser:
 
     def parse(self):
         self._metaMachine = MetaMachineDefinition(self._path, self._machineName)
+        return self._metaMachine

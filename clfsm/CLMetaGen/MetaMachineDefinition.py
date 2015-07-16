@@ -11,7 +11,6 @@ class MetaMachineDefinition:
         self.parseIncludes()
         self.parseStates()
         self.parseProperties()
-        print [p.__dict__ for p in self.states]
 
 
     def parseIncludes(self):
@@ -81,6 +80,7 @@ class State:
                 varName = tokens[1].rstrip(';')
                 self.properties.append(StateProperty(varName, dataType, self.machine, self.name))
         propertyFile.close()
+        print [p.__dict__ for p in self.properties]
 
 class MachineProperty:
 

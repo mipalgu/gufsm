@@ -1,5 +1,6 @@
 import sys, re, os
 from CLParser import *
+from MetaMachineDefinition import *
 
 # Get machine path and name
 machinePath = sys.argv[1]
@@ -15,6 +16,6 @@ else:
 
 # Setup parser
 parser = CLParser(machinePath, machineName)
-parser.parse()
+metaMachineDef = parser.parse()
 
 # Get metamachine definition
