@@ -13,8 +13,8 @@ class MetaFileWriter:
         self.impIncludes = MetaFileWriter.impIncludes_static
         self.impIncludes += [self.machineDef.name + '_MetaMachine.h',
                                 self.machineDef.name + '_Properties.h']
-        #for state in self.machineDef.states:
-            #self.impIncludes.append('State_' + state.name + '_Properties.h')
+        for state in self.machineDef.states:
+            self.impIncludes.append('State_' + state.name + '_Properties.h')
 
 
     def write(self):

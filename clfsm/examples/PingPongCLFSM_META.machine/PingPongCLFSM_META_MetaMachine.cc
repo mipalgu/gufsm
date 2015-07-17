@@ -2,6 +2,8 @@
 #include "CLMetaState.h"
 #include "PingPongCLFSM_META_MetaMachine.h"
 #include "PingPongCLFSM_META_Properties.h"
+#include "State_Ping_Properties.h"
+#include "State_Pong_Properties.h"
 using namespace std;
 using namespace FSM;
 using namespace CLReflect;

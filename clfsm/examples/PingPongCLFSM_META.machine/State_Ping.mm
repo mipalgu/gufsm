@@ -11,7 +11,7 @@
 
 using namespace FSM;
 using namespace CLM;
-using namespace FSMPingPongCLFSM;
+using namespace FSMPingPongCLFSM_META;
 using namespace State;
 
 Ping::Ping(const char *name): CLState(name, *new Ping::OnEntry, *new Ping::OnExit, *new Ping::Internal)

@@ -4,7 +4,7 @@ import re
 
 class MachinePropertyFileWriter:
 
-    includes_static = ['#include <memory>', '#include <string>', '#include <sstream>'
+    includes_static = ['#include <memory>', '#include <string>', '#include <sstream>',
                         '#include "CLMetaProperty.h"', '#include "CLBoundProperty.h"']
     primTypes_static = ['unsigned int', 'int', 'float', 'double', 'long' 'long long',
                         'unsigned long', 'unsigned long long', 'long double']
@@ -29,7 +29,6 @@ class MachinePropertyFileWriter:
             with cpp.block('namespace ' + self.metaMachineDef.name + '_namespace'):
                 for prop in self.metaMachineDef.properties:
                     self.writeProperty(cpp, prop)
-
         cpp('\n#endif')
         cpp.close()
 
@@ -39,21 +38,34 @@ class MachinePropertyFileWriter:
         cpp('// Meta property: ' + prop.name)
         self.writeMetaProperty(cpp, prop)
 
-    def writeMetaProperty(self, cpp, prop):
-        with cpp.subs(propClass = "Meta_Machine_" + prop.name):
+    def writeMetaProperty(self, cpp, prop, state = None):
+        if state:
+            propClass = "Meta_" + state.name + "_" + prop.name
+        else:
+            propClass = "Meta_Machine_" + prop.name
+        with cpp.subs(propClass = propClass):
             with cpp.block('class $propClass$ : public CLReflect::CLMetaProperty', ';'):
                 cpp.label('public')
                 with cpp.subs(machName = self.metaMachineDef.name, propName = prop.name, dType = prop.dataType):
                     cpp('$propClass$() : CLMetaProperty("$propName$", "$dType$") {}\n')
                     with cpp.block('std::shared_ptr<CLReflect::CLBoundProperty> bind(FSM::CLMachine* machineInstance)'):
                         cpp('CLM::$machName$* castedMachine = dynamic_cast<CLM::$machName$*>(machineInstance);')
-                        with cpp.block('if (castedMachine)'):
-                            cpp('return std::shared_ptr<CLReflect::CLBoundProperty(new Bound_Machine_$propName$(castedMachine));')
-                        with cpp.block('else'):
-                            cpp('return std::shared_ptr<CLReflect::CLBoundProperty>(NULL);')
+                        if state:
+                            bPropClass = 'Bound_' + state.name + '_' + prop.name
+                        else:
+                            bPropClass = 'Bound_Machine_' + prop.name
+                        with cpp.subs(bPropClass = bPropClass):
+                            with cpp.block('if (castedMachine)'):
+                                cpp('return std::shared_ptr<CLReflect::CLBoundProperty>(new $bPropClass$(castedMachine));')
+                            with cpp.block('else'):
+                                cpp('return std::shared_ptr<CLReflect::CLBoundProperty>(NULL);')
 
     def writeBoundProperty(self, cpp, prop, state = None):
-        with cpp.subs(propClass = 'Bound_Machine_' + prop.name):
+        if state:
+            propClass = "Bound_" + state.name + "_" + prop.name
+        else:
+            propClass = "Bound_Machine_" + prop.name
+        with cpp.subs(propClass = propClass):
             with cpp.block('class $propClass$ : public CLReflect::CLBoundProperty', ';'):
                 cpp.label('private')
                 with cpp.subs(machName = self.metaMachineDef.name, propName = prop.name):
@@ -62,38 +74,45 @@ class MachinePropertyFileWriter:
                     cpp('$propClass$(CLM::$machName$* machine) : _machine(machine) {}\n')
 
                     # getValue()
-                    with cpp.block('std::string getValue()'):
-                        #Check for primitive type
-                        if prop.dataType in MachinePropertyFileWriter.primTypes_static:
-                            cpp("return std::to_string(_machine->$propName$);")
-                        elif prop.dataType == 'char': # Check for char type
-                            cpp("return std::string(1, _machine->$propName$);")
-                        elif 'char *' in prop.dataType:
-                            cpp("return std::string(_machine->$propName$);")
-                        elif prop.dataType in ['string', 'std::string']:
-                            cpp("return _machine->$propName$;")
-                        else:
-                            # Check if description method may be available
-                            dataType = re.sub('const|[*+& ]', '', prop.dataType)
-                            cpp('#ifdef ' + dataType + '_DEFINED')
-                            cpp('return _machine->$propName$.desciption()')
-                            cpp('#else')
-                            cpp("return std::string();")
-                            cpp("#endif")
-                    # setValue()
-                    with cpp.block('void setValue(std::string value)'):
-                        if prop.dataType in MachinePropertyFileWriter.primTypes_static:
-                            cpp(prop.dataType + ' newValue; istringstream(value) >> newValue;')
-                            cpp('_machine->$propName$ = newValue;')
-                        elif 'char *' in prop.dataType:
-                            cpp('_machine->$propName$ = value.c_str();')
-                        elif prop.dataType == 'char':
-                            cpp('_machine->$propName$ = value[0];')
-                        elif prop.dataType in ['string', 'std::string']:
-                            cpp("_machine->$propName$ = value;")
-                        else:
-                            dataType = re.sub('const|[*+& ]', '', prop.dataType)
-                            cpp('#ifdef ' + dataType + '_DEFINED')
-                            cpp('_machine->$propName$.from_string(value)')
-                            cpp('#else')
-                            cpp('std::cerr << "Value not set. No conversion available." << std::endl;')
+                    if state:
+                        # (((FSM::CLM::FSMPingPongCLFSM_META::State::Ping*) _machine->state(0))->property)
+                        # Casting state to correct type to allow property access
+                        varPath = "((FSM::CLM::FSM" + self.metaMachineDef.name + "::State::" + state.name + "*) _machine->state(" + str(state.index) + "))->" + prop.name
+                    else:
+                        varPath = '_machine->' + prop.name
+                    with cpp.subs(varPath = varPath):
+                        with cpp.block('std::string getValue()'):
+                            #Check for primitive type
+                            if prop.dataType in MachinePropertyFileWriter.primTypes_static:
+                                cpp("return std::to_string($varPath$);")
+                            elif prop.dataType == 'char': # Check for char type
+                                cpp("return std::string(1, $varPath$);")
+                            elif 'char *' in prop.dataType:
+                                cpp("return std::string($varPath$);")
+                            elif prop.dataType in ['string', 'std::string']:
+                                cpp("return $varPath$;")
+                            else:
+                                # Check if description method may be available
+                                dataType = re.sub('const|[*+& ]', '', prop.dataType)
+                                cpp('#ifdef ' + dataType + '_DEFINED')
+                                cpp('return $varPath$.desciption()')
+                                cpp('#else')
+                                cpp("return std::string();")
+                                cpp("#endif")
+                        # setValue()
+                        with cpp.block('void setValue(std::string value)'):
+                            if prop.dataType in MachinePropertyFileWriter.primTypes_static:
+                                cpp(prop.dataType + ' newValue; std::istringstream(value) >> newValue;')
+                                cpp('$varPath$ = newValue;')
+                            elif 'char *' in prop.dataType:
+                                cpp('$varPath$ = value.c_str();')
+                            elif prop.dataType == 'char':
+                                cpp('$varPath$ = value[0];')
+                            elif prop.dataType in ['string', 'std::string']:
+                                cpp("$varPath$ = value;")
+                            else:
+                                dataType = re.sub('const|[*+& ]', '', prop.dataType)
+                                cpp('#ifdef ' + dataType + '_DEFINED')
+                                cpp('$varPath$.from_string(value)')
+                                cpp('#else')
+                                cpp('std::cerr << "Value not set. No conversion available." << std::endl;')

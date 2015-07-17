@@ -14,7 +14,7 @@ namespace FSM
 {
     namespace CLM
     {
-      namespace FSMPingPongCLFSM
+      namespace FSMPingPongCLFSM_META
       {
         namespace State
         {

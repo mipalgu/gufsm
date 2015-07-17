@@ -8,7 +8,8 @@
 #include "CLMacros.h"
 #include <memory>
 #include <string>
-#include <sstream>#include "CLMetaProperty.h"
+#include <sstream>
+#include "CLMetaProperty.h"
 #include "CLBoundProperty.h"
 #include "PingPongCLFSM_META.h"
 
@@ -31,7 +32,7 @@ namespace FSM
 			}
 			void setValue(std::string value)
 			{
-				int newValue; istringstream(value) >> newValue;
+				int newValue; std::istringstream(value) >> newValue;
 				_machine->currentState = newValue;
 			}
 		};
@@ -46,7 +47,7 @@ namespace FSM
 				CLM::PingPongCLFSM_META* castedMachine = dynamic_cast<CLM::PingPongCLFSM_META*>(machineInstance);
 				if (castedMachine)
 				{
-					return std::shared_ptr<CLReflect::CLBoundProperty(new Bound_Machine_currentState(castedMachine));
+					return std::shared_ptr<CLReflect::CLBoundProperty>(new Bound_Machine_currentState(castedMachine));
 				}
 				else
 				{

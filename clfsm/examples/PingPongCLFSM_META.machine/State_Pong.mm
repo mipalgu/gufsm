@@ -11,7 +11,7 @@
 
 using namespace FSM;
 using namespace CLM;
-using namespace FSMPingPongCLFSM;
+using namespace FSMPingPongCLFSM_META;
 using namespace State;
 
 Pong::Pong(const char *name): CLState(name, *new Pong::OnEntry, *new Pong::OnExit, *new Pong::Internal)
