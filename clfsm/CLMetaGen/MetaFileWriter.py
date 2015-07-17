@@ -13,8 +13,8 @@ class MetaFileWriter:
         self.impIncludes = MetaFileWriter.impIncludes_static
         self.impIncludes += [self.machineDef.name + '_MetaMachine.h',
                                 self.machineDef.name + '_Properties.h']
-        for state in self.machineDef.states:
-            self.impIncludes.append('State_' + state.name + '_Properties.h')
+        #for state in self.machineDef.states:
+            #self.impIncludes.append('State_' + state.name + '_Properties.h')
 
 
     def write(self):
@@ -23,7 +23,7 @@ class MetaFileWriter:
 
     def generateHeader(self):
         # Includes
-        cpp = CppFile(self.machineDef.name + '_MetaMachine.h')
+        cpp = CppFile(self.machineDef.machinePath + '/' + self.machineDef.name + '_MetaMachine.h')
         cpp(MetaFileWriter.DO_NOT_MODIFY_static)
         for h in self.headerIncludes:
             with cpp.subs(includeFile = h):
@@ -38,7 +38,7 @@ class MetaFileWriter:
 
 
     def generateImplementation(self):
-        cpp = CppFile(self.machineDef.name + '_MetaMachine.cc')
+        cpp = CppFile(self.machineDef.machinePath + '/' + self.machineDef.name + '_MetaMachine.cc')
         cpp(MetaFileWriter.DO_NOT_MODIFY_static)
         #includes
         for h in self.impIncludes:
