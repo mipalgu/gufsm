@@ -115,4 +115,5 @@ class MachinePropertyFileWriter:
                                 cpp('#ifdef ' + dataType + '_DEFINED')
                                 cpp('$varPath$.from_string(value)')
                                 cpp('#else')
-                                cpp('std::cerr << "Value not set. No conversion available." << std::endl;')
+                                cpp('std::cerr << "Value: " << value << " not set. No conversion available." << std::endl;')
+                                cpp('#endif')

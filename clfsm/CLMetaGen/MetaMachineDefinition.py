@@ -74,7 +74,7 @@ class State:
         propertiesPath = os.path.join(self.path, 'State_' + self.name + '_Variables.h')
         propertyFile = open(propertiesPath)
         for line in propertyFile:
-            if line[:2] != r'//':
+            if line[:2] != r'//' and not line: #check if comment or empty line i.e. not a variable declaration
                 tokens = line.split("\t")
                 dataType = tokens[0]
                 varName = tokens[1].rstrip(';')
