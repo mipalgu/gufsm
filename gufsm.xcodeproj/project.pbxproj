@@ -24,6 +24,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		3CFD06221A1B684300C36E6C /* clfsm_visitors.cc in Sources */ = {isa = PBXBuildFile; fileRef = 3CFD061E1A1B684300C36E6C /* clfsm_visitors.cc */; };
+		3CFD06231A1B684300C36E6C /* clfsm_visitorsupport.cc in Sources */ = {isa = PBXBuildFile; fileRef = 3CFD06201A1B684300C36E6C /* clfsm_visitorsupport.cc */; };
 		E1144EB61585E21600C3C113 /* SimpleCLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = E1144EB41585E21600C3C113 /* SimpleCLexer.c */; };
 		E1144EB71585E21600C3C113 /* SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E1144EB51585E21600C3C113 /* SimpleCParser.c */; };
 		E1144EBD1585E23900C3C113 /* ActionsContainer_SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E1144EB81585E23900C3C113 /* ActionsContainer_SimpleCParser.c */; };
@@ -414,6 +416,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3CFD061E1A1B684300C36E6C /* clfsm_visitors.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = clfsm_visitors.cc; sourceTree = "<group>"; };
+		3CFD061F1A1B684300C36E6C /* clfsm_visitors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clfsm_visitors.h; sourceTree = "<group>"; };
+		3CFD06201A1B684300C36E6C /* clfsm_visitorsupport.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = clfsm_visitorsupport.cc; sourceTree = "<group>"; };
+		3CFD06211A1B684300C36E6C /* clfsm_visitorsupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clfsm_visitorsupport.h; sourceTree = "<group>"; };
 		E1144EB41585E21600C3C113 /* SimpleCLexer.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = SimpleCLexer.c; path = build.host/SimpleCLexer.c; sourceTree = "<group>"; };
 		E1144EB51585E21600C3C113 /* SimpleCParser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = SimpleCParser.c; path = build.host/SimpleCParser.c; sourceTree = "<group>"; };
 		E1144EB81585E23900C3C113 /* ActionsContainer_SimpleCParser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = ActionsContainer_SimpleCParser.c; path = build.host/ActionsContainer_SimpleCParser.c; sourceTree = "<group>"; };
@@ -568,9 +574,9 @@
 		F12B423C147DC38B00FF4A6B /* SMLexer.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SMLexer.g; sourceTree = "<group>"; };
 		F12B423D147DC38B00FF4A6B /* TransitionsParser.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TransitionsParser.g; sourceTree = "<group>"; };
 		F12DCDD71484BAD100461AD6 /* FSMTransition.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMTransition.cc; sourceTree = "<group>"; };
-		F12EAE5415F6F48A002DB436 /* clfsm_factory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = clfsm_factory.cc; sourceTree = "<group>"; };
+		F12EAE5415F6F48A002DB436 /* clfsm_factory.cc */ = {isa = PBXFileReference; indentWidth = 8; lastKnownFileType = sourcecode.cpp.cpp; path = clfsm_factory.cc; sourceTree = "<group>"; };
 		F12EAE5815F6F4C3002DB436 /* clfsm_factory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = clfsm_factory.h; sourceTree = "<group>"; };
-		F12EAE5915F6F4C3002DB436 /* clfsm_vector_factory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = clfsm_vector_factory.h; sourceTree = "<group>"; };
+		F12EAE5915F6F4C3002DB436 /* clfsm_vector_factory.h */ = {isa = PBXFileReference; indentWidth = 8; lastKnownFileType = sourcecode.c.h; path = clfsm_vector_factory.h; sourceTree = "<group>"; };
 		F12EAE5A15F6F993002DB436 /* FSMFactory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FSMFactory.cc; sourceTree = "<group>"; };
 		F12EAE5B15F6F993002DB436 /* FSMFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMFactory.h; sourceTree = "<group>"; };
 		F12EAE6015F6FDAE002DB436 /* FSMFactory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FSMFactory.cc; sourceTree = "<group>"; };
@@ -1245,7 +1251,7 @@
 				F1284D1F14A6CAA800C0247E /* libgusimplewhiteboard.a */,
 				F1284D2114A6CAA800C0247E /* SimpleWhiteboardTest.xctest */,
 				F1B5AB8C1555F8B1000B770D /* libguobjcwhiteboard.a */,
-				F1B5AB8E1555F8B1000B770D /* guobjcwhiteboardTests.octest */,
+				F1B5AB8E1555F8B1000B770D /* guobjcwhiteboardTests.xctest */,
 				F1B5AB901555F8B1000B770D /* libgusimplewhiteboardios.a */,
 				F1EB446718DC4CE200433261 /* guudpwhiteboard */,
 				F11F952118E0234900E17493 /* SimpleWhiteboardTest.bundle */,
@@ -2199,6 +2205,10 @@
 				F1D126F21609382400E526BE /* clfsm_cc.h */,
 				F1158173161BCA20006C6363 /* clfsm_cc_delegate.h */,
 				F1D575B71627B9E400976A23 /* clfsm_main.cc */,
+				3CFD061F1A1B684300C36E6C /* clfsm_visitors.h */,
+				3CFD061E1A1B684300C36E6C /* clfsm_visitors.cc */,
+				3CFD06211A1B684300C36E6C /* clfsm_visitorsupport.h */,
+				3CFD06201A1B684300C36E6C /* clfsm_visitorsupport.cc */,
 				F1A5180015C9278500348C25 /* examples */,
 				F1A517CF15C91BDC00348C25 /* clfsm+PingPong.cc */,
 				F1A517D115C91BDC00348C25 /* clfsm.1 */,
@@ -2744,10 +2754,10 @@
 			remoteRef = F1B5AB8B1555F8B1000B770D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		F1B5AB8E1555F8B1000B770D /* guobjcwhiteboardTests.octest */ = {
+		F1B5AB8E1555F8B1000B770D /* guobjcwhiteboardTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = guobjcwhiteboardTests.octest;
+			path = guobjcwhiteboardTests.xctest;
 			remoteRef = F1B5AB8D1555F8B1000B770D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -3020,8 +3030,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CFD06221A1B684300C36E6C /* clfsm_visitors.cc in Sources */,
 				F1D126F31609382400E526BE /* clfsm_cc.cc in Sources */,
 				F108330B1626997A00D6C789 /* clfsm_machine.cc in Sources */,
+				3CFD06231A1B684300C36E6C /* clfsm_visitorsupport.cc in Sources */,
 				F12E5ED11627F36D00B95186 /* clfsm_main.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
