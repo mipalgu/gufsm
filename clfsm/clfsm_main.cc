@@ -239,9 +239,9 @@ static bool print_machine_and_state(void *ctx, SuspensibleMachine *machine, int 
         const char* path = wrapper->path();
 
         if (machine->previousState() != machine->currentState())
-                fprintf(stderr, "%sm%3d s%3d - %-30.30s / %-20.20s - %s\n",  debug_internal_states ? "\n" : "", machine_number, machine->indexOfState(), path, machineName, machine->currentState()->name().c_str());
+                fprintf(fStateMsgOutput, "%sm%3d s%3d - %-30.30s / %-20.20s - %s\n",  debug_internal_states ? "\n" : "", machine_number, machine->indexOfState(), path, machineName, machine->currentState()->name().c_str());
         else if (debug_internal_states)
-                fprintf(stderr, "%d/%d ", machine_number, machine->indexOfState());
+                fprintf(fStateMsgOutput, "%d/%d ", machine_number, machine->indexOfState());
 
         return true;
 }
@@ -258,86 +258,88 @@ static bool unloadMachineIfAccepting(void *ctx, SuspensibleMachine* machine, int
 
 int main(int argc, char * const argv[])
 {
-        vector<string> machines;
-        vector<string> compiler_args;
-        vector<string> linker_args;
+    fStateMsgOutput = stderr;
 
-        command_argc = argc;
-        command_argv = argv;
-        command = argv[0];
-
-        signal(SIGABRT, backtrace_signal_handler);
-        signal(SIGIOT,  backtrace_signal_handler);
-
-        signal(SIGINT,  aborting_signal_handler);
-        signal(SIGTERM, aborting_signal_handler);
-        signal(SIGQUIT, aborting_signal_handler);
-        signal(SIGSEGV, aborting_signal_handler);
-        signal(SIGBUS,  aborting_signal_handler);
-        signal(SIGILL,  aborting_signal_handler);
-        signal(SIGSYS,  aborting_signal_handler);
-        signal(SIGFPE,  aborting_signal_handler);
-        signal(SIGXCPU, aborting_signal_handler);
+    vector<string> machines;
+    vector<string> compiler_args;
+    vector<string> linker_args;
+    
+    command_argc = argc;
+    command_argv = argv;
+    command = argv[0];
+    
+    signal(SIGABRT, backtrace_signal_handler);
+    signal(SIGIOT,  backtrace_signal_handler);
+    
+    signal(SIGINT,  aborting_signal_handler);
+    signal(SIGTERM, aborting_signal_handler);
+    signal(SIGQUIT, aborting_signal_handler);
+    signal(SIGSEGV, aborting_signal_handler);
+    signal(SIGBUS,  aborting_signal_handler);
+    signal(SIGILL,  aborting_signal_handler);
+    signal(SIGSYS,  aborting_signal_handler);
+    signal(SIGFPE,  aborting_signal_handler);
+    signal(SIGXCPU, aborting_signal_handler);
 #ifdef SIGINFO
     signal(SIGINFO, print_backtrace);
 #endif
-        signal(SIGTSTP, print_backtrace);
-        signal(SIGHUP,  print_backtrace);
-
-        compiler_args.push_back("-std=c++11");    /// XXX: fix this
-
-        int ch;
-        int debug = 0, verbose = 0, noUnloadIfAccepting = 0;
-        while ((ch = getopt(argc, argv, "dgf:I:L:l:nstuv")) != -1)
+    signal(SIGTSTP, print_backtrace);
+    signal(SIGHUP,  print_backtrace);
+    
+    compiler_args.push_back("-std=c++11");    /// XXX: fix this
+    
+    int ch;
+    int debug = 0, verbose = 0, noUnloadIfAccepting = 0;
+    while ((ch = getopt(argc, argv, "dgf:I:L:l:nstuv")) != -1)
+    {
+        switch (ch)
         {
-            switch (ch)
-            {
-                case 'd':
-                    debug++;
-                    break;
-                case 'g':
-                    compiler_args.push_back("-g");
-                    linker_args.push_back("-g");
-                    break;
-                case 'f':
-                    compiler_args.push_back(string("-f")+optarg);
-                    break;
-                case 'I':
-                    compiler_args.push_back("-I");
-                    compiler_args.push_back(optarg);
-                    break;
-                case 'L':
-                    linker_args.push_back("-L");
-                    linker_args.push_back(optarg);
-                    break;
-                case 'l':
-                    linker_args.push_back("-l");
-                    linker_args.push_back(optarg);
-                    break;
-                case 'n':
-                    nonstop = true;
-                    DBG(cerr << "nonstop mode: sleeping 1 second before (re)starting" << endl);
-                    protected_usleep(1000000ULL);
-                    break;
-                case 's':
-                    FSM::debugSuspends++;
-                    break;
-                case 't': // Timer Flag
-                    time_state_execution = true;
-                    break;
-                case 'v':
-                    verbose++;
-                    break;
-                case 'u':
-                    noUnloadIfAccepting++;
-                    break;
-                case '?':
-                default:
-                    usage(argv[0]);
-                    exit(EXIT_FAILURE);
-            }
+            case 'd':
+                debug++;
+                break;
+            case 'g':
+                compiler_args.push_back("-g");
+                linker_args.push_back("-g");
+                break;
+            case 'f':
+                compiler_args.push_back(string("-f")+optarg);
+                break;
+            case 'I':
+                compiler_args.push_back("-I");
+                compiler_args.push_back(optarg);
+                break;
+            case 'L':
+                linker_args.push_back("-L");
+                linker_args.push_back(optarg);
+                break;
+            case 'l':
+                linker_args.push_back("-l");
+                linker_args.push_back(optarg);
+                break;
+            case 'n':
+                nonstop = true;
+                DBG(cerr << "nonstop mode: sleeping 1 second before (re)starting" << endl);
+                protected_usleep(1000000ULL);
+                break;
+            case 's':
+                FSM::debugSuspends++;
+                break;
+            case 't': // Timer Flag
+                time_state_execution = true;
+                break;
+            case 'v':
+                verbose++;
+                break;
+            case 'u':
+                noUnloadIfAccepting++;
+                break;
+            case '?':
+            default:
+                usage(argv[0]);
+                exit(EXIT_FAILURE);
         }
     }
+
     argc -= optind;
     argv += optind;
     
@@ -380,4 +382,5 @@ int main(int argc, char * const argv[])
         delete CLFSMMachineLoader::getMachineLoaderSingleton();
 
         return EXIT_SUCCESS;
+    }
 }
