@@ -59,6 +59,7 @@
 #define clfsm_vector_factory_
 
 #include <vector>
+#include "FSMachineVector.h"
 
 #ifdef bool
 #undef bool
