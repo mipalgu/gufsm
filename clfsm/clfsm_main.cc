@@ -115,6 +115,7 @@ struct clfsm_context {
 static CLFSMWBVectorFactory *createMachines(const vector<string> &machines, const vector<string> &compiler_args, const vector<string> &linker_args)
 {
     CLFSMMachineLoader *loader = CLFSMMachineLoader::getMachineLoaderSingleton();
+    std::cout << "Creating machines: " << machines.size() << std::endl;
     for (vector<string>::const_iterator it = machines.begin(); it != machines.end(); it++)
     {
             const string &machine = *it;
@@ -137,20 +138,20 @@ static void __attribute((noreturn)) aborting_signal_handler(int signum)
     guWhiteboard::QSpeech_t say;
 #endif
     stringstream ss;
-    
+
     if (signum == SIGTERM || signum == SIGQUIT || signum == SIGINT)
         nonstop = false;
-    
+
     ss << "Caught signal " << signum << ": " << (nonstop ? "restarting ... " : "aborting ...") << endl;
-    
+
     say(ss.str());
     cerr << ss.str();
-    
+
     if (time_state_execution)
     {
         CLFSMVisitorsExecution::print_results_stderr();
     }
-    
+
     abort();
 }
 
@@ -169,7 +170,7 @@ static void print_backtrace(int signum)
     {
         fprintf(stderr, "*** Cannot open '%s': %s", tmpname, strerror(errno));
     }
-    
+
 #ifdef DEBUG
     guWhiteboard::QSay_t say;
 #else
@@ -183,14 +184,14 @@ static void print_backtrace(int signum)
         if (logfile) fprintf(logfile,"%3.3d: %s\n", i, function);
         fprintf(stderr, "%3.3d: %s\n", i, function);
     }
-    
+
     free(strs);
     if (logfile)
     {
         fclose(logfile);
         fprintf(stderr, "Log file written to '%s'\n", tmpname);
     }
-    
+
     if (signum == SIGTSTP) kill(getpid(), SIGSTOP);
     errno = olderrno;
 }
@@ -209,7 +210,7 @@ static void __attribute((noreturn)) backtrace_signal_handler(int signum)
         execvp(command, command_argv);
         fprintf(stderr, "*** Cannot re-run '%s': %s", command, strerror(errno));
     }
-    
+
     abort();
 }
 
@@ -263,14 +264,14 @@ int main(int argc, char * const argv[])
     vector<string> machines;
     vector<string> compiler_args;
     vector<string> linker_args;
-    
+
     command_argc = argc;
     command_argv = argv;
     command = argv[0];
-    
+
     signal(SIGABRT, backtrace_signal_handler);
     signal(SIGIOT,  backtrace_signal_handler);
-    
+
     signal(SIGINT,  aborting_signal_handler);
     signal(SIGTERM, aborting_signal_handler);
     signal(SIGQUIT, aborting_signal_handler);
@@ -285,9 +286,9 @@ int main(int argc, char * const argv[])
 #endif
     signal(SIGTSTP, print_backtrace);
     signal(SIGHUP,  print_backtrace);
-    
+
     compiler_args.push_back("-std=c++11");    /// XXX: fix this
-    
+
     int ch;
     int debug = 0, verbose = 0, noUnloadIfAccepting = 0;
     while ((ch = getopt(argc, argv, "dgf:I:L:l:nstuv")) != -1)
@@ -342,7 +343,7 @@ int main(int argc, char * const argv[])
 
     argc -= optind;
     argv += optind;
-    
+
     while (argc--)
     {
         struct stat s;
@@ -357,30 +358,31 @@ int main(int argc, char * const argv[])
             }
             machine = machine_with_extension;
         }
-
-        if (!compiler_args.size()) compiler_args = MachineWrapper::default_compiler_args();
-        if (!linker_args.size())   linker_args   = MachineWrapper::default_linker_args();
-
-        visitor_f visitor = NULL;
-        visitor_f accept_action = NULL; //Used to unload machines when in accepting state
-        if (verbose) visitor = print_machine_and_state;
-        if (time_state_execution) visitor = CLFSMVisitorsExecution::time_state_execution;
-        if (!noUnloadIfAccepting) accept_action = unloadMachineIfAccepting;
-        initReflection();
-        CLFSMWBVectorFactory *factory = createMachines(machines, compiler_args, linker_args);
-        struct clfsm_context context = { CLFSMMachineLoader::getMachineLoaderSingleton() };
-        factory->postMachineStatus();
-        debug_internal_states = debug;
-        factory->fsms()->execute(visitor, &context, accept_action);
-
-        // Print Execution Results
-        if (time_state_execution)
-        {
-            CLFSMVisitorsExecution::print_results_stderr();
-        }
-        
-        delete CLFSMMachineLoader::getMachineLoaderSingleton();
-
-        return EXIT_SUCCESS;
+        machines.push_back(machine);
     }
+
+    if (!compiler_args.size()) compiler_args = MachineWrapper::default_compiler_args();
+    if (!linker_args.size())   linker_args   = MachineWrapper::default_linker_args();
+
+    visitor_f visitor = NULL;
+    visitor_f accept_action = NULL; //Used to unload machines when in accepting state
+    if (verbose) visitor = print_machine_and_state;
+    if (time_state_execution) visitor = CLFSMVisitorsExecution::time_state_execution;
+    if (!noUnloadIfAccepting) accept_action = unloadMachineIfAccepting;
+    initReflection();
+    CLFSMWBVectorFactory *factory = createMachines(machines, compiler_args, linker_args);
+    struct clfsm_context context = { CLFSMMachineLoader::getMachineLoaderSingleton() };
+    factory->postMachineStatus();
+    debug_internal_states = debug;
+    factory->fsms()->execute(visitor, &context, accept_action);
+
+    // Print Execution Results
+    if (time_state_execution)
+    {
+        CLFSMVisitorsExecution::print_results_stderr();
+    }
+
+    delete CLFSMMachineLoader::getMachineLoaderSingleton();
+
+    return EXIT_SUCCESS;
 }

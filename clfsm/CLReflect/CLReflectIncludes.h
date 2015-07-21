@@ -14,6 +14,7 @@
 // Meta machines (type system)
 #include "CLMetaMachine.h"
 #include "CLMetaState.h"
+#include "CLMetaTransition.h"
 #include "CLMetaProperty.h"
 #include "CLBoundProperty.h"
 

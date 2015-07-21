@@ -21,14 +21,10 @@ extern "C"
 		// State creation
 		// State: Ping
 		shared_ptr<CLMetaState> state_0(new CLMetaState("Ping"));
-		shared_ptr<Meta_Ping_stateName> ping_property_0(new Meta_Ping_stateName());
-		state_0->addProperty(ping_property_0);
 		meta->addState(state_0);
 		
 		// State: Pong
 		shared_ptr<CLMetaState> state_1(new CLMetaState("Pong"));
-		shared_ptr<Meta_Pong_stateName> pong_property_0(new Meta_Pong_stateName());
-		state_1->addProperty(pong_property_0);
 		meta->addState(state_1);
 		
 		return meta;
