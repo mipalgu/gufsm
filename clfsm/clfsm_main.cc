@@ -115,7 +115,6 @@ struct clfsm_context {
 static CLFSMWBVectorFactory *createMachines(const vector<string> &machines, const vector<string> &compiler_args, const vector<string> &linker_args)
 {
     CLFSMMachineLoader *loader = CLFSMMachineLoader::getMachineLoaderSingleton();
-    std::cout << "Creating machines: " << machines.size() << std::endl;
     for (vector<string>::const_iterator it = machines.begin(); it != machines.end(); it++)
     {
             const string &machine = *it;
