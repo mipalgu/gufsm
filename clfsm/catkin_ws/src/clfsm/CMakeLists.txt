@@ -102,6 +102,8 @@ add_executable(clfsm
 	src/clfsm_cc.cc
 	src/clfsm_machine.cc
 	src/clfsm_main.cc
+	src/clfsm_visitors.cc
+	src/clfsm_visitorsupport.cc
 )
 
 ## Add cmake target dependencies of the executable/library

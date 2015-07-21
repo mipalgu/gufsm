@@ -3,6 +3,9 @@
 #
 MODULE_BASE=clfsm
 
+DONT_COMPLAIN_ABOUT_TEST_TARGET=yes	## test target is defined elsewhere
+CI_SERVER_DOC_SUBDIR=utils
+
 .include "../../../../mk/c++11.mk"	# use C++11
 
 .ifndef TARGET
@@ -17,8 +20,10 @@ SPECIFIC_LIBS+=-Wl,-R/usr/local/lib
 
 SPECIFIC_LIBS+=-L/usr/local/lib -lclfsm -ldl
 
-CPPFLAGS+=-g
-
+CC_SRCS+=clfsm_cc.cc
+CC_SRCS+=clfsm_machine.cc
+CC_SRCS+=clfsm_visitorsupport.cc
+CC_SRCS+=clfsm_visitors.cc
 CC_SRCS+=clfsm_main.cc
 HDRS+=CLActionAction.h
 HDRS+=CLTransitionExpression.h
@@ -42,6 +47,8 @@ HDRS+=clfsm_factory.h
 HDRS+=clfsm_machine.h
 HDRS+=clfsm_cc_delegate.h
 HDRS+=clfsm_cc.h
+HDRS+=clfsm_visitorsupport.h
+HDRS+=clfsm_visitors.h
 HDRS+=stringConstants.h
 HDRS+=clfsm_machine_loader.h
 HDRS+=CLReflectIncludes.h
@@ -51,8 +58,11 @@ HDRS+=CLReflectIncludes.h
 
 pre-catkin:
 	$Emkdir -p ${CATKIN_DIR}/include/typeClassDefs
-.for hfile in FSM_Control.h FSMControlStatus.h wb_fsm_control_status.h
+.for hfile in FSM_Control.h FSMControlStatus.h wb_fsm_control_status.h wb_fsm_state_status.h
 	$Ecp -p ${WB_DIR}/typeClassDefs/${hfile} ${CATKIN_DIR}/include/typeClassDefs
 .endfor
+
+test:
+	$Eecho ""				# nothing to see here, move on
 
 .include "../../../../mk/mipal.mk"

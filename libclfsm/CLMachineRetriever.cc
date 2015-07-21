@@ -1,1 +1,1 @@
-/home/mitch/MIPAL-src/MiPal/GUNao/posix/gufsm/clfsm/CLReflect/CLMachineRetriever.cc
+../clfsm/CLReflect/CLMachineRetriever.cc

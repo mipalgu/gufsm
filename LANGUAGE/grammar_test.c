@@ -5,15 +5,14 @@
 //  Created by René Hexel on 21/08/11.
 //  Copyright (c) 2011 ICT. All rights reserved.
 //
+#include "parse_actions.h"
+#include "parse_transitions.h"
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <libgen.h>
 #include <unistd.h>
-
-#include "parse_actions.h"
-#include "parse_transitions.h"
 
 int main(int argc, char *argv[])
 {

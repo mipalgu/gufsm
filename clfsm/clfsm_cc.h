@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 19/09/12.
- *  Copyright (c) 2012 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2015 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -55,8 +55,8 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef __gufsm__clfsm_cc__
-#define __gufsm__clfsm_cc__
+#ifndef gufsm_clfsm_cc_
+#define gufsm_clfsm_cc_
 
 //#include <cstdint>
 #include <vector>
@@ -69,6 +69,9 @@
 
 #else // use libclang internals
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wreserved-id-macro"
+
 #ifndef __STDC_LIMIT_MACROS
 #define __STDC_LIMIT_MACROS
 #endif
@@ -76,7 +79,9 @@
 #ifndef __STDC_CONSTANT_MACROS
 #define __STDC_CONSTANT_MACROS
 #endif
- 
+
+#pragma clang diagnostic pop
+
 #include <clang/Driver/Arg.h>
 #include <clang/Driver/ArgList.h>
 #include <clang/Driver/Options.h>
@@ -141,4 +146,4 @@ namespace FSM
                 virtual void errorHandler(const std::string &message);
         };
 }
-#endif /* defined(__gufsm__clfsm_cc__) */
+#endif /* defined gufsm_clfsm_cc_) */

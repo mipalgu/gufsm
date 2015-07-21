@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 5/09/12.
- *  Copyright (c) 2012, 2013 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2013, 2015 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -55,8 +55,8 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef ____clfsm_vector_factory__
-#define ____clfsm_vector_factory__
+#ifndef clfsm_vector_factory_
+#define clfsm_vector_factory_
 
 #include <vector>
 
@@ -176,9 +176,45 @@ namespace FSM
                 {
                         return (index < _clmachines.size()) ? _clmachines[index] : NULL;
                 }
+
+                /**
+                 * execute one iteration of the current state of each machine
+                 * @return true if any transition fired on any machine
+                 */
+                virtual bool executeOnce() { return executeOnce(NULL); }
+
+                /**
+                 * execute one iteration of the current state of each machine
+                 * with a given visitor for each machine
+                 * @param should_execute_machine visitor that returns whether machine should be executed in this round
+                 * @param context pointer to a user-defined context (such as a whiteboard context for the wb singleton)
+                 * @return true if any transition fired on any machine
+                 */
+                virtual bool executeOnce(visitor_f should_execute_machine, void *context = NULL)
+                {
+                        return fsms()->executeOnce(should_execute_machine, context);
+                }
+
+                /**
+                 * execute until accepting state is encountered
+                 */
+                virtual void execute() { execute(NULL); }
+                
+                /**
+                 * execute until accepting state is encountered
+                 */
+                virtual void execute(visitor_f should_execute_machine, void *context = NULL)
+                {
+                        do
+                        {
+                                if (!executeOnce(should_execute_machine, context))
+                                        fsms()->noTransitionFired();
+                        }
+                        while (!fsms()->accepting());
+                }
         };
 }
 
 #pragma clang diagnostic pop
 
-#endif /* defined(____clfsm_factory__) */
+#endif /* defined clfsm_factory_) */

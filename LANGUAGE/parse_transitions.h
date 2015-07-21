@@ -3,7 +3,7 @@
 //  grammar_test
 //
 //  Created by René Hexel on 21/08/11.
-//  Copyright (c) 2011 Rene Hexel. All rights reserved.
+//  Copyright (c) 2011, 2014 Rene Hexel. All rights reserved.
 //
 
 #ifndef grammar_test_parse_transitions_h

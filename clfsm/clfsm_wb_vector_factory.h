@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 25/03/13.
- *  Copyright (c) 2013 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2013, 2015 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -56,8 +56,8 @@
  *
  */
 
-#ifndef ____clfsm_wb_vector_factory__
-#define ____clfsm_wb_vector_factory__
+#ifndef clfsm_wb_vector_factory_
+#define clfsm_wb_vector_factory_
 
 #include "clfsm_vector_factory.h"
 #include "typeClassDefs/FSM_Control.h"
@@ -93,6 +93,8 @@ namespace FSM
                 whiteboard_watcher _watcher;            ///< whiteboard watcher to manage subscriptions
                 guWhiteboard::FSM_Status_t _wbstatus;   ///< current whiteboard status of machines
                 guWhiteboard::FSM_Names_t _wbfsmnames;  ///< fsm name information on the whiteboard
+                guWhiteboard::FSM_States_t _wbfsmStates;   ///< buffered state status, used to limit WB publications.
+                guWhiteboard::FSMState fsmCurrStates;
         public:
                 /**
                  * Designated constructor.
@@ -100,27 +102,29 @@ namespace FSM
                  * @param[in] deleteOnDestruction       Delete non-NULL wbcontext on destruction
                  */
                 CLFSMWBVectorFactory(FSM::Context *wbcontext = NULL, bool deleteOnDestruction = false);
-                
+
                 /** context getter */
                 FSM::Context *context() { return (FSM::Context *)(_context); }
-                
+
                 /** context setter */
                 void setContext(FSM::Context *context) { _context = (FSM::Context *) context; }
-                
+
                 /** whiteboard watcher getter */
                 whiteboard_watcher &watcher() { return _watcher; }
-                
+
                 /** status getter */
                 guWhiteboard::FSM_Status_t &wbstatus() { return _wbstatus; }
 
                 /** names getter */
                 guWhiteboard::FSM_Names_t &wbfsmnames() { return _wbfsmnames; }
 
+                /** state getter */
+                guWhiteboard::FSM_States_t &wbfsmstates() { return _wbfsmStates; }
                 /**
                  * whiteboard callback for control message
                  */
                 void whiteboard_fsm_control(guWhiteboard::WBTypes t, guWhiteboard::FSMControlStatus &controlMsg);
-                
+
                 /**
                  * whiteboard callback for names message
                  */
@@ -128,13 +132,13 @@ namespace FSM
 
                 /// post the status of all machines on the whiteboard
                 void postMachineStatus();
-                
+
                 /// suspend the machines whose bits are 1
                 void suspendMachines(guWhiteboard::FSMControlStatus &suspendControl);
-                
+
                 /// resume the machines whose bits are 1
                 void resumeMachines(guWhiteboard::FSMControlStatus &resumeControl);
-                
+
                 /// restart the machines whose bits are 1
                 void restartMachines(guWhiteboard::FSMControlStatus &restartControl);
 
@@ -142,9 +146,18 @@ namespace FSM
                 void postMachineNames();
 
                 /// post one packet of names starting from the given index
-                uint16_t postMachineNamesFromIndex(uint16_t index);
+                guWhiteboard::FSMNames* postMachineNamesFromIndex(guWhiteboard::FSMNames &namesReq);
+
+                /**
+                 * execute one iteration of the current state of each machine
+                 * with a given visitor for each machine
+                 * @param should_execute_machine visitor that returns whether machine should be executed in this round
+                 * @param context pointer to a user-defined context (such as a whiteboard context for the wb singleton)
+                 * @return true if any transition fired on any machine
+                 */
+                virtual bool executeOnce(visitor_f should_execute_machine, void *context);
         };
 }
 #pragma clang diagnostic pop
 
-#endif /* defined(____clfsm_wb_vector_factory__) */
+#endif /* defined clfsm_wb_vector_factory_ */

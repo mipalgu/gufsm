@@ -4,7 +4,7 @@ DOC=grammar_doc.pdf
 C_SRCS=grammar_test.c parse_actions.c parse_transitions.c
 HDRS=parse_actions.h parse_transitions.h
 
-ALL_TARGETS=${DOC} host
+ALL_TARGETS=${DOC} # host
 TEST_TARGETS=test-grammar
 
 CLEAN_FILES+=${DOC}
@@ -13,8 +13,8 @@ ANTLR_SRCS=
 #ANTLR_SRCS=TransitionContainer.g ActionsContainer.g
 #ANTLR_SRCS=Java.g
 ANTLR_COMBINED=TransitionContainer.g ActionsContainer.g
-ANTLR_INCLUDES=SimpleCParser.g SimpleCLexer.g
-ANTLR_GRAMMARS=
+ANTLR_INCLUDES=SimpleCParser.g
+ANTLR_GRAMMARS=SimpleCLexer.g
 
 TEX_MAIN=grammar_doc.tex
 TEX_MODS=transitions.tex actions.tex
@@ -31,6 +31,7 @@ test: test-grammar
 grammar_doc.pdf: ${TEX_SRCS} ${EPS_SRCS}
 
 test-grammar: ${ALL_TARGETS}
+.if 0
 	$E${BUILDDIR}/${BIN} testfiles/T*.txt				\
 		>${BUILDDIR}/T.out 2>${BUILDDIR}/T.err
 	$E${BUILDDIR}/${BIN} testfiles/A*.txt				\
@@ -51,3 +52,4 @@ test-grammar: ${ALL_TARGETS}
 		echo "" ;						\
 		echo "*** A files failed test!" ; exit 1 ;		\
 	fi
+.endif

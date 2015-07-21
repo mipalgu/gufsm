@@ -3,7 +3,7 @@
  *  gufsm
  *
  *  Created by Rene Hexel on 1/08/12.
- *  Copyright (c) 2012, 2013 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2013, 2015 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -55,8 +55,8 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef __clfsm__CLState__
-#define __clfsm__CLState__
+#ifndef clfsm_CLState_
+#define clfsm_CLState_
 
 #include "CLAction.h"
 
@@ -126,4 +126,4 @@ namespace FSM
 
 #pragma clang diagnostic pop
 
-#endif /* defined(__gufsm__CLState__) */
+#endif /* defined gufsm_CLState_) */
