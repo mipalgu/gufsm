@@ -89,6 +89,10 @@
             argument = "$(SRCROOT)/clfsm/examples/PingPongCLFSM.machine"
             isEnabled = "YES">
          </CommandLineArgument>
+         <CommandLineArgument
+            argument = "$(SRCROOT)/clfsm/examples/PingPongCLFSM_META.machine"
+            isEnabled = "YES">
+         </CommandLineArgument>
       </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>

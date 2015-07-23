@@ -13,6 +13,8 @@ shared_ptr<CLMetaState> API::getCurrentStateDefinition(string machineName)
     CLReflectionSystem *sys = CLReflectionSystem::getInstance();
     shared_ptr<IMachineStorage> machineStore = sys->getMachineStore();
     FSM::CLMachine* machine = machineStore->getMachineByName(machineName);
+    if (!machine) return shared_ptr<CLMetaState>(nullptr);
+
     FSM::Machine* context = machine->machineContext();
     const char* currState_c = machine->state(context->currentStateID())->name();
     string currentStateName(currState_c);
