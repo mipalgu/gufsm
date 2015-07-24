@@ -7,7 +7,7 @@ MODULE_BASE=clfsm
 CI_NAME=libclfsm
 
 ALL_TARGETS=host-local robot-local
-
+TEST_TARGETS=tests
 CATKIN_BASE=libclfsm
 CATKIN_COMPILE_UTIL=YES
 
@@ -47,6 +47,9 @@ upload-robot:
 .endfor
 .endif
 
+tests:
+	echo "Testing libclfsm"
+
 install: host-local
 	mkdir -p -m 0755 /usr/local/include/clfsm
 	mkdir -p -m 0755 /usr/local/lib
@@ -60,6 +63,7 @@ install: host-local
 	  install -m 0644 ${hdr} /usr/local/include/clfsm;\
 	fi
 .endfor
+
 
 pre-catkin:
 	$Emkdir -p ${CATKIN_DIR}/include/typeClassDefs
