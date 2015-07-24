@@ -48,7 +48,7 @@ upload-robot:
 .endif
 
 test:
-	echo "Testing libclfsm"
+	(cd libclfsmTests && ${MAKE} host)
 
 install: host-local
 	mkdir -p -m 0755 /usr/local/include/clfsm

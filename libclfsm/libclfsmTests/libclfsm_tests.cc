@@ -6,8 +6,7 @@
 //  Copyright (c) 2014, 2015 Rene Hexel. All rights reserved.
 //
 
-#ifndef gufsm_libclfsm_tests_
-#define gufsm_libclfsm_tests_
+
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wglobal-constructors"
@@ -21,7 +20,7 @@
 #include "CLState.h"
 #include "clfsm_machine.h"
 #include "clfsm_vector_factory.h"
-#include "libclfsm_tests.h"
+
 
 namespace
 {
@@ -102,6 +101,6 @@ namespace
 //    ::testing::InitGoogleTest(&argc, argv);
 //    return RUN_ALL_TESTS();
 //}
-#endif /* defined gufsm_libclfsm_tests_ */
+
 
 #pragma clang diagnostic pop
