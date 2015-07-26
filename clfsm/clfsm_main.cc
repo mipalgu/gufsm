@@ -91,9 +91,6 @@
 #include "gugenericwhiteboardobject.h"
 #include "clfsm_machine_loader.h"
 
-#include "CLReflect_API.h"
-#include "CLMachineRetriever.h"
-
 // Visitors and Support Objects
 #include "clfsm_visitors.h"
 #include "clfsm_visitorsupport.h"
@@ -125,8 +122,7 @@ static CLFSMWBVectorFactory *createMachines(const vector<string> &machines, cons
 
 static void initReflection()
 {
-    std::shared_ptr<CLReflect::CLMachineRetriever> retriever(new CLReflect::CLMachineRetriever());
-    CLReflect::API::initialise(retriever);
+
 }
 
 static void __attribute((noreturn)) aborting_signal_handler(int signum)

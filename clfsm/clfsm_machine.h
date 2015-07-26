@@ -75,14 +75,12 @@ namespace FSM
         class CLMachine;
 
         typedef CLMachine* (*create_machine_f)(int, const char *);
-        typedef CLReflect::CLMetaMachine* (*create_metaMachine_f)(void);
 
         class MachineWrapper
         {
                 std::string _fullPath;          ///< full name, including path
                 std::string _name;              ///< name w/o path and extension
                 create_machine_f _factory;      ///< machine factory
-                create_metaMachine_f _metaFactory; ///< meta-machine factory
                 void *_shared_object;           ///< object as returned by dlopen()
                 class Cc *_compiler;            ///< C++ compiler wrapper
                 const std::vector<std::string> *_compiler_args; ///< compiler command line arguments
@@ -130,9 +128,6 @@ namespace FSM
 
                 /// instantiate a machine
                 CLMachine *instantiate(int id, const char *machine_name);
-
-                /// instantiate the meta machine
-                std::shared_ptr<CLReflect::CLMetaMachine> instantiateMetaMachine();
 
                 /// return the default compiler args
                 static const std::vector<std::string> &default_compiler_args();
