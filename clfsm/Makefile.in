@@ -51,7 +51,6 @@ HDRS+=clfsm_visitorsupport.h
 HDRS+=clfsm_visitors.h
 HDRS+=stringConstants.h
 HDRS+=clfsm_machine_loader.h
-HDRS+=CLReflectIncludes.h
 
 .include "../../../../mk/whiteboard.mk"		# required for the whiteboard
 .include "../../../../mk/util.mk"		# required for gu_util
