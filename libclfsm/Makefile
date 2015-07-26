@@ -50,7 +50,7 @@ upload-robot:
 TEST_DIR=libclfsmTests
 
 test:
-	$(MAKE) -C ${TEST_DIR} run-test
+	$(MAKE) -C libclfsmTests run-test
 
 
 install: host-local
