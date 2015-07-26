@@ -65,7 +65,6 @@
 #include "clfsm_wb_vector_factory.h"
 #include "clfsm_machine.h"
 #include "CLMachine.h"
-#include "CLReflect_API.h"
 
 using namespace FSM;
 

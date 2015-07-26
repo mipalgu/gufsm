@@ -62,7 +62,6 @@
 #include <vector>
 #include <memory>
 #include "clfsm_cc_delegate.h"
-#include "CLMetaMachine.h"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wshorten-64-to-32"
