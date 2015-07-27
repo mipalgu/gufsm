@@ -8,5 +8,6 @@ CLReflectResult reflect_initAPI(getMachine_f machineGetter)
     {
         return API_INVALID_ARGS;
     }
+    getMachine = machineGetter;
     return API_SUCCESS;
 }
