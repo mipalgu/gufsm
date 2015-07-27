@@ -1,7 +1,14 @@
-#include <gtest/gtest.h>
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wglobal-constructors"
+
+#include <gtest/gtest.h>
+#include "CLMachineRetriever.h"
+#include "clfsm_vector_factory.h"
+#include "DummyMachines.h"
+
+using namespace std;
+using namespace FSM;
 
 namespace
 {
@@ -37,17 +44,26 @@ namespace
             // before the destructor).
         }
 
-        // Objects declared here can be used by all tests in the test case for clfsm.
+        // Objects declared here can be used by all tests in the test case.
     };
 
 
 
-    //Test test
-    TEST_F(ReflectAPI_Init_Tests, initWithFunctionPointer)
+    //! Testing retrieval from execution vector
+    TEST_F(ReflectAPI_Init_Tests, getMachineByName)
     {
-        using namespace std;
+        Context context;
+        CLFSMVectorFactory factory(&context, false);
 
-        ASSERT_EQ(0, 0) << "Not equal" << endl;
+        const char* name = "TestMachineName";
+        void* null_machine = CLMachineRetriever::getMachineWithName(name);
+        ASSERT_TRUE(null_machine == NULL) << "Expecting null pointer" << std::endl;
+
+        TestMachine testMachine;
+        testMachine.setMachineName(name);
+        factory.addMachine(&testMachine);
+        void* machine = CLMachineRetriever::getMachineWithName(name);
+        ASSERT_FALSE(machine == NULL) << "Machine should not be null" << std::endl;
     }
 }
 
