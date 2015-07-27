@@ -2,6 +2,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 struct metaMachine_s
 {
@@ -34,12 +35,39 @@ CLReflectResult refl_destroyMetaMachine(refl_metaMachine metaMachine)
     return API_SUCCESS;
 }
 
-CLReflectResult refl_setMachineName(refl_metaMachine machine, char* name)
+CLReflectResult refl_setMetaMachineName(refl_metaMachine machine, char* name)
 {
-    return API_SUCCESS;
+    if (name == NULL)
+    {
+        return API_INVALID_ARGS;
+    }
+    free(machine->name); // Free the old machine name. Guaranteed heap mem.
+    int len = strlen(name);
+    machine->name = (char *)malloc(sizeof(char) * len);
+    if (machine->name == NULL)
+    {
+        return API_UNKNOWN_ERROR;
+    }
+    else
+    {
+        memcpy(machine->name, name, len);
+        return API_SUCCESS;
+    }
 }
 
-CLReflectResult refl_getMachineName(refl_metaMachine machine, char* buffer, int bufferLen)
+CLReflectResult refl_getMetaMachineName(refl_metaMachine machine, char* buffer, int bufferLen)
 {
-    return API_SUCCESS;
+    if (buffer == NULL)
+    {
+        return API_INVALID_ARGS;
+    }
+    strncpy(buffer, machine->name, bufferLen);
+    if (strlen(machine->name) >= bufferLen)
+    {
+        return API_BUFFER_OVERFLOW;
+    }
+    else
+    {
+        return API_SUCCESS;
+    }
 }
