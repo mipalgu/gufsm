@@ -1,6 +1,6 @@
 #include "API_Init.h"
 
-bool reflect_initAPI(getMachine_f machineGetter)
+CLReflectResult reflect_initAPI(getMachine_f machineGetter)
 {
-    return true;
+    return API_SUCCESS;
 }
