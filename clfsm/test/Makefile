@@ -5,6 +5,8 @@
 #
 MACHINES=SpeedTest
 
+ALL_TARGETS?=host-local test
+
 all: all-real
 
 CLFSM_DIR=${MODULE_DIR}/..

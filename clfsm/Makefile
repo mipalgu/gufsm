@@ -47,6 +47,7 @@ do-catkin: copy-stuff
 	cd ${BUILDDIR} && ${MAKE} catkin
 
 test: build-host
+	cd ${MODULE_DIR}/test && ${MAKE} ${MAKEFLAGS}
 .for machine in ${TEST_MACHINES}
 #	$Ecd ${PWD:Q}/test && ${MAKE} host-local MACHINES=${machine} && \
 	${PWD:Q}/${BUILDDIR}/clfsm ${machine}
