@@ -4,12 +4,15 @@
 # Makefile for libclfsm
 #
 MODULE_BASE=clfsm
-CI_NAME=libclfsm
+XCTSCHEME=libclfsm
+CI_NAME=${XCTSCHEME}
 
-ALL_TARGETS=host-local robot-local
+ALL_TARGETS=host-local robot-local xc
 
 CATKIN_BASE=libclfsm
 CATKIN_COMPILE_UTIL=YES
+
+XCODE_USE_WORKSPACE=yes
 
 .include "../../../mk/c++11.mk"	# use C++11
 
