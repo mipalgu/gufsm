@@ -3,8 +3,8 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef __clfsm__SpeedTest__
-#define __clfsm__SpeedTest__
+#ifndef clfsm__SpeedTest
+#define clfsm__SpeedTest
 
 #include "CLMachine.h"
 
@@ -32,4 +32,4 @@ extern "C"
     FSM::CLM::SpeedTest *CLM_Create_SpeedTest(int mid, const char *name);
 }
 
-#endif // defined(__gufsm__SpeedTest__)
+#endif // defined(clfm__SpeedTest)

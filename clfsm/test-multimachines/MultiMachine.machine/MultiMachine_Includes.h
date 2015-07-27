@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cmath>
-#include "CLMacros.h"
+#include <CLMacros.h>
 
 using namespace std;
