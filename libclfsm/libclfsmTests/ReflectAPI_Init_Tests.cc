@@ -40,10 +40,7 @@ namespace
         // Objects declared here can be used by all tests in the test case for clfsm.
     };
 
-    void* getMachineWithId(int id)
-    {
-        return NULL;
-    }
+
 
     //Test test
     TEST_F(ReflectAPI_Init_Tests, initWithFunctionPointer)

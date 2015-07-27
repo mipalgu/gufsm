@@ -20,6 +20,7 @@
 #include "CLState.h"
 #include "clfsm_machine.h"
 #include "clfsm_vector_factory.h"
+#include "DummyMachines.h"
 
 
 namespace
@@ -59,12 +60,6 @@ namespace
         // Objects declared here can be used by all tests in the test case for clfsm.
     };
 
-    class TestMachine: public FSM::CLMachine
-    {
-        virtual FSM::CLState * const *states() const { return NULL; }
-        virtual int numberOfStates() const { return 0; }
-    };
-
     // Tests that the an empty clfsm vector has no machines
     TEST_F(clfsmTest, EmptyMachineVectorHasNoMachines)
     {
@@ -101,6 +96,3 @@ namespace
 //    ::testing::InitGoogleTest(&argc, argv);
 //    return RUN_ALL_TESTS();
 //}
-
-
-#pragma clang diagnostic pop
