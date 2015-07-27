@@ -89,7 +89,7 @@ using namespace FSM;
 
 static dispatch_queue_t sync_queue = NULL;
 
-MachineWrapper::MachineWrapper(string path): _fullPath(path), _factory(NULL), _shared_object(NULL), _compiler(NULL), _compiler_args(NULL), _linker_args(NULL), _delete_compiler(false)
+MachineWrapper::MachineWrapper(string path): _fullPath(path), _factory(NULL), _metaFactory(NULL), _shared_object(NULL), _compiler(NULL), _compiler_args(NULL), _linker_args(NULL), _delete_compiler(false)
 {
         if (!file_exists(path.c_str()))
         {
