@@ -5,6 +5,9 @@
 #include <gtest/gtest.h>
 #include "CLMachineRetriever.h"
 #include "clfsm_vector_factory.h"
+
+#include "CLReflectAPI.h"
+
 #include "DummyMachines.h"
 
 using namespace std;
@@ -64,6 +67,14 @@ namespace
         factory.addMachine(&testMachine);
         void* machine = CLMachineRetriever::getMachineWithName(name);
         ASSERT_FALSE(machine == NULL) << "Machine should not be null" << std::endl;
+    }
+
+    //! Testing CLReflect API inits
+    TEST_F(ReflectAPI_Init_Tests, init)
+    {
+        getMachine_f machineGetter = CLMachineRetriever::getMachineWithName;
+        ASSERT_EQ(reflect_initAPI(machineGetter), API_SUCCESS);
+        ASSERT_NE(reflect_initAPI(NULL), API_SUCCESS);        
     }
 }
 
