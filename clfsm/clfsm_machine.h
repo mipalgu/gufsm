@@ -60,6 +60,7 @@
 
 #include <string>
 #include <vector>
+#include <memory>
 #include "clfsm_cc_delegate.h"
 
 #pragma clang diagnostic push

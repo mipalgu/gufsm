@@ -59,6 +59,7 @@
 #define clfsm_vector_factory_
 
 #include <vector>
+#include "FSMachineVector.h"
 
 #ifdef bool
 #undef bool
@@ -134,6 +135,8 @@ namespace FSM
 
                 /** add a machine to the vector */
                 virtual SuspensibleMachine *addMachine(CLMachine *clm, int index=-1, bool resume=false);
+
+                virtual bool removeMachineAtIndex(int index);
 
                 /// return the machine factory to use (override in subclasses)
                 virtual CLFSMFactory *machine_factory(CLMachine *clm, int index);

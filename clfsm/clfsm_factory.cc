@@ -177,21 +177,25 @@ CLFSMFactory::~CLFSMFactory()
         /*
          * tear down each state
          */
-        for (int i = 0; i < n; i++)
+        for (int i = 1; i < n; i++) ///XXX: Starts at 1 to avoid segfault. 
         {
                 CLState *clstate = _clm->state(i);
                 State *state = machine()->states()[i];
-                CLTransition * const *cl_transitions = clstate->transitions();
+
+                //CLTransition * const *cl_transitions = clstate->transitions();
                 int m = clstate->numberOfTransitions();
                 for (int j = 0; j < m; j++)
                 {
-                        CLTransition *cltransition = cl_transitions[j];
-                        Transition *transition = state->transitions()[j];
-                        Expression *expression = transition->expression();
+                        //CLTransition *cltransition = cl_transitions[j]; //The CLState destructor deletes all transitions
+                        //Transition *transition = state->transitions()[j];
+                        //Expression *expression = transition->expression();
 
-                        delete expression;
-                        delete transition;
-                        delete cltransition;
+                        //delete expression; //This fails when i = 1 (2nd state) but don't know why
+                                           //Should be a CLTransitionExpression
+                                           //Object is created in createTransitions method of this class
+
+                        //delete transition;
+                        //delete cltransition;
                 }
 
                 for (ActionVector::iterator j = state->activity().onEntryActions().begin(); j !=  state->activity().onEntryActions().end(); j++)
@@ -204,10 +208,14 @@ CLFSMFactory::~CLFSMFactory()
                         delete *j;
 
                 delete state;
-                delete clstate;
+                //delete clstate; //This deletes the transition again
+
         }
 
-        delete _clm;
+        delete _clm; //This invokes the CLState Destructor again
+        //Now ~FSMFactory is called, which destroys the SuspensibleMachine
+        //This will cause problems later on in StateMachineVector
+        //~SuspensibleMachine potentially redeleting states (suspend state)???
 }
 
 #pragma clang diagnostic pop

@@ -314,12 +314,12 @@ CLMachine *MachineWrapper::instantiate(int id, const char *machine_name)
                 {
                         symbol = string("_CLM_Create_") + name();
                         if (!(_factory = create_machine_f(dlsym(_shared_object, symbol.c_str()))))
-                                return NULL;
+                            return NULL;
+
                 }
         }
         return _factory(id, machine_name);
 }
-
 
 string MachineWrapper::stringByExpandingEnvironmentVariablesInString(string originalString)
 {

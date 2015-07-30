@@ -1,0 +1,1 @@
+loadMachine("examples/PingPongCLFSM.machine");

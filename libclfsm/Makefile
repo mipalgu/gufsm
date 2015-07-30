@@ -4,20 +4,24 @@
 # Makefile for libclfsm
 #
 MODULE_BASE=clfsm
-CI_NAME=libclfsm
+XCTSCHEME=libclfsm
+CI_NAME=${XCTSCHEME}
 
-ALL_TARGETS=host-local robot-local
+ALL_TARGETS=host-local robot-local xc
 
 CATKIN_BASE=libclfsm
 CATKIN_COMPILE_UTIL=YES
 
+XCODE_USE_WORKSPACE=yes
+
 .include "../../../mk/c++11.mk"	# use C++11
 
+CPPFLAGS+=-g -O0
 SPECIFIC_LDFLAGS+=-Wl,-rpath -Wl,/usr/local/lib
 
-C_SRCS=stringConstants.c
-CC_SRCS=CLActionAction.cc CLTransitionExpression.cc FSMAction.cc FSMActivity.cc FSMExpression.cc FSMFactory.cc FSMState.cc FSMSuspensibleMachine.cc FSMTransition.cc FSMAsynchronousSuspensibleMachine.cc FSMachine.cc FSMachineVector.cc clfsm_factory.cc clfsm_vector_factory.cc clfsm_wb_vector_factory.cc
-HDRS=CLAction.h CLActionAction.h CLTransitionExpression.h FSMAction.h FSMActivity.h FSMExpression.h FSMFactory.h FSMState.h FSMSuspensibleMachine.h FSMTransition.h FSMAsynchronousSuspensibleMachine.h FSMachine.h FSMachineVector.h clfsm_factory.h CLTransition.h CLMachine.h CLState.h clfsm_vector_factory.h clfsm_wb_vector_factory.h stringConstants.h
+C_SRCS=stringConstants.c API_Init.c API_MetaMachine.c
+CC_SRCS=CLActionAction.cc CLTransitionExpression.cc FSMAction.cc FSMActivity.cc FSMExpression.cc FSMFactory.cc FSMState.cc FSMSuspensibleMachine.cc FSMTransition.cc FSMAsynchronousSuspensibleMachine.cc FSMachine.cc FSMachineVector.cc clfsm_factory.cc clfsm_vector_factory.cc clfsm_wb_vector_factory.cc clfsm_cc.cc clfsm_machine.cc clfsm_machine_loader.cc CLMachineRetriever.cc
+HDRS=CLAction.h CLActionAction.h CLTransitionExpression.h FSMAction.h FSMActivity.h FSMExpression.h FSMFactory.h FSMState.h FSMSuspensibleMachine.h FSMTransition.h FSMAsynchronousSuspensibleMachine.h FSMachine.h FSMachineVector.h clfsm_factory.h CLTransition.h CLMachine.h CLState.h clfsm_vector_factory.h clfsm_wb_vector_factory.h clfsm_cc.h clfsm_cc_delegate.h clfsm_machine.h clfsm_machine_loader.h  CLReflectIncludes.h stringConstants.h
 INSTHDRS=CLMacros.h CLWhiteboard.h
 
 .include "../../../mk/whiteboard.mk"	# required for whiteboard clients
@@ -46,6 +50,12 @@ upload-robot:
 .endfor
 .endif
 
+TEST_DIR=libclfsmTests
+
+tests:
+	$(MAKE) -C libclfsmTests run-test
+
+
 install: host-local
 	mkdir -p -m 0755 /usr/local/include/clfsm
 	mkdir -p -m 0755 /usr/local/lib
@@ -59,6 +69,7 @@ install: host-local
 	  install -m 0644 ${hdr} /usr/local/include/clfsm;\
 	fi
 .endfor
+
 
 pre-catkin:
 	$Emkdir -p ${CATKIN_DIR}/include/typeClassDefs

@@ -65,7 +65,6 @@
 		E11FB9B614BD4793009C778E /* TransitionContainer_SimpleCParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E11FB99714BD4793009C778E /* TransitionContainer_SimpleCParser.c */; };
 		E11FB9B714BD4793009C778E /* TransitionContainerParser.c in Sources */ = {isa = PBXBuildFile; fileRef = E11FB99814BD4793009C778E /* TransitionContainerParser.c */; };
 		E11FB9B814BD4793009C778E /* gusimplewhiteboard.c in Sources */ = {isa = PBXBuildFile; fileRef = E11FB99914BD4793009C778E /* gusimplewhiteboard.c */; };
-		F108330B1626997A00D6C789 /* clfsm_machine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F10833091626997A00D6C789 /* clfsm_machine.cc */; };
 		F1199D6014302767003853BF /* FSMExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1199D5F14302767003853BF /* FSMExpression.cc */; };
 		F1199D6114302767003853BF /* FSMExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1199D5F14302767003853BF /* FSMExpression.cc */; };
 		F1284D1214A6CAA800C0247E /* gusimplewhiteboard.c in Sources */ = {isa = PBXBuildFile; fileRef = F1284D0014A6CAA800C0247E /* gusimplewhiteboard.c */; };
@@ -76,6 +75,11 @@
 		F12B423F147DC38B00FF4A6B /* SMCommon.g in Resources */ = {isa = PBXBuildFile; fileRef = F12B423B147DC38B00FF4A6B /* SMCommon.g */; };
 		F12B4240147DC38B00FF4A6B /* SMLexer.g in Resources */ = {isa = PBXBuildFile; fileRef = F12B423C147DC38B00FF4A6B /* SMLexer.g */; };
 		F12B4241147DC38B00FF4A6B /* TransitionsParser.g in Resources */ = {isa = PBXBuildFile; fileRef = F12B423D147DC38B00FF4A6B /* TransitionsParser.g */; };
+		F12B73731B605173006C64D8 /* CLMachineRetriever.cc in Sources */ = {isa = PBXBuildFile; fileRef = F12B73411B605152006C64D8 /* CLMachineRetriever.cc */; };
+		F12B737A1B6052DB006C64D8 /* clfsm_machine_loader.cc in Sources */ = {isa = PBXBuildFile; fileRef = F12B73781B6052DB006C64D8 /* clfsm_machine_loader.cc */; };
+		F12B737B1B6052DB006C64D8 /* clfsm_machine_loader.h in Headers */ = {isa = PBXBuildFile; fileRef = F12B73791B6052DB006C64D8 /* clfsm_machine_loader.h */; };
+		F12B737C1B605341006C64D8 /* clfsm_machine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F10833091626997A00D6C789 /* clfsm_machine.cc */; };
+		F12B737E1B6053AA006C64D8 /* clfsm_cc.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1D126F11609382400E526BE /* clfsm_cc.cc */; };
 		F12DCCE414830A9D00461AD6 /* TransitionFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7D0147F76C200C852FC /* TransitionFactory.cpp */; };
 		F12DCCE714830A9E00461AD6 /* TransitionFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7D0147F76C200C852FC /* TransitionFactory.cpp */; };
 		F12DCDD81484BAD100461AD6 /* FSMTransition.cc in Sources */ = {isa = PBXBuildFile; fileRef = F12DCDD71484BAD100461AD6 /* FSMTransition.cc */; };
@@ -149,8 +153,6 @@
 		F1A3DF6E142D3BFF0060F293 /* FSMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC30B142C0CDE001F788B /* FSMachine.cc */; };
 		F1A517D215C91BDC00348C25 /* clfsm.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1A517D115C91BDC00348C25 /* clfsm.1 */; };
 		F1A854F118EF3F0500DCB83E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F16CC31C142C2AD9001F788B /* SenTestingKit.framework */; };
-		F1A854F718EF3F0500DCB83E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1A854F518EF3F0500DCB83E /* InfoPlist.strings */; };
-		F1A854F918EF3F0500DCB83E /* libclfsmTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1A854F818EF3F0500DCB83E /* libclfsmTests.mm */; };
 		F1A8551918EF3F8F00DCB83E /* CLTransitionExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F170781D15F95B830058AECD /* CLTransitionExpression.cc */; };
 		F1A8551C18EF3FC400DCB83E /* libclfsm.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F1D5758D1627948900976A23 /* libclfsm.dylib */; };
 		F1A9E7D2147F76C200C852FC /* ActivityFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E7CC147F76C200C852FC /* ActivityFactory.cpp */; };
@@ -165,9 +167,10 @@
 		F1AFCD2A147B56FA00C975DC /* FSMachineVector.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1AFCD28147B56FA00C975DC /* FSMachineVector.cc */; };
 		F1AFCD2F147B8F7800C975DC /* FSMWBSubMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1AFCD2E147B8F7800C975DC /* FSMWBSubMachine.cc */; };
 		F1AFCD30147B8F7800C975DC /* FSMWBSubMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1AFCD2E147B8F7800C975DC /* FSMWBSubMachine.cc */; };
+		F1C411521B67096700663625 /* API_Init.c in Sources */ = {isa = PBXBuildFile; fileRef = F1C4114C1B67094900663625 /* API_Init.c */; };
+		F1C411531B67096700663625 /* API_MetaMachine.c in Sources */ = {isa = PBXBuildFile; fileRef = F1C4114E1B67094900663625 /* API_MetaMachine.c */; };
 		F1C7CE5F16FFE48300D5D843 /* clfsm_wb_vector_factory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1C7CE5D16FFE48300D5D843 /* clfsm_wb_vector_factory.cc */; };
 		F1C7CE6016FFE48300D5D843 /* clfsm_wb_vector_factory.h in Headers */ = {isa = PBXBuildFile; fileRef = F1C7CE5E16FFE48300D5D843 /* clfsm_wb_vector_factory.h */; };
-		F1D126F31609382400E526BE /* clfsm_cc.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1D126F11609382400E526BE /* clfsm_cc.cc */; };
 		F1D5759E1627956700976A23 /* CLActionAction.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1D126EE160937B400E526BE /* CLActionAction.cc */; };
 		F1D5759F1627956E00976A23 /* CLTransitionExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F170781D15F95B830058AECD /* CLTransitionExpression.cc */; };
 		F1D575A01627959C00976A23 /* FSMAction.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC334142C3433001F788B /* FSMAction.cc */; };
@@ -185,7 +188,6 @@
 		F1D575B4162797CB00976A23 /* libclfsm.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F1D5758D1627948900976A23 /* libclfsm.dylib */; };
 		F1D575B5162798B600976A23 /* clfsm_vector_factory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F11144FB15F98447005953C1 /* clfsm_vector_factory.cc */; };
 		F1D575B6162798C900976A23 /* clfsm_factory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F12EAE5415F6F48A002DB436 /* clfsm_factory.cc */; };
-		F1D7CC2518EFF66A00DDB67C /* libclfsm_tests.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1D7CC2318EFF66A00DDB67C /* libclfsm_tests.cc */; };
 		F1D962B415F7236300EB0B30 /* FSMANTLRMachineFactory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1D962B315F7236300EB0B30 /* FSMANTLRMachineFactory.cc */; };
 		F1DF55911584274B0097A438 /* FSMVectorRunner.cc in Sources */ = {isa = PBXBuildFile; fileRef = F13BA40E1579E92500929C9C /* FSMVectorRunner.cc */; };
 		F1DF55921584274C0097A438 /* FSMVectorRunner.cc in Sources */ = {isa = PBXBuildFile; fileRef = F13BA40E1579E92500929C9C /* FSMVectorRunner.cc */; };
@@ -299,6 +301,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = F1D9C39018EE363B00593DD3;
 			remoteInfo = catkin;
+		};
+		F1A7EF711B5DCA8C004A6815 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F1284D0214A6CAA800C0247E /* gusimplewhiteboard.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F19F051F1B3A7EBD00F34B4D;
+			remoteInfo = swift_wb;
 		};
 		F1A854FB18EF3F0500DCB83E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -573,6 +582,28 @@
 		F12B423B147DC38B00FF4A6B /* SMCommon.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SMCommon.g; sourceTree = "<group>"; };
 		F12B423C147DC38B00FF4A6B /* SMLexer.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SMLexer.g; sourceTree = "<group>"; };
 		F12B423D147DC38B00FF4A6B /* TransitionsParser.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TransitionsParser.g; sourceTree = "<group>"; };
+		F12B732B1B605152006C64D8 /* PingPongCLFSM_META_MetaMachine.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PingPongCLFSM_META_MetaMachine.cc; sourceTree = "<group>"; };
+		F12B732C1B605152006C64D8 /* PingPongCLFSM_META_MetaMachine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PingPongCLFSM_META_MetaMachine.h; sourceTree = "<group>"; };
+		F12B732D1B605152006C64D8 /* PingPongCLFSM_META_Properties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PingPongCLFSM_META_Properties.h; sourceTree = "<group>"; };
+		F12B732E1B605152006C64D8 /* CodeGen.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = CodeGen.py; sourceTree = "<group>"; };
+		F12B732F1B605152006C64D8 /* CodeGen.pyc */ = {isa = PBXFileReference; lastKnownFileType = file; path = CodeGen.pyc; sourceTree = "<group>"; };
+		F12B73301B605152006C64D8 /* generate.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = generate.sh; sourceTree = "<group>"; };
+		F12B73311B605152006C64D8 /* MachinePropertyFileWriter.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = MachinePropertyFileWriter.py; sourceTree = "<group>"; };
+		F12B73321B605152006C64D8 /* MachinePropertyFileWriter.pyc */ = {isa = PBXFileReference; lastKnownFileType = file; path = MachinePropertyFileWriter.pyc; sourceTree = "<group>"; };
+		F12B73331B605152006C64D8 /* main.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = main.py; sourceTree = "<group>"; };
+		F12B73341B605152006C64D8 /* MetaFileWriter.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = MetaFileWriter.py; sourceTree = "<group>"; };
+		F12B73351B605152006C64D8 /* MetaFileWriter.pyc */ = {isa = PBXFileReference; lastKnownFileType = file; path = MetaFileWriter.pyc; sourceTree = "<group>"; };
+		F12B73361B605152006C64D8 /* MetaMachineDefinition.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = MetaMachineDefinition.py; sourceTree = "<group>"; };
+		F12B73371B605152006C64D8 /* MetaMachineDefinition.pyc */ = {isa = PBXFileReference; lastKnownFileType = file; path = MetaMachineDefinition.pyc; sourceTree = "<group>"; };
+		F12B73381B605152006C64D8 /* Parser.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = Parser.py; sourceTree = "<group>"; };
+		F12B73391B605152006C64D8 /* Parser.pyc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Parser.pyc; sourceTree = "<group>"; };
+		F12B733A1B605152006C64D8 /* StatePropertyFileWriter.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = StatePropertyFileWriter.py; sourceTree = "<group>"; };
+		F12B733B1B605152006C64D8 /* StatePropertyFileWriter.pyc */ = {isa = PBXFileReference; lastKnownFileType = file; path = StatePropertyFileWriter.pyc; sourceTree = "<group>"; };
+		F12B73411B605152006C64D8 /* CLMachineRetriever.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CLMachineRetriever.cc; sourceTree = "<group>"; };
+		F12B73421B605152006C64D8 /* CLMachineRetriever.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLMachineRetriever.h; sourceTree = "<group>"; };
+		F12B734E1B605152006C64D8 /* CLReflectIncludes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLReflectIncludes.h; sourceTree = "<group>"; };
+		F12B73781B6052DB006C64D8 /* clfsm_machine_loader.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = clfsm_machine_loader.cc; sourceTree = "<group>"; };
+		F12B73791B6052DB006C64D8 /* clfsm_machine_loader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clfsm_machine_loader.h; sourceTree = "<group>"; };
 		F12DCDD71484BAD100461AD6 /* FSMTransition.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMTransition.cc; sourceTree = "<group>"; };
 		F12EAE5415F6F48A002DB436 /* clfsm_factory.cc */ = {isa = PBXFileReference; indentWidth = 8; lastKnownFileType = sourcecode.cpp.cpp; path = clfsm_factory.cc; sourceTree = "<group>"; };
 		F12EAE5815F6F4C3002DB436 /* clfsm_factory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = clfsm_factory.h; sourceTree = "<group>"; };
@@ -1031,11 +1062,8 @@
 		F1A5180B15C9514A00348C25 /* PingPong.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PingPong.mm; sourceTree = "<group>"; };
 		F1A5180C15C9514A00348C25 /* PingPong.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = PingPong.h; sourceTree = "<group>"; };
 		F1A5180E15C9577000348C25 /* PingPong_Variables.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PingPong_Variables.h; sourceTree = "<group>"; };
+		F1A7EF541B5DCA8B004A6815 /* Makefile.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = Makefile.in; sourceTree = "<group>"; };
 		F1A854F018EF3F0500DCB83E /* libclfsmTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = libclfsmTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F1A854F418EF3F0500DCB83E /* libclfsmTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "libclfsmTests-Info.plist"; sourceTree = "<group>"; };
-		F1A854F618EF3F0500DCB83E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F1A854F818EF3F0500DCB83E /* libclfsmTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = libclfsmTests.mm; sourceTree = "<group>"; };
-		F1A854FA18EF3F0500DCB83E /* libclfsmTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "libclfsmTests-Prefix.pch"; sourceTree = "<group>"; };
 		F1A9E7CC147F76C200C852FC /* ActivityFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ActivityFactory.cpp; sourceTree = "<group>"; };
 		F1A9E7CD147F76C200C852FC /* ActivityFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityFactory.h; sourceTree = "<group>"; };
 		F1A9E7CE147F76C200C852FC /* parser_walk.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = parser_walk.c; sourceTree = "<group>"; };
@@ -1050,6 +1078,13 @@
 		F1AFCD2C147B573700C975DC /* FSMachineVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMachineVector.h; sourceTree = "<group>"; };
 		F1AFCD2D147B8F4200C975DC /* FSMWBSubMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMWBSubMachine.h; sourceTree = "<group>"; };
 		F1AFCD2E147B8F7800C975DC /* FSMWBSubMachine.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMWBSubMachine.cc; sourceTree = "<group>"; };
+		F1C4114B1B67094900663625 /* API_Error.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = API_Error.h; sourceTree = "<group>"; };
+		F1C4114C1B67094900663625 /* API_Init.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = API_Init.c; sourceTree = "<group>"; };
+		F1C4114D1B67094900663625 /* API_Init.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = API_Init.h; sourceTree = "<group>"; };
+		F1C4114E1B67094900663625 /* API_MetaMachine.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = API_MetaMachine.c; sourceTree = "<group>"; };
+		F1C4114F1B67094900663625 /* API_MetaMachine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = API_MetaMachine.h; sourceTree = "<group>"; };
+		F1C411501B67094900663625 /* CLReflectAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLReflectAPI.h; sourceTree = "<group>"; };
+		F1C411511B67094900663625 /* CLReflectFunctionPointerTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLReflectFunctionPointerTypes.h; sourceTree = "<group>"; };
 		F1C5AAE419A993E200CA955A /* CLMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLMacros.h; sourceTree = "<group>"; };
 		F1C7CE5D16FFE48300D5D843 /* clfsm_wb_vector_factory.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = clfsm_wb_vector_factory.cc; sourceTree = "<group>"; };
 		F1C7CE5E16FFE48300D5D843 /* clfsm_wb_vector_factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clfsm_wb_vector_factory.h; sourceTree = "<group>"; };
@@ -1064,8 +1099,6 @@
 		F1D126F21609382400E526BE /* clfsm_cc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clfsm_cc.h; sourceTree = "<group>"; };
 		F1D5758D1627948900976A23 /* libclfsm.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libclfsm.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1D575B71627B9E400976A23 /* clfsm_main.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = clfsm_main.cc; sourceTree = "<group>"; };
-		F1D7CC2318EFF66A00DDB67C /* libclfsm_tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = libclfsm_tests.cc; sourceTree = "<group>"; };
-		F1D7CC2418EFF66A00DDB67C /* libclfsm_tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libclfsm_tests.h; sourceTree = "<group>"; };
 		F1D962B015F722D400EB0B30 /* FSMANTLRVectorFactory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRVectorFactory.cc; sourceTree = "<group>"; };
 		F1D962B115F7231300EB0B30 /* FSMANTLRMachineFactory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRMachineFactory.cc; sourceTree = "<group>"; };
 		F1D962B315F7236300EB0B30 /* FSMANTLRMachineFactory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRMachineFactory.cc; sourceTree = "<group>"; };
@@ -1257,6 +1290,7 @@
 				F11F952118E0234900E17493 /* SimpleWhiteboardTest.bundle */,
 				F1D9C3B718EE3AD900593DD3 /* wbperf */,
 				F1D9C3B918EE3AD900593DD3 /* wbPerfTests.octest */,
+				F1A7EF721B5DCA8C004A6815 /* swift_wb */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1410,6 +1444,55 @@
 				F12B423D147DC38B00FF4A6B /* TransitionsParser.g */,
 			);
 			path = LANGUAGE;
+			sourceTree = "<group>";
+		};
+		F12B73291B605152006C64D8 /* CLMetaGen */ = {
+			isa = PBXGroup;
+			children = (
+				F12B732A1B605152006C64D8 /* Backup */,
+				F12B732E1B605152006C64D8 /* CodeGen.py */,
+				F12B732F1B605152006C64D8 /* CodeGen.pyc */,
+				F12B73301B605152006C64D8 /* generate.sh */,
+				F12B73311B605152006C64D8 /* MachinePropertyFileWriter.py */,
+				F12B73321B605152006C64D8 /* MachinePropertyFileWriter.pyc */,
+				F12B73331B605152006C64D8 /* main.py */,
+				F12B73341B605152006C64D8 /* MetaFileWriter.py */,
+				F12B73351B605152006C64D8 /* MetaFileWriter.pyc */,
+				F12B73361B605152006C64D8 /* MetaMachineDefinition.py */,
+				F12B73371B605152006C64D8 /* MetaMachineDefinition.pyc */,
+				F12B73381B605152006C64D8 /* Parser.py */,
+				F12B73391B605152006C64D8 /* Parser.pyc */,
+				F12B733A1B605152006C64D8 /* StatePropertyFileWriter.py */,
+				F12B733B1B605152006C64D8 /* StatePropertyFileWriter.pyc */,
+			);
+			path = CLMetaGen;
+			sourceTree = "<group>";
+		};
+		F12B732A1B605152006C64D8 /* Backup */ = {
+			isa = PBXGroup;
+			children = (
+				F12B732B1B605152006C64D8 /* PingPongCLFSM_META_MetaMachine.cc */,
+				F12B732C1B605152006C64D8 /* PingPongCLFSM_META_MetaMachine.h */,
+				F12B732D1B605152006C64D8 /* PingPongCLFSM_META_Properties.h */,
+			);
+			path = Backup;
+			sourceTree = "<group>";
+		};
+		F12B733C1B605152006C64D8 /* CLReflect */ = {
+			isa = PBXGroup;
+			children = (
+				F1C4114B1B67094900663625 /* API_Error.h */,
+				F1C4114C1B67094900663625 /* API_Init.c */,
+				F1C4114D1B67094900663625 /* API_Init.h */,
+				F1C4114E1B67094900663625 /* API_MetaMachine.c */,
+				F1C4114F1B67094900663625 /* API_MetaMachine.h */,
+				F12B73411B605152006C64D8 /* CLMachineRetriever.cc */,
+				F12B73421B605152006C64D8 /* CLMachineRetriever.h */,
+				F1C411501B67094900663625 /* CLReflectAPI.h */,
+				F1C411511B67094900663625 /* CLReflectFunctionPointerTypes.h */,
+				F12B734E1B605152006C64D8 /* CLReflectIncludes.h */,
+			);
+			path = CLReflect;
 			sourceTree = "<group>";
 		};
 		F155F66815C3A78A008F5637 /* simplecc */ = {
@@ -1798,7 +1881,6 @@
 				F155F66815C3A78A008F5637 /* simplecc */,
 				F1A517CE15C91BDC00348C25 /* clfsm */,
 				F1D5758E1627948900976A23 /* libclfsm */,
-				F1A854F218EF3F0500DCB83E /* libclfsmTests */,
 				F16CC31B142C2AD9001F788B /* Frameworks */,
 				F16CC2FB142C0C01001F788B /* Products */,
 				F15A2BF014CF81F400D88624 /* cdl */,
@@ -2184,6 +2266,8 @@
 		F1A517CE15C91BDC00348C25 /* clfsm */ = {
 			isa = PBXGroup;
 			children = (
+				F12B73291B605152006C64D8 /* CLMetaGen */,
+				F12B733C1B605152006C64D8 /* CLReflect */,
 				F1C5AAE419A993E200CA955A /* CLMacros.h */,
 				F1D126EC160937B400E526BE /* CLMachine.h */,
 				F1D126E9160937B400E526BE /* CLAction.h */,
@@ -2195,6 +2279,8 @@
 				F170781D15F95B830058AECD /* CLTransitionExpression.cc */,
 				F12EAE5415F6F48A002DB436 /* clfsm_factory.cc */,
 				F12EAE5815F6F4C3002DB436 /* clfsm_factory.h */,
+				F12B73781B6052DB006C64D8 /* clfsm_machine_loader.cc */,
+				F12B73791B6052DB006C64D8 /* clfsm_machine_loader.h */,
 				F11144FB15F98447005953C1 /* clfsm_vector_factory.cc */,
 				F12EAE5915F6F4C3002DB436 /* clfsm_vector_factory.h */,
 				F1C7CE5D16FFE48300D5D843 /* clfsm_wb_vector_factory.cc */,
@@ -2212,6 +2298,7 @@
 				F1A5180015C9278500348C25 /* examples */,
 				F1A517CF15C91BDC00348C25 /* clfsm+PingPong.cc */,
 				F1A517D115C91BDC00348C25 /* clfsm.1 */,
+				F1A7EF541B5DCA8B004A6815 /* Makefile.in */,
 			);
 			path = clfsm;
 			sourceTree = "<group>";
@@ -2259,27 +2346,6 @@
 			path = PingPong.machine;
 			sourceTree = "<group>";
 		};
-		F1A854F218EF3F0500DCB83E /* libclfsmTests */ = {
-			isa = PBXGroup;
-			children = (
-				F1A854F818EF3F0500DCB83E /* libclfsmTests.mm */,
-				F1D7CC2318EFF66A00DDB67C /* libclfsm_tests.cc */,
-				F1D7CC2418EFF66A00DDB67C /* libclfsm_tests.h */,
-				F1A854F318EF3F0500DCB83E /* Supporting Files */,
-			);
-			path = libclfsmTests;
-			sourceTree = "<group>";
-		};
-		F1A854F318EF3F0500DCB83E /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				F1A854F418EF3F0500DCB83E /* libclfsmTests-Info.plist */,
-				F1A854F518EF3F0500DCB83E /* InfoPlist.strings */,
-				F1A854FA18EF3F0500DCB83E /* libclfsmTests-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		F1D5758E1627948900976A23 /* libclfsm */ = {
 			isa = PBXGroup;
 			children = (
@@ -2303,6 +2369,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F12B737B1B6052DB006C64D8 /* clfsm_machine_loader.h in Headers */,
 				F1C7CE6016FFE48300D5D843 /* clfsm_wb_vector_factory.h in Headers */,
 				F16864FC1703BA29003B195F /* FSMAsynchronousSuspensibleMachine.h in Headers */,
 			);
@@ -2747,6 +2814,13 @@
 			remoteRef = F15A2CF614CF81F500D88624 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		F1A7EF721B5DCA8C004A6815 /* swift_wb */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = swift_wb;
+			remoteRef = F1A7EF711B5DCA8C004A6815 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		F1B5AB8C1555F8B1000B770D /* libguobjcwhiteboard.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -2810,7 +2884,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1A854F718EF3F0500DCB83E /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3031,8 +3104,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CFD06221A1B684300C36E6C /* clfsm_visitors.cc in Sources */,
-				F1D126F31609382400E526BE /* clfsm_cc.cc in Sources */,
-				F108330B1626997A00D6C789 /* clfsm_machine.cc in Sources */,
 				3CFD06231A1B684300C36E6C /* clfsm_visitorsupport.cc in Sources */,
 				F12E5ED11627F36D00B95186 /* clfsm_main.cc in Sources */,
 			);
@@ -3042,8 +3113,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1A854F918EF3F0500DCB83E /* libclfsmTests.mm in Sources */,
-				F1D7CC2518EFF66A00DDB67C /* libclfsm_tests.cc in Sources */,
 				F1A8551918EF3F8F00DCB83E /* CLTransitionExpression.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3054,15 +3123,20 @@
 			files = (
 				F1D5759E1627956700976A23 /* CLActionAction.cc in Sources */,
 				F1D5759F1627956E00976A23 /* CLTransitionExpression.cc in Sources */,
+				F12B737A1B6052DB006C64D8 /* clfsm_machine_loader.cc in Sources */,
 				F1D575A01627959C00976A23 /* FSMAction.cc in Sources */,
 				F1D575A1162795A600976A23 /* FSMExpression.cc in Sources */,
+				F12B737E1B6053AA006C64D8 /* clfsm_cc.cc in Sources */,
 				F1D575A5162795D500976A23 /* FSMachine.cc in Sources */,
 				F1D575A6162795DB00976A23 /* FSMState.cc in Sources */,
+				F1C411521B67096700663625 /* API_Init.c in Sources */,
 				F1D575A7162795E700976A23 /* FSMSuspensibleMachine.cc in Sources */,
 				F1D575A91627960400976A23 /* FSMTransition.cc in Sources */,
 				F1D575AB1627962E00976A23 /* FSMActivity.cc in Sources */,
 				F1D575AA1627960D00976A23 /* stringConstants.c in Sources */,
+				F1C411531B67096700663625 /* API_MetaMachine.c in Sources */,
 				F1D575AC1627966D00976A23 /* FSMFactory.cc in Sources */,
+				F12B73731B605173006C64D8 /* CLMachineRetriever.cc in Sources */,
 				F1D575AD1627968300976A23 /* FSMachineVector.cc in Sources */,
 				F1D575AE162796F600976A23 /* gu_util.cpp in Sources */,
 				F1D575AF1627975F00976A23 /* gusimplewhiteboard.c in Sources */,
@@ -3070,6 +3144,7 @@
 				F1D575B6162798C900976A23 /* clfsm_factory.cc in Sources */,
 				F15755A116FC0EA700C6EBA1 /* guwhiteboardtypelist_c_typestrings_generated.c in Sources */,
 				F1777E7A16FD97E6006E263E /* gugenericwhiteboardobject.cpp in Sources */,
+				F12B737C1B605341006C64D8 /* clfsm_machine.cc in Sources */,
 				F1C7CE5F16FFE48300D5D843 /* clfsm_wb_vector_factory.cc in Sources */,
 				F16864FB1703BA29003B195F /* FSMAsynchronousSuspensibleMachine.cc in Sources */,
 			);
@@ -3128,14 +3203,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				F16CC328142C2AD9001F788B /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		F1A854F518EF3F0500DCB83E /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F1A854F618EF3F0500DCB83E /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

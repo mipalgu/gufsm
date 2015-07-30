@@ -75,6 +75,7 @@
 #include <execinfo.h>
 #include <libgen.h>
 #include <sys/stat.h>
+#include <memory>
 
 //#ifdef block_defined
 //#define __block __attribute__((__blocks__(byref)))
@@ -88,6 +89,7 @@
 #include "clfsm_machine.h"
 #include "clfsm_wb_vector_factory.h"
 #include "gugenericwhiteboardobject.h"
+#include "clfsm_machine_loader.h"
 
 // Visitors and Support Objects
 #include "clfsm_visitors.h"
@@ -104,65 +106,24 @@ using namespace std;
 using namespace FSM;
 
 struct clfsm_context {
-    vector<string> *machineFiles;       /// pointer to vector of file names
-    CLFSMWBVectorFactory *factory;      /// machine factory that was used
+    CLFSMMachineLoader* loader;
 };
 
-static string bumpedName(string name)
+static CLFSMWBVectorFactory *createMachines(const vector<string> &machines, const vector<string> &compiler_args, const vector<string> &linker_args)
 {
-    size_t len = name.size();
-    if (!len || !isdigit(name[len-1]))
-        return name + ".0";
-    while (--len && isdigit(name[len-1]))
-        ;
-    int i = atoi(name.c_str()+len);
-    stringstream ss;
-    ss << name.substr(0, len) << ++i;
-    
-    return ss.str();
-}
-
-
-static CLFSMWBVectorFactory *createMachines(vector<MachineWrapper *> &machineWrappers, const vector<string> &machines, const vector<string> &compiler_args, const vector<string> &linker_args)
-{
-    CLFSMWBVectorFactory *factory = new CLFSMWBVectorFactory();
-    int i = 0;
+    CLFSMMachineLoader *loader = CLFSMMachineLoader::getMachineLoaderSingleton();
     for (vector<string>::const_iterator it = machines.begin(); it != machines.end(); it++)
     {
-        const string &machine = *it;
-        machineWrappers.push_back(new MachineWrapper(machine));
-        MachineWrapper &machineWrapper = *machineWrappers[i];
-        machineWrapper.setCompilerArgs(compiler_args);
-        machineWrapper.setLinkerArgs(linker_args);
-        CLMachine *clm = machineWrapper.instantiate(i, machine.c_str());
-        if (clm)
-        {
-            string name = machineWrapper.name();
-            /*
-             * Bump name if not unique
-             */
-            if (factory->index_of_machine_named(name.c_str()) != CLError)
-            {
-                while (factory->index_of_machine_named(name.c_str()) != CLError)
-                    name = bumpedName(name);
-                machineWrapper.setName(name);
-                clm->setMachineName(name.c_str());
-            } else {
-                clm->setMachineName(machineWrapper.name()); // set name without .machine extension
-            }
-            factory->addMachine(clm);
-        }
-        else
-        {
-            cerr << "Could not add machine " << i << ": '" << machine << "'" << endl;
-        }
-        
-        i++;
+            const string &machine = *it;
+            FSM::loadAndAddMachineAtPath(machine, compiler_args, linker_args);
     }
-    
-    return factory;
+    return loader->vector_factory();
 }
 
+static void initReflection()
+{
+
+}
 
 static void __attribute((noreturn)) aborting_signal_handler(int signum)
 {
@@ -172,20 +133,20 @@ static void __attribute((noreturn)) aborting_signal_handler(int signum)
     guWhiteboard::QSpeech_t say;
 #endif
     stringstream ss;
-    
+
     if (signum == SIGTERM || signum == SIGQUIT || signum == SIGINT)
         nonstop = false;
-    
+
     ss << "Caught signal " << signum << ": " << (nonstop ? "restarting ... " : "aborting ...") << endl;
-    
+
     say(ss.str());
     cerr << ss.str();
-    
+
     if (time_state_execution)
     {
         CLFSMVisitorsExecution::print_results_stderr();
     }
-    
+
     abort();
 }
 
@@ -204,7 +165,7 @@ static void print_backtrace(int signum)
     {
         fprintf(stderr, "*** Cannot open '%s': %s", tmpname, strerror(errno));
     }
-    
+
 #ifdef DEBUG
     guWhiteboard::QSay_t say;
 #else
@@ -218,14 +179,14 @@ static void print_backtrace(int signum)
         if (logfile) fprintf(logfile,"%3.3d: %s\n", i, function);
         fprintf(stderr, "%3.3d: %s\n", i, function);
     }
-    
+
     free(strs);
     if (logfile)
     {
         fclose(logfile);
         fprintf(stderr, "Log file written to '%s'\n", tmpname);
     }
-    
+
     if (signum == SIGTSTP) kill(getpid(), SIGSTOP);
     errno = olderrno;
 }
@@ -244,7 +205,7 @@ static void __attribute((noreturn)) backtrace_signal_handler(int signum)
         execvp(command, command_argv);
         fprintf(stderr, "*** Cannot re-run '%s': %s", command, strerror(errno));
     }
-    
+
     abort();
 }
 
@@ -268,44 +229,44 @@ static bool debug_internal_states = false;
 
 static bool print_machine_and_state(void *ctx, SuspensibleMachine *machine, int machine_number)
 {
-    struct clfsm_context *context = static_cast<struct clfsm_context *>(ctx);
-    CLFSMWBVectorFactory *factory = context->factory;
-    const char *machineName = factory->name_of_machine_at_index(machine_number);
-    
-    if (machine->previousState() != machine->currentState())
-    {
-        fprintf(fStateMsgOutput, "%sm%3d s%3d - %-30.30s / %-30.30s - %s\n", \
-                debug_internal_states ? "\n" : "", \
-                machine_number, \
-                machine->indexOfState(), \
-                context->machineFiles->at(machine_number).c_str(), \
-                machineName, \
-                machine->currentState()->name().c_str());
-    }
-    else if (debug_internal_states)
-    {
-        fprintf(fStateMsgOutput, "%d/%d ", machine_number, machine->indexOfState());
-    }
-    
-    return true;
+        struct clfsm_context *context = static_cast<struct clfsm_context *>(ctx);
+        MachineWrapper* wrapper = context->loader->machineWrappers().at(machine_number);
+        const char *machineName = wrapper->name();
+        const char* path = wrapper->path();
+
+        if (machine->previousState() != machine->currentState())
+                fprintf(fStateMsgOutput, "%sm%3d s%3d - %-30.30s / %-20.20s - %s\n",  debug_internal_states ? "\n" : "", machine_number, machine->indexOfState(), path, machineName, machine->currentState()->name().c_str());
+        else if (debug_internal_states)
+                fprintf(fStateMsgOutput, "%d/%d ", machine_number, machine->indexOfState());
+
+        return true;
 }
 
+static bool unloadMachineIfAccepting(void *ctx, SuspensibleMachine* machine, int machine_number)
+{
+        struct clfsm_context *context = static_cast<struct clfsm_context *>(ctx);
+        CLFSMMachineLoader *loader = context->loader;
+        loader->unloadMachineAtIndex(machine_number);
+        machine; ///XXX: Just to get it to compile.
+                 ///     Consider creating new function type
+        return true;
+}
 
 int main(int argc, char * const argv[])
 {
     fStateMsgOutput = stderr;
-    vector<MachineWrapper *> machineWrappers;
+
     vector<string> machines;
     vector<string> compiler_args;
     vector<string> linker_args;
-    
+
     command_argc = argc;
     command_argv = argv;
     command = argv[0];
-    
+
     signal(SIGABRT, backtrace_signal_handler);
     signal(SIGIOT,  backtrace_signal_handler);
-    
+
     signal(SIGINT,  aborting_signal_handler);
     signal(SIGTERM, aborting_signal_handler);
     signal(SIGQUIT, aborting_signal_handler);
@@ -320,20 +281,15 @@ int main(int argc, char * const argv[])
 #endif
     signal(SIGTSTP, print_backtrace);
     signal(SIGHUP,  print_backtrace);
-    
+
     compiler_args.push_back("-std=c++11");    /// XXX: fix this
-    
+
     int ch;
-    bool compileOnly = false;
-    int debug = 0, verbose = 0;
-    
-    while ((ch = getopt(argc, argv, "cdgfI:L:l:nstv")) != -1)
+    int debug = 0, verbose = 0, noUnloadIfAccepting = 0;
+    while ((ch = getopt(argc, argv, "dgf:I:L:l:nstuv")) != -1)
     {
         switch (ch)
         {
-            case 'c':
-                compileOnly = true;
-                break;
             case 'd':
                 debug++;
                 break;
@@ -370,15 +326,19 @@ int main(int argc, char * const argv[])
             case 'v':
                 verbose++;
                 break;
+            case 'u':
+                noUnloadIfAccepting++;
+                break;
             case '?':
             default:
                 usage(argv[0]);
                 exit(EXIT_FAILURE);
         }
     }
+
     argc -= optind;
     argv += optind;
-    
+
     while (argc--)
     {
         struct stat s;
@@ -395,51 +355,29 @@ int main(int argc, char * const argv[])
         }
         machines.push_back(machine);
     }
-    
-    if (!compiler_args.size())
-    {
-        compiler_args = MachineWrapper::default_compiler_args();
-    }
-    
-    if (!linker_args.size())
-    {
-        linker_args   = MachineWrapper::default_linker_args();
-    }
-    
+
+    if (!compiler_args.size()) compiler_args = MachineWrapper::default_compiler_args();
+    if (!linker_args.size())   linker_args   = MachineWrapper::default_linker_args();
+
     visitor_f visitor = NULL;
-    
-    if (verbose)
-    {
-        visitor = print_machine_and_state;
-    }
-    
-    if (time_state_execution)
-    {
-        visitor = CLFSMVisitorsExecution::time_state_execution;
-    }
-    
-    CLFSMWBVectorFactory *factory = createMachines(machineWrappers, machines, compiler_args, linker_args);
-    
-    if (!compileOnly)
-    {
-        struct clfsm_context context = { &machines, factory };
-        factory->postMachineStatus();
-        debug_internal_states = debug;
-        factory->execute(visitor, &context);
-        delete factory;
-        
-        for (vector<MachineWrapper *>::const_iterator it = machineWrappers.begin(); it != machineWrappers.end(); it++)
-        {
-            if (*it) delete *it;
-        }
-    }
-    
-    
+    visitor_f accept_action = NULL; //Used to unload machines when in accepting state
+    if (verbose) visitor = print_machine_and_state;
+    if (time_state_execution) visitor = CLFSMVisitorsExecution::time_state_execution;
+    if (!noUnloadIfAccepting) accept_action = unloadMachineIfAccepting;
+    initReflection();
+    CLFSMWBVectorFactory *factory = createMachines(machines, compiler_args, linker_args);
+    struct clfsm_context context = { CLFSMMachineLoader::getMachineLoaderSingleton() };
+    factory->postMachineStatus();
+    debug_internal_states = debug;
+    factory->fsms()->execute(visitor, &context, accept_action);
+
     // Print Execution Results
     if (time_state_execution)
     {
         CLFSMVisitorsExecution::print_results_stderr();
     }
-    
+
+    delete CLFSMMachineLoader::getMachineLoaderSingleton();
+
     return EXIT_SUCCESS;
 }
