@@ -109,6 +109,9 @@ namespace FSM
                 /** restart this state machine from its initial state */
                 virtual State *restart(State *initialState = NULL);
 
+                /** is this machine scheduled for suspend? */
+                virtual bool scheduledForSuspend() const { return _scheduleSuspend; }
+
                 /** is this machine scheduled for resumption? */
                 virtual bool scheduledForResume() const { return _scheduleResume; }
                 
