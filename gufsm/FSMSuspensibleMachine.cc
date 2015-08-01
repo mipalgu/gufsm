@@ -2,7 +2,7 @@
  *  FSMSuspensibleMachine.cc
  *  
  *  Created by René Hexel on 24/09/11.
- *  Copyright (c) 2011-2014 Rene Hexel.
+ *  Copyright (c) 2011-2015 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -94,7 +94,7 @@ void SuspensibleMachine::suspend()
                 _resumeState = currentState();
                 setPreviousState(_resumeState);
                 if (debugSuspends)
-                    cerr << "Suspend " << id() << ": " << previousState()->name() << " -> " << currentState()->name() << endl;
+                    cerr << "Suspend " << id() << ": " << previousState()->name() << " -> " << suspendState()->name() << endl;
         }
         else if (debugSuspends > 1)
             cerr << "Suspend " << id() << ": " << previousState()->name() << " -> " << currentState()->name() << " (re-suspend)" << endl;
