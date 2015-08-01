@@ -223,7 +223,7 @@ enum CLControlStatus CLFSMVectorFactory::control_machine_at_index(int i, enum CL
 #ifndef NDEBUG
                         CLMachine *clm = _clmachines[i];
                         const char *machine = clm ? clm->machineName() : "<unknown>";
-                        std::cerr << "Warning: suspending " << machine << " scheduled for resume (cancelling resume)" << std::endl;
+                        std::cerr << "Warning: suspending " << i << ": " << machine << " scheduled for resume (cancelling resume)" << std::endl;
 #endif
                     }
                     if (m->scheduledForRestart())
@@ -232,7 +232,7 @@ enum CLControlStatus CLFSMVectorFactory::control_machine_at_index(int i, enum CL
 #ifndef NDEBUG
                         CLMachine *clm = _clmachines[i];
                         const char *machine = clm ? clm->machineName() : "<unknown>";
-                        std::cerr << "Warning: suspending " << machine << " scheduled for restart (cancelling restart)" << std::endl;
+                        std::cerr << "Warning: suspending " << i << ": " << machine << " scheduled for restart (cancelling restart)" << std::endl;
 #endif
                     }
                     m->scheduleSuspend();
@@ -245,7 +245,7 @@ enum CLControlStatus CLFSMVectorFactory::control_machine_at_index(int i, enum CL
 #ifndef NDEBUG
                         CLMachine *clm = _clmachines[i];
                         const char *machine = clm ? clm->machineName() : "<unknown>";
-                        std::cerr << "Warning: resuming " << machine << " scheduled for suspend (cancelling suspend)" << std::endl;
+                        std::cerr << "Warning: resuming " << i << ": " << machine << " scheduled for suspend (cancelling suspend)" << std::endl;
 #endif
                     }
                     if (m->scheduledForRestart())
@@ -254,7 +254,7 @@ enum CLControlStatus CLFSMVectorFactory::control_machine_at_index(int i, enum CL
 #ifndef NDEBUG
                         CLMachine *clm = _clmachines[i];
                         const char *machine = clm ? clm->machineName() : "<unknown>";
-                        std::cerr << "Warning: attempting to resume " << machine << " scheduled for restart (cancelling resume)" << std::endl;
+                        std::cerr << "Warning: attempting to resume " << i << ": " << machine << " scheduled for restart (cancelling resume)" << std::endl;
 #endif
                         return CLError;
                     }
@@ -268,7 +268,7 @@ enum CLControlStatus CLFSMVectorFactory::control_machine_at_index(int i, enum CL
 #ifndef NDEBUG
                         CLMachine *clm = _clmachines[i];
                         const char *machine = clm ? clm->machineName() : "<unknown>";
-                        std::cerr << "Warning: restarting " << machine << " scheduled for suspend (cancelling suspend)" << std::endl;
+                        std::cerr << "Warning: restarting " << i << ": " << machine << " scheduled for suspend (cancelling suspend)" << std::endl;
 #endif
                     }
                     if (m->scheduledForResume())
@@ -277,7 +277,7 @@ enum CLControlStatus CLFSMVectorFactory::control_machine_at_index(int i, enum CL
 #ifndef NDEBUG
                         CLMachine *clm = _clmachines[i];
                         const char *machine = clm ? clm->machineName() : "<unknown>";
-                        std::cerr << "Warning: restarting " << machine << " scheduled for resume (cancelling resume)" << std::endl;
+                        std::cerr << "Warning: restarting " << i << ": " << machine << " scheduled for resume (cancelling resume)" << std::endl;
 #endif
                     }
                     m->scheduleRestart();
