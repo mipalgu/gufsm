@@ -250,6 +250,8 @@ static bool print_machine_and_state(void *ctx, SuspensibleMachine *machine, int 
 
 static bool unloadMachineIfAccepting(void *ctx, SuspensibleMachine* machine, int machine_number)
 {
+        if (machine->isSuspended()) return false;   // don't unload if suspended
+
         struct clfsm_context *context = static_cast<struct clfsm_context *>(ctx);
         CLFSMMachineLoader *loader = context->loader;
         loader->unloadMachineAtIndex(machine_number);

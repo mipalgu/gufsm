@@ -161,7 +161,7 @@ bool StateMachineVector::executeOnce(visitor_f should_execute_machine, void *con
                     continue;
 
             bool mfire = false;
-            bool a = !m->executeOnce(&mfire) && !m->isSuspended();
+            bool a = !m->executeOnce(&mfire);
             setAccepting(a && accepting());
             if (a && accepting_action)
                 accepting_action(context, m, int(it)); //Execute function if machine in accepting state
