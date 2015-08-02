@@ -220,19 +220,19 @@ enum CLControlStatus CLFSMVectorFactory::control_machine_at_index(int i, enum CL
                     if (m->scheduledForResume())
                     {
                         m->scheduleResume(false);
-#ifndef NDEBUG
+#ifdef DEBUG
                         CLMachine *clm = _clmachines[i];
                         const char *machine = clm ? clm->machineName() : "<unknown>";
-                        std::cerr << "Warning: suspending " << i << ": " << machine << " scheduled for resume (cancelling resume)" << std::endl;
+                        std::cerr << "Warning: suspending " << i << ": " << machine << " scheduled for resume\n\t (cancelling resume)" << std::endl;
 #endif
                     }
                     if (m->scheduledForRestart())
                     {
                         m->scheduleRestart(false);
-#ifndef NDEBUG
+#ifdef DEBUG
                         CLMachine *clm = _clmachines[i];
                         const char *machine = clm ? clm->machineName() : "<unknown>";
-                        std::cerr << "Warning: suspending " << i << ": " << machine << " scheduled for restart (cancelling restart)" << std::endl;
+                        std::cerr << "Warning: suspending " << i << ": " << machine << " scheduled for restart\n\t (cancelling restart)" << std::endl;
 #endif
                     }
                     m->scheduleSuspend();
@@ -242,19 +242,19 @@ enum CLControlStatus CLFSMVectorFactory::control_machine_at_index(int i, enum CL
                     if (m->scheduledForSuspend())
                     {
                         m->scheduleSuspend(false);
-#ifndef NDEBUG
+#ifdef DEBUG
                         CLMachine *clm = _clmachines[i];
                         const char *machine = clm ? clm->machineName() : "<unknown>";
-                        std::cerr << "Warning: resuming " << i << ": " << machine << " scheduled for suspend (cancelling suspend)" << std::endl;
+                        std::cerr << "Warning: resuming " << i << ": " << machine << " scheduled for suspend\n\t (cancelling suspend)" << std::endl;
 #endif
                     }
                     if (m->scheduledForRestart())
                     {
                         m->scheduleResume(false);
-#ifndef NDEBUG
+#ifdef DEBUG
                         CLMachine *clm = _clmachines[i];
                         const char *machine = clm ? clm->machineName() : "<unknown>";
-                        std::cerr << "Warning: attempting to resume " << i << ": " << machine << " scheduled for restart (cancelling resume)" << std::endl;
+                        std::cerr << "Warning: attempting to resume " << i << ": " << machine << " scheduled for restart\n\t (cancelling resume)" << std::endl;
 #endif
                         return CLError;
                     }
@@ -265,19 +265,19 @@ enum CLControlStatus CLFSMVectorFactory::control_machine_at_index(int i, enum CL
                     if (m->scheduledForSuspend())
                     {
                         m->scheduleSuspend(false);
-#ifndef NDEBUG
+#ifdef DEBUG
                         CLMachine *clm = _clmachines[i];
                         const char *machine = clm ? clm->machineName() : "<unknown>";
-                        std::cerr << "Warning: restarting " << i << ": " << machine << " scheduled for suspend (cancelling suspend)" << std::endl;
+                        std::cerr << "Warning: restarting " << i << ": " << machine << " scheduled for suspend\n\t (cancelling suspend)" << std::endl;
 #endif
                     }
                     if (m->scheduledForResume())
                     {
                         m->scheduleResume(false);
-#ifndef NDEBUG
+#ifdef DEBUG
                         CLMachine *clm = _clmachines[i];
                         const char *machine = clm ? clm->machineName() : "<unknown>";
-                        std::cerr << "Warning: restarting " << i << ": " << machine << " scheduled for resume (cancelling resume)" << std::endl;
+                        std::cerr << "Warning: restarting " << i << ": " << machine << " scheduled for resume\n\t (cancelling resume)" << std::endl;
 #endif
                     }
                     m->scheduleRestart();
