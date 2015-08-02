@@ -73,6 +73,8 @@
 
 #include <string>
 
+#define CLRunning CLStatus      ///< running machine
+
 namespace FSM
 {
         class Machine;
