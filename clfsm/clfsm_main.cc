@@ -101,6 +101,7 @@ static char * const *command_argv;
 static bool nonstop;
 static bool time_state_execution;
 static FILE* fStateMsgOutput;
+static int verbosity;
 
 using namespace std;
 using namespace FSM;
@@ -221,7 +222,7 @@ static void usage(const char *cmd)
     cerr << "[-n] = Restart CLFSM after SIGABRT or SIGIOT signals." << endl;
     cerr << "[-s] = Outputs information about machine suspensions and resumes." << endl;
     cerr << "[-t] = Time execution of machine states." << endl;
-    cerr << "[-v] = Verbose; output MachineID, State, and name of machine." << endl;
+    cerr << "[-v] = Verbose; output MachineID, State, and name of machine. (multiple times to increase verbosity)" << endl;
     cerr << "[-d] = Output debug information (requires Verbose switch)." << endl;
 }
 
@@ -235,7 +236,12 @@ static bool print_machine_and_state(void *ctx, SuspensibleMachine *machine, int 
         const char* path = wrapper->path();
 
         if (machine->previousState() != machine->currentState())
+        {
+            if (verbosity > 1)
                 fprintf(fStateMsgOutput, "%sm%3d s%3d - %-30.30s / %-20.20s - %s\n",  debug_internal_states ? "\n" : "", machine_number, machine->indexOfState(), path, machineName, machine->currentState()->name().c_str());
+            else
+                fprintf(fStateMsgOutput, "%sm%3d s%3d - %-20.20s - %s\n",  debug_internal_states ? "\n" : "", machine_number, machine->indexOfState(), machineName, machine->currentState()->name().c_str());
+        }
         else if (debug_internal_states)
                 fprintf(fStateMsgOutput, "%d/%d ", machine_number, machine->indexOfState());
 
@@ -244,6 +250,8 @@ static bool print_machine_and_state(void *ctx, SuspensibleMachine *machine, int 
 
 static bool unloadMachineIfAccepting(void *ctx, SuspensibleMachine* machine, int machine_number)
 {
+        if (machine->isSuspended()) return false;   // don't unload if suspended
+
         struct clfsm_context *context = static_cast<struct clfsm_context *>(ctx);
         CLFSMMachineLoader *loader = context->loader;
         loader->unloadMachineAtIndex(machine_number);
@@ -361,7 +369,7 @@ int main(int argc, char * const argv[])
 
     visitor_f visitor = NULL;
     visitor_f accept_action = NULL; //Used to unload machines when in accepting state
-    if (verbose) visitor = print_machine_and_state;
+    if ((verbosity = verbose)) visitor = print_machine_and_state;
     if (time_state_execution) visitor = CLFSMVisitorsExecution::time_state_execution;
     if (!noUnloadIfAccepting) accept_action = unloadMachineIfAccepting;
     initReflection();

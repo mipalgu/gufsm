@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 5/09/12.
- *  Copyright (c) 2012, 2013, 2014 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2013, 2014, 2015 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -55,6 +55,7 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#include <iostream>
 #include <dispatch/dispatch.h>
 #include "FSMachineVector.h"
 #include "FSMAsynchronousSuspensibleMachine.h"
@@ -169,7 +170,7 @@ const char *CLFSMVectorFactory::name_of_machine_at_index(int i)
         int n = int(_clmachines.size());
         if (i < 0 || i >= n) return NULL;
 
-        CLMachine* clm = _clmachines[i];
+        CLMachine *clm = _clmachines[i];
         if (!clm) return NULL;
         return clm->machineName();
 }
@@ -183,7 +184,7 @@ int CLFSMVectorFactory::index_of_machine_named(const char *machine_name)
         if (!machine_name) return int(n)-1;
         for (size_t i = 0; i < n; i++)
         {
-                CLMachine* clm = _clmachines[i];
+                CLMachine *clm = _clmachines[i];
                 if (clm && strcmp(clm->machineName(), machine_name) == 0)
                         return int(i);
         }
@@ -193,7 +194,7 @@ int CLFSMVectorFactory::index_of_machine_named(const char *machine_name)
         const char *name = machine_name_with_extension.c_str();
         for (size_t i = 0; i < n; i++)
         {
-                CLMachine* clm = _clmachines[i];
+                CLMachine *clm = _clmachines[i];
                 if (clm && strcmp(clm->machineName(), name) == 0)
                         return int(i);
         }
@@ -216,16 +217,71 @@ enum CLControlStatus CLFSMVectorFactory::control_machine_at_index(int i, enum CL
                         break;
 
                 case CLSuspend:
-                        m->scheduleSuspend();
-                        break;
+                    if (m->scheduledForResume())
+                    {
+                        m->scheduleResume(false);
+#ifdef DEBUG
+                        CLMachine *clm = _clmachines[i];
+                        const char *machine = clm ? clm->machineName() : "<unknown>";
+                        std::cerr << "Warning: suspending " << i << ": " << machine << " scheduled for resume\n\t (cancelling resume)" << std::endl;
+#endif
+                    }
+                    if (m->scheduledForRestart())
+                    {
+                        m->scheduleRestart(false);
+#ifdef DEBUG
+                        CLMachine *clm = _clmachines[i];
+                        const char *machine = clm ? clm->machineName() : "<unknown>";
+                        std::cerr << "Warning: suspending " << i << ": " << machine << " scheduled for restart\n\t (cancelling restart)" << std::endl;
+#endif
+                    }
+                    m->scheduleSuspend();
+                    break;
 
                 case CLResume:
-                        m->scheduleResume();
-                        break;
+                    if (m->scheduledForSuspend())
+                    {
+                        m->scheduleSuspend(false);
+#ifdef DEBUG
+                        CLMachine *clm = _clmachines[i];
+                        const char *machine = clm ? clm->machineName() : "<unknown>";
+                        std::cerr << "Warning: resuming " << i << ": " << machine << " scheduled for suspend\n\t (cancelling suspend)" << std::endl;
+#endif
+                    }
+                    if (m->scheduledForRestart())
+                    {
+                        m->scheduleResume(false);
+#ifdef DEBUG
+                        CLMachine *clm = _clmachines[i];
+                        const char *machine = clm ? clm->machineName() : "<unknown>";
+                        std::cerr << "Warning: attempting to resume " << i << ": " << machine << " scheduled for restart\n\t (cancelling resume)" << std::endl;
+#endif
+                        return CLError;
+                    }
+                    m->scheduleResume();
+                    break;
 
                 case CLRestart:
-                        m->scheduleRestart();
-                        break;
+                    if (m->scheduledForSuspend())
+                    {
+                        m->scheduleSuspend(false);
+#ifdef DEBUG
+                        CLMachine *clm = _clmachines[i];
+                        const char *machine = clm ? clm->machineName() : "<unknown>";
+                        std::cerr << "Warning: restarting " << i << ": " << machine << " scheduled for suspend\n\t (cancelling suspend)" << std::endl;
+#endif
+                    }
+                    if (m->scheduledForResume())
+                    {
+                        m->scheduleResume(false);
+#ifdef DEBUG
+                        CLMachine *clm = _clmachines[i];
+                        const char *machine = clm ? clm->machineName() : "<unknown>";
+                        std::cerr << "Warning: restarting " << i << ": " << machine << " scheduled for resume\n\t (cancelling resume)" << std::endl;
+#endif
+                    }
+                    m->scheduleRestart();
+                    break;
 
                 case CLError:
                         status = CLError;

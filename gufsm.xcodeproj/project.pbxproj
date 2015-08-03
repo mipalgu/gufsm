@@ -928,7 +928,7 @@
 		F16864F51703A560003B195F /* guwhiteboardtypelist_generated.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = guwhiteboardtypelist_generated.h; sourceTree = "<group>"; };
 		F16864F61703A560003B195F /* guwhiteboardtypelist.tsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = guwhiteboardtypelist.tsl; sourceTree = "<group>"; };
 		F16864F71703A560003B195F /* guwhiteboardwatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = guwhiteboardwatcher.h; sourceTree = "<group>"; };
-		F16864F81703BA29003B195F /* FSMAsynchronousSuspensibleMachine.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMAsynchronousSuspensibleMachine.cc; sourceTree = "<group>"; };
+		F16864F81703BA29003B195F /* FSMAsynchronousSuspensibleMachine.cc */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 8; lastKnownFileType = sourcecode.cpp.cpp; path = FSMAsynchronousSuspensibleMachine.cc; sourceTree = "<group>"; };
 		F16864F91703BA29003B195F /* FSMAsynchronousSuspensibleMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMAsynchronousSuspensibleMachine.h; sourceTree = "<group>"; };
 		F16CC2FA142C0C01001F788B /* gufsm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = gufsm; sourceTree = BUILT_PRODUCTS_DIR; };
 		F16CC2FE142C0C01001F788B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };

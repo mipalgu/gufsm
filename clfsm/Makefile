@@ -47,7 +47,7 @@ do-catkin: copy-stuff
 	cd ${BUILDDIR} && ${MAKE} catkin
 
 test: build-host
-.for test in test test-multimachines
+.for test in test test-multimachines test-suspend
 	cd ${MODULE_DIR}/${test} && ${MAKE} ${MAKEFLAGS}
 .endfor
 .for machine in ${TEST_MACHINES}

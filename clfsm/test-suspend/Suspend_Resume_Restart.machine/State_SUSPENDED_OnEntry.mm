@@ -1,0 +1,1 @@
+cout << "OK.\n" << endl;
