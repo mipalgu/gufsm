@@ -66,34 +66,43 @@ AsynchronousSuspensibleMachine::AsynchronousSuspensibleMachine(State *initialSta
 
 bool AsynchronousSuspensibleMachine::executeOnce(bool *fired)
 {
-        if (_scheduleSuspend) suspend();
-        else if (_scheduleRestart) restart();
-        else if (_scheduleResume) resume();
+        switch (scheduledAction())
+        {
+                case SCHEDULE_SUSPEND_ACTION:
+                        suspend();
+                        break;
 
+                case SCHEDULE_RESUME_ACTION:
+                        resume();
+                        break;
+
+                case SCHEDULE_RESTART_ACTION:
+                        restart();
+                        break;
+                        
+                case SCHEDULE_NO_ACTION:
+                        break;
+        }
+        
         return SuspensibleMachine::executeOnce(fired);
 }
 
 void AsynchronousSuspensibleMachine::suspend()
 {
+        setScheduledAction(SCHEDULE_NO_ACTION);
         SuspensibleMachine::suspend();
-
-        _scheduleSuspend = false;
 }
 
 
 void AsynchronousSuspensibleMachine::resume()
 {
+        setScheduledAction(SCHEDULE_NO_ACTION);
         SuspensibleMachine::resume();
-
-        _scheduleResume = false;
 }
-
 
 
 State *AsynchronousSuspensibleMachine::restart(State *initialState)
 {
-        State *oldState = SuspensibleMachine::restart(initialState);
-        _scheduleRestart = false;
-        
-        return oldState;
+        setScheduledAction(SCHEDULE_NO_ACTION);
+        return SuspensibleMachine::restart(initialState);
 }

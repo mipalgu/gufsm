@@ -124,19 +124,21 @@ namespace FSM
                 virtual bool scheduledForRestart() const { return _scheduledAction == SCHEDULE_RESTART_ACTION; }
 
                 /** schedule suspend */
-                virtual void scheduleSuspend(bool s=true) { if (s) scheduledAction = SCHEDULE_SUSPEND_ACTION; }
+                virtual void scheduleSuspend(bool s=true) { if (s) _scheduledAction = SCHEDULE_SUSPEND_ACTION; }
                 
                 /** schedule resume */
-                virtual void scheduleResume(bool s=true) { if (s) scheduledAction = SCHEDULE_RESUME_ACTION; }
+                virtual void scheduleResume(bool s=true) { if (s) _scheduledAction = SCHEDULE_RESUME_ACTION; }
                 
                 /** schedule restart */
-                virtual void scheduleRestart(bool s=true) { if (s) scheduledAction = SCHEDULE_RESTART_ACTION; }
+                virtual void scheduleRestart(bool s=true) { if (s) _scheduledAction = SCHEDULE_RESTART_ACTION; }
 
                 /** return the scheduled action */
-                virtual void scheduledAction() const { return _scheduledAction; }
+                virtual enum ScheduledAction scheduledAction() const { return _scheduledAction; }
 
-                /** schedule an action */
-                virtual enum ScheduledAction
+                /** schedule an action or cancel scheduled actions
+                 *  if action == SCHEDULE_NO_ACTION (default))
+                 */
+                virtual void setScheduledAction(enum ScheduledAction action = SCHEDULE_NO_ACTION) { _scheduledAction = action; }
         };
 }
 
