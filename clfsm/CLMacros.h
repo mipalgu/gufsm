@@ -129,7 +129,15 @@ static inline enum CLControlStatus status(const char *m)  { return cs_machine_na
             if (_m != _m_) control_machine_at_index(_i, CLSuspend); \
         } \
     } while(0)
-#define suspend_self() control_machine_at_index(machine_index(), CLSuspend)
+
+#define suspend_self()  control_machine_at_index(machine_index(), CLSuspend)
+#define suspend_at(i)   control_machine_at_index((i), CLSuspend)
+#define resume_at(i)    control_machine_at_index((i), CLResume)
+#define restart_at(i)   control_machine_at_index((i), CLRestart)
+#define status_at(i)    control_machine_at_index((i), CLStatus)
+#define is_suspended_at(i)  (status_at(i) == CLSuspend)
+#define is_running_at(i)    (status_at(i) != CLSuspend)
+    
 #define is_suspended(m) (status(m) == CLSuspend)
 #define is_running(m)   (status(m) != CLSuspend)
 
