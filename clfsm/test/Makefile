@@ -14,8 +14,11 @@ CLFSM=${CLFSM_DIR}/build.host/clfsm
 
 SPECIFIC_CPPFLAGS+=-fblocks
 
+host-local: ${CLFSM}
+${CLFSM}:
+	$E[ -x ${CLFSM:Q} ] || ( cd ${CLFSM_DIR:Q} && ${MAKE} build-host )
+
 test:
-	$E[ -x ${CLFSM:Q} ] || ( cd ${CLFSM_DIR:Q} && ${MAKE} ${MAKEFLAGS} host )
 .for machine in ${MACHINES}
 	$E${CLFSM} ${machine}
 .endfor

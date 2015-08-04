@@ -13,8 +13,11 @@ all: all-real
 CLFSM_DIR=${MODULE_DIR}/..
 CLFSM=${CLFSM_DIR}/build.host/clfsm
 
+host-local: ${CLFSM}
+${CLFSM}:
+	$E[ -x ${CLFSM:Q} ] || ( cd ${CLFSM_DIR:Q} && ${MAKE} build-host )
+
 test: ${OUTFILE}
-	$E[ -x ${CLFSM:Q} ] || ( cd ${CLFSM_DIR:Q} && ${MAKE} ${MAKEFLAGS} host )
 	$E${CLFSM} -vs Suspend Suspend &&				\
 		( cd /tmp && rm test_suspend_ok )
 	$E${CLFSM} -vs Suspend_is_Accepting &&				\

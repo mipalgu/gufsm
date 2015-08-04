@@ -21,8 +21,11 @@ args${i} := ${args}
 .endfor
 .endfor
 
+host-local: ${CLFSM}
+${CLFSM}:
+	$E[ -x ${CLFSM:Q} ] || ( cd ${CLFSM_DIR:Q} && ${MAKE} build-host )
+
 test:
-	$E[ -x ${CLFSM:Q} ] || ( cd ${CLFSM_DIR:Q} && ${MAKE} ${MAKEFLAGS} host )
 .for i in ${COUNT}
 	$E${CLFSM} ${args$i}
 .endfor
