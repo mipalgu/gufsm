@@ -5,10 +5,7 @@
 
 struct metaState_s;
 typedef struct metaState_s* refl_metaState;
-
-struct metaAction_s;
-typedef struct metaAction_s* refl_metaAction;
-
+    
 //! Initialises the meta state
 CLReflectResult refl_initMetaState(refl_metaState *metaState);
 
