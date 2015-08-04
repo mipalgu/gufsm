@@ -12,11 +12,11 @@ CLReflectResult refl_initMetaMachine(refl_metaMachine *metaMachine)
     {
         newMeta->name = NULL;
         *metaMachine = newMeta;
-        return API_SUCCESS;
+        return REFL_SUCCESS;
     }
     else
     {
-        return API_UNKNOWN_ERROR;
+        return REFL_UNKNOWN_ERROR;
     }
 }
 
@@ -24,11 +24,11 @@ CLReflectResult refl_destroyMetaMachine(refl_metaMachine metaMachine)
 {
     if (metaMachine == NULL)
     {
-        return API_INVALID_ARGS;
+        return REFL_INVALID_ARGS;
     }
     free(metaMachine->name);
     free(metaMachine);
-    return API_SUCCESS;
+    return REFL_SUCCESS;
 }
 
 CLReflectResult refl_setMetaMachineName(refl_metaMachine machine, char* name)
@@ -36,19 +36,19 @@ CLReflectResult refl_setMetaMachineName(refl_metaMachine machine, char* name)
 
     if (!machine || !name)
     {
-        return API_INVALID_ARGS;
+        return REFL_INVALID_ARGS;
     }
     free(machine->name); // Free the old machine name. Guaranteed heap mem.
     int len = strlen(name);
     machine->name = (char *)malloc(sizeof(char) * len);
     if (machine->name == NULL)
     {
-        return API_UNKNOWN_ERROR;
+        return REFL_UNKNOWN_ERROR;
     }
     else
     {
         memcpy(machine->name, name, len);
-        return API_SUCCESS;
+        return REFL_SUCCESS;
     }
 }
 
@@ -56,15 +56,15 @@ CLReflectResult refl_getMetaMachineName(refl_metaMachine machine, char* buffer, 
 {
     if (!machine || !buffer || !machine->name)
     {
-        return API_INVALID_ARGS; //name has not been set
+        return REFL_INVALID_ARGS; //name has not been set
     }
     strncpy(buffer, machine->name, bufferLen);
     if (strlen(machine->name) >= bufferLen)
     {
-        return API_BUFFER_OVERFLOW;
+        return REFL_BUFFER_OVERFLOW;
     }
     else
     {
-        return API_SUCCESS;
+        return REFL_SUCCESS;
     }
 }

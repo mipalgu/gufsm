@@ -73,8 +73,8 @@ namespace
     TEST_F(ReflectAPI_Init_Tests, init)
     {
         getMachine_f machineGetter = CLMachineRetriever::getMachineWithName;
-        ASSERT_EQ(reflect_initAPI(machineGetter), API_SUCCESS);
-        ASSERT_NE(reflect_initAPI(NULL), API_SUCCESS);        
+        ASSERT_EQ(reflect_initAPI(machineGetter), REFL_SUCCESS);
+        ASSERT_NE(reflect_initAPI(NULL), REFL_SUCCESS);        
     }
 }
 

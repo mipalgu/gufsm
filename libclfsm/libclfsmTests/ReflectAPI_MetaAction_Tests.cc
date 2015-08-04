@@ -48,13 +48,13 @@ namespace
 
     TEST_F(ReflectAPI_MetaAction_Tests, initMetaFunction)
     {
-        ASSERT_EQ(refl_initMetaAction(&action), API_SUCCESS);
+        ASSERT_EQ(refl_initMetaAction(&action), REFL_SUCCESS);
         ASSERT_TRUE(action != NULL);
     }
 
     TEST_F(ReflectAPI_MetaAction_Tests, destroyMetaAction)
     {
-        ASSERT_EQ(refl_destroyMetaAction(action), API_SUCCESS);
+        ASSERT_EQ(refl_destroyMetaAction(action), REFL_SUCCESS);
     }
 
 

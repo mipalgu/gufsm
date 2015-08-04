@@ -12,11 +12,11 @@ CLReflectResult refl_initMetaAction(refl_metaAction *metaAction)
         newAction->action = NULL;
         newAction->data = NULL;
         *metaAction = newAction;
-        return API_SUCCESS;
+        return REFL_SUCCESS;
     }
     else
     {
-        return API_UNKNOWN_ERROR;
+        return REFL_UNKNOWN_ERROR;
     }
 }
 
@@ -24,5 +24,5 @@ CLReflectResult refl_initMetaAction(refl_metaAction *metaAction)
 CLReflectResult refl_destroyMetaAction(refl_metaAction metaAction)
 {
     free(metaAction);
-    return API_SUCCESS;
+    return REFL_SUCCESS;
 }

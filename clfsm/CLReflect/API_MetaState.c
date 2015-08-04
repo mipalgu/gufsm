@@ -10,11 +10,11 @@ CLReflectResult refl_initMetaState(refl_metaState *metaState)
     {
         newMetaState->name = NULL;
         *metaState = newMetaState;
-        return API_SUCCESS;
+        return REFL_SUCCESS;
     }
     else
     {
-        return API_UNKNOWN_ERROR;
+        return REFL_UNKNOWN_ERROR;
     }
 }
 
@@ -23,5 +23,5 @@ CLReflectResult refl_destroyMetaState(refl_metaState metaState)
 {
     free(metaState->name);
     free(metaState);
-    return API_SUCCESS;
+    return REFL_SUCCESS;
 }

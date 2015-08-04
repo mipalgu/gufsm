@@ -47,7 +47,7 @@ namespace
 
     TEST_F(ReflectAPI_MetaState_Tests, initMetaState)
     {
-        ASSERT_EQ(refl_initMetaState(&metaState), API_SUCCESS) << "Expecting API_SUCCESS" << endl;
+        ASSERT_EQ(refl_initMetaState(&metaState), REFL_SUCCESS) << "Expecting REFL_SUCCESS" << endl;
         ASSERT_TRUE(metaState != NULL) << "Ptr should not be null " << endl;
 
     }
@@ -55,7 +55,7 @@ namespace
     TEST_F(ReflectAPI_MetaState_Tests, destroyMetaState)
     {
         refl_initMetaState(&metaState);
-        ASSERT_EQ(refl_destroyMetaState(metaState), API_SUCCESS);
+        ASSERT_EQ(refl_destroyMetaState(metaState), REFL_SUCCESS);
     }
 
 }

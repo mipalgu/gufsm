@@ -3,10 +3,10 @@
 
 typedef enum
 {
-    API_UNKNOWN_ERROR,
-    API_BUFFER_OVERFLOW,
-    API_INVALID_ARGS,
-    API_SUCCESS
+    REFL_UNKNOWN_ERROR,
+    REFL_BUFFER_OVERFLOW,
+    REFL_INVALID_ARGS,
+    REFL_SUCCESS
 } CLReflectResult;
 
 #endif /* end of include guard: API_RESULT_H */
