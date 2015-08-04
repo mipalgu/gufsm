@@ -24,10 +24,10 @@ CLReflectResult refl_initMetaState(refl_metaState *metaState)
 }
 
 //! Destroys the meta-state
-/*
+
 CLReflectResult refl_destroyMetaState(refl_metaState metaState)
 {
-    metaState;
+    free(metaState->name);
+    free(metaState);
     return API_SUCCESS;
 }
-*/

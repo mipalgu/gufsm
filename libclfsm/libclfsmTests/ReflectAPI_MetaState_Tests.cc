@@ -52,6 +52,11 @@ namespace
 
     }
 
+    TEST_F(ReflectAPI_MetaState_Tests, destroyMetaState)
+    {
+        refl_initMetaState(&metaState);
+        ASSERT_EQ(refl_destroyMetaState(metaState), API_SUCCESS);
+    }
 
 }
 
