@@ -6,7 +6,7 @@
 MACHINES=Suspend Suspend_is_Accepting Suspend_Resume_Restart
 MODULE=TEST_SUSPEND
 
-ALL_TARGETS?=test
+ALL_TARGETS?=host-local test
 
 all: all-real
 
