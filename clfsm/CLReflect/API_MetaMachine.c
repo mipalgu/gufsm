@@ -1,14 +1,10 @@
 #include "API_MetaMachine.h"
+#include "API_MetaMachine_Internal.h"
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
-
-struct metaMachine_s
-{
-    char* name;
-};
 
 CLReflectResult refl_initMetaMachine(refl_metaMachine *metaMachine)
 {

@@ -1,11 +1,6 @@
 #include "API_MetaState.h"
-
+#include "API_MetaMachine_Internal.h"
 #include <stdlib.h>
-
-struct metaState_s
-{
-    char* name;
-};
 
 //! Initialises the meta state
 CLReflectResult refl_initMetaState(refl_metaState *metaState)
@@ -24,7 +19,6 @@ CLReflectResult refl_initMetaState(refl_metaState *metaState)
 }
 
 //! Destroys the meta-state
-
 CLReflectResult refl_destroyMetaState(refl_metaState metaState)
 {
     free(metaState->name);
