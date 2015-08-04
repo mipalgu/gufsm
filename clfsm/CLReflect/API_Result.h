@@ -1,5 +1,5 @@
-#ifndef API_ERROR_H
-#define API_ERROR_H
+#ifndef API_RESULT_H
+#define API_RESULT_H
 
 typedef enum
 {
@@ -9,4 +9,4 @@ typedef enum
     API_SUCCESS
 } CLReflectResult;
 
-#endif /* end of include guard: API_ERROR_H */
+#endif /* end of include guard: API_RESULT_H */

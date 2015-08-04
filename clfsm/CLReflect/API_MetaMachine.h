@@ -1,7 +1,7 @@
 #ifndef API_METAMACHINE_H
 #define API_METAMACHINE_H
 
-#include "API_Error.h"
+#include "API_Result.h"
 
 struct metaMachine_s;
 typedef struct metaMachine_s* refl_metaMachine;

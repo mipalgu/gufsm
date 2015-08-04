@@ -1,7 +1,7 @@
 #ifndef API_INIT_H
 #define API_INIT_H
 
-#include "API_Error.h"
+#include "API_Result.h"
 #include "CLReflectFunctionPointerTypes.h"
 
 
