@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <assert.h>
 
 struct metaMachine_s
 {
@@ -37,7 +38,8 @@ CLReflectResult refl_destroyMetaMachine(refl_metaMachine metaMachine)
 
 CLReflectResult refl_setMetaMachineName(refl_metaMachine machine, char* name)
 {
-    if (name == NULL)
+
+    if (!machine || !name)
     {
         return API_INVALID_ARGS;
     }
@@ -57,9 +59,9 @@ CLReflectResult refl_setMetaMachineName(refl_metaMachine machine, char* name)
 
 CLReflectResult refl_getMetaMachineName(refl_metaMachine machine, char* buffer, int bufferLen)
 {
-    if (buffer == NULL)
+    if (!machine || !buffer || !machine->name)
     {
-        return API_INVALID_ARGS;
+        return API_INVALID_ARGS; //name has not been set
     }
     strncpy(buffer, machine->name, bufferLen);
     if (strlen(machine->name) >= bufferLen)

@@ -27,11 +27,11 @@ CLReflectResult refl_destroyMetaMachine(refl_metaMachine machine);
 */
 CLReflectResult refl_setMetaMachineName(refl_metaMachine machine, char* name);
 
-/*! Places the metamachineName into the buffer
+/*! Places the metamachine Name into the buffer. 
     @param machine The meta machine
     @param buffer The buffer in which the name will be placed.
     @param bufferLen The length of buffer.
-    @return API_INVALID_ARGS if buffer is null
+    @return API_INVALID_ARGS if machine name is null
             API_BUFFER_OVERFLOW if the buffer cannot hold the name including terminating character.
             API_SUCCESS otherwise.
 */

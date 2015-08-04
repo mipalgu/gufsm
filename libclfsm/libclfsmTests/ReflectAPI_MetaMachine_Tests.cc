@@ -72,6 +72,15 @@ namespace
         ASSERT_TRUE(strcmp(name, buffer)) << "Expecting names to be equal" << std::endl;
     }
 
+    TEST_F(ReflectAPI_MetaMachine_Tests, nullName)
+    {
+        refl_initMetaMachine(&metaMachine);
+        char buffer[20];
+        CLReflectResult result = refl_getMetaMachineName(metaMachine, buffer, 20);
+        ASSERT_NE(result, API_SUCCESS) << "Expecting failure since name is not set" << endl;
+        ASSERT_NE(refl_setMetaMachineName(metaMachine, NULL), API_SUCCESS);
+    }
+
     TEST_F(ReflectAPI_MetaMachine_Tests, bufferOverFlowTest)
     {
         char name[] = "Test Name";
