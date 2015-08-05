@@ -19,4 +19,10 @@ CLReflectResult refl_getMetaActionMethod(refl_metaAction metaAction, refl_stateA
 //! Sets the action function pointer
 CLReflectResult refl_setMetaActionMethod(refl_metaAction metaAction, refl_stateAction_f method);
 
+//! Sets the user data
+CLReflectResult refl_setMetaActionData(refl_metaAction metaAction, refl_userData_t data);
+
+//! Gets the user data
+CLReflectResult refl_getMetaActionData(refl_metaAction metaAction, refl_userData_t* data);
+
 #endif /* end of include guard: API_METAACTION_H */

@@ -17,7 +17,7 @@ struct metaState_s
 struct metaAction_s
 {
     refl_stateAction_f action;
-    userData_t data;
+    refl_userData_t data;
 };
 
 #endif /* end of include guard: API_METAMACHINE_INTERNAL_H */

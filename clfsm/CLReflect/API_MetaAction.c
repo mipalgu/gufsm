@@ -49,3 +49,25 @@ CLReflectResult refl_setMetaActionMethod(refl_metaAction metaAction, refl_stateA
     metaAction->action = action;
     return REFL_SUCCESS;
 }
+
+//! Sets the user data
+CLReflectResult refl_setMetaActionData(refl_metaAction metaAction, refl_userData_t data)
+{
+    if (!metaAction)
+    {
+        return REFL_INVALID_ARGS;
+    }
+    metaAction->data = data;
+    return REFL_SUCCESS;
+}
+
+//! Gets the user data
+CLReflectResult refl_getMetaActionData(refl_metaAction metaAction, refl_userData_t* data)
+{
+    if (!metaAction)
+    {
+        return REFL_INVALID_ARGS;
+    }
+    *data = metaAction->data;
+    return REFL_SUCCESS;
+}

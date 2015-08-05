@@ -22,6 +22,7 @@ namespace
         ReflectAPI_MetaAction_Tests()
         {
             n = 0;
+            refl_initMetaAction(&action);
         }
 
         virtual ~ReflectAPI_MetaAction_Tests()
@@ -44,7 +45,7 @@ namespace
         }
 
         // Objects declared here can be used by all tests in the test case.
-        refl_metaAction action = NULL;
+        refl_metaAction action;
 
         public:
             int n;
@@ -65,8 +66,9 @@ namespace
 
     TEST_F(ReflectAPI_MetaAction_Tests, initMetaFunction)
     {
-        ASSERT_EQ(refl_initMetaAction(&action), REFL_SUCCESS);
-        ASSERT_TRUE(action != NULL);
+        refl_metaAction metaAction;
+        ASSERT_EQ(refl_initMetaAction(&metaAction), REFL_SUCCESS);
+        ASSERT_TRUE(metaAction != NULL);
     }
 
     TEST_F(ReflectAPI_MetaAction_Tests, destroyMetaAction)
@@ -76,7 +78,6 @@ namespace
 
     TEST_F(ReflectAPI_MetaAction_Tests, setActionMethod)
     {
-        refl_initMetaAction(&action);
         refl_stateAction_f testMethod = testStateMethod;
         ASSERT_EQ(refl_setMetaActionMethod(action, testMethod), REFL_SUCCESS);
         ASSERT_NE(refl_setMetaActionMethod(NULL, NULL), REFL_SUCCESS);
@@ -84,7 +85,6 @@ namespace
 
     TEST_F(ReflectAPI_MetaAction_Tests, getActionMethod)
     {
-        refl_initMetaAction(&action);
         refl_stateAction_f testMethod = testStateMethod;
         refl_setMetaActionMethod(action, testMethod);
         refl_stateAction_f returnMethod;
@@ -94,6 +94,27 @@ namespace
         ASSERT_NE(refl_getMetaActionMethod(NULL, &returnMethod), REFL_SUCCESS);
     }
 
+    TEST_F(ReflectAPI_MetaAction_Tests, getUserData)
+    {
+        refl_userData_t returnData;
+        refl_getMetaActionData(action, &returnData);
+        ASSERT_TRUE(returnData == NULL);
+        int testValue = 1;
+        refl_userData_t data = static_cast<refl_userData_t>(&testValue);
+        refl_setMetaActionData(action, data);
+
+        refl_getMetaActionData(action, &returnData);
+        ASSERT_EQ(data, returnData);
+        ASSERT_EQ(testValue, *static_cast<int*>(returnData));
+        ASSERT_NE(REFL_SUCCESS, refl_getMetaActionData(NULL, &returnData));
+    }
+
+    TEST_F(ReflectAPI_MetaAction_Tests, setUserData)
+    {
+        refl_userData_t data = NULL;
+        refl_setMetaActionData(action, data);
+
+    }
 
 }
 
