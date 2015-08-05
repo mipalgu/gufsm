@@ -1,6 +1,8 @@
 #include "API_MetaState.h"
+#include "API_MetaAction.h"
 #include "API_MetaMachine_Internal.h"
 #include <stdlib.h>
+
 
 //! Initialises the meta state
 CLReflectResult refl_initMetaState(refl_metaState *metaState)

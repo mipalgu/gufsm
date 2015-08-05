@@ -21,7 +21,6 @@ namespace
 
         ReflectAPI_MetaAction_Tests()
         {
-            n = 0;
             refl_initMetaAction(&action);
         }
 
@@ -47,21 +46,12 @@ namespace
         // Objects declared here can be used by all tests in the test case.
         refl_metaAction action;
 
-        public:
-            int n;
-
-
-
-
-
-
 
     };
-
+    //! Test method for state action
     void testStateMethod(void* testObj, void* userData)
     {
-        ReflectAPI_MetaAction_Tests* test = static_cast<ReflectAPI_MetaAction_Tests*>(testObj);
-        test->n++;
+
     }
 
     TEST_F(ReflectAPI_MetaAction_Tests, initMetaFunction)
@@ -111,10 +101,12 @@ namespace
 
     TEST_F(ReflectAPI_MetaAction_Tests, setUserData)
     {
-        refl_userData_t data = NULL;
-        refl_setMetaActionData(action, data);
+        ASSERT_EQ(refl_setMetaActionData(action, NULL), REFL_SUCCESS);
+        ASSERT_NE(refl_setMetaActionData(NULL, NULL), REFL_SUCCESS);
 
     }
+
+
 
 }
 
