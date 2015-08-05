@@ -1,6 +1,7 @@
 #ifndef API_METAMACHINE_INTERNAL_H
 #define API_METAMACHINE_INTERNAL_H
 
+#include "CLReflectFunctionPointerTypes.h"
 
 
 struct metaMachine_s
@@ -12,10 +13,6 @@ struct metaState_s
 {
     char* name;
 };
-
-typedef void* machine_t;
-typedef void* userData_t;
-typedef void (*refl_stateAction_f)(void*, void*);
 
 struct metaAction_s
 {

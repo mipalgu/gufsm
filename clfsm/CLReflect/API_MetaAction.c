@@ -26,3 +26,26 @@ CLReflectResult refl_destroyMetaAction(refl_metaAction metaAction)
     free(metaAction);
     return REFL_SUCCESS;
 }
+
+
+//! Gets the action function pointer
+CLReflectResult refl_getMetaActionMethod(refl_metaAction metaAction, refl_stateAction_f* method)
+{
+    if (!metaAction)
+    {
+        return REFL_INVALID_ARGS;
+    }
+    *method = metaAction->action;
+    return REFL_SUCCESS;
+}
+
+//! Sets the action function pointer
+CLReflectResult refl_setMetaActionMethod(refl_metaAction metaAction, refl_stateAction_f action)
+{
+    if (!metaAction || !action)
+    {
+        return REFL_INVALID_ARGS;
+    }
+    metaAction->action = action;
+    return REFL_SUCCESS;
+}
