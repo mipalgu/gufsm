@@ -22,7 +22,7 @@ struct metaMachine_s
 {
     char* name;
     int numberOfStates;
-    refl_metaState** metaStates;
+    refl_metaState* metaStates;
 };
 
 

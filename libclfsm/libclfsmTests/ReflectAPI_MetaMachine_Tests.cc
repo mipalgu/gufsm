@@ -102,6 +102,20 @@ namespace
         ASSERT_EQ(n, 0) << "No states added, number of states should = 0" << endl;
     }
 
+    TEST_F(ReflectAPI_MetaMachine_Tests, setStates)
+    {
+        refl_initMetaMachine(&metaMachine);
+        refl_metaState states[1];
+        refl_metaState state;
+        refl_initMetaState(&state);
+        states[0] = state;
+        ASSERT_EQ(refl_setMetaStates(metaMachine, states, 1), REFL_SUCCESS);
+        int numStates;
+        refl_getNumberOfStates(metaMachine, &numStates);
+        ASSERT_EQ(numStates, 1) << "Expecting just one state" << endl;
+        ASSERT_NE(refl_setMetaStates(metaMachine, NULL, 1), REFL_SUCCESS) << "Expecting failure" << endl;
+        ASSERT_EQ(refl_setMetaStates(metaMachine, NULL, 0), REFL_SUCCESS);
+    }
 
 }
 

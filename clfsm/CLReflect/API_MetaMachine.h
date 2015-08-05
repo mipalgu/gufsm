@@ -39,7 +39,7 @@ CLReflectResult refl_setMetaMachineName(refl_metaMachine machine, char* name);
 CLReflectResult refl_getMetaMachineName(refl_metaMachine machine, char* buffer, int bufferLen);
 
 //! Sets the meta-machine's states
-CLReflectResult refl_setMetaStates(refl_metaMachine machine, refl_metaState** states, int len);
+CLReflectResult refl_setMetaStates(refl_metaMachine machine, refl_metaState* states, int len);
 
 //! Gets the number of states
 CLReflectResult refl_getNumberOfStates(refl_metaMachine machine, int* num);

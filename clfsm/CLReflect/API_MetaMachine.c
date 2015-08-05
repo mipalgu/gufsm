@@ -81,3 +81,15 @@ CLReflectResult refl_getNumberOfStates(refl_metaMachine machine, int* num)
     *num = machine->numberOfStates;
     return REFL_SUCCESS;
 }
+
+//! Sets the meta-machine's states
+CLReflectResult refl_setMetaStates(refl_metaMachine machine, refl_metaState* states, int len)
+{
+    if (!machine || (!states && len) || (states && !len)) //Can have null states if len = 0
+    {
+        return REFL_INVALID_ARGS;
+    }
+    machine->metaStates = states;
+    machine->numberOfStates = len;
+    return REFL_SUCCESS;
+}
