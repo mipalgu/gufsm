@@ -2,7 +2,7 @@
 #define API_METAMACHINE_INTERNAL_H
 
 #include "CLReflectFunctionPointerTypes.h"
-
+#include "API_MetaState.h"
 
 struct metaAction_s
 {
@@ -21,6 +21,8 @@ struct metaState_s
 struct metaMachine_s
 {
     char* name;
+    int numberOfStates;
+    refl_metaState** metaStates;
 };
 
 

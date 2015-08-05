@@ -11,6 +11,8 @@ CLReflectResult refl_initMetaMachine(refl_metaMachine *metaMachine)
     if (newMeta != NULL)
     {
         newMeta->name = NULL;
+        newMeta->numberOfStates = 0;
+        newMeta->metaStates = NULL;
         *metaMachine = newMeta;
         return REFL_SUCCESS;
     }
@@ -67,4 +69,15 @@ CLReflectResult refl_getMetaMachineName(refl_metaMachine machine, char* buffer, 
     {
         return REFL_SUCCESS;
     }
+}
+
+//! Gets the number of states
+CLReflectResult refl_getNumberOfStates(refl_metaMachine machine, int* num)
+{
+    if (!machine || !num)
+    {
+        return REFL_INVALID_ARGS;
+    }
+    *num = machine->numberOfStates;
+    return REFL_SUCCESS;
 }

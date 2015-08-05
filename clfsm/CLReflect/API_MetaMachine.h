@@ -2,6 +2,7 @@
 #define API_METAMACHINE_H
 
 #include "API_Result.h"
+#include "API_MetaState.h"
 
 struct metaMachine_s;
 typedef struct metaMachine_s* refl_metaMachine;
@@ -27,7 +28,7 @@ CLReflectResult refl_destroyMetaMachine(refl_metaMachine machine);
 */
 CLReflectResult refl_setMetaMachineName(refl_metaMachine machine, char* name);
 
-/*! Places the metamachine Name into the buffer. 
+/*! Places the metamachine Name into the buffer.
     @param machine The meta machine
     @param buffer The buffer in which the name will be placed.
     @param bufferLen The length of buffer.
@@ -36,5 +37,13 @@ CLReflectResult refl_setMetaMachineName(refl_metaMachine machine, char* name);
             REFL_SUCCESS otherwise.
 */
 CLReflectResult refl_getMetaMachineName(refl_metaMachine machine, char* buffer, int bufferLen);
+
+//! Sets the meta-machine's states
+CLReflectResult refl_setMetaStates(refl_metaMachine machine, refl_metaState** states, int len);
+
+//! Gets the number of states
+CLReflectResult refl_getNumberOfStates(refl_metaMachine machine, int* num);
+
+
 
 #endif /* end of include guard: API_METAMACHINE_H */

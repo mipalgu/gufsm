@@ -93,6 +93,14 @@ namespace
         ASSERT_EQ(res, REFL_BUFFER_OVERFLOW) << "Expecting buffer overflow since buffer is too small" << std::endl;
     }
 
+    TEST_F(ReflectAPI_MetaMachine_Tests, emptyStates)
+    {
+        refl_initMetaMachine(&metaMachine);
+        int n;
+        ASSERT_EQ(refl_getNumberOfStates(metaMachine, &n), REFL_SUCCESS);
+        ASSERT_NE(refl_getNumberOfStates(NULL, NULL), REFL_SUCCESS);
+        ASSERT_EQ(n, 0) << "No states added, number of states should = 0" << endl;
+    }
 
 
 }
