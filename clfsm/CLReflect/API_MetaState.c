@@ -27,3 +27,14 @@ CLReflectResult refl_destroyMetaState(refl_metaState metaState)
     free(metaState);
     return REFL_SUCCESS;
 }
+
+//! Sets the OnEntry function
+CLReflectResult refl_setOnEntry(refl_metaState metaState, refl_metaAction action)
+{
+    if (!metaState || !action)
+    {
+        return REFL_INVALID_ARGS;
+    }
+    metaState->onEntry = action;
+    return REFL_SUCCESS;
+}

@@ -13,5 +13,7 @@ CLReflectResult refl_initMetaState(refl_metaState *metaState);
 //! Destroys the meta-state
 CLReflectResult refl_destroyMetaState(refl_metaState metaState);
 
+//! Sets the OnEntry function
+CLReflectResult refl_setOnEntry(refl_metaState metaState, refl_metaAction action);
 
 #endif /* end of include guard: API_METASTATE */

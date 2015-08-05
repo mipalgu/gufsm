@@ -21,6 +21,7 @@ struct metaState_s
 struct metaMachine_s
 {
     char* name;
+    refl_machine_t machine;
     int numberOfStates;
     refl_metaState* metaStates;
 };

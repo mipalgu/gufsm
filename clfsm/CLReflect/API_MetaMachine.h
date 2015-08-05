@@ -38,12 +38,17 @@ CLReflectResult refl_setMetaMachineName(refl_metaMachine machine, char* name);
 */
 CLReflectResult refl_getMetaMachineName(refl_metaMachine machine, char* buffer, int bufferLen);
 
+//! Sets the actual machine
+CLReflectResult refl_setMachine(refl_metaMachine metaMachine, refl_machine_t machine);
+
 //! Sets the meta-machine's states
 CLReflectResult refl_setMetaStates(refl_metaMachine machine, refl_metaState* states, int len);
 
 //! Gets the number of states
 CLReflectResult refl_getNumberOfStates(refl_metaMachine machine, int* num);
 
+//! Invokes the OnEntry of a given state
+CLReflectResult refl_invokeOnEntry(refl_metaMachine metaMachine, int stateNum);
 
 
 #endif /* end of include guard: API_METAMACHINE_H */

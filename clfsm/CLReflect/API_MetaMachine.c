@@ -11,6 +11,7 @@ CLReflectResult refl_initMetaMachine(refl_metaMachine *metaMachine)
     if (newMeta != NULL)
     {
         newMeta->name = NULL;
+        newMeta->machine = NULL;
         newMeta->numberOfStates = 0;
         newMeta->metaStates = NULL;
         *metaMachine = newMeta;
@@ -71,6 +72,16 @@ CLReflectResult refl_getMetaMachineName(refl_metaMachine machine, char* buffer, 
     }
 }
 
+CLReflectResult refl_setMachine(refl_metaMachine metaMachine, refl_machine_t machine)
+{
+    if (!metaMachine || !machine)
+    {
+        return REFL_INVALID_ARGS;
+    }
+    metaMachine->machine = machine;
+    return REFL_SUCCESS;
+}
+
 //! Gets the number of states
 CLReflectResult refl_getNumberOfStates(refl_metaMachine machine, int* num)
 {
@@ -91,5 +102,14 @@ CLReflectResult refl_setMetaStates(refl_metaMachine machine, refl_metaState* sta
     }
     machine->metaStates = states;
     machine->numberOfStates = len;
+    return REFL_SUCCESS;
+}
+
+CLReflectResult refl_invokeOnEntry(refl_metaMachine metaMachine, int stateNum)
+{
+    // No error checking, needs to be fast
+    refl_machine_t machine = metaMachine->machine;
+    refl_metaAction metaAction = metaMachine->metaStates[stateNum]->onEntry;
+    metaAction->action(machine, metaAction->data);
     return REFL_SUCCESS;
 }
