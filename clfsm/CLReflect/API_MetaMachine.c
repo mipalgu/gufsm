@@ -113,3 +113,22 @@ CLReflectResult refl_invokeOnEntry(refl_metaMachine metaMachine, int stateNum)
     metaAction->action(machine, metaAction->data);
     return REFL_SUCCESS;
 }
+
+
+CLReflectResult refl_invokeInternal(refl_metaMachine metaMachine, int stateNum)
+{
+    // No error checking, needs to be fast
+    refl_machine_t machine = metaMachine->machine;
+    refl_metaAction metaAction = metaMachine->metaStates[stateNum]->internal;
+    metaAction->action(machine, metaAction->data);
+    return REFL_SUCCESS;
+}
+
+CLReflectResult refl_invokeOnExit(refl_metaMachine metaMachine, int stateNum)
+{
+    // No error checking, needs to be fast
+    refl_machine_t machine = metaMachine->machine;
+    refl_metaAction metaAction = metaMachine->metaStates[stateNum]->onExit;
+    metaAction->action(machine, metaAction->data);
+    return REFL_SUCCESS;
+}

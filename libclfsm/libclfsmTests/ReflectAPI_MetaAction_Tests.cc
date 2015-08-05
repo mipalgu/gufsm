@@ -26,7 +26,7 @@ namespace
 
         virtual ~ReflectAPI_MetaAction_Tests()
         {
-            // You can do clean-up work that doesn't throw exceptions here.
+            refl_destroyMetaAction(action);
         }
 
         // If the constructor and destructor are not enough for setting up
@@ -64,6 +64,7 @@ namespace
     TEST_F(ReflectAPI_MetaAction_Tests, destroyMetaAction)
     {
         ASSERT_EQ(refl_destroyMetaAction(action), REFL_SUCCESS);
+        action = NULL;
     }
 
     TEST_F(ReflectAPI_MetaAction_Tests, setActionMethod)

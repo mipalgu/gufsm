@@ -23,7 +23,7 @@ namespace
 
         virtual ~ReflectAPI_MetaState_Tests()
         {
-            // You can do clean-up work that doesn't throw exceptions here.
+            refl_destroyMetaState(metaState);
         }
 
         // If the constructor and destructor are not enough for setting up
@@ -56,6 +56,7 @@ namespace
     {
         refl_initMetaState(&metaState);
         ASSERT_EQ(refl_destroyMetaState(metaState), REFL_SUCCESS);
+        metaState = NULL;
     }
 
 }

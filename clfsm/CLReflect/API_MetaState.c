@@ -11,6 +11,9 @@ CLReflectResult refl_initMetaState(refl_metaState *metaState)
     if (newMetaState != NULL)
     {
         newMetaState->name = NULL;
+        newMetaState->onEntry = NULL;
+        newMetaState->internal = NULL;
+        newMetaState->onExit = NULL;
         *metaState = newMetaState;
         return REFL_SUCCESS;
     }
@@ -23,8 +26,11 @@ CLReflectResult refl_initMetaState(refl_metaState *metaState)
 //! Destroys the meta-state
 CLReflectResult refl_destroyMetaState(refl_metaState metaState)
 {
-    free(metaState->name);
-    free(metaState);
+    if (metaState)
+    {
+        free(metaState->name);
+        free(metaState);
+    }    
     return REFL_SUCCESS;
 }
 
@@ -36,5 +42,25 @@ CLReflectResult refl_setOnEntry(refl_metaState metaState, refl_metaAction action
         return REFL_INVALID_ARGS;
     }
     metaState->onEntry = action;
+    return REFL_SUCCESS;
+}
+
+CLReflectResult refl_setInternal(refl_metaState metaState, refl_metaAction action)
+{
+    if (!metaState || !action)
+    {
+        return REFL_INVALID_ARGS;
+    }
+    metaState->internal = action;
+    return REFL_SUCCESS;
+}
+
+CLReflectResult refl_setOnExit(refl_metaState metaState, refl_metaAction action)
+{
+    if (!metaState || !action)
+    {
+        return REFL_INVALID_ARGS;
+    }
+    metaState->onExit = action;
     return REFL_SUCCESS;
 }

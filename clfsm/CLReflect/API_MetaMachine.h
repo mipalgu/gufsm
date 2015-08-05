@@ -50,5 +50,9 @@ CLReflectResult refl_getNumberOfStates(refl_metaMachine machine, int* num);
 //! Invokes the OnEntry of a given state
 CLReflectResult refl_invokeOnEntry(refl_metaMachine metaMachine, int stateNum);
 
+CLReflectResult refl_invokeInternal(refl_metaMachine metaMachine, int stateNum);
+
+CLReflectResult refl_invokeOnExit(refl_metaMachine metaMachine, int stateNum);
+
 
 #endif /* end of include guard: API_METAMACHINE_H */

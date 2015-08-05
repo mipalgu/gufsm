@@ -11,6 +11,8 @@ using namespace std;
 
 namespace
 {
+    void testStateMethod(refl_machine_t testObj, refl_userData_t userData);
+
     // The fixture for testing clfsm.
     class ReflectAPI_StateMethod_Tests: public ::testing::Test
     {
@@ -26,12 +28,24 @@ namespace
             refl_initMetaMachine(&machine);
             refl_setMachine(machine, this);
             n = N_START_VAL;
+            incValue = 1;
+
+            refl_setMetaActionMethod(action, testStateMethod);
+
+            refl_setMetaActionData(action, static_cast<refl_userData_t>(&incValue));
+            refl_setOnEntry(state, action);
+            refl_setInternal(state, action);
+            refl_setOnExit(state, action);
+            states[0] = state;
+            refl_setMetaStates(machine, states, 1);
 
         }
 
         virtual ~ReflectAPI_StateMethod_Tests()
         {
-            // You can do clean-up work that doesn't throw exceptions here.
+            refl_destroyMetaMachine(machine);
+            refl_destroyMetaState(state);
+            refl_destroyMetaAction(action);
         }
 
         // If the constructor and destructor are not enough for setting up
@@ -53,6 +67,7 @@ namespace
         refl_metaState state;
         refl_metaMachine machine;
         refl_metaState* states;
+        int incValue;
 
     public:
         static const int N_START_VAL = 0;
@@ -75,24 +90,35 @@ namespace
         ASSERT_NE(refl_setOnEntry(state, NULL), REFL_SUCCESS);
     }
 
-    TEST_F(ReflectAPI_StateMethod_Tests, invokeOnEntry)
+    TEST_F(ReflectAPI_StateMethod_Tests, setInternal)
     {
-        refl_setMetaActionMethod(action, testStateMethod);
-        int data = 1;
-        refl_setMetaActionData(action, static_cast<refl_userData_t>(&data));
-        refl_setOnEntry(state, action);
-
-        states[0] = state;
-        refl_setMetaStates(machine, states, 1);
-
-        refl_invokeOnEntry(machine, 0);
-        ASSERT_EQ(n, N_START_VAL + data);
-
-
-
+        ASSERT_EQ(refl_setInternal(state, action), REFL_SUCCESS);
+        ASSERT_NE(refl_setInternal(state, NULL), REFL_SUCCESS);
     }
 
+    TEST_F(ReflectAPI_StateMethod_Tests, setOnExit)
+    {
+        ASSERT_EQ(refl_setOnExit(state, action), REFL_SUCCESS);
+        ASSERT_NE(refl_setOnExit(state, NULL), REFL_SUCCESS);
+    }
 
+    TEST_F(ReflectAPI_StateMethod_Tests, invokeOnEntry)
+    {
+        refl_invokeOnEntry(machine, 0);
+        ASSERT_EQ(n, N_START_VAL + incValue);
+    }
+
+    TEST_F(ReflectAPI_StateMethod_Tests, invokeInternal)
+    {
+        refl_invokeInternal(machine, 0);
+        ASSERT_EQ(n, N_START_VAL + incValue);
+    }
+
+    TEST_F(ReflectAPI_StateMethod_Tests, invokeOnExit)
+    {
+        refl_invokeInternal(machine, 0);
+        ASSERT_EQ(n, N_START_VAL + incValue);
+    }
 
 }
 
