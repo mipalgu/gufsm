@@ -49,7 +49,7 @@ CLReflectResult refl_setMetaMachineName(refl_metaMachine machine, char* name)
     }
     else
     {
-        memcpy(machine->name, name, len);
+        strncpy(machine->name, name, len);
         return REFL_SUCCESS;
     }
 }
