@@ -161,9 +161,9 @@
 			<key>internalHeight</key>
 			<real>51</real>
 			<key>onEntryHeight</key>
-			<real>51</real>
+			<real>50</real>
 			<key>onExitHeight</key>
-			<real>51</real>
+			<real>52</real>
 			<key>strokeColour</key>
 			<dict>
 				<key>alpha</key>
@@ -342,13 +342,13 @@
 			<key>expanded</key>
 			<true/>
 			<key>h</key>
-			<real>200</real>
+			<real>300</real>
 			<key>internalHeight</key>
-			<real>51</real>
+			<real>156</real>
 			<key>onEntryHeight</key>
-			<real>51</real>
+			<real>32</real>
 			<key>onExitHeight</key>
-			<real>51</real>
+			<real>65</real>
 			<key>strokeColour</key>
 			<dict>
 				<key>alpha</key>
@@ -361,11 +361,11 @@
 				<real>0.0</real>
 			</dict>
 			<key>w</key>
-			<real>300</real>
+			<real>350</real>
 			<key>x</key>
-			<real>200</real>
+			<real>197.9609375</real>
 			<key>y</key>
-			<real>494</real>
+			<real>508</real>
 			<key>zoomedInternalHeight</key>
 			<real>0.0</real>
 			<key>zoomedOnEntryHeight</key>
