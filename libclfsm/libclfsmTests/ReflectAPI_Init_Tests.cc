@@ -1,9 +1,10 @@
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wglobal-constructors"
+#pragma clang diagnostic ignored "-Wunused-member-function"
+
 
 #include <gtest/gtest.h>
-#include "CLMachineRetriever.h"
 #include "clfsm_vector_factory.h"
 
 #include "CLReflectAPI.h"
@@ -53,29 +54,7 @@ namespace
 
 
     //! Testing retrieval from execution vector
-    TEST_F(ReflectAPI_Init_Tests, getMachineByName)
-    {
-        Context context;
-        CLFSMVectorFactory factory(&context, false);
 
-        const char* name = "TestMachineName";
-        void* null_machine = CLMachineRetriever::getMachineWithName(name);
-        ASSERT_TRUE(null_machine == NULL) << "Expecting null pointer" << std::endl;
-
-        TestMachine testMachine;
-        testMachine.setMachineName(name);
-        factory.addMachine(&testMachine);
-        void* machine = CLMachineRetriever::getMachineWithName(name);
-        ASSERT_FALSE(machine == NULL) << "Machine should not be null" << std::endl;
-    }
-
-    //! Testing CLReflect API inits
-    TEST_F(ReflectAPI_Init_Tests, init)
-    {
-        getMachine_f machineGetter = CLMachineRetriever::getMachineWithName;
-        ASSERT_EQ(reflect_initAPI(machineGetter), REFL_SUCCESS);
-        ASSERT_NE(reflect_initAPI(NULL), REFL_SUCCESS);        
-    }
 }
 
 #pragma clang diagnostic pop
