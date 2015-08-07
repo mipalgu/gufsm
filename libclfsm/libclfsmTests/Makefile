@@ -10,7 +10,7 @@ CC_SRCS=VectorFactory_tests.cc ReflectAPI_Init_Tests.cc ReflectAPI_MetaMachine_T
 run-test:  host
 	${SAY} "------------------------"
 	${SAY} "Running libclfsmTests..."
-	cd build.host && ./libclfsmTests
+	cd ${POSIX_DIR}/gufsm/libclfsm/libclfsmTests/build.host && ./libclfsmTests
 	${SAY} "------------------------"
 
 tests:

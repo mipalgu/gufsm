@@ -50,10 +50,8 @@ upload-robot:
 .endfor
 .endif
 
-TEST_DIR=libclfsmTests
-
 tests:
-	${MAKE} -C libclfsmTests run-test
+	${MAKE} -C libclfsmTests tests
 
 
 install: host-local
