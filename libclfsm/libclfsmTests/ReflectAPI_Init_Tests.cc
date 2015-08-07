@@ -29,7 +29,7 @@ namespace
 
         virtual ~ReflectAPI_Init_Tests()
         {
-            // You can do clean-up work that doesn't throw exceptions here.
+            refl_destroyMetaMachine(metaMachine);
         }
 
         // If the constructor and destructor are not enough for setting up
@@ -49,8 +49,14 @@ namespace
         refl_metaMachine metaMachine;
     };
 
+    TEST_F(ReflectAPI_Init_Tests, initAPI)
+    {
+        ASSERT_EQ(refl_initAPI(), REFL_SUCCESS);
+    }
+
     TEST_F(ReflectAPI_Init_Tests, registerMetaMachine)
     {
+        refl_initAPI();
         ASSERT_EQ(refl_registerMetaMachine(metaMachine, 0), REFL_SUCCESS);
         ASSERT_NE(refl_registerMetaMachine(metaMachine, 0), REFL_SUCCESS) << "Expecting fail for reuse of id" << endl;
         ASSERT_NE(refl_registerMetaMachine(NULL, 1), REFL_SUCCESS) << "Expecting fail for NULL machine" << endl;

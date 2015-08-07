@@ -3,3 +3,5 @@
 
 //Internal struct implementations
 #include "API_MetaMachine_Internal.h"
+
+#include "CLMetaRegister.h"

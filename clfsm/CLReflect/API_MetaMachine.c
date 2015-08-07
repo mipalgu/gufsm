@@ -30,6 +30,12 @@ CLReflectResult refl_destroyMetaMachine(refl_metaMachine metaMachine)
         return REFL_INVALID_ARGS;
     }
     free(metaMachine->name);
+    //Destroy states
+    int i;
+    for (i = 0; i < metaMachine->numberOfStates; i++)
+    {
+        refl_destroyMetaState(metaMachine->metaStates[i]);
+    }
     free(metaMachine);
     return REFL_SUCCESS;
 }

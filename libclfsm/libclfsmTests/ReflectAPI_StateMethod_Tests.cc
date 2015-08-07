@@ -33,9 +33,7 @@ namespace
             refl_setMetaActionMethod(action, testStateMethod);
 
             refl_setMetaActionData(action, static_cast<refl_userData_t>(&incValue));
-            refl_setOnEntry(state, action);
-            refl_setInternal(state, action);
-            refl_setOnExit(state, action);
+
             states[0] = state;
             refl_setMetaStates(machine, states, 1);
 
@@ -43,9 +41,8 @@ namespace
 
         virtual ~ReflectAPI_StateMethod_Tests()
         {
+
             refl_destroyMetaMachine(machine);
-            refl_destroyMetaState(state);
-            refl_destroyMetaAction(action);
         }
 
         // If the constructor and destructor are not enough for setting up
@@ -104,19 +101,22 @@ namespace
 
     TEST_F(ReflectAPI_StateMethod_Tests, invokeOnEntry)
     {
+        refl_setOnEntry(state, action);
         refl_invokeOnEntry(machine, 0);
         ASSERT_EQ(n, N_START_VAL + incValue);
     }
 
     TEST_F(ReflectAPI_StateMethod_Tests, invokeInternal)
     {
+        refl_setInternal(state, action);
         refl_invokeInternal(machine, 0);
         ASSERT_EQ(n, N_START_VAL + incValue);
     }
 
     TEST_F(ReflectAPI_StateMethod_Tests, invokeOnExit)
     {
-        refl_invokeInternal(machine, 0);
+        refl_setOnExit(state, action);
+        refl_invokeOnExit(machine, 0);
         ASSERT_EQ(n, N_START_VAL + incValue);
     }
 

@@ -29,8 +29,12 @@ CLReflectResult refl_destroyMetaState(refl_metaState metaState)
     if (metaState)
     {
         free(metaState->name);
+
+        refl_destroyMetaAction(metaState->onEntry);
+        refl_destroyMetaAction(metaState->internal);
+        refl_destroyMetaAction(metaState->onExit);
         free(metaState);
-    }    
+    }
     return REFL_SUCCESS;
 }
 
