@@ -1,7 +1,6 @@
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wglobal-constructors"
-#pragma clang diagnostic ignored "-Wunused-member-function"
 
 
 #include <gtest/gtest.h>
@@ -25,7 +24,7 @@ namespace
 
         ReflectAPI_Init_Tests()
         {
-            // You can do set-up work for each test here.
+            refl_initMetaMachine(&metaMachine);
         }
 
         virtual ~ReflectAPI_Init_Tests()
@@ -47,13 +46,17 @@ namespace
             // Code here will be called immediately after each test (right
             // before the destructor).
         }
-
-        // Objects declared here can be used by all tests in the test case.
+        refl_metaMachine metaMachine;
     };
 
+    TEST_F(ReflectAPI_Init_Tests, registerMetaMachine)
+    {
+        ASSERT_EQ(refl_registerMetaMachine(metaMachine, 0), REFL_SUCCESS);
+        ASSERT_NE(refl_registerMetaMachine(metaMachine, 0), REFL_SUCCESS) << "Expecting fail for reuse of id" << endl;
+        ASSERT_NE(refl_registerMetaMachine(NULL, 1), REFL_SUCCESS) << "Expecting fail for NULL machine" << endl;
 
+    }
 
-    //! Testing retrieval from execution vector
 
 }
 

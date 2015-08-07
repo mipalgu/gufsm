@@ -19,8 +19,8 @@ XCODE_USE_WORKSPACE=yes
 CPPFLAGS+=-g -O0
 SPECIFIC_LDFLAGS+=-Wl,-rpath -Wl,/usr/local/lib
 
-C_SRCS=stringConstants.c API_MetaMachine.c API_MetaState.c API_MetaAction.c API_Interface.c
-CC_SRCS=CLActionAction.cc CLTransitionExpression.cc FSMAction.cc FSMActivity.cc FSMExpression.cc FSMFactory.cc FSMState.cc FSMSuspensibleMachine.cc FSMTransition.cc FSMAsynchronousSuspensibleMachine.cc FSMachine.cc FSMachineVector.cc clfsm_factory.cc clfsm_vector_factory.cc clfsm_wb_vector_factory.cc clfsm_cc.cc clfsm_machine.cc clfsm_machine_loader.cc
+C_SRCS=stringConstants.c API_MetaMachine.c API_MetaState.c API_MetaAction.c
+CC_SRCS=CLActionAction.cc CLTransitionExpression.cc FSMAction.cc FSMActivity.cc FSMExpression.cc FSMFactory.cc FSMState.cc FSMSuspensibleMachine.cc FSMTransition.cc FSMAsynchronousSuspensibleMachine.cc FSMachine.cc FSMachineVector.cc clfsm_factory.cc clfsm_vector_factory.cc clfsm_wb_vector_factory.cc clfsm_cc.cc clfsm_machine.cc clfsm_machine_loader.cc API_Interface.cc
 HDRS=CLAction.h CLActionAction.h CLTransitionExpression.h FSMAction.h FSMActivity.h FSMExpression.h FSMFactory.h FSMState.h FSMSuspensibleMachine.h FSMTransition.h FSMAsynchronousSuspensibleMachine.h FSMachine.h FSMachineVector.h clfsm_factory.h CLTransition.h CLMachine.h CLState.h clfsm_vector_factory.h clfsm_wb_vector_factory.h clfsm_cc.h clfsm_cc_delegate.h clfsm_machine.h clfsm_machine_loader.h  CLReflectIncludes.h stringConstants.h
 INSTHDRS=CLMacros.h CLWhiteboard.h
 
