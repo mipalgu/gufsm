@@ -4,6 +4,7 @@
 
 
 #include <gtest/gtest.h>
+#include <string>
 #include "clfsm_vector_factory.h"
 
 #include "CLReflectAPI.h"
@@ -80,6 +81,17 @@ namespace
         ASSERT_EQ(refl_getMetaMachine(0, &returnMach), REFL_SUCCESS);
         ASSERT_EQ(metaMachine, returnMach);
         ASSERT_EQ(refl_getMetaMachine(1, &returnMach), REFL_INVALID_ARGS);
+    }
+
+    TEST_F(ReflectAPI_Init_Tests, testPingPong)
+    {
+        refl_metaMachine pingPong = createPingPong();
+        char buffer[20];
+        refl_getMetaMachineName(pingPong, buffer, 20);
+        ASSERT_STREQ("PingPongCLFSM", buffer);
+        int numStates;
+        refl_getNumberOfStates(pingPong, &numStates);
+        ASSERT_EQ(2, numStates);
     }
 
 

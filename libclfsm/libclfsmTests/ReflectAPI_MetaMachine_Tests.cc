@@ -69,7 +69,7 @@ namespace
         char buffer[20];
         CLReflectResult res = refl_getMetaMachineName(metaMachine, buffer, 20);
         ASSERT_EQ(res, REFL_SUCCESS) << "Expecting successful name retrieval" << std::endl;
-        ASSERT_TRUE(strcmp(name, buffer)) << "Expecting names to be equal" << std::endl;
+        ASSERT_STREQ(name, buffer) << "Expecting names to be equal" << std::endl;
     }
 
     TEST_F(ReflectAPI_MetaMachine_Tests, nullName)

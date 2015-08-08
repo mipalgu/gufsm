@@ -2,11 +2,36 @@
 #define DUMMYMACHINES_H
 
 #include "CLMachine.h"
+#include "CLReflectAPI.h"
 
 class TestMachine: public FSM::CLMachine
 {
     virtual FSM::CLState * const *states() const { return NULL; }
     virtual int numberOfStates() const { return 0; }
 };
+
+//! Function to create dummy meta-machine for PingPong
+refl_metaMachine createPingPong();
+
+inline refl_metaMachine createPingPong()
+{
+    refl_metaMachine m;
+    refl_metaState ping, pong;
+
+    refl_initMetaMachine(&m);
+    refl_initMetaState(&ping);
+    refl_initMetaState(&pong);
+
+    // Machine
+    char machineName[] = "PingPongCLFSM";
+    refl_setMetaMachineName(m, machineName);
+
+    //States
+    refl_metaState states[] = { ping, pong };
+    refl_setMetaStates(m, states, 2);
+
+    return m;
+
+}
 
 #endif /* end of include guard: DUMMYMACHINES_H */
