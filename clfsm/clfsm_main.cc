@@ -84,6 +84,7 @@
 #include "gu_util.h"
 #include "FSMState.h"
 #include "FSMSuspensibleMachine.h"
+#include "FSMAsynchronousSuspensibleMachine.h"
 #include "FSMachineVector.h"
 #include "CLMachine.h"
 #include "clfsm_machine.h"
@@ -248,8 +249,30 @@ static bool print_machine_and_state(void *ctx, SuspensibleMachine *machine, int 
 
 static bool unloadMachineIfAccepting(void *ctx, SuspensibleMachine* machine, int machine_number)
 {
+        AsynchronousSuspensibleMachine *async = reinterpret_cast<AsynchronousSuspensibleMachine *>(machine);
         if (machine->isSuspended()) return false;   // don't unload if suspended
-
+        if (async->scheduledForSuspend())         // don't unload if scheduled for suspend
+        {
+#ifndef NDEBUG
+            struct clfsm_context *context = static_cast<struct clfsm_context *>(ctx);
+            MachineWrapper* wrapper = context->loader->machineWrappers().at(machine_number);
+            const char *machineName = wrapper ? wrapper->name() : NULL;
+            if (!machineName) machineName = "<unknown>";
+            cerr << "*** Machine " << machine->id() << ": '" << machineName << "' scheduled for suspend -- not unloading! ***" << endl;
+#endif
+            return false;
+        }
+        if (machine->scheduledForRestart())         // don't unload if scheduled for restart
+        {
+#ifndef NDEBUG
+            struct clfsm_context *context = static_cast<struct clfsm_context *>(ctx);
+            MachineWrapper* wrapper = context->loader->machineWrappers().at(machine_number);
+            const char *machineName = wrapper ? wrapper->name() : NULL;
+            if (!machineName) machineName = "<unknown>";
+            cerr << "*** Machine " << machine->id() << ": '" << machineName << "' scheduled for restart -- not unloading! ***" << endl;
+#endif
+            return false;
+        }
         struct clfsm_context *context = static_cast<struct clfsm_context *>(ctx);
         CLFSMMachineLoader *loader = context->loader;
         loader->unloadMachineAtIndex(machine_number);
