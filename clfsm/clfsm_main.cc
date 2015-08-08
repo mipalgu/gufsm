@@ -95,6 +95,9 @@
 #include "clfsm_visitors.h"
 #include "clfsm_visitorsupport.h"
 
+// Reflection API
+#include "CLReflectAPI.h"
+
 static const char *command;
 static int command_argc;
 static char * const *command_argv;
