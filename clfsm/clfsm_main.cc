@@ -251,7 +251,17 @@ static bool print_machine_and_state(void *ctx, SuspensibleMachine *machine, int 
 static bool unloadMachineIfAccepting(void *ctx, SuspensibleMachine* machine, int machine_number)
 {
         if (machine->isSuspended()) return false;   // don't unload if suspended
-
+        if (machine->scheduleSuspend())             // don't unload if scheduled for suspend
+        {
+#ifndef NDEBUG
+            struct clfsm_context *context = static_cast<struct clfsm_context *>(ctx);
+            MachineWrapper* wrapper = context->loader->machineWrappers().at(machine_number);
+            const char *machineName = wrapper ? wrapper->name() : NULL;
+            if (!machineName) machineName = "<unknown>";
+            cerr << "*** Machine " << machine->id() << ": '" << machineName << "' scheduled for suspend -- not unloading! ***" << endl;
+#endif
+            return false;
+        }
         struct clfsm_context *context = static_cast<struct clfsm_context *>(ctx);
         CLFSMMachineLoader *loader = context->loader;
         loader->unloadMachineAtIndex(machine_number);
