@@ -47,7 +47,7 @@ CLReflectResult refl_setMetaStates(refl_metaMachine machine, refl_metaState* sta
 //! Gets the number of states
 CLReflectResult refl_getNumberOfStates(refl_metaMachine machine, int* num);
 
-CLReflectResult refl_getStates(refl_metaMachine, refl_metaState const* stateBuffer);
+CLReflectResult refl_getMetaStates(refl_metaMachine metaMachine, refl_metaState const** stateBuffer);
 
 //! Invokes the OnEntry of a given state
 CLReflectResult refl_invokeOnEntry(refl_metaMachine metaMachine, int stateNum);

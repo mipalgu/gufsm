@@ -104,6 +104,16 @@ CLReflectResult refl_setMetaStates(refl_metaMachine machine, refl_metaState* sta
     return REFL_SUCCESS;
 }
 
+CLReflectResult refl_getMetaStates(refl_metaMachine metaMachine, refl_metaState const** stateBuffer)
+{
+    if (!metaMachine)
+    {
+        return REFL_INVALID_ARGS;
+    }
+    *stateBuffer = metaMachine->metaStates;
+    return REFL_SUCCESS;
+}
+
 CLReflectResult refl_invokeOnEntry(refl_metaMachine metaMachine, int stateNum)
 {
     // No error checking, needs to be fast

@@ -117,6 +117,19 @@ namespace
         ASSERT_EQ(refl_setMetaStates(metaMachine, NULL, 0), REFL_SUCCESS);
     }
 
+    TEST_F(ReflectAPI_MetaMachine_Tests, getStates)
+    {
+        refl_initMetaMachine(&metaMachine);
+        refl_metaState states[2];
+        refl_initMetaState(&states[0]);
+        refl_initMetaState(&states[1]);
+        refl_setMetaStates(metaMachine, states, 2);
+
+        refl_metaState const * retStates;
+        ASSERT_EQ(REFL_SUCCESS, refl_getMetaStates(metaMachine, &retStates));
+        ASSERT_EQ(states, retStates);
+    }
+
 }
 
 #pragma clang diagnostic pop
