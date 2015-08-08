@@ -5,7 +5,7 @@
 SPECIFIC_LDFLAGS+=-Wl,-rpath -Wl,/usr/local/lib
 SPECIFIC_LIBS+=-lclfsm -lgtest -lgtest_main -ldl # Link CLFSM and GTest + dlopen()
 SPECIFIC_CPPFLAGS+= -I.. -I${GUNAO_DIR}/Common
-CC_SRCS=VectorFactory_tests.cc ReflectAPI_Init_Tests.cc ReflectAPI_MetaMachine_Tests.cc ReflectAPI_MetaState_Tests.cc ReflectAPI_MetaAction_Tests.cc ReflectAPI_StateMethod_Tests.cc
+CC_SRCS=VectorFactory_tests.cc ReflectAPI_Init_Tests.cc ReflectAPI_MetaMachine_Tests.cc ReflectAPI_MetaState_Tests.cc ReflectAPI_MetaAction_Tests.cc ReflectAPI_StateMethod_Tests.cc ReflectAPI_Util_Tests.cc 
 
 run-test:  host
 	${SAY} "------------------------"

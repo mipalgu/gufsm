@@ -1,5 +1,6 @@
 #include "API_MetaMachine.h"
 #include "API_MetaMachine_Internal.h"
+#include "API_Util.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -56,28 +57,18 @@ CLReflectResult refl_setMetaMachineName(refl_metaMachine machine, char* name)
     }
     else
     {
-        memcpy(machine->name, name, len);
-        return REFL_SUCCESS;
+        return refl_strcpy(machine->name, name, len);
     }
 }
 
 CLReflectResult refl_getMetaMachineName(refl_metaMachine machine, char* buffer, int bufferLen)
 {
-    if (!machine || !buffer || !machine->name)
+    if (!machine)
     {
         return REFL_INVALID_ARGS; //name has not been set
     }
 
-    unsigned int stringLength = strlen(machine->name) + 1;
-    if ((int)stringLength >= bufferLen)
-    {
-        return REFL_BUFFER_OVERFLOW;
-    }
-    else
-    {
-        memcpy(buffer, machine->name, stringLength);
-        return REFL_SUCCESS;
-    }
+    return refl_strcpy(buffer, machine->name, bufferLen);
 }
 
 CLReflectResult refl_setMachine(refl_metaMachine metaMachine, refl_machine_t machine)
