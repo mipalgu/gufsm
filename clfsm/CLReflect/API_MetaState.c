@@ -2,7 +2,7 @@
 #include "API_MetaAction.h"
 #include "API_MetaMachine_Internal.h"
 #include <stdlib.h>
-
+#include <stdio.h>
 
 //! Initialises the meta state
 CLReflectResult refl_initMetaState(refl_metaState *metaState)
@@ -29,7 +29,6 @@ CLReflectResult refl_destroyMetaState(refl_metaState metaState)
     if (metaState)
     {
         free(metaState->name);
-
         refl_destroyMetaAction(metaState->onEntry);
         refl_destroyMetaAction(metaState->internal);
         refl_destroyMetaAction(metaState->onExit);

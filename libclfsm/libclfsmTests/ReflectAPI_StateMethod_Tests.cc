@@ -42,7 +42,7 @@ namespace
         virtual ~ReflectAPI_StateMethod_Tests()
         {
 
-            refl_destroyMetaMachine(machine);
+            //refl_destroyMetaMachine(machine);
         }
 
         // If the constructor and destructor are not enough for setting up
@@ -63,7 +63,7 @@ namespace
         refl_metaAction action;
         refl_metaState state;
         refl_metaMachine machine;
-        refl_metaState* states;
+        refl_metaState states[1];
         int incValue;
 
     public:
