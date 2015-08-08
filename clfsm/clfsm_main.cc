@@ -251,7 +251,7 @@ static bool print_machine_and_state(void *ctx, SuspensibleMachine *machine, int 
 static bool unloadMachineIfAccepting(void *ctx, SuspensibleMachine* machine, int machine_number)
 {
         if (machine->isSuspended()) return false;   // don't unload if suspended
-        if (machine->scheduleSuspend())             // don't unload if scheduled for suspend
+        if (machine->scheduledForSuspend())         // don't unload if scheduled for suspend
         {
 #ifndef NDEBUG
             struct clfsm_context *context = static_cast<struct clfsm_context *>(ctx);
