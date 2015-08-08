@@ -27,6 +27,11 @@ inline refl_metaMachine createPingPong()
     refl_setMetaMachineName(m, machineName);
 
     //States
+    refl_setMetaStateName(ping, "Ping");
+
+    refl_setMetaStateName(pong, "Pong");
+
+
     refl_metaState states[] = { ping, pong };
     refl_setMetaStates(m, states, 2);
 

@@ -26,7 +26,7 @@ CLReflectResult refl_destroyMetaMachine(refl_metaMachine machine);
             REFL_UNKNOWN_ERROR if memory allocation for the name fails.
             Otherwise REFL_SUCCESS
 */
-CLReflectResult refl_setMetaMachineName(refl_metaMachine machine, char* name);
+CLReflectResult refl_setMetaMachineName(refl_metaMachine machine, char const * name);
 
 /*! Places the metamachine Name into the buffer.
     @param machine The meta machine
