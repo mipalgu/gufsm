@@ -65,6 +65,7 @@
 #include "clfsm_wb_vector_factory.h"
 #include "clfsm_machine.h"
 #include "CLMachine.h"
+#include "CLReflectAPI.h"
 
 using namespace FSM;
 
@@ -184,6 +185,9 @@ SuspensibleMachine* CLFSMMachineLoader::loadAndAddMachineAtPath(const std::strin
         }
         strcpy(c_name, name.c_str());
         clm->setMachineName(c_name);
+
+        // Load and register meta machine
+        
         return _vector_factory->addMachine(clm, index);
 
     }
