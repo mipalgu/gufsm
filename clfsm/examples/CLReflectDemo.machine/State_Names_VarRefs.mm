@@ -1,14 +1,13 @@
 //
-//CLReflectDemo_VarRefs.mm
+//State_Names_VarRefs.mm
 //
 //Automatically created through MiEditCLFSM -- do not change manually!
 //
-CLReflectDemo *_m = static_cast<CLReflectDemo *>(_machine);
+Names *_s = static_cast<Names *>(_state);
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"
 #pragma clang diagnostic ignored "-Wshadow"
 
-refl_metaMachine	&metaMachine= _m->metaMachine;	///<
 
 #pragma clang diagnostic pop

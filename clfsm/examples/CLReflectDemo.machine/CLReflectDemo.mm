@@ -7,6 +7,7 @@
 #include "CLReflectDemo.h"
 
 #include "State_INITIAL.h"
+#include "State_Names.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -21,6 +22,7 @@ extern "C"
 CLReflectDemo::CLReflectDemo(int mid, const char *name): CLMachine(mid, name)
 {
 	_states[0]  = new FSMCLReflectDemo::State:: INITIAL;
+	_states[1]  = new FSMCLReflectDemo::State:: Names;
 
 	setInitialState(_states[0]);            // set initial state
 }
@@ -28,4 +30,5 @@ CLReflectDemo::CLReflectDemo(int mid, const char *name): CLMachine(mid, name)
 CLReflectDemo::~CLReflectDemo()
 {
 	delete _states[0];
+	delete _states[1];
 }
