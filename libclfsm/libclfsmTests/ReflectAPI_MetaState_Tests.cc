@@ -9,16 +9,21 @@ using namespace std;
 
 namespace
 {
+    const char* STATE_0 = "STATE_0";
+    const char* STATE_1 = "STATE_1";
     // The fixture for testing clfsm.
     class ReflectAPI_MetaState_Tests: public ::testing::Test
     {
+    public:
+
+
     protected:
         // You can remove any or all of the following functions if its body
         // is empty.
 
         ReflectAPI_MetaState_Tests()
         {
-            // You can do set-up work for each test here.
+
         }
 
         virtual ~ReflectAPI_MetaState_Tests()
@@ -44,6 +49,17 @@ namespace
         // Objects declared here can be used by all tests in the test case.
         refl_metaState metaState = NULL;
     };
+
+
+    void setStates(refl_metaMachine machine)
+    {
+        refl_metaState states[2];
+        refl_initMetaState(&states[0]);
+        refl_setMetaStateName(states[0], STATE_0);
+        refl_initMetaState(&states[1]);
+        refl_setMetaStateName(states[1], STATE_1);
+        refl_setMetaStates(machine, states, 2);
+    }
 
     TEST_F(ReflectAPI_MetaState_Tests, initMetaState)
     {
@@ -83,6 +99,25 @@ namespace
         int bufferLen = 9;
         CLReflectResult res = refl_getMetaStateName(metaState, buffer, bufferLen);
         ASSERT_EQ(res, REFL_BUFFER_OVERFLOW) << "Expecting buffer overflow since buffer is too small" << std::endl;
+    }
+
+    TEST_F(ReflectAPI_MetaState_Tests, statesOnStack)
+    {
+        refl_metaMachine machine;
+        refl_initMetaMachine(&machine);
+        setStates(machine);
+        int numStates;
+        refl_getNumberOfStates(machine, &numStates);
+        ASSERT_EQ(2, numStates);
+        refl_metaState const * states;
+        refl_getMetaStates(machine, &states);
+        char buffer[20];
+        refl_getMetaStateName(states[0], buffer, 20);
+        ASSERT_STREQ(STATE_0, buffer);
+        refl_getMetaStateName(states[1], buffer, 20);
+        ASSERT_STREQ(STATE_1, buffer);
+
+
     }
 
 }

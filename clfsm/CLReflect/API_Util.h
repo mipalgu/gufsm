@@ -5,6 +5,6 @@
 
 #include "API_Result.h"
 
-CLReflectResult refl_strcpy(char* dest, char* src, size_t size);
+CLReflectResult refl_strcpy(char* dest, char const * src, size_t size);
 
 #endif /* end of include guard: API_UTIL_H */

@@ -1,10 +1,10 @@
 //
-//State_Names.h
+//State_States.h
 //
 //Automatically created through MiEditCLFSM -- do not change manually!
 //
-#ifndef __clfsm__CLReflectDemo_State_Names_h__
-#define __clfsm__CLReflectDemo_State_Names_h__
+#ifndef __clfsm__CLReflectDemo_State_States_h__
+#define __clfsm__CLReflectDemo_State_States_h__
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
 		{
 			namespace State
 			{
-				class Names: public CLState
+				class States: public CLState
 				{
 					class OnEntry: public CLAction
 					{
@@ -32,30 +32,22 @@ namespace FSM
 					{
 						virtual void perform(CLMachine *, CLState *) const;
 					};
-					class Transition_0: public CLTransition
-					{
-						public:
-						Transition_0(int toState = 2): CLTransition(toState) {}
-
-						virtual bool check(CLMachine *, CLState *) const;
-					};
-
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wzero-length-array"
-				CLTransition *_transitions[1];
+				CLTransition *_transitions[0];
 				public:
-					Names(const char *name = "Names");
-					virtual ~Names();
+					States(const char *name = "States");
+					virtual ~States();
 
 					virtual CLTransition * const *transitions() const { return _transitions; }
-					virtual int numberOfTransitions() const { return 1; }
+					virtual int numberOfTransitions() const { return 0; }
 
-#					include "State_Names_Variables.h"
+#					include "State_States_Variables.h"
 #pragma clang diagnostic pop
 				};
 			}
 		}
 	}
 }
-#endif // defined(__gufsm__CLReflectDemo_State_Names__)
+#endif // defined(__gufsm__CLReflectDemo_State_States__)

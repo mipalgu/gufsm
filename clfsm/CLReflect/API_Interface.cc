@@ -2,6 +2,7 @@
 
 #include "API_Interface.h"
 #include "CLMetaRegister.h"
+#include <stdio.h> //XXX
 
 #include <stdlib.h>
 

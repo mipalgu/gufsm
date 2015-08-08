@@ -187,7 +187,11 @@ SuspensibleMachine* CLFSMMachineLoader::loadAndAddMachineAtPath(const std::strin
         clm->setMachineName(c_name);
 
         // Load and register meta machine
-        
+        refl_metaMachine meta = wrapper->instantiateMetaMachine(clm);
+        if (meta)
+        {
+            refl_registerMetaMachine(meta, id);
+        }
         return _vector_factory->addMachine(clm, index);
 
     }

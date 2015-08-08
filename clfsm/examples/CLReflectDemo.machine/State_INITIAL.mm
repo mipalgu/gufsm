@@ -16,7 +16,7 @@ using namespace State;
 
 INITIAL::INITIAL(const char *name):CLState(name, *new INITIAL::OnEntry,*new INITIAL::OnExit, *new INITIAL::Internal)
 {
-
+	_transitions[0] = new Transition_0();
 }
 
 INITIAL::~INITIAL()
@@ -48,5 +48,15 @@ void INITIAL::Internal::perform(CLMachine *_machine, CLState *_state) const
 #	include "State_INITIAL_Internal.mm"
 }
 
+bool INITIAL::Transition_0::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "CLReflectDemo_VarRefs.mm"
+#	include "State_INITIAL_VarRefs.mm"
+
+	return
+	(
+#			include "State_INITIAL_Transition_0.expr"
+	);
+}
 
 

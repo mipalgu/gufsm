@@ -127,7 +127,9 @@ namespace
 
         refl_metaState const * retStates;
         ASSERT_EQ(REFL_SUCCESS, refl_getMetaStates(metaMachine, &retStates));
-        ASSERT_EQ(states, retStates);
+        ASSERT_EQ(states[0], retStates[0]);
+        ASSERT_EQ(states[1], retStates[1]);
+
     }
 
 }

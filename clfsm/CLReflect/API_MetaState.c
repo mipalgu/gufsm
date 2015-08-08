@@ -40,7 +40,7 @@ CLReflectResult refl_destroyMetaState(refl_metaState metaState)
 }
 
 //! Sets the state name
-CLReflectResult refl_setMetaStateName(refl_metaState metaState, char* name)
+CLReflectResult refl_setMetaStateName(refl_metaState metaState, char const * name)
 {
     if (!metaState || !name)
     {

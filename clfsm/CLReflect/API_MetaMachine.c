@@ -41,7 +41,7 @@ CLReflectResult refl_destroyMetaMachine(refl_metaMachine metaMachine)
     return REFL_SUCCESS;
 }
 
-CLReflectResult refl_setMetaMachineName(refl_metaMachine machine, char* name)
+CLReflectResult refl_setMetaMachineName(refl_metaMachine machine, char const * name)
 {
 
     if (!machine || !name)
@@ -99,7 +99,9 @@ CLReflectResult refl_setMetaStates(refl_metaMachine machine, refl_metaState* sta
     {
         return REFL_INVALID_ARGS;
     }
-    machine->metaStates = states;
+    free(machine->metaStates);
+    machine->metaStates = (refl_metaState*)malloc(sizeof(refl_metaState*) * len);
+    memcpy(machine->metaStates, states, sizeof(refl_metaState*) * len);
     machine->numberOfStates = len;
     return REFL_SUCCESS;
 }

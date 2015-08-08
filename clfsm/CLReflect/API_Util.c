@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-CLReflectResult refl_strcpy(char* dest, char* src, size_t size)
+CLReflectResult refl_strcpy(char* dest, char const * src, size_t size)
 {
     if (!dest || !src)
     {
