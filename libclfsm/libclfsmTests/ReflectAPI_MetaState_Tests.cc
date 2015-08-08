@@ -59,6 +59,32 @@ namespace
         metaState = NULL;
     }
 
+    TEST_F(ReflectAPI_MetaState_Tests, setStateName)
+    {
+        char name[] = "Test Name";
+        refl_initMetaState(&metaState);
+        ASSERT_EQ(refl_setMetaStateName(metaState, name), REFL_SUCCESS) << "Expecting success" << std::endl;
+        ASSERT_NE(refl_setMetaStateName(metaState, NULL), REFL_SUCCESS) << "Expecting failure for null value" << std::endl;
+
+        // Retrieving and checking name value
+        char buffer[20];
+        CLReflectResult res = refl_getMetaStateName(metaState, buffer, 20);
+        ASSERT_EQ(res, REFL_SUCCESS) << "Expecting successful name retrieval" << std::endl;
+        ASSERT_STREQ(name, buffer) << "Expecting names to be equal" << std::endl;
+    }
+
+    TEST_F(ReflectAPI_MetaState_Tests, bufferOverflow)
+    {
+        char name[] = "Test Name";
+        refl_initMetaState(&metaState);
+        refl_setMetaStateName(metaState, name);
+
+        char buffer[9];
+        int bufferLen = 9;
+        CLReflectResult res = refl_getMetaStateName(metaState, buffer, bufferLen);
+        ASSERT_EQ(res, REFL_BUFFER_OVERFLOW) << "Expecting buffer overflow since buffer is too small" << std::endl;
+    }
+
 }
 
 #pragma clang diagnostic pop
