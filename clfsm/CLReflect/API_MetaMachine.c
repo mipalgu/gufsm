@@ -49,7 +49,7 @@ CLReflectResult refl_setMetaMachineName(refl_metaMachine machine, char* name)
         return REFL_INVALID_ARGS;
     }
     free(machine->name); // Free the old machine name. Guaranteed heap mem.
-    int len = strlen(name);
+    int len = (int)strlen(name);
     machine->name = (char *)malloc(sizeof(char) * len);
     if (machine->name == NULL)
     {
@@ -69,7 +69,7 @@ CLReflectResult refl_getMetaMachineName(refl_metaMachine machine, char* buffer, 
         return REFL_INVALID_ARGS; //name has not been set
     }
     strncpy(buffer, machine->name, bufferLen);
-    if (strlen(machine->name) >= bufferLen)
+    if ((int)strlen(machine->name) >= bufferLen)
     {
         return REFL_BUFFER_OVERFLOW;
     }
