@@ -6,6 +6,7 @@ typedef enum
     REFL_UNKNOWN_ERROR,
     REFL_BUFFER_OVERFLOW,
     REFL_INVALID_ARGS,
+    REFL_INVALID_CALL,
     REFL_SUCCESS
 } CLReflectResult;
 

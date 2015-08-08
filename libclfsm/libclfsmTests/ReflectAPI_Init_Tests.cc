@@ -30,6 +30,7 @@ namespace
         virtual ~ReflectAPI_Init_Tests()
         {
             refl_destroyMetaMachine(metaMachine);
+            refl_destroyAPI();
         }
 
         // If the constructor and destructor are not enough for setting up
@@ -54,13 +55,31 @@ namespace
         ASSERT_EQ(refl_initAPI(), REFL_SUCCESS);
     }
 
+    TEST_F(ReflectAPI_Init_Tests, destroyAPI)
+    {
+        ASSERT_EQ(refl_destroyAPI(), REFL_INVALID_CALL) << "Expecting invalid as API not inited" << endl;
+        refl_initAPI();
+        ASSERT_EQ(refl_destroyAPI(), REFL_SUCCESS) << "Expecting successful destroy after API init" << endl;
+    }
+
     TEST_F(ReflectAPI_Init_Tests, registerMetaMachine)
     {
         refl_initAPI();
         ASSERT_EQ(refl_registerMetaMachine(metaMachine, 0), REFL_SUCCESS);
+        ASSERT_EQ(refl_registerMetaMachine(metaMachine, 10), REFL_SUCCESS);
+        ASSERT_EQ(refl_registerMetaMachine(metaMachine, 50), REFL_SUCCESS);
         ASSERT_NE(refl_registerMetaMachine(metaMachine, 0), REFL_SUCCESS) << "Expecting fail for reuse of id" << endl;
         ASSERT_NE(refl_registerMetaMachine(NULL, 1), REFL_SUCCESS) << "Expecting fail for NULL machine" << endl;
+    }
 
+    TEST_F(ReflectAPI_Init_Tests, getMetaMachine)
+    {
+        refl_initAPI();
+        refl_registerMetaMachine(metaMachine, 0);
+        refl_metaMachine returnMach;
+        ASSERT_EQ(refl_getMetaMachine(0, &returnMach), REFL_SUCCESS);
+        ASSERT_EQ(metaMachine, returnMach);
+        ASSERT_EQ(refl_getMetaMachine(1, &returnMach), REFL_INVALID_ARGS);
     }
 
 

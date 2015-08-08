@@ -17,8 +17,19 @@ CLReflectResult refl_initAPI()
     return REFL_SUCCESS;
 }
 
+CLReflectResult refl_destroyAPI()
+{
+    if (!metaRegister)
+    {
+        return REFL_INVALID_CALL;
+    }
+    delete metaRegister;
+    metaRegister = NULL;
+    return REFL_SUCCESS;
+}
+
 //! Registers the meta machine with the reflection API
-CLReflectResult refl_registerMetaMachine(refl_metaMachine metaMachine, int machineID)
+CLReflectResult refl_registerMetaMachine(refl_metaMachine metaMachine, unsigned int machineID)
 {
     if (!metaMachine)
     {
@@ -29,11 +40,25 @@ CLReflectResult refl_registerMetaMachine(refl_metaMachine metaMachine, int machi
     {
         return REFL_INVALID_ARGS;
     }
+    //Check capacity and resize if need
+    if (machineID > metaRegister->metaRegister.size())
+    {
+        metaRegister->metaRegister.resize(machineID + 1, NULL);
+    }
     metaRegister->metaRegister.insert(metaRegister->metaRegister.begin() + machineID, metaMachine);
     return REFL_SUCCESS;
 }
 
 //! Gets the meta machine with the given ID
-CLReflectResult refl_getMetaMachine(int machineID, refl_metaMachine* metaMachine);
+CLReflectResult refl_getMetaMachine(unsigned int machineID, refl_metaMachine* metaMachine)
+{
+    std::vector<refl_metaMachine> metaReg = metaRegister->metaRegister;
+    if (machineID >= metaReg.size())
+    {
+        return REFL_INVALID_ARGS;
+    }
+    *metaMachine = metaReg[machineID];
+    return REFL_SUCCESS;
+}
 
 #pragma clang diagnostic pop

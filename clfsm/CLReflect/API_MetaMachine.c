@@ -34,7 +34,6 @@ CLReflectResult refl_destroyMetaMachine(refl_metaMachine metaMachine)
     int i;
     for (i = 0; i < metaMachine->numberOfStates; i++)
     {
-        printf("%s%i\n", "Destroying state: " , i); fflush(stdout);
         refl_destroyMetaState(metaMachine->metaStates[i]);
     }
     free(metaMachine);
