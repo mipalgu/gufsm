@@ -97,14 +97,14 @@ MachineWrapper::MachineWrapper(string path): _fullPath(path), _factory(NULL), _s
                 if (file_exists(machinePath.c_str()))
                         path = machinePath;
         }
-        char pathName[path.length()];
-
-        strcpy(pathName, path.c_str());
+        char *pathName = static_cast<char *>(gu_strdup(path.c_str()));
         char *base = basename(pathName);
         char *dot = strchr(base, '.');
         if (dot) *dot = '\0';
 
         _name = base;
+
+        free(pathName);
 }
 
 

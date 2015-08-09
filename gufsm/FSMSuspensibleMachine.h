@@ -2,7 +2,7 @@
  *  FSMSuspensibleMachine.h
  *  
  *  Created by René Hexel on 24/09/11.
- *  Copyright (c) 2011-2014 Rene Hexel.
+ *  Copyright (c) 2011, 2012, 2013, 2014, 2015 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -108,6 +108,9 @@ namespace FSM
 
                 /** resume this state machine where it left off */
                 virtual void resume();
+
+                /** is this machine scheduled for suspension? */
+                virtual bool scheduledForSuspend() const { return false; }
 
                 /** is this machine scheduled for resumption? */
                 virtual bool scheduledForResume() const { return false; }

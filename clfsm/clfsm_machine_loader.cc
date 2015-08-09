@@ -82,9 +82,9 @@ std::vector<std::string> compiler_args,
 std::vector<std::string> linker_args)
 {
     if (!loader_singleton)
-    return NULL;
+        return NULL;
     else
-    return loader_singleton->loadAndAddMachineAtPath(machine, compiler_args, linker_args);
+        return loader_singleton->loadAndAddMachineAtPath(machine, compiler_args, linker_args);
 }
 
 SuspensibleMachine *FSM::loadAndAddMachine(const std::string machine)
