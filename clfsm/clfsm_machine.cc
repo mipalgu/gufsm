@@ -91,20 +91,22 @@ static dispatch_queue_t sync_queue = NULL;
 
 MachineWrapper::MachineWrapper(string path): _fullPath(path), _factory(NULL), _metaFactory(NULL), _shared_object(NULL), _compiler(NULL), _compiler_args(NULL), _linker_args(NULL), _delete_compiler(false)
 {
-    if (!file_exists(path.c_str()))
-    {
-            string machinePath = path + ".machine";
-            if (file_exists(machinePath.c_str()))
-                    path = machinePath;
-    }
-    char pathName[path.length()];
 
-    strcpy(pathName, path.c_str());
-    char *base = basename(pathName);
-    char *dot = strchr(base, '.');
-    if (dot) *dot = '\0';
+        if (!file_exists(path.c_str()))
+        {
+                string machinePath = path + ".machine";
+                if (file_exists(machinePath.c_str()))
+                        path = machinePath;
+        }
+        char *pathName = static_cast<char *>(gu_strdup(path.c_str()));
+        char *base = basename(pathName);
+        char *dot = strchr(base, '.');
+        if (dot) *dot = '\0';
 
-    _name = base;
+        _name = base;
+
+        free(pathName);
+
 }
 
 
