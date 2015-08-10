@@ -9,7 +9,7 @@ CLReflectResult refl_strcpy(char* dest, char const * src, size_t size)
     {
         return REFL_INVALID_ARGS;
     }
-    unsigned int srclength = strlen(src) + 1;
+    unsigned int srclength = (unsigned int)strlen(src) + 1;
     if (srclength > size)
     {
         return REFL_BUFFER_OVERFLOW;
