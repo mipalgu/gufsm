@@ -962,6 +962,7 @@
 		F16CC32D142C2AD9001F788B /* FSMTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FSMTest-Prefix.pch"; sourceTree = "<group>"; };
 		F16CC334142C3433001F788B /* FSMAction.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMAction.cc; sourceTree = "<group>"; };
 		F170781D15F95B830058AECD /* CLTransitionExpression.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CLTransitionExpression.cc; sourceTree = "<group>"; };
+		F17650961B7983A2009CAC69 /* libclfsmTests.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libclfsmTests.xcodeproj; path = libclfsm/libclfsmTests/libclfsmTests.xcodeproj; sourceTree = SOURCE_ROOT; };
 		F1777E6016FD96C2006E263E /* gugenericwhiteboardobject.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; path = gugenericwhiteboardobject.cpp; sourceTree = "<group>"; };
 		F1777E6116FD96C2006E263E /* gugenericwhiteboardobject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gugenericwhiteboardobject.h; sourceTree = "<group>"; };
 		F1777E6216FD96C2006E263E /* guwhiteboardtypelist_c_generated.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = guwhiteboardtypelist_c_generated.h; sourceTree = "<group>"; };
@@ -2142,6 +2143,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F17650971B7983A2009CAC69 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		F192CC8F144D27C200FF8526 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -2316,6 +2324,7 @@
 				3CFD061E1A1B684300C36E6C /* clfsm_visitors.cc */,
 				3CFD06211A1B684300C36E6C /* clfsm_visitorsupport.h */,
 				3CFD06201A1B684300C36E6C /* clfsm_visitorsupport.cc */,
+				F17650961B7983A2009CAC69 /* libclfsmTests.xcodeproj */,
 				F1A5180015C9278500348C25 /* examples */,
 				F1A517CF15C91BDC00348C25 /* clfsm+PingPong.cc */,
 				F1A517D115C91BDC00348C25 /* clfsm.1 */,
@@ -2726,6 +2735,10 @@
 				{
 					ProductGroup = F1284D0314A6CAA800C0247E /* Products */;
 					ProjectRef = F1284D0214A6CAA800C0247E /* gusimplewhiteboard.xcodeproj */;
+				},
+				{
+					ProductGroup = F17650971B7983A2009CAC69 /* Products */;
+					ProjectRef = F17650961B7983A2009CAC69 /* libclfsmTests.xcodeproj */;
 				},
 				{
 					ProductGroup = F15A2CC014CF81F400D88624 /* Products */;
