@@ -1,6 +1,6 @@
 //
-//CLReflectDemo_Variables.h
+// CLReflectDemo_Variables.h
 //
-//Automatically created through MiEditCLFSM -- do not change manually!
+// Automatically created through MiCASE -- do not change manually!
 //
 refl_metaMachine	metaMachine;	///<

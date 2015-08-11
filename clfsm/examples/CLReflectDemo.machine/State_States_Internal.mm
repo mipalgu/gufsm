@@ -6,4 +6,3 @@ refl_invokeInternal(metaMachine, 3);
 
 std::cout << "Invoking OnExit: ";
 refl_invokeOnExit(metaMachine, 3);
-
