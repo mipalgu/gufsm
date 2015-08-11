@@ -24,6 +24,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		307B5A2F1B797C4700F7ACB8 /* API_Util.c in Sources */ = {isa = PBXBuildFile; fileRef = 307B5A2D1B797C4700F7ACB8 /* API_Util.c */; };
+		307B5A301B797C4700F7ACB8 /* API_Util.h in Headers */ = {isa = PBXBuildFile; fileRef = 307B5A2E1B797C4700F7ACB8 /* API_Util.h */; };
 		3CFD06221A1B684300C36E6C /* clfsm_visitors.cc in Sources */ = {isa = PBXBuildFile; fileRef = 3CFD061E1A1B684300C36E6C /* clfsm_visitors.cc */; };
 		3CFD06231A1B684300C36E6C /* clfsm_visitorsupport.cc in Sources */ = {isa = PBXBuildFile; fileRef = 3CFD06201A1B684300C36E6C /* clfsm_visitorsupport.cc */; };
 		E1144EB61585E21600C3C113 /* SimpleCLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = E1144EB41585E21600C3C113 /* SimpleCLexer.c */; };
@@ -432,6 +434,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		307B5A2D1B797C4700F7ACB8 /* API_Util.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = API_Util.c; sourceTree = "<group>"; };
+		307B5A2E1B797C4700F7ACB8 /* API_Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API_Util.h; sourceTree = "<group>"; };
 		3CFD061E1A1B684300C36E6C /* clfsm_visitors.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = clfsm_visitors.cc; sourceTree = "<group>"; };
 		3CFD061F1A1B684300C36E6C /* clfsm_visitors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clfsm_visitors.h; sourceTree = "<group>"; };
 		3CFD06201A1B684300C36E6C /* clfsm_visitorsupport.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = clfsm_visitorsupport.cc; sourceTree = "<group>"; };
@@ -1502,6 +1506,8 @@
 				F17A1DE71B77F38C00C24CAB /* API_MetaState.c */,
 				F17A1DE81B77F38C00C24CAB /* API_MetaState.h */,
 				F17A1DE91B77F38C00C24CAB /* API_Result.h */,
+				307B5A2D1B797C4700F7ACB8 /* API_Util.c */,
+				307B5A2E1B797C4700F7ACB8 /* API_Util.h */,
 				F17A1DEA1B77F38C00C24CAB /* CLMetaRegister.h */,
 				F1C411501B67094900663625 /* CLReflectAPI.h */,
 				F1C411511B67094900663625 /* CLReflectFunctionPointerTypes.h */,
@@ -2387,6 +2393,7 @@
 				F12B737B1B6052DB006C64D8 /* clfsm_machine_loader.h in Headers */,
 				F1C7CE6016FFE48300D5D843 /* clfsm_wb_vector_factory.h in Headers */,
 				F17A1DED1B77F38C00C24CAB /* API_Result.h in Headers */,
+				307B5A301B797C4700F7ACB8 /* API_Util.h in Headers */,
 				F17A1DEC1B77F38C00C24CAB /* API_MetaState.h in Headers */,
 				F16864FC1703BA29003B195F /* FSMAsynchronousSuspensibleMachine.h in Headers */,
 				F17A1DE51B77F37500C24CAB /* API_MetaAction.h in Headers */,
@@ -3160,6 +3167,7 @@
 				F1D575AC1627966D00976A23 /* FSMFactory.cc in Sources */,
 				F1D575AD1627968300976A23 /* FSMachineVector.cc in Sources */,
 				F1D575AE162796F600976A23 /* gu_util.cpp in Sources */,
+				307B5A2F1B797C4700F7ACB8 /* API_Util.c in Sources */,
 				F1D575AF1627975F00976A23 /* gusimplewhiteboard.c in Sources */,
 				F1D575B5162798B600976A23 /* clfsm_vector_factory.cc in Sources */,
 				F1D575B6162798C900976A23 /* clfsm_factory.cc in Sources */,

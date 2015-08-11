@@ -18,15 +18,18 @@ struct metaState_s
     refl_metaAction onExit;
 };
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpadded"
+
 struct metaMachine_s
 {
     char* name;
     refl_machine_t machine;
+    refl_metaState *metaStates;
     int numberOfStates;
-    refl_metaState* metaStates;
 };
 
-
+#pragma clang diagnostic pop
 
 
 
