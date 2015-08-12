@@ -11,10 +11,10 @@ typedef struct metaState_s* refl_metaState;
 refl_metaState refl_initMetaState(CLReflectResult *result);
 
 //! Destroys the meta-state
-CLReflectResult refl_destroyMetaState(refl_metaState metaState);
+void refl_destroyMetaState(refl_metaState metaState, CLReflectResult* result);
 
 //! Sets the state name
-CLReflectResult refl_setMetaStateName(refl_metaState metaState, char const * name);
+void refl_setMetaStateName(refl_metaState metaState, char const * name, CLReflectResult* result);
 
 //! Gets the state name
 CLReflectResult refl_getMetaStateName(refl_metaState metaState, char* buffer, int bufferLen);

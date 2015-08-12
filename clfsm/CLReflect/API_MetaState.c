@@ -16,7 +16,6 @@ refl_metaState refl_initMetaState(CLReflectResult *result)
         newMetaState->onEntry = NULL;
         newMetaState->internal = NULL;
         newMetaState->onExit = NULL;
-        *metaState = newMetaState;
         if (result)
             *result = REFL_SUCCESS;
         return newMetaState;
@@ -31,7 +30,7 @@ refl_metaState refl_initMetaState(CLReflectResult *result)
 }
 
 //! Destroys the meta-state
-CLReflectResult refl_destroyMetaState(refl_metaState metaState)
+void refl_destroyMetaState(refl_metaState metaState, CLReflectResult* result)
 {
     if (metaState)
     {
@@ -40,27 +39,41 @@ CLReflectResult refl_destroyMetaState(refl_metaState metaState)
         refl_destroyMetaAction(metaState->internal);
         refl_destroyMetaAction(metaState->onExit);
         free(metaState);
-    }
-    return REFL_SUCCESS;
-}
-
-//! Sets the state name
-CLReflectResult refl_setMetaStateName(refl_metaState metaState, char const * name)
-{
-    if (!metaState || !name)
-    {
-        return REFL_INVALID_ARGS;
-    }
-    free(metaState->name); // Free the old machine name. Guaranteed heap mem.
-    int len = (int)strlen(name) + 1;
-    metaState->name = (char *)malloc(sizeof(char) *  len);
-    if (metaState->name == NULL)
-    {
-        return REFL_UNKNOWN_ERROR;
+        if (result)
+            *result = REFL_SUCCESS;
     }
     else
     {
-        return refl_strcpy(metaState->name, name, len);
+        if (result)
+            *result = REFL_SUCCESS;
+    }
+
+}
+
+//! Sets the state name
+void refl_setMetaStateName(refl_metaState metaState, char const * name, CLReflectResult* result)
+{
+    if (!metaState || !name)
+    {
+        if (result)
+            *result = REFL_INVALID_ARGS;
+    }
+    else
+    {
+        free(metaState->name); // Free the old machine name. Guaranteed heap mem.
+        int len = (int)strlen(name) + 1;
+        metaState->name = (char *)malloc(sizeof(char) *  len);
+        CLReflectResult res;
+        if (metaState->name == NULL)
+        {
+            res = REFL_UNKNOWN_ERROR;
+        }
+        else
+        {
+            res = refl_strcpy(metaState->name, name, len);
+        }
+        if (result)
+            *result = res;
     }
 }
 

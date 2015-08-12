@@ -32,7 +32,7 @@ namespace
 
         virtual ~ReflectAPI_MetaState_Tests()
         {
-            refl_destroyMetaState(metaState);
+            refl_destroyMetaState(metaState, NULL);
         }
 
         // If the constructor and destructor are not enough for setting up
@@ -59,9 +59,9 @@ namespace
     {
         refl_metaState states[2];
         states[0] = refl_initMetaState(NULL);
-        refl_setMetaStateName(states[0], STATE_0);
+        refl_setMetaStateName(states[0], STATE_0, NULL);
         states[1] = refl_initMetaState(NULL);
-        refl_setMetaStateName(states[1], STATE_1);
+        refl_setMetaStateName(states[1], STATE_1, NULL);
         refl_setMetaStates(machine, states, 2, NULL);
     }
 
@@ -87,8 +87,11 @@ namespace
     {
         char name[] = "Test Name";
         metaState = refl_initMetaState(NULL);
-        ASSERT_EQ(refl_setMetaStateName(metaState, name), REFL_SUCCESS) << "Expecting success" << std::endl;
-        ASSERT_NE(refl_setMetaStateName(metaState, NULL), REFL_SUCCESS) << "Expecting failure for null value" << std::endl;
+        CLReflectResult result;
+        refl_setMetaStateName(metaState, name, &result);
+        ASSERT_EQ(REFL_SUCCESS, result) << "Expecting success" << std::endl;
+        refl_setMetaStateName(metaState, NULL, &result);
+        ASSERT_NE(REFL_SUCCESS, result) << "Expecting failure for null value" << std::endl;
 
         // Retrieving and checking name value
         char buffer[20];
@@ -101,7 +104,7 @@ namespace
     {
         char name[] = "Test Name";
         metaState = refl_initMetaState(NULL);
-        refl_setMetaStateName(metaState, name);
+        refl_setMetaStateName(metaState, name, NULL);
 
         char buffer[9];
         int bufferLen = 9;

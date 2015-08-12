@@ -31,23 +31,22 @@ refl_metaMachine refl_initMetaMachine(CLReflectResult* result)
 
 void refl_destroyMetaMachine(refl_metaMachine metaMachine, CLReflectResult* result)
 {
-    CLReflectResult functionResult;
+    CLReflectResult functionResult = REFL_SUCCESS;
     if (metaMachine == NULL)
     {
         functionResult = REFL_INVALID_ARGS;
-
-    } else
+    }
+    else
     {
         free(metaMachine->name);
         //Destroy states
         int i;
         for (i = 0; i < metaMachine->numberOfStates; i++)
         {
-            refl_destroyMetaState(metaMachine->metaStates[i]);
+            refl_destroyMetaState(metaMachine->metaStates[i], &functionResult);
         }
-        free(metaMachine);
-        functionResult = REFL_SUCCESS;
-
+        if (functionResult == REFL_SUCCESS)
+            free(metaMachine);
     }
     if (result != NULL)
         *result = functionResult;
