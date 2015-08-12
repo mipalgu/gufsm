@@ -28,7 +28,7 @@ namespace
         {
             refl_initMetaAction(&action);
             refl_initMetaState(&state);
-            refl_initMetaMachine(&machine);
+            machine = refl_initMetaMachine(NULL);
             refl_setMachine(machine, this);
             n = N_START_VAL;
             incValue = 1;

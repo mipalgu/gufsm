@@ -27,12 +27,12 @@ namespace
 
         ReflectAPI_Init_Tests()
         {
-            refl_initMetaMachine(&metaMachine);
+            metaMachine = refl_initMetaMachine(NULL);
         }
 
         virtual ~ReflectAPI_Init_Tests()
         {
-            refl_destroyMetaMachine(metaMachine);
+            refl_destroyMetaMachine(metaMachine, NULL);
             refl_destroyAPI();
         }
 

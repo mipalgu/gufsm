@@ -107,8 +107,7 @@ namespace
 
     TEST_F(ReflectAPI_MetaState_Tests, statesOnStack)
     {
-        refl_metaMachine machine;
-        refl_initMetaMachine(&machine);
+        refl_metaMachine machine = refl_initMetaMachine(NULL);
         setStates(machine);
         int numStates;
         refl_getNumberOfStates(machine, &numStates);

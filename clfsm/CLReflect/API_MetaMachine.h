@@ -8,16 +8,16 @@ struct metaMachine_s;
 typedef struct metaMachine_s* refl_metaMachine;
 
 /*! Initialises and allocates memory for the meta-machine
-    @param machine The meta machine.
-    @return REFL_SUCCESS if successful or REFL_UNKNOWN_ERROR if memory allocation fails.
+    @param result The result of the call.
+    @return A new heap-allocated meta-machine
 */
-CLReflectResult refl_initMetaMachine(refl_metaMachine *machine);
+refl_metaMachine refl_initMetaMachine(CLReflectResult* result);
 
 /*! Deallocates the meta machine
     @param machine The meta machine.
-    @return REFL_SUCCESS
+    @param result The result of the call
 */
-CLReflectResult refl_destroyMetaMachine(refl_metaMachine machine);
+void refl_destroyMetaMachine(refl_metaMachine machine, CLReflectResult* result);
 
 /*! Sets the meta machine name to the given parameter.
     @param machine The meta machine

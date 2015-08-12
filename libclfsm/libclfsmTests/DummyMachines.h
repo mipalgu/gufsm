@@ -15,10 +15,10 @@ refl_metaMachine createPingPong();
 
 inline refl_metaMachine createPingPong()
 {
-    refl_metaMachine m;
+    refl_metaMachine m = refl_initMetaMachine(NULL);
     refl_metaState ping, pong;
 
-    refl_initMetaMachine(&m);
+
     refl_initMetaState(&ping);
     refl_initMetaState(&pong);
 

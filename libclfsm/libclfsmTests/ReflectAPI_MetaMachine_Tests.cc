@@ -27,7 +27,7 @@ namespace
 
         virtual ~ReflectAPI_MetaMachine_Tests()
         {
-            // You can do clean-up work that doesn't throw exceptions here.
+            refl_destroyMetaMachine(metaMachine, NULL);
         }
 
         // If the constructor and destructor are not enough for setting up
@@ -51,21 +51,26 @@ namespace
 
     TEST_F(ReflectAPI_MetaMachine_Tests, initMetaMachine)
     {
-        ASSERT_EQ(refl_initMetaMachine(&metaMachine), REFL_SUCCESS);
-        ASSERT_TRUE(metaMachine != NULL) << "Metamachine should not be null" << std::endl;
+        CLReflectResult result;
+        ASSERT_TRUE(refl_initMetaMachine(&result) != NULL);
+        ASSERT_EQ(REFL_SUCCESS, result);
     }
 
     TEST_F(ReflectAPI_MetaMachine_Tests, destroyMetaMachine)
     {
-        refl_initMetaMachine(&metaMachine);
-        ASSERT_EQ(refl_destroyMetaMachine(metaMachine), REFL_SUCCESS) << "Expecting success" << std::endl;
-        ASSERT_NE(refl_destroyMetaMachine(NULL), REFL_SUCCESS) << "Expecting destroy failure" << std::endl;
+        metaMachine = refl_initMetaMachine(NULL);
+        CLReflectResult result;
+        refl_destroyMetaMachine(metaMachine, &result);
+        metaMachine = NULL;
+        ASSERT_EQ(REFL_SUCCESS, result) << "Expecting success" << std::endl;
+        refl_destroyMetaMachine(NULL, &result);
+        ASSERT_NE(REFL_SUCCESS, result) << "Expecting destroy failure" << std::endl;
     }
 
     TEST_F(ReflectAPI_MetaMachine_Tests, setMachineName)
     {
         char name[] = "Test Name";
-        refl_initMetaMachine(&metaMachine);
+        metaMachine = refl_initMetaMachine(NULL);
         ASSERT_EQ(refl_setMetaMachineName(metaMachine, name), REFL_SUCCESS) << "Expecting success" << std::endl;
         ASSERT_NE(refl_setMetaMachineName(metaMachine, NULL), REFL_SUCCESS) << "Expecting failure for null value" << std::endl;
 
@@ -78,7 +83,7 @@ namespace
 
     TEST_F(ReflectAPI_MetaMachine_Tests, nullName)
     {
-        refl_initMetaMachine(&metaMachine);
+        metaMachine = refl_initMetaMachine(NULL);
         char buffer[20];
         CLReflectResult result = refl_getMetaMachineName(metaMachine, buffer, 20);
         ASSERT_NE(result, REFL_SUCCESS) << "Expecting failure since name is not set" << endl;
@@ -88,7 +93,7 @@ namespace
     TEST_F(ReflectAPI_MetaMachine_Tests, bufferOverFlowTest)
     {
         char name[] = "Test Name";
-        refl_initMetaMachine(&metaMachine);
+        metaMachine = refl_initMetaMachine(NULL);
         refl_setMetaMachineName(metaMachine, name);
 
         char buffer[9];
@@ -99,7 +104,7 @@ namespace
 
     TEST_F(ReflectAPI_MetaMachine_Tests, emptyStates)
     {
-        refl_initMetaMachine(&metaMachine);
+        metaMachine = refl_initMetaMachine(NULL);
         int n;
         ASSERT_EQ(refl_getNumberOfStates(metaMachine, &n), REFL_SUCCESS);
         ASSERT_NE(refl_getNumberOfStates(NULL, NULL), REFL_SUCCESS);
@@ -108,7 +113,7 @@ namespace
 
     TEST_F(ReflectAPI_MetaMachine_Tests, setStates)
     {
-        refl_initMetaMachine(&metaMachine);
+        metaMachine = refl_initMetaMachine(NULL);
         refl_metaState states[1];
         refl_metaState state;
         refl_initMetaState(&state);
@@ -123,7 +128,7 @@ namespace
 
     TEST_F(ReflectAPI_MetaMachine_Tests, getStates)
     {
-        refl_initMetaMachine(&metaMachine);
+        metaMachine = refl_initMetaMachine(NULL);
         refl_metaState states[2];
         refl_initMetaState(&states[0]);
         refl_initMetaState(&states[1]);

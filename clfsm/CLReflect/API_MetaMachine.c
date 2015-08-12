@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <string.h>
 
-CLReflectResult refl_initMetaMachine(refl_metaMachine *metaMachine)
+refl_metaMachine refl_initMetaMachine(CLReflectResult* result)
 {
     refl_metaMachine newMeta  = (refl_metaMachine)malloc(sizeof(struct metaMachine_s));
     if (newMeta != NULL)
@@ -15,30 +15,42 @@ CLReflectResult refl_initMetaMachine(refl_metaMachine *metaMachine)
         newMeta->machine = NULL;
         newMeta->numberOfStates = 0;
         newMeta->metaStates = NULL;
-        *metaMachine = newMeta;
-        return REFL_SUCCESS;
+        if (result != NULL)
+        {
+            *result = REFL_SUCCESS;
+        }
+        return newMeta;
     }
     else
     {
-        return REFL_UNKNOWN_ERROR;
+        if (result != NULL)
+            *result = REFL_UNKNOWN_ERROR;
+        return NULL;
     }
 }
 
-CLReflectResult refl_destroyMetaMachine(refl_metaMachine metaMachine)
+void refl_destroyMetaMachine(refl_metaMachine metaMachine, CLReflectResult* result)
 {
+    CLReflectResult functionResult;
     if (metaMachine == NULL)
     {
-        return REFL_INVALID_ARGS;
-    }
-    free(metaMachine->name);
-    //Destroy states
-    int i;
-    for (i = 0; i < metaMachine->numberOfStates; i++)
+        functionResult = REFL_INVALID_ARGS;
+
+    } else
     {
-        refl_destroyMetaState(metaMachine->metaStates[i]);
+        free(metaMachine->name);
+        //Destroy states
+        int i;
+        for (i = 0; i < metaMachine->numberOfStates; i++)
+        {
+            refl_destroyMetaState(metaMachine->metaStates[i]);
+        }
+        free(metaMachine);
+        functionResult = REFL_SUCCESS;
+        
     }
-    free(metaMachine);
-    return REFL_SUCCESS;
+    if (result != NULL)
+        *result = functionResult;
 }
 
 CLReflectResult refl_setMetaMachineName(refl_metaMachine machine, char const * name)
