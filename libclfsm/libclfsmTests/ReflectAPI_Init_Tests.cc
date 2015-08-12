@@ -92,8 +92,7 @@ namespace
         ASSERT_STREQ("PingPongCLFSM", buffer);
         int numStates = refl_getNumberOfStates(pingPong, NULL);
         ASSERT_EQ(2, numStates);
-        refl_metaState const * states;
-        refl_getMetaStates(pingPong, &states);
+        refl_metaState const * states = refl_getMetaStates(pingPong, NULL);
 
         char pingBuffer[20];
         refl_getMetaStateName(states[0], pingBuffer, 20);

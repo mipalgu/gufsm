@@ -158,14 +158,21 @@ void refl_setMetaStates(refl_metaMachine machine, refl_metaState* states, int le
     }
 }
 
-CLReflectResult refl_getMetaStates(refl_metaMachine metaMachine, refl_metaState const** stateBuffer)
+refl_metaState const * refl_getMetaStates(refl_metaMachine metaMachine, CLReflectResult *result)
 {
     if (!metaMachine)
     {
-        return REFL_INVALID_ARGS;
+        if (result)
+            *result = REFL_INVALID_ARGS;
+            return NULL;
     }
-    *stateBuffer = metaMachine->metaStates;
-    return REFL_SUCCESS;
+    else
+    {
+        if (result)
+            *result = REFL_SUCCESS;
+        return metaMachine->metaStates;
+    }
+
 }
 
 void refl_invokeOnEntry(refl_metaMachine metaMachine, int stateNum, CLReflectResult* result)

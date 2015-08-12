@@ -5,8 +5,7 @@ assert(result == REFL_SUCCESS);
 std::cout << "I have " << numStates << " states. " << std::endl;
 
 //Enumerate states
-refl_metaState const * states;
-refl_getMetaStates(metaMachine, &states);
+refl_metaState const * states = refl_getMetaStates(metaMachine, NULL);
 char buffer[30];
 for (int i = 0; i < numStates; i++)
 {

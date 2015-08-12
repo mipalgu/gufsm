@@ -111,8 +111,7 @@ namespace
         setStates(machine);
         int numStates = refl_getNumberOfStates(machine, NULL);
         ASSERT_EQ(2, numStates);
-        refl_metaState const * states;
-        refl_getMetaStates(machine, &states);
+        refl_metaState const * states = refl_getMetaStates(machine, NULL);
         char buffer[20];
         refl_getMetaStateName(states[0], buffer, 20);
         ASSERT_STREQ(STATE_0, buffer);
