@@ -168,30 +168,60 @@ CLReflectResult refl_getMetaStates(refl_metaMachine metaMachine, refl_metaState 
     return REFL_SUCCESS;
 }
 
-CLReflectResult refl_invokeOnEntry(refl_metaMachine metaMachine, int stateNum)
+void refl_invokeOnEntry(refl_metaMachine metaMachine, int stateNum, CLReflectResult* result)
 {
-    // No error checking, needs to be fast
-    refl_machine_t machine = metaMachine->machine;
-    refl_metaAction metaAction = metaMachine->metaStates[stateNum]->onEntry;
-    metaAction->action(machine, metaAction->data);
-    return REFL_SUCCESS;
+    if (!metaMachine || stateNum >= metaMachine->numberOfStates ||
+            !metaMachine->metaStates[stateNum] ||
+            !metaMachine->metaStates[stateNum]->onEntry)
+    {
+        if (result)
+            *result = REFL_INVALID_ARGS;
+    }
+    else
+    {
+        refl_machine_t machine = metaMachine->machine;
+        refl_metaAction metaAction = metaMachine->metaStates[stateNum]->onEntry;
+        metaAction->action(machine, metaAction->data);
+        if (result)
+            *result = REFL_SUCCESS;
+    }
 }
 
 
-CLReflectResult refl_invokeInternal(refl_metaMachine metaMachine, int stateNum)
+void refl_invokeInternal(refl_metaMachine metaMachine, int stateNum, CLReflectResult* result)
 {
-    // No error checking, needs to be fast
-    refl_machine_t machine = metaMachine->machine;
-    refl_metaAction metaAction = metaMachine->metaStates[stateNum]->internal;
-    metaAction->action(machine, metaAction->data);
-    return REFL_SUCCESS;
+    if (!metaMachine || stateNum >= metaMachine->numberOfStates ||
+            !metaMachine->metaStates[stateNum] ||
+            !metaMachine->metaStates[stateNum]->internal)
+    {
+        if (result)
+            *result = REFL_INVALID_ARGS;
+    }
+    else
+    {
+        refl_machine_t machine = metaMachine->machine;
+        refl_metaAction metaAction = metaMachine->metaStates[stateNum]->internal;
+        metaAction->action(machine, metaAction->data);
+        if (result)
+            *result = REFL_SUCCESS;
+    }
 }
 
-CLReflectResult refl_invokeOnExit(refl_metaMachine metaMachine, int stateNum)
+void refl_invokeOnExit(refl_metaMachine metaMachine, int stateNum, CLReflectResult* result)
 {
-    // No error checking, needs to be fast
-    refl_machine_t machine = metaMachine->machine;
-    refl_metaAction metaAction = metaMachine->metaStates[stateNum]->onExit;
-    metaAction->action(machine, metaAction->data);
-    return REFL_SUCCESS;
+    if (!metaMachine || stateNum >= metaMachine->numberOfStates ||
+            !metaMachine->metaStates[stateNum] ||
+            !metaMachine->metaStates[stateNum]->onExit)
+    {
+        if (result)
+            *result = REFL_INVALID_ARGS;
+    }
+    else
+    {
+        refl_machine_t machine = metaMachine->machine;
+        refl_metaAction metaAction = metaMachine->metaStates[stateNum]->onExit;
+        metaAction->action(machine, metaAction->data);
+        if (result)
+            *result = REFL_SUCCESS;
+    }
 }

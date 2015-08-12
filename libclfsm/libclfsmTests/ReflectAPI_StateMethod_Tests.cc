@@ -105,21 +105,21 @@ namespace
     TEST_F(ReflectAPI_StateMethod_Tests, invokeOnEntry)
     {
         refl_setOnEntry(state, action);
-        refl_invokeOnEntry(machine, 0);
+        refl_invokeOnEntry(machine, 0, NULL);
         ASSERT_EQ(n, N_START_VAL + incValue);
     }
 
     TEST_F(ReflectAPI_StateMethod_Tests, invokeInternal)
     {
         refl_setInternal(state, action);
-        refl_invokeInternal(machine, 0);
+        refl_invokeInternal(machine, 0, NULL);
         ASSERT_EQ(n, N_START_VAL + incValue);
     }
 
     TEST_F(ReflectAPI_StateMethod_Tests, invokeOnExit)
     {
         refl_setOnExit(state, action);
-        refl_invokeOnExit(machine, 0);
+        refl_invokeOnExit(machine, 0, NULL);
         ASSERT_EQ(n, N_START_VAL + incValue);
     }
 

@@ -50,11 +50,11 @@ unsigned int refl_getNumberOfStates(refl_metaMachine machine, CLReflectResult* r
 CLReflectResult refl_getMetaStates(refl_metaMachine metaMachine, refl_metaState const** stateBuffer);
 
 //! Invokes the OnEntry of a given state
-CLReflectResult refl_invokeOnEntry(refl_metaMachine metaMachine, int stateNum);
+void refl_invokeOnEntry(refl_metaMachine metaMachine, int stateNum, CLReflectResult* result);
 
-CLReflectResult refl_invokeInternal(refl_metaMachine metaMachine, int stateNum);
+void refl_invokeInternal(refl_metaMachine metaMachine, int stateNum, CLReflectResult* result);
 
-CLReflectResult refl_invokeOnExit(refl_metaMachine metaMachine, int stateNum);
+void refl_invokeOnExit(refl_metaMachine metaMachine, int stateNum, CLReflectResult* result);
 
 
 #endif /* end of include guard: API_METAMACHINE_H */

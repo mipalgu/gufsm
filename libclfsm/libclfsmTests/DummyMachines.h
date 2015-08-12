@@ -34,9 +34,9 @@ inline refl_metaMachine createPingPong()
 
 
     refl_metaState states[] = { ping, pong };
-    CLReflectResult res;
-    refl_setMetaStates(m, states, 2, &res);
-    std::cerr << res << std::endl;
+
+    refl_setMetaStates(m, states, 2, NULL);
+
 
     return m;
 
