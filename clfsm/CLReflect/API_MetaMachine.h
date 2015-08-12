@@ -22,21 +22,16 @@ void refl_destroyMetaMachine(refl_metaMachine machine, CLReflectResult* result);
 /*! Sets the meta machine name to the given parameter.
     @param machine The meta machine
     @param name The new name.
-    @return REFL_INVALID_ARGS if name is null
-            REFL_UNKNOWN_ERROR if memory allocation for the name fails.
-            Otherwise REFL_SUCCESS
+    @param result The result of the call
 */
-CLReflectResult refl_setMetaMachineName(refl_metaMachine machine, char const * name);
+void refl_setMetaMachineName(refl_metaMachine machine, char const * name, CLReflectResult* result);
 
-/*! Places the metamachine Name into the buffer.
+/*! Returns a copy of the machine's name. Caller is responsible for freeing the return value.
     @param machine The meta machine
-    @param buffer The buffer in which the name will be placed.
-    @param bufferLen The length of buffer.
-    @return REFL_INVALID_ARGS if machine name is null
-            REFL_BUFFER_OVERFLOW if the buffer cannot hold the name including terminating character.
-            REFL_SUCCESS otherwise.
+    @param result The result of the call.
+    @return A pointer to a heap allocated string.
 */
-CLReflectResult refl_getMetaMachineName(refl_metaMachine machine, char* buffer, int bufferLen);
+char* refl_getMetaMachineName(refl_metaMachine machine, CLReflectResult* result);
 
 //! Sets the actual machine
 CLReflectResult refl_setMachine(refl_metaMachine metaMachine, refl_machine_t machine);

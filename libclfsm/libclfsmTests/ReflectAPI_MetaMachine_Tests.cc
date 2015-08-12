@@ -71,35 +71,29 @@ namespace
     {
         char name[] = "Test Name";
         metaMachine = refl_initMetaMachine(NULL);
-        ASSERT_EQ(refl_setMetaMachineName(metaMachine, name), REFL_SUCCESS) << "Expecting success" << std::endl;
-        ASSERT_NE(refl_setMetaMachineName(metaMachine, NULL), REFL_SUCCESS) << "Expecting failure for null value" << std::endl;
+        CLReflectResult result;
+        refl_setMetaMachineName(metaMachine, name, &result);
+        ASSERT_EQ(REFL_SUCCESS, result) << "Expecting success" << std::endl;
+        refl_setMetaMachineName(metaMachine, NULL, &result);
+        ASSERT_NE(REFL_SUCCESS, result) << "Expecting failure for null value" << std::endl;
 
         // Retrieving and checking name value
-        char buffer[20];
-        CLReflectResult res = refl_getMetaMachineName(metaMachine, buffer, 20);
+        CLReflectResult res;
+        char* buffer = refl_getMetaMachineName(metaMachine, &res);
         ASSERT_EQ(res, REFL_SUCCESS) << "Expecting successful name retrieval" << std::endl;
         ASSERT_STREQ(name, buffer) << "Expecting names to be equal" << std::endl;
+        free(buffer);
     }
 
     TEST_F(ReflectAPI_MetaMachine_Tests, nullName)
     {
         metaMachine = refl_initMetaMachine(NULL);
-        char buffer[20];
-        CLReflectResult result = refl_getMetaMachineName(metaMachine, buffer, 20);
+        CLReflectResult result;
+        char* buffer = refl_getMetaMachineName(metaMachine, &result);
         ASSERT_NE(result, REFL_SUCCESS) << "Expecting failure since name is not set" << endl;
-        ASSERT_NE(refl_setMetaMachineName(metaMachine, NULL), REFL_SUCCESS);
-    }
-
-    TEST_F(ReflectAPI_MetaMachine_Tests, bufferOverFlowTest)
-    {
-        char name[] = "Test Name";
-        metaMachine = refl_initMetaMachine(NULL);
-        refl_setMetaMachineName(metaMachine, name);
-
-        char buffer[9];
-        int bufferLen = 9;
-        CLReflectResult res = refl_getMetaMachineName(metaMachine, buffer, bufferLen);
-        ASSERT_EQ(res, REFL_BUFFER_OVERFLOW) << "Expecting buffer overflow since buffer is too small" << std::endl;
+        free(buffer);
+        refl_setMetaMachineName(metaMachine, NULL, &result);
+        ASSERT_NE(REFL_SUCCESS, result);
     }
 
     TEST_F(ReflectAPI_MetaMachine_Tests, emptyStates)

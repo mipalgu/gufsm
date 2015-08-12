@@ -47,40 +47,57 @@ void refl_destroyMetaMachine(refl_metaMachine metaMachine, CLReflectResult* resu
         }
         free(metaMachine);
         functionResult = REFL_SUCCESS;
-        
+
     }
     if (result != NULL)
         *result = functionResult;
 }
 
-CLReflectResult refl_setMetaMachineName(refl_metaMachine machine, char const * name)
+void refl_setMetaMachineName(refl_metaMachine machine, char const * name, CLReflectResult* result)
 {
-
+    CLReflectResult funcResult;
     if (!machine || !name)
     {
-        return REFL_INVALID_ARGS;
-    }
-    free(machine->name); // Free the old machine name. Guaranteed heap mem.
-    int len = (int)strlen(name) + 1;
-    machine->name = (char *)malloc(sizeof(char) *  len);
-    if (machine->name == NULL)
+        funcResult = REFL_INVALID_ARGS;
+    } else
     {
-        return REFL_UNKNOWN_ERROR;
+        free(machine->name); // Free the old machine name. Guaranteed heap mem.
+        int len = (int)strlen(name) + 1;
+        machine->name = (char *)malloc(sizeof(char) *  len);
+        if (machine->name == NULL)
+        {
+            funcResult = REFL_UNKNOWN_ERROR;
+        }
+        else
+        {
+            funcResult = refl_strcpy(machine->name, name, len);
+        }
+
     }
-    else
+    if (result)
     {
-        return refl_strcpy(machine->name, name, len);
+        *result = funcResult;
     }
 }
 
-CLReflectResult refl_getMetaMachineName(refl_metaMachine machine, char* buffer, int bufferLen)
+char* refl_getMetaMachineName(refl_metaMachine machine, CLReflectResult* result)
 {
-    if (!machine)
+    if (!machine || !machine->name)
     {
-        return REFL_INVALID_ARGS; //name has not been set
+        if (result)
+            *result = REFL_INVALID_ARGS; //name has not been set
+        return NULL;
+    }
+    else
+    {
+        int bufferLen = strlen(machine->name) + 1;
+        char* buffer = (char*)malloc(bufferLen);
+        CLReflectResult funcResult = refl_strcpy(buffer, machine->name, bufferLen);
+        if (result)
+            *result = funcResult;
+        return buffer;
     }
 
-    return refl_strcpy(buffer, machine->name, bufferLen);
 }
 
 CLReflectResult refl_setMachine(refl_metaMachine metaMachine, refl_machine_t machine)

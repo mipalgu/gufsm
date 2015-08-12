@@ -24,7 +24,7 @@ inline refl_metaMachine createPingPong()
 
     // Machine
     char machineName[] = "PingPongCLFSM";
-    refl_setMetaMachineName(m, machineName);
+    refl_setMetaMachineName(m, machineName, NULL);
 
     //States
     refl_setMetaStateName(ping, "Ping");

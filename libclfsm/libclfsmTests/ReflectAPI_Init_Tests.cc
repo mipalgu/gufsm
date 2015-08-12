@@ -88,8 +88,7 @@ namespace
     TEST_F(ReflectAPI_Init_Tests, testPingPong)
     {
         refl_metaMachine pingPong = createPingPong();
-        char buffer[20];
-        refl_getMetaMachineName(pingPong, buffer, 20);
+        char* buffer = refl_getMetaMachineName(pingPong, NULL);
         ASSERT_STREQ("PingPongCLFSM", buffer);
         int numStates;
         refl_getNumberOfStates(pingPong, &numStates);
