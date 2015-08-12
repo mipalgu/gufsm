@@ -45,7 +45,7 @@ void refl_setMachine(refl_metaMachine metaMachine, refl_machine_t machine, CLRef
 void refl_setMetaStates(refl_metaMachine machine, refl_metaState* states, int len, CLReflectResult* result);
 
 //! Gets the number of states
-CLReflectResult refl_getNumberOfStates(refl_metaMachine machine, int* num);
+unsigned int refl_getNumberOfStates(refl_metaMachine machine, CLReflectResult* result);
 
 CLReflectResult refl_getMetaStates(refl_metaMachine metaMachine, refl_metaState const** stateBuffer);
 

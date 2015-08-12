@@ -117,14 +117,19 @@ void refl_setMachine(refl_metaMachine metaMachine, refl_machine_t machine, CLRef
 }
 
 //! Gets the number of states
-CLReflectResult refl_getNumberOfStates(refl_metaMachine machine, int* num)
+unsigned int refl_getNumberOfStates(refl_metaMachine machine, CLReflectResult* result)
 {
-    if (!machine || !num)
+    if ((!machine || !num) && result)
     {
-        return REFL_INVALID_ARGS;
+        *result = REFL_INVALID_ARGS;
     }
-    *num = machine->numberOfStates;
-    return REFL_SUCCESS;
+    else
+    {
+        if (result)
+            *result = REFL_SUCCESS;
+        return machine->numberOfStates;
+
+    }
 }
 
 //! Sets the meta-machine's states
