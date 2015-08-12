@@ -99,9 +99,11 @@ namespace
     TEST_F(ReflectAPI_MetaMachine_Tests, emptyStates)
     {
         metaMachine = refl_initMetaMachine(NULL);
-        int n;
-        ASSERT_EQ(refl_getNumberOfStates(metaMachine, &n), REFL_SUCCESS);
-        ASSERT_NE(refl_getNumberOfStates(NULL, NULL), REFL_SUCCESS);
+        CLReflectResult result;
+        int n = refl_getNumberOfStates(metaMachine, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        n = refl_getNumberOfStates(NULL, &result);
+        ASSERT_NE(REFL_SUCCESS, result);
         ASSERT_EQ(n, 0) << "No states added, number of states should = 0" << endl;
     }
 
@@ -115,8 +117,7 @@ namespace
         CLReflectResult result;
         refl_setMetaStates(metaMachine, states, 1, &result);
         ASSERT_EQ(REFL_SUCCESS, result);
-        int numStates;
-        refl_getNumberOfStates(metaMachine, &numStates);
+        int numStates = refl_getNumberOfStates(metaMachine, NULL);
         ASSERT_EQ(numStates, 1) << "Expecting just one state" << endl;
         refl_setMetaStates(metaMachine, NULL, 1, &result);
         ASSERT_NE(REFL_SUCCESS, result) << "Expecting failure" << endl;

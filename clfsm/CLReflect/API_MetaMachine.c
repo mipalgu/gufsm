@@ -102,9 +102,10 @@ char* refl_getMetaMachineName(refl_metaMachine machine, CLReflectResult* result)
 
 void refl_setMachine(refl_metaMachine metaMachine, refl_machine_t machine, CLReflectResult *result)
 {
-    if ((!metaMachine || !machine) && result)
+    if (!metaMachine || !machine)
     {
-        *result = REFL_INVALID_ARGS;
+        if (result)
+            *result = REFL_INVALID_ARGS;
     }
     else
     {
@@ -119,9 +120,11 @@ void refl_setMachine(refl_metaMachine metaMachine, refl_machine_t machine, CLRef
 //! Gets the number of states
 unsigned int refl_getNumberOfStates(refl_metaMachine machine, CLReflectResult* result)
 {
-    if ((!machine || !num) && result)
+    if (!machine)
     {
-        *result = REFL_INVALID_ARGS;
+        if (result)
+            *result = REFL_INVALID_ARGS;
+        return 0;
     }
     else
     {

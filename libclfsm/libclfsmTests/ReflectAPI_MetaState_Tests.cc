@@ -109,8 +109,7 @@ namespace
     {
         refl_metaMachine machine = refl_initMetaMachine(NULL);
         setStates(machine);
-        int numStates;
-        refl_getNumberOfStates(machine, &numStates);
+        int numStates = refl_getNumberOfStates(machine, NULL);
         ASSERT_EQ(2, numStates);
         refl_metaState const * states;
         refl_getMetaStates(machine, &states);

@@ -90,8 +90,7 @@ namespace
         refl_metaMachine pingPong = createPingPong();
         char* buffer = refl_getMetaMachineName(pingPong, NULL);
         ASSERT_STREQ("PingPongCLFSM", buffer);
-        int numStates;
-        refl_getNumberOfStates(pingPong, &numStates);
+        int numStates = refl_getNumberOfStates(pingPong, NULL);
         ASSERT_EQ(2, numStates);
         refl_metaState const * states;
         refl_getMetaStates(pingPong, &states);
