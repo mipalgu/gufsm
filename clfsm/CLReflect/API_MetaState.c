@@ -35,9 +35,10 @@ void refl_destroyMetaState(refl_metaState metaState, CLReflectResult* result)
     if (metaState)
     {
         free(metaState->name);
-        refl_destroyMetaAction(metaState->onEntry);
-        refl_destroyMetaAction(metaState->internal);
-        refl_destroyMetaAction(metaState->onExit);
+
+        refl_destroyMetaAction(metaState->onEntry, NULL);
+        refl_destroyMetaAction(metaState->internal, NULL);
+        refl_destroyMetaAction(metaState->onExit, NULL);
         free(metaState);
         if (result)
             *result = REFL_SUCCESS;

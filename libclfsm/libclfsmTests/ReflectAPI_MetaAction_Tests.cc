@@ -25,12 +25,12 @@ namespace
 
         ReflectAPI_MetaAction_Tests()
         {
-            refl_initMetaAction(&action);
+            action = refl_initMetaAction(NULL);
         }
 
         virtual ~ReflectAPI_MetaAction_Tests()
         {
-            refl_destroyMetaAction(action);
+            refl_destroyMetaAction(action, NULL);
         }
 
         // If the constructor and destructor are not enough for setting up
@@ -60,54 +60,66 @@ namespace
 
     TEST_F(ReflectAPI_MetaAction_Tests, initMetaFunction)
     {
-        refl_metaAction metaAction;
-        ASSERT_EQ(refl_initMetaAction(&metaAction), REFL_SUCCESS);
+        CLReflectResult result;
+        refl_metaAction metaAction = refl_initMetaAction(&result);
+        ASSERT_EQ(REFL_SUCCESS, result);
         ASSERT_TRUE(metaAction != NULL);
     }
 
     TEST_F(ReflectAPI_MetaAction_Tests, destroyMetaAction)
     {
-        ASSERT_EQ(refl_destroyMetaAction(action), REFL_SUCCESS);
+        CLReflectResult result;
+        refl_destroyMetaAction(action, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
         action = NULL;
     }
 
     TEST_F(ReflectAPI_MetaAction_Tests, setActionMethod)
     {
         refl_stateAction_f testMethod = testStateMethod;
-        ASSERT_EQ(refl_setMetaActionMethod(action, testMethod), REFL_SUCCESS);
-        ASSERT_NE(refl_setMetaActionMethod(NULL, NULL), REFL_SUCCESS);
+        CLReflectResult result;
+        refl_setMetaActionMethod(action, testMethod, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        refl_setMetaActionMethod(NULL, NULL, &result);
+        ASSERT_NE(REFL_SUCCESS, result);
     }
 
     TEST_F(ReflectAPI_MetaAction_Tests, getActionMethod)
     {
         refl_stateAction_f testMethod = testStateMethod;
-        refl_setMetaActionMethod(action, testMethod);
-        refl_stateAction_f returnMethod;
-        int result = refl_getMetaActionMethod(action, &returnMethod);
+        refl_setMetaActionMethod(action, testMethod, NULL);
+
+        CLReflectResult result ;
+        refl_stateAction_f returnMethod = refl_getMetaActionMethod(action, &result);
         ASSERT_EQ(result, REFL_SUCCESS);
         ASSERT_EQ(testMethod, returnMethod);
-        ASSERT_NE(refl_getMetaActionMethod(NULL, &returnMethod), REFL_SUCCESS);
+        refl_getMetaActionMethod(NULL, &result);
+        ASSERT_NE(REFL_SUCCESS, result);
     }
 
     TEST_F(ReflectAPI_MetaAction_Tests, getUserData)
     {
-        refl_userData_t returnData;
-        refl_getMetaActionData(action, &returnData);
+        refl_userData_t returnData = refl_getMetaActionData(action, NULL);
         ASSERT_TRUE(returnData == NULL);
         int testValue = 1;
         refl_userData_t data = static_cast<refl_userData_t>(&testValue);
-        refl_setMetaActionData(action, data);
+        refl_setMetaActionData(action, data, NULL);
 
-        refl_getMetaActionData(action, &returnData);
+        returnData = refl_getMetaActionData(action, NULL);
         ASSERT_EQ(data, returnData);
         ASSERT_EQ(testValue, *static_cast<int*>(returnData));
-        ASSERT_NE(REFL_SUCCESS, refl_getMetaActionData(NULL, &returnData));
+        CLReflectResult result;
+        refl_getMetaActionData(NULL, &result);
+        ASSERT_NE(REFL_SUCCESS, result);
     }
 
     TEST_F(ReflectAPI_MetaAction_Tests, setUserData)
     {
-        ASSERT_EQ(refl_setMetaActionData(action, NULL), REFL_SUCCESS);
-        ASSERT_NE(refl_setMetaActionData(NULL, NULL), REFL_SUCCESS);
+        CLReflectResult result;
+        refl_setMetaActionData(action, NULL, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        refl_setMetaActionData(NULL, NULL, &result);
+        ASSERT_NE(REFL_SUCCESS, result);
 
     }
 

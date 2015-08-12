@@ -4,70 +4,100 @@
 #include <stdlib.h>
 
 //! Inits the meta-action
-CLReflectResult refl_initMetaAction(refl_metaAction *metaAction)
+refl_metaAction refl_initMetaAction(CLReflectResult* result)
 {
     refl_metaAction newAction = (refl_metaAction)malloc(sizeof(struct metaAction_s));
     if (newAction != NULL)
     {
         newAction->action = NULL;
         newAction->data = NULL;
-        *metaAction = newAction;
-        return REFL_SUCCESS;
+        if (result)
+            *result = REFL_SUCCESS;
+        return newAction;
     }
     else
     {
-        return REFL_UNKNOWN_ERROR;
+        if (result)
+            *result = REFL_UNKNOWN_ERROR;
+        return NULL;
     }
 }
 
 //! Destroys the meta action
-CLReflectResult refl_destroyMetaAction(refl_metaAction metaAction)
+void refl_destroyMetaAction(refl_metaAction metaAction, CLReflectResult* result)
 {
     free(metaAction);
-    return REFL_SUCCESS;
+    if (result)
+        *result = REFL_SUCCESS;
 }
 
 
 //! Gets the action function pointer
-CLReflectResult refl_getMetaActionMethod(refl_metaAction metaAction, refl_stateAction_f* method)
+refl_stateAction_f refl_getMetaActionMethod(refl_metaAction metaAction, CLReflectResult* result)
 {
     if (!metaAction)
     {
-        return REFL_INVALID_ARGS;
+        if (result)
+            *result = REFL_INVALID_ARGS;
+        return NULL;
     }
-    *method = metaAction->action;
-    return REFL_SUCCESS;
+    else
+    {
+        if (result)
+            *result = REFL_SUCCESS;
+        return metaAction->action;
+    }
+
 }
 
 //! Sets the action function pointer
-CLReflectResult refl_setMetaActionMethod(refl_metaAction metaAction, refl_stateAction_f action)
+void refl_setMetaActionMethod(refl_metaAction metaAction, refl_stateAction_f method, CLReflectResult* result)
 {
-    if (!metaAction || !action)
+    if (!metaAction)
     {
-        return REFL_INVALID_ARGS;
+        if (result)
+            *result = REFL_INVALID_ARGS;
     }
-    metaAction->action = action;
-    return REFL_SUCCESS;
+    else
+    {
+        metaAction->action = method;
+        if (result)
+            *result = REFL_SUCCESS;
+    }
+
 }
 
 //! Sets the user data
-CLReflectResult refl_setMetaActionData(refl_metaAction metaAction, refl_userData_t data)
+void refl_setMetaActionData(refl_metaAction metaAction, refl_userData_t data, CLReflectResult* result)
 {
     if (!metaAction)
     {
-        return REFL_INVALID_ARGS;
+        if (result)
+            *result = REFL_INVALID_ARGS;
     }
-    metaAction->data = data;
-    return REFL_SUCCESS;
+    else
+    {
+        metaAction->data = data;
+        if (result)
+            *result = REFL_SUCCESS;
+    }
+
 }
 
 //! Gets the user data
-CLReflectResult refl_getMetaActionData(refl_metaAction metaAction, refl_userData_t* data)
+refl_userData_t refl_getMetaActionData(refl_metaAction metaAction, CLReflectResult* result)
 {
     if (!metaAction)
     {
-        return REFL_INVALID_ARGS;
+        if (result)
+            *result = REFL_INVALID_ARGS;
+        return NULL;
     }
-    *data = metaAction->data;
-    return REFL_SUCCESS;
+    else
+    {
+        if (result)
+            *result = REFL_SUCCESS;
+        return metaAction->data;
+    }
+
 }

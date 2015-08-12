@@ -26,16 +26,16 @@ namespace
 
         ReflectAPI_StateMethod_Tests()
         {
-            refl_initMetaAction(&action);
+            action = refl_initMetaAction(NULL);
             state = refl_initMetaState(NULL);
             machine = refl_initMetaMachine(NULL);
             refl_setMachine(machine, this, NULL);
             n = N_START_VAL;
             incValue = 1;
 
-            refl_setMetaActionMethod(action, testStateMethod);
+            refl_setMetaActionMethod(action, testStateMethod, NULL);
 
-            refl_setMetaActionData(action, static_cast<refl_userData_t>(&incValue));
+            refl_setMetaActionData(action, static_cast<refl_userData_t>(&incValue), NULL);
 
             states[0] = state;
             refl_setMetaStates(machine, states, 1, NULL);
