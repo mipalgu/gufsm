@@ -6,11 +6,12 @@ std::cout << "I have " << numStates << " states. " << std::endl;
 
 //Enumerate states
 refl_metaState const * states = refl_getMetaStates(metaMachine, NULL);
-char buffer[30];
+
 for (int i = 0; i < numStates; i++)
 {
 	std::cout << "State " << i << ": ";
-	refl_getMetaStateName(states[i], buffer, 30);
+	char* buffer = refl_getMetaStateName(states[i], NULL);
 	std::cout << buffer << std::endl;
+	free(buffer);
 }
 std::cout << "   ------------------------- " << std::endl;

@@ -78,42 +78,70 @@ void refl_setMetaStateName(refl_metaState metaState, char const * name, CLReflec
 }
 
 //! Gets the state name
-CLReflectResult refl_getMetaStateName(refl_metaState metaState, char* buffer, int bufferLen)
+char* refl_getMetaStateName(refl_metaState metaState, CLReflectResult *result)
 {
-    if (!metaState)
+    if (!metaState || !metaState->name)
     {
-        return REFL_INVALID_ARGS; //name has not been set
+        if (result)
+            *result = REFL_INVALID_ARGS; //name has not been set
+        return NULL;
     }
-    return refl_strcpy(buffer, metaState->name, bufferLen);
+    else
+    {
+        int bufferLen = strlen(metaState->name) + 1;
+        char* buffer = (char*)malloc(bufferLen);
+        CLReflectResult funcResult = refl_strcpy(buffer, metaState->name, bufferLen);
+        if (result)
+            *result = funcResult;
+        return buffer;
+    }
 }
 
 //! Sets the OnEntry function
-CLReflectResult refl_setOnEntry(refl_metaState metaState, refl_metaAction action)
+void refl_setOnEntry(refl_metaState metaState, refl_metaAction action, CLReflectResult *result)
 {
     if (!metaState || !action)
     {
-        return REFL_INVALID_ARGS;
+        if (result)
+            *result = REFL_INVALID_ARGS;
     }
-    metaState->onEntry = action;
-    return REFL_SUCCESS;
+    else
+    {
+        metaState->onEntry = action;
+        if (result)
+            *result = REFL_SUCCESS;
+
+    }
 }
 
-CLReflectResult refl_setInternal(refl_metaState metaState, refl_metaAction action)
+void refl_setInternal(refl_metaState metaState, refl_metaAction action, CLReflectResult *result)
 {
     if (!metaState || !action)
     {
-        return REFL_INVALID_ARGS;
+        if (result)
+            *result = REFL_INVALID_ARGS;
     }
-    metaState->internal = action;
-    return REFL_SUCCESS;
+    else
+    {
+        metaState->internal = action;
+        if (result)
+            *result = REFL_SUCCESS;
+
+    }
 }
 
-CLReflectResult refl_setOnExit(refl_metaState metaState, refl_metaAction action)
+void refl_setOnExit(refl_metaState metaState, refl_metaAction action, CLReflectResult *result)
 {
     if (!metaState || !action)
     {
-        return REFL_INVALID_ARGS;
+        if (result)
+            *result = REFL_INVALID_ARGS;
     }
-    metaState->onExit = action;
-    return REFL_SUCCESS;
+    else
+    {
+        metaState->onExit = action;
+        if (result)
+            *result = REFL_SUCCESS;
+
+    }
 }

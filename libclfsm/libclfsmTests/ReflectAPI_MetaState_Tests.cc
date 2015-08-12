@@ -94,22 +94,11 @@ namespace
         ASSERT_NE(REFL_SUCCESS, result) << "Expecting failure for null value" << std::endl;
 
         // Retrieving and checking name value
-        char buffer[20];
-        CLReflectResult res = refl_getMetaStateName(metaState, buffer, 20);
+        CLReflectResult res;
+        char* buffer = refl_getMetaStateName(metaState, &res);
         ASSERT_EQ(res, REFL_SUCCESS) << "Expecting successful name retrieval" << std::endl;
         ASSERT_STREQ(name, buffer) << "Expecting names to be equal" << std::endl;
-    }
-
-    TEST_F(ReflectAPI_MetaState_Tests, bufferOverflow)
-    {
-        char name[] = "Test Name";
-        metaState = refl_initMetaState(NULL);
-        refl_setMetaStateName(metaState, name, NULL);
-
-        char buffer[9];
-        int bufferLen = 9;
-        CLReflectResult res = refl_getMetaStateName(metaState, buffer, bufferLen);
-        ASSERT_EQ(res, REFL_BUFFER_OVERFLOW) << "Expecting buffer overflow since buffer is too small" << std::endl;
+        free(buffer);
     }
 
     TEST_F(ReflectAPI_MetaState_Tests, statesOnStack)
@@ -119,11 +108,11 @@ namespace
         int numStates = refl_getNumberOfStates(machine, NULL);
         ASSERT_EQ(2, numStates);
         refl_metaState const * states = refl_getMetaStates(machine, NULL);
-        char buffer[20];
-        refl_getMetaStateName(states[0], buffer, 20);
+        char *buffer = refl_getMetaStateName(states[0], NULL);
         ASSERT_STREQ(STATE_0, buffer);
-        refl_getMetaStateName(states[1], buffer, 20);
+        buffer = refl_getMetaStateName(states[1], NULL);
         ASSERT_STREQ(STATE_1, buffer);
+        free(buffer);
 
 
     }

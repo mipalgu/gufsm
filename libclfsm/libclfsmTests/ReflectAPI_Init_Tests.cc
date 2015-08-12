@@ -94,12 +94,12 @@ namespace
         ASSERT_EQ(2, numStates);
         refl_metaState const * states = refl_getMetaStates(pingPong, NULL);
 
-        char pingBuffer[20];
-        refl_getMetaStateName(states[0], pingBuffer, 20);
+        char* pingBuffer = refl_getMetaStateName(states[0], NULL);
         ASSERT_STREQ("Ping", pingBuffer);
-        char pongBuffer[20];
-        refl_getMetaStateName(states[1],pongBuffer, 20);
+        free(pingBuffer);
+        char* pongBuffer = refl_getMetaStateName(states[1], NULL);
         ASSERT_STREQ("Pong", pongBuffer);
+        free(pongBuffer);
     }
 
 

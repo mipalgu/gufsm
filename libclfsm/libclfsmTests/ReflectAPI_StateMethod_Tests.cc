@@ -86,39 +86,48 @@ namespace
 
     TEST_F(ReflectAPI_StateMethod_Tests, setOnEntry)
     {
-        ASSERT_EQ(refl_setOnEntry(state, action), REFL_SUCCESS);
-        ASSERT_NE(refl_setOnEntry(state, NULL), REFL_SUCCESS);
+        CLReflectResult result;
+        refl_setOnEntry(state, action, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        refl_setOnEntry(state, NULL, &result);
+        ASSERT_NE(REFL_SUCCESS, result);
     }
 
     TEST_F(ReflectAPI_StateMethod_Tests, setInternal)
     {
-        ASSERT_EQ(refl_setInternal(state, action), REFL_SUCCESS);
-        ASSERT_NE(refl_setInternal(state, NULL), REFL_SUCCESS);
+        CLReflectResult result;
+        refl_setInternal(state, action, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        refl_setInternal(state, NULL, &result);
+        ASSERT_NE(REFL_SUCCESS, result);
     }
 
     TEST_F(ReflectAPI_StateMethod_Tests, setOnExit)
     {
-        ASSERT_EQ(refl_setOnExit(state, action), REFL_SUCCESS);
-        ASSERT_NE(refl_setOnExit(state, NULL), REFL_SUCCESS);
+        CLReflectResult result;
+        refl_setOnExit(state, action, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        refl_setOnExit(state, NULL, &result);
+        ASSERT_NE(REFL_SUCCESS, result);
     }
 
     TEST_F(ReflectAPI_StateMethod_Tests, invokeOnEntry)
     {
-        refl_setOnEntry(state, action);
+        refl_setOnEntry(state, action, NULL);
         refl_invokeOnEntry(machine, 0, NULL);
         ASSERT_EQ(n, N_START_VAL + incValue);
     }
 
     TEST_F(ReflectAPI_StateMethod_Tests, invokeInternal)
     {
-        refl_setInternal(state, action);
+        refl_setInternal(state, action, NULL);
         refl_invokeInternal(machine, 0, NULL);
         ASSERT_EQ(n, N_START_VAL + incValue);
     }
 
     TEST_F(ReflectAPI_StateMethod_Tests, invokeOnExit)
     {
-        refl_setOnExit(state, action);
+        refl_setOnExit(state, action, NULL);
         refl_invokeOnExit(machine, 0, NULL);
         ASSERT_EQ(n, N_START_VAL + incValue);
     }
