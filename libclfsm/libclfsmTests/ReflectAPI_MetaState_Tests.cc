@@ -58,31 +58,35 @@ namespace
     void setStates(refl_metaMachine machine)
     {
         refl_metaState states[2];
-        refl_initMetaState(&states[0]);
+        states[0] = refl_initMetaState(NULL);
         refl_setMetaStateName(states[0], STATE_0);
-        refl_initMetaState(&states[1]);
+        states[1] = refl_initMetaState(NULL);
         refl_setMetaStateName(states[1], STATE_1);
         refl_setMetaStates(machine, states, 2, NULL);
     }
 
     TEST_F(ReflectAPI_MetaState_Tests, initMetaState)
     {
-        ASSERT_EQ(refl_initMetaState(&metaState), REFL_SUCCESS) << "Expecting REFL_SUCCESS" << endl;
+        CLReflectResult result;
+        metaState = refl_initMetaState(&result);
+        ASSERT_EQ(REFL_SUCCESS, result) << "Expecting REFL_SUCCESS" << endl;
         ASSERT_TRUE(metaState != NULL) << "Ptr should not be null " << endl;
 
     }
 
     TEST_F(ReflectAPI_MetaState_Tests, destroyMetaState)
     {
-        refl_initMetaState(&metaState);
-        ASSERT_EQ(refl_destroyMetaState(metaState), REFL_SUCCESS);
+        CLReflectResult result;
+        metaState = refl_initMetaState(NULL);
+        refl_destroyMetaState(metaState, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
         metaState = NULL;
     }
 
     TEST_F(ReflectAPI_MetaState_Tests, setStateName)
     {
         char name[] = "Test Name";
-        refl_initMetaState(&metaState);
+        metaState = refl_initMetaState(NULL);
         ASSERT_EQ(refl_setMetaStateName(metaState, name), REFL_SUCCESS) << "Expecting success" << std::endl;
         ASSERT_NE(refl_setMetaStateName(metaState, NULL), REFL_SUCCESS) << "Expecting failure for null value" << std::endl;
 
@@ -96,7 +100,7 @@ namespace
     TEST_F(ReflectAPI_MetaState_Tests, bufferOverflow)
     {
         char name[] = "Test Name";
-        refl_initMetaState(&metaState);
+        metaState = refl_initMetaState(NULL);
         refl_setMetaStateName(metaState, name);
 
         char buffer[9];

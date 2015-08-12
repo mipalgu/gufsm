@@ -111,8 +111,7 @@ namespace
     {
         metaMachine = refl_initMetaMachine(NULL);
         refl_metaState states[1];
-        refl_metaState state;
-        refl_initMetaState(&state);
+        refl_metaState state = refl_initMetaState(NULL);
         states[0] = state;
         CLReflectResult result;
         refl_setMetaStates(metaMachine, states, 1, &result);
@@ -129,8 +128,8 @@ namespace
     {
         metaMachine = refl_initMetaMachine(NULL);
         refl_metaState states[2];
-        refl_initMetaState(&states[0]);
-        refl_initMetaState(&states[1]);
+        states[0] = refl_initMetaState(NULL);
+        states[1] = refl_initMetaState(NULL);
         refl_setMetaStates(metaMachine, states, 2, NULL);
 
         CLReflectResult res;

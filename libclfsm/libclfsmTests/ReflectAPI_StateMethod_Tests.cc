@@ -27,7 +27,7 @@ namespace
         ReflectAPI_StateMethod_Tests()
         {
             refl_initMetaAction(&action);
-            refl_initMetaState(&state);
+            state = refl_initMetaState(NULL);
             machine = refl_initMetaMachine(NULL);
             refl_setMachine(machine, this, NULL);
             n = N_START_VAL;

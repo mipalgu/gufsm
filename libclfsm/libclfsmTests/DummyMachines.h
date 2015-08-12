@@ -17,11 +17,8 @@ refl_metaMachine createPingPong();
 inline refl_metaMachine createPingPong()
 {
     refl_metaMachine m = refl_initMetaMachine(NULL);
-    refl_metaState ping, pong;
-
-
-    refl_initMetaState(&ping);
-    refl_initMetaState(&pong);
+    refl_metaState ping = refl_initMetaState(NULL);
+    refl_metaState pong = refl_initMetaState(NULL);
 
     // Machine
     char machineName[] = "PingPongCLFSM";

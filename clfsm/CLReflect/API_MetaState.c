@@ -7,7 +7,7 @@
 #include <string.h>
 
 //! Initialises the meta state
-CLReflectResult refl_initMetaState(refl_metaState *metaState)
+refl_metaState refl_initMetaState(CLReflectResult *result)
 {
     refl_metaState newMetaState = (refl_metaState)malloc(sizeof(struct metaState_s));
     if (newMetaState != NULL)
@@ -17,12 +17,17 @@ CLReflectResult refl_initMetaState(refl_metaState *metaState)
         newMetaState->internal = NULL;
         newMetaState->onExit = NULL;
         *metaState = newMetaState;
-        return REFL_SUCCESS;
+        if (result)
+            *result = REFL_SUCCESS;
+        return newMetaState;
     }
     else
     {
-        return REFL_UNKNOWN_ERROR;
+        if (result)
+            *result = REFL_UNKNOWN_ERROR;
+        return NULL;
     }
+
 }
 
 //! Destroys the meta-state

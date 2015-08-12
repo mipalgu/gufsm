@@ -8,7 +8,7 @@ struct metaState_s;
 typedef struct metaState_s* refl_metaState;
 
 //! Initialises the meta state
-CLReflectResult refl_initMetaState(refl_metaState *metaState);
+refl_metaState refl_initMetaState(CLReflectResult *result);
 
 //! Destroys the meta-state
 CLReflectResult refl_destroyMetaState(refl_metaState metaState);
