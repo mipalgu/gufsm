@@ -112,12 +112,16 @@ namespace
         refl_metaState state;
         refl_initMetaState(&state);
         states[0] = state;
-        ASSERT_EQ(refl_setMetaStates(metaMachine, states, 1), REFL_SUCCESS);
+        CLReflectResult result;
+        refl_setMetaStates(metaMachine, states, 1, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
         int numStates;
         refl_getNumberOfStates(metaMachine, &numStates);
         ASSERT_EQ(numStates, 1) << "Expecting just one state" << endl;
-        ASSERT_NE(refl_setMetaStates(metaMachine, NULL, 1), REFL_SUCCESS) << "Expecting failure" << endl;
-        ASSERT_EQ(refl_setMetaStates(metaMachine, NULL, 0), REFL_SUCCESS);
+        refl_setMetaStates(metaMachine, NULL, 1, &result);
+        ASSERT_NE(REFL_SUCCESS, result) << "Expecting failure" << endl;
+        refl_setMetaStates(metaMachine, NULL, 0, &result)
+        ASSERT_EQ(REFL_SUCCESS, result);
     }
 
     TEST_F(ReflectAPI_MetaMachine_Tests, getStates)

@@ -62,7 +62,7 @@ namespace
         refl_setMetaStateName(states[0], STATE_0);
         refl_initMetaState(&states[1]);
         refl_setMetaStateName(states[1], STATE_1);
-        refl_setMetaStates(machine, states, 2);
+        refl_setMetaStates(machine, states, 2, NULL);
     }
 
     TEST_F(ReflectAPI_MetaState_Tests, initMetaState)

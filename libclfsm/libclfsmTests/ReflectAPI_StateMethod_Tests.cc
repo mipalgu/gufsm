@@ -38,7 +38,7 @@ namespace
             refl_setMetaActionData(action, static_cast<refl_userData_t>(&incValue));
 
             states[0] = state;
-            refl_setMetaStates(machine, states, 1);
+            refl_setMetaStates(machine, states, 1, NULL);
 
         }
 

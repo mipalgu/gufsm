@@ -33,11 +33,16 @@ void refl_setMetaMachineName(refl_metaMachine machine, char const * name, CLRefl
 */
 char* refl_getMetaMachineName(refl_metaMachine machine, CLReflectResult* result);
 
-//! Sets the actual machine
+/*!
+    Sets the actual FSM for this meta machine
+    @param metaMachine The metamachine
+    @param machine The executable FSM
+    @param result A pointer to an int in which the call is placed.
+*/
 void refl_setMachine(refl_metaMachine metaMachine, refl_machine_t machine, CLReflectResult *result);
 
 //! Sets the meta-machine's states
-CLReflectResult refl_setMetaStates(refl_metaMachine machine, refl_metaState* states, int len);
+void refl_setMetaStates(refl_metaMachine machine, refl_metaState* states, int len, CLReflectResult* result);
 
 //! Gets the number of states
 CLReflectResult refl_getNumberOfStates(refl_metaMachine machine, int* num);

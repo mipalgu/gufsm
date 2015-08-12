@@ -128,17 +128,26 @@ CLReflectResult refl_getNumberOfStates(refl_metaMachine machine, int* num)
 }
 
 //! Sets the meta-machine's states
-CLReflectResult refl_setMetaStates(refl_metaMachine machine, refl_metaState* states, int len)
+void refl_setMetaStates(refl_metaMachine machine, refl_metaState* states, int len, CLReflectResult* result)
 {
     if (!machine || (!states && len) || (states && !len)) //Can have null states if len = 0
     {
-        return REFL_INVALID_ARGS;
+        if (result)
+            *result = REFL_INVALID_ARGS;
     }
-    free(machine->metaStates);
-    machine->metaStates = (refl_metaState*)malloc(sizeof(refl_metaState*) * len);
-    memcpy(machine->metaStates, states, sizeof(refl_metaState*) * len);
-    machine->numberOfStates = len;
-    return REFL_SUCCESS;
+    else
+    {
+        if (len != 0)
+        {
+            free(machine->metaStates);
+            machine->metaStates = (refl_metaState*)malloc(sizeof(refl_metaState*) * len);
+            memcpy(machine->metaStates, states, sizeof(refl_metaState*) * len);
+        }
+        machine->numberOfStates = len;
+        if (result)
+            *result = REFL_SUCCESS;
+
+    }
 }
 
 CLReflectResult refl_getMetaStates(refl_metaMachine metaMachine, refl_metaState const** stateBuffer)

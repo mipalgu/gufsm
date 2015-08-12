@@ -33,7 +33,7 @@ inline refl_metaMachine createPingPong()
 
 
     refl_metaState states[] = { ping, pong };
-    refl_setMetaStates(m, states, 2);
+    refl_setMetaStates(m, states, 2, NULL);
 
     return m;
 
