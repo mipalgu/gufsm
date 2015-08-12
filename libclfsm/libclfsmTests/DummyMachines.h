@@ -3,6 +3,7 @@
 
 #include "CLMachine.h"
 #include "CLReflectAPI.h"
+#include <iostream>
 
 class TestMachine: public FSM::CLMachine
 {
@@ -33,7 +34,9 @@ inline refl_metaMachine createPingPong()
 
 
     refl_metaState states[] = { ping, pong };
-    refl_setMetaStates(m, states, 2, NULL);
+    CLReflectResult res;
+    refl_setMetaStates(m, states, 2, &res);
+    std::cerr << res << std::endl;
 
     return m;
 

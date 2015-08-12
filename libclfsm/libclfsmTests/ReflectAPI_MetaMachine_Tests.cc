@@ -120,7 +120,7 @@ namespace
         ASSERT_EQ(numStates, 1) << "Expecting just one state" << endl;
         refl_setMetaStates(metaMachine, NULL, 1, &result);
         ASSERT_NE(REFL_SUCCESS, result) << "Expecting failure" << endl;
-        refl_setMetaStates(metaMachine, NULL, 0, &result)
+        refl_setMetaStates(metaMachine, NULL, 0, &result);
         ASSERT_EQ(REFL_SUCCESS, result);
     }
 
@@ -130,7 +130,7 @@ namespace
         refl_metaState states[2];
         refl_initMetaState(&states[0]);
         refl_initMetaState(&states[1]);
-        refl_setMetaStates(metaMachine, states, 2);
+        refl_setMetaStates(metaMachine, states, 2, NULL);
 
         refl_metaState const * retStates;
         ASSERT_EQ(REFL_SUCCESS, refl_getMetaStates(metaMachine, &retStates));
