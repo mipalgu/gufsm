@@ -29,7 +29,7 @@ namespace
             refl_initMetaAction(&action);
             refl_initMetaState(&state);
             machine = refl_initMetaMachine(NULL);
-            refl_setMachine(machine, this);
+            refl_setMachine(machine, this, NULL);
             n = N_START_VAL;
             incValue = 1;
 

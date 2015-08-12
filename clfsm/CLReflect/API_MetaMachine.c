@@ -100,14 +100,20 @@ char* refl_getMetaMachineName(refl_metaMachine machine, CLReflectResult* result)
 
 }
 
-CLReflectResult refl_setMachine(refl_metaMachine metaMachine, refl_machine_t machine)
+void refl_setMachine(refl_metaMachine metaMachine, refl_machine_t machine, CLReflectResult *result)
 {
-    if (!metaMachine || !machine)
+    if ((!metaMachine || !machine) && result)
     {
-        return REFL_INVALID_ARGS;
+        *result = REFL_INVALID_ARGS;
     }
-    metaMachine->machine = machine;
-    return REFL_SUCCESS;
+    else
+    {
+        metaMachine->machine = machine;
+        if (result)
+        {
+            *result = REFL_SUCCESS;
+        }
+    }
 }
 
 //! Gets the number of states

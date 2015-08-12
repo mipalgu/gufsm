@@ -34,7 +34,7 @@ void refl_setMetaMachineName(refl_metaMachine machine, char const * name, CLRefl
 char* refl_getMetaMachineName(refl_metaMachine machine, CLReflectResult* result);
 
 //! Sets the actual machine
-CLReflectResult refl_setMachine(refl_metaMachine metaMachine, refl_machine_t machine);
+void refl_setMachine(refl_metaMachine metaMachine, refl_machine_t machine, CLReflectResult *result);
 
 //! Sets the meta-machine's states
 CLReflectResult refl_setMetaStates(refl_metaMachine machine, refl_metaState* states, int len);

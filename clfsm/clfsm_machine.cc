@@ -323,7 +323,7 @@ CLMachine *MachineWrapper::instantiate(int id, const char *machine_name)
     return _factory(id, machine_name);
 }
 
-refl_metaMachine MachineWrapper::  instantiateMetaMachine(CLMachine * machine)
+refl_metaMachine MachineWrapper::instantiateMetaMachine(CLMachine * machine)
 {
     if (!_shared_object)
     {
@@ -336,12 +336,11 @@ refl_metaMachine MachineWrapper::  instantiateMetaMachine(CLMachine * machine)
         _metaFactory = create_meta_f(dlsym(_shared_object, symbol.c_str()));
         if (!_metaFactory)
         {
-            std::cerr << "Couldn't find symbol" << std::endl;
             return NULL;
         }
     }
     refl_metaMachine meta = _metaFactory();
-    refl_setMachine(meta, static_cast<void*>(machine));
+    refl_setMachine(meta, static_cast<void*>(machine), NULL);
     return meta;
 }
 
