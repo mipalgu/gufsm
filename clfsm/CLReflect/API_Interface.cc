@@ -9,57 +9,73 @@
 static CLMetaRegister* metaRegister = NULL;
 
 //! Inits the API
-CLReflectResult refl_initAPI()
+void refl_initAPI(CLReflectResult *result)
 {
     if (!metaRegister)
     {
         metaRegister = new CLMetaRegister();
     }
-    return REFL_SUCCESS;
+    if (result)
+        *result = REFL_SUCCESS;
 }
 
-CLReflectResult refl_destroyAPI()
+void refl_destroyAPI(CLReflectResult *result)
 {
     if (!metaRegister)
     {
-        return REFL_INVALID_CALL;
+        if (result)
+            *result = REFL_INVALID_CALL;
     }
-    delete metaRegister;
-    metaRegister = NULL;
-    return REFL_SUCCESS;
+    else
+    {
+        delete metaRegister;
+        metaRegister = NULL;
+        if (result)
+            *result = REFL_SUCCESS;
+    }
+
 }
 
 //! Registers the meta machine with the reflection API
-CLReflectResult refl_registerMetaMachine(refl_metaMachine metaMachine, unsigned int machineID)
+void refl_registerMetaMachine(refl_metaMachine metaMachine, unsigned int machineID, CLReflectResult *result)
 {
-    if (!metaMachine)
+    if (!metaMachine || (metaRegister->metaRegister.size() > machineID &&
+                metaRegister->metaRegister[machineID] != NULL))
     {
-        return REFL_INVALID_ARGS;
+        if (result)
+            *result = REFL_INVALID_ARGS;
     }
-    if (metaRegister->metaRegister.size() > machineID &&
-                metaRegister->metaRegister[machineID] != NULL)
+    else
     {
-        return REFL_INVALID_ARGS;
+        //Check capacity and resize if need
+        if (machineID > metaRegister->metaRegister.size())
+        {
+            metaRegister->metaRegister.resize(machineID + 1, NULL);
+        }
+        metaRegister->metaRegister.insert(metaRegister->metaRegister.begin() + machineID, metaMachine);
+        if (result)
+            *result = REFL_SUCCESS;
     }
-    //Check capacity and resize if need
-    if (machineID > metaRegister->metaRegister.size())
-    {
-        metaRegister->metaRegister.resize(machineID + 1, NULL);
-    }
-    metaRegister->metaRegister.insert(metaRegister->metaRegister.begin() + machineID, metaMachine);
-    return REFL_SUCCESS;
+
 }
 
 //! Gets the meta machine with the given ID
-CLReflectResult refl_getMetaMachine(unsigned int machineID, refl_metaMachine* metaMachine)
+refl_metaMachine refl_getMetaMachine(unsigned int machineID, CLReflectResult *result)
 {
     std::vector<refl_metaMachine> metaReg = metaRegister->metaRegister;
     if (machineID >= metaReg.size())
     {
-        return REFL_INVALID_ARGS;
+        if (result)
+            *result = REFL_INVALID_ARGS;
+        return NULL;
     }
-    *metaMachine = metaReg[machineID];
-    return REFL_SUCCESS;
+    else
+    {
+        if (result)
+            *result = REFL_SUCCESS;
+        return metaReg[machineID];
+    }
+
 }
 
 #pragma clang diagnostic pop

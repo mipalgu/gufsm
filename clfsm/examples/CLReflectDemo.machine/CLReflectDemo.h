@@ -1,7 +1,7 @@
 //
-// CLReflectDemo.h
+//CLReflectDemo.h
 //
-// Automatically created through MiCASE -- do not change manually!
+//Automatically created through MiEditCLFSM -- do not change manually!
 //
 #ifndef __clfsm__CLReflectDemo__
 #define __clfsm__CLReflectDemo__
@@ -10,26 +10,26 @@
 
 namespace FSM
 {
-    class CLState;
+	class CLState;
 
-    namespace CLM
-    {
-        class CLReflectDemo: public CLMachine
-        {
-            CLState *_states[4];
-        public:
-            CLReflectDemo(int mid  = 0, const char *name = "CLReflectDemo");
-            virtual ~CLReflectDemo();
-            virtual CLState * const * states() const { return _states; }
-            virtual int numberOfStates() const { return 4; }
-#           include "CLReflectDemo_Variables.h"
-        };
-    }
+	namespace CLM
+	{
+		class CLReflectDemo: public CLMachine
+		{
+			CLState *_states[4];
+			public:
+			CLReflectDemo(int mid  = 0, const char *name = "CLReflectDemo");
+			virtual ~CLReflectDemo();
+			virtual CLState * const * states() const { return _states; }
+			virtual int numberOfStates() const { return 4; }
+#			include "CLReflectDemo_Variables.h"
+		};
+	}
 }
 
 extern "C"
 {
-    FSM::CLM::CLReflectDemo *CLM_Create_CLReflectDemo(int mid, const char *name);
+	FSM::CLM::CLReflectDemo *CLM_Create_CLReflectDemo(int mid, const char *name);
 }
 
 #endif // defined(__gufsm__CLReflectDemo__)

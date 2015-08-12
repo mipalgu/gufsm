@@ -7,16 +7,16 @@
 extern "C"
 {
     //! Inits the API
-    CLReflectResult refl_initAPI();
+    void refl_initAPI(CLReflectResult *result);
 
     //! De-inits the API
-    CLReflectResult refl_destroyAPI();
+    void refl_destroyAPI(CLReflectResult *result);
 
     //! Registers the meta machine with the reflection API
-    CLReflectResult refl_registerMetaMachine(refl_metaMachine metaMachine, unsigned int machineID);
+    void refl_registerMetaMachine(refl_metaMachine metaMachine, unsigned int machineID, CLReflectResult *result);
 
     //! Gets the meta machine with the given ID
-    CLReflectResult refl_getMetaMachine(unsigned int machineID, refl_metaMachine* metaMachine);
+    refl_metaMachine refl_getMetaMachine(unsigned int machineID, CLReflectResult *result);
 
 
 }

@@ -33,7 +33,7 @@ namespace
         virtual ~ReflectAPI_Init_Tests()
         {
             refl_destroyMetaMachine(metaMachine, NULL);
-            refl_destroyAPI();
+            refl_destroyAPI(NULL);
         }
 
         // If the constructor and destructor are not enough for setting up
@@ -55,34 +55,47 @@ namespace
 
     TEST_F(ReflectAPI_Init_Tests, initAPI)
     {
-        ASSERT_EQ(refl_initAPI(), REFL_SUCCESS);
+        CLReflectResult result;
+        refl_initAPI(&result);
+        ASSERT_EQ(result, REFL_SUCCESS);
     }
 
     TEST_F(ReflectAPI_Init_Tests, destroyAPI)
     {
-        ASSERT_EQ(refl_destroyAPI(), REFL_INVALID_CALL) << "Expecting invalid as API not inited" << endl;
-        refl_initAPI();
-        ASSERT_EQ(refl_destroyAPI(), REFL_SUCCESS) << "Expecting successful destroy after API init" << endl;
+        CLReflectResult result;
+        refl_destroyAPI(&result);
+        ASSERT_EQ(result, REFL_INVALID_CALL) << "Expecting invalid as API not inited" << endl;
+        refl_initAPI(NULL);
+        refl_destroyAPI(&result);
+        ASSERT_EQ(result, REFL_SUCCESS) << "Expecting successful destroy after API init" << endl;
     }
 
     TEST_F(ReflectAPI_Init_Tests, registerMetaMachine)
     {
-        refl_initAPI();
-        ASSERT_EQ(refl_registerMetaMachine(metaMachine, 0), REFL_SUCCESS);
-        ASSERT_EQ(refl_registerMetaMachine(metaMachine, 10), REFL_SUCCESS);
-        ASSERT_EQ(refl_registerMetaMachine(metaMachine, 50), REFL_SUCCESS);
-        ASSERT_NE(refl_registerMetaMachine(metaMachine, 0), REFL_SUCCESS) << "Expecting fail for reuse of id" << endl;
-        ASSERT_NE(refl_registerMetaMachine(NULL, 1), REFL_SUCCESS) << "Expecting fail for NULL machine" << endl;
+        refl_initAPI(NULL);
+        CLReflectResult result;
+        refl_registerMetaMachine(metaMachine, 0, &result);
+        ASSERT_EQ(result, REFL_SUCCESS);
+        refl_registerMetaMachine(metaMachine, 10, &result);
+        ASSERT_EQ(result, REFL_SUCCESS);
+        refl_registerMetaMachine(metaMachine, 50, &result);
+        ASSERT_EQ(result, REFL_SUCCESS);
+        refl_registerMetaMachine(metaMachine, 0, &result);
+        ASSERT_NE(result, REFL_SUCCESS) << "Expecting fail for reuse of id" << endl;
+        refl_registerMetaMachine(NULL, 1, &result);
+        ASSERT_NE(result, REFL_SUCCESS) << "Expecting fail for NULL machine" << endl;
     }
 
     TEST_F(ReflectAPI_Init_Tests, getMetaMachine)
     {
-        refl_initAPI();
-        refl_registerMetaMachine(metaMachine, 0);
-        refl_metaMachine returnMach;
-        ASSERT_EQ(refl_getMetaMachine(0, &returnMach), REFL_SUCCESS);
+        refl_initAPI(NULL);
+        refl_registerMetaMachine(metaMachine, 0, NULL);
+        CLReflectResult result;
+        refl_metaMachine returnMach = refl_getMetaMachine(0, &result);
+        ASSERT_EQ(result, REFL_SUCCESS);
         ASSERT_EQ(metaMachine, returnMach);
-        ASSERT_EQ(refl_getMetaMachine(1, &returnMach), REFL_INVALID_ARGS);
+        refl_getMetaMachine(1, &result);
+        ASSERT_EQ(result, REFL_INVALID_ARGS);
     }
 
     TEST_F(ReflectAPI_Init_Tests, testPingPong)
