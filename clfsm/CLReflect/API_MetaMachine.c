@@ -89,7 +89,7 @@ char* refl_getMetaMachineName(refl_metaMachine machine, CLReflectResult* result)
     }
     else
     {
-        int bufferLen = strlen(machine->name) + 1;
+        int bufferLen = (int)strlen(machine->name) + 1;
         char* buffer = (char*)malloc(bufferLen);
         CLReflectResult funcResult = refl_strcpy(buffer, machine->name, bufferLen);
         if (result)
