@@ -7,9 +7,9 @@ struct metaTransition_s;
 typedef struct metaTransition_s* refl_metaTransition;
 
 //! Inits the metaTransition
-refl_metaTransition refl_initMetaTransition(uint32_t* result);
+refl_metaTransition refl_initMetaTransition(int* result);
 
 //! Destroys the metaTransition
-refl_metaTransition refl_destroyMetaTransition(refl_metaTransition trans, uint32_t* result);
+void refl_destroyMetaTransition(refl_metaTransition trans, int* result);
 
 #endif /* end of include guard: API_METATRANSITION_H */
