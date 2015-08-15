@@ -89,7 +89,7 @@ char* refl_getMetaStateName(refl_metaState metaState, CLReflectResult *result)
     }
     else
     {
-        int bufferLen = strlen(metaState->name) + 1;
+        int bufferLen = (int)strlen(metaState->name) + 1;
         char* buffer = (char*)malloc(bufferLen);
         CLReflectResult funcResult = refl_strcpy(buffer, metaState->name, bufferLen);
         if (result)
