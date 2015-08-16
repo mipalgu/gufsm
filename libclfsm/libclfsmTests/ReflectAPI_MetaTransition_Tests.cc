@@ -145,6 +145,7 @@ namespace
         refl_getMetaTransitionExpression(NULL, &result);
         ASSERT_EQ(REFL_INVALID_ARGS, result);
     }
+
 }
 
 #pragma clang diagnostic pop

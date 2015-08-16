@@ -1,6 +1,9 @@
 #include "API_MetaTransition.h"
 
 #include <stdlib.h>
+#include <string.h>
+
+#include "API_Util.h"
 
 refl_metaTransition refl_initMetaTransition(CLReflectResult* result)
 {
@@ -187,5 +190,68 @@ refl_userData_t refl_getMetaTransitionData(refl_metaTransition trans, CLReflectR
             *result = REFL_SUCCESS;
         }
         return trans->data;
+    }
+}
+
+char * refl_getMetaTransitionExpression(refl_metaTransition trans, CLReflectResult* result)
+{
+    refl_bool shouldReturnNull = refl_FALSE;
+    CLReflectResult res;
+    char *expression;
+    if (!trans)
+    {
+        res = REFL_INVALID_ARGS;
+        shouldReturnNull = refl_TRUE;
+    }
+    else if (trans->expression == NULL)
+    {
+        res = REFL_SUCCESS;
+        shouldReturnNull = refl_TRUE;
+    }
+    else
+    {
+        size_t len = strlen(trans->expression) + 1;
+        expression = (char *) malloc(sizeof(char) * len);
+        res = refl_strcpy(expression, trans->expression, len);
+    }
+    if (result)
+    {
+        *result = res;
+    }
+    if (shouldReturnNull)
+    {
+        return NULL;
+    }
+    else
+    {
+        return expression;
+    }
+
+}
+
+void refl_setMetaTransitionExpression(refl_metaTransition trans, char const * expression, CLReflectResult* result)
+{
+    if (!trans || !expression)
+    {
+        if (result)
+            *result = REFL_INVALID_ARGS;
+    }
+    else
+    {
+        free(trans->expression);
+        size_t len = strlen(expression) + 1;
+        trans->expression = (char *) malloc(sizeof(char) * len);
+        if (!trans->expression)
+        {
+            if (result)
+                *result = REFL_UNKNOWN_ERROR;
+        }
+        else
+        {
+            CLReflectResult res = refl_strcpy(trans->expression, expression, len);
+            if (result)
+                *result = res;
+        }
+
     }
 }
