@@ -9,8 +9,8 @@ typedef void* refl_machine_t;
 typedef void* refl_userData_t;
 typedef unsigned char refl_bool;
 
-#define refl_true 1
-#define refl_false 0
+#define refl_TRUE 1
+#define refl_FALSE 0
 
 // Function pointers
 

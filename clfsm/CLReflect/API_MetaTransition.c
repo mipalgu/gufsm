@@ -2,7 +2,7 @@
 
 #include <stdlib.h>
 
-refl_metaTransition refl_initMetaTransition(int* result)
+refl_metaTransition refl_initMetaTransition(CLReflectResult* result)
 {
     refl_metaTransition transition = (refl_metaTransition)
                                     malloc(sizeof(struct metaTransition_s));
@@ -29,7 +29,7 @@ refl_metaTransition refl_initMetaTransition(int* result)
 
 }
 
-void refl_destroyMetaTransition(refl_metaTransition trans, int* result)
+void refl_destroyMetaTransition(refl_metaTransition trans, CLReflectResult* result)
 {
     if (trans == NULL)
     {
@@ -48,4 +48,144 @@ void refl_destroyMetaTransition(refl_metaTransition trans, int* result)
         }
     }
 
+}
+
+int refl_getMetaTransitionTarget(refl_metaTransition trans, CLReflectResult* result)
+{
+    int errorReturnVal = -1;
+    if (trans == NULL)
+    {
+        if (result)
+        {
+            *result = REFL_INVALID_ARGS;
+        }
+        return errorReturnVal;
+    }
+    else
+    {
+        if (result)
+        {
+            *result = REFL_SUCCESS;
+        }
+        return trans->target;
+    }
+}
+
+void refl_setMetaTransitionTarget(refl_metaTransition trans, unsigned int target, CLReflectResult* result)
+{
+    if (trans == NULL)
+    {
+        if (result)
+        {
+            *result = REFL_INVALID_ARGS;
+        }
+    }
+    else
+    {
+        trans->target = target;
+        if (result)
+        {
+            *result = REFL_SUCCESS;
+        }
+    }
+}
+
+int refl_getMetaTransitionSource(refl_metaTransition trans, CLReflectResult* result)
+{
+    int errorReturnVal = -1;
+    if (trans == NULL)
+    {
+        if (result)
+        {
+            *result = REFL_INVALID_ARGS;
+        }
+        return errorReturnVal;
+    }
+    else
+    {
+        if (result)
+        {
+            *result = REFL_SUCCESS;
+        }
+        return trans->source;
+    }
+}
+
+void refl_setMetaTransitionSource(refl_metaTransition trans, unsigned int source, CLReflectResult* result)
+{
+    if (trans == NULL)
+    {
+        if (result)
+        {
+            *result = REFL_INVALID_ARGS;
+        }
+    }
+    else
+    {
+        trans->source = source;
+        if (result)
+        {
+            *result = REFL_SUCCESS;
+        }
+    }
+}
+
+refl_transitionEval_f refl_getMetaTransitionEvalFunction(refl_metaTransition trans, CLReflectResult* result)
+{
+    if (trans == NULL)
+    {
+        if (result)
+        {
+            *result = REFL_INVALID_ARGS;
+        }
+        return NULL;
+    }
+    else
+    {
+        if (result)
+        {
+            *result = REFL_SUCCESS;
+        }
+        return trans->evalFunction;
+    }
+}
+
+void refl_setMetaTransitionEvalFunction(refl_metaTransition trans, refl_transitionEval_f func, refl_userData_t data, CLReflectResult* result)
+{
+    if (trans == NULL)
+    {
+        if (result)
+        {
+            *result = REFL_INVALID_ARGS;
+        }
+    }
+    else
+    {
+        trans->evalFunction = func;
+        trans->data = data;
+        if (result)
+        {
+            *result = REFL_SUCCESS;
+        }
+    }
+}
+
+refl_userData_t refl_getMetaTransitionData(refl_metaTransition trans, CLReflectResult* result)
+{
+    if (trans == NULL)
+    {
+        if (result)
+        {
+            *result = REFL_INVALID_ARGS;
+        }
+        return NULL;
+    }
+    else
+    {
+        if (result)
+        {
+            *result = REFL_SUCCESS;
+        }
+        return trans->data;
+    }
 }
