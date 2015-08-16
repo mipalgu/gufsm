@@ -147,7 +147,7 @@ void refl_setMetaStates(refl_metaMachine machine, refl_metaState* states, int le
         if (len != 0)
         {
             free(machine->metaStates);
-            machine->metaStates = (refl_metaState*)malloc(sizeof(refl_metaState*) * len);
+            machine->metaStates = (refl_metaState*)malloc(sizeof(refl_metaState) * len);
             memcpy(machine->metaStates, states, sizeof(refl_metaState*) * len);
         }
         machine->numberOfStates = len;

@@ -4,6 +4,7 @@
 #include <string.h>
 
 #include "API_Util.h"
+#include "API_MetaMachine_Internal.h"
 
 refl_metaTransition refl_initMetaTransition(CLReflectResult* result)
 {

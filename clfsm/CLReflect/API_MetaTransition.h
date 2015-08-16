@@ -1,7 +1,8 @@
 #ifndef API_METATRANSITION_H
 #define API_METATRANSITION_H
 
-#include "API_MetaMachine_Internal.h"
+#include "API_Result.h"
+#include "CLReflectFunctionPointerTypes.h"
 
 struct metaTransition_s;
 typedef struct metaTransition_s* refl_metaTransition;

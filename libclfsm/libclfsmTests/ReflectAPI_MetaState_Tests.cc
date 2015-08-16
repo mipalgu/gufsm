@@ -113,8 +113,24 @@ namespace
         buffer = refl_getMetaStateName(states[1], NULL);
         ASSERT_STREQ(STATE_1, buffer);
         free(buffer);
+    }
+
+    TEST_F(ReflectAPI_MetaState_Tests, transitions)
+    {
+        metaState = refl_initMetaState(NULL);
+        CLReflectResult result;
+        refl_metaTransition transitions[2];
+        transitions[0] = refl_initMetaTransition(NULL);
+        transitions[1] = refl_initMetaTransition(NULL);
+        refl_setMetaTransitions(metaState, transitions, 2, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        ASSERT_EQ(2, refl_getNumberOfTransitions(metaState, &result));
+        refl_metaTransition const * retVal = refl_getMetaTransitions(metaState, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        ASSERT_TRUE(retVal[0] == transitions[0] && retVal[1] == transitions[1]);
 
 
+        
     }
 
 }

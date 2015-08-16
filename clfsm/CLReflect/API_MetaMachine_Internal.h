@@ -5,6 +5,7 @@
 
 #include "CLReflectFunctionPointerTypes.h"
 #include "API_MetaState.h"
+#include "API_MetaTransition.h"
 
 struct metaAction_s
 {
@@ -15,8 +16,8 @@ struct metaAction_s
 struct metaTransition_s
 {
     char *expression;
-    uint32_t target;
-    uint32_t source;
+    unsigned int target;
+    unsigned int source;
     refl_transitionEval_f evalFunction;
     refl_userData_t data;
 };
@@ -24,6 +25,8 @@ struct metaTransition_s
 struct metaState_s
 {
     char* name;
+    unsigned int numberOfTransitions;
+    refl_metaTransition* transitions;
     refl_metaAction onEntry;
     refl_metaAction internal;
     refl_metaAction onExit;

@@ -56,5 +56,7 @@ void refl_invokeInternal(refl_metaMachine metaMachine, int stateNum, CLReflectRe
 
 void refl_invokeOnExit(refl_metaMachine metaMachine, int stateNum, CLReflectResult* result);
 
+void refl_evaluateTransition(refl_metaMachine metaMachine, unsigned int stateNum, unsigned int transitionNum);
+
 
 #endif /* end of include guard: API_METAMACHINE_H */

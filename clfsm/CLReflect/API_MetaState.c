@@ -13,6 +13,8 @@ refl_metaState refl_initMetaState(CLReflectResult *result)
     if (newMetaState != NULL)
     {
         newMetaState->name = NULL;
+        newMetaState->numberOfTransitions = 0;
+        newMetaState->transitions = NULL;
         newMetaState->onEntry = NULL;
         newMetaState->internal = NULL;
         newMetaState->onExit = NULL;
@@ -39,6 +41,11 @@ void refl_destroyMetaState(refl_metaState metaState, CLReflectResult* result)
         refl_destroyMetaAction(metaState->onEntry, NULL);
         refl_destroyMetaAction(metaState->internal, NULL);
         refl_destroyMetaAction(metaState->onExit, NULL);
+        unsigned int i;
+        for (i = 0; i < metaState->numberOfTransitions; i++)
+        {
+            refl_destroyMetaTransition(metaState->transitions[i], NULL);
+        }
         free(metaState);
         if (result)
             *result = REFL_SUCCESS;
@@ -144,5 +151,62 @@ void refl_setOnExit(refl_metaState metaState, refl_metaAction action, CLReflectR
         if (result)
             *result = REFL_SUCCESS;
 
+    }
+}
+
+
+void refl_setMetaTransitions(refl_metaState metaState, refl_metaTransition* transitions, unsigned int len, CLReflectResult* result)
+{
+    if (!metaState || (!transitions && len) || (transitions && !len)) //Can have null states if len = 0
+    {
+        if (result)
+            *result = REFL_INVALID_ARGS;
+    }
+    else
+    {
+        if (len != 0)
+        {
+            free(metaState->transitions);
+            metaState->transitions = (refl_metaTransition*)
+                            malloc(sizeof(refl_metaTransition) * len);
+            memcpy(metaState->transitions, transitions,
+                        sizeof(refl_metaState) * len);
+        }
+        metaState->numberOfTransitions = len;
+        if (result)
+            *result = REFL_SUCCESS;
+    }
+}
+
+unsigned int refl_getNumberOfTransitions(refl_metaState metaState, CLReflectResult* result)
+{
+    if (!metaState)
+    {
+        if (result)
+            *result = REFL_INVALID_ARGS;
+        return 0;
+    }
+    else
+    {
+        if (result)
+            *result = REFL_SUCCESS;
+        return metaState->numberOfTransitions;
+    }
+
+}
+
+refl_metaTransition const * refl_getMetaTransitions(refl_metaState metaState, CLReflectResult* result)
+{
+    if (!metaState)
+    {
+        if (result)
+            *result = REFL_INVALID_ARGS;
+        return NULL;
+    }
+    else
+    {
+        if (result)
+            *result = REFL_SUCCESS;
+        return metaState->transitions;
     }
 }
