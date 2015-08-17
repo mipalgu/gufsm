@@ -1,8 +1,8 @@
 from CodeGen import *
 from MetaMachineDefinition import *
+from CLMetaGenConstants import *
 
 class MetaMethodWriter:
-    ACTIONS = ['OnEntry', 'Internal', 'OnExit']
 
     def __init__(self, machineDef, cpp):
         self.machineDef = machineDef
@@ -14,18 +14,18 @@ class MetaMethodWriter:
 
     def writeDeclarations(self):
         cpp = self.cpp
-        cpp("// Method Declarations")
+        cpp("// Action Declarations")
         for state in self.machineDef.states:
-            for action in self.ACTIONS:
+            for action in CLMetaGenConstants.ACTIONS:
                 with cpp.subs(sName = state.name, action = action):
                     cpp("void $sName$_$action$(refl_machine_t machine, refl_userData_t data);")
         cpp('')
 
     def writeImplementations(self):
         cpp = self.cpp
-        cpp("// Method Implementations")
+        cpp("// Action Implementations")
         for state in self.machineDef.states:
-            for action in self.ACTIONS:
+            for action in CLMetaGenConstants.ACTIONS:
                 with cpp.subs(mName = self.machineDef.name, sName = state.name, sNum = state.index, action = action):
                     with cpp.block("void $sName$_$action$(refl_machine_t machine, refl_userData_t data)"):
                         cpp("$mName$* thisMachine = static_cast<$mName$*>(machine);")
