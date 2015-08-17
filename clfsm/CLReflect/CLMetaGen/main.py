@@ -22,5 +22,5 @@ metaMachineDef = parser.parse()
 writer = MetaFileWriter(metaMachineDef)
 writer.write()
 
-#print filename
+# print filename
 print os.path.split(writer.filename)[1]
