@@ -112,12 +112,32 @@ refl_bool Names_Transition_0(refl_machine_t machine, refl_userData_t data);
 // Transition Evaluation Implementations
 refl_bool INITIAL_Transition_0(refl_machine_t machine, refl_userData_t data)
 {
-	return refl_TRUE;
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
+	INITIAL* thisState = static_cast<INITIAL*>(thisMachine->states()[0]);
+	CLTransition* thisTrans = thisState->transition(0);
+	if (thisTrans->check(thisMachine, thisState))
+	{
+		return refl_TRUE;
+	}
+	else
+	{
+		return refl_FALSE;
+	}
 }
 
 refl_bool Names_Transition_0(refl_machine_t machine, refl_userData_t data)
 {
-	return refl_TRUE;
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
+	Names* thisState = static_cast<Names*>(thisMachine->states()[1]);
+	CLTransition* thisTrans = thisState->transition(0);
+	if (thisTrans->check(thisMachine, thisState))
+	{
+		return refl_TRUE;
+	}
+	else
+	{
+		return refl_FALSE;
+	}
 }
 
 // Creation script

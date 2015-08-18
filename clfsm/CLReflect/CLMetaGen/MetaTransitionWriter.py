@@ -26,7 +26,13 @@ class MetaTransitionWriter:
         cpp("\n// Transition Evaluation Implementations")
         for state in self.machineDef.states:
             for transition in state.transitions:
-                with cpp.subs(sName = state.name, transIndex = transition.index):
+                with cpp.subs(mName = self.machineDef.name, sNum = state.index, sName = state.name, transIndex = transition.index):
                     with cpp.block("refl_bool $sName$_Transition_$transIndex$(refl_machine_t machine, refl_userData_t data)"):
-                        cpp('return refl_TRUE;')
+                        cpp("$mName$* thisMachine = static_cast<$mName$*>(machine);")
+                        cpp("$sName$* thisState = static_cast<$sName$*>(thisMachine->states()[$sNum$]);")
+                        cpp("CLTransition* thisTrans = thisState->transition($transIndex$);")
+                        with cpp.block('if (thisTrans->check(thisMachine, thisState))'):
+                            cpp('return refl_TRUE;')
+                        with cpp.block('else'):
+                            cpp('return refl_FALSE;')
                     cpp('')
