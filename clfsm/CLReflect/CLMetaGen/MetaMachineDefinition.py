@@ -87,7 +87,7 @@ class State:
         transitions = []
         for index, file in enumerate(transitionFiles):
             with open(file) as expressionFile:
-                expression = expressionFile.read()
+                expression = expressionFile.read().rstrip()
             transition = Transition()
             transition.index = index
             transition.source = self.index

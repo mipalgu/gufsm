@@ -26,7 +26,7 @@ class MetaCreationWriter():
             cpp('refl_metaState $states$[$numStates$];\n')
         for state in self.machineDef.states:
             with cpp.subs(sName = state.name, sIndex = state.index):
-                cpp("//State $sName$")
+                cpp("\n\t//State: $sName$")
                 cpp('refl_metaState ms_$sName$ = refl_initMetaState(NULL);')
                 cpp('refl_setMetaStateName(ms_$sName$, "$sName$", NULL);\n')
                 for action in CLMetaGenConstants.ACTIONS:
@@ -35,4 +35,22 @@ class MetaCreationWriter():
                         cpp('refl_setMetaActionMethod(ma_$sName$_$action$, $sName$_$action$, NULL);')
                         cpp('refl_set$action$(ms_$sName$, ma_$sName$_$action$, NULL);')
                 cpp('states[$sIndex$] = ms_$sName$;')
+                # Transitions
+                numTransitions = len(state.transitions)
+                if numTransitions > 0:
+                    cpp('refl_metaTransition $sName$_transitions[' + str(numTransitions) + '];')
+                for trans in state.transitions:
+                    with cpp.subs(tIndex = trans.index, target = trans.target,
+                            source = trans.source, expr = trans.expression,
+                            varName = 'mt_' + state.name + '_T_' + str(trans.index)):
+                            cpp('refl_metaTransition $varName$ = refl_initMetaTransition(NULL);')
+                            cpp('refl_setMetaTransitionSource($varName$, $source$, NULL);')
+                            cpp('refl_setMetaTransitionTarget($varName$, $target$, NULL);')
+                            cpp('refl_setMetaTransitionExpression($varName$, "$expr$", NULL);')
+                            cpp('refl_transitionEval_f $varName$_eval_f = $sName$_Transition_$tIndex$;')
+                            cpp('refl_setMetaTransitionEvalFunction($varName$, $varName$_eval_f, NULL, NULL);')
+                            cpp('$sName$_transitions[$tIndex$] = $varName$;')
+                if numTransitions > 0:
+                    cpp('refl_setMetaTransitions(ms_$sName$, $sName$_transitions, ' + str(numTransitions) + ', NULL);')
+
         return statesVarName

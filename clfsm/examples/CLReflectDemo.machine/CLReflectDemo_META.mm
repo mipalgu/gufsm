@@ -147,7 +147,8 @@ refl_metaMachine Create_MetaMachine()
 	refl_setMetaMachineName(m, "CLReflectDemo", NULL);
 	refl_metaState states[4];
 
-	//State INITIAL
+	
+	//State: INITIAL
 	refl_metaState ms_INITIAL = refl_initMetaState(NULL);
 	refl_setMetaStateName(ms_INITIAL, "INITIAL", NULL);
 
@@ -161,7 +162,17 @@ refl_metaMachine Create_MetaMachine()
 	refl_setMetaActionMethod(ma_INITIAL_OnExit, INITIAL_OnExit, NULL);
 	refl_setOnExit(ms_INITIAL, ma_INITIAL_OnExit, NULL);
 	states[0] = ms_INITIAL;
-	//State Names
+	refl_metaTransition INITIAL_transitions[1];
+	refl_metaTransition mt_INITIAL_T_0 = refl_initMetaTransition(NULL);
+	refl_setMetaTransitionSource(mt_INITIAL_T_0, 0, NULL);
+	refl_setMetaTransitionTarget(mt_INITIAL_T_0, 1, NULL);
+	refl_setMetaTransitionExpression(mt_INITIAL_T_0, "true", NULL);
+	refl_transitionEval_f mt_INITIAL_T_0_eval_f = INITIAL_Transition_0;
+	refl_setMetaTransitionEvalFunction(mt_INITIAL_T_0, mt_INITIAL_T_0_eval_f, NULL, NULL);
+	INITIAL_transitions[0] = mt_INITIAL_T_0;
+	refl_setMetaTransitions(ms_INITIAL, INITIAL_transitions, 1, NULL);
+	
+	//State: Names
 	refl_metaState ms_Names = refl_initMetaState(NULL);
 	refl_setMetaStateName(ms_Names, "Names", NULL);
 
@@ -175,7 +186,17 @@ refl_metaMachine Create_MetaMachine()
 	refl_setMetaActionMethod(ma_Names_OnExit, Names_OnExit, NULL);
 	refl_setOnExit(ms_Names, ma_Names_OnExit, NULL);
 	states[1] = ms_Names;
-	//State States
+	refl_metaTransition Names_transitions[1];
+	refl_metaTransition mt_Names_T_0 = refl_initMetaTransition(NULL);
+	refl_setMetaTransitionSource(mt_Names_T_0, 1, NULL);
+	refl_setMetaTransitionTarget(mt_Names_T_0, 2, NULL);
+	refl_setMetaTransitionExpression(mt_Names_T_0, "true", NULL);
+	refl_transitionEval_f mt_Names_T_0_eval_f = Names_Transition_0;
+	refl_setMetaTransitionEvalFunction(mt_Names_T_0, mt_Names_T_0_eval_f, NULL, NULL);
+	Names_transitions[0] = mt_Names_T_0;
+	refl_setMetaTransitions(ms_Names, Names_transitions, 1, NULL);
+	
+	//State: States
 	refl_metaState ms_States = refl_initMetaState(NULL);
 	refl_setMetaStateName(ms_States, "States", NULL);
 
@@ -189,7 +210,8 @@ refl_metaMachine Create_MetaMachine()
 	refl_setMetaActionMethod(ma_States_OnExit, States_OnExit, NULL);
 	refl_setOnExit(ms_States, ma_States_OnExit, NULL);
 	states[2] = ms_States;
-	//State MethodInvocation
+	
+	//State: MethodInvocation
 	refl_metaState ms_MethodInvocation = refl_initMetaState(NULL);
 	refl_setMetaStateName(ms_MethodInvocation, "MethodInvocation", NULL);
 
