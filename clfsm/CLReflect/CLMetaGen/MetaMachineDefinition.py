@@ -1,5 +1,5 @@
 #Defines a meta machine
-import os
+import os, glob, re
 
 class MetaMachineDefinition:
     def __init__(self, machinePath, name):
@@ -59,6 +59,7 @@ class State:
         self.includes = []
         self.properties = []
         self.parseIncludes()
+        self.parseTransitions()
         self.parseProperties()
 
     def parseIncludes(self):
@@ -67,8 +68,6 @@ class State:
         for line in includeFile:
             self.includes.append(line.rstrip('\n'))
         includeFile.close()
-
-
 
     def parseProperties(self):
         propertiesPath = os.path.join(self.path, 'State_' + self.name + '_Variables.h')
@@ -80,6 +79,33 @@ class State:
                 varName = tokens[1].rstrip(';')
                 self.properties.append(StateProperty(varName, dataType, self.machine, self.name))
         propertyFile.close()
+
+    def parseTransitions(self):
+        # Find expression files
+        transitionFiles = sorted(glob.glob(self.path + '/*' + self.name + '*.expr'))  # sorted so we get transition index for free
+        # Create transition and set source state, expression and transition index
+        transitions = []
+        for index, file in enumerate(transitionFiles):
+            with open(file) as expressionFile:
+                expression = expressionFile.read()
+            transition = Transition()
+            transition.index = index
+            transition.source = self.index
+            transition.expression = expression
+            transitions.append(transition) # Add to transition list
+        # Open state header file, find transition target state
+        with open(self.path + '/State_' + self.name + '.h') as stateFile:
+            contents = stateFile.read()
+            for index, trans in enumerate(transitions):
+                # Find transition declaration
+                match = re.search('(?<=Transition_0\(int toState = )\d', contents)
+                trans.target = int(match.group())
+
+class Transition:
+
+    def __init__(self):
+        pass
+
 
 class MachineProperty:
 

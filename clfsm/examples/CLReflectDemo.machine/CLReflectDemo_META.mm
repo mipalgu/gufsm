@@ -104,6 +104,8 @@ void MethodInvocation_OnExit(refl_machine_t machine, refl_userData_t data)
 	MethodInvocation* thisState = static_cast<MethodInvocation*>(thisMachine->states()[3]);
 	thisState->performOnExit(thisMachine);
 }
+/*
+*/
 // Creation script
 refl_metaMachine Create_MetaMachine()
 {
