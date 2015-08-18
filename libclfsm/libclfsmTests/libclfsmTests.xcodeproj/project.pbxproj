@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		30B2268D1B82B318001511B5 /* ReflectAPI_MetaTransition_Tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_MetaTransition_Tests.cc; sourceTree = "<group>"; };
 		F17650881B7983A1009CAC69 /* DummyMachines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DummyMachines.h; sourceTree = "<group>"; };
 		F17650891B7983A1009CAC69 /* en.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = en.lproj; sourceTree = "<group>"; };
 		F176508A1B7983A1009CAC69 /* libclfsmTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "libclfsmTests-Info.plist"; sourceTree = "<group>"; };
@@ -31,6 +32,7 @@
 				F176508C1B7983A1009CAC69 /* ReflectAPI_Init_Tests.cc */,
 				F176508D1B7983A1009CAC69 /* ReflectAPI_MetaAction_Tests.cc */,
 				F176508E1B7983A1009CAC69 /* ReflectAPI_MetaMachine_Tests.cc */,
+				30B2268D1B82B318001511B5 /* ReflectAPI_MetaTransition_Tests.cc */,
 				F176508F1B7983A1009CAC69 /* ReflectAPI_MetaState_Tests.cc */,
 				F17650901B7983A1009CAC69 /* ReflectAPI_StateMethod_Tests.cc */,
 				F17650911B7983A1009CAC69 /* ReflectAPI_Util_Tests.cc */,

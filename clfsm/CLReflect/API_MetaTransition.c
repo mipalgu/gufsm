@@ -198,7 +198,7 @@ char * refl_getMetaTransitionExpression(refl_metaTransition trans, CLReflectResu
 {
     refl_bool shouldReturnNull = refl_FALSE;
     CLReflectResult res;
-    char *expression;
+    char *expression = NULL;
     if (!trans)
     {
         res = REFL_INVALID_ARGS;

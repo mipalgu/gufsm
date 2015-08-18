@@ -78,7 +78,7 @@ namespace
         unsigned int target = 1;
         refl_setMetaTransitionTarget(transition, target, &result);
         ASSERT_EQ(REFL_SUCCESS, result);
-        int retTarget = refl_getMetaTransitionTarget(transition, &result);
+        unsigned int retTarget = refl_getMetaTransitionTarget(transition, &result);
         ASSERT_EQ(REFL_SUCCESS, result);
         ASSERT_EQ(target, retTarget);
         refl_setMetaTransitionTarget(NULL, target, &result);
@@ -93,7 +93,7 @@ namespace
         unsigned int source = 1;
         refl_setMetaTransitionSource(transition, source, &result);
         ASSERT_EQ(REFL_SUCCESS, result);
-        int retTarget = refl_getMetaTransitionSource(transition, &result);
+        unsigned int retTarget = refl_getMetaTransitionSource(transition, &result);
         ASSERT_EQ(REFL_SUCCESS, result);
         ASSERT_EQ(source, retTarget);
         refl_setMetaTransitionSource(NULL, source, &result);

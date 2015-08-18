@@ -26,6 +26,8 @@
 /* Begin PBXBuildFile section */
 		307B5A2F1B797C4700F7ACB8 /* API_Util.c in Sources */ = {isa = PBXBuildFile; fileRef = 307B5A2D1B797C4700F7ACB8 /* API_Util.c */; };
 		307B5A301B797C4700F7ACB8 /* API_Util.h in Headers */ = {isa = PBXBuildFile; fileRef = 307B5A2E1B797C4700F7ACB8 /* API_Util.h */; };
+		30B226671B82B07C001511B5 /* API_MetaTransition.c in Sources */ = {isa = PBXBuildFile; fileRef = 30B226651B82B07C001511B5 /* API_MetaTransition.c */; };
+		30B226681B82B07C001511B5 /* API_MetaTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = 30B226661B82B07C001511B5 /* API_MetaTransition.h */; };
 		3CFD06221A1B684300C36E6C /* clfsm_visitors.cc in Sources */ = {isa = PBXBuildFile; fileRef = 3CFD061E1A1B684300C36E6C /* clfsm_visitors.cc */; };
 		3CFD06231A1B684300C36E6C /* clfsm_visitorsupport.cc in Sources */ = {isa = PBXBuildFile; fileRef = 3CFD06201A1B684300C36E6C /* clfsm_visitorsupport.cc */; };
 		E1144EB61585E21600C3C113 /* SimpleCLexer.c in Sources */ = {isa = PBXBuildFile; fileRef = E1144EB41585E21600C3C113 /* SimpleCLexer.c */; };
@@ -436,6 +438,8 @@
 /* Begin PBXFileReference section */
 		307B5A2D1B797C4700F7ACB8 /* API_Util.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = API_Util.c; sourceTree = "<group>"; };
 		307B5A2E1B797C4700F7ACB8 /* API_Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API_Util.h; sourceTree = "<group>"; };
+		30B226651B82B07C001511B5 /* API_MetaTransition.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = API_MetaTransition.c; sourceTree = "<group>"; };
+		30B226661B82B07C001511B5 /* API_MetaTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API_MetaTransition.h; sourceTree = "<group>"; };
 		3CFD061E1A1B684300C36E6C /* clfsm_visitors.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = clfsm_visitors.cc; sourceTree = "<group>"; };
 		3CFD061F1A1B684300C36E6C /* clfsm_visitors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clfsm_visitors.h; sourceTree = "<group>"; };
 		3CFD06201A1B684300C36E6C /* clfsm_visitorsupport.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = clfsm_visitorsupport.cc; sourceTree = "<group>"; };
@@ -1498,6 +1502,8 @@
 			isa = PBXGroup;
 			children = (
 				F17A1DDD1B77F37500C24CAB /* API_Interface.cc */,
+				30B226651B82B07C001511B5 /* API_MetaTransition.c */,
+				30B226661B82B07C001511B5 /* API_MetaTransition.h */,
 				F17A1DDE1B77F37500C24CAB /* API_Interface.h */,
 				F17A1DDF1B77F37500C24CAB /* API_MetaAction.c */,
 				F17A1DE01B77F37500C24CAB /* API_MetaAction.h */,
@@ -2407,6 +2413,7 @@
 				F16864FC1703BA29003B195F /* FSMAsynchronousSuspensibleMachine.h in Headers */,
 				F17A1DE51B77F37500C24CAB /* API_MetaAction.h in Headers */,
 				F17A1DEE1B77F38C00C24CAB /* CLMetaRegister.h in Headers */,
+				30B226681B82B07C001511B5 /* API_MetaTransition.h in Headers */,
 				F17A1DE31B77F37500C24CAB /* API_Interface.h in Headers */,
 				F17A1DE61B77F37500C24CAB /* API_MetaMachine_Internal.h in Headers */,
 			);
@@ -3176,6 +3183,7 @@
 				F17A1DEB1B77F38C00C24CAB /* API_MetaState.c in Sources */,
 				F1D575AB1627962E00976A23 /* FSMActivity.cc in Sources */,
 				F1D575AA1627960D00976A23 /* stringConstants.c in Sources */,
+				30B226671B82B07C001511B5 /* API_MetaTransition.c in Sources */,
 				F1C411531B67096700663625 /* API_MetaMachine.c in Sources */,
 				F1D575AC1627966D00976A23 /* FSMFactory.cc in Sources */,
 				F1D575AD1627968300976A23 /* FSMachineVector.cc in Sources */,

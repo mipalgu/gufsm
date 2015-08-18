@@ -105,8 +105,9 @@ namespace
     {
         refl_metaMachine machine = refl_initMetaMachine(NULL);
         setStates(machine);
-        int numStates = refl_getNumberOfStates(machine, NULL);
-        ASSERT_EQ(2, numStates);
+        unsigned int numStates = refl_getNumberOfStates(machine, NULL);
+        unsigned int expectedStates = 2;
+        ASSERT_EQ(expectedStates, numStates);
         refl_metaState const * states = refl_getMetaStates(machine, NULL);
         char *buffer = refl_getMetaStateName(states[0], NULL);
         ASSERT_STREQ(STATE_0, buffer);
@@ -124,7 +125,8 @@ namespace
         transitions[1] = refl_initMetaTransition(NULL);
         refl_setMetaTransitions(metaState, transitions, 2, &result);
         ASSERT_EQ(REFL_SUCCESS, result);
-        ASSERT_EQ(2, refl_getNumberOfTransitions(metaState, &result));
+        unsigned int expectedTransitions = 2;
+        ASSERT_EQ(expectedTransitions, refl_getNumberOfTransitions(metaState, &result));
         refl_metaTransition const * retVal = refl_getMetaTransitions(metaState, &result);
         ASSERT_EQ(REFL_SUCCESS, result);
         ASSERT_TRUE(retVal[0] == transitions[0] && retVal[1] == transitions[1]);

@@ -13,6 +13,9 @@ struct metaAction_s
     refl_userData_t data;
 };
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpadded"
+
 struct metaTransition_s
 {
     char *expression;
@@ -32,8 +35,7 @@ struct metaState_s
     refl_metaAction onExit;
 };
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wpadded"
+
 
 struct metaMachine_s
 {
