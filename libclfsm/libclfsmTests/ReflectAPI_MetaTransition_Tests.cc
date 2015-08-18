@@ -146,6 +146,25 @@ namespace
         ASSERT_EQ(REFL_INVALID_ARGS, result);
     }
 
+    TEST_F(ReflectAPI_MetaTransition_Tests, evaluateTransition)
+    {
+        refl_metaMachine machine = refl_initMetaMachine(NULL);
+        refl_metaState metaState = refl_initMetaState(NULL);
+        refl_setMetaTransitionEvalFunction(transition, testEvalMethod, NULL, NULL);
+        CLReflectResult result;
+        refl_setMetaTransitions(metaState, &transition, 1, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        refl_setMetaStates(machine, &metaState, 1, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        refl_bool ret = refl_evaluateTransition(machine, 0, 0, &result);
+        ASSERT_EQ(refl_TRUE, ret);
+        ret = refl_evaluateTransition(machine, 1, 5, &result);
+        ASSERT_EQ(refl_FALSE, ret) << "Expecting false since transition doesn't exist" << std::endl;
+        ASSERT_EQ(REFL_INVALID_ARGS, result);
+        refl_destroyMetaMachine(machine, NULL);
+        transition = NULL;
+    }
+
 }
 
 #pragma clang diagnostic pop

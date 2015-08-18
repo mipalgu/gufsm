@@ -1,7 +1,7 @@
 #include "API_MetaMachine.h"
 #include "API_MetaMachine_Internal.h"
 #include "API_Util.h"
-
+#include "CLReflectFunctionPointerTypes.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -230,4 +230,35 @@ void refl_invokeOnExit(refl_metaMachine metaMachine, int stateNum, CLReflectResu
         if (result)
             *result = REFL_SUCCESS;
     }
+}
+
+refl_bool refl_evaluateTransition(refl_metaMachine metaMachine, unsigned int stateNum, unsigned int transitionNum, CLReflectResult *result)
+{
+    if (!metaMachine)
+    {
+        if (result)
+            *result = REFL_INVALID_ARGS;
+        return refl_FALSE;
+    }
+    unsigned int numStates = metaMachine->numberOfStates;
+    if (stateNum >= numStates)
+    {
+        if (result)
+            *result = REFL_INVALID_ARGS;
+        return refl_FALSE;
+    }
+    refl_metaState state = metaMachine->metaStates[stateNum];
+    unsigned int numTransitions = state->numberOfTransitions;
+    if (transitionNum >= numTransitions)
+    {
+        if (result)
+            *result = REFL_INVALID_ARGS;
+        return refl_FALSE;
+    }
+    refl_metaTransition transition = state->transitions[transitionNum];
+    if (result)
+        *result = REFL_SUCCESS;
+    return transition->evalFunction(metaMachine->machine,
+                        transition->data);
+
 }
