@@ -1,5 +1,5 @@
 //
-//State_States_Variables.h
+//State_StatesActions_Variables.h
 //
 //Automatically created through MiEditCLFSM -- do not change manually!
 //

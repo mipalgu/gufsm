@@ -1,10 +1,10 @@
 //
-//State_States.h
+//State_Transitions.h
 //
 //Automatically created through MiEditCLFSM -- do not change manually!
 //
-#ifndef __clfsm__CLReflectDemo_State_States_h__
-#define __clfsm__CLReflectDemo_State_States_h__
+#ifndef __clfsm__CLReflectDemo_State_Transitions_h__
+#define __clfsm__CLReflectDemo_State_Transitions_h__
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
 		{
 			namespace State
 			{
-				class States: public CLState
+				class Transitions: public CLState
 				{
 					class OnEntry: public CLAction
 					{
@@ -37,17 +37,17 @@ namespace FSM
 #pragma clang diagnostic ignored "-Wzero-length-array"
 				CLTransition *_transitions[0];
 				public:
-					States(const char *name = "States");
-					virtual ~States();
+					Transitions(const char *name = "Transitions");
+					virtual ~Transitions();
 
 					virtual CLTransition * const *transitions() const { return _transitions; }
 					virtual int numberOfTransitions() const { return 0; }
 
-#					include "State_States_Variables.h"
+#					include "State_Transitions_Variables.h"
 #pragma clang diagnostic pop
 				};
 			}
 		}
 	}
 }
-#endif // defined(__gufsm__CLReflectDemo_State_States__)
+#endif // defined(__gufsm__CLReflectDemo_State_Transitions__)
