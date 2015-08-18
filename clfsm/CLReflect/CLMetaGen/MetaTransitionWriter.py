@@ -9,13 +9,24 @@ class MetaTransitionWriter:
 
     def write(self):
         cpp = self.cpp
-        cpp("/*")
         self.writeDeclarations()
         self.writeImplementations()
-        cpp("*/")
+
 
     def writeDeclarations(self):
-        pass
+        cpp = self.cpp
+        cpp("\n// Transition Evaluation Declarations")
+        for state in self.machineDef.states:
+            for transition in state.transitions:
+                with cpp.subs(sName = state.name, transIndex = transition.index):
+                    cpp("refl_bool $sName$_Transition_$transIndex$(refl_machine_t machine, refl_userData_t data);")
 
     def writeImplementations(self):
-        pass
+        cpp = self.cpp
+        cpp("\n// Transition Evaluation Implementations")
+        for state in self.machineDef.states:
+            for transition in state.transitions:
+                with cpp.subs(sName = state.name, transIndex = transition.index):
+                    with cpp.block("refl_bool $sName$_Transition_$transIndex$(refl_machine_t machine, refl_userData_t data)"):
+                        cpp('return refl_TRUE;')
+                    cpp('')

@@ -104,8 +104,22 @@ void MethodInvocation_OnExit(refl_machine_t machine, refl_userData_t data)
 	MethodInvocation* thisState = static_cast<MethodInvocation*>(thisMachine->states()[3]);
 	thisState->performOnExit(thisMachine);
 }
-/*
-*/
+
+// Transition Evaluation Declarations
+refl_bool INITIAL_Transition_0(refl_machine_t machine, refl_userData_t data);
+refl_bool Names_Transition_0(refl_machine_t machine, refl_userData_t data);
+
+// Transition Evaluation Implementations
+refl_bool INITIAL_Transition_0(refl_machine_t machine, refl_userData_t data)
+{
+	return refl_TRUE;
+}
+
+refl_bool Names_Transition_0(refl_machine_t machine, refl_userData_t data)
+{
+	return refl_TRUE;
+}
+
 // Creation script
 refl_metaMachine Create_MetaMachine()
 {

@@ -100,6 +100,7 @@ class State:
                 # Find transition declaration
                 match = re.search('(?<=Transition_0\(int toState = )\d', contents)
                 trans.target = int(match.group())
+        self.transitions = transitions
 
 class Transition:
 
