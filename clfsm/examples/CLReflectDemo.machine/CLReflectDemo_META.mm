@@ -8,6 +8,7 @@
 #include "State_MethodInvocation.h"
 #include "State_Transitions.h"
 #include "State_End.h"
+#include "State_GetMetaMachine.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -38,6 +39,9 @@ void Transitions_OnExit(refl_machine_t machine, refl_userData_t data);
 void End_OnEntry(refl_machine_t machine, refl_userData_t data);
 void End_Internal(refl_machine_t machine, refl_userData_t data);
 void End_OnExit(refl_machine_t machine, refl_userData_t data);
+void GetMetaMachine_OnEntry(refl_machine_t machine, refl_userData_t data);
+void GetMetaMachine_Internal(refl_machine_t machine, refl_userData_t data);
+void GetMetaMachine_OnExit(refl_machine_t machine, refl_userData_t data);
 
 // Action Implementations
 void INITIAL_OnEntry(refl_machine_t machine, refl_userData_t data)
@@ -148,11 +152,32 @@ void End_OnExit(refl_machine_t machine, refl_userData_t data)
 	End* thisState = static_cast<End*>(thisMachine->states()[5]);
 	thisState->performOnExit(thisMachine);
 }
+void GetMetaMachine_OnEntry(refl_machine_t machine, refl_userData_t data)
+{
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
+	GetMetaMachine* thisState = static_cast<GetMetaMachine*>(thisMachine->states()[6]);
+	thisState->performOnEntry(thisMachine);
+}
+void GetMetaMachine_Internal(refl_machine_t machine, refl_userData_t data)
+{
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
+	GetMetaMachine* thisState = static_cast<GetMetaMachine*>(thisMachine->states()[6]);
+	thisState->performInternal(thisMachine);
+}
+void GetMetaMachine_OnExit(refl_machine_t machine, refl_userData_t data)
+{
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
+	GetMetaMachine* thisState = static_cast<GetMetaMachine*>(thisMachine->states()[6]);
+	thisState->performOnExit(thisMachine);
+}
 
 // Transition Evaluation Declarations
 refl_bool INITIAL_Transition_0(refl_machine_t machine, refl_userData_t data);
 refl_bool Names_Transition_0(refl_machine_t machine, refl_userData_t data);
 refl_bool StatesActions_Transition_0(refl_machine_t machine, refl_userData_t data);
+refl_bool Transitions_Transition_0(refl_machine_t machine, refl_userData_t data);
+refl_bool GetMetaMachine_Transition_0(refl_machine_t machine, refl_userData_t data);
+refl_bool GetMetaMachine_Transition_1(refl_machine_t machine, refl_userData_t data);
 
 // Transition Evaluation Implementations
 refl_bool INITIAL_Transition_0(refl_machine_t machine, refl_userData_t data)
@@ -200,12 +225,57 @@ refl_bool StatesActions_Transition_0(refl_machine_t machine, refl_userData_t dat
 	}
 }
 
+refl_bool Transitions_Transition_0(refl_machine_t machine, refl_userData_t data)
+{
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
+	Transitions* thisState = static_cast<Transitions*>(thisMachine->states()[4]);
+	CLTransition* thisTrans = thisState->transition(0);
+	if (thisTrans->check(thisMachine, thisState))
+	{
+		return refl_TRUE;
+	}
+	else
+	{
+		return refl_FALSE;
+	}
+}
+
+refl_bool GetMetaMachine_Transition_0(refl_machine_t machine, refl_userData_t data)
+{
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
+	GetMetaMachine* thisState = static_cast<GetMetaMachine*>(thisMachine->states()[6]);
+	CLTransition* thisTrans = thisState->transition(0);
+	if (thisTrans->check(thisMachine, thisState))
+	{
+		return refl_TRUE;
+	}
+	else
+	{
+		return refl_FALSE;
+	}
+}
+
+refl_bool GetMetaMachine_Transition_1(refl_machine_t machine, refl_userData_t data)
+{
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
+	GetMetaMachine* thisState = static_cast<GetMetaMachine*>(thisMachine->states()[6]);
+	CLTransition* thisTrans = thisState->transition(1);
+	if (thisTrans->check(thisMachine, thisState))
+	{
+		return refl_TRUE;
+	}
+	else
+	{
+		return refl_FALSE;
+	}
+}
+
 // Creation script
 refl_metaMachine Create_MetaMachine()
 {
 	refl_metaMachine m = refl_initMetaMachine(NULL);
 	refl_setMetaMachineName(m, "CLReflectDemo", NULL);
-	refl_metaState states[6];
+	refl_metaState states[7];
 
 	
 	//State: INITIAL
@@ -225,7 +295,7 @@ refl_metaMachine Create_MetaMachine()
 	refl_metaTransition INITIAL_transitions[1];
 	refl_metaTransition mt_INITIAL_T_0 = refl_initMetaTransition(NULL);
 	refl_setMetaTransitionSource(mt_INITIAL_T_0, 0, NULL);
-	refl_setMetaTransitionTarget(mt_INITIAL_T_0, 1, NULL);
+	refl_setMetaTransitionTarget(mt_INITIAL_T_0, 6, NULL);
 	refl_setMetaTransitionExpression(mt_INITIAL_T_0, "true", NULL);
 	refl_transitionEval_f mt_INITIAL_T_0_eval_f = INITIAL_Transition_0;
 	refl_setMetaTransitionEvalFunction(mt_INITIAL_T_0, mt_INITIAL_T_0_eval_f, NULL, NULL);
@@ -309,6 +379,15 @@ refl_metaMachine Create_MetaMachine()
 	refl_setMetaActionMethod(ma_Transitions_OnExit, Transitions_OnExit, NULL);
 	refl_setOnExit(ms_Transitions, ma_Transitions_OnExit, NULL);
 	states[4] = ms_Transitions;
+	refl_metaTransition Transitions_transitions[1];
+	refl_metaTransition mt_Transitions_T_0 = refl_initMetaTransition(NULL);
+	refl_setMetaTransitionSource(mt_Transitions_T_0, 4, NULL);
+	refl_setMetaTransitionTarget(mt_Transitions_T_0, 6, NULL);
+	refl_setMetaTransitionExpression(mt_Transitions_T_0, "after(1)", NULL);
+	refl_transitionEval_f mt_Transitions_T_0_eval_f = Transitions_Transition_0;
+	refl_setMetaTransitionEvalFunction(mt_Transitions_T_0, mt_Transitions_T_0_eval_f, NULL, NULL);
+	Transitions_transitions[0] = mt_Transitions_T_0;
+	refl_setMetaTransitions(ms_Transitions, Transitions_transitions, 1, NULL);
 	
 	//State: End
 	refl_metaState ms_End = refl_initMetaState(NULL);
@@ -324,7 +403,38 @@ refl_metaMachine Create_MetaMachine()
 	refl_setMetaActionMethod(ma_End_OnExit, End_OnExit, NULL);
 	refl_setOnExit(ms_End, ma_End_OnExit, NULL);
 	states[5] = ms_End;
-	refl_setMetaStates(m, states, 6, NULL);
+	
+	//State: GetMetaMachine
+	refl_metaState ms_GetMetaMachine = refl_initMetaState(NULL);
+	refl_setMetaStateName(ms_GetMetaMachine, "GetMetaMachine", NULL);
+
+	refl_metaAction ma_GetMetaMachine_OnEntry = refl_initMetaAction(NULL);
+	refl_setMetaActionMethod(ma_GetMetaMachine_OnEntry, GetMetaMachine_OnEntry, NULL);
+	refl_setOnEntry(ms_GetMetaMachine, ma_GetMetaMachine_OnEntry, NULL);
+	refl_metaAction ma_GetMetaMachine_Internal = refl_initMetaAction(NULL);
+	refl_setMetaActionMethod(ma_GetMetaMachine_Internal, GetMetaMachine_Internal, NULL);
+	refl_setInternal(ms_GetMetaMachine, ma_GetMetaMachine_Internal, NULL);
+	refl_metaAction ma_GetMetaMachine_OnExit = refl_initMetaAction(NULL);
+	refl_setMetaActionMethod(ma_GetMetaMachine_OnExit, GetMetaMachine_OnExit, NULL);
+	refl_setOnExit(ms_GetMetaMachine, ma_GetMetaMachine_OnExit, NULL);
+	states[6] = ms_GetMetaMachine;
+	refl_metaTransition GetMetaMachine_transitions[2];
+	refl_metaTransition mt_GetMetaMachine_T_0 = refl_initMetaTransition(NULL);
+	refl_setMetaTransitionSource(mt_GetMetaMachine_T_0, 6, NULL);
+	refl_setMetaTransitionTarget(mt_GetMetaMachine_T_0, 1, NULL);
+	refl_setMetaTransitionExpression(mt_GetMetaMachine_T_0, "currentMachineID < numberOfMachines", NULL);
+	refl_transitionEval_f mt_GetMetaMachine_T_0_eval_f = GetMetaMachine_Transition_0;
+	refl_setMetaTransitionEvalFunction(mt_GetMetaMachine_T_0, mt_GetMetaMachine_T_0_eval_f, NULL, NULL);
+	GetMetaMachine_transitions[0] = mt_GetMetaMachine_T_0;
+	refl_metaTransition mt_GetMetaMachine_T_1 = refl_initMetaTransition(NULL);
+	refl_setMetaTransitionSource(mt_GetMetaMachine_T_1, 6, NULL);
+	refl_setMetaTransitionTarget(mt_GetMetaMachine_T_1, 1, NULL);
+	refl_setMetaTransitionExpression(mt_GetMetaMachine_T_1, "currentMachineID >= numberOfMachines", NULL);
+	refl_transitionEval_f mt_GetMetaMachine_T_1_eval_f = GetMetaMachine_Transition_1;
+	refl_setMetaTransitionEvalFunction(mt_GetMetaMachine_T_1, mt_GetMetaMachine_T_1_eval_f, NULL, NULL);
+	GetMetaMachine_transitions[1] = mt_GetMetaMachine_T_1;
+	refl_setMetaTransitions(ms_GetMetaMachine, GetMetaMachine_transitions, 2, NULL);
+	refl_setMetaStates(m, states, 7, NULL);
 	return m;
 }
 #pragma clang diagnostic pop

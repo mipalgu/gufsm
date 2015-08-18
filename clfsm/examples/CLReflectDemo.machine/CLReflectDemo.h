@@ -16,12 +16,12 @@ namespace FSM
 	{
 		class CLReflectDemo: public CLMachine
 		{
-			CLState *_states[6];
+			CLState *_states[7];
 			public:
 			CLReflectDemo(int mid  = 0, const char *name = "CLReflectDemo");
 			virtual ~CLReflectDemo();
 			virtual CLState * const * states() const { return _states; }
-			virtual int numberOfStates() const { return 6; }
+			virtual int numberOfStates() const { return 7; }
 #			include "CLReflectDemo_Variables.h"
 		};
 	}

@@ -16,7 +16,7 @@ using namespace State;
 
 Transitions::Transitions(const char *name):CLState(name, *new Transitions::OnEntry,*new Transitions::OnExit, *new Transitions::Internal)
 {
-
+	_transitions[0] = new Transition_0();
 }
 
 Transitions::~Transitions()
@@ -48,5 +48,15 @@ void Transitions::Internal::perform(CLMachine *_machine, CLState *_state) const
 #	include "State_Transitions_Internal.mm"
 }
 
+bool Transitions::Transition_0::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "CLReflectDemo_VarRefs.mm"
+#	include "State_Transitions_VarRefs.mm"
+
+	return
+	(
+#			include "State_Transitions_Transition_0.expr"
+	);
+}
 
 

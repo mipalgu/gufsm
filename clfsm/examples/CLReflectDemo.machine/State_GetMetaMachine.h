@@ -1,10 +1,10 @@
 //
-//State_Transitions.h
+//State_GetMetaMachine.h
 //
 //Automatically created through MiEditCLFSM -- do not change manually!
 //
-#ifndef __clfsm__CLReflectDemo_State_Transitions_h__
-#define __clfsm__CLReflectDemo_State_Transitions_h__
+#ifndef __clfsm__CLReflectDemo_State_GetMetaMachine_h__
+#define __clfsm__CLReflectDemo_State_GetMetaMachine_h__
 
 #include "CLState.h"
 #include "CLAction.h"
@@ -18,7 +18,7 @@ namespace FSM
 		{
 			namespace State
 			{
-				class Transitions: public CLState
+				class GetMetaMachine: public CLState
 				{
 					class OnEntry: public CLAction
 					{
@@ -35,7 +35,15 @@ namespace FSM
 					class Transition_0: public CLTransition
 					{
 						public:
-						Transition_0(int toState = 6): CLTransition(toState) {}
+						Transition_0(int toState = 1): CLTransition(toState) {}
+
+						virtual bool check(CLMachine *, CLState *) const;
+					};
+
+					class Transition_1: public CLTransition
+					{
+						public:
+						Transition_1(int toState = 5): CLTransition(toState) {}
 
 						virtual bool check(CLMachine *, CLState *) const;
 					};
@@ -43,19 +51,19 @@ namespace FSM
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wzero-length-array"
-				CLTransition *_transitions[1];
+				CLTransition *_transitions[2];
 				public:
-					Transitions(const char *name = "Transitions");
-					virtual ~Transitions();
+					GetMetaMachine(const char *name = "GetMetaMachine");
+					virtual ~GetMetaMachine();
 
 					virtual CLTransition * const *transitions() const { return _transitions; }
-					virtual int numberOfTransitions() const { return 1; }
+					virtual int numberOfTransitions() const { return 2; }
 
-#					include "State_Transitions_Variables.h"
+#					include "State_GetMetaMachine_Variables.h"
 #pragma clang diagnostic pop
 				};
 			}
 		}
 	}
 }
-#endif // defined(__gufsm__CLReflectDemo_State_Transitions__)
+#endif // defined(__gufsm__CLReflectDemo_State_GetMetaMachine__)

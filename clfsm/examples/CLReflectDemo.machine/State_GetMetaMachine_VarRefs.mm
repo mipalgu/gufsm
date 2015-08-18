@@ -1,9 +1,9 @@
 //
-//State_MethodInvocation_VarRefs.mm
+//State_GetMetaMachine_VarRefs.mm
 //
 //Automatically created through MiEditCLFSM -- do not change manually!
 //
-MethodInvocation *_s = static_cast<MethodInvocation *>(_state);
+GetMetaMachine *_s = static_cast<GetMetaMachine *>(_state);
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"
