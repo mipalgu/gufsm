@@ -89,236 +89,259 @@ using namespace FSM;
 
 static dispatch_queue_t sync_queue = NULL;
 
-MachineWrapper::MachineWrapper(string path): _fullPath(path), _factory(NULL), _shared_object(NULL), _compiler(NULL), _compiler_args(NULL), _linker_args(NULL), _delete_compiler(false)
+MachineWrapper::MachineWrapper(string path): _fullPath(path), _factory(NULL), _metaFactory(NULL), _shared_object(NULL), _compiler(NULL), _compiler_args(NULL), _linker_args(NULL), _delete_compiler(false)
 {
+
         if (!file_exists(path.c_str()))
         {
                 string machinePath = path + ".machine";
                 if (file_exists(machinePath.c_str()))
                         path = machinePath;
         }
-        char pathName[path.length()];
-
-        strcpy(pathName, path.c_str());
+        char *pathName = static_cast<char *>(gu_strdup(path.c_str()));
         char *base = basename(pathName);
         char *dot = strchr(base, '.');
         if (dot) *dot = '\0';
 
         _name = base;
+
+        free(pathName);
+
 }
 
 
 MachineWrapper::~MachineWrapper()
 {
-        if (_shared_object) dlclose(_shared_object);
-        if (_delete_compiler) delete _compiler;
+    if (_shared_object) dlclose(_shared_object);
+    if (_delete_compiler) delete _compiler;
 }
 
 
 void MachineWrapper::setCompiler(Cc *compiler, bool del)
 {
-        if (!compiler)
-        {
-                compiler = new Cc();
-                del = true;
-        }
-        _compiler = compiler;
-        _delete_compiler = del;
+    if (!compiler)
+    {
+            compiler = new Cc();
+            del = true;
+    }
+    _compiler = compiler;
+    _delete_compiler = del;
 }
 
 
 string MachineWrapper::binaryDirectory() const
 {
-        struct utsname buffer;
-        stringstream ss;
+    struct utsname buffer;
+    stringstream ss;
 
-        ss << _fullPath << "/";
+    ss << _fullPath << "/";
 
-        if (uname(&buffer) == -1)
-                ss << "unknown-architecture";
-        else
-                ss << buffer.sysname << "-" << buffer.machine;
+    if (uname(&buffer) == -1)
+            ss << "unknown-architecture";
+    else
+            ss << buffer.sysname << "-" << buffer.machine;
 
-        return ss.str();
+    return ss.str();
 }
 
 string MachineWrapper::includePathFile() const
 {
-        stringstream ss;
-        ss << _fullPath << "/IncludePath";
+    stringstream ss;
+    ss << _fullPath << "/IncludePath";
 
-        return ss.str();
+    return ss.str();
 }
 
 vector<string> MachineWrapper::states() const
 {
-        stringstream filename;
+    stringstream filename;
 
-        filename << path() << "/States";
+    filename << path() << "/States";
 
-        const string &fn = filename.str();
-        DBG(cout << fn << endl);
-        ifstream file(fn.c_str());
-        vector<string> states;
+    const string &fn = filename.str();
+    DBG(cout << fn << endl);
+    ifstream file(fn.c_str());
+    vector<string> states;
 
-        while (!file.eof())
-        {
-                string name;
-                getline(file, name);
-                if (file.fail())
-                        break;
-                if (name.length())
-                        states.push_back(name);
-        }
+    while (!file.eof())
+    {
+            string name;
+            getline(file, name);
+            if (file.fail())
+                    break;
+            if (name.length())
+                    states.push_back(name);
+    }
 
-        return states;
+    return states;
 }
 
 static void create_compile_queue(void *)
 {
-        sync_queue = dispatch_queue_create("net.mipal.clfsm.compile", 0);
+    sync_queue = dispatch_queue_create("net.mipal.clfsm.compile", 0);
 }
 
 struct outfile_pushback_param
 {
-        vector<string> *outfilesp;
-        string *outfilenamep;
+    vector<string> *outfilesp;
+    string *outfilenamep;
 };
 
 static void push_back_outfilename(void *p)
 {
-        outfile_pushback_param *param = static_cast<outfile_pushback_param *>(p);
-        param->outfilesp->push_back(*param->outfilenamep);
+    outfile_pushback_param *param = static_cast<outfile_pushback_param *>(p);
+    param->outfilesp->push_back(*param->outfilenamep);
 }
 
 
 bool MachineWrapper::compile(const vector<string> &compiler_args, const vector<string> &linker_args)
 {
-        string binary_directory = binaryDirectory();
-        static dispatch_once_t onceToken;
-        dispatch_once_f(&onceToken, NULL, create_compile_queue);
+    string binary_directory = binaryDirectory();
+    static dispatch_once_t onceToken;
+    dispatch_once_f(&onceToken, NULL, create_compile_queue);
 
-        if (!compiler()) setCompiler();
+    if (!compiler()) setCompiler();
 
-        mkdir(binary_directory.c_str(), 0777);
+    mkdir(binary_directory.c_str(), 0777);
 
-        vector<string> files = states();
-        files.push_back("");
+    vector<string> files = states();
+    files.push_back("");
 
 #ifdef __BLOCKS__
-        __block vector<string> outfiles;
-        __block bool success = true;
-        dispatch_apply(files.size(), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(size_t i)
+    __block vector<string> outfiles;
+    __block bool success = true;
+    dispatch_apply(files.size(), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(size_t i)
 #else
-        vector<string> outfiles;
-        bool success = true;
-        for (size_t i = 0; i < files.size(); i++)
+    vector<string> outfiles;
+    bool success = true;
+    for (size_t i = 0; i < files.size(); i++)
 #endif
-        {
-                vector<string> args = compiler_args;
-                stringstream file;
-                stringstream outfile;
+    {
+        vector<string> args = compiler_args;
+        stringstream file;
+        stringstream outfile;
 
-                if (files[i].length())
-                        file << "State_" << files[i];
-                else
-                        file << name();
+        if (files[i].length())
+                file << "State_" << files[i];
+        else
+                file << name();
 
-                outfile << binary_directory << "/" << file.str() << ".o";
-                file << ".mm";
+        outfile << binary_directory << "/" << file.str() << ".o";
+        file << ".mm";
 
-                string outfilename = outfile.str();
+        string outfilename = outfile.str();
 
-                args.push_back("-I");
-                args.push_back(path());
-                args.push_back("-Weverything");
-                args.push_back("-Wno-weak-vtables");
-                args.push_back("-Wno-padded");
-                args.push_back("-stdlib=libc++");
-                args.push_back("-c");
-                args.push_back("-o");
-                args.push_back(outfilename);
-                args.push_back(_fullPath + "/" + file.str());
+        args.push_back("-I");
+        args.push_back(path());
+        args.push_back("-Weverything");
+        args.push_back("-Wno-weak-vtables");
+        args.push_back("-Wno-padded");
+        args.push_back("-stdlib=libc++");
+        args.push_back("-c");
+        args.push_back("-o");
+        args.push_back(outfilename);
+        args.push_back(_fullPath + "/" + file.str());
 
-                if (!compiler()->compile(args))
-                        success = false;
+        if (!compiler()->compile(args))
+                success = false;
 #ifdef __BLOCKS__
-                else dispatch_sync(sync_queue,
-                ^{
-                        outfiles.push_back(outfilename);
-                });
+        else dispatch_sync(sync_queue,
+        ^{
+                outfiles.push_back(outfilename);
         });
+});
 #else
-                else
-                {
-                        outfile_pushback_param param = { &outfiles, &outfilename };
-                        dispatch_sync_f(sync_queue, &param, push_back_outfilename);
-                }
-        }
-#endif
-        if (success)    // link into shared object if compiler was successful
+        else
         {
-                vector<string> args = linker_args;
-                for (vector<string>::iterator of = outfiles.begin(); of != outfiles.end(); of++)
-                        args.push_back(*of);
-                args.push_back("-shared");
-                args.push_back("-stdlib=libc++");
-                args.push_back("-lclfsm");
-                args.push_back("-o");
-                args.push_back(binary_directory + "/" + name() + ".so");
-
-                success = compiler()->compile(args);
+                outfile_pushback_param param = { &outfiles, &outfilename };
+                dispatch_sync_f(sync_queue, &param, push_back_outfilename);
         }
+}
+#endif
+if (success)    // link into shared object if compiler was successful
+{
+        vector<string> args = linker_args;
+        for (vector<string>::iterator of = outfiles.begin(); of != outfiles.end(); of++)
+                args.push_back(*of);
+        args.push_back("-shared");
+        args.push_back("-stdlib=libc++");
+        args.push_back("-lclfsm");
+        args.push_back("-o");
+        args.push_back(binary_directory + "/" + name() + ".so");
 
-        return success;
+        success = compiler()->compile(args);
+    }
+
+    return success;
 }
 
 
 CLMachine *MachineWrapper::instantiate(int id, const char *machine_name)
 {
-        if (!_shared_object)
+    if (!_shared_object)
+    {
+        string shared_path = binaryDirectory() + "/" + _name + ".so";
+        if (!(_shared_object = dlopen(shared_path.c_str(), RTLD_NOW|RTLD_GLOBAL)))
         {
-                string shared_path = binaryDirectory() + "/" + _name + ".so";
-                if (!(_shared_object = dlopen(shared_path.c_str(), RTLD_NOW|RTLD_GLOBAL)))
-                {
-                        const char *error = dlerror();
-                        if (error) cerr << error << endl;
+            const char *error = dlerror();
+            if (error) cerr << error << endl;
 
-                        const vector<string> *cmdline_compiler_args = _compiler_args;
-                        const vector<string> *linker_args = _linker_args;
-                        vector<string> compiler_args = cmdline_compiler_args ? *cmdline_compiler_args : default_compiler_args();
+            const vector<string> *cmdline_compiler_args = _compiler_args;
+            const vector<string> *linker_args = _linker_args;
+            vector<string> compiler_args = cmdline_compiler_args ? *cmdline_compiler_args : default_compiler_args();
 
-                        add_machine_includes(compiler_args);
+            add_machine_includes(compiler_args);
 
-                        if (!linker_args)   linker_args   = &default_linker_args();
+            if (!linker_args)   linker_args   = &default_linker_args();
 
-                        compile(compiler_args, *linker_args);
+            compile(compiler_args, *linker_args);
 
-                        if (!(_shared_object = dlopen(shared_path.c_str(), RTLD_NOW|RTLD_GLOBAL)))
-                        {
-                                if (!error)
-                                {
-                                        error = dlerror();
-                                        if (error) cerr << error << endl;
-                                        else cerr << "Unkown error!" << endl;
-                                }
-                                return NULL;
-                        }
-                }
+            if (!(_shared_object = dlopen(shared_path.c_str(), RTLD_NOW|RTLD_GLOBAL)))
+            {
+                    if (!error)
+                    {
+                            error = dlerror();
+                            if (error) cerr << error << endl;
+                            else cerr << "Unkown error!" << endl;
+                    }
+                    return NULL;
+            }
         }
+    }
+    if (!_factory)
+    {
+        string symbol = string("CLM_Create_") + name();
+        _factory = create_machine_f(dlsym(_shared_object, symbol.c_str()));
         if (!_factory)
         {
-                string symbol = string("CLM_Create_") + name();
-                _factory = create_machine_f(dlsym(_shared_object, symbol.c_str()));
-                if (!_factory)
-                {
-                        symbol = string("_CLM_Create_") + name();
-                        if (!(_factory = create_machine_f(dlsym(_shared_object, symbol.c_str()))))
-                            return NULL;
+            symbol = string("_CLM_Create_") + name();
+            if (!(_factory = create_machine_f(dlsym(_shared_object, symbol.c_str()))))
+                return NULL;
 
-                }
         }
-        return _factory(id, machine_name);
+    }
+    return _factory(id, machine_name);
+}
+
+refl_metaMachine MachineWrapper::instantiateMetaMachine(CLMachine * machine)
+{
+    if (!_shared_object)
+    {
+        std::cerr << "Shared object doesn't exist" << std::endl;
+        return NULL; //Assumes machine is already instantiated
+    }
+    if (!_metaFactory)
+    {
+        string symbol = string("Create_MetaMachine");
+        _metaFactory = create_meta_f(dlsym(_shared_object, symbol.c_str()));
+        if (!_metaFactory)
+        {
+            return NULL;
+        }
+    }
+    refl_metaMachine meta = _metaFactory();
+    refl_setMachine(meta, static_cast<void*>(machine), NULL);
+    return meta;
 }
 
 string MachineWrapper::stringByExpandingEnvironmentVariablesInString(string originalString)

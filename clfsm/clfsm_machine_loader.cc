@@ -65,6 +65,7 @@
 #include "clfsm_wb_vector_factory.h"
 #include "clfsm_machine.h"
 #include "CLMachine.h"
+#include "CLReflectAPI.h"
 
 using namespace FSM;
 
@@ -82,9 +83,9 @@ std::vector<std::string> compiler_args,
 std::vector<std::string> linker_args)
 {
     if (!loader_singleton)
-    return NULL;
+        return NULL;
     else
-    return loader_singleton->loadAndAddMachineAtPath(machine, compiler_args, linker_args);
+        return loader_singleton->loadAndAddMachineAtPath(machine, compiler_args, linker_args);
 }
 
 SuspensibleMachine *FSM::loadAndAddMachine(const std::string machine)
@@ -184,6 +185,13 @@ SuspensibleMachine* CLFSMMachineLoader::loadAndAddMachineAtPath(const std::strin
         }
         strcpy(c_name, name.c_str());
         clm->setMachineName(c_name);
+
+        // Load and register meta machine
+        refl_metaMachine meta = wrapper->instantiateMetaMachine(clm);
+        if (meta)
+        {
+            refl_registerMetaMachine(meta, id, NULL);
+        }
         return _vector_factory->addMachine(clm, index);
 
     }

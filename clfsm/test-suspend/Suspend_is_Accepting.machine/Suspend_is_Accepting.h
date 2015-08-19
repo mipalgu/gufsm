@@ -3,8 +3,8 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_machine_Suspend_is_Accepting_
-#define clfsm_machine_Suspend_is_Accepting_
+#ifndef __clfsm__Suspend_is_Accepting__
+#define __clfsm__Suspend_is_Accepting__
 
 #include "CLMachine.h"
 
@@ -32,4 +32,4 @@ extern "C"
     FSM::CLM::Suspend_is_Accepting *CLM_Create_Suspend_is_Accepting(int mid, const char *name);
 }
 
-#endif // defined(clfsm_machine_Suspend_is_Accepting_)
+#endif // defined(__gufsm__Suspend_is_Accepting__)

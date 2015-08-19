@@ -3,8 +3,8 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef clfsm_Suspend_
-#define clfsm_Suspend_
+#ifndef __clfsm__Suspend__
+#define __clfsm__Suspend__
 
 #include "CLMachine.h"
 
@@ -32,4 +32,4 @@ extern "C"
     FSM::CLM::Suspend *CLM_Create_Suspend(int mid, const char *name);
 }
 
-#endif // defined(clfsm_Suspend_)
+#endif // defined(__gufsm__Suspend__)

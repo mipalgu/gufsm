@@ -84,6 +84,7 @@
 #include "gu_util.h"
 #include "FSMState.h"
 #include "FSMSuspensibleMachine.h"
+#include "FSMAsynchronousSuspensibleMachine.h"
 #include "FSMachineVector.h"
 #include "CLMachine.h"
 #include "clfsm_machine.h"
@@ -94,6 +95,9 @@
 // Visitors and Support Objects
 #include "clfsm_visitors.h"
 #include "clfsm_visitorsupport.h"
+
+// Reflection API
+#include "CLReflectAPI.h"
 
 static const char *command;
 static int command_argc;
@@ -119,11 +123,6 @@ static CLFSMWBVectorFactory *createMachines(const vector<string> &machines, cons
             FSM::loadAndAddMachineAtPath(machine, compiler_args, linker_args);
     }
     return loader->vector_factory();
-}
-
-static void initReflection()
-{
-
 }
 
 static void __attribute((noreturn)) aborting_signal_handler(int signum)
@@ -248,17 +247,31 @@ static bool print_machine_and_state(void *ctx, SuspensibleMachine *machine, int 
         return true;
 }
 
-static bool unloadMachineIfAccepting(void *ctx, SuspensibleMachine* machine, int machine_number)
+
+static bool unloadMachineIfAccepting(void *ctx, SuspensibleMachine *machine, int machine_number)
 {
         if (machine->isSuspended()) return false;   // don't unload if suspended
 
         struct clfsm_context *context = static_cast<struct clfsm_context *>(ctx);
+        if (machine->scheduledForSuspend() ||       // don't unload if scheduled for suspend
+            machine->scheduledForRestart())         // don't unload if scheduled for restart
+        {
+#ifndef NDEBUG
+            const char *action = machine->scheduledForRestart() ? "restart" : "suspension";
+            MachineWrapper* wrapper = context->loader->machineWrappers().at(machine_number);
+            const char *machineName = wrapper ? wrapper->name() : NULL;
+            if (!machineName) machineName = "<unknown>";
+            cerr << "*** Machine " << machine->id() << ": '" << machineName << "' scheduled for " << action << " -- not unloading! ***" << endl;
+#endif
+            return false;
+        }
+
         CLFSMMachineLoader *loader = context->loader;
         loader->unloadMachineAtIndex(machine_number);
-        machine; ///XXX: Just to get it to compile.
-                 ///     Consider creating new function type
+
         return true;
 }
+
 
 int main(int argc, char * const argv[])
 {
@@ -372,13 +385,13 @@ int main(int argc, char * const argv[])
     if ((verbosity = verbose)) visitor = print_machine_and_state;
     if (time_state_execution) visitor = CLFSMVisitorsExecution::time_state_execution;
     if (!noUnloadIfAccepting) accept_action = unloadMachineIfAccepting;
-    initReflection();
+    refl_initAPI(NULL); //Init reflection system
     CLFSMWBVectorFactory *factory = createMachines(machines, compiler_args, linker_args);
     struct clfsm_context context = { CLFSMMachineLoader::getMachineLoaderSingleton() };
     factory->postMachineStatus();
     debug_internal_states = debug;
     factory->fsms()->execute(visitor, &context, accept_action);
-
+    refl_destroyAPI(NULL); // Destroy reflection system
     // Print Execution Results
     if (time_state_execution)
     {

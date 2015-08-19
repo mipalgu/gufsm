@@ -1,51 +1,264 @@
 #include "API_MetaMachine.h"
-
+#include "API_MetaMachine_Internal.h"
+#include "API_Util.h"
+#include "CLReflectFunctionPointerTypes.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
-struct metaMachine_s
-{
-    char* name;
-};
-
-CLReflectResult refl_initMetaMachine(refl_metaMachine *metaMachine)
+refl_metaMachine refl_initMetaMachine(CLReflectResult* result)
 {
     refl_metaMachine newMeta  = (refl_metaMachine)malloc(sizeof(struct metaMachine_s));
     if (newMeta != NULL)
     {
         newMeta->name = NULL;
-        *metaMachine = newMeta;
-        return API_SUCCESS;
+        newMeta->machine = NULL;
+        newMeta->numberOfStates = 0;
+        newMeta->metaStates = NULL;
+        if (result != NULL)
+        {
+            *result = REFL_SUCCESS;
+        }
+        return newMeta;
     }
     else
     {
-        return API_UNKNOWN_ERROR;
+        if (result != NULL)
+            *result = REFL_UNKNOWN_ERROR;
+        return NULL;
     }
 }
 
-CLReflectResult refl_destroyMetaMachine(refl_metaMachine metaMachine)
+void refl_destroyMetaMachine(refl_metaMachine metaMachine, CLReflectResult* result)
 {
+    CLReflectResult functionResult = REFL_SUCCESS;
     if (metaMachine == NULL)
     {
-        return API_INVALID_ARGS;
+        functionResult = REFL_INVALID_ARGS;
     }
-    free(metaMachine->name);
-    free(metaMachine);
-    return API_SUCCESS;
+    else
+    {
+        free(metaMachine->name);
+        //Destroy states
+        int i;
+        for (i = 0; i < metaMachine->numberOfStates; i++)
+        {
+            refl_destroyMetaState(metaMachine->metaStates[i], &functionResult);
+        }
+        if (functionResult == REFL_SUCCESS)
+            free(metaMachine);
+    }
+    if (result != NULL)
+        *result = functionResult;
 }
 
-// XXX: remove once parameters are actually used
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunused-parameter"
-
-CLReflectResult refl_setMachineName(refl_metaMachine machine, char* name)
+void refl_setMetaMachineName(refl_metaMachine machine, char const * name, CLReflectResult* result)
 {
-    return API_SUCCESS;
+    CLReflectResult funcResult;
+    if (!machine || !name)
+    {
+        funcResult = REFL_INVALID_ARGS;
+    } else
+    {
+        free(machine->name); // Free the old machine name. Guaranteed heap mem.
+        int len = (int)strlen(name) + 1;
+        machine->name = (char *)malloc(sizeof(char) *  len);
+        if (machine->name == NULL)
+        {
+            funcResult = REFL_UNKNOWN_ERROR;
+        }
+        else
+        {
+            funcResult = refl_strcpy(machine->name, name, len);
+        }
+
+    }
+    if (result)
+    {
+        *result = funcResult;
+    }
 }
 
-CLReflectResult refl_getMachineName(refl_metaMachine machine, char* buffer, int bufferLen)
+char* refl_getMetaMachineName(refl_metaMachine machine, CLReflectResult* result)
 {
-    return API_SUCCESS;
+    if (!machine || !machine->name)
+    {
+        if (result)
+            *result = REFL_INVALID_ARGS; //name has not been set
+        return NULL;
+    }
+    else
+    {
+        int bufferLen = (int)strlen(machine->name) + 1;
+        char* buffer = (char*)malloc(bufferLen);
+        CLReflectResult funcResult = refl_strcpy(buffer, machine->name, bufferLen);
+        if (result)
+            *result = funcResult;
+        return buffer;
+    }
+
 }
 
-#pragma clang diagnostic pop
+void refl_setMachine(refl_metaMachine metaMachine, refl_machine_t machine, CLReflectResult *result)
+{
+    if (!metaMachine || !machine)
+    {
+        if (result)
+            *result = REFL_INVALID_ARGS;
+    }
+    else
+    {
+        metaMachine->machine = machine;
+        if (result)
+        {
+            *result = REFL_SUCCESS;
+        }
+    }
+}
+
+//! Gets the number of states
+unsigned int refl_getNumberOfStates(refl_metaMachine machine, CLReflectResult* result)
+{
+    if (!machine)
+    {
+        if (result)
+            *result = REFL_INVALID_ARGS;
+        return 0;
+    }
+    else
+    {
+        if (result)
+            *result = REFL_SUCCESS;
+        return machine->numberOfStates;
+
+    }
+}
+
+//! Sets the meta-machine's states
+void refl_setMetaStates(refl_metaMachine machine, refl_metaState* states, int len, CLReflectResult* result)
+{
+    if (!machine || (!states && len) || (states && !len)) //Can have null states if len = 0
+    {
+        if (result)
+            *result = REFL_INVALID_ARGS;
+    }
+    else
+    {
+        if (len != 0)
+        {
+            free(machine->metaStates);
+            machine->metaStates = (refl_metaState*)malloc(sizeof(refl_metaState) * len);
+            memcpy(machine->metaStates, states, sizeof(refl_metaState*) * len);
+        }
+        machine->numberOfStates = len;
+        if (result)
+            *result = REFL_SUCCESS;
+
+    }
+}
+
+refl_metaState const * refl_getMetaStates(refl_metaMachine metaMachine, CLReflectResult *result)
+{
+    if (!metaMachine)
+    {
+        if (result)
+            *result = REFL_INVALID_ARGS;
+            return NULL;
+    }
+    else
+    {
+        if (result)
+            *result = REFL_SUCCESS;
+        return metaMachine->metaStates;
+    }
+
+}
+
+void refl_invokeOnEntry(refl_metaMachine metaMachine, int stateNum, CLReflectResult* result)
+{
+    if (!metaMachine || stateNum >= metaMachine->numberOfStates ||
+            !metaMachine->metaStates[stateNum] ||
+            !metaMachine->metaStates[stateNum]->onEntry)
+    {
+        if (result)
+            *result = REFL_INVALID_ARGS;
+    }
+    else
+    {
+        refl_machine_t machine = metaMachine->machine;
+        refl_metaAction metaAction = metaMachine->metaStates[stateNum]->onEntry;
+        metaAction->action(machine, metaAction->data);
+        if (result)
+            *result = REFL_SUCCESS;
+    }
+}
+
+
+void refl_invokeInternal(refl_metaMachine metaMachine, int stateNum, CLReflectResult* result)
+{
+    if (!metaMachine || stateNum >= metaMachine->numberOfStates ||
+            !metaMachine->metaStates[stateNum] ||
+            !metaMachine->metaStates[stateNum]->internal)
+    {
+        if (result)
+            *result = REFL_INVALID_ARGS;
+    }
+    else
+    {
+        refl_machine_t machine = metaMachine->machine;
+        refl_metaAction metaAction = metaMachine->metaStates[stateNum]->internal;
+        metaAction->action(machine, metaAction->data);
+        if (result)
+            *result = REFL_SUCCESS;
+    }
+}
+
+void refl_invokeOnExit(refl_metaMachine metaMachine, int stateNum, CLReflectResult* result)
+{
+    if (!metaMachine || stateNum >= metaMachine->numberOfStates ||
+            !metaMachine->metaStates[stateNum] ||
+            !metaMachine->metaStates[stateNum]->onExit)
+    {
+        if (result)
+            *result = REFL_INVALID_ARGS;
+    }
+    else
+    {
+        refl_machine_t machine = metaMachine->machine;
+        refl_metaAction metaAction = metaMachine->metaStates[stateNum]->onExit;
+        metaAction->action(machine, metaAction->data);
+        if (result)
+            *result = REFL_SUCCESS;
+    }
+}
+
+refl_bool refl_evaluateTransition(refl_metaMachine metaMachine, unsigned int stateNum, unsigned int transitionNum, CLReflectResult *result)
+{
+    if (!metaMachine)
+    {
+        if (result)
+            *result = REFL_INVALID_ARGS;
+        return refl_FALSE;
+    }
+    unsigned int numStates = metaMachine->numberOfStates;
+    if (stateNum >= numStates)
+    {
+        if (result)
+            *result = REFL_INVALID_ARGS;
+        return refl_FALSE;
+    }
+    refl_metaState state = metaMachine->metaStates[stateNum];
+    unsigned int numTransitions = state->numberOfTransitions;
+    if (transitionNum >= numTransitions)
+    {
+        if (result)
+            *result = REFL_INVALID_ARGS;
+        return refl_FALSE;
+    }
+    refl_metaTransition transition = state->transitions[transitionNum];
+    if (result)
+        *result = REFL_SUCCESS;
+    return transition->evalFunction(metaMachine->machine,
+                        transition->data);
+
+}
