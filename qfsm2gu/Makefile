@@ -49,7 +49,10 @@ link-utils:
 	$Eln -s ${UTIL_DIR}/${file} . 2>/dev/null || true
 .endfor
 
-.if `whoami` != root
+.ifndef WHOAMI
+WHOAMI!=whoami
+.endif
+.if ${WHOAMI} != root
 NSUDO?=sudo
 .endif
 install: ${ALL_TARGETS}
