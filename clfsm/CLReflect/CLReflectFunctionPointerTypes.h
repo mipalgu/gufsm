@@ -19,8 +19,21 @@ typedef void* (*getMachine_f)(const char*);
 
 //! Typedef for a state action (internal, onExit etc)
 typedef void (*refl_stateAction_f)(refl_machine_t, refl_userData_t);
-
+//! Evaluation transition function type
 typedef refl_bool (*refl_transitionEval_f)(refl_machine_t, refl_userData_t);
 
+//! Get current state function type
 typedef int (*refl_getCurrentState_f)(refl_machine_t, refl_userData_t);
+
+//! Get property as void *
+typedef void* (*refl_getValueAsVoid_f)(refl_machine_t, refl_userData_t);
+
+//! Get property as string
+typedef char const * (*refl_getValueAsString_f) (refl_machine_t, refl_userData_t);
+
+//! Set property as void*
+typedef void (*refl_setValueAsVoid_f) (refl_machine_t, refl_userData_t, void*);
+
+typedef void (*refl_setValueAsString_f) (refl_machine_t, refl_userData_t, char const * const);
+
 #endif /* end of include guard: CLREFLECTFUNCTIONPOINTERTYPES_H */

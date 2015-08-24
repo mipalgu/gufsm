@@ -7,4 +7,5 @@ extern "C" {
     #include "API_MetaState.h"
     #include "API_MetaTransition.h"
     #include "API_MetaAction.h"
+    #include "API_MetaProperty.h"
 }

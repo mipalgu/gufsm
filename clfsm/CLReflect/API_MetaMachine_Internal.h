@@ -6,6 +6,7 @@
 #include "CLReflectFunctionPointerTypes.h"
 #include "API_MetaState.h"
 #include "API_MetaTransition.h"
+#include "API_MetaProperty.h"
 
 struct metaAction_s
 {
@@ -23,6 +24,17 @@ struct metaTransition_s
     unsigned int source;
     refl_transitionEval_f evalFunction;
     refl_userData_t data;
+};
+
+struct metaProperty_s
+{
+    char * name;
+    char * type;
+    refl_userData_t data;
+    refl_getValueAsVoid_f getAsVoid;
+    refl_setValueAsVoid_f setAsVoid;
+    refl_getValueAsString_f getAsString;
+    refl_setValueAsString_f setAsString;
 };
 
 struct metaState_s
@@ -45,6 +57,8 @@ struct metaMachine_s
     int numberOfStates;
     refl_getCurrentState_f currentState;
     refl_userData_t data;
+    unsigned int numberOfProperties;
+    refl_metaProperty* getMetaMachineProperties;
 };
 
 #pragma clang diagnostic pop
