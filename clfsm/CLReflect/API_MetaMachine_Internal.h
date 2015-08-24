@@ -58,7 +58,7 @@ struct metaMachine_s
     refl_getCurrentState_f currentState;
     refl_userData_t data;
     unsigned int numberOfProperties;
-    refl_metaProperty* getMetaMachineProperties;
+    refl_metaProperty* metaProperties;
 };
 
 #pragma clang diagnostic pop

@@ -15,6 +15,10 @@ refl_metaMachine refl_initMetaMachine(CLReflectResult* result)
         newMeta->machine = NULL;
         newMeta->numberOfStates = 0;
         newMeta->metaStates = NULL;
+        newMeta->numberOfProperties = 0;
+        newMeta->metaProperties = NULL;
+        newMeta->currentState = NULL;
+        newMeta->data = NULL;
         if (result != NULL)
         {
             *result = REFL_SUCCESS;
@@ -44,6 +48,10 @@ void refl_destroyMetaMachine(refl_metaMachine metaMachine, CLReflectResult* resu
         for (i = 0; i < metaMachine->numberOfStates; i++)
         {
             refl_destroyMetaState(metaMachine->metaStates[i], &functionResult);
+        }
+        for (i = 0; i < metaMachine->numberOfProperties; i++)
+        {
+            refl_destroyMetaProperty(metaMachine->metaProperties[i], NULL);
         }
         if (functionResult == REFL_SUCCESS)
             free(metaMachine);
