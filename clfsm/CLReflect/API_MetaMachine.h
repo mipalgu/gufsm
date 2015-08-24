@@ -3,6 +3,7 @@
 
 #include "API_Result.h"
 #include "API_MetaState.h"
+#include "API_MetaProperty.h"
 
 struct metaMachine_s;
 typedef struct metaMachine_s* refl_metaMachine;
@@ -47,7 +48,7 @@ void refl_setMetaStates(refl_metaMachine machine, refl_metaState* states, int le
 //! Gets the number of states
 unsigned int refl_getNumberOfStates(refl_metaMachine machine, CLReflectResult* result);
 
-refl_metaState const * refl_getMetaStates(refl_metaMachine metaMachine, CLReflectResult *result);
+refl_metaState * refl_getMetaStates(refl_metaMachine metaMachine, CLReflectResult *result);
 
 //! Invokes the OnEntry of a given state
 void refl_invokeOnEntry(refl_metaMachine metaMachine, int stateNum, CLReflectResult* result);
@@ -62,6 +63,13 @@ int refl_getCurrentState(refl_metaMachine metaMachine, CLReflectResult* result);
 
 void refl_setCurrentStateFunction(refl_metaMachine metaMachine, refl_getCurrentState_f function, refl_userData_t data, CLReflectResult* result);
 
+void refl_setMachineMetaProperties(refl_metaMachine metaMachine, refl_metaProperty *properties, unsigned int len, CLReflectResult *result);
+
+refl_metaProperty * refl_getMachineMetaProperties(refl_metaMachine metaMachine, CLReflectResult* result);
+
+unsigned int refl_getNumberOfMachineProperties(refl_metaMachine metaMachine, CLReflectResult *result);
+
 void refl_setMachinePropertyValue_VP(refl_metaMachine metaMachine, unsigned int propIndex, void* value, CLReflectResult *result);
+
 
 #endif /* end of include guard: API_METAMACHINE_H */

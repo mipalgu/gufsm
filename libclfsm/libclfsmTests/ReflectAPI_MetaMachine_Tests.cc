@@ -134,7 +134,7 @@ namespace
         refl_setMetaStates(metaMachine, states, 2, NULL);
 
         CLReflectResult res;
-        refl_metaState const * retStates = refl_getMetaStates(metaMachine, &res);
+        refl_metaState * retStates = refl_getMetaStates(metaMachine, &res);
         ASSERT_EQ(REFL_SUCCESS, res);
         ASSERT_EQ(states[0], retStates[0]);
         ASSERT_EQ(states[1], retStates[1]);

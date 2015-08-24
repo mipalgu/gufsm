@@ -148,6 +148,26 @@ namespace
         ASSERT_EQ(REFL_INVALID_ARGS, result);
         refl_getMetaPropertyType(NULL, &result);
         ASSERT_EQ(REFL_INVALID_ARGS, result);
+    }
+
+    TEST_F(ReflectAPI_MetaProperty_Tests, machineProperties)
+    {
+        refl_metaMachine machine = refl_initMetaMachine(NULL);
+        refl_metaProperty properties[] = { metaProperty };
+        CLReflectResult result;
+        refl_setMachineMetaProperties(machine, properties, 1, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        ASSERT_EQ(1, refl_getNumberOfMachineProperties(machine, &result));
+        ASSERT_EQ(REFL_SUCCESS, result);
+        refl_metaProperty const *retProperties = refl_getMachineMetaProperties(machine, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        ASSERT_EQ(properties[0], retProperties[0]);
+
+        //Error handling
+        refl_setMachineMetaProperties(machine, NULL, 0, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        refl_getMachineMetaProperties(NULL, &result);
+        ASSERT_EQ(REFL_INVALID_ARGS, result);
 
     }
 

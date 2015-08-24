@@ -165,7 +165,7 @@ void refl_setMetaStates(refl_metaMachine machine, refl_metaState* states, int le
     }
 }
 
-refl_metaState const * refl_getMetaStates(refl_metaMachine metaMachine, CLReflectResult *result)
+refl_metaState * refl_getMetaStates(refl_metaMachine metaMachine, CLReflectResult *result)
 {
     if (!metaMachine)
     {
