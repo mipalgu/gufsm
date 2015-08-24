@@ -61,4 +61,7 @@ refl_bool refl_evaluateTransition(refl_metaMachine metaMachine, unsigned int sta
 int refl_getCurrentState(refl_metaMachine metaMachine, CLReflectResult* result);
 
 void refl_setCurrentStateFunction(refl_metaMachine metaMachine, refl_getCurrentState_f function, refl_userData_t data, CLReflectResult* result);
+
+void refl_setMachinePropertyValue_VP(refl_metaMachine metaMachine, unsigned int propIndex, void* value, CLReflectResult *result);
+
 #endif /* end of include guard: API_METAMACHINE_H */

@@ -108,6 +108,48 @@ namespace
 
     }
 
+    TEST_F(ReflectAPI_MetaProperty_Tests, setUserData)
+    {
+        CLReflectResult result;
+        refl_setMetaPropertyData(metaProperty, NULL, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        refl_setMetaPropertyData(NULL, NULL, &result);
+        ASSERT_EQ(REFL_INVALID_ARGS, result);
+    }
+
+    TEST_F(ReflectAPI_MetaProperty_Tests, name)
+    {
+        CLReflectResult result;
+        char const * name = "TestName";
+        refl_setMetaPropertyName(metaProperty, name, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        char const * ret = refl_getMetaPropertyName(metaProperty, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        ASSERT_STREQ(name, ret);
+
+        refl_setMetaPropertyName(NULL, name, &result);
+        ASSERT_EQ(REFL_INVALID_ARGS, result);
+        refl_getMetaPropertyName(NULL, &result);
+        ASSERT_EQ(REFL_INVALID_ARGS, result);
+
+    }
+
+    TEST_F(ReflectAPI_MetaProperty_Tests, type)
+    {
+        CLReflectResult result;
+        char const * name = "TestName";
+        refl_setMetaPropertyType(metaProperty, name, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        char const * ret = refl_getMetaPropertyType(metaProperty, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        ASSERT_STREQ(name, ret);
+
+        refl_setMetaPropertyType(NULL, name, &result);
+        ASSERT_EQ(REFL_INVALID_ARGS, result);
+        refl_getMetaPropertyType(NULL, &result);
+        ASSERT_EQ(REFL_INVALID_ARGS, result);
+
+    }
 
 }
 

@@ -1,6 +1,8 @@
 #include "API_MetaProperty.h"
 #include "API_MetaMachine_Internal.h"
+#include "API_Util.h"
 #include <stdlib.h>
+#include <string.h>
 
 refl_metaProperty refl_initMetaProperty(CLReflectResult *result)
 {
@@ -90,4 +92,117 @@ void refl_setMetaPropertyVoidFunctions(refl_metaProperty metaProperty,
         }
     }
 
+}
+
+void refl_setMetaPropertyData(refl_metaProperty metaProperty, refl_userData_t data, CLReflectResult *result)
+{
+    if (!metaProperty)
+    {
+        if (result)
+        {
+            *result = REFL_INVALID_ARGS;
+        }
+    }
+    else
+    {
+        metaProperty->data = data;
+        if (result)
+        {
+            *result = REFL_SUCCESS;
+        }
+    }
+}
+
+void refl_setMetaPropertyName(refl_metaProperty metaProperty, char const * name, CLReflectResult* result)
+{
+    CLReflectResult funcResult;
+    if (!metaProperty || !name)
+    {
+        funcResult = REFL_INVALID_ARGS;
+    } else
+    {
+        free(metaProperty->name); // Free the old machine name. Guaranteed heap mem.
+        int len = (int)strlen(name) + 1;
+        metaProperty->name = (char *)malloc(sizeof(char) *  len);
+        if (metaProperty->name == NULL)
+        {
+            funcResult = REFL_UNKNOWN_ERROR;
+        }
+        else
+        {
+            funcResult = refl_strcpy(metaProperty->name, name, len);
+        }
+
+    }
+    if (result)
+    {
+        *result = funcResult;
+    }
+}
+
+char const * refl_getMetaPropertyName(refl_metaProperty metaProperty, CLReflectResult* result)
+{
+    if (!metaProperty)
+    {
+        if (result)
+        {
+            *result = REFL_INVALID_ARGS;
+        }
+        return NULL;
+    }
+    else
+    {
+        if (result)
+        {
+            *result = REFL_SUCCESS;
+        }
+        return metaProperty->name;
+    }
+}
+
+void refl_setMetaPropertyType(refl_metaProperty metaProperty, char const * type, CLReflectResult* result)
+{
+    CLReflectResult funcResult;
+    if (!metaProperty || !type)
+    {
+        funcResult = REFL_INVALID_ARGS;
+    } else
+    {
+        free(metaProperty->type); // Free the old machine name. Guaranteed heap mem.
+        int len = (int)strlen(type) + 1;
+        metaProperty->type = (char *)malloc(sizeof(char) *  len);
+        if (metaProperty->type == NULL)
+        {
+            funcResult = REFL_UNKNOWN_ERROR;
+        }
+        else
+        {
+            funcResult = refl_strcpy(metaProperty->type, type, len);
+        }
+
+    }
+    if (result)
+    {
+        *result = funcResult;
+    }
+}
+
+char const * refl_getMetaPropertyType(refl_metaProperty metaProperty, CLReflectResult* result)
+{
+    if (!metaProperty)
+    {
+        if (result)
+        {
+            *result = REFL_INVALID_ARGS;
+        }
+        return NULL;
+    }
+    else
+    {
+        if (result)
+        {
+            *result = REFL_SUCCESS;
+        }
+        return metaProperty->type;
+    }
 }
