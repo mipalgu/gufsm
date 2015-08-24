@@ -58,5 +58,7 @@ void refl_invokeOnExit(refl_metaMachine metaMachine, int stateNum, CLReflectResu
 
 refl_bool refl_evaluateTransition(refl_metaMachine metaMachine, unsigned int stateNum, unsigned int transitionNum, CLReflectResult *result);
 
+int refl_getCurrentState(refl_metaMachine metaMachine, CLReflectResult* result);
 
+void refl_setCurrentStateFunction(refl_metaMachine metaMachine, refl_getCurrentState_f function, refl_userData_t data, CLReflectResult* result);
 #endif /* end of include guard: API_METAMACHINE_H */

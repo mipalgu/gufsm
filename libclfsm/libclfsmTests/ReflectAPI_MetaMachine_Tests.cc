@@ -3,6 +3,7 @@
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 #pragma clang diagnostic ignored "-Wshift-sign-overflow"
 #pragma clang diagnostic ignored "-Wused-but-marked-unused"
+#pragma clang diagnostic ignored "-Wunused-parameter"
 #pragma clang diagnostic ignored "-Wdeprecated"
 
 #include <gtest/gtest.h>
@@ -140,6 +141,27 @@ namespace
 
     }
 
+    int currentStateFunc(refl_machine_t machine, refl_userData_t data)
+    {
+        return *static_cast<int*>(data);
+    }
+
+    TEST_F(ReflectAPI_MetaMachine_Tests, getCurrentState)
+    {
+        metaMachine = refl_initMetaMachine(NULL);
+        CLReflectResult result;
+        int data = 45;
+        refl_setCurrentStateFunction(metaMachine, currentStateFunc, NULL, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        refl_getCurrentState(metaMachine, &result);
+        ASSERT_EQ(REFL_INVALID_ARGS, result) << "Expecting invalid as machine not set" << endl;
+        refl_setMachine(metaMachine, static_cast<void*>(this), NULL);
+        refl_setCurrentStateFunction(metaMachine, currentStateFunc, static_cast<void*>(&data), &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        int retVal = refl_getCurrentState(metaMachine, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        ASSERT_EQ(data, retVal) << "Expecting same value" << endl;
+    }
 }
 
 #pragma clang diagnostic pop

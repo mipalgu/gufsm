@@ -43,6 +43,8 @@ struct metaMachine_s
     refl_machine_t machine;
     refl_metaState *metaStates;
     int numberOfStates;
+    refl_getCurrentState_f currentState;
+    refl_userData_t data;
 };
 
 #pragma clang diagnostic pop

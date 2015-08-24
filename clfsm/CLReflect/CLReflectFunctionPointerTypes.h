@@ -22,5 +22,5 @@ typedef void (*refl_stateAction_f)(refl_machine_t, refl_userData_t);
 
 typedef refl_bool (*refl_transitionEval_f)(refl_machine_t, refl_userData_t);
 
-
+typedef int (*refl_getCurrentState_f)(refl_machine_t, refl_userData_t);
 #endif /* end of include guard: CLREFLECTFUNCTIONPOINTERTYPES_H */
