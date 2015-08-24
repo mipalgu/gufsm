@@ -63,7 +63,50 @@ namespace
         ASSERT_EQ(REFL_INVALID_ARGS, result);
     }
 
+    int value;
+    void set(refl_machine_t machine, refl_userData_t data, void* val)
+    {
+        value = *static_cast<int*>(val);
+    }
 
+    void* get(refl_machine_t machine, refl_userData_t data)
+    {
+        return static_cast<void*>(&value);
+    }
+
+    TEST_F(ReflectAPI_MetaProperty_Tests, setAndGetVoid)
+    {
+        CLReflectResult result;
+        refl_setMetaPropertyVoidFunctions(metaProperty, get, set, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        refl_setMetaPropertyVoidFunctions(NULL, get, set, &result);
+        ASSERT_EQ(REFL_INVALID_ARGS, result);
+        refl_setMetaPropertyVoidFunctions(metaProperty, get, NULL, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+
+    }
+
+    void setString(refl_machine_t machine, refl_userData_t data, char const * val)
+    {
+
+    }
+
+    char const * getString(refl_machine_t machine, refl_userData_t data)
+    {
+        return  NULL;
+    }
+
+    TEST_F(ReflectAPI_MetaProperty_Tests, setAndGetString)
+    {
+        CLReflectResult result;
+        refl_setMetaPropertyStringFunctions(metaProperty, getString, setString, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        refl_setMetaPropertyStringFunctions(NULL, getString, setString, &result);
+        ASSERT_EQ(REFL_INVALID_ARGS, result);
+        refl_setMetaPropertyStringFunctions(metaProperty, getString, NULL, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+
+    }
 
 
 }

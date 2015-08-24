@@ -30,6 +30,7 @@ struct metaProperty_s
 {
     char * name;
     char * type;
+    size_t size;
     refl_userData_t data;
     refl_getValueAsVoid_f getAsVoid;
     refl_setValueAsVoid_f setAsVoid;

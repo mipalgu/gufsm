@@ -46,3 +46,48 @@ void refl_destroyMetaProperty(refl_metaProperty metaProperty, CLReflectResult *r
         free(metaProperty);
     }
 }
+
+
+void refl_setMetaPropertyStringFunctions(refl_metaProperty metaProperty,
+        refl_getValueAsString_f getter, refl_setValueAsString_f setter, CLReflectResult* result)
+{
+    if (!metaProperty)
+    {
+        if (result)
+        {
+            *result = REFL_INVALID_ARGS;
+        }
+    }
+    else
+    {
+        metaProperty->getAsString = getter;
+        metaProperty->setAsString = setter;
+        if (result)
+        {
+            *result = REFL_SUCCESS;
+        }
+    }
+
+}
+
+void refl_setMetaPropertyVoidFunctions(refl_metaProperty metaProperty,
+        refl_getValueAsVoid_f getter, refl_setValueAsVoid_f setter, CLReflectResult* result)
+{
+    if (!metaProperty)
+    {
+        if (result)
+        {
+            *result = REFL_INVALID_ARGS;
+        }
+    }
+    else
+    {
+        metaProperty->getAsVoid = getter;
+        metaProperty->setAsVoid = setter;
+        if (result)
+        {
+            *result = REFL_SUCCESS;
+        }
+    }
+
+}
