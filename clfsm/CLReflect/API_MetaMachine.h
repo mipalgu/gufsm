@@ -38,7 +38,7 @@ char* refl_getMetaMachineName(refl_metaMachine machine, CLReflectResult* result)
     Sets the actual FSM for this meta machine
     @param metaMachine The metamachine
     @param machine The executable FSM
-    @param result A pointer to an int in which the call is placed.
+    @param result A pointer to an int in which the result is placed.
 */
 void refl_setMachine(refl_metaMachine metaMachine, refl_machine_t machine, CLReflectResult *result);
 

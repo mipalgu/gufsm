@@ -29,7 +29,8 @@ namespace
 
         virtual ~ReflectAPI_MetaProperty_Tests()
         {
-            refl_destroyMetaMachine(metaMachine, NULL); //Destroys meta property too
+            refl_destroyMetaMachine(metaMachine, NULL);
+            refl_destroyMetaProperty(metaProperty, NULL);
         }
 
         // If the constructor and destructor are not enough for setting up
@@ -169,6 +170,7 @@ namespace
         refl_getMachineMetaProperties(NULL, &result);
         ASSERT_EQ(REFL_INVALID_ARGS, result);
 
+        metaProperty = NULL; // So we don't delete twice in destructor
     }
 
 }
