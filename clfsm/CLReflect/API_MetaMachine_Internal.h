@@ -43,6 +43,8 @@ struct metaState_s
     char* name;
     unsigned int numberOfTransitions;
     refl_metaTransition* transitions;
+    unsigned int numberOfProperties;
+    refl_metaProperty* metaProperties;
     refl_metaAction onEntry;
     refl_metaAction internal;
     refl_metaAction onExit;

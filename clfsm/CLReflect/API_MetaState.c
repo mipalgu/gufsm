@@ -18,6 +18,8 @@ refl_metaState refl_initMetaState(CLReflectResult *result)
         newMetaState->onEntry = NULL;
         newMetaState->internal = NULL;
         newMetaState->onExit = NULL;
+        newMetaState->numberOfProperties = 0;
+        newMetaState->metaProperties = NULL;
         if (result)
             *result = REFL_SUCCESS;
         return newMetaState;
