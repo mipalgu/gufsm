@@ -23,13 +23,11 @@ namespace
 
         ReflectAPI_MetaProperty_Tests()
         {
-            metaMachine = refl_initMetaMachine(NULL);
             metaProperty = refl_initMetaProperty(NULL);
         }
 
         virtual ~ReflectAPI_MetaProperty_Tests()
         {
-            refl_destroyMetaMachine(metaMachine, NULL);
             refl_destroyMetaProperty(metaProperty, NULL);
         }
 
@@ -49,7 +47,6 @@ namespace
         }
 
         // Objects declared here can be used by all tests in the test case.
-        refl_metaMachine metaMachine = NULL;
         refl_metaProperty metaProperty = NULL;
     };
 
@@ -171,6 +168,28 @@ namespace
         ASSERT_EQ(REFL_INVALID_ARGS, result);
 
         metaProperty = NULL; // So we don't delete twice in destructor
+        refl_destroyMetaMachine(machine, NULL);
+    }
+
+    TEST_F(ReflectAPI_MetaProperty_Tests, stateProperties)
+    {
+        refl_metaState metaState = refl_initMetaState(NULL);
+
+        refl_metaProperty properties[] = { metaProperty };
+        CLReflectResult result;
+        refl_setStateMetaProperties(metaState, properties, 1, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        ASSERT_EQ(1, refl_getNumberOfStateProperties(metaState, &result));
+        ASSERT_EQ(REFL_SUCCESS, result);
+        refl_metaProperty const *retProperties = refl_getStateMetaProperties(metaState, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        ASSERT_EQ(properties[0], retProperties[0]);
+
+        //Error handling
+        refl_setStateMetaProperties(metaState, NULL, 0, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        refl_getStateMetaProperties(NULL, &result);
+        ASSERT_EQ(REFL_INVALID_ARGS, result);
     }
 
 }
