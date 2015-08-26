@@ -9,6 +9,11 @@
 #include <gtest/gtest.h>
 #include <string>
 #include "CLReflectAPI.h"
+extern "C"
+{
+    #include "API_MetaProperty_Access.h" //Private implementation
+}
+
 
 using namespace std;
 

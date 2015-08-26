@@ -16,7 +16,7 @@ XCODE_USE_WORKSPACE=yes
 
 .include "../../../mk/c++11.mk"	# use C++11
 
-CPPFLAGS+=-g -O0
+#CPPFLAGS+=-g -O0
 SPECIFIC_LDFLAGS+=-Wl,-rpath -Wl,/usr/local/lib
 
 C_SRCS=stringConstants.c API_MetaMachine.c API_MetaState.c API_MetaAction.c API_MetaTransition.c API_Util.c API_MetaProperty.c API_MetaMachine_Properties.c API_MetaState_Properties.c API_MetaProperty_Access.c
