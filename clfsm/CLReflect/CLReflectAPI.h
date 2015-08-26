@@ -10,4 +10,5 @@ extern "C" {
     #include "API_MetaTransition.h"
     #include "API_MetaAction.h"
     #include "API_MetaProperty.h"
+    #include "API_MetaProperty_Access.h"
 }

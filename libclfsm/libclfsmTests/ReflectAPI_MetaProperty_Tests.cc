@@ -17,6 +17,8 @@ namespace
     // The fixture for testing clfsm.
     class ReflectAPI_MetaProperty_Tests: public ::testing::Test
     {
+    public:
+        int testValue;
     protected:
         // You can remove any or all of the following functions if its body
         // is empty.
@@ -190,6 +192,57 @@ namespace
         ASSERT_EQ(REFL_SUCCESS, result);
         refl_getStateMetaProperties(NULL, &result);
         ASSERT_EQ(REFL_INVALID_ARGS, result);
+    }
+
+    void setAsVoid(refl_machine_t machine, refl_userData_t data, void* newValue)
+    {
+        ReflectAPI_MetaProperty_Tests* tests = static_cast<ReflectAPI_MetaProperty_Tests*>
+                                                    (machine);
+        tests->testValue = *static_cast<int*>(newValue);
+    }
+
+    void* getAsVoid(refl_machine_t machine, refl_userData_t data)
+    {
+        ReflectAPI_MetaProperty_Tests* tests = static_cast<ReflectAPI_MetaProperty_Tests*>
+                                                    (machine);
+        return static_cast<void*>(&tests->testValue);
+    }
+
+
+    TEST_F(ReflectAPI_MetaProperty_Tests, getAsVoid)
+    {
+        CLReflectResult result;
+        refl_setMetaPropertyVoidFunctions(metaProperty, getAsVoid, setAsVoid, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+
+        int val = 0;
+        this->testValue = val;
+        void* testClass = static_cast<void*>(this);
+
+        int retVal = *static_cast<int*>(_refl_getPropertyAsVoid(metaProperty, testClass, &result));
+        ASSERT_EQ(REFL_SUCCESS, result);
+        ASSERT_EQ(this->testValue, retVal);
+        ++val;
+
+        _refl_setPropertyAsVoid(metaProperty, testClass, static_cast<void*>(&val),
+                                    &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        ASSERT_EQ(val, testValue);
+        //Error handling
+        void* badReturnVal = _refl_getPropertyAsVoid(metaProperty, NULL, &result);
+        ASSERT_TRUE(badReturnVal == NULL);
+        ASSERT_EQ(REFL_INVALID_ARGS, result);
+
+        //Create new property without setting functions
+        refl_metaProperty prop = refl_initMetaProperty(NULL);
+        _refl_setPropertyAsVoid(prop, testClass, NULL, &result);
+        ASSERT_EQ(REFL_INVALID_ARGS, result);
+        badReturnVal = _refl_getPropertyAsVoid(prop, testClass, &result);
+        ASSERT_EQ(REFL_INVALID_ARGS, result);
+        refl_destroyMetaProperty(prop, NULL);
+
+
+
     }
 
 }
