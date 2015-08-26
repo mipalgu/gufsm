@@ -269,6 +269,41 @@ namespace
         refl_setMachinePropertyValue_V(machine, 0, static_cast<void*>(&val), &result);
         ASSERT_EQ(REFL_SUCCESS, result);
         ASSERT_EQ(val, this->testValue);
+        metaProperty = NULL;
+        refl_destroyMetaMachine(machine, NULL);
+
+    }
+
+    TEST_F(ReflectAPI_MetaProperty_Tests, statePropertyGetAsVoid)
+    {
+        CLReflectResult result;
+        refl_metaMachine machine = refl_initMetaMachine(&result);
+        void* testClass = static_cast<void*>(this);
+        refl_setMachine(machine, testClass, &result);
+        refl_metaState state = refl_initMetaState(&result);
+        refl_setMetaPropertyVoidFunctions(metaProperty, getAsVoid, setAsVoid, &result);
+        refl_setStateMetaProperties(state, &metaProperty, 1, &result);
+        refl_setMetaStates(machine, &state, 1, &result);
+
+        //Setup values
+        int val = 45;
+        this->testValue = val;
+        //Get value and check its right
+
+        int retVal = *static_cast<int *>(refl_getStatePropertyValue_V(machine,
+                                            0, 0, &result));
+        ASSERT_EQ(REFL_SUCCESS, result);
+        ASSERT_EQ(this->testValue, retVal);
+        ++val;
+      refl_setStatePropertyValue_V(machine, 0, 0, static_cast<void*>(&val), &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        ASSERT_EQ(val, this->testValue);
+
+        //Error checking
+        refl_getStatePropertyValue_V(machine, 1, 0, &result);
+        ASSERT_EQ(REFL_INVALID_ARGS, result);
+        metaProperty = NULL;
+        refl_destroyMetaMachine(machine, NULL);
 
 
     }

@@ -14,4 +14,13 @@ void refl_setMachinePropertyValue_V(refl_metaMachine metaMachine, unsigned int p
 
 void* refl_getMachinePropertyValue_V(refl_metaMachine metaMachine, unsigned int propIndex, CLReflectResult* result);
 
+// State properties
+
+void refl_setStatePropertyValue_V(refl_metaMachine metaMachine, unsigned int stateIndex,
+                                    int propIndex, void* value, CLReflectResult *result);
+
+void* refl_getStatePropertyValue_V(refl_metaMachine metaMachine, unsigned int stateIndex,
+                                        unsigned int propIndex, CLReflectResult* result);
+
+
 #endif /* end of include guard: API_METAMACHINE_PROPERTIES_H */

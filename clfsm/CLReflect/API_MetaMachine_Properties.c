@@ -4,6 +4,7 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h> //XXX:
 
 void refl_setMachineMetaProperties(refl_metaMachine metaMachine, refl_metaProperty *properties, unsigned int len, CLReflectResult *result)
 {
@@ -102,5 +103,43 @@ void* refl_getMachinePropertyValue_V(refl_metaMachine metaMachine, unsigned int 
     {
         return _refl_getPropertyAsVoid(metaMachine->metaProperties[propIndex],
                     metaMachine->machine, result);
+    }
+}
+
+void refl_setStatePropertyValue_V(refl_metaMachine metaMachine, unsigned int stateIndex,
+                                    int propIndex, void* value, CLReflectResult *result)
+{
+    if (!metaMachine || !metaMachine->machine || stateIndex >= metaMachine->numberOfStates ||
+            propIndex >= metaMachine->metaStates[stateIndex]->numberOfProperties)
+    {
+        if (result)
+        {
+            *result = REFL_INVALID_ARGS;
+        }
+    }
+    else
+    {
+        refl_metaProperty prop = metaMachine->metaStates[stateIndex]->metaProperties[propIndex];
+        _refl_setPropertyAsVoid(prop, metaMachine->machine, value, result);
+    }
+}
+
+void* refl_getStatePropertyValue_V(refl_metaMachine metaMachine, unsigned int stateIndex,
+                                        unsigned int propIndex, CLReflectResult* result)
+{
+    if (!metaMachine || !metaMachine->machine || stateIndex >= metaMachine->numberOfStates ||
+            propIndex >= metaMachine->metaStates[stateIndex]->numberOfProperties)
+    {
+        if (result)
+        {
+            *result = REFL_INVALID_ARGS;
+        }
+        return NULL;
+    }
+    else
+    {
+
+        refl_metaProperty prop = metaMachine->metaStates[stateIndex]->metaProperties[propIndex];
+        return _refl_getPropertyAsVoid(prop, metaMachine->machine, result);
     }
 }
