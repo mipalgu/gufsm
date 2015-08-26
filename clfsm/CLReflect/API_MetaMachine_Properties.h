@@ -10,7 +10,8 @@ refl_metaProperty * refl_getMachineMetaProperties(refl_metaMachine metaMachine, 
 
 unsigned int refl_getNumberOfMachineProperties(refl_metaMachine metaMachine, CLReflectResult *result);
 
-void refl_setMachinePropertyValue_VP(refl_metaMachine metaMachine, unsigned int propIndex, void* value, CLReflectResult *result);
+void refl_setMachinePropertyValue_V(refl_metaMachine metaMachine, unsigned int propIndex, void* value, CLReflectResult *result);
 
+void* refl_getMachinePropertyValue_V(refl_metaMachine metaMachine, unsigned int propIndex, CLReflectResult* result);
 
 #endif /* end of include guard: API_METAMACHINE_PROPERTIES_H */

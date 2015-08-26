@@ -245,7 +245,30 @@ namespace
         badReturnVal = _refl_getPropertyAsVoid(prop, testClass, &result);
         ASSERT_EQ(REFL_INVALID_ARGS, result);
         refl_destroyMetaProperty(prop, NULL);
+    }
 
+    TEST_F(ReflectAPI_MetaProperty_Tests, machinePropertyGetAsVoid)
+    {
+        refl_metaMachine machine = refl_initMetaMachine(NULL);
+        void* testClass = static_cast<void*>(this);
+        refl_setMachine(machine, testClass, NULL);
+        refl_setMetaPropertyVoidFunctions(metaProperty, getAsVoid, setAsVoid, NULL);
+        refl_metaProperty properties[] = { metaProperty };
+        refl_setMachineMetaProperties(machine, properties, 1, NULL);
+
+        //Setup values
+        int val = 45;
+        this->testValue = val;
+        //Get value and check its right
+        CLReflectResult result;
+        int retVal = *static_cast<int *>(refl_getMachinePropertyValue_V(machine,
+                                            0, &result));
+        ASSERT_EQ(REFL_SUCCESS, result);
+        ASSERT_EQ(this->testValue, retVal);
+        ++val;
+        refl_setMachinePropertyValue_V(machine, 0, static_cast<void*>(&val), &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        ASSERT_EQ(val, this->testValue);
 
 
     }

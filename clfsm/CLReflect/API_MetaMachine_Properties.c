@@ -1,5 +1,6 @@
 #include "API_MetaMachine_Properties.h"
 #include "API_MetaMachine_Internal.h"
+#include "API_MetaProperty_Access.h"
 
 #include <stdlib.h>
 #include <string.h>
@@ -66,5 +67,40 @@ unsigned int refl_getNumberOfMachineProperties(refl_metaMachine metaMachine, CLR
             *result = REFL_SUCCESS;
         }
         return metaMachine->numberOfProperties;
+    }
+}
+
+void refl_setMachinePropertyValue_V(refl_metaMachine metaMachine, unsigned int propIndex, void* value, CLReflectResult *result)
+{
+    if (!metaMachine || !metaMachine->machine ||
+            propIndex >= metaMachine->numberOfProperties)
+    {
+        if (result)
+        {
+            *result = REFL_INVALID_ARGS;
+        }
+    }
+    else
+    {
+        _refl_setPropertyAsVoid(metaMachine->metaProperties[propIndex],
+                    metaMachine->machine, value, result);
+    }
+}
+
+void* refl_getMachinePropertyValue_V(refl_metaMachine metaMachine, unsigned int propIndex, CLReflectResult* result)
+{
+    if (!metaMachine || !metaMachine->machine ||
+            propIndex >= metaMachine->numberOfProperties)
+    {
+        if (result)
+        {
+            *result = REFL_INVALID_ARGS;
+        }
+        return NULL;
+    }
+    else
+    {
+        return _refl_getPropertyAsVoid(metaMachine->metaProperties[propIndex],
+                    metaMachine->machine, result);
     }
 }
