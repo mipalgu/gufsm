@@ -1,7 +1,7 @@
 from CodeGen import *
 from MetaMachineDefinition import *
 from MetaMethodWriter import *
-from MetaCreationWriter import *
+from MetaCreateScriptWriter import *
 from MetaTransitionWriter import *
 
 class MetaFileWriter:
@@ -33,7 +33,7 @@ class MetaFileWriter:
         transWriter = MetaTransitionWriter(self.machineDef, cpp)
         transWriter.write()
         # Write meta-FSM creation script
-        createWriter = MetaCreationWriter(self.machineDef, cpp)
+        createWriter = MetaCreateScriptWriter(self.machineDef, cpp)
         createWriter.write()
         cpp("#pragma clang diagnostic pop")
 

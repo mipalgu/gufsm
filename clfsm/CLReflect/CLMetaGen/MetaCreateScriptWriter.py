@@ -2,7 +2,7 @@ from CodeGen import *
 from MetaMachineDefinition import *
 from CLMetaGenConstants import *
 
-class MetaCreationWriter():
+class MetaCreateScriptWriter():
 
     def __init__(self, machineDef, cpp):
         self.machineDef = machineDef
