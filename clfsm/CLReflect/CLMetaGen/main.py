@@ -1,10 +1,10 @@
 import sys, re, os
-from Parser import *
+from CPP_Parser import *
 from CPP_MetaMachineDefinition import *
 from CLMetaGenDependencies import *
 
 
-# Get machine path and name
+# Get machine path, name and language
 machinePath = sys.argv[1]
 language = sys.argv[2]
 
@@ -19,9 +19,10 @@ else:
 
 # Setup parser and create metamachine defintion
 depManager = CLMetaGenDependencies()
-parser = Parser(machinePath, machineName)
+ParserClass = depManager.getParserForLanguage(language)
+parser = ParserClass(machinePath, machineName)
 metaMachineDef = parser.parse()
-WriterClass = depManager.getWriterForLanguage("C++")
+WriterClass = depManager.getWriterForLanguage(language)
 writer = WriterClass(metaMachineDef)
 writer.write()
 

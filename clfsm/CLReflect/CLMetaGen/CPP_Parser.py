@@ -1,7 +1,7 @@
 # Parses the directory and creates a machine definition
 from CPP_MetaMachineDefinition import *
 
-class Parser:
+class CPP_Parser:
 
     def __init__(self, path, machineName):
         self._path = path
