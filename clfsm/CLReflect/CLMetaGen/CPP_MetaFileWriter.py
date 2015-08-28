@@ -34,6 +34,9 @@ class CPP_MetaFileWriter(CLMetaGenWriter):
         # write transition evaluation functions
         transWriter = CPP_MetaTransitionWriter(self.machineDef, cpp)
         transWriter.write()
+        # write property access functions
+        propWriter = CPP_MetaPropertyWriter(self.machineDef, cpp)
+        propWriter.write()
         # Write meta-FSM creation script
         createWriter = CPP_MetaCreateScriptWriter(self.machineDef, cpp)
         createWriter.write()

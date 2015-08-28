@@ -270,6 +270,28 @@ refl_bool GetMetaMachine_Transition_1(refl_machine_t machine, refl_userData_t da
 	}
 }
 
+
+// Property Access Declarations
+void* mp_machine_metaMachine_getAsVoid(refl_machine_t machine, refl_userData_t data);
+void* mp_machine_currentMachineID_getAsVoid(refl_machine_t machine, refl_userData_t data);
+void* mp_machine_numberOfMachines_getAsVoid(refl_machine_t machine, refl_userData_t data);
+
+// Property Access Implementations
+void* mp_machine_metaMachine_getAsVoid(refl_machine_t machine, refl_userData_t data)
+{
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
+	return static_cast<void *>(&thisMachine->metaMachine);
+}
+void* mp_machine_currentMachineID_getAsVoid(refl_machine_t machine, refl_userData_t data)
+{
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
+	return static_cast<void *>(&thisMachine->currentMachineID);
+}
+void* mp_machine_numberOfMachines_getAsVoid(refl_machine_t machine, refl_userData_t data)
+{
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
+	return static_cast<void *>(&thisMachine->numberOfMachines);
+}
 // Creation script
 refl_metaMachine Create_MetaMachine()
 {
