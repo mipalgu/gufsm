@@ -1,7 +1,7 @@
 from CodeGen import *
-from MetaMachineDefinition import *
+from CPP_MetaMachineDefinition import *
 
-class MetaTransitionWriter:
+class CPP_MetaTransitionWriter:
     """A class that generates meta-code for all state transitions"""
     def __init__(self, machineDef, cpp):
         self.machineDef = machineDef

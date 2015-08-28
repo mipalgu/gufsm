@@ -1,7 +1,7 @@
 #Defines a meta machine
 import os, glob, re
 
-class MetaMachineDefinition:
+class CPP_MetaMachineDefinition:
     def __init__(self, machinePath, name):
         self.machinePath = machinePath
         self.name = name

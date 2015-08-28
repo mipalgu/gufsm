@@ -1,4 +1,4 @@
-from MetaMachineDefinition import *
+from CPP_MetaMachineDefinition import *
 from MachinePropertyFileWriter import *
 from CodeGen import *
 import re

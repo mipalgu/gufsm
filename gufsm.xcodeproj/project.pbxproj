@@ -606,10 +606,10 @@
 		F12B73311B605152006C64D8 /* MachinePropertyFileWriter.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = MachinePropertyFileWriter.py; sourceTree = "<group>"; };
 		F12B73321B605152006C64D8 /* MachinePropertyFileWriter.pyc */ = {isa = PBXFileReference; lastKnownFileType = file; path = MachinePropertyFileWriter.pyc; sourceTree = "<group>"; };
 		F12B73331B605152006C64D8 /* main.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = main.py; sourceTree = "<group>"; };
-		F12B73341B605152006C64D8 /* MetaFileWriter.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = MetaFileWriter.py; sourceTree = "<group>"; };
-		F12B73351B605152006C64D8 /* MetaFileWriter.pyc */ = {isa = PBXFileReference; lastKnownFileType = file; path = MetaFileWriter.pyc; sourceTree = "<group>"; };
-		F12B73361B605152006C64D8 /* MetaMachineDefinition.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = MetaMachineDefinition.py; sourceTree = "<group>"; };
-		F12B73371B605152006C64D8 /* MetaMachineDefinition.pyc */ = {isa = PBXFileReference; lastKnownFileType = file; path = MetaMachineDefinition.pyc; sourceTree = "<group>"; };
+		F12B73341B605152006C64D8 /* CPP_MetaFileWriter.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = CPP_MetaFileWriter.py; sourceTree = "<group>"; };
+		F12B73351B605152006C64D8 /* CPP_MetaFileWriter.pyc */ = {isa = PBXFileReference; lastKnownFileType = file; path = CPP_MetaFileWriter.pyc; sourceTree = "<group>"; };
+		F12B73361B605152006C64D8 /* CPP_MetaMachineDefinition.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = CPP_MetaMachineDefinition.py; sourceTree = "<group>"; };
+		F12B73371B605152006C64D8 /* CPP_MetaMachineDefinition.pyc */ = {isa = PBXFileReference; lastKnownFileType = file; path = CPP_MetaMachineDefinition.pyc; sourceTree = "<group>"; };
 		F12B73381B605152006C64D8 /* Parser.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = Parser.py; sourceTree = "<group>"; };
 		F12B73391B605152006C64D8 /* Parser.pyc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Parser.pyc; sourceTree = "<group>"; };
 		F12B733A1B605152006C64D8 /* StatePropertyFileWriter.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = StatePropertyFileWriter.py; sourceTree = "<group>"; };
@@ -1476,10 +1476,10 @@
 				F12B73311B605152006C64D8 /* MachinePropertyFileWriter.py */,
 				F12B73321B605152006C64D8 /* MachinePropertyFileWriter.pyc */,
 				F12B73331B605152006C64D8 /* main.py */,
-				F12B73341B605152006C64D8 /* MetaFileWriter.py */,
-				F12B73351B605152006C64D8 /* MetaFileWriter.pyc */,
-				F12B73361B605152006C64D8 /* MetaMachineDefinition.py */,
-				F12B73371B605152006C64D8 /* MetaMachineDefinition.pyc */,
+				F12B73341B605152006C64D8 /* CPP_MetaFileWriter.py */,
+				F12B73351B605152006C64D8 /* CPP_MetaFileWriter.pyc */,
+				F12B73361B605152006C64D8 /* CPP_MetaMachineDefinition.py */,
+				F12B73371B605152006C64D8 /* CPP_MetaMachineDefinition.pyc */,
 				F12B73381B605152006C64D8 /* Parser.py */,
 				F12B73391B605152006C64D8 /* Parser.pyc */,
 				F12B733A1B605152006C64D8 /* StatePropertyFileWriter.py */,

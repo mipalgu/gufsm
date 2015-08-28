@@ -1,5 +1,5 @@
 # Parses the directory and creates a machine definition
-from MetaMachineDefinition import *
+from CPP_MetaMachineDefinition import *
 
 class Parser:
 
@@ -8,5 +8,5 @@ class Parser:
         self._machineName = machineName
 
     def parse(self):
-        self._metaMachine = MetaMachineDefinition(self._path, self._machineName)
+        self._metaMachine = CPP_MetaMachineDefinition(self._path, self._machineName)
         return self._metaMachine

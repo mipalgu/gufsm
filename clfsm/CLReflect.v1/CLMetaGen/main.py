@@ -1,7 +1,7 @@
 import sys, re, os
 from Parser import *
-from MetaMachineDefinition import *
-from MetaFileWriter import *
+from CPP_MetaMachineDefinition import *
+from CPP_MetaFileWriter import *
 from MachinePropertyFileWriter import *
 from StatePropertyFileWriter import *
 
@@ -22,7 +22,7 @@ parser = Parser(machinePath, machineName)
 metaMachineDef = parser.parse()
 
 # Write main header and implementation file
-mainFileWriter = MetaFileWriter(metaMachineDef)
+mainFileWriter = CPP_MetaFileWriter(metaMachineDef)
 mainFileWriter.write()
 
 #Write machine properties

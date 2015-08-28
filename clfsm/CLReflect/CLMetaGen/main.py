@@ -1,7 +1,7 @@
 import sys, re, os
 from Parser import *
-from MetaMachineDefinition import *
-from MetaFileWriter import *
+from CPP_MetaMachineDefinition import *
+from CPP_MetaFileWriter import *
 
 
 # Get machine path and name
@@ -19,7 +19,7 @@ else:
 # Setup parser and create metamachine defintion
 parser = Parser(machinePath, machineName)
 metaMachineDef = parser.parse()
-writer = MetaFileWriter(metaMachineDef)
+writer = CPP_MetaFileWriter(metaMachineDef)
 writer.write()
 
 # print filename
