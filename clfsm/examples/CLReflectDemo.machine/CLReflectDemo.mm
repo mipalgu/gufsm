@@ -13,6 +13,7 @@
 #include "State_Transitions.h"
 #include "State_End.h"
 #include "State_GetMetaMachine.h"
+#include "State_Variables.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -33,6 +34,7 @@ CLReflectDemo::CLReflectDemo(int mid, const char *name): CLMachine(mid, name)
 	_states[4]  = new FSMCLReflectDemo::State:: Transitions;
 	_states[5]  = new FSMCLReflectDemo::State:: End;
 	_states[6]  = new FSMCLReflectDemo::State:: GetMetaMachine;
+	_states[7]  = new FSMCLReflectDemo::State:: Variables;
 
 	setInitialState(_states[0]);            // set initial state
 }
@@ -46,4 +48,5 @@ CLReflectDemo::~CLReflectDemo()
 	delete _states[4];
 	delete _states[5];
 	delete _states[6];
+	delete _states[7];
 }

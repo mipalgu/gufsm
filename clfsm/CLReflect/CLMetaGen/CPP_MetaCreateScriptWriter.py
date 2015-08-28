@@ -1,6 +1,7 @@
 from CodeGen import *
 from CPP_MetaMachineDefinition import *
 from CLMetaGenConstants import *
+from CPP_MetaPropertyWriter import *
 
 class CPP_MetaCreateScriptWriter():
 
@@ -14,6 +15,10 @@ class CPP_MetaCreateScriptWriter():
         with cpp.block("refl_metaMachine Create_MetaMachine()"):
             cpp("refl_metaMachine m = refl_initMetaMachine(NULL);")
             cpp('refl_setMetaMachineName(m, "' + self.machineDef.name + '", NULL);')
+            machinePropertiesVar = self.writeMachineProperties()
+            with cpp.subs(propsVar = machinePropertiesVar, numProps = len(self.machineDef.properties)):
+                cpp("refl_setMachineMetaProperties(m, $propsVar$, $numProps$, NULL);")
+
             statesVar = self.writeStateDefinitions()
             with cpp.subs(states = statesVar, numStates = len(self.machineDef.states)):
                 cpp('refl_setMetaStates(m, $states$, $numStates$, NULL);')
@@ -52,5 +57,22 @@ class CPP_MetaCreateScriptWriter():
                             cpp('$sName$_transitions[$tIndex$] = $varName$;')
                 if numTransitions > 0:
                     cpp('refl_setMetaTransitions(ms_$sName$, $sName$_transitions, ' + str(numTransitions) + ', NULL);')
-
         return statesVarName
+
+    def writeMachineProperties(self):
+        cpp = self.cpp
+        propertiesVar = "machineProperties"
+        with cpp.subs(numProperties = len(self.machineDef.properties),
+                        propsVar = propertiesVar):
+            cpp("refl_metaProperty $propsVar$[$numProperties$];")
+        for index, prop in enumerate(self.machineDef.properties):
+            getFunction = "mp_machine_" + prop.name + "_getAsVoid"
+            with cpp.subs(mName = self.machineDef.name, pName = prop.name,
+                            pType = prop.dataType, varName = "mp_machine_" + prop.name,
+                            getFunction = getFunction, index = index):
+                cpp("refl_metaProperty $varName$ = refl_initMetaProperty(NULL);")
+                cpp('refl_setMetaPropertyName($varName$, "$pName$", NULL);')
+                cpp('refl_setMetaPropertyType($varName$, "$pType$", NULL);')
+                cpp("refl_setMetaPropertyVoidFunctions($varName$, $getFunction$, NULL, NULL);")
+                cpp('machineProperties[$index$] = $varName$;')
+        return propertiesVar

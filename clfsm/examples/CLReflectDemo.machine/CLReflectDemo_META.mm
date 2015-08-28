@@ -9,6 +9,7 @@
 #include "State_Transitions.h"
 #include "State_End.h"
 #include "State_GetMetaMachine.h"
+#include "State_Variables.h"
 
 using namespace FSM;
 using namespace CLM;
@@ -42,6 +43,9 @@ void End_OnExit(refl_machine_t machine, refl_userData_t data);
 void GetMetaMachine_OnEntry(refl_machine_t machine, refl_userData_t data);
 void GetMetaMachine_Internal(refl_machine_t machine, refl_userData_t data);
 void GetMetaMachine_OnExit(refl_machine_t machine, refl_userData_t data);
+void Variables_OnEntry(refl_machine_t machine, refl_userData_t data);
+void Variables_Internal(refl_machine_t machine, refl_userData_t data);
+void Variables_OnExit(refl_machine_t machine, refl_userData_t data);
 
 // Action Implementations
 void INITIAL_OnEntry(refl_machine_t machine, refl_userData_t data)
@@ -170,6 +174,24 @@ void GetMetaMachine_OnExit(refl_machine_t machine, refl_userData_t data)
 	GetMetaMachine* thisState = static_cast<GetMetaMachine*>(thisMachine->states()[6]);
 	thisState->performOnExit(thisMachine);
 }
+void Variables_OnEntry(refl_machine_t machine, refl_userData_t data)
+{
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
+	Variables* thisState = static_cast<Variables*>(thisMachine->states()[7]);
+	thisState->performOnEntry(thisMachine);
+}
+void Variables_Internal(refl_machine_t machine, refl_userData_t data)
+{
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
+	Variables* thisState = static_cast<Variables*>(thisMachine->states()[7]);
+	thisState->performInternal(thisMachine);
+}
+void Variables_OnExit(refl_machine_t machine, refl_userData_t data)
+{
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
+	Variables* thisState = static_cast<Variables*>(thisMachine->states()[7]);
+	thisState->performOnExit(thisMachine);
+}
 
 // Transition Evaluation Declarations
 refl_bool INITIAL_Transition_0(refl_machine_t machine, refl_userData_t data);
@@ -178,6 +200,7 @@ refl_bool StatesActions_Transition_0(refl_machine_t machine, refl_userData_t dat
 refl_bool Transitions_Transition_0(refl_machine_t machine, refl_userData_t data);
 refl_bool GetMetaMachine_Transition_0(refl_machine_t machine, refl_userData_t data);
 refl_bool GetMetaMachine_Transition_1(refl_machine_t machine, refl_userData_t data);
+refl_bool Variables_Transition_0(refl_machine_t machine, refl_userData_t data);
 
 // Transition Evaluation Implementations
 refl_bool INITIAL_Transition_0(refl_machine_t machine, refl_userData_t data)
@@ -270,6 +293,21 @@ refl_bool GetMetaMachine_Transition_1(refl_machine_t machine, refl_userData_t da
 	}
 }
 
+refl_bool Variables_Transition_0(refl_machine_t machine, refl_userData_t data)
+{
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
+	Variables* thisState = static_cast<Variables*>(thisMachine->states()[7]);
+	CLTransition* thisTrans = thisState->transition(0);
+	if (thisTrans->check(thisMachine, thisState))
+	{
+		return refl_TRUE;
+	}
+	else
+	{
+		return refl_FALSE;
+	}
+}
+
 
 // Property Access Declarations
 void* mp_machine_metaMachine_getAsVoid(refl_machine_t machine, refl_userData_t data);
@@ -297,7 +335,24 @@ refl_metaMachine Create_MetaMachine()
 {
 	refl_metaMachine m = refl_initMetaMachine(NULL);
 	refl_setMetaMachineName(m, "CLReflectDemo", NULL);
-	refl_metaState states[7];
+	refl_metaProperty machineProperties[3];
+	refl_metaProperty mp_machine_metaMachine = refl_initMetaProperty(NULL);
+	refl_setMetaPropertyName(mp_machine_metaMachine, "metaMachine", NULL);
+	refl_setMetaPropertyType(mp_machine_metaMachine, "refl_metaMachine", NULL);
+	refl_setMetaPropertyVoidFunctions(mp_machine_metaMachine, mp_machine_metaMachine_getAsVoid, NULL, NULL);
+	machineProperties[0] = mp_machine_metaMachine;
+	refl_metaProperty mp_machine_currentMachineID = refl_initMetaProperty(NULL);
+	refl_setMetaPropertyName(mp_machine_currentMachineID, "currentMachineID", NULL);
+	refl_setMetaPropertyType(mp_machine_currentMachineID, "unsigned int", NULL);
+	refl_setMetaPropertyVoidFunctions(mp_machine_currentMachineID, mp_machine_currentMachineID_getAsVoid, NULL, NULL);
+	machineProperties[1] = mp_machine_currentMachineID;
+	refl_metaProperty mp_machine_numberOfMachines = refl_initMetaProperty(NULL);
+	refl_setMetaPropertyName(mp_machine_numberOfMachines, "numberOfMachines", NULL);
+	refl_setMetaPropertyType(mp_machine_numberOfMachines, "unsigned int", NULL);
+	refl_setMetaPropertyVoidFunctions(mp_machine_numberOfMachines, mp_machine_numberOfMachines_getAsVoid, NULL, NULL);
+	machineProperties[2] = mp_machine_numberOfMachines;
+	refl_setMachineMetaProperties(m, machineProperties, 3, NULL);
+	refl_metaState states[8];
 
 	
 	//State: INITIAL
@@ -404,8 +459,8 @@ refl_metaMachine Create_MetaMachine()
 	refl_metaTransition Transitions_transitions[1];
 	refl_metaTransition mt_Transitions_T_0 = refl_initMetaTransition(NULL);
 	refl_setMetaTransitionSource(mt_Transitions_T_0, 4, NULL);
-	refl_setMetaTransitionTarget(mt_Transitions_T_0, 6, NULL);
-	refl_setMetaTransitionExpression(mt_Transitions_T_0, "after(1)", NULL);
+	refl_setMetaTransitionTarget(mt_Transitions_T_0, 7, NULL);
+	refl_setMetaTransitionExpression(mt_Transitions_T_0, "after_ms(500)", NULL);
 	refl_transitionEval_f mt_Transitions_T_0_eval_f = Transitions_Transition_0;
 	refl_setMetaTransitionEvalFunction(mt_Transitions_T_0, mt_Transitions_T_0_eval_f, NULL, NULL);
 	Transitions_transitions[0] = mt_Transitions_T_0;
@@ -456,7 +511,31 @@ refl_metaMachine Create_MetaMachine()
 	refl_setMetaTransitionEvalFunction(mt_GetMetaMachine_T_1, mt_GetMetaMachine_T_1_eval_f, NULL, NULL);
 	GetMetaMachine_transitions[1] = mt_GetMetaMachine_T_1;
 	refl_setMetaTransitions(ms_GetMetaMachine, GetMetaMachine_transitions, 2, NULL);
-	refl_setMetaStates(m, states, 7, NULL);
+	
+	//State: Variables
+	refl_metaState ms_Variables = refl_initMetaState(NULL);
+	refl_setMetaStateName(ms_Variables, "Variables", NULL);
+
+	refl_metaAction ma_Variables_OnEntry = refl_initMetaAction(NULL);
+	refl_setMetaActionMethod(ma_Variables_OnEntry, Variables_OnEntry, NULL);
+	refl_setOnEntry(ms_Variables, ma_Variables_OnEntry, NULL);
+	refl_metaAction ma_Variables_Internal = refl_initMetaAction(NULL);
+	refl_setMetaActionMethod(ma_Variables_Internal, Variables_Internal, NULL);
+	refl_setInternal(ms_Variables, ma_Variables_Internal, NULL);
+	refl_metaAction ma_Variables_OnExit = refl_initMetaAction(NULL);
+	refl_setMetaActionMethod(ma_Variables_OnExit, Variables_OnExit, NULL);
+	refl_setOnExit(ms_Variables, ma_Variables_OnExit, NULL);
+	states[7] = ms_Variables;
+	refl_metaTransition Variables_transitions[1];
+	refl_metaTransition mt_Variables_T_0 = refl_initMetaTransition(NULL);
+	refl_setMetaTransitionSource(mt_Variables_T_0, 7, NULL);
+	refl_setMetaTransitionTarget(mt_Variables_T_0, 6, NULL);
+	refl_setMetaTransitionExpression(mt_Variables_T_0, "true", NULL);
+	refl_transitionEval_f mt_Variables_T_0_eval_f = Variables_Transition_0;
+	refl_setMetaTransitionEvalFunction(mt_Variables_T_0, mt_Variables_T_0_eval_f, NULL, NULL);
+	Variables_transitions[0] = mt_Variables_T_0;
+	refl_setMetaTransitions(ms_Variables, Variables_transitions, 1, NULL);
+	refl_setMetaStates(m, states, 8, NULL);
 	return m;
 }
 #pragma clang diagnostic pop
