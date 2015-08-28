@@ -1,11 +1,12 @@
 import sys, re, os
 from Parser import *
 from CPP_MetaMachineDefinition import *
-from CPP_MetaFileWriter import *
+from CLMetaGenDependencies import *
 
 
 # Get machine path and name
 machinePath = sys.argv[1]
+language = sys.argv[2]
 
 extensionMatch = re.search('.+?(?=.machine)', machinePath) #get path without .machine extension
 if (extensionMatch):
@@ -17,9 +18,11 @@ else:
     exit()
 
 # Setup parser and create metamachine defintion
+depManager = CLMetaGenDependencies()
 parser = Parser(machinePath, machineName)
 metaMachineDef = parser.parse()
-writer = CPP_MetaFileWriter(metaMachineDef)
+WriterClass = depManager.getWriterForLanguage("C++")
+writer = WriterClass(metaMachineDef)
 writer.write()
 
 # print filename
