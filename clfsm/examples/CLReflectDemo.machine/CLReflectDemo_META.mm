@@ -310,26 +310,16 @@ refl_bool Variables_Transition_0(refl_machine_t machine, refl_userData_t data)
 
 
 // Property Access Declarations
-void* mp_machine_metaMachine_getAsVoid(refl_machine_t machine, refl_userData_t data);
-void mp_machine_metaMachine_setAsVoid(refl_machine_t machine, refl_userData_t data, void* value);
 void* mp_machine_currentMachineID_getAsVoid(refl_machine_t machine, refl_userData_t data);
 void mp_machine_currentMachineID_setAsVoid(refl_machine_t machine, refl_userData_t data, void* value);
 void* mp_machine_numberOfMachines_getAsVoid(refl_machine_t machine, refl_userData_t data);
 void mp_machine_numberOfMachines_setAsVoid(refl_machine_t machine, refl_userData_t data, void* value);
 void* mp_machine_numberCopy_getAsVoid(refl_machine_t machine, refl_userData_t data);
 void mp_machine_numberCopy_setAsVoid(refl_machine_t machine, refl_userData_t data, void* value);
+void* mp_machine_metaMachine_getAsVoid(refl_machine_t machine, refl_userData_t data);
+void mp_machine_metaMachine_setAsVoid(refl_machine_t machine, refl_userData_t data, void* value);
 
 // Property Access Implementations
-void* mp_machine_metaMachine_getAsVoid(refl_machine_t machine, refl_userData_t data)
-{
-	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
-	return static_cast<void *>(&thisMachine->metaMachine);
-}
-void mp_machine_metaMachine_setAsVoid(refl_machine_t machine, refl_userData_t data, void* value)
-{
-	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
-	thisMachine->metaMachine = *static_cast<refl_metaMachine*>(value);
-}
 void* mp_machine_currentMachineID_getAsVoid(refl_machine_t machine, refl_userData_t data)
 {
 	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
@@ -360,32 +350,42 @@ void mp_machine_numberCopy_setAsVoid(refl_machine_t machine, refl_userData_t dat
 	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
 	thisMachine->numberCopy = static_cast<unsigned int*>(value);
 }
+void* mp_machine_metaMachine_getAsVoid(refl_machine_t machine, refl_userData_t data)
+{
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
+	return static_cast<void *>(&thisMachine->metaMachine);
+}
+void mp_machine_metaMachine_setAsVoid(refl_machine_t machine, refl_userData_t data, void* value)
+{
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
+	thisMachine->metaMachine = *static_cast<refl_metaMachine*>(value);
+}
 // Creation script
 refl_metaMachine Create_MetaMachine()
 {
 	refl_metaMachine m = refl_initMetaMachine(NULL);
 	refl_setMetaMachineName(m, "CLReflectDemo", NULL);
 	refl_metaProperty machineProperties[4];
-	refl_metaProperty mp_machine_metaMachine = refl_initMetaProperty(NULL);
-	refl_setMetaPropertyName(mp_machine_metaMachine, "metaMachine", NULL);
-	refl_setMetaPropertyType(mp_machine_metaMachine, "refl_metaMachine", NULL);
-	refl_setMetaPropertyVoidFunctions(mp_machine_metaMachine, mp_machine_metaMachine_getAsVoid, NULL, NULL);
-	machineProperties[0] = mp_machine_metaMachine;
 	refl_metaProperty mp_machine_currentMachineID = refl_initMetaProperty(NULL);
 	refl_setMetaPropertyName(mp_machine_currentMachineID, "currentMachineID", NULL);
 	refl_setMetaPropertyType(mp_machine_currentMachineID, "unsigned int", NULL);
 	refl_setMetaPropertyVoidFunctions(mp_machine_currentMachineID, mp_machine_currentMachineID_getAsVoid, NULL, NULL);
-	machineProperties[1] = mp_machine_currentMachineID;
+	machineProperties[0] = mp_machine_currentMachineID;
 	refl_metaProperty mp_machine_numberOfMachines = refl_initMetaProperty(NULL);
 	refl_setMetaPropertyName(mp_machine_numberOfMachines, "numberOfMachines", NULL);
 	refl_setMetaPropertyType(mp_machine_numberOfMachines, "unsigned int", NULL);
 	refl_setMetaPropertyVoidFunctions(mp_machine_numberOfMachines, mp_machine_numberOfMachines_getAsVoid, NULL, NULL);
-	machineProperties[2] = mp_machine_numberOfMachines;
+	machineProperties[1] = mp_machine_numberOfMachines;
 	refl_metaProperty mp_machine_numberCopy = refl_initMetaProperty(NULL);
 	refl_setMetaPropertyName(mp_machine_numberCopy, "numberCopy", NULL);
 	refl_setMetaPropertyType(mp_machine_numberCopy, "unsigned int*", NULL);
 	refl_setMetaPropertyVoidFunctions(mp_machine_numberCopy, mp_machine_numberCopy_getAsVoid, NULL, NULL);
-	machineProperties[3] = mp_machine_numberCopy;
+	machineProperties[2] = mp_machine_numberCopy;
+	refl_metaProperty mp_machine_metaMachine = refl_initMetaProperty(NULL);
+	refl_setMetaPropertyName(mp_machine_metaMachine, "metaMachine", NULL);
+	refl_setMetaPropertyType(mp_machine_metaMachine, "refl_metaMachine", NULL);
+	refl_setMetaPropertyVoidFunctions(mp_machine_metaMachine, mp_machine_metaMachine_getAsVoid, NULL, NULL);
+	machineProperties[3] = mp_machine_metaMachine;
 	refl_setMachineMetaProperties(m, machineProperties, 4, NULL);
 	refl_metaState states[8];
 

@@ -9,9 +9,9 @@ CLReflectDemo *_m = static_cast<CLReflectDemo *>(_machine);
 #pragma clang diagnostic ignored "-Wunused-variable"
 #pragma clang diagnostic ignored "-Wshadow"
 
-refl_metaMachine	&metaMachine= _m->metaMachine;	///<
 unsigned int	&currentMachineID= _m->currentMachineID;	///<
 unsigned int	&numberOfMachines= _m->numberOfMachines;	///<
 unsigned int*	&numberCopy= _m->numberCopy;	///<
+refl_metaMachine	&metaMachine= _m->metaMachine;	///<
 
 #pragma clang diagnostic pop
