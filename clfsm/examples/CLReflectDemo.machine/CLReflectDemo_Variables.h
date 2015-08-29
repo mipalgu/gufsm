@@ -6,3 +6,4 @@
 refl_metaMachine	metaMachine;	///<
 unsigned int	currentMachineID;	///<
 unsigned int	numberOfMachines;	///<
+unsigned int*	numberCopy;	///<

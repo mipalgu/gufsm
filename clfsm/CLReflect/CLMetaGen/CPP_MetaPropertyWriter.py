@@ -17,6 +17,7 @@ class CPP_MetaPropertyWriter(object):
         # Machine properties
         for prop in self.machineDef.properties:
             cpp(self.getMethodSignatureForMachineProperty_Void(prop.name) + ";")
+            cpp(self.setMethodSignatureForMachineProperty_Void(prop.name) + ';')
         for state in self.machineDef.states:
             for prop in state.properties:
                 cpp(self.getMethodSignatureForStateProperty_Void(state.name, prop.name) + ";")
@@ -29,14 +30,25 @@ class CPP_MetaPropertyWriter(object):
                 with cpp.block(self.getMethodSignatureForMachineProperty_Void(prop.name)):
                     cpp("$mName$* thisMachine = static_cast<$mName$*>(machine);")
                     cpp("return " + self._voidStaticCastForProperty("thisMachine->", prop) + ";")
+                with cpp.block(self.setMethodSignatureForMachineProperty_Void(prop.name)):
+                    # Check if const
+                    if 'const' not in prop.dataType:
+                        cpp("$mName$* thisMachine = static_cast<$mName$*>(machine);")
+                        cpp('thisMachine->$pName$ = ' + self._typeStaticCastForProperty(prop.dataType) + ';')
 
+    @staticmethod
+    def _voidStaticCastForProperty(access, property):
+        staticCastTemplate = "static_cast<void *>($var$)"
+        return staticCastTemplate.replace("$var$", "&" + access + property.name)
 
-    def _voidStaticCastForProperty(self, machineAccess, property):
-        staticCastTemplate = "static_cast<void *>(var)"
-        if "*" in property.dataType or "&" in property.dataType: # Is it a pointer or reference?
-            return staticCastTemplate.replace("var", machineAccess + property.name)
+    @staticmethod
+    def _typeStaticCastForProperty(dataType):
+        staticCastTemplate = 'static_cast<$type$>(value)'
+        if "*" in dataType: # Is it a pointer or reference?
+            return staticCastTemplate.replace('$type$', dataType)
         else:
-            return staticCastTemplate.replace("var", "&" + machineAccess + property.name)
+            return "*" + staticCastTemplate.replace('$type$', dataType + '*')
+
 
     @staticmethod
     def getMethodSignatureForMachineProperty_Void(propertyName):
@@ -47,3 +59,8 @@ class CPP_MetaPropertyWriter(object):
     def getMethodSignatureForStateProperty_Void(stateName, propertyName):
         signatureTemplate = "void* mp_$sName$_$pName$_getAsVoid(refl_machine_t machine, refl_userData_t data)"
         return signatureTemplate.replace("$sName$", stateName).replace("$pName$", propertyName)
+
+    @staticmethod
+    def setMethodSignatureForMachineProperty_Void(propertyName):
+        signatureTemplate = "void mp_machine_$pName$_setAsVoid(refl_machine_t machine, refl_userData_t data, void* value)"
+        return signatureTemplate.replace('$pName$', propertyName)
