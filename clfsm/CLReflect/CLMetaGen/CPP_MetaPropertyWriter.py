@@ -18,6 +18,8 @@ class CPP_MetaPropertyWriter(object):
         for prop in self.machineDef.properties:
             cpp(self.getMethodSignatureForMachineProperty_Void(prop.name) + ";")
             cpp(self.setMethodSignatureForMachineProperty_Void(prop.name) + ';')
+            #cpp(self.getMethodSignatureForMachineProperty_String(prop.name) + ';')
+            #cpp(self.setMethodSignatureForMachineProperty_String(prop.name) + ';')
         for state in self.machineDef.states:
             for prop in state.properties:
                 cpp(self.getMethodSignatureForStateProperty_Void(state.name, prop.name) + ";")
@@ -59,6 +61,14 @@ class CPP_MetaPropertyWriter(object):
     def getMethodSignatureForStateProperty_Void(stateName, propertyName):
         signatureTemplate = "void* mp_$sName$_$pName$_getAsVoid(refl_machine_t machine, refl_userData_t data)"
         return signatureTemplate.replace("$sName$", stateName).replace("$pName$", propertyName)
+
+    @staticmethod
+    def getMethodSignatureForMachineProperty_String(propertyName):
+        pass
+
+    @staticmethod
+    def setMethodSignatureForMachineProperty_String(propertyName):
+        pass
 
     @staticmethod
     def setMethodSignatureForMachineProperty_Void(propertyName):
