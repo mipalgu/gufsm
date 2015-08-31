@@ -109,6 +109,8 @@ namespace
         _refl_setPropertyAsString(metaProperty, thisTestClass, value, &result);
         ASSERT_EQ(result, REFL_SUCCESS);
         ASSERT_EQ(stoi(value), this->testValue);
+        ASSERT_THROW(_refl_setPropertyAsString(metaProperty, thisTestClass, "sdf", NULL), exception);
+        
     }
 
 
