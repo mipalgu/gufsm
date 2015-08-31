@@ -304,9 +304,8 @@ namespace
         ASSERT_EQ(REFL_INVALID_ARGS, result);
         metaProperty = NULL;
         refl_destroyMetaMachine(machine, NULL);
-
-
     }
+    
 
 }
 
