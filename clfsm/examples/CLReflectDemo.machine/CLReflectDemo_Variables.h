@@ -7,3 +7,6 @@ unsigned int	currentMachineID;	///<
 unsigned int	numberOfMachines;	///<
 unsigned int*	numberCopy;	///<
 refl_metaMachine	metaMachine;	///<
+char	testCharVariable;	///<
+char*	testCharPointer;	///<
+double	testDouble;	///<

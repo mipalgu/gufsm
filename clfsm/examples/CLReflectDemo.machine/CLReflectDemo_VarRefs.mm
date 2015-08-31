@@ -13,5 +13,8 @@ unsigned int	&currentMachineID= _m->currentMachineID;	///<
 unsigned int	&numberOfMachines= _m->numberOfMachines;	///<
 unsigned int*	&numberCopy= _m->numberCopy;	///<
 refl_metaMachine	&metaMachine= _m->metaMachine;	///<
+char	&testCharVariable= _m->testCharVariable;	///<
+char*	&testCharPointer= _m->testCharPointer;	///<
+double	&testDouble= _m->testDouble;	///<
 
 #pragma clang diagnostic pop

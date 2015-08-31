@@ -1,6 +1,7 @@
 #pragma clang diagnostic ignored "-Wunused-parameter"
 
 #include "CLReflectAPI.h"
+#include <sstream>
 #include "CLReflectDemo.h"
 #include "CLReflectAPI.h"
 #include "CLMacros.h"
@@ -321,12 +322,32 @@ refl_bool Variables_Transition_0(refl_machine_t machine, refl_userData_t data)
 // Property Access Declarations
 void* mp_machine_currentMachineID_getAsVoid(refl_machine_t machine, refl_userData_t data);
 void mp_machine_currentMachineID_setAsVoid(refl_machine_t machine, refl_userData_t data, void* value);
+char* mp_machine_currentMachineID_getAsString(refl_machine_t machine, refl_userData_t data);
+void mp_machine_currentMachineID_setAsString(refl_machine_t machine, refl_userData_t data, const char * const value);
 void* mp_machine_numberOfMachines_getAsVoid(refl_machine_t machine, refl_userData_t data);
 void mp_machine_numberOfMachines_setAsVoid(refl_machine_t machine, refl_userData_t data, void* value);
+char* mp_machine_numberOfMachines_getAsString(refl_machine_t machine, refl_userData_t data);
+void mp_machine_numberOfMachines_setAsString(refl_machine_t machine, refl_userData_t data, const char * const value);
 void* mp_machine_numberCopy_getAsVoid(refl_machine_t machine, refl_userData_t data);
 void mp_machine_numberCopy_setAsVoid(refl_machine_t machine, refl_userData_t data, void* value);
+char* mp_machine_numberCopy_getAsString(refl_machine_t machine, refl_userData_t data);
+void mp_machine_numberCopy_setAsString(refl_machine_t machine, refl_userData_t data, const char * const value);
 void* mp_machine_metaMachine_getAsVoid(refl_machine_t machine, refl_userData_t data);
 void mp_machine_metaMachine_setAsVoid(refl_machine_t machine, refl_userData_t data, void* value);
+char* mp_machine_metaMachine_getAsString(refl_machine_t machine, refl_userData_t data);
+void mp_machine_metaMachine_setAsString(refl_machine_t machine, refl_userData_t data, const char * const value);
+void* mp_machine_testCharVariable_getAsVoid(refl_machine_t machine, refl_userData_t data);
+void mp_machine_testCharVariable_setAsVoid(refl_machine_t machine, refl_userData_t data, void* value);
+char* mp_machine_testCharVariable_getAsString(refl_machine_t machine, refl_userData_t data);
+void mp_machine_testCharVariable_setAsString(refl_machine_t machine, refl_userData_t data, const char * const value);
+void* mp_machine_testCharPointer_getAsVoid(refl_machine_t machine, refl_userData_t data);
+void mp_machine_testCharPointer_setAsVoid(refl_machine_t machine, refl_userData_t data, void* value);
+char* mp_machine_testCharPointer_getAsString(refl_machine_t machine, refl_userData_t data);
+void mp_machine_testCharPointer_setAsString(refl_machine_t machine, refl_userData_t data, const char * const value);
+void* mp_machine_testDouble_getAsVoid(refl_machine_t machine, refl_userData_t data);
+void mp_machine_testDouble_setAsVoid(refl_machine_t machine, refl_userData_t data, void* value);
+char* mp_machine_testDouble_getAsString(refl_machine_t machine, refl_userData_t data);
+void mp_machine_testDouble_setAsString(refl_machine_t machine, refl_userData_t data, const char * const value);
 
 // Property Access Implementations
 void* mp_machine_currentMachineID_getAsVoid(refl_machine_t machine, refl_userData_t data)
@@ -339,6 +360,16 @@ void mp_machine_currentMachineID_setAsVoid(refl_machine_t machine, refl_userData
 	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
 	thisMachine->currentMachineID = *static_cast<unsigned int*>(value);
 }
+char* mp_machine_currentMachineID_getAsString(refl_machine_t machine, refl_userData_t data)
+{
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
+	char * returnVar = NULL;
+	std::string str = std::to_string(thisMachine->currentMachineID);
+	size_t len = str.length() + 1;
+	returnVar = static_cast<char *>(malloc(sizeof(char) * len));
+	refl_strcpy(returnVar, str.c_str(), len);
+	return returnVar;
+}
 void* mp_machine_numberOfMachines_getAsVoid(refl_machine_t machine, refl_userData_t data)
 {
 	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
@@ -348,6 +379,16 @@ void mp_machine_numberOfMachines_setAsVoid(refl_machine_t machine, refl_userData
 {
 	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
 	thisMachine->numberOfMachines = *static_cast<unsigned int*>(value);
+}
+char* mp_machine_numberOfMachines_getAsString(refl_machine_t machine, refl_userData_t data)
+{
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
+	char * returnVar = NULL;
+	std::string str = std::to_string(thisMachine->numberOfMachines);
+	size_t len = str.length() + 1;
+	returnVar = static_cast<char *>(malloc(sizeof(char) * len));
+	refl_strcpy(returnVar, str.c_str(), len);
+	return returnVar;
 }
 void* mp_machine_numberCopy_getAsVoid(refl_machine_t machine, refl_userData_t data)
 {
@@ -359,6 +400,18 @@ void mp_machine_numberCopy_setAsVoid(refl_machine_t machine, refl_userData_t dat
 	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
 	thisMachine->numberCopy = static_cast<unsigned int*>(value);
 }
+char* mp_machine_numberCopy_getAsString(refl_machine_t machine, refl_userData_t data)
+{
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
+	char * returnVar = NULL;
+	std::ostringstream address;
+	address << static_cast<void *>(thisMachine->numberCopy);
+	std::string str = address.str();
+	size_t len = str.length() + 1;
+	returnVar = static_cast<char *>(malloc(sizeof(char) * len));
+	refl_strcpy(returnVar, str.c_str(), len);
+	return returnVar;
+}
 void* mp_machine_metaMachine_getAsVoid(refl_machine_t machine, refl_userData_t data)
 {
 	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
@@ -369,12 +422,75 @@ void mp_machine_metaMachine_setAsVoid(refl_machine_t machine, refl_userData_t da
 	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
 	thisMachine->metaMachine = *static_cast<refl_metaMachine*>(value);
 }
+char* mp_machine_metaMachine_getAsString(refl_machine_t machine, refl_userData_t data)
+{
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
+	char * returnVar = NULL;
+	return returnVar;
+}
+void* mp_machine_testCharVariable_getAsVoid(refl_machine_t machine, refl_userData_t data)
+{
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
+	return static_cast<void *>(&thisMachine->testCharVariable);
+}
+void mp_machine_testCharVariable_setAsVoid(refl_machine_t machine, refl_userData_t data, void* value)
+{
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
+	thisMachine->testCharVariable = *static_cast<char*>(value);
+}
+char* mp_machine_testCharVariable_getAsString(refl_machine_t machine, refl_userData_t data)
+{
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
+	char * returnVar = NULL;
+	returnVar = static_cast<char *>(malloc(sizeof(char) * 2));
+	refl_strcpy(returnVar, &thisMachine->testCharVariable, 2);
+	return returnVar;
+}
+void* mp_machine_testCharPointer_getAsVoid(refl_machine_t machine, refl_userData_t data)
+{
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
+	return static_cast<void *>(&thisMachine->testCharPointer);
+}
+void mp_machine_testCharPointer_setAsVoid(refl_machine_t machine, refl_userData_t data, void* value)
+{
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
+	thisMachine->testCharPointer = static_cast<char*>(value);
+}
+char* mp_machine_testCharPointer_getAsString(refl_machine_t machine, refl_userData_t data)
+{
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
+	char * returnVar = NULL;
+	unsigned long len = strlen(thisMachine->testCharPointer) + 1;
+	returnVar = static_cast<char *>(malloc(sizeof(char) * len));
+	refl_strcpy(returnVar, thisMachine->testCharPointer, len);
+	return returnVar;
+}
+void* mp_machine_testDouble_getAsVoid(refl_machine_t machine, refl_userData_t data)
+{
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
+	return static_cast<void *>(&thisMachine->testDouble);
+}
+void mp_machine_testDouble_setAsVoid(refl_machine_t machine, refl_userData_t data, void* value)
+{
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
+	thisMachine->testDouble = *static_cast<double*>(value);
+}
+char* mp_machine_testDouble_getAsString(refl_machine_t machine, refl_userData_t data)
+{
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
+	char * returnVar = NULL;
+	std::string str = std::to_string(thisMachine->testDouble);
+	size_t len = str.length() + 1;
+	returnVar = static_cast<char *>(malloc(sizeof(char) * len));
+	refl_strcpy(returnVar, str.c_str(), len);
+	return returnVar;
+}
 // Creation script
 refl_metaMachine Create_MetaMachine()
 {
 	refl_metaMachine m = refl_initMetaMachine(NULL);
 	refl_setMetaMachineName(m, "CLReflectDemo", NULL);
-	refl_metaProperty machineProperties[4];
+	refl_metaProperty machineProperties[7];
 	refl_metaProperty mp_machine_currentMachineID = refl_initMetaProperty(NULL);
 	refl_setMetaPropertyName(mp_machine_currentMachineID, "currentMachineID", NULL);
 	refl_setMetaPropertyType(mp_machine_currentMachineID, "unsigned int", NULL);
@@ -395,7 +511,22 @@ refl_metaMachine Create_MetaMachine()
 	refl_setMetaPropertyType(mp_machine_metaMachine, "refl_metaMachine", NULL);
 	refl_setMetaPropertyVoidFunctions(mp_machine_metaMachine, mp_machine_metaMachine_getAsVoid, NULL, NULL);
 	machineProperties[3] = mp_machine_metaMachine;
-	refl_setMachineMetaProperties(m, machineProperties, 4, NULL);
+	refl_metaProperty mp_machine_testCharVariable = refl_initMetaProperty(NULL);
+	refl_setMetaPropertyName(mp_machine_testCharVariable, "testCharVariable", NULL);
+	refl_setMetaPropertyType(mp_machine_testCharVariable, "char", NULL);
+	refl_setMetaPropertyVoidFunctions(mp_machine_testCharVariable, mp_machine_testCharVariable_getAsVoid, NULL, NULL);
+	machineProperties[4] = mp_machine_testCharVariable;
+	refl_metaProperty mp_machine_testCharPointer = refl_initMetaProperty(NULL);
+	refl_setMetaPropertyName(mp_machine_testCharPointer, "testCharPointer", NULL);
+	refl_setMetaPropertyType(mp_machine_testCharPointer, "char*", NULL);
+	refl_setMetaPropertyVoidFunctions(mp_machine_testCharPointer, mp_machine_testCharPointer_getAsVoid, NULL, NULL);
+	machineProperties[5] = mp_machine_testCharPointer;
+	refl_metaProperty mp_machine_testDouble = refl_initMetaProperty(NULL);
+	refl_setMetaPropertyName(mp_machine_testDouble, "testDouble", NULL);
+	refl_setMetaPropertyType(mp_machine_testDouble, "double", NULL);
+	refl_setMetaPropertyVoidFunctions(mp_machine_testDouble, mp_machine_testDouble_getAsVoid, NULL, NULL);
+	machineProperties[6] = mp_machine_testDouble;
+	refl_setMachineMetaProperties(m, machineProperties, 7, NULL);
 	refl_metaState states[8];
 
 	
