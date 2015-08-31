@@ -41,3 +41,44 @@ void _refl_setPropertyAsVoid(refl_metaProperty property, refl_machine_t machine,
         property->setAsVoid(machine, property->data, value);
     }
 }
+
+char * _refl_getPropertyAsString(refl_metaProperty property, refl_machine_t machine,
+                                CLReflectResult *result)
+{
+    if (!property || !property->getAsString || !machine)
+    {
+        if (result)
+        {
+            *result = REFL_INVALID_ARGS;
+        }
+        return NULL;
+    }
+    else
+    {
+        if (result)
+        {
+            *result = REFL_SUCCESS;
+        }
+        return property->getAsString(machine, property->data);
+    }
+}
+
+void _refl_setPropertyAsString(refl_metaProperty property, refl_machine_t machine,
+                                const char * const value, CLReflectResult* result)
+{
+    if (!property || !property->setAsString || !machine)
+    {
+        if (result)
+        {
+            *result = REFL_INVALID_ARGS;
+        }
+    }
+    else
+    {
+        if (result)
+        {
+            *result = REFL_SUCCESS;
+        }
+        property->setAsString(machine, property->data, value);
+    }
+}

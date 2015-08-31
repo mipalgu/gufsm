@@ -19,23 +19,32 @@ using namespace std;
 
 namespace
 {
+
+
     // The fixture for testing clfsm.
     class ReflectAPI_MetaPropertyString_Tests: public ::testing::Test
     {
     public:
         int testValue;
+        const int INITIAL_TEST_VALUE = 45;
     protected:
         // You can remove any or all of the following functions if its body
         // is empty.
 
+
+
         ReflectAPI_MetaPropertyString_Tests()
         {
+            metaMachine = refl_initMetaMachine(NULL);
             metaProperty = refl_initMetaProperty(NULL);
+            refl_setMachineMetaProperties(metaMachine, &metaProperty, 1, NULL);
+            thisTestClass = static_cast<void *>(this);
+            testValue = INITIAL_TEST_VALUE;
         }
 
         virtual ~ReflectAPI_MetaPropertyString_Tests()
         {
-            refl_destroyMetaProperty(metaProperty, NULL);
+            refl_destroyMetaMachine(metaMachine, NULL); //destroys property too if assigned to meta machine
         }
 
         // If the constructor and destructor are not enough for setting up
@@ -55,12 +64,54 @@ namespace
 
         // Objects declared here can be used by all tests in the test case.
         refl_metaProperty metaProperty = NULL;
+        refl_metaMachine metaMachine = NULL;
+        void * thisTestClass = NULL;
+        CLReflectResult result;
     };
+
+    char * getAsString(refl_machine_t machine, refl_userData_t data)
+    {
+        ReflectAPI_MetaPropertyString_Tests* testClass =
+                            static_cast<ReflectAPI_MetaPropertyString_Tests*>(machine);
+        string str = to_string(testClass->INITIAL_TEST_VALUE);
+        char * returnValue = static_cast<char *>(malloc(str.length() + 1));
+        refl_strcpy(returnValue, str.c_str(), str.length() + 1);
+        return returnValue;
+
+    }
+
+    void setAsString(refl_machine_t machine, refl_userData_t data, const char * const value)
+    {
+        ReflectAPI_MetaPropertyString_Tests* testClass =
+                            static_cast<ReflectAPI_MetaPropertyString_Tests*>(machine);
+        testClass->testValue = stoi(value);
+    }
 
     TEST_F(ReflectAPI_MetaPropertyString_Tests, getAsString)
     {
-        
+        refl_setMetaPropertyStringFunctions(metaProperty, getAsString, setAsString, NULL);
+        char * returnValue = _refl_getPropertyAsString(metaProperty, thisTestClass,
+                                                        &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        ASSERT_TRUE(returnValue != NULL);
+        ASSERT_STREQ(std::to_string(this->INITIAL_TEST_VALUE).c_str(), returnValue);
+        free(returnValue);
+        //Error checking
+        returnValue = _refl_getPropertyAsString( metaProperty, NULL, &result);
+        ASSERT_EQ(REFL_INVALID_ARGS, result);
+        ASSERT_TRUE(returnValue == NULL);
     }
+
+    TEST_F(ReflectAPI_MetaPropertyString_Tests, setAsString)
+    {
+        refl_setMetaPropertyStringFunctions(metaProperty, getAsString, setAsString, NULL);
+        const char * value = "46";
+        _refl_setPropertyAsString(metaProperty, thisTestClass, value, &result);
+        ASSERT_EQ(result, REFL_SUCCESS);
+        ASSERT_EQ(stoi(value), this->testValue);
+    }
+
+
 
 }
 

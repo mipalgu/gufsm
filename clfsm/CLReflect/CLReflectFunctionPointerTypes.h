@@ -29,7 +29,7 @@ typedef int (*refl_getCurrentState_f)(refl_machine_t, refl_userData_t);
 typedef void* (*refl_getValueAsVoid_f)(refl_machine_t, refl_userData_t);
 
 //! Get property as string
-typedef char const * (*refl_getValueAsString_f) (refl_machine_t, refl_userData_t);
+typedef char * (*refl_getValueAsString_f) (refl_machine_t, refl_userData_t);
 
 //! Set property as void*
 typedef void (*refl_setValueAsVoid_f) (refl_machine_t, refl_userData_t, void*);
