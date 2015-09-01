@@ -143,3 +143,23 @@ void* refl_getStatePropertyValue_V(refl_metaMachine metaMachine, unsigned int st
         return _refl_getPropertyAsVoid(prop, metaMachine->machine, result);
     }
 }
+
+//void refl_setMachinePropertyValue_S(refl_metaMachine metaMachine, unsigned int propIndex, const char * const value, CLReflectResult *result);
+
+char * refl_getMachinePropertyValue_S(refl_metaMachine metaMachine, unsigned int propIndex, CLReflectResult* result)
+{
+    if (!metaMachine || !metaMachine->machine ||
+            propIndex >= metaMachine->numberOfProperties)
+    {
+        if (result)
+        {
+            *result = REFL_INVALID_ARGS;
+        }
+        return NULL;
+    }
+    else
+    {
+        return _refl_getPropertyAsString(metaMachine->metaProperties[propIndex],
+                    metaMachine->machine, result);
+    }
+}

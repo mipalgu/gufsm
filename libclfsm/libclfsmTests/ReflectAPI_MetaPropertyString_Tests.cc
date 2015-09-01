@@ -110,10 +110,25 @@ namespace
         ASSERT_EQ(result, REFL_SUCCESS);
         ASSERT_EQ(stoi(value), this->testValue);
         ASSERT_THROW(_refl_setPropertyAsString(metaProperty, thisTestClass, "sdf", NULL), exception);
-        
+
     }
 
+    TEST_F(ReflectAPI_MetaPropertyString_Tests, machinePropertyGetAsString)
+    {
+        refl_setMachine(metaMachine, this->thisTestClass, NULL);
+        refl_setMetaPropertyStringFunctions(metaProperty, getAsString, setAsString, NULL);
+        char * returnValue = refl_getMachinePropertyValue_S(metaMachine,
+                                0, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        ASSERT_EQ(this->testValue, stoi(returnValue));
+    }
 
+    TEST_F(ReflectAPI_MetaPropertyString_Tests, machinePropertySetAsString)
+    {
+        refl_setMachine(metaMachine, this->thisTestClass, NULL);
+        refl_setMetaPropertyStringFunctions(metaProperty, getAsString, setAsString, NULL);
+
+    }
 
 }
 
