@@ -7,6 +7,7 @@ SPECIFIC_LIBS+=-lclfsm -lgtest -lgtest_main -ldl # Link CLFSM and GTest + dlopen
 SPECIFIC_CPPFLAGS+= -I.. -I${GUNAO_DIR}/Common
 CC_SRCS!=echo *.cc
 run-test:  host
+	(cd ReflectTestMachines && ${MAKE} host-local)
 	${SAY} "------------------------"
 	${SAY} "Running libclfsmTests..."
 	cd ${POSIX_DIR}/gufsm/libclfsm/libclfsmTests/build.host && ./libclfsmTests
