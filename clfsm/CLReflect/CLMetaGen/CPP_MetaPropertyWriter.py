@@ -47,6 +47,7 @@ class CPP_MetaPropertyWriter(object):
                     stringConverter = CPP_StringConversion(prop, 'thisMachine->' + prop.name, cpp)
                     stringConverter.writeGetPropertyAsString()
                 with cpp.block(self.setMethodSignatureForMachineProperty_String(prop.name)):
+                    cpp("$mName$* thisMachine = static_cast<$mName$*>(machine);")
                     stringConverter = CPP_StringConversion(prop, 'thisMachine->' + prop.name, cpp)
                     stringConverter.writeSetPropertyAsString('value')
 

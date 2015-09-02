@@ -9,5 +9,10 @@ VariableTests *_m = static_cast<VariableTests *>(_machine);
 #pragma clang diagnostic ignored "-Wunused-variable"
 #pragma clang diagnostic ignored "-Wshadow"
 
+int	&intTest= _m->intTest;	///<
+long	&longTest= _m->longTest;	///<
+unsigned int	&uintTest= _m->uintTest;	///<
+float	&floatTest= _m->floatTest;	///<
+double	&doubleTest= _m->doubleTest;	///<
 
 #pragma clang diagnostic pop

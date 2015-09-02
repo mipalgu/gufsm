@@ -43,7 +43,7 @@ class CPP_MetaMachineDefinition:
         for line in propertyFile:
             if line[:2] != r'//':
                 tokens = line.split("\t")
-                dataType = tokens[0]
+                dataType = tokens[0].rstrip()
                 varName = tokens[1].rstrip(';')
                 self.properties.append(MachineProperty(varName, dataType, self.name))
         propertyFile.close()

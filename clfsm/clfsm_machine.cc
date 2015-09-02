@@ -298,13 +298,13 @@ CLMachine *MachineWrapper::instantiate(int id, const char *machine_name)
 
             if (!(_shared_object = dlopen(shared_path.c_str(), RTLD_NOW|RTLD_GLOBAL)))
             {
-                    if (!error)
-                    {
-                            error = dlerror();
-                            if (error) cerr << error << endl;
-                            else cerr << "Unkown error!" << endl;
-                    }
-                    return NULL;
+                if (!error)
+                {
+                    error = dlerror();
+                    if (error) cerr << error << endl;
+                    else cerr << "Unkown error!" << endl;
+                }
+                return NULL;
             }
         }
     }

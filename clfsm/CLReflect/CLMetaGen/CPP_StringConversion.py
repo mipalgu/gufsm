@@ -66,7 +66,16 @@ class CPP_StringConversion(object):
                 elif checker.isStdString():
                     pass
                 elif checker.isPrimitiveConvertable():
-                    pass
+                    if checker.isInt():
+                        cpp('$propVar$ = stoi($stringVar$);')
+                    elif checker.isUnsignedInt():
+                        cpp('$propVar$ = static_cast<unsigned int>(stoi($stringVar$));')
+                    elif checker.isLong():
+                        cpp('$propVar$ = stol($stringVar$);')
+                    elif checker.isFloat():
+                        cpp('$propVar$ = stof($stringVar$);')
+                    elif checker.isDouble():
+                        cpp('$propVar$ = stod($stringVar$);')
                 elif checker.isPointer():
                     pass
                 else:
@@ -103,13 +112,36 @@ class TypeChecker(object):
                 return True
         return False
 
-    def isIntOrLong(self):
-        prop = self.prop
-        return 'int' in prop.dataType or 'long' in prop.dataType
+    def isUnsignedInt(self):
+        return 'unsigned int' in self.prop.dataType
 
-    def isFloatingPoint(self):
+    def isInt(self):
         prop = self.prop
-        return 'float' in prop.dataType or 'double' in prop.dataType
+        m = re.match(r'^int$', prop.dataType)
+        if m:
+            return True
+        return False
+
+    def isLong(self):
+        prop = self.prop
+        m = re.match(r'^long$', prop.dataType)
+        if m:
+            return True
+        return False
+
+    def isFloat(self):
+        prop = self.prop
+        m = re.match(r'^float$', prop.dataType)
+        if m:
+            return True
+        return False
+
+    def isDouble(self):
+        prop = self.prop
+        m = re.match(r'^double$', prop.dataType)
+        if m:
+            return True
+        return False
 
     def isPointer(self):
         prop = self.prop
