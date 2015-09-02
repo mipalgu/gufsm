@@ -70,7 +70,7 @@ class CPP_MetaCreateScriptWriter():
             getFunctionV = "mp_machine_" + prop.name + "_getAsVoid"
             setFunctionV = "mp_machine_" + prop.name + "_setAsVoid"
             getFunctionS = "mp_machine_" + prop.name + "_getAsString"
-            setFunctionS = "NULL"
+            setFunctionS = "mp_machine_" + prop.name + "_setAsString"
 
             with cpp.subs(mName = self.machineDef.name, pName = prop.name,
                             pType = prop.dataType, varName = "mp_machine_" + prop.name,

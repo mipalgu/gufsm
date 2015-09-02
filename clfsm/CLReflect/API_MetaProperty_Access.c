@@ -25,7 +25,7 @@ void* _refl_getPropertyAsVoid(refl_metaProperty property, refl_machine_t machine
 void _refl_setPropertyAsVoid(refl_metaProperty property, refl_machine_t machine,
                                 void* value, CLReflectResult* result)
 {
-    if (!property || !property->setAsVoid || !machine)
+    if (!value || !property || !property->setAsVoid || !machine)
     {
         if (result)
         {
@@ -66,7 +66,7 @@ char * _refl_getPropertyAsString(refl_metaProperty property, refl_machine_t mach
 void _refl_setPropertyAsString(refl_metaProperty property, refl_machine_t machine,
                                 const char * const value, CLReflectResult* result)
 {
-    if (!property || !property->setAsString || !machine)
+    if (!value || !property || !property->setAsString || !machine)
     {
         if (result)
         {

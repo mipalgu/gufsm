@@ -8,12 +8,8 @@ for (unsigned int i = 0; i < numProperties; i++)
 	std::string name(refl_getMetaPropertyName(properties[i], NULL));
 	void * address = refl_getMachinePropertyValue_V(metaMachine, i, NULL);
 	char * stringValue = refl_getMachinePropertyValue_S(metaMachine, i, NULL);
-	std::cout << type << " " << name << " " << address <<  " ";
-	if (stringValue)
-	{
-		std::cout << stringValue;
-	}
-	std::cout << std::endl;
+	std::cout << type << " " << name << " " << address <<  " " << stringValue << std::endl;
+	
 	free(stringValue);		
 }
 std::cout << "----------------------------------------- " << std::endl;

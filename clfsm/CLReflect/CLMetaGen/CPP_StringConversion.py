@@ -43,22 +43,34 @@ class CPP_StringConversion(object):
                 cpp('$returnVar$ = static_cast<char *>(malloc(sizeof(char) * len));')
                 cpp('refl_strcpy($returnVar$, str.c_str(), len);')
             else:
-                pass
+                cpp('std::ostringstream address;')
+                cpp('address << static_cast<void *>(&$propVar$);')
+                cpp('std::string str = address.str();')
+                cpp('size_t len = str.length() + 1;')
+                cpp('$returnVar$ = static_cast<char *>(malloc(sizeof(char) * len));')
+                cpp('refl_strcpy($returnVar$, str.c_str(), len);')
             cpp('return $returnVar$;')
-        '''
-        if character pointer:
-            copy and return
-        elif char (but not pointer):
-            malloc(2), copy and return
-        elif string:
-            check if pointer
-            get c_str(), copy and return
-        elif primitive convertable type:
-            choose stoX method, copy and return
-        else:
-            return NULL
 
-        '''
+    def writeSetPropertyAsString(self, valueName):
+        cpp = self.cpp
+        checker = TypeChecker(self.prop)
+        stringVar = 'stringVar'
+        with cpp.subs(value = valueName, propVar = self.propVarName,
+                        stringVar = stringVar, dType = self.prop.dataType):
+            cpp('std::string $stringVar$($value$);')
+            with cpp.block('if ($stringVar$.length() != 0)'):
+                if checker.isChar():
+                    pass
+                elif checker.isCharPointer():
+                    pass
+                elif checker.isStdString():
+                    pass
+                elif checker.isPrimitiveConvertable():
+                    pass
+                elif checker.isPointer():
+                    pass
+                else:
+                    pass
 
 import re
 
