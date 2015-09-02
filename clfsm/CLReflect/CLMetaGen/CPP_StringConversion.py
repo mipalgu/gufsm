@@ -18,9 +18,16 @@ class CPP_StringConversion(object):
                 cpp('$returnVar$ = static_cast<char *>(malloc(sizeof(char) * 2));')
                 cpp('refl_strcpy($returnVar$, &$propVar$, 2);')
             elif checker.isCharPointer():
-                cpp('unsigned long len = strlen($propVar$) + 1;')
-                cpp('$returnVar$ = static_cast<char *>(malloc(sizeof(char) * len));')
-                cpp('refl_strcpy($returnVar$, $propVar$, len);')
+                with cpp.block('if ($propVar$ != NULL)'):
+                    cpp('unsigned long len = strlen($propVar$) + 1;')
+                    cpp('$returnVar$ = static_cast<char *>(malloc(sizeof(char) * len));')
+                    cpp('refl_strcpy($returnVar$, $propVar$, len);')
+                with cpp.block('else'):
+                    with cpp.subs(nullStringVar = 'nullStringVar'):
+                        cpp('const char * $nullStringVar$ = "NULL_STRING";')
+                        cpp('unsigned long len = strlen($nullStringVar$) + 1;')
+                        cpp('$returnVar$ = static_cast<char *>(malloc(sizeof(char) * len));')
+                        cpp('refl_strcpy($returnVar$, $nullStringVar$, len);')
             elif checker.isStdString():
                 pass
             elif checker.isPrimitiveConvertable():

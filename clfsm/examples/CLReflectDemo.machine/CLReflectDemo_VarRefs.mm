@@ -12,9 +12,8 @@ CLReflectDemo *_m = static_cast<CLReflectDemo *>(_machine);
 unsigned int	&currentMachineID= _m->currentMachineID;	///<
 unsigned int	&numberOfMachines= _m->numberOfMachines;	///<
 unsigned int*	&numberCopy= _m->numberCopy;	///<
-refl_metaMachine	&metaMachine= _m->metaMachine;	///<
-char	&testCharVariable= _m->testCharVariable;	///<
 char*	&testCharPointer= _m->testCharPointer;	///<
-double	&testDouble= _m->testDouble;	///<
+char**	&testCharArray= _m->testCharArray;	///<
+refl_metaMachine	&metaMachine= _m->metaMachine;	///<
 
 #pragma clang diagnostic pop

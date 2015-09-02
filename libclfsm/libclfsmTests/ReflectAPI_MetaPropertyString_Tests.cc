@@ -73,7 +73,7 @@ namespace
     {
         ReflectAPI_MetaPropertyString_Tests* testClass =
                             static_cast<ReflectAPI_MetaPropertyString_Tests*>(machine);
-        string str = to_string(testClass->INITIAL_TEST_VALUE);
+        string str = to_string(testClass->testValue);
         char * returnValue = static_cast<char *>(malloc(str.length() + 1));
         refl_strcpy(returnValue, str.c_str(), str.length() + 1);
         return returnValue;
@@ -121,12 +121,37 @@ namespace
                                 0, &result);
         ASSERT_EQ(REFL_SUCCESS, result);
         ASSERT_EQ(this->testValue, stoi(returnValue));
+        free(returnValue);
     }
 
     TEST_F(ReflectAPI_MetaPropertyString_Tests, machinePropertySetAsString)
     {
         refl_setMachine(metaMachine, this->thisTestClass, NULL);
         refl_setMetaPropertyStringFunctions(metaProperty, getAsString, setAsString, NULL);
+        refl_setMachinePropertyValue_S(metaMachine, 0, "46", &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        char * returnValue = refl_getMachinePropertyValue_S(metaMachine, 0, NULL);
+        ASSERT_STREQ("46", returnValue);
+        free(returnValue);
+
+    }
+
+    TEST_F(ReflectAPI_MetaPropertyString_Tests, statePropertyAsString)
+    {
+        refl_setMachine(metaMachine, this->thisTestClass, NULL);
+        refl_metaState metaState = refl_initMetaState(NULL);
+        refl_metaProperty prop = refl_initMetaProperty(NULL);
+        refl_setMetaPropertyStringFunctions(prop, getAsString, setAsString, NULL);
+        refl_setStateMetaProperties(metaState, &prop, 1, NULL);
+        refl_setMetaStates(metaMachine, &metaState, 1, NULL);
+
+        refl_setStatePropertyValue_S(metaMachine, 0, 0, "46", &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        char * returnValue = refl_getStatePropertyValue_S(metaMachine, 0, 0, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        ASSERT_STREQ("46", returnValue);
+        free(returnValue);
+
 
     }
 

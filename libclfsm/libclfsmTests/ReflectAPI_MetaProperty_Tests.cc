@@ -96,7 +96,7 @@ namespace
 
     }
 
-    char const * getString(refl_machine_t machine, refl_userData_t data)
+    char * getString(refl_machine_t machine, refl_userData_t data)
     {
         return  NULL;
     }
@@ -305,7 +305,7 @@ namespace
         metaProperty = NULL;
         refl_destroyMetaMachine(machine, NULL);
     }
-    
+
 
 }
 

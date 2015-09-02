@@ -144,9 +144,26 @@ void* refl_getStatePropertyValue_V(refl_metaMachine metaMachine, unsigned int st
     }
 }
 
-//void refl_setMachinePropertyValue_S(refl_metaMachine metaMachine, unsigned int propIndex, const char * const value, CLReflectResult *result);
+void refl_setMachinePropertyValue_S(refl_metaMachine metaMachine, unsigned int propIndex,
+                                        const char * const value, CLReflectResult *result)
+{
+    if (!metaMachine || !metaMachine->machine ||
+            propIndex >= metaMachine->numberOfProperties)
+    {
+        if (result)
+        {
+            *result = REFL_INVALID_ARGS;
+        }
+    }
+    else
+    {
+        _refl_setPropertyAsString(metaMachine->metaProperties[propIndex],
+                    metaMachine->machine, value, result);
+    }
+}
 
-char * refl_getMachinePropertyValue_S(refl_metaMachine metaMachine, unsigned int propIndex, CLReflectResult* result)
+char * refl_getMachinePropertyValue_S(refl_metaMachine metaMachine, unsigned int propIndex,
+                                            CLReflectResult* result)
 {
     if (!metaMachine || !metaMachine->machine ||
             propIndex >= metaMachine->numberOfProperties)
@@ -161,5 +178,44 @@ char * refl_getMachinePropertyValue_S(refl_metaMachine metaMachine, unsigned int
     {
         return _refl_getPropertyAsString(metaMachine->metaProperties[propIndex],
                     metaMachine->machine, result);
+    }
+}
+
+
+void refl_setStatePropertyValue_S(refl_metaMachine metaMachine, unsigned int stateIndex,
+                                    int propIndex, const char * const value, CLReflectResult *result)
+{
+    if (!metaMachine || !metaMachine->machine || stateIndex >= metaMachine->numberOfStates ||
+            propIndex >= metaMachine->metaStates[stateIndex]->numberOfProperties)
+    {
+        if (result)
+        {
+            *result = REFL_INVALID_ARGS;
+        }
+    }
+    else
+    {
+        refl_metaProperty prop = metaMachine->metaStates[stateIndex]->metaProperties[propIndex];
+        _refl_setPropertyAsString(prop, metaMachine->machine, value, result);
+    }
+}
+
+char * refl_getStatePropertyValue_S(refl_metaMachine metaMachine, unsigned int stateIndex,
+                                        unsigned int propIndex, CLReflectResult* result)
+{
+    if (!metaMachine || !metaMachine->machine || stateIndex >= metaMachine->numberOfStates ||
+            propIndex >= metaMachine->metaStates[stateIndex]->numberOfProperties)
+    {
+        if (result)
+        {
+            *result = REFL_INVALID_ARGS;
+        }
+        return NULL;
+    }
+    else
+    {
+
+        refl_metaProperty prop = metaMachine->metaStates[stateIndex]->metaProperties[propIndex];
+        return _refl_getPropertyAsString(prop, metaMachine->machine, result);
     }
 }
