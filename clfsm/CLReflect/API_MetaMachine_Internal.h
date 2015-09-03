@@ -57,7 +57,7 @@ struct metaMachine_s
     char* name;
     refl_machine_t machine;
     refl_metaState *metaStates;
-    int numberOfStates;
+    unsigned int numberOfStates;
     refl_getCurrentState_f currentState;
     refl_userData_t data;
     unsigned int numberOfProperties;
