@@ -1,12 +1,12 @@
 //
-//State_Variables.mm
+// State_Variables.mm
 //
-//Automatically created through MiEditCLFSM -- do not change manually!
+// Automatically created through MiCASE -- do not change manually!
 //
 #include "CLReflectDemo_Includes.h"
 #include "CLReflectDemo.h"
-
 #include "State_Variables.h"
+
 #include "State_Variables_Includes.h"
 
 using namespace FSM;
@@ -14,7 +14,7 @@ using namespace CLM;
 using namespace FSMCLReflectDemo;
 using namespace State;
 
-Variables::Variables(const char *name):CLState(name, *new Variables::OnEntry,*new Variables::OnExit, *new Variables::Internal)
+Variables::Variables(const char *name): CLState(name, *new Variables::OnEntry, *new Variables::OnExit, *new Variables::Internal)
 {
 	_transitions[0] = new Transition_0();
 }
@@ -25,6 +25,7 @@ Variables::~Variables()
 	delete &onExitAction();
 	delete &internalAction();
 
+	delete _transitions[0];
 }
 
 void Variables::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -55,8 +56,6 @@ bool Variables::Transition_0::check(CLMachine *_machine, CLState *_state) const
 
 	return
 	(
-#			include "State_Variables_Transition_0.expr"
+#		include "State_Variables_Transition_0.expr"
 	);
 }
-
-

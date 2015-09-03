@@ -1,13 +1,13 @@
 //
-//State_Transitions_VarRefs.mm
+// State_Transitions_VarRefs.mm
 //
-//Automatically created through MiEditCLFSM -- do not change manually!
+// Automatically created through MiCASE -- do not change manually!
 //
-Transitions *_s = static_cast<Transitions *>(_state);
-
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"
 #pragma clang diagnostic ignored "-Wshadow"
+
+Transitions *_s = static_cast<Transitions *>(_state);
 
 
 #pragma clang diagnostic pop

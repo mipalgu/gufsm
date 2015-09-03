@@ -1,7 +1,7 @@
 //
-//CLReflectDemo.mm
+// CLReflectDemo.mm
 //
-//Automatically created through MiEditCLFSM -- do not change manually!
+// Automatically created through MiCASE -- do not change manually!
 //
 #include "CLReflectDemo_Includes.h"
 #include "CLReflectDemo.h"
@@ -17,6 +17,7 @@
 
 using namespace FSM;
 using namespace CLM;
+
 extern "C"
 {
 	CLReflectDemo *CLM_Create_CLReflectDemo(int mid, const char *name)
@@ -27,14 +28,14 @@ extern "C"
 
 CLReflectDemo::CLReflectDemo(int mid, const char *name): CLMachine(mid, name)
 {
-	_states[0]  = new FSMCLReflectDemo::State:: INITIAL;
-	_states[1]  = new FSMCLReflectDemo::State:: Names;
-	_states[2]  = new FSMCLReflectDemo::State:: StatesActions;
-	_states[3]  = new FSMCLReflectDemo::State:: MethodInvocation;
-	_states[4]  = new FSMCLReflectDemo::State:: Transitions;
-	_states[5]  = new FSMCLReflectDemo::State:: End;
-	_states[6]  = new FSMCLReflectDemo::State:: GetMetaMachine;
-	_states[7]  = new FSMCLReflectDemo::State:: Variables;
+	_states[0] = new FSMCLReflectDemo::State::INITIAL;
+	_states[1] = new FSMCLReflectDemo::State::Names;
+	_states[2] = new FSMCLReflectDemo::State::StatesActions;
+	_states[3] = new FSMCLReflectDemo::State::MethodInvocation;
+	_states[4] = new FSMCLReflectDemo::State::Transitions;
+	_states[5] = new FSMCLReflectDemo::State::End;
+	_states[6] = new FSMCLReflectDemo::State::GetMetaMachine;
+	_states[7] = new FSMCLReflectDemo::State::Variables;
 
 	setInitialState(_states[0]);            // set initial state
 }

@@ -1,12 +1,12 @@
 //
-//State_INITIAL.mm
+// State_INITIAL.mm
 //
-//Automatically created through MiEditCLFSM -- do not change manually!
+// Automatically created through MiCASE -- do not change manually!
 //
 #include "CLReflectDemo_Includes.h"
 #include "CLReflectDemo.h"
-
 #include "State_INITIAL.h"
+
 #include "State_INITIAL_Includes.h"
 
 using namespace FSM;
@@ -14,7 +14,7 @@ using namespace CLM;
 using namespace FSMCLReflectDemo;
 using namespace State;
 
-INITIAL::INITIAL(const char *name):CLState(name, *new INITIAL::OnEntry,*new INITIAL::OnExit, *new INITIAL::Internal)
+INITIAL::INITIAL(const char *name): CLState(name, *new INITIAL::OnEntry, *new INITIAL::OnExit, *new INITIAL::Internal)
 {
 	_transitions[0] = new Transition_0();
 }
@@ -25,6 +25,7 @@ INITIAL::~INITIAL()
 	delete &onExitAction();
 	delete &internalAction();
 
+	delete _transitions[0];
 }
 
 void INITIAL::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -55,8 +56,6 @@ bool INITIAL::Transition_0::check(CLMachine *_machine, CLState *_state) const
 
 	return
 	(
-#			include "State_INITIAL_Transition_0.expr"
+#		include "State_INITIAL_Transition_0.expr"
 	);
 }
-
-

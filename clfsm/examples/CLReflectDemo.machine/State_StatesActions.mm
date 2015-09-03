@@ -1,12 +1,12 @@
 //
-//State_StatesActions.mm
+// State_StatesActions.mm
 //
-//Automatically created through MiEditCLFSM -- do not change manually!
+// Automatically created through MiCASE -- do not change manually!
 //
 #include "CLReflectDemo_Includes.h"
 #include "CLReflectDemo.h"
-
 #include "State_StatesActions.h"
+
 #include "State_StatesActions_Includes.h"
 
 using namespace FSM;
@@ -14,7 +14,7 @@ using namespace CLM;
 using namespace FSMCLReflectDemo;
 using namespace State;
 
-StatesActions::StatesActions(const char *name):CLState(name, *new StatesActions::OnEntry,*new StatesActions::OnExit, *new StatesActions::Internal)
+StatesActions::StatesActions(const char *name): CLState(name, *new StatesActions::OnEntry, *new StatesActions::OnExit, *new StatesActions::Internal)
 {
 	_transitions[0] = new Transition_0();
 }
@@ -25,6 +25,7 @@ StatesActions::~StatesActions()
 	delete &onExitAction();
 	delete &internalAction();
 
+	delete _transitions[0];
 }
 
 void StatesActions::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -55,8 +56,6 @@ bool StatesActions::Transition_0::check(CLMachine *_machine, CLState *_state) co
 
 	return
 	(
-#			include "State_StatesActions_Transition_0.expr"
+#		include "State_StatesActions_Transition_0.expr"
 	);
 }
-
-

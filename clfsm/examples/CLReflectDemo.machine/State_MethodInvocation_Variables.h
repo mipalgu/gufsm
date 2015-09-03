@@ -1,6 +1,5 @@
 //
-//State_MethodInvocation_Variables.h
+// State_MethodInvocation_Variables.h
 //
-//Automatically created through MiEditCLFSM -- do not change manually!
+// Automatically created through MiCASE -- do not change manually!
 //
-
