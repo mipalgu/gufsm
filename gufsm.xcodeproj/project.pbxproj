@@ -24,6 +24,13 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		301ABF781B97ECC300224CF9 /* API_MetaMachine_Properties.c in Sources */ = {isa = PBXBuildFile; fileRef = 301ABF761B97ECC300224CF9 /* API_MetaMachine_Properties.c */; settings = {ASSET_TAGS = (); }; };
+		301ABF791B97ECC300224CF9 /* API_MetaMachine_Properties.h in Headers */ = {isa = PBXBuildFile; fileRef = 301ABF771B97ECC300224CF9 /* API_MetaMachine_Properties.h */; settings = {ASSET_TAGS = (); }; };
+		301ABF9E1B97ECD900224CF9 /* API_MetaState_Properties.c in Sources */ = {isa = PBXBuildFile; fileRef = 301ABF9C1B97ECD900224CF9 /* API_MetaState_Properties.c */; settings = {ASSET_TAGS = (); }; };
+		301ABF9F1B97ECD900224CF9 /* API_MetaState_Properties.h in Headers */ = {isa = PBXBuildFile; fileRef = 301ABF9D1B97ECD900224CF9 /* API_MetaState_Properties.h */; settings = {ASSET_TAGS = (); }; };
+		301ABFA21B97ECE900224CF9 /* API_MetaProperty.c in Sources */ = {isa = PBXBuildFile; fileRef = 301ABFA01B97ECE900224CF9 /* API_MetaProperty.c */; settings = {ASSET_TAGS = (); }; };
+		301ABFA31B97ECE900224CF9 /* API_MetaProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 301ABFA11B97ECE900224CF9 /* API_MetaProperty.h */; settings = {ASSET_TAGS = (); }; };
+		301ABFA41B97ECEF00224CF9 /* API_MetaProperty_Access.c in Sources */ = {isa = PBXBuildFile; fileRef = 301ABF991B97ECC900224CF9 /* API_MetaProperty_Access.c */; settings = {ASSET_TAGS = (); }; };
 		307B5A2F1B797C4700F7ACB8 /* API_Util.c in Sources */ = {isa = PBXBuildFile; fileRef = 307B5A2D1B797C4700F7ACB8 /* API_Util.c */; };
 		307B5A301B797C4700F7ACB8 /* API_Util.h in Headers */ = {isa = PBXBuildFile; fileRef = 307B5A2E1B797C4700F7ACB8 /* API_Util.h */; };
 		30B226671B82B07C001511B5 /* API_MetaTransition.c in Sources */ = {isa = PBXBuildFile; fileRef = 30B226651B82B07C001511B5 /* API_MetaTransition.c */; };
@@ -436,6 +443,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		301ABF761B97ECC300224CF9 /* API_MetaMachine_Properties.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = API_MetaMachine_Properties.c; sourceTree = "<group>"; };
+		301ABF771B97ECC300224CF9 /* API_MetaMachine_Properties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API_MetaMachine_Properties.h; sourceTree = "<group>"; };
+		301ABF991B97ECC900224CF9 /* API_MetaProperty_Access.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = API_MetaProperty_Access.c; sourceTree = "<group>"; };
+		301ABF9A1B97ECC900224CF9 /* API_MetaProperty_Access.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API_MetaProperty_Access.h; sourceTree = "<group>"; };
+		301ABF9C1B97ECD900224CF9 /* API_MetaState_Properties.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = API_MetaState_Properties.c; sourceTree = "<group>"; };
+		301ABF9D1B97ECD900224CF9 /* API_MetaState_Properties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API_MetaState_Properties.h; sourceTree = "<group>"; };
+		301ABFA01B97ECE900224CF9 /* API_MetaProperty.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = API_MetaProperty.c; sourceTree = "<group>"; };
+		301ABFA11B97ECE900224CF9 /* API_MetaProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API_MetaProperty.h; sourceTree = "<group>"; };
 		307B5A2D1B797C4700F7ACB8 /* API_Util.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = API_Util.c; sourceTree = "<group>"; };
 		307B5A2E1B797C4700F7ACB8 /* API_Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API_Util.h; sourceTree = "<group>"; };
 		30B226651B82B07C001511B5 /* API_MetaTransition.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = API_MetaTransition.c; sourceTree = "<group>"; };
@@ -1508,8 +1523,16 @@
 				F17A1DDF1B77F37500C24CAB /* API_MetaAction.c */,
 				F17A1DE01B77F37500C24CAB /* API_MetaAction.h */,
 				F17A1DE11B77F37500C24CAB /* API_MetaMachine_Internal.h */,
+				301ABF761B97ECC300224CF9 /* API_MetaMachine_Properties.c */,
+				301ABF771B97ECC300224CF9 /* API_MetaMachine_Properties.h */,
 				F1C4114E1B67094900663625 /* API_MetaMachine.c */,
 				F1C4114F1B67094900663625 /* API_MetaMachine.h */,
+				301ABF991B97ECC900224CF9 /* API_MetaProperty_Access.c */,
+				301ABF9A1B97ECC900224CF9 /* API_MetaProperty_Access.h */,
+				301ABFA01B97ECE900224CF9 /* API_MetaProperty.c */,
+				301ABFA11B97ECE900224CF9 /* API_MetaProperty.h */,
+				301ABF9C1B97ECD900224CF9 /* API_MetaState_Properties.c */,
+				301ABF9D1B97ECD900224CF9 /* API_MetaState_Properties.h */,
 				F17A1DE71B77F38C00C24CAB /* API_MetaState.c */,
 				F17A1DE81B77F38C00C24CAB /* API_MetaState.h */,
 				F17A1DE91B77F38C00C24CAB /* API_Result.h */,
@@ -2408,6 +2431,8 @@
 				F12B737B1B6052DB006C64D8 /* clfsm_machine_loader.h in Headers */,
 				F1C7CE6016FFE48300D5D843 /* clfsm_wb_vector_factory.h in Headers */,
 				F17A1DED1B77F38C00C24CAB /* API_Result.h in Headers */,
+				301ABFA31B97ECE900224CF9 /* API_MetaProperty.h in Headers */,
+				301ABF791B97ECC300224CF9 /* API_MetaMachine_Properties.h in Headers */,
 				307B5A301B797C4700F7ACB8 /* API_Util.h in Headers */,
 				F17A1DEC1B77F38C00C24CAB /* API_MetaState.h in Headers */,
 				F16864FC1703BA29003B195F /* FSMAsynchronousSuspensibleMachine.h in Headers */,
@@ -2415,6 +2440,7 @@
 				F17A1DEE1B77F38C00C24CAB /* CLMetaRegister.h in Headers */,
 				30B226681B82B07C001511B5 /* API_MetaTransition.h in Headers */,
 				F17A1DE31B77F37500C24CAB /* API_Interface.h in Headers */,
+				301ABF9F1B97ECD900224CF9 /* API_MetaState_Properties.h in Headers */,
 				F17A1DE61B77F37500C24CAB /* API_MetaMachine_Internal.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3175,14 +3201,18 @@
 				F1D575A01627959C00976A23 /* FSMAction.cc in Sources */,
 				F1D575A1162795A600976A23 /* FSMExpression.cc in Sources */,
 				F12B737E1B6053AA006C64D8 /* clfsm_cc.cc in Sources */,
+				301ABF9E1B97ECD900224CF9 /* API_MetaState_Properties.c in Sources */,
 				F17A1DE21B77F37500C24CAB /* API_Interface.cc in Sources */,
+				301ABFA21B97ECE900224CF9 /* API_MetaProperty.c in Sources */,
 				F1D575A5162795D500976A23 /* FSMachine.cc in Sources */,
 				F1D575A6162795DB00976A23 /* FSMState.cc in Sources */,
 				F1D575A7162795E700976A23 /* FSMSuspensibleMachine.cc in Sources */,
 				F1D575A91627960400976A23 /* FSMTransition.cc in Sources */,
+				301ABFA41B97ECEF00224CF9 /* API_MetaProperty_Access.c in Sources */,
 				F17A1DEB1B77F38C00C24CAB /* API_MetaState.c in Sources */,
 				F1D575AB1627962E00976A23 /* FSMActivity.cc in Sources */,
 				F1D575AA1627960D00976A23 /* stringConstants.c in Sources */,
+				301ABF781B97ECC300224CF9 /* API_MetaMachine_Properties.c in Sources */,
 				30B226671B82B07C001511B5 /* API_MetaTransition.c in Sources */,
 				F1C411531B67096700663625 /* API_MetaMachine.c in Sources */,
 				F1D575AC1627966D00976A23 /* FSMFactory.cc in Sources */,

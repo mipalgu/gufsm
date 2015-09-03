@@ -2,6 +2,7 @@
 
 #include "CLReflectAPI.h"
 #include <sstream>
+#include <iostream>
 #include "CLReflectDemo.h"
 #include "CLReflectAPI.h"
 #include "CLMacros.h"
@@ -368,9 +369,18 @@ char* mp_machine_currentMachineID_getAsString(refl_machine_t machine, refl_userD
 }
 void mp_machine_currentMachineID_setAsString(refl_machine_t machine, refl_userData_t data, const char * const value)
 {
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
 	std::string stringVar(value);
 	if (stringVar.length() != 0)
 	{
+		try
+		{
+			thisMachine->currentMachineID = static_cast<unsigned int>(stoi(stringVar));
+		}
+		catch (std::invalid_argument e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
 	}
 }
 void* mp_machine_numberOfMachines_getAsVoid(refl_machine_t machine, refl_userData_t data)
@@ -395,9 +405,18 @@ char* mp_machine_numberOfMachines_getAsString(refl_machine_t machine, refl_userD
 }
 void mp_machine_numberOfMachines_setAsString(refl_machine_t machine, refl_userData_t data, const char * const value)
 {
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
 	std::string stringVar(value);
 	if (stringVar.length() != 0)
 	{
+		try
+		{
+			thisMachine->numberOfMachines = static_cast<unsigned int>(stoi(stringVar));
+		}
+		catch (std::invalid_argument e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
 	}
 }
 void* mp_machine_numberCopy_getAsVoid(refl_machine_t machine, refl_userData_t data)
@@ -424,9 +443,17 @@ char* mp_machine_numberCopy_getAsString(refl_machine_t machine, refl_userData_t 
 }
 void mp_machine_numberCopy_setAsString(refl_machine_t machine, refl_userData_t data, const char * const value)
 {
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
 	std::string stringVar(value);
 	if (stringVar.length() != 0)
 	{
+		try
+		{
+		}
+		catch (std::invalid_argument e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
 	}
 }
 void* mp_machine_testCharPointer_getAsVoid(refl_machine_t machine, refl_userData_t data)
@@ -460,9 +487,17 @@ char* mp_machine_testCharPointer_getAsString(refl_machine_t machine, refl_userDa
 }
 void mp_machine_testCharPointer_setAsString(refl_machine_t machine, refl_userData_t data, const char * const value)
 {
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
 	std::string stringVar(value);
 	if (stringVar.length() != 0)
 	{
+		try
+		{
+		}
+		catch (std::invalid_argument e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
 	}
 }
 void* mp_machine_testCharArray_getAsVoid(refl_machine_t machine, refl_userData_t data)
@@ -489,9 +524,17 @@ char* mp_machine_testCharArray_getAsString(refl_machine_t machine, refl_userData
 }
 void mp_machine_testCharArray_setAsString(refl_machine_t machine, refl_userData_t data, const char * const value)
 {
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
 	std::string stringVar(value);
 	if (stringVar.length() != 0)
 	{
+		try
+		{
+		}
+		catch (std::invalid_argument e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
 	}
 }
 void* mp_machine_metaMachine_getAsVoid(refl_machine_t machine, refl_userData_t data)
@@ -518,9 +561,17 @@ char* mp_machine_metaMachine_getAsString(refl_machine_t machine, refl_userData_t
 }
 void mp_machine_metaMachine_setAsString(refl_machine_t machine, refl_userData_t data, const char * const value)
 {
+	CLReflectDemo* thisMachine = static_cast<CLReflectDemo*>(machine);
 	std::string stringVar(value);
 	if (stringVar.length() != 0)
 	{
+		try
+		{
+		}
+		catch (std::invalid_argument e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
 	}
 }
 // Creation script
