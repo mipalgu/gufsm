@@ -82,7 +82,7 @@ namespace
             free(checkValue);
         }
     }
-
+/*
     TEST_F(ReflectAPI_VariableTests, integers_ErrorHandling)
     {
         for (int i = 0; i < 1; i++)
@@ -115,7 +115,7 @@ namespace
             refl_setMachinePropertyValue_S(metaFSM, i, "ss", &result);
             //ASSERT_NO_THROW();
         }
-    }
+    }*/
 }
 
 #pragma clang diagnostic pop
