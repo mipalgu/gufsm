@@ -20,7 +20,7 @@ char * refl_getMachinePropertyValue_S(refl_metaMachine metaMachine, unsigned int
 
 // State properties
 void refl_setStatePropertyValue_V(refl_metaMachine metaMachine, unsigned int stateIndex,
-                                    int propIndex, void* value, CLReflectResult *result);
+                                    unsigned int propIndex, void* value, CLReflectResult *result);
 
 void* refl_getStatePropertyValue_V(refl_metaMachine metaMachine, unsigned int stateIndex,
                                         unsigned int propIndex, CLReflectResult* result);

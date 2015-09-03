@@ -107,7 +107,7 @@ void* refl_getMachinePropertyValue_V(refl_metaMachine metaMachine, unsigned int 
 }
 
 void refl_setStatePropertyValue_V(refl_metaMachine metaMachine, unsigned int stateIndex,
-                                    int propIndex, void* value, CLReflectResult *result)
+                                    unsigned int propIndex, void* value, CLReflectResult *result)
 {
     if (!metaMachine || !metaMachine->machine || stateIndex >= metaMachine->numberOfStates ||
             propIndex >= metaMachine->metaStates[stateIndex]->numberOfProperties)
