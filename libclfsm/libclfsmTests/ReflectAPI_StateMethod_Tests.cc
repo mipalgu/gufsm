@@ -45,7 +45,7 @@ namespace
         virtual ~ReflectAPI_StateMethod_Tests()
         {
 
-            //refl_destroyMetaMachine(machine);
+            refl_destroyMetaMachine(machine, NULL);
         }
 
         // If the constructor and destructor are not enough for setting up
@@ -63,9 +63,9 @@ namespace
         }
 
         // Objects declared here can be used by all tests in the test case.
-        refl_metaAction action;
-        refl_metaState state;
-        refl_metaMachine machine;
+        refl_metaAction action = NULL;
+        refl_metaState state = NULL;
+        refl_metaMachine machine = NULL;
         refl_metaState states[1];
         int incValue;
 

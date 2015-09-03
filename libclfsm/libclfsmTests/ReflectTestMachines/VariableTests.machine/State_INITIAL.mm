@@ -47,6 +47,3 @@ void INITIAL::Internal::perform(CLMachine *_machine, CLState *_state) const
 #	include "State_INITIAL_VarRefs.mm"
 #	include "State_INITIAL_Internal.mm"
 }
-
-
-

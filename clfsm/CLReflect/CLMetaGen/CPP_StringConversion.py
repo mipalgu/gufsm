@@ -55,32 +55,40 @@ class CPP_StringConversion(object):
         cpp = self.cpp
         checker = TypeChecker(self.prop)
         stringVar = 'stringVar'
+        testVar = 'testVar'
         with cpp.subs(value = valueName, propVar = self.propVarName,
-                        stringVar = stringVar, dType = self.prop.dataType):
+                        stringVar = stringVar, testVar = testVar, dType = self.prop.dataType):
             cpp('std::string $stringVar$($value$);')
             with cpp.block('if ($stringVar$.length() != 0)'):
-                if checker.isChar():
-                    pass
-                elif checker.isCharPointer():
-                    pass
-                elif checker.isStdString():
-                    pass
-                elif checker.isPrimitiveConvertable():
-                    if checker.isInt():
-                        cpp('$propVar$ = stoi($stringVar$);')
-                    elif checker.isUnsignedInt():
-                        cpp('$propVar$ = static_cast<unsigned int>(stoi($stringVar$));')
-                    elif checker.isLong():
-                        cpp('$propVar$ = stol($stringVar$);')
-                    elif checker.isFloat():
-                        cpp('$propVar$ = stof($stringVar$);')
-                    elif checker.isDouble():
-                        cpp('$propVar$ = stod($stringVar$);')
-                elif checker.isPointer():
-                    pass
-                else:
-                    pass
+                with cpp.block('try'):
 
+                    if checker.isChar():
+                        pass
+                    elif checker.isCharPointer():
+                        pass
+                    elif checker.isStdString():
+                        pass
+                    elif checker.isPrimitiveConvertable():
+                        if checker.isInt():
+                            cpp('$dType$ $testVar$ = stoi($stringVar$);')
+                            cpp('$propVar$ = $testVar$;')
+                        elif checker.isUnsignedInt():
+                            cpp('$propVar$ = static_cast<unsigned int>(stoi($stringVar$));')
+                        elif checker.isLong():
+                            cpp('$propVar$ = stol($stringVar$);')
+                        elif checker.isFloat():
+                            cpp('$dType$ $testVar$ = stof($stringVar$);')
+                            cpp('$propVar$ = $testVar$;')
+                        elif checker.isDouble():
+                            cpp('$dType$ $testVar$ = stod($stringVar$);')
+                            cpp('$propVar$ = $testVar$;')
+                    elif checker.isPointer():
+                        pass
+                    else:
+                        pass
+                with cpp.block('catch (std::invalid_argument e)'):
+                    cpp('std::cerr << e.what() << std::endl;')
+                    pass
 import re
 
 class TypeChecker(object):

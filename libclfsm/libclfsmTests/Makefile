@@ -4,7 +4,7 @@
 
 SPECIFIC_LDFLAGS+=-Wl,-rpath -Wl,/usr/local/lib
 SPECIFIC_LIBS+=-lclfsm -lgtest -lgtest_main -ldl # Link CLFSM and GTest + dlopen()
-SPECIFIC_CPPFLAGS+= -I.. -I${GUNAO_DIR}/Common
+SPECIFIC_CPPFLAGS+= -I.. -I${GUNAO_DIR}/Common -I${POSIX_DIR}/gufsm/libclfsm/libclfsmTests/ReflectTestMachines/VariableTests.machine
 CC_SRCS!=echo *.cc
 run-test:  host
 	(cd ReflectTestMachines && ${MAKE} host-local)

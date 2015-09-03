@@ -5,12 +5,14 @@
 #pragma clang diagnostic ignored "-Wshift-sign-overflow"
 #pragma clang diagnostic ignored "-Wused-but-marked-unused"
 #pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wreserved-id-macro"
 
 #include <gtest/gtest.h>
 #include <string>
 #include <unistd.h>
 #include "clfsm_machine.h"
 #include "CLReflectAPI.h"
+#include "VariableTests.h"
 
 using namespace std;
 
@@ -32,13 +34,16 @@ namespace
         ReflectAPI_VariableTests()
         {
             wrapper = new FSM::MachineWrapper(VARIABLE_TESTS_FSM_PATH);
-            fsm = wrapper->instantiate(0, "VariableTests");
+            fsm = static_cast<FSM::CLM::VariableTests*>(wrapper->instantiate(0, "VariableTests"));
             metaFSM = wrapper->instantiateMetaMachine(fsm);
+
         }
 
         virtual ~ReflectAPI_VariableTests()
         {
-            delete wrapper;
+            delete(fsm);
+            delete(wrapper);            
+            refl_destroyMetaMachine(metaFSM, NULL);
         }
 
         // If the constructor and destructor are not enough for setting up
@@ -46,7 +51,8 @@ namespace
 
         virtual void SetUp()
         {
-
+            if (!wrapper || !fsm || !metaFSM)
+                throw;
         }
 
         virtual void TearDown()
@@ -56,7 +62,7 @@ namespace
         }
 
         FSM::MachineWrapper *wrapper;
-        FSM::CLMachine *fsm;
+        FSM::CLM::VariableTests *fsm;
         refl_metaMachine metaFSM;
         CLReflectResult result;
     };
@@ -75,6 +81,16 @@ namespace
         }
     }
 
+    TEST_F(ReflectAPI_VariableTests, integers_ErrorHandling)
+    {
+        for (int i = 0; i < 1; i++)
+        {
+            ASSERT_NO_THROW(refl_setMachinePropertyValue_S(metaFSM, i, "", &result));
+            refl_setMachinePropertyValue_S(metaFSM, i, "1", &result);
+            //ASSERT_NO_THROW();
+        }
+    }
+
     TEST_F(ReflectAPI_VariableTests, floats_setAndCheck)
     {
         // Variables 4,5 are float, double
@@ -86,6 +102,16 @@ namespace
             ASSERT_EQ(REFL_SUCCESS, result);
             ASSERT_STREQ("45.500000", checkValue) << "Expecting 45.5 for property " << i << endl;
             free(checkValue);
+        }
+    }
+
+    TEST_F(ReflectAPI_VariableTests, floats_ErrorHandling)
+    {
+        for (int i = 0; i < 1; i++)
+        {
+            ASSERT_NO_THROW(refl_setMachinePropertyValue_S(metaFSM, i, "", &result));
+            refl_setMachinePropertyValue_S(metaFSM, i, "ss", &result);
+            //ASSERT_NO_THROW();
         }
     }
 }
