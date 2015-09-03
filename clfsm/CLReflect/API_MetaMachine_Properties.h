@@ -26,7 +26,7 @@ void* refl_getStatePropertyValue_V(refl_metaMachine metaMachine, unsigned int st
                                         unsigned int propIndex, CLReflectResult* result);
 
 void refl_setStatePropertyValue_S(refl_metaMachine metaMachine, unsigned int stateIndex,
-                                    int propIndex, const char * const value, CLReflectResult *result);
+                                    unsigned int propIndex, const char * const value, CLReflectResult *result);
 
 char * refl_getStatePropertyValue_S(refl_metaMachine metaMachine, unsigned int stateIndex,
                                         unsigned int propIndex, CLReflectResult* result);
