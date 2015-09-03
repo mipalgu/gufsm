@@ -3,7 +3,7 @@
 #
 # clfsm Makefile
 #
-ALL_TARGETS=build-host do-catkin xc doc
+ALL_TARGETS=build-host do-catkin analyse xc doc
 
 DONT_COMPLAIN_ABOUT_TEST_TARGET=yes	## test target is defined below
 TEST_MACHINES=SpeedTest			## machines to run for testing
