@@ -182,7 +182,7 @@ refl_metaState * refl_getMetaStates(refl_metaMachine metaMachine, CLReflectResul
 
 }
 
-void refl_invokeOnEntry(refl_metaMachine metaMachine, int stateNum, CLReflectResult* result)
+void refl_invokeOnEntry(refl_metaMachine metaMachine,unsigned int stateNum, CLReflectResult* result)
 {
     if (!metaMachine || stateNum >= metaMachine->numberOfStates ||
             !metaMachine->metaStates[stateNum] ||
@@ -202,7 +202,7 @@ void refl_invokeOnEntry(refl_metaMachine metaMachine, int stateNum, CLReflectRes
 }
 
 
-void refl_invokeInternal(refl_metaMachine metaMachine, int stateNum, CLReflectResult* result)
+void refl_invokeInternal(refl_metaMachine metaMachine, unsigned int stateNum, CLReflectResult* result)
 {
     if (!metaMachine || stateNum >= metaMachine->numberOfStates ||
             !metaMachine->metaStates[stateNum] ||
@@ -221,7 +221,7 @@ void refl_invokeInternal(refl_metaMachine metaMachine, int stateNum, CLReflectRe
     }
 }
 
-void refl_invokeOnExit(refl_metaMachine metaMachine, int stateNum, CLReflectResult* result)
+void refl_invokeOnExit(refl_metaMachine metaMachine, unsigned int stateNum, CLReflectResult* result)
 {
     if (!metaMachine || stateNum >= metaMachine->numberOfStates ||
             !metaMachine->metaStates[stateNum] ||

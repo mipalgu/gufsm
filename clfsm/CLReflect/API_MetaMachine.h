@@ -51,11 +51,11 @@ unsigned int refl_getNumberOfStates(refl_metaMachine machine, CLReflectResult* r
 refl_metaState * refl_getMetaStates(refl_metaMachine metaMachine, CLReflectResult *result);
 
 //! Invokes the OnEntry of a given state
-void refl_invokeOnEntry(refl_metaMachine metaMachine, int stateNum, CLReflectResult* result);
+void refl_invokeOnEntry(refl_metaMachine metaMachine, unsigned int stateNum, CLReflectResult* result);
 
-void refl_invokeInternal(refl_metaMachine metaMachine, int stateNum, CLReflectResult* result);
+void refl_invokeInternal(refl_metaMachine metaMachine, unsigned int stateNum, CLReflectResult* result);
 
-void refl_invokeOnExit(refl_metaMachine metaMachine, int stateNum, CLReflectResult* result);
+void refl_invokeOnExit(refl_metaMachine metaMachine, unsigned int stateNum, CLReflectResult* result);
 
 refl_bool refl_evaluateTransition(refl_metaMachine metaMachine, unsigned int stateNum, unsigned int transitionNum, CLReflectResult *result);
 
