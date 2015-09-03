@@ -43,7 +43,7 @@ void _refl_setPropertyAsVoid(refl_metaProperty property, refl_machine_t machine,
 }
 
 char * _refl_getPropertyAsString(refl_metaProperty property, refl_machine_t machine,
-                                CLReflectResult *result)
+                                char* buffer, unsigned int bufferLen, CLReflectResult *result)
 {
     if (!property || !property->getAsString || !machine)
     {
@@ -59,7 +59,7 @@ char * _refl_getPropertyAsString(refl_metaProperty property, refl_machine_t mach
         {
             *result = REFL_SUCCESS;
         }
-        return property->getAsString(machine, property->data);
+        return property->getAsString(machine, property->data, buffer, bufferLen);
     }
 }
 

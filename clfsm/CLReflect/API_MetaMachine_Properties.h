@@ -16,7 +16,8 @@ void* refl_getMachinePropertyValue_V(refl_metaMachine metaMachine, unsigned int 
 
 void refl_setMachinePropertyValue_S(refl_metaMachine metaMachine, unsigned int propIndex, const char * const value, CLReflectResult *result);
 
-char * refl_getMachinePropertyValue_S(refl_metaMachine metaMachine, unsigned int propIndex, CLReflectResult* result);
+char * refl_getMachinePropertyValue_S(refl_metaMachine metaMachine, unsigned int propIndex, char *buffer,
+                                        unsigned int bufferLen, CLReflectResult* result);
 
 // State properties
 void refl_setStatePropertyValue_V(refl_metaMachine metaMachine, unsigned int stateIndex,
@@ -29,7 +30,8 @@ void refl_setStatePropertyValue_S(refl_metaMachine metaMachine, unsigned int sta
                                     unsigned int propIndex, const char * const value, CLReflectResult *result);
 
 char * refl_getStatePropertyValue_S(refl_metaMachine metaMachine, unsigned int stateIndex,
-                                        unsigned int propIndex, CLReflectResult* result);
+                                        unsigned int propIndex, char *buffer,
+                                        unsigned int bufferLen, CLReflectResult* result);
 
 
 #endif /* end of include guard: API_METAMACHINE_PROPERTIES_H */

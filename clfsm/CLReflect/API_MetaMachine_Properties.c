@@ -163,7 +163,8 @@ void refl_setMachinePropertyValue_S(refl_metaMachine metaMachine, unsigned int p
 }
 
 char * refl_getMachinePropertyValue_S(refl_metaMachine metaMachine, unsigned int propIndex,
-                                            CLReflectResult* result)
+                                        char *buffer, unsigned int bufferLen,
+                                        CLReflectResult* result)
 {
     if (!metaMachine || !metaMachine->machine ||
             propIndex >= metaMachine->numberOfProperties)
@@ -177,7 +178,7 @@ char * refl_getMachinePropertyValue_S(refl_metaMachine metaMachine, unsigned int
     else
     {
         return _refl_getPropertyAsString(metaMachine->metaProperties[propIndex],
-                    metaMachine->machine, result);
+                    metaMachine->machine, buffer, bufferLen, result);
     }
 }
 
@@ -201,7 +202,8 @@ void refl_setStatePropertyValue_S(refl_metaMachine metaMachine, unsigned int sta
 }
 
 char * refl_getStatePropertyValue_S(refl_metaMachine metaMachine, unsigned int stateIndex,
-                                        unsigned int propIndex, CLReflectResult* result)
+                                        unsigned int propIndex, char *buffer,
+                                        unsigned int bufferLen,CLReflectResult* result)
 {
     if (!metaMachine || !metaMachine->machine || stateIndex >= metaMachine->numberOfStates ||
             propIndex >= metaMachine->metaStates[stateIndex]->numberOfProperties)
@@ -216,6 +218,6 @@ char * refl_getStatePropertyValue_S(refl_metaMachine metaMachine, unsigned int s
     {
 
         refl_metaProperty prop = metaMachine->metaStates[stateIndex]->metaProperties[propIndex];
-        return _refl_getPropertyAsString(prop, metaMachine->machine, result);
+        return _refl_getPropertyAsString(prop, metaMachine->machine, buffer, bufferLen, result);
     }
 }

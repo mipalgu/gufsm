@@ -76,7 +76,7 @@ namespace
         {
             refl_setMachinePropertyValue_S(metaFSM, i, "45", &result);
             ASSERT_EQ(REFL_SUCCESS, result);
-            char *checkValue = refl_getMachinePropertyValue_S(metaFSM, i, &result);
+            char *checkValue = refl_getMachinePropertyValue_S(metaFSM, i, NULL, 0, &result);
             ASSERT_EQ(REFL_SUCCESS, result);
             ASSERT_STREQ("45", checkValue) << "Expecting 45 for property " << i << endl;
             free(checkValue);
@@ -87,7 +87,7 @@ namespace
     {
         for (int i = 0; i < 1; i++)
         {
-            ASSERT_NO_THROW(refl_setMachinePropertyValue_S(metaFSM, i, "", &result));
+            ASSERT_NO_THROW(refl_setMachinePropertyValue_S(metaFSM, i, "2", &result));
             refl_setMachinePropertyValue_S(metaFSM, i, "1", &result);
             //ASSERT_NO_THROW();
         }
@@ -100,7 +100,7 @@ namespace
         {
             refl_setMachinePropertyValue_S(metaFSM, i, "45.5", &result);
             ASSERT_EQ(REFL_SUCCESS, result);
-            char *checkValue = refl_getMachinePropertyValue_S(metaFSM, i, &result);
+            char *checkValue = refl_getMachinePropertyValue_S(metaFSM, i, NULL, 0, &result);
             ASSERT_EQ(REFL_SUCCESS, result);
             ASSERT_STREQ("45.500000", checkValue) << "Expecting 45.5 for property " << i << endl;
             free(checkValue);

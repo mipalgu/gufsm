@@ -16,7 +16,7 @@ void _refl_setPropertyAsVoid(refl_metaProperty property, refl_machine_t machine,
     @returns A heap allocated string. Caller is responsible for freeing memory.
 */
 char * _refl_getPropertyAsString(refl_metaProperty property, refl_machine_t machine,
-                                CLReflectResult *result);
+                                char* buffer, unsigned int bufferLen, CLReflectResult *result);
 
 void _refl_setPropertyAsString(refl_metaProperty property, refl_machine_t machine,
                                 const char * const value, CLReflectResult* result);

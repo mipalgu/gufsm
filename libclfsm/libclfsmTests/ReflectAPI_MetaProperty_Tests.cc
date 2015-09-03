@@ -97,7 +97,7 @@ namespace
 
     }
 
-    char * getString(refl_machine_t machine, refl_userData_t data)
+    char * getString(refl_machine_t machine, refl_userData_t data, char * buffer, unsigned int bufferLen)
     {
         return  NULL;
     }

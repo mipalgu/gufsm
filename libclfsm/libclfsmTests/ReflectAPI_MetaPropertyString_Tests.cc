@@ -71,7 +71,7 @@ namespace
         CLReflectResult result;
     };
 
-    char * getAsString(refl_machine_t machine, refl_userData_t data)
+    char * getAsString(refl_machine_t machine, refl_userData_t data, char * buffer, unsigned int bufferLen)
     {
         ReflectAPI_MetaPropertyString_Tests* testClass =
                             static_cast<ReflectAPI_MetaPropertyString_Tests*>(machine);
@@ -84,22 +84,21 @@ namespace
 
     void setAsString(refl_machine_t machine, refl_userData_t data, const char * const value)
     {
-        ReflectAPI_MetaPropertyString_Tests* testClass =
-                            static_cast<ReflectAPI_MetaPropertyString_Tests*>(machine);
+        ReflectAPI_MetaPropertyString_Tests* testClass = static_cast<ReflectAPI_MetaPropertyString_Tests*>(machine);
         testClass->testValue = stoi(value);
     }
 
     TEST_F(ReflectAPI_MetaPropertyString_Tests, getAsString)
     {
         refl_setMetaPropertyStringFunctions(metaProperty, getAsString, setAsString, NULL);
-        char * returnValue = _refl_getPropertyAsString(metaProperty, thisTestClass,
+        char * returnValue = _refl_getPropertyAsString(metaProperty, thisTestClass, NULL, 0,
                                                         &result);
         ASSERT_EQ(REFL_SUCCESS, result);
         ASSERT_TRUE(returnValue != NULL);
         ASSERT_STREQ(std::to_string(this->INITIAL_TEST_VALUE).c_str(), returnValue);
         free(returnValue);
         //Error checking
-        returnValue = _refl_getPropertyAsString( metaProperty, NULL, &result);
+        returnValue = _refl_getPropertyAsString( metaProperty, NULL, NULL, 0, &result);
         ASSERT_EQ(REFL_INVALID_ARGS, result);
         ASSERT_TRUE(returnValue == NULL);
     }
@@ -120,7 +119,7 @@ namespace
         refl_setMachine(metaMachine, this->thisTestClass, NULL);
         refl_setMetaPropertyStringFunctions(metaProperty, getAsString, setAsString, NULL);
         char * returnValue = refl_getMachinePropertyValue_S(metaMachine,
-                                0, &result);
+                                0, NULL, 0, &result);
         ASSERT_EQ(REFL_SUCCESS, result);
         ASSERT_EQ(this->testValue, stoi(returnValue));
         free(returnValue);
@@ -132,7 +131,7 @@ namespace
         refl_setMetaPropertyStringFunctions(metaProperty, getAsString, setAsString, NULL);
         refl_setMachinePropertyValue_S(metaMachine, 0, "46", &result);
         ASSERT_EQ(REFL_SUCCESS, result);
-        char * returnValue = refl_getMachinePropertyValue_S(metaMachine, 0, NULL);
+        char * returnValue = refl_getMachinePropertyValue_S(metaMachine, 0, NULL, 0, NULL);
         ASSERT_STREQ("46", returnValue);
         free(returnValue);
 
@@ -149,7 +148,7 @@ namespace
 
         refl_setStatePropertyValue_S(metaMachine, 0, 0, "46", &result);
         ASSERT_EQ(REFL_SUCCESS, result);
-        char * returnValue = refl_getStatePropertyValue_S(metaMachine, 0, 0, &result);
+        char * returnValue = refl_getStatePropertyValue_S(metaMachine, 0, 0, NULL, 0, &result);
         ASSERT_EQ(REFL_SUCCESS, result);
         ASSERT_STREQ("46", returnValue);
         free(returnValue);
