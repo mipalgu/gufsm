@@ -6,6 +6,8 @@
 #pragma clang diagnostic ignored "-Wused-but-marked-unused"
 #pragma clang diagnostic ignored "-Wdeprecated"
 #pragma clang diagnostic ignored "-Wreserved-id-macro"
+#pragma clang diagnostic ignored "-Wsign-compare"
+
 
 #include <gtest/gtest.h>
 #include <string>
@@ -42,7 +44,7 @@ namespace
         virtual ~ReflectAPI_VariableTests()
         {
             delete(fsm);
-            delete(wrapper);            
+            delete(wrapper);
             refl_destroyMetaMachine(metaFSM, NULL);
         }
 

@@ -4,6 +4,8 @@
 #pragma clang diagnostic ignored "-Wshift-sign-overflow"
 #pragma clang diagnostic ignored "-Wused-but-marked-unused"
 #pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wsign-compare"
+
 
 #include <gtest/gtest.h>
 #include <string>
@@ -114,7 +116,7 @@ namespace
         ASSERT_STREQ("Pong", pongBuffer);
         free(pongBuffer);
 
-        
+
     }
 
 
