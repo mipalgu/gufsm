@@ -44,7 +44,7 @@ void refl_destroyMetaMachine(refl_metaMachine metaMachine, CLReflectResult* resu
     {
         free(metaMachine->name);
         //Destroy states
-        int i;
+        unsigned int i;
         for (i = 0; i < metaMachine->numberOfStates; i++)
         {
             refl_destroyMetaState(metaMachine->metaStates[i], &functionResult);
