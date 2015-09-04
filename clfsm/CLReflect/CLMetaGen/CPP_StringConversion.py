@@ -10,13 +10,17 @@ class CPP_StringConversion(object):
 
     def writeGetPropertyAsString(self):
         cpp = self.cpp
-        varName = 'returnVar' # the name of the return value
+        varName = 'buffer' # the name of the return value
         checker = TypeChecker(self.prop)
         with cpp.subs(returnVar = varName, propVar = self.propVarName, dType = self.prop.dataType):
-            cpp('char * $returnVar$ = NULL;')
             if checker.isChar():
-                cpp('$returnVar$ = static_cast<char *>(malloc(sizeof(char) * 2));')
-                cpp('refl_strcpy($returnVar$, &$propVar$, 2);')
+                with cpp.block('if (buffer != NULL)'):
+                    with cpp.block('if (bufferLen >= 2)'):
+                        cpp('$returnVar$ = buffer;')
+                        cpp('refl_strcpy($returnVar$, &$propVar$, 2);')
+                with cpp.block('else'):
+                    cpp('$returnVar$ = static_cast<char *>(malloc(sizeof(char) * 2));')
+                    cpp('refl_strcpy($returnVar$, &$propVar$, 2);')
             elif checker.isCharPointer():
                 with cpp.block('if ($propVar$ != NULL)'):
                     cpp('unsigned long len = strlen($propVar$) + 1;')
@@ -31,10 +35,15 @@ class CPP_StringConversion(object):
             elif checker.isStdString():
                 pass
             elif checker.isPrimitiveConvertable():
-                cpp('std::string str = std::to_string($propVar$);')
-                cpp('size_t len = str.length() + 1;')
-                cpp('$returnVar$ = static_cast<char *>(malloc(sizeof(char) * len));')
-                cpp('refl_strcpy($returnVar$, str.c_str(), len);')
+                if checker.isInt():
+                    cpp('snprintf(buffer, bufferLen, "%d", $propVar$);')
+                elif checker.isUnsignedInt():
+                    cpp('snprintf(buffer, bufferLen, "%u", $propVar$);')
+                elif checker.isLong():
+                    cpp('snprintf(buffer, bufferLen, "%ld", $propVar$);')
+                elif checker.isFloat() or checker.isDouble():
+                    cpp('snprintf(buffer, bufferLen, "%f", $propVar$);')
+
             elif checker.isPointer():
                 cpp('std::ostringstream address;')
                 cpp('address << static_cast<void *>($propVar$);')
@@ -61,7 +70,6 @@ class CPP_StringConversion(object):
             cpp('std::string $stringVar$($value$);')
             with cpp.block('if ($stringVar$.length() != 0)'):
                 with cpp.block('try'):
-
                     if checker.isChar():
                         pass
                     elif checker.isCharPointer():
