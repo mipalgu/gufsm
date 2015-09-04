@@ -55,6 +55,16 @@ char * _refl_getPropertyAsString(refl_metaProperty property, refl_machine_t mach
     }
     else
     {
+        //If buffer null then allocate memory
+        if (!buffer)
+        {
+            if (bufferLen == 0)
+            {
+                bufferLen = 40;  //Default amount, as not possible to know
+                                // how much will be needed without asking FSM
+            }            
+            buffer = (char *)malloc(sizeof(char) * bufferLen);
+        }
         if (result)
         {
             *result = REFL_SUCCESS;
