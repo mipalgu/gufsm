@@ -70,17 +70,17 @@ class CPP_StringConversion(object):
                         pass
                     elif checker.isPrimitiveConvertable():
                         if checker.isInt():
-                            cpp('$dType$ $testVar$ = stoi($stringVar$);')
+                            cpp('$dType$ $testVar$ = atoi($stringVar$.c_str());')
                             cpp('$propVar$ = $testVar$;')
                         elif checker.isUnsignedInt():
                             cpp('$propVar$ = static_cast<unsigned int>(stoi($stringVar$));')
                         elif checker.isLong():
                             cpp('$propVar$ = stol($stringVar$);')
-                        elif checker.isFloat():
-                            cpp('$dType$ $testVar$ = stof($stringVar$);')
+                        elif checker.isFloat() or checker.isDouble():
+                            cpp('$dType$ $testVar$ = static_cast<$dType$>(atof($stringVar$.c_str()));')
                             cpp('$propVar$ = $testVar$;')
                         elif checker.isDouble():
-                            cpp('$dType$ $testVar$ = stod($stringVar$);')
+                            cpp('$dType$ $testVar$ = atod($stringVar$.c_str());')
                             cpp('$propVar$ = $testVar$;')
                     elif checker.isPointer():
                         pass

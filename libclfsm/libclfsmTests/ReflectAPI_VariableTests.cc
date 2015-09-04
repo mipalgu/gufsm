@@ -82,14 +82,17 @@ namespace
             free(checkValue);
         }
     }
-/*
+
     TEST_F(ReflectAPI_VariableTests, integers_ErrorHandling)
     {
         for (int i = 0; i < 1; i++)
         {
-            ASSERT_NO_THROW(refl_setMachinePropertyValue_S(metaFSM, i, "2", &result));
-            refl_setMachinePropertyValue_S(metaFSM, i, "1", &result);
-            //ASSERT_NO_THROW();
+            refl_setMachinePropertyValue_S(metaFSM, i, "---", &result);
+            char * checkValue = refl_getMachinePropertyValue_S(metaFSM, i, NULL, 0, &result);
+            std::cout << checkValue << std::endl;
+            free(checkValue);
+            refl_setMachinePropertyValue_S(metaFSM, i, "f", &result);
+
         }
     }
 
@@ -109,13 +112,13 @@ namespace
 
     TEST_F(ReflectAPI_VariableTests, floats_ErrorHandling)
     {
-        for (int i = 0; i < 1; i++)
+        for (int i = 3; i < 5; i++)
         {
-            ASSERT_NO_THROW(refl_setMachinePropertyValue_S(metaFSM, i, "", &result));
+            refl_setMachinePropertyValue_S(metaFSM, i, "", &result);
             refl_setMachinePropertyValue_S(metaFSM, i, "ss", &result);
             //ASSERT_NO_THROW();
         }
-    }*/
+    }
 }
 
 #pragma clang diagnostic pop
