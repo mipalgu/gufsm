@@ -89,9 +89,12 @@ namespace
         {
             refl_setMachinePropertyValue_S(metaFSM, i, "---", &result);
             char * checkValue = refl_getMachinePropertyValue_S(metaFSM, i, NULL, 0, &result);
-            std::cout << checkValue << std::endl;
+            ASSERT_STREQ("0", checkValue);
             free(checkValue);
             refl_setMachinePropertyValue_S(metaFSM, i, "f", &result);
+            checkValue = refl_getMachinePropertyValue_S(metaFSM, i, NULL, 0, &result);
+            ASSERT_STREQ("0", checkValue);
+            free(checkValue);
 
         }
     }
@@ -115,8 +118,12 @@ namespace
         for (int i = 3; i < 5; i++)
         {
             refl_setMachinePropertyValue_S(metaFSM, i, "", &result);
+            char * checkValue = refl_getMachinePropertyValue_S(metaFSM, i, NULL, 0, &result);
+            ASSERT_STREQ("0.000000", checkValue);
+            free(checkValue);
             refl_setMachinePropertyValue_S(metaFSM, i, "ss", &result);
-            //ASSERT_NO_THROW();
+            checkValue = refl_getMachinePropertyValue_S(metaFSM, i, NULL, 0, &result);
+            ASSERT_STREQ("0.000000", checkValue);
         }
     }
 }

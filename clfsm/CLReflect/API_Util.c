@@ -10,10 +10,14 @@ CLReflectResult refl_strcpy(char* dest, char const * src, size_t size)
         return REFL_INVALID_ARGS;
     }
     unsigned int srclength = (unsigned int)strlen(src) + 1;
+
     if (srclength > size)
     {
         return REFL_BUFFER_OVERFLOW;
     }
-    memcpy(dest, src, size);
-    return REFL_SUCCESS;
+    else
+    {
+        memcpy(dest, src, srclength);
+        return REFL_SUCCESS;        
+    }
 }
