@@ -76,8 +76,17 @@ namespace
         ReflectAPI_MetaPropertyString_Tests* testClass =
                             static_cast<ReflectAPI_MetaPropertyString_Tests*>(machine);
         string str = to_string(testClass->testValue);
-        char * returnValue = static_cast<char *>(malloc(str.length() + 1));
-        refl_strcpy(returnValue, str.c_str(), str.length() + 1);
+        char *returnValue;
+        if (buffer)
+        {
+            refl_strcpy(buffer, str.c_str(), bufferLen);
+            returnValue = buffer;
+        }
+        else
+        {
+            returnValue = static_cast<char *>(malloc(str.length() + 1));
+            refl_strcpy(returnValue, str.c_str(), str.length() + 1);
+        }
         return returnValue;
 
     }
@@ -152,8 +161,18 @@ namespace
         ASSERT_EQ(REFL_SUCCESS, result);
         ASSERT_STREQ("46", returnValue);
         free(returnValue);
+    }
 
-
+    TEST_F(ReflectAPI_MetaPropertyString_Tests, stackAndHeapStringVariable)
+    {
+        //! Check that if buffer provided it is used, otherwise memory is allocated
+        refl_setMachine(metaMachine, this->thisTestClass, NULL);
+        refl_setMetaPropertyStringFunctions(metaProperty, getAsString, setAsString, NULL);
+        char buffer[20];
+        char * returnValue = _refl_getPropertyAsString(metaProperty, this->thisTestClass,
+                                        buffer, 20, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        ASSERT_EQ(buffer, returnValue);
     }
 
 }
