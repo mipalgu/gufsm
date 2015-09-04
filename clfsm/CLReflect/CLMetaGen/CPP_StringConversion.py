@@ -14,18 +14,11 @@ class CPP_StringConversion(object):
         checker = TypeChecker(self.prop)
         with cpp.subs(returnVar = varName, propVar = self.propVarName, dType = self.prop.dataType):
             if checker.isChar():
-                with cpp.block('if (buffer != NULL)'):
-                    with cpp.block('if (bufferLen >= 2)'):
-                        cpp('$returnVar$ = buffer;')
-                        cpp('refl_strcpy($returnVar$, &$propVar$, 2);')
-                with cpp.block('else'):
-                    cpp('$returnVar$ = static_cast<char *>(malloc(sizeof(char) * 2));')
-                    cpp('refl_strcpy($returnVar$, &$propVar$, 2);')
+                with cpp.block('if (bufferLen >= 2)'):
+                    cpp('snprintf(buffer, 1, "%c", $propVar$);')
             elif checker.isCharPointer():
                 with cpp.block('if ($propVar$ != NULL)'):
-                    cpp('unsigned long len = strlen($propVar$) + 1;')
-                    cpp('$returnVar$ = static_cast<char *>(malloc(sizeof(char) * len));')
-                    cpp('refl_strcpy($returnVar$, $propVar$, len);')
+                    cpp('snprintf(buffer, bufferLen, "%s", $propVar$);')
                 with cpp.block('else'):
                     with cpp.subs(nullStringVar = 'nullStringVar'):
                         cpp('const char * $nullStringVar$ = "NULL_STRING";')

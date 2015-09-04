@@ -14,5 +14,8 @@ long	&longTest= _m->longTest;	///<
 unsigned int	&uintTest= _m->uintTest;	///<
 float	&floatTest= _m->floatTest;	///<
 double	&doubleTest= _m->doubleTest;	///<
+char	&charTest= _m->charTest;	///<
+char *	&charPTest= _m->charPTest;	///<
+void *	&voidPTest= _m->voidPTest;	///<
 
 #pragma clang diagnostic pop
