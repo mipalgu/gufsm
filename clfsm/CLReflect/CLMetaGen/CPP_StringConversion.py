@@ -43,14 +43,8 @@ class CPP_StringConversion(object):
                     cpp('snprintf(buffer, bufferLen, "%ld", $propVar$);')
                 elif checker.isFloat() or checker.isDouble():
                     cpp('snprintf(buffer, bufferLen, "%f", $propVar$);')
-
             elif checker.isPointer():
-                cpp('std::ostringstream address;')
-                cpp('address << static_cast<void *>($propVar$);')
-                cpp('std::string str = address.str();')
-                cpp('size_t len = str.length() + 1;')
-                cpp('$returnVar$ = static_cast<char *>(malloc(sizeof(char) * len));')
-                cpp('refl_strcpy($returnVar$, str.c_str(), len);')
+                cpp('snprintf(buffer, bufferLen, "%x", $propVar$);')
             else:
                 cpp('std::ostringstream address;')
                 cpp('address << static_cast<void *>(&$propVar$);')
