@@ -7,7 +7,7 @@ MODULE_BASE=clfsm
 XCTSCHEME=libclfsm
 CI_NAME=${XCTSCHEME}
 
-ALL_TARGETS=host-local robot-local analyse xc
+ALL_TARGETS=host-local robot-local analyse xc tests
 
 CATKIN_BASE=libclfsm
 CATKIN_COMPILE_UTIL=YES
