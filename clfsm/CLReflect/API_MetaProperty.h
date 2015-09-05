@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 #include "API_Result.h"
+#include "API_Type.h"
 #include "CLReflectFunctionPointerTypes.h"
 
 struct metaProperty_s;
@@ -20,6 +21,10 @@ char const * refl_getMetaPropertyName(refl_metaProperty metaProperty, CLReflectR
 void refl_setMetaPropertyTypeString(refl_metaProperty metaProperty, char const * type, CLReflectResult* result);
 
 char const * refl_getMetaPropertyTypeAsString(refl_metaProperty metaProperty, CLReflectResult* result);
+
+void refl_setMetaPropertyType(refl_metaProperty metaProperty, refl_type type, CLReflectResult* result);
+
+refl_type refl_getMetaPropertyType(refl_metaProperty metaProperty, CLReflectResult* result);
 
 void refl_setMetaPropertyData(refl_metaProperty metaProperty, refl_userData_t data, CLReflectResult *result);
 

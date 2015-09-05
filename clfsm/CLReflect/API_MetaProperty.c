@@ -160,6 +160,45 @@ char const * refl_getMetaPropertyName(refl_metaProperty metaProperty, CLReflectR
     }
 }
 
+void refl_setMetaPropertyType(refl_metaProperty metaProperty, refl_type type, CLReflectResult* result)
+{
+    if (!metaProperty)
+    {
+        if (result)
+        {
+            *result = REFL_INVALID_ARGS;
+        }
+    }
+    else
+    {
+        if (result)
+        {
+            *result = REFL_SUCCESS;
+        }
+        metaProperty->type_enum = type;
+    }
+}
+
+refl_type refl_getMetaPropertyType(refl_metaProperty metaProperty, CLReflectResult* result)
+{
+    if (!metaProperty)
+    {
+        if (result)
+        {
+            *result = REFL_INVALID_ARGS;
+        }
+        return REFL_VOID_PTR;
+    }
+    else
+    {
+        if (result)
+        {
+            *result = REFL_SUCCESS;
+        }
+        return metaProperty->type_enum;
+    }
+}
+
 void refl_setMetaPropertyTypeString(refl_metaProperty metaProperty, char const * type, CLReflectResult* result)
 {
     CLReflectResult funcResult;
