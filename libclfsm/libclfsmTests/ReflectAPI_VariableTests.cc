@@ -66,6 +66,8 @@ namespace
         FSM::MachineWrapper *wrapper;
         FSM::CLM::VariableTests *fsm;
         refl_metaMachine metaFSM;
+        char buffer[40];
+        unsigned int bufferLen = 40;
         CLReflectResult result;
     };
 
@@ -74,7 +76,7 @@ namespace
         // First 3 values are int, long, unsigned int
         for (int i = 0; i < 3; i++)
         {
-            refl_setMachinePropertyValue_S(metaFSM, i, "45", &result);
+            refl_setMachinePropertyValue_S(metaFSM, i, &string("45")[0], &result);
             ASSERT_EQ(REFL_SUCCESS, result);
             char *checkValue = refl_getMachinePropertyValue_S(metaFSM, i, NULL, 0, &result);
             ASSERT_EQ(REFL_SUCCESS, result);
@@ -87,11 +89,11 @@ namespace
     {
         for (int i = 0; i < 1; i++)
         {
-            refl_setMachinePropertyValue_S(metaFSM, i, "---", &result);
+            refl_setMachinePropertyValue_S(metaFSM, i, &string("---")[0], &result);
             char * checkValue = refl_getMachinePropertyValue_S(metaFSM, i, NULL, 0, &result);
             ASSERT_STREQ("0", checkValue);
             free(checkValue);
-            refl_setMachinePropertyValue_S(metaFSM, i, "f", &result);
+            refl_setMachinePropertyValue_S(metaFSM, i, &string("f")[0], &result);
             checkValue = refl_getMachinePropertyValue_S(metaFSM, i, NULL, 0, &result);
             ASSERT_STREQ("0", checkValue);
             free(checkValue);
@@ -104,7 +106,7 @@ namespace
         // Variables 4,5 are float, double
         for (int i = 3; i < 5; i++)
         {
-            refl_setMachinePropertyValue_S(metaFSM, i, "45.5", &result);
+            refl_setMachinePropertyValue_S(metaFSM, i, &string("45.5")[0], &result);
             ASSERT_EQ(REFL_SUCCESS, result);
             char *checkValue = refl_getMachinePropertyValue_S(metaFSM, i, NULL, 0, &result);
             ASSERT_EQ(REFL_SUCCESS, result);
@@ -117,14 +119,46 @@ namespace
     {
         for (int i = 3; i < 5; i++)
         {
-            refl_setMachinePropertyValue_S(metaFSM, i, "", &result);
+            refl_setMachinePropertyValue_S(metaFSM, i, &string("")[0], &result);
             char * checkValue = refl_getMachinePropertyValue_S(metaFSM, i, NULL, 0, &result);
             ASSERT_STREQ("0.000000", checkValue);
             free(checkValue);
-            refl_setMachinePropertyValue_S(metaFSM, i, "ss", &result);
+            refl_setMachinePropertyValue_S(metaFSM, i, &string("ss")[0], &result);
             checkValue = refl_getMachinePropertyValue_S(metaFSM, i, NULL, 0, &result);
             ASSERT_STREQ("0.000000", checkValue);
         }
+    }
+
+    TEST_F(ReflectAPI_VariableTests, chars)
+    {
+        // 5th variable is char
+        unsigned int charVar = 5;
+        refl_setMachinePropertyValue_S(metaFSM, charVar, &string("c")[0], &result);
+        //Check returned value is buffer
+        ASSERT_STREQ(refl_getMachinePropertyValue_S(metaFSM, charVar, buffer, bufferLen, &result), buffer);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        ASSERT_STREQ("c", buffer);
+
+        // Check that it fails if buffer is too small
+        buffer[0] = 'd';
+        refl_getMachinePropertyValue_S(metaFSM, charVar, buffer, 1, NULL);
+        ASSERT_STRNE(buffer, "c");
+
+
+    }
+
+    TEST_F(ReflectAPI_VariableTests, pointers)
+    {
+        //6, 7 are char* and void*
+        unsigned int chrPtrIndex = 6;
+        //unsigned int voidPtrIndex = 7;
+
+        //Char ptr
+        string testValue = "Test";
+        refl_setMachinePropertyValue_S(metaFSM, chrPtrIndex, &testValue[0], &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        refl_getMachinePropertyValue_S(metaFSM, chrPtrIndex, buffer, bufferLen, NULL);
+        ASSERT_STREQ(testValue.c_str(), buffer);
     }
 }
 

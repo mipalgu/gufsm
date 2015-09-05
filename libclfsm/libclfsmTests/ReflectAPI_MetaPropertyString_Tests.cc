@@ -91,7 +91,7 @@ namespace
 
     }
 
-    void setAsString(refl_machine_t machine, refl_userData_t data, const char * const value)
+    void setAsString(refl_machine_t machine, refl_userData_t data, char * value)
     {
         ReflectAPI_MetaPropertyString_Tests* testClass = static_cast<ReflectAPI_MetaPropertyString_Tests*>(machine);
         testClass->testValue = stoi(value);
@@ -115,11 +115,11 @@ namespace
     TEST_F(ReflectAPI_MetaPropertyString_Tests, setAsString)
     {
         refl_setMetaPropertyStringFunctions(metaProperty, getAsString, setAsString, NULL);
-        const char * value = "46";
-        _refl_setPropertyAsString(metaProperty, thisTestClass, value, &result);
+        string value("46");
+        _refl_setPropertyAsString(metaProperty, thisTestClass, &value[0], &result);
         ASSERT_EQ(result, REFL_SUCCESS);
-        ASSERT_EQ(stoi(value), this->testValue);
-        ASSERT_THROW(_refl_setPropertyAsString(metaProperty, thisTestClass, "sdf", NULL), exception);
+        ASSERT_EQ(stoi(value.c_str()), this->testValue);
+        ASSERT_THROW(_refl_setPropertyAsString(metaProperty, thisTestClass, &string("sdf")[0], NULL), exception);
 
     }
 
@@ -138,7 +138,7 @@ namespace
     {
         refl_setMachine(metaMachine, this->thisTestClass, NULL);
         refl_setMetaPropertyStringFunctions(metaProperty, getAsString, setAsString, NULL);
-        refl_setMachinePropertyValue_S(metaMachine, 0, "46", &result);
+        refl_setMachinePropertyValue_S(metaMachine, 0, &string("46")[0], &result);
         ASSERT_EQ(REFL_SUCCESS, result);
         char * returnValue = refl_getMachinePropertyValue_S(metaMachine, 0, NULL, 0, NULL);
         ASSERT_STREQ("46", returnValue);
@@ -155,7 +155,7 @@ namespace
         refl_setStateMetaProperties(metaState, &prop, 1, NULL);
         refl_setMetaStates(metaMachine, &metaState, 1, NULL);
 
-        refl_setStatePropertyValue_S(metaMachine, 0, 0, "46", &result);
+        refl_setStatePropertyValue_S(metaMachine, 0, 0, &string("46")[0], &result);
         ASSERT_EQ(REFL_SUCCESS, result);
         char * returnValue = refl_getStatePropertyValue_S(metaMachine, 0, 0, NULL, 0, &result);
         ASSERT_EQ(REFL_SUCCESS, result);

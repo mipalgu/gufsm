@@ -34,6 +34,6 @@ typedef char * (*refl_getValueAsString_f) (refl_machine_t, refl_userData_t, char
 //! Set property as void*
 typedef void (*refl_setValueAsVoid_f) (refl_machine_t, refl_userData_t, void*);
 
-typedef void (*refl_setValueAsString_f) (refl_machine_t, refl_userData_t, char const * const);
+typedef void (*refl_setValueAsString_f) (refl_machine_t, refl_userData_t,  char *);
 
 #endif /* end of include guard: CLREFLECTFUNCTIONPOINTERTYPES_H */

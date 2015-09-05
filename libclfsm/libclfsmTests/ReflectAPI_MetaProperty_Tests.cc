@@ -92,7 +92,7 @@ namespace
 
     }
 
-    void setString(refl_machine_t machine, refl_userData_t data, char const * val)
+    void setString(refl_machine_t machine, refl_userData_t data, char * val)
     {
 
     }

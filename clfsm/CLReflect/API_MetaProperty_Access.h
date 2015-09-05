@@ -19,6 +19,6 @@ char * _refl_getPropertyAsString(refl_metaProperty property, refl_machine_t mach
                                 char* buffer, unsigned int bufferLen, CLReflectResult *result);
 
 void _refl_setPropertyAsString(refl_metaProperty property, refl_machine_t machine,
-                                const char * const value, CLReflectResult* result);
+                                char * value, CLReflectResult* result);
 
 #endif /* end of include guard: API_METAPROPERTY_ACCESS */

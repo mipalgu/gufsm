@@ -84,7 +84,7 @@ class CPP_MetaPropertyWriter(object):
 
     @staticmethod
     def setMethodSignatureForMachineProperty_String(propertyName):
-        signatureTemplate = "void mp_machine_$pName$_setAsString(refl_machine_t machine, refl_userData_t data, const char * const value)"
+        signatureTemplate = "void mp_machine_$pName$_setAsString(refl_machine_t machine, refl_userData_t data, char * const value)"
         return signatureTemplate.replace('$pName$', propertyName)
 
 

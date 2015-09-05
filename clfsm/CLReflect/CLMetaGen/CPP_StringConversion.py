@@ -15,18 +15,11 @@ class CPP_StringConversion(object):
         with cpp.subs(returnVar = varName, propVar = self.propVarName, dType = self.prop.dataType):
             if checker.isChar():
                 with cpp.block('if (bufferLen >= 2)'):
-                    cpp('snprintf(buffer, 1, "%c", $propVar$);')
+                    cpp('snprintf(buffer, 2, "%c", $propVar$);')
             elif checker.isCharPointer():
-                with cpp.block('if ($propVar$ != NULL)'):
-                    cpp('snprintf(buffer, bufferLen, "%s", $propVar$);')
-                with cpp.block('else'):
-                    with cpp.subs(nullStringVar = 'nullStringVar'):
-                        cpp('const char * $nullStringVar$ = "NULL_STRING";')
-                        cpp('unsigned long len = strlen($nullStringVar$) + 1;')
-                        cpp('$returnVar$ = static_cast<char *>(malloc(sizeof(char) * len));')
-                        cpp('refl_strcpy($returnVar$, $nullStringVar$, len);')
+                cpp('snprintf(buffer, bufferLen, "%s", $propVar$);')
             elif checker.isStdString():
-                pass
+                cpp('snprintf(buffer, bufferLen, "%s", $propVar$.c_str());')
             elif checker.isPrimitiveConvertable():
                 if checker.isInt():
                     cpp('snprintf(buffer, bufferLen, "%d", $propVar$);')
@@ -37,9 +30,9 @@ class CPP_StringConversion(object):
                 elif checker.isFloat() or checker.isDouble():
                     cpp('snprintf(buffer, bufferLen, "%f", $propVar$);')
             elif checker.isPointer():
-                cpp('snprintf(buffer, bufferLen, "%x", $propVar$);')
+                cpp('snprintf(buffer, bufferLen, "%p", $propVar$);')
             else:
-                cpp('snprintf(buffer, bufferLen, "%x", $propVar$);')
+                cpp('snprintf(buffer, bufferLen, "%p", $propVar$);')
             cpp('return $returnVar$;')
 
     def writeSetPropertyAsString(self, valueName):
@@ -53,9 +46,9 @@ class CPP_StringConversion(object):
             with cpp.block('if ($stringVar$.length() != 0)'):
                 with cpp.block('try'):
                     if checker.isChar():
-                        pass
+                        cpp('$propVar$ = $value$[0];')
                     elif checker.isCharPointer():
-                        pass
+                        cpp('$propVar$ = $value$;')
                     elif checker.isStdString():
                         pass
                     elif checker.isPrimitiveConvertable():

@@ -145,7 +145,7 @@ void* refl_getStatePropertyValue_V(refl_metaMachine metaMachine, unsigned int st
 }
 
 void refl_setMachinePropertyValue_S(refl_metaMachine metaMachine, unsigned int propIndex,
-                                        const char * const value, CLReflectResult *result)
+                                        char * value, CLReflectResult *result)
 {
     if (!metaMachine || !metaMachine->machine ||
             propIndex >= metaMachine->numberOfProperties)
@@ -184,7 +184,7 @@ char * refl_getMachinePropertyValue_S(refl_metaMachine metaMachine, unsigned int
 
 
 void refl_setStatePropertyValue_S(refl_metaMachine metaMachine, unsigned int stateIndex,
-                                    unsigned int propIndex, const char * const value, CLReflectResult *result)
+                                    unsigned int propIndex, char * value, CLReflectResult *result)
 {
     if (!metaMachine || !metaMachine->machine || stateIndex >= metaMachine->numberOfStates ||
             propIndex >= metaMachine->metaStates[stateIndex]->numberOfProperties)
