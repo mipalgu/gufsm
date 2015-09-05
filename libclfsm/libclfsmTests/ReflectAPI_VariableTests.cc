@@ -151,7 +151,7 @@ namespace
     {
         //6, 7 are char* and void*
         unsigned int chrPtrIndex = 6;
-        //unsigned int voidPtrIndex = 7;
+        unsigned int voidPtrIndex = 7;
 
         //Char ptr
         string testValue = "Test";
@@ -159,6 +159,20 @@ namespace
         ASSERT_EQ(REFL_SUCCESS, result);
         refl_getMachinePropertyValue_S(metaFSM, chrPtrIndex, buffer, bufferLen, NULL);
         ASSERT_STREQ(testValue.c_str(), buffer);
+        char * heapValue = refl_getMachinePropertyValue_S(metaFSM, chrPtrIndex, NULL, bufferLen, NULL);
+        ASSERT_NE(heapValue, buffer);
+        ASSERT_STREQ(testValue.c_str(), heapValue);
+        free(heapValue);
+
+        //Void ptr
+        refl_setMachinePropertyValue_V(metaFSM, voidPtrIndex, static_cast<void *>(&testValue), &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        void ** returnValueAddress = static_cast<void **>(refl_getMachinePropertyValue_V(metaFSM, voidPtrIndex, &result));
+        string* testValueCopy = static_cast<string *>(*returnValueAddress);
+        ASSERT_EQ(&testValue, testValueCopy);
+        ASSERT_EQ(REFL_SUCCESS, result);
+
+
     }
 }
 

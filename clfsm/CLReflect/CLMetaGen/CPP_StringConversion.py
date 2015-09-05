@@ -64,14 +64,14 @@ class CPP_StringConversion(object):
                             cpp('$propVar$ = $testVar$;')
                         elif checker.isDouble():
                             cpp('$dType$ $testVar$ = atod($stringVar$.c_str());')
-                            cpp('$propVar$ = $testVar$;')
-                    elif checker.isPointer():
-                        pass
+                            cpp('$propVar$ = $testVar$;')                    
                     else:
                         pass
                 with cpp.block('catch (std::invalid_argument e)'):
                     cpp('std::cerr << e.what() << std::endl;')
                     pass
+
+
 import re
 
 class TypeChecker(object):
