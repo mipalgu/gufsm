@@ -144,15 +144,15 @@ namespace
     {
         CLReflectResult result;
         char const * name = "TestName";
-        refl_setMetaPropertyType(metaProperty, name, &result);
+        refl_setMetaPropertyTypeString(metaProperty, name, &result);
         ASSERT_EQ(REFL_SUCCESS, result);
-        char const * ret = refl_getMetaPropertyType(metaProperty, &result);
+        char const * ret = refl_getMetaPropertyTypeAsString(metaProperty, &result);
         ASSERT_EQ(REFL_SUCCESS, result);
         ASSERT_STREQ(name, ret);
 
-        refl_setMetaPropertyType(NULL, name, &result);
+        refl_setMetaPropertyTypeString(NULL, name, &result);
         ASSERT_EQ(REFL_INVALID_ARGS, result);
-        refl_getMetaPropertyType(NULL, &result);
+        refl_getMetaPropertyTypeAsString(NULL, &result);
         ASSERT_EQ(REFL_INVALID_ARGS, result);
     }
 

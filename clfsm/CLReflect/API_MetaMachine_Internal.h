@@ -4,6 +4,7 @@
 #include <stdint.h>
 
 #include "CLReflectFunctionPointerTypes.h"
+#include "API_Type.h"
 #include "API_MetaState.h"
 #include "API_MetaTransition.h"
 #include "API_MetaProperty.h"
@@ -29,7 +30,8 @@ struct metaTransition_s
 struct metaProperty_s
 {
     char * name;
-    char * type;
+    char * type_string;
+    refl_type type_enum;
     size_t size;
     refl_userData_t data;
     refl_getValueAsVoid_f getAsVoid;

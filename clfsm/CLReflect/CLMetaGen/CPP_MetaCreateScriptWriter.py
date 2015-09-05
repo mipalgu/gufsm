@@ -78,7 +78,7 @@ class CPP_MetaCreateScriptWriter():
                             getS = getFunctionS, setS = setFunctionS, index = index):
                 cpp("refl_metaProperty $varName$ = refl_initMetaProperty(NULL);")
                 cpp('refl_setMetaPropertyName($varName$, "$pName$", NULL);')
-                cpp('refl_setMetaPropertyType($varName$, "$pType$", NULL);')
+                cpp('refl_setMetaPropertyTypeString($varName$, "$pType$", NULL);')
                 cpp("refl_setMetaPropertyVoidFunctions($varName$, $getV$, $setV$, NULL);")
                 cpp("refl_setMetaPropertyStringFunctions($varName$, $getS$, $setS$, NULL);")
                 cpp('machineProperties[$index$] = $varName$;')

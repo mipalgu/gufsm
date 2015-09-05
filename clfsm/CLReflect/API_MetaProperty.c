@@ -17,7 +17,7 @@ refl_metaProperty refl_initMetaProperty(CLReflectResult *result)
     else
     {
         newMeta->name = NULL;
-        newMeta->type = NULL;
+        newMeta->type_string = NULL;
         newMeta->data = NULL;
         newMeta->getAsString = NULL;
         newMeta->setAsString = NULL;
@@ -44,7 +44,7 @@ void refl_destroyMetaProperty(refl_metaProperty metaProperty, CLReflectResult *r
     else
     {
         free(metaProperty->name);
-        free(metaProperty->type);
+        free(metaProperty->type_string);
         free(metaProperty);
     }
 }
@@ -160,7 +160,7 @@ char const * refl_getMetaPropertyName(refl_metaProperty metaProperty, CLReflectR
     }
 }
 
-void refl_setMetaPropertyType(refl_metaProperty metaProperty, char const * type, CLReflectResult* result)
+void refl_setMetaPropertyTypeString(refl_metaProperty metaProperty, char const * type, CLReflectResult* result)
 {
     CLReflectResult funcResult;
     if (!metaProperty || !type)
@@ -168,16 +168,16 @@ void refl_setMetaPropertyType(refl_metaProperty metaProperty, char const * type,
         funcResult = REFL_INVALID_ARGS;
     } else
     {
-        free(metaProperty->type); // Free the old machine name. Guaranteed heap mem.
+        free(metaProperty->type_string); // Free the old machine name. Guaranteed heap mem.
         int len = (int)strlen(type) + 1;
-        metaProperty->type = (char *)malloc(sizeof(char) *  len);
-        if (metaProperty->type == NULL)
+        metaProperty->type_string = (char *)malloc(sizeof(char) *  len);
+        if (metaProperty->type_string == NULL)
         {
             funcResult = REFL_UNKNOWN_ERROR;
         }
         else
         {
-            funcResult = refl_strcpy(metaProperty->type, type, len);
+            funcResult = refl_strcpy(metaProperty->type_string, type, len);
         }
 
     }
@@ -187,7 +187,7 @@ void refl_setMetaPropertyType(refl_metaProperty metaProperty, char const * type,
     }
 }
 
-char const * refl_getMetaPropertyType(refl_metaProperty metaProperty, CLReflectResult* result)
+char const * refl_getMetaPropertyTypeAsString(refl_metaProperty metaProperty, CLReflectResult* result)
 {
     if (!metaProperty)
     {
@@ -203,6 +203,6 @@ char const * refl_getMetaPropertyType(refl_metaProperty metaProperty, CLReflectR
         {
             *result = REFL_SUCCESS;
         }
-        return metaProperty->type;
+        return metaProperty->type_string;
     }
 }

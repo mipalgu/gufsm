@@ -73,7 +73,9 @@ typedef enum
     REFL_UINT16_T_PTR,
     REFL_UINT32_T_PTR,
     REFL_UINT64_T_PTR,
+    REFL_USERTYPE,
+    REFL_USERTYPE_PTR
 
-} refl_Type;
+} refl_type;
 
 #endif /* end of include guard: API_TYPE_H */
