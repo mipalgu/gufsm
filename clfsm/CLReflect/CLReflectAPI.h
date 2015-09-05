@@ -1,5 +1,8 @@
+#ifdef __cplusplus
 extern "C" {
+#endif
     #include "API_Result.h"
+    #include "API_Type.h"
     #include "API_Util.h"
     #include "CLReflectFunctionPointerTypes.h"
     #include "API_Interface.h"
@@ -10,4 +13,6 @@ extern "C" {
     #include "API_MetaTransition.h"
     #include "API_MetaAction.h"
     #include "API_MetaProperty.h"
+#ifdef __cplusplus
 }
+#endif
