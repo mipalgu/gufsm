@@ -45,6 +45,12 @@ class CPP_MetaMachineDefinition:
                 tokens = line.split("\t")
                 dataType = tokens[0].rstrip()
                 varName = tokens[1].rstrip(';')
+                # Check if an array
+                arrayDecStart = varName.find('[')
+                if arrayDecStart != -1:
+                    # Erase array dec from var name and append to type
+                    varName = varName[:arrayDecStart]
+                    dataType += '*'
                 self.properties.append(MachineProperty(varName, dataType, self.name))
         propertyFile.close()
 

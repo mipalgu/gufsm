@@ -15,7 +15,8 @@ unsigned int	&uintTest= _m->uintTest;	///<
 float	&floatTest= _m->floatTest;	///<
 double	&doubleTest= _m->doubleTest;	///<
 char	&charTest= _m->charTest;	///<
-char *	&charPTest= _m->charPTest;	///<
-void *	&voidPTest= _m->voidPTest;	///<
+char*	&charPTest= _m->charPTest;	///<
+void*	&voidPTest= _m->voidPTest;	///<
+char**	&charPtrArrayTest= _m->charPtrArrayTest;	///<
 
 #pragma clang diagnostic pop

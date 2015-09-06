@@ -32,7 +32,7 @@ class CPP_MetaPropertyWriter(object):
         cpp = self.cpp
         cpp("\n// Property Access Implementations")
         for prop in self.machineDef.properties:
-            with cpp.subs(mName = self.machineDef.name, pName = prop.name):
+            with cpp.subs(mName = self.machineDef.name, pName = prop.name, dType = prop.dataType):
                 with cpp.block(self.getMethodSignatureForMachineProperty_Void(prop.name)):
                     cpp("$mName$* thisMachine = static_cast<$mName$*>(machine);")
                     cpp("return " + self._voidStaticCastForProperty("thisMachine->", prop) + ";")
@@ -40,7 +40,8 @@ class CPP_MetaPropertyWriter(object):
                     # Check if const
                     if 'const' not in prop.dataType:
                         cpp("$mName$* thisMachine = static_cast<$mName$*>(machine);")
-                        cpp('thisMachine->$pName$ = ' + self._typeStaticCastForProperty(prop.dataType) + ';')
+                        cpp('memcpy(&thisMachine->$pName$, value, sizeof($dType$));')
+                        #cpp('thisMachine->$pName$ = ' + self._typeStaticCastForProperty(prop.dataType) + ';')
                 # String methods
                 with cpp.block(self.getMethodSignatureForMachineProperty_String(prop.name)):
                     cpp("$mName$* thisMachine = static_cast<$mName$*>(machine);")

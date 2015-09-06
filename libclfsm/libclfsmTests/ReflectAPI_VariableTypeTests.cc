@@ -73,16 +73,26 @@ namespace
 
     TEST_F(ReflectAPI_VariableTypeTests, basicTypes)
     {
-        refl_type types[] = { REFL_INT, REFL_LONG, REFL_UNSIGNED_INT, REFL_DOUBLE,
+        refl_type types[] = { REFL_INT, REFL_LONG, REFL_UNSIGNED_INT, REFL_FLOAT, REFL_DOUBLE,
                                 REFL_CHAR, REFL_CHAR_PTR, REFL_VOID_PTR };
-        unsigned int len = 7; //Length of types[]
+        const char * typeStrings[] = { "REFL_INT", "REFL_LONG", "REFL_UNSIGNED_INT", "REFL_FLOAT", "REFL_DOUBLE",
+                                        "REFL_CHAR", "REFL_CHAR_PTR", "REFL_VOID_PTR" };
+        unsigned int len = 8; //Length of types[]
         refl_metaProperty* properties = refl_getMachineMetaProperties(metaFSM, NULL);
         for (unsigned int i = 0; i < len; i++)
         {
             refl_type type = refl_getMetaPropertyType(properties[i], &result);
             ASSERT_EQ(REFL_SUCCESS, result);
-            ASSERT_EQ(types[i], type);
+            ASSERT_EQ(types[i], type) << "Expecting " << typeStrings[i]
+                                      << " for type "
+                                      << refl_getMetaPropertyTypeAsString(properties[i], NULL)
+                                      << endl;
         }
+    }
+
+    TEST_F(ReflectAPI_VariableTypeTests, arrays)
+    {
+
     }
 }
 

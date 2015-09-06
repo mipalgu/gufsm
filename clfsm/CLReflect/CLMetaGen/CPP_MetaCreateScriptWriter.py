@@ -2,12 +2,14 @@ from CodeGen import *
 from CPP_MetaMachineDefinition import *
 from CLMetaGenConstants import *
 from CPP_MetaPropertyWriter import *
+from CPP_Type_Interpreter import *
 
 class CPP_MetaCreateScriptWriter():
 
     def __init__(self, machineDef, cpp):
         self.machineDef = machineDef
         self.cpp = cpp
+        self.typeInterpreter = CPP_Type_Interpreter()
 
     def write(self):
         cpp = self.cpp
@@ -79,6 +81,10 @@ class CPP_MetaCreateScriptWriter():
                 cpp("refl_metaProperty $varName$ = refl_initMetaProperty(NULL);")
                 cpp('refl_setMetaPropertyName($varName$, "$pName$", NULL);')
                 cpp('refl_setMetaPropertyTypeString($varName$, "$pType$", NULL);')
+                # Get type enum value
+                enumType = self.typeInterpreter.getReflectType(prop.dataType)
+                if enumType:
+                    cpp('refl_setMetaPropertyType($varName$, ' + enumType + ', NULL);')
                 cpp("refl_setMetaPropertyVoidFunctions($varName$, $getV$, $setV$, NULL);")
                 cpp("refl_setMetaPropertyStringFunctions($varName$, $getS$, $setS$, NULL);")
                 cpp('machineProperties[$index$] = $varName$;')

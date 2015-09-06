@@ -119,12 +119,8 @@ namespace
     {
         for (int i = 3; i < 5; i++)
         {
-            refl_setMachinePropertyValue_S(metaFSM, i, &string("")[0], &result);
-            char * checkValue = refl_getMachinePropertyValue_S(metaFSM, i, NULL, 0, &result);
-            ASSERT_STREQ("0.000000", checkValue);
-            free(checkValue);
             refl_setMachinePropertyValue_S(metaFSM, i, &string("ss")[0], &result);
-            checkValue = refl_getMachinePropertyValue_S(metaFSM, i, NULL, 0, &result);
+            char * checkValue = refl_getMachinePropertyValue_S(metaFSM, i, NULL, 0, &result);
             ASSERT_STREQ("0.000000", checkValue);
         }
     }
@@ -165,7 +161,8 @@ namespace
         free(heapValue);
 
         //Void ptr
-        refl_setMachinePropertyValue_V(metaFSM, voidPtrIndex, static_cast<void *>(&testValue), &result);
+        string* ptrToTestValue = &testValue;
+        refl_setMachinePropertyValue_V(metaFSM, voidPtrIndex, static_cast<void *>(&ptrToTestValue), &result);
         ASSERT_EQ(REFL_SUCCESS, result);
         void ** returnValueAddress = static_cast<void **>(refl_getMachinePropertyValue_V(metaFSM, voidPtrIndex, &result));
         string* testValueCopy = static_cast<string *>(*returnValueAddress);
