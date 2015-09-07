@@ -23,7 +23,7 @@ void* _refl_getPropertyAsVoid(refl_metaProperty property, refl_machine_t machine
 }
 
 void _refl_setPropertyAsVoid(refl_metaProperty property, refl_machine_t machine,
-                                void* value, CLReflectResult* result)
+                                void* value, size_t size, CLReflectResult* result)
 {
     if (!value || !property || !property->setAsVoid || !machine)
     {
@@ -38,7 +38,7 @@ void _refl_setPropertyAsVoid(refl_metaProperty property, refl_machine_t machine,
         {
             *result = REFL_SUCCESS;
         }
-        property->setAsVoid(machine, property->data, value);
+        property->setAsVoid(machine, property->data, value, size);
     }
 }
 

@@ -40,7 +40,7 @@ class CPP_MetaPropertyWriter(object):
                     # Check if const
                     if 'const' not in prop.dataType:
                         cpp("$mName$* thisMachine = static_cast<$mName$*>(machine);")
-                        cpp('memcpy(&thisMachine->$pName$, value, sizeof($dType$));')
+                        cpp('memcpy(&thisMachine->$pName$, value, size);')
                         #cpp('thisMachine->$pName$ = ' + self._typeStaticCastForProperty(prop.dataType) + ';')
                 # String methods
                 with cpp.block(self.getMethodSignatureForMachineProperty_String(prop.name)):
@@ -91,5 +91,5 @@ class CPP_MetaPropertyWriter(object):
 
     @staticmethod
     def setMethodSignatureForMachineProperty_Void(propertyName):
-        signatureTemplate = "void mp_machine_$pName$_setAsVoid(refl_machine_t machine, refl_userData_t data, void* value)"
+        signatureTemplate = "void mp_machine_$pName$_setAsVoid(refl_machine_t machine, refl_userData_t data, void* value, size_t size)"
         return signatureTemplate.replace('$pName$', propertyName)

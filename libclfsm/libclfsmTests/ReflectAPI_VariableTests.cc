@@ -162,7 +162,7 @@ namespace
 
         //Void ptr
         string* ptrToTestValue = &testValue;
-        refl_setMachinePropertyValue_V(metaFSM, voidPtrIndex, static_cast<void *>(&ptrToTestValue), &result);
+        refl_setMachinePropertyValue_V(metaFSM, voidPtrIndex, static_cast<void *>(&ptrToTestValue), sizeof(string*), &result);
         ASSERT_EQ(REFL_SUCCESS, result);
         void ** returnValueAddress = static_cast<void **>(refl_getMachinePropertyValue_V(metaFSM, voidPtrIndex, &result));
         string* testValueCopy = static_cast<string *>(*returnValueAddress);

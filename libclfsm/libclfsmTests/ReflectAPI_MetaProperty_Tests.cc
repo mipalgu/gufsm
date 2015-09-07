@@ -70,7 +70,7 @@ namespace
     }
 
     int value;
-    void set(refl_machine_t machine, refl_userData_t data, void* val)
+    void set(refl_machine_t machine, refl_userData_t data, void* val, size_t size)
     {
         value = *static_cast<int*>(val);
     }
@@ -200,7 +200,7 @@ namespace
         ASSERT_EQ(REFL_INVALID_ARGS, result);
     }
 
-    void setAsVoid(refl_machine_t machine, refl_userData_t data, void* newValue)
+    void setAsVoid(refl_machine_t machine, refl_userData_t data, void* newValue, size_t size)
     {
         ReflectAPI_MetaProperty_Tests* tests = static_cast<ReflectAPI_MetaProperty_Tests*>
                                                     (machine);
@@ -231,7 +231,7 @@ namespace
         ++val;
 
         _refl_setPropertyAsVoid(metaProperty, testClass, static_cast<void*>(&val),
-                                    &result);
+                                    sizeof(val), &result);
         ASSERT_EQ(REFL_SUCCESS, result);
         ASSERT_EQ(val, testValue);
         //Error handling
@@ -241,7 +241,7 @@ namespace
 
         //Create new property without setting functions
         refl_metaProperty prop = refl_initMetaProperty(NULL);
-        _refl_setPropertyAsVoid(prop, testClass, NULL, &result);
+        _refl_setPropertyAsVoid(prop, testClass, NULL, sizeof(void*), &result);
         ASSERT_EQ(REFL_INVALID_ARGS, result);
         badReturnVal = _refl_getPropertyAsVoid(prop, testClass, &result);
         ASSERT_EQ(REFL_INVALID_ARGS, result);
@@ -267,7 +267,7 @@ namespace
         ASSERT_EQ(REFL_SUCCESS, result);
         ASSERT_EQ(this->testValue, retVal);
         ++val;
-        refl_setMachinePropertyValue_V(machine, 0, static_cast<void*>(&val), &result);
+        refl_setMachinePropertyValue_V(machine, 0, static_cast<void*>(&val), sizeof(val), &result);
         ASSERT_EQ(REFL_SUCCESS, result);
         ASSERT_EQ(val, this->testValue);
         metaProperty = NULL;
@@ -296,7 +296,7 @@ namespace
         ASSERT_EQ(REFL_SUCCESS, result);
         ASSERT_EQ(this->testValue, retVal);
         ++val;
-      refl_setStatePropertyValue_V(machine, 0, 0, static_cast<void*>(&val), &result);
+        refl_setStatePropertyValue_V(machine, 0, 0, static_cast<void*>(&val), sizeof(val), &result);
         ASSERT_EQ(REFL_SUCCESS, result);
         ASSERT_EQ(val, this->testValue);
 
