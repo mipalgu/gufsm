@@ -23,7 +23,7 @@ C_SRCS=stringConstants.c API_MetaMachine.c API_MetaState.c API_MetaAction.c API_
 CC_SRCS=CLActionAction.cc CLTransitionExpression.cc FSMAction.cc FSMActivity.cc FSMExpression.cc FSMFactory.cc FSMState.cc FSMSuspensibleMachine.cc FSMTransition.cc FSMAsynchronousSuspensibleMachine.cc FSMachine.cc FSMachineVector.cc clfsm_factory.cc clfsm_vector_factory.cc clfsm_wb_vector_factory.cc clfsm_cc.cc clfsm_machine.cc clfsm_machine_loader.cc API_Interface.cc
 HDRS=CLAction.h CLActionAction.h CLTransitionExpression.h FSMAction.h FSMActivity.h FSMExpression.h FSMFactory.h FSMState.h FSMSuspensibleMachine.h FSMTransition.h FSMAsynchronousSuspensibleMachine.h FSMachine.h FSMachineVector.h clfsm_factory.h CLTransition.h CLMachine.h CLState.h clfsm_vector_factory.h clfsm_wb_vector_factory.h clfsm_cc.h clfsm_cc_delegate.h clfsm_machine.h clfsm_machine_loader.h  CLReflectIncludes.h stringConstants.h
 HDRS+=API_Result.h API_Type.h API_Util.h CLReflectFunctionPointerTypes.h API_Interface.h API_MetaMachine.h API_MetaMachine_Properties.h API_MetaState.h API_MetaState_Properties.h API_MetaTransition.h API_MetaAction.h API_MetaProperty.h API_MetaMachine_Internal.h API_MetaProperty_Access.h CLMetaRegister.h CLReflectAPI.h
-HDRS+=CLMacros.h CLWhiteboard.h ExecComStruct.h FSMWBContext.h FSMWBPredicate.h FSMWBQueryPredicate.h FSMWBSubMachine.h 
+HDRS+=CLMacros.h CLWhiteboard.h ExecComStruct.h FSMWBContext.h FSMWBPredicate.h FSMWBQueryPredicate.h FSMWBSubMachine.h
 INSTHDRS=CLMacros.h CLWhiteboard.h
 
 .include "../../../mk/whiteboard.mk"	# required for whiteboard clients
