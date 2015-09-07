@@ -11,4 +11,4 @@ double	doubleTest;	///<
 char	charTest;	///<
 char*	charPTest;	///<
 void*	voidPTest;	///<
-char**	charPtrArrayTest;	///<
+char	charArrayTest[20];	///<

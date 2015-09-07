@@ -48,7 +48,8 @@ class CPP_StringConversion(object):
                     if checker.isChar():
                         cpp('$propVar$ = $value$[0];')
                     elif checker.isCharPointer():
-                        cpp('$propVar$ = $value$;')
+                        cpp('//$propVar$ = $value$;')
+                        cpp('memcpy(&$propVar$, &$value$, sizeof(char *));')
                     elif checker.isStdString():
                         pass
                     elif checker.isPrimitiveConvertable():

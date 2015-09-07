@@ -92,7 +92,10 @@ namespace
 
     TEST_F(ReflectAPI_VariableTypeTests, arrays)
     {
-
+        unsigned int charArrayIndex = 8;
+        refl_metaProperty* properties = refl_getMachineMetaProperties(metaFSM, NULL);
+        refl_type type = refl_getMetaPropertyType(properties[charArrayIndex], NULL);
+        ASSERT_EQ(REFL_CHAR_PTR, type);
     }
 }
 

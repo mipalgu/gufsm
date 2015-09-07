@@ -83,6 +83,11 @@ class State:
                 tokens = line.split("\t")
                 dataType = tokens[0]
                 varName = tokens[1].rstrip(';')
+                # Change array to ptr
+                if '[' in varName:
+                    arrIndex = varName.index('[')
+                    dataType += '*'
+                    varName = varName[:arrIndex]
                 self.properties.append(StateProperty(varName, dataType, self.machine, self.name))
         propertyFile.close()
 
