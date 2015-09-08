@@ -92,9 +92,9 @@ namespace
 
     TEST_F(ReflectAPI_VariableTypeTests, strings)
     {
-        unsigned int charArrayIndex = 8;
+        unsigned int stringIndex = 8;
         refl_metaProperty* properties = refl_getMachineMetaProperties(metaFSM, NULL);
-        refl_type type = refl_getMetaPropertyType(properties[charArrayIndex], NULL);
+        refl_type type = refl_getMetaPropertyType(properties[stringIndex], NULL);
         ASSERT_EQ(REFL_STRING, type);
     }
 
@@ -117,7 +117,7 @@ namespace
         refl_metaProperty* props = refl_getMachineMetaProperties(metaFSM, NULL);
         ASSERT_EQ(0, refl_getMetaPropertyIndirection(props[noPointerIndex], NULL));
         ASSERT_EQ(1, refl_getMetaPropertyIndirection(props[onePointerIndex], NULL));
-        ASSERT_EQ(2, refl_getMetaPropertyIndirection(props[doublePointerIndex], NULL));        
+        ASSERT_EQ(2, refl_getMetaPropertyIndirection(props[doublePointerIndex], NULL));
     }
 }
 
