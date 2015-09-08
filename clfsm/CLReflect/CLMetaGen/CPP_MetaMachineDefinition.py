@@ -1,6 +1,13 @@
 #Defines a meta machine
 import os, glob, re
 
+def isConst(dataType):
+    return re.match(r'(^|\W)const(?=[\W$].)', dataType)
+
+def isUnsigned(dataType):
+    return re.match(r'^unsigned ', dataType)
+
+
 class CPP_MetaMachineDefinition:
     def __init__(self, machinePath, name):
         self.machinePath = machinePath
@@ -51,7 +58,10 @@ class CPP_MetaMachineDefinition:
                     # Erase array dec from var name and append to type
                     varName = varName[:arrayDecStart]
                     dataType += '*'
-                self.properties.append(MachineProperty(varName, dataType, self.name))
+                prop = MachineProperty(varName, dataType, self.name)
+                prop.isConst = isConst(dataType)
+                prop.indirection = dataType.count('*')
+                self.properties.append(prop)
         propertyFile.close()
 
 
@@ -88,7 +98,10 @@ class State:
                     arrIndex = varName.index('[')
                     dataType += '*'
                     varName = varName[:arrIndex]
-                self.properties.append(StateProperty(varName, dataType, self.machine, self.name))
+                prop = StateProperty(varName, dataType, self.machine, self.name)
+                prop.isConst = isConst(dataType)
+                prop.indirection = dataType.count('*')
+                self.properties.append(prop)
         propertyFile.close()
 
     def parseTransitions(self):

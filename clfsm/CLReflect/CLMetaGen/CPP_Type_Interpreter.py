@@ -37,7 +37,7 @@ class CPP_Type_Interpreter(object):
             ratio = SM(None, strippedTypeString, k.replace(' ', '')).ratio()
             if ratio > matchInfo[1]:
                 matchInfo = (k, ratio)
-        #print (matchInfo, strippedTypeString)
+        # print (matchInfo, strippedTypeString)
         if matchInfo[1] > confidenceBarrier:
             #print 'returning ' + self.typeDict[matchInfo[0]]
             return self.typeDict[matchInfo[0]]
