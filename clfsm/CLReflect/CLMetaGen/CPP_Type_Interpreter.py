@@ -5,7 +5,8 @@ class CPP_Type_Interpreter(object):
     """Class for interpreting variable types as refl_type enum value"""
     def __init__(self):
         super(CPP_Type_Interpreter, self).__init__()
-        self.types = CPP_Types.types
+        cppTypes = CPP_Types()
+        self.types = cppTypes.types
         self.typeDict = { t.replace('REFL_', '').
                             replace('PTR', '*').
                             replace('_', '').lower() : t for t in self.types }
@@ -23,7 +24,7 @@ class CPP_Type_Interpreter(object):
             return 'REFL_USERTYPE'
 
     def naiveLookup(self, typeString):
-        return self.typeDict.get(typeString.replace(' ', ''), None)
+        return self.typeDict.get(typeString.replace(' ', '').replace('std::', ''), None)
 
     def fuzzyLookup(self, typeString):
         """Uses fuzzy text matching to guess type.
@@ -31,23 +32,14 @@ class CPP_Type_Interpreter(object):
         matchInfo = (None, 0) # Type string, Ratio
         confidenceBarrier = 0.95
         keys = self.typeDict.keys()
-        strippedTypeString = typeString.replace(' ', '')
+        strippedTypeString = typeString.replace(' ', '').replace('std::', '')
         for k in keys:
             ratio = SM(None, strippedTypeString, k.replace(' ', '')).ratio()
             if ratio > matchInfo[1]:
                 matchInfo = (k, ratio)
-        #print matchInfo
+        #print (matchInfo, strippedTypeString)
         if matchInfo[1] > confidenceBarrier:
             #print 'returning ' + self.typeDict[matchInfo[0]]
             return self.typeDict[matchInfo[0]]
         else:
             return None
-
-    def pointerLookup(self, typeString):
-        """Tries adjusting the position of * to get a match"""
-        ptrIndex = typeString.index('*')
-        if typeString[ptrIndex - 1] != ' ':
-            # insert space between type and *
-            typeString = typeString[:ptrIndex] + ' ' + typeString[ptrIndex:]
-            return self.naiveLookup(typeString)
-        # Now check for too many spaces (need 1)

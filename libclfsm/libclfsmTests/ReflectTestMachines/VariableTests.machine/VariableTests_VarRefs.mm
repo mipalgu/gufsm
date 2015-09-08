@@ -17,6 +17,6 @@ double	&doubleTest= _m->doubleTest;	///<
 char	&charTest= _m->charTest;	///<
 char*	&charPTest= _m->charPTest;	///<
 void*	&voidPTest= _m->voidPTest;	///<
-char*	&charArrayTest= _m->charArrayTest;	///<
+std::string	&stringTest= _m->stringTest;	///<
 
 #pragma clang diagnostic pop

@@ -1,81 +1,13 @@
+from CLMetaGenConstants import *
+import os
+
 class CPP_Types(object):
     """docstring for CPP_Types"""
 
-    types = [
-        "REFL_CHAR",
-        "REFL_SIGNED_CHAR",
-        "REFL_UNSIGNED_CHAR",
-        "REFL_SHORT",
-        "REFL_SHORT_INT",
-        "REFL_SIGNED_SHORT",
-        "REFL_SIGNED_SHORT_INT",
-        "REFL_UNSIGNED_SHORT",
-        "REFL_UNSIGNED_SHORT_INT",
-        "REFL_INT",
-        "REFL_SIGNED_INT",
-        "REFL_UNSIGNED_INT",
-        "REFL_LONG",
-        "REFL_LONG_INT",
-        "REFL_SIGNED_LONG",
-        "REFL_SIGNED_LONG_INT",
-        "REFL_UNSIGNED_LONG",
-        "REFL_UNSIGNED_LONG_INT",
-        "REFL_LONG_LONG",
-        "REFL_LONG_LONG_INT",
-        "REFL_SIGNED_LONG_LONG",
-        "REFL_SIGNED_LONG_LONG_INT",
-        "REFL_UNSIGNED_LONG_LONG",
-        "REFL_UNSIGNED_LONG_LONG_INT",
-        "REFL_FLOAT",
-        "REFL_DOUBLE",
-        "REFL_LONG_DOUBLE",
-        "REFL_INT8_T",
-        "REFL_INT16_T",
-        "REFL_INT32_T",
-        "REFL_INT64_T",
-        "REFL_UINT8_T",
-        "REFL_UINT16_T",
-        "REFL_UINT32_T",
-        "REFL_UINT64_T",
-        "REFL_CHAR_PTR",
-        "REFL_SIGNED_CHAR_PTR",
-        "REFL_UNSIGNED_CHAR_PTR",
-        "REFL_SHORT_PTR",
-        "REFL_SHORT_INT_PTR",
-        "REFL_SIGNED_SHORT_PTR",
-        "REFL_SIGNED_SHORT_INT_PTR",
-        "REFL_UNSIGNED_SHORT_PTR",
-        "REFL_UNSIGNED_SHORT_INT_PTR",
-        "REFL_INT_PTR",
-        "REFL_SIGNED_INT_PTR",
-        "REFL_UNSIGNED_INT_PTR",
-        "REFL_LONG_PTR",
-        "REFL_LONG_INT_PTR",
-        "REFL_SIGNED_LONG_PTR",
-        "REFL_SIGNED_LONG_INT_PTR",
-        "REFL_UNSIGNED_LONG_PTR",
-        "REFL_UNSIGNED_LONG_INT_PTR",
-        "REFL_LONG_LONG_PTR",
-        "REFL_LONG_LONG_INT_PTR",
-        "REFL_SIGNED_LONG_LONG_PTR",
-        "REFL_SIGNED_LONG_LONG_INT_PTR",
-        "REFL_UNSIGNED_LONG_LONG_PTR",
-        "REFL_UNSIGNED_LONG_LONG_INT_PTR",
-        "REFL_FLOAT_PTR",
-        "REFL_DOUBLE_PTR",
-        "REFL_LONG_DOUBLE_PTR",
-        "REFL_INT8_T_PTR",
-        "REFL_INT16_T_PTR",
-        "REFL_INT32_T_PTR",
-        "REFL_INT64_T_PTR",
-        "REFL_UINT8_T_PTR",
-        "REFL_UINT16_T_PTR",
-        "REFL_UINT32_T_PTR",
-        "REFL_UINT64_T_PTR",
-        "REFL_VOID_PTR",
-        "REFL_USERTYPE",
-        "REFL_USERTYPE_PTR "
-    ]
-
     def __init__(self):
-        super(CPP_Types).__init__()
+        super(CPP_Types, self).__init__()
+        self.types = []
+        with open(CLMetaGenConstants.TYPE_FILE, 'r') as f:
+            for line in f:
+                self.types.append(line.strip(',\n'))
+        f.close()

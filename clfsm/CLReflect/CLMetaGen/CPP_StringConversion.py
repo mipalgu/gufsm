@@ -50,7 +50,7 @@ class CPP_StringConversion(object):
                     elif checker.isCharPointer():
                         cpp('memcpy(&$propVar$, &$value$, sizeof(char *));')
                     elif checker.isStdString():
-                        pass
+                        cpp('$propVar$ = std::string($value$);')
                     elif checker.isPrimitiveConvertable():
                         if checker.isInt():
                             cpp('$dType$ $testVar$ = atoi($stringVar$.c_str());')

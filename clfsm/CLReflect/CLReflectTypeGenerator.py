@@ -37,7 +37,9 @@ class CLReflectTypeGenerator(object):
         "uint16_t",
         "uint32_t",
         "uint64_t",
-
+        "void",
+        "string",
+        "usertype"
     ]
 
     def __init__(self, outFile):
