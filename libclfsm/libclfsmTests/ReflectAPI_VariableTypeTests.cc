@@ -108,6 +108,17 @@ namespace
         ASSERT_EQ(refl_FALSE, refl_isMetaPropertyUnsigned(nonUS, NULL));
 
     }
+
+    TEST_F(ReflectAPI_VariableTypeTests , indirection)
+    {
+        unsigned int noPointerIndex = 0;
+        unsigned int onePointerIndex = 6;
+        unsigned int doublePointerIndex = 9;
+        refl_metaProperty* props = refl_getMachineMetaProperties(metaFSM, NULL);
+        ASSERT_EQ(0, refl_getMetaPropertyIndirection(props[noPointerIndex], NULL));
+        ASSERT_EQ(1, refl_getMetaPropertyIndirection(props[onePointerIndex], NULL));
+        ASSERT_EQ(2, refl_getMetaPropertyIndirection(props[doublePointerIndex], NULL));        
+    }
 }
 
 #pragma clang diagnostic pop

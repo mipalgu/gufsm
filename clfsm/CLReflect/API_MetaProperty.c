@@ -276,3 +276,34 @@ void refl_setIsMetaPropertyUnsigned(refl_metaProperty metaProperty, refl_bool is
         metaProperty->isUnsigned = isUS;
     }
 }
+
+unsigned int refl_getMetaPropertyIndirection(refl_metaProperty metaProperty, CLReflectResult *result)
+{
+    if (!metaProperty)
+    {
+        if (result)
+            *result = REFL_INVALID_ARGS;
+        return 0;
+    }
+    else
+    {
+        if (result)
+            *result = REFL_SUCCESS;
+        return metaProperty->indirectionLevel;
+    }
+}
+
+void refl_setMetaPropertyIndirection(refl_metaProperty metaProperty, unsigned int level, CLReflectResult *result)
+{
+    if (!metaProperty)
+    {
+        if (result)
+            *result = REFL_INVALID_ARGS;
+    }
+    else
+    {
+        if (result)
+            *result = REFL_SUCCESS;
+        metaProperty->indirectionLevel = level;
+    }
+}

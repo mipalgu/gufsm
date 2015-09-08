@@ -12,3 +12,4 @@ char	charTest;	///<
 char*	charPTest;	///<
 void*	voidPTest;	///<
 std::string	stringTest;	///<
+char**	doublePointerTest;	///<

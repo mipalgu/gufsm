@@ -77,7 +77,8 @@ class CPP_MetaCreateScriptWriter():
             with cpp.subs(mName = self.machineDef.name, pName = prop.name,
                             pType = prop.dataType, varName = "mp_machine_" + prop.name,
                             getV = getFunctionV, setV = setFunctionV,
-                            getS = getFunctionS, setS = setFunctionS, index = index):
+                            getS = getFunctionS, setS = setFunctionS, index = index,
+                            indirection = prop.indirection):
                 cpp("refl_metaProperty $varName$ = refl_initMetaProperty(NULL);")
                 cpp('refl_setMetaPropertyName($varName$, "$pName$", NULL);')
                 cpp('refl_setMetaPropertyTypeString($varName$, "$pType$", NULL);')
@@ -85,6 +86,7 @@ class CPP_MetaCreateScriptWriter():
                     cpp('refl_setIsMetaPropertyUnsigned($varName$, refl_TRUE, NULL);')
                 else:
                     cpp('refl_setIsMetaPropertyUnsigned($varName$, refl_FALSE, NULL);')
+                cpp('refl_setMetaPropertyIndirection($varName$, $indirection$, NULL);')
                 # Get type enum value
                 enumType = self.typeInterpreter.getReflectType(prop.dataType)
                 if enumType:
