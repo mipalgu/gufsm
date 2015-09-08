@@ -105,6 +105,7 @@ class State:
                     varName = varName[:arrIndex]
                 prop = StateProperty(varName, dataType, self.machine, self.name)
                 prop.isConst = isConst(dataType)
+                prop.isUnsigned = isUnsigned(dataType)
                 prop.indirection = dataType.count('*')
                 self.properties.append(prop)
         propertyFile.close()

@@ -42,7 +42,12 @@ class CPP_MetaCreateScriptWriter():
                         cpp('refl_metaAction ma_$sName$_$action$ = refl_initMetaAction(NULL);')
                         cpp('refl_setMetaActionMethod(ma_$sName$_$action$, $sName$_$action$, NULL);')
                         cpp('refl_set$action$(ms_$sName$, ma_$sName$_$action$, NULL);')
+                if len(state.properties) > 0:
+                    stateProps = self.writeStateProperties(state)
+                    with cpp.subs(stateProps = stateProps, numProps = len(state.properties)):
+                        cpp('refl_setStateMetaProperties(ms_$sName$, $stateProps$, $numProps$, NULL);')
                 cpp('states[$sIndex$] = ms_$sName$;')
+
                 # Transitions
                 numTransitions = len(state.transitions)
                 if numTransitions > 0:
@@ -73,7 +78,6 @@ class CPP_MetaCreateScriptWriter():
             setFunctionV = "mp_machine_" + prop.name + "_setAsVoid"
             getFunctionS = "mp_machine_" + prop.name + "_getAsString"
             setFunctionS = "mp_machine_" + prop.name + "_setAsString"
-
             with cpp.subs(mName = self.machineDef.name, pName = prop.name,
                             pType = prop.dataType, varName = "mp_machine_" + prop.name,
                             getV = getFunctionV, setV = setFunctionV,
@@ -95,3 +99,39 @@ class CPP_MetaCreateScriptWriter():
                 cpp("refl_setMetaPropertyStringFunctions($varName$, $getS$, $setS$, NULL);")
                 cpp('machineProperties[$index$] = $varName$;')
         return propertiesVar
+
+    def writeStateProperties(self, state):
+        cpp = self.cpp
+        statePropsVar = state.name + '_properties'
+        numProps = len(state.properties)
+        with cpp.subs(statePropsVar = statePropsVar, numProps = numProps):
+            cpp('refl_metaProperty $statePropsVar$[$numProps$];')
+            for index, prop in enumerate(state.properties):
+                getFunctionV = 'mp_' + state.name + '_' + prop.name + "_getAsVoid"
+                setFunctionV = 'mp_' + state.name + '_' + prop.name + "_setAsVoid"
+                getFunctionS = 'mp_' + state.name + '_' + prop.name + "_getAsString"
+                setFunctionS = 'mp_' + state.name + '_' + prop.name + "_setAsString"
+                isUs = 'refl_TRUE' if prop.isUnsigned else 'refl_FALSE'
+                enumType = self.typeInterpreter.getReflectType(prop.dataType)
+                with cpp.subs(varName = 'mp_' + state.name + '_' + prop.name,
+                              index = index, pName = prop.name, pType = prop.dataType,
+                              getV = getFunctionV, setV = setFunctionV,
+                              getS = getFunctionS, setS = setFunctionS,
+                              isUs = isUs, enumType = enumType,
+                              indirection = prop.indirection):
+                    cpp("refl_metaProperty $varName$ = refl_initMetaProperty(NULL);")
+                    cpp('refl_setMetaPropertyName($varName$, "$pName$", NULL);')
+                    cpp('refl_setMetaPropertyTypeString($varName$, "$pType$", NULL);')
+                    if prop.isUnsigned:
+                        cpp('refl_setIsMetaPropertyUnsigned($varName$, refl_TRUE, NULL);')
+                    else:
+                        cpp('refl_setIsMetaPropertyUnsigned($varName$, refl_FALSE, NULL);')
+                    cpp('refl_setMetaPropertyIndirection($varName$, $indirection$, NULL);')
+                    # Get type enum value
+                    enumType = self.typeInterpreter.getReflectType(prop.dataType)
+                    if enumType:
+                        cpp('refl_setMetaPropertyType($varName$, ' + enumType + ', NULL);')
+                    cpp("refl_setMetaPropertyVoidFunctions($varName$, $getV$, $setV$, NULL);")
+                    cpp("refl_setMetaPropertyStringFunctions($varName$, $getS$, $setS$, NULL);")
+                    cpp('$statePropsVar$[$index$] = $varName$;')
+        return statePropsVar
