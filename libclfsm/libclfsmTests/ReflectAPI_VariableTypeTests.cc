@@ -74,9 +74,9 @@ namespace
     TEST_F(ReflectAPI_VariableTypeTests, basicTypes)
     {
         refl_type types[] = { REFL_INT, REFL_LONG, REFL_UNSIGNED_INT, REFL_FLOAT, REFL_DOUBLE,
-                                REFL_CHAR, REFL_CHAR_PTR, REFL_VOID_PTR };
+                                REFL_CHAR, REFL_CHAR, REFL_VOID };
         const char * typeStrings[] = { "REFL_INT", "REFL_LONG", "REFL_UNSIGNED_INT", "REFL_FLOAT", "REFL_DOUBLE",
-                                        "REFL_CHAR", "REFL_CHAR_PTR", "REFL_VOID_PTR" };
+                                        "REFL_CHAR", "REFL_CHAR", "REFL_VOID" };
         unsigned int len = 8; //Length of types[]
         refl_metaProperty* properties = refl_getMachineMetaProperties(metaFSM, NULL);
         for (unsigned int i = 0; i < len; i++)

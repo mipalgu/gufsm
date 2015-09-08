@@ -32,7 +32,7 @@ struct metaProperty_s
     char * name;
     char * type_string;
     refl_type type_enum;
-    size_t size;
+    refl_bool isUnsigned;
     refl_userData_t data;
     refl_getValueAsVoid_f getAsVoid;
     refl_setValueAsVoid_f setAsVoid;

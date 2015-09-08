@@ -49,10 +49,8 @@ class CLReflectTypeGenerator(object):
     def generateTypeList(self):
         with open(self.outFile, 'w') as outFile:
             outFile.write('REFL_' + self._supportedTypes[0].upper().replace(' ', '_') + '\n')
-            outFile.write(',REFL_' + self._supportedTypes[0].upper().replace(' ', '_') + '_PTR\n')
             for index ,t in enumerate(self._supportedTypes[1:]):
                 outFile.write(',REFL_' + t.upper().replace(' ', '_') + '\n')
-                outFile.write(',REFL_' + t.upper().replace(' ', '_') + '_PTR\n')
             outFile.close()
 
 import sys, os

@@ -1,5 +1,6 @@
 from CPP_Types import *
 from difflib import SequenceMatcher as SM
+from string import maketrans
 
 class CPP_Type_Interpreter(object):
     """Class for interpreting variable types as refl_type enum value"""
@@ -7,24 +8,23 @@ class CPP_Type_Interpreter(object):
         super(CPP_Type_Interpreter, self).__init__()
         cppTypes = CPP_Types()
         self.types = cppTypes.types
-        self.typeDict = { t.replace('REFL_', '').
-                            replace('PTR', '*').
-                            replace('_', '').lower() : t for t in self.types }
+        self.typeDict = { t.replace("REFL_", "").translate(None, "*_ ").lower() : t for t in self.types }
 
     def getReflectType(self, typeString):
         """Gets the corresponding refl_type"""
+        strippedTypeString = typeString.replace("const", "").replace("std::", '').translate(None, "*_ ").lower()
         # Try naive lookup first
-        naive = self.naiveLookup(typeString)
+        naive = self.naiveLookup(strippedTypeString)
         if naive:
             return naive
-        fuzzy = self.fuzzyLookup(typeString)
+        fuzzy = self.fuzzyLookup(strippedTypeString)
         if fuzzy:
             return fuzzy
         else:
             return 'REFL_USERTYPE'
 
     def naiveLookup(self, typeString):
-        return self.typeDict.get(typeString.replace(' ', '').replace('std::', ''), None)
+        return self.typeDict.get(typeString.replace('std::', ''), None)
 
     def fuzzyLookup(self, typeString):
         """Uses fuzzy text matching to guess type.
@@ -32,7 +32,7 @@ class CPP_Type_Interpreter(object):
         matchInfo = (None, 0) # Type string, Ratio
         confidenceBarrier = 0.95
         keys = self.typeDict.keys()
-        strippedTypeString = typeString.replace(' ', '').replace('std::', '')
+        strippedTypeString = typeString.replace('std::', '')
         for k in keys:
             ratio = SM(None, strippedTypeString, k.replace(' ', '')).ratio()
             if ratio > matchInfo[1]:

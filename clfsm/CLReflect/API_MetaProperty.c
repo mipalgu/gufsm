@@ -187,7 +187,7 @@ refl_type refl_getMetaPropertyType(refl_metaProperty metaProperty, CLReflectResu
         {
             *result = REFL_INVALID_ARGS;
         }
-        return REFL_VOID_PTR;
+        return REFL_USERTYPE;
     }
     else
     {
