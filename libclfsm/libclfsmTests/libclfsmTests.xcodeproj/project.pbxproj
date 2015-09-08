@@ -9,6 +9,7 @@
 /* Begin PBXFileReference section */
 		301ABFA51B97ED5400224CF9 /* ReflectAPI_MetaProperty_Tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_MetaProperty_Tests.cc; sourceTree = "<group>"; };
 		301ABFA61B97ED6200224CF9 /* ReflectAPI_VariableTests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_VariableTests.cc; sourceTree = "<group>"; };
+		305EDA261B9E65210053F665 /* ReflectAPI_VariableTypeTests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_VariableTypeTests.cc; sourceTree = "<group>"; };
 		30B2268D1B82B318001511B5 /* ReflectAPI_MetaTransition_Tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_MetaTransition_Tests.cc; sourceTree = "<group>"; };
 		F17650881B7983A1009CAC69 /* DummyMachines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DummyMachines.h; sourceTree = "<group>"; };
 		F17650891B7983A1009CAC69 /* en.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = en.lproj; sourceTree = "<group>"; };
@@ -40,6 +41,7 @@
 				F17650901B7983A1009CAC69 /* ReflectAPI_StateMethod_Tests.cc */,
 				F17650911B7983A1009CAC69 /* ReflectAPI_Util_Tests.cc */,
 				301ABFA61B97ED6200224CF9 /* ReflectAPI_VariableTests.cc */,
+				305EDA261B9E65210053F665 /* ReflectAPI_VariableTypeTests.cc */,
 				F17650921B7983A1009CAC69 /* VectorFactory_tests.cc */,
 			);
 			sourceTree = "<group>";
