@@ -2,10 +2,14 @@
 import os, glob, re
 
 def isConst(dataType):
-    return re.match(r'(^|\W)const(?=[\W$].)', dataType)
+    if re.match(r'(^|\W)const(?=[\W$].)', dataType):
+        return True
+    return False
 
 def isUnsigned(dataType):
-    return re.match(r'^unsigned ', dataType)
+    if re.match(r'^unsigned ', dataType):
+        return True
+    return False
 
 
 class CPP_MetaMachineDefinition:
@@ -60,6 +64,7 @@ class CPP_MetaMachineDefinition:
                     dataType += '*'
                 prop = MachineProperty(varName, dataType, self.name)
                 prop.isConst = isConst(dataType)
+                prop.isUnsigned = isUnsigned(dataType)
                 prop.indirection = dataType.count('*')
                 self.properties.append(prop)
         propertyFile.close()

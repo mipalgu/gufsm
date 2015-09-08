@@ -81,6 +81,10 @@ class CPP_MetaCreateScriptWriter():
                 cpp("refl_metaProperty $varName$ = refl_initMetaProperty(NULL);")
                 cpp('refl_setMetaPropertyName($varName$, "$pName$", NULL);')
                 cpp('refl_setMetaPropertyTypeString($varName$, "$pType$", NULL);')
+                if prop.isUnsigned:
+                    cpp('refl_setIsMetaPropertyUnsigned($varName$, refl_TRUE, NULL);')
+                else:
+                    cpp('refl_setIsMetaPropertyUnsigned($varName$, refl_FALSE, NULL);')
                 # Get type enum value
                 enumType = self.typeInterpreter.getReflectType(prop.dataType)
                 if enumType:

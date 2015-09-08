@@ -245,3 +245,34 @@ char const * refl_getMetaPropertyTypeAsString(refl_metaProperty metaProperty, CL
         return metaProperty->type_string;
     }
 }
+
+refl_bool refl_isMetaPropertyUnsigned(refl_metaProperty metaProperty, CLReflectResult *result)
+{
+    if (!metaProperty)
+    {
+        if (result)
+            *result = REFL_INVALID_ARGS;
+        return refl_FALSE;
+    }
+    else
+    {
+        if (result)
+            *result = REFL_SUCCESS;
+        return metaProperty->isUnsigned;
+    }
+}
+
+void refl_setIsMetaPropertyUnsigned(refl_metaProperty metaProperty, refl_bool isUS, CLReflectResult *result)
+{
+    if (!metaProperty)
+    {
+        if (result)
+            *result = REFL_INVALID_ARGS;
+    }
+    else
+    {
+        if (result)
+            *result = REFL_SUCCESS;
+        metaProperty->isUnsigned = isUS;
+    }
+}

@@ -97,6 +97,17 @@ namespace
         refl_type type = refl_getMetaPropertyType(properties[charArrayIndex], NULL);
         ASSERT_EQ(REFL_STRING, type);
     }
+
+    TEST_F(ReflectAPI_VariableTypeTests, unsignedTests)
+    {
+        unsigned int unsignedIndex = 2;
+        refl_metaProperty us = refl_getMachineMetaProperties(metaFSM, NULL)[unsignedIndex];
+        ASSERT_EQ(refl_TRUE, refl_isMetaPropertyUnsigned(us, NULL));
+        unsigned int nonUSIndex = 0;
+        refl_metaProperty nonUS = refl_getMachineMetaProperties(metaFSM, NULL)[nonUSIndex];
+        ASSERT_EQ(refl_FALSE, refl_isMetaPropertyUnsigned(nonUS, NULL));
+
+    }
 }
 
 #pragma clang diagnostic pop

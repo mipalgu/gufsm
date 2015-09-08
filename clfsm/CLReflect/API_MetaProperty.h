@@ -24,6 +24,10 @@ char const * refl_getMetaPropertyTypeAsString(refl_metaProperty metaProperty, CL
 
 void refl_setMetaPropertyType(refl_metaProperty metaProperty, refl_type type, CLReflectResult* result);
 
+refl_bool refl_isMetaPropertyUnsigned(refl_metaProperty metaProperty, CLReflectResult *result);
+
+void refl_setIsMetaPropertyUnsigned(refl_metaProperty metaProperty, refl_bool isUS, CLReflectResult *result);
+
 refl_type refl_getMetaPropertyType(refl_metaProperty metaProperty, CLReflectResult* result);
 
 void refl_setMetaPropertyData(refl_metaProperty metaProperty, refl_userData_t data, CLReflectResult *result);

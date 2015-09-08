@@ -33,6 +33,7 @@ struct metaProperty_s
     char * type_string;
     refl_type type_enum;
     refl_bool isUnsigned;
+    unsigned int indirectionLevel;
     refl_userData_t data;
     refl_getValueAsVoid_f getAsVoid;
     refl_setValueAsVoid_f setAsVoid;
