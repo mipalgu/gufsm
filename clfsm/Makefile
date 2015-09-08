@@ -26,7 +26,7 @@ copy-stuff:
 	rm -rf ${BUILDDIR}/${BUILDDIR}
 	cp -p ../gufsm/*.c*  ../gufsm/*.h ${BUILDDIR}
 	cp -p *.c* *.h ${BUILDDIR}
-	cp -p CLReflect/*.c* CLReflect/*.h ${BUILDDIR}
+	cp -p CLReflect/*.c* CLReflect/*.h CLReflect/CLReflectTypeEnum ${BUILDDIR}
 	cp -p Makefile.in ${BUILDDIR}/Makefile
 	cd ${BUILDDIR} && ln -s . ${BUILDDIR}
 
