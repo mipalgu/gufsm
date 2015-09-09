@@ -46,19 +46,19 @@ class CPP_StringConversion(object):
             with cpp.block('if ($stringVar$.length() != 0)'):
                 with cpp.block('try'):
                     if checker.isChar():
-                        cpp('$propVar$ = $value$[0];')
+                        cpp('$propVar$ = static_cast<$dType$>($value$[0]);')
                     elif checker.isCharPointer():
                         cpp('memcpy(&$propVar$, &$value$, sizeof(char *));')
                     elif checker.isStdString():
                         cpp('$propVar$ = std::string($value$);')
                     elif checker.isPrimitiveConvertable():
                         if checker.isSignedInt():
-                            cpp('$dType$ $testVar$ = atoi($stringVar$.c_str());')
+                            cpp('$dType$ $testVar$ = static_cast<$dType$>(atoi($stringVar$.c_str()));')
                             cpp('$propVar$ = $testVar$;')
                         elif checker.isUnsignedInt():
                             cpp('$propVar$ = static_cast<$dType$>(stoi($stringVar$));')
                         elif checker.isSignedLong() or checker.isUnsignedLong():
-                            cpp('$propVar$ = stol($stringVar$);')
+                            cpp('$propVar$ = static_cast<$dType$>(stol($stringVar$));')
                         elif checker.isFloat():
                             cpp('$dType$ $testVar$ = static_cast<$dType$>(atof($stringVar$.c_str()));')
                             cpp('$propVar$ = $testVar$;')
