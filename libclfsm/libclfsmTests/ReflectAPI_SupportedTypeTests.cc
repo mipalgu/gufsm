@@ -83,6 +83,39 @@ namespace
             ASSERT_EQ(type, refl_getMetaPropertyType(properties[i], NULL));
         }
     }
+
+    TEST_F(ReflectAPI_SupportedTypeTests, stringConversion)
+    {
+        char returnBuffer[40];
+        unsigned int bufferSize = 40;
+        // chars
+        for (unsigned int i = 0; i < 3; i++)
+        {
+            const char * value = "v";
+            refl_setMachinePropertyValue_S(metaFSM, i, const_cast<char *>(value), NULL);
+            ASSERT_STREQ(value, refl_getMachinePropertyValue_S(metaFSM, i,
+                                                returnBuffer, bufferSize, NULL));
+        }
+        //integers/longs
+        for (unsigned int i = 3; i < 20; i++)
+        {
+            const char * value = "45";
+            refl_setMachinePropertyValue_S(metaFSM, i, const_cast<char *>(value), NULL);
+            ASSERT_STREQ(value, refl_getMachinePropertyValue_S(metaFSM, i,
+                                                returnBuffer, bufferSize, NULL))
+                                                << "Expecting " << value << " for property " << i << endl;
+        }
+        // floats/doubles
+        for (unsigned int i = 20; i < 23; i++)
+        {
+            const char * value = "45.500000";
+            refl_setMachinePropertyValue_S(metaFSM, i, const_cast<char *>(value), NULL);
+            ASSERT_STREQ(value, refl_getMachinePropertyValue_S(metaFSM, i,
+                                                returnBuffer, bufferSize, NULL))
+                                                << "Expecting " << value << " for property " << i << endl;
+
+        }
+    }
 }
 
 #pragma clang diagnostic pop
