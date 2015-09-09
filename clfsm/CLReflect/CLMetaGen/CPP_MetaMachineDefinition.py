@@ -1,5 +1,6 @@
 #Defines a meta machine
 import os, glob, re
+from CPP_Type_Interpreter import *
 
 def isConst(dataType):
     if re.match(r'(^|\W)const(?=[\W$].)', dataType):
@@ -51,6 +52,7 @@ class CPP_MetaMachineDefinition:
     def parseProperties(self):
         propertiesPath = os.path.join(self.machinePath, self.name + '_Variables.h')
         propertyFile = open(propertiesPath)
+        typeInterpreter = CPP_Type_Interpreter()
         for line in propertyFile:
             if line[:2] != r'//':
                 tokens = line.split("\t")
@@ -66,6 +68,7 @@ class CPP_MetaMachineDefinition:
                 prop.isConst = isConst(dataType)
                 prop.isUnsigned = isUnsigned(dataType)
                 prop.indirection = dataType.count('*')
+                prop.enumType = typeInterpreter.getReflectType(dataType)
                 self.properties.append(prop)
         propertyFile.close()
 
@@ -91,6 +94,7 @@ class State:
         includeFile.close()
 
     def parseProperties(self):
+        typeInterpreter = CPP_Type_Interpreter()
         propertiesPath = os.path.join(self.path, 'State_' + self.name + '_Variables.h')
         propertyFile = open(propertiesPath)
         for line in propertyFile:
@@ -107,6 +111,7 @@ class State:
                 prop.isConst = isConst(dataType)
                 prop.isUnsigned = isUnsigned(dataType)
                 prop.indirection = dataType.count('*')
+                prop.enumType = typeInterpreter.getReflectType(dataType)
                 self.properties.append(prop)
         propertyFile.close()
 
