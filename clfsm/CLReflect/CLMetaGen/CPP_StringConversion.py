@@ -32,7 +32,7 @@ class CPP_StringConversion(object):
             elif checker.isPointer():
                 cpp('snprintf(buffer, bufferLen, "%p", $propVar$);')
             else:
-                cpp('snprintf(buffer, bufferLen, "%p", $propVar$);')
+                cpp('snprintf(buffer, bufferLen, "%p", &$propVar$);')
             cpp('return $returnVar$;')
 
     def writeSetPropertyAsString(self, valueName):
@@ -63,7 +63,10 @@ class CPP_StringConversion(object):
                             cpp('$dType$ $testVar$ = static_cast<$dType$>(atof($stringVar$.c_str()));')
                             cpp('$propVar$ = $testVar$;')
                     else:
-                        pass
+                        dTypeStripped = self.prop.dataType.replace('*', '')
+                        cpp('#ifdef ' + dTypeStripped + '_DEFINED') # is it a whiteboard type
+                        cpp('$propVar$.from_string();')
+                        cpp("#endif")
                 with cpp.block('catch (std::invalid_argument e)'):
                     cpp('std::cerr << e.what() << std::endl;')
             with cpp.block('else '):

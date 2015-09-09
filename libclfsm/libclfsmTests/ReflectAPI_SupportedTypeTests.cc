@@ -12,9 +12,10 @@
 #include <gtest/gtest.h>
 #include <string>
 #include <unistd.h>
+#include <cstdio>
 #include "clfsm_machine.h"
 #include "CLReflectAPI.h"
-#include "VariableTests.h"
+#include "SupportedTypesTest.h"
 
 using namespace std;
 
@@ -36,7 +37,7 @@ namespace
         ReflectAPI_SupportedTypeTests()
         {
             wrapper = new FSM::MachineWrapper(TEST_FSM_PATH);
-            fsm = static_cast<FSM::CLM::VariableTests*>(wrapper->instantiate(0, "VariableTests"));
+            fsm = static_cast<FSM::CLM::SupportedTypesTest*>(wrapper->instantiate(0, "VariableTests"));
             metaFSM = wrapper->instantiateMetaMachine(fsm);
 
         }
@@ -64,7 +65,7 @@ namespace
         }
 
         FSM::MachineWrapper *wrapper;
-        FSM::CLM::VariableTests *fsm;
+        FSM::CLM::SupportedTypesTest *fsm;
         refl_metaMachine metaFSM;
         char buffer[40];
         unsigned int bufferLen = 40;
@@ -119,6 +120,17 @@ namespace
                                                 << "Expecting " << value << " for property " << i << endl;
 
         }
+
+        //String
+        unsigned int metaPropNum = 23;
+        unsigned int stringPropNum = 24;
+        const char * value = "Test";
+        refl_setMachinePropertyValue_S(metaFSM, stringPropNum, const_cast<char *>(value), NULL);
+        ASSERT_STREQ(value, refl_getMachinePropertyValue_S(metaFSM, stringPropNum,
+                    returnBuffer, bufferSize, NULL));
+        char metaFSMAddr[15];
+        snprintf(metaFSMAddr, 15, "%p", &fsm->metaMachine);
+        ASSERT_STREQ(metaFSMAddr, refl_getMachinePropertyValue_S(metaFSM, metaPropNum, returnBuffer, bufferSize, NULL));
     }
 }
 
