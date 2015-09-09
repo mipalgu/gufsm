@@ -21,11 +21,11 @@ class CPP_StringConversion(object):
             elif checker.isStdString():
                 cpp('snprintf(buffer, bufferLen, "%s", $propVar$.c_str());')
             elif checker.isPrimitiveConvertable():
-                if checker.isInt():
+                if checker.isSignedInt():
                     cpp('snprintf(buffer, bufferLen, "%d", $propVar$);')
                 elif checker.isUnsignedInt():
                     cpp('snprintf(buffer, bufferLen, "%u", $propVar$);')
-                elif checker.isLong():
+                elif checker.isSignedLong():
                     cpp('snprintf(buffer, bufferLen, "%ld", $propVar$);')
                 elif checker.isFloat() or checker.isDouble():
                     cpp('snprintf(buffer, bufferLen, "%f", $propVar$);')
@@ -52,18 +52,15 @@ class CPP_StringConversion(object):
                     elif checker.isStdString():
                         cpp('$propVar$ = std::string($value$);')
                     elif checker.isPrimitiveConvertable():
-                        if checker.isInt():
+                        if checker.isSignedInt():
                             cpp('$dType$ $testVar$ = atoi($stringVar$.c_str());')
                             cpp('$propVar$ = $testVar$;')
                         elif checker.isUnsignedInt():
                             cpp('$propVar$ = static_cast<unsigned int>(stoi($stringVar$));')
-                        elif checker.isLong():
+                        elif checker.isSignedLong() or checker.isUnsignedLong():
                             cpp('$propVar$ = stol($stringVar$);')
-                        elif checker.isFloat() or checker.isDouble():
+                        elif checker.isFloat():
                             cpp('$dType$ $testVar$ = static_cast<$dType$>(atof($stringVar$.c_str()));')
-                            cpp('$propVar$ = $testVar$;')
-                        elif checker.isDouble():
-                            cpp('$dType$ $testVar$ = atod($stringVar$.c_str());')
                             cpp('$propVar$ = $testVar$;')
                     else:
                         pass
@@ -74,10 +71,18 @@ class CPP_StringConversion(object):
 
 
 import re
+from CPP_Types import *
 
 class TypeChecker(object):
     """docstring for TypeChecker"""
-    _primitiveConvertables = ['int', 'long', 'float', 'double']
+    typeRepo = CPP_Types()
+    _chars = typeRepo.types[:3]
+    _primitiveConvertables = typeRepo.types[3:37]
+    _string = [typeRepo.types[38]]
+    _integers = typeRepo.types[3:14] + typeRepo.types[29:37]
+    _longs = typeRepo.types[14:26]
+    _floatingPoint = typeRepo.types[26:28]
+    _longFloatingPoint = [typeRepo.types[29]]
 
     def __init__(self, prop):
         super(TypeChecker, self).__init__()
@@ -89,52 +94,39 @@ class TypeChecker(object):
 
     def isCharPointer(self):
         prop = self.prop
-        return 'char' in prop.dataType and prop.dataType.count('*') == 1
+        return prop.enumType in self._chars and prop.indirection == 1
 
     def isStdString(self):
         prop = self.prop
-        return 'string' in prop.dataType and '*' not in prop.dataType
+        return prop.enumType in self._string and prop.indirection == 0
 
     def isPrimitiveConvertable(self):
         prop = self.prop
         if '*' in prop.dataType:
             return False
-        for primitiveType in self._primitiveConvertables:
-            if primitiveType in prop.dataType: #XXX
-                return True
-        return False
+        return prop.enumType in self._primitiveConvertables
 
     def isUnsignedInt(self):
-        return 'unsigned int' in self.prop.dataType
+        return self.prop.enumType in self._integers and self.prop.isUnsigned
 
-    def isInt(self):
+    def isSignedInt(self):
         prop = self.prop
-        m = re.match(r'^int$', prop.dataType)
-        if m:
-            return True
-        return False
+        return prop.enumType in self._integers and not self.prop.isUnsigned
 
-    def isLong(self):
-        prop = self.prop
-        m = re.match(r'^long$', prop.dataType)
-        if m:
-            return True
-        return False
+    def isSignedLong(self):
+        return self.prop.enumType in self._longs and not self.prop.isUnsigned
+
+    def isUnsignedLong(self):
+        return self.prop.enumType in self._longs and self.prop.isUnsigned
 
     def isFloat(self):
         prop = self.prop
-        m = re.match(r'^float$', prop.dataType)
-        if m:
-            return True
-        return False
+        return prop.enumType in self._floatingPoint
 
-    def isDouble(self):
+    def isLongFloat(self):
         prop = self.prop
-        m = re.match(r'^double$', prop.dataType)
-        if m:
-            return True
-        return False
+        return prop.enumType in self._longFloatingPoint
 
     def isPointer(self):
         prop = self.prop
-        return '*' in prop.dataType
+        return prop.indirection > 0
