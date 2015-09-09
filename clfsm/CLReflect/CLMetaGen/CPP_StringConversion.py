@@ -130,3 +130,13 @@ class TypeChecker(object):
     def isPointer(self):
         prop = self.prop
         return prop.indirection > 0
+
+
+class PrintfFormatBuilder(object):
+    """ Builds a format string for printf """
+    def __init__(self, prop):
+        super(PrintfFormatBuilder, self).__init__()
+        self.prop = prop
+
+    def buildFormatString(self):
+        pass
