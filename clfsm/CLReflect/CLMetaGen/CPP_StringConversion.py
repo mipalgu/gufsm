@@ -27,7 +27,7 @@ class CPP_StringConversion(object):
                     cpp('snprintf(buffer, bufferLen, "%u", $propVar$);')
                 elif checker.isSignedLong():
                     cpp('snprintf(buffer, bufferLen, "%ld", $propVar$);')
-                elif checker.isFloat() or checker.isDouble():
+                elif checker.isFloat():
                     cpp('snprintf(buffer, bufferLen, "%f", $propVar$);')
             elif checker.isPointer():
                 cpp('snprintf(buffer, bufferLen, "%p", $propVar$);')
@@ -77,12 +77,12 @@ class TypeChecker(object):
     """docstring for TypeChecker"""
     typeRepo = CPP_Types()
     _chars = typeRepo.types[:3]
-    _primitiveConvertables = typeRepo.types[3:37]
-    _string = [typeRepo.types[38]]
-    _integers = typeRepo.types[3:14] + typeRepo.types[29:37]
-    _longs = typeRepo.types[14:26]
-    _floatingPoint = typeRepo.types[26:28]
-    _longFloatingPoint = [typeRepo.types[29]]
+    _primitiveConvertables = typeRepo.types[3:31]
+    _string = [typeRepo.types[32]]
+    _integers = typeRepo.types[3:14] + typeRepo.types[23:31]
+    _longs = typeRepo.types[14:20]
+    _floatingPoint = typeRepo.types[20:22]
+    _longFloatingPoint = [typeRepo.types[22]]
 
     def __init__(self, prop):
         super(TypeChecker, self).__init__()

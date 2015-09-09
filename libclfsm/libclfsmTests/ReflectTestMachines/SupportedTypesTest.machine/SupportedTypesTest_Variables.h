@@ -23,12 +23,6 @@ signed long	q;	///<
 signed long int	r;	///<
 unsigned long	s;	///<
 unsigned long int	t;	///<
-long long	u;	///<
-long long int	v;	///<
-signed long long	w;	///<
-signed long long int	x;	///<
-unsigned long long	y;	///<
-unsigned long long int	z;	///<
 float	aa;	///<
 double 	bb;	///<
 long double	cc;	///<

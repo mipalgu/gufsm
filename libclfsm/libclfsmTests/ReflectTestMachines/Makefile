@@ -1,4 +1,4 @@
-MACHINES=VariableTests
+MACHINES=VariableTests SupportedTypesTest
 MODULE=TEST_SUSPEND
 
 ALL_TARGETS?=host-local test
