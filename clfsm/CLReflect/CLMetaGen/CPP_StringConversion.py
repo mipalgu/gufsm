@@ -56,7 +56,7 @@ class CPP_StringConversion(object):
                             cpp('$dType$ $testVar$ = atoi($stringVar$.c_str());')
                             cpp('$propVar$ = $testVar$;')
                         elif checker.isUnsignedInt():
-                            cpp('$propVar$ = static_cast<unsigned int>(stoi($stringVar$));')
+                            cpp('$propVar$ = static_cast<$dType$>(stoi($stringVar$));')
                         elif checker.isSignedLong() or checker.isUnsignedLong():
                             cpp('$propVar$ = stol($stringVar$);')
                         elif checker.isFloat():
