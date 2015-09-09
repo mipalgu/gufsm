@@ -12,7 +12,7 @@ signed short	f;	///<
 signed short int	g;	///<
 unsigned short	h;	///<
 unsigned short int	i;	///<
-int 	j;	///<
+int	j;	///<
 signed	k;	///<
 signed int	l;	///<
 unsigned	m;	///<
@@ -24,5 +24,7 @@ signed long int	r;	///<
 unsigned long	s;	///<
 unsigned long int	t;	///<
 float	aa;	///<
-double 	bb;	///<
+double	bb;	///<
 long double	cc;	///<
+refl_metaMachine	metaMachine;	///<
+std::string	stringTest;	///<

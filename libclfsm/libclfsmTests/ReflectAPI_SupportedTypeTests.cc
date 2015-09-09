@@ -77,11 +77,15 @@ namespace
         unsigned int expectedType = 0;
         refl_metaProperty* properties = refl_getMachineMetaProperties(metaFSM, NULL);
         unsigned int numProperties = refl_getNumberOfMachineProperties(metaFSM, NULL);
-        for (unsigned int i = 0; i < numProperties; i++)
+        for (unsigned int i = 0; i < numProperties - 2; i++)
         {
             refl_type type = static_cast<refl_type>(expectedType++);
             ASSERT_EQ(type, refl_getMetaPropertyType(properties[i], NULL));
         }
+        refl_type type = static_cast<refl_type>(33);
+        ASSERT_EQ(type, refl_getMetaPropertyType(properties[numProperties - 2], NULL));
+        type = static_cast<refl_type>(32);
+        ASSERT_EQ(type, refl_getMetaPropertyType(properties[numProperties - 1], NULL));
     }
 
     TEST_F(ReflectAPI_SupportedTypeTests, stringConversion)

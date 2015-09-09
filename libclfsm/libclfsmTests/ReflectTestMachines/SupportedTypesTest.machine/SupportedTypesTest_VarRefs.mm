@@ -18,7 +18,7 @@ signed short	&f= _m->f;	///<
 signed short int	&g= _m->g;	///<
 unsigned short	&h= _m->h;	///<
 unsigned short int	&i= _m->i;	///<
-int 	&j= _m->j;	///<
+int	&j= _m->j;	///<
 signed	&k= _m->k;	///<
 signed int	&l= _m->l;	///<
 unsigned	&m= _m->m;	///<
@@ -30,7 +30,9 @@ signed long int	&r= _m->r;	///<
 unsigned long	&s= _m->s;	///<
 unsigned long int	&t= _m->t;	///<
 float	&aa= _m->aa;	///<
-double 	&bb= _m->bb;	///<
+double	&bb= _m->bb;	///<
 long double	&cc= _m->cc;	///<
+refl_metaMachine	&metaMachine= _m->metaMachine;	///<
+std::string	&stringTest= _m->stringTest;	///<
 
 #pragma clang diagnostic pop
