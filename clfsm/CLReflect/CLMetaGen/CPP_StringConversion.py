@@ -27,6 +27,8 @@ class CPP_StringConversion(object):
                     cpp('snprintf(buffer, bufferLen, "%u", $propVar$);')
                 elif checker.isSignedLong():
                     cpp('snprintf(buffer, bufferLen, "%ld", $propVar$);')
+                elif checker.isLongFloat():
+                    cpp('snprintf(buffer, bufferLen, "%Lf", $propVar$);')
                 elif checker.isFloat():
                     cpp('snprintf(buffer, bufferLen, "%f", $propVar$);')
             elif checker.isPointer():
@@ -57,6 +59,8 @@ class CPP_StringConversion(object):
                             cpp('$propVar$ = $testVar$;')
                         elif checker.isUnsignedInt():
                             cpp('$propVar$ = static_cast<$dType$>(stoi($stringVar$));')
+                        elif checker.isLongFloat():
+                            cpp('$propVar$ = static_cast<$dType$>(stold($stringVar$));')                            
                         elif checker.isSignedLong() or checker.isUnsignedLong():
                             cpp('$propVar$ = static_cast<$dType$>(stol($stringVar$));')
                         elif checker.isFloat():

@@ -168,8 +168,6 @@ namespace
         string* testValueCopy = static_cast<string *>(*returnValueAddress);
         ASSERT_EQ(&testValue, testValueCopy);
         ASSERT_EQ(REFL_SUCCESS, result);
-
-
     }
 }
 

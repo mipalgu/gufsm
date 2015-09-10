@@ -120,7 +120,6 @@ namespace
         ASSERT_EQ(2, refl_getMetaPropertyIndirection(props[doublePointerIndex], NULL));
     }
 
-    
 }
 
 #pragma clang diagnostic pop

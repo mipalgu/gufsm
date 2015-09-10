@@ -13,6 +13,7 @@
 #include <string>
 #include <unistd.h>
 #include <cstdio>
+#include <limits>
 #include "clfsm_machine.h"
 #include "CLReflectAPI.h"
 #include "SupportedTypesTest.h"
@@ -132,6 +133,16 @@ namespace
         snprintf(metaFSMAddr, 15, "%p", &fsm->metaMachine);
         ASSERT_STREQ(metaFSMAddr, refl_getMachinePropertyValue_S(metaFSM, metaPropNum, returnBuffer, bufferSize, NULL));
     }
+
+    TEST_F(ReflectAPI_SupportedTypeTests, sizeMismatch)
+    {
+        unsigned int llIndex = 22;
+        string value = std::to_string(numeric_limits<long double>::max());
+        refl_setMachinePropertyValue_S(metaFSM, llIndex, const_cast<char *>(value.c_str()), NULL);
+        char buffer[10000];
+        ASSERT_STREQ(value.c_str(), refl_getMachinePropertyValue_S(metaFSM, llIndex, buffer, 10000, NULL));
+    }
+
 }
 
 #pragma clang diagnostic pop
