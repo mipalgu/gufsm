@@ -12,29 +12,17 @@ class CPP_StringConversion(object):
         cpp = self.cpp
         varName = 'buffer' # the name of the return value
         checker = TypeChecker(self.prop)
-        with cpp.subs(returnVar = varName, propVar = self.propVarName, dType = self.prop.dataType):
-            if checker.isChar():
-                with cpp.block('if (bufferLen >= 2)'):
-                    cpp('snprintf(buffer, 2, "%c", $propVar$);')
-            elif checker.isCharPointer():
-                cpp('snprintf(buffer, bufferLen, "%s", $propVar$);')
-            elif checker.isStdString():
-                cpp('snprintf(buffer, bufferLen, "%s", $propVar$.c_str());')
-            elif checker.isPrimitiveConvertable():
-                if checker.isSignedInt():
-                    cpp('snprintf(buffer, bufferLen, "%d", $propVar$);')
-                elif checker.isUnsignedInt():
-                    cpp('snprintf(buffer, bufferLen, "%u", $propVar$);')
-                elif checker.isSignedLong():
-                    cpp('snprintf(buffer, bufferLen, "%ld", $propVar$);')
-                elif checker.isLongFloat():
-                    cpp('snprintf(buffer, bufferLen, "%Lf", $propVar$);')
-                elif checker.isFloat():
-                    cpp('snprintf(buffer, bufferLen, "%f", $propVar$);')
-            elif checker.isPointer():
-                cpp('snprintf(buffer, bufferLen, "%p", $propVar$);')
-            else:
+        formatBuilder = PrintfFormatBuilder()
+        formatStr = formatBuilder.buildFormatString(self.prop)
+        with cpp.subs(returnVar = varName, propVar = self.propVarName,
+                        dType = self.prop.dataType,
+                        formatStr = formatStr):
+            if not formatStr:
                 cpp('snprintf(buffer, bufferLen, "%p", &$propVar$);')
+            elif checker.isStdString():
+                cpp('snprintf(buffer, bufferLen, "$formatStr$", $propVar$.c_str());')                
+            else:
+                cpp('snprintf(buffer, bufferLen, "$formatStr$", $propVar$);')
             cpp('return $returnVar$;')
 
     def writeSetPropertyAsString(self, valueName):
@@ -60,9 +48,11 @@ class CPP_StringConversion(object):
                         elif checker.isUnsignedInt():
                             cpp('$propVar$ = static_cast<$dType$>(stoi($stringVar$));')
                         elif checker.isLongFloat():
-                            cpp('$propVar$ = static_cast<$dType$>(stold($stringVar$));')                            
-                        elif checker.isSignedLong() or checker.isUnsignedLong():
+                            cpp('$propVar$ = static_cast<$dType$>(stold($stringVar$));')
+                        elif checker.isSignedLong():
                             cpp('$propVar$ = static_cast<$dType$>(stol($stringVar$));')
+                        elif checker.isUnsignedLong():
+                            cpp('$propVar$ = static_cast<$dType$>(stoul($stringVar$));')
                         elif checker.isFloat():
                             cpp('$dType$ $testVar$ = static_cast<$dType$>(atof($stringVar$.c_str()));')
                             cpp('$propVar$ = $testVar$;')
@@ -88,7 +78,7 @@ class TypeChecker(object):
     _string = [typeRepo.types[32]]
     _integers = typeRepo.types[3:14] + typeRepo.types[23:31]
     _longs = typeRepo.types[14:20]
-    _floatingPoint = typeRepo.types[20:22]
+    _floatingPoint = typeRepo.types[20:23]
     _longFloatingPoint = [typeRepo.types[22]]
 
     def __init__(self, prop):
@@ -141,9 +131,31 @@ class TypeChecker(object):
 
 class PrintfFormatBuilder(object):
     """ Builds a format string for printf """
-    def __init__(self, prop):
+    def __init__(self):
         super(PrintfFormatBuilder, self).__init__()
-        self.prop = prop
 
-    def buildFormatString(self):
-        pass
+    def buildFormatString(self, prop):
+        checker = TypeChecker(prop)
+        if checker.isChar():
+            return "%c"
+        elif checker.isStdString() or checker.isCharPointer():
+            return "%s"
+        elif prop.indirection > 0:
+            return "%p"
+        elif checker.isPrimitiveConvertable():
+            prefix = ''
+            mid = ''
+            if prop.isUnsigned:
+                mid = 'u'
+            elif checker.isFloat():
+                mid = 'f'
+            else:
+                mid = 'd'
+            # prefix
+            if checker.isSignedLong() or checker.isUnsignedLong():
+                prefix = 'l'
+            elif checker.isLongFloat():
+                prefix = 'L'
+            return '%' + prefix + mid
+        else:
+            return None

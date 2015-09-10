@@ -134,7 +134,7 @@ namespace
         ASSERT_STREQ(metaFSMAddr, refl_getMachinePropertyValue_S(metaFSM, metaPropNum, returnBuffer, bufferSize, NULL));
     }
 
-    TEST_F(ReflectAPI_SupportedTypeTests, sizeMismatch)
+    TEST_F(ReflectAPI_SupportedTypeTests, longDouble)
     {
         unsigned int llIndex = 22;
         string value = std::to_string(numeric_limits<long double>::max());
