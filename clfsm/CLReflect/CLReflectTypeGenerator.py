@@ -1,4 +1,7 @@
 class CLReflectTypeGenerator(object):
+    """ A class for generating both the type enum for CLReflect, and a set
+        of utility methods for converting between supported types. Of course,
+        there is no guarantee that the particular conversion will be valid """
     _supportedTypes = [
         "char",
         "signed char",
@@ -36,22 +39,34 @@ class CLReflectTypeGenerator(object):
         "usertype"
     ]
 
-    def __init__(self, outFile):
+    def __init__(self, enumOutFile, conversionOutFile):
         super(CLReflectTypeGenerator, self).__init__()
-        self.outFile = outFile
+        self.enumOutFile = enumOutFile
+        self.conversionOutFile = conversionOutFile
 
     def generateTypeList(self):
-        with open(self.outFile, 'w') as outFile:
+        with open(self.enumOutFile, 'w') as outFile:
             outFile.write('REFL_' + self._supportedTypes[0].upper().replace(' ', '_') + '\n')
             for index ,t in enumerate(self._supportedTypes[1:]):
                 outFile.write(',REFL_' + t.upper().replace(' ', '_') + '\n')
             outFile.close()
 
+    def generateConversionHeader(self):
+        with open(self.conversionOutFile + '.h', 'w') as outFile:
+            outFile.close()
+
+    def generateConversionImplementation(self):
+        with open(self.conversionOutFile + '.c', 'w') as outFile:
+            outFile.close()
+
+
 import sys, os
 
 def main(argv):
-    generator = CLReflectTypeGenerator(argv[1])
+    generator = CLReflectTypeGenerator(argv[1], argv[2])
     generator.generateTypeList()
+    generator.generateConversionHeader()
+    generator.generateConversionImplementation()
 
 
 if __name__ == "__main__":
