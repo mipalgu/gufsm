@@ -24,16 +24,18 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		301ABF781B97ECC300224CF9 /* API_MetaMachine_Properties.c in Sources */ = {isa = PBXBuildFile; fileRef = 301ABF761B97ECC300224CF9 /* API_MetaMachine_Properties.c */; settings = {ASSET_TAGS = (); }; };
-		301ABF791B97ECC300224CF9 /* API_MetaMachine_Properties.h in Headers */ = {isa = PBXBuildFile; fileRef = 301ABF771B97ECC300224CF9 /* API_MetaMachine_Properties.h */; settings = {ASSET_TAGS = (); }; };
-		301ABF9E1B97ECD900224CF9 /* API_MetaState_Properties.c in Sources */ = {isa = PBXBuildFile; fileRef = 301ABF9C1B97ECD900224CF9 /* API_MetaState_Properties.c */; settings = {ASSET_TAGS = (); }; };
-		301ABF9F1B97ECD900224CF9 /* API_MetaState_Properties.h in Headers */ = {isa = PBXBuildFile; fileRef = 301ABF9D1B97ECD900224CF9 /* API_MetaState_Properties.h */; settings = {ASSET_TAGS = (); }; };
-		301ABFA21B97ECE900224CF9 /* API_MetaProperty.c in Sources */ = {isa = PBXBuildFile; fileRef = 301ABFA01B97ECE900224CF9 /* API_MetaProperty.c */; settings = {ASSET_TAGS = (); }; };
-		301ABFA31B97ECE900224CF9 /* API_MetaProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 301ABFA11B97ECE900224CF9 /* API_MetaProperty.h */; settings = {ASSET_TAGS = (); }; };
-		301ABFA41B97ECEF00224CF9 /* API_MetaProperty_Access.c in Sources */ = {isa = PBXBuildFile; fileRef = 301ABF991B97ECC900224CF9 /* API_MetaProperty_Access.c */; settings = {ASSET_TAGS = (); }; };
-		305EDA061B9E64DA0053F665 /* API_Type.h in Headers */ = {isa = PBXBuildFile; fileRef = 305EDA051B9E64DA0053F665 /* API_Type.h */; settings = {ASSET_TAGS = (); }; };
+		301ABF781B97ECC300224CF9 /* API_MetaMachine_Properties.c in Sources */ = {isa = PBXBuildFile; fileRef = 301ABF761B97ECC300224CF9 /* API_MetaMachine_Properties.c */; };
+		301ABF791B97ECC300224CF9 /* API_MetaMachine_Properties.h in Headers */ = {isa = PBXBuildFile; fileRef = 301ABF771B97ECC300224CF9 /* API_MetaMachine_Properties.h */; };
+		301ABF9E1B97ECD900224CF9 /* API_MetaState_Properties.c in Sources */ = {isa = PBXBuildFile; fileRef = 301ABF9C1B97ECD900224CF9 /* API_MetaState_Properties.c */; };
+		301ABF9F1B97ECD900224CF9 /* API_MetaState_Properties.h in Headers */ = {isa = PBXBuildFile; fileRef = 301ABF9D1B97ECD900224CF9 /* API_MetaState_Properties.h */; };
+		301ABFA21B97ECE900224CF9 /* API_MetaProperty.c in Sources */ = {isa = PBXBuildFile; fileRef = 301ABFA01B97ECE900224CF9 /* API_MetaProperty.c */; };
+		301ABFA31B97ECE900224CF9 /* API_MetaProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 301ABFA11B97ECE900224CF9 /* API_MetaProperty.h */; };
+		301ABFA41B97ECEF00224CF9 /* API_MetaProperty_Access.c in Sources */ = {isa = PBXBuildFile; fileRef = 301ABF991B97ECC900224CF9 /* API_MetaProperty_Access.c */; };
+		305EDA061B9E64DA0053F665 /* API_Type.h in Headers */ = {isa = PBXBuildFile; fileRef = 305EDA051B9E64DA0053F665 /* API_Type.h */; };
 		307B5A2F1B797C4700F7ACB8 /* API_Util.c in Sources */ = {isa = PBXBuildFile; fileRef = 307B5A2D1B797C4700F7ACB8 /* API_Util.c */; };
 		307B5A301B797C4700F7ACB8 /* API_Util.h in Headers */ = {isa = PBXBuildFile; fileRef = 307B5A2E1B797C4700F7ACB8 /* API_Util.h */; };
+		30A1B30A1BA2985A00640F88 /* API_TypeConversion.c in Sources */ = {isa = PBXBuildFile; fileRef = 30A1B3081BA2985A00640F88 /* API_TypeConversion.c */; };
+		30A1B30B1BA2985A00640F88 /* API_TypeConversion.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A1B3091BA2985A00640F88 /* API_TypeConversion.h */; };
 		30B226671B82B07C001511B5 /* API_MetaTransition.c in Sources */ = {isa = PBXBuildFile; fileRef = 30B226651B82B07C001511B5 /* API_MetaTransition.c */; };
 		30B226681B82B07C001511B5 /* API_MetaTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = 30B226661B82B07C001511B5 /* API_MetaTransition.h */; };
 		3CFD06221A1B684300C36E6C /* clfsm_visitors.cc in Sources */ = {isa = PBXBuildFile; fileRef = 3CFD061E1A1B684300C36E6C /* clfsm_visitors.cc */; };
@@ -455,6 +457,8 @@
 		305EDA051B9E64DA0053F665 /* API_Type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API_Type.h; sourceTree = "<group>"; };
 		307B5A2D1B797C4700F7ACB8 /* API_Util.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = API_Util.c; sourceTree = "<group>"; };
 		307B5A2E1B797C4700F7ACB8 /* API_Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API_Util.h; sourceTree = "<group>"; };
+		30A1B3081BA2985A00640F88 /* API_TypeConversion.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = API_TypeConversion.c; sourceTree = "<group>"; };
+		30A1B3091BA2985A00640F88 /* API_TypeConversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API_TypeConversion.h; sourceTree = "<group>"; };
 		30B226651B82B07C001511B5 /* API_MetaTransition.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = API_MetaTransition.c; sourceTree = "<group>"; };
 		30B226661B82B07C001511B5 /* API_MetaTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API_MetaTransition.h; sourceTree = "<group>"; };
 		3CFD061E1A1B684300C36E6C /* clfsm_visitors.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = clfsm_visitors.cc; sourceTree = "<group>"; };
@@ -1539,6 +1543,8 @@
 				F17A1DE81B77F38C00C24CAB /* API_MetaState.h */,
 				F17A1DE91B77F38C00C24CAB /* API_Result.h */,
 				305EDA051B9E64DA0053F665 /* API_Type.h */,
+				30A1B3081BA2985A00640F88 /* API_TypeConversion.c */,
+				30A1B3091BA2985A00640F88 /* API_TypeConversion.h */,
 				307B5A2D1B797C4700F7ACB8 /* API_Util.c */,
 				307B5A2E1B797C4700F7ACB8 /* API_Util.h */,
 				F17A1DEA1B77F38C00C24CAB /* CLMetaRegister.h */,
@@ -2442,6 +2448,7 @@
 				F17A1DE51B77F37500C24CAB /* API_MetaAction.h in Headers */,
 				F17A1DEE1B77F38C00C24CAB /* CLMetaRegister.h in Headers */,
 				30B226681B82B07C001511B5 /* API_MetaTransition.h in Headers */,
+				30A1B30B1BA2985A00640F88 /* API_TypeConversion.h in Headers */,
 				F17A1DE31B77F37500C24CAB /* API_Interface.h in Headers */,
 				301ABF9F1B97ECD900224CF9 /* API_MetaState_Properties.h in Headers */,
 				305EDA061B9E64DA0053F665 /* API_Type.h in Headers */,
@@ -3211,6 +3218,7 @@
 				F1D575A5162795D500976A23 /* FSMachine.cc in Sources */,
 				F1D575A6162795DB00976A23 /* FSMState.cc in Sources */,
 				F1D575A7162795E700976A23 /* FSMSuspensibleMachine.cc in Sources */,
+				30A1B30A1BA2985A00640F88 /* API_TypeConversion.c in Sources */,
 				F1D575A91627960400976A23 /* FSMTransition.cc in Sources */,
 				301ABFA41B97ECEF00224CF9 /* API_MetaProperty_Access.c in Sources */,
 				F17A1DEB1B77F38C00C24CAB /* API_MetaState.c in Sources */,
