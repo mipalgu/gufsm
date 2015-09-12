@@ -1,4 +1,5 @@
 #ifdef __cplusplus
+#include "API_TypeConversion_Vector.h"
 extern "C" {
 #endif
     #include "API_Result.h"
@@ -13,6 +14,7 @@ extern "C" {
     #include "API_MetaTransition.h"
     #include "API_MetaAction.h"
     #include "API_MetaProperty.h"
+    #include "API_TypeConversion.h"
 #ifdef __cplusplus
 }
 #endif

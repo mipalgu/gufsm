@@ -74,7 +74,6 @@ class CLReflectTypeGenerator(object):
         for i, t in enumerate(self._declarationTypes):
             with cpp.subs(type = self._withPointerTypes[i], decType = t.replace('*', '_ptr')):
                 cpp('$type$ refl_getAs_$decType$(refl_metaProperty p, refl_machine_t mach, CLReflectResult *result);')
-
         cpp('#endif')
 
     def generateConversionImplementation(self):
