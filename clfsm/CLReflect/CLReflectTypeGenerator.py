@@ -1,3 +1,9 @@
+from CodeGen import *
+
+""" A script for generating the type conversion methods for CLReflect.
+    Usage: python CLReflectTypeGenerator.py
+"""
+
 class CLReflectTypeGenerator(object):
     """ A class for generating both the type enum for CLReflect, and a set
         of utility methods for converting between supported types. Of course,
@@ -43,6 +49,11 @@ class CLReflectTypeGenerator(object):
         super(CLReflectTypeGenerator, self).__init__()
         self.enumOutFile = enumOutFile
         self.conversionOutFile = conversionOutFile
+        self._withPointerTypes = []
+        for t in self._supportedTypes[:31]:
+            self._withPointerTypes.append(t)
+            self._withPointerTypes.append(t + '*')
+        self._declarationTypes = [t.replace(' ', '_') for t in self._withPointerTypes]
 
     def generateTypeList(self):
         with open(self.enumOutFile, 'w') as outFile:
@@ -52,18 +63,40 @@ class CLReflectTypeGenerator(object):
             outFile.close()
 
     def generateConversionHeader(self):
-        with open(self.conversionOutFile + '.h', 'w') as outFile:
-            outFile.close()
+        cpp = CppFile(self.conversionOutFile + '.h')
+        cpp('#ifndef API_TYPECONVERSION_H\n#define API_TYPECONVERSION_H')
+
+        cpp('// Generated declarations for type conversion')
+        includes = ['"API_Result.h"', '"API_MetaProperty_Access.h"']
+        for inc in includes:
+            with cpp.subs(inc = inc):
+                cpp('#include $inc$')
+        for i, t in enumerate(self._declarationTypes):
+            with cpp.subs(type = self._withPointerTypes[i], decType = t.replace('*', '_ptr')):
+                cpp('$type$ refl_getAs_$decType$(refl_metaProperty p, refl_machine_t mach, CLReflectResult *result);')
+
+        cpp('#endif')
 
     def generateConversionImplementation(self):
-        with open(self.conversionOutFile + '.c', 'w') as outFile:
-            outFile.close()
+        cpp = CppFile(self.conversionOutFile + '.c')
+        cpp('// Generated implementations for type conversion')
+        cpp('#include "' + self.conversionOutFile + '.h"')
+        for i, t in enumerate(self._declarationTypes):
+            val = 'value'
+            with cpp.subs(type = self._withPointerTypes[i], decType = t.replace('*', '_ptr'),
+                            val = val):
+                with cpp.block('$type$ refl_getAs_$decType$(refl_metaProperty p, refl_machine_t mach, CLReflectResult *result)'):
+                    cpp('void* $val$ = _refl_getPropertyAsVoid(p, mach, result);')
+                    cpp('return *($type$*)$val$;')
+
 
 
 import sys, os
 
 def main(argv):
-    generator = CLReflectTypeGenerator(argv[1], argv[2])
+    enumOutFile = 'CLReflectTypeEnum'
+    conversionOutFile = 'API_TypeConversion'
+    generator = CLReflectTypeGenerator(enumOutFile, conversionOutFile)
     generator.generateTypeList()
     generator.generateConversionHeader()
     generator.generateConversionImplementation()
