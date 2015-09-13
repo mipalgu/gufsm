@@ -17,7 +17,7 @@ refl_metaMachine refl_initMetaMachine(CLReflectResult* result)
         newMeta->metaStates = NULL;
         newMeta->numberOfProperties = 0;
         newMeta->metaProperties = NULL;
-        newMeta->currentState = NULL;
+        newMeta->currentState = 0;
         newMeta->data = NULL;
         if (result != NULL)
         {

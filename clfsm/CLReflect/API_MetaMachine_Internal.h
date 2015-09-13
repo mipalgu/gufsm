@@ -61,7 +61,8 @@ struct metaMachine_s
     refl_machine_t machine;
     refl_metaState *metaStates;
     unsigned int numberOfStates;
-    refl_getCurrentState_f currentState;
+    unsigned int currentState;
+    unsigned int previousState;
     refl_userData_t data;
     unsigned int numberOfProperties;
     refl_metaProperty* metaProperties;

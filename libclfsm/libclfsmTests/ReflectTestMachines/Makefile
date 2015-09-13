@@ -1,5 +1,5 @@
-MACHINES=VariableTests SupportedTypesTest
-MODULE=TEST_SUSPEND
+MACHINES=VariableTests SupportedTypesTest MachineControlTest
+MODULE=ReflectTestMachines
 
 ALL_TARGETS?=host-local test
 MAKEFLAGS+="WANT_FSM_REFLECTION=yes" ## so we get reflection by default

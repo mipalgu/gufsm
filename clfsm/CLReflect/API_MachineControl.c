@@ -9,16 +9,14 @@ unsigned int refl_getCurrentState(refl_metaMachine metaMachine, CLReflectResult*
         {
             *result = REFL_INVALID_ARGS;
         }
-        return -1;
+        return 0;
     }
     else
-    {
-        int currentState = metaMachine->currentState(metaMachine->machine,
-                                            metaMachine->data);
+    { 
         if (result)
         {
             *result = REFL_SUCCESS;
         }
-        return currentState;
+        return metaMachine->currentState;
     }
 }
