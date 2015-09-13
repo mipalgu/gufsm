@@ -25,6 +25,8 @@ class CPP_MetaCreateScriptWriter():
             statesVar = self.writeStateDefinitions()
             with cpp.subs(states = statesVar, numStates = len(self.machineDef.states)):
                 cpp('refl_setMetaStates(m, $states$, $numStates$, NULL);')
+            with cpp.subs(initState = self.machineDef.initalState):
+                cpp('refl_setCurrentState(m, $initState$, NULL);')
             cpp('return m;')
 
     def writeStateDefinitions(self):

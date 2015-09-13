@@ -23,7 +23,7 @@ unsigned int refl_getCurrentState(refl_metaMachine metaMachine, CLReflectResult*
 
 void refl_setCurrentState(refl_metaMachine metaMachine, unsigned int stateIndex, CLReflectResult* result)
 {
-    if (!metaMachine)
+    if (!metaMachine || stateIndex >= metaMachine->numberOfStates)
     {
         if (result)
         {

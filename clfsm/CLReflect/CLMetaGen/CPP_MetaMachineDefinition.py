@@ -20,9 +20,19 @@ class CPP_MetaMachineDefinition:
         self.includes = []
         self.properties = []
         self.states = []
+        self.parseControlInformation()
         self.parseIncludes()
         self.parseStates()
         self.parseProperties()
+
+
+    def parseControlInformation(self):
+        """ Retrieves initial and suspend state indexes """
+        with open(os.path.join(self.machinePath, self.name + '.mm')) as f:
+            contents = f.read()
+            # search for 'setInitialState(_states[n])'
+            match = re.search('(?<=setInitialState\(_states\[)\d', contents)
+            self.initalState = int(match.group())
 
 
     def parseIncludes(self):
