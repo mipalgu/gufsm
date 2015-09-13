@@ -90,7 +90,18 @@ namespace
         ASSERT_EQ(REFL_SUCCESS, result);
         prevState = refl_getPreviousState(metaFSM, &result);
         ASSERT_EQ(newPrevState, prevState);
+    }
 
+    TEST_F(ReflectAPI_MachineControlTests, suspendState)
+    {
+        int expectedSuspendState = 2;
+        int suspendState = refl_getSuspendState(metaFSM, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        ASSERT_EQ(expectedSuspendState, suspendState);
+        unsigned int newSuspendState = 0;
+        refl_setSuspendState(metaFSM, newSuspendState, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        ASSERT_EQ(static_cast<int>(newSuspendState), refl_getSuspendState(metaFSM, NULL));
     }
 }
 

@@ -31,8 +31,14 @@ class CPP_MetaMachineDefinition:
         with open(os.path.join(self.machinePath, self.name + '.mm')) as f:
             contents = f.read()
             # search for 'setInitialState(_states[n])'
-            match = re.search('(?<=setInitialState\(_states\[)\d', contents)
-            self.initalState = int(match.group())
+            initMatch = re.search('(?<=setInitialState\(_states\[)\d', contents)
+            self.initalState = int(initMatch.group())
+            # search for 'setSuspendState(_states[n])'
+            suspendMatch = re.search('(?<=setSuspendState\(_states\[)\d', contents)
+            if suspendMatch: # machine may not have suspend state
+                self.suspendState = int(suspendMatch.group())
+            else:
+                self.suspendState = None;
 
 
     def parseIncludes(self):

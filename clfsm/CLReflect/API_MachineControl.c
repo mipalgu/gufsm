@@ -75,6 +75,45 @@ void refl_setPreviousState(refl_metaMachine metaMachine, unsigned int stateIndex
         {
             *result = REFL_SUCCESS;
         }
-        metaMachine->previousState = stateIndex;
+        metaMachine->previousState = (int)stateIndex;
+    }
+}
+
+int refl_getSuspendState(refl_metaMachine metaMachine, CLReflectResult *result)
+{
+    if (!metaMachine)
+    {
+        if (result)
+        {
+            *result = REFL_INVALID_ARGS;
+        }
+        return 0;
+    }
+    else
+    {
+        if (result)
+        {
+            *result = REFL_SUCCESS;
+        }
+        return metaMachine->suspendState;
+    }
+}
+
+void refl_setSuspendState(refl_metaMachine metaMachine, unsigned int stateIndex, CLReflectResult* result)
+{
+    if (!metaMachine || stateIndex >= metaMachine->numberOfStates)
+    {
+        if (result)
+        {
+            *result = REFL_INVALID_ARGS;
+        }
+    }
+    else
+    {
+        if (result)
+        {
+            *result = REFL_SUCCESS;
+        }
+        metaMachine->suspendState = (int)stateIndex;
     }
 }

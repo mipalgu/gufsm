@@ -63,6 +63,7 @@ struct metaMachine_s
     unsigned int numberOfStates;
     unsigned int currentState;
     int previousState; // Null previous state = -1
+    int suspendState; // Null suspend state = -1
     refl_userData_t data;
     unsigned int numberOfProperties;
     refl_metaProperty* metaProperties;
