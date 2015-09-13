@@ -3,7 +3,7 @@
 
 unsigned int refl_getCurrentState(refl_metaMachine metaMachine, CLReflectResult* result)
 {
-    if (!metaMachine || !metaMachine->currentState || !metaMachine->machine)
+    if (!metaMachine)
     {
         if (result)
         {
@@ -12,11 +12,30 @@ unsigned int refl_getCurrentState(refl_metaMachine metaMachine, CLReflectResult*
         return 0;
     }
     else
-    { 
+    {
         if (result)
         {
             *result = REFL_SUCCESS;
         }
         return metaMachine->currentState;
+    }
+}
+
+void refl_setCurrentState(refl_metaMachine metaMachine, unsigned int stateIndex, CLReflectResult* result)
+{
+    if (!metaMachine)
+    {
+        if (result)
+        {
+            *result = REFL_INVALID_ARGS;
+        }
+    }
+    else
+    {
+        if (result)
+        {
+            *result = REFL_SUCCESS;
+        }
+        metaMachine->currentState = stateIndex;
     }
 }

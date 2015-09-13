@@ -13,6 +13,6 @@ unsigned int refl_getCurrentState(refl_metaMachine metaMachine, CLReflectResult*
 /*!
     Returns the current state of the FSM.
 */
-void refl_setCurrentState(refl_metaMachine metaMachine, CLReflectResult* result);
+void refl_setCurrentState(refl_metaMachine metaMachine, unsigned int stateIndex, CLReflectResult* result);
 
 #endif /* end of include guard: API_MACHINECONTROL_H */
