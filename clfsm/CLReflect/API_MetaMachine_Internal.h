@@ -62,7 +62,7 @@ struct metaMachine_s
     refl_metaState *metaStates;
     unsigned int numberOfStates;
     unsigned int currentState;
-    unsigned int previousState;
+    int previousState; // Null previous state = -1
     refl_userData_t data;
     unsigned int numberOfProperties;
     refl_metaProperty* metaProperties;

@@ -39,3 +39,42 @@ void refl_setCurrentState(refl_metaMachine metaMachine, unsigned int stateIndex,
         metaMachine->currentState = stateIndex;
     }
 }
+
+int refl_getPreviousState(refl_metaMachine metaMachine, CLReflectResult *result)
+{
+    if (!metaMachine)
+    {
+        if (result)
+        {
+            *result = REFL_INVALID_ARGS;
+        }
+        return 0;
+    }
+    else
+    {
+        if (result)
+        {
+            *result = REFL_SUCCESS;
+        }
+        return metaMachine->previousState;
+    }
+}
+
+void refl_setPreviousState(refl_metaMachine metaMachine, unsigned int stateIndex, CLReflectResult* result)
+{
+    if (!metaMachine || stateIndex >= metaMachine->numberOfStates)
+    {
+        if (result)
+        {
+            *result = REFL_INVALID_ARGS;
+        }
+    }
+    else
+    {
+        if (result)
+        {
+            *result = REFL_SUCCESS;
+        }
+        metaMachine->previousState = stateIndex;
+    }
+}

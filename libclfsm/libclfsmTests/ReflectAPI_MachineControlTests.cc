@@ -79,7 +79,19 @@ namespace
         ASSERT_EQ(initialState, currentState);
     }
 
+    TEST_F(ReflectAPI_MachineControlTests, previousState)
+    {
+        int nullPrevState = -1;
+        int prevState = refl_getPreviousState(metaFSM, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        ASSERT_EQ(nullPrevState, prevState);
+        unsigned int newPrevState = 1;
+        refl_setPreviousState(metaFSM, newPrevState, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        prevState = refl_getPreviousState(metaFSM, &result);
+        ASSERT_EQ(newPrevState, prevState);
 
+    }
 }
 
 #pragma clang diagnostic pop
