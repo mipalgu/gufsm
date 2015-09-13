@@ -18,7 +18,7 @@
 
 using namespace std;
 
-typedef void (*onEntryFunc)();
+typedef refl_metaMachine (*create_meta_f)();
 
 namespace
 {
@@ -37,7 +37,8 @@ namespace
         ReflectAPI_CPingPongTests()
         {
             sharedObject = dlopen(SO_PATH, RTLD_NOW|RTLD_GLOBAL);
-            
+            createFunc = create_meta_f(dlsym(sharedObject, "Create_MetaMachine"));
+            metaFSM = createFunc();
         }
 
         virtual ~ReflectAPI_CPingPongTests()
@@ -50,7 +51,7 @@ namespace
 
         virtual void SetUp()
         {
-            if (!sharedObject)
+            if (!sharedObject || !metaFSM)
                 throw;
         }
 
@@ -61,7 +62,7 @@ namespace
         }
         void* sharedObject = NULL;
         refl_metaMachine metaFSM = NULL;
-        onEntryFunc func = NULL;
+        create_meta_f createFunc = NULL;
         char buffer[40];
         unsigned int bufferLen = 40;
         CLReflectResult result;

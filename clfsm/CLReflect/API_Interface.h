@@ -4,8 +4,10 @@
 #include "API_Result.h"
 #include "API_MetaMachine.h"
 
+#ifdef __cplusplus
 extern "C"
 {
+#endif
     //! Inits the API
     void refl_initAPI(CLReflectResult *result);
 
@@ -17,9 +19,10 @@ extern "C"
 
     //! Gets the meta machine with the given ID
     refl_metaMachine refl_getMetaMachine(unsigned int machineID, CLReflectResult *result);
-
-
+#ifdef __cplusplus
 }
+#endif
+
 
 
 
