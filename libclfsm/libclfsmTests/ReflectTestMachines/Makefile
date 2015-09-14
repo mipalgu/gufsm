@@ -1,7 +1,7 @@
 MACHINES=VariableTests SupportedTypesTest MachineControlTest
 MODULE=ReflectTestMachines
 
-ALL_TARGETS?=tests
+ALL_TARGETS?=host-local tests
 MAKEFLAGS+="WANT_FSM_REFLECTION=yes" ## so we get reflection by default
 
 all: all-real
