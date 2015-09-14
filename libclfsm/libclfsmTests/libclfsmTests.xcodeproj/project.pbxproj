@@ -9,6 +9,7 @@
 /* Begin PBXFileReference section */
 		301ABFA51B97ED5400224CF9 /* ReflectAPI_MetaProperty_Tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_MetaProperty_Tests.cc; sourceTree = "<group>"; };
 		301ABFA61B97ED6200224CF9 /* ReflectAPI_VariableTests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_VariableTests.cc; sourceTree = "<group>"; };
+		304BB9931BA791BC0039EDDF /* ReflectAPI_CPingPongTests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_CPingPongTests.cc; sourceTree = "<group>"; };
 		305EDA261B9E65210053F665 /* ReflectAPI_VariableTypeTests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_VariableTypeTests.cc; sourceTree = "<group>"; };
 		30A1B32B1BA2988800640F88 /* ReflectAPI_SupportedTypeTests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_SupportedTypeTests.cc; sourceTree = "<group>"; };
 		30B2268D1B82B318001511B5 /* ReflectAPI_MetaTransition_Tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_MetaTransition_Tests.cc; sourceTree = "<group>"; };
@@ -33,6 +34,7 @@
 				F17650891B7983A1009CAC69 /* en.lproj */,
 				F176508A1B7983A1009CAC69 /* libclfsmTests-Info.plist */,
 				F176508B1B7983A1009CAC69 /* Makefile */,
+				304BB9931BA791BC0039EDDF /* ReflectAPI_CPingPongTests.cc */,
 				F176508C1B7983A1009CAC69 /* ReflectAPI_Init_Tests.cc */,
 				F176508D1B7983A1009CAC69 /* ReflectAPI_MetaAction_Tests.cc */,
 				F176508E1B7983A1009CAC69 /* ReflectAPI_MetaMachine_Tests.cc */,

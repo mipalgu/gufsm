@@ -38,6 +38,10 @@ namespace
         {
             sharedObject = dlopen(SO_PATH, RTLD_NOW|RTLD_GLOBAL);
             createFunc = create_meta_f(dlsym(sharedObject, "Create_MetaMachine"));
+            if (!createFunc)
+            {
+                createFunc = create_meta_f(dlsym(sharedObject, "_Create_MetaMachine"));
+            }
             metaFSM = createFunc();
         }
 
