@@ -9,13 +9,13 @@ void initial_OnEntry()
 
 void ping_OnEntry()
 {
-    printf("Ping: %d\n", counter++);
+    printf("C-Ping: %d\n", counter++);
     sleep(1);
 }
 
 void pong_OnEntry()
 {
-    printf("Pong: %d\n", counter++);
+    printf("C-Pong: %d\n", counter++);
     sleep(1);
 }
 
@@ -27,10 +27,15 @@ unsigned char ping_transition0()
         return 0;
 }
 
-unsigned char pong_transition0()
+unsigned char ping_transition1()
 {
-    if (counter < 5)
+    if (counter >= 5)
         return 1;
     else
         return 0;
+}
+
+unsigned char pong_transition0()
+{
+    return 1;
 }
