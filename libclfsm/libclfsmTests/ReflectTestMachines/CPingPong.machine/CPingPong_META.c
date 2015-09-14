@@ -2,6 +2,7 @@
 
 #include "CPingPong.h"
 #include "CLReflectAPI.h"
+#include <stdlib.h>
 
 // Create meta machine method
 refl_metaMachine Create_MetaMachine();
@@ -13,15 +14,15 @@ void meta_pong_OnEntry(refl_machine_t machine, refl_userData_t data);
 
 void meta_initial_OnEntry(refl_machine_t machine, refl_userData_t data)
 {
-    initial_OnEntry();
+    initial_OnEntry((CPingPong*)machine);
 }
 void meta_ping_OnEntry(refl_machine_t machine, refl_userData_t data)
 {
-    ping_OnEntry();
+    ping_OnEntry((CPingPong*)machine);
 }
 void meta_pong_OnEntry(refl_machine_t machine, refl_userData_t data)
 {
-    pong_OnEntry();
+    pong_OnEntry((CPingPong*)machine);
 }
 
 // Transitions
@@ -36,22 +37,23 @@ refl_bool meta_initial_transition0(refl_machine_t machine, refl_userData_t data)
 }
 refl_bool meta_ping_transition0(refl_machine_t machine, refl_userData_t data)
 {
-    return (ping_transition0()) ? refl_TRUE : refl_FALSE;
+    return (ping_transition0((CPingPong*)machine)) ? refl_TRUE : refl_FALSE;
 
 }
 refl_bool meta_ping_transition1(refl_machine_t machine, refl_userData_t data)
 {
-    return (ping_transition1()) ? refl_TRUE : refl_FALSE;
+    return (ping_transition1((CPingPong*)machine)) ? refl_TRUE : refl_FALSE;
 }
 refl_bool meta_pong_transition0(refl_machine_t machine, refl_userData_t data)
 {
-    return (pong_transition0()) ? refl_TRUE : refl_FALSE;
+    return (pong_transition0((CPingPong*)machine)) ? refl_TRUE : refl_FALSE;
 }
 
 refl_metaMachine Create_MetaMachine()
 {
     refl_metaMachine m = refl_initMetaMachine(NULL);
-
+    CPingPong* machine = (CPingPong*)malloc(sizeof(CPingPong));
+    refl_setMachine(m, machine, NULL);
     // States
     refl_metaState states[4];
     // Initial

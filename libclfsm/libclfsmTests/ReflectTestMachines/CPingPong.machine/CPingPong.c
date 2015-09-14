@@ -2,32 +2,32 @@
 #include <stdio.h>
 #include "CPingPong.h"
 
-void initial_OnEntry()
+void initial_OnEntry(CPingPong* machine)
 {
-    counter = 0;
+    machine->counter = 0;
 }
 
-void ping_OnEntry()
+void ping_OnEntry(CPingPong* machine)
 {
-    printf("C-Ping: %d\n", counter++);
+    printf("C-Ping: %d\n", machine->counter++);
 }
 
-void pong_OnEntry()
+void pong_OnEntry(CPingPong* machine)
 {
-    printf("C-Pong: %d\n", counter++);
+    printf("C-Pong: %d\n",  machine->counter++);
 }
 
-unsigned char ping_transition0()
+unsigned char ping_transition0(CPingPong* machine)
 {
-    return counter < 5;
+    return machine->counter < 5;
 }
 
-unsigned char ping_transition1()
+unsigned char ping_transition1(CPingPong* machine)
 {
-    return counter >= 5;
+    return machine->counter >= 5;
 }
 
-unsigned char pong_transition0()
+unsigned char pong_transition0(CPingPong* machine)
 {
     return 1;
 }
