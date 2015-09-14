@@ -9,7 +9,7 @@ SPECIFIC_CPPFLAGS+= -I${POSIX_DIR}/gufsm/libclfsm/libclfsmTests/ReflectTestMachi
 SPECIFIC_CPPFLAGS+= -I${POSIX_DIR}/gufsm/libclfsm/libclfsmTests/ReflectTestMachines/MachineControlTest.machine
 CC_SRCS!=echo *.cc
 run-test:  host
-	(cd ReflectTestMachines && ${MAKE} host-local)
+	(cd ReflectTestMachines && ${MAKE} tests)
 	${SAY} "------------------------"
 	${SAY} "Running libclfsmTests..."
 	cd ${POSIX_DIR}/gufsm/libclfsm/libclfsmTests/build.host && ./libclfsmTests
