@@ -3,6 +3,7 @@
 #include "CPingPong.h"
 #include "CLReflectAPI.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 // Create meta machine method
 refl_metaMachine Create_MetaMachine();
@@ -49,11 +50,21 @@ refl_bool meta_pong_transition0(refl_machine_t machine, refl_userData_t data)
     return (pong_transition0((CPingPong*)machine)) ? refl_TRUE : refl_FALSE;
 }
 
+/*  Custom destructor call back. Required to delete CPingPong since we are allocating
+    it in Create_MetaMachine()
+*/
+void destroy(refl_machine_t machine, refl_userData_t data)
+{
+    printf("Destroying CPingPong\n");
+    free(machine);
+}
+
 refl_metaMachine Create_MetaMachine()
 {
     refl_metaMachine m = refl_initMetaMachine(NULL);
     CPingPong* machine = (CPingPong*)malloc(sizeof(CPingPong));
     refl_setMachine(m, machine, NULL);
+    refl_setDestructorAction(m, destroy, NULL);
     // States
     refl_metaState states[4];
     // Initial

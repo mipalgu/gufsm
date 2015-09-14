@@ -59,5 +59,16 @@ void refl_invokeOnExit(refl_metaMachine metaMachine, unsigned int stateNum, CLRe
 
 refl_bool refl_evaluateTransition(refl_metaMachine metaMachine, unsigned int stateNum, unsigned int transitionNum, CLReflectResult *result);
 
+/*!
+    Allows a user defined destructor callback to be set. This is called prior to the API
+    destroying the meta-FSM within refl_destroyMetaMachine(). The user-defined destructor should not delete any
+    CLReflectAPI data related to the meta-FSM e.g. meta-states, as this is performed
+    in the refl_destroyMetaMachine() call.
+    @param metaMachine The meta machine.
+    @param destructFunction The user defined destructor function.
+    @param result The result of the call.
+*/
+void refl_setDestructorAction(refl_metaMachine metaMachine, refl_destuctor_f destructFunction, CLReflectResult* result);
+
 
 #endif /* end of include guard: API_METAMACHINE_H */

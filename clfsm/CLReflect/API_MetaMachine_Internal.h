@@ -67,6 +67,7 @@ struct metaMachine_s
     refl_userData_t data;
     unsigned int numberOfProperties;
     refl_metaProperty* metaProperties;
+    refl_destuctor_f destructorAction;
 };
 
 #pragma clang diagnostic pop

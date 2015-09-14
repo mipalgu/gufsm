@@ -20,6 +20,7 @@ refl_metaMachine refl_initMetaMachine(CLReflectResult* result)
         newMeta->currentState = 0;
         newMeta->previousState = -1;
         newMeta->data = NULL;
+        newMeta->destructorAction = NULL;
         if (result != NULL)
         {
             *result = REFL_SUCCESS;
@@ -43,6 +44,10 @@ void refl_destroyMetaMachine(refl_metaMachine metaMachine, CLReflectResult* resu
     }
     else
     {
+        if (metaMachine->destructorAction)
+        {
+            metaMachine->destructorAction(metaMachine->machine, metaMachine->data);
+        }
         free(metaMachine->name);
         //Destroy states
         unsigned int i;
@@ -270,4 +275,23 @@ refl_bool refl_evaluateTransition(refl_metaMachine metaMachine, unsigned int sta
     return transition->evalFunction(metaMachine->machine,
                         transition->data);
 
+}
+
+void refl_setDestructorAction(refl_metaMachine metaMachine, refl_destuctor_f destructFunction, CLReflectResult* result)
+{
+    if (!metaMachine)
+    {
+        if (result)
+        {
+            *result = REFL_INVALID_ARGS;
+        }
+    }
+    else
+    {
+        metaMachine->destructorAction = destructFunction;
+        if (result)
+        {
+            *result = REFL_SUCCESS;
+        }
+    }
 }
