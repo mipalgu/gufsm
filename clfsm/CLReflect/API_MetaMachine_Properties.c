@@ -150,6 +150,7 @@ void refl_setMachinePropertyValue_S(refl_metaMachine metaMachine, unsigned int p
     if (!metaMachine || !metaMachine->machine ||
             propIndex >= metaMachine->numberOfProperties)
     {
+        printf("%p %p %u %u\n", metaMachine, metaMachine->machine, propIndex, metaMachine->numberOfProperties);
         if (result)
         {
             *result = REFL_INVALID_ARGS;
