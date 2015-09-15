@@ -41,6 +41,10 @@ namespace
             if (!createFunc)
             {
                 createFunc = create_meta_f(dlsym(sharedObject, "_Create_MetaMachine"));
+                if (createFunc == NULL)
+                {
+                    std::cerr << "Problems" << std::endl;
+                }
             }
             metaFSM = createFunc();
         }

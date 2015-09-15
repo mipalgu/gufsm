@@ -29,5 +29,6 @@ unsigned char ping_transition1(CPingPong* machine)
 
 unsigned char pong_transition0(CPingPong* machine)
 {
+    (void)machine;
     return 1;
 }

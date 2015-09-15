@@ -6,7 +6,7 @@
 #include <stdio.h>
 
 // Create meta machine method
-refl_metaMachine Create_MetaMachine();
+refl_metaMachine Create_MetaMachine(void);
 
 // State actions
 void meta_initial_OnEntry(refl_machine_t machine, refl_userData_t data);
@@ -53,6 +53,7 @@ refl_bool meta_pong_transition0(refl_machine_t machine, refl_userData_t data)
 /*  Custom destructor call back. Required to delete CPingPong since we are allocating
     it in Create_MetaMachine()
 */
+void destroy(refl_machine_t machine, refl_userData_t data);
 void destroy(refl_machine_t machine, refl_userData_t data)
 {
     printf("Destroying CPingPong\n");

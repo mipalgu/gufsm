@@ -58,7 +58,7 @@ tests:
 
 install: host-local
 	mkdir -p -m 0755 /usr/local/include/clfsm
-	mkdir -p -m 0755 /usr/local/lib
+	-mkdir -p -m 0755 /usr/local/lib
 	cd ${BUILDDIR}-local && \
 	install -m 0755 *${SOEXT}* /usr/local/lib
 .for hdr in ${INSTHDRS}
