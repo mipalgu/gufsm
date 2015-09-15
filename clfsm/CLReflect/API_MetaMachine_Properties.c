@@ -19,7 +19,6 @@ void refl_setMachineMetaProperties(refl_metaMachine metaMachine, refl_metaProper
     {
         if (len != 0)
         {
-            printf("Len = %u\n", len);
             free(metaMachine->metaProperties);
             metaMachine->metaProperties = (refl_metaProperty*)malloc(sizeof(refl_metaProperty) * len);
             memcpy(metaMachine->metaProperties, properties, sizeof(refl_metaProperty) * len);
