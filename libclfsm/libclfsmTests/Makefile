@@ -8,6 +8,7 @@ SPECIFIC_CPPFLAGS+= -I.. -I${GUNAO_DIR}/Common -I${POSIX_DIR}/gufsm/libclfsm/lib
 SPECIFIC_CPPFLAGS+= -I${POSIX_DIR}/gufsm/libclfsm/libclfsmTests/ReflectTestMachines/SupportedTypesTest.machine
 SPECIFIC_CPPFLAGS+= -I${POSIX_DIR}/gufsm/libclfsm/libclfsmTests/ReflectTestMachines/MachineControlTest.machine
 CC_SRCS!=echo *.cc
+
 run-test:  host
 	(cd ReflectTestMachines && ${MAKE} tests)
 	${SAY} "------------------------"
