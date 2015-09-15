@@ -16,6 +16,15 @@ host: build-host
 
 robot: build-robot
 
+.include "clfsm_hdrs.mk"                # include the clfsm HDRS here so they are put in HDRS when the documentation target comes looking. 
+#also add additional HDRS that the doc target should see
+HDRS+= CLAction.h
+HDRS+= CLMachine.h
+HDRS+= CLMacros.h
+HDRS+= CLState.h
+HDRS+= CLTransition.h
+HDRS+= CLWhiteboard.h
+
 .include "../../../mk/c++11.mk"         # use C++11
 .include "../../../mk/whiteboard.mk"	# not really, but for catkin
 
