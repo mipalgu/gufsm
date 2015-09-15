@@ -28,7 +28,7 @@ namespace
     {
     public:
         const char * TEST_FSM_PATH = "../ReflectTestMachines/CPingPong.machine";
-        const char * SO_PATH = "../ReflectTestMachines/CPingPong.machine/build.host-local/CPingPong.machine.so";
+        const string SO_PATH = "../ReflectTestMachines/CPingPong.machine/build.host-local/CPingPong.machine";
 
     protected:
         // You can remove any or all of the following functions if its body
@@ -36,17 +36,17 @@ namespace
 
         ReflectAPI_CPingPongTests()
         {
-            sharedObject = dlopen(SO_PATH, RTLD_NOW|RTLD_GLOBAL);
+            sharedObject = dlopen((SO_PATH + ".so").c_str(), RTLD_NOW|RTLD_GLOBAL);
+            if (!sharedObject)
+            {
+                sharedObject = dlopen((SO_PATH + ".dylib").c_str(), RTLD_NOW|RTLD_GLOBAL);
+            }
             createFunc = create_meta_f(dlsym(sharedObject, "Create_MetaMachine"));
             if (!createFunc)
             {
                 createFunc = create_meta_f(dlsym(sharedObject, "_Create_MetaMachine"));
-                if (createFunc == NULL)
-                {
-                    std::cerr << "Problems" << std::endl;
-                }
             }
-            metaFSM = createFunc();
+
         }
 
         virtual ~ReflectAPI_CPingPongTests()
@@ -59,8 +59,8 @@ namespace
 
         virtual void SetUp()
         {
-            if (!sharedObject || !metaFSM)
-                throw;
+            ASSERT_TRUE(sharedObject != NULL && createFunc != NULL);
+            metaFSM = createFunc();
         }
 
         virtual void TearDown()
