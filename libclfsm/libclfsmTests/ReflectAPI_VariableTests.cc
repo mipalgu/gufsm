@@ -126,9 +126,9 @@ namespace
         unsigned int charVar = 5;
         refl_setMachinePropertyValue_S(metaFSM, charVar, const_cast<char *>("c"), &result);
         //Check returned value is buffer
-        ASSERT_EQ(REFL_SUCCESS, result);
+        ASSERT_EQ(REFL_SUCCESS, result) << "Something went wrong with setting" << endl;
         char * returned = refl_getMachinePropertyValue_S(metaFSM, charVar, buffer, bufferLen, &result);
-        ASSERT_EQ(REFL_SUCCESS, result);
+        ASSERT_EQ(REFL_SUCCESS, result) << "Something went wrong with getting" << endl;
         ASSERT_STREQ(buffer, returned);
         ASSERT_STREQ("c", buffer);
 
