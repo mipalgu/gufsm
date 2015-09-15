@@ -54,7 +54,7 @@ namespace
         virtual void SetUp()
         {
             if (!wrapper || !fsm || !metaFSM)
-                throw;
+                FAIL();
         }
 
         virtual void TearDown()

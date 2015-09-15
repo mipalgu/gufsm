@@ -21,7 +21,7 @@ class CPP_MetaCreateScriptWriter():
                 machinePropertiesVar = self.writeMachineProperties()
                 with cpp.subs(propsVar = machinePropertiesVar, numProps = len(self.machineDef.properties)):
                     cpp("refl_setMachineMetaProperties(m, $propsVar$, $numProps$, NULL);")
-
+                    cpp('std::cout << "Setting $numProps$ properties" << std::endl;')
             statesVar = self.writeStateDefinitions()
             with cpp.subs(states = statesVar, numStates = len(self.machineDef.states)):
                 cpp('refl_setMetaStates(m, $states$, $numStates$, NULL);')
