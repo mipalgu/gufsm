@@ -71,6 +71,12 @@ namespace
         CLReflectResult result;
     };
 
+    TEST_F(ReflectAPI_VariableTests, fsmSanity)
+    {
+        unsigned int numProperties = refl_getNumberOfMachineProperties(metaFSM, NULL);
+        ASSERT_EQ(10, numProperties);
+    }
+
     TEST_F(ReflectAPI_VariableTests, integers_setAndCheck)
     {
         // First 3 values are int, long, unsigned int
