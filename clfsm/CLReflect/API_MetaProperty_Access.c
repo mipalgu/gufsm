@@ -1,6 +1,8 @@
 #include "API_MetaProperty_Access.h"
 #include "API_MetaMachine_Internal.h"
 
+#include <stdio.h> //XXX
+
 void* _refl_getPropertyAsVoid(refl_metaProperty property, refl_machine_t machine,
                                 CLReflectResult* result)
 {
@@ -78,6 +80,7 @@ void _refl_setPropertyAsString(refl_metaProperty property, refl_machine_t machin
 {
     if (!value || !property || !property->setAsString || !machine)
     {
+        printf("%s %p %p %p\n", value, property, property->setAsString, machine);
         if (result)
         {
             *result = REFL_INVALID_ARGS;
