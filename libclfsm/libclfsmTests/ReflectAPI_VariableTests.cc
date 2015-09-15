@@ -126,10 +126,10 @@ namespace
         unsigned int charVar = 5;
         refl_setMachinePropertyValue_S(metaFSM, charVar, const_cast<char *>("c"), &result);
         //Check returned value is buffer
+        ASSERT_EQ(REFL_SUCCESS, result);
         char * returned = refl_getMachinePropertyValue_S(metaFSM, charVar, buffer, bufferLen, &result);
         ASSERT_EQ(REFL_SUCCESS, result);
         ASSERT_STREQ(buffer, returned);
-        ASSERT_EQ(REFL_SUCCESS, result);
         ASSERT_STREQ("c", buffer);
 
         // Check that it fails if buffer is too small

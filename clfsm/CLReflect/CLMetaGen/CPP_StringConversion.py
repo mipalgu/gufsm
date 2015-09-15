@@ -61,7 +61,7 @@ class CPP_StringConversion(object):
                         cpp('#ifdef ' + dTypeStripped + '_DEFINED') # is it a whiteboard type
                         cpp('$propVar$.from_string();')
                         cpp("#endif")
-                with cpp.block('catch (std::invalid_argument &e)'):
+                with cpp.block('catch (std::exception &e)'):
                     cpp('std::cerr << "Exception: " << e.what() << std::endl;')
             with cpp.block('else '):
                 cpp('std::cout << "string length 0" << std::endl;')
