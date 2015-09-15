@@ -33,6 +33,7 @@ CPPFLAGS+=-g -O0
 copy-stuff:
 	mkdir -p ${BUILDDIR}
 	rm -rf ${BUILDDIR}/${BUILDDIR}
+	cp -p clfsm_hdrs.mk
 	cp -p ../gufsm/*.c*  ../gufsm/*.h ${BUILDDIR}
 	cp -p *.c* *.h ${BUILDDIR}
 	cp -p CLReflect/*.c* CLReflect/*.h CLReflect/CLReflectTypeEnum ${BUILDDIR}
