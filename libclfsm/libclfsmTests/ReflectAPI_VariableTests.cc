@@ -89,11 +89,15 @@ namespace
     {
         for (int i = 0; i < 1; i++)
         {
-            refl_setMachinePropertyValue_S(metaFSM, i, &string("---")[0], &result);
+            cerr << "1" << std::endl;
             char * checkValue = refl_getMachinePropertyValue_S(metaFSM, i, NULL, 0, &result);
-            ASSERT_STREQ("0", checkValue);
+            ASSERT_NO_THROW(refl_setMachinePropertyValue_S(metaFSM, i,const_cast<char *>("dfg"), &result));
+            char * checkValue2 = refl_getMachinePropertyValue_S(metaFSM, i, NULL, 0, &result);
+            ASSERT_STREQ(checkValue, checkValue2) << "Value should not have been changed" << endl;
             free(checkValue);
-            refl_setMachinePropertyValue_S(metaFSM, i, &string("f")[0], &result);
+            free(checkValue2);
+            cerr << "2" << std::endl;
+            refl_setMachinePropertyValue_S(metaFSM, i, const_cast<char *>("f"), &result);
             checkValue = refl_getMachinePropertyValue_S(metaFSM, i, NULL, 0, &result);
             ASSERT_STREQ("0", checkValue);
             free(checkValue);
@@ -119,7 +123,7 @@ namespace
     {
         for (int i = 3; i < 5; i++)
         {
-            refl_setMachinePropertyValue_S(metaFSM, i, &string("ss")[0], &result);
+            refl_setMachinePropertyValue_S(metaFSM, i, const_cast<char *>("ss"), &result);
             char * checkValue = refl_getMachinePropertyValue_S(metaFSM, i, NULL, 0, &result);
             ASSERT_STREQ("0.000000", checkValue);
         }

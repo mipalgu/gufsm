@@ -20,7 +20,7 @@ class CPP_StringConversion(object):
             if not formatStr:
                 cpp('snprintf(buffer, bufferLen, "%p", &$propVar$);')
             elif checker.isStdString():
-                cpp('snprintf(buffer, bufferLen, "$formatStr$", $propVar$.c_str());')                
+                cpp('snprintf(buffer, bufferLen, "$formatStr$", $propVar$.c_str());')
             else:
                 cpp('snprintf(buffer, bufferLen, "$formatStr$", $propVar$);')
             cpp('return $returnVar$;')
@@ -43,7 +43,7 @@ class CPP_StringConversion(object):
                         cpp('$propVar$ = std::string($value$);')
                     elif checker.isPrimitiveConvertable():
                         if checker.isSignedInt():
-                            cpp('$dType$ $testVar$ = static_cast<$dType$>(atoi($stringVar$.c_str()));')
+                            cpp('$dType$ $testVar$ = static_cast<$dType$>(stoi($stringVar$));')
                             cpp('$propVar$ = $testVar$;')
                         elif checker.isUnsignedInt():
                             cpp('$propVar$ = static_cast<$dType$>(stoi($stringVar$));')
@@ -61,8 +61,8 @@ class CPP_StringConversion(object):
                         cpp('#ifdef ' + dTypeStripped + '_DEFINED') # is it a whiteboard type
                         cpp('$propVar$.from_string();')
                         cpp("#endif")
-                with cpp.block('catch (std::invalid_argument e)'):
-                    cpp('std::cerr << e.what() << std::endl;')
+                with cpp.block('catch (std::invalid_argument &e)'):
+                    cpp('std::cerr << "Exception: " << e.what() << std::endl;')
             with cpp.block('else '):
                 cpp('std::cout << "string length 0" << std::endl;')
 
