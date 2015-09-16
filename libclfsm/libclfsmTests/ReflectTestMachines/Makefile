@@ -1,4 +1,4 @@
-MACHINES=VariableTests SupportedTypesTest MachineControlTest
+MACHINES=VariableTests SupportedTypesTest MachineControlTest WhiteboardVariableTest
 MODULE=ReflectTestMachines
 
 ALL_TARGETS?=host-local tests
