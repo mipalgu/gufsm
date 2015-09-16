@@ -4,10 +4,13 @@
 
 SPECIFIC_LDFLAGS+=-Wl,-rpath -Wl,/usr/local/lib
 SPECIFIC_LIBS+=-lclfsm -lgtest -lgtest_main -ldl # Link CLFSM and GTest + dlopen()
-SPECIFIC_CPPFLAGS+= -I.. -I${GUNAO_DIR}/Common -I${POSIX_DIR}/gufsm/libclfsm/libclfsmTests/ReflectTestMachines/VariableTests.machine
+SPECIFIC_CPPFLAGS+= -I.. -I${GUNAO_DIR}/Common -I${GUNAO_DIR}/Common/Whiteboard.Classes -I${POSIX_DIR}/gufsm/libclfsm/libclfsmTests/ReflectTestMachines/VariableTests.machine
 SPECIFIC_CPPFLAGS+= -I${POSIX_DIR}/gufsm/libclfsm/libclfsmTests/ReflectTestMachines/SupportedTypesTest.machine
 SPECIFIC_CPPFLAGS+= -I${POSIX_DIR}/gufsm/libclfsm/libclfsmTests/ReflectTestMachines/MachineControlTest.machine
+SPECIFIC_CPPFLAGS+= -I${POSIX_DIR}/gufsm/libclfsm/libclfsmTests/ReflectTestMachines/WhiteboardVariableTest.machine
 CC_SRCS!=echo *.cc
+
+HDRS+=DummyMachines.h
 
 run-test:  host
 	(cd ReflectTestMachines && ${MAKE} tests)

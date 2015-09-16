@@ -64,7 +64,7 @@ class CPP_StringConversion(object):
                     else:
                         dTypeStripped = self.prop.dataType.translate(None, '* ')
                         cpp('#ifdef ' + dTypeStripped + '_DEFINED') # is it a whiteboard type
-                        cpp('$propVar$.from_string(std::string());')
+                        cpp('$propVar$.from_string(std::string($value$));')
                         cpp("#endif")
                 with cpp.block('catch (std::exception &e)'):
                     cpp('std::cerr << "Exception: " << e.what() << std::endl;')
