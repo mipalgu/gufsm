@@ -52,10 +52,10 @@ class CPP_MetaFileWriter(CLMetaGenWriter):
         cpp('')
 
     def writeIncludes(self, cpp):
-        self.includes += ['#include "' + self.machineDef.name + '.h"']
         self.includes += self.machineDef.includes
         for state in self.machineDef.states:
             self.includes += ['#include "State_' + state.name + '.h"'] + state.includes
+        self.includes += ['#include "' + self.machineDef.name + '.h"']
         for inc in self.includes:
             cpp(inc)
 

@@ -1,6 +1,5 @@
 from CPP_Types import *
 from difflib import SequenceMatcher as SM
-from string import maketrans
 
 class CPP_Type_Interpreter(object):
     """Class for interpreting variable types as refl_type enum value"""

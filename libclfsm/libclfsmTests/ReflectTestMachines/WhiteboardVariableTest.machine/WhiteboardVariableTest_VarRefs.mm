@@ -9,5 +9,6 @@ WhiteboardVariableTest *_m = static_cast<WhiteboardVariableTest *>(_machine);
 #pragma clang diagnostic ignored "-Wunused-variable"
 #pragma clang diagnostic ignored "-Wshadow"
 
+Point2D	&pointTest= _m->pointTest;	///<
 
 #pragma clang diagnostic pop

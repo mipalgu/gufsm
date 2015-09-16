@@ -46,11 +46,7 @@ class CPP_MetaMachineDefinition:
         Get include paths for the machine
         '''
         includeFileName = self.name + "_Includes.h"
-        includeFilePath = os.path.join(self.machinePath, includeFileName)
-        includeFile = open(includeFilePath)
-        for line in includeFile:
-            self.includes.append(line.rstrip('\n'))
-        includeFile.close()
+        self.includes.append('#include "' + includeFileName + '"')
 
     def parseStates(self):
         '''
@@ -103,11 +99,8 @@ class State:
         self.parseProperties()
 
     def parseIncludes(self):
-        includePath = os.path.join(self.path, 'State_' + self.name + '_Includes.h')
-        includeFile = open(includePath)
-        for line in includeFile:
-            self.includes.append(line.rstrip('\n'))
-        includeFile.close()
+        includeFileName = 'State_' + self.name + '_Includes.h'
+        self.includes.append('#include "' + includeFileName + '"')
 
     def parseProperties(self):
         typeInterpreter = CPP_Type_Interpreter()

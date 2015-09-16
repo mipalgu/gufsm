@@ -18,7 +18,12 @@ class CPP_StringConversion(object):
                         dType = self.prop.dataType,
                         formatStr = formatStr):
             if not formatStr:
+                dTypeStripped = self.prop.dataType.translate(None, '* ')
+                cpp('#ifdef ' + dTypeStripped + '_DEFINED') # is it a whiteboard type
+                cpp('snprintf(buffer, bufferLen, "%s", $propVar$.description().c_str());')
+                cpp('#else')
                 cpp('snprintf(buffer, bufferLen, "%p", &$propVar$);')
+                cpp("#endif")
             elif checker.isStdString():
                 cpp('snprintf(buffer, bufferLen, "$formatStr$", $propVar$.c_str());')
             else:
@@ -57,9 +62,9 @@ class CPP_StringConversion(object):
                             cpp('$dType$ $testVar$ = static_cast<$dType$>(atof($stringVar$.c_str()));')
                             cpp('$propVar$ = $testVar$;')
                     else:
-                        dTypeStripped = self.prop.dataType.replace('*', '')
+                        dTypeStripped = self.prop.dataType.translate(None, '* ')
                         cpp('#ifdef ' + dTypeStripped + '_DEFINED') # is it a whiteboard type
-                        cpp('$propVar$.from_string();')
+                        cpp('$propVar$.from_string(std::string());')
                         cpp("#endif")
                 with cpp.block('catch (std::exception &e)'):
                     cpp('std::cerr << "Exception: " << e.what() << std::endl;')
