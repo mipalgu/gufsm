@@ -17,6 +17,8 @@ host: build-host
 robot: build-robot
 
 .include "clfsm_hdrs.mk"                # include the clfsm HDRS here so they are put in HDRS when the documentation target comes looking. 
+IGNORED_HDRS=${HDRS}
+HDRS=
 #also add additional HDRS that the doc target should see
 HDRS+= CLAction.h
 HDRS+= CLMachine.h
@@ -33,7 +35,7 @@ CPPFLAGS+=-g -O0
 copy-stuff:
 	mkdir -p ${BUILDDIR}
 	rm -rf ${BUILDDIR}/${BUILDDIR}
-	cp -p clfsm_hdrs.mk
+	cp -p clfsm_hdrs.mk ${BUILDDIR}
 	cp -p ../gufsm/*.c*  ../gufsm/*.h ${BUILDDIR}
 	cp -p *.c* *.h ${BUILDDIR}
 	cp -p CLReflect/*.c* CLReflect/*.h CLReflect/CLReflectTypeEnum ${BUILDDIR}

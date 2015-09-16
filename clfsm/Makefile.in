@@ -27,6 +27,7 @@ CC_SRCS+=clfsm_visitors.cc
 CC_SRCS+=clfsm_main.cc
 
 .include "clfsm_hdrs.mk"
+DONT_CHECK_HDRS=yes
 
 .include "../../../../mk/whiteboard.mk"		# required for the whiteboard
 .include "../../../../mk/util.mk"		# required for gu_util
