@@ -1,7 +1,6 @@
 
 HDRS+=CLActionAction.h
 HDRS+=CLTransitionExpression.h
-HDRS+=FSM.h
 HDRS+=FSMAction.h
 HDRS+=FSMActivity.h
 HDRS+=FSMExpression.h
