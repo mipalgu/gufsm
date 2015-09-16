@@ -16,7 +16,7 @@ host: build-host
 
 robot: build-robot
 
-.include "clfsm_hdrs.mk"                # include the clfsm HDRS here so they are put in HDRS when the documentation target comes looking. 
+#.include "clfsm_hdrs.mk"                # include the clfsm HDRS here so they are put in HDRS when the documentation target comes looking. 
 #also add additional HDRS that the doc target should see
 HDRS+= CLAction.h
 HDRS+= CLMachine.h
