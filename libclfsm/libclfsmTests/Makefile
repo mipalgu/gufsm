@@ -28,4 +28,11 @@ tests:
 		echo "Couldn't find gtest"; \
 	fi
 
+coverage:
+	(cd .. && ${MAKE} host-local CODE_COVERAGE=yes && sudo ${MAKE} install)
+	-${MAKE} run-test CODE_COVERAGE=yes # Segfaults at end but still seems to work
+	(cd ../build.host-local &&  \
+		lcov --quiet --directory . --base-directory . --gcov-tool gcov-4.4 --capture -o cov.info && \
+		genhtml --quiet cov.info -o ${HOME}/html_output)
+
 .include "../../../../mk/mipal.mk"		# comes last!
