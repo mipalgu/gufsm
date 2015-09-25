@@ -10,8 +10,7 @@ refl_metaState const * states = refl_getMetaStates(metaMachine, NULL);
 for (unsigned int i = 0; i < numStates; i++)
 {
 	std::cout << "State " << i << ": ";
-	char* buffer = refl_getMetaStateName(states[i], NULL);
+	const char* buffer = refl_getMetaStateName(states[i], NULL);
 	std::cout << buffer << std::endl;
-	free(buffer);
 }
 std::cout << "   ------------------------- " << std::endl;

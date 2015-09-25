@@ -88,7 +88,7 @@ void refl_setMetaStateName(refl_metaState metaState, char const * name, CLReflec
 }
 
 //! Gets the state name
-char* refl_getMetaStateName(refl_metaState metaState, CLReflectResult *result)
+const char* refl_getMetaStateName(refl_metaState metaState, CLReflectResult *result)
 {
     if (!metaState || !metaState->name)
     {
@@ -98,12 +98,9 @@ char* refl_getMetaStateName(refl_metaState metaState, CLReflectResult *result)
     }
     else
     {
-        int bufferLen = (int)strlen(metaState->name) + 1;
-        char* buffer = (char*)malloc(bufferLen);
-        CLReflectResult funcResult = refl_strcpy(buffer, metaState->name, bufferLen);
         if (result)
-            *result = funcResult;
-        return buffer;
+            *result = REFL_SUCCESS;
+        return metaState->name;
     }
 }
 

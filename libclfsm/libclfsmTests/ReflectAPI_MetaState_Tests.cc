@@ -97,10 +97,9 @@ namespace
 
         // Retrieving and checking name value
         CLReflectResult res;
-        char* buffer = refl_getMetaStateName(metaState, &res);
+        const char* buffer = refl_getMetaStateName(metaState, &res);
         ASSERT_EQ(res, REFL_SUCCESS) << "Expecting successful name retrieval" << std::endl;
         ASSERT_STREQ(name, buffer) << "Expecting names to be equal" << std::endl;
-        free(buffer);
     }
 
     TEST_F(ReflectAPI_MetaState_Tests, statesOnStack)
@@ -111,11 +110,10 @@ namespace
         unsigned int expectedStates = 2;
         ASSERT_EQ(expectedStates, numStates);
         refl_metaState const * states = refl_getMetaStates(machine, NULL);
-        char *buffer = refl_getMetaStateName(states[0], NULL);
+        const char *buffer = refl_getMetaStateName(states[0], NULL);
         ASSERT_STREQ(STATE_0, buffer);
         buffer = refl_getMetaStateName(states[1], NULL);
         ASSERT_STREQ(STATE_1, buffer);
-        free(buffer);
     }
 
     TEST_F(ReflectAPI_MetaState_Tests, transitions)

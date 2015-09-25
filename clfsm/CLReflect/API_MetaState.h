@@ -18,7 +18,7 @@ void refl_destroyMetaState(refl_metaState metaState, CLReflectResult* result);
 void refl_setMetaStateName(refl_metaState metaState, char const * name, CLReflectResult* result);
 
 //! Gets the state name. Caller responsible for freeing pointer.
-char* refl_getMetaStateName(refl_metaState metaState, CLReflectResult *result);
+const char* refl_getMetaStateName(refl_metaState metaState, CLReflectResult *result);
 
 //! Sets the OnEntry function
 void refl_setOnEntry(refl_metaState metaState, refl_metaAction action, CLReflectResult *result);
