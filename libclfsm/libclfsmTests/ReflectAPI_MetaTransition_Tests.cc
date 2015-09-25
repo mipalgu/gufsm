@@ -137,7 +137,7 @@ namespace
         const char * expression = "true";
         refl_setMetaTransitionExpression(transition, expression, &result);
         ASSERT_EQ(REFL_SUCCESS, result);
-        char * retExpression = refl_getMetaTransitionExpression(transition, &result);
+        const char * retExpression = refl_getMetaTransitionExpression(transition, &result);
         ASSERT_EQ(REFL_SUCCESS, result);
         ASSERT_STREQ(expression, retExpression);
 

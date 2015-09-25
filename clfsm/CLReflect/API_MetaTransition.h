@@ -27,7 +27,7 @@ void refl_setMetaTransitionEvalFunction(refl_metaTransition trans, refl_transiti
 
 refl_userData_t refl_getMetaTransitionData(refl_metaTransition trans, CLReflectResult* result);
 
-char * refl_getMetaTransitionExpression(refl_metaTransition trans, CLReflectResult* result);
+const char * refl_getMetaTransitionExpression(refl_metaTransition trans, CLReflectResult* result);
 
 void refl_setMetaTransitionExpression(refl_metaTransition trans, char const * exp, CLReflectResult* result);
 

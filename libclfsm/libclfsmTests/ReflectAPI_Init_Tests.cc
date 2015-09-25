@@ -103,18 +103,16 @@ namespace
     TEST_F(ReflectAPI_Init_Tests, testPingPong)
     {
         refl_metaMachine pingPong = createPingPong();
-        char* buffer = refl_getMetaMachineName(pingPong, NULL);
+        const char* buffer = refl_getMetaMachineName(pingPong, NULL);
         ASSERT_STREQ("PingPongCLFSM", buffer);
         int numStates = refl_getNumberOfStates(pingPong, NULL);
         ASSERT_EQ(2, numStates);
         refl_metaState const * states = refl_getMetaStates(pingPong, NULL);
 
-        char* pingBuffer = refl_getMetaStateName(states[0], NULL);
+        const char* pingBuffer = refl_getMetaStateName(states[0], NULL);
         ASSERT_STREQ("Ping", pingBuffer);
-        free(pingBuffer);
-        char* pongBuffer = refl_getMetaStateName(states[1], NULL);
+        const char* pongBuffer = refl_getMetaStateName(states[1], NULL);
         ASSERT_STREQ("Pong", pongBuffer);
-        free(pongBuffer);
 
 
     }

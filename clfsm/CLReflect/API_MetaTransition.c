@@ -194,38 +194,19 @@ refl_userData_t refl_getMetaTransitionData(refl_metaTransition trans, CLReflectR
     }
 }
 
-char * refl_getMetaTransitionExpression(refl_metaTransition trans, CLReflectResult* result)
+const char * refl_getMetaTransitionExpression(refl_metaTransition trans, CLReflectResult* result)
 {
-    refl_bool shouldReturnNull = refl_FALSE;
-    CLReflectResult res;
-    char *expression = NULL;
     if (!trans)
     {
-        res = REFL_INVALID_ARGS;
-        shouldReturnNull = refl_TRUE;
-    }
-    else if (trans->expression == NULL)
-    {
-        res = REFL_SUCCESS;
-        shouldReturnNull = refl_TRUE;
-    }
-    else
-    {
-        size_t len = strlen(trans->expression) + 1;
-        expression = (char *) malloc(sizeof(char) * len);
-        res = refl_strcpy(expression, trans->expression, len);
-    }
-    if (result)
-    {
-        *result = res;
-    }
-    if (shouldReturnNull)
-    {
+        if (result)
+            *result = REFL_INVALID_ARGS;
         return NULL;
     }
     else
     {
-        return expression;
+        if (result)
+            *result = REFL_SUCCESS;
+        return trans->expression;
     }
 
 }

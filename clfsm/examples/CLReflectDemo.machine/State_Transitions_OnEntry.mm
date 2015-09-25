@@ -9,12 +9,11 @@ for (unsigned int i = 0; i < numStates; i++)
 	refl_metaTransition const * transitions = refl_getMetaTransitions(states[i], NULL);
 	for (unsigned int t = 0; t < numTransitions; t++)
 	{
-		char * expression = refl_getMetaTransitionExpression(transitions[t], NULL);
+		const char * expression = refl_getMetaTransitionExpression(transitions[t], NULL);
 		std::cout << "Transition " << t << ": " << expression << std::endl;
 		bool eval = refl_evaluateTransition(metaMachine, i, t, NULL);
 		std::string evalString = (eval) ? "true" : "false";
 		std:: cout << "Evaluates " << evalString << std::endl;
-		free(expression);
 	}
 
 }
