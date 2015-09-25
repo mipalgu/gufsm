@@ -20,19 +20,19 @@ refl_metaMachine refl_initMetaMachine(CLReflectResult* result);
 */
 void refl_destroyMetaMachine(refl_metaMachine machine, CLReflectResult* result);
 
-/*! Sets the meta machine name to the given parameter.
+/*! Sets the meta machine name to the given parameter. The string content of name is copied.
     @param machine The meta machine
     @param name The new name.
     @param result The result of the call
 */
 void refl_setMetaMachineName(refl_metaMachine machine, char const * name, CLReflectResult* result);
 
-/*! Returns a copy of the machine's name. Caller is responsible for freeing the return value.
+/*! Returns a pointer to the machine's name. 
     @param machine The meta machine
     @param result The result of the call.
     @return A pointer to a heap allocated string.
 */
-char* refl_getMetaMachineName(refl_metaMachine machine, CLReflectResult* result);
+const char * refl_getMetaMachineName(refl_metaMachine machine, CLReflectResult* result);
 
 /*!
     Sets the actual FSM for this meta machine

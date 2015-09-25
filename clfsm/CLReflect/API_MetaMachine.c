@@ -93,7 +93,7 @@ void refl_setMetaMachineName(refl_metaMachine machine, char const * name, CLRefl
     }
 }
 
-char* refl_getMetaMachineName(refl_metaMachine machine, CLReflectResult* result)
+const char * refl_getMetaMachineName(refl_metaMachine machine, CLReflectResult* result)
 {
     if (!machine || !machine->name)
     {
@@ -103,12 +103,9 @@ char* refl_getMetaMachineName(refl_metaMachine machine, CLReflectResult* result)
     }
     else
     {
-        int bufferLen = (int)strlen(machine->name) + 1;
-        char* buffer = (char*)malloc(bufferLen);
-        CLReflectResult funcResult = refl_strcpy(buffer, machine->name, bufferLen);
         if (result)
-            *result = funcResult;
-        return buffer;
+            *result = REFL_SUCCESS;
+        return machine->name;
     }
 
 }

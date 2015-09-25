@@ -82,19 +82,18 @@ namespace
 
         // Retrieving and checking name value
         CLReflectResult res;
-        char* buffer = refl_getMetaMachineName(metaMachine, &res);
+        const char* buffer = refl_getMetaMachineName(metaMachine, &res);
         ASSERT_EQ(res, REFL_SUCCESS) << "Expecting successful name retrieval" << std::endl;
         ASSERT_STREQ(name, buffer) << "Expecting names to be equal" << std::endl;
-        free(buffer);
     }
 
     TEST_F(ReflectAPI_MetaMachine_Tests, nullName)
     {
         metaMachine = refl_initMetaMachine(NULL);
         CLReflectResult result;
-        char* buffer = refl_getMetaMachineName(metaMachine, &result);
+        refl_getMetaMachineName(metaMachine, &result);
+
         ASSERT_NE(result, REFL_SUCCESS) << "Expecting failure since name is not set" << endl;
-        free(buffer);
         refl_setMetaMachineName(metaMachine, NULL, &result);
         ASSERT_NE(REFL_SUCCESS, result);
     }
