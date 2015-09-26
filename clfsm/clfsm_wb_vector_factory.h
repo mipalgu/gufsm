@@ -90,7 +90,9 @@ namespace FSM
 
         class CLFSMWBVectorFactory: public FSM::CLFSMVectorFactory
         {
+#ifndef WITHOUT_LIBDISPATCH
                 whiteboard_watcher _watcher;            ///< whiteboard watcher to manage subscriptions
+#endif
                 guWhiteboard::FSM_Status_t _wbstatus;   ///< current whiteboard status of machines
                 guWhiteboard::FSM_Names_t _wbfsmnames;  ///< fsm name information on the whiteboard
                 guWhiteboard::FSM_States_t _wbfsmStates;   ///< buffered state status, used to limit WB publications.
@@ -109,9 +111,10 @@ namespace FSM
                 /** context setter */
                 void setContext(FSM::Context *context) { _context = (FSM::Context *) context; }
 
+#ifndef WITHOUT_LIBDISPATCH
                 /** whiteboard watcher getter */
                 whiteboard_watcher &watcher() { return _watcher; }
-
+#endif
                 /** status getter */
                 guWhiteboard::FSM_Status_t &wbstatus() { return _wbstatus; }
 

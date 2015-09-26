@@ -2,7 +2,7 @@
  *  FSMachine.cc
  *  
  *  Created by René Hexel on 23/09/11.
- *  Copyright (c) 2011, 2013, 2014 Rene Hexel.
+ *  Copyright (c) 2011, 2013, 2014, 2015 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -61,7 +61,10 @@
 #include "FSMState.h"
 #include "FSMTransition.h"
 #include "FSMExpression.h"
+
+#ifndef WITHOUT_LIBDISPATCH
 #include <dispatch/dispatch.h>
+#endif
 
 #include "stringConstants.h"
 

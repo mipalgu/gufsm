@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 25/03/13.
- *  Copyright (c) 2013 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2013, 2015 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -65,10 +65,16 @@ using namespace FSM;
 using namespace guWhiteboard;
 using namespace std;
 
-CLFSMWBVectorFactory::CLFSMWBVectorFactory(Context *context, bool deleteOnDestruction): CLFSMVectorFactory(context, deleteOnDestruction), _watcher(),  _wbstatus()
+CLFSMWBVectorFactory::CLFSMWBVectorFactory(Context *context, bool deleteOnDestruction): CLFSMVectorFactory(context, deleteOnDestruction),
+#ifndef WITHOUT_LIBDISPATCH
+	_watcher(),
+#endif
+	_wbstatus()
 {
+#ifndef WITHOUT_LIBDISPATCH
         SUBSCRIBE(&watcher(), FSM_Control, FSM::CLFSMWBVectorFactory, FSM::CLFSMWBVectorFactory::whiteboard_fsm_control);
         SUBSCRIBE(&watcher(), FSM_Names, FSM::CLFSMWBVectorFactory, FSM::CLFSMWBVectorFactory::whiteboard_fsm_names);
+#endif
 }
 
 

@@ -56,7 +56,11 @@
  *
  */
 #include <iostream>
+
+#ifndef WITHOUT_LIBDISPATCH
 #include <dispatch/dispatch.h>
+#endif
+
 #include "FSMachineVector.h"
 #include "FSMAsynchronousSuspensibleMachine.h"
 #include "CLMachine.h"

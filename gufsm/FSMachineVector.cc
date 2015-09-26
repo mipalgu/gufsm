@@ -2,7 +2,7 @@
  *  FSMachineVector.cc
  *
  *  Created by René Hexel on 22/11/11.
- *  Copyright (c) 2011, 2013-2014 Rene Hexel.
+ *  Copyright (c) 2011, 2013, 2014, 2015 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -80,11 +80,12 @@ StateMachineVector::StateMachineVector(Context *ctx, useconds_t timeout,
                                        idle_f default_idle_function):
         _context(ctx), _machines(), _idle_timeout(timeout), _accepting(false)
 {
+#ifndef WITHOUT_LIBDISPATCH
         stringstream ss;
         ss << "dispatch_queue_" << reinterpret_cast<long long>(this);
 
         _queue = dispatch_queue_create(ss.str().c_str(), NULL);
-
+#endif
         if (!default_idle_function) default_idle_function = default_idle_sleep;
         _no_transition_fired = default_idle_function;
 }
@@ -201,6 +202,7 @@ void StateMachineVector::scheduleSuspend()
         }
 }
 
+#ifndef WITHOUT_LIBDISPATCH
 #ifndef __BLOCKS__
 struct spawn_context
 {
@@ -247,6 +249,7 @@ bool StateMachineVector::executeOnceOnQueue(dispatch_queue_t queue)
         }
         return fired;
 }
+#endif
 
 
 void StateMachineVector::execute(visitor_f should_execute_machine, void *context, visitor_f accepting_action)
@@ -261,7 +264,7 @@ void StateMachineVector::execute(visitor_f should_execute_machine, void *context
 }
 
 
-#ifndef __BLOCKS__
+#if !defined(__BLOCKS__) && !defined(WITHOUT_LIBDISPATCH)
 struct spawn_queue_param
 {
         StateMachineVector *self;
@@ -292,6 +295,7 @@ struct spawn_queue_param
 #pragma clang diagnostic ignored "-Wweak-vtables"
 #pragma clang diagnostic ignored "-Wpadded"
 
+#ifndef WITHOUT_LIBDISPATCH
 
 void StateMachineVector::scheduleExecuteOnQueue(dispatch_queue_t queue)
 {
@@ -313,6 +317,8 @@ void StateMachineVector::scheduleExecuteOnQueue(dispatch_queue_t queue)
         dispatch_async_f(_queue, &p, spawn_execute_once_on_queue);
 #endif
 }
+
+#endif
 
 #pragma clang diagnostic pop
 

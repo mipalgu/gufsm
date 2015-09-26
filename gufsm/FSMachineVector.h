@@ -61,12 +61,16 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wreserved-id-macro"
 
+#ifndef WITHOUT_LIBDISPATCH
 #include <dispatch/dispatch.h>
+#endif
 #undef __block
 #define __block _xblock
 #include <unistd.h>
 #undef __block
+#ifndef WITHOUT_LIBDISPATCH
 #define __block __attribute__((__blocks__(byref)))
+#endif
 #include <vector>
 #include <string>
 #include <list>
@@ -144,7 +148,9 @@ namespace FSM
                 Context         *_context;              ///< global context
                 MachineVector   _machines;              ///< vector of suspensible FSMs
                 idle_f          _no_transition_fired;   ///< idle function
+#ifndef WITHOUT_LIBDISPATCH
                 dispatch_queue_t _queue;                ///< dispatch run queue
+#endif
                 useconds_t      _idle_timeout;          ///< idle timeout in usec
                 bool            _accepting;             ///< all machines are in an accepting state
 
@@ -213,11 +219,12 @@ namespace FSM
                  */
                 virtual bool executeOnce(visitor_f should_execute_machine, void *context = NULL, visitor_f accepting_action = NULL);
 
+#ifndef WITHOUT_LIBDISPATCH
                 /**
                  * synchronously execute once on a specific dispatch queue
                  */
                 virtual bool executeOnceOnQueue(dispatch_queue_t queue = NULL);
-
+#endif
                 /**
                  * execute until accepting state is encountered
                  */
@@ -228,11 +235,13 @@ namespace FSM
                  */
                 virtual void execute(visitor_f should_execute_machine, void *context = NULL, visitor_f accepting_action = NULL);
 
+#ifndef WITHOUT_LIBDISPATCH
                 /**
-                 * asynchronously schedule execute on a specific dispatch queue until
-                 * accepting state is encountered
+                 * asynchronously schedule execute on a specific dispatch queue
+                 * until accepting state is encountered
                  */
                 virtual void scheduleExecuteOnQueue(dispatch_queue_t queue = NULL);
+#endif
 
                 /**
                  * execute dedicated function if no transition fired --
@@ -275,7 +284,7 @@ namespace FSM
                  * subclass responsibility: serialise a Kripke Gobal vector in smv format
                  */
                 std::string descriptionSMVformat(KripkeFreezePointVector &) { return ""; }
-#ifndef __BLOCKS__
+#if !defined(__BLOCKS__) && !defined(WITHOUT_LIBDISPATCH)
                 /** not really public */
                 void do_spawn_once_on_queue(dispatch_queue_t queue);
 #endif
