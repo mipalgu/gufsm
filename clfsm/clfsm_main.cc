@@ -55,6 +55,10 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#ifndef _BSD_SOURCE
+#define _BSD_SOURCE 199601
+#endif
+
 #include <iostream>
 #include <sstream>
 #include <cstdio>
@@ -72,7 +76,9 @@
 #include <stdlib.h>                     // C++ stdlib instead of cstdlib.
 #include <unistd.h>
 #include <signal.h>
+#ifndef WITHOUT_BACKTRACE
 #include <execinfo.h>
+#endif
 #include <libgen.h>
 #include <sys/stat.h>
 #include <memory>
@@ -151,6 +157,7 @@ static void __attribute((noreturn)) aborting_signal_handler(int signum)
 }
 
 
+#ifndef WITHOUT_BACKTRACE
 static void print_backtrace(int signum)
 {
     void *callstack[256];
@@ -158,8 +165,8 @@ static void print_backtrace(int signum)
     int frames = backtrace(callstack, sizeof(callstack)/sizeof(callstack[0]));
     char **strs = backtrace_symbols(callstack, frames);
     char tmpname[256];
-    snprintf(tmpname, sizeof(tmpname), "/tmp/%s-XXX.log", basename((char *)command));
-    int fn = mkstemps(tmpname, 4);
+    snprintf(tmpname, sizeof(tmpname), "/tmp/%s-XXXX", basename((char *)command));
+    int fn = mkstemp(tmpname);
     FILE *logfile = fdopen(fn, "w");
     if (!logfile)
     {
@@ -190,11 +197,13 @@ static void print_backtrace(int signum)
     if (signum == SIGTSTP) kill(getpid(), SIGSTOP);
     errno = olderrno;
 }
-
+#endif
 
 static void __attribute((noreturn)) backtrace_signal_handler(int signum)
 {
+#ifndef WITHOUT_BACKTRACE
     print_backtrace(signum);
+#endif
     signal(SIGABRT, SIG_DFL);
     if (nonstop)
     {
@@ -300,8 +309,10 @@ int main(int argc, char * const argv[])
 #ifdef SIGINFO
     signal(SIGINFO, print_backtrace);
 #endif
+#ifndef WITHOUT_BACKTRACE
     signal(SIGTSTP, print_backtrace);
     signal(SIGHUP,  print_backtrace);
+#endif
 
     compiler_args.push_back("-std=c++11");    /// XXX: fix this
 
