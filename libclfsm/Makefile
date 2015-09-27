@@ -71,6 +71,31 @@ install: host-local
 .endfor
 
 
+.ifndef TARGET
+cross-install: cross-local
+.  for rarch in ${ARCHS.${DEFAULT_TARGET}}
+	$Eenv PATH=${TARGET_PATH.${DEFAULT_TARGET}:Q}                   \
+                ${MAKE} ${MAKEFLAGS} TARGET=${DEFAULT_TARGET}           \
+                BUILD_FLAGS=${TARGET_BUILD_FLAGS.${DEFAULT_TARGET}:Q}   \
+                TARGET_PLATFORM=${rarch} ALL_TARGETS=cross-install
+.  endfor
+.else
+cross-install: cross-local
+	mkdir -p -m 0755 ${STAGING}/usr/local/include/clfsm
+	-mkdir -p -m 0755 ${STAGING}/usr/local/lib
+	cd ${BUILDDIR}-local && \
+	install -m 0755 *${SOEXT}* ${STAGING}/usr/local/lib
+.  for hdr in ${INSTHDRS}
+	cd ${SRCDIR} && \
+	if [ -d ${hdr:Q} ]; then \
+	  cp -pR ${hdr:Q} ${STAGING}/usr/local/include/clfsm;\
+	else \
+	  install -m 0644 ${hdr} ${STAGING}/usr/local/include/clfsm;\
+	fi
+.  endfor
+.endif
+
+
 pre-catkin:
 	$Emkdir -p ${CATKIN_DIR}/include/typeClassDefs
 .for hfile in FSM_Control.h FSMControlStatus.h wb_fsm_control_status.h wb_fsm_state_status.h
