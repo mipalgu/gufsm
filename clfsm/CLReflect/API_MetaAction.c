@@ -1,7 +1,13 @@
 #include "API_MetaAction.h"
 #include "API_MetaMachine_Internal.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wbuiltin-requires-header"
+
 #include <stdlib.h>
+
+#pragma clang diagnostic pop
 
 //! Inits the meta-action
 refl_metaAction refl_initMetaAction(CLReflectResult* result)

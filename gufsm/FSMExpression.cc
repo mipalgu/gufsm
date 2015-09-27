@@ -2,7 +2,7 @@
  *  FSMExpression.cc
  *  
  *  Created by René Hexel on 26/09/11.
- *  Copyright (c) 2011, 2013 Rene Hexel.
+ *  Copyright (c) 2011, 2013, 2015 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,7 +55,13 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
+
 #include <sys/time.h>
+
+#pragma clang diagnostic pop
+
 #include "FSMExpression.h"
 #include "FSMachine.h"
 

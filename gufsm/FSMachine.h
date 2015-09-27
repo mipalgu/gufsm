@@ -2,7 +2,7 @@
  *  FSMachine.h
  *  
  *  Created by René Hexel on 23/09/11.
- *  Copyright (c) 2011 Rene Hexel.
+ *  Copyright (c) 2011, 2015 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -58,6 +58,14 @@
 #ifndef gufsm_FSMachine_h
 #define gufsm_FSMachine_h
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wshorten-64-to-32"
+#pragma clang diagnostic ignored "-Wweak-vtables"
+#pragma clang diagnostic ignored "-Wpadded"
+#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+#pragma clang diagnostic ignored "-Wunused-parameter"
+#pragma clang diagnostic ignored "-Wdeprecated"
+
 #include <vector>
 #include <string>
 #include <sys/time.h>
@@ -70,13 +78,6 @@
 #undef true
 #undef false
 #endif
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wshorten-64-to-32"
-#pragma clang diagnostic ignored "-Wweak-vtables"
-#pragma clang diagnostic ignored "-Wpadded"
-#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
-#pragma clang diagnostic ignored "-Wunused-parameter"
 
 #define TIMES_TO_POST_NAME_AND_ID 5
 

@@ -56,10 +56,15 @@
 * Fifth Floor, Boston, MA  02110-1301, USA.
 *
 */
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
 
 #include <iostream>
+#include <sstream>
 #include <string.h>
 #include <memory>
+
+#pragma clang diagnostic pop
 
 #include "clfsm_machine_loader.h"
 #include "clfsm_wb_vector_factory.h"

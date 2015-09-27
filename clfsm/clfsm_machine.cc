@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 11/10/12.
- *  Copyright (c) 2012, 2014 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2014, 2015 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -58,7 +58,14 @@
 #include <cstdlib>
 #include <sstream>
 #include <fstream>
+
+#ifndef WITHOUT_LIBDISPATCH
 #include <dispatch/dispatch.h>
+#endif
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
+
 #include <libgen.h>
 
 #ifdef bool
@@ -73,6 +80,9 @@
 #include <dlfcn.h>
 #include <sys/utsname.h>
 #include <sys/stat.h>
+
+#pragma clang diagnostic pop
+
 #include <gu_util.h>
 #include "clfsm_cc.h"
 #include "clfsm_machine.h"
@@ -87,7 +97,9 @@
 using namespace std;
 using namespace FSM;
 
+#ifndef WITHOUT_LIBDISPATCH
 static dispatch_queue_t sync_queue = NULL;
+#endif
 
 MachineWrapper::MachineWrapper(string path): _fullPath(path), _factory(NULL), _metaFactory(NULL), _shared_object(NULL), _compiler(NULL), _compiler_args(NULL), _linker_args(NULL), _delete_compiler(false)
 {
@@ -176,6 +188,7 @@ vector<string> MachineWrapper::states() const
     return states;
 }
 
+#ifndef WITHOUT_LIBDISPATCH
 static void create_compile_queue(void *)
 {
     sync_queue = dispatch_queue_create("net.mipal.clfsm.compile", 0);
@@ -192,14 +205,17 @@ static void push_back_outfilename(void *p)
     outfile_pushback_param *param = static_cast<outfile_pushback_param *>(p);
     param->outfilesp->push_back(*param->outfilenamep);
 }
+#endif
 
 
 bool MachineWrapper::compile(const vector<string> &compiler_args, const vector<string> &linker_args)
 {
     string binary_directory = binaryDirectory();
+
+#ifndef WITHOUT_LIBDISPATCH
     static dispatch_once_t onceToken;
     dispatch_once_f(&onceToken, NULL, create_compile_queue);
-
+#endif
     if (!compiler()) setCompiler();
 
     mkdir(binary_directory.c_str(), 0777);
@@ -207,7 +223,7 @@ bool MachineWrapper::compile(const vector<string> &compiler_args, const vector<s
     vector<string> files = states();
     files.push_back("");
 
-#ifdef __BLOCKS__
+#if defined(__BLOCKS__) && !defined(WITHOUT_LIBDISPATCH)
     __block vector<string> outfiles;
     __block bool success = true;
     dispatch_apply(files.size(), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(size_t i)
@@ -244,7 +260,7 @@ bool MachineWrapper::compile(const vector<string> &compiler_args, const vector<s
 
         if (!compiler()->compile(args))
                 success = false;
-#ifdef __BLOCKS__
+#if defined(__BLOCKS__) && !defined(WITHOUT_LIBDISPATCH)
         else dispatch_sync(sync_queue,
         ^{
                 outfiles.push_back(outfilename);
@@ -253,8 +269,12 @@ bool MachineWrapper::compile(const vector<string> &compiler_args, const vector<s
 #else
         else
         {
+#ifndef WITHOUT_LIBDISPATCH
                 outfile_pushback_param param = { &outfiles, &outfilename };
                 dispatch_sync_f(sync_queue, &param, push_back_outfilename);
+#else
+                outfiles.push_back(outfilename);
+#endif
         }
 }
 #endif

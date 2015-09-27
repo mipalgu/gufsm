@@ -1,8 +1,14 @@
 #ifndef CLREFLECTFUNCTIONPOINTERTYPES_H
 #define CLREFLECTFUNCTIONPOINTERTYPES_H
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wold-style-cast"
+
 #include <stdint.h>
 #include <stdlib.h>
+
+#pragma clang diagnostic pop
 
 // Typedefs
 

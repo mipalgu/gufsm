@@ -2,9 +2,16 @@
 #include "API_MetaMachine_Internal.h"
 #include "API_Util.h"
 #include "CLReflectFunctionPointerTypes.h"
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wbuiltin-requires-header"
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+
+#pragma clang diagnostic pop
 
 refl_metaMachine refl_initMetaMachine(CLReflectResult* result)
 {

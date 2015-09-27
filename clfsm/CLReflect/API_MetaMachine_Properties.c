@@ -2,9 +2,15 @@
 #include "API_MetaMachine_Internal.h"
 #include "API_MetaProperty_Access.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wbuiltin-requires-header"
+
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h> //XXX:
+
+#pragma clang diagnostic pop
 
 void refl_setMachineMetaProperties(refl_metaMachine metaMachine, refl_metaProperty *properties, unsigned int len, CLReflectResult *result)
 {

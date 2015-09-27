@@ -1,3 +1,5 @@
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
 #pragma clang diagnostic ignored "-Wsign-compare"
 
 #include "API_Interface.h"

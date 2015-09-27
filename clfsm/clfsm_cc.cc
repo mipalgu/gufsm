@@ -55,7 +55,10 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#ifndef WITHOUT_LIBDISPATCH
 #include <dispatch/dispatch.h>
+#endif
+
 #include <cstdlib>
 #include <cstdio>
 #include <cerrno>
@@ -63,16 +66,19 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-macros"
 #pragma clang diagnostic ignored "-Wreserved-id-macro"
+#pragma clang diagnostic ignored "-Wdeprecated"
 
 #undef __block
 #define __block _xblock
 #include <unistd.h>
 #undef __block
 #define __block __attribute__((__blocks__(byref)))
-#pragma clang diagnostic pop
 
 #include <sys/wait.h>
 #include <vector>
+
+#pragma clang diagnostic pop
+
 #include <gu_util.h>
 #include "clfsm_cc_delegate.h"
 #include "clfsm_cc.h"

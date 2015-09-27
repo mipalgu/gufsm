@@ -2,7 +2,7 @@
  *  FSMAction.cc
  *
  *  Created by René Hexel on 23/09/11.
- *  Copyright (c) 2011, 2014 Rene Hexel.
+ *  Copyright (c) 2011, 2014, 2015 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,9 +55,15 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
+
 #include <time.h>
 #include <cstdio>
 #include <errno.h>
+
+#pragma clang diagnostic pop
+
 #include "FSMAction.h"
 
 using namespace FSM;

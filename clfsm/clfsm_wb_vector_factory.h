@@ -61,6 +61,8 @@
 
 #include "clfsm_vector_factory.h"
 #include "typeClassDefs/FSM_Control.h"
+#include "gusimplewhiteboard.h"
+#include "guwhiteboardtypelist_generated.h"
 #include "guwhiteboardwatcher.h"
 
 #ifdef bool
@@ -106,10 +108,10 @@ namespace FSM
                 CLFSMWBVectorFactory(FSM::Context *wbcontext = NULL, bool deleteOnDestruction = false);
 
                 /** context getter */
-                FSM::Context *context() { return (FSM::Context *)(_context); }
+                FSM::Context *context() { return static_cast<FSM::Context *>(_context); }
 
                 /** context setter */
-                void setContext(FSM::Context *context) { _context = (FSM::Context *) context; }
+                void setContext(FSM::Context *context) { _context = static_cast<FSM::Context *>(context); }
 
 #ifndef WITHOUT_LIBDISPATCH
                 /** whiteboard watcher getter */

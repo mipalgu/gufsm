@@ -1,7 +1,13 @@
 #include "API_MetaTransition.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wbuiltin-requires-header"
+
 #include <stdlib.h>
 #include <string.h>
+
+#pragma clang diagnostic pop
 
 #include "API_Util.h"
 #include "API_MetaMachine_Internal.h"
