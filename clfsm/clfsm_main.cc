@@ -59,13 +59,15 @@
 #define _BSD_SOURCE 199601
 #endif
 
+#pragma clang diagnostic ignored "-Wreserved-id-macro"
+#pragma clang diagnostic ignored "-Wold-style-cast"
+#pragma clang diagnostic ignored "-Wdeprecated"
+
 #include <iostream>
 #include <sstream>
 #include <cstdio>
 #include <cerrno>
 #include <cctype>
-
-#pragma clang diagnostic ignored "-Wreserved-id-macro"
 
 //#include <stdio.h>
 #ifdef __block
@@ -201,7 +203,9 @@ static void print_backtrace(int signum)
 
 static void __attribute((noreturn)) backtrace_signal_handler(int signum)
 {
-#ifndef WITHOUT_BACKTRACE
+#ifdef WITHOUT_BACKTRACE
+    (void) signum;
+#else
     print_backtrace(signum);
 #endif
     signal(SIGABRT, SIG_DFL);
