@@ -56,42 +56,34 @@ tests:
 	${MAKE} -C libclfsmTests tests
 
 
+.ifndef TARGET
 install: host-local
-	mkdir -p -m 0755 /usr/local/include/clfsm
-	-mkdir -p -m 0755 /usr/local/lib
+.else
+install: cross-local
+.endif
+	mkdir -p -m 0755 ${DST:Q}/include/clfsm
+	-mkdir -p -m 0755 ${DST:Q}/lib
 	cd ${BUILDDIR}-local && \
-	install -m 0755 *${SOEXT}* /usr/local/lib
+	install -m 0755 *${SOEXT}* ${DST:Q}/lib
 .for hdr in ${INSTHDRS}
 	cd ${SRCDIR} && \
 	if [ -d ${hdr:Q} ]; then \
-	  cp -pR ${hdr:Q} /usr/local/include/clfsm;\
+	  cp -pR ${hdr:Q} ${DST:Q}/include/clfsm;\
 	else \
-	  install -m 0644 ${hdr} /usr/local/include/clfsm;\
+	  install -m 0644 ${hdr} ${DST:Q}/include/clfsm;\
 	fi
 .endfor
 
 
-.ifndef TARGET
+.ifdef TARGET
+cross-install: install
+.else
 cross-install: cross-local
 .  for rarch in ${ARCHS.${DEFAULT_TARGET}}
 	$Eenv PATH=${TARGET_PATH.${DEFAULT_TARGET}:Q}                   \
                 ${MAKE} ${MAKEFLAGS} TARGET=${DEFAULT_TARGET}           \
                 BUILD_FLAGS=${TARGET_BUILD_FLAGS.${DEFAULT_TARGET}:Q}   \
                 TARGET_PLATFORM=${rarch} ALL_TARGETS=cross-install
-.  endfor
-.else
-cross-install: cross-local
-	mkdir -p -m 0755 ${STAGING}/usr/local/include/clfsm
-	-mkdir -p -m 0755 ${STAGING}/usr/local/lib
-	cd ${BUILDDIR}-local && \
-	install -m 0755 *${SOEXT}* ${STAGING}/usr/local/lib
-.  for hdr in ${INSTHDRS}
-	cd ${SRCDIR} && \
-	if [ -d ${hdr:Q} ]; then \
-	  cp -pR ${hdr:Q} ${STAGING}/usr/local/include/clfsm;\
-	else \
-	  install -m 0644 ${hdr} ${STAGING}/usr/local/include/clfsm;\
-	fi
 .  endfor
 .endif
 
