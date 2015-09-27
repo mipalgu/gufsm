@@ -55,13 +55,13 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef _BSD_SOURCE
-#define _BSD_SOURCE 199601
-#endif
-
 #pragma clang diagnostic ignored "-Wreserved-id-macro"
 #pragma clang diagnostic ignored "-Wold-style-cast"
 #pragma clang diagnostic ignored "-Wdeprecated"
+
+#ifndef _BSD_SOURCE
+#define _BSD_SOURCE 199601
+#endif
 
 #include <iostream>
 #include <sstream>
