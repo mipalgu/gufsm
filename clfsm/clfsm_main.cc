@@ -56,6 +56,7 @@
  *
  */
 #pragma clang diagnostic ignored "-Wreserved-id-macro"
+#pragma clang diagnostic ignored "-Wunused-macros"
 #pragma clang diagnostic ignored "-Wold-style-cast"
 #pragma clang diagnostic ignored "-Wdeprecated"
 
