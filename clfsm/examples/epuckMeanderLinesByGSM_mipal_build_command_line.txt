@@ -1,6 +1,6 @@
 In order to build this machine using the MiPal infrastructure, the following command line is required:
 
-    bmake host-local MACHINES=epuckMeanderLinesByGSM CPPFLAGS=-I/usr/local/webots/include/controller/cpp CPPFLAGS+=-I/home/nap/src/MiPal/GUNao/posix/gusimplewhiteboard CPPFLAGS+=-I/home/nap/src/MiPal/GUNao/Common
+    bmake host-local MACHINES=epuckMeanderLinesByGSM CPPFLAGS=-I/usr/local/webots/include/controller/cpp CPPFLAGS+=-I${GUNAO_DIR}/posix/gusimplewhiteboard CPPFLAGS+=-I${GUNAO_DIR}/Common
 
 
 NOTE:
