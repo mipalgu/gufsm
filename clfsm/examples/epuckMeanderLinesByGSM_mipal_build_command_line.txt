@@ -1,0 +1,56 @@
+In order to build this machine using the MiPal infrastructure, the following command line is required:
+
+    bmake host-local MACHINES=epuckMeanderLinesByGSM CPPFLAGS=-I/usr/local/webots/include/controller/cpp CPPFLAGS+=-I/home/nap/src/MiPal/GUNao/posix/gusimplewhiteboard CPPFLAGS+=-I/home/nap/src/MiPal/GUNao/Common
+
+
+NOTE:
+      The machine requires WEBOTS libraries to build/link.
+
+
+
+
+
+
+compiling OC++  epuckMeanderLinesByGSM.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_InitialPseudoState.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_Initial.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_Forward.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_Intersection_Check_LeftGS.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_Turn_Right.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_Turn_Left.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_Align_After_Left_Turn.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_ChooseDirection.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_Stop.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_Entering_Intersection.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_Forward_Feedback.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_LeftGS_Detects_Path.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_LeftGS_Detects_Intersection.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_CentreGS_Detects_Path.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_CentreGS_Detects_Intersection.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_RightGS_Detects_Path.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_RightGS_Detects_Intersection.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_May_Need_Align_In_Intersection.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_Align_In_Intersection.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_Align_To_Left_Beyond_Intersection.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_May_Need_Align_Beyond_Intersection.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_TurnLeftAwayFromObstacleOnRight.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_TurnRightAwayFromObstacleOnLeft.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_LeftGS_Detects_Nothing.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_Intersection_Check_CentreGS.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_CentreGS_Detects_Nothing.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_Intersection_Check_RightGS.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_RightGS_Detects_Nothing.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_Intersection_Alignment.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_Determine_Directiion_Left.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_Align_Beyond_Intersection.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_Left_Is_Available.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_Determine_Direction_Right.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_Right_Is_Available.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_Determine_Direction_Straight.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_Straight_Is_Available.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_Continue_Forward.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_Continue_Align_Left.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_Align_After_Right_Turn.mm (epuckMeanderLinesByGSM)
+compiling OC++  State_Continue_Align_Right.mm (epuckMeanderLinesByGSM)
+linking output epuckMeanderLinesByGSM.machine/Linux-x86_64/epuckMeanderLinesByGSM.so
+please define a test target!
