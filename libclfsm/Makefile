@@ -53,6 +53,7 @@ upload-robot:
 .endif
 
 tests:
+	${MAKE} -C libclfsmTests clean
 	${MAKE} -C libclfsmTests tests
 
 
