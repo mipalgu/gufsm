@@ -58,7 +58,16 @@
  */
 #include <vector>
 #include <string>
-#include <unistd.h>
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-macros"
+#pragma clang diagnostic ignored "-Wreserved-id-macro"
+#undef __block
+#define __block _xblock
+#include <unistd.h> //optargs
+#undef __block
+#define __block __attribute__((__blocks__(byref)))
+#pragma clang diagnostic pop
 
 namespace FSM
 {
