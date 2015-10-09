@@ -64,7 +64,7 @@
 #pragma clang diagnostic ignored "-Wreserved-id-macro"
 #undef __block
 #define __block _xblock
-#include <unistd.h> //optargs
+#include <unistd.h> // useconds_t
 #undef __block
 #define __block __attribute__((__blocks__(byref)))
 #pragma clang diagnostic pop
