@@ -78,6 +78,7 @@ using namespace FSM;
 /// The loader singleton object
 static CLFSMMachineLoader *loader_singleton;
 
+useconds_t CLFSMMachineLoader::idle_timeout = 10000;     ///< idle timeout
 
 
 /* ---- Global Access Methods ---- */
@@ -100,8 +101,7 @@ SuspensibleMachine *FSM::loadAndAddMachine(const std::string machine)
 
 bool FSM::unloadMachineAtIndex(int index)
 {
-    if (!loader_singleton)
-    return false;
+    if (!loader_singleton) return false;
     return loader_singleton->unloadMachineAtIndex(index);
 }
 
@@ -109,8 +109,7 @@ bool FSM::unloadMachineAtIndex(int index)
 /// Gets the loader singleton
 CLFSMMachineLoader* CLFSMMachineLoader::getMachineLoaderSingleton()
 {
-    if (!loader_singleton)
-    loader_singleton = new CLFSMMachineLoader();
+    if (!loader_singleton) loader_singleton = new CLFSMMachineLoader();
     return loader_singleton;
 }
 
@@ -122,9 +121,8 @@ CLFSMMachineLoader* CLFSMMachineLoader::getMachineLoaderSingleton()
 
 CLFSMMachineLoader::CLFSMMachineLoader()
 {
-    if (!loader_singleton)
-    loader_singleton = this;
-    _vector_factory = new CLFSMWBVectorFactory();
+    if (!loader_singleton) loader_singleton = this;
+    _vector_factory = new CLFSMWBVectorFactory(NULL, false, idle_timeout);
 }
 
 CLFSMMachineLoader::~CLFSMMachineLoader()

@@ -121,7 +121,7 @@ namespace FSM
                 bool                     _delete;               ///< delete machines?
         public:
                 /// default constructor
-                CLFSMVectorFactory(Context *context, bool del = true);
+                CLFSMVectorFactory(Context *context, bool del = true, useconds_t timeout = 10000L);
                 virtual ~CLFSMVectorFactory();           /// destructor
 
                 /// state machine vector getter

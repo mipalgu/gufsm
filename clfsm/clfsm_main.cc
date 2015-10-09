@@ -226,10 +226,11 @@ static void __attribute((noreturn)) backtrace_signal_handler(int signum)
 
 static void usage(const char *cmd)
 {
-    cerr << "Usage: " << cmd << "[-c][-d][-fPIC]{-I includedir}{-L linkdir}{-l lib}[-n][-s][-t][-v]" << endl;
+    cerr << "Usage: " << cmd << "[-c][-d][-fPIC]{-I includedir}[-i idlesleep]{-L linkdir}{-l lib}[-n][-s][-t][-v]" << endl;
     cerr << "[-c] = Compile only flag, don't execute machine." << endl;
     cerr << "[-f] = compiler specific flags (eg. 'PIC' To generate Position Independent Code)." << endl;
-    cerr << "{-I includedir} = Directory to include during compilation. Use repeatedly for multiple directories." << endl;
+    cerr << "{-I idlesleep} = Number of microseconds to sleep when idle (default: 10000)" << endl;
+    cerr << "{-i includedir} = Directory to include during compilation. Use repeatedly for multiple directories." << endl;
     cerr << "{-L linkdir} = Directory to include during linking. Use repeatedly for multiple directories." << endl;
     cerr << "{-l lib} = Library to include during linking. Use repeatedly for multiple libraries." << endl;
     cerr << "[-n] = Restart CLFSM after SIGABRT or SIGIOT signals." << endl;
@@ -323,7 +324,7 @@ int main(int argc, char * const argv[])
 
     int ch;
     int debug = 0, verbose = 0, noUnloadIfAccepting = 0;
-    while ((ch = getopt(argc, argv, "dgf:I:L:l:nstuv")) != -1)
+    while ((ch = getopt(argc, argv, "dgf:I:i:L:l:nstuv")) != -1)
     {
         switch (ch)
         {
@@ -340,6 +341,9 @@ int main(int argc, char * const argv[])
             case 'I':
                 compiler_args.push_back("-I");
                 compiler_args.push_back(optarg);
+                break;
+            case 'i':
+                FSM::CLFSMMachineLoader::idle_timeout = atol(optarg);
                 break;
             case 'L':
                 linker_args.push_back("-L");

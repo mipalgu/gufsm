@@ -65,7 +65,7 @@ using namespace FSM;
 using namespace guWhiteboard;
 using namespace std;
 
-CLFSMWBVectorFactory::CLFSMWBVectorFactory(Context *context, bool deleteOnDestruction): CLFSMVectorFactory(context, deleteOnDestruction),
+CLFSMWBVectorFactory::CLFSMWBVectorFactory(Context *context, bool deleteOnDestruction, useconds_t timeout): CLFSMVectorFactory(context, deleteOnDestruction, timeout),
 #ifndef WITHOUT_LIBDISPATCH
 	_watcher(),
 #endif

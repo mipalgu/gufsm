@@ -56,10 +56,9 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-
- #include <vector>
- #include <string>
-
+#include <vector>
+#include <string>
+#include <unistd.h>
 
 namespace FSM
 {
@@ -95,6 +94,7 @@ namespace FSM
 
 
 	public:
+                static useconds_t idle_timeout;     ///< idle timeout in microseconds
 		static CLFSMMachineLoader* getMachineLoaderSingleton();
 
 		~CLFSMMachineLoader();

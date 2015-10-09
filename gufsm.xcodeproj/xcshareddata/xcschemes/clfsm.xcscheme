@@ -56,6 +56,10 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
+            argument = "-i0"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "-L$(BUILT_PRODUCTS_DIR)"
             isEnabled = "YES">
          </CommandLineArgument>

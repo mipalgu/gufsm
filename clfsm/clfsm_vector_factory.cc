@@ -109,10 +109,10 @@ const char *FSM::name_of_machine_at_index(int index)
 }
 
 
-CLFSMVectorFactory::CLFSMVectorFactory(Context *context, bool del): _context(context), _clmachines(), _clfactories(), _delete(del)
+CLFSMVectorFactory::CLFSMVectorFactory(Context *context, bool del, useconds_t timeout): _context(context), _clmachines(), _clfactories(), _delete(del)
 {
         if (!factory_singleton) factory_singleton = this;
-        _fsms = new StateMachineVector(context);
+        _fsms = new StateMachineVector(context, timeout);
 }
 
 

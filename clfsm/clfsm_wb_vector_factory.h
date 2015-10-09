@@ -104,8 +104,9 @@ namespace FSM
                  * Designated constructor.
                  * @param[in] wbcontext                 Whiteboard context to use.
                  * @param[in] deleteOnDestruction       Delete non-NULL wbcontext on destruction
+                 * @param[in] timeout                   Idle timeout in microseconds
                  */
-                CLFSMWBVectorFactory(FSM::Context *wbcontext = NULL, bool deleteOnDestruction = false);
+                CLFSMWBVectorFactory(FSM::Context *wbcontext = NULL, bool deleteOnDestruction = false, useconds_t timeout = 10000L);
 
                 /** context getter */
                 FSM::Context *context() { return static_cast<FSM::Context *>(_context); }
