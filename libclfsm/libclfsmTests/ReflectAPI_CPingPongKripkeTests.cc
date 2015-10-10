@@ -35,9 +35,9 @@ namespace
     {
     public:
         T typedVariable;
-        VariableInternalConcrete(T val)
+        VariableInternalConcrete(void* val)
         {
-            typedVariable = val;
+            typedVariable = *static_cast<unsigned char*>(val);
             value = static_cast<void *>(&typedVariable);
         }
 
@@ -54,7 +54,7 @@ namespace
         {
             if (t == REFL_UNSIGNED_CHAR)
             {
-                this->var = new VariableInternalConcrete<unsigned char>(*static_cast<unsigned char*>(val));
+                this->var = new VariableInternalConcrete<unsigned char>(val);
             }
         }
 
