@@ -52,6 +52,8 @@ namespace
         virtual ~ReflectAPI_CPingPongTests()
         {
             refl_destroyMetaMachine(metaFSM, NULL);
+            if (sharedObject)
+                dlclose(sharedObject);
         }
 
         // If the constructor and destructor are not enough for setting up
@@ -65,9 +67,9 @@ namespace
 
         virtual void TearDown()
         {
-            // Code here will be called immediately after each test (right
-            // before the destructor).
+
         }
+
         void* sharedObject = NULL;
         refl_metaMachine metaFSM = NULL;
         create_meta_f createFunc = NULL;
