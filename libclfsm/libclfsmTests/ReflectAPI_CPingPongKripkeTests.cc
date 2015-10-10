@@ -22,6 +22,47 @@ typedef refl_metaMachine (*create_meta_f)();
 
 namespace
 {
+    class VariableInternalParent
+    {
+    public:
+        void* value;
+
+        virtual ~VariableInternalParent() {}
+    };
+
+    template<typename T>
+    class VariableInternalConcrete : public VariableInternalParent
+    {
+    public:
+        T typedVariable;
+        VariableInternalConcrete(T val)
+        {
+            typedVariable = val;
+            value = static_cast<void *>(&typedVariable);
+        }
+
+        virtual ~VariableInternalConcrete() {}
+
+    };
+
+    class Variable
+    {
+    public:
+        VariableInternalParent* var;
+
+        Variable(void *val, refl_type t)
+        {
+            if (t == REFL_UNSIGNED_CHAR)
+            {
+                this->var = new VariableInternalConcrete<unsigned char>(*static_cast<unsigned char*>(val));
+            }
+        }
+
+        virtual ~Variable() { delete(var); }
+
+    };
+
+
 
     // The fixture for testing clfsm.
     class ReflectAPI_CPingPongKripkeTests: public ::testing::Test
@@ -114,7 +155,6 @@ namespace
                 refl_setPreviousState(metaFSM, currentState, NULL);
             }
 
-            pcHistory[pcCount++] = beforeEvaluate;
             //Check for transitions
             unsigned int transNum;
             unsigned int numTransitions = refl_getNumberOfTransitions(states[currentState], NULL);
@@ -148,6 +188,7 @@ namespace
                 refl_invokeInternal(metaFSM, currentState, NULL);
                 // *** Take snapshopt *** //
                 string beforeEvaluate = "M0S" + to_string(currentState) + "R2";
+                pcHistory[pcCount++] = beforeEvaluate;
             }
         }
         //Check pc trace
@@ -161,6 +202,15 @@ namespace
 
     }
 
+    TEST_F(ReflectAPI_CPingPongKripkeTests, variableTest)
+    {
+        unsigned char test = 1;
+        Variable testVar(static_cast<void*>(&test), REFL_UNSIGNED_CHAR);
+        unsigned char stored = *static_cast<unsigned char*>(testVar.var->value);
+        ASSERT_EQ(test, stored);
+        test = 2;
+        ASSERT_NE(test, stored);
+    }
 }
 
 #pragma clang diagnostic pop
