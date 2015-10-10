@@ -4,7 +4,12 @@
 
 void ping_OnEntry(CPingPongKripke* machine)
 {
-    printf("C-Ping: %c\n", machine->b);
+    machine->b = 0;
+    printf("C-Ping: %d\n", machine->b);
+}
+
+void ping_Internal(CPingPongKripke* machine)
+{
     machine->b = !machine->b;
 }
 

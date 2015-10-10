@@ -12,6 +12,9 @@ void ping_OnEntry(CPingPongKripke* machine);
 
 void pong_OnEntry(CPingPongKripke* machine);
 
+//Internal action for Ping
+void ping_Internal(CPingPongKripke* machine);
+
 // Transition eval functions
 unsigned char ping_transition0(CPingPongKripke* machine);
 
