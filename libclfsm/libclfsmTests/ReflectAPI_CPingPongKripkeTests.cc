@@ -94,7 +94,8 @@ namespace
     {
         unsigned int currentState = refl_getCurrentState(metaFSM, NULL);
         refl_metaState *states = refl_getMetaStates(metaFSM, NULL);
-        while (refl_getNumberOfTransitions(states[currentState], NULL) > 0)
+        unsigned int stateChanges = 0;
+        while (stateChanges < 2)
         {
             int previousState = refl_getPreviousState(metaFSM, NULL);
             // Execute on Entry if new state
@@ -120,6 +121,7 @@ namespace
                         refl_getMetaTransitions(states[currentState], NULL)[transNum];
                 unsigned int target = currentState = refl_getMetaTransitionTarget(firingTransition, NULL);
                 refl_setCurrentState(metaFSM, target, NULL);
+                stateChanges++;
             }
             else
             {
