@@ -113,8 +113,7 @@ namespace
                 pcHistory[pcCount++] = pcAfterEntry;
                 refl_setPreviousState(metaFSM, currentState, NULL);
             }
-            // *** Take snapshopt *** //
-            string beforeEvaluate = "M0S" + to_string(currentState) + "R2";
+
             pcHistory[pcCount++] = beforeEvaluate;
             //Check for transitions
             unsigned int transNum;
@@ -147,6 +146,8 @@ namespace
             else
             {
                 refl_invokeInternal(metaFSM, currentState, NULL);
+                // *** Take snapshopt *** //
+                string beforeEvaluate = "M0S" + to_string(currentState) + "R2";
             }
         }
         //Check pc trace
