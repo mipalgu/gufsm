@@ -96,25 +96,45 @@ namespace
         unsigned int currentState = refl_getCurrentState(metaFSM, NULL);
         refl_metaState *states = refl_getMetaStates(metaFSM, NULL);
         unsigned int stateChanges = 0;
+        string pcHistory[10];
+        unsigned int pcCount = 0;
         while (stateChanges < 2)
         {
             int previousState = refl_getPreviousState(metaFSM, NULL);
             // Execute on Entry if new state
             if (static_cast<int>(currentState) != previousState)
             {
+                // *** Take snapshopt *** //
+                string pcBeforeEntry = "M0S" + to_string(currentState) + "R0";
+                pcHistory[pcCount++] = pcBeforeEntry;
                 refl_invokeOnEntry(metaFSM, currentState, NULL);
+                // *** Take snapshopt *** //
+                string pcAfterEntry = "M0S" + to_string(currentState) + "R1";
+                pcHistory[pcCount++] = pcAfterEntry;
                 refl_setPreviousState(metaFSM, currentState, NULL);
             }
+            // *** Take snapshopt *** //
+            string beforeEvaluate = "M0S" + to_string(currentState) + "R2";
+            pcHistory[pcCount++] = beforeEvaluate;
             //Check for transitions
             unsigned int transNum;
             unsigned int numTransitions = refl_getNumberOfTransitions(states[currentState], NULL);
             for (transNum = 0; transNum < numTransitions; transNum++)
             {
                 if (refl_evaluateTransition(metaFSM, currentState, transNum, NULL) == refl_TRUE)
+                {
+                    // *** Take snapshopt *** //
+                    string pcAfterEvaluateTrue = "M0S" + to_string(currentState) + "R3T" + to_string(transNum);
+                    pcHistory[pcCount++] = pcAfterEvaluateTrue;
                     break;
+                }
+                // *** Take snapshopt *** //
+                string pcAfterEvaluateFalse = "M0S" + to_string(currentState) + "R4T" + to_string(transNum);
+                pcHistory[pcCount++] = pcAfterEvaluateFalse;
             }
             if (transNum != numTransitions)
             {
+
                 //Transition has fired
                 refl_invokeOnExit(metaFSM, currentState, NULL);
                 refl_setPreviousState(metaFSM, currentState, NULL);
@@ -129,6 +149,14 @@ namespace
                 refl_invokeInternal(metaFSM, currentState, NULL);
             }
         }
+        //Check pc trace
+        //string pcHistoryCheck[] = {"M0S0R0", "M0S0R1", "M0S0R2", "M0S1R0", "M0S1R1", "M0S1R2" };
+        for (unsigned int i = 0; i < pcCount; i++)
+        {
+            //ASSERT_STREQ(pcHistoryCheck[i].c_str(), pcHistory[i].c_str());
+            std::cout << pcHistory[i] << ",";
+        }
+        std::cout << std::endl;
 
     }
 
