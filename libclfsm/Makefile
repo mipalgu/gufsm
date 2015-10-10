@@ -52,7 +52,7 @@ upload-robot:
 .endfor
 .endif
 
-tests:
+tests: host-local
 	${MAKE} -C libclfsmTests clean
 	${MAKE} -C libclfsmTests tests
 
