@@ -28,3 +28,8 @@ unsigned char pong_transition0(CPingPongKripke* machine)
     (void)machine;
     return 1;
 }
+
+void* mp_b_getAsVoid(CPingPongKripke* machine)
+{
+    return (void*)&(machine->b);
+}

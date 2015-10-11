@@ -42,13 +42,18 @@ refl_bool meta_pong_transition0(refl_machine_t machine, refl_userData_t data)
     return (pong_transition0((CPingPongKripke*)machine)) ? refl_TRUE : refl_FALSE;
 }
 
+// Property retrieval
+void* mp_machine_b_getAsVoid(refl_machine_t machine, refl_userData_t data)
+{
+    return mp_b_getAsVoid((CPingPongKripke *)machine);
+}
+
 /*  Custom destructor call back. Required to delete CPingPong since we are allocating
     it in Create_MetaMachine()
 */
 void destroy(refl_machine_t machine, refl_userData_t data);
 void destroy(refl_machine_t machine, refl_userData_t data)
 {
-    printf("Destroying CPingPong\n");
     free(machine);
 }
 
@@ -58,6 +63,13 @@ refl_metaMachine Create_MetaMachine()
     CPingPongKripke* machine = (CPingPongKripke*)malloc(sizeof(CPingPongKripke));
     refl_setMachine(m, machine, NULL);
     refl_setDestructorAction(m, destroy, NULL);
+    //Properties
+    refl_metaProperty mp_machine_b = refl_initMetaProperty(NULL);
+    refl_setMetaPropertyName(mp_machine_b, "b", NULL);
+    refl_setMetaPropertyTypeString(mp_machine_b, "unsigned char", NULL);
+    refl_setMetaPropertyType(mp_machine_b, REFL_UNSIGNED_CHAR, NULL);
+    refl_setMetaPropertyVoidFunctions(mp_machine_b, mp_machine_b_getAsVoid, NULL, NULL);
+    refl_setMachineMetaProperties(m, &mp_machine_b, 1, NULL);
     // States
     refl_metaState states[2];
 

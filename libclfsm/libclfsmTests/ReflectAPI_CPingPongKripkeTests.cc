@@ -14,6 +14,7 @@
 #include <dlfcn.h>
 #include "clfsm_machine.h"
 #include "CLReflectAPI.h"
+#include <vector>
 
 
 using namespace std;
@@ -37,7 +38,8 @@ namespace
         T typedVariable;
         VariableInternalConcrete(void* val)
         {
-            typedVariable = *static_cast<unsigned char*>(val);
+            T valueCopy = *static_cast<unsigned char*>(val);
+            typedVariable = valueCopy;
             value = static_cast<void *>(&typedVariable);
         }
 
@@ -55,6 +57,7 @@ namespace
             if (t == REFL_UNSIGNED_CHAR)
             {
                 this->var = new VariableInternalConcrete<unsigned char>(val);
+
             }
         }
 
@@ -132,6 +135,15 @@ namespace
         }
     }
 
+    void takeSnapShot(vector<Variable*> &variableHistory, refl_metaMachine metaFSM)
+    {
+        refl_metaProperty prop = refl_getMachineMetaProperties(metaFSM, NULL)[0];
+        refl_type propType = refl_getMetaPropertyType(prop, NULL);
+        void* val = refl_getMachinePropertyValue_V(metaFSM, 0, NULL);
+        Variable* var = new Variable(val, propType);
+        variableHistory.push_back(var);
+    }
+
     TEST_F(ReflectAPI_CPingPongKripkeTests, verifyingCPingPongKripke)
     {
         unsigned int currentState = refl_getCurrentState(metaFSM, NULL);
@@ -139,6 +151,7 @@ namespace
         unsigned int stateChanges = 0;
         string pcHistory[10];
         unsigned int pcCount = 0;
+        std::vector<Variable*> variableHistory; // Only one variable in this FSM i.e. on variable per snapshot
         while (stateChanges < 2)
         {
             int previousState = refl_getPreviousState(metaFSM, NULL);
@@ -146,12 +159,15 @@ namespace
             if (static_cast<int>(currentState) != previousState)
             {
                 // *** Take snapshopt *** //
-                string pcBeforeEntry = "M0S" + to_string(currentState) + "R0";
-                pcHistory[pcCount++] = pcBeforeEntry;
+                //string pcBeforeEntry = "M0S" + to_string(currentState) + "R0";
+                //pcHistory[pcCount++] = pcBeforeEntry;
+                takeSnapShot(variableHistory, metaFSM);
+
                 refl_invokeOnEntry(metaFSM, currentState, NULL);
                 // *** Take snapshopt *** //
-                string pcAfterEntry = "M0S" + to_string(currentState) + "R1";
-                pcHistory[pcCount++] = pcAfterEntry;
+                //string pcAfterEntry = "M0S" + to_string(currentState) + "R1";
+                //pcHistory[pcCount++] = pcAfterEntry;
+                takeSnapShot(variableHistory, metaFSM);
                 refl_setPreviousState(metaFSM, currentState, NULL);
             }
 
@@ -163,13 +179,15 @@ namespace
                 if (refl_evaluateTransition(metaFSM, currentState, transNum, NULL) == refl_TRUE)
                 {
                     // *** Take snapshopt *** //
-                    string pcAfterEvaluateTrue = "M0S" + to_string(currentState) + "R3T" + to_string(transNum);
-                    pcHistory[pcCount++] = pcAfterEvaluateTrue;
+                    //string pcAfterEvaluateTrue = "M0S" + to_string(currentState) + "R3T" + to_string(transNum);
+                    //pcHistory[pcCount++] = pcAfterEvaluateTrue;
+                    takeSnapShot(variableHistory, metaFSM);
                     break;
                 }
                 // *** Take snapshopt *** //
-                string pcAfterEvaluateFalse = "M0S" + to_string(currentState) + "R4T" + to_string(transNum);
-                pcHistory[pcCount++] = pcAfterEvaluateFalse;
+                //string pcAfterEvaluateFalse = "M0S" + to_string(currentState) + "R4T" + to_string(transNum);
+                //pcHistory[pcCount++] = pcAfterEvaluateFalse;
+                takeSnapShot(variableHistory, metaFSM);
             }
             if (transNum != numTransitions)
             {
@@ -187,8 +205,9 @@ namespace
             {
                 refl_invokeInternal(metaFSM, currentState, NULL);
                 // *** Take snapshopt *** //
-                string beforeEvaluate = "M0S" + to_string(currentState) + "R2";
-                pcHistory[pcCount++] = beforeEvaluate;
+                //string beforeEvaluate = "M0S" + to_string(currentState) + "R2";
+                //pcHistory[pcCount++] = beforeEvaluate;
+                takeSnapShot(variableHistory, metaFSM);
             }
         }
         //Check pc trace
@@ -196,15 +215,26 @@ namespace
         for (unsigned int i = 0; i < pcCount; i++)
         {
             //ASSERT_STREQ(pcHistoryCheck[i].c_str(), pcHistory[i].c_str());
-            std::cout << pcHistory[i] << ",";
+            (void)pcHistory;
+            //std::cout << pcHistory[i] << ",";
         }
         std::cout << std::endl;
+        // Cleanup
+        for (vector<Variable*>::iterator it = variableHistory.begin();
+                it != variableHistory.end(); it++)
+        {
+            unsigned char val = *static_cast<unsigned char*>((*it)->var->value);
+            int intVal = static_cast<int>(val);
+            std::cout << intVal << ", " ;
+            delete(*it);
+        }
+        cout << std::endl;
 
     }
 
     TEST_F(ReflectAPI_CPingPongKripkeTests, variableTest)
     {
-        unsigned char test = 1;
+        unsigned char test = 5;
         Variable testVar(static_cast<void*>(&test), REFL_UNSIGNED_CHAR);
         unsigned char stored = *static_cast<unsigned char*>(testVar.var->value);
         ASSERT_EQ(test, stored);

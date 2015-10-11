@@ -20,4 +20,7 @@ unsigned char ping_transition0(CPingPongKripke* machine);
 
 unsigned char pong_transition0(CPingPongKripke* machine);
 
+// Property retrieval
+void* mp_b_getAsVoid(CPingPongKripke* machine);
+
 #endif /* end of include guard: CPINGPONG_H */

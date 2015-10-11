@@ -56,7 +56,6 @@ refl_bool meta_pong_transition0(refl_machine_t machine, refl_userData_t data)
 void destroy(refl_machine_t machine, refl_userData_t data);
 void destroy(refl_machine_t machine, refl_userData_t data)
 {
-    printf("Destroying CPingPong\n");
     free(machine);
 }
 
