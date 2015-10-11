@@ -135,7 +135,7 @@ namespace
         }
     }
 
-    void takeSnapShot(vector<Variable*> &variableHistory, refl_metaMachine metaFSM)
+    void takeValuation(vector<Variable*> &variableHistory, refl_metaMachine metaFSM)
     {
         refl_metaProperty prop = refl_getMachineMetaProperties(metaFSM, NULL)[0];
         refl_type propType = refl_getMetaPropertyType(prop, NULL);
@@ -149,8 +149,6 @@ namespace
         unsigned int currentState = refl_getCurrentState(metaFSM, NULL);
         refl_metaState *states = refl_getMetaStates(metaFSM, NULL);
         unsigned int stateChanges = 0;
-        string pcHistory[10];
-        unsigned int pcCount = 0;
         std::vector<Variable*> variableHistory; // Only one variable in this FSM i.e. on variable per snapshot
         while (stateChanges < 2)
         {
@@ -158,16 +156,8 @@ namespace
             // Execute on Entry if new state
             if (static_cast<int>(currentState) != previousState)
             {
-                // *** Take snapshopt *** //
-                //string pcBeforeEntry = "M0S" + to_string(currentState) + "R0";
-                //pcHistory[pcCount++] = pcBeforeEntry;
-                takeSnapShot(variableHistory, metaFSM);
-
                 refl_invokeOnEntry(metaFSM, currentState, NULL);
-                // *** Take snapshopt *** //
-                //string pcAfterEntry = "M0S" + to_string(currentState) + "R1";
-                //pcHistory[pcCount++] = pcAfterEntry;
-                takeSnapShot(variableHistory, metaFSM);
+                takeValuation(variableHistory, metaFSM);
                 refl_setPreviousState(metaFSM, currentState, NULL);
             }
 
@@ -178,22 +168,16 @@ namespace
             {
                 if (refl_evaluateTransition(metaFSM, currentState, transNum, NULL) == refl_TRUE)
                 {
-                    // *** Take snapshopt *** //
-                    //string pcAfterEvaluateTrue = "M0S" + to_string(currentState) + "R3T" + to_string(transNum);
-                    //pcHistory[pcCount++] = pcAfterEvaluateTrue;
-                    takeSnapShot(variableHistory, metaFSM);
+                    takeValuation(variableHistory, metaFSM);
                     break;
                 }
-                // *** Take snapshopt *** //
-                //string pcAfterEvaluateFalse = "M0S" + to_string(currentState) + "R4T" + to_string(transNum);
-                //pcHistory[pcCount++] = pcAfterEvaluateFalse;
-                takeSnapShot(variableHistory, metaFSM);
+                takeValuation(variableHistory, metaFSM);
             }
             if (transNum != numTransitions)
             {
-
                 //Transition has fired
                 refl_invokeOnExit(metaFSM, currentState, NULL);
+                takeValuation(variableHistory, metaFSM);
                 refl_setPreviousState(metaFSM, currentState, NULL);
                 refl_metaTransition firingTransition =
                         refl_getMetaTransitions(states[currentState], NULL)[transNum];
@@ -204,32 +188,19 @@ namespace
             else
             {
                 refl_invokeInternal(metaFSM, currentState, NULL);
-                // *** Take snapshopt *** //
-                //string beforeEvaluate = "M0S" + to_string(currentState) + "R2";
-                //pcHistory[pcCount++] = beforeEvaluate;
-                takeSnapShot(variableHistory, metaFSM);
+                takeValuation(variableHistory, metaFSM);
             }
         }
-        //Check pc trace
-        //string pcHistoryCheck[] = {"M0S0R0", "M0S0R1", "M0S0R2", "M0S1R0", "M0S1R1", "M0S1R2" };
-        for (unsigned int i = 0; i < pcCount; i++)
-        {
-            //ASSERT_STREQ(pcHistoryCheck[i].c_str(), pcHistory[i].c_str());
-            (void)pcHistory;
-            //std::cout << pcHistory[i] << ",";
-        }
-        std::cout << std::endl;
         // Cleanup
+        unsigned int i = 0;
         for (vector<Variable*>::iterator it = variableHistory.begin();
-                it != variableHistory.end(); it++)
+                it != variableHistory.end(); it++, i++)
         {
             unsigned char val = *static_cast<unsigned char*>((*it)->var->value);
             int intVal = static_cast<int>(val);
-            std::cout << intVal << ", " ;
+            std::cout << "PC: " << i << " b = " << intVal << ", " << std::endl ;
             delete(*it);
         }
-        cout << std::endl;
-
     }
 
     TEST_F(ReflectAPI_CPingPongKripkeTests, variableTest)
