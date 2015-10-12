@@ -11,7 +11,7 @@ refl_metaMachine Create_MetaMachine(void);
 // State actions
 void meta_ping_OnEntry(refl_machine_t machine, refl_userData_t data);
 void meta_pong_OnEntry(refl_machine_t machine, refl_userData_t data);
-void meta_pong_Internal(refl_machine_t machine, refl_userData_t data);
+void meta_ping_Internal(refl_machine_t machine, refl_userData_t data);
 
 void meta_ping_OnEntry(refl_machine_t machine, refl_userData_t data)
 {
@@ -43,6 +43,7 @@ refl_bool meta_pong_transition0(refl_machine_t machine, refl_userData_t data)
 }
 
 // Property retrieval
+void* mp_machine_b_getAsVoid(refl_machine_t machine, refl_userData_t data);
 void* mp_machine_b_getAsVoid(refl_machine_t machine, refl_userData_t data)
 {
     return mp_b_getAsVoid((CPingPongKripke *)machine);
