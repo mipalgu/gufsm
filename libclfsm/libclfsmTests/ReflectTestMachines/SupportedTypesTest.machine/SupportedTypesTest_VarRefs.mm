@@ -34,5 +34,6 @@ double	&bb= _m->bb;	///<
 long double	&cc= _m->cc;	///<
 refl_metaMachine	&metaMachine= _m->metaMachine;	///<
 std::string	&stringTest= _m->stringTest;	///<
+bool	&boolTest= _m->boolTest;	///<
 
 #pragma clang diagnostic pop

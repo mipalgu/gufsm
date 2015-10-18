@@ -78,7 +78,7 @@ namespace
         // Checks that types have been recognised correctly
         unsigned int expectedType = 0;
         refl_metaProperty* properties = refl_getMachineMetaProperties(metaFSM, NULL);
-        unsigned int numProperties = refl_getNumberOfMachineProperties(metaFSM, NULL);
+        unsigned int numProperties = 25;
         for (unsigned int i = 0; i < numProperties - 2; i++)
         {
             refl_type type = static_cast<refl_type>(expectedType++);
@@ -141,6 +141,23 @@ namespace
         refl_setMachinePropertyValue_S(metaFSM, llIndex, const_cast<char *>(value.c_str()), NULL);
         char buffer[10000];
         ASSERT_STREQ(value.c_str(), refl_getMachinePropertyValue_S(metaFSM, llIndex, buffer, 10000, NULL));
+    }
+
+    TEST_F(ReflectAPI_SupportedTypeTests, boolTest)
+    {
+        unsigned boolIndex = 25;
+        refl_metaProperty prop = refl_getMachineMetaProperties(metaFSM, &result)[boolIndex];
+        ASSERT_EQ(REFL_SUCCESS, result);
+        refl_type type = refl_getMetaPropertyType(prop, &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        ASSERT_EQ(REFL_UNSIGNED_CHAR, type);
+        refl_bool val = refl_TRUE;
+        void * vpVal = static_cast<void *>(&val);
+        refl_setMachinePropertyValue_V(metaFSM, boolIndex, vpVal, sizeof(refl_bool), &result);
+        ASSERT_EQ(REFL_SUCCESS, result);
+        void * retVal = refl_getMachinePropertyValue_V(metaFSM, boolIndex,  &result);
+        ASSERT_EQ(val, *static_cast<refl_bool*>(retVal));
+
     }
 
 }

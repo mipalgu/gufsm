@@ -28,3 +28,4 @@ double	bb;	///<
 long double	cc;	///<
 refl_metaMachine	metaMachine;	///<
 std::string	stringTest;	///<
+bool	boolTest;	///<

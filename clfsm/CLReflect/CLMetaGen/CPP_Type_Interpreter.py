@@ -12,6 +12,8 @@ class CPP_Type_Interpreter(object):
     def getReflectType(self, typeString):
         """Gets the corresponding refl_type"""
         strippedTypeString = typeString.replace("const", "").replace("std::", '').translate(None, "*_ ").lower()
+        if strippedTypeString == 'bool': # C doesn't support bools so treat as unsigned char
+            strippedTypeString = 'unsigned char'
         # Try naive lookup first
         naive = self.naiveLookup(strippedTypeString)
         if naive:
