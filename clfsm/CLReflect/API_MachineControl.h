@@ -1,3 +1,7 @@
+/*!
+    @file API_MachineControl.h
+*/
+
 #ifndef API_MACHINECONTROL_H
 #define API_MACHINECONTROL_H
 

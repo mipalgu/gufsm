@@ -1,3 +1,7 @@
+/*!
+    @file CLMetaRegister.h
+*/
+
 #include <vector>
 
 #include "API_MetaMachine.h"

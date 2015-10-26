@@ -1,3 +1,7 @@
+/*!
+    @file API_MetaMachine_Internal.h
+*/
+
 #ifndef API_METAMACHINE_INTERNAL_H
 #define API_METAMACHINE_INTERNAL_H
 

@@ -1,3 +1,7 @@
+/*!
+    @file CLReflectFunctionPointerTypes.h
+*/
+
 #ifndef CLREFLECTFUNCTIONPOINTERTYPES_H
 #define CLREFLECTFUNCTIONPOINTERTYPES_H
 

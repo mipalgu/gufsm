@@ -1,3 +1,7 @@
+/*!
+    @file API_MetaTransition.h
+*/
+
 #ifndef API_METATRANSITION_H
 #define API_METATRANSITION_H
 

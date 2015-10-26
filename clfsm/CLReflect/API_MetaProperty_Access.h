@@ -1,3 +1,7 @@
+/*!
+    @file API_MetaProperty_Access.h
+*/
+
 #ifndef API_METAPROPERTY_ACCESS
 #define API_METAPROPERTY_ACCESS
 

@@ -1,3 +1,7 @@
+/*!
+    @file API_MetaState.c
+*/
+
 #include "API_MetaState.h"
 #include "API_MetaAction.h"
 #include "API_MetaMachine_Internal.h"

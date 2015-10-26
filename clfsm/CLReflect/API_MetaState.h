@@ -1,3 +1,7 @@
+/*!
+    @file API_MetaState.h
+*/
+
 #ifndef API_METASTATE
 #define API_METASTATE
 

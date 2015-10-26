@@ -1,3 +1,7 @@
+/*!
+    @file API_MetaAction.h
+*/
+
 #ifndef API_METAACTION_H
 #define API_METAACTION_H
 

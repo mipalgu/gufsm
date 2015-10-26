@@ -1,3 +1,7 @@
+/*!
+    @file API_Util.c
+*/
+
 #include "API_Util.h"
 
 #include <stdlib.h>
@@ -18,6 +22,6 @@ CLReflectResult refl_strcpy(char* dest, char const * src, size_t size)
     else
     {
         memcpy(dest, src, srclength);
-        return REFL_SUCCESS;        
+        return REFL_SUCCESS;
     }
 }

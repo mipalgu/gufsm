@@ -1,3 +1,7 @@
+/*!
+    @file API_Result.h
+*/
+
 #ifndef API_RESULT_H
 #define API_RESULT_H
 

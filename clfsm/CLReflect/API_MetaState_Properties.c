@@ -1,3 +1,7 @@
+/*!
+    @file API_MetaState_Properties.c
+*/
+
 #include <string.h>
 
 #include "API_MetaState_Properties.h"

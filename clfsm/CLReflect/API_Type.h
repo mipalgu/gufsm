@@ -1,3 +1,7 @@
+/*!
+    @file API_Type.h
+*/
+
 #ifndef API_TYPE_H
 #define API_TYPE_H
 

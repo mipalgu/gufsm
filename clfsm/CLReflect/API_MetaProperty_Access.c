@@ -1,3 +1,7 @@
+/*!
+    @file API_MetaProperty_Access.c
+*/
+
 #include "API_MetaProperty_Access.h"
 #include "API_MetaMachine_Internal.h"
 

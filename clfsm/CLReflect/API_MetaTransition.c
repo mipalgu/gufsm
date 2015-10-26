@@ -1,3 +1,7 @@
+/*!
+    @file API_MetaTransition.c
+*/
+
 #include "API_MetaTransition.h"
 
 #pragma clang diagnostic push

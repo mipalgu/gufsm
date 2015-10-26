@@ -1,3 +1,7 @@
+/*!
+    @file API_MetaMachine_Properties.h
+*/
+
 #ifndef API_METAMACHINE_PROPERTIES_H
 #define API_METAMACHINE_PROPERTIES_H
 

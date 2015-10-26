@@ -1,3 +1,7 @@
+/*!
+    @file API_TypeConversion_Vector.h
+*/
+
 #ifndef API_TYPECONVERSION_VECTOR_H
 #define API_TYPECONVERSION_VECTOR_H
 

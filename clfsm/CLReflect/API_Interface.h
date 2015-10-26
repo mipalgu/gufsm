@@ -1,3 +1,7 @@
+/*!
+    @file API_Interface.h
+*/
+
 #ifndef API_INIT_H
 #define API_INIT_H
 
@@ -34,7 +38,7 @@ extern "C"
         @return The meta-machine corresponding to the given ID, else NULL if it doesn't exist.
     */
     refl_metaMachine refl_getMetaMachine(unsigned int machineID, CLReflectResult *result);
-    
+
 #ifdef __cplusplus
 }
 #endif
