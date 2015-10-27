@@ -22,19 +22,22 @@ refl_metaProperty refl_initMetaProperty(CLReflectResult *result);
 
 /*!
     Destroys the meta property
+    @param metaProperty The meta-property.
     @param result The result of the call.
 */
 void refl_destroyMetaProperty(refl_metaProperty metaProperty, CLReflectResult *result);
 
 /*!
     Sets the meta-property's name
-    @name The name of the meta-property. Caller does not need to retain name memory.
+    @param metaProperty The meta-property.
+    @param name The name of the meta-property. Caller does not need to retain name memory.
     @param result The result of the call.
 */
 void refl_setMetaPropertyName(refl_metaProperty metaProperty, char const * name, CLReflectResult* result);
 
 /*!
     Returns a pointer to the meta property's name
+    @param metaProperty The meta-property.
     @param result The result of the call.
     @return A pointer to the meta-property name
 */
@@ -42,6 +45,7 @@ char const * refl_getMetaPropertyName(refl_metaProperty metaProperty, CLReflectR
 
 /*!
     Sets the meta-property's string representation of its type e.g. "int" or "char *"
+    @param metaProperty The meta-property.
     @param type The name of the meta-property. Caller does not need to retain name memory.
     @param result The result of the call.
 */
@@ -49,6 +53,7 @@ void refl_setMetaPropertyTypeString(refl_metaProperty metaProperty, char const *
 
 /*!
     Returns a pointer to the meta property's type as a string
+    @param metaProperty The meta-property.
     @param result The result of the call.
     @return A pointer to the meta-property type as a string.
 */
@@ -56,6 +61,7 @@ char const * refl_getMetaPropertyTypeAsString(refl_metaProperty metaProperty, CL
 
 /*!
     Sets the meta-property's type according to the refl_type enum e.g. REFL_INT or REFL_DOUBLE etc.
+    @param metaProperty The meta-property.
     @param type The type of the property
     @param result The result of the call.
 */
@@ -63,6 +69,7 @@ void refl_setMetaPropertyType(refl_metaProperty metaProperty, refl_type type, CL
 
 /*!
     Returns the meta property's type
+    @param metaProperty The meta-property.
     @param result The result of the call.
     @return The meta property's type
 */
@@ -70,6 +77,7 @@ refl_type refl_getMetaPropertyType(refl_metaProperty metaProperty, CLReflectResu
 
 /*!
     Returns whether the meta-property is unsigned e.g. unsigned int.
+    @param metaProperty The meta-property.
     @param result The result of the call.
     @return True if the property is unsigned, else false.
 */
@@ -77,6 +85,7 @@ refl_bool refl_isMetaPropertyUnsigned(refl_metaProperty metaProperty, CLReflectR
 
 /*!
     Sets whether the meta-property is unsigned e.g. unsigned int.
+    @param metaProperty The meta-property.
     @param result The result of the call.
     @param isUS refl_true or refl_false based on whether the property is unsigned or not.
 */
@@ -84,6 +93,7 @@ void refl_setIsMetaPropertyUnsigned(refl_metaProperty metaProperty, refl_bool is
 
 /*!
     Returns the level of indirection of the variable e.g. char * = 1, char ** = 2.
+    @param metaProperty The meta-property.
     @param result The result of the call.
     @return The meta-property's level of indirection.
 */
@@ -91,6 +101,7 @@ unsigned int refl_getMetaPropertyIndirection(refl_metaProperty metaProperty, CLR
 
 /*!
     Sets the meta-property's level of indirection.
+    @param metaProperty The meta-property.
     @param result The result of the call.
     @param level The level of indirection i.e. how many pointers.
 */
@@ -98,6 +109,7 @@ void refl_setMetaPropertyIndirection(refl_metaProperty metaProperty, unsigned in
 
 /*!
     Sets the meta-property's data that is provided as a parameter in its call-back functions.
+    @param metaProperty The meta-property.
     @param result The result of the call.
     @param data A pointer to a piece of user data.
 */
@@ -105,6 +117,7 @@ void refl_setMetaPropertyData(refl_metaProperty metaProperty, refl_userData_t da
 
 /*!
     Sets the meta-property's call-back functions for string read/write
+    @param metaProperty The meta-property.
     @param getter The read call-back function
     @param setter The write call-back function.
     @param result The result of the call.
@@ -114,6 +127,7 @@ void refl_setMetaPropertyStringFunctions(refl_metaProperty metaProperty,
 
 /*!
     Sets the meta-property's call-back functions for void * read/write
+    @param metaProperty The meta-property.
     @param getter The read call-back function
     @param setter The write call-back function.
     @param result The result of the call.

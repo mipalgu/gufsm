@@ -31,6 +31,8 @@ void _refl_setPropertyAsVoid(refl_metaProperty property, refl_machine_t machine,
 /*! Gets a string representation of the property
     @param property The meta property.
     @param machine The executing FSM.
+    @param buffer An optional buffer in which to place the string.
+    @param bufferLen The length of /p buffer.
     @param result An optional result enum.
     @return A string representation of the property. If buffer is provided, then
             it is returned, otherwise a heap allocated string is returned. The

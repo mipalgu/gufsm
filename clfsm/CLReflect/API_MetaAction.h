@@ -21,6 +21,7 @@ refl_metaAction refl_initMetaAction(CLReflectResult* result);
 /*!
     Destroys the meta action and frees its memory, including the memory held by any internal members.
     @param metaAction The meta-action being destroyed.
+    @param result The result of the call.
 */
 void refl_destroyMetaAction(refl_metaAction metaAction, CLReflectResult* result);
 

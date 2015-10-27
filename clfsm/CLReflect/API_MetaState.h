@@ -20,7 +20,8 @@ typedef struct metaState_s* refl_metaState;
 refl_metaState refl_initMetaState(CLReflectResult *result);
 
 /*!
-    Destroys the meta state    
+    Destroys the meta state
+    @param metaState The meta-state to be destroyed
     @param result The result of the call.
 */
 void refl_destroyMetaState(refl_metaState metaState, CLReflectResult* result);
