@@ -53,8 +53,8 @@ upload-robot:
 .endif
 
 tests: host-local
-	${MAKE} -C libclfsmTests clean
-	${MAKE} -C libclfsmTests tests
+	$E${MAKE} -C libclfsmTests clean
+	$E${MAKE} -C libclfsmTests tests
 
 
 .ifndef TARGET
@@ -94,5 +94,10 @@ pre-catkin:
 .for hfile in FSM_Control.h FSMControlStatus.h wb_fsm_control_status.h wb_fsm_state_status.h
 	$Ecp -p ${WB_DIR}/typeClassDefs/${hfile} ${CATKIN_DIR}/include/typeClassDefs
 .endfor
+
+test:
+	$Eecho "libclfsm tests take a while to compile, so please run"
+	$Eecho "	make tests"
+	$Eecho "to run your tests manually!"
 
 .include "../../../mk/mipal.mk"		# comes last!
