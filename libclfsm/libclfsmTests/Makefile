@@ -19,7 +19,11 @@ run-test:  host
 	cd ${POSIX_DIR}/gufsm/libclfsm/libclfsmTests/build.host && ./libclfsmTests
 	${SAY} "------------------------"
 
-tests:
+ReflectTestMachines-clean:
+	${SAY} "Cleaning ReflectTestMachines..."
+	cd ReflectTestMachines && ${MAKE} clean ;
+
+tests: ReflectTestMachines-clean
 	${SAY} "Checking that GTest is installed..."
 	if [ -e /usr/local/lib/libgtest.* ]; \
 	then \
