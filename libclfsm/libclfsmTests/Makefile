@@ -25,7 +25,7 @@ ReflectTestMachines-clean:
 
 tests: ReflectTestMachines-clean
 	${SAY} "Checking that GTest is installed..."
-	if [ -e /usr/local/lib/libgtest.* ]; \
+	if [ -e /usr/local/lib/libgtest.a -o -e /usr/local/lib/libgtest.so -o -e  /usr/local/lib/libgtest.dylib ]; \
 	then \
 		${MAKE} run-test; \
 	else \
@@ -38,5 +38,7 @@ coverage:
 	(cd ../build.host-local &&  \
 		lcov --quiet --directory . --base-directory . --gcov-tool gcov-4.4 --capture -o cov.info && \
 		genhtml --quiet cov.info -o ${HOME}/html_output)
+
+test: tests
 
 .include "../../../../mk/mipal.mk"		# comes last!

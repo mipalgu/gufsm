@@ -7,23 +7,27 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		301ABFA51B97ED5400224CF9 /* ReflectAPI_MetaProperty_Tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_MetaProperty_Tests.cc; sourceTree = "<group>"; };
-		301ABFA61B97ED6200224CF9 /* ReflectAPI_VariableTests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_VariableTests.cc; sourceTree = "<group>"; };
-		304BB9931BA791BC0039EDDF /* ReflectAPI_CPingPongTests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_CPingPongTests.cc; sourceTree = "<group>"; };
-		305EDA261B9E65210053F665 /* ReflectAPI_VariableTypeTests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_VariableTypeTests.cc; sourceTree = "<group>"; };
-		30A1B32B1BA2988800640F88 /* ReflectAPI_SupportedTypeTests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_SupportedTypeTests.cc; sourceTree = "<group>"; };
-		30B2268D1B82B318001511B5 /* ReflectAPI_MetaTransition_Tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_MetaTransition_Tests.cc; sourceTree = "<group>"; };
 		F17650881B7983A1009CAC69 /* DummyMachines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DummyMachines.h; sourceTree = "<group>"; };
 		F17650891B7983A1009CAC69 /* en.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = en.lproj; sourceTree = "<group>"; };
 		F176508A1B7983A1009CAC69 /* libclfsmTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "libclfsmTests-Info.plist"; sourceTree = "<group>"; };
 		F176508B1B7983A1009CAC69 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		F176508C1B7983A1009CAC69 /* ReflectAPI_Init_Tests.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_Init_Tests.cc; sourceTree = "<group>"; };
-		F176508D1B7983A1009CAC69 /* ReflectAPI_MetaAction_Tests.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_MetaAction_Tests.cc; sourceTree = "<group>"; };
-		F176508E1B7983A1009CAC69 /* ReflectAPI_MetaMachine_Tests.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_MetaMachine_Tests.cc; sourceTree = "<group>"; };
-		F176508F1B7983A1009CAC69 /* ReflectAPI_MetaState_Tests.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_MetaState_Tests.cc; sourceTree = "<group>"; };
-		F17650901B7983A1009CAC69 /* ReflectAPI_StateMethod_Tests.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_StateMethod_Tests.cc; sourceTree = "<group>"; };
-		F17650911B7983A1009CAC69 /* ReflectAPI_Util_Tests.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_Util_Tests.cc; sourceTree = "<group>"; };
-		F17650921B7983A1009CAC69 /* VectorFactory_tests.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VectorFactory_tests.cc; sourceTree = "<group>"; };
+		F1780FD91BF4575E00644F03 /* ReflectAPI_CPingPongKripkeTests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_CPingPongKripkeTests.cc; sourceTree = "<group>"; };
+		F1780FDA1BF4575E00644F03 /* ReflectAPI_CPingPongTests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_CPingPongTests.cc; sourceTree = "<group>"; };
+		F1780FDB1BF4575E00644F03 /* ReflectAPI_Init_Tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_Init_Tests.cc; sourceTree = "<group>"; };
+		F1780FDC1BF4575E00644F03 /* ReflectAPI_MachineControlTests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_MachineControlTests.cc; sourceTree = "<group>"; };
+		F1780FDD1BF4575E00644F03 /* ReflectAPI_MetaAction_Tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_MetaAction_Tests.cc; sourceTree = "<group>"; };
+		F1780FDE1BF4575E00644F03 /* ReflectAPI_MetaMachine_Tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_MetaMachine_Tests.cc; sourceTree = "<group>"; };
+		F1780FDF1BF4575E00644F03 /* ReflectAPI_MetaProperty_Tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_MetaProperty_Tests.cc; sourceTree = "<group>"; };
+		F1780FE01BF4575E00644F03 /* ReflectAPI_MetaPropertyString_Tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_MetaPropertyString_Tests.cc; sourceTree = "<group>"; };
+		F1780FE11BF4575E00644F03 /* ReflectAPI_MetaState_Tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_MetaState_Tests.cc; sourceTree = "<group>"; };
+		F1780FE21BF4575E00644F03 /* ReflectAPI_MetaTransition_Tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_MetaTransition_Tests.cc; sourceTree = "<group>"; };
+		F1780FE31BF4575E00644F03 /* ReflectAPI_StateMethod_Tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_StateMethod_Tests.cc; sourceTree = "<group>"; };
+		F1780FE41BF4575E00644F03 /* ReflectAPI_SupportedTypeTests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_SupportedTypeTests.cc; sourceTree = "<group>"; };
+		F1780FE51BF4575E00644F03 /* ReflectAPI_Util_Tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_Util_Tests.cc; sourceTree = "<group>"; };
+		F1780FE61BF4575E00644F03 /* ReflectAPI_VariableTests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_VariableTests.cc; sourceTree = "<group>"; };
+		F1780FE71BF4575E00644F03 /* ReflectAPI_VariableTypeTests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_VariableTypeTests.cc; sourceTree = "<group>"; };
+		F1780FE81BF4575E00644F03 /* ReflectAPI_WhiteboardVariableTests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_WhiteboardVariableTests.cc; sourceTree = "<group>"; };
+		F1780FE91BF4575E00644F03 /* VectorFactory_tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VectorFactory_tests.cc; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -34,19 +38,23 @@
 				F17650891B7983A1009CAC69 /* en.lproj */,
 				F176508A1B7983A1009CAC69 /* libclfsmTests-Info.plist */,
 				F176508B1B7983A1009CAC69 /* Makefile */,
-				304BB9931BA791BC0039EDDF /* ReflectAPI_CPingPongTests.cc */,
-				F176508C1B7983A1009CAC69 /* ReflectAPI_Init_Tests.cc */,
-				F176508D1B7983A1009CAC69 /* ReflectAPI_MetaAction_Tests.cc */,
-				F176508E1B7983A1009CAC69 /* ReflectAPI_MetaMachine_Tests.cc */,
-				301ABFA51B97ED5400224CF9 /* ReflectAPI_MetaProperty_Tests.cc */,
-				30B2268D1B82B318001511B5 /* ReflectAPI_MetaTransition_Tests.cc */,
-				F176508F1B7983A1009CAC69 /* ReflectAPI_MetaState_Tests.cc */,
-				F17650901B7983A1009CAC69 /* ReflectAPI_StateMethod_Tests.cc */,
-				30A1B32B1BA2988800640F88 /* ReflectAPI_SupportedTypeTests.cc */,
-				F17650911B7983A1009CAC69 /* ReflectAPI_Util_Tests.cc */,
-				301ABFA61B97ED6200224CF9 /* ReflectAPI_VariableTests.cc */,
-				305EDA261B9E65210053F665 /* ReflectAPI_VariableTypeTests.cc */,
-				F17650921B7983A1009CAC69 /* VectorFactory_tests.cc */,
+				F1780FD91BF4575E00644F03 /* ReflectAPI_CPingPongKripkeTests.cc */,
+				F1780FDA1BF4575E00644F03 /* ReflectAPI_CPingPongTests.cc */,
+				F1780FDB1BF4575E00644F03 /* ReflectAPI_Init_Tests.cc */,
+				F1780FDC1BF4575E00644F03 /* ReflectAPI_MachineControlTests.cc */,
+				F1780FDD1BF4575E00644F03 /* ReflectAPI_MetaAction_Tests.cc */,
+				F1780FDE1BF4575E00644F03 /* ReflectAPI_MetaMachine_Tests.cc */,
+				F1780FDF1BF4575E00644F03 /* ReflectAPI_MetaProperty_Tests.cc */,
+				F1780FE01BF4575E00644F03 /* ReflectAPI_MetaPropertyString_Tests.cc */,
+				F1780FE11BF4575E00644F03 /* ReflectAPI_MetaState_Tests.cc */,
+				F1780FE21BF4575E00644F03 /* ReflectAPI_MetaTransition_Tests.cc */,
+				F1780FE31BF4575E00644F03 /* ReflectAPI_StateMethod_Tests.cc */,
+				F1780FE41BF4575E00644F03 /* ReflectAPI_SupportedTypeTests.cc */,
+				F1780FE51BF4575E00644F03 /* ReflectAPI_Util_Tests.cc */,
+				F1780FE61BF4575E00644F03 /* ReflectAPI_VariableTests.cc */,
+				F1780FE71BF4575E00644F03 /* ReflectAPI_VariableTypeTests.cc */,
+				F1780FE81BF4575E00644F03 /* ReflectAPI_WhiteboardVariableTests.cc */,
+				F1780FE91BF4575E00644F03 /* VectorFactory_tests.cc */,
 			);
 			sourceTree = "<group>";
 		};

@@ -996,6 +996,7 @@
 		F1777E6516FD96C2006E263E /* guwhiteboardtypelist.tsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = guwhiteboardtypelist.tsl; sourceTree = "<group>"; };
 		F1777E6616FD96C2006E263E /* guwhiteboardwatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = guwhiteboardwatcher.h; sourceTree = "<group>"; };
 		F177D0FA1499753A0003748C /* FSMWBPostAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMWBPostAction.h; sourceTree = "<group>"; };
+		F1780FD51BF4564D00644F03 /* libclfsmTests.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libclfsmTests.xcodeproj; path = libclfsmTests/libclfsmTests.xcodeproj; sourceTree = "<group>"; };
 		F17A1DDD1B77F37500C24CAB /* API_Interface.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = API_Interface.cc; sourceTree = "<group>"; };
 		F17A1DDE1B77F37500C24CAB /* API_Interface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API_Interface.h; sourceTree = "<group>"; };
 		F17A1DDF1B77F37500C24CAB /* API_MetaAction.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = API_MetaAction.c; sourceTree = "<group>"; };
@@ -2188,6 +2189,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		F1780FD61BF4564D00644F03 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		F192CC8F144D27C200FF8526 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -2417,6 +2425,7 @@
 		F1D5758E1627948900976A23 /* libclfsm */ = {
 			isa = PBXGroup;
 			children = (
+				F1780FD51BF4564D00644F03 /* libclfsmTests.xcodeproj */,
 				F104D05119451CDC00511628 /* catkin_ws */,
 				F1D5758F1627948900976A23 /* Supporting Files */,
 			);
@@ -2779,6 +2788,10 @@
 				{
 					ProductGroup = F1284D0314A6CAA800C0247E /* Products */;
 					ProjectRef = F1284D0214A6CAA800C0247E /* gusimplewhiteboard.xcodeproj */;
+				},
+				{
+					ProductGroup = F1780FD61BF4564D00644F03 /* Products */;
+					ProjectRef = F1780FD51BF4564D00644F03 /* libclfsmTests.xcodeproj */;
 				},
 				{
 					ProductGroup = F17650971B7983A2009CAC69 /* Products */;
