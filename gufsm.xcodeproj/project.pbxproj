@@ -618,23 +618,6 @@
 		F12B423B147DC38B00FF4A6B /* SMCommon.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SMCommon.g; sourceTree = "<group>"; };
 		F12B423C147DC38B00FF4A6B /* SMLexer.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SMLexer.g; sourceTree = "<group>"; };
 		F12B423D147DC38B00FF4A6B /* TransitionsParser.g */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TransitionsParser.g; sourceTree = "<group>"; };
-		F12B732B1B605152006C64D8 /* PingPongCLFSM_META_MetaMachine.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PingPongCLFSM_META_MetaMachine.cc; sourceTree = "<group>"; };
-		F12B732C1B605152006C64D8 /* PingPongCLFSM_META_MetaMachine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PingPongCLFSM_META_MetaMachine.h; sourceTree = "<group>"; };
-		F12B732D1B605152006C64D8 /* PingPongCLFSM_META_Properties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PingPongCLFSM_META_Properties.h; sourceTree = "<group>"; };
-		F12B732E1B605152006C64D8 /* CodeGen.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = CodeGen.py; sourceTree = "<group>"; };
-		F12B732F1B605152006C64D8 /* CodeGen.pyc */ = {isa = PBXFileReference; lastKnownFileType = file; path = CodeGen.pyc; sourceTree = "<group>"; };
-		F12B73301B605152006C64D8 /* generate.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = generate.sh; sourceTree = "<group>"; };
-		F12B73311B605152006C64D8 /* MachinePropertyFileWriter.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = MachinePropertyFileWriter.py; sourceTree = "<group>"; };
-		F12B73321B605152006C64D8 /* MachinePropertyFileWriter.pyc */ = {isa = PBXFileReference; lastKnownFileType = file; path = MachinePropertyFileWriter.pyc; sourceTree = "<group>"; };
-		F12B73331B605152006C64D8 /* main.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = main.py; sourceTree = "<group>"; };
-		F12B73341B605152006C64D8 /* CPP_MetaFileWriter.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = CPP_MetaFileWriter.py; sourceTree = "<group>"; };
-		F12B73351B605152006C64D8 /* CPP_MetaFileWriter.pyc */ = {isa = PBXFileReference; lastKnownFileType = file; path = CPP_MetaFileWriter.pyc; sourceTree = "<group>"; };
-		F12B73361B605152006C64D8 /* CPP_MetaMachineDefinition.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = CPP_MetaMachineDefinition.py; sourceTree = "<group>"; };
-		F12B73371B605152006C64D8 /* CPP_MetaMachineDefinition.pyc */ = {isa = PBXFileReference; lastKnownFileType = file; path = CPP_MetaMachineDefinition.pyc; sourceTree = "<group>"; };
-		F12B73381B605152006C64D8 /* Parser.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = Parser.py; sourceTree = "<group>"; };
-		F12B73391B605152006C64D8 /* Parser.pyc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Parser.pyc; sourceTree = "<group>"; };
-		F12B733A1B605152006C64D8 /* StatePropertyFileWriter.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = StatePropertyFileWriter.py; sourceTree = "<group>"; };
-		F12B733B1B605152006C64D8 /* StatePropertyFileWriter.pyc */ = {isa = PBXFileReference; lastKnownFileType = file; path = StatePropertyFileWriter.pyc; sourceTree = "<group>"; };
 		F12B734E1B605152006C64D8 /* CLReflectIncludes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLReflectIncludes.h; sourceTree = "<group>"; };
 		F12B73781B6052DB006C64D8 /* clfsm_machine_loader.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = clfsm_machine_loader.cc; sourceTree = "<group>"; };
 		F12B73791B6052DB006C64D8 /* clfsm_machine_loader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clfsm_machine_loader.h; sourceTree = "<group>"; };
@@ -1491,33 +1474,8 @@
 		F12B73291B605152006C64D8 /* CLMetaGen */ = {
 			isa = PBXGroup;
 			children = (
-				F12B732A1B605152006C64D8 /* Backup */,
-				F12B732E1B605152006C64D8 /* CodeGen.py */,
-				F12B732F1B605152006C64D8 /* CodeGen.pyc */,
-				F12B73301B605152006C64D8 /* generate.sh */,
-				F12B73311B605152006C64D8 /* MachinePropertyFileWriter.py */,
-				F12B73321B605152006C64D8 /* MachinePropertyFileWriter.pyc */,
-				F12B73331B605152006C64D8 /* main.py */,
-				F12B73341B605152006C64D8 /* CPP_MetaFileWriter.py */,
-				F12B73351B605152006C64D8 /* CPP_MetaFileWriter.pyc */,
-				F12B73361B605152006C64D8 /* CPP_MetaMachineDefinition.py */,
-				F12B73371B605152006C64D8 /* CPP_MetaMachineDefinition.pyc */,
-				F12B73381B605152006C64D8 /* Parser.py */,
-				F12B73391B605152006C64D8 /* Parser.pyc */,
-				F12B733A1B605152006C64D8 /* StatePropertyFileWriter.py */,
-				F12B733B1B605152006C64D8 /* StatePropertyFileWriter.pyc */,
 			);
 			path = CLMetaGen;
-			sourceTree = "<group>";
-		};
-		F12B732A1B605152006C64D8 /* Backup */ = {
-			isa = PBXGroup;
-			children = (
-				F12B732B1B605152006C64D8 /* PingPongCLFSM_META_MetaMachine.cc */,
-				F12B732C1B605152006C64D8 /* PingPongCLFSM_META_MetaMachine.h */,
-				F12B732D1B605152006C64D8 /* PingPongCLFSM_META_Properties.h */,
-			);
-			path = Backup;
 			sourceTree = "<group>";
 		};
 		F12B733C1B605152006C64D8 /* CLReflect */ = {
