@@ -12,6 +12,8 @@ ALL_TARGETS=host-local robot-local analyse xc tests
 CATKIN_BASE=libclfsm
 CATKIN_COMPILE_UTIL=YES
 
+CATKIN_HDRS+=${MODULE_DIR}/../clfsm/CLReflect/CLReflectTypeEnum
+
 XCODE_USE_WORKSPACE=yes
 
 .include "../../../mk/c++11.mk"	# use C++11

@@ -26,6 +26,8 @@ CC_SRCS+=clfsm_visitorsupport.cc
 CC_SRCS+=clfsm_visitors.cc
 CC_SRCS+=clfsm_main.cc
 
+CATKIN_HDRS+=${MODULE_DIR}/../CLReflect/CLReflectTypeEnum
+
 .include "clfsm_hdrs.mk"
 DONT_CHECK_HDRS=yes
 
