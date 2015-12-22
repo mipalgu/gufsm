@@ -114,6 +114,7 @@ src/FSMachineVector.cc
 src/clfsm_factory.cc
 src/clfsm_vector_factory.cc
 src/clfsm_wb_vector_factory.cc
+src/clfsm_cc.cc
 src/clfsm_machine.cc
 src/clfsm_machine_loader.cc
 src/gu_util.cpp
