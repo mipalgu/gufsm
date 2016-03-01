@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 5/08/12.
- *  Copyright (c) 2012, 2013, 2014, 2015 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2013, 2014, 2015, 2016 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -82,6 +82,15 @@
 
 using namespace std;
 using namespace FSM;
+
+CLState *FSM::current_state_of_machine(CLMachine *clm)
+{
+        const Machine *fsm = clm->machineContext();
+        const State *currentState = fsm->currentState();
+        int stateIndex = currentState->stateID();
+        CLState * const *cl_states = clm->states();
+        return cl_states[stateIndex];
+}
 
 CLFSMFactory::CLFSMFactory(Context *context, CLMachine *clm, int mid, bool del): Factory(NULL, del), _clm(clm)
 {

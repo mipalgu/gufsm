@@ -2,7 +2,7 @@
  *  CLMacros.h
  *
  *  Created by René Hexel on 23/03/13.
- *  Copyright (c) 2013, 2015 Rene Hexel.
+ *  Copyright (c) 2013, 2015, 2016 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -92,6 +92,7 @@ namespace FSM
         };
 
         CLMachine *machine_at_index(unsigned index);
+        CLState *current_state_of_machine(CLMachine *);
         long long start_time_for_current_state(const class Machine *machine);
         long long current_time_in_microseconds(void);
         int number_of_machines(void);
