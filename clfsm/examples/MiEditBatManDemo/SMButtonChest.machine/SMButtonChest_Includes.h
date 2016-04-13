@@ -4,8 +4,8 @@
 #include <cmath>
 #include <gu_util.h>
 #include "CLMacros.h"
-#include "typeClassDefs/SENSORS_BodySensors.h"
-#include "typeClassDefs/SENSORS_LedsSensors.h"
+#include "typeClassDefs/SENSORSBodySensors.h"
+#include "typeClassDefs/SENSORSLedsSensors.h"
 #include "typeClassDefs/NAO_State.h"
 #include "CLWhiteboard.h"
 

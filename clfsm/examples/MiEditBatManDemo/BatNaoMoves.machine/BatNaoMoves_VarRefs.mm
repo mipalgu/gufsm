@@ -10,8 +10,8 @@ BatNaoMoves *_m = static_cast<BatNaoMoves *>(_machine);
 #pragma clang diagnostic ignored "-Wshadow"
 
 QSay_t	&say = _m->say;	///< 
-SENSORS_SonarSensors_t	&sensorHandler = _m->sensorHandler;	///< 
-SENSORS_SonarSensors	&sensorValues = _m->sensorValues;	///< 
+SENSORSSonarSensors_t	&sensorHandler = _m->sensorHandler;	///< 
+SENSORSSonarSensors	&sensorValues = _m->sensorValues;	///< 
 MOTION_Status_t	&motion_status_handler = _m->motion_status_handler;	///< 
 MOTION_Commands_t	&motion_ptr = _m->motion_ptr;	///< 
 NAO_State	&nao_state = _m->nao_state;	///< 

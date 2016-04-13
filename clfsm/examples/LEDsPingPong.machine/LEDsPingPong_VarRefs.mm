@@ -9,7 +9,7 @@ LEDsPingPong *_m = static_cast<LEDsPingPong *>(_machine);
 #pragma clang diagnostic ignored "-Wunused-variable"
 #pragma clang diagnostic ignored "-Wshadow"
 
-SENSORS_LedsSensors	&leds = _m->leds;	///< LED Change
-SENSORS_LedsSensors_t	&leds_t = _m->leds_t;	///< LEDs WB Ptr
+SENSORSLedsSensors	&leds = _m->leds;	///< LED Change
+SENSORSLedsSensors_t	&leds_t = _m->leds_t;	///< LEDs WB Ptr
 
 #pragma clang diagnostic pop
