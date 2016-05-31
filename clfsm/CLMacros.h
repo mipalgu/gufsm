@@ -109,8 +109,8 @@ namespace FSM
 #ifndef NO_CL_READABILITY_MACROS
 
 #define timeout(t)      (current_time_in_microseconds() > start_time_for_current_state((_m)->machineContext()) + (t))
-#define after(t)        (timeout((t) * 1000000.0L))
-#define after_ms(t)     (timeout((t) * 1000.0L))
+#define after(t)        (timeout((t) * 1000000.0))
+#define after_ms(t)     (timeout((t) * 1000.0))
 
 #define machine_id()    ((_m)->machineID())
 #define machine_name()  ((_m)->machineName())
