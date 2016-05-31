@@ -119,8 +119,7 @@ namespace
         _refl_setPropertyAsString(metaProperty, thisTestClass, &value[0], &result);
         ASSERT_EQ(result, REFL_SUCCESS);
         ASSERT_EQ(stoi(value.c_str()), this->testValue);
-        ASSERT_THROW(_refl_setPropertyAsString(metaProperty, thisTestClass, &string("sdf")[0], NULL), exception);
-
+        ASSERT_THROW(_refl_setPropertyAsString(metaProperty, thisTestClass, &string("sdf")[0], NULL), logic_error);
     }
 
     TEST_F(ReflectAPI_MetaPropertyString_Tests, machinePropertyGetAsString)

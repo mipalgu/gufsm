@@ -77,7 +77,7 @@ namespace
     {
         // Property is a Point2D wb type
         unsigned int propIndex = 0;
-        char * setValue = const_cast<char *>("45,45");
+        char * setValue = const_cast<char *>("x=45, y=45");
         refl_setMachinePropertyValue_S(metaFSM, propIndex, setValue, &result);
         ASSERT_EQ(REFL_SUCCESS, result);
         refl_getMachinePropertyValue_S(metaFSM, propIndex, buffer, bufferLen, &result);
