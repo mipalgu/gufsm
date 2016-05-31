@@ -3,7 +3,7 @@ MODULE=ReflectTestMachines
 
 ALL_TARGETS?=host-local tests
 MAKEFLAGS+="WANT_FSM_REFLECTION=yes" ## so we get reflection by default
-SPECIFIC_WFLAGS= -Wno-double-promotion -Wno-format-pedantic 
+CLFSM_WFLAGS= -Wno-double-promotion -Wno-format-pedantic -Werror -Wall -Wno-unknown-pragmas -Wno-padded -Wno-unused-variable -Wno-unknown-warning-option -Wno-reserved-id-macro
 
 all: all-real
 
