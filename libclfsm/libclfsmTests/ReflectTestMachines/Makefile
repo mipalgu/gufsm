@@ -3,6 +3,7 @@ MODULE=ReflectTestMachines
 
 ALL_TARGETS?=host-local tests
 MAKEFLAGS+="WANT_FSM_REFLECTION=yes" ## so we get reflection by default
+SPECIFIC_WFLAGS= -Wno-double-promotion -Wno-format-pedantic 
 
 all: all-real
 
