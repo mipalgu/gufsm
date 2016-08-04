@@ -242,7 +242,7 @@ namespace FSM
                 virtual int evaluate(Machine * = NULL)
                 {
                         float value = float(content()) / float(FIXED_FACTOR);
-                        return int(atanf(value) * 180.0f / M_PI);
+                        return int(atanf(value) * 180.0f / (float)M_PI);
                 }
         };
         
@@ -256,7 +256,7 @@ namespace FSM
                 virtual int evaluate(Machine * = NULL)
                 {
                     float value = float(content()) / float(FIXED_FACTOR);
-                        return int(asinf(value) * 180.0f / M_PI);
+                        return int(asinf(value) * 180.0f / (float)M_PI);
                 }
         };
 
@@ -270,7 +270,7 @@ namespace FSM
                 virtual int evaluate(Machine * = NULL)
                 {
                     float value = float(content()) / float(FIXED_FACTOR);
-                        return int(acosf(value) * 180.0f / M_PI);
+                        return int(acosf(value) * 180.0f / (float)M_PI);
                 }
         };
 
