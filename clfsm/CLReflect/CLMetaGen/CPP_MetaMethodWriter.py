@@ -15,6 +15,7 @@ class CPP_MetaMethodWriter:
     def writeDeclarations(self):
         cpp = self.cpp
         cpp("// Action Declarations")
+        cpp("void " + self.machineDef.name + "_destroy(refl_machine_t machine, refl_userData_t data);")
         for state in self.machineDef.states:
             for action in CLMetaGenConstants.ACTIONS:
                 with cpp.subs(sName = state.name, action = action):
@@ -24,6 +25,10 @@ class CPP_MetaMethodWriter:
     def writeImplementations(self):
         cpp = self.cpp
         cpp("// Action Implementations")
+        with cpp.block("void " + self.machineDef.name + "_destroy(refl_machine_t machine, refl_userData_t data)"):
+            cpp(self.machineDef.name + "* thisMachine = static_cast<" + self.machineDef.name + "*>(machine);")
+            cpp("delete thisMachine;")
+        cpp('')
         for state in self.machineDef.states:
             for action in CLMetaGenConstants.ACTIONS:
                 with cpp.subs(mName = self.machineDef.name, sName = state.name, sNum = state.index, action = action):

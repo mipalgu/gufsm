@@ -17,6 +17,9 @@ class CPP_MetaCreateScriptWriter():
         with cpp.block("refl_metaMachine Create_MetaMachine()"):
             cpp("refl_metaMachine m = refl_initMetaMachine(NULL);")
             cpp('refl_setMetaMachineName(m, "' + self.machineDef.name + '", NULL);')
+            cpp(self.machineDef.name + '* machine = new ' + self.machineDef.name + '();')
+            cpp('refl_setMachine(m, machine, NULL);')
+            cpp('refl_setDestructorAction(m, ' + self.machineDef.name + '_destroy, NULL);')
             if len(self.machineDef.properties) > 0:
                 machinePropertiesVar = self.writeMachineProperties()
                 with cpp.subs(propsVar = machinePropertiesVar, numProps = len(self.machineDef.properties)):
