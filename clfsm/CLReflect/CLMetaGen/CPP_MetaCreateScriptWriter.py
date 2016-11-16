@@ -12,13 +12,15 @@ class CPP_MetaCreateScriptWriter():
         self.typeInterpreter = CPP_Type_Interpreter()
 
     def write(self):
+        self.writeCreateMetaMachine()
+        self.writeCreateScheduledMetaMachine()
+
+    def writeCreateMetaMachine(self):
         cpp = self.cpp
         cpp("// Creation script")
         with cpp.block("refl_metaMachine Create_MetaMachine()"):
             cpp("refl_metaMachine m = refl_initMetaMachine(NULL);")
             cpp('refl_setMetaMachineName(m, "' + self.machineDef.name + '", NULL);')
-            cpp(self.machineDef.name + '* machine = new ' + self.machineDef.name + '();')
-            cpp('refl_setMachine(m, machine, NULL);')
             cpp('refl_setDestructorAction(m, ' + self.machineDef.name + '_destroy, NULL);')
             if len(self.machineDef.properties) > 0:
                 machinePropertiesVar = self.writeMachineProperties()
@@ -139,3 +141,15 @@ class CPP_MetaCreateScriptWriter():
                     cpp("refl_setMetaPropertyStringFunctions($varName$, $getS$, $setS$, NULL);")
                     cpp('$statePropsVar$[$index$] = $varName$;')
         return statePropsVar
+
+    def writeCreateScheduledMetaMachine(self):
+        cpp = self.cpp
+        cpp("// Scheduled Creation script")
+        with cpp.block("refl_metaMachine Create_ScheduledMetaMachine()"):
+            cpp("machineID = number_of_machines() < 0 ? 0 : static_cast<unsigned int>(number_of_machines());")
+            cpp("CLFSMMachineLoader::CLFSMMachineLoader* loader = CLFSMMachineLoader::getMachineLoaderSingleton();")
+            cpp('loader->loadAndAddMachineAtPath("' + self.machineDef.machinePath +'");')
+            cpp("CLMachine* machine = machine_at_index(machineID);")
+            cpp("refl_metaMachine metaMachine = Create_MetaMachine();")
+            cpp("refl_setMachine(metaMachine, machine, NULL);")
+            cpp("return metaMachine;")

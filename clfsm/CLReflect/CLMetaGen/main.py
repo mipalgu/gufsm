@@ -5,7 +5,7 @@ from CLMetaGenDependencies import *
 
 
 # Get machine path, name and language
-machinePath = sys.argv[1]
+machinePath = os.path.abspath(sys.argv[1])
 language = sys.argv[2]
 
 extensionMatch = re.search('.+?(?=.machine)', machinePath) #get path without .machine extension
