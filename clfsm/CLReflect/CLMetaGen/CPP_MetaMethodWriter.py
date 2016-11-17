@@ -16,6 +16,7 @@ class CPP_MetaMethodWriter:
         cpp = self.cpp
         cpp("// Action Declarations")
         cpp("void " + self.machineDef.name + "_destroy(refl_machine_t machine, refl_userData_t data);")
+        cpp("void " + self.machineDef.name + "_executeCurrentState(refl_machine_t machine, refl_userData_t data);")
         for state in self.machineDef.states:
             for action in CLMetaGenConstants.ACTIONS:
                 with cpp.subs(sName = state.name, action = action):
@@ -28,6 +29,11 @@ class CPP_MetaMethodWriter:
         with cpp.block("void " + self.machineDef.name + "_destroy(refl_machine_t machine, refl_userData_t data)"):
             cpp(self.machineDef.name + "* thisMachine = static_cast<" + self.machineDef.name + "*>(machine);")
             cpp("delete thisMachine;")
+        cpp('')
+        with cpp.block("void " + self.machineDef.name + "_executeCurrentState(refl_machine_t machine, refl_userData_t data)"):
+            cpp(self.machineDef.name + "* thisMachine = static_cast<" + self.machineDef.name + "*>(machine);")
+            cpp("Machine* m = thisMachine->machineContext();")
+            cpp("m->executeOnce();")
         cpp('')
         for state in self.machineDef.states:
             for action in CLMetaGenConstants.ACTIONS:
