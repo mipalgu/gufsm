@@ -116,5 +116,8 @@ refl_bool refl_evaluateTransition(refl_metaMachine metaMachine, unsigned int sta
 */
 void refl_setDestructorAction(refl_metaMachine metaMachine, refl_destuctor_f destructFunction, CLReflectResult* result);
 
+void refl_setExecuteAction(refl_metaMachine metaMachine, refl_execute_f executeFunction, CLReflectResult* result);
+
+void refl_executeCurrentState(refl_metaMachine metaMachine, CLReflectResult* result);
 
 #endif /* end of include guard: API_METAMACHINE_H */

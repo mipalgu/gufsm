@@ -35,6 +35,7 @@ typedef void* (*getMachine_f)(const char*);
 //! Typedef for a state action (internal, onExit etc)
 typedef void (*refl_stateAction_f)(refl_machine_t, refl_userData_t);
 typedef refl_stateAction_f refl_destuctor_f;
+typedef refl_stateAction_f refl_execute_f;
 
 //! Evaluation transition function type
 typedef refl_bool (*refl_transitionEval_f)(refl_machine_t, refl_userData_t);

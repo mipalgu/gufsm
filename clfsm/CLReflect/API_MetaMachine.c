@@ -303,3 +303,29 @@ void refl_setDestructorAction(refl_metaMachine metaMachine, refl_destuctor_f des
         }
     }
 }
+
+void refl_setExecuteAction(refl_metaMachine metaMachine, refl_execute_f executeFunction, CLReflectResult* result) {
+    if (!metaMachine) {
+        if (result) {
+            *result = REFL_INVALID_ARGS;
+        }
+        return;
+    }
+    metaMachine->executeAction = executeFunction;
+    if (result) {
+        *result = REFL_SUCCESS;
+    }
+}
+
+void refl_executeCurrentState(refl_metaMachine metaMachine, CLReflectResult* result) {
+    if (!metaMachine) {
+        if (result) {
+            *result = REFL_INVALID_ARGS;
+        }
+        return;
+    }
+    metaMachine->executeAction(metaMachine, metaMachine->data);
+    if (result) {
+        *result = REFL_SUCCESS;
+    }
+}
