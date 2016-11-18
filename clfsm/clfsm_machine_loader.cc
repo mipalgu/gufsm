@@ -70,7 +70,7 @@
 #include "clfsm_wb_vector_factory.h"
 #include "clfsm_machine.h"
 #include "CLMachine.h"
-#include "CLReflectAPI.h"
+#include <CLReflect/CLReflectAPI.h>
 
 using namespace FSM;
 
