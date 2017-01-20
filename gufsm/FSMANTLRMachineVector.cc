@@ -643,10 +643,34 @@ std:: string ANTLRMachineVector ::descriptionSMVformat(KripkeFreezePointVector &
 
                 ss << "M"<< machineRingletState.machine->id();
                 if (verbose)
-                        ss << "S"<< machineRingletState.stateName;
+                {
+                        ss << "S"<< machineRingletState.stateName << "R";
+                        switch (machineRingletState.ringletStage) {
+                                case Epcbefore:
+                                        ss << "beforeOnEntry";
+                                        break;
+                                case EpcAfterOnEntry:
+                                        ss << "afterOnEntry";
+                                        break;
+                                case EBeforeTransition:
+                                        ss << "beforeTransition";
+                                        break;
+                                case EtransitionFalse:
+                                        ss << "transitionFalse";
+                                        break;
+                                case EtransitionTrue:
+                                        ss << "transitionTrue";
+                                        break;
+                                case ETOTAL_NUM_VALUES:
+                                        ss << "invalid";
+                                        break;
+                        }
+                }
                 else
+                {
                         ss << "S"<< machineRingletState.stateID;
-                ss << "R" << machineRingletState.ringletStage;
+                        ss << "R" << machineRingletState.ringletStage;
+                }
                 if (EpcAfterOnEntry < machineRingletState.ringletStage)
                         ss << "T" << machineRingletState.transition_id;
         }
