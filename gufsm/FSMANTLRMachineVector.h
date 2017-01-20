@@ -107,7 +107,7 @@ namespace FSM
                 /**
                  * Serialise a Kripke Gobal vector in smv format
                  */
-                std::string descriptionSMVformat(KripkeFreezePointVector &, bool verbose = false);
+                std::string descriptionSMVformat(const KripkeFreezePointVector &, bool verbose = false);
         };
 }
 

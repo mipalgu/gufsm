@@ -1009,7 +1009,7 @@
 		F18AD00915CB6F6D00492118 /* State_Pong_Transition_0.expr */ = {isa = PBXFileReference; lastKnownFileType = text; path = State_Pong_Transition_0.expr; sourceTree = "<group>"; };
 		F18AD00A15CBA63800492118 /* FSMANTLRMachineVector.cc */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 8; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRMachineVector.cc; sourceTree = "<group>"; };
 		F18AD00B15CBA63800492118 /* FSMANTLRMachineVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMANTLRMachineVector.h; sourceTree = "<group>"; };
-		F191E602142D99150014AF84 /* FSMachine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMachine.h; sourceTree = "<group>"; };
+		F191E602142D99150014AF84 /* FSMachine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMachine.h; sourceTree = "<group>"; tabWidth = 8; };
 		F191E603142D9A2D0014AF84 /* FSMSuspensibleMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMSuspensibleMachine.h; sourceTree = "<group>"; };
 		F191E604142D9B970014AF84 /* FSMSuspensibleMachine.cc */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 8; lastKnownFileType = sourcecode.cpp.cpp; path = FSMSuspensibleMachine.cc; sourceTree = "<group>"; };
 		F192CC90144D27C200FF8526 /* AlgUtil.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AlgUtil.cpp; sourceTree = "<group>"; };

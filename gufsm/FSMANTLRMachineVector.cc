@@ -288,6 +288,7 @@ string ANTLRMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                 next.variable_combination=ANTLRContextToVariableCombination(n, names);
                 (*next.freeze_point)[machineToRunOnce].ringletStage=Epcbefore;
                 (*next.freeze_point)[machineToRunOnce].stateID = m->currentStateID();
+                (*next.freeze_point)[machineToRunOnce].stateName = m->currentState()->name();
                 next.whose_turn = (next.whose_turn + 1) % machines().size();
 
                 /* output a derived state */
@@ -496,9 +497,9 @@ string ANTLRMachineVector::kripkeInSVMformat(bool verbose)
                      it != machines().end(); it++)
                 {
                         SuspensibleMachine *m = *it;
-                        KripkeFreezePointOfMachine freezePoint;
-                        freezePoint.machine=m;
-                        (void)freezePoint;  // really?
+//                        KripkeFreezePointOfMachine freezePoint;
+//                        freezePoint.machine=m;
+//                        (void)freezePoint;  // really?
 
                         pcKripkeValue.push_back(m->localKripkeStateNames() [indexesPerFSM[i]]);
                         i++;
@@ -633,7 +634,7 @@ string ANTLRMachineVector::kripkeInSVMformat(bool verbose)
 
 }
 
-std:: string ANTLRMachineVector ::descriptionSMVformat(KripkeFreezePointVector &data, bool verbose)
+std:: string ANTLRMachineVector ::descriptionSMVformat(const KripkeFreezePointVector &data, bool verbose)
 {
         stringstream ss;
         for (KripkeFreezePointVector::const_iterator it = data.begin();
@@ -642,9 +643,10 @@ std:: string ANTLRMachineVector ::descriptionSMVformat(KripkeFreezePointVector &
                 const KripkeFreezePointOfMachine &machineRingletState = *it;
 
                 ss << "M"<< machineRingletState.machine->id();
+                ss << "S"<< machineRingletState.stateID;
                 if (verbose)
                 {
-                        ss << "S"<< machineRingletState.stateName << "R";
+                        ss << machineRingletState.stateName << "R";
                         switch (machineRingletState.ringletStage) {
                                 case Epcbefore:
                                         ss << "beforeOnEntry";
@@ -668,7 +670,6 @@ std:: string ANTLRMachineVector ::descriptionSMVformat(KripkeFreezePointVector &
                 }
                 else
                 {
-                        ss << "S"<< machineRingletState.stateID;
                         ss << "R" << machineRingletState.ringletStage;
                 }
                 if (EpcAfterOnEntry < machineRingletState.ringletStage)

@@ -120,10 +120,22 @@ namespace FSM
                                  On Entry * transiitons evaluation (or Onexit)
                                   */
                 int transition_id; /* id of transition frozen if above */
+                KripkeFreezePointOfMachine() {}
+                KripkeFreezePointOfMachine(const KripkeFreezePointOfMachine &other): machine(other.machine), stateName(other.stateName), stateID(other.stateID), ringletStage(other.ringletStage), transition_id(other.transition_id) {}
+                KripkeFreezePointOfMachine &operator=(const KripkeFreezePointOfMachine &other)
+                {
+                    machine = other.machine;
+                    stateID = other.stateID;
+                    stateName = other.stateName;
+                    ringletStage = other.ringletStage;
+                    transition_id = other.transition_id;
+                    return *this;
+                }
                 bool operator==(const KripkeFreezePointOfMachine &other) const
                 {
                         return machine == other.machine &&
                                 stateID == other.stateID &&
+                                stateName == other.stateName &&
                                 ringletStage == other.ringletStage &&
                         transition_id == other.transition_id;
                 }
