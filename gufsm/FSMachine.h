@@ -113,6 +113,7 @@ namespace FSM
         struct KripkeFreezePointOfMachine
         {
                 Machine* machine;  /* machine that is frozen */
+                std::string stateName;  ///< name of the machine state
                 int stateID;    /* state where it is frozen */
                 enum RingletStage ringletStage ;
                  /* a state in a machien goes thorugh

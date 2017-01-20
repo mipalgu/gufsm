@@ -244,6 +244,7 @@ const LocalKripkeFrezzePointVector &Machine::localKripkeStateNames(bool snapshot
         {
                 State *s = *it;
                 rigletCurrentStage.stateID=s->stateID();
+                rigletCurrentStage.stateName = s->name();
                 rigletCurrentStage.ringletStage=Epcbefore;
                 _localKripkeStateNames.push_back(rigletCurrentStage ) ;
                 

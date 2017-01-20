@@ -87,9 +87,9 @@ namespace FSM
                 ANTLRMachineVector(ANTLRContext *context): StateMachineVector(static_cast<Context *>(context)), _typeBoolMask(0ULL) {}
 
                 /// generate Kripke String
-                std::string generate_from(KripkeState &, std::list<KripkeState> &, size_t n, std::string **names);
+                std::string generate_from(KripkeState &, std::list<KripkeState> &, size_t n, std::string **names, bool verbose);
                 /// convert Kripke state to a string
-                std::string kripkeToString(KripkeState &s, size_t n, std::string **names, bool derived=false);
+                std::string kripkeToString(KripkeState &s, size_t n, std::string **names, bool verbose, bool derived=false);
 
                 void add_if_not_seen(KripkeState &, std::list<KripkeState> &);
                 void  kripkeToANTLRContext (KripkeState &s, size_t n, std:: string **names);
@@ -97,17 +97,17 @@ namespace FSM
                 unsigned long long  AllToExtVariableCombination(unsigned long long v, size_t n, std:: string **names, std::vector<int> &posOfExternals);
                 unsigned long long extVarToKripke(unsigned long long all_vars, unsigned long long ext, const std::vector<int> &ext_offsets);
                 bool inList( const std::list<KripkeState>  & , const KripkeState &);
-                void outputList (  std::list<KripkeState>  & , size_t n, std::string **names);
+                void outputList (  std::list<KripkeState>  & , size_t n, std::string **names, bool verbose);
 
                 /**
                  * print the Kripke structure in smv format
                  */
-                virtual std::string kripkeInSVMformat();
+                virtual std::string kripkeInSVMformat(bool verbose = false);
 
                 /**
                  * Serialise a Kripke Gobal vector in smv format
                  */
-                std::string descriptionSMVformat(KripkeFreezePointVector &);
+                std::string descriptionSMVformat(KripkeFreezePointVector &, bool verbose = false);
         };
 }
 

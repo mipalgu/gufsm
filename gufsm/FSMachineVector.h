@@ -254,7 +254,7 @@ namespace FSM
                  * subclass responsibility:
                  * print the Kripke structure in svm format
                  */
-                virtual std::string kripkeInSVMformat() { return ""; }
+                virtual std::string kripkeInSVMformat(bool verbose = false) { return ""; }
 
                 /**
                  * restart all state machines from their initial state
@@ -284,7 +284,7 @@ namespace FSM
                 /**
                  * subclass responsibility: serialise a Kripke Gobal vector in smv format
                  */
-                std::string descriptionSMVformat(KripkeFreezePointVector &) { return ""; }
+                std::string descriptionSMVformat(KripkeFreezePointVector &, bool verbose = false) { return ""; }
 #if !defined(__BLOCKS__) && !defined(WITHOUT_LIBDISPATCH)
                 /** not really public */
                 void do_spawn_once_on_queue(dispatch_queue_t queue);

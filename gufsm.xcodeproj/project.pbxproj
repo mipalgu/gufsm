@@ -478,7 +478,7 @@
 		E11FB97D14BD4793009C778E /* FSMState.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMState.cc; path = ../gufsm/FSMState.cc; sourceTree = "<group>"; };
 		E11FB97E14BD4793009C778E /* FSMActivity.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMActivity.cc; path = ../gufsm/FSMActivity.cc; sourceTree = "<group>"; };
 		E11FB97F14BD4793009C778E /* FSMAction.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMAction.cc; path = ../gufsm/FSMAction.cc; sourceTree = "<group>"; };
-		E11FB98014BD4793009C778E /* FSMachine.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMachine.cc; path = ../gufsm/FSMachine.cc; sourceTree = "<group>"; };
+		E11FB98014BD4793009C778E /* FSMachine.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMachine.cc; path = ../gufsm/FSMachine.cc; sourceTree = "<group>"; tabWidth = 8; };
 		E11FB98114BD4793009C778E /* FSMSuspensibleMachine.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMSuspensibleMachine.cc; path = ../gufsm/FSMSuspensibleMachine.cc; sourceTree = "<group>"; };
 		E11FB98214BD4793009C778E /* FSMExpression.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FSMExpression.cc; path = ../gufsm/FSMExpression.cc; sourceTree = "<group>"; };
 		E11FB98314BD4793009C778E /* gu_util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gu_util.cpp; path = ../../../Common/gu_util.cpp; sourceTree = "<group>"; };

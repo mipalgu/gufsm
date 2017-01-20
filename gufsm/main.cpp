@@ -75,13 +75,14 @@ using namespace std;
 using namespace FSM;
 
 int dump_kripke(ANTLRStateMachineVectorFactory &factory, vector<string> &machine_names);
+int dump_kripke_verbose(ANTLRStateMachineVectorFactory &factory, vector<string> &machine_names);
 int dumpNames(ANTLRContext & context);
 int block_schedule(ANTLRStateMachineVectorFactory &factory, vector<string> &machine_names);
 int factory_execute(ANTLRStateMachineVectorFactory &factory, vector<string> &machine_names);
 
 static __attribute__((__noreturn__)) void usage(const char *cmd)
 {
-        cerr << "Usage: " << cmd << " [-b][-k][-v][-n] [fsm [...]]" << endl;
+        cerr << "Usage: " << cmd << " [-b][-K][-k][-v][-n] [fsm [...]]" << endl;
         exit(EXIT_FAILURE);
 }
 
@@ -91,6 +92,14 @@ int dump_kripke(ANTLRStateMachineVectorFactory &factory, vector<string> &)
         string kripke = factory.fsms()->kripkeInSVMformat();
         cout << kripke << endl;
         return EXIT_SUCCESS;
+}
+
+
+int dump_kripke_verbose(ANTLRStateMachineVectorFactory &factory, vector<string> &)
+{
+    string kripke = factory.fsms()->kripkeInSVMformat(true);
+    cout << kripke << endl;
+    return EXIT_SUCCESS;
 }
 
 
@@ -135,16 +144,19 @@ static void signal_handler(int)
         exit_factory->fsms()->scheduleSuspend();
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wimplicit-fallthrough"
+
 int main (int argc, char * const argv[])
 {
-        bool kripke_flag = false, verbose = false, dump_names = false, want_cdl = true,
+        bool kripke_flag = false, kripke_verbose = false, verbose = false, dump_names = false, want_cdl = true,
 #ifdef __APPLE__
         blocks_flag = true;
 #else
         blocks_flag = false;
 #endif
         int ch;
-        while ((ch = getopt(argc, argv, "BbCkvn")) != -1)
+        while ((ch = getopt(argc, argv, "BbCKkvn")) != -1)
         {
                 switch (ch)
                 {
@@ -157,6 +169,8 @@ int main (int argc, char * const argv[])
                         case 'C':       // disable CDL bridge
                                 want_cdl = false;
                                 break;
+                        case 'K':
+                                kripke_verbose = true;
                         case 'k':
                                 kripke_flag = true;
                                 break;
@@ -211,6 +225,9 @@ int main (int argc, char * const argv[])
 #endif // 0
         if (kripke_flag)
         {
+            if (kripke_verbose)
+                return run_machine_vector(factory, machine_names, dump_kripke_verbose, verbose);
+            else
                 return run_machine_vector(factory, machine_names, dump_kripke, verbose);
         }
         if (blocks_flag)                        // execute on dispatch queue
@@ -220,4 +237,5 @@ int main (int argc, char * const argv[])
 
         return run_machine_vector(factory, machine_names, factory_execute, verbose);
 }
+#pragma clang diagnostic pop
 
