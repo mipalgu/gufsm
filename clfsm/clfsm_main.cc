@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 12/10/12.
- *  Copyright (c) 2012, 2013, 2014 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2013, 2014, 2015 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -55,6 +55,15 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#pragma clang diagnostic ignored "-Wreserved-id-macro"
+#pragma clang diagnostic ignored "-Wunused-macros"
+#pragma clang diagnostic ignored "-Wold-style-cast"
+#pragma clang diagnostic ignored "-Wdeprecated"
+
+#ifndef _BSD_SOURCE
+#define _BSD_SOURCE 199601
+#endif
+
 #include <iostream>
 #include <sstream>
 #include <cstdio>
@@ -70,9 +79,12 @@
 #include <stdlib.h>                     // C++ stdlib instead of cstdlib.
 #include <unistd.h>
 #include <signal.h>
+#ifndef WITHOUT_BACKTRACE
 #include <execinfo.h>
+#endif
 #include <libgen.h>
 #include <sys/stat.h>
+#include <memory>
 
 //#ifdef block_defined
 //#define __block __attribute__((__blocks__(byref)))
@@ -81,15 +93,20 @@
 #include "gu_util.h"
 #include "FSMState.h"
 #include "FSMSuspensibleMachine.h"
+#include "FSMAsynchronousSuspensibleMachine.h"
 #include "FSMachineVector.h"
 #include "CLMachine.h"
 #include "clfsm_machine.h"
 #include "clfsm_wb_vector_factory.h"
 #include "gugenericwhiteboardobject.h"
+#include "clfsm_machine_loader.h"
 
 // Visitors and Support Objects
 #include "clfsm_visitors.h"
 #include "clfsm_visitorsupport.h"
+
+// Reflection API
+#include "CLReflectAPI.h"
 
 static const char *command;
 static int command_argc;
@@ -97,70 +114,25 @@ static char * const *command_argv;
 static bool nonstop;
 static bool time_state_execution;
 static FILE* fStateMsgOutput;
+static int verbosity;
 
 using namespace std;
 using namespace FSM;
 
 struct clfsm_context {
-    vector<string> *machineFiles;       /// pointer to vector of file names
-    CLFSMWBVectorFactory *factory;      /// machine factory that was used
+    CLFSMMachineLoader* loader;
 };
 
-static string bumpedName(string name)
+static CLFSMWBVectorFactory *createMachines(const vector<string> &machines, const vector<string> &compiler_args, const vector<string> &linker_args)
 {
-    size_t len = name.size();
-    if (!len || !isdigit(name[len-1]))
-        return name + ".0";
-    while (--len && isdigit(name[len-1]))
-        ;
-    int i = atoi(name.c_str()+len);
-    stringstream ss;
-    ss << name.substr(0, len) << ++i;
-    
-    return ss.str();
-}
-
-
-static CLFSMWBVectorFactory *createMachines(vector<MachineWrapper *> &machineWrappers, const vector<string> &machines, const vector<string> &compiler_args, const vector<string> &linker_args)
-{
-    CLFSMWBVectorFactory *factory = new CLFSMWBVectorFactory();
-    int i = 0;
+    CLFSMMachineLoader *loader = CLFSMMachineLoader::getMachineLoaderSingleton();
     for (vector<string>::const_iterator it = machines.begin(); it != machines.end(); it++)
     {
-        const string &machine = *it;
-        machineWrappers.push_back(new MachineWrapper(machine));
-        MachineWrapper &machineWrapper = *machineWrappers[i];
-        machineWrapper.setCompilerArgs(compiler_args);
-        machineWrapper.setLinkerArgs(linker_args);
-        CLMachine *clm = machineWrapper.instantiate(i, machine.c_str());
-        if (clm)
-        {
-            string name = machineWrapper.name();
-            /*
-             * Bump name if not unique
-             */
-            if (factory->index_of_machine_named(name.c_str()) != CLError)
-            {
-                while (factory->index_of_machine_named(name.c_str()) != CLError)
-                    name = bumpedName(name);
-                machineWrapper.setName(name);
-                clm->setMachineName(name.c_str());
-            } else {
-                clm->setMachineName(machineWrapper.name()); // set name without .machine extension
-            }
-            factory->addMachine(clm);
-        }
-        else
-        {
-            cerr << "Could not add machine " << i << ": '" << machine << "'" << endl;
-        }
-        
-        i++;
+            const string &machine = *it;
+            FSM::loadAndAddMachineAtPath(machine, compiler_args, linker_args);
     }
-    
-    return factory;
+    return loader->vector_factory();
 }
-
 
 static void __attribute((noreturn)) aborting_signal_handler(int signum)
 {
@@ -170,24 +142,25 @@ static void __attribute((noreturn)) aborting_signal_handler(int signum)
     guWhiteboard::QSpeech_t say;
 #endif
     stringstream ss;
-    
+
     if (signum == SIGTERM || signum == SIGQUIT || signum == SIGINT)
         nonstop = false;
-    
+
     ss << "Caught signal " << signum << ": " << (nonstop ? "restarting ... " : "aborting ...") << endl;
-    
+
     say(ss.str());
     cerr << ss.str();
-    
+
     if (time_state_execution)
     {
         CLFSMVisitorsExecution::print_results_stderr();
     }
-    
+
     abort();
 }
 
 
+#ifndef WITHOUT_BACKTRACE
 static void print_backtrace(int signum)
 {
     void *callstack[256];
@@ -195,14 +168,14 @@ static void print_backtrace(int signum)
     int frames = backtrace(callstack, sizeof(callstack)/sizeof(callstack[0]));
     char **strs = backtrace_symbols(callstack, frames);
     char tmpname[256];
-    snprintf(tmpname, sizeof(tmpname), "/tmp/%s-XXX.log", basename((char *)command));
-    int fn = mkstemps(tmpname, 4);
+    snprintf(tmpname, sizeof(tmpname), "/tmp/%s-XXXX", basename((char *)command));
+    int fn = mkstemp(tmpname);
     FILE *logfile = fdopen(fn, "w");
     if (!logfile)
     {
         fprintf(stderr, "*** Cannot open '%s': %s", tmpname, strerror(errno));
     }
-    
+
 #ifdef DEBUG
     guWhiteboard::QSay_t say;
 #else
@@ -216,22 +189,26 @@ static void print_backtrace(int signum)
         if (logfile) fprintf(logfile,"%3.3d: %s\n", i, function);
         fprintf(stderr, "%3.3d: %s\n", i, function);
     }
-    
+
     free(strs);
     if (logfile)
     {
         fclose(logfile);
         fprintf(stderr, "Log file written to '%s'\n", tmpname);
     }
-    
+
     if (signum == SIGTSTP) kill(getpid(), SIGSTOP);
     errno = olderrno;
 }
-
+#endif
 
 static void __attribute((noreturn)) backtrace_signal_handler(int signum)
 {
+#ifdef WITHOUT_BACKTRACE
+    (void) signum;
+#else
     print_backtrace(signum);
+#endif
     signal(SIGABRT, SIG_DFL);
     if (nonstop)
     {
@@ -242,23 +219,24 @@ static void __attribute((noreturn)) backtrace_signal_handler(int signum)
         execvp(command, command_argv);
         fprintf(stderr, "*** Cannot re-run '%s': %s", command, strerror(errno));
     }
-    
+
     abort();
 }
 
 
 static void usage(const char *cmd)
 {
-    cerr << "Usage: " << cmd << "[-c][-d][-fPIC]{-I includedir}{-L linkdir}{-l lib}[-n][-s][-t][-v]" << endl;
+    cerr << "Usage: " << cmd << "[-c][-d][-fPIC]{-I includedir}[-i idlesleep]{-L linkdir}{-l lib}[-n][-s][-t][-v]" << endl;
     cerr << "[-c] = Compile only flag, don't execute machine." << endl;
     cerr << "[-f] = compiler specific flags (eg. 'PIC' To generate Position Independent Code)." << endl;
-    cerr << "{-I includedir} = Directory to include during compilation. Use repeatedly for multiple directories." << endl;
+    cerr << "{-I idlesleep} = Number of microseconds to sleep when idle (default: 10000)" << endl;
+    cerr << "{-i includedir} = Directory to include during compilation. Use repeatedly for multiple directories." << endl;
     cerr << "{-L linkdir} = Directory to include during linking. Use repeatedly for multiple directories." << endl;
     cerr << "{-l lib} = Library to include during linking. Use repeatedly for multiple libraries." << endl;
     cerr << "[-n] = Restart CLFSM after SIGABRT or SIGIOT signals." << endl;
     cerr << "[-s] = Outputs information about machine suspensions and resumes." << endl;
     cerr << "[-t] = Time execution of machine states." << endl;
-    cerr << "[-v] = Verbose; output MachineID, State, and name of machine." << endl;
+    cerr << "[-v] = Verbose; output MachineID, State, and name of machine. (multiple times to increase verbosity)" << endl;
     cerr << "[-d] = Output debug information (requires Verbose switch)." << endl;
 }
 
@@ -266,44 +244,65 @@ static bool debug_internal_states = false;
 
 static bool print_machine_and_state(void *ctx, SuspensibleMachine *machine, int machine_number)
 {
-    struct clfsm_context *context = static_cast<struct clfsm_context *>(ctx);
-    CLFSMWBVectorFactory *factory = context->factory;
-    const char *machineName = factory->name_of_machine_at_index(machine_number);
-    
-    if (machine->previousState() != machine->currentState())
-    {
-        fprintf(fStateMsgOutput, "%sm%3d s%3d - %-30.30s / %-30.30s - %s\n", \
-                debug_internal_states ? "\n" : "", \
-                machine_number, \
-                machine->indexOfState(), \
-                context->machineFiles->at(machine_number).c_str(), \
-                machineName, \
-                machine->currentState()->name().c_str());
-    }
-    else if (debug_internal_states)
-    {
-        fprintf(fStateMsgOutput, "%d/%d ", machine_number, machine->indexOfState());
-    }
-    
-    return true;
+        struct clfsm_context *context = static_cast<struct clfsm_context *>(ctx);
+        MachineWrapper* wrapper = context->loader->machineWrappers().at(machine_number);
+        const char *machineName = wrapper->name();
+        const char* path = wrapper->path();
+
+        if (machine->previousState() != machine->currentState())
+        {
+            if (verbosity > 1)
+                fprintf(fStateMsgOutput, "%sm%3d s%3d - %-30.30s / %-20.20s - %s\n",  debug_internal_states ? "\n" : "", machine_number, machine->indexOfState(), path, machineName, machine->currentState()->name().c_str());
+            else
+                fprintf(fStateMsgOutput, "%sm%3d s%3d - %-20.20s - %s\n",  debug_internal_states ? "\n" : "", machine_number, machine->indexOfState(), machineName, machine->currentState()->name().c_str());
+        }
+        else if (debug_internal_states)
+                fprintf(fStateMsgOutput, "%d/%d ", machine_number, machine->indexOfState());
+
+        return true;
+}
+
+
+static bool unloadMachineIfAccepting(void *ctx, SuspensibleMachine *machine, int machine_number)
+{
+        if (machine->isSuspended()) return false;   // don't unload if suspended
+
+        struct clfsm_context *context = static_cast<struct clfsm_context *>(ctx);
+        if (machine->scheduledForSuspend() ||       // don't unload if scheduled for suspend
+            machine->scheduledForRestart())         // don't unload if scheduled for restart
+        {
+#ifndef NDEBUG
+            const char *action = machine->scheduledForRestart() ? "restart" : "suspension";
+            MachineWrapper* wrapper = context->loader->machineWrappers().at(machine_number);
+            const char *machineName = wrapper ? wrapper->name() : NULL;
+            if (!machineName) machineName = "<unknown>";
+            cerr << "*** Machine " << machine->id() << ": '" << machineName << "' scheduled for " << action << " -- not unloading! ***" << endl;
+#endif
+            return false;
+        }
+
+        CLFSMMachineLoader *loader = context->loader;
+        loader->unloadMachineAtIndex(machine_number);
+
+        return true;
 }
 
 
 int main(int argc, char * const argv[])
 {
     fStateMsgOutput = stderr;
-    vector<MachineWrapper *> machineWrappers;
+
     vector<string> machines;
     vector<string> compiler_args;
     vector<string> linker_args;
-    
+
     command_argc = argc;
     command_argv = argv;
     command = argv[0];
-    
+
     signal(SIGABRT, backtrace_signal_handler);
     signal(SIGIOT,  backtrace_signal_handler);
-    
+
     signal(SIGINT,  aborting_signal_handler);
     signal(SIGTERM, aborting_signal_handler);
     signal(SIGQUIT, aborting_signal_handler);
@@ -316,22 +315,19 @@ int main(int argc, char * const argv[])
 #ifdef SIGINFO
     signal(SIGINFO, print_backtrace);
 #endif
+#ifndef WITHOUT_BACKTRACE
     signal(SIGTSTP, print_backtrace);
     signal(SIGHUP,  print_backtrace);
-    
+#endif
+
     compiler_args.push_back("-std=c++11");    /// XXX: fix this
-    
+
     int ch;
-    bool compileOnly = false;
-    int debug = 0, verbose = 0;
-    
-    while ((ch = getopt(argc, argv, "cdgfI:L:l:nstv")) != -1)
+    int debug = 0, verbose = 0, noUnloadIfAccepting = 0;
+    while ((ch = getopt(argc, argv, "dgf:I:i:L:l:nstuv")) != -1)
     {
         switch (ch)
         {
-            case 'c':
-                compileOnly = true;
-                break;
             case 'd':
                 debug++;
                 break;
@@ -345,6 +341,9 @@ int main(int argc, char * const argv[])
             case 'I':
                 compiler_args.push_back("-I");
                 compiler_args.push_back(optarg);
+                break;
+            case 'i':
+                FSM::CLFSMMachineLoader::idle_timeout = atol(optarg);
                 break;
             case 'L':
                 linker_args.push_back("-L");
@@ -368,15 +367,19 @@ int main(int argc, char * const argv[])
             case 'v':
                 verbose++;
                 break;
+            case 'u':
+                noUnloadIfAccepting++;
+                break;
             case '?':
             default:
                 usage(argv[0]);
                 exit(EXIT_FAILURE);
         }
     }
+
     argc -= optind;
     argv += optind;
-    
+
     while (argc--)
     {
         struct stat s;
@@ -393,51 +396,29 @@ int main(int argc, char * const argv[])
         }
         machines.push_back(machine);
     }
-    
-    if (!compiler_args.size())
-    {
-        compiler_args = MachineWrapper::default_compiler_args();
-    }
-    
-    if (!linker_args.size())
-    {
-        linker_args   = MachineWrapper::default_linker_args();
-    }
-    
+
+    if (!compiler_args.size()) compiler_args = MachineWrapper::default_compiler_args();
+    if (!linker_args.size())   linker_args   = MachineWrapper::default_linker_args();
+
     visitor_f visitor = NULL;
-    
-    if (verbose)
-    {
-        visitor = print_machine_and_state;
-    }
-    
-    if (time_state_execution)
-    {
-        visitor = CLFSMVisitorsExecution::time_state_execution;
-    }
-    
-    CLFSMWBVectorFactory *factory = createMachines(machineWrappers, machines, compiler_args, linker_args);
-    
-    if (!compileOnly)
-    {
-        struct clfsm_context context = { &machines, factory };
-        factory->postMachineStatus();
-        debug_internal_states = debug;
-        factory->execute(visitor, &context);
-        delete factory;
-        
-        for (vector<MachineWrapper *>::const_iterator it = machineWrappers.begin(); it != machineWrappers.end(); it++)
-        {
-            if (*it) delete *it;
-        }
-    }
-    
-    
+    visitor_f accept_action = NULL; //Used to unload machines when in accepting state
+    if ((verbosity = verbose)) visitor = print_machine_and_state;
+    if (time_state_execution) visitor = CLFSMVisitorsExecution::time_state_execution;
+    if (!noUnloadIfAccepting) accept_action = unloadMachineIfAccepting;
+    refl_initAPI(NULL); //Init reflection system
+    CLFSMWBVectorFactory *factory = createMachines(machines, compiler_args, linker_args);
+    struct clfsm_context context = { CLFSMMachineLoader::getMachineLoaderSingleton() };
+    factory->postMachineStatus();
+    debug_internal_states = debug;
+    factory->fsms()->execute(visitor, &context, accept_action);
+    refl_destroyAPI(NULL); // Destroy reflection system
     // Print Execution Results
     if (time_state_execution)
     {
         CLFSMVisitorsExecution::print_results_stderr();
     }
-    
+
+    delete CLFSMMachineLoader::getMachineLoaderSingleton();
+
     return EXIT_SUCCESS;
 }

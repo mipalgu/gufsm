@@ -9,8 +9,8 @@ RobotPosition *_m = static_cast<RobotPosition *>(_machine);
 #pragma clang diagnostic ignored "-Wunused-variable"
 #pragma clang diagnostic ignored "-Wshadow"
 
-SENSORS_BodySensors	&body = _m->body;	///< 
-SENSORS_BodySensors_t	&body_ptr = _m->body_ptr;	///< 
+SENSORSBodySensors	&body = _m->body;	///< 
+SENSORSBodySensors_t	&body_ptr = _m->body_ptr;	///< 
 int	&frontalAngle = _m->frontalAngle;	///< 
 int	&lateralAngle = _m->lateralAngle;	///< 
 NAO_State_t	&NAO_State_ptr = _m->NAO_State_ptr;	///< 

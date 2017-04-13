@@ -4,7 +4,7 @@
 #include <cmath>
 #include "CLMacros.h"
 #include "CLWhiteboard.h"
-#include "typeClassDefs/SENSORS_SonarSensors.h"
+#include "typeClassDefs/SENSORSSonarSensors.h"
 #include "typeClassDefs/MOTION_Interface.h"
 
 using namespace guWhiteboard;

@@ -88,7 +88,7 @@ catkin_package(
 ###########
 
 set(CMAKE_C_FLAGS "-std=c99")
-set(CMAKE_CXX_FLAGS "-std=c++11")
+set(CMAKE_CXX_FLAGS "-std=c++11 -DWITHOUT_LIBDISPATCH")
 set(CMAKE_SHARED_LINKER_FLAGS "-Wl,-rpath -Wl,${CMAKE_INSTALL_PREFIX}/lib")
 
 ## Specify additional locations of header files
@@ -114,7 +114,23 @@ src/FSMachineVector.cc
 src/clfsm_factory.cc
 src/clfsm_vector_factory.cc
 src/clfsm_wb_vector_factory.cc
+src/clfsm_cc.cc
+src/clfsm_machine.cc
+src/clfsm_machine_loader.cc
 src/gu_util.cpp
+src/stringConstants.c
+src/API_Interface.cc
+src/API_MetaMachine.c
+src/API_MetaState.c
+src/API_MetaAction.c
+src/API_MetaTransition.c
+src/API_Util.c
+src/API_MetaProperty.c
+src/API_MetaMachine_Properties.c
+src/API_MetaState_Properties.c
+src/API_MetaProperty_Access.c
+src/API_TypeConversion.c
+src/API_MachineControl.c
 )
 set_target_properties(libclfsm PROPERTIES OUTPUT_NAME clfsm)
 

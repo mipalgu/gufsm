@@ -9,8 +9,8 @@ SMButtonChest *_m = static_cast<SMButtonChest *>(_machine);
 #pragma clang diagnostic ignored "-Wunused-variable"
 #pragma clang diagnostic ignored "-Wshadow"
 
-SENSORS_BodySensors	&body = _m->body;	///< 
-SENSORS_BodySensors_t	&body_ptr = _m->body_ptr;	///< 
+SENSORSBodySensors	&body = _m->body;	///< 
+SENSORSBodySensors_t	&body_ptr = _m->body_ptr;	///< 
 NAO_State_t	&nao_state_ptr = _m->nao_state_ptr;	///< 
 NAO_State	&nao_state = _m->nao_state;	///< 
 

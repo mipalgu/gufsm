@@ -1,8 +1,8 @@
 /*
  *  FSMachineVector.h
- *  
+ *
  *  Created by René Hexel on 22/11/11.
- *  Copyright (c) 2011, 2013 Rene Hexel.
+ *  Copyright (c) 2011, 2013, 2015 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -58,12 +58,20 @@
 #ifndef gufsm_FSMachineVector_h
 #define gufsm_FSMachineVector_h
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wreserved-id-macro"
+#pragma clang diagnostic ignored "-Wdeprecated"
+
+#ifndef WITHOUT_LIBDISPATCH
 #include <dispatch/dispatch.h>
+#endif
 #undef __block
 #define __block _xblock
 #include <unistd.h>
 #undef __block
+#ifndef WITHOUT_LIBDISPATCH
 #define __block __attribute__((__blocks__(byref)))
+#endif
 #include <vector>
 #include <string>
 #include <list>
@@ -81,7 +89,6 @@
 #undef false
 #endif
 
-#pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wpadded"
 #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
 #pragma clang diagnostic ignored "-Wunused-parameter"
@@ -115,7 +122,7 @@ namespace FSM
                         return *this;
                 }
                 bool operator==(const struct KripkeState &other) const
-                {       
+                {
                         if (variable_combination != other.variable_combination ||
                         whose_turn != other.whose_turn)
                                 return false;
@@ -142,7 +149,9 @@ namespace FSM
                 Context         *_context;              ///< global context
                 MachineVector   _machines;              ///< vector of suspensible FSMs
                 idle_f          _no_transition_fired;   ///< idle function
+#ifndef WITHOUT_LIBDISPATCH
                 dispatch_queue_t _queue;                ///< dispatch run queue
+#endif
                 useconds_t      _idle_timeout;          ///< idle timeout in usec
                 bool            _accepting;             ///< all machines are in an accepting state
 
@@ -159,13 +168,13 @@ namespace FSM
 
                 /** machines getter method */
                 MachineVector &machines() { return _machines; }
-                
+
                 /** const machines getter method */
                 const MachineVector &machines() const { return _machines; }
 
                 /** machines setter method */
                 void setMachines(const MachineVector &mv) { _machines = mv; }
-                
+
                 /**
                  * add a machine at a given index (-1 = end)
                  * @param m             state machine to add (NULL to create a new one)
@@ -184,16 +193,16 @@ namespace FSM
 
                 /** context getter */
                 Context *context() { return _context; }
-                
+
                 /** context setter */
                 void setContext(Context *ctx = NULL) { _context = ctx; }
-                
+
                 /** accepting state getter */
                 bool accepting() const { return _accepting; }
-                
+
                 /** accepting state setter */
                 void setAccepting(bool accept = true) { _accepting = accept; }
-                
+
                 /** put all state machines into their initial state */
                 virtual void initialise();
 
@@ -206,16 +215,17 @@ namespace FSM
                 /**
                  * execute one iteration of the current state of each machine
                  * with a given visitor for each machine
-                 * @param should_execute_machine visitor that returns whether machine should be executed in this round
+                 * param should_execute_machine visitor that returns whether machine should be executed in this round
                  * @return true if any transition fired on any machine
                  */
-                virtual bool executeOnce(visitor_f should_execute_machine, void *context = NULL);
+                virtual bool executeOnce(visitor_f should_execute_machine, void *context = NULL, visitor_f accepting_action = NULL);
 
+#ifndef WITHOUT_LIBDISPATCH
                 /**
                  * synchronously execute once on a specific dispatch queue
                  */
                 virtual bool executeOnceOnQueue(dispatch_queue_t queue = NULL);
-                
+#endif
                 /**
                  * execute until accepting state is encountered
                  */
@@ -224,14 +234,16 @@ namespace FSM
                 /**
                  * execute until accepting state is encountered
                  */
-                virtual void execute(visitor_f should_execute_machine, void *context = NULL);
+                virtual void execute(visitor_f should_execute_machine, void *context = NULL, visitor_f accepting_action = NULL);
 
+#ifndef WITHOUT_LIBDISPATCH
                 /**
-                 * asynchronously schedule execute on a specific dispatch queue until
-                 * accepting state is encountered
+                 * asynchronously schedule execute on a specific dispatch queue
+                 * until accepting state is encountered
                  */
                 virtual void scheduleExecuteOnQueue(dispatch_queue_t queue = NULL);
- 
+#endif
+
                 /**
                  * execute dedicated function if no transition fired --
                  * sleeps for _idle_timeout by default
@@ -240,20 +252,20 @@ namespace FSM
 
                 /**
                  * subclass responsibility:
-                 * print the Kripke structure in svm format 
+                 * print the Kripke structure in svm format
                  */
-                virtual std::string kripkeInSVMformat() { return ""; }
+                virtual std::string kripkeInSVMformat(bool verbose = false) { return ""; }
 
                 /**
                  * restart all state machines from their initial state
                  */
                 virtual void restart();
-                
+
                 /**
                  * call suspend() on all state machines.
                  */
                 virtual void suspend();
-                
+
                 /**
                  * call resume() on all state machines.
                  */
@@ -268,12 +280,12 @@ namespace FSM
                  * printable state machine vector description
                  */
                 virtual std::string description() const;
-                
-                /** 
+
+                /**
                  * subclass responsibility: serialise a Kripke Gobal vector in smv format
                  */
-                std::string descriptionSMVformat(KripkeFreezePointVector &) { return ""; }
-#ifndef __BLOCKS__
+                std::string descriptionSMVformat(KripkeFreezePointVector &, bool verbose = false) { return ""; }
+#if !defined(__BLOCKS__) && !defined(WITHOUT_LIBDISPATCH)
                 /** not really public */
                 void do_spawn_once_on_queue(dispatch_queue_t queue);
 #endif

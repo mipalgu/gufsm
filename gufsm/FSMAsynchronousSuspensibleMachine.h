@@ -3,7 +3,7 @@
  *  gufsm
  *
  *  Created by Rene Hexel on 25/03/13.
- *  Copyright (c) 2013 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2013, 2015 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -55,8 +55,8 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef __gufsm__FSMAsynchronousSuspensibleMachine__
-#define __gufsm__FSMAsynchronousSuspensibleMachine__
+#ifndef gufsm_FSMAsynchronousSuspensibleMachine_
+#define gufsm_FSMAsynchronousSuspensibleMachine_
 
 #include "FSMSuspensibleMachine.h"
 
@@ -82,10 +82,15 @@ namespace FSM
          */
         class AsynchronousSuspensibleMachine: public SuspensibleMachine
         {
+            enum ScheduledAction {
+                SCHEDULE_NO_ACTION,
+                SCHEDULE_SUSPEND_ACTION,
+                SCHEDULE_RESUME_ACTION,
+                SCHEDULE_RESTART_ACTION
+            };
         protected:
-                bool _scheduleSuspend;  ///< should suspend when executing next time
-                bool _scheduleResume;   ///< should resume when executing next time
-                bool _scheduleRestart;  ///< should restart when executing next time
+                /// suspend/resume/restart action to happen when executing the next time
+                enum ScheduledAction _scheduledAction;
         public:
                 /** constructor */
                 AsynchronousSuspensibleMachine(State *initialState = NULL,
@@ -109,21 +114,32 @@ namespace FSM
                 /** restart this state machine from its initial state */
                 virtual State *restart(State *initialState = NULL);
 
+                /** is this machine scheduled for suspend? */
+                virtual bool scheduledForSuspend() const { return _scheduledAction == SCHEDULE_SUSPEND_ACTION; }
+
                 /** is this machine scheduled for resumption? */
-                virtual bool scheduledForResume() const { return _scheduleResume; }
+                virtual bool scheduledForResume() const { return _scheduledAction == SCHEDULE_RESUME_ACTION; }
                 
                 /** is this machine scheduled for restart? */
-                virtual bool scheduledForRestart() const { return _scheduleRestart; }
+                virtual bool scheduledForRestart() const { return _scheduledAction == SCHEDULE_RESTART_ACTION; }
 
                 /** schedule suspend */
-                virtual void scheduleSuspend(bool s=true) { _scheduleSuspend = s; }
+                virtual void scheduleSuspend(bool s=true) { if (s) _scheduledAction = SCHEDULE_SUSPEND_ACTION; }
                 
                 /** schedule resume */
-                virtual void scheduleResume(bool s=true) { _scheduleResume = s; }
+                virtual void scheduleResume(bool s=true) { if (s) _scheduledAction = SCHEDULE_RESUME_ACTION; }
                 
                 /** schedule restart */
-                virtual void scheduleRestart(bool s=true) { _scheduleRestart = s; }
+                virtual void scheduleRestart(bool s=true) { if (s) _scheduledAction = SCHEDULE_RESTART_ACTION; }
+
+                /** return the scheduled action */
+                virtual enum ScheduledAction scheduledAction() const { return _scheduledAction; }
+
+                /** schedule an action or cancel scheduled actions
+                 *  if action == SCHEDULE_NO_ACTION (default))
+                 */
+                virtual void setScheduledAction(enum ScheduledAction action = SCHEDULE_NO_ACTION) { _scheduledAction = action; }
         };
 }
 
-#endif /* defined(__gufsm__FSMAsynchronousSuspensibleMachine__) */
+#endif /* defined gufsm_FSMAsynchronousSuspensibleMachine_ */

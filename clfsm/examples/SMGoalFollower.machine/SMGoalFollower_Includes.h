@@ -4,7 +4,7 @@
 #include <cmath>
 #include "CLMacros.h"
 #include "typeClassDefs/FilteredOneDimObjects.h"
-#include "typeClassDefs/SENSORS_TorsoJointSensors.h"
+#include "typeClassDefs/SENSORSTorsoJointSensors.h"
 #include "typeClassDefs/WALK_ControlStatus.h"
 #include "typeClassDefs/HAL_HeadTarget.h"
 

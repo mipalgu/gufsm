@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 11/10/12.
- *  Copyright (c) 2012, 2013, 2014 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2013, 2014, 2015 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -55,12 +55,14 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef __gufsm__clfsm_machine__
-#define __gufsm__clfsm_machine__
+#ifndef gufsm_clfsm_machine_
+#define gufsm_clfsm_machine_
 
 #include <string>
 #include <vector>
+#include <memory>
 #include "clfsm_cc_delegate.h"
+#include "CLReflectAPI.h"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wshorten-64-to-32"
@@ -73,12 +75,14 @@ namespace FSM
         class CLMachine;
 
         typedef CLMachine* (*create_machine_f)(int, const char *);
+        typedef refl_metaMachine (*create_meta_f)();
 
         class MachineWrapper
         {
                 std::string _fullPath;          ///< full name, including path
                 std::string _name;              ///< name w/o path and extension
                 create_machine_f _factory;      ///< machine factory
+                create_meta_f _metaFactory;
                 void *_shared_object;           ///< object as returned by dlopen()
                 class Cc *_compiler;            ///< C++ compiler wrapper
                 const std::vector<std::string> *_compiler_args; ///< compiler command line arguments
@@ -127,6 +131,9 @@ namespace FSM
                 /// instantiate a machine
                 CLMachine *instantiate(int id, const char *machine_name);
 
+                /// instantiate a meta-machine
+                refl_metaMachine instantiateMetaMachine(CLMachine * machine);
+
                 /// return the default compiler args
                 static const std::vector<std::string> &default_compiler_args();
 
@@ -141,4 +148,4 @@ namespace FSM
         };
 }
 
-#endif /* defined(__gufsm__clfsm_machine__) */
+#endif /* defined gufsm_clfsm_machine_) */

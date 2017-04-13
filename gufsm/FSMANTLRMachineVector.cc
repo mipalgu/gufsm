@@ -111,12 +111,12 @@ static std::string variableWithMachineID(string varName, int machineID)
 
 }
 
-string ANTLRMachineVector::generate_from( KripkeState &s, list<KripkeState> &kstates, size_t n, std::string **names)
+string ANTLRMachineVector::generate_from( KripkeState &s, list<KripkeState> &kstates, size_t n, std::string **names, bool verbose)
 {
         stringstream ss;
 
 #ifndef NO_SELF
-        {ss << kripkeToString(s, n, names) << ":\n";
+        {ss << kripkeToString(s, n, names, verbose) << ":\n";
 
         }
 #endif
@@ -136,7 +136,7 @@ string ANTLRMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
 
         if (debug_vlad)
         {
-                DBG(outputList(kstates,n,names));
+                DBG(outputList(kstates, n, names, verbose));
         }
 
         Machine * m = machines()[machineToRunOnce];
@@ -152,8 +152,8 @@ string ANTLRMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                 (*next.freeze_point)[machineToRunOnce].ringletStage=EpcAfterOnEntry;
 
                 /* output a derived state */
-                ss << "\t" << kripkeToString(next, n, names, true) << ";";
-                DBG(cerr << "\t" << kripkeToString(next, n, names, true) << ";");
+                ss << "\t" << kripkeToString(next, n, names, verbose, true) << ";";
+                DBG(cerr << "\t" << kripkeToString(next, n, names, verbose, true) << ";");
 
                 ss << "\t-- machine :"<< machineToRunOnce << " executes OnEntry \n";
                 DBG(cerr << "\t-- machine :"<< machineToRunOnce << " executes OnEntry \n");
@@ -193,9 +193,9 @@ string ANTLRMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                                 (*next.freeze_point)[machineToRunOnce].ringletStage=result ? EtransitionTrue : EtransitionFalse;
                                 (*next.freeze_point)[machineToRunOnce].transition_id=0;
                                 /* output a derived state */
-                                ss << "\t" << kripkeToString(next, n, names,true) << ( (ext_comb < n_comb-1 )? " |" : ";" );
+                                ss << "\t" << kripkeToString(next, n, names, verbose, true) << ( (ext_comb < n_comb-1 )? " |" : ";" );
                                 ss << "\t-- machine :"<< machineToRunOnce << " evaluates Transition 0 with result " << result << " \n";
-                                DBG(cerr << "\t" << kripkeToString(next, n, names,true) << ( (ext_comb < n_comb-1 )? " |" : ";" ));
+                                DBG(cerr << "\t" << kripkeToString(next, n, names, verbose, true) << ( (ext_comb < n_comb-1 )? " |" : ";" ));
                                 DBG(cerr << "\t-- machine :"<< machineToRunOnce << " evaluates Transition 0 with result " << result << " \n");
                         }
                         else
@@ -207,9 +207,9 @@ string ANTLRMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                                 /* sequential scheduler pauses this FSM here and moves to next */
                                 next.whose_turn = (next.whose_turn + 1) % machines().size();
                                 /* output a derived state */
-                                ss << "\t" << kripkeToString(next, n, names, true) <<( (ext_comb < n_comb-1 )? "|" : ";" );
+                                ss << "\t" << kripkeToString(next, n, names, verbose, true) <<( (ext_comb < n_comb-1 )? "|" : ";" );
                                 ss << "\t-- machine :"<< machineToRunOnce << " execute internal \n";
-                                DBG(cerr<< "\t" << kripkeToString(next, n, names, true) <<( (ext_comb < n_comb-1 )? "|" : ";" ));
+                                DBG(cerr<< "\t" << kripkeToString(next, n, names, verbose, true) <<( (ext_comb < n_comb-1 )? "|" : ";" ));
                                 DBG(cerr << "\t-- machine :"<< machineToRunOnce << " execute internal \n");
                         }
 
@@ -246,9 +246,9 @@ string ANTLRMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                         //next.variable_combination=ANTLRContextToVariableCombination(n, names);
                         (*next.freeze_point)[machineToRunOnce].ringletStage=result ? EtransitionTrue : EtransitionFalse;
                         (*next.freeze_point)[machineToRunOnce].transition_id=tid;
-                        ss << "\t" << kripkeToString(next, n, names,true) <<  ";" ;
+                        ss << "\t" << kripkeToString(next, n, names, verbose, true) <<  ";" ;
                         ss << "\t-- machine : "<< machineToRunOnce << "evaluates Transition " << tid <<" with result " << result << " \n";
-                        DBG(cerr << "\t" << kripkeToString(next, n, names,true) <<  ";") ;
+                        DBG(cerr << "\t" << kripkeToString(next, n, names, verbose, true) <<  ";") ;
                         DBG(cerr << "\t-- machine : "<< machineToRunOnce << "evaluates Transition " << tid <<" with result " << result << " \n");
                 }
                 else    /* all transitions exhausted, execute internal state */
@@ -263,9 +263,9 @@ string ANTLRMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                         next.whose_turn = (next.whose_turn + 1) % machines().size();
 
                         /* output a derived state */
-                        ss << "\t" << kripkeToString(next, n, names,true)<<";" ;
+                        ss << "\t" << kripkeToString(next, n, names, verbose, true) << ";" ;
                         ss << "\t-- machine : "<< machineToRunOnce << "execute internal \n";
-                        DBG(cerr<< "\t" << kripkeToString(next, n, names,true)<<";" );
+                        DBG(cerr<< "\t" << kripkeToString(next, n, names, verbose, true)<<";" );
                         DBG(cerr << "\t-- machine : "<< machineToRunOnce << "execute internal \n");
                 }
 
@@ -288,12 +288,13 @@ string ANTLRMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                 next.variable_combination=ANTLRContextToVariableCombination(n, names);
                 (*next.freeze_point)[machineToRunOnce].ringletStage=Epcbefore;
                 (*next.freeze_point)[machineToRunOnce].stateID = m->currentStateID();
+                (*next.freeze_point)[machineToRunOnce].stateName = m->currentState()->name();
                 next.whose_turn = (next.whose_turn + 1) % machines().size();
 
                 /* output a derived state */
-                ss << "\t" << kripkeToString(next, n, names,true) <<";";
+                ss << "\t" << kripkeToString(next, n, names, verbose, true) <<";";
                 ss << "\t-- machine : "<< machineToRunOnce << " executes OnExit \n";
-                DBG( cerr << "\t" << kripkeToString(next, n, names,true) <<";" );
+                DBG( cerr << "\t" << kripkeToString(next, n, names, verbose, true) <<";" );
                 DBG(cerr  << "\t-- machine : "<< machineToRunOnce << " executes OnExit \n");
                 /* check next is not in the list, and if so, push it and output to the SMV output
                  */
@@ -319,7 +320,7 @@ void ANTLRMachineVector:: add_if_not_seen(KripkeState &x, std::list<KripkeState>
         if (!found) kstates.push_back(x);
 }
 
-string ANTLRMachineVector:: kripkeToString(KripkeState &s, size_t n, string **names, bool derived)
+string ANTLRMachineVector:: kripkeToString(KripkeState &s, size_t n, string **names, bool verbose, bool derived)
 {
         stringstream ss;
         static const char * next ="next(";
@@ -332,7 +333,7 @@ string ANTLRMachineVector:: kripkeToString(KripkeState &s, size_t n, string **na
 
                 ss << (derived? next : "") << *names[i] << (derived? ")" : "" ) <<"=" << ((s.variable_combination & j) >> (i*BITS)) << " & ";
         }
-        ss << (derived? next : "") << "pc" << (derived? ")" : "" ) << "="<< descriptionSMVformat (*s.freeze_point);
+        ss << (derived? next : "") << "pc" << (derived? ")" : "" ) << "="<< descriptionSMVformat (*s.freeze_point, verbose);
 
 
         return ss.str();
@@ -406,7 +407,7 @@ unsigned long long ANTLRMachineVector::extVarToKripke(unsigned long long all_var
 }
 
 
-string ANTLRMachineVector::kripkeInSVMformat()
+string ANTLRMachineVector::kripkeInSVMformat(bool verbose)
 {
         stringstream ss;
         ANTLRContext* antlr_context = static_cast<ANTLRContext *>(context());
@@ -496,9 +497,9 @@ string ANTLRMachineVector::kripkeInSVMformat()
                      it != machines().end(); it++)
                 {
                         SuspensibleMachine *m = *it;
-                        KripkeFreezePointOfMachine freezePoint;
-                        freezePoint.machine=m;
-                        (void)freezePoint;  // really?
+//                        KripkeFreezePointOfMachine freezePoint;
+//                        freezePoint.machine=m;
+//                        (void)freezePoint;  // really?
 
                         pcKripkeValue.push_back(m->localKripkeStateNames() [indexesPerFSM[i]]);
                         i++;
@@ -523,7 +524,7 @@ string ANTLRMachineVector::kripkeInSVMformat()
                         }
                         column++;
                 }
-                ss << descriptionSMVformat ( pcKripkeValue) ;
+                ss << descriptionSMVformat ( pcKripkeValue, verbose) ;
                 kripkePCValues.push_back( pcKripkeValue );
         }// while
 
@@ -547,7 +548,7 @@ string ANTLRMachineVector::kripkeInSVMformat()
 
         ss << "INIT"  << std::endl;
         int firstMachine=0;
-        ss  << "turn = " << firstMachine << " & " << "pc=" << descriptionSMVformat (kripkePCValues[firstMachine]);
+        ss  << "turn = " << firstMachine << " & " << "pc=" << descriptionSMVformat (kripkePCValues[firstMachine], verbose);
 
         /* Write the TRANS states section */
         ss << "\nTRANS"  << std::endl;
@@ -615,14 +616,14 @@ string ANTLRMachineVector::kripkeInSVMformat()
         {       /* printing a Kiprke state  */
                 /* as source */
                 KripkeState &s = *it;
-                ss << kripkeToString(s, n, names) << ":\n";
-                DBG(cerr << kripkeToString(s, n, names) << ":\n");
+                ss << kripkeToString(s, n, names, verbose) << ":\n";
+                DBG(cerr << kripkeToString(s, n, names, verbose) << ":\n");
 
-                ss << generate_from(s, kstates,n,names);
+                ss << generate_from(s, kstates,n,names, verbose);
         }
 
         /* Write the exhaustive condition  */
-        ss << "TRUE:"  << kripkeToString(kstates.front(), n, names, true) << ";"<< std::endl;
+        ss << "TRUE:"  << kripkeToString(kstates.front(), n, names, verbose, true) << ";"<< std::endl;
         /* Write the closing ESAC  */
         ss << "esac"  << std::endl;
 
@@ -633,7 +634,7 @@ string ANTLRMachineVector::kripkeInSVMformat()
 
 }
 
-std:: string ANTLRMachineVector ::descriptionSMVformat(KripkeFreezePointVector &data)
+std:: string ANTLRMachineVector ::descriptionSMVformat(const KripkeFreezePointVector &data, bool verbose)
 {
         stringstream ss;
         for (KripkeFreezePointVector::const_iterator it = data.begin();
@@ -643,7 +644,34 @@ std:: string ANTLRMachineVector ::descriptionSMVformat(KripkeFreezePointVector &
 
                 ss << "M"<< machineRingletState.machine->id();
                 ss << "S"<< machineRingletState.stateID;
-                ss << "R" << machineRingletState.ringletStage;
+                if (verbose)
+                {
+                        ss << machineRingletState.stateName << "R";
+                        switch (machineRingletState.ringletStage) {
+                                case Epcbefore:
+                                        ss << "beforeOnEntry";
+                                        break;
+                                case EpcAfterOnEntry:
+                                        ss << "afterOnEntry";
+                                        break;
+                                case EBeforeTransition:
+                                        ss << "beforeTransition";
+                                        break;
+                                case EtransitionFalse:
+                                        ss << "transitionFalse";
+                                        break;
+                                case EtransitionTrue:
+                                        ss << "transitionTrue";
+                                        break;
+                                case ETOTAL_NUM_VALUES:
+                                        ss << "invalid";
+                                        break;
+                        }
+                }
+                else
+                {
+                        ss << "R" << machineRingletState.ringletStage;
+                }
                 if (EpcAfterOnEntry < machineRingletState.ringletStage)
                         ss << "T" << machineRingletState.transition_id;
         }
@@ -663,7 +691,7 @@ bool ANTLRMachineVector :: inList( const std::list<KripkeState>  & list , const 
         return false;
 }
 
-void ANTLRMachineVector ::    outputList ( std::list<KripkeState>  & list , size_t n, string **names)
+void ANTLRMachineVector ::    outputList ( std::list<KripkeState>  & list , size_t n, string **names, bool verbose)
 {
         cerr << list.size() << "\n";
         int i=0;
@@ -685,7 +713,7 @@ void ANTLRMachineVector ::    outputList ( std::list<KripkeState>  & list , size
                         *it2++;
                 }
                 
-                cerr << " " <<  kripkeToString (kp,n,names) << std::endl;
+                cerr << " " <<  kripkeToString (kp,n,names, verbose) << std::endl;
                 i++;
         }
         

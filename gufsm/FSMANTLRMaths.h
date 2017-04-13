@@ -2,7 +2,7 @@
  *  FSMANTLRMaths.h
  *
  *  Created by René Hexel on 29/12/11.
- *  Copyright (c) 2011 Rene Hexel.
+ *  Copyright (c) 2011, 2015 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,8 +55,8 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef _FSMANTLRMaths_h
-#define _FSMANTLRMaths_h
+#ifndef FSMANTLRMaths_h
+#define FSMANTLRMaths_h
 #endif
 
 #ifndef COMPLEX_CONTENT_ACTION
@@ -228,7 +228,7 @@ namespace FSM
                 virtual int evaluate(Machine * = NULL)
                 {
                         float angle = float(content() * M_PI / 180.0);
-                        return int((1.0 / tanf(angle)) * FIXED_FACTOR);
+                        return int((1.0f / tanf(angle)) * FIXED_FACTOR);
                 }
         };
 
@@ -242,7 +242,7 @@ namespace FSM
                 virtual int evaluate(Machine * = NULL)
                 {
                         float value = float(content()) / float(FIXED_FACTOR);
-                        return int(atanf(value) * 180.0 / M_PI);
+                        return int(atanf(value) * 180.0f / float(M_PI));
                 }
         };
         
@@ -256,7 +256,7 @@ namespace FSM
                 virtual int evaluate(Machine * = NULL)
                 {
                     float value = float(content()) / float(FIXED_FACTOR);
-                        return int(asinf(value) * 180.0 / M_PI);
+                        return int(asinf(value) * 180.0f / float(M_PI));
                 }
         };
 
@@ -270,7 +270,7 @@ namespace FSM
                 virtual int evaluate(Machine * = NULL)
                 {
                     float value = float(content()) / float(FIXED_FACTOR);
-                        return int(acosf(value) * 180.0 / M_PI);
+                        return int(acosf(value) * 180.0f / float(M_PI));
                 }
         };
 
@@ -460,4 +460,4 @@ namespace FSM
 
 #pragma clang diagnostic push
 
-#endif // _FSMANTLRMaths_h
+#endif // FSMANTLRMaths_h

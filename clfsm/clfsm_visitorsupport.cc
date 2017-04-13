@@ -57,7 +57,8 @@
  */
 #include <numeric>      // Accumlate
 #include <algorithm>    // std::sort
-#include <string>       // std::to_string
+#include <string>
+#include <sstream>
 
 #include "clfsm_visitorsupport.h"
 
@@ -75,11 +76,21 @@ CLFSMStateExecutionTimeContainer::CLFSMStateExecutionTimeContainer(std::string s
  */
 std::string CLFSMStateExecutionTimeContainer::getResults()
 {
+#ifdef USE_STD_TO_STRING
     // C++ really needs a string.format. This is just stupid!
     return this->getStateName() + " " + std::to_string(this->getBestTime())
         + " " + std::to_string(this->getWorstTime()) + " "
         + std::to_string(this->getAverageTime()) + " "
         + std::to_string(this->_executionTimes.size());
+#else
+	using namespace std;
+	ostringstream ss;
+    	ss << this->getStateName() << " " << this->getBestTime()
+	   << " " << this->getWorstTime() << " "
+           << this->getAverageTime() << " "
+           << this->_executionTimes.size();
+	return ss.str();
+#endif
 }
 
 /* Query executionTimes for Best Execution Time */

@@ -1,8 +1,8 @@
 /*
  *  FSMachineVector.cc
- *  
+ *
  *  Created by René Hexel on 22/11/11.
- *  Copyright (c) 2011, 2013-2014 Rene Hexel.
+ *  Copyright (c) 2011, 2013, 2014, 2015 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -80,11 +80,12 @@ StateMachineVector::StateMachineVector(Context *ctx, useconds_t timeout,
                                        idle_f default_idle_function):
         _context(ctx), _machines(), _idle_timeout(timeout), _accepting(false)
 {
+#ifndef WITHOUT_LIBDISPATCH
         stringstream ss;
         ss << "dispatch_queue_" << reinterpret_cast<long long>(this);
 
         _queue = dispatch_queue_create(ss.str().c_str(), NULL);
-
+#endif
         if (!default_idle_function) default_idle_function = default_idle_sleep;
         _no_transition_fired = default_idle_function;
 }
@@ -132,14 +133,13 @@ SuspensibleMachine *StateMachineVector::addMachine(SuspensibleMachine *m, int in
 bool StateMachineVector::removeMachineAtIndex(int index, bool del)
 {
         int size = static_cast<int>(machines().size());
-        int mid = index;
-        if (mid < 0 || mid >= size) mid = size-1;
+        if (index < 0 || index >= size) index = size-1;
         if (!size) return false;
 
-        SuspensibleMachine *m = _machines[mid];
+        SuspensibleMachine *m = _machines[index];
         if (!m) return false;
 
-        _machines[mid] = NULL;
+        _machines[index] = NULL;
 
         if (del) delete m;
 
@@ -147,26 +147,26 @@ bool StateMachineVector::removeMachineAtIndex(int index, bool del)
 }
 
 
-bool StateMachineVector::executeOnce(visitor_f should_execute_machine, void *context)
+bool StateMachineVector::executeOnce(visitor_f should_execute_machine, void *context, visitor_f accepting_action)
 {
-        int machine_no = 0;
+        //int machine_no = 0;
         bool fired = false;
 
         setAccepting(true);
 
-        for (MachineVector::iterator it = machines().begin();
-             it != machines().end(); it++)
+        for (unsigned long it = 0;
+             it < machines().size(); it++)
         {
-                SuspensibleMachine *m = *it;
+            SuspensibleMachine *m = machines()[it];
+            if (!m || (should_execute_machine != NULL && !should_execute_machine(context, m, int(it))))
+                    continue;
 
-                if (!m || (should_execute_machine != NULL && !should_execute_machine(context, m, machine_no++)))
-                        continue;
-
-                bool mfire = false;
-                bool a = !m->executeOnce(&mfire);
-                setAccepting(a && accepting());
-
-                if (mfire) fired = true;
+            bool mfire = false;
+            bool a = !m->executeOnce(&mfire);
+            setAccepting(a && accepting());
+            if (a && accepting_action)
+                accepting_action(context, m, int(it)); //Execute function if machine in accepting state
+            if (mfire) fired = true;
         }
 
         return fired;
@@ -202,6 +202,7 @@ void StateMachineVector::scheduleSuspend()
         }
 }
 
+#ifndef WITHOUT_LIBDISPATCH
 #ifndef __BLOCKS__
 struct spawn_context
 {
@@ -245,16 +246,17 @@ bool StateMachineVector::executeOnceOnQueue(dispatch_queue_t queue)
 
                         if (f) fired = true;
                 }
-        }        
+        }
         return fired;
 }
+#endif
 
 
-void StateMachineVector::execute(visitor_f should_execute_machine, void *context)
+void StateMachineVector::execute(visitor_f should_execute_machine, void *context, visitor_f accepting_action)
 {
         do
         {
-                if (!executeOnce(should_execute_machine, context) &&
+                if (!executeOnce(should_execute_machine, context, accepting_action) &&
                     _no_transition_fired)
                         _no_transition_fired(_idle_timeout);
         }
@@ -262,7 +264,7 @@ void StateMachineVector::execute(visitor_f should_execute_machine, void *context
 }
 
 
-#ifndef __BLOCKS__
+#if !defined(__BLOCKS__) && !defined(WITHOUT_LIBDISPATCH)
 struct spawn_queue_param
 {
         StateMachineVector *self;
@@ -293,6 +295,7 @@ struct spawn_queue_param
 #pragma clang diagnostic ignored "-Wweak-vtables"
 #pragma clang diagnostic ignored "-Wpadded"
 
+#ifndef WITHOUT_LIBDISPATCH
 
 void StateMachineVector::scheduleExecuteOnQueue(dispatch_queue_t queue)
 {
@@ -314,6 +317,8 @@ void StateMachineVector::scheduleExecuteOnQueue(dispatch_queue_t queue)
         dispatch_async_f(_queue, &p, spawn_execute_once_on_queue);
 #endif
 }
+
+#endif
 
 #pragma clang diagnostic pop
 

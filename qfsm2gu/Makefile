@@ -23,7 +23,8 @@ C_SRCS=syntax_check.c
 UTIL_SRCS=NSString+MixedCase.m NSMutableArray+Stack.m
 UTIL_HDRS=${UTIL_SRCS:.m=.h}
 OBJC_SRCS=QFSMElement.m QFSMExporter.m QFSMParser.m main.m ${UTIL_SRCS}
-HDRS=syntax_check.h QFSMElement.h QFSMExporter.h QFSMParser.h
+HDRS=syntax_check.h QFSMElement.h QFSMExporter.h QFSMParser.h AvailabilityMacros.h GTMNSString+HTML.h NSString+MixedCase.h GTMDefines.h NSMutableArray+Stack.h TargetConditionals.h
+
 
 ANTLR_COMBINED=TransitionContainer.g ActionsContainer.g
 ANTLR_INCLUDES=SimpleCParser.g
@@ -49,7 +50,10 @@ link-utils:
 	$Eln -s ${UTIL_DIR}/${file} . 2>/dev/null || true
 .endfor
 
-.if `whoami` != root
+.ifndef WHOAMI
+WHOAMI!=whoami
+.endif
+.if ${WHOAMI} != root
 NSUDO?=sudo
 .endif
 install: ${ALL_TARGETS}

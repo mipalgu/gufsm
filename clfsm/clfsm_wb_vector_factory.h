@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 25/03/13.
- *  Copyright (c) 2013 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2013, 2015 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -56,11 +56,13 @@
  *
  */
 
-#ifndef ____clfsm_wb_vector_factory__
-#define ____clfsm_wb_vector_factory__
+#ifndef clfsm_wb_vector_factory_
+#define clfsm_wb_vector_factory_
 
 #include "clfsm_vector_factory.h"
 #include "typeClassDefs/FSM_Control.h"
+#include "gusimplewhiteboard.h"
+#include "guwhiteboardtypelist_generated.h"
 #include "guwhiteboardwatcher.h"
 
 #ifdef bool
@@ -90,7 +92,9 @@ namespace FSM
 
         class CLFSMWBVectorFactory: public FSM::CLFSMVectorFactory
         {
+#ifndef WITHOUT_LIBDISPATCH
                 whiteboard_watcher _watcher;            ///< whiteboard watcher to manage subscriptions
+#endif
                 guWhiteboard::FSM_Status_t _wbstatus;   ///< current whiteboard status of machines
                 guWhiteboard::FSM_Names_t _wbfsmnames;  ///< fsm name information on the whiteboard
                 guWhiteboard::FSM_States_t _wbfsmStates;   ///< buffered state status, used to limit WB publications.
@@ -100,18 +104,20 @@ namespace FSM
                  * Designated constructor.
                  * @param[in] wbcontext                 Whiteboard context to use.
                  * @param[in] deleteOnDestruction       Delete non-NULL wbcontext on destruction
+                 * @param[in] timeout                   Idle timeout in microseconds
                  */
-                CLFSMWBVectorFactory(FSM::Context *wbcontext = NULL, bool deleteOnDestruction = false);
+                CLFSMWBVectorFactory(FSM::Context *wbcontext = NULL, bool deleteOnDestruction = false, useconds_t timeout = 10000L);
 
                 /** context getter */
-                FSM::Context *context() { return (FSM::Context *)(_context); }
+                FSM::Context *context() { return static_cast<FSM::Context *>(_context); }
 
                 /** context setter */
-                void setContext(FSM::Context *context) { _context = (FSM::Context *) context; }
+                void setContext(FSM::Context *context) { _context = static_cast<FSM::Context *>(context); }
 
+#ifndef WITHOUT_LIBDISPATCH
                 /** whiteboard watcher getter */
                 whiteboard_watcher &watcher() { return _watcher; }
-
+#endif
                 /** status getter */
                 guWhiteboard::FSM_Status_t &wbstatus() { return _wbstatus; }
 
@@ -160,4 +166,4 @@ namespace FSM
 }
 #pragma clang diagnostic pop
 
-#endif /* defined(____clfsm_wb_vector_factory__) */
+#endif /* defined clfsm_wb_vector_factory_ */

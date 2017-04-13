@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 25/03/13.
- *  Copyright (c) 2013 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2013, 2015 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -65,10 +65,16 @@ using namespace FSM;
 using namespace guWhiteboard;
 using namespace std;
 
-CLFSMWBVectorFactory::CLFSMWBVectorFactory(Context *context, bool deleteOnDestruction): CLFSMVectorFactory(context, deleteOnDestruction), _watcher(),  _wbstatus()
+CLFSMWBVectorFactory::CLFSMWBVectorFactory(Context *context, bool deleteOnDestruction, useconds_t timeout): CLFSMVectorFactory(context, deleteOnDestruction, timeout),
+#ifndef WITHOUT_LIBDISPATCH
+	_watcher(),
+#endif
+	_wbstatus()
 {
+#ifndef WITHOUT_LIBDISPATCH
         SUBSCRIBE(&watcher(), FSM_Control, FSM::CLFSMWBVectorFactory, FSM::CLFSMWBVectorFactory::whiteboard_fsm_control);
         SUBSCRIBE(&watcher(), FSM_Names, FSM::CLFSMWBVectorFactory, FSM::CLFSMWBVectorFactory::whiteboard_fsm_names);
+#endif
 }
 
 
@@ -107,7 +113,8 @@ void CLFSMWBVectorFactory::postMachineStatus()
                 if (i >= int(CONTROLSTATUS_NUM_FSMS-1))
                         break;
                 const SuspensibleMachine *machine = *it;
-                status.set(i, machine->isSuspended());
+                if (machine)
+                    status.set(i, machine->isSuspended());
         }
         status.set(i);                  // set the high bit to 1
 
@@ -128,6 +135,8 @@ void CLFSMWBVectorFactory::suspendMachines(guWhiteboard::FSMControlStatus &suspe
                 if (i >= int(CONTROLSTATUS_NUM_FSMS-1))
                         break;
                 AsynchronousSuspensibleMachine *machine = static_cast<AsynchronousSuspensibleMachine *>(*it);
+                if (!machine)
+                        continue;
                 if (suspendControl.get(i))
                 {
                         machine->scheduleSuspend();
@@ -154,6 +163,8 @@ void CLFSMWBVectorFactory::resumeMachines(guWhiteboard::FSMControlStatus &resume
                 if (i >= int(CONTROLSTATUS_NUM_FSMS-1))
                         break;
                 AsynchronousSuspensibleMachine *machine = static_cast<AsynchronousSuspensibleMachine *>(*it);
+                if (!machine)
+                        continue;
                 if (resumeControl.get(i))
                 {
                         machine->scheduleResume();
@@ -180,6 +191,8 @@ void CLFSMWBVectorFactory::restartMachines(guWhiteboard::FSMControlStatus &resum
                 if (i >= int(CONTROLSTATUS_NUM_FSMS-1))
                         break;
                 AsynchronousSuspensibleMachine *machine = static_cast<AsynchronousSuspensibleMachine *>(*it);
+                if (!machine)
+                        continue;
                 if (resumeControl.get(i))
                 {
                         machine->scheduleRestart();

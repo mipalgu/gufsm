@@ -1,0 +1,176 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXFileReference section */
+		F17650881B7983A1009CAC69 /* DummyMachines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DummyMachines.h; sourceTree = "<group>"; };
+		F17650891B7983A1009CAC69 /* en.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = en.lproj; sourceTree = "<group>"; };
+		F176508A1B7983A1009CAC69 /* libclfsmTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "libclfsmTests-Info.plist"; sourceTree = "<group>"; };
+		F176508B1B7983A1009CAC69 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		F1780FD91BF4575E00644F03 /* ReflectAPI_CPingPongKripkeTests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_CPingPongKripkeTests.cc; sourceTree = "<group>"; };
+		F1780FDA1BF4575E00644F03 /* ReflectAPI_CPingPongTests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_CPingPongTests.cc; sourceTree = "<group>"; };
+		F1780FDB1BF4575E00644F03 /* ReflectAPI_Init_Tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_Init_Tests.cc; sourceTree = "<group>"; };
+		F1780FDC1BF4575E00644F03 /* ReflectAPI_MachineControlTests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_MachineControlTests.cc; sourceTree = "<group>"; };
+		F1780FDD1BF4575E00644F03 /* ReflectAPI_MetaAction_Tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_MetaAction_Tests.cc; sourceTree = "<group>"; };
+		F1780FDE1BF4575E00644F03 /* ReflectAPI_MetaMachine_Tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_MetaMachine_Tests.cc; sourceTree = "<group>"; };
+		F1780FDF1BF4575E00644F03 /* ReflectAPI_MetaProperty_Tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_MetaProperty_Tests.cc; sourceTree = "<group>"; };
+		F1780FE01BF4575E00644F03 /* ReflectAPI_MetaPropertyString_Tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_MetaPropertyString_Tests.cc; sourceTree = "<group>"; };
+		F1780FE11BF4575E00644F03 /* ReflectAPI_MetaState_Tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_MetaState_Tests.cc; sourceTree = "<group>"; };
+		F1780FE21BF4575E00644F03 /* ReflectAPI_MetaTransition_Tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_MetaTransition_Tests.cc; sourceTree = "<group>"; };
+		F1780FE31BF4575E00644F03 /* ReflectAPI_StateMethod_Tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_StateMethod_Tests.cc; sourceTree = "<group>"; };
+		F1780FE41BF4575E00644F03 /* ReflectAPI_SupportedTypeTests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_SupportedTypeTests.cc; sourceTree = "<group>"; };
+		F1780FE51BF4575E00644F03 /* ReflectAPI_Util_Tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_Util_Tests.cc; sourceTree = "<group>"; };
+		F1780FE61BF4575E00644F03 /* ReflectAPI_VariableTests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_VariableTests.cc; sourceTree = "<group>"; };
+		F1780FE71BF4575E00644F03 /* ReflectAPI_VariableTypeTests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_VariableTypeTests.cc; sourceTree = "<group>"; };
+		F1780FE81BF4575E00644F03 /* ReflectAPI_WhiteboardVariableTests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReflectAPI_WhiteboardVariableTests.cc; sourceTree = "<group>"; };
+		F1780FE91BF4575E00644F03 /* VectorFactory_tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VectorFactory_tests.cc; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		F17650811B7983A1009CAC69 = {
+			isa = PBXGroup;
+			children = (
+				F17650881B7983A1009CAC69 /* DummyMachines.h */,
+				F17650891B7983A1009CAC69 /* en.lproj */,
+				F176508A1B7983A1009CAC69 /* libclfsmTests-Info.plist */,
+				F176508B1B7983A1009CAC69 /* Makefile */,
+				F1780FD91BF4575E00644F03 /* ReflectAPI_CPingPongKripkeTests.cc */,
+				F1780FDA1BF4575E00644F03 /* ReflectAPI_CPingPongTests.cc */,
+				F1780FDB1BF4575E00644F03 /* ReflectAPI_Init_Tests.cc */,
+				F1780FDC1BF4575E00644F03 /* ReflectAPI_MachineControlTests.cc */,
+				F1780FDD1BF4575E00644F03 /* ReflectAPI_MetaAction_Tests.cc */,
+				F1780FDE1BF4575E00644F03 /* ReflectAPI_MetaMachine_Tests.cc */,
+				F1780FDF1BF4575E00644F03 /* ReflectAPI_MetaProperty_Tests.cc */,
+				F1780FE01BF4575E00644F03 /* ReflectAPI_MetaPropertyString_Tests.cc */,
+				F1780FE11BF4575E00644F03 /* ReflectAPI_MetaState_Tests.cc */,
+				F1780FE21BF4575E00644F03 /* ReflectAPI_MetaTransition_Tests.cc */,
+				F1780FE31BF4575E00644F03 /* ReflectAPI_StateMethod_Tests.cc */,
+				F1780FE41BF4575E00644F03 /* ReflectAPI_SupportedTypeTests.cc */,
+				F1780FE51BF4575E00644F03 /* ReflectAPI_Util_Tests.cc */,
+				F1780FE61BF4575E00644F03 /* ReflectAPI_VariableTests.cc */,
+				F1780FE71BF4575E00644F03 /* ReflectAPI_VariableTypeTests.cc */,
+				F1780FE81BF4575E00644F03 /* ReflectAPI_WhiteboardVariableTests.cc */,
+				F1780FE91BF4575E00644F03 /* VectorFactory_tests.cc */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		F17650861B7983A1009CAC69 /* libclfsmTests */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "run-test";
+			buildConfigurationList = F17650931B7983A1009CAC69 /* Build configuration list for PBXLegacyTarget "libclfsmTests" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/local/bin/bmake;
+			buildWorkingDirectory = /Users/rh/Devel/src/MiPal/GUNao/posix/gufsm/libclfsm/libclfsmTests;
+			dependencies = (
+			);
+			name = libclfsmTests;
+			passBuildSettingsInEnvironment = 1;
+			productName = libclfsmTests;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXProject section */
+		F17650821B7983A1009CAC69 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+			};
+			buildConfigurationList = F17650851B7983A1009CAC69 /* Build configuration list for PBXProject "libclfsmTests" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F17650811B7983A1009CAC69;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F17650861B7983A1009CAC69 /* libclfsmTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		F17650831B7983A1009CAC69 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx10.6;
+			};
+			name = Debug;
+		};
+		F17650841B7983A1009CAC69 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				SDKROOT = macosx10.6;
+			};
+			name = Release;
+		};
+		F17650941B7983A1009CAC69 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = libclfsmTests;
+			};
+			name = Debug;
+		};
+		F17650951B7983A1009CAC69 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = libclfsmTests;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F17650851B7983A1009CAC69 /* Build configuration list for PBXProject "libclfsmTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F17650831B7983A1009CAC69 /* Debug */,
+				F17650841B7983A1009CAC69 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F17650931B7983A1009CAC69 /* Build configuration list for PBXLegacyTarget "libclfsmTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F17650941B7983A1009CAC69 /* Debug */,
+				F17650951B7983A1009CAC69 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F17650821B7983A1009CAC69 /* Project object */;
+}
