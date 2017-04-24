@@ -129,7 +129,7 @@ static CLFSMWBVectorFactory *createMachines(const vector<string> &machines, cons
     for (vector<string>::const_iterator it = machines.begin(); it != machines.end(); it++)
     {
             const string &machine = *it;
-            FSM::loadAndAddMachineAtPath(machine, compiler_args, linker_args);
+            FSM::loadAndAddMachineAtPath(machine, false, compiler_args, linker_args);
     }
     return loader->vector_factory();
 }
