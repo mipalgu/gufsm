@@ -73,7 +73,6 @@ namespace FSM
 {
 	class CLFSMWBVectorFactory;
 	class MachineWrapper;
-	class SuspensibleMachine;
 	class CLMachine;
 
 
@@ -109,11 +108,11 @@ namespace FSM
 		~CLFSMMachineLoader();
 
                 /// Loads the machine's shared object and inserts it into the
-                /// execution queue.
-                SuspensibleMachine *loadAndAddMachineAtPath(
-                             const std::string machine,
-                             std::vector<std::string> compiler_args = std::vector<std::string>(),
-                             std::vector<std::string> linker_args = std::vector<std::string>());
+                /// execution queue. Returns -1 on error
+                int loadAndAddMachineAtPath(const std::string machine,
+                    std::vector<std::string> compiler_args = std::vector<std::string>(),
+                    std::vector<std::string> linker_args = std::vector<std::string>(),
+                    bool initiallySuspended = false);
 
                 /// Unloads the machine at the given index.
                 /// Returns true if successful, otherwise false.
@@ -130,12 +129,20 @@ namespace FSM
 	/* Global FSM:: methods */
 
         /// Simplified method for CLMacros
-	SuspensibleMachine *loadAndAddMachine(const std::string machine);
+	/**
+	 Load and add a machine
+
+	 @param machine name of the machine to load and add
+	 @param initiallySuspended `true` to suspend the machine immediately
+	 @return index of the machine, -1 on error
+	 */
+	int loadAndAddMachine(const std::string machine, bool initiallySuspended = false);
 
         /// Calls the singleton instance method of the same name.
-	SuspensibleMachine *loadAndAddMachineAtPath(const std::string machine,
-			             std::vector<std::string> compiler_args = std::vector<std::string>(),
-			             std::vector<std::string> linker_args = std::vector<std::string>());
+        int loadAndAddMachineAtPath(const std::string machine,
+                                    bool initiallySuspended = false,
+            std::vector<std::string> compiler_args = std::vector<std::string>(),
+            std::vector<std::string> linker_args = std::vector<std::string>());
 
         /// Unloads the machine at the given index. Returns true if successful.
 	bool unloadMachineAtIndex(int index);
