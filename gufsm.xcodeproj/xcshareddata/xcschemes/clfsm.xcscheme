@@ -38,7 +38,8 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
-      useCustomWorkingDirectory = "NO"
+      useCustomWorkingDirectory = "YES"
+      customWorkingDirectory = "$(SRCROOT)/../../fsms/Tutorials"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       enableAddressSanitizer = "YES"
@@ -92,8 +93,12 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "$(SRCROOT)/clfsm/examples/PingPongCLFSM.machine"
+            argument = "LoadSuspended"
             isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "$(SRCROOT)/clfsm/examples/PingPongCLFSM.machine"
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "$(SRCROOT)/clfsm/examples/PingPongCLFSM_META.machine"
@@ -101,15 +106,15 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "$(SRCROOT)/clfsm/examples/PingPongCLFSM.machine"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "$(SRCROOT)/clfsm/examples/PingPongCLFSM.machine"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "$(SRCROOT)/clfsm/examples/PingPongCLFSM.machine"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
       <AdditionalOptions>
