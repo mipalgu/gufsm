@@ -2,7 +2,7 @@
  *  CLMacros.h
  *
  *  Created by René Hexel on 23/03/13.
- *  Copyright (c) 2013, 2015, 2016 Rene Hexel.
+ *  Copyright (c) 2013, 2015, 2016, 2017 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -80,7 +80,6 @@ namespace FSM
         class Machine;
         class CLMachine;
         class CLState;
-        class SuspensibleMachine;
 
         enum CLControlStatus
         {
@@ -100,7 +99,14 @@ namespace FSM
         int index_of_machine_named(const char *machine_name);
         enum CLControlStatus control_machine_at_index(int index, enum CLControlStatus command);
 
-        SuspensibleMachine* loadAndAddMachine(const std::string machine);
+        /**
+         Load and add a machine
+
+         @param machine name of the machine to load
+         @param initiallySuspended `true` to initially suspend the loaded machine
+         @return index of the loaded machine, CLError on error
+         */
+        int loadAndAddMachine(const std::string machine, bool initiallySuspended = false);
         bool unloadMachineAtIndex(int index);
 
 /*
@@ -145,7 +151,8 @@ static inline enum CLControlStatus status(const char *m)  { return cs_machine_na
 #define state_of(m)     (machine_at_index(unsigned(index_of_machine_named(m)))->machineContext()->currentState())
 #define state_name_of(m)        (state_of(m)->name())
 
-#define loadMachine(m)  (loadAndAddMachine(m))
+#define loadMachine(m)   (loadAndAddMachine(m))
+#define loadSuspended(m) (loadAndAddMachine(m, true))
 #define unloadMachine(i) (unloadMachineAtIndex(i))
 
 #endif // NO_CL_READABILITY_MACROS
