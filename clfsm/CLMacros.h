@@ -152,7 +152,7 @@ static inline enum CLControlStatus status(const char *m)  { return cs_machine_na
 #define state_name_of(m)        (state_of(m)->name())
 
 #define loadMachine(m)   (loadAndAddMachine(m))
-#define loadSuspended(m) (loadAndAddMachine(m, true)
+#define loadSuspended(m) (loadAndAddMachine(m, true))
 #define unloadMachine(i) (unloadMachineAtIndex(i))
 
 #endif // NO_CL_READABILITY_MACROS
