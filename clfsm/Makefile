@@ -16,6 +16,8 @@ host: build-host
 
 robot: build-robot
 
+atom1: build-atom1
+
 .include "clfsm_hdrs.mk"                # include the clfsm HDRS here so they are put in HDRS when the documentation target comes looking. 
 IGNORED_HDRS=${HDRS}
 HDRS=
@@ -53,6 +55,18 @@ build-robot:
 	cp -p Makefile.in ${DEFAULT_TARGET_BUILDDIR}/Makefile
 	cd ${DEFAULT_TARGET_BUILDDIR} && ln -s . ${DEFAULT_TARGET_BUILDDIR}
 	cd ${DEFAULT_TARGET_BUILDDIR} && ${MAKE} robot
+
+build-atom1:
+	mkdir -p ${DEFAULT_TARGET_BUILDDIR}
+	rm -rf ${DEFAULT_TARGET_BUILDDIR}/${DEFAULT_TARGET_BUILDDIR}
+	cp -p clfsm_hdrs.mk ${DEFAULT_TARGET_BUILDDIR}
+	cp -p ../gufsm/*.c*  ../gufsm/*.h ${DEFAULT_TARGET_BUILDDIR}
+	cp -p *.c* *.h ${DEFAULT_TARGET_BUILDDIR}
+	cp -p CLReflect/*.c* CLReflect/*.h CLReflect/CLReflectTypeEnum ${DEFAULT_TARGET_BUILDDIR}
+	cp -p Makefile.in ${DEFAULT_TARGET_BUILDDIR}/Makefile
+	cd ${DEFAULT_TARGET_BUILDDIR} && ln -s . ${DEFAULT_TARGET_BUILDDIR}
+	cd ${DEFAULT_TARGET_BUILDDIR} && ${MAKE} atom1
+
 
 do-catkin: copy-stuff
 	cd ${BUILDDIR} && ln -fs ${CATKIN_TEMPLATE} ${BUILDDIR}
