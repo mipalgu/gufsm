@@ -88,4 +88,4 @@ clean-test:
 	$Ecd ${PWD:Q}/test && ${MAKE} clean
 .endfor
 
-#.include "../../../mk/mipal.mk"		# comes last!
+.include "../../../mk/mipal.mk"		# comes last!
