@@ -2,7 +2,7 @@
  *  parser_walk.c
  *  
  *  Created by René Hexel on 21/08/11.
- *  Copyright (c) 2011, 2013, 2015 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2011, 2013, 2015, 2017 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -54,6 +54,10 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wcast-qual"
+#pragma clang diagnostic ignored "-Wstrict-prototypes"
+
 #include "parser_walk.h"
 
 #include <stdio.h>
@@ -65,9 +69,6 @@
 #include "TransitionContainerParser.h"
 #include "ActionsContainerParser.h"
 #include "SimpleCLexer.h"
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wcast-qual"
 
 static inline ANTLR3_UINT32 getType(pANTLR3_BASE_TREE tree)
 {
