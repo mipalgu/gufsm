@@ -31,6 +31,8 @@ CATKIN_HDRS+=${MODULE_DIR}/../CLReflect/CLReflectTypeEnum
 .include "clfsm_hdrs.mk"
 DONT_CHECK_HDRS=yes
 
+LDFLAGS+=-lCLReflect
+
 .include "../../../../mk/whiteboard.mk"		# required for the whiteboard
 .include "../../../../mk/util.mk"		# required for gu_util
 

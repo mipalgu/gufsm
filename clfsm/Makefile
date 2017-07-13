@@ -38,7 +38,6 @@ copy-stuff:
 	cp -p clfsm_hdrs.mk ${BUILDDIR}
 	cp -p ../gufsm/*.c*  ../gufsm/*.h ${BUILDDIR}
 	cp -p *.c* *.h ${BUILDDIR}
-	cp -p CLReflect/*.c* CLReflect/*.h CLReflect/CLReflectTypeEnum ${BUILDDIR}
 	cp -p Makefile.in ${BUILDDIR}/Makefile
 	cd ${BUILDDIR} && ln -s . ${BUILDDIR}
 
@@ -51,7 +50,6 @@ build-robot:
 	cp -p clfsm_hdrs.mk ${DEFAULT_TARGET_BUILDDIR}
 	cp -p ../gufsm/*.c*  ../gufsm/*.h ${DEFAULT_TARGET_BUILDDIR}
 	cp -p *.c* *.h ${DEFAULT_TARGET_BUILDDIR}
-	cp -p CLReflect/*.c* CLReflect/*.h CLReflect/CLReflectTypeEnum ${DEFAULT_TARGET_BUILDDIR}
 	cp -p Makefile.in ${DEFAULT_TARGET_BUILDDIR}/Makefile
 	cd ${DEFAULT_TARGET_BUILDDIR} && ln -s . ${DEFAULT_TARGET_BUILDDIR}
 	cd ${DEFAULT_TARGET_BUILDDIR} && ${MAKE} robot
