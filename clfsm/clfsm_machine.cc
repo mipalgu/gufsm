@@ -101,7 +101,11 @@ using namespace FSM;
 static dispatch_queue_t sync_queue = NULL;
 #endif
 
+#ifdef WANT_FSM_REFLECTION
 MachineWrapper::MachineWrapper(string path): _fullPath(path), _factory(NULL), _metaFactory(NULL), _shared_object(NULL), _compiler(NULL), _compiler_args(NULL), _linker_args(NULL), _delete_compiler(false)
+#else
+MachineWrapper::MachineWrapper(string path): _fullPath(path), _factory(NULL), _shared_object(NULL), _compiler(NULL), _compiler_args(NULL), _linker_args(NULL), _delete_compiler(false)
+#endif
 {
 
         if (!file_exists(path.c_str()))
@@ -343,6 +347,7 @@ CLMachine *MachineWrapper::instantiate(int id, const char *machine_name)
     return _factory(id, machine_name);
 }
 
+#ifdef WANT_FSM_REFLECTION
 refl_metaMachine MachineWrapper::instantiateMetaMachine(CLMachine * machine)
 {
     if (!_shared_object)
@@ -363,6 +368,7 @@ refl_metaMachine MachineWrapper::instantiateMetaMachine(CLMachine * machine)
     refl_setMachine(meta, static_cast<void*>(machine), NULL);
     return meta;
 }
+#endif
 
 string MachineWrapper::stringByExpandingEnvironmentVariablesInString(string originalString)
 {

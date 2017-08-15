@@ -405,13 +405,17 @@ int main(int argc, char * const argv[])
     if ((verbosity = verbose)) visitor = print_machine_and_state;
     if (time_state_execution) visitor = CLFSMVisitorsExecution::time_state_execution;
     if (!noUnloadIfAccepting) accept_action = unloadMachineIfAccepting;
+#ifdef WANT_FSM_REFLECTION
     refl_initAPI(NULL); //Init reflection system
+#endif
     CLFSMWBVectorFactory *factory = createMachines(machines, compiler_args, linker_args);
     struct clfsm_context context = { CLFSMMachineLoader::getMachineLoaderSingleton() };
     factory->postMachineStatus();
     debug_internal_states = debug;
     factory->fsms()->execute(visitor, &context, accept_action);
+#ifdef WANT_FSM_REFLECTION
     refl_destroyAPI(NULL); // Destroy reflection system
+#endif
     // Print Execution Results
     if (time_state_execution)
     {
