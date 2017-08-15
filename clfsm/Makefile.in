@@ -20,18 +20,19 @@ SPECIFIC_LIBS+=-Wl,-R/usr/local/lib
 
 SPECIFIC_LIBS+=-L/usr/local/lib -lclfsm -ldl
 
+.if ${WANT_FSM_REFLECTION:M[yY][eE][sS]}
+CFLAGS+=-DWANT_FSM_REFLECTION=1
+SPECIFIC_LIBS+=-lCLReflect
+.endif
+
 CC_SRCS+=clfsm_cc.cc
 CC_SRCS+=clfsm_machine.cc
 CC_SRCS+=clfsm_visitorsupport.cc
 CC_SRCS+=clfsm_visitors.cc
 CC_SRCS+=clfsm_main.cc
 
-CATKIN_HDRS+=${MODULE_DIR}/../CLReflect/CLReflectTypeEnum
-
 .include "clfsm_hdrs.mk"
 DONT_CHECK_HDRS=yes
-
-LDFLAGS+=-lCLReflect
 
 .include "../../../../mk/whiteboard.mk"		# required for the whiteboard
 .include "../../../../mk/util.mk"		# required for gu_util

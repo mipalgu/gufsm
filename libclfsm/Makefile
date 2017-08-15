@@ -26,7 +26,6 @@ CC_SRCS=CLActionAction.cc CLTransitionExpression.cc FSMAction.cc FSMActivity.cc 
 HDRS=CLAction.h CLActionAction.h CLTransitionExpression.h FSMAction.h FSMActivity.h FSMExpression.h FSMFactory.h FSMState.h FSMSuspensibleMachine.h FSMTransition.h FSMAsynchronousSuspensibleMachine.h FSMachine.h FSMachineVector.h clfsm_factory.h CLTransition.h CLMachine.h CLState.h clfsm_vector_factory.h clfsm_wb_vector_factory.h clfsm_cc.h clfsm_cc_delegate.h clfsm_machine.h clfsm_machine_loader.h stringConstants.h
 HDRS+=CLMacros.h CLWhiteboard.h ExecComStruct.h FSMWBContext.h FSMWBPredicate.h FSMWBQueryPredicate.h FSMWBSubMachine.h
 INSTHDRS=CLMacros.h CLWhiteboard.h
-LDFLAGS+=-lCLReflect
 
 .include "../../../mk/whiteboard.mk"	# required for whiteboard clients
 .include "../../../mk/util.mk"		# required for GU utility functions
