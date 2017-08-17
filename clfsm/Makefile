@@ -42,7 +42,7 @@ copy-stuff:
 	cd ${BUILDDIR} && ln -s . ${BUILDDIR}
 
 build-host: copy-stuff
-	cd ${BUILDDIR} && ${MAKE} host
+	cd ${BUILDDIR} && ${MAKE} host WANT_FSM_REFLECTION=${WANT_FSM_REFLECTION} E=
 
 build-robot:
 	mkdir -p ${DEFAULT_TARGET_BUILDDIR}
@@ -52,7 +52,7 @@ build-robot:
 	cp -p *.c* *.h ${DEFAULT_TARGET_BUILDDIR}
 	cp -p Makefile.in ${DEFAULT_TARGET_BUILDDIR}/Makefile
 	cd ${DEFAULT_TARGET_BUILDDIR} && ln -s . ${DEFAULT_TARGET_BUILDDIR}
-	cd ${DEFAULT_TARGET_BUILDDIR} && ${MAKE} robot
+	cd ${DEFAULT_TARGET_BUILDDIR} && ${MAKE} robot WANT_FSM_REFLECTION=${WANT_FSM_REFLECTION}
 
 build-atom1:
 	mkdir -p ${DEFAULT_TARGET_BUILDDIR}
@@ -60,10 +60,9 @@ build-atom1:
 	cp -p clfsm_hdrs.mk ${DEFAULT_TARGET_BUILDDIR}
 	cp -p ../gufsm/*.c*  ../gufsm/*.h ${DEFAULT_TARGET_BUILDDIR}
 	cp -p *.c* *.h ${DEFAULT_TARGET_BUILDDIR}
-	cp -p CLReflect/*.c* CLReflect/*.h CLReflect/CLReflectTypeEnum ${DEFAULT_TARGET_BUILDDIR}
 	cp -p Makefile.in ${DEFAULT_TARGET_BUILDDIR}/Makefile
 	cd ${DEFAULT_TARGET_BUILDDIR} && ln -s . ${DEFAULT_TARGET_BUILDDIR}
-	cd ${DEFAULT_TARGET_BUILDDIR} && ${MAKE} atom1
+	cd ${DEFAULT_TARGET_BUILDDIR} && ${MAKE} atom1 WANT_FSM_REFLECTION=${WANT_FSM_REFLECTION}
 
 
 do-catkin: copy-stuff

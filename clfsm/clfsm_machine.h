@@ -62,7 +62,10 @@
 #include <vector>
 #include <memory>
 #include "clfsm_cc_delegate.h"
+
+#ifdef WANT_FSM_REFLECTION
 #include <CLReflect/CLReflectAPI.h>
+#endif
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wshorten-64-to-32"
@@ -75,14 +78,19 @@ namespace FSM
         class CLMachine;
 
         typedef CLMachine* (*create_machine_f)(int, const char *);
+
+#ifdef WANT_FSM_REFLECTION
         typedef refl_metaMachine (*create_meta_f)();
+#endif
 
         class MachineWrapper
         {
                 std::string _fullPath;          ///< full name, including path
                 std::string _name;              ///< name w/o path and extension
                 create_machine_f _factory;      ///< machine factory
+#ifdef WANT_FSM_REFLECTION
                 create_meta_f _metaFactory;
+#endif
                 void *_shared_object;           ///< object as returned by dlopen()
                 class Cc *_compiler;            ///< C++ compiler wrapper
                 const std::vector<std::string> *_compiler_args; ///< compiler command line arguments
@@ -131,8 +139,10 @@ namespace FSM
                 /// instantiate a machine
                 CLMachine *instantiate(int id, const char *machine_name);
 
+#ifdef WANT_FSM_REFLECTION
                 /// instantiate a meta-machine
                 refl_metaMachine instantiateMetaMachine(CLMachine * machine);
+#endif
 
                 /// return the default compiler args
                 static const std::vector<std::string> &default_compiler_args();
