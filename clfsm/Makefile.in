@@ -5,6 +5,7 @@ MODULE_BASE=clfsm
 
 DONT_COMPLAIN_ABOUT_TEST_TARGET=yes	## test target is defined elsewhere
 CI_SERVER_DOC_SUBDIR=utils
+WANT_FSM_REFLECTION=no
 
 .include "../../../../mk/c++11.mk"	# use C++11
 
@@ -20,10 +21,10 @@ SPECIFIC_LIBS+=-Wl,-R/usr/local/lib
 
 SPECIFIC_LIBS+=-L/usr/local/lib -lclfsm -ldl
 
-#.if ${WANT_FSM_REFLECTION:M[yY][eE][sS]}
-#CFLAGS+=-DWANT_FSM_REFLECTION=1
-#SPECIFIC_LIBS+=-lCLReflect
-#.endif
+.if ${WANT_FSM_REFLECTION:M[yY][eE][sS]}
+CFLAGS+=-DWANT_FSM_REFLECTION=1
+SPECIFIC_LIBS+=-lCLReflect
+.endif
 
 CC_SRCS+=clfsm_cc.cc
 CC_SRCS+=clfsm_machine.cc
