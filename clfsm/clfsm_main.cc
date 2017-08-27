@@ -59,6 +59,7 @@
 #pragma clang diagnostic ignored "-Wunused-macros"
 #pragma clang diagnostic ignored "-Wold-style-cast"
 #pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-W#warnings"
 
 #ifndef _BSD_SOURCE
 #define _BSD_SOURCE 199601
