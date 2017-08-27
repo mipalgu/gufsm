@@ -65,7 +65,7 @@ install: cross-local
 .endif
 	mkdir -p -m 0755 ${DST:Q}/include/clfsm
 	-mkdir -p -m 0755 ${DST:Q}/lib
-	cd ${BUILDDIR}-local && \
+	cd ${BUILDDIR} && \
 	install -m 0755 *${SOEXT}* ${DST:Q}/lib
 .for hdr in ${INSTHDRS}
 	cd ${SRCDIR} && \
