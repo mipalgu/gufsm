@@ -53,6 +53,7 @@ build-robot:
 	cp -p Makefile.in ${DEFAULT_TARGET_BUILDDIR}/Makefile
 	cd ${DEFAULT_TARGET_BUILDDIR} && ln -s . ${DEFAULT_TARGET_BUILDDIR}
 	cd ${DEFAULT_TARGET_BUILDDIR} && ${MAKE} robot WANT_FSM_REFLECTION=${WANT_FSM_REFLECTION}
+	mkdir -p build.nao-atom
 	cp -p ${DEFAULT_TARGET_BUILDDIR}/build.nao-atom/clfsm build.nao-atom/clfsm
 
 build-atom1:
