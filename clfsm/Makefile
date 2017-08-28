@@ -42,7 +42,7 @@ copy-stuff:
 	cd ${BUILDDIR} && ln -s . ${BUILDDIR}
 
 build-host: copy-stuff
-	cd ${BUILDDIR} && ${MAKE} host WANT_FSM_REFLECTION=${WANT_FSM_REFLECTION} E=
+	cd ${BUILDDIR} && ${MAKE} host WANT_FSM_REFLECTION=${WANT_FSM_REFLECTION}
 
 build-robot:
 	mkdir -p ${DEFAULT_TARGET_BUILDDIR}
@@ -53,6 +53,7 @@ build-robot:
 	cp -p Makefile.in ${DEFAULT_TARGET_BUILDDIR}/Makefile
 	cd ${DEFAULT_TARGET_BUILDDIR} && ln -s . ${DEFAULT_TARGET_BUILDDIR}
 	cd ${DEFAULT_TARGET_BUILDDIR} && ${MAKE} robot WANT_FSM_REFLECTION=${WANT_FSM_REFLECTION}
+	cp -p ${DEFAULT_TARGET_BUILDDIR}/build.nao-atom/clfsm build.nao-atom/clfsm
 
 build-atom1:
 	mkdir -p ${DEFAULT_TARGET_BUILDDIR}
