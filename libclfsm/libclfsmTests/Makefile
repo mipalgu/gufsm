@@ -1,4 +1,5 @@
-# Makefile for libclfsm tests
+#Makefile for libclfsm tests
+
 
 .include "../../../../mk/c++11.mk"	# use C++11
 
