@@ -12,7 +12,7 @@ ALL_TARGETS=host-local robot-local analyse xc tests
 CATKIN_BASE=libclfsm
 CATKIN_COMPILE_UTIL=YES
 
-CATKIN_HDRS+=${MODULE_DIR}/../clfsm/CLReflect/CLReflectTypeEnum
+CATKIN_HDRS+=${GUNAO_DIR}/posix/CLReflect/CLReflectTypeEnum
 
 XCODE_USE_WORKSPACE=yes
 
@@ -47,7 +47,7 @@ upload-robot:
 	  /usr/bin/install_name_tool -id ${PREFIX:Q}/lib/${OUTFILE_LOCAL:Q} ${BUILDDIR}-local/*${SOEXT}*
 	cd ${BUILDDIR}-local && \
 	install -m 0755 *${SOEXT}* ${DESTDIR}${PREFIX:Q}/lib
-.for hdr in ${INSTHDRS}
+.for hdr in ${INSTHDRS}:
 	cd ${SRCDIR}/../clfsm && \
 	install -m 0644 ${hdr} /usr/local/include/clfsm
 .endfor
