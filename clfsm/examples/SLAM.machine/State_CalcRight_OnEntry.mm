@@ -1,0 +1,18 @@
+Joints[0]=SenMsg.get().LHipYawPitch();
+Joints[1]=SenMsg.get().LHipRoll();
+Joints[2]=SenMsg.get().LHipPitch();
+Joints[3]=SenMsg.get().LKneePitch();
+Joints[4]=SenMsg.get().LAnklePitch();
+Joints[5]=SenMsg.get().LAnkleRoll();
+Joints[6]=SenMsg.get().LHipYawPitch();
+Joints[7]=SenMsg.get().RHipRoll();
+Joints[8]=SenMsg.get().RHipPitch();
+Joints[9]=SenMsg.get().RKneePitch();
+Joints[10]=SenMsg.get().RAnklePitch();
+Joints[11]=SenMsg.get().RAnkleRoll();
+TestOdom.CalcRightPos(Joints);
+for(ii=0;ii<12;ii++)
+{
+	std::cout<<Joints[ii]<<",";
+}
+std::cout<<"1,"<<atan2(TestOdom.RightData()[6],TestOdom.RightData()[10])*57.29<<","<<TestOdom.RightData()[7]<<","<<TestOdom.RightData()[11]<<std::endl;
