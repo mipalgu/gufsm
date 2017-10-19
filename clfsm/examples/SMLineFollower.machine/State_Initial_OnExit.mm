@@ -1,0 +1,1 @@
+HeadMsg.set(HeadTrg);

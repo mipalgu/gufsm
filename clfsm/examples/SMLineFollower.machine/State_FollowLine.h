@@ -1,0 +1,63 @@
+//
+// State_FollowLine.h
+//
+// Automatically created through MiPalCASE -- do not change manually!
+//
+#ifndef clfsm_SMLineFollower_State_FollowLine_h
+#define clfsm_SMLineFollower_State_FollowLine_h
+
+#include "CLState.h"
+#include "CLAction.h"
+#include "CLTransition.h"
+
+namespace FSM
+{
+    namespace CLM
+    {
+      namespace FSMSMLineFollower
+      {
+        namespace State
+        {
+            class FollowLine: public CLState
+            {
+                class OnEntry: public CLAction
+                {
+                    virtual void perform(CLMachine *, CLState *) const;
+                };
+
+                class OnExit: public CLAction
+                {
+                    virtual void perform(CLMachine *, CLState *) const;
+                };
+
+                class Internal: public CLAction
+                {
+                    virtual void perform(CLMachine *, CLState *) const;
+                };
+
+                class Transition_0: public CLTransition
+                {
+                public:
+                    Transition_0(int toState = 3): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                CLTransition *_transitions[1];
+
+                public:
+                    FollowLine(const char *name = "FollowLine");
+                    virtual ~FollowLine();
+
+                    virtual CLTransition * const *transitions() const { return _transitions; }
+                    virtual int numberOfTransitions() const { return 1; }
+
+#                   include "State_FollowLine_Variables.h"
+#                   include "State_FollowLine_Methods.h"
+            };
+        }
+      }
+    }
+}
+
+#endif
