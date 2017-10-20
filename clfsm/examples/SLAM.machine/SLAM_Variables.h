@@ -18,8 +18,6 @@ int	RowIdx;	///<
 int	ColIdx;	///<
 double*	ToPrint;	///<
 int	Res;	///<
-HumanoidOdometry	RobCls;	///<
-OdometryPose	RobPos;	///<
 SENSORSLegJointSensors_t	SenMsg;	///<
 OdomCalc	TestOdom;	///<
 double*	Joints;	///<

@@ -5,8 +5,7 @@
 #include <typeClassDefs/SENSORSLegJointSensors.h>
 #include <typeClassDefs/SENSORSFootSensors.h>
 #include <gu_util.h>
-#include <MeasMatrixClass.h>
-#include <OdometryClass.h>
+#include <MeasMatrix.h>
 #include <Odometry.h>
 #include "CLMacros.h"
 #include "CLWhiteboard.h"
@@ -19,4 +18,4 @@
 #define LEN 20
 using namespace std;
 using namespace guWhiteboard;
-#define BaseIdx (3 * (((RowIdx * (RowIdx + 1)) >> 1) + ColIdx))
+//#define BaseIdx (3 * (((RowIdx * (RowIdx + 1)) >> 1) + ColIdx))

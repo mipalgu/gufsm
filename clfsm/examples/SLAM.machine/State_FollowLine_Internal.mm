@@ -57,7 +57,7 @@ if((LMass>1.2) && (RMass<0.5) && !Step)
 	{
 		std::cout<<Joints[ii]<<",";
 	}*/
-	//std::cout<<"0,"<<atan2(TestOdom.LeftData()[6],TestOdom.LeftData()[10])*57.29<<","<<TestOdom.LeftData()[7]<<","<<TestOdom.LeftData()[11]<<std::endl;
+	std::cout<<atan2(TestOdom.LeftData()[6],TestOdom.LeftData()[10])*57.29<<"\t"<<TestOdom.LeftData()[7]<<"\t"<<TestOdom.LeftData()[11]<<std::endl;
 }
 if((RMass>1.2) && (LMass<0.5) && Step)
 {

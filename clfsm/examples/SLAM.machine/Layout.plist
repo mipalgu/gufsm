@@ -69,7 +69,7 @@
 			<key>onExitHeight</key>
 			<real>0.0</real>
 			<key>stateSelected</key>
-			<true/>
+			<false/>
 			<key>strokeColour</key>
 			<dict>
 				<key>alpha</key>
@@ -324,9 +324,9 @@
 					<key>controlPoint2Y</key>
 					<real>497</real>
 					<key>dstPointX</key>
-					<real>302.22999556560461</real>
+					<real>288.05179580244055</real>
 					<key>dstPointY</key>
-					<real>603.30370963540543</real>
+					<real>605.53738476656031</real>
 					<key>srcPointX</key>
 					<real>266.29308132876815</real>
 					<key>srcPointY</key>
@@ -975,7 +975,7 @@
 				<real>0.92000000000000004</real>
 			</dict>
 			<key>editingMode</key>
-			<false/>
+			<true/>
 			<key>expanded</key>
 			<false/>
 			<key>h</key>
@@ -987,7 +987,7 @@
 			<key>onExitHeight</key>
 			<real>0.0</real>
 			<key>stateSelected</key>
-			<false/>
+			<true/>
 			<key>strokeColour</key>
 			<dict>
 				<key>alpha</key>
