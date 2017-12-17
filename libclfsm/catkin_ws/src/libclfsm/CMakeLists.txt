@@ -119,18 +119,6 @@ src/clfsm_machine.cc
 src/clfsm_machine_loader.cc
 src/gu_util.cpp
 src/stringConstants.c
-src/API_Interface.cc
-src/API_MetaMachine.c
-src/API_MetaState.c
-src/API_MetaAction.c
-src/API_MetaTransition.c
-src/API_Util.c
-src/API_MetaProperty.c
-src/API_MetaMachine_Properties.c
-src/API_MetaState_Properties.c
-src/API_MetaProperty_Access.c
-src/API_TypeConversion.c
-src/API_MachineControl.c
 )
 set_target_properties(libclfsm PROPERTIES OUTPUT_NAME clfsm)
 
