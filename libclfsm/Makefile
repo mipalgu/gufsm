@@ -58,25 +58,6 @@ tests: host-local
 	$E${MAKE} -C libclfsmTests tests
 
 
-.ifndef TARGET
-install: host-local
-.else
-install: cross-local
-.endif
-	mkdir -p -m 0755 ${DST:Q}/include/clfsm
-	-mkdir -p -m 0755 ${DST:Q}/lib
-	cd ${BUILDDIR}-local && \
-	install -m 0755 *${SOEXT}* ${DST:Q}/lib
-.for hdr in ${INSTHDRS}
-	cd ${SRCDIR} && \
-	if [ -d ${hdr:Q} ]; then \
-	  cp -pR ${hdr:Q} ${DST:Q}/include/clfsm;\
-	else \
-	  install -m 0644 ${hdr} ${DST:Q}/include/clfsm;\
-	fi
-.endfor
-
-
 .ifdef TARGET
 cross-install: install
 .else
