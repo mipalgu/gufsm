@@ -76,6 +76,8 @@
 #endif
 
 #pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+#pragma clang diagnostic ignored "-Wc++98-compat"
 #pragma clang diagnostic ignored "-Wshorten-64-to-32"
 #pragma clang diagnostic ignored "-Wsign-compare"
 #pragma clang diagnostic ignored "-Wvla"
@@ -144,7 +146,7 @@ string ANTLRMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
         if ((*s.freeze_point)[machineToRunOnce].ringletStage == Epcbefore )
         { /*evaluate the expresion */
                 kripkeToANTLRContext (s,n,names);
-                m->setPreviousState(NULL);
+                m->setPreviousState(NULLPTR);
                 m->setCurrentState(m->stateForID(stateToRun));
                 m->executeOnEntry();
                 /* place values in next*/
@@ -184,7 +186,7 @@ string ANTLRMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
                         kripkeToANTLRContext (current,n,names);
                         next = current;
                         next.freeze_point = freeze;
-                        m->setPreviousState(NULL);
+                        m->setPreviousState(NULLPTR);
                         m->setCurrentState(m->stateForID(stateToRun));
                         if (m->numberOfTransitionsInCurrentState())
                         {
@@ -233,7 +235,7 @@ string ANTLRMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
         else if ((*s.freeze_point)[machineToRunOnce].ringletStage == EtransitionFalse )
         { /*evaluate the expresion */
                 kripkeToANTLRContext (s,n,names);
-                m->setPreviousState(NULL);
+                m->setPreviousState(NULLPTR);
                 m->setCurrentState(m->stateForID(stateToRun));
                 int tid = (*next.freeze_point)[machineToRunOnce].transition_id + 1;
                 /*
@@ -281,7 +283,7 @@ string ANTLRMachineVector::generate_from( KripkeState &s, list<KripkeState> &kst
         else if ((*s.freeze_point)[machineToRunOnce].ringletStage == EtransitionTrue )
         { /*evaluate the expresion */
                 kripkeToANTLRContext (s,n,names);
-                m->setPreviousState(NULL);
+                m->setPreviousState(NULLPTR);
                 m->setCurrentState(m->stateForID(stateToRun));
                 m->executeOnExitForTransitionWithIndex((*next.freeze_point)[machineToRunOnce].transition_id);
                 /* place values in next*/

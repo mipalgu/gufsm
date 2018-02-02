@@ -2,7 +2,7 @@
  *  FSMANTLRContext.h
  *  
  *  Created by René Hexel on 18/10/11.
- *  Copyright (c) 2011, 2015 Rene Hexel.
+ *  Copyright (c) 2011, 2015, 2018 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -90,6 +90,8 @@ extern "C"
 #endif
 
 #pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+#pragma clang diagnostic ignored "-Wc++98-compat"
 #pragma clang diagnostic ignored "-Wshorten-64-to-32"
 #pragma clang diagnostic ignored "-Wsign-compare"
 #pragma clang diagnostic ignored "-Wpadded"
@@ -108,9 +110,9 @@ namespace FSM
                 /**
                  * default constructor
                  * @param wb pointer to an already opened whiteboard
-                 * @param deletewb delete wb pointer when destructed (only relevant if wb is non-NULL, otherwise the whiteboard will always be deleted in the destructor
+                 * @param deletewb delete wb pointer when destructed (only relevant if wb is non-NULLPTR, otherwise the whiteboard will always be deleted in the destructor
                  */
-                ANTLRContext(guWhiteboard::Whiteboard *wb = NULL, bool deletewb = false): WBContext(wb, deletewb), _variables() {}
+                ANTLRContext(guWhiteboard::Whiteboard *wb = NULLPTR, bool deletewb = false): WBContext(wb, deletewb), _variables() {}
                 ANTLRContext(const ANTLRContext &orig): _variables((const_cast<ANTLRContext &>(orig)).variables()) {}
 
                 /** variable getter */

@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 5/08/12.
- *  Copyright (c) 2012, 2015, 2016 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2015, 2016, 2018 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -72,6 +72,7 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wpadded"
 #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+#pragma clang diagnostic ignored "-Wc++98-compat"
 
 namespace FSM
 {
@@ -95,7 +96,7 @@ namespace FSM
                 virtual ~CLFSMFactory();
 
                 /** machine creator */
-                virtual void createMachine(CLMachine *clm, Context *context = 0, State *initialState = 0, int mid = 0, const char *name = "");
+                virtual void createMachine(CLMachine *clm, Context *context = NULLPTR, State *initialState = NULLPTR, int mid = 0, const char *name = "");
 
                 /** state creator */
                 virtual State *createState(CLState *clstate, int state_number);

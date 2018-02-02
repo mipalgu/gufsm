@@ -3,7 +3,7 @@
  *  gufsm
  *
  *  Created by Rene Hexel on 25/03/13.
- *  Copyright (c) 2013, 2015 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2013, 2015, 2018 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -72,6 +72,7 @@
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wpadded"
+#pragma clang diagnostic ignored "-Wc++98-compat"
 
 namespace FSM
 {
@@ -93,17 +94,17 @@ namespace FSM
                 enum ScheduledAction _scheduledAction;
         public:
                 /** constructor */
-                AsynchronousSuspensibleMachine(State *initialState = NULL,
-                                               Context *ctx = NULL,
+                AsynchronousSuspensibleMachine(State *initialState = NULLPTR,
+                                               Context *ctx = NULLPTR,
                                                int mid=0,
-                                               State *s = NULL,
+                                               State *s = NULLPTR,
                                                bool del = false);
 
                 // /** destructor */
                 //virtual ~AsynchronousSuspensibleMachine();
 
                 /** execute once */
-                virtual bool executeOnce(bool *fired=NULL);
+                virtual bool executeOnce(bool *fired=NULLPTR);
                 
                 /** suspend this state machine */
                 virtual void suspend();
@@ -112,7 +113,7 @@ namespace FSM
                 virtual void resume();
                 
                 /** restart this state machine from its initial state */
-                virtual State *restart(State *initialState = NULL);
+                virtual State *restart(State *initialState = NULLPTR);
 
                 /** is this machine scheduled for suspend? */
                 virtual bool scheduledForSuspend() const { return _scheduledAction == SCHEDULE_SUSPEND_ACTION; }

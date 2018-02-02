@@ -71,7 +71,8 @@
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wpadded"
-
+#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+#pragma clang diagnostic ignored "-Wc++98-compat"
 
 namespace guWhiteboard
 {
@@ -88,9 +89,9 @@ namespace FSM
                 /**
                  * default constructor
                  * @param wb pointer to an already opened whiteboard
-                 * @param deletewb delete wb pointer when destructed (only relevant if wb is non-NULL, otherwise the whiteboard will always be deleted in the destructor
+                 * @param deletewb delete wb pointer when destructed (only relevant if wb is non-NULLPTR, otherwise the whiteboard will always be deleted in the destructor
                  */
-                WBContext(guWhiteboard::Whiteboard *wb = NULL, bool deletewb = false);
+                WBContext(guWhiteboard::Whiteboard *wb = NULLPTR, bool deletewb = false);
 
                 /** destructor */
                 virtual ~WBContext();
@@ -99,7 +100,7 @@ namespace FSM
                 guWhiteboard::Whiteboard *whiteboard() { return _wb; }
 
                 /** whiteboard setter */
-                void setWhiteboard(guWhiteboard::Whiteboard *wb = NULL, bool deletewb = false);
+                void setWhiteboard(guWhiteboard::Whiteboard *wb = NULLPTR, bool deletewb = false);
         };
 }
 

@@ -2,7 +2,7 @@
  *  FSMExpression.cc
  *  
  *  Created by René Hexel on 26/09/11.
- *  Copyright (c) 2011, 2013, 2015 Rene Hexel.
+ *  Copyright (c) 2011, 2013, 2015, 2018 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -76,7 +76,7 @@
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
-
+#pragma clang diagnostic ignored "-Wc++98-compat"
 
 using namespace FSM;
 using namespace std;
@@ -104,7 +104,7 @@ int TimeoutPredicate::evaluate(Machine *machine)
         struct timeval now;
         const struct timeval &then = machine->stateTime();
 
-        gettimeofday(&now, NULL);
+        gettimeofday(&now, NULLPTR);
 
         long long t = then.tv_usec + 1000000LL * then.tv_sec;
         long long x =  now.tv_usec + 1000000LL *  now.tv_sec;

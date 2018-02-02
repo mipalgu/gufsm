@@ -24,19 +24,12 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		301ABF781B97ECC300224CF9 /* API_MetaMachine_Properties.c in Sources */ = {isa = PBXBuildFile; fileRef = 301ABF761B97ECC300224CF9 /* API_MetaMachine_Properties.c */; };
 		301ABF791B97ECC300224CF9 /* API_MetaMachine_Properties.h in Headers */ = {isa = PBXBuildFile; fileRef = 301ABF771B97ECC300224CF9 /* API_MetaMachine_Properties.h */; };
-		301ABF9E1B97ECD900224CF9 /* API_MetaState_Properties.c in Sources */ = {isa = PBXBuildFile; fileRef = 301ABF9C1B97ECD900224CF9 /* API_MetaState_Properties.c */; };
 		301ABF9F1B97ECD900224CF9 /* API_MetaState_Properties.h in Headers */ = {isa = PBXBuildFile; fileRef = 301ABF9D1B97ECD900224CF9 /* API_MetaState_Properties.h */; };
-		301ABFA21B97ECE900224CF9 /* API_MetaProperty.c in Sources */ = {isa = PBXBuildFile; fileRef = 301ABFA01B97ECE900224CF9 /* API_MetaProperty.c */; };
 		301ABFA31B97ECE900224CF9 /* API_MetaProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 301ABFA11B97ECE900224CF9 /* API_MetaProperty.h */; };
-		301ABFA41B97ECEF00224CF9 /* API_MetaProperty_Access.c in Sources */ = {isa = PBXBuildFile; fileRef = 301ABF991B97ECC900224CF9 /* API_MetaProperty_Access.c */; };
 		305EDA061B9E64DA0053F665 /* API_Type.h in Headers */ = {isa = PBXBuildFile; fileRef = 305EDA051B9E64DA0053F665 /* API_Type.h */; };
-		307B5A2F1B797C4700F7ACB8 /* API_Util.c in Sources */ = {isa = PBXBuildFile; fileRef = 307B5A2D1B797C4700F7ACB8 /* API_Util.c */; };
 		307B5A301B797C4700F7ACB8 /* API_Util.h in Headers */ = {isa = PBXBuildFile; fileRef = 307B5A2E1B797C4700F7ACB8 /* API_Util.h */; };
-		30A1B30A1BA2985A00640F88 /* API_TypeConversion.c in Sources */ = {isa = PBXBuildFile; fileRef = 30A1B3081BA2985A00640F88 /* API_TypeConversion.c */; };
 		30A1B30B1BA2985A00640F88 /* API_TypeConversion.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A1B3091BA2985A00640F88 /* API_TypeConversion.h */; };
-		30B226671B82B07C001511B5 /* API_MetaTransition.c in Sources */ = {isa = PBXBuildFile; fileRef = 30B226651B82B07C001511B5 /* API_MetaTransition.c */; };
 		30B226681B82B07C001511B5 /* API_MetaTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = 30B226661B82B07C001511B5 /* API_MetaTransition.h */; };
 		3CFD06221A1B684300C36E6C /* clfsm_visitors.cc in Sources */ = {isa = PBXBuildFile; fileRef = 3CFD061E1A1B684300C36E6C /* clfsm_visitors.cc */; };
 		3CFD06231A1B684300C36E6C /* clfsm_visitorsupport.cc in Sources */ = {isa = PBXBuildFile; fileRef = 3CFD06201A1B684300C36E6C /* clfsm_visitorsupport.cc */; };
@@ -151,12 +144,9 @@
 		F16CC335142C3433001F788B /* FSMAction.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC334142C3433001F788B /* FSMAction.cc */; };
 		F16CC336142C390D001F788B /* FSMAction.cc in Sources */ = {isa = PBXBuildFile; fileRef = F16CC334142C3433001F788B /* FSMAction.cc */; };
 		F1777E7A16FD97E6006E263E /* gugenericwhiteboardobject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1777E6016FD96C2006E263E /* gugenericwhiteboardobject.cpp */; };
-		F17A1DE21B77F37500C24CAB /* API_Interface.cc in Sources */ = {isa = PBXBuildFile; fileRef = F17A1DDD1B77F37500C24CAB /* API_Interface.cc */; };
 		F17A1DE31B77F37500C24CAB /* API_Interface.h in Headers */ = {isa = PBXBuildFile; fileRef = F17A1DDE1B77F37500C24CAB /* API_Interface.h */; };
-		F17A1DE41B77F37500C24CAB /* API_MetaAction.c in Sources */ = {isa = PBXBuildFile; fileRef = F17A1DDF1B77F37500C24CAB /* API_MetaAction.c */; };
 		F17A1DE51B77F37500C24CAB /* API_MetaAction.h in Headers */ = {isa = PBXBuildFile; fileRef = F17A1DE01B77F37500C24CAB /* API_MetaAction.h */; };
 		F17A1DE61B77F37500C24CAB /* API_MetaMachine_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = F17A1DE11B77F37500C24CAB /* API_MetaMachine_Internal.h */; };
-		F17A1DEB1B77F38C00C24CAB /* API_MetaState.c in Sources */ = {isa = PBXBuildFile; fileRef = F17A1DE71B77F38C00C24CAB /* API_MetaState.c */; };
 		F17A1DEC1B77F38C00C24CAB /* API_MetaState.h in Headers */ = {isa = PBXBuildFile; fileRef = F17A1DE81B77F38C00C24CAB /* API_MetaState.h */; };
 		F17A1DED1B77F38C00C24CAB /* API_Result.h in Headers */ = {isa = PBXBuildFile; fileRef = F17A1DE91B77F38C00C24CAB /* API_Result.h */; };
 		F17A1DEE1B77F38C00C24CAB /* CLMetaRegister.h in Headers */ = {isa = PBXBuildFile; fileRef = F17A1DEA1B77F38C00C24CAB /* CLMetaRegister.h */; };
@@ -189,7 +179,6 @@
 		F1AFCD2A147B56FA00C975DC /* FSMachineVector.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1AFCD28147B56FA00C975DC /* FSMachineVector.cc */; };
 		F1AFCD2F147B8F7800C975DC /* FSMWBSubMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1AFCD2E147B8F7800C975DC /* FSMWBSubMachine.cc */; };
 		F1AFCD30147B8F7800C975DC /* FSMWBSubMachine.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1AFCD2E147B8F7800C975DC /* FSMWBSubMachine.cc */; };
-		F1C411531B67096700663625 /* API_MetaMachine.c in Sources */ = {isa = PBXBuildFile; fileRef = F1C4114E1B67094900663625 /* API_MetaMachine.c */; };
 		F1C7CE5F16FFE48300D5D843 /* clfsm_wb_vector_factory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1C7CE5D16FFE48300D5D843 /* clfsm_wb_vector_factory.cc */; };
 		F1C7CE6016FFE48300D5D843 /* clfsm_wb_vector_factory.h in Headers */ = {isa = PBXBuildFile; fileRef = F1C7CE5E16FFE48300D5D843 /* clfsm_wb_vector_factory.h */; };
 		F1D5759E1627956700976A23 /* CLActionAction.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1D126EE160937B400E526BE /* CLActionAction.cc */; };
@@ -212,6 +201,8 @@
 		F1D962B415F7236300EB0B30 /* FSMANTLRMachineFactory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1D962B315F7236300EB0B30 /* FSMANTLRMachineFactory.cc */; };
 		F1DF55911584274B0097A438 /* FSMVectorRunner.cc in Sources */ = {isa = PBXBuildFile; fileRef = F13BA40E1579E92500929C9C /* FSMVectorRunner.cc */; };
 		F1DF55921584274C0097A438 /* FSMVectorRunner.cc in Sources */ = {isa = PBXBuildFile; fileRef = F13BA40E1579E92500929C9C /* FSMVectorRunner.cc */; };
+		F1F2180B2025215D00620A5D /* WhiteboardConstants.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1F218032025214000620A5D /* WhiteboardConstants.cc */; };
+		F1F2180C2025215D00620A5D /* Whiteboard.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1F2180A2025214000620A5D /* Whiteboard.cc */; };
 		F1F8EAC71480B732008AB889 /* FSMANTLRExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1F8EAC61480B732008AB889 /* FSMANTLRExpression.cc */; };
 		F1F8EAC81480B732008AB889 /* FSMANTLRExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1F8EAC61480B732008AB889 /* FSMANTLRExpression.cc */; };
 		F5EE57F81487441C001F6C9C /* stringConstants.c in Sources */ = {isa = PBXBuildFile; fileRef = F5EE57F61487441C001F6C9C /* stringConstants.c */; };
@@ -524,10 +515,6 @@
 		F1284D0B14A6CAA800C0247E /* SimpleWhiteboardTest.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SimpleWhiteboardTest.mm; sourceTree = "<group>"; };
 		F1284D0C14A6CAA800C0247E /* WBFunctor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = WBFunctor.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		F1284D0D14A6CAA800C0247E /* WBMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBMsg.h; sourceTree = "<group>"; };
-		F1284D0E14A6CAA800C0247E /* Whiteboard.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Whiteboard.cc; sourceTree = "<group>"; };
-		F1284D0F14A6CAA800C0247E /* Whiteboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Whiteboard.h; sourceTree = "<group>"; };
-		F1284D1014A6CAA800C0247E /* WhiteboardConstants.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WhiteboardConstants.cc; sourceTree = "<group>"; };
-		F1284D1114A6CAA800C0247E /* WhiteboardConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhiteboardConstants.h; sourceTree = "<group>"; };
 		F12B41CE147DBC7D00FF4A6B /* MainStart.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MainStart.cpp; sourceTree = "<group>"; };
 		F12B41CF147DBC7D00FF4A6B /* Activity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Activity.cpp; sourceTree = "<group>"; };
 		F12B41D0147DBC7D00FF4A6B /* Activity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Activity.h; sourceTree = "<group>"; };
@@ -974,7 +961,6 @@
 		F1777E6016FD96C2006E263E /* gugenericwhiteboardobject.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; path = gugenericwhiteboardobject.cpp; sourceTree = "<group>"; };
 		F1777E6116FD96C2006E263E /* gugenericwhiteboardobject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gugenericwhiteboardobject.h; sourceTree = "<group>"; };
 		F1777E6216FD96C2006E263E /* guwhiteboardtypelist_c_generated.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = guwhiteboardtypelist_c_generated.h; sourceTree = "<group>"; };
-		F1777E6316FD96C2006E263E /* guwhiteboardtypelist_generated_template.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = guwhiteboardtypelist_generated_template.h; sourceTree = "<group>"; };
 		F1777E6416FD96C2006E263E /* guwhiteboardtypelist_generated.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = guwhiteboardtypelist_generated.h; sourceTree = "<group>"; };
 		F1777E6516FD96C2006E263E /* guwhiteboardtypelist.tsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = guwhiteboardtypelist.tsl; sourceTree = "<group>"; };
 		F1777E6616FD96C2006E263E /* guwhiteboardwatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = guwhiteboardwatcher.h; sourceTree = "<group>"; };
@@ -1128,6 +1114,16 @@
 		F1D962B115F7231300EB0B30 /* FSMANTLRMachineFactory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRMachineFactory.cc; sourceTree = "<group>"; };
 		F1D962B315F7236300EB0B30 /* FSMANTLRMachineFactory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRMachineFactory.cc; sourceTree = "<group>"; };
 		F1DC485A1626A5740054E824 /* States */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = States; sourceTree = "<group>"; };
+		F1F218012025214000620A5D /* iOSWhiteboard.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = iOSWhiteboard.cc; sourceTree = "<group>"; };
+		F1F218022025214000620A5D /* RemoteWhiteboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RemoteWhiteboard.h; sourceTree = "<group>"; };
+		F1F218032025214000620A5D /* WhiteboardConstants.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = WhiteboardConstants.cc; sourceTree = "<group>"; };
+		F1F218042025214000620A5D /* WhiteboardConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WhiteboardConstants.h; sourceTree = "<group>"; };
+		F1F218052025214000620A5D /* WBFunctor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBFunctor.h; sourceTree = "<group>"; };
+		F1F218062025214000620A5D /* WBMsg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBMsg.h; sourceTree = "<group>"; };
+		F1F218072025214000620A5D /* Whiteboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Whiteboard.h; sourceTree = "<group>"; };
+		F1F218082025214000620A5D /* iOSWhiteboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iOSWhiteboard.h; sourceTree = "<group>"; };
+		F1F218092025214000620A5D /* RemoteWhiteboard.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RemoteWhiteboard.cc; sourceTree = "<group>"; };
+		F1F2180A2025214000620A5D /* Whiteboard.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Whiteboard.cc; sourceTree = "<group>"; };
 		F1F8EAC31480B6BE008AB889 /* FSMANTLRExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMANTLRExpression.h; sourceTree = "<group>"; };
 		F1F8EAC61480B732008AB889 /* FSMANTLRExpression.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRExpression.cc; sourceTree = "<group>"; };
 		F1F8EAC91480B98E008AB889 /* FSMANTLRContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMANTLRContext.h; sourceTree = "<group>"; };
@@ -1273,6 +1269,7 @@
 		F1284CFF14A6CAA800C0247E /* gusimplewhiteboard */ = {
 			isa = PBXGroup;
 			children = (
+				F1F218002025214000620A5D /* OLD_WB */,
 				F1284D0014A6CAA800C0247E /* gusimplewhiteboard.c */,
 				F157558D16FC0E5700C6EBA1 /* guwhiteboardtypelist_c_typestrings_generated.c */,
 				F1284D0114A6CAA800C0247E /* gusimplewhiteboard.h */,
@@ -1287,14 +1284,9 @@
 				F1284D0514A6CAA800C0247E /* SimpleWhiteboardTest */,
 				F1284D0C14A6CAA800C0247E /* WBFunctor.h */,
 				F1284D0D14A6CAA800C0247E /* WBMsg.h */,
-				F1284D0E14A6CAA800C0247E /* Whiteboard.cc */,
-				F1284D0F14A6CAA800C0247E /* Whiteboard.h */,
-				F1284D1014A6CAA800C0247E /* WhiteboardConstants.cc */,
-				F1284D1114A6CAA800C0247E /* WhiteboardConstants.h */,
 				F1777E6016FD96C2006E263E /* gugenericwhiteboardobject.cpp */,
 				F1777E6116FD96C2006E263E /* gugenericwhiteboardobject.h */,
 				F1777E6216FD96C2006E263E /* guwhiteboardtypelist_c_generated.h */,
-				F1777E6316FD96C2006E263E /* guwhiteboardtypelist_generated_template.h */,
 				F1777E6416FD96C2006E263E /* guwhiteboardtypelist_generated.h */,
 				F1777E6516FD96C2006E263E /* guwhiteboardtypelist.tsl */,
 				F1777E6616FD96C2006E263E /* guwhiteboardwatcher.h */,
@@ -2397,6 +2389,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F1F218002025214000620A5D /* OLD_WB */ = {
+			isa = PBXGroup;
+			children = (
+				F1F218012025214000620A5D /* iOSWhiteboard.cc */,
+				F1F218022025214000620A5D /* RemoteWhiteboard.h */,
+				F1F218032025214000620A5D /* WhiteboardConstants.cc */,
+				F1F218042025214000620A5D /* WhiteboardConstants.h */,
+				F1F218052025214000620A5D /* WBFunctor.h */,
+				F1F218062025214000620A5D /* WBMsg.h */,
+				F1F218072025214000620A5D /* Whiteboard.h */,
+				F1F218082025214000620A5D /* iOSWhiteboard.h */,
+				F1F218092025214000620A5D /* RemoteWhiteboard.cc */,
+				F1F2180A2025214000620A5D /* Whiteboard.cc */,
+			);
+			path = OLD_WB;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -2716,7 +2725,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastTestingUpgradeCheck = 0510;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = MiPal;
 				TargetAttributes = {
 					F1A854EF18EF3F0500DCB83E = {
@@ -3067,10 +3076,12 @@
 				F16CC335142C3433001F788B /* FSMAction.cc in Sources */,
 				F1A3DF6E142D3BFF0060F293 /* FSMachine.cc in Sources */,
 				F191E605142D9B970014AF84 /* FSMSuspensibleMachine.cc in Sources */,
+				F1F2180C2025215D00620A5D /* Whiteboard.cc in Sources */,
 				F12EAE5C15F6F993002DB436 /* FSMFactory.cc in Sources */,
 				E1144EB61585E21600C3C113 /* SimpleCLexer.c in Sources */,
 				E1144EB71585E21600C3C113 /* SimpleCParser.c in Sources */,
 				E1144EBD1585E23900C3C113 /* ActionsContainer_SimpleCParser.c in Sources */,
+				F1F2180B2025215D00620A5D /* WhiteboardConstants.cc in Sources */,
 				E1144EBE1585E23900C3C113 /* ActionsContainerLexer.c in Sources */,
 				E1144EBF1585E23900C3C113 /* ActionsContainerParser.c in Sources */,
 				E1144EC01585E23900C3C113 /* TransitionContainer_SimpleCParser.c in Sources */,
@@ -3183,25 +3194,15 @@
 				F1D575A01627959C00976A23 /* FSMAction.cc in Sources */,
 				F1D575A1162795A600976A23 /* FSMExpression.cc in Sources */,
 				F12B737E1B6053AA006C64D8 /* clfsm_cc.cc in Sources */,
-				301ABF9E1B97ECD900224CF9 /* API_MetaState_Properties.c in Sources */,
-				F17A1DE21B77F37500C24CAB /* API_Interface.cc in Sources */,
-				301ABFA21B97ECE900224CF9 /* API_MetaProperty.c in Sources */,
 				F1D575A5162795D500976A23 /* FSMachine.cc in Sources */,
 				F1D575A6162795DB00976A23 /* FSMState.cc in Sources */,
 				F1D575A7162795E700976A23 /* FSMSuspensibleMachine.cc in Sources */,
-				30A1B30A1BA2985A00640F88 /* API_TypeConversion.c in Sources */,
 				F1D575A91627960400976A23 /* FSMTransition.cc in Sources */,
-				301ABFA41B97ECEF00224CF9 /* API_MetaProperty_Access.c in Sources */,
-				F17A1DEB1B77F38C00C24CAB /* API_MetaState.c in Sources */,
 				F1D575AB1627962E00976A23 /* FSMActivity.cc in Sources */,
 				F1D575AA1627960D00976A23 /* stringConstants.c in Sources */,
-				301ABF781B97ECC300224CF9 /* API_MetaMachine_Properties.c in Sources */,
-				30B226671B82B07C001511B5 /* API_MetaTransition.c in Sources */,
-				F1C411531B67096700663625 /* API_MetaMachine.c in Sources */,
 				F1D575AC1627966D00976A23 /* FSMFactory.cc in Sources */,
 				F1D575AD1627968300976A23 /* FSMachineVector.cc in Sources */,
 				F1D575AE162796F600976A23 /* gu_util.cpp in Sources */,
-				307B5A2F1B797C4700F7ACB8 /* API_Util.c in Sources */,
 				F1D575AF1627975F00976A23 /* gusimplewhiteboard.c in Sources */,
 				F1D575B5162798B600976A23 /* clfsm_vector_factory.cc in Sources */,
 				F1D575B6162798C900976A23 /* clfsm_factory.cc in Sources */,
@@ -3210,7 +3211,6 @@
 				F12B737C1B605341006C64D8 /* clfsm_machine.cc in Sources */,
 				F1C7CE5F16FFE48300D5D843 /* clfsm_wb_vector_factory.cc in Sources */,
 				F16864FB1703BA29003B195F /* FSMAsynchronousSuspensibleMachine.cc in Sources */,
-				F17A1DE41B77F37500C24CAB /* API_MetaAction.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3277,6 +3277,7 @@
 		E11CABE114BD243900A1019A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib,
@@ -3288,6 +3289,7 @@
 		E11CABE214BD243900A1019A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib,
@@ -3301,6 +3303,7 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
@@ -3313,6 +3316,7 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
@@ -3323,19 +3327,30 @@
 		F16CC302142C0C01001F788B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_CXX0X_EXTENSIONS = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -3358,12 +3373,13 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../gusimplewhiteboard\"",
+					"\"$(SRCROOT)/../gusimplewhiteboard/OLD_WB\"",
 					"\"$(SRCROOT)/build.host\"",
 					"\"$(SRCROOT)/../cdl/gucdlmodule\"",
 					"\"$(SRCROOT)/../cdl/Engine\"",
 					"\"$(SRCROOT)/../../Common\"",
+					"\"$(SRCROOT)\"",
 					/usr/local/include,
-					/opt/local/include,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
@@ -3375,19 +3391,29 @@
 		F16CC303142C0C01001F788B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_CXX0X_EXTENSIONS = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
@@ -3404,12 +3430,13 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../gusimplewhiteboard\"",
+					"\"$(SRCROOT)/../gusimplewhiteboard/OLD_WB\"",
 					"\"$(SRCROOT)/build.host\"",
 					"\"$(SRCROOT)/../cdl/gucdlmodule\"",
 					"\"$(SRCROOT)/../cdl/Engine\"",
 					"\"$(SRCROOT)/../../Common\"",
+					"\"$(SRCROOT)\"",
 					/usr/local/include,
-					/opt/local/include,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_CFLAGS = "-Weverything";
@@ -3420,6 +3447,7 @@
 		F16CC305142C0C01001F788B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = "MONITORING_MODE_ON=1";
 				LIBRARY_SEARCH_PATHS = (
@@ -3433,6 +3461,7 @@
 		F16CC306142C0C01001F788B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib,
@@ -3444,6 +3473,7 @@
 		F16CC32F142C2AD9001F788B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -3453,6 +3483,7 @@
 					"$(inherited)",
 					/usr/local/lib,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "net.mipal.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -3461,6 +3492,7 @@
 		F16CC330142C2AD9001F788B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -3470,6 +3502,7 @@
 					"$(inherited)",
 					/usr/local/lib,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "net.mipal.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -3481,6 +3514,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
@@ -3506,6 +3540,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
@@ -3524,6 +3559,7 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
@@ -3536,6 +3572,7 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
@@ -3549,6 +3586,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
@@ -3577,6 +3615,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
@@ -3602,6 +3641,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
@@ -3627,6 +3667,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
@@ -3646,6 +3687,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
@@ -3671,6 +3713,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
@@ -3690,6 +3733,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
@@ -3715,6 +3759,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
@@ -3734,6 +3779,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -3748,6 +3794,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -3762,6 +3809,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
@@ -3787,6 +3835,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
@@ -3806,6 +3855,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
@@ -3831,6 +3881,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
@@ -3850,6 +3901,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
@@ -3875,6 +3927,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
@@ -3894,6 +3947,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
@@ -3919,6 +3973,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
@@ -3935,6 +3990,7 @@
 		F1D9C3CF18EE3ED600593DD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -3942,6 +3998,7 @@
 		F1D9C3D018EE3ED600593DD3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -3952,6 +4009,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
@@ -3977,6 +4035,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
@@ -3996,6 +4055,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
@@ -4021,6 +4081,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
@@ -4040,6 +4101,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
@@ -4065,6 +4127,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;

@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 5/08/12.
- *  Copyright (c) 2012, 2013, 2014, 2015, 2016 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2013, 2014, 2015, 2016, 2018 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -76,6 +76,7 @@
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wvla"
+#pragma clang diagnostic ignored "-Wc++98-compat"
 #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
 #pragma clang diagnostic ignored "-Wvla-extension"
 #pragma clang diagnostic ignored "-Wunused-parameter"
@@ -92,10 +93,10 @@ CLState *FSM::current_state_of_machine(CLMachine *clm)
         return cl_states[stateIndex];
 }
 
-CLFSMFactory::CLFSMFactory(Context *context, CLMachine *clm, int mid, bool del): Factory(NULL, del), _clm(clm)
+CLFSMFactory::CLFSMFactory(Context *context, CLMachine *clm, int mid, bool del): Factory(NULLPTR, del), _clm(clm)
 {
-        State *initialState = NULL;
-        State *suspendState = NULL;
+        State *initialState = NULLPTR;
+        State *suspendState = NULLPTR;
         CLState * const *cl_states = clm->states();
         const CLState * cl_initial = clm->initialState();
         const CLState * cl_suspend = clm->suspendState();

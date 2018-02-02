@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 5/09/12.
- *  Copyright (c) 2012, 2013, 2014, 2015 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2013, 2014, 2015, 2018 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -77,7 +77,7 @@ static CLFSMVectorFactory *factory_singleton;
 
 CLMachine *FSM::machine_at_index(unsigned index)
 {
-        if (!factory_singleton) return NULL;
+        if (!factory_singleton) return NULLPTR;
         return factory_singleton->machine_at_index(index);
 }
 
@@ -104,7 +104,7 @@ int FSM::number_of_machines(void)
 
 const char *FSM::name_of_machine_at_index(int index)
 {
-        if (!factory_singleton) return NULL;
+        if (!factory_singleton) return NULLPTR;
         return factory_singleton->name_of_machine_at_index(index);
 }
 
@@ -118,7 +118,7 @@ CLFSMVectorFactory::CLFSMVectorFactory(Context *context, bool del, useconds_t ti
 
 CLFSMVectorFactory::~CLFSMVectorFactory()
 {
-        if (factory_singleton == this) factory_singleton = NULL;
+        if (factory_singleton == this) factory_singleton = NULLPTR;
         if (_delete) delete _fsms;
 }
 
@@ -157,8 +157,8 @@ bool CLFSMVectorFactory::removeMachineAtIndex(int index)
                 return false;
         //Delete clmachine
         delete _clfactories[index]; //XXX:Problems in CLFSMFactory destructor
-        _clfactories[index] = NULL;
-        _clmachines[index] = NULL;
+        _clfactories[index] = NULLPTR;
+        _clmachines[index] = NULLPTR;
         //Delete suspensible machine from StateMachineVector
         return _fsms->removeMachineAtIndex(index, false); //false-Machine is already deleted by ~Factory() {FSMFactory.cc}
 }
@@ -172,10 +172,10 @@ CLFSMFactory *CLFSMVectorFactory::machine_factory(CLMachine *clm, int index)
 const char *CLFSMVectorFactory::name_of_machine_at_index(int i)
 {
         int n = int(_clmachines.size());
-        if (i < 0 || i >= n) return NULL;
+        if (i < 0 || i >= n) return NULLPTR;
 
         CLMachine *clm = _clmachines[i];
-        if (!clm) return NULL;
+        if (!clm) return NULLPTR;
         return clm->machineName();
 }
 

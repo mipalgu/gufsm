@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 11/10/12.
- *  Copyright (c) 2012, 2014, 2015 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2014, 2015, 2018 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -89,6 +89,7 @@
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+#pragma clang diagnostic ignored "-Wc++98-compat"
 #pragma clang diagnostic ignored "-Wvla"
 #pragma clang diagnostic ignored "-Wvla-extension"
 #pragma clang diagnostic ignored "-Wexit-time-destructors"
@@ -98,13 +99,13 @@ using namespace std;
 using namespace FSM;
 
 #ifndef WITHOUT_LIBDISPATCH
-static dispatch_queue_t sync_queue = NULL;
+static dispatch_queue_t sync_queue = NULLPTR;
 #endif
 
 #ifdef WANT_FSM_REFLECTION
-MachineWrapper::MachineWrapper(string path): _fullPath(path), _factory(NULL), _metaFactory(NULL), _shared_object(NULL), _compiler(NULL), _compiler_args(NULL), _linker_args(NULL), _delete_compiler(false)
+MachineWrapper::MachineWrapper(string path): _fullPath(path), _factory(NULLPTR), _metaFactory(NULLPTR), _shared_object(NULLPTR), _compiler(NULLPTR), _compiler_args(NULLPTR), _linker_args(NULLPTR), _delete_compiler(false)
 #else
-MachineWrapper::MachineWrapper(string path): _fullPath(path), _factory(NULL), _shared_object(NULL), _compiler(NULL), _compiler_args(NULL), _linker_args(NULL), _delete_compiler(false)
+MachineWrapper::MachineWrapper(string path): _fullPath(path), _factory(NULLPTR), _shared_object(NULLPTR), _compiler(NULLPTR), _compiler_args(NULLPTR), _linker_args(NULLPTR), _delete_compiler(false)
 #endif
 {
 
@@ -195,7 +196,7 @@ vector<string> MachineWrapper::states() const
 #ifndef WITHOUT_LIBDISPATCH
 static void create_compile_queue(void *)
 {
-    sync_queue = dispatch_queue_create("net.mipal.clfsm.compile", 0);
+    sync_queue = dispatch_queue_create("net.mipal.clfsm.compile", NULLPTR);
 }
 
 struct outfile_pushback_param
@@ -218,7 +219,7 @@ bool MachineWrapper::compile(const vector<string> &compiler_args, const vector<s
 
 #ifndef WITHOUT_LIBDISPATCH
     static dispatch_once_t onceToken;
-    dispatch_once_f(&onceToken, NULL, create_compile_queue);
+    dispatch_once_f(&onceToken, NULLPTR, create_compile_queue);
 #endif
     if (!compiler()) setCompiler();
 
@@ -328,7 +329,7 @@ CLMachine *MachineWrapper::instantiate(int id, const char *machine_name)
                     if (error) cerr << error << endl;
                     else cerr << "Unkown error!" << endl;
                 }
-                return NULL;
+                return NULLPTR;
             }
         }
     }
@@ -340,7 +341,7 @@ CLMachine *MachineWrapper::instantiate(int id, const char *machine_name)
         {
             symbol = string("_CLM_Create_") + name();
             if (!(_factory = create_machine_f(dlsym(_shared_object, symbol.c_str()))))
-                return NULL;
+                return NULLPTR;
 
         }
     }
@@ -353,7 +354,7 @@ refl_metaMachine MachineWrapper::instantiateMetaMachine(CLMachine * machine)
     if (!_shared_object)
     {
         std::cerr << "Shared object doesn't exist" << std::endl;
-        return NULL; //Assumes machine is already instantiated
+        return NULLPTR; //Assumes machine is already instantiated
     }
     if (!_metaFactory)
     {
@@ -361,11 +362,11 @@ refl_metaMachine MachineWrapper::instantiateMetaMachine(CLMachine * machine)
         _metaFactory = create_meta_f(dlsym(_shared_object, symbol.c_str()));
         if (!_metaFactory)
         {
-            return NULL;
+            return NULLPTR;
         }
     }
     refl_metaMachine meta = _metaFactory();
-    refl_setMachine(meta, static_cast<void*>(machine), NULL);
+    refl_setMachine(meta, static_cast<void*>(machine), NULLPTR);
     return meta;
 }
 #endif

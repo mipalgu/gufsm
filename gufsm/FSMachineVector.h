@@ -91,6 +91,7 @@
 
 #pragma clang diagnostic ignored "-Wpadded"
 #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+#pragma clang diagnostic ignored "-Wc++98-compat"
 #pragma clang diagnostic ignored "-Wunused-parameter"
 
 namespace FSM
@@ -161,7 +162,7 @@ namespace FSM
                 std::string kripkeToString(KripkeState &s, size_t n, std::string **names, bool derived=false) { return ""; }
         public:
                 /** constructor */
-                StateMachineVector(Context *ctx = NULL, useconds_t timeout = 10000L, idle_f default_idle_function = NULL);
+                StateMachineVector(Context *ctx = NULLPTR, useconds_t timeout = 10000L, idle_f default_idle_function = NULLPTR);
 
                 /** destructor */
                 virtual ~StateMachineVector() {}
@@ -177,11 +178,11 @@ namespace FSM
 
                 /**
                  * add a machine at a given index (-1 = end)
-                 * @param m             state machine to add (NULL to create a new one)
+                 * @param m             state machine to add (NULLPTR to create a new one)
                  * @param index         index if replacing an existing state machine (-1 to add at end)
                  * @param resume        true if new state machine should resume from state where old machine left off
                  */
-                SuspensibleMachine *addMachine(SuspensibleMachine *m = NULL, int index=-1, bool resume=false);
+                SuspensibleMachine *addMachine(SuspensibleMachine *m = NULLPTR, int index=-1, bool resume=false);
 
                 /**
                  * Remove a machine at a given index (-1 = end)
@@ -195,7 +196,7 @@ namespace FSM
                 Context *context() { return _context; }
 
                 /** context setter */
-                void setContext(Context *ctx = NULL) { _context = ctx; }
+                void setContext(Context *ctx = NULLPTR) { _context = ctx; }
 
                 /** accepting state getter */
                 bool accepting() const { return _accepting; }
@@ -210,7 +211,7 @@ namespace FSM
                  * execute one iteration of the current state of each machine
                  * @return true if any transition fired on any machine
                  */
-                virtual bool executeOnce() { return executeOnce(NULL); }
+                virtual bool executeOnce() { return executeOnce(NULLPTR); }
 
                 /**
                  * execute one iteration of the current state of each machine
@@ -218,30 +219,30 @@ namespace FSM
                  * param should_execute_machine visitor that returns whether machine should be executed in this round
                  * @return true if any transition fired on any machine
                  */
-                virtual bool executeOnce(visitor_f should_execute_machine, void *context = NULL, visitor_f accepting_action = NULL);
+                virtual bool executeOnce(visitor_f should_execute_machine, void *context = NULLPTR, visitor_f accepting_action = NULLPTR);
 
 #ifndef WITHOUT_LIBDISPATCH
                 /**
                  * synchronously execute once on a specific dispatch queue
                  */
-                virtual bool executeOnceOnQueue(dispatch_queue_t queue = NULL);
+                virtual bool executeOnceOnQueue(dispatch_queue_t queue = NULLPTR);
 #endif
                 /**
                  * execute until accepting state is encountered
                  */
-                virtual void execute() { execute(NULL); }
+                virtual void execute() { execute(NULLPTR); }
 
                 /**
                  * execute until accepting state is encountered
                  */
-                virtual void execute(visitor_f should_execute_machine, void *context = NULL, visitor_f accepting_action = NULL);
+                virtual void execute(visitor_f should_execute_machine, void *context = NULLPTR, visitor_f accepting_action = NULLPTR);
 
 #ifndef WITHOUT_LIBDISPATCH
                 /**
                  * asynchronously schedule execute on a specific dispatch queue
                  * until accepting state is encountered
                  */
-                virtual void scheduleExecuteOnQueue(dispatch_queue_t queue = NULL);
+                virtual void scheduleExecuteOnQueue(dispatch_queue_t queue = NULLPTR);
 #endif
 
                 /**

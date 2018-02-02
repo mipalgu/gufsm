@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 25/03/13.
- *  Copyright (c) 2013, 2015 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2013, 2015, 2018 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -266,7 +266,7 @@ FSMNames* CLFSMWBVectorFactory::postMachineNamesFromIndex(FSMNames &namesReq)
 }
 
 
-bool CLFSMWBVectorFactory::executeOnce(visitor_f should_execute_machine, void *context = NULL)
+bool CLFSMWBVectorFactory::executeOnce(visitor_f should_execute_machine, void *context = NULLPTR)
 {
         bool needToSend = false;
         uint8_t machineID = 0;

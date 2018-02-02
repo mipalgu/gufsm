@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 25/03/13.
- *  Copyright (c) 2013, 2015 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2013, 2015, 2018 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -77,6 +77,7 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wpadded"
 #pragma clang diagnostic ignored "-Wweak-vtables"
+#pragma clang diagnostic ignored "-Wc++98-compat"
 
 //namespace guWhiteboard
 //{
@@ -103,10 +104,10 @@ namespace FSM
                 /**
                  * Designated constructor.
                  * @param[in] wbcontext                 Whiteboard context to use.
-                 * @param[in] deleteOnDestruction       Delete non-NULL wbcontext on destruction
+                 * @param[in] deleteOnDestruction       Delete non-NULLPTR wbcontext on destruction
                  * @param[in] timeout                   Idle timeout in microseconds
                  */
-                CLFSMWBVectorFactory(FSM::Context *wbcontext = NULL, bool deleteOnDestruction = false, useconds_t timeout = 10000L);
+                CLFSMWBVectorFactory(FSM::Context *wbcontext = NULLPTR, bool deleteOnDestruction = false, useconds_t timeout = 10000L);
 
                 /** context getter */
                 FSM::Context *context() { return static_cast<FSM::Context *>(_context); }

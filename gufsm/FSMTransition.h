@@ -59,6 +59,11 @@
 #define gufsm_FSMTransition_h
 
 #include <string>
+#include <gu_util.h>
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpadded"
+#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
 
 namespace FSM
 {
@@ -73,7 +78,7 @@ namespace FSM
                 
         public:
                 /** default constructor */
-                Transition(State *s = NULL, State *t = NULL, Expression *e = NULL):
+                Transition(State *s = NULLPTR, State *t = NULLPTR, Expression *e = NULLPTR):
                                 _source(s), _target(t), _expression(e) {}
                 /** source state getter */
                 State *source() { return _source; }
@@ -97,4 +102,7 @@ namespace FSM
                 std::string description();
         };
 }
+
+#pragma clang diagnostic pop
+
 #endif

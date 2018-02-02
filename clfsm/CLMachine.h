@@ -3,7 +3,7 @@
  *  gufsm
  *
  *  Created by Rene Hexel on 1/08/12.
- *  Copyright (c) 2012, 2013 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2013, 2018 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -70,6 +70,7 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wpadded"
 #pragma clang diagnostic ignored "-Wweak-vtables"
+#pragma clang diagnostic ignored "-Wc++98-compat"
 
 namespace FSM
 {
@@ -87,7 +88,7 @@ namespace FSM
                 int                      _machineID;            ///< number of this machine
         public:
                 /** default constructor */
-                CLMachine(int mid = 0, const char *name = ""): _vectorContext(0), _machineContext(0), _initialState(0), _suspendState(0), _machineName(name), _machineID(mid) {}
+                CLMachine(int mid = 0, const char *name = ""): _vectorContext(NULLPTR), _machineContext(NULLPTR), _initialState(NULLPTR), _suspendState(NULLPTR), _machineName(name), _machineID(mid) {}
 
                 /** default destructor (subclass responsibility) */
                 virtual ~CLMachine() {}

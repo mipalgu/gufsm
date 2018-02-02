@@ -2,7 +2,7 @@
  *  FSMachine.cc
  *  
  *  Created by René Hexel on 23/09/11.
- *  Copyright (c) 2011, 2013, 2014, 2015 Rene Hexel.
+ *  Copyright (c) 2011, 2013, 2014, 2015, 2018 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -79,6 +79,7 @@
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+#pragma clang diagnostic ignored "-Wc++98-compat"
 
 using namespace FSM;
 
@@ -122,10 +123,10 @@ bool Machine::executeOnce(bool *fired)
          */
         if (_currentState != _previousState)    // entering a new state?
         {
-                gettimeofday(&_state_time, NULL);
+                gettimeofday(&_state_time, NULLPTR);
                 _activities_count = 0;
                 executeOnEntry();
-                gettimeofday(&_actty_time, NULL);
+                gettimeofday(&_actty_time, NULLPTR);
         }
 
         /*
@@ -136,7 +137,7 @@ bool Machine::executeOnce(bool *fired)
         /*
          * check all transitions to see if state change is required
          */
-        Transition *firingTransition = NULL;
+        Transition *firingTransition = NULLPTR;
         for (TransitionVector::iterator it = _currentState->transitions().begin();
              it != _currentState->transitions().end(); it++)
         {
@@ -197,7 +198,7 @@ State *Machine::stateForID(int state_id) const
                         return s;
         }
 
-        return NULL;
+        return NULLPTR;
 }
 
 using namespace std;
@@ -328,7 +329,7 @@ long long FSM::start_time_for_current_state(const Machine *machine)
 long long FSM::current_time_in_microseconds(void)
 {
         timeval current_time;
-        gettimeofday(&current_time, NULL);
+        gettimeofday(&current_time, NULLPTR);
         long long usec = current_time.tv_sec * 1000000LL + current_time.tv_usec;
 
         return usec;

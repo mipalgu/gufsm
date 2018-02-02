@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 5/09/12.
- *  Copyright (c) 2012, 2013, 2015 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2013, 2015, 2018 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -74,7 +74,7 @@
 #pragma clang diagnostic ignored "-Wweak-vtables"
 #pragma clang diagnostic ignored "-Wpadded"
 #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
-
+#pragma clang diagnostic ignored "-Wc++98-compat"
 
 namespace FSM
 {
@@ -99,11 +99,11 @@ namespace FSM
         /// return a pointer to the machine at a given index in the vector
         CLMachine *machine_at_index(unsigned index);
 
-        /// return the name of the machine in the factory singleton at the given index (NULL if the index is invalid)
+        /// return the name of the machine in the factory singleton at the given index (NULLPTR if the index is invalid)
         const char *name_of_machine_at_index(int index = 0);
 
         /// return the index of a machine with a given name in the factory singleton
-        int index_of_machine_named(const char *machine_name = NULL);
+        int index_of_machine_named(const char *machine_name = NULLPTR);
 
         /// control the machine at the given index in the factory singleton
         enum CLControlStatus control_machine_at_index(int index = 0, enum CLControlStatus command = CLStatus);
@@ -149,10 +149,10 @@ namespace FSM
 
                 /**
                  * return the index of the machine with the given name (-1 if not found)
-                 * @param machine_name  name of the machine to search for (NULL = last machine)
+                 * @param machine_name  name of the machine to search for (NULLPTR = last machine)
                  * @return index of that machine or -1 if not found
                  */
-                int index_of_machine_named(const char *machine_name = NULL);
+                int index_of_machine_named(const char *machine_name = NULLPTR);
 
                 /**
                  * control the machine at a given index and return the status for that machine
@@ -167,7 +167,7 @@ namespace FSM
                  */
                 const CLMachine *machine_at_index(size_t index = 0) const
                 {
-                        return (index < _clmachines.size()) ? _clmachines[index] : NULL;
+                        return (index < _clmachines.size()) ? _clmachines[index] : NULLPTR;
                 }
 
                 /**
@@ -175,14 +175,14 @@ namespace FSM
                  */
                 CLMachine *machine_at_index(size_t index = 0)
                 {
-                        return (index < _clmachines.size()) ? _clmachines[index] : NULL;
+                        return (index < _clmachines.size()) ? _clmachines[index] : NULLPTR;
                 }
 
                 /**
                  * execute one iteration of the current state of each machine
                  * @return true if any transition fired on any machine
                  */
-                virtual bool executeOnce() { return executeOnce(NULL); }
+                virtual bool executeOnce() { return executeOnce(NULLPTR); }
 
                 /**
                  * execute one iteration of the current state of each machine
@@ -191,7 +191,7 @@ namespace FSM
                  * @param context pointer to a user-defined context (such as a whiteboard context for the wb singleton)
                  * @return true if any transition fired on any machine
                  */
-                virtual bool executeOnce(visitor_f should_execute_machine, void *context = NULL)
+                virtual bool executeOnce(visitor_f should_execute_machine, void *context = NULLPTR)
                 {
                         return fsms()->executeOnce(should_execute_machine, context);
                 }
@@ -199,12 +199,12 @@ namespace FSM
                 /**
                  * execute until accepting state is encountered
                  */
-                virtual void execute() { execute(NULL); }
+                virtual void execute() { execute(NULLPTR); }
                 
                 /**
                  * execute until accepting state is encountered
                  */
-                virtual void execute(visitor_f should_execute_machine, void *context = NULL)
+                virtual void execute(visitor_f should_execute_machine, void *context = NULLPTR)
                 {
                         do
                         {

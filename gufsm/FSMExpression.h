@@ -2,7 +2,7 @@
  *  FSMExpression.h
  *  
  *  Created by René Hexel on 23/09/11.
- *  Copyright (c) 2011, 2013-2014 Rene Hexel.
+ *  Copyright (c) 2011, 2013-2014, 2018 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -60,6 +60,7 @@
 
 #include <string>
 #include <sstream>
+#include <gu_util.h>
 
 #ifdef bool
 #undef bool
@@ -91,7 +92,7 @@ namespace FSM
                 virtual ~Expression() {}
 
                 /** evaluation needs to be performed by sublcasses */
-                virtual int evaluate(Machine *m = NULL) = 0;
+                virtual int evaluate(Machine *m = NULLPTR) = 0;
 
                 /** print abstract expression */
                 virtual std::string description()
@@ -141,7 +142,7 @@ namespace FSM
                 void setNegation(bool n = true) { _negation = ( n != false ); }
 
                 /** return the value, negated if necessary */
-                virtual int evaluate(Machine *m = NULL) { return _value ^ _negation; }
+                virtual int evaluate(Machine *m = NULLPTR) { return _value ^ _negation; }
 
                 /** print abstract expression */
                 virtual std::string description();
@@ -165,7 +166,7 @@ namespace FSM
                 void setTimeout(long t=1000) { _timeout = t; }
 
                 /** return true if state timeout has been reached */
-                virtual int evaluate(Machine *m = NULL);
+                virtual int evaluate(Machine *m = NULLPTR);
 
                 /** print abstract expression */
                 virtual std::string description();

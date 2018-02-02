@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 12/10/12.
- *  Copyright (c) 2012, 2013, 2014, 2015 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2013, 2014, 2015, 2018 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -60,6 +60,8 @@
 #pragma clang diagnostic ignored "-Wold-style-cast"
 #pragma clang diagnostic ignored "-Wdeprecated"
 #pragma clang diagnostic ignored "-W#warnings"
+#pragma clang diagnostic ignored "-Wc++98-compat"
+#pragma clang diagnostic ignored "-Wcast-qual"
 
 #ifndef _BSD_SOURCE
 #define _BSD_SOURCE 199601
@@ -275,7 +277,7 @@ static bool unloadMachineIfAccepting(void *ctx, SuspensibleMachine *machine, int
 #ifndef NDEBUG
             const char *action = machine->scheduledForRestart() ? "restart" : "suspension";
             MachineWrapper* wrapper = context->loader->machineWrappers().at(machine_number);
-            const char *machineName = wrapper ? wrapper->name() : NULL;
+            const char *machineName = wrapper ? wrapper->name() : NULLPTR;
             if (!machineName) machineName = "<unknown>";
             cerr << "*** Machine " << machine->id() << ": '" << machineName << "' scheduled for " << action << " -- not unloading! ***" << endl;
 #endif
@@ -401,13 +403,13 @@ int main(int argc, char * const argv[])
     if (!compiler_args.size()) compiler_args = MachineWrapper::default_compiler_args();
     if (!linker_args.size())   linker_args   = MachineWrapper::default_linker_args();
 
-    visitor_f visitor = NULL;
-    visitor_f accept_action = NULL; //Used to unload machines when in accepting state
+    visitor_f visitor = NULLPTR;
+    visitor_f accept_action = NULLPTR; //Used to unload machines when in accepting state
     if ((verbosity = verbose)) visitor = print_machine_and_state;
     if (time_state_execution) visitor = CLFSMVisitorsExecution::time_state_execution;
     if (!noUnloadIfAccepting) accept_action = unloadMachineIfAccepting;
 #ifdef WANT_FSM_REFLECTION
-    refl_initAPI(NULL); //Init reflection system
+    refl_initAPI(NULLPTR); //Init reflection system
 #endif
     CLFSMWBVectorFactory *factory = createMachines(machines, compiler_args, linker_args);
     struct clfsm_context context = { CLFSMMachineLoader::getMachineLoaderSingleton() };
@@ -415,7 +417,7 @@ int main(int argc, char * const argv[])
     debug_internal_states = debug;
     factory->fsms()->execute(visitor, &context, accept_action);
 #ifdef WANT_FSM_REFLECTION
-    refl_destroyAPI(NULL); // Destroy reflection system
+    refl_destroyAPI(NULLPTR); // Destroy reflection system
 #endif
     // Print Execution Results
     if (time_state_execution)

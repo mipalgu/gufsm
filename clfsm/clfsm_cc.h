@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 19/09/12.
- *  Copyright (c) 2012, 2015 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2015, 2018 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -62,15 +62,18 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <gu_util.h>
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wreserved-id-macro"
+#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+#pragma clang diagnostic ignored "-Wc++98-compat"
 
 #ifndef USE_LIBCLANG_INTERNAL
 
 //#include <clang-c/Index.h>
 
 #else // use libclang internals
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wreserved-id-macro"
 
 #ifndef __STDC_LIMIT_MACROS
 #define __STDC_LIMIT_MACROS
@@ -79,8 +82,6 @@
 #ifndef __STDC_CONSTANT_MACROS
 #define __STDC_CONSTANT_MACROS
 #endif
-
-#pragma clang diagnostic pop
 
 #include <clang/Driver/Arg.h>
 #include <clang/Driver/ArgList.h>
@@ -115,13 +116,13 @@ namespace FSM
                 llvm::IntrusiveRefCntPtr<clang::DiagnosticIDs> diagIDs;
         public:
                 /// constructor: takes a compiler instance and diagnostic IDs
-                Cc(clang::CompilerInstance *ci, clang::DiagnosticIDs *dis): _delegate(NULL),
+                Cc(clang::CompilerInstance *ci, clang::DiagnosticIDs *dis): _delegate(NULLPTR),
                         clang(ci), diagIDs(dis) {}
                 /// default constructor: creates a new compiler instance
                 Cc(): Cc(new clang::CompilerInstance(), new clang::DiagnosticIDs()) {}
 #else
         public:
-                Cc(): _delegate(NULL) {}
+                Cc(): _delegate(NULLPTR) {}
 #endif
 
                 /// default destructor
@@ -146,4 +147,7 @@ namespace FSM
                 virtual void errorHandler(const std::string &message);
         };
 }
+
+#pragma clang diagnostic pop
+
 #endif /* defined gufsm_clfsm_cc_) */

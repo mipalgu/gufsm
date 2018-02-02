@@ -58,6 +58,8 @@
 #ifndef gufsm_FSMFactory_h
 #define gufsm_FSMFactory_h
 
+#include <gu_util.h>
+
 #ifdef bool
 #undef bool
 #endif
@@ -69,7 +71,8 @@
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wpadded"
-
+#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+#pragma clang diagnostic ignored "-Wc++98-compat"
 
 namespace FSM
 {
@@ -83,7 +86,7 @@ namespace FSM
                 bool                _delete;    ///< delete machine (default: no)
         public:
                 /** Constructor */
-                Factory(SuspensibleMachine *m = 0, bool del = false): _machine(m), _delete(del) {}
+                Factory(SuspensibleMachine *m = NULLPTR, bool del = false): _machine(m), _delete(del) {}
 
                 /** Destructor */
                 virtual ~Factory();

@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 11/10/12.
- *  Copyright (c) 2012, 2013, 2014, 2015 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2013, 2014, 2015, 2018 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -72,6 +72,7 @@
 #pragma clang diagnostic ignored "-Wweak-vtables"
 #pragma clang diagnostic ignored "-Wpadded"
 #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+#pragma clang diagnostic ignored "-Wc++98-compat"
 
 namespace FSM
 {
@@ -116,7 +117,7 @@ namespace FSM
                 std::string includePathFile() const;
 
                 /// set the compiler
-                virtual void setCompiler(Cc *compiler = NULL, bool del = false);
+                virtual void setCompiler(Cc *compiler = NULLPTR, bool del = false);
 
                 /// get the compiler
                 Cc *compiler() const { return _compiler; }

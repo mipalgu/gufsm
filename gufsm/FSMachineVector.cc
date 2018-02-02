@@ -2,7 +2,7 @@
  *  FSMachineVector.cc
  *
  *  Created by René Hexel on 22/11/11.
- *  Copyright (c) 2011, 2013, 2014, 2015 Rene Hexel.
+ *  Copyright (c) 2011, 2013, 2014, 2015, 2018 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -66,6 +66,7 @@
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+#pragma clang diagnostic ignored "-Wc++98-compat"
 
 using namespace FSM;
 using namespace std;
@@ -84,7 +85,7 @@ StateMachineVector::StateMachineVector(Context *ctx, useconds_t timeout,
         stringstream ss;
         ss << "dispatch_queue_" << reinterpret_cast<long long>(this);
 
-        _queue = dispatch_queue_create(ss.str().c_str(), NULL);
+        _queue = dispatch_queue_create(ss.str().c_str(), NULLPTR);
 #endif
         if (!default_idle_function) default_idle_function = default_idle_sleep;
         _no_transition_fired = default_idle_function;
@@ -97,7 +98,7 @@ SuspensibleMachine *StateMachineVector::addMachine(SuspensibleMachine *m, int in
         int mid = index;
         if (mid < 0|| mid > size) mid = size;
 
-        if (!m) m = new SuspensibleMachine(NULL, _context, 0, NULL, false);
+        if (!m) m = new SuspensibleMachine(NULLPTR, _context, 0, NULLPTR, false);
         if (!m->id()) m->setID(mid);
         if (index < 0 || index >= size )
                 _machines.push_back(m);
@@ -139,7 +140,7 @@ bool StateMachineVector::removeMachineAtIndex(int index, bool del)
         SuspensibleMachine *m = _machines[index];
         if (!m) return false;
 
-        _machines[index] = NULL;
+        _machines[index] = NULLPTR;
 
         if (del) delete m;
 
@@ -158,7 +159,7 @@ bool StateMachineVector::executeOnce(visitor_f should_execute_machine, void *con
              it < machines().size(); it++)
         {
             SuspensibleMachine *m = machines()[it];
-            if (!m || (should_execute_machine != NULL && !should_execute_machine(context, m, int(it))))
+            if (!m || (should_execute_machine != NULLPTR && !should_execute_machine(context, m, int(it))))
                     continue;
 
             bool mfire = false;

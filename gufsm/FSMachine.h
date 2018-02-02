@@ -2,7 +2,7 @@
  *  FSMachine.h
  *  
  *  Created by René Hexel on 23/09/11.
- *  Copyright (c) 2011, 2015 Rene Hexel.
+ *  Copyright (c) 2011, 2015, 2018 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -63,12 +63,14 @@
 #pragma clang diagnostic ignored "-Wweak-vtables"
 #pragma clang diagnostic ignored "-Wpadded"
 #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+#pragma clang diagnostic ignored "-Wc++98-compat"
 #pragma clang diagnostic ignored "-Wunused-parameter"
 #pragma clang diagnostic ignored "-Wdeprecated"
 
 #include <vector>
 #include <string>
 #include <sys/time.h>
+#include <gu_util.h>
 
 #ifdef bool
 #undef bool
@@ -174,13 +176,13 @@ namespace FSM
 					  *   to the whiteboard? */
         public:
                 /** constructor */
-                Machine(State *initial = NULL, 
-                        Context *ctx = NULL, int mid=0,
+                Machine(State *initial = NULLPTR, 
+                        Context *ctx = NULLPTR, int mid=0,
 			bool beingMonitored=false):
                    _context(ctx),
                    _states(),
                    _currentState(initial),
-                   _previousState(NULL),
+                   _previousState(NULLPTR),
                    _id(mid),
                    _beingMonitored(false),
                    _activities_count(0),
@@ -232,9 +234,9 @@ namespace FSM
                 void setPreviousState(State *s) { _previousState = s; }
 
                 /** return the index of the given state (default: current state) */
-                int indexOfState(const State *s = NULL) const
+                int indexOfState(const State *s = NULLPTR) const
                 {
-                        if (s == NULL) s = _currentState;
+                        if (s == NULLPTR) s = _currentState;
                         int i = 0;
                         for (StateVector::const_iterator it = _states.begin(); it != _states.end(); it++, i++)
                                 if (s == *it) return i;
@@ -264,7 +266,7 @@ namespace FSM
                 Context *context() const { return _context; }
 
                 /** context setter */
-                void setContext(Context *ctx = NULL) { _context = ctx; }
+                void setContext(Context *ctx = NULLPTR) { _context = ctx; }
 		
 		/** If we are monitoring machines, how many times have we
 		  * pose the name and id of each machine being executed? */
@@ -276,7 +278,7 @@ namespace FSM
                 virtual void initialise()
                 {
                         if (_states.size()) _currentState = _states[0];
-                        _previousState = NULL;
+                        _previousState = NULLPTR;
                         if (context()) context()->take_snapshot();
                 }
 
@@ -285,7 +287,7 @@ namespace FSM
                  * @param fired pointer to a boolean capturing fired condition
                  * @return true if the state machine should continue
                  */
-                virtual bool executeOnce(bool *fired=NULL);
+                virtual bool executeOnce(bool *fired=NULLPTR);
 
                 /**
                  * execute until accepting state is encountered
@@ -322,7 +324,7 @@ namespace FSM
                  * @param initialState state to start from (default: first state)
                  * @return previous state the machine was in
                  */
-                virtual State *restart(State *initialState = NULL);
+                virtual State *restart(State *initialState = NULLPTR);
                 
                 /**
                  * restart the current state machine from initial state

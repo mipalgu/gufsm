@@ -58,6 +58,7 @@
 */
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wc++98-compat"
 
 #include <iostream>
 #include <sstream>
@@ -123,7 +124,7 @@ CLFSMMachineLoader* CLFSMMachineLoader::getMachineLoaderSingleton()
 CLFSMMachineLoader::CLFSMMachineLoader()
 {
     if (!loader_singleton) loader_singleton = this;
-    _vector_factory = new CLFSMWBVectorFactory(NULL, false, idle_timeout);
+    _vector_factory = new CLFSMWBVectorFactory(NULLPTR, false, idle_timeout);
 }
 
 CLFSMMachineLoader::~CLFSMMachineLoader()
@@ -197,7 +198,7 @@ int CLFSMMachineLoader::loadAndAddMachineAtPath(const std::string machine,
         refl_metaMachine meta = wrapper->instantiateMetaMachine(clm);
         if (meta)
         {
-            refl_registerMetaMachine(meta, id, NULL);
+            refl_registerMetaMachine(meta, id, NULLPTR);
         }
 #endif // WANT_FSM_REFLECTION
 
@@ -221,7 +222,7 @@ bool CLFSMMachineLoader::unloadMachineAtIndex(int index)
         {
             MachineWrapper* wrapper = _machineWrappers.at(index);
             delete wrapper;
-            _machineWrappers[index] = NULL;
+            _machineWrappers[index] = NULLPTR;
 
             return true;
         }
@@ -238,7 +239,7 @@ int CLFSMMachineLoader::findIndexForNewMachine(const std::string machinePath)
     {
         const std::string pathAtIndex = _machinePaths.at(i);
         if (machinePath.compare(pathAtIndex) == 0 &&
-        _machineWrappers.at(i) == NULL)
+        _machineWrappers.at(i) == NULLPTR)
         {
             return i;
         }

@@ -2,7 +2,7 @@
  *  FSMSuspensibleMachine.h
  *  
  *  Created by René Hexel on 24/09/11.
- *  Copyright (c) 2011, 2012, 2013, 2014, 2015 Rene Hexel.
+ *  Copyright (c) 2011, 2012, 2013, 2014, 2015, 2018 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -70,8 +70,9 @@
 #endif
 
 #pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+#pragma clang diagnostic ignored "-Wc++98-compat"
 #pragma clang diagnostic ignored "-Wpadded"
-#pragma clang diagnostic ignored "-Wunused-parameter"
 
 namespace FSM
 {
@@ -84,12 +85,12 @@ namespace FSM
                 bool _deleteSuspendState;       ///< should delete in destructor?
         public:
                 /** constructor */
-                SuspensibleMachine(State *initialState = NULL, 
-                                   Context *ctx = NULL, int mid=0,
-                                   State *s = NULL, bool del = false):
+                SuspensibleMachine(State *initialState = NULLPTR,
+                                   Context *ctx = NULLPTR, int mid=0,
+                                   State *s = NULLPTR, bool del = false):
                                 Machine(initialState, ctx, mid),
                                 _suspendState(s),
-                                _resumeState(NULL),
+                                _resumeState(NULLPTR),
                                 _deleteSuspendState(del) {}
                 /** destructor */
                 virtual ~SuspensibleMachine();

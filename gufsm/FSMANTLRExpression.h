@@ -1,8 +1,8 @@
 /*
- *  Action.h
+ *  FSMANTLRExpression.h
  *
  *  Created by René Hexel on 23/09/11.
- *  Copyright (c) 2011, 2015 Rene Hexel.
+ *  Copyright (c) 2011, 2015, 2018 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -61,6 +61,8 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-macros"
 #pragma clang diagnostic ignored "-Wreserved-id-macro"
+#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+#pragma clang diagnostic ignored "-Wc++98-compat"
 
 extern "C"
 {
@@ -75,7 +77,6 @@ extern "C"
 #include <sstream>
 #include "FSMExpression.h"
 
-#pragma clang diagnostic pop
 
 namespace FSM
 {
@@ -86,8 +87,8 @@ namespace FSM
                 pANTLR3_RECOGNIZER_SHARED_STATE _state; /// ANTLR context
                 pANTLR3_BASE_TREE _expression;          /// ANTLR expression tree
         public:
-                ANTLRExpression(pANTLR3_RECOGNIZER_SHARED_STATE s, pANTLR3_BASE_TREE e = NULL): _state(s), _expression(e) {}
-                virtual int evaluate(Machine *m = NULL);
+                ANTLRExpression(pANTLR3_RECOGNIZER_SHARED_STATE s, pANTLR3_BASE_TREE e = NULLPTR): _state(s), _expression(e) {}
+                virtual int evaluate(Machine *m = NULLPTR);
                 void setExpression(pANTLR3_BASE_TREE e) { _expression = e; }
                 pANTLR3_BASE_TREE expression() { return _expression; }
                 pANTLR3_RECOGNIZER_SHARED_STATE antlrState() { return  _state; }
@@ -109,5 +110,7 @@ namespace FSM
                                     Machine *m);
         };
 }
+
+#pragma clang diagnostic pop
 
 #endif

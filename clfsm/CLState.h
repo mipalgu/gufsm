@@ -3,7 +3,7 @@
  *  gufsm
  *
  *  Created by Rene Hexel on 1/08/12.
- *  Copyright (c) 2012, 2013, 2015 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2013, 2015, 2018 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -62,6 +62,7 @@
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wweak-vtables"
+#pragma clang diagnostic ignored "-Wc++98-compat"
 
 namespace FSM
 {
@@ -78,7 +79,7 @@ namespace FSM
                 CLAction        &_internalAction;       /// internal
         public:
                 /** default constructor */
-                CLState(const char *name, CLAction &onEntry, CLAction &onExit, CLAction &internal, class State *context = 0): _name(name), _stateContext(context), _onEntryAction(onEntry), _onExitAction(onExit), _internalAction(internal) {}
+                CLState(const char *name, CLAction &onEntry, CLAction &onExit, CLAction &internal, class State *context = NULLPTR): _name(name), _stateContext(context), _onEntryAction(onEntry), _onExitAction(onExit), _internalAction(internal) {}
 
                 /** destructor (subclass responsibility!) */
                 virtual ~CLState() {}

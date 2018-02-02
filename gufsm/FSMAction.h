@@ -2,7 +2,7 @@
  *  Action.h
  *
  *  Created by René Hexel on 23/09/11.
- *  Copyright (c) 2011 Rene Hexel.
+ *  Copyright (c) 2011, 2018 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -62,6 +62,7 @@
 #include <string>
 #include <sstream>
 #include <iostream>
+#include <gu_util.h>
 
 #include "FSMExpression.h"
 
@@ -112,7 +113,7 @@ namespace FSM
                 virtual std::string description();
 
                 /** evaluation by default just performs, then returns 1 */
-                virtual int evaluate(Machine *m = NULL) { perform(m); return true; }
+                virtual int evaluate(Machine *m = NULLPTR) { perform(m); return true; }
         };
         
         
