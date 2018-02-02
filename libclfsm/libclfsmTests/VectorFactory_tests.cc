@@ -3,7 +3,7 @@
 //  gufsm
 //
 //  Created by Rene Hexel on 5/04/2014.
-//  Copyright (c) 2014, 2015 Rene Hexel. All rights reserved.
+//  Copyright (c) 2014, 2015, 2018 Rene Hexel. All rights reserved.
 //
 
 

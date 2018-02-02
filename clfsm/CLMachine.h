@@ -67,6 +67,14 @@
 #undef false
 #endif
 
+#ifndef NULLPTR
+#  if defined(__cplusplus) && (__cplusplus >= 201103L)
+#    define NULLPTR nullptr
+#  else
+#    define NULLPTR NULL
+#  endif
+#endif
+
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wpadded"
 #pragma clang diagnostic ignored "-Wweak-vtables"

@@ -7,7 +7,7 @@
 
 class TestMachine: public FSM::CLMachine
 {
-    virtual FSM::CLState * const *states() const { return NULL; }
+    virtual FSM::CLState * const *states() const { return NULLPTR; }
     virtual int numberOfStates() const { return 0; }
 };
 
@@ -16,23 +16,23 @@ refl_metaMachine createPingPong();
 
 inline refl_metaMachine createPingPong()
 {
-    refl_metaMachine m = refl_initMetaMachine(NULL);
-    refl_metaState ping = refl_initMetaState(NULL);
-    refl_metaState pong = refl_initMetaState(NULL);
+    refl_metaMachine m = refl_initMetaMachine(NULLPTR);
+    refl_metaState ping = refl_initMetaState(NULLPTR);
+    refl_metaState pong = refl_initMetaState(NULLPTR);
 
     // Machine
     char machineName[] = "PingPongCLFSM";
-    refl_setMetaMachineName(m, machineName, NULL);
+    refl_setMetaMachineName(m, machineName, NULLPTR);
 
     //States
-    refl_setMetaStateName(ping, "Ping", NULL);
+    refl_setMetaStateName(ping, "Ping", NULLPTR);
 
-    refl_setMetaStateName(pong, "Pong", NULL);
+    refl_setMetaStateName(pong, "Pong", NULLPTR);
 
 
     refl_metaState states[] = { ping, pong };
 
-    refl_setMetaStates(m, states, 2, NULL);
+    refl_setMetaStates(m, states, 2, NULLPTR);
 
 
     return m;
