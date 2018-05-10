@@ -111,6 +111,9 @@
 // Reflection API
 #include <CLReflect/CLReflectAPI.h>
 
+//Time-Triggered Includes
+#include "FileReader.h"
+
 static const char *command;
 static int command_argc;
 static char * const *command_argv;
@@ -241,6 +244,7 @@ static void usage(const char *cmd)
     cerr << "[-t] = Time execution of machine states." << endl;
     cerr << "[-v] = Verbose; output MachineID, State, and name of machine. (multiple times to increase verbosity)" << endl;
     cerr << "[-d] = Output debug information (requires Verbose switch)." << endl;
+    cerr << "[-T] = Time-Triggered execution of machine states" << endl;
 }
 
 static bool debug_internal_states = false;
@@ -290,6 +294,7 @@ static bool unloadMachineIfAccepting(void *ctx, SuspensibleMachine *machine, int
         return true;
 }
 
+bool isTT = false;
 
 int main(int argc, char * const argv[])
 {
@@ -327,7 +332,7 @@ int main(int argc, char * const argv[])
 
     int ch;
     int debug = 0, verbose = 0, noUnloadIfAccepting = 0;
-    while ((ch = getopt(argc, argv, "dgf:I:i:L:l:nstuv")) != -1)
+    while ((ch = getopt(argc, argv, "dgf:I:i:L:l:nstuvT")) != -1)
     {
         switch (ch)
         {
@@ -367,6 +372,9 @@ int main(int argc, char * const argv[])
             case 't': // Timer Flag
                 time_state_execution = true;
                 break;
+            case 'T': // Time-Triggered Execution
+                isTT = true;
+                break;
             case 'v':
                 verbose++;
                 break;
@@ -382,6 +390,13 @@ int main(int argc, char * const argv[])
 
     argc -= optind;
     argv += optind;
+
+    if (isTT) {
+        cout << "Detected T flag" << endl;
+        string tablePath(*argv);
+        cout <<  tablePath << endl;;
+        return 1;
+    }
 
     while (argc--)
     {

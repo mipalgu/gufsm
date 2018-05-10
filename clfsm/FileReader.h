@@ -61,59 +61,21 @@
 
 #include <iostream>
 #include <fstream>
-
-using namespace std;
+#include <vector>
 
 namespace FSM {
-    class DeadlinedMachineCreator : MachineCreator<DeadlinedMachine> {
+
+    using namespace std;
+
+    class FileReader {
         private:
 
-            vector<string> readLine(ifstream file) {
-                string sum = "";
-                vector<string> data(4);
-                char x;
-                string name = "";
-                string raw = "";
-                while (true) {
-                    if (file.eof()) {
-                        break;
-                    }
-                    file >> x;
-                    raw += x;
-                    if (x == '.') {
-                        data[0] = name;
-                    }
-                    if (x == '\t') {
-                        data[1] = sum;
-                        sum = "";
-                        continue;
-                    }
-                    if (x == '\n') {
-                        data[2] = sum;
-                        break;
-                    }
-                    sum += x;
-                    if (x == '/') {
-                        name = "";
-                        continue;
-                    }
-                    name += x;
-                }
-                data[3] = raw;
-                return data;
-            }
+            vector<string> readLine(ifstream);
 
         public:
-            virtual vector<string> read(string path) {
-                ifstream file;
-                file.open(path.c_str());
-                vector<vector<string>> machinesData;
-                while (!file.eof()) {
-                    machinesData.push_back(this->readLine(file));
-                }
-                file.close();
-                return machinesData; 
-            }
+            FileReader();
+
+            vector<string> read(string);
     };
 }
 #endif  /* FILEREADER_H */ 
