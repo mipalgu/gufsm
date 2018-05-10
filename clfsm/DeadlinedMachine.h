@@ -7,6 +7,7 @@ namespace FSM {
 
         public:
             DeadlinedMachine(int, int, const char) : CLMachine(int, const char);
+            DeadlinedMachine* createMachineFromCLMachine(int, CLMachine*);
             int duration();
             void duration(int);
     };

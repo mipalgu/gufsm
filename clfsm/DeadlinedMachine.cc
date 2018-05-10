@@ -4,6 +4,12 @@ DeadLinedMachine::DeadlinedMachine(int duration, int mid, const char *name) : CL
     this->duration = duration;
 }
 
+DeadlinedMachine::createMachineFromCLMachine(int duration, CLMachine* machine) {
+    DeadlinedMachine* thisMachine = static_cast<DeadlinedMachine*>(machine);
+    thisMachine.setDuration(duration);
+    return thisMachine;
+}
+
 DeadlinedMachine::duration() {
     return this->duration;
 }
