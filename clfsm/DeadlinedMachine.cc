@@ -1,3 +1,10 @@
+/*
+ * DeadlinedMachine.cc
+ * Copyright (C) 2018 Morgan McColl <Morgan McColl@morgan-X550LD>
+ *
+ * Distributed under terms of the MIT license.
+ */
+
 #include "DeadlinedMachine.h"
 
 DeadLinedMachine::DeadlinedMachine(int duration, int mid, const char *name) : CLMachine(mid, *name) {
