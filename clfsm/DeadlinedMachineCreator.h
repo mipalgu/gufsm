@@ -80,6 +80,9 @@ namespace FSM {
                 string name = "";
                 string raw = "";
                 while (true) {
+                    if (file.eof()) {
+                        break;
+                    }
                     file >> x;
                     raw += x;
                     if (x == '.') {
@@ -105,18 +108,29 @@ namespace FSM {
                 return data;
             }
 
-            DeadlinedMachine* createMachine(vector<string> data) {
-                string name = data[0];
-                string path = data[1];
-                int t  << data[2];
+            vector<DeadlinedMachine*> createMachines(vector<vector<string>> data, vector<string> compArgs, vector<string> linkArgs) {
+                vector<string> names = data[0];
+                vector<string> paths = data[1];
+                vector<string> times = data[2];
+                vector<string> raws = data[4];
+                vector<DeadlinedMachine*> machines;
+                for (unsigned long i = 0; i < paths.size(), i++) {
+                    
+                }
+                loadAndAddMachineAtPath(const string machine, compArgs, linkArgs, false);
                 return new DeadlinedMachine(t, this->id++, name.c_str());
             }
         
         public:
-            virtual vector<DeadlinedMachine*> createMachines(string path) {
+            virtual vector<DeadlinedMachine*> createMachines(string path, vector<string> compArgs, vector<string> linkArgs) {
                 ifstream file;
                 file.open(path.c_str());
-                vector<DeadlinedMachine*> machines;
+                vector<vector<string>> machinesData;
+                while (!file.eof()) {
+                    machinesData.push_back(this->readLine(file));
+                }
+                file.close();
+                return this->createMachines(machinesData, compArgs, linkArgs);
             }
     };
 }
