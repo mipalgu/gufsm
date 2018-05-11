@@ -1,4 +1,4 @@
-#include <typeClassDefs/Vision_Control.h>
+#include <typeClassDefs/VisionControlStatus.h>
 #include <typeClassDefs/WALK_ControlStatus.h>
 #include <gu_util.h>
 #include "CLMacros.h"

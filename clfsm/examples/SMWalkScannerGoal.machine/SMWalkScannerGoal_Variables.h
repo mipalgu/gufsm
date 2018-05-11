@@ -13,4 +13,4 @@ int	maxLoop;	///<
 int	waitTime;	///< 
 Speech_t	speak;	///< 
 WALK_Command_t	walk_post;	///< 
-Vision_Control_t	visionpost;	///<
+VisionControl_t	visionpost;	///<
