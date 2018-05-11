@@ -81,15 +81,41 @@ namespace FSM {
             vector<string> _durations;
             vector<string> _raws;
 
-            void parseLine(string);
+            /**
+             * A function to set the members to their respective values for a single machine.
+             *
+             * @param line The line in the dispatch table representing the machine to be parsed.
+             */
+            void parseLine(string line);
 
-            string parseName(string);
+            /**
+             * A function to retrieve the name of the machine from the dispatch table.
+             * @param line The line to be parsed.
+             *
+             * @return The name of the machine.
+             */
+            string parseName(string line);
 
-            string parseDuration(string);
+            /**
+             * A function to retrieve the maximum duration a machine takes to execute a ringlet from the dispatch table.
+             *@param line The line to be parsed.
+             *
+             * @return The maximum duration of the machine.
+             */
+            string parseDuration(string line);
 
-            string parsePath(string);
+            /**
+             * A function to retrieve the path of the machine from the dispatch table.
+             * @param line The line to be parsed.
+             *
+             * @return The path of the machine.
+             */
+            string parsePath(string line);
 
         public:
+            /**
+             * The constructor open the dispatch table located at path and parses the contents.
+             */
             FileParser(string path);
 
             vector<string> paths() {return this->_paths;}
