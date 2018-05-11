@@ -398,6 +398,7 @@ int main(int argc, char * const argv[])
         vector<string> paths = parser->paths();
         for (unsigned long i = 0; i < paths.size(); i++) {
             machines.push_back(paths[i]);
+            cout << machines[i] << endl;
         }
         delete(parser);
     } else{
@@ -438,9 +439,9 @@ int main(int argc, char * const argv[])
         factory->fsms()->execute(visitor, &context, accept_action);
     } else {
         cout << "Time to Execute" << endl;
+        factory->fsms()->execute(visitor, &context, accept_action);
         /*TTCLFSMVectorFactory* ttFactory = dynamic_cast<TTCLFSMVectorFactory*>(factory);
-        ttFactory->fsms()->execute(visitor, &context, accept_action);
-        */return 1;
+        ttFactory->fsms()->execute(visitor, &context, accept_action);*/
     }
 #ifdef WANT_FSM_REFLECTION
     refl_destroyAPI(NULLPTR); // Destroy reflection system
