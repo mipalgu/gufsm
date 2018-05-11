@@ -25,3 +25,4 @@ HDRS+=clfsm_visitorsupport.h
 HDRS+=clfsm_visitors.h
 HDRS+=stringConstants.h
 HDRS+=clfsm_machine_loader.h
+HDRS+=FileParser.h

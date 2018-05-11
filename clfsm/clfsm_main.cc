@@ -112,7 +112,7 @@
 #include <CLReflect/CLReflectAPI.h>
 
 //Time-Triggered Includes
-#include "FileReader.h"
+#include "FileParser.h"
 
 static const char *command;
 static int command_argc;
@@ -395,6 +395,17 @@ int main(int argc, char * const argv[])
         cout << "Detected T flag" << endl;
         string tablePath(*argv);
         cout <<  tablePath << endl;;
+        FileParser* parser = new FileParser(tablePath);
+        cout << "Created parser." << endl;
+        vector<string> paths = parser->paths();
+        cout << "Got Paths" << endl;
+        for (unsigned long i = 0; i < paths.size(); i++) {
+            cout << "Path " << i << ": " << paths[i] << endl;
+            cout << "Raw " << i << ": " << parser->raws()[i] << endl;
+            cout << "Durations " << i << ": " << parser->durations()[i] << endl;
+            cout << "Name " << i << ": " << parser->names()[i] << endl;
+        }
+        delete(parser);
         return 1;
     }
 

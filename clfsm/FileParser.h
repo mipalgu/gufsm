@@ -1,5 +1,5 @@
 /*
- * FileReader.h 
+ * FileParser.h 
  * clfsm 
  *
  * Created by Morgan McColl on 10/05/2018.
@@ -56,26 +56,52 @@
  *
  */
 
-#ifndef FILEREADER_H 
-#define FILEREADER_H
+#ifndef FILEPARSER_H 
+#define FILEPARSER_H
 
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include "gu_util.h"
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpadded"
+#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+#pragma clang diagnostic ignored "-Wc++98-compat"
 
 namespace FSM {
 
     using namespace std;
 
-    class FileReader {
+    class FileParser {
         private:
+            string _contents;
+            vector<string> _paths;
+            vector<string> _names;
+            vector<string> _durations;
+            vector<string> _raws;
 
-            vector<string> readLine(ifstream);
+            void parseLine(string);
+
+            string parseName(string);
+
+            string parseDuration(string);
+
+            string parsePath(string);
 
         public:
-            FileReader();
+            FileParser(string path);
 
-            vector<string> read(string);
+            vector<string> paths() {return this->_paths;}
+
+            vector<string> names() {return this->_names;}
+
+            vector<string> durations() {return this->_durations;}
+
+            vector<string> raws() {return this->_raws;}
     };
 }
-#endif  /* FILEREADER_H */ 
+
+#pragma clang diagnostic pop
+
+#endif  /* FILEPARSER_H */ 
