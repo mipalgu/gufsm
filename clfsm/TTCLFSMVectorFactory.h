@@ -65,14 +65,9 @@ namespace FSM {
     class TTCLFSMVectorFactory : public CLFSMVectorFactory {
         public:
             TTCLFSMVectorFactory(Context *context, bool del = true, useconds_t timeout = 10000L)
-                : CLFSMVectorFactory(context, del, timetout);
-            
-            ~TTCLFSMVectorFactory();
+                : CLFSMVectorFactory(context, del, timeout){}
 
-            virtual bool executeOnce(visitor_f should_execute_machine, void *context = NULLPTR)
-            {
-                return fsms()->executeOnce(should_execute_machine, context);
-            }
+            virtual bool executeOnce(visitor_f should_execute_machine, void *context = NULLPTR);
     };
 }
 

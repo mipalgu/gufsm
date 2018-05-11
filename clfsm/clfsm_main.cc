@@ -113,6 +113,7 @@
 
 //Time-Triggered Includes
 #include "FileParser.h"
+#include "TTCLFSMVectorFactory.h"
 
 static const char *command;
 static int command_argc;
@@ -232,7 +233,7 @@ static void __attribute((noreturn)) backtrace_signal_handler(int signum)
 
 static void usage(const char *cmd)
 {
-    cerr << "Usage: " << cmd << "[-c][-d][-fPIC]{-I includedir}[-i idlesleep]{-L linkdir}{-l lib}[-n][-s][-t][-v]" << endl;
+    cerr << "Usage: " << cmd << "[-c][-d][-fPIC]{-I includedir}[-i idlesleep]{-L linkdir}{-l lib}[-n][-s][-t][-v][-T]" << endl;
     cerr << "[-c] = Compile only flag, don't execute machine." << endl;
     cerr << "[-f] = compiler specific flags (eg. 'PIC' To generate Position Independent Code)." << endl;
     cerr << "{-I idlesleep} = Number of microseconds to sleep when idle (default: 10000)" << endl;
@@ -392,38 +393,30 @@ int main(int argc, char * const argv[])
     argv += optind;
 
     if (isTT) {
-        cout << "Detected T flag" << endl;
         string tablePath(*argv);
-        cout <<  tablePath << endl;;
         FileParser* parser = new FileParser(tablePath);
-        cout << "Created parser." << endl;
         vector<string> paths = parser->paths();
-        cout << "Got Paths" << endl;
         for (unsigned long i = 0; i < paths.size(); i++) {
-            cout << "Path " << i << ": " << paths[i] << endl;
-            cout << "Raw " << i << ": " << parser->raws()[i] << endl;
-            cout << "Durations " << i << ": " << parser->durations()[i] << endl;
-            cout << "Name " << i << ": " << parser->names()[i] << endl;
+            machines.push_back(paths[i]);
         }
         delete(parser);
-        return 1;
-    }
-
-    while (argc--)
-    {
-        struct stat s;
-        string machine(*argv++);
-        if (stat(machine.c_str(), &s) < 0)
+    } else{
+        while (argc--)
         {
-            string machine_with_extension = machine + ".machine";
-            if (stat(machine_with_extension.c_str(), &s) < 0)
+            struct stat s;
+            string machine(*argv++);
+            if (stat(machine.c_str(), &s) < 0)
             {
-                perror(machine.c_str());
-                continue;
+                string machine_with_extension = machine + ".machine";
+                if (stat(machine_with_extension.c_str(), &s) < 0)
+                {
+                    perror(machine.c_str());
+                    continue;
+                }
+                machine = machine_with_extension;
             }
-            machine = machine_with_extension;
+            machines.push_back(machine);
         }
-        machines.push_back(machine);
     }
 
     if (!compiler_args.size()) compiler_args = MachineWrapper::default_compiler_args();
@@ -441,7 +434,14 @@ int main(int argc, char * const argv[])
     struct clfsm_context context = { CLFSMMachineLoader::getMachineLoaderSingleton() };
     factory->postMachineStatus();
     debug_internal_states = debug;
-    factory->fsms()->execute(visitor, &context, accept_action);
+    if (!isTT) {
+        factory->fsms()->execute(visitor, &context, accept_action);
+    } else {
+        cout << "Time to Execute" << endl;
+        /*TTCLFSMVectorFactory* ttFactory = dynamic_cast<TTCLFSMVectorFactory*>(factory);
+        ttFactory->fsms()->execute(visitor, &context, accept_action);
+        */return 1;
+    }
 #ifdef WANT_FSM_REFLECTION
     refl_destroyAPI(NULLPTR); // Destroy reflection system
 #endif

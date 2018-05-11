@@ -31,6 +31,7 @@ CC_SRCS+=clfsm_machine.cc
 CC_SRCS+=clfsm_visitorsupport.cc
 CC_SRCS+=clfsm_visitors.cc
 CC_SRCS+=FileParser.cc
+CC_SRCS+=TTCLFSMVectorFactory.cc
 CC_SRCS+=clfsm_main.cc
 
 .include "clfsm_hdrs.mk"
