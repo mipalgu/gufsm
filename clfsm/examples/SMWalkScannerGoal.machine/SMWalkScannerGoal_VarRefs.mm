@@ -19,6 +19,6 @@ int	&maxLoop = _m->maxLoop;	///<
 int	&waitTime = _m->waitTime;	///< 
 Speech_t	&speak = _m->speak;	///< 
 WALK_Command_t	&walk_post = _m->walk_post;	///< 
-Vision_Control_t	&visionpost = _m->visionpost;	///< 
+VisionControl_t	&visionpost = _m->visionpost;	///< 
 
 #pragma clang diagnostic pop

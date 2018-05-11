@@ -1,4 +1,4 @@
-#include <typeClassDefs/Vision_Control.h>
+#include <typeClassDefs/VisionControlStatus.h>
 #include <typeClassDefs/WALK2014_ControlStatus.h>
 #include <typeClassDefs/HAL_HeadTarget.h>
 #include <typeClassDefs/MOTION_Interface.h>
