@@ -60,14 +60,32 @@
 #define TTCLFSMVECTORFACTORY_H
 
 #include "clfsm_vector_factory.h"
+#include <time.h>
+#include <math.h>
+#include <inttypes.h>
+#include <unistd.h>
+#include "CLMachine.h"
 
 namespace FSM {
+    
+    using namespace std;
+
     class TTCLFSMVectorFactory : public CLFSMVectorFactory {
+        private:
+
+            struct timespec spec;
+
+            long getTimeMS();
+
+            vector<long> createStartTimes(vector<int> times);
+
         public:
             TTCLFSMVectorFactory(Context *context, bool del = true, useconds_t timeout = 10000L)
                 : CLFSMVectorFactory(context, del, timeout){}
 
-            virtual bool executeOnce(visitor_f should_execute_machine, void *context = NULLPTR);
+            bool executeOnceTT(visitor_f should_execute_machine,  vector<long>, vector<string>, void *context = NULLPTR);
+
+            void executeTT(visitor_f should_execute_machine, vector<int>, vector<string>, void *context = NULLPTR); 
     };
 }
 
