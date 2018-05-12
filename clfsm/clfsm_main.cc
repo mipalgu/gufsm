@@ -114,6 +114,7 @@
 //Time-Triggered Includes
 #include "FileParser.h"
 #include "TTCLFSMVectorFactory.h"
+#include <unistd.h>
 
 static const char *command;
 static int command_argc;
@@ -391,14 +392,16 @@ int main(int argc, char * const argv[])
 
     argc -= optind;
     argv += optind;
+    vector<int> times;
+    vector<string> names;
 
     if (isTT) {
         string tablePath(*argv);
         FileParser* parser = new FileParser(tablePath);
-        vector<string> paths = parser->paths();
-        for (unsigned long i = 0; i < paths.size(); i++) {
-            machines.push_back(paths[i]);
-            cout << machines[i] << endl;
+        for (unsigned long i = 0; i < parser->paths().size(); i++) {
+            machines.push_back(parser->paths()[i]);
+            times.push_back(atoi(parser->durations()[i].c_str()));
+            names.push_back(parser->names()[i]);
         }
         delete(parser);
     } else{
@@ -439,9 +442,8 @@ int main(int argc, char * const argv[])
         factory->fsms()->execute(visitor, &context, accept_action);
     } else {
         cout << "Time to Execute" << endl;
-        factory->fsms()->execute(visitor, &context, accept_action);
-        /*TTCLFSMVectorFactory* ttFactory = dynamic_cast<TTCLFSMVectorFactory*>(factory);
-        ttFactory->fsms()->execute(visitor, &context, accept_action);*/
+        TTCLFSMVectorFactory* ttFactory = dynamic_cast<TTCLFSMVectorFactory*>(factory);
+        ttFactory->executeTT(visitor, times, names, &context, accept_action);
     }
 #ifdef WANT_FSM_REFLECTION
     refl_destroyAPI(NULLPTR); // Destroy reflection system

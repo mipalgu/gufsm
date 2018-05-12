@@ -9,14 +9,29 @@
 
 using namespace FSM;
 
-bool TTCLFSMVectorFactory::executeOnceTT(visitor_f should_execute_machine, vector<long> times, vector<string> names, void *context) {
+bool TTCLFSMVectorFactory::executeOnceTT(
+    visitor_f should_execute_machine,
+    vector<long> times,
+    vector<string> names,
+    void *context,
+    visitor_f accepting_action
+) {
+    bool fired = false;
+    setAccepting(true);
     long start = this->getTimeMS();
     for (unsigned long i = 0; i < names.size(); i++) {
         int id = this->index_of_machine_named(names[i].c_str());
         CLMachine *wrapper = this->machine_at_index(id);
-        Machine *machine = wrapper->machineContext();
-        machine->executeOnce();
+        SuspensibleMachine *machine = dynamic_cast<SuspensibleMachine*>(wrapper->machineContext());
+        if (!machine || (should_execute_machine != NULLPTR && !should_execute_machine(context, machine, int(id))))
+            continue;
+        bool mfire = false;
+        bool a = !machine->executeOnce(&mfire);
         long end = this->getTimeMS();
+        setAccepting(a && accepting());
+        if (a && accepting_action)
+            accepting_action(context, machine, int(id)); //Execute function if machine in accepting state
+        if (mfire) fired = true;
         if (end > times[i+1] + start) {
             cerr << names[i] << " Failed to execute by t = " << times[i+1] + start << "ms." << endl;
             continue;
@@ -26,13 +41,19 @@ bool TTCLFSMVectorFactory::executeOnceTT(visitor_f should_execute_machine, vecto
             usleep(int(times[i+1] + start - now) * 1000); // sleep till start time of next machine.
         }
     }
-    return true;
+    return fired;
 }
 
-void TTCLFSMVectorFactory::executeTT(visitor_f should_execute_machine, vector<int> times, vector<string> names, void *context) {
+void TTCLFSMVectorFactory::executeTT(
+    visitor_f should_execute_machine,
+    vector<int> times,
+    vector<string> names,
+    void *context,
+    visitor_f accepting_action
+) {
     do
     {
-        if (!this->executeOnceTT(should_execute_machine, this->createStartTimes(times), names, context))
+        if (!this->executeOnceTT(should_execute_machine, this->createStartTimes(times), names, context, accepting_action))
             fsms()->noTransitionFired();
     }
         while (!fsms()->accepting());

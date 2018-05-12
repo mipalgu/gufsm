@@ -65,6 +65,8 @@
 #include <inttypes.h>
 #include <unistd.h>
 #include "CLMachine.h"
+#include "FSMachineVector.h"
+#include "FSMSuspensibleMachine.h"
 
 namespace FSM {
     
@@ -83,9 +85,21 @@ namespace FSM {
             TTCLFSMVectorFactory(Context *context, bool del = true, useconds_t timeout = 10000L)
                 : CLFSMVectorFactory(context, del, timeout){}
 
-            bool executeOnceTT(visitor_f should_execute_machine,  vector<long>, vector<string>, void *context = NULLPTR);
+            bool executeOnceTT(
+                visitor_f should_execute_machine,
+                vector<long>,
+                vector<string>,
+                void *context = NULLPTR,
+                visitor_f accepting_action = NULLPTR
+            );
 
-            void executeTT(visitor_f should_execute_machine, vector<int>, vector<string>, void *context = NULLPTR); 
+            void executeTT(
+                visitor_f should_execute_machine,
+                vector<int>,
+                vector<string>,
+                void *context = NULLPTR,
+                visitor_f accepting_action = NULLPTR
+            ); 
     };
 }
 
