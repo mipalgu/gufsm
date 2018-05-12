@@ -139,7 +139,7 @@ static CLFSMWBVectorFactory *createMachines(const vector<string> &machines, cons
             const string &machine = *it;
             FSM::loadAndAddMachineAtPath(machine, false, compiler_args, linker_args);
     }
-    return loader->vector_factory();
+    return static_cast<CLFSMWBVectorFactory*>(loader->vector_factory());
 }
 
 static void __attribute((noreturn)) aborting_signal_handler(int signum)
@@ -442,7 +442,9 @@ int main(int argc, char * const argv[])
         factory->fsms()->execute(visitor, &context, accept_action);
     } else {
         cout << "Time to Execute" << endl;
-        TTCLFSMVectorFactory* ttFactory = dynamic_cast<TTCLFSMVectorFactory*>(factory);
+        cout << factory->fsms() << endl;
+        TTCLFSMVectorFactory* ttFactory = static_cast<TTCLFSMVectorFactory*>(factory);
+        cout << ttFactory->fsms() << endl;
         ttFactory->executeTT(visitor, times, names, &context, accept_action);
     }
 #ifdef WANT_FSM_REFLECTION

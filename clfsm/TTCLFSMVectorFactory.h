@@ -59,7 +59,7 @@
 #ifndef TTCLFSMVECTORFACTORY_H
 #define TTCLFSMVECTORFACTORY_H
 
-#include "clfsm_vector_factory.h"
+#include "clfsm_wb_vector_factory.h"
 #include <time.h>
 #include <math.h>
 #include <inttypes.h>
@@ -72,19 +72,20 @@ namespace FSM {
     
     using namespace std;
 
-    class TTCLFSMVectorFactory : public CLFSMVectorFactory {
+    class TTCLFSMVectorFactory : public CLFSMWBVectorFactory {
         private:
-
 
             long getTimeMS();
 
             vector<long> createStartTimes(vector<int> times);
 
-            bool _accepting = false;
+            bool _accepting;
 
         public:
-            TTCLFSMVectorFactory(Context *context, bool del = true, useconds_t timeout = 10000L)
-                : CLFSMVectorFactory(context, del, timeout){}
+            TTCLFSMVectorFactory(bool accepting, Context *context, bool del = true, useconds_t timeout = 10000L)
+                : CLFSMWBVectorFactory(context, del, timeout) {
+                    this->_accepting = accepting;
+                }
 
             bool executeOnceTT(
                 visitor_f should_execute_machine,

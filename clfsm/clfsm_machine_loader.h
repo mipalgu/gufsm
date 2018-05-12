@@ -58,6 +58,7 @@
  */
 #include <vector>
 #include <string>
+#include "TTCLFSMVectorFactory.h"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-macros"
@@ -82,7 +83,7 @@ namespace FSM
 	{
 	private:
 		/// The vectory factory
-		CLFSMWBVectorFactory *_vector_factory;
+		TTCLFSMVectorFactory *_vector_factory;
 
 		/// The vector of machine wrappers
 		std::vector<MachineWrapper *> _machineWrappers;
@@ -119,7 +120,7 @@ namespace FSM
 		bool unloadMachineAtIndex(int index);
 
                 /// Vector factory getter
-		CLFSMWBVectorFactory *vector_factory() const { return _vector_factory; }
+		TTCLFSMVectorFactory *vector_factory() const { return _vector_factory; }
 
 		///Machine Wrapper getter
 		std::vector<MachineWrapper *> machineWrappers() const { return _machineWrappers; }
