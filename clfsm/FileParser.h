@@ -98,7 +98,7 @@ namespace FSM {
 
             /**
              * A function to retrieve the maximum duration a machine takes to execute a ringlet from the dispatch table.
-             *@param line The line to be parsed.
+             * @param line The line to be parsed.
              *
              * @return The maximum duration of the machine.
              */
@@ -114,7 +114,7 @@ namespace FSM {
 
         public:
             /**
-             * The constructor open the dispatch table located at path and parses the contents.
+             * The constructor opens the dispatch table located at path and parses the contents.
              */
             FileParser(string path);
 
