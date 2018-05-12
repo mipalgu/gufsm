@@ -81,6 +81,8 @@ namespace FSM {
 
             vector<long> createStartTimes(vector<int> times);
 
+            bool accepting = false;
+
         public:
             TTCLFSMVectorFactory(Context *context, bool del = true, useconds_t timeout = 10000L)
                 : CLFSMVectorFactory(context, del, timeout){}

@@ -17,7 +17,7 @@ bool TTCLFSMVectorFactory::executeOnceTT(
     visitor_f accepting_action
 ) {
     bool fired = false;
-    setAccepting(true);
+    this->accepting = true;
     long start = this->getTimeMS();
     for (unsigned long i = 0; i < names.size(); i++) {
         int id = this->index_of_machine_named(names[i].c_str());
@@ -27,11 +27,11 @@ bool TTCLFSMVectorFactory::executeOnceTT(
             continue;
         bool mfire = false;
         bool a = !machine->executeOnce(&mfire);
-        long end = this->getTimeMS();
-        setAccepting(a && accepting());
         if (a && accepting_action)
             accepting_action(context, machine, int(id)); //Execute function if machine in accepting state
         if (mfire) fired = true;
+        long end = this->getTimeMS();
+        this->accepting = a && accepting;
         if (end > times[i+1] + start) {
             cerr << names[i] << " Failed to execute by t = " << times[i+1] + start << "ms." << endl;
             continue;
@@ -56,7 +56,7 @@ void TTCLFSMVectorFactory::executeTT(
         if (!this->executeOnceTT(should_execute_machine, this->createStartTimes(times), names, context, accepting_action))
             fsms()->noTransitionFired();
     }
-        while (!fsms()->accepting());
+        while (!this->accepting);
 }
 
 long TTCLFSMVectorFactory::getTimeMS() {
