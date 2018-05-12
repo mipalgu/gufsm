@@ -16,9 +16,13 @@ bool TTCLFSMVectorFactory::executeOnceTT(
     void *context,
     visitor_f accepting_action
 ) {
+    cout << "In executeOnceTT" << endl;
     bool fired = false;
-    this->accepting = true;
+    cout << "Set up fired" << endl;
+    this->_accepting = true;
+    cout << "Set up accepting and fired" << endl;
     long start = this->getTimeMS();
+    cout << "Start Time: " << start << endl;
     for (unsigned long i = 0; i < names.size(); i++) {
         int id = this->index_of_machine_named(names[i].c_str());
         CLMachine *wrapper = this->machine_at_index(id);
@@ -31,7 +35,7 @@ bool TTCLFSMVectorFactory::executeOnceTT(
             accepting_action(context, machine, int(id)); //Execute function if machine in accepting state
         if (mfire) fired = true;
         long end = this->getTimeMS();
-        this->accepting = a && accepting;
+        this->_accepting = a && this->_accepting;
         if (end > times[i+1] + start) {
             cerr << names[i] << " Failed to execute by t = " << times[i+1] + start << "ms." << endl;
             continue;
@@ -51,17 +55,21 @@ void TTCLFSMVectorFactory::executeTT(
     void *context,
     visitor_f accepting_action
 ) {
+    cout << "In executeTT" << endl;
     do
     {
         if (!this->executeOnceTT(should_execute_machine, this->createStartTimes(times), names, context, accepting_action))
             fsms()->noTransitionFired();
     }
-        while (!this->accepting);
+        while (!this->_accepting);
 }
 
 long TTCLFSMVectorFactory::getTimeMS() {
-    clock_gettime(CLOCK_REALTIME, &this->spec);
-    return lround(this->spec.tv_nsec / 1.0e6);
+    struct timespec spec;
+    cout << "Getting Time" << endl;
+    clock_gettime(CLOCK_REALTIME, &spec);
+    cout << "Converting Time" << endl;
+    return lround(spec.tv_nsec / 1.0e6);
 }
 
 vector<long> TTCLFSMVectorFactory::createStartTimes(vector<int> times) {

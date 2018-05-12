@@ -75,13 +75,12 @@ namespace FSM {
     class TTCLFSMVectorFactory : public CLFSMVectorFactory {
         private:
 
-            struct timespec spec;
 
             long getTimeMS();
 
             vector<long> createStartTimes(vector<int> times);
 
-            bool accepting = false;
+            bool _accepting = false;
 
         public:
             TTCLFSMVectorFactory(Context *context, bool del = true, useconds_t timeout = 10000L)
