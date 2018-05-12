@@ -26,7 +26,7 @@ bool TTCLFSMVectorFactory::executeOnceTT(
     for (unsigned long i = 0; i < names.size(); i++) {
         int id = this->index_of_machine_named(names[i].c_str());
         CLMachine *wrapper = this->machine_at_index(id);
-        SuspensibleMachine *machine = dynamic_cast<SuspensibleMachine*>(wrapper->machineContext());
+        SuspensibleMachine *machine = static_cast<SuspensibleMachine*>(wrapper->machineContext());
         if (!machine || (should_execute_machine != NULLPTR && !should_execute_machine(context, machine, int(id))))
             continue;
         bool mfire = false;
