@@ -398,6 +398,9 @@ int main(int argc, char * const argv[])
     if (isTT) {
         string tablePath(*argv);
         FileParser* parser = new FileParser(tablePath);
+        if (!parser->parse()) {
+            return 0;
+        }
         for (unsigned long i = 0; i < parser->paths().size(); i++) {
             machines.push_back(parser->paths()[i]);
             times.push_back(atoi(parser->durations()[i].c_str()));

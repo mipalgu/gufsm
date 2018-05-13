@@ -12,20 +12,28 @@ using namespace FSM;
 
 FileParser::FileParser(string path) {
     this->_contents = string_from_file(path.c_str());
-    vector<string> lines = components_of_string_separated(this->_contents, '\n', false);
-    for (unsigned long i = 0; i < lines.size(); i++) {
-        this->parseLine(lines[i]);
-    }
 }
 
-void FileParser::parseLine(string line) noexcept {
+bool FileParser::parse() {
+    vector<string> lines = components_of_string_separated(this->_contents, '\n', false);
+    for (unsigned long i = 0; i < lines.size(); i++) {
+        if (!this->parseLine(lines[i])) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool FileParser::parseLine(string line) {
     if (!this->isValid(line)) {
-        throw ("Invalid Syntax in dispatch table for line:\n" + line + "\n\n");
+        cerr << "Invalid Syntax in dispatch table for line:\n" <<  line << "\n\n";
+        return false;
     }
     this->_raws.push_back(line);
     this->_paths.push_back(this->parsePath(line));
     this->_names.push_back(this->parseName(line));
     this->_durations.push_back(this->parseDuration(line));
+    return true;
 }
 
 

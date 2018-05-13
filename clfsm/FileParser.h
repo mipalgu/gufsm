@@ -82,12 +82,14 @@ namespace FSM {
             vector<string> _durations;
             vector<string> _raws;
 
+
+
             /**
              * A function to set the members to their respective values for a single machine.
              *
              * @param line The line in the dispatch table representing the machine to be parsed.
              */
-            void parseLine(string line) noexcept;
+            bool parseLine(string line);
 
             /**
              * A function to retrieve the name of the machine from the dispatch table.
@@ -135,6 +137,8 @@ namespace FSM {
             vector<string> durations() {return this->_durations;}
 
             vector<string> raws() {return this->_raws;}
+
+            bool parse();
     };
 }
 
