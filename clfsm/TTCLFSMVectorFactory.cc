@@ -19,18 +19,27 @@ bool TTCLFSMVectorFactory::executeOnceTT(
     bool fired = false;
     this->_accepting = true;
     long start = this->getTimeMS();
-    cout << "Start Time: " << start << endl;
     for (unsigned long i = 0; i < names.size(); i++) {
         int id = this->index_of_machine_named(names[i].c_str());
         if (id == -1) {
             cerr << "Failed to index machine: " << names[i] << endl;
             continue;
         }
-        //CLMachine *wrapper = this->machine_at_index(id);
-        SuspensibleMachine *machine = this->fsms()->machines()[id]; //wrapper->machineContext());
+        SuspensibleMachine *machine = this->fsms()->machines()[id]; 
         if (!machine || (should_execute_machine != NULLPTR && !should_execute_machine(context, machine, int(id))))
             continue;
         bool mfire = false;
+        long startOfMachine = this->getTimeMS();
+        if (startOfMachine > times[i] + start) {
+            cerr << "Machine " << names[i] << " starting late.\nScheduled Time: "
+                << times[i] + start << "\nActual Time: " << startOfMachine << endl;
+        } else {
+            while (startOfMachine < times[i] + start) {
+                usleep(int(times[i+1] + start - startOfMachine - 1) * 1000);
+                startOfMachine = this->getTimeMS();
+            }
+            cout << names[i] << " start time: " << startOfMachine << endl;
+        }
         bool a = !machine->executeOnce(&mfire);
         if (a && accepting_action)
             accepting_action(context, machine, int(id)); //Execute function if machine in accepting state
@@ -39,13 +48,14 @@ bool TTCLFSMVectorFactory::executeOnceTT(
         cout << "Finished at: " << end << endl;
         this->_accepting = a && this->_accepting;
         if (end > times[i+1] + start) {
-            cerr << names[i] << " Failed to execute by t = " << times[i+1] + start << "ms." << endl;
+            cerr << names[i] << " Failed to execute by timeslot t = " << times[i+1] + start << "ms." << endl;
             continue;
         }
-        long now = this->getTimeMS();
+        /*long now = this->getTimeMS();
         if (now < times[i+1] + start) {
-            usleep(int(times[i+1] + start - now) * 1000); // sleep till start time of next machine.
-        }
+            usleep(int(times[i+1] + start - startOfMachine - 1) * 1000);
+             // sleep till start time of next machine.
+        }*/
     }
     return fired;
 }
