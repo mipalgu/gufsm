@@ -16,17 +16,18 @@ bool TTCLFSMVectorFactory::executeOnceTT(
     void *context,
     visitor_f accepting_action
 ) {
-    cout << "In executeOnceTT" << endl;
     bool fired = false;
-    cout << "Set up fired" << endl;
     this->_accepting = true;
-    cout << "Set up accepting and fired" << endl;
     long start = this->getTimeMS();
     cout << "Start Time: " << start << endl;
     for (unsigned long i = 0; i < names.size(); i++) {
         int id = this->index_of_machine_named(names[i].c_str());
-        CLMachine *wrapper = this->machine_at_index(id);
-        SuspensibleMachine *machine = static_cast<SuspensibleMachine*>(wrapper->machineContext());
+        if (id == -1) {
+            cerr << "Failed to index machine: " << names[i] << endl;
+            continue;
+        }
+        //CLMachine *wrapper = this->machine_at_index(id);
+        SuspensibleMachine *machine = this->fsms()->machines()[id]; //wrapper->machineContext());
         if (!machine || (should_execute_machine != NULLPTR && !should_execute_machine(context, machine, int(id))))
             continue;
         bool mfire = false;
@@ -35,6 +36,7 @@ bool TTCLFSMVectorFactory::executeOnceTT(
             accepting_action(context, machine, int(id)); //Execute function if machine in accepting state
         if (mfire) fired = true;
         long end = this->getTimeMS();
+        cout << "Finished at: " << end << endl;
         this->_accepting = a && this->_accepting;
         if (end > times[i+1] + start) {
             cerr << names[i] << " Failed to execute by t = " << times[i+1] + start << "ms." << endl;
@@ -55,7 +57,6 @@ void TTCLFSMVectorFactory::executeTT(
     void *context,
     visitor_f accepting_action
 ) {
-    cout << "In executeTT" << endl;
     do
     {
         if (!this->executeOnceTT(should_execute_machine, this->createStartTimes(times), names, context, accepting_action))
@@ -66,9 +67,7 @@ void TTCLFSMVectorFactory::executeTT(
 
 long TTCLFSMVectorFactory::getTimeMS() {
     struct timespec spec;
-    cout << "Getting Time" << endl;
     clock_gettime(CLOCK_REALTIME, &spec);
-    cout << "Converting Time" << endl;
     return lround(spec.tv_nsec / 1.0e6);
 }
 

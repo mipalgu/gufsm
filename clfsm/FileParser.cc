@@ -28,7 +28,9 @@ void FileParser::parseLine(string line) {
 
 string FileParser::parseName(string line) {
     vector<string> nameVec = components_of_string_separated(line, '/', false);
-    return components_of_string_separated(nameVec[nameVec.size()-1], '\t', false)[0];
+    string nameWithMachine = components_of_string_separated(nameVec[nameVec.size()-1], '\t', false)[0];
+    vector<string> splitNameWithMachine = components_of_string_separated(nameWithMachine, '.', false);
+    return splitNameWithMachine[splitNameWithMachine.size() - 2];
 }
 
 string FileParser::parseDuration(string line) {
