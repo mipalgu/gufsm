@@ -81,6 +81,8 @@ namespace FSM {
 
             bool _accepting;
 
+            long start;
+
         public:
             TTCLFSMVectorFactory(bool accepting, Context *context, bool del = true, useconds_t timeout = 10000L)
                 : CLFSMWBVectorFactory(context, del, timeout) {
