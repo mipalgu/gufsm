@@ -18,7 +18,10 @@ FileParser::FileParser(string path) {
     }
 }
 
-void FileParser::parseLine(string line) {
+void FileParser::parseLine(string line) noexcept {
+    if (!this->isValid(line)) {
+        throw ("Invalid Syntax in dispatch table for line:\n" + line + "\n\n");
+    }
     this->_raws.push_back(line);
     this->_paths.push_back(this->parsePath(line));
     this->_names.push_back(this->parseName(line));
@@ -39,4 +42,8 @@ string FileParser::parseDuration(string line) {
 
 string FileParser::parsePath(string line) {
     return components_of_string_separated(line, '\t', false)[0];
+}
+
+bool FileParser::isValid(string data) {
+    return regex_match(data, regex("[\\/~\\.\\w][\\w\\/\\.:\\-]+[\\w\\.\\-]+\\.machine\\t\\d+"));
 }

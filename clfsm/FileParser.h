@@ -63,6 +63,7 @@
 #include <fstream>
 #include <vector>
 #include "gu_util.h"
+#include <regex>
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wpadded"
@@ -86,7 +87,7 @@ namespace FSM {
              *
              * @param line The line in the dispatch table representing the machine to be parsed.
              */
-            void parseLine(string line);
+            void parseLine(string line) noexcept;
 
             /**
              * A function to retrieve the name of the machine from the dispatch table.
@@ -111,6 +112,8 @@ namespace FSM {
              * @return The path of the machine.
              */
             string parsePath(string line);
+
+            bool isValid(string data);
 
         public:
             /**
