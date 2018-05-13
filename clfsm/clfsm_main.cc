@@ -441,10 +441,7 @@ int main(int argc, char * const argv[])
     if (!isTT) {
         factory->fsms()->execute(visitor, &context, accept_action);
     } else {
-        cout << "Time to Execute" << endl;
-        cout << factory->fsms() << endl;
         TTCLFSMVectorFactory* ttFactory = static_cast<TTCLFSMVectorFactory*>(factory);
-        cout << ttFactory->fsms() << endl;
         ttFactory->executeTT(visitor, times, names, &context, accept_action);
     }
 #ifdef WANT_FSM_REFLECTION
