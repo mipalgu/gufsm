@@ -36,8 +36,8 @@ bool TTCLFSMVectorFactory::executeOnceTT(
             startOfMachine = this->getTimeMS();
         }
         if (startOfMachine > scheduledStart) {
-            cerr << "Machine " << names[i] << " starting late.\nScheduled Time: "
-                << scheduledStart << "\nActual Time: " << startOfMachine << endl;
+            cerr << "Machine " << names[i] << " starting late. Scheduled Time: "
+                << scheduledStart << ". Actual Time: " << startOfMachine << endl;
         } 
         bool a = !machine->executeOnce(&mfire);
         if (a && accepting_action)
