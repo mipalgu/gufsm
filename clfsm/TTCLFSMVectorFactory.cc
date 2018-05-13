@@ -21,8 +21,6 @@ bool TTCLFSMVectorFactory::executeOnceTT(
     for (unsigned long i = 0; i < names.size(); i++) {
         long scheduledStart = times[i] + this->start;
         long scheduledEnd = times[i+1] + this->start;
-        cout << names[i] << " Scheduled start: " << scheduledStart
-            << endl << names[i] << " Scheduled End: " << scheduledEnd << endl;
         int id = this->index_of_machine_named(names[i].c_str());
         if (id == -1) {
             cerr << "Failed to index machine: " << names[i] << endl;
@@ -40,14 +38,12 @@ bool TTCLFSMVectorFactory::executeOnceTT(
         if (startOfMachine > scheduledStart) {
             cerr << "Machine " << names[i] << " starting late.\nScheduled Time: "
                 << scheduledStart << "\nActual Time: " << startOfMachine << endl;
-        }
-        cout << names[i] << " start time: " << startOfMachine << endl;
+        } 
         bool a = !machine->executeOnce(&mfire);
         if (a && accepting_action)
             accepting_action(context, machine, int(id)); //Execute function if machine in accepting state
         if (mfire) fired = true;
         long end = this->getTimeMS();
-        cout << "Finished at: " << end << endl;
         this->_accepting = a && this->_accepting;
         if (end > scheduledEnd) {
             cerr << names[i] << " Failed to execute by timeslot t = " << scheduledEnd << "ms." << endl;
