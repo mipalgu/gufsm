@@ -113,6 +113,13 @@ namespace FSM {
              */
             string parsePath(string line);
 
+            /**
+             * Checks if a line from the dispatch table has valid syntax.
+             *
+             * @param data The line from the dispatch table.
+             *
+             * @return Whether the string is valid syntax.
+             */
             bool isValid(string data);
 
         public:
