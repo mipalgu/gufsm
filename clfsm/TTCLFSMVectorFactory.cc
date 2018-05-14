@@ -30,17 +30,18 @@ bool TTCLFSMVectorFactory::executeOnceTT(
         if (!machine || (should_execute_machine != NULLPTR && !should_execute_machine(context, machine, int(id))))
             continue;
         bool mfire = false;
-        long startOfMachine = this->getTimeMS() + this->start; 
+        long startOfMachine = this->getTimeMS(); 
         if (startOfMachine > scheduledStart) {
             cerr << "Machine " << names[i] << " starting late. Scheduled Time: "
                 << scheduledStart << ". Actual Time: " << startOfMachine << endl;
-        } else {
-            while (startOfMachine < scheduledStart) {
-                //usleep(int(scheduledEnd - startOfMachine) * 1000);
-                usleep(100);
-                startOfMachine = this->getTimeMS() + this->start;
-            }
         } 
+        cout << "Scheduled start: " << scheduledStart << endl;
+        while (startOfMachine < scheduledStart) {
+            //usleep(int(scheduledEnd - startOfMachine) * 1000);
+            usleep(100);
+            startOfMachine = this->getTimeMS();
+            cout << "Start of Machine: " << startOfMachine << endl;
+        }
         bool a = !machine->executeOnce(&mfire);
         if (a && accepting_action)
             accepting_action(context, machine, int(id)); //Execute function if machine in accepting state
