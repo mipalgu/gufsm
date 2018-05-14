@@ -67,6 +67,7 @@
 #include "CLMachine.h"
 #include "FSMachineVector.h"
 #include "FSMSuspensibleMachine.h"
+#include "gu_util.h"
 
 namespace FSM {
     

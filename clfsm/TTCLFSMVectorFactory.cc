@@ -16,11 +16,11 @@ bool TTCLFSMVectorFactory::executeOnceTT(
     void *context,
     visitor_f accepting_action
 ) {
+    cout << "Entering Function" << endl;
     bool fired = false;
     this->_accepting = true;
     for (unsigned long i = 0; i < names.size(); i++) {
-        long scheduledStart = times[i] + this->start;
-        long scheduledEnd = times[i+1] + this->start;
+        cout << "Starting new Iteration" << endl;
         int id = this->index_of_machine_named(names[i].c_str());
         if (id == -1) {
             cerr << "Failed to index machine: " << names[i] << endl;
@@ -30,7 +30,10 @@ bool TTCLFSMVectorFactory::executeOnceTT(
         if (!machine || (should_execute_machine != NULLPTR && !should_execute_machine(context, machine, int(id))))
             continue;
         bool mfire = false;
+        long scheduledStart = times[i] + this->start;
+        long scheduledEnd = times[i+1] + this->start;
         long startOfMachine = this->getTimeMS(); 
+        cout << "Default start of machine: " << startOfMachine << endl;
         if (startOfMachine > scheduledStart) {
             cerr << "Machine " << names[i] << " starting late. Scheduled Time: "
                 << scheduledStart << ". Actual Time: " << startOfMachine << endl;
@@ -40,13 +43,13 @@ bool TTCLFSMVectorFactory::executeOnceTT(
             //usleep(int(scheduledEnd - startOfMachine) * 1000);
             usleep(100);
             startOfMachine = this->getTimeMS();
-            cout << "Start of Machine: " << startOfMachine << endl;
         }
+        cout << "Done Sleeping" << endl;
         bool a = !machine->executeOnce(&mfire);
         if (a && accepting_action)
             accepting_action(context, machine, int(id)); //Execute function if machine in accepting state
         if (mfire) fired = true;
-        long end = this->getTimeMS() + this->start;
+        long end = this->getTimeMS();
         this->_accepting = a && this->_accepting;
         if (end > scheduledEnd) {
             cerr << names[i] << " Failed to execute by timeslot t = " << scheduledEnd << "ms." << endl;
@@ -64,7 +67,7 @@ void TTCLFSMVectorFactory::executeTT(
     void *context,
     visitor_f accepting_action
 ) {
-    this->start = this->getTimeMS();
+    //this->start = this->getTimeMS();
     do
     {
         if (!this->executeOnceTT(should_execute_machine, this->createStartTimes(times), names, context, accepting_action))
@@ -76,7 +79,12 @@ void TTCLFSMVectorFactory::executeTT(
 long TTCLFSMVectorFactory::getTimeMS() {
     struct timespec spec;
     clock_gettime(CLOCK_REALTIME, &spec);
-    return lround(spec.tv_nsec / 1.0e6);
+    long time = long(spec.tv_nsec / 1.0e6);
+    if (this->start == NULLPTR) {
+        cout << "Setting Start Time to: " << time << endl;
+        this->start = time;
+    }
+    return time;
 }
 
 vector<long> TTCLFSMVectorFactory::createStartTimes(vector<int> times) {
