@@ -31,20 +31,21 @@ bool TTCLFSMVectorFactory::executeOnceTT(
             continue;
         bool mfire = false;
         long startOfMachine = this->getTimeMS() + this->start; 
-        while (startOfMachine < scheduledStart) {
-            //usleep(int(scheduledEnd - startOfMachine) * 1000);
-            usleep(100);
-            startOfMachine = this->getTimeMS() + this->start;
-        }
         if (startOfMachine > scheduledStart) {
             cerr << "Machine " << names[i] << " starting late. Scheduled Time: "
                 << scheduledStart << ". Actual Time: " << startOfMachine << endl;
+        } else {
+            while (startOfMachine < scheduledStart) {
+                //usleep(int(scheduledEnd - startOfMachine) * 1000);
+                usleep(100);
+                startOfMachine = this->getTimeMS() + this->start;
+            }
         } 
         bool a = !machine->executeOnce(&mfire);
         if (a && accepting_action)
             accepting_action(context, machine, int(id)); //Execute function if machine in accepting state
         if (mfire) fired = true;
-        long end = this->getTimeMS();
+        long end = this->getTimeMS() + this->start;
         this->_accepting = a && this->_accepting;
         if (end > scheduledEnd) {
             cerr << names[i] << " Failed to execute by timeslot t = " << scheduledEnd << "ms." << endl;
