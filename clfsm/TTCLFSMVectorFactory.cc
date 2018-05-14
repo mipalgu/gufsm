@@ -30,11 +30,11 @@ bool TTCLFSMVectorFactory::executeOnceTT(
         if (!machine || (should_execute_machine != NULLPTR && !should_execute_machine(context, machine, int(id))))
             continue;
         bool mfire = false;
-        long startOfMachine = this->getTimeMS(); 
+        long startOfMachine = this->getTimeMS() + this->start; 
         while (startOfMachine < scheduledStart) {
             //usleep(int(scheduledEnd - startOfMachine) * 1000);
             usleep(100);
-            startOfMachine = this->getTimeMS();
+            startOfMachine = this->getTimeMS() + this->start;
         }
         if (startOfMachine > scheduledStart) {
             cerr << "Machine " << names[i] << " starting late. Scheduled Time: "
