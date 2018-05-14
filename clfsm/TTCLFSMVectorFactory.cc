@@ -18,7 +18,6 @@ bool TTCLFSMVectorFactory::executeOnceTT(
 ) {
     bool fired = false;
     this->_accepting = true;
-    cout << this->start << endl;
     for (unsigned long i = 0; i < names.size(); i++) {
         long scheduledStart = times[i] + this->start;
         long scheduledEnd = times[i+1] + this->start;
