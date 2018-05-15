@@ -88,7 +88,7 @@ namespace FSM {
 
             vector<SuspensibleMachine*> fetchMachines(vector<int> ids);
 
-            long long sleepTillTimeslot(long long);
+            long long sleepTillTimeslot(long long, long long);
 
         public:
             TTCLFSMVectorFactory(bool accepting, Context *context, bool del = true, useconds_t timeout = 10000L)

@@ -22,17 +22,18 @@ bool TTCLFSMVectorFactory::executeOnceTT(
     vector<SuspensibleMachine*> machines = this->fetchMachines(ids);
     for (unsigned long i = 0; i < machines.size(); i++) {
         SuspensibleMachine *machine = machines[i];
-        long long scheduledStart = times[i] + this->start;
-        long long scheduledEnd = times[i+1] + this->start;
         if (!machine || (should_execute_machine != NULLPTR && !should_execute_machine(context, machine, int(ids[i]))))
             continue;
-        bool mfire = false;
-        long long startOfMachine = this->getTimeUS(); 
-        if (startOfMachine - scheduledStart > 1000) {
+        bool mfire = false; 
+        long long scheduledEnd = times[i+1] + this->start;
+        long long scheduledStart = times[i] + this->start;
+        long long startOfMachine = this->sleepTillTimeslot(scheduledStart, this->getTimeUS());
+        if (startOfMachine - scheduledStart > 200) {
             cerr << "Machine " << names[i] << " starting late. Scheduled Time: "
-                << scheduledStart - this->start << ". Actual Time: " << startOfMachine - this->start << endl;
+                << scheduledStart << "us. Actual Time: " << startOfMachine << "us. Overran by: "
+                << startOfMachine - scheduledStart << "us." << endl;
         } 
-        startOfMachine = this->sleepTillTimeslot(scheduledStart);
+        //cout << "Scheduled Start: " << scheduledStart - this->start << "\nActual Start: " << startOfMachine - this->start << endl;
         bool a = !machine->executeOnce(&mfire);
         if (a && accepting_action)
             accepting_action(context, machine, int(ids[i])); //Execute function if machine in accepting state
@@ -40,7 +41,8 @@ bool TTCLFSMVectorFactory::executeOnceTT(
         long long end = this->getTimeUS();
         this->_accepting = a && this->_accepting;
         if (end > scheduledEnd) {
-            cerr << names[i] << " Failed to execute by timeslot t = " << scheduledEnd - this->start << "us." << endl;
+            cerr << names[i] << " Failed to execute by timeslot t = " << scheduledEnd - this->start
+                << "us. Overran by " << end - scheduledEnd << "us." << endl;
             continue;
         }
     }
@@ -104,11 +106,10 @@ vector<SuspensibleMachine*> TTCLFSMVectorFactory::fetchMachines(vector<int> ids)
     return machines;
 }
 
-long long TTCLFSMVectorFactory::sleepTillTimeslot(long long scheduled) {
-    long long now = this->getTimeUS();
+long long TTCLFSMVectorFactory::sleepTillTimeslot(long long scheduled, long long now) {
     if (now >= scheduled) {
         return now;
     }
-    usleep(1);
-    return this->sleepTillTimeslot(scheduled);
+    usleep(100);
+    return this->sleepTillTimeslot(scheduled, this->getTimeUS());
 }
