@@ -25,8 +25,8 @@ bool TTCLFSMVectorFactory::executeOnceTT(
         if (!machine || (should_execute_machine != NULLPTR && !should_execute_machine(context, machine, int(ids[i]))))
             continue;
         bool mfire = false; 
-        long long scheduledEnd = times[i+1] + this->start;
-        long long scheduledStart = times[i] + this->start;
+        long long scheduledEnd = this->sum(times, i+1) + this->start;
+        long long scheduledStart = this->sum(times, i) + this->start;
         long long startOfMachine = this->sleepTillTimeslot(scheduledStart, this->getTimeUS());
         if (startOfMachine - scheduledStart > 200) {
             cerr << "Machine " << names[i] << " starting late. Scheduled Time: "
@@ -112,4 +112,15 @@ long long TTCLFSMVectorFactory::sleepTillTimeslot(long long scheduled, long long
     }
     usleep(100);
     return this->sleepTillTimeslot(scheduled, this->getTimeUS());
+}
+
+long long TTCLFSMVectorFactory::sum(vector<long long> vec, unsigned long index) {
+    long long carry = 0;
+    for (unsigned long i = 0; i < vec.size(); i++) {
+        carry += vec[i];
+        if (i == index) {
+            break;
+        }
+    }
+    return carry;
 }
