@@ -76,13 +76,19 @@ namespace FSM {
     class TTCLFSMVectorFactory : public CLFSMWBVectorFactory {
         private:
 
-            long getTimeMS();
+            long long getTimeUS();
 
-            vector<long> createStartTimes(vector<int> times);
+            vector<long long> createStartTimes(vector<int> times);
 
             bool _accepting;
 
-            long start;
+            long long start;
+
+            vector<int> fetchIds(vector<string> names);
+
+            vector<SuspensibleMachine*> fetchMachines(vector<int> ids);
+
+            long long sleepTillTimeslot(long long);
 
         public:
             TTCLFSMVectorFactory(bool accepting, Context *context, bool del = true, useconds_t timeout = 10000L)
@@ -92,7 +98,7 @@ namespace FSM {
 
             bool executeOnceTT(
                 visitor_f should_execute_machine,
-                vector<long>,
+                vector<long long>,
                 vector<string>,
                 void *context = NULLPTR,
                 visitor_f accepting_action = NULLPTR

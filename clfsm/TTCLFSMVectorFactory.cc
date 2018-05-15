@@ -11,48 +11,36 @@ using namespace FSM;
 
 bool TTCLFSMVectorFactory::executeOnceTT(
     visitor_f should_execute_machine,
-    vector<long> times,
+    vector<long long> times,
     vector<string> names,
     void *context,
     visitor_f accepting_action
 ) {
-    cout << "Entering Function" << endl;
     bool fired = false;
     this->_accepting = true;
-    for (unsigned long i = 0; i < names.size(); i++) {
-        cout << "Starting new Iteration" << endl;
-        int id = this->index_of_machine_named(names[i].c_str());
-        if (id == -1) {
-            cerr << "Failed to index machine: " << names[i] << endl;
-            continue;
-        }
-        SuspensibleMachine *machine = this->fsms()->machines()[id];
-        if (!machine || (should_execute_machine != NULLPTR && !should_execute_machine(context, machine, int(id))))
+    vector<int> ids = this->fetchIds(names);
+    vector<SuspensibleMachine*> machines = this->fetchMachines(ids);
+    for (unsigned long i = 0; i < machines.size(); i++) {
+        SuspensibleMachine *machine = machines[i];
+        long long scheduledStart = times[i] + this->start;
+        long long scheduledEnd = times[i+1] + this->start;
+        if (!machine || (should_execute_machine != NULLPTR && !should_execute_machine(context, machine, int(ids[i]))))
             continue;
         bool mfire = false;
-        long scheduledStart = times[i] + this->start;
-        long scheduledEnd = times[i+1] + this->start;
-        long startOfMachine = this->getTimeMS(); 
-        cout << "Default start of machine: " << startOfMachine << endl;
-        if (startOfMachine > scheduledStart) {
+        long long startOfMachine = this->getTimeUS(); 
+        if (startOfMachine - scheduledStart > 1000) {
             cerr << "Machine " << names[i] << " starting late. Scheduled Time: "
-                << scheduledStart << ". Actual Time: " << startOfMachine << endl;
+                << scheduledStart - this->start << ". Actual Time: " << startOfMachine - this->start << endl;
         } 
-        cout << "Scheduled start: " << scheduledStart << endl;
-        while (startOfMachine < scheduledStart) {
-            //usleep(int(scheduledEnd - startOfMachine) * 1000);
-            usleep(100);
-            startOfMachine = this->getTimeMS();
-        }
-        cout << "Done Sleeping" << endl;
+        startOfMachine = this->sleepTillTimeslot(scheduledStart);
         bool a = !machine->executeOnce(&mfire);
         if (a && accepting_action)
-            accepting_action(context, machine, int(id)); //Execute function if machine in accepting state
+            accepting_action(context, machine, int(ids[i])); //Execute function if machine in accepting state
         if (mfire) fired = true;
-        long end = this->getTimeMS();
+        long long end = this->getTimeUS();
         this->_accepting = a && this->_accepting;
         if (end > scheduledEnd) {
-            cerr << names[i] << " Failed to execute by timeslot t = " << scheduledEnd << "ms." << endl;
+            cerr << names[i] << " Failed to execute by timeslot t = " << scheduledEnd - this->start << "us." << endl;
             continue;
         }
     }
@@ -67,7 +55,7 @@ void TTCLFSMVectorFactory::executeTT(
     void *context,
     visitor_f accepting_action
 ) {
-    //this->start = this->getTimeMS();
+    this->start = this->getTimeUS();
     do
     {
         if (!this->executeOnceTT(should_execute_machine, this->createStartTimes(times), names, context, accepting_action))
@@ -76,24 +64,51 @@ void TTCLFSMVectorFactory::executeTT(
         while (!this->_accepting);
 }
 
-long TTCLFSMVectorFactory::getTimeMS() {
+long long TTCLFSMVectorFactory::getTimeUS() {
     struct timespec spec;
     clock_gettime(CLOCK_REALTIME, &spec);
-    long time = long(spec.tv_nsec / 1.0e6);
-    if (this->start == NULLPTR) {
-        cout << "Setting Start Time to: " << time << endl;
-        this->start = time;
-    }
-    return time;
+    return (spec.tv_sec * 1000000) + (spec.tv_nsec / 1000);
 }
 
-vector<long> TTCLFSMVectorFactory::createStartTimes(vector<int> times) {
-    int carry = 0;
-    vector<long> startTimes;
+vector<long long> TTCLFSMVectorFactory::createStartTimes(vector<int> times) {
+    long long carry = 0;
+    vector<long long> startTimes;
     startTimes.push_back(0);
     for (unsigned long i = 0; i < times.size(); i++) {
-        startTimes.push_back(long(carry + times[i]));
+        startTimes.push_back(carry + times[i]);
         carry += times[i];
     }
     return startTimes;
+}
+
+vector<int> TTCLFSMVectorFactory::fetchIds(vector<string> names) {
+    vector<int> ids;
+    for (unsigned long i = 0; i < names.size(); i++) {
+        int id = this->index_of_machine_named(names[i].c_str());
+        if (id == -1) {
+            cerr << "Failed to index machine: " << names[i] << endl;
+            ids.clear();
+            return ids;
+        } 
+        ids.push_back(id);
+    }
+    return ids;
+}
+
+vector<SuspensibleMachine*> TTCLFSMVectorFactory::fetchMachines(vector<int> ids) {
+    vector<SuspensibleMachine*> machines;
+    for (unsigned long i = 0; i < ids.size(); i++) {
+        SuspensibleMachine *machine = this->fsms()->machines()[ids[i]];
+        machines.push_back(machine);
+    }
+    return machines;
+}
+
+long long TTCLFSMVectorFactory::sleepTillTimeslot(long long scheduled) {
+    long long now = this->getTimeUS();
+    if (now >= scheduled) {
+        return now;
+    }
+    usleep(1);
+    return this->sleepTillTimeslot(scheduled);
 }
