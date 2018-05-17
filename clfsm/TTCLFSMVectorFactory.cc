@@ -33,7 +33,7 @@ bool TTCLFSMVectorFactory::executeOnceTT(
                 << scheduledStart << "us. Actual Time: " << startOfMachine << "us. Overran by: "
                 << startOfMachine - scheduledStart << "us." << endl;
         } 
-        //cout << "Scheduled Start: " << scheduledStart - this->start << "\nActual Start: " << startOfMachine - this->start << endl;
+        cout << "Scheduled Start: " << scheduledStart - this->start << "\nActual Start: " << startOfMachine - this->start << endl;
         bool a = !machine->executeOnce(&mfire);
         if (a && accepting_action)
             accepting_action(context, machine, int(ids[i])); //Execute function if machine in accepting state
