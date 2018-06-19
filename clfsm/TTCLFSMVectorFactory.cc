@@ -12,6 +12,7 @@ using namespace FSM;
 bool TTCLFSMVectorFactory::executeOnceTT(
     visitor_f should_execute_machine,
     vector<long long> times,
+    vector<long long> deadlines,
     vector<string> names,
     void *context,
     visitor_f accepting_action
@@ -20,20 +21,13 @@ bool TTCLFSMVectorFactory::executeOnceTT(
     this->_accepting = true;
     vector<int> ids = this->fetchIds(names);
     vector<SuspensibleMachine*> machines = this->fetchMachines(ids);
+    long long start = this->getTimeUS();
     for (unsigned long i = 0; i < machines.size(); i++) {
         SuspensibleMachine *machine = machines[i];
         if (!machine || (should_execute_machine != NULLPTR && !should_execute_machine(context, machine, int(ids[i]))))
             continue;
-        bool mfire = false; 
-        long long scheduledEnd = times[i+1] + this->start;
-        long long scheduledStart = times[i] + this->start;
-        long long startOfMachine = this->sleepTillTimeslot(scheduledStart, this->getTimeUS());
-        if (startOfMachine - scheduledStart > 200) {
-            cerr << "Machine " << names[i] << " starting late. Scheduled Time: "
-                << scheduledStart << "us. Actual Time: " << startOfMachine << "us. Overran by: "
-                << startOfMachine - scheduledStart << "us." << endl;
-        } 
-        cout << "Scheduled Start: " << scheduledStart - this->start << "\nActual Start: " << startOfMachine - this->start << endl;
+        bool mfire = false;
+        long long scheduledEnd = this->getTimeUS() + deadlines[i];
         bool a = !machine->executeOnce(&mfire);
         if (a && accepting_action)
             accepting_action(context, machine, int(ids[i])); //Execute function if machine in accepting state
@@ -41,26 +35,38 @@ bool TTCLFSMVectorFactory::executeOnceTT(
         long long end = this->getTimeUS();
         this->_accepting = a && this->_accepting;
         if (end > scheduledEnd) {
-            cerr << names[i] << " Failed to execute by timeslot t = " << scheduledEnd - this->start
+            cerr << names[i] << " Failed to execute by timeslot t = " << scheduledEnd - start
                 << "us. Overran by " << end - scheduledEnd << "us." << endl;
             continue;
         }
+        // If the Machines finish early then sleep till start of next cycle.
+        if (i == machines.size() - 1) {
+            this->sleepTillTimeslot(scheduledEnd);
+        }
     }
-    this->start = times[times.size() - 1] + this->start;
     return fired;
 }
 
 void TTCLFSMVectorFactory::executeTT(
     visitor_f should_execute_machine,
-    vector<int> times,
+    vector<int> periods,
+    vector<int> deadlines,
     vector<string> names,
     void *context,
     visitor_f accepting_action
 ) {
-    this->start = this->getTimeUS();
     do
     {
-        if (!this->executeOnceTT(should_execute_machine, this->createStartTimes(times), names, context, accepting_action))
+        if (
+            !this->executeOnceTT(
+                should_execute_machine,
+                this->createStartTimes(times),
+                this->toLongLong(deadlines),
+                names,
+                context,
+                accepting_action
+            )
+        )
             fsms()->noTransitionFired();
     }
         while (!this->_accepting);
@@ -106,10 +112,19 @@ vector<SuspensibleMachine*> TTCLFSMVectorFactory::fetchMachines(vector<int> ids)
     return machines;
 }
 
-long long TTCLFSMVectorFactory::sleepTillTimeslot(long long scheduled, long long now) {
-    if (now >= scheduled) {
+long long TTCLFSMVectorFactory::sleepTillTimeslot(long long scheduled) {
+    long long now = this->getTimeUS();
+    if (scheduled <= now) {
         return now;
     }
-    usleep(100);
-    return this->sleepTillTimeslot(scheduled, this->getTimeUS());
+    usleep(scheduled - now);
+    return this->getTimeUS();
+}
+
+vector<long long> TTCLFSMVectorFactory::toLongLong(vector<int> ints) {
+    vector<long long> longLongs;
+    for (unsigned long i = 0; i < ints.size(); i++) {
+        longLongs.push_back(static_cast<long long>(ints[i]));
+    }
+    return longLongs;
 }

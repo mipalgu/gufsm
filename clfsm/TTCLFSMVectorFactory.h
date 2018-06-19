@@ -82,13 +82,13 @@ namespace FSM {
 
             bool _accepting;
 
-            long long start;
-
             vector<int> fetchIds(vector<string> names);
 
             vector<SuspensibleMachine*> fetchMachines(vector<int> ids);
 
             long long sleepTillTimeslot(long long, long long);
+
+            vector<long long> toLongLong(vector<int>);
 
 
         public:
@@ -107,6 +107,7 @@ namespace FSM {
 
             void executeTT(
                 visitor_f should_execute_machine,
+                vector<int>,
                 vector<int>,
                 vector<string>,
                 void *context = NULLPTR,
