@@ -392,7 +392,8 @@ int main(int argc, char * const argv[])
 
     argc -= optind;
     argv += optind;
-    vector<int> times;
+    vector<int> periods;
+    vector<int> deadlines;
     vector<string> names;
 
     if (isTT) {
@@ -403,7 +404,8 @@ int main(int argc, char * const argv[])
         }
         for (unsigned long i = 0; i < parser->paths().size(); i++) {
             machines.push_back(parser->paths()[i]);
-            times.push_back(atoi(parser->durations()[i].c_str()));
+            periods.push_back(atoi(parser->periods()[i].c_str()));
+            deadlines.push_back(atoi(parser->deadlines()[i].c_str()));
             names.push_back(parser->names()[i]);
         }
         delete(parser);
@@ -445,7 +447,7 @@ int main(int argc, char * const argv[])
         factory->fsms()->execute(visitor, &context, accept_action);
     } else {
         TTCLFSMVectorFactory* ttFactory = static_cast<TTCLFSMVectorFactory*>(factory);
-        ttFactory->executeTT(visitor, times, names, &context, accept_action);
+        ttFactory->executeTT(visitor, periods, deadlines, names, &context, accept_action);
     }
 #ifdef WANT_FSM_REFLECTION
     refl_destroyAPI(NULLPTR); // Destroy reflection system
