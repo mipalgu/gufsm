@@ -32,7 +32,8 @@ bool FileParser::parseLine(string line) {
     this->_raws.push_back(line);
     this->_paths.push_back(this->parsePath(line));
     this->_names.push_back(this->parseName(line));
-    this->_durations.push_back(this->parseDuration(line));
+    this->_periods.push_back(this->parsePeriod(line));
+    this->_deadlines.push_back(this->parseDeadline(line));
     return true;
 }
 
@@ -44,8 +45,12 @@ string FileParser::parseName(string line) {
     return splitNameWithMachine[splitNameWithMachine.size() - 2];
 }
 
-string FileParser::parseDuration(string line) {
+string FileParser::parsePeriod(string line) {
     return components_of_string_separated(line, '\t', false)[1];
+}
+
+string FileParser::parseDeadline(string line) {
+    return components_of_string_separated(line, '\t', false)[2];
 }
 
 string FileParser::parsePath(string line) {

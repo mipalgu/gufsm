@@ -79,7 +79,8 @@ namespace FSM {
             string _contents;
             vector<string> _paths;
             vector<string> _names;
-            vector<string> _durations;
+            vector<string> _periods;
+            vector<string> _deadlines;
             vector<string> _raws;
 
 
@@ -100,12 +101,20 @@ namespace FSM {
             string parseName(string line);
 
             /**
-             * A function to retrieve the maximum duration a machine takes to execute a ringlet from the dispatch table.
+             * A function to retrieve the period a machine takes to execute a ringlet from the dispatch table.
              * @param line The line to be parsed.
              *
-             * @return The maximum duration of the machine.
+             * @return The period of the machine.
              */
-            string parseDuration(string line);
+            string parsePeriod(string line);
+
+            /**
+             * A function to reqieve the deadline of the machine
+             * @param line The line to be parsed.
+             *
+             * @return This deadline of the machine.
+             */
+            string parseDeadline(string line);
 
             /**
              * A function to retrieve the path of the machine from the dispatch table.
@@ -134,7 +143,9 @@ namespace FSM {
 
             vector<string> names() {return this->_names;}
 
-            vector<string> durations() {return this->_durations;}
+            vector<string> periods() {return this->_periods;}
+
+            vector<string> deadlines() {return this->_deadlines;}
 
             vector<string> raws() {return this->_raws;}
 
