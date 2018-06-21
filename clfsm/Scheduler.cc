@@ -8,38 +8,50 @@
 #include "Scheduler.h"
 
 using namespace std;
+using namespace FSM;
 
 vector<Schedule*> Scheduler::createSchedule(vector<string> paths, vector<int> periods, vector<int> deadlines) {
     vector<int> unscheduled;
     return this->generateSchedule(paths, periods, deadlines);
 }
 
+int Scheduler::smallest(vector<int> vec) {
+    int small = vec[0];
+    for (unsigned long i = 0; i < vec.size(); i++) {
+        if (vec[i] < small) {
+            small = vec[i];
+        }
+    }
+    return small;
+}
+
 vector<Schedule*> Scheduler::generateSchedule(vector<string> paths, vector<int> periods, vector<int> deadlines) {
     vector<int> scheduled;
     vector<int> timesScheduled(paths.size(), 0);
-    int smallestTimeIndex = min_element(periods.begin(), periods.end());
-    int time = periods[smallestTimeIndex] * (time / periods[smallestTimeIndex]) + periods[smallestTimeIndex];
+    int smallestPeriod = this->smallest(periods); 
+    int time = 0;
     int initialTime = time;
-    int i = 0;
+    unsigned long i = 0;
     vector<Schedule*> schedule;
     vector<int> emptyVector;
     while (true) {
         if (time / periods[i] > timesScheduled[i]) {
             time += deadlines[i];
-            scheduled.push_back(i);
+            scheduled.push_back(static_cast<int>(i));
             i = 0;
             continue;
         }
         i++;
         if (i >= paths.size()) {
-            schedule.push_back(new Schedule(paths, periods, deadlines, scheduled, emptyVector, initialTime));
+            time = smallestPeriod * (time / smallestPeriod) + smallestPeriod;
+            schedule.push_back(new Schedule(paths, periods, deadlines, scheduled, emptyVector, initialTime, time));
             scheduled = emptyVector;
-            time = periods[smallestTimeIndex] * (time / periods[smallestTimeIndex]) + periods[smallestTimeIndex];
             initialTime = time;
         }
-        if (timesScheduled[min_element(timesScheduled.begin(), timesScheduled.end())] > 0) {
+        if (this->smallest(timesScheduled) > 0) {
             if (!scheduled.empty()) {
-                schedule.push_back(new Schedule(paths, periods, deadlines, scheduled, emptyVector, initialTime));
+                time = smallestPeriod * (time / smallestPeriod) + smallestPeriod;
+                schedule.push_back(new Schedule(paths, periods, deadlines, scheduled, emptyVector, initialTime, time));
             }
             return schedule;
         }

@@ -8,6 +8,7 @@
 #include "Schedule.h"
 
 using namespace std;
+using namespace FSM;
 
 Schedule::Schedule(
     vector<string> newPaths,
@@ -29,18 +30,18 @@ Schedule::Schedule(
 }
 
 void Schedule::refresh() {
-    if (!this->_scheduled.empty()) {
-        this->_unscheduled.insert(this->_unscheduled.end(), this->_scheduled.begin(), this->_scheduled.end());
+    if (!this->_scheduledMachines.empty()) {
+        this->_unscheduledMachines.insert(this->_unscheduledMachines.end(), this->_scheduledMachines.begin(), this->_scheduledMachines.end());
     }
-    this->_scheduled = this->_unscheduled;
-    this->_unscheduled.clear(); 
+    this->_scheduledMachines = this->_unscheduledMachines;
+    this->_unscheduledMachines.clear(); 
 }
 
 string Schedule::description() {
     stringstream str;
     str << "Start at: " << this->_start;
-    for (unsigned long i = 0; i < this->_scheduled.size(); i++) {
-        int index = this->_scheduled[i];
+    for (unsigned long i = 0; i < this->_scheduledMachines.size(); i++) {
+        int index = this->_scheduledMachines[i];
         str << "\n" << this->_paths[index] << " " << this->_deadlines[index];
     }
     str << "End at: " << this->_end << endl;
