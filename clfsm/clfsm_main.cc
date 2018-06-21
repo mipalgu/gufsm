@@ -300,6 +300,7 @@ bool isTT = false;
 
 int main(int argc, char * const argv[])
 {
+    std::cout << "In main!" << std::endl;
     fStateMsgOutput = stderr;
 
     vector<string> machines;
@@ -397,17 +398,21 @@ int main(int argc, char * const argv[])
     vector<string> names;
 
     if (isTT) {
+        std::cout << "Getting args" << std::endl;
         string tablePath(*argv);
         FileParser* parser = new FileParser(tablePath);
+        std::cout << "Created parser" << std::endl;
         if (!parser->parse()) {
             return 0;
         }
+        std::cout << "Parsed table" << std::endl;
         for (unsigned long i = 0; i < parser->paths().size(); i++) {
             machines.push_back(parser->paths()[i]);
             periods.push_back(atoi(parser->periods()[i].c_str()));
             deadlines.push_back(atoi(parser->deadlines()[i].c_str()));
             names.push_back(parser->names()[i]);
         }
+        std::cout << "Created variables" << std::endl;
         delete(parser);
     } else{
         while (argc--)
@@ -446,7 +451,9 @@ int main(int argc, char * const argv[])
     if (!isTT) {
         factory->fsms()->execute(visitor, &context, accept_action);
     } else {
+        std::cout << "Creating ttFactory" << std::endl;
         TTCLFSMVectorFactory* ttFactory = static_cast<TTCLFSMVectorFactory*>(factory);
+        std::cout << "Executing TT" << std::endl;
         ttFactory->executeTT(visitor, periods, deadlines, names, &context, accept_action);
     }
 #ifdef WANT_FSM_REFLECTION

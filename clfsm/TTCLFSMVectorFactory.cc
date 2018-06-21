@@ -15,6 +15,9 @@ bool TTCLFSMVectorFactory::executeOnceTT(
     void *context,
     visitor_f accepting_action
 ) {
+    for (unsigned long i = 0; i < schedules.size(); i++) {
+        std::cout << schedules[i] << std::endl;
+    }
     bool fired = false;
     this->_accepting = true;
     for (unsigned long s = 0; s < schedules.size() ; s++) {
@@ -59,6 +62,7 @@ void TTCLFSMVectorFactory::executeTT(
     Scheduler *scheduler = new Scheduler();
     do
     {
+        std::cout << "Test!" << std::endl;
         if (
             !this->executeOnceTT(
                 should_execute_machine,
