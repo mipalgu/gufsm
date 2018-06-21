@@ -33,7 +33,7 @@ Schedule* Scheduler::generateSchedule(vector<string> paths, vector<int> periods,
             }
         }
     }
-    return new Schedule(paths, periods, deadlines, schedule, scheduleTimes);
+    return new Schedule(paths, periods, deadlines, schedule, scheduleTimes, sleepTime);
     
     
     /*vector<int> scheduled;
@@ -68,7 +68,7 @@ Schedule* Scheduler::generateSchedule(vector<string> paths, vector<int> periods,
     }*/
 }
 
-vector<unsigned long> findSchedulableMachines(
+/*vector<unsigned long> Scheduler::findSchedulableMachines(
     vector<int> lastScheduled,
     vector<int> periods,
     int time
@@ -80,9 +80,9 @@ vector<unsigned long> findSchedulableMachines(
         }
     }
     return indexes;
-}
+}*/
 /*
-vector<unsigned long> orderByLowestFrequency(vector<int> periods, vector<int> deadlines) {
+vector<unsigned long> Scheduler::orderByLowestFrequency(vector<int> periods, vector<int> deadlines) {
     vector<unsigned long> indexes;
     indexes.push_back(0);
     for (unsigned long i = 1; i < periods.size(); i++) {
@@ -101,7 +101,7 @@ vector<unsigned long> orderByLowestFrequency(vector<int> periods, vector<int> de
     return indexes;
 }*/
 
-int getSmallestTimeSlot(vector<int> periods) {
+/*int Scheduler::getSmallestTimeSlot(vector<int> periods) {
     int timeslot = periods[0];
     for (unsigned long i = 0; i < periods.size(); i++) {
         for (unsigned long j = 0; j < periods.size(); j++) {
@@ -115,9 +115,9 @@ int getSmallestTimeSlot(vector<int> periods) {
         }
     }
     return timeslot;
-}
+}*/
 
-int getHighestValue(vector<int> vec) {
+int Scheduler::getHighestValue(vector<int> vec) {
     int high = vec[0];
     for (unsigned long i = 1; i < vec.size(); i++) {
         if (vec[i] > high) {

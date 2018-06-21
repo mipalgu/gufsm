@@ -38,7 +38,7 @@ Schedule::Schedule(
 string Schedule::description() {
     stringstream str;
     for (unsigned long i = 0; i < this->_scheduledMachines.size(); i++) {
-        int index = this->_scheduledMachines[i];
+        unsigned long index = this->_scheduledMachines[i];
         str << "\n" << this->_paths[index] << " " << this->_deadlines[index];
     }
     str << "\nSleep For: " << this->_sleepTime << endl;

@@ -74,7 +74,7 @@ namespace FSM {
         private:
             Schedule* generateSchedule(vector<string>, vector<int>, vector<int>);
 
-            int getSmallestTimeslot(vector<int>);
+            //int getSmallestTimeslot(vector<int>);
 
             int getHighestValue(vector<int>);
         public:

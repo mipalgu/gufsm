@@ -74,7 +74,7 @@ namespace FSM {
             vector<int> _deadlines;
             vector<unsigned long> _scheduledMachines;
             vector<int> _scheduledTimes;
-            int _sleepTime
+            int _sleepTime;
         public:
             Schedule(vector<string>, vector<int>, vector<int>, vector<unsigned long>, vector<int>, int);
 
