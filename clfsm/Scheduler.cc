@@ -15,18 +15,24 @@ vector<Schedule*> Scheduler::createSchedule(vector<string> paths, vector<int> pe
     return this->generateSchedule(paths, periods, deadlines);
 }
 
-int Scheduler::smallest(vector<int> vec) {
-    int small = vec[0];
-    for (unsigned long i = 0; i < vec.size(); i++) {
-        if (vec[i] < small) {
-            small = vec[i];
+vector<Schedule*> Scheduler::generateSchedule(vector<string> paths, vector<int> periods, vector<int> deadlines) {
+    //vector<unsigned long> orderedMachines = this->orderByLowestFrequency(periods, deadlines);
+    int timeslot = this->getSmallestTimeslot(periods);
+    vector<int> lastScheduled(paths.size(), 0); 
+    int maxTime = this->getHighestValue(periods);
+    vector<unsigned long> schedule;
+    vector<int> scheduleTimes;
+    for (int t = 0; t <= maxTime; t += timeslot) {
+        for (unsigned long i = 0; i < periods.size(); i++) {
+            if (t - lastScheduled[i] >= periods[i]) {
+                schedule.push_back(i);
+                scheduleTimes.push_back(t);
+            }
         }
     }
-    return small;
-}
-
-vector<Schedule*> Scheduler::generateSchedule(vector<string> paths, vector<int> periods, vector<int> deadlines) {
-    vector<int> scheduled;
+    
+    
+    /*vector<int> scheduled;
     vector<int> timesScheduled(paths.size(), 0);
     int smallestPeriod = this->smallest(periods); 
     int time = 0;
@@ -55,5 +61,78 @@ vector<Schedule*> Scheduler::generateSchedule(vector<string> paths, vector<int> 
             }
             return schedule;
         }
-    }
+    }*/
 }
+
+vector<unsigned long> findSchedulableMachines(
+    vector<int> lastScheduled,
+    vector<int> periods,
+    int time
+) {
+    vector<unsigned long> indexes;
+    for (unsigned long i = 0; i < periods.size(); i++) {
+        if (time - lastScheduled[i] > periods[i]) {
+            indexes.push_back(i);
+        }
+    }
+    return indexes;
+}
+/*
+vector<unsigned long> orderByLowestFrequency(vector<int> periods, vector<int> deadlines) {
+    vector<unsigned long> indexes;
+    indexes.push_back(0);
+    for (unsigned long i = 1; i < periods.size(); i++) {
+        for (unsigned long j = 0; j < indexes.size(); j++) {
+            if (periods[i] == periods[indexes[j]]) {
+                if (deadlines[i] <= deadlines[indexes[j]]) {
+                    //insert
+                }
+                continue;
+            }
+            if (periods[i] < periods[indexes[j]]) {
+                //insert
+            }
+        }
+    }
+    return indexes;
+}*/
+
+int getSmallestTimeSlot(vector<int> periods) {
+    int timeslot = periods[0];
+    for (unsigned long i = 0; i < periods.size(); i++) {
+        for (unsigned long j = 0; j < periods.size(); j++) {
+            if (i == j) {
+                continue;
+            }
+            int dt = abs(periods[j] - periods[i]);
+            if (dt < timeslot) {
+                timeslot = dt;
+            }
+        }
+    }
+    return timeslot;
+}
+
+int getHighestValue(vector<int> vec) {
+    int high = vec[0];
+    for (unsigned long i = 1; i < vec.size(); i++) {
+        if (vec[i] > high) {
+            high = vec[i];
+        }
+    }
+    return high;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

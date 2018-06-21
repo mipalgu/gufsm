@@ -63,6 +63,7 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <stdlib.h>
 
 
 namespace FSM {
@@ -71,9 +72,11 @@ namespace FSM {
 
     class Scheduler {
         private:
-            int smallest(vector<int>);
-
             vector<Schedule*> generateSchedule(vector<string>, vector<int>, vector<int>);
+
+            int getSmallestTimeslot(vector<int>);
+
+            int getHighestValue(vector<int>);
         public:
             vector<Schedule*> createSchedule(vector<string>, vector<int>, vector<int>);    
     };
