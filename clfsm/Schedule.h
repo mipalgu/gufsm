@@ -74,8 +74,9 @@ namespace FSM {
             vector<int> _deadlines;
             vector<unsigned long> _scheduledMachines;
             vector<int> _scheduledTimes;
+            int _sleepTime
         public:
-            Schedule(vector<string>, vector<int>, vector<int>, vector<unsigned long>, vector<int>);
+            Schedule(vector<string>, vector<int>, vector<int>, vector<unsigned long>, vector<int>, int);
 
             vector<string> paths() {return this->_paths;}
 
@@ -86,6 +87,8 @@ namespace FSM {
             vector<unsigned long> scheduledMachines() {return this->_scheduledMachines;}
 
             vector<int> scheduledTimes() {return this->_scheduledTimes;}
+
+            int sleepTime() {return this->_sleepTime;}
 
             //int period() {return this->_period;}
 

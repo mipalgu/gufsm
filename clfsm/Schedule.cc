@@ -15,13 +15,15 @@ Schedule::Schedule(
     vector<int> newPeriods,
     vector<int> newDeadlines,
     vector<unsigned long> scheduled,
-    vector<int> times
+    vector<int> times,
+    int newSleepTime
 ) {
     this->_paths = newPaths;
     this->_periods = newPeriods;
     this->_deadlines = newDeadlines;
     this->_scheduledMachines = scheduled;
     this->_scheduledTimes = times;
+    this->_sleepTime = newSleepTime;
     //this->_period = this->_periods[min_element(0, this->_periods.size() - 1)];
 }
 
@@ -39,5 +41,6 @@ string Schedule::description() {
         int index = this->_scheduledMachines[i];
         str << "\n" << this->_paths[index] << " " << this->_deadlines[index];
     }
+    str << "\nSleep For: " << this->_sleepTime << endl;
     return str.str();
 }

@@ -10,26 +10,30 @@
 using namespace std;
 using namespace FSM;
 
-vector<Schedule*> Scheduler::createSchedule(vector<string> paths, vector<int> periods, vector<int> deadlines) {
-    vector<int> unscheduled;
+Schedule* Scheduler::createSchedule(vector<string> paths, vector<int> periods, vector<int> deadlines) {
     return this->generateSchedule(paths, periods, deadlines);
 }
 
-vector<Schedule*> Scheduler::generateSchedule(vector<string> paths, vector<int> periods, vector<int> deadlines) {
+Schedule* Scheduler::generateSchedule(vector<string> paths, vector<int> periods, vector<int> deadlines) {
     //vector<unsigned long> orderedMachines = this->orderByLowestFrequency(periods, deadlines);
-    int timeslot = this->getSmallestTimeslot(periods);
+    //int timeslot = this->getSmallestTimeslot(periods);
     vector<int> lastScheduled(paths.size(), 0); 
     int maxTime = this->getHighestValue(periods);
     vector<unsigned long> schedule;
     vector<int> scheduleTimes;
-    for (int t = 0; t <= maxTime; t += timeslot) {
+    int sleepTime = 0;
+    for (int t = 0; t <= maxTime; t++) {
         for (unsigned long i = 0; i < periods.size(); i++) {
             if (t - lastScheduled[i] >= periods[i]) {
                 schedule.push_back(i);
                 scheduleTimes.push_back(t);
+                if (t == maxTime) {
+                    sleepTime += deadlines[i];
+                }
             }
         }
     }
+    return new Schedule(paths, periods, deadlines, schedule, scheduleTimes);
     
     
     /*vector<int> scheduled;

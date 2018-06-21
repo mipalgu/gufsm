@@ -72,13 +72,13 @@ namespace FSM {
 
     class Scheduler {
         private:
-            vector<Schedule*> generateSchedule(vector<string>, vector<int>, vector<int>);
+            Schedule* generateSchedule(vector<string>, vector<int>, vector<int>);
 
             int getSmallestTimeslot(vector<int>);
 
             int getHighestValue(vector<int>);
         public:
-            vector<Schedule*> createSchedule(vector<string>, vector<int>, vector<int>);    
+            Schedule* createSchedule(vector<string>, vector<int>, vector<int>);    
     };
 
 };
