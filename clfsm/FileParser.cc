@@ -58,5 +58,5 @@ string FileParser::parsePath(string line) {
 }
 
 bool FileParser::isValid(string data) {
-    return regex_match(data, regex("[\\/~\\.\\w][\\w\\/\\.:\\-]+[\\w\\.\\-]+\\.machine\\t\\d+"));
+    return regex_match(data, regex("[\\/~\\.\\w][\\w\\/\\.:\\-]+[\\w\\.\\-]+\\.machine\\t\\d+\\t\\d+"));
 }
