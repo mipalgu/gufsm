@@ -1,8 +1,8 @@
 /*
- * TTCLFSMVectorFactory.h 
+ * Schedule.h 
  * clfsm 
  *
- * Created by Morgan McColl on 11/05/2018.
+ * Created by Morgan McColl on 21/06/2018.
  * Copyright © 2018 Morgan McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,65 +56,49 @@
  *
  */
 
-#ifndef TTCLFSMVECTORFACTORY_H
-#define TTCLFSMVECTORFACTORY_H
+#ifndef SCHEDULE_H
+#define SCHEDULE_H
 
-#include "clfsm_wb_vector_factory.h"
-#include <time.h>
-#include <math.h>
-#include <inttypes.h>
-#include <unistd.h>
-#include "CLMachine.h"
-#include "FSMachineVector.h"
-#include "FSMSuspensibleMachine.h"
-#include "gu_util.h"
-#include "Scheduler.h"
-#include "Schedule.h"
+#include <vector>
+#include <string>
+#include <sstream>
 
 namespace FSM {
     
     using namespace std;
 
-    class TTCLFSMVectorFactory : public CLFSMWBVectorFactory {
+    class Schedule {
         private:
-
-            long long getTimeUS();
-
-            //vector<long long> createStartTimes(vector<int> times);
-
-            bool _accepting;
-
-            vector<int> fetchIds(vector<string> names);
-
-            vector<SuspensibleMachine*> fetchMachines(vector<int> ids);
-
-            long long sleepTillTimeslot(long long);
-
-            //vector<long long> toLongLong(vector<int>);
-
-
+            vector<string> _paths;
+            vector<int> _periods;
+            vector<int> _deadlines;
+            vector<int> _scheduledMachines;
+            vector<int> _unscheduledMachines;
+            int _start;
+            int _end;
         public:
-            TTCLFSMVectorFactory(bool accepting, Context *context, bool del = true, useconds_t timeout = 10000L)
-                : CLFSMWBVectorFactory(context, del, timeout) {
-                    this->_accepting = accepting;
-                }
+            Schedule(vector<string>, vector<int>, vector<int>, vector<int>, vector<int>, int, int);
 
-            bool executeOnceTT(
-                visitor_f should_execute_machine,
-                vector<Schedule*>,
-                void *context = NULLPTR,
-                visitor_f accepting_action = NULLPTR
-            );
+            void refresh();
 
-            void executeTT(
-                visitor_f should_execute_machine,
-                vector<int>,
-                vector<int>,
-                vector<string>,
-                void *context = NULLPTR,
-                visitor_f accepting_action = NULLPTR
-            ); 
+            vector<string> paths() {return this->_paths;}
+
+            vector<int> periods() {return this->_periods;}
+
+            vector<int> deadlines() {return this->_deadlines;}
+
+            vector<int> scheduledMachines() {return this->_scheduledMachines;}
+
+            vector<int> unscheduledMachines() {return this->_unscheduledMachines;}
+
+            int start() {return this->_start;}
+
+            int end() {return this->_end;}
+
+            //int period() {return this->_period;}
+
+            string description();
     };
-}
+};
 
-#endif  /* TTCLFSMVECTORFACTORY_H */
+#endif  /* SCHEDULE_H */

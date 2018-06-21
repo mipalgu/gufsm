@@ -11,37 +11,38 @@ using namespace FSM;
 
 bool TTCLFSMVectorFactory::executeOnceTT(
     visitor_f should_execute_machine,
-    vector<long long> times,
-    vector<long long> deadlines,
-    vector<string> names,
+    vector<Schedule*> schedules,
     void *context,
     visitor_f accepting_action
 ) {
     bool fired = false;
     this->_accepting = true;
-    vector<int> ids = this->fetchIds(names);
-    vector<SuspensibleMachine*> machines = this->fetchMachines(ids);
-    long long start = this->getTimeUS();
-    for (unsigned long i = 0; i < machines.size(); i++) {
-        SuspensibleMachine *machine = machines[i];
-        if (!machine || (should_execute_machine != NULLPTR && !should_execute_machine(context, machine, int(ids[i]))))
-            continue;
-        bool mfire = false;
-        long long scheduledEnd = this->getTimeUS() + deadlines[i];
-        bool a = !machine->executeOnce(&mfire);
-        if (a && accepting_action)
-            accepting_action(context, machine, int(ids[i])); //Execute function if machine in accepting state
-        if (mfire) fired = true;
-        long long end = this->getTimeUS();
-        this->_accepting = a && this->_accepting;
-        if (end > scheduledEnd) {
-            cerr << names[i] << " Failed to execute by timeslot t = " << scheduledEnd - start
-                << "us. Overran by " << end - scheduledEnd << "us." << endl;
-            continue;
-        }
-        // If the Machines finish early then sleep till start of next cycle.
-        if (i == machines.size() - 1) {
-            this->sleepTillTimeslot(scheduledEnd);
+    for (unsigned long s = 0; s < schedules.size() ; s++) {
+        Schedule *schedule = schedules[s];
+        vector<int> ids = this->fetchIds(schedule->paths());
+        vector<SuspensibleMachine*> machines = this->fetchMachines(ids);
+        long long start = this->getTimeUS();
+        for (unsigned long i = 0; i < schedule->scheduledMachines().size(); i++) {
+            SuspensibleMachine *machine = machines[i];
+            if (!machine || (should_execute_machine != NULLPTR && !should_execute_machine(context, machine, int(ids[i]))))
+                continue;
+            bool mfire = false;
+            long long scheduledEnd = this->getTimeUS() + schedule->deadlines()[i];
+            bool a = !machine->executeOnce(&mfire);
+            if (a && accepting_action)
+                accepting_action(context, machine, int(ids[i])); //Execute function if machine in accepting state
+            if (mfire) fired = true;
+            long long end = this->getTimeUS();
+            this->_accepting = a && this->_accepting;
+            if (end > scheduledEnd) {
+                cerr << schedule->paths()[i] << " Failed to execute by timeslot t = " << scheduledEnd - start
+                    << "us. Overran by " << end - scheduledEnd << "us." << endl;
+                continue;
+            }
+            // If the Machines finish early then sleep till start of next cycle.
+            if (i == machines.size() - 1) {
+                this->sleepTillTimeslot(scheduledEnd);
+            }
         }
     }
     return fired;
@@ -55,14 +56,13 @@ void TTCLFSMVectorFactory::executeTT(
     void *context,
     visitor_f accepting_action
 ) {
+    Scheduler *scheduler = new Scheduler();
     do
     {
         if (
             !this->executeOnceTT(
                 should_execute_machine,
-                this->createStartTimes(times),
-                this->toLongLong(deadlines),
-                names,
+                scheduler->createSchedule(names, periods, deadlines);
                 context,
                 accepting_action
             )
@@ -70,6 +70,7 @@ void TTCLFSMVectorFactory::executeTT(
             fsms()->noTransitionFired();
     }
         while (!this->_accepting);
+    delete(scheduler);
 }
 
 long long TTCLFSMVectorFactory::getTimeUS() {
@@ -78,6 +79,7 @@ long long TTCLFSMVectorFactory::getTimeUS() {
     return (spec.tv_sec * 1000000) + (spec.tv_nsec / 1000);
 }
 
+/*
 vector<long long> TTCLFSMVectorFactory::createStartTimes(vector<int> times) {
     long long carry = 0;
     vector<long long> startTimes;
@@ -87,7 +89,7 @@ vector<long long> TTCLFSMVectorFactory::createStartTimes(vector<int> times) {
         carry += times[i];
     }
     return startTimes;
-}
+}*/
 
 vector<int> TTCLFSMVectorFactory::fetchIds(vector<string> names) {
     vector<int> ids;
@@ -121,10 +123,11 @@ long long TTCLFSMVectorFactory::sleepTillTimeslot(long long scheduled) {
     return this->getTimeUS();
 }
 
+/*
 vector<long long> TTCLFSMVectorFactory::toLongLong(vector<int> ints) {
     vector<long long> longLongs;
     for (unsigned long i = 0; i < ints.size(); i++) {
         longLongs.push_back(static_cast<long long>(ints[i]));
     }
     return longLongs;
-}
+}*/

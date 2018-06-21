@@ -1,8 +1,8 @@
 /*
- * TTCLFSMVectorFactory.h 
+ * Scheduler.h 
  * clfsm 
  *
- * Created by Morgan McColl on 11/05/2018.
+ * Created by Morgan McColl on 21/06/2018.
  * Copyright © 2018 Morgan McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,65 +56,25 @@
  *
  */
 
-#ifndef TTCLFSMVECTORFACTORY_H
-#define TTCLFSMVECTORFACTORY_H
+#ifndef SCHEDULER_H
+#define SCHEDULER_H
 
-#include "clfsm_wb_vector_factory.h"
-#include <time.h>
-#include <math.h>
-#include <inttypes.h>
-#include <unistd.h>
-#include "CLMachine.h"
-#include "FSMachineVector.h"
-#include "FSMSuspensibleMachine.h"
-#include "gu_util.h"
-#include "Scheduler.h"
 #include "Schedule.h"
+#include <vector>
+#include <string>
+
 
 namespace FSM {
-    
+
     using namespace std;
 
-    class TTCLFSMVectorFactory : public CLFSMWBVectorFactory {
+    class Scheduler {
         private:
-
-            long long getTimeUS();
-
-            //vector<long long> createStartTimes(vector<int> times);
-
-            bool _accepting;
-
-            vector<int> fetchIds(vector<string> names);
-
-            vector<SuspensibleMachine*> fetchMachines(vector<int> ids);
-
-            long long sleepTillTimeslot(long long);
-
-            //vector<long long> toLongLong(vector<int>);
-
-
+            vector<Schedule*> generateSchedule(vector<string>, vector<int>, vector<int>);
         public:
-            TTCLFSMVectorFactory(bool accepting, Context *context, bool del = true, useconds_t timeout = 10000L)
-                : CLFSMWBVectorFactory(context, del, timeout) {
-                    this->_accepting = accepting;
-                }
-
-            bool executeOnceTT(
-                visitor_f should_execute_machine,
-                vector<Schedule*>,
-                void *context = NULLPTR,
-                visitor_f accepting_action = NULLPTR
-            );
-
-            void executeTT(
-                visitor_f should_execute_machine,
-                vector<int>,
-                vector<int>,
-                vector<string>,
-                void *context = NULLPTR,
-                visitor_f accepting_action = NULLPTR
-            ); 
+            vector<Schedule*> createSchedule(vector<string>, vector<int>, vector<int>);    
     };
-}
 
-#endif  /* TTCLFSMVECTORFACTORY_H */
+};
+
+#endif  /* SCHEDULER_H */
