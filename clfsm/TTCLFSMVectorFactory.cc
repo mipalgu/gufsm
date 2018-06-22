@@ -48,7 +48,7 @@ bool TTCLFSMVectorFactory::executeOnceTT(
             this->sleepTillTimeslot(schedule->sleepTime());
         }
     }
-    return false;
+    return fired;
 }
 
 void TTCLFSMVectorFactory::executeTT(
@@ -61,7 +61,7 @@ void TTCLFSMVectorFactory::executeTT(
 ) {
     Scheduler *scheduler = new Scheduler();
     Schedule *schedule = scheduler->createSchedule(names, periods, deadlines);
-    cout << "Schedule:\n" << schedule->description() << endl;
+    cout << "Schedule:" << schedule->description() << endl;
     do
     {
         if (

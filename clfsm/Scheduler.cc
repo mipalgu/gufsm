@@ -28,7 +28,6 @@ Schedule* Scheduler::generateSchedule(vector<string> paths, vector<int> periods,
                 schedule.push_back(i);
                 scheduleTimes.push_back(t);
                 lastScheduled[i] = t;
-                cout << t << ", ";
                 if (t == maxTime) {
                     sleepTime += deadlines[i];
                 }
