@@ -84,6 +84,8 @@ namespace FSM {
 
             bool _accepting;
 
+            long long start;
+
             vector<int> fetchIds(vector<string> names);
 
             vector<SuspensibleMachine*> fetchMachines(vector<int> ids);

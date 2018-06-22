@@ -20,7 +20,6 @@ bool TTCLFSMVectorFactory::executeOnceTT(
     this->_accepting = true;
     vector<int> ids = this->fetchIds(schedule->paths());
     vector<SuspensibleMachine*> machines = this->fetchMachines(ids);
-    long long start = this->getTimeUS();
     vector<unsigned long> scheduledMachines = schedule->scheduledMachines();
     for (unsigned long i = 0; i < scheduledMachines.size(); i++) {
         unsigned long m = scheduledMachines[i];
@@ -31,25 +30,30 @@ bool TTCLFSMVectorFactory::executeOnceTT(
         int period = schedule->periods()[m];
         int deadline = schedule->deadlines()[m];
         int scheduledTime = schedule->scheduledTimes()[i];
-        if (this->getTimeUS() - start > scheduledTime + period) {
-            cerr << "Starting Late by " << this->getTimeUS() - scheduledTime + period - deadline << endl;
+        if (this->getTimeUS() - this->start > scheduledTime + period) {
+            cerr << "Starting Late by " << this->getTimeUS() - scheduledTime + period - deadline - this->start << endl;
         }
-        long long scheduledEnd = this->sleepTillTimeslot(start + scheduledTime) + schedule->deadlines()[m];
+        long long scheduledEnd = this->sleepTillTimeslot(this->start + scheduledTime) + schedule->deadlines()[m];
+        if (i == machines.size() - 1) {
+            this->start += scheduledTime;
+        }
+        cout << "Executing machine " << m << " at t=" << this->getTimeUS() - this->start << "us..." << endl;
         bool a = !machine->executeOnce(&mfire);
         if (a && accepting_action)
             accepting_action(context, machine, int(ids[i])); //Execute function if machine in accepting state
         if (mfire) fired = true;
         long long end = this->getTimeUS();
+        cout << "Finished executing machine " << m << " at t=" << end - this->start << "us." << endl;
         this->_accepting = a && this->_accepting;
         if (end > scheduledEnd) {
-            cerr << schedule->paths()[i] << " Failed to execute by timeslot t = " << scheduledEnd - start
+            cerr << schedule->paths()[i] << " Failed to execute machine " << m << " by timeslot t = " << scheduledEnd - this->start
                 << "us. Overran by " << end - scheduledEnd << "us." << endl;
             continue;
         }
         // If the Machines finish early then sleep till start of next cycle.
-        if (i == machines.size() - 1) {
+        /*if (i == machines.size() - 1) {
             this->sleepTillTimeslot(schedule->sleepTime());
-        }
+        }*/
     }
     return fired;
 }
@@ -65,6 +69,7 @@ void TTCLFSMVectorFactory::executeTT(
     Scheduler *scheduler = new Scheduler();
     Schedule *schedule = scheduler->createSchedule(names, periods, deadlines);
     cout << "Schedule:" << schedule->description() << endl;
+    this->start = this->getTimeUS();
     do
     {
         if (
