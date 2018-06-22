@@ -16,7 +16,6 @@ bool TTCLFSMVectorFactory::executeOnceTT(
     void *context,
     visitor_f accepting_action
 ) {
-    cout << schedule->description() << endl;
     bool fired = false;
     this->_accepting = true;
     vector<int> ids = this->fetchIds(schedule->paths());
@@ -49,7 +48,7 @@ bool TTCLFSMVectorFactory::executeOnceTT(
             this->sleepTillTimeslot(schedule->sleepTime());
         }
     }
-    return fired;
+    return false;
 }
 
 void TTCLFSMVectorFactory::executeTT(
@@ -61,13 +60,14 @@ void TTCLFSMVectorFactory::executeTT(
     visitor_f accepting_action
 ) {
     Scheduler *scheduler = new Scheduler();
+    Schedule *schedule = scheduler->createSchedule(names, periods, deadlines);
+    cout << "Schedule:\n" << schedule->description() << endl;
     do
     {
-        std::cout << "Test!" << std::endl;
         if (
             !this->executeOnceTT(
                 should_execute_machine,
-                scheduler->createSchedule(names, periods, deadlines),
+                schedule,
                 context,
                 accepting_action
             )
@@ -75,6 +75,8 @@ void TTCLFSMVectorFactory::executeTT(
             fsms()->noTransitionFired();
     }
         while (!this->_accepting);
+
+    delete(schedule);
     delete(scheduler);
 }
 

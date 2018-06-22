@@ -64,6 +64,7 @@
 #include <string>
 #include <algorithm>
 #include <stdlib.h>
+#include <iostream>
 
 
 namespace FSM {
