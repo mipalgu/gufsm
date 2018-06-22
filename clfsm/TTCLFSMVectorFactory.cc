@@ -28,10 +28,13 @@ bool TTCLFSMVectorFactory::executeOnceTT(
         if (!machine || (should_execute_machine != NULLPTR && !should_execute_machine(context, machine, int(ids[m]))))
             continue;
         bool mfire = false;
-        if (this->getTimeUS() - start < schedule->scheduledTimes()[i]) {
-            this->sleepTillTimeslot(schedule->scheduledTimes()[i]);
+        int period = schedule->periods()[m];
+        int deadline = schedule->deadlines()[m];
+        int scheduledTime = schedule->scheduledTimes()[i];
+        if (this->getTimeUS() - start > scheduledTime + period) {
+            cerr << "Starting Late by " << this->getTimeUS() - scheduledTime + period - deadline << endl;
         }
-        long long scheduledEnd = this->getTimeUS() + schedule->deadlines()[m];
+        long long scheduledEnd = this->sleepTillTimeslot(start + scheduledTime) + schedule->deadlines()[m];
         bool a = !machine->executeOnce(&mfire);
         if (a && accepting_action)
             accepting_action(context, machine, int(ids[i])); //Execute function if machine in accepting state
