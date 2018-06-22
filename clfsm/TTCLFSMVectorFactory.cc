@@ -8,44 +8,45 @@
 #include "TTCLFSMVectorFactory.h"
 
 using namespace FSM;
+using namespace std;
 
 bool TTCLFSMVectorFactory::executeOnceTT(
     visitor_f should_execute_machine,
-    vector<Schedule*> schedules,
+    Schedule* schedule,
     void *context,
     visitor_f accepting_action
 ) {
-    for (unsigned long i = 0; i < schedules.size(); i++) {
-        std::cout << schedules[i] << std::endl;
-    }
+    cout << schedule->description() << endl;
     bool fired = false;
     this->_accepting = true;
-    for (unsigned long s = 0; s < schedules.size() ; s++) {
-        Schedule *schedule = schedules[s];
-        vector<int> ids = this->fetchIds(schedule->paths());
-        vector<SuspensibleMachine*> machines = this->fetchMachines(ids);
-        long long start = this->getTimeUS();
-        for (unsigned long i = 0; i < schedule->scheduledMachines().size(); i++) {
-            SuspensibleMachine *machine = machines[i];
-            if (!machine || (should_execute_machine != NULLPTR && !should_execute_machine(context, machine, int(ids[i]))))
-                continue;
-            bool mfire = false;
-            long long scheduledEnd = this->getTimeUS() + schedule->deadlines()[i];
-            bool a = !machine->executeOnce(&mfire);
-            if (a && accepting_action)
-                accepting_action(context, machine, int(ids[i])); //Execute function if machine in accepting state
-            if (mfire) fired = true;
-            long long end = this->getTimeUS();
-            this->_accepting = a && this->_accepting;
-            if (end > scheduledEnd) {
-                cerr << schedule->paths()[i] << " Failed to execute by timeslot t = " << scheduledEnd - start
-                    << "us. Overran by " << end - scheduledEnd << "us." << endl;
-                continue;
-            }
-            // If the Machines finish early then sleep till start of next cycle.
-            if (i == machines.size() - 1) {
-                this->sleepTillTimeslot(scheduledEnd);
-            }
+    vector<int> ids = this->fetchIds(schedule->paths());
+    vector<SuspensibleMachine*> machines = this->fetchMachines(ids);
+    long long start = this->getTimeUS();
+    vector<unsigned long> scheduledMachines = schedule->scheduledMachines();
+    for (unsigned long i = 0; i < scheduledMachines.size(); i++) {
+        unsigned long m = scheduledMachines[i];
+        SuspensibleMachine *machine = machines[m];
+        if (!machine || (should_execute_machine != NULLPTR && !should_execute_machine(context, machine, int(ids[m]))))
+            continue;
+        bool mfire = false;
+        if (this->getTimeUS() - start < schedule->scheduledTimes()[i]) {
+            this->sleepTillTimeslot(schedule->scheduledTimes()[i]);
+        }
+        long long scheduledEnd = start + schedule->scheduledTimes()[i] + schedule->periods()[m];
+        bool a = !machine->executeOnce(&mfire);
+        if (a && accepting_action)
+            accepting_action(context, machine, int(ids[i])); //Execute function if machine in accepting state
+        if (mfire) fired = true;
+        long long end = this->getTimeUS();
+        this->_accepting = a && this->_accepting;
+        if (end > scheduledEnd) {
+            cerr << schedule->paths()[i] << " Failed to execute by timeslot t = " << scheduledEnd - start
+                << "us. Overran by " << end - scheduledEnd << "us." << endl;
+            continue;
+        }
+        // If the Machines finish early then sleep till start of next cycle.
+        if (i == machines.size() - 1) {
+            this->sleepTillTimeslot(schedule->sleepTime());
         }
     }
     return fired;

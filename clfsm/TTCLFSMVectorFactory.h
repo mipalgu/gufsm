@@ -101,7 +101,7 @@ namespace FSM {
 
             bool executeOnceTT(
                 visitor_f should_execute_machine,
-                vector<Schedule*>,
+                Schedule*,
                 void *context = NULLPTR,
                 visitor_f accepting_action = NULLPTR
             );

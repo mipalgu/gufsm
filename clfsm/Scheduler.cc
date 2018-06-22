@@ -21,7 +21,7 @@ Schedule* Scheduler::generateSchedule(vector<string> paths, vector<int> periods,
     int maxTime = this->getHighestValue(periods);
     vector<unsigned long> schedule;
     vector<int> scheduleTimes;
-    int sleepTime = 0;
+    int sleepTime = maxTime;
     for (int t = 0; t <= maxTime; t++) {
         for (unsigned long i = 0; i < periods.size(); i++) {
             if (t - lastScheduled[i] >= periods[i]) {
