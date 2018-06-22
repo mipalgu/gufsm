@@ -31,7 +31,7 @@ bool TTCLFSMVectorFactory::executeOnceTT(
         if (this->getTimeUS() - start < schedule->scheduledTimes()[i]) {
             this->sleepTillTimeslot(schedule->scheduledTimes()[i]);
         }
-        long long scheduledEnd = start + schedule->scheduledTimes()[i] + schedule->periods()[m];
+        long long scheduledEnd = this->getTimeUS() + schedule->deadlines()[m];
         bool a = !machine->executeOnce(&mfire);
         if (a && accepting_action)
             accepting_action(context, machine, int(ids[i])); //Execute function if machine in accepting state
