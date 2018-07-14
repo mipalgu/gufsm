@@ -64,6 +64,7 @@
 #include <vector>
 #include "gu_util.h"
 #include <regex>
+#include <stdlib.h>
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wpadded"
@@ -82,8 +83,7 @@ namespace FSM {
             vector<string> _periods;
             vector<string> _deadlines;
             vector<string> _raws;
-
-
+            vector<string> _indexes;
 
             /**
              * A function to set the members to their respective values for a single machine.
@@ -124,6 +124,8 @@ namespace FSM {
              */
             string parsePath(string line);
 
+            string parseIndex(string line);
+
             /**
              * Checks if a line from the dispatch table has valid syntax.
              *
@@ -132,6 +134,12 @@ namespace FSM {
              * @return Whether the string is valid syntax.
              */
             bool isValid(string data);
+
+            bool hasValue(vector<string>, string);
+
+            unsigned long getIndex(vector<string>, string);
+
+            int last(vector<string>);
 
         public:
             /**
@@ -148,6 +156,8 @@ namespace FSM {
             vector<string> deadlines() {return this->_deadlines;}
 
             vector<string> raws() {return this->_raws;}
+
+            vector<string> indexes() {return this->_indexes;}
 
             bool parse();
     };
