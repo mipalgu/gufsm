@@ -2,7 +2,7 @@
  * Scheduler.h 
  * clfsm 
  *
- * Created by Morgan McColl on 21/06/2018.
+ * Created by Morgan McColl on 14/07/2018.
  * Copyright © 2018 Morgan McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -62,26 +62,16 @@
 #include "Schedule.h"
 #include <vector>
 #include <string>
-#include <algorithm>
-#include <stdlib.h>
-#include <iostream>
-
 
 namespace FSM {
 
     using namespace std;
 
     class Scheduler {
-        private:
-            Schedule* generateSchedule(vector<string>, vector<int>, vector<int>);
-
-            //int getSmallestTimeslot(vector<int>);
-
-            int getHighestValue(vector<int>);
         public:
-            Schedule* createSchedule(vector<string>, vector<int>, vector<int>);    
+            virtual Schedule* createSchedule(vector<string>, vector<int>, vector<int>) = 0;
+            virtual ~Scheduler(){}
     };
-
 };
 
 #endif  /* SCHEDULER_H */

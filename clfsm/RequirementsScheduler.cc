@@ -5,16 +5,16 @@
  * Distributed under terms of the MIT license.
  */
 
-#include "Scheduler.h"
+#include "RequirementsScheduler.h"
 
 using namespace std;
 using namespace FSM;
 
-Schedule* Scheduler::createSchedule(vector<string> paths, vector<int> periods, vector<int> deadlines) {
+Schedule* RequirementsScheduler::createSchedule(vector<string> paths, vector<int> periods, vector<int> deadlines) {
     return this->generateSchedule(paths, periods, deadlines);
 }
 
-Schedule* Scheduler::generateSchedule(vector<string> paths, vector<int> periods, vector<int> deadlines) {
+Schedule* RequirementsScheduler::generateSchedule(vector<string> paths, vector<int> periods, vector<int> deadlines) {
     //vector<unsigned long> orderedMachines = this->orderByLowestFrequency(periods, deadlines);
     //int timeslot = this->getSmallestTimeslot(periods);
     vector<int> lastScheduled(paths.size(), 0); 
@@ -118,7 +118,7 @@ vector<unsigned long> Scheduler::orderByLowestFrequency(vector<int> periods, vec
     return timeslot;
 }*/
 
-int Scheduler::getHighestValue(vector<int> vec) {
+int RequirementsScheduler::getHighestValue(vector<int> vec) {
     int high = vec[0];
     for (unsigned long i = 1; i < vec.size(); i++) {
         if (vec[i] > high) {

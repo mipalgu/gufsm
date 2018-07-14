@@ -1,8 +1,8 @@
 /*
- * TTCLFSMVectorFactory.h 
+ * DispatchScheduler.h 
  * clfsm 
  *
- * Created by Morgan McColl on 11/05/2018.
+ * Created by Morgan McColl on 14/07/2018.
  * Copyright © 2018 Morgan McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,67 +56,17 @@
  *
  */
 
-#ifndef TTCLFSMVECTORFACTORY_H
-#define TTCLFSMVECTORFACTORY_H
+#ifndef DISPATCHSCHEDULER_H
+#define DISPATCHSCHEDULER_H
 
-#include "clfsm_wb_vector_factory.h"
-#include <time.h>
-#include <math.h>
-#include <inttypes.h>
-#include <unistd.h>
-#include "CLMachine.h"
-#include "FSMachineVector.h"
-#include "FSMSuspensibleMachine.h"
-#include "gu_util.h"
-#include "DispatchScheduler.h"
-#include "Schedule.h"
+#include "Scheduler.h"
 
 namespace FSM {
-    
-    using namespace std;
 
-    class TTCLFSMVectorFactory : public CLFSMWBVectorFactory {
-        private:
-
-            long long getTimeUS();
-
-            //vector<long long> createStartTimes(vector<int> times);
-
-            bool _accepting;
-
-            long long start;
-
-            vector<int> fetchIds(vector<string> names);
-
-            vector<SuspensibleMachine*> fetchMachines(vector<int> ids);
-
-            long long sleepTillTimeslot(long long);
-
-            //vector<long long> toLongLong(vector<int>);
-
-
+    class DispatchScheduler : public Scheduler {
         public:
-            TTCLFSMVectorFactory(bool accepting, Context *context, bool del = true, useconds_t timeout = 10000L)
-                : CLFSMWBVectorFactory(context, del, timeout) {
-                    this->_accepting = accepting;
-                }
-
-            bool executeOnceTT(
-                visitor_f should_execute_machine,
-                Schedule*,
-                void *context = NULLPTR,
-                visitor_f accepting_action = NULLPTR
-            );
-
-            void executeTT(
-                visitor_f should_execute_machine,
-                vector<int>,
-                vector<int>,
-                vector<string>,
-                void *context = NULLPTR,
-                visitor_f accepting_action = NULLPTR
-            ); 
+            virtual Schedule* createSchedule(vector<string>, vector<int>, vector<int>);
     };
-}
+};
 
-#endif  /* TTCLFSMVECTORFACTORY_H */
+#endif  /* DISPATCHSCHEDULER_H */
