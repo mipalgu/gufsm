@@ -394,7 +394,7 @@ int main(int argc, char * const argv[])
 
     argc -= optind;
     argv += optind;
-    Schedule *schedule;
+    Schedule *schedule = nullptr;
 
     if (isTT) {
         string tablePath(*argv);

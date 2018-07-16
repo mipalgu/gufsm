@@ -39,7 +39,7 @@ string Schedule::description() {
     stringstream str;
     for (unsigned long i = 0; i < this->_scheduledMachines.size(); i++) {
         unsigned long index = this->_scheduledMachines[i];
-        str << "\n" << this->_paths[index] << " " << this->_deadlines[index] << " " << this->_scheduledTimes[i];
+        str << "\n" << index << " " << this->_paths[index] << " " << this->_scheduledTimes[i] << " " << this->_deadlines[index];
     }
     str << "\nSleep Till: " << this->_sleepTime << endl;
     return str.str();

@@ -29,7 +29,7 @@ bool FileParser::parse() {
 
 bool FileParser::parseLine(string line) {
     if (!this->isValid(line)) {
-        cerr << "Invalid Syntax in dispatch table for line:\n" <<  line << "\n\n";
+        cerr << "Invalid Syntax in machine table for line:\n" <<  line << "\n\n";
         return false;
     }
     this->_raws.push_back(line);
@@ -57,12 +57,6 @@ int FileParser::parseDeadline(string line) {
 }
 
 string FileParser::parsePath(string line) {
-    cout << "\n\nstart printing" << endl;
-    for (auto str: components_of_string_separated(line, '\t', false)) {
-        cout << "str: " << endl;
-        cout << str << endl;
-    }
-    cout << "end printing\n" << endl;
     return components_of_string_separated(line, '\t', false)[0];
 }
 
@@ -100,6 +94,7 @@ vector<vector<string>> FileParser::seperateTable(string raw) {
     for (unsigned long i = 0; i < lines.size(); i++) {
         if (!hasBlankLine && lines[i] == "") {
             hasBlankLine = true;
+            cout << "Blank line found at line " << i + 1 << endl;
             continue;
         }
         if (hasBlankLine) {
@@ -123,8 +118,8 @@ Schedule* FileParser::createSchedule() {
     vector<int> scheduledTimes;
     for (unsigned long i = 0; i < this->_bottom.size(); i++) {
         if (!this->isDispatchValid(this->_bottom[i])) {
-            cerr << "Invalid Line in Dispatch Table:\n" << this->_bottom[i] << endl;
-            break;
+            cerr << "Invalid syntax in Dispatch Table for line:\n" << this->_bottom[i] << endl;
+            continue;
         }
         scheduledMachines.push_back(this->parseIndex(this->_bottom[i]));
         scheduledTimes.push_back(this->parseScheduledTime(this->_bottom[i]));
