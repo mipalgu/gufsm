@@ -116,7 +116,6 @@
 #include "TTCLFSMVectorFactory.h"
 #include <unistd.h>
 #include "Schedule.h"
-#include "DispatchScheduler.h"
 
 static const char *command;
 static int command_argc;
@@ -398,13 +397,10 @@ int main(int argc, char * const argv[])
 
     if (isTT) {
         string tablePath(*argv);
-        FileParser* parser = new FileParser(tablePath, new DispatchScheduler());
-        cout << "Trying to parse table..." << endl;
+        FileParser* parser = new FileParser(tablePath);
         schedule = parser->createSchedule();
         machines = schedule->paths();
-        cout << "Parsed table" << endl;
         delete(parser);
-        cout << "Deleted parser" << endl;
     } else{
         while (argc--)
         {

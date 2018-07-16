@@ -69,6 +69,7 @@ namespace FSM {
 
     class Schedule {
         private:
+            vector<string> _names;
             vector<string> _paths;
             vector<int> _periods;
             vector<int> _deadlines;
@@ -76,7 +77,9 @@ namespace FSM {
             vector<int> _scheduledTimes;
             int _sleepTime;
         public:
-            Schedule(vector<string>, vector<int>, vector<int>, vector<unsigned long>, vector<int>, int);
+            Schedule(vector<string>, vector<string>, vector<int>, vector<int>, vector<unsigned long>, vector<int>, int);
+
+            vector<string> names() {return this->_names;}
 
             vector<string> paths() {return this->_paths;}
 

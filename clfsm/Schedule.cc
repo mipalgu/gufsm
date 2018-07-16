@@ -11,6 +11,7 @@ using namespace std;
 using namespace FSM;
 
 Schedule::Schedule(
+    vector<string> newNames,
     vector<string> newPaths,
     vector<int> newPeriods,
     vector<int> newDeadlines,
@@ -18,6 +19,7 @@ Schedule::Schedule(
     vector<int> times,
     int newSleepTime
 ) {
+    this->_names = newNames;
     this->_paths = newPaths;
     this->_periods = newPeriods;
     this->_deadlines = newDeadlines;

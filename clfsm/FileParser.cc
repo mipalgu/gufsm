@@ -10,9 +10,8 @@
 using namespace std;
 using namespace FSM;
 
-FileParser::FileParser(string path, Scheduler *newScheduler) {
+FileParser::FileParser(string path) {
     this->_contents = string_from_file(path.c_str());
-    this->_scheduler = newScheduler;
 }
 
 bool FileParser::parse() {
@@ -125,6 +124,7 @@ Schedule* FileParser::createSchedule() {
         scheduledTimes.push_back(this->parseScheduledTime(this->_bottom[i]));
     }
     return new Schedule(
+        this->_names,
         this->_paths,
         this->_periods,
         this->_deadlines,

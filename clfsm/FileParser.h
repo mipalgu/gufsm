@@ -66,7 +66,6 @@
 #include <regex>
 #include <stdlib.h>
 #include "Schedule.h"
-#include "Scheduler.h"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wpadded"
@@ -85,7 +84,6 @@ namespace FSM {
             vector<int> _periods;
             vector<int> _deadlines;
             vector<string> _raws;
-            Scheduler *_scheduler;
             vector<string> _bottom;
             vector<string> _top;
 
@@ -155,9 +153,7 @@ namespace FSM {
             /**
              * The constructor opens the dispatch table located at path and parses the contents.
              */
-            FileParser(string path, Scheduler*);
-
-            ~FileParser() {delete(this->_scheduler);}
+            FileParser(string path);
 
             vector<string> paths() {return this->_paths;}
 
@@ -168,8 +164,6 @@ namespace FSM {
             vector<int> deadlines() {return this->_deadlines;}
 
             vector<string> raws() {return this->_raws;}
-
-            Scheduler* scheduler() {return this->_scheduler;}
 
             Schedule* createSchedule();
     };
