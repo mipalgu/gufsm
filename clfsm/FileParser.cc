@@ -10,14 +10,17 @@
 using namespace std;
 using namespace FSM;
 
-FileParser::FileParser(string path) {
+FileParser::FileParser(string path, Scheduler *newScheduler) {
     this->_contents = string_from_file(path.c_str());
+    this->_scheduler = newScheduler;
 }
 
 bool FileParser::parse() {
-    vector<string> lines = components_of_string_separated(this->_contents, '\n', false);
-    for (unsigned long i = 0; i < lines.size(); i++) {
-        if (!this->parseLine(lines[i])) {
+    vector<vector<string>> all = this->seperateTable(this->_contents);
+    this->_top = all[0];
+    this->_bottom = all[1];
+    for (unsigned long i = 0; i < this->_top.size(); i++) {
+        if (!this->parseLine(this->_top[i])) {
             return false;
         }
     }
@@ -30,9 +33,8 @@ bool FileParser::parseLine(string line) {
         return false;
     }
     this->_raws.push_back(line);
-    this->_indexes.push_back(this->parseIndex(line));
-    this->_paths[this->last(this->_indexes)] = this->parsePath(line);
-    this->_names[this->last(this->_indexes)] = this->parseName(line);
+    this->_paths.push_back(this->parsePath(line));
+    this->_names.push_back(this->parseName(line));
     this->_periods.push_back(this->parsePeriod(line));
     this->_deadlines.push_back(this->parseDeadline(line));
     return true;
@@ -46,30 +48,26 @@ string FileParser::parseName(string line) {
     return splitNameWithMachine[splitNameWithMachine.size() - 2];
 }
 
-string FileParser::parsePeriod(string line) {
-    return components_of_string_separated(line, '\t', false)[2];
+int FileParser::parsePeriod(string line) {
+    return atoi(components_of_string_separated(line, '\t', false)[1].c_str());
 }
 
-string FileParser::parseDeadline(string line) {
-    return components_of_string_separated(line, '\t', false)[3];
+int FileParser::parseDeadline(string line) {
+    return atoi(components_of_string_separated(line, '\t', false)[2].c_str());
 }
 
 string FileParser::parsePath(string line) {
-    return components_of_string_separated(line, '\t', false)[1];
-}
-
-string FileParser::parseIndex(string line) {
-    string index = components_of_string_separated(line, '\t', false)[0];
-    if (this->hasValue(this->_indexes, index)) {
-        if (this->_paths[this->getIndex(this->_indexes, index)] != this->parsePath(line)) {
-            cerr << "Index mismatch for line:\n" << line << endl;
-        }
+    cout << "\n\nstart printing" << endl;
+    for (auto str: components_of_string_separated(line, '\t', false)) {
+        cout << "str: " << endl;
+        cout << str << endl;
     }
-    return index;
+    cout << "end printing\n" << endl;
+    return components_of_string_separated(line, '\t', false)[0];
 }
 
 bool FileParser::isValid(string data) {
-    return regex_match(data, regex("[0-9]{1,3}\\t[\\/~\\.\\w][\\w\\/\\.:\\-]+[\\w\\.\\-]+\\.machine\\t\\d+\\t\\d+"));
+    return regex_match(data, regex("[\\/~\\.\\w][\\w\\/\\.:\\-]+[\\w\\.\\-]+\\.machine\\t\\d+\\t\\d+"));
 }
 
 bool FileParser::hasValue(vector<string> vec, string data) {
@@ -81,15 +79,73 @@ bool FileParser::hasValue(vector<string> vec, string data) {
     return false;
 }
 
-unsigned long FileParser::getIndex(vector<string> vec, string data) {
+/*unsigned long FileParser::getIndex(vector<string> vec, string data) {
     for (unsigned long i = 0; i < vec.size(); i++) {
         if (vec[i] == data) {
             return i;
         }
     }
     return -1;
-}
+}*/
 
 int FileParser::last(vector<string> vec) {
     return atoi(vec[vec.size() - 1].c_str());
+}
+
+vector<vector<string>> FileParser::seperateTable(string raw) {
+    vector<string> top;
+    vector<string> bottom;
+    vector<string> lines = components_of_string_separated(raw, '\n', false);
+    bool hasBlankLine = false;
+    for (unsigned long i = 0; i < lines.size(); i++) {
+        if (!hasBlankLine && lines[i] == "") {
+            hasBlankLine = true;
+            continue;
+        }
+        if (hasBlankLine) {
+            bottom.push_back(lines[i]);
+            continue;
+        }
+        top.push_back(lines[i]);
+    }
+    vector<vector<string>> all;
+    all.push_back(top);
+    all.push_back(bottom);
+    return all;
+}
+
+Schedule* FileParser::createSchedule() {
+    if (!this->parse()) {
+        cerr << "Failed to parse file" << endl;
+        return NULL;
+    }
+    vector<unsigned long> scheduledMachines;
+    vector<int> scheduledTimes;
+    for (unsigned long i = 0; i < this->_bottom.size(); i++) {
+        if (!this->isDispatchValid(this->_bottom[i])) {
+            cerr << "Invalid Line in Dispatch Table:\n" << this->_bottom[i] << endl;
+            break;
+        }
+        scheduledMachines.push_back(this->parseIndex(this->_bottom[i]));
+        scheduledTimes.push_back(this->parseScheduledTime(this->_bottom[i]));
+    }
+    return new Schedule(
+        this->_paths,
+        this->_periods,
+        this->_deadlines,
+        scheduledMachines,
+        scheduledTimes,
+        0
+    );
+}
+
+bool FileParser::isDispatchValid(string data) {
+    return regex_match(data, regex("\\d{1,3}\\t\\d{1,9}"));
+}
+
+int FileParser::parseScheduledTime(string line) {
+    return atoi(components_of_string_separated(line, '\t', false)[1].c_str());
+}
+unsigned long FileParser::parseIndex(string line) {
+    return static_cast<unsigned long>(atoi(components_of_string_separated(line, '\t', false)[0].c_str()));
 }

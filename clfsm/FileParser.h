@@ -65,6 +65,8 @@
 #include "gu_util.h"
 #include <regex>
 #include <stdlib.h>
+#include "Schedule.h"
+#include "Scheduler.h"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wpadded"
@@ -80,10 +82,12 @@ namespace FSM {
             string _contents;
             vector<string> _paths;
             vector<string> _names;
-            vector<string> _periods;
-            vector<string> _deadlines;
+            vector<int> _periods;
+            vector<int> _deadlines;
             vector<string> _raws;
-            vector<string> _indexes;
+            Scheduler *_scheduler;
+            vector<string> _bottom;
+            vector<string> _top;
 
             /**
              * A function to set the members to their respective values for a single machine.
@@ -106,7 +110,7 @@ namespace FSM {
              *
              * @return The period of the machine.
              */
-            string parsePeriod(string line);
+            int parsePeriod(string line);
 
             /**
              * A function to reqieve the deadline of the machine
@@ -114,7 +118,7 @@ namespace FSM {
              *
              * @return This deadline of the machine.
              */
-            string parseDeadline(string line);
+            int parseDeadline(string line);
 
             /**
              * A function to retrieve the path of the machine from the dispatch table.
@@ -124,7 +128,7 @@ namespace FSM {
              */
             string parsePath(string line);
 
-            string parseIndex(string line);
+            unsigned long parseIndex(string line);
 
             /**
              * Checks if a line from the dispatch table has valid syntax.
@@ -137,29 +141,37 @@ namespace FSM {
 
             bool hasValue(vector<string>, string);
 
-            unsigned long getIndex(vector<string>, string);
-
             int last(vector<string>);
+
+            vector<vector<string>> seperateTable(string);
+
+            bool parse();
+
+            bool isDispatchValid(string);
+
+            int parseScheduledTime(string);
 
         public:
             /**
              * The constructor opens the dispatch table located at path and parses the contents.
              */
-            FileParser(string path);
+            FileParser(string path, Scheduler*);
+
+            ~FileParser() {delete(this->_scheduler);}
 
             vector<string> paths() {return this->_paths;}
 
             vector<string> names() {return this->_names;}
 
-            vector<string> periods() {return this->_periods;}
+            vector<int> periods() {return this->_periods;}
 
-            vector<string> deadlines() {return this->_deadlines;}
+            vector<int> deadlines() {return this->_deadlines;}
 
             vector<string> raws() {return this->_raws;}
 
-            vector<string> indexes() {return this->_indexes;}
+            Scheduler* scheduler() {return this->_scheduler;}
 
-            bool parse();
+            Schedule* createSchedule();
     };
 }
 

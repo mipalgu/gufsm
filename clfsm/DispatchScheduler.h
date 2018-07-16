@@ -65,7 +65,7 @@ namespace FSM {
 
     class DispatchScheduler : public Scheduler {
         public:
-            virtual Schedule* createSchedule(vector<string>, vector<int>, vector<int>);
+            virtual Schedule* createSchedule(vector<string>, vector<int>, vector<int>, vector<unsigned long>);
     };
 };
 

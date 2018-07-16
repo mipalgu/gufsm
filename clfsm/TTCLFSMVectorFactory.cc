@@ -53,14 +53,10 @@ bool TTCLFSMVectorFactory::executeOnceTT(
 
 void TTCLFSMVectorFactory::executeTT(
     visitor_f should_execute_machine,
-    vector<int> periods,
-    vector<int> deadlines,
-    vector<string> names,
+    Schedule *schedule,
     void *context,
     visitor_f accepting_action
 ) {
-    DispatchScheduler *scheduler = new DispatchScheduler(); //should probably use generic for this
-    Schedule *schedule = scheduler->createSchedule(names, periods, deadlines);
     cout << "Schedule:" << schedule->description() << endl;
     this->start = this->getTimeUS();
     do
@@ -76,9 +72,6 @@ void TTCLFSMVectorFactory::executeTT(
             fsms()->noTransitionFired();
     }
         while (!this->_accepting);
-
-    delete(schedule);
-    delete(scheduler);
 }
 
 long long TTCLFSMVectorFactory::getTimeUS() {

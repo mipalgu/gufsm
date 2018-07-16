@@ -69,7 +69,7 @@ namespace FSM {
 
     class Scheduler {
         public:
-            virtual Schedule* createSchedule(vector<string>, vector<int>, vector<int>) = 0;
+            virtual Schedule* createSchedule(vector<string>, vector<int>, vector<int>, vector<unsigned long>) = 0;
             virtual ~Scheduler(){}
     };
 };

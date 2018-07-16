@@ -115,6 +115,8 @@
 #include "FileParser.h"
 #include "TTCLFSMVectorFactory.h"
 #include <unistd.h>
+#include "Schedule.h"
+#include "DispatchScheduler.h"
 
 static const char *command;
 static int command_argc;
@@ -392,23 +394,16 @@ int main(int argc, char * const argv[])
 
     argc -= optind;
     argv += optind;
-    vector<int> periods;
-    vector<int> deadlines;
-    vector<string> names;
+    Schedule *schedule;
 
     if (isTT) {
         string tablePath(*argv);
-        FileParser* parser = new FileParser(tablePath);
-        if (!parser->parse()) {
-            return 0;
-        }
-        for (unsigned long i = 0; i < parser->paths().size(); i++) {
-            machines.push_back(parser->paths()[i]);
-            periods.push_back(atoi(parser->periods()[i].c_str()));
-            deadlines.push_back(atoi(parser->deadlines()[i].c_str()));
-            names.push_back(parser->names()[i]);
-        }
+        FileParser* parser = new FileParser(tablePath, new DispatchScheduler());
+        cout << "Trying to parse table..." << endl;
+        schedule = parser->createSchedule();
+        cout << "Parsed table" << endl;
         delete(parser);
+        cout << "Deleted parser" << endl;
     } else{
         while (argc--)
         {
@@ -447,7 +442,7 @@ int main(int argc, char * const argv[])
         factory->fsms()->execute(visitor, &context, accept_action);
     } else {
         TTCLFSMVectorFactory* ttFactory = static_cast<TTCLFSMVectorFactory*>(factory);
-        ttFactory->executeTT(visitor, periods, deadlines, names, &context, accept_action);
+        ttFactory->executeTT(visitor, schedule, &context, accept_action);
     }
 #ifdef WANT_FSM_REFLECTION
     refl_destroyAPI(NULLPTR); // Destroy reflection system
@@ -459,6 +454,7 @@ int main(int argc, char * const argv[])
     }
 
     delete CLFSMMachineLoader::getMachineLoaderSingleton();
+    delete(schedule);
 
     return EXIT_SUCCESS;
 }

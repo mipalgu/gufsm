@@ -110,9 +110,7 @@ namespace FSM {
 
             void executeTT(
                 visitor_f should_execute_machine,
-                vector<int>,
-                vector<int>,
-                vector<string>,
+                Schedule*,
                 void *context = NULLPTR,
                 visitor_f accepting_action = NULLPTR
             ); 
