@@ -142,5 +142,5 @@ int FileParser::parseScheduledTime(string line) {
     return atoi(components_of_string_separated(line, '\t', false)[1].c_str());
 }
 unsigned long FileParser::parseIndex(string line) {
-    return static_cast<unsigned long>(atoi(components_of_string_separated(line, '\t', false)[0].c_str()));
+    return strtoul(components_of_string_separated(line, '\t', false)[0].c_str(), nullptr, 0);
 }
