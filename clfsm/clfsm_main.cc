@@ -401,6 +401,7 @@ int main(int argc, char * const argv[])
         FileParser* parser = new FileParser(tablePath, new DispatchScheduler());
         cout << "Trying to parse table..." << endl;
         schedule = parser->createSchedule();
+        machines = schedule->paths();
         cout << "Parsed table" << endl;
         delete(parser);
         cout << "Deleted parser" << endl;
