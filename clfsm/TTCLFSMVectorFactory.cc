@@ -27,25 +27,22 @@ bool TTCLFSMVectorFactory::executeOnceTT(
         if (!machine || (should_execute_machine != NULLPTR && !should_execute_machine(context, machine, int(ids[m]))))
             continue;
         bool mfire = false;
-        int scheduledTime = schedule->scheduledTimes()[i];
-        if (this->getTimeUS() - this->start > scheduledTime) {
-            cerr << "Starting Late by " << this->getTimeUS() - (scheduledTime + this->start) << endl;
-        }
-        long long scheduledEnd = this->sleepTillTimeslot(this->start + scheduledTime) + schedule->deadlines()[m];
-        cout << "Executing machine " << m << " at t=" << this->getTimeUS() - this->start << "us..." << endl;
+        long long scheduledTime = this->start + schedule->scheduledTimes()[i];
+        long long scheduledEnd = scheduledTime + schedule->deadlines()[m];
+        this->sleepTillTimeslot(scheduledTime);
         bool a = !machine->executeOnce(&mfire);
         if (a && accepting_action)
             accepting_action(context, machine, int(ids[i])); //Execute function if machine in accepting state
         if (mfire) fired = true;
         long long end = this->getTimeUS();
-        cout << "Finished executing machine " << m << " at t=" << end - this->start << "us." << endl;
         this->_accepting = a && this->_accepting;
         if (end > scheduledEnd) {
             cerr << schedule->paths()[i] << " Failed to execute machine " << m << " by timeslot t = " << scheduledEnd - this->start
                 << "us. Overran by " << end - scheduledEnd << "us." << endl;
         }
-        if (i == machines.size() - 1) {
-            this->start += scheduledTime;
+        if (i == scheduledMachines.size() - 1) {
+            this->start = scheduledTime + schedule->sleepTime();
+            continue;
         }
     }
     return fired;
