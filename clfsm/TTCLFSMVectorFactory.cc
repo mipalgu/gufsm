@@ -37,7 +37,7 @@ bool TTCLFSMVectorFactory::executeOnceTT(
         long long end = this->getTimeUS();
         this->_accepting = a && this->_accepting;
         if (end > scheduledEnd) {
-            cerr << schedule->paths()[i] << " Failed to execute machine " << m << " by timeslot t = " << scheduledEnd - this->start
+            cerr << "Failed to execute machine " << m << " by timeslot t = " << scheduledEnd - this->start
                 << "us. Overran by " << end - scheduledEnd << "us." << endl;
         }
         if (i == scheduledMachines.size() - 1) {
