@@ -101,6 +101,9 @@ namespace FSM {
                     this->_accepting = accepting;
                 }
 
+            /**
+             * Execute a Schedule Once.
+             */
             bool executeOnceTT(
                 visitor_f should_execute_machine,
                 Schedule*,
@@ -108,6 +111,9 @@ namespace FSM {
                 visitor_f accepting_action = NULLPTR
             );
 
+            /**
+             * Continuously execute a schedule.
+             */
             void executeTT(
                 visitor_f should_execute_machine,
                 Schedule*,

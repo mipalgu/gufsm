@@ -93,7 +93,6 @@ vector<vector<string>> FileParser::seperateTable(string raw) {
     for (unsigned long i = 0; i < lines.size(); i++) {
         if (!hasBlankLine && lines[i] == "") {
             hasBlankLine = true;
-            cout << "Blank line found at line " << i + 1 << endl;
             continue;
         }
         if (hasBlankLine) {
@@ -117,8 +116,8 @@ Schedule* FileParser::createSchedule() {
     vector<int> scheduledTimes;
     for (unsigned long i = 0; i < this->_bottom.size(); i++) {
         if (!this->isDispatchValid(this->_bottom[i])) {
-            cerr << "Invalid syntax in Dispatch Table for line:\n" << this->_bottom[i] << endl;
-            continue;
+            cerr << "Invalid syntax in Dispatch Table for line " << i << " in dispatch table:\n" << this->_bottom[i] << endl;
+            break;
         }
         scheduledMachines.push_back(this->parseIndex(this->_bottom[i]));
         scheduledTimes.push_back(this->parseScheduledTime(this->_bottom[i]));

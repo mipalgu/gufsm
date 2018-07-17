@@ -129,9 +129,9 @@ namespace FSM {
             unsigned long parseIndex(string line);
 
             /**
-             * Checks if a line from the dispatch table has valid syntax.
+             * Checks if a line from the requirements table has valid syntax.
              *
-             * @param data The line from the dispatch table.
+             * @param data The line from the requirements table.
              *
              * @return Whether the string is valid syntax.
              */
@@ -165,6 +165,11 @@ namespace FSM {
 
             vector<string> raws() {return this->_raws;}
 
+            /**
+             * Creates a Schedule object from the table specified in the constructor.
+             *
+             * @return The Schedule.
+             */
             Schedule* createSchedule();
     };
 }
