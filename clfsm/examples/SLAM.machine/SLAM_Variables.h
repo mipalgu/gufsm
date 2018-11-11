@@ -5,7 +5,7 @@
 //
 Ball_Color_Num_t	LineMsg;	///<
 Say_t	SayMsg;	///<
-WALK2014_Command_t	WalkMsg;	///<
+NaoWalkCommand_t	WalkMsg;	///<
 HAL_HeadTarget_t	HeadMsg;	///<
 HAL_HeadTarget	HeadTrg;	///<
 MOTION_Commands_t	MotMsg;	///<
@@ -21,7 +21,7 @@ int	Res;	///<
 SENSORSLegJointSensors_t	SenMsg;	///<
 OdomCalc	TestOdom;	///<
 double*	Joints;	///<
-SENSORSFootSensors_t	FSRMsg;	///<
+SensorsFootSensors_t	FSRMsg;	///<
 double	LMass;	///<
 double	RMass;	///<
 bool	LeftStep;	///<

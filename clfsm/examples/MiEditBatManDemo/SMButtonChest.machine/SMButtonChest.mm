@@ -1,7 +1,7 @@
 //
-// SMButtonChest.mm
+//SMButtonChest.mm
 //
-// Automatically created through MiCASE -- do not change manually!
+//Automatically created through MiEditCLFSM -- do not change manually!
 //
 #include "SMButtonChest_Includes.h"
 #include "SMButtonChest.h"
@@ -14,7 +14,6 @@
 
 using namespace FSM;
 using namespace CLM;
-
 extern "C"
 {
 	SMButtonChest *CLM_Create_SMButtonChest(int mid, const char *name)
@@ -25,11 +24,11 @@ extern "C"
 
 SMButtonChest::SMButtonChest(int mid, const char *name): CLMachine(mid, name)
 {
-	_states[0] = new FSMSMButtonChest::State::Init;
-	_states[1] = new FSMSMButtonChest::State::Button_On;
-	_states[2] = new FSMSMButtonChest::State::Button_Off;
-	_states[3] = new FSMSMButtonChest::State::Long_Press;
-	_states[4] = new FSMSMButtonChest::State::Zero;
+	_states[0]  = new FSMSMButtonChest::State:: Init;
+	_states[1]  = new FSMSMButtonChest::State:: Button_On;
+	_states[2]  = new FSMSMButtonChest::State:: Button_Off;
+	_states[3]  = new FSMSMButtonChest::State:: Long_Press;
+	_states[4]  = new FSMSMButtonChest::State:: Zero;
 
 	setInitialState(_states[0]);            // set initial state
 }
