@@ -1,2 +1,4 @@
 HeadMsg.set(HeadTrg);
-WalkMsg(WALK2014_ControlStatus(WALK, 100, 0, static_cast<int>(((LineMsg & 1023) - 320)/5), 0));
+
+//WalkMsg(WALK2014_ControlStatus(WALK, 100, 0, static_cast<int>(((LineMsg & 1023) - 320)/5), 0));
+WalkMsg(NaoWalkCommand().walk(100,0, static_cast<int>(((LineMsg & 1023) - 320)/5)));

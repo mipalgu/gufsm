@@ -1,7 +1,7 @@
 //
-// RobotPosition.mm
+//RobotPosition.mm
 //
-// Automatically created through MiCASE -- do not change manually!
+//Automatically created through MiEditCLFSM -- do not change manually!
 //
 #include "RobotPosition_Includes.h"
 #include "RobotPosition.h"
@@ -18,7 +18,6 @@
 
 using namespace FSM;
 using namespace CLM;
-
 extern "C"
 {
 	RobotPosition *CLM_Create_RobotPosition(int mid, const char *name)
@@ -29,15 +28,15 @@ extern "C"
 
 RobotPosition::RobotPosition(int mid, const char *name): CLMachine(mid, name)
 {
-	_states[0] = new FSMRobotPosition::State::Init;
-	_states[1] = new FSMRobotPosition::State::Delay;
-	_states[2] = new FSMRobotPosition::State::FallingLeft;
-	_states[3] = new FSMRobotPosition::State::Check;
-	_states[4] = new FSMRobotPosition::State::FallingRight;
-	_states[5] = new FSMRobotPosition::State::FallingBack;
-	_states[6] = new FSMRobotPosition::State::Forward;
-	_states[7] = new FSMRobotPosition::State::Done;
-	_states[8] = new FSMRobotPosition::State::StandingUp;
+	_states[0]  = new FSMRobotPosition::State:: Init;
+	_states[1]  = new FSMRobotPosition::State:: Delay;
+	_states[2]  = new FSMRobotPosition::State:: FallingLeft;
+	_states[3]  = new FSMRobotPosition::State:: Check;
+	_states[4]  = new FSMRobotPosition::State:: FallingRight;
+	_states[5]  = new FSMRobotPosition::State:: FallingBack;
+	_states[6]  = new FSMRobotPosition::State:: Forward;
+	_states[7]  = new FSMRobotPosition::State:: Done;
+	_states[8]  = new FSMRobotPosition::State:: StandingUp;
 
 	setInitialState(_states[0]);            // set initial state
 }

@@ -1,12 +1,12 @@
 //
-// State_Init.mm
+//State_Init.mm
 //
-// Automatically created through MiCASE -- do not change manually!
+//Automatically created through MiEditCLFSM -- do not change manually!
 //
 #include "RobotPosition_Includes.h"
 #include "RobotPosition.h"
-#include "State_Init.h"
 
+#include "State_Init.h"
 #include "State_Init_Includes.h"
 
 using namespace FSM;
@@ -14,7 +14,7 @@ using namespace CLM;
 using namespace FSMRobotPosition;
 using namespace State;
 
-Init::Init(const char *name): CLState(name, *new Init::OnEntry, *new Init::OnExit, *new Init::Internal)
+Init::Init(const char *name):CLState(name, *new Init::OnEntry,*new Init::OnExit, *new Init::Internal)
 {
 	_transitions[0] = new Transition_0();
 }
@@ -25,7 +25,6 @@ Init::~Init()
 	delete &onExitAction();
 	delete &internalAction();
 
-	delete _transitions[0];
 }
 
 void Init::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -56,6 +55,8 @@ bool Init::Transition_0::check(CLMachine *_machine, CLState *_state) const
 
 	return
 	(
-#		include "State_Init_Transition_0.expr"
+#			include "State_Init_Transition_0.expr"
 	);
 }
+
+

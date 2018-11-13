@@ -1,9 +1,9 @@
 #include <typeClassDefs/VisionControlStatus.h>
-#include <typeClassDefs/WALK2014_ControlStatus.h>
+#include "typeClassDefs/NaoWalkCommand.h"
 #include <typeClassDefs/HAL_HeadTarget.h>
 #include <typeClassDefs/MOTION_Interface.h>
 #include <typeClassDefs/SENSORSLegJointSensors.h>
-#include <typeClassDefs/SENSORSFootSensors.h>
+#include <typeClassDefs/SensorsFootSensors.h>
 #include <gu_util.h>
 #include <MeasMatrix.h>
 #include <Odometry.h>

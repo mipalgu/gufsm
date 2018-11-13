@@ -1,7 +1,7 @@
 //
-// State_Init_VarRefs.mm
+//State_Init_VarRefs.mm
 //
-// Automatically created through MiCASE -- do not change manually!
+//Automatically created through MiEditCLFSM -- do not change manually!
 //
 Init *_s = static_cast<Init *>(_state);
 
