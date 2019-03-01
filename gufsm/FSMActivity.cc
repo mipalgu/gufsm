@@ -2,7 +2,7 @@
  *  FSMActivity.cc
  *
  *  Created by René Hexel on 23/09/11.
- *  Copyright (c) 2011, 2014 Rene Hexel.
+ *  Copyright (c) 2011, 2014, 2019 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -80,6 +80,9 @@ void Activity::perform(Machine *m, ActionStage stage)
                 case STAGE_INTERNAL:
                         perform(m, stage, _internalActions);
                         break;
+                case STAGE_ON_SUSPEND:
+                        perform(m, stage, _onSuspendActions);
+                        break;
                 default:
                         assert(false);
         }
@@ -110,6 +113,10 @@ string Activity::description(ActionStage stage) const
                 case STAGE_INTERNAL:
                         ss << "Internal:\n" << description(_internalActions)
                         << endl;
+                        break;
+                case STAGE_ON_SUSPEND:
+                        ss << "On Suspend:\n" << description(_onSuspendActions)
+                           << endl;
                         break;
                 default:
                         ss << "<invalid stage " << static_cast<int>(stage) << ">"

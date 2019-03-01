@@ -2,7 +2,7 @@
  *  Action.h
  *
  *  Created by René Hexel on 23/09/11.
- *  Copyright (c) 2011, 2018 Rene Hexel.
+ *  Copyright (c) 2011, 2018, 2019 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -87,7 +87,7 @@ namespace FSM
         class Machine;
 
         enum ActionStage { STAGE_ON_ENTRY, STAGE_ON_EXIT, STAGE_INTERNAL,
-                NUM_ACTION_STAGES };
+            STAGE_ON_SUSPEND, NUM_ACTION_STAGES };
         /**
          * Abstract class for FSM actions
          */
