@@ -121,6 +121,13 @@ namespace FSM
 
                 /** schedule suspend (subclass responsibility */
                 virtual void scheduleSuspend(bool s=true) { if (s) suspend(); }
+
+                /**
+                 * execute one iteration of the current state
+                 * @param fired pointer to a boolean capturing fired condition
+                 * @return true if the state machine should continue
+                 */
+                virtual bool executeOnce(bool *fired=NULLPTR);
         };
 }
 
