@@ -42,7 +42,7 @@ namespace FSM
                 {
                     virtual void perform(CLMachine *, CLState *) const;
                 };
-                
+
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wzero-length-array"
                 CLTransition *_transitions[0];

@@ -6,6 +6,9 @@
 #ifndef clfsm_TestOnSuspend_State_Initial_h
 #define clfsm_TestOnSuspend_State_Initial_h
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat"
+
 #include "CLState.h"
 #include "CLAction.h"
 #include "CLTransition.h"
@@ -39,7 +42,7 @@ namespace FSM
                 {
                     virtual void perform(CLMachine *, CLState *) const;
                 };
-                
+
                 class Transition_0: public CLTransition
                 {
                 public:
