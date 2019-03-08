@@ -111,6 +111,12 @@
 // Reflection API
 #include <CLReflect/CLReflectAPI.h>
 
+//Time-Triggered Includes
+#include "FileParser.h"
+#include "TTCLFSMVectorFactory.h"
+#include <unistd.h>
+#include "Schedule.h"
+
 static const char *command;
 static int command_argc;
 static char * const *command_argv;
@@ -134,7 +140,7 @@ static CLFSMWBVectorFactory *createMachines(const vector<string> &machines, cons
             const string &machine = *it;
             FSM::loadAndAddMachineAtPath(machine, false, compiler_args, linker_args);
     }
-    return loader->vector_factory();
+    return static_cast<CLFSMWBVectorFactory*>(loader->vector_factory());
 }
 
 static void __attribute((noreturn)) aborting_signal_handler(int signum)
@@ -229,7 +235,7 @@ static void __attribute((noreturn)) backtrace_signal_handler(int signum)
 
 static void usage(const char *cmd)
 {
-    cerr << "Usage: " << cmd << "[-c][-d][-fPIC]{-I includedir}[-i idlesleep]{-L linkdir}{-l lib}[-n][-s][-t][-v]" << endl;
+    cerr << "Usage: " << cmd << "[-c][-d][-fPIC]{-I includedir}[-i idlesleep]{-L linkdir}{-l lib}[-n][-s][-t][-v][-T]" << endl;
     cerr << "[-c] = Compile only flag, don't execute machine." << endl;
     cerr << "[-f] = compiler specific flags (eg. 'PIC' To generate Position Independent Code)." << endl;
     cerr << "{-I idlesleep} = Number of microseconds to sleep when idle (default: 10000)" << endl;
@@ -241,6 +247,7 @@ static void usage(const char *cmd)
     cerr << "[-t] = Time execution of machine states." << endl;
     cerr << "[-v] = Verbose; output MachineID, State, and name of machine. (multiple times to increase verbosity)" << endl;
     cerr << "[-d] = Output debug information (requires Verbose switch)." << endl;
+    cerr << "[-T] = Time-Triggered execution of machine states" << endl;
 }
 
 static bool debug_internal_states = false;
@@ -290,6 +297,7 @@ static bool unloadMachineIfAccepting(void *ctx, SuspensibleMachine *machine, int
         return true;
 }
 
+bool isTT = false;
 
 int main(int argc, char * const argv[])
 {
@@ -327,7 +335,7 @@ int main(int argc, char * const argv[])
 
     int ch;
     int debug = 0, verbose = 0, noUnloadIfAccepting = 0;
-    while ((ch = getopt(argc, argv, "dgf:I:i:L:l:nstuv")) != -1)
+    while ((ch = getopt(argc, argv, "dgf:I:i:L:l:nstuvT")) != -1)
     {
         switch (ch)
         {
@@ -367,6 +375,9 @@ int main(int argc, char * const argv[])
             case 't': // Timer Flag
                 time_state_execution = true;
                 break;
+            case 'T': // Time-Triggered Execution
+                isTT = true;
+                break;
             case 'v':
                 verbose++;
                 break;
@@ -382,22 +393,31 @@ int main(int argc, char * const argv[])
 
     argc -= optind;
     argv += optind;
+    Schedule *schedule = nullptr;
 
-    while (argc--)
-    {
-        struct stat s;
-        string machine(*argv++);
-        if (stat(machine.c_str(), &s) < 0)
+    if (isTT) {
+        string tablePath(*argv);
+        FileParser* parser = new FileParser(tablePath);
+        schedule = parser->createSchedule();
+        machines = schedule->paths();
+        delete(parser);
+    } else{
+        while (argc--)
         {
-            string machine_with_extension = machine + ".machine";
-            if (stat(machine_with_extension.c_str(), &s) < 0)
+            struct stat s;
+            string machine(*argv++);
+            if (stat(machine.c_str(), &s) < 0)
             {
-                perror(machine.c_str());
-                continue;
+                string machine_with_extension = machine + ".machine";
+                if (stat(machine_with_extension.c_str(), &s) < 0)
+                {
+                    perror(machine.c_str());
+                    continue;
+                }
+                machine = machine_with_extension;
             }
-            machine = machine_with_extension;
+            machines.push_back(machine);
         }
-        machines.push_back(machine);
     }
 
     if (!compiler_args.size()) compiler_args = MachineWrapper::default_compiler_args();
@@ -415,7 +435,12 @@ int main(int argc, char * const argv[])
     struct clfsm_context context = { CLFSMMachineLoader::getMachineLoaderSingleton() };
     factory->postMachineStatus();
     debug_internal_states = debug;
-    factory->fsms()->execute(visitor, &context, accept_action);
+    if (!isTT) {
+        factory->fsms()->execute(visitor, &context, accept_action);
+    } else {
+        TTCLFSMVectorFactory* ttFactory = static_cast<TTCLFSMVectorFactory*>(factory);
+        ttFactory->executeTT(visitor, schedule, &context, accept_action);
+    }
 #ifdef WANT_FSM_REFLECTION
     refl_destroyAPI(NULLPTR); // Destroy reflection system
 #endif
@@ -426,6 +451,7 @@ int main(int argc, char * const argv[])
     }
 
     delete CLFSMMachineLoader::getMachineLoaderSingleton();
+    delete(schedule);
 
     return EXIT_SUCCESS;
 }
