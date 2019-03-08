@@ -79,8 +79,8 @@ namespace FSM {
     /**
      * FileParser
      *
-     * The FileParser parses a dispatch table provided in the constructor. The dispatch table is broken up into a requirements section
-     * and a Schedule section. The sections are separated by a blank line. The top section is the requirements section and designates the
+     * The FileParser parses a dispatch table provided in the constructor into a Schedule object. The dispatch table is broken up into a requirements
+     * section and a Schedule section. The sections are separated by a blank line. The top section is the requirements section and designates the
      * machines to be scheduled and their required periods and deadlines. The scheduling section indicates the entire cycle of when the
      * machines are scheduled. This consists of the machine index based on the list of machines provided in the requirements section
      * starting at 0 and the scheduled time after schedule start. All times including periods, start times and deadlines are represented
