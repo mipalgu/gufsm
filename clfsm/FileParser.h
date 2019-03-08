@@ -111,7 +111,7 @@ namespace FSM {
             int parsePeriod(string line);
 
             /**
-             * A function to reqieve the deadline of the machine
+             * A function to retrieve the deadline of the machine
              * @param line The line to be parsed.
              *
              * @return This deadline of the machine.
