@@ -110,7 +110,7 @@ vector<vector<string>> FileParser::seperateTable(string raw) {
 Schedule* FileParser::createSchedule() {
     if (!this->parse()) {
         cerr << "Failed to parse file" << endl;
-        return NULL;
+        return NULLPTR;
     }
     vector<unsigned long> scheduledMachines;
     vector<int> scheduledTimes;
