@@ -129,3 +129,16 @@ void SuspensibleMachine::resume()
                 cerr << "Resume " << id() << ": " << curr->name() << " -> " << prev->name() << (prev == states()[0] ? " (initial)" : "") << endl;
 }
 
+
+bool SuspensibleMachine::executeOnce(bool *fired)
+{
+        const State *curr = currentState();
+        if (curr && curr == _suspendState)
+        {
+                State *prev = previousState();
+                if (prev && curr != prev)
+                        prev->activity().performOnSuspend(this);
+        }
+        return Machine::executeOnce(fired);
+}
+

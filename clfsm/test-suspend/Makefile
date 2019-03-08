@@ -3,7 +3,7 @@
 #
 # Makefile for pre- and cross-compiling .machine files
 #
-MACHINES=Suspend Suspend_is_Accepting Suspend_Resume_Restart Schedule_Suspend
+MACHINES=Suspend Suspend_is_Accepting Suspend_Resume_Restart Schedule_Suspend TestOnSuspend
 MODULE=TEST_SUSPEND
 
 ALL_TARGETS?=host-local test
@@ -26,6 +26,8 @@ test: ${OUTFILE}
 		( cd /tmp && rm test_concurrent_suspend_resume_ok )
 	$E${CLFSM} -vs Schedule_Suspend Schedule_Suspend &&	\
 		( cd /tmp && rm test_schedule_suspend_accepting_ok )
+	$E${CLFSM} -vs TestOnSuspend &&				\
+		( cd /tmp && rm test_on_suspend_ok )
 
 .include "../../../../mk/fsm.mk"	# comes first: required for fsms
 .include "../../../../mk/mipal.mk"	# comes last!

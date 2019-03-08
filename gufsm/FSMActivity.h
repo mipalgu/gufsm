@@ -2,7 +2,7 @@
  *  FSMActivity.h
  *
  *  Created by René Hexel on 23/09/11.
- *  Copyright (c) 2011 Rene Hexel.
+ *  Copyright (c) 2011, 2019 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -76,7 +76,8 @@ namespace FSM
                 ActionVector _onEntryActions;   /// on entry actions
                 ActionVector _internalActions;  /// internal actions
                 ActionVector _onExitActions;    /// on exit actions
-                
+                ActionVector _onSuspendActions; /// on suspend actions
+
                 /** perform actions */
                 void perform(Machine *m, ActionStage stage,
                              const ActionVector &actions)
@@ -114,6 +115,15 @@ namespace FSM
                 /** add an on exit action */
                 void addOnExitAction(Action *a) { _onExitActions.push_back(a); }
                 
+                /** return the std::vector of actions that happen on suspend */
+                ActionVector &onSuspendActions() { return _onSuspendActions; }
+            
+                /** add an on suspend action */
+                void addOnSuspendAction(Action *a) { _onSuspendActions.push_back(a); }
+            
+                /** set the on suspend actions */
+                void setOnSuspendActions(const ActionVector &av) { _onSuspendActions = av; }
+            
                 /** perform actions for state and stage */
                 void perform(Machine *m, ActionStage stage = STAGE_INTERNAL);
                 
@@ -126,6 +136,9 @@ namespace FSM
                 /** perform actions for state and stage */
                 void performOnExit(Machine *m) { perform(m, STAGE_ON_EXIT,
                                                         _onExitActions); }
+                /** perform actions for state and stage */
+                void performOnSuspend(Machine *m) { perform(m, STAGE_ON_SUSPEND,
+                                                     _onSuspendActions); }
 
                 /** activity description */
                 std::string description() const;
