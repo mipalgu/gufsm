@@ -75,7 +75,23 @@
 namespace FSM {
 
     using namespace std;
-
+    
+    /**
+     * FileParser
+     *
+     * The FileParser parses a dispatch table provided in the constructor. The dispatch table is broken up into a requirements section
+     * and a Schedule section. The sections are separated by a blank line. The top section is the requirements section and designates the
+     * machines to be scheduled and their required periods and deadlines. The scheduling section indicates the entire cycle of when the
+     * machines are scheduled. This consists of the machine index based on the list of machines provided in the requirements section
+     * starting at 0 and the scheduled time after schedule start. All times including periods, start times and deadlines are represented
+     * in microseconds. The schedule will repeat indefinitely. The dispatch table is to be formatted using the following style:
+     *
+     * PATH_TO_MACHINE0\tPERIOD\tDEADLINE
+     * PATH_TO_MACHINE1\tPERIOD\tDEADLINE
+     * ...\n\n
+     * MACHINE_INDEX\tSCHEDULED_TIME
+     * ...
+     */
     class FileParser {
         private:
             string _contents;
