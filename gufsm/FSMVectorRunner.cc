@@ -2,7 +2,7 @@
  *  FSMVectorRunner.cc
  *  
  *  Created by René Hexel on 31/05/12.
- *  Copyright (c) 2011, 2012, 2013, 2014 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2011, 2012, 2013, 2014, 2019 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -82,6 +82,7 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wshorten-64-to-32"
 #pragma clang diagnostic ignored "-Wsign-compare"
+#pragma clang diagnostic ignored "-Wold-style-cast"
 
 #define ANTLRFunc(x,n)  x func ## x; \
                         antlr_context.set_function((n), &func ## x);
@@ -113,7 +114,7 @@ struct StringFunction: public ContentAction<string>
 #ifdef NEED_SLEEP
 struct SleepFunction: public TimeoutPredicate
 {
-        virtual int evaluate(Machine *m = NULL)
+        virtual int evaluate(Machine *m = NULLPTR)
         {
                 protected_usleep(1000000LL * timeout());
                 return 0;
@@ -124,7 +125,7 @@ struct SleepFunction: public TimeoutPredicate
 struct PrintStatenameFunction: public PrintingAction<string>
 {
         PrintStatenameFunction(): PrintingAction<string>("") {}
-        virtual int evaluate(Machine *m = NULL)
+        virtual int evaluate(Machine *m = NULLPTR)
         {
                 stringstream ss;
                 ss << "Machine " << m->id() << " state " << m->currentState()->name();
@@ -140,7 +141,7 @@ struct SystemFunction: public ContentAction<string>
         {
                 evaluate(m);
         }
-        virtual int evaluate(Machine * = NULL)
+        virtual int evaluate(Machine * = NULLPTR)
         {
                 return system(_content.c_str());
         }
@@ -160,7 +161,7 @@ struct ReadIntFunction: public ContentAction<string>
         }
 
         /** read the file passed as a parameter and interpret the content as an int */
-        virtual int evaluate(Machine * = NULL)
+        virtual int evaluate(Machine * = NULLPTR)
         {
                 return int_from_file(_content.c_str());
         }
@@ -180,7 +181,7 @@ class SuspendAllFunction: public Action
         StateMachineVector *_fsms;
 public:
         /** default constructor */
-        SuspendAllFunction(): Action(), _fsms(NULL) {}
+        SuspendAllFunction(): Action(), _fsms(NULLPTR) {}
 
         /** setter for state machine vector */
         void setFSMs(StateMachineVector *v) { _fsms = v; }
@@ -189,17 +190,17 @@ public:
         StateMachineVector *fsms() const { return _fsms; }
 
         /** suspend all state machines except for the current one */
-        virtual void performv(Machine *m, ActionStage = STAGE_ON_ENTRY, int = 0, va_list = NULL)
+        virtual void performv(Machine *m, ActionStage = STAGE_ON_ENTRY, int = 0, va_list = NULLPTR)
         {
                 _fsms->suspend();
                 if (m) static_cast<SuspensibleMachine*>(m)->resume();
         }
 
         /** suspend machines and return number of machines suspended */
-        virtual int evaluate(Machine *m = NULL)
+        virtual int evaluate(Machine *m = NULLPTR)
         {
                 performv(m);
-                return _fsms->machines().size() - (m != NULL);
+                return _fsms->machines().size() - (m != NULLPTR);
         }
 };
 
@@ -356,7 +357,7 @@ public:
  */
 struct ProofFunction: public StringFunction
 {
-        virtual int evaluate(Machine * = NULL)
+        virtual int evaluate(Machine * = NULLPTR)
         {
                 if (!gucdlbridge) return -3;
                 return gucdlbridge->update_proofs("", _content);
@@ -366,7 +367,7 @@ struct ProofFunction: public StringFunction
 
 struct LoadTheoryFunction: public StringFunction
 {
-        virtual int evaluate(Machine * = NULL)
+        virtual int evaluate(Machine * = NULLPTR)
         {
                 if (!gucdlbridge) return -3;
                 return gucdlbridge->load_theory_file(_content);

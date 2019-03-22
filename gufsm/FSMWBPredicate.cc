@@ -1,8 +1,8 @@
 /*
- *  FSMWBPredicate.cpp
+ *  FSMWBPredicate.cc
  *  
  *  Created by Rene Hexel on 18/10/11.
- *  Copyright (c) 2011, 2014 Rene Hexel.
+ *  Copyright (c) 2011, 2014, 2019 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -59,6 +59,8 @@
 #include "FSMWBPredicate.h"
 #include "FSMWBContext.h"
 #include <ctype.h>
+
+#pragma clang diagnostic ignored "-Wold-style-cast"
 
 using namespace std;
 using namespace FSM;

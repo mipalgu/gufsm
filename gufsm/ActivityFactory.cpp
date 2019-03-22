@@ -2,7 +2,7 @@
  *  ActivityFactory.cpp
  *  
  *  Created by René Hexel on 28/08/11.
- *  Copyright (c) 2011, 2014 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2011, 2014, 2019 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -93,7 +93,7 @@ static inline const char *getTString(pANTLR3_RECOGNIZER_SHARED_STATE state, pANT
 static inline const char *getContent(pANTLR3_BASE_TREE tree)
 {
         pANTLR3_STRING s = tree->toString(tree);
-        if (!s) return NULL;
+        if (!s) return NULLPTR;
         const char *rv = gu_strdup(reinterpret_cast<const char *>(s->chars));
         s->factory->destroy(s->factory, s);
         return rv;
@@ -190,7 +190,7 @@ block_pop(void *context, const char *, const char *,
                         return -1;
         }
 
-        self->set_action(NULL);
+        self->set_action(NULLPTR);
 
         return 1;
 }
@@ -211,7 +211,7 @@ action_callback(void *context, const char *terminal, const char *content,
         if (string("BLOCK") == terminal)        /* block in curly brackets? */
         {
                 if (walk_parse_children(state, tree, block_callback,
-                                        NULL, block_pop, context) == -1)
+                                        NULLPTR, block_pop, context) == -1)
                         return -1;
                 return 0;
         }
@@ -259,7 +259,7 @@ state_push(void *context, const char *terminal, const char *content,
         if (string("STATENAME") == terminal)    /* state name? */
         {
                 if (walk_parse_children(state, tree, statename_callback,
-                                          NULL, NULL, context) == -1)
+                                          NULLPTR, NULLPTR, context) == -1)
                         return -1;
                 return 0;
         }
@@ -267,7 +267,7 @@ state_push(void *context, const char *terminal, const char *content,
         {
                 self->set_stage(STAGE_ON_ENTRY);
                 if (walk_parse_children(state, tree, action_callback,
-                                          NULL, NULL, context) == -1)
+                                          NULLPTR, NULLPTR, context) == -1)
                         return -1;
                 return 0;
         }
@@ -275,7 +275,7 @@ state_push(void *context, const char *terminal, const char *content,
         {
                 self->set_stage(STAGE_ON_EXIT);
                 if (walk_parse_children(state, tree, action_callback,
-                                          NULL, NULL, context) == -1)
+                                          NULLPTR, NULLPTR, context) == -1)
                         return -1;
                 return 0;
         }
@@ -283,7 +283,7 @@ state_push(void *context, const char *terminal, const char *content,
         {
                 self->set_stage(STAGE_INTERNAL);
                 if (walk_parse_children(state, tree, action_callback,
-                                          NULL, NULL, context) == -1)
+                                          NULLPTR, NULLPTR, context) == -1)
                         return -1;
                 return 0;
         }
@@ -322,8 +322,8 @@ activity_push(void *context, const char *terminal, const char *content,
                         return -1;
                 }
 
-                if (walk_parse_children(state, tree, NULL,
-                                          state_push, NULL, context) == -1)
+                if (walk_parse_children(state, tree, NULLPTR,
+                                          state_push, NULLPTR, context) == -1)
                         return -1;
                 return 0;
         }
@@ -352,12 +352,12 @@ ActivityFactory::ActivityFactory(FSM::Machine *machine, const char *filename, ma
                 _fsm(machine), 
                 _named_actions(func), 
                 _file(filename), 
-                _currentState(NULL),
-                _currentAction(NULL),
+                _currentState(NULLPTR),
+                _currentAction(NULLPTR),
                 _currentStage(STAGE_ON_ENTRY),
                 _error(false)
 {
-        if (parse_actions(filename, NULL, activity_push, activity_pop, this) == -1)
+        if (parse_actions(filename, NULLPTR, activity_push, activity_pop, this) == -1)
                 set_error(true);
 }
 
@@ -365,8 +365,8 @@ ActivityFactory::ActivityFactory(FSM::Machine *machine, const char *filename, ma
 _fsm(machine), 
 _named_actions(func), 
 _file(filename), 
-_currentState(NULL),
-_currentAction(NULL),
+_currentState(NULLPTR),
+_currentAction(NULLPTR),
 _currentStage(STAGE_ON_ENTRY),
 _error(false)
 {

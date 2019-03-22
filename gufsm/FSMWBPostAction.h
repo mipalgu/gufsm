@@ -2,7 +2,7 @@
  *  FSMWBPostAction.h
  *
  *  Created by René Hexel on 15/12/11.
- *  Copyright (c) 2011 Rene Hexel.
+ *  Copyright (c) 2011, 2019 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -62,6 +62,9 @@
 #include "FSMAction.h"
 #include "FSMWBContext.h"
 #include <Whiteboard.h>
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wold-style-cast"
 
 namespace FSM
 {
@@ -128,5 +131,7 @@ namespace FSM
                 }
         };
 }
+
+#pragma clang diagnostic pop
 
 #endif

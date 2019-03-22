@@ -2,7 +2,7 @@
  *  FSMWBPredicate.h
  *  
  *  Created by René Hexel on 18/10/11.
- *  Copyright (c) 2011, 2014 Rene Hexel.
+ *  Copyright (c) 2011, 2014, 2019 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -93,7 +93,7 @@ namespace FSM
                  * Whiteboard constructor
                  * @param wb the whiteboard to use (null to use machine context)
                  */
-                WBExpression(guWhiteboard::Whiteboard *wb = NULL): _wb(wb) {}
+                WBExpression(guWhiteboard::Whiteboard *wb = NULLPTR): _wb(wb) {}
 
                 /**
                  * Whiteboard context constructor
@@ -135,7 +135,7 @@ namespace FSM
                  * @param neg is this a negation?
                  * @param wb the whiteboard to use (null to use machine context)
                  */
-                WBPredicate(const std::string &expr, bool neg, guWhiteboard::Whiteboard *wb = NULL): Predicate(expr, false, neg), WBExpression(wb) {}
+                WBPredicate(const std::string &expr, bool neg, guWhiteboard::Whiteboard *wb = NULLPTR): Predicate(expr, false, neg), WBExpression(wb) {}
 
                 /**
                  * Whiteboard context constructor
@@ -148,7 +148,7 @@ namespace FSM
                 virtual ~WBPredicate() {}       /// destructor
 
                 /** return the value, negated if necessary */
-                virtual int evaluate(Machine *m = NULL);
+                virtual int evaluate(Machine *m = NULLPTR);
                 
                 /** return the value, negated if necessary */
                 virtual int evaluate(WBMsg &msg);

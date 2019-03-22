@@ -1,8 +1,8 @@
 /*
- *  Action.h
+ *  FSMANTLRAction.cc
  *
  *  Created by René Hexel on 23/09/11.
- *  Copyright (c) 2011 Rene Hexel.
+ *  Copyright (c) 2011, 2019 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -59,6 +59,8 @@
 #include "FSMANTLRAction.h"
 #include "FSMANTLRExpression.h"
 
+#pragma clang diagnostic ignored "-Wold-style-cast"
+
 #include <iostream>
 #include <sstream>
 #include <cassert>
@@ -92,7 +94,7 @@ static inline const char *getTString(pANTLR3_RECOGNIZER_SHARED_STATE state, pANT
 static inline string getContent(pANTLR3_BASE_TREE tree)
 {
         pANTLR3_STRING s = tree->toString(tree);
-        if (!s) return NULL;
+        if (!s) return NULLPTR;
         string rv = (const char *) s->chars;
         s->factory->destroy(s->factory, s);
         return rv;
@@ -111,7 +113,7 @@ statement_callback(void *context, const char *terminal, const char *,
         if (string("BLOCK") == terminal)        /* block in curly brackets? */
         {
                 /*
-                walk_parse_children(state, tree, statement_callback, NULL, NULL, context);
+                walk_parse_children(state, tree, statement_callback, NULLPTR, NULLPTR, context);
                 return 0;
                  */
                 return 1;                       /* parse children */
@@ -194,7 +196,7 @@ void ANTLRAction::performv(Machine *m, ActionStage, int, va_list)
              << s->name() << "(" << s->stateID()
              << "): " << x << endl);
 #endif
-        walk_parse_children(antlr_state(), content(), statement_callback, NULL, NULL, m);
+        walk_parse_children(antlr_state(), content(), statement_callback, NULLPTR, NULLPTR, m);
 }
 
 
@@ -235,7 +237,7 @@ assignment_print_callback(void *context, const char *terminal, const char *conte
         if (string("K_EQ") == terminal)         /* assignment */
         {
                 ss << " =( " ;
-                walk_parse_children(state, tree, assignment_print_callback, NULL, statement_print_pop_callback, context);
+                walk_parse_children(state, tree, assignment_print_callback, NULLPTR, statement_print_pop_callback, context);
                 return 0;
         }
         ss << content << ", ";
@@ -259,7 +261,7 @@ statement_print_callback(void *context, const char *terminal, const char *conten
         if (string("K_EQ") == terminal)         /* assignment */
         {
                 ss << " =( " ;
-                walk_parse_children(state, tree, assignment_print_callback, NULL, NULL, context);
+                walk_parse_children(state, tree, assignment_print_callback, NULLPTR, NULLPTR, context);
                 return 0;
         }
         ss << content << ", ";
@@ -271,7 +273,7 @@ string ANTLRAction::description()
 {
         stringstream ss;
 
-        walk_parse_children(antlr_state(), content(), statement_print_callback, NULL, statement_print_pop_callback, &ss);
+        walk_parse_children(antlr_state(), content(), statement_print_callback, NULLPTR, statement_print_pop_callback, &ss);
 
         return ss.str();
 };
@@ -294,7 +296,7 @@ assignment_extract_callback(void *context, const char *terminal, const char *con
         }
         if (string("K_EQ") == terminal)         /* assignment */
         {
-                walk_parse_children(state, tree, assignment_extract_callback, NULL, NULL, context);
+                walk_parse_children(state, tree, assignment_extract_callback, NULLPTR, NULLPTR, context);
                 return 0;
         }
         return 1;
@@ -314,7 +316,7 @@ statement_extract_callback(void *context, const char *terminal, const char *,
         }
         if (string("K_EQ") == terminal)         /* assignment */
         {
-                walk_parse_children(state, tree, assignment_extract_callback, NULL, NULL, context);
+                walk_parse_children(state, tree, assignment_extract_callback, NULLPTR, NULLPTR, context);
                 return 0;
         }
         return 1;
@@ -323,7 +325,7 @@ statement_extract_callback(void *context, const char *terminal, const char *,
 
 void ANTLRAction::set_external_variables(Machine *fsm)
 {
-        walk_parse_children(antlr_state(), content(), statement_extract_callback, NULL, NULL, fsm);
+        walk_parse_children(antlr_state(), content(), statement_extract_callback, NULLPTR, NULLPTR, fsm);
 }
 
 

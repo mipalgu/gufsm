@@ -2,7 +2,7 @@
  *  FSMANTLRContext.cc
  *  
  *  Created by René Hexel on 8/12/11.
- *  Copyright (c) 2011 Rene Hexel.
+ *  Copyright (c) 2011, 2019 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -59,6 +59,8 @@
 
 #include <iostream>
 #include <Whiteboard.h>
+
+#pragma clang diagnostic ignored "-Wold-style-cast"
 
 using namespace guWhiteboard;
 using namespace FSM;

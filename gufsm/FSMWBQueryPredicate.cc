@@ -1,8 +1,8 @@
 /*
- *  FSMWBQueryPredicate.cpp
+ *  FSMWBQueryPredicate.cc
  *  
  *  Created by Rene Hexel on 22/10/11.
- *  Copyright (c) 2011 Rene Hexel.
+ *  Copyright (c) 2011, 2019 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -61,6 +61,8 @@
 #include "FSMWBQueryPredicate.h"
 #include "FSMWBContext.h"
 
+#pragma clang diagnostic ignored "-Wold-style-cast"
+
 using namespace std;
 using namespace FSM;
 using namespace guWhiteboard;
@@ -83,10 +85,10 @@ void WBQueryPredicate::init(Whiteboard *wb)
 
         pthread_mutexattr_init(&mattr);
         pthread_mutexattr_settype(&mattr, PTHREAD_MUTEX_RECURSIVE);
-        pthread_mutex_init(&_lock, NULL);
+        pthread_mutex_init(&_lock, NULLPTR);
         pthread_mutexattr_destroy(&mattr);
 
-        pthread_cond_init(&_receivedProof, NULL);
+        pthread_cond_init(&_receivedProof, NULLPTR);
 
         setWhiteboard(wb);
 }

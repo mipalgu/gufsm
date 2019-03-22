@@ -1,8 +1,8 @@
 /*
- *  FSMVectorFactory.cc
+ *  FSMANTLRVectorFactory.cc
  *  
  *  Created by René Hexel on 23/09/11.
- *  Copyright (c) 2011, 2013 Rene Hexel.
+ *  Copyright (c) 2011, 2013, 2019 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -64,6 +64,8 @@
 #include "FSMANTLRVectorFactory.h"
 #include "FSMWBSubMachine.h"
 #include "FSMANTLRMachineFactory.h"
+
+#pragma clang diagnostic ignored "-Wold-style-cast"
 
 #ifdef bool
 #undef bool

@@ -2,7 +2,7 @@
  *  FSMWBSubMachine.h
  *  
  *  Created by René Hexel on 22/11/11.
- *  Copyright (c) 2011, 2013, 2015 Rene Hexel.
+ *  Copyright (c) 2011, 2013, 2015, 2019 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -75,10 +75,10 @@ namespace FSM
                 std::string _name;      ///< name for the machine on the Whiteboard
         public:
                 /** constructor */
-                WBSubMachine(const std::string &mname, State *initialState = NULL, 
-                             WBContext *ctx = NULL, 
+                WBSubMachine(const std::string &mname, State *initialState = NULLPTR,
+                             WBContext *ctx = NULLPTR,
                              int mid=0,
-                             State *s = NULL, 
+                             State *s = NULLPTR,
                              bool del = false);
 
                 /** destructor */
@@ -100,7 +100,7 @@ namespace FSM
                 virtual void resume();
 
                 ///** restart this state machine where it left off */
-                //virtual State *restart(State *initialState = NULL);
+                //virtual State *restart(State *initialState = NULLPTR);
 
                 /** return whether the context will be deleted by the destructor */
                 bool willDeleteContext() { return _deleteContext; }

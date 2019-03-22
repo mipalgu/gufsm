@@ -2,7 +2,7 @@
  *  FSMWBSubMachine.cc
  *  
  *  Created by René Hexel on 22/11/11.
- *  Copyright (c) 2011, 2013 Rene Hexel.
+ *  Copyright (c) 2011, 2013, 2019 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -62,6 +62,8 @@
 #include "FSMWBContext.h"
 #include "FSMState.h"
 
+#pragma clang diagnostic ignored "-Wold-style-cast"
+
 using namespace FSM;
 using namespace std;
 using namespace guWhiteboard;
@@ -83,13 +85,13 @@ WBSubMachine::WBSubMachine(const string &mname, State *initialState,
         if (!ctx)
         {
                 setContext(new WBContext());
-                _deleteContext = context() != NULL;
+                _deleteContext = context() != NULLPTR;
         }
 
         /*
          * subscribe to suspend/resume/restart type messages
          */
-        Whiteboard *wb = ctx ? ctx->whiteboard() : NULL;
+        Whiteboard *wb = ctx ? ctx->whiteboard() : NULLPTR;
         if (!wb)
         {
             cerr << "No whiteboard in context -- not subscribing!" << endl;

@@ -2,7 +2,7 @@
  *  FSMWBQueryPredicate.h
  *  
  *  Created by René Hexel on 22/10/11.
- *  Copyright (c) 2011 Rene Hexel.
+ *  Copyright (c) 2011, 2019 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -102,7 +102,7 @@ namespace FSM
                  * @param neg is this a negation?
                  * @param wb the whiteboard to use (null to use machine context)
                  */
-                WBQueryPredicate(const std::string &p, bool neg, guWhiteboard::Whiteboard *wb = NULL);
+                WBQueryPredicate(const std::string &p, bool neg, guWhiteboard::Whiteboard *wb = NULLPTR);
 
                 /**
                  * Whiteboard context constructor
@@ -118,7 +118,7 @@ namespace FSM
                 void setWhiteboard(guWhiteboard::Whiteboard *wb);
 
                 /** return the value, negated if necessary */
-                virtual int evaluate(Machine *m = NULL);
+                virtual int evaluate(Machine *m = NULLPTR);
         };
 }
 

@@ -1,8 +1,8 @@
 /*
- *  FSMWBMachine.cc
+ *  FSMWBContext.cc
  *  
  *  Created by René Hexel on 18/10/11.
- *  Copyright (c) 2011 Rene Hexel.
+ *  Copyright (c) 2011, 2019 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -71,7 +71,7 @@ WBContext::WBContext(guWhiteboard::Whiteboard *wb, bool deletewb)
         else
         {
                 _wb = new Whiteboard();
-                _deletewb = _wb != NULL;
+                _deletewb = _wb != NULLPTR;
         }
 }
 

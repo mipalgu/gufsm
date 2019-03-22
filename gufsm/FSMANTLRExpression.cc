@@ -2,7 +2,7 @@
  *  FSMExpression.cc
  *  
  *  Created by René Hexel on 26/09/11.
- *  Copyright (c) 2011-2014 Rene Hexel.
+ *  Copyright (c) 2011-2014, 2019 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -109,7 +109,7 @@ static inline const char *getTString(pANTLR3_RECOGNIZER_SHARED_STATE state, pANT
 static inline string getContent(pANTLR3_BASE_TREE tree)
 {
         pANTLR3_STRING s = tree->toString(tree);
-        if (!s) return NULL;
+        if (!s) return NULLPTR;
         string rv = reinterpret_cast<const char *>(s->chars);
         s->factory->destroy(s->factory, s);
         return rv;

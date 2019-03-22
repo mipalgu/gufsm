@@ -1,8 +1,8 @@
 /*
- *  ANTLRMachineFactory.cc
+ *  FSMANTLRMachineFactory.cc
  *  
  *  Created by René Hexel on 23/09/11.
- *  Copyright (c) 2011 Rene Hexel.
+ *  Copyright (c) 2011, 2019 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -67,15 +67,15 @@ using namespace std;
 
 ANTLRMachineFactory::ANTLRMachineFactory(WBContext *context, const string &machine_name, int mid)
 {
-        setMachine(new WBSubMachine(machine_name, NULL, context, mid));
+        setMachine(new WBSubMachine(machine_name, NULLPTR, context, mid));
 
         string a_file_name = machine_name + string(".acsl");
         string t_file_name = machine_name + string(".tcsl");
 
-        ActivityFactory afactory(machine(), a_file_name.c_str(), NULL);
+        ActivityFactory afactory(machine(), a_file_name.c_str(), NULLPTR);
         TransitionFactory tfactory(machine(), t_file_name.c_str());
         if (!determineSuspendState())
-                determineSuspendState(NULL);
+                determineSuspendState(NULLPTR);
         machine()->setName(machine_name);
         machine()->initialise();
 }

@@ -2,7 +2,7 @@
  *  TransitionFactory.cpp
  *  
  *  Created by René Hexel on 2/09/11.
- *  Copyright (c) 2011, 2013, 2014 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2011, 2013, 2014, 2019 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -122,7 +122,7 @@ transition_push(void *context, const char *terminal, const char *content,
                         return -1;
                 }
 
-                if (walk_parse_children(state, tree, exp_callback, NULL, NULL,
+                if (walk_parse_children(state, tree, exp_callback, NULLPTR, NULLPTR,
                                         context) == -1)
                         return -1;
                 return 0;
@@ -173,7 +173,7 @@ transition_pop(void *context, const char *, const char *,
 
 TransitionFactory::TransitionFactory(FSM::Machine *machine, const char *filename): _fsm(machine), _file(filename), _state_id(-1), _destination_id(-1), _error(false)
 {
-        if (parse_transitions(filename, NULL, transition_push, transition_pop, this) == -1)
+        if (parse_transitions(filename, NULLPTR, transition_push, transition_pop, this) == -1)
                 set_error(true);
 }
 
