@@ -124,7 +124,7 @@ CLFSMMachineLoader* CLFSMMachineLoader::getMachineLoaderSingleton()
 CLFSMMachineLoader::CLFSMMachineLoader()
 {
     if (!loader_singleton) loader_singleton = this;
-    _vector_factory = new CLFSMWBVectorFactory(NULLPTR, false, idle_timeout);
+    _vector_factory = new TTCLFSMVectorFactory(false, NULLPTR, false, idle_timeout);
 }
 
 CLFSMMachineLoader::~CLFSMMachineLoader()
