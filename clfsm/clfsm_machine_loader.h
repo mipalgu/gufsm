@@ -152,6 +152,12 @@ namespace FSM
         std::vector<std::string> compiler_args = std::vector<std::string>(),
         std::vector<std::string> linker_args = std::vector<std::string>());
 
+    void *preloadMachineAtPath(const std::string machine,
+        std::vector<std::string> compiler_args = std::vector<std::string>(),
+        std::vector<std::string> linker_args = std::vector<std::string>());
+    
+    int scheduleMachine(void * context, bool initiallySuspended = false);
+    
     /// Unloads the machine at the given index. Returns true if successful.
 	bool unloadMachineAtIndex(int index);
 }

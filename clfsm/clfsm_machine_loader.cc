@@ -87,6 +87,23 @@ useconds_t CLFSMMachineLoader::idle_timeout = 10000;     ///< idle timeout
 
 /* ---- Global Access Methods ---- */
 
+void *FSM::preloadMachineAtPath(const std::string machine, std::vector<std::string> compiler_args, std::vector<std::string> linker_args)
+{
+    if (!loader_singleton)
+        return NULLPTR;
+    else
+        return static_cast<void *>(loader_singleton->loadMachineAtPath(machine, compiler_args, linker_args));
+}
+
+int FSM::scheduleMachine(void * context, bool initiallySuspended)
+{
+    MachineWrapper * wrapper = static_cast<MachineWrapper *>(context);
+    if (!wrapper || !loader_singleton)
+        return -1;
+    else
+        return loader_singleton->scheduleMachine(wrapper, initiallySuspended);
+}
+
 /// Loads a machine into the vector given its name
 int FSM::loadAndAddMachineAtPath(const std::string machine, bool initiallySuspended, std::vector<std::string> compiler_args, std::vector<std::string> linker_args)
 {
