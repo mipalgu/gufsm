@@ -152,6 +152,8 @@ namespace FSM
         std::vector<std::string> compiler_args = std::vector<std::string>(),
         std::vector<std::string> linker_args = std::vector<std::string>());
 
+    void *preloadMachine(const std::string machine);
+    
     void *preloadMachineAtPath(const std::string machine,
         std::vector<std::string> compiler_args = std::vector<std::string>(),
         std::vector<std::string> linker_args = std::vector<std::string>());

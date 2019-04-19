@@ -87,6 +87,25 @@ useconds_t CLFSMMachineLoader::idle_timeout = 10000;     ///< idle timeout
 
 /* ---- Global Access Methods ---- */
 
+/// Loads a machine into the vector given its name
+int FSM::loadAndAddMachineAtPath(const std::string machine, bool initiallySuspended, std::vector<std::string> compiler_args, std::vector<std::string> linker_args)
+{
+    if (!loader_singleton)
+        return -1;
+    else
+        return loader_singleton->loadAndAddMachineAtPath(machine, compiler_args, linker_args, initiallySuspended);
+}
+
+int FSM::loadAndAddMachine(const std::string machine, bool initiallySuspended)
+{
+    return loadAndAddMachineAtPath(machine, initiallySuspended);
+}
+
+void *FSM::preloadMachine(const std::string machine)
+{
+    return preloadMachineAtPath(machine);
+}
+
 void *FSM::preloadMachineAtPath(const std::string machine, std::vector<std::string> compiler_args, std::vector<std::string> linker_args)
 {
     if (!loader_singleton)
@@ -102,20 +121,6 @@ int FSM::scheduleMachine(void * context, bool initiallySuspended)
         return -1;
     else
         return loader_singleton->scheduleMachine(wrapper, initiallySuspended);
-}
-
-/// Loads a machine into the vector given its name
-int FSM::loadAndAddMachineAtPath(const std::string machine, bool initiallySuspended, std::vector<std::string> compiler_args, std::vector<std::string> linker_args)
-{
-    if (!loader_singleton)
-        return -1;
-    else
-        return loader_singleton->loadAndAddMachineAtPath(machine, compiler_args, linker_args, initiallySuspended);
-}
-
-int FSM::loadAndAddMachine(const std::string machine, bool initiallySuspended)
-{
-    return loadAndAddMachineAtPath(machine, initiallySuspended);
 }
 
 bool FSM::unloadMachineAtIndex(int index)
