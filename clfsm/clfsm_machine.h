@@ -137,6 +137,9 @@ namespace FSM
                 /// compile the given machine with same args for compiler and linker
                 bool compile(const std::vector<std::string> &args) { return compile(args, args); }
 
+                /// preload
+                void *preload();
+            
                 /// instantiate a machine
                 CLMachine *instantiate(int id, const char *machine_name);
 

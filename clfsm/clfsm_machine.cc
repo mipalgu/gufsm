@@ -300,8 +300,7 @@ if (success)    // link into shared object if compiler was successful
     return success;
 }
 
-
-CLMachine *MachineWrapper::instantiate(int id, const char *machine_name)
+void *MachineWrapper::preload()
 {
     if (!_shared_object)
     {
@@ -310,17 +309,17 @@ CLMachine *MachineWrapper::instantiate(int id, const char *machine_name)
         {
             const char *error = dlerror();
             if (error) cerr << error << endl;
-
+            
             const vector<string> *cmdline_compiler_args = _compiler_args;
             const vector<string> *linker_args = _linker_args;
             vector<string> compiler_args = cmdline_compiler_args ? *cmdline_compiler_args : default_compiler_args();
-
+            
             add_machine_includes(compiler_args);
-
+            
             if (!linker_args)   linker_args   = &default_linker_args();
-
+            
             compile(compiler_args, *linker_args);
-
+            
             if (!(_shared_object = dlopen(shared_path.c_str(), RTLD_NOW|RTLD_GLOBAL)))
             {
                 if (!error)
@@ -332,6 +331,16 @@ CLMachine *MachineWrapper::instantiate(int id, const char *machine_name)
                 return NULLPTR;
             }
         }
+    }
+    return _shared_object;
+}
+
+
+CLMachine *MachineWrapper::instantiate(int id, const char *machine_name)
+{
+    if (!this->preload())
+    {
+        return NULLPTR;
     }
     if (!_factory)
     {
