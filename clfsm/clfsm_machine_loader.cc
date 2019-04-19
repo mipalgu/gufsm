@@ -166,12 +166,9 @@ MachineWrapper *CLFSMMachineLoader::loadMachineAtPath(const std::string machine,
     return wrapper;
 }
 
-int CLFSMMachineLoader::loadAndAddMachineAtPath(const std::string machine,
-                                        std::vector<std::string> compiler_args,
-                                        std::vector<std::string> linker_args,
-                                                bool initiallySuspended)
+int CLFSMMachineLoader::scheduleMachine(MachineWrapper *wrapper, bool initiallySuspended)
 {
-    MachineWrapper *wrapper = this->loadMachineAtPath(machine, compiler_args, linker_args);
+    const std::string machine = wrapper->path();
     //Leave ids as unique - Not reusing based on index position
     int id = _vector_factory->number_of_machines();
     CLMachine *clm = wrapper->instantiate(id, machine.c_str());
@@ -181,14 +178,14 @@ int CLFSMMachineLoader::loadAndAddMachineAtPath(const std::string machine,
         if (_vector_factory->index_of_machine_named(name.c_str()) != CLError)
         {
             while (_vector_factory->index_of_machine_named(name.c_str()) != CLError)
-            name = bumpedName(name);
+                name = bumpedName(name);
             wrapper->setName(name);
         }
         int index = findIndexForNewMachine(machine);
-
+        
         //Create c string to retain for CLMachine
         char* c_name = new char[strlen(name.c_str()) + 1];
-
+        
         if (index == CLError)
         {
             index = static_cast<int>(_machineWrappers.size());
@@ -203,7 +200,7 @@ int CLFSMMachineLoader::loadAndAddMachineAtPath(const std::string machine,
         }
         strcpy(c_name, name.c_str());
         clm->setMachineName(c_name);
-
+        
 #ifdef WANT_FSM_REFLECTION
         // Load and register meta machine
         refl_metaMachine meta = wrapper->instantiateMetaMachine(clm);
@@ -212,15 +209,28 @@ int CLFSMMachineLoader::loadAndAddMachineAtPath(const std::string machine,
             refl_registerMetaMachine(meta, id, NULLPTR);
         }
 #endif // WANT_FSM_REFLECTION
-
+        
         SuspensibleMachine *fsm = _vector_factory->addMachine(clm, index);
         if (initiallySuspended) fsm->suspend();
-
+        
         return index;
     }
     else std::cerr << "Could not add machine " << id << ": '" << machine << "'" << std::endl;
-
+    
     return -1;
+}
+
+int CLFSMMachineLoader::loadAndAddMachineAtPath(const std::string machine,
+                                        std::vector<std::string> compiler_args,
+                                        std::vector<std::string> linker_args,
+                                                bool initiallySuspended)
+{
+    MachineWrapper * wrapper;
+    if (!(wrapper = this->loadMachineAtPath(machine, compiler_args, linker_args)))
+    {
+        return -1;
+    }
+    return this->scheduleMachine(wrapper, initiallySuspended);
 }
 
 bool CLFSMMachineLoader::unloadMachineAtIndex(int index)

@@ -112,6 +112,8 @@ namespace FSM
         MachineWrapper *loadMachineAtPath(const std::string machine,
             std::vector<std::string> compiler_args = std::vector<std::string>(),
             std::vector<std::string> linker_args = std::vector<std::string>());
+        
+        int scheduleMachine(MachineWrapper *wrapper, bool initiallySuspended = false);
 
         /// Loads the machine's shared object and inserts it into the
         /// execution queue. Returns -1 on error
