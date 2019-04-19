@@ -103,23 +103,23 @@ namespace FSM
 
 
 	public:
-                static useconds_t idle_timeout;     ///< idle timeout in microseconds
+        static useconds_t idle_timeout;     ///< idle timeout in microseconds
 		static CLFSMMachineLoader* getMachineLoaderSingleton();
 
 		~CLFSMMachineLoader();
 
-                /// Loads the machine's shared object and inserts it into the
-                /// execution queue. Returns -1 on error
-                int loadAndAddMachineAtPath(const std::string machine,
-                    std::vector<std::string> compiler_args = std::vector<std::string>(),
-                    std::vector<std::string> linker_args = std::vector<std::string>(),
-                    bool initiallySuspended = false);
+        /// Loads the machine's shared object and inserts it into the
+        /// execution queue. Returns -1 on error
+        int loadAndAddMachineAtPath(const std::string machine,
+            std::vector<std::string> compiler_args = std::vector<std::string>(),
+            std::vector<std::string> linker_args = std::vector<std::string>(),
+            bool initiallySuspended = false);
 
-                /// Unloads the machine at the given index.
-                /// Returns true if successful, otherwise false.
+        /// Unloads the machine at the given index.
+        /// Returns true if successful, otherwise false.
 		bool unloadMachineAtIndex(int index);
 
-                /// Vector factory getter
+        /// Vector factory getter
 		TTCLFSMVectorFactory *vector_factory() const { return _vector_factory; }
 
 		///Machine Wrapper getter
@@ -139,12 +139,12 @@ namespace FSM
 	 */
 	int loadAndAddMachine(const std::string machine, bool initiallySuspended = false);
 
-        /// Calls the singleton instance method of the same name.
-        int loadAndAddMachineAtPath(const std::string machine,
-                                    bool initiallySuspended = false,
-            std::vector<std::string> compiler_args = std::vector<std::string>(),
-            std::vector<std::string> linker_args = std::vector<std::string>());
+    /// Calls the singleton instance method of the same name.
+    int loadAndAddMachineAtPath(const std::string machine,
+                                bool initiallySuspended = false,
+        std::vector<std::string> compiler_args = std::vector<std::string>(),
+        std::vector<std::string> linker_args = std::vector<std::string>());
 
-        /// Unloads the machine at the given index. Returns true if successful.
+    /// Unloads the machine at the given index. Returns true if successful.
 	bool unloadMachineAtIndex(int index);
 }
