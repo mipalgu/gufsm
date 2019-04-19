@@ -152,15 +152,26 @@ static std::string bumpedName(std::string name)
     return ss.str();
 }
 
+MachineWrapper *CLFSMMachineLoader::loadMachineAtPath(const std::string machine,
+                                  std::vector<std::string> compiler_args,
+                                  std::vector<std::string> linker_args)
+{
+    MachineWrapper *wrapper = new MachineWrapper(machine);
+    wrapper->setCompilerArgs(compiler_args);
+    wrapper->setLinkerArgs(linker_args);
+    if (!wrapper->preload())
+    {
+        return NULLPTR;
+    }
+    return wrapper;
+}
+
 int CLFSMMachineLoader::loadAndAddMachineAtPath(const std::string machine,
                                         std::vector<std::string> compiler_args,
                                         std::vector<std::string> linker_args,
                                                 bool initiallySuspended)
 {
-    MachineWrapper *wrapper = new MachineWrapper(machine);
-    wrapper->setCompilerArgs(compiler_args);
-    wrapper->setLinkerArgs(linker_args);
-
+    MachineWrapper *wrapper = this->loadMachineAtPath(machine, compiler_args, linker_args);
     //Leave ids as unique - Not reusing based on index position
     int id = _vector_factory->number_of_machines();
     CLMachine *clm = wrapper->instantiate(id, machine.c_str());

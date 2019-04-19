@@ -107,6 +107,11 @@ namespace FSM
 		static CLFSMMachineLoader* getMachineLoaderSingleton();
 
 		~CLFSMMachineLoader();
+        
+        /// Creates the machine's MachineContext and preloads the shared object.
+        MachineWrapper *loadMachineAtPath(const std::string machine,
+            std::vector<std::string> compiler_args = std::vector<std::string>(),
+            std::vector<std::string> linker_args = std::vector<std::string>());
 
         /// Loads the machine's shared object and inserts it into the
         /// execution queue. Returns -1 on error
