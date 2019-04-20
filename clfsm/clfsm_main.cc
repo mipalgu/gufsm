@@ -235,7 +235,7 @@ static void __attribute((noreturn)) backtrace_signal_handler(int signum)
 
 static void usage(const char *cmd)
 {
-    cerr << "Usage: " << cmd << "[-c][-d][-fPIC]{-I includedir}[-i idlesleep]{-L linkdir}{-l lib}[-n][-s][-t][-v][-T]" << endl;
+    cerr << "Usage: " << cmd << "[-c][-d][-fPIC]{-I includedir}[-i idlesleep]{-L linkdir}{-l lib}[-n][-p <machine>][-P <machine>][-s][-t][-v][-T]" << endl;
     cerr << "[-c] = Compile only flag, don't execute machine." << endl;
     cerr << "[-f] = compiler specific flags (eg. 'PIC' To generate Position Independent Code)." << endl;
     cerr << "{-I idlesleep} = Number of microseconds to sleep when idle (default: 10000)" << endl;
@@ -243,6 +243,8 @@ static void usage(const char *cmd)
     cerr << "{-L linkdir} = Directory to include during linking. Use repeatedly for multiple directories." << endl;
     cerr << "{-l lib} = Library to include during linking. Use repeatedly for multiple libraries." << endl;
     cerr << "[-n] = Restart CLFSM after SIGABRT or SIGIOT signals." << endl;
+    cerr << "[-p <machine>] = Preload a machine." << endl;
+    cerr << "[-P <machine>] = Load a machine suspended." << endl;
     cerr << "[-s] = Outputs information about machine suspensions and resumes." << endl;
     cerr << "[-t] = Time execution of machine states." << endl;
     cerr << "[-v] = Verbose; output MachineID, State, and name of machine. (multiple times to increase verbosity)" << endl;
@@ -335,7 +337,9 @@ int main(int argc, char * const argv[])
 
     int ch;
     int debug = 0, verbose = 0, noUnloadIfAccepting = 0;
-    while ((ch = getopt(argc, argv, "dgf:I:i:L:l:nstuvT")) != -1)
+    std::vector<std::string> preloads;
+    std::vector<std::string> suspends;
+    while ((ch = getopt(argc, argv, "dgf:I:i:L:l:nstuvTp:P:")) != -1)
     {
         switch (ch)
         {
@@ -369,6 +373,28 @@ int main(int argc, char * const argv[])
                 DBG(cerr << "nonstop mode: sleeping 1 second before (re)starting" << endl);
                 protected_usleep(1000000ULL);
                 break;
+            case 'p':
+            {
+                if (optarg == NULLPTR)
+                {
+                    std::cerr << "You must provide a path to a machine when using -p." << std::endl;
+                    return EXIT_FAILURE;
+                }
+                const std::string path = std::string(optarg);
+                preloads.push_back(path);
+                break;
+            }
+            case 'P':
+            {
+                if (optarg == NULLPTR)
+                {
+                    std::cerr << "You must provide a path to a machine when using -P." << std::endl;
+                    return EXIT_FAILURE;
+                }
+                const std::string path = std::string(optarg);
+                suspends.push_back(path);
+                break;
+            }
             case 's':
                 FSM::debugSuspends++;
                 break;
@@ -435,6 +461,14 @@ int main(int argc, char * const argv[])
     struct clfsm_context context = { CLFSMMachineLoader::getMachineLoaderSingleton() };
     factory->postMachineStatus();
     debug_internal_states = debug;
+    for (std::string path : preloads)
+    {
+        if (!FSM::preloadMachineAtPath(path)) return EXIT_FAILURE;
+    }
+    for (std::string path : suspends)
+    {
+        if (FSM::loadAndAddMachineAtPath(path, true) < 0) return EXIT_FAILURE;
+    }
     if (!isTT) {
         factory->fsms()->execute(visitor, &context, accept_action);
     } else {
