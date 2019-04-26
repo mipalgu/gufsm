@@ -235,7 +235,7 @@ static void __attribute((noreturn)) backtrace_signal_handler(int signum)
 
 static void usage(const char *cmd)
 {
-    cerr << "Usage: " << cmd << "[-c][-d][-fPIC]{-I includedir}[-i idlesleep]{-L linkdir}{-l lib}[-n][-p <machine>][-P <machine>][-s][-t][-v][-T]" << endl;
+    cerr << "Usage: " << cmd << "[-c][-d][-fPIC]{-I includedir}[-i idlesleep]{-L linkdir}{-l lib}[-n][-P <machine>][-s][-S <machine>][-t][-v][-T]" << endl;
     cerr << "[-c] = Compile only flag, don't execute machine." << endl;
     cerr << "[-f] = compiler specific flags (eg. 'PIC' To generate Position Independent Code)." << endl;
     cerr << "{-I idlesleep} = Number of microseconds to sleep when idle (default: 10000)" << endl;
@@ -243,9 +243,9 @@ static void usage(const char *cmd)
     cerr << "{-L linkdir} = Directory to include during linking. Use repeatedly for multiple directories." << endl;
     cerr << "{-l lib} = Library to include during linking. Use repeatedly for multiple libraries." << endl;
     cerr << "[-n] = Restart CLFSM after SIGABRT or SIGIOT signals." << endl;
-    cerr << "[-p <machine>] = Preload a machine." << endl;
-    cerr << "[-P <machine>] = Load a machine suspended." << endl;
+    cerr << "[-P <machine>] = Preload a machine." << endl;
     cerr << "[-s] = Outputs information about machine suspensions and resumes." << endl;
+    cerr << "[-S <machine>] = Load a machine suspended." << endl;
     cerr << "[-t] = Time execution of machine states." << endl;
     cerr << "[-v] = Verbose; output MachineID, State, and name of machine. (multiple times to increase verbosity)" << endl;
     cerr << "[-d] = Output debug information (requires Verbose switch)." << endl;
@@ -339,7 +339,7 @@ int main(int argc, char * const argv[])
     int debug = 0, verbose = 0, noUnloadIfAccepting = 0;
     std::vector<std::string> preloads;
     std::vector<std::string> suspends;
-    while ((ch = getopt(argc, argv, "dgf:I:i:L:l:nstuvTp:P:")) != -1)
+    while ((ch = getopt(argc, argv, "dgf:I:i:L:l:nstuvTP:S:")) != -1)
     {
         switch (ch)
         {
@@ -373,22 +373,22 @@ int main(int argc, char * const argv[])
                 DBG(cerr << "nonstop mode: sleeping 1 second before (re)starting" << endl);
                 protected_usleep(1000000ULL);
                 break;
-            case 'p':
+            case 'P':
             {
                 if (optarg == NULLPTR)
                 {
-                    std::cerr << "You must provide a path to a machine when using -p." << std::endl;
+                    std::cerr << "You must provide a path to a machine when using -P." << std::endl;
                     return EXIT_FAILURE;
                 }
                 const std::string path = std::string(optarg);
                 preloads.push_back(path);
                 break;
             }
-            case 'P':
+            case 'S':
             {
                 if (optarg == NULLPTR)
                 {
-                    std::cerr << "You must provide a path to a machine when using -P." << std::endl;
+                    std::cerr << "You must provide a path to a machine when using -S." << std::endl;
                     return EXIT_FAILURE;
                 }
                 const std::string path = std::string(optarg);
