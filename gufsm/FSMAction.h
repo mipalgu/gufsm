@@ -87,7 +87,7 @@ namespace FSM
         class Machine;
 
         enum ActionStage { STAGE_ON_ENTRY, STAGE_ON_EXIT, STAGE_INTERNAL,
-            STAGE_ON_SUSPEND, NUM_ACTION_STAGES };
+            STAGE_ON_SUSPEND, STAGE_ON_RESUME, NUM_ACTION_STAGES };
         /**
          * Abstract class for FSM actions
          */

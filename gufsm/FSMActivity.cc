@@ -83,6 +83,9 @@ void Activity::perform(Machine *m, ActionStage stage)
                 case STAGE_ON_SUSPEND:
                         perform(m, stage, _onSuspendActions);
                         break;
+                case STAGE_ON_RESUME:
+                        perform(m, stage, _onResumeActions);
+                        break;
                 default:
                         assert(false);
         }
@@ -118,6 +121,10 @@ string Activity::description(ActionStage stage) const
                         ss << "On Suspend:\n" << description(_onSuspendActions)
                            << endl;
                         break;
+                case STAGE_ON_RESUME:
+                        ss << "On RESUME:\n" << description(_onResumeActions)
+                           << endl;
+                break;
                 default:
                         ss << "<invalid stage " << static_cast<int>(stage) << ">"
                            << endl;

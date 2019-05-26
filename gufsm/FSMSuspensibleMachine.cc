@@ -132,12 +132,22 @@ void SuspensibleMachine::resume()
 
 bool SuspensibleMachine::executeOnce(bool *fired)
 {
-        const State *curr = currentState();
-        if (curr && curr == _suspendState)
+        State *curr = currentState();
+        if (curr)
         {
-                State *prev = previousState();
-                if (prev && curr != prev)
+            State *prev = previousState();
+            if (prev && curr != prev)
+            {
+                if (curr == _suspendState)
+                {
                         prev->activity().performOnSuspend(this);
+                }
+                else if (prev == _suspendState)
+                {
+                        prev->activity().performOnResume(this);
+                        curr->activity().performOnResume(this);
+                }
+            }
         }
         return Machine::executeOnce(fired);
 }

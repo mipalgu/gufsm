@@ -77,6 +77,7 @@ namespace FSM
                 ActionVector _internalActions;  /// internal actions
                 ActionVector _onExitActions;    /// on exit actions
                 ActionVector _onSuspendActions; /// on suspend actions
+                ActionVector _onResumeActions;  /// on resume actions
 
                 /** perform actions */
                 void perform(Machine *m, ActionStage stage,
@@ -114,16 +115,25 @@ namespace FSM
                 
                 /** add an on exit action */
                 void addOnExitAction(Action *a) { _onExitActions.push_back(a); }
-                
+
                 /** return the std::vector of actions that happen on suspend */
                 ActionVector &onSuspendActions() { return _onSuspendActions; }
             
+                /** return the std::vector of actions that happen on resume */
+                ActionVector &onResumeActions() { return _onResumeActions; }
+
                 /** add an on suspend action */
                 void addOnSuspendAction(Action *a) { _onSuspendActions.push_back(a); }
-            
+
                 /** set the on suspend actions */
                 void setOnSuspendActions(const ActionVector &av) { _onSuspendActions = av; }
             
+                /** add an on resume action */
+                void addOnResumeAction(Action *a) { _onResumeActions.push_back(a); }
+
+                /** set the on resume actions */
+                void setOnResumeActions(const ActionVector &av) { _onResumeActions = av; }
+
                 /** perform actions for state and stage */
                 void perform(Machine *m, ActionStage stage = STAGE_INTERNAL);
                 
@@ -139,7 +149,9 @@ namespace FSM
                 /** perform actions for state and stage */
                 void performOnSuspend(Machine *m) { perform(m, STAGE_ON_SUSPEND,
                                                      _onSuspendActions); }
-
+                /** perform actions for state and stage */
+                void performOnResume(Machine *m) { perform(m, STAGE_ON_RESUME,
+                                                        _onResumeActions); }
                 /** activity description */
                 std::string description() const;
 

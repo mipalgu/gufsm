@@ -164,10 +164,18 @@ void CLFSMFactory::createActions(CLMachine *clm, CLState *clstate, State *state)
         state->activity().addInternalAction(internal);
 
         CLAction *onSuspendAction = clstate->onSuspendAction();
-        if (!onSuspendAction) return;
+        if (onSuspendAction)
+        {
+                CLActionAction *onSuspend = new CLActionAction(clm, clstate, onSuspendAction);
+                state->activity().addOnSuspendAction(onSuspend);
+        }
 
-        CLActionAction *onSuspend = new CLActionAction(clm, clstate, onSuspendAction);
-        state->activity().addOnSuspendAction(onSuspend);
+        CLAction *onResumeAction = clstate->onResumeAction();
+        if (onResumeAction)
+        {
+                CLActionAction *onResume = new CLActionAction(clm, clstate, onResumeAction);
+                state->activity().addOnResumeAction(onResume);
+        }
 }
 
 
@@ -226,7 +234,10 @@ CLFSMFactory::~CLFSMFactory()
 
                 for (ActionVector::iterator j = state->activity().onSuspendActions().begin(); j !=  state->activity().onSuspendActions().end(); j++)
                         delete *j;
-                
+
+                for (ActionVector::iterator j = state->activity().onResumeActions().begin(); j !=  state->activity().onResumeActions().end(); j++)
+                        delete *j;
+
                 delete state;
                 //delete clstate; //This deletes the transition again
 

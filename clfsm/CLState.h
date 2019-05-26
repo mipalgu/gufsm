@@ -78,9 +78,10 @@ namespace FSM
                 CLAction        &_onExitAction;         /// onExit
                 CLAction        &_internalAction;       /// internal
                 CLAction        *_onSuspendAction;      /// onSuspend (optional)
+                CLAction        *_onResumeAction;       /// onResume (optional)
         public:
                 /** default constructor */
-                CLState(const char *name, CLAction &onEntry, CLAction &onExit, CLAction &internal, class State *context = NULLPTR, CLAction *onSuspend = NULLPTR): _name(name), _stateContext(context), _onEntryAction(onEntry), _onExitAction(onExit), _internalAction(internal), _onSuspendAction(onSuspend) {}
+                CLState(const char *name, CLAction &onEntry, CLAction &onExit, CLAction &internal, class State *context = NULLPTR, CLAction *onSuspend = NULLPTR, CLAction *onResume = NULLPTR): _name(name), _stateContext(context), _onEntryAction(onEntry), _onExitAction(onExit), _internalAction(internal), _onSuspendAction(onSuspend), _onResumeAction(onResume) {}
 
                 /** destructor (subclass responsibility!) */
                 virtual ~CLState() {}
@@ -109,6 +110,9 @@ namespace FSM
                 /** onSuspend action getter (NULLPTR if not set) */
                 CLAction *onSuspendAction()  const { return _onSuspendAction; }
             
+                /** onResume action getter (NULLPTR if not set) */
+                CLAction *onResumeAction()  const { return _onResumeAction; }
+            
                 /** perform the onEntry action */
                 void performOnEntry(CLMachine *m) { _onEntryAction.perform(m, this); }
 
@@ -118,8 +122,11 @@ namespace FSM
                 /** perform the internal action */
                 void performInternal(CLMachine *m){ _internalAction.perform(m, this); }
 
-                /** perform the onExit action */
-                void performOnSuspend(CLMachine *m)  { if (_onSuspendAction)  _onSuspendAction->perform(m, this); }
+                /** perform the onSuspend action */
+                void performOnSuspend(CLMachine *m)  { if (_onSuspendAction) _onSuspendAction->perform(m, this); }
+
+                /** perform the onResume action */
+                void performOnResume(CLMachine *m)  { if (_onResumeAction) _onResumeAction->perform(m, this); }
 
                 /** return the ith transition leading out of this state */
                 CLTransition *transition(int i) const { return transitions()[i]; }
