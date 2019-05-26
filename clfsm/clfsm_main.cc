@@ -426,6 +426,8 @@ int main(int argc, char * const argv[])
         FileParser* parser = new FileParser(tablePath);
         schedule = parser->createSchedule();
         machines = schedule->paths();
+        preloads = schedule->paths();
+        suspends = schedule->suspends();
         delete(parser);
     } else{
         while (argc--)
@@ -473,6 +475,7 @@ int main(int argc, char * const argv[])
         factory->fsms()->execute(visitor, &context, accept_action);
     } else {
         TTCLFSMVectorFactory* ttFactory = static_cast<TTCLFSMVectorFactory*>(factory);
+        cout << "Trying to Execute Schedule" << endl;
         ttFactory->executeTT(visitor, schedule, &context, accept_action);
     }
 #ifdef WANT_FSM_REFLECTION
