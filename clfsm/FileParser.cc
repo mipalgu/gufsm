@@ -31,11 +31,15 @@ bool FileParser::parseLine(string line) {
         cerr << "Invalid Syntax in machine table for line:\n" <<  line << "\n\n";
         return false;
     }
+    string path = this->parsePath(line);
     this->_raws.push_back(line);
-    this->_paths.push_back(this->parsePath(line));
+    this->_paths.push_back(path);
     this->_names.push_back(this->parseName(line));
     this->_periods.push_back(this->parsePeriod(line));
     this->_deadlines.push_back(this->parseDeadline(line));
+    if (this->isSuspended(line)) {
+        this->_suspends.push_back(path);
+    }
     return true;
 }
 
@@ -60,7 +64,12 @@ string FileParser::parsePath(string line) {
 }
 
 bool FileParser::isValid(string data) {
-    return regex_match(data, regex("[\\/~\\.\\w][\\w\\/\\.:\\-]+[\\w\\.\\-]+\\.machine\\t\\d+\\t\\d+"));
+    return regex_match(data, regex("[\\/~\\.\\w][\\w\\/\\.:\\-]+[\\w\\.\\-]+\\.machine\\t\\d+\\t\\d+")) ||
+        this->isSuspended(data);
+}
+
+bool FileParser::isSuspended(string data) {
+    return regex_match(data, regex("[\\/~\\.\\w][\\w\\/\\.:\\-]+[\\w\\.\\-]+\\.machine\\t\\d+\\t\\d+\\tS"));
 }
 
 bool FileParser::hasValue(vector<string> vec, string data) {
@@ -125,6 +134,7 @@ Schedule* FileParser::createSchedule() {
     return new Schedule(
         this->_names,
         this->_paths,
+        this->_suspends,
         this->_periods,
         this->_deadlines,
         scheduledMachines,

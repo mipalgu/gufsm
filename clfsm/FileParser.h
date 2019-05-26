@@ -102,6 +102,7 @@ namespace FSM {
             vector<string> _raws;
             vector<string> _bottom;
             vector<string> _top;
+            vector<string> _suspends;
 
             /**
              * A function to set the members to their respective values for a single machine.
@@ -153,6 +154,8 @@ namespace FSM {
              */
             bool isValid(string data);
 
+            bool isSuspended(string data);
+
             bool hasValue(vector<string>, string);
 
             int last(vector<string>);
@@ -180,6 +183,8 @@ namespace FSM {
             vector<int> deadlines() {return this->_deadlines;}
 
             vector<string> raws() {return this->_raws;}
+
+            vector<string> suspends() {return this->_suspends;}
 
             /**
              * Creates a Schedule object from the table specified in the constructor.
