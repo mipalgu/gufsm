@@ -72,19 +72,24 @@ namespace FSM {
             vector<string> _names;
             vector<string> _paths;
             vector<string> _suspends;
+            vector<string> _preloads;
             vector<int> _periods;
             vector<int> _deadlines;
             vector<unsigned long> _scheduledMachines;
             vector<int> _scheduledTimes;
             int _sleepTime;
+            vector<unsigned long> _preloadsIndexes;
+            vector<unsigned long> _suspendsIndexes;
         public:
-            Schedule(vector<string>, vector<string>, vector<string>, vector<int>, vector<int>, vector<unsigned long>, vector<int>, int);
+            Schedule(vector<string>, vector<string>, vector<string>, vector<string>, vector<int>, vector<int>, vector<unsigned long>, vector<int>, int, vector<unsigned long>, vector<unsigned long>);
 
             vector<string> names() {return this->_names;}
 
             vector<string> paths() {return this->_paths;}
 
             vector<string> suspends() {return this->_suspends;}
+
+            vector<string> preloads() {return this->_preloads;}
 
             vector<int> periods() {return this->_periods;}
 
@@ -95,6 +100,10 @@ namespace FSM {
             vector<int> scheduledTimes() {return this->_scheduledTimes;}
 
             int sleepTime() {return this->_sleepTime;}
+
+            vector<unsigned long> preloadsIndexes() {return this->_preloadsIndexes;}
+
+            vector<unsigned long> suspendsIndexes() {return this->_suspendsIndexes;}
 
             //int period() {return this->_period;}
 

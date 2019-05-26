@@ -14,20 +14,26 @@ Schedule::Schedule(
     vector<string> newNames,
     vector<string> newPaths,
     vector<string> newSuspends,
+    vector<string> newPreloads,
     vector<int> newPeriods,
     vector<int> newDeadlines,
     vector<unsigned long> scheduled,
     vector<int> times,
-    int newSleepTime
+    int newSleepTime,
+    vector<unsigned long> newPreloadsIndexes,
+    vector<unsigned long> newSuspendsIndexes
 ) {
     this->_names = newNames;
     this->_paths = newPaths;
     this->_suspends = newSuspends;
+    this->_preloads = newPreloads;
     this->_periods = newPeriods;
     this->_deadlines = newDeadlines;
     this->_scheduledMachines = scheduled;
     this->_scheduledTimes = times;
     this->_sleepTime = newSleepTime;
+    this->_preloadsIndexes = newPreloadsIndexes;
+    this->_suspendsIndexes = newSuspendsIndexes;
     //this->_period = this->_periods[min_element(0, this->_periods.size() - 1)];
 }
 
@@ -49,6 +55,11 @@ string Schedule::description() {
     str << "\nSuspended Machines:";
     for (unsigned long j = 0; j < this->_suspends.size(); j++) {
         str << "\n" << this->_suspends[j];
+    }
+    str << endl << endl;
+    str << "Preloads:";
+    for (unsigned long k = 0; k < this->_preloads.size(); k++) {
+        str << "\n" << this->_preloads[k];
     }
     str << endl << endl;
     return str.str();

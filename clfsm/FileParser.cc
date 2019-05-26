@@ -19,14 +19,14 @@ bool FileParser::parse() {
     this->_top = all[0];
     this->_bottom = all[1];
     for (unsigned long i = 0; i < this->_top.size(); i++) {
-        if (!this->parseLine(this->_top[i])) {
+        if (!this->parseLine(this->_top[i], i)) {
             return false;
         }
     }
     return true;
 }
 
-bool FileParser::parseLine(string line) {
+bool FileParser::parseLine(string line, unsigned long index) {
     if (!this->isValid(line)) {
         cerr << "Invalid Syntax in machine table for line:\n" <<  line << "\n\n";
         return false;
@@ -39,7 +39,11 @@ bool FileParser::parseLine(string line) {
     this->_deadlines.push_back(this->parseDeadline(line));
     if (this->isSuspended(line)) {
         this->_suspends.push_back(path);
+        this->_suspendsIndexes.push_back(index);
+        return true;
     }
+    this->_preloads.push_back(path);
+    this->_preloadsIndexes.push_back(index);
     return true;
 }
 
@@ -135,11 +139,14 @@ Schedule* FileParser::createSchedule() {
         this->_names,
         this->_paths,
         this->_suspends,
+        this->_preloads,
         this->_periods,
         this->_deadlines,
         scheduledMachines,
         scheduledTimes,
-        0
+        0,
+        this->_preloadsIndexes,
+        this->_suspendsIndexes
     );
 }
 
