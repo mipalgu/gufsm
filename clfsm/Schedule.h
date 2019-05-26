@@ -71,17 +71,20 @@ namespace FSM {
         private:
             vector<string> _names;
             vector<string> _paths;
+            vector<string> _suspends;
             vector<int> _periods;
             vector<int> _deadlines;
             vector<unsigned long> _scheduledMachines;
             vector<int> _scheduledTimes;
             int _sleepTime;
         public:
-            Schedule(vector<string>, vector<string>, vector<int>, vector<int>, vector<unsigned long>, vector<int>, int);
+            Schedule(vector<string>, vector<string>, vector<string>, vector<int>, vector<int>, vector<unsigned long>, vector<int>, int);
 
             vector<string> names() {return this->_names;}
 
             vector<string> paths() {return this->_paths;}
+
+            vector<string> suspends() {return this->_suspends;}
 
             vector<int> periods() {return this->_periods;}
 

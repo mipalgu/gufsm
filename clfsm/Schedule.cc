@@ -13,6 +13,7 @@ using namespace FSM;
 Schedule::Schedule(
     vector<string> newNames,
     vector<string> newPaths,
+    vector<string> newSuspends,
     vector<int> newPeriods,
     vector<int> newDeadlines,
     vector<unsigned long> scheduled,
@@ -21,6 +22,7 @@ Schedule::Schedule(
 ) {
     this->_names = newNames;
     this->_paths = newPaths;
+    this->_suspends = newSuspends;
     this->_periods = newPeriods;
     this->_deadlines = newDeadlines;
     this->_scheduledMachines = scheduled;
@@ -43,6 +45,11 @@ string Schedule::description() {
         unsigned long index = this->_scheduledMachines[i];
         str << "\n" << index << " " << this->_paths[index] << " " << this->_scheduledTimes[i] << " " << this->_deadlines[index];
     }
-    str << "\nSleep Till: " << this->_sleepTime << endl;
+    str << "\n\nSleep Till: " << this->_sleepTime << endl;
+    str << "\nSuspended Machines:";
+    for (unsigned long j = 0; j < this->_suspends.size(); j++) {
+        str << "\n" << this->_suspends[j];
+    }
+    str << endl << endl;
     return str.str();
 }
