@@ -1,0 +1,2 @@
+unlink(testfile);
+ok = false;

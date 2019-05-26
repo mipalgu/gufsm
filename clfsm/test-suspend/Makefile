@@ -3,7 +3,7 @@
 #
 # Makefile for pre- and cross-compiling .machine files
 #
-MACHINES=Suspend Suspend_is_Accepting Suspend_Resume_Restart Schedule_Suspend TestOnSuspend
+MACHINES=Suspend Suspend_is_Accepting Suspend_Resume_Restart Schedule_Suspend TestOnSuspend TestOnResume
 MODULE=TEST_SUSPEND
 
 ALL_TARGETS?=host-local test
