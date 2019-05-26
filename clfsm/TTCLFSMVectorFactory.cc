@@ -18,7 +18,7 @@ bool TTCLFSMVectorFactory::executeOnceTT(
 ) {
     bool fired = false;
     this->_accepting = true;
-    vector<int> ids = this->fetchIds(schedule->names());
+    vector<int> ids = schedule->clfsmIndexes();
     vector<SuspensibleMachine*> machines = this->fetchMachines(ids);
     vector<unsigned long> scheduledMachines = schedule->scheduledMachines();
     for (unsigned long i = 0; i < scheduledMachines.size(); i++) {
