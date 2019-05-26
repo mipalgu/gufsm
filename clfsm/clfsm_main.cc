@@ -464,7 +464,7 @@ int main(int argc, char * const argv[])
     factory->postMachineStatus();
     debug_internal_states = debug;
     if (isTT) {
-        unsigned long clfsmIndex = 0;
+        int clfsmIndex = 0;
         for (unsigned long i = 0; i < schedule->paths().size(); i++) {
             bool isSuspended = false;
             for (unsigned long j :  schedule->suspendsIndexes()) {

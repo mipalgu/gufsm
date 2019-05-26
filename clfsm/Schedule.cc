@@ -65,6 +65,6 @@ string Schedule::description() {
     return str.str();
 }
 
-void Schedule::scheduleMachine(unsigned long index) {
+void Schedule::scheduleMachine(int index) {
     this->_clfsmIndexes.push_back(index);
 }

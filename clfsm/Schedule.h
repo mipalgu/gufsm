@@ -80,7 +80,7 @@ namespace FSM {
             int _sleepTime;
             vector<unsigned long> _preloadsIndexes;
             vector<unsigned long> _suspendsIndexes;
-            vector<unsigned long> _clfsmIndexes;
+            vector<int> _clfsmIndexes;
         public:
             Schedule(vector<string>, vector<string>, vector<string>, vector<string>, vector<int>, vector<int>, vector<unsigned long>, vector<int>, int, vector<unsigned long>, vector<unsigned long>);
 
@@ -106,7 +106,7 @@ namespace FSM {
 
             vector<unsigned long> suspendsIndexes() {return this->_suspendsIndexes;}
 
-            vector<unsigned long> clfsmIndexes() {return this->_clfsmIndexes;}
+            vector<int> clfsmIndexes() {return this->_clfsmIndexes;}
 
             //int period() {return this->_period;}
 
@@ -117,7 +117,7 @@ namespace FSM {
              *
              * @param clfsmIndex The index that clfsm uses to call the machine.
              */
-            void scheduleMachine(unsigned long clfsmIndex);
+            void scheduleMachine(int clfsmIndex);
     };
 };
 
