@@ -426,7 +426,7 @@ int main(int argc, char * const argv[])
         FileParser* parser = new FileParser(tablePath);
         schedule = parser->createSchedule();
         machines = schedule->paths();
-        preloads = schedule->paths();
+        preloads = schedule->preloads();
         suspends = schedule->suspends();
         delete(parser);
     } else{
@@ -463,13 +463,33 @@ int main(int argc, char * const argv[])
     struct clfsm_context context = { CLFSMMachineLoader::getMachineLoaderSingleton() };
     factory->postMachineStatus();
     debug_internal_states = debug;
-    for (std::string path : preloads)
-    {
-        if (!FSM::preloadMachineAtPath(path)) return EXIT_FAILURE;
-    }
-    for (std::string path : suspends)
-    {
-        if (FSM::loadAndAddMachineAtPath(path, true) < 0) return EXIT_FAILURE;
+    if (isTT) {
+        unsigned long clfsmIndex = 0;
+        for (unsigned long i = 0; i < schedule->paths().size(); i++) {
+            bool isSuspended = false;
+            for (unsigned long j :  schedule->suspendsIndexes()) {
+                if (j > i) {
+                    break;
+                }
+                isSuspended = i == j;
+            }
+            if (isSuspended) {
+                if (FSM::loadAndAddMachineAtPath(schedule->paths()[i], true) < 0) return EXIT_FAILURE;
+                schedule->scheduleMachine(clfsmIndex++);
+                continue;
+            }
+            if (!FSM::preloadMachineAtPath(schedule->paths()[i])) return EXIT_FAILURE;
+            schedule->scheduleMachine(clfsmIndex++);
+        }
+    } else {
+        for (std::string path : preloads)
+        {
+            if (!FSM::preloadMachineAtPath(path)) return EXIT_FAILURE;
+        }
+        for (std::string path : suspends)
+        {
+            if (FSM::loadAndAddMachineAtPath(path, true) < 0) return EXIT_FAILURE;
+        }
     }
     if (!isTT) {
         factory->fsms()->execute(visitor, &context, accept_action);
