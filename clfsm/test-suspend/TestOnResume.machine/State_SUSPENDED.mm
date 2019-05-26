@@ -19,6 +19,7 @@ using namespace State;
 
 SUSPENDED::SUSPENDED(const char *name): CLState(name, *new SUSPENDED::OnEntry, *new SUSPENDED::OnExit, *new SUSPENDED::Internal, NULLPTR, new SUSPENDED::OnSuspend, new SUSPENDED::OnResume)
 {
+	_transitions[0] = new Transition_0();
 }
 
 SUSPENDED::~SUSPENDED()
@@ -29,6 +30,7 @@ SUSPENDED::~SUSPENDED()
 	delete onSuspendAction();
 	delete onResumeAction();
 
+	delete _transitions[0];
 }
 
 void SUSPENDED::OnEntry::perform(CLMachine *_machine, CLState *_state) const
@@ -74,4 +76,17 @@ void SUSPENDED::OnResume::perform(CLMachine *_machine, CLState *_state) const
 #	include "TestOnResume_FuncRefs.mm"
 #	include "State_SUSPENDED_FuncRefs.mm"
 #	include "State_SUSPENDED_OnResume.mm"
+}
+
+bool SUSPENDED::Transition_0::check(CLMachine *_machine, CLState *_state) const
+{
+#	include "TestOnResume_VarRefs.mm"
+#	include "State_SUSPENDED_VarRefs.mm"
+#	include "TestOnResume_FuncRefs.mm"
+#	include "State_SUSPENDED_FuncRefs.mm"
+
+	return
+	(
+#		include "State_SUSPENDED_Transition_0.expr"
+	);
 }

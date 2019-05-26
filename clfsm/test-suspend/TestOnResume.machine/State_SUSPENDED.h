@@ -41,22 +41,29 @@ namespace FSM
                 class OnSuspend: public CLAction
                 {
                     virtual void perform(CLMachine *, CLState *) const;
+                };
 
                 class OnResume: public CLAction
                 {
                     virtual void perform(CLMachine *, CLState *) const;
                 };
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wzero-length-array"
-                CLTransition *_transitions[0];
+                class Transition_0: public CLTransition
+                {
+                public:
+                    Transition_0(int toState = 4): CLTransition(toState) {}
+
+                    virtual bool check(CLMachine *, CLState *) const;
+                };
+
+                CLTransition *_transitions[1];
 
                 public:
                     SUSPENDED(const char *name = "SUSPENDED");
                     virtual ~SUSPENDED();
 
                     virtual CLTransition * const *transitions() const { return _transitions; }
-                    virtual int numberOfTransitions() const { return 0; }
+                    virtual int numberOfTransitions() const { return 1; }
 
 #                   include "State_SUSPENDED_Variables.h"
 #                   include "State_SUSPENDED_Methods.h"
@@ -67,4 +74,3 @@ namespace FSM
 }
 
 #endif
-#pragma clang diagnostic pop

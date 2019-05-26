@@ -28,6 +28,8 @@ test: ${OUTFILE}
 		( cd /tmp && rm test_schedule_suspend_accepting_ok )
 	$E${CLFSM} -vs TestOnSuspend &&				\
 		( cd /tmp && rm test_on_suspend_ok )
+	$E${CLFSM} -vs TestOnResume &&				\
+		( cd /tmp && rm test_on_resume_ok )
 
 .include "../../../../mk/fsm.mk"	# comes first: required for fsms
 .include "../../../../mk/mipal.mk"	# comes last!

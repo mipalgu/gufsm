@@ -11,7 +11,6 @@
 #include "State_Done_Suspending.h"
 #include "State_Error.h"
 #include "State_SUSPENDED.h"
-#include "State_Do_Suspend.h"
 #include "State_Done.h"
 
 using namespace FSM;
@@ -32,8 +31,7 @@ TestOnResume::TestOnResume(int mid, const char *name): CLMachine(mid, name)
 	_states[2] = new FSMTestOnResume::State::Done_Suspending;
 	_states[3] = new FSMTestOnResume::State::Error;
 	_states[4] = new FSMTestOnResume::State::SUSPENDED;
-	_states[5] = new FSMTestOnResume::State::Do_Suspend;
-	_states[6] = new FSMTestOnResume::State::Done;
+	_states[5] = new FSMTestOnResume::State::Done;
 
 	setSuspendState(_states[4]);            // set suspend state
 	setInitialState(_states[0]);            // set initial state
@@ -47,5 +45,4 @@ TestOnResume::~TestOnResume()
 	delete _states[3];
 	delete _states[4];
 	delete _states[5];
-	delete _states[6];
 }

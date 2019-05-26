@@ -16,12 +16,12 @@ namespace FSM
     {
         class TestOnResume: public CLMachine
         {
-            CLState *_states[7];
+            CLState *_states[6];
         public:
             TestOnResume(int mid  = 0, const char *name = "TestOnResume");
             virtual ~TestOnResume();
             virtual CLState * const * states() const { return _states; }
-            virtual int numberOfStates() const { return 7; }
+            virtual int numberOfStates() const { return 6; }
 #           include "TestOnResume_Variables.h"
 #           include "TestOnResume_Methods.h"
         };

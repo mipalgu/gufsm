@@ -41,6 +41,7 @@ namespace FSM
                 class OnSuspend: public CLAction
                 {
                     virtual void perform(CLMachine *, CLState *) const;
+                };
 
                 class OnResume: public CLAction
                 {

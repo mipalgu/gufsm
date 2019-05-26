@@ -41,6 +41,7 @@ namespace FSM
                 class OnSuspend: public CLAction
                 {
                     virtual void perform(CLMachine *, CLState *) const;
+                };
 
                 class OnResume: public CLAction
                 {
@@ -50,7 +51,7 @@ namespace FSM
                 class Transition_0: public CLTransition
                 {
                 public:
-                    Transition_0(int toState = 5): CLTransition(toState) {}
+                    Transition_0(int toState = 2): CLTransition(toState) {}
 
                     virtual bool check(CLMachine *, CLState *) const;
                 };

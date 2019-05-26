@@ -1,2 +1,2 @@
-testfile = "/tmp/test_on_suspend_ok";
+testfile = "/tmp/test_on_resume_ok";
 ok = true;
