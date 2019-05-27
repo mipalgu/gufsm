@@ -464,7 +464,6 @@ int main(int argc, char * const argv[])
     factory->postMachineStatus();
     debug_internal_states = debug;
     if (isTT) {
-        int clfsmIndex = 0;
         for (unsigned long i = 0; i < schedule->paths().size(); i++) {
             bool isPreloaded = false;
             for (unsigned long k : schedule->preloadsIndexes()) {
@@ -491,8 +490,9 @@ int main(int argc, char * const argv[])
                     break;
                 }
             }
-            if (FSM::loadAndAddMachineAtPath(schedule->paths()[i], isSuspended) < 0) return EXIT_FAILURE;
-            schedule->scheduleMachine(clfsmIndex++);
+            int clfsmIndex = FSM::loadAndAddMachineAtPath(schedule->paths()[i], isSuspended);
+            if (clfsmIndex < 0) return EXIT_FAILURE;
+            schedule->scheduleMachine(clfsmIndex);
         }
     } else {
         for (std::string path : preloads)
