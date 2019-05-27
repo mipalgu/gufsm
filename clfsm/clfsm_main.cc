@@ -459,7 +459,7 @@ int main(int argc, char * const argv[])
 #ifdef WANT_FSM_REFLECTION
     refl_initAPI(NULLPTR); //Init reflection system
 #endif
-    CLFSMWBVectorFactory *factory = createMachines(machines, compiler_args, linker_args);
+    CLFSMWBVectorFactory *factory = createMachines(isTT ? std::vector<string>() : machines, compiler_args, linker_args);
     struct clfsm_context context = { CLFSMMachineLoader::getMachineLoaderSingleton() };
     factory->postMachineStatus();
     debug_internal_states = debug;
