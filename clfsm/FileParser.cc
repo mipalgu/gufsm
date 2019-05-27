@@ -42,8 +42,10 @@ bool FileParser::parseLine(string line, unsigned long index) {
         this->_suspendsIndexes.push_back(index);
         return true;
     }
-    this->_preloads.push_back(path);
-    this->_preloadsIndexes.push_back(index);
+    if (this->isPreloaded(line)) {
+        this->_preloads.push_back(path);
+        this->_preloadsIndexes.push_back(index);
+    }
     return true;
 }
 
@@ -69,11 +71,15 @@ string FileParser::parsePath(string line) {
 
 bool FileParser::isValid(string data) {
     return regex_match(data, regex("[\\/~\\.\\w][\\w\\/\\.:\\-]+[\\w\\.\\-]+\\.machine\\t\\d+\\t\\d+")) ||
-        this->isSuspended(data);
+        this->isSuspended(data) || this->isPreloaded(data);
 }
 
 bool FileParser::isSuspended(string data) {
     return regex_match(data, regex("[\\/~\\.\\w][\\w\\/\\.:\\-]+[\\w\\.\\-]+\\.machine\\t\\d+\\t\\d+\\tS"));
+}
+
+bool FileParser::isPreloaded(string data) {
+    return regex_match(data, regex("[\\/~\\.\\w][\\w\\/\\.:\\-]+[\\w\\.\\-]+\\.machine\\t\\d+\\t\\d+\\tP"));
 }
 
 bool FileParser::hasValue(vector<string> vec, string data) {

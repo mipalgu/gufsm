@@ -466,19 +466,32 @@ int main(int argc, char * const argv[])
     if (isTT) {
         int clfsmIndex = 0;
         for (unsigned long i = 0; i < schedule->paths().size(); i++) {
+            bool isPreloaded = false;
+            for (unsigned long k : schedule->preloadsIndexes()) {
+                if (i > k) {
+                    break;
+                }
+                if (i == k) {
+                    isPreloaded = true;
+                    break;
+                }
+            }
+            if (isPreloaded) {
+                if (!FSM::preloadMachineAtPath(schedule->paths()[i])) return EXIT_FAILURE;
+                schedule->scheduleMachine(-1);
+                continue;
+            }
             bool isSuspended = false;
             for (unsigned long j :  schedule->suspendsIndexes()) {
                 if (j > i) {
                     break;
                 }
                 isSuspended = i == j;
+                if (isSuspended) {
+                    break;
+                }
             }
-            if (isSuspended) {
-                if (FSM::loadAndAddMachineAtPath(schedule->paths()[i], true) < 0) return EXIT_FAILURE;
-                schedule->scheduleMachine(clfsmIndex++);
-                continue;
-            }
-            if (!FSM::preloadMachineAtPath(schedule->paths()[i])) return EXIT_FAILURE;
+            if (FSM::loadAndAddMachineAtPath(schedule->paths()[i], isSuspended) < 0) return EXIT_FAILURE;
             schedule->scheduleMachine(clfsmIndex++);
         }
     } else {

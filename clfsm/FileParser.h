@@ -160,6 +160,8 @@ namespace FSM {
 
             bool isSuspended(string data);
 
+            bool isPreloaded(string data);
+
             bool hasValue(vector<string>, string);
 
             int last(vector<string>);
