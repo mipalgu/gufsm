@@ -136,7 +136,10 @@ namespace FSM
 
 	/* Global FSM:: methods */
 
-        /// Simplified method for CLMacros
+    /// Simplified method for CLMacros
+    
+    bool abandonMachineAtIndex(int index);
+    
 	/**
 	 Load and add a machine
 

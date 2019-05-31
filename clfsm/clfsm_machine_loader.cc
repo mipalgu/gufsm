@@ -87,6 +87,12 @@ useconds_t CLFSMMachineLoader::idle_timeout = 10000;     ///< idle timeout
 
 /* ---- Global Access Methods ---- */
 
+
+bool FSM::abandonMachineAtIndex(int)
+{
+    return false;
+}
+
 /// Loads a machine into the vector given its name
 int FSM::loadAndAddMachineAtPath(const std::string machine, bool initiallySuspended, std::vector<std::string> compiler_args, std::vector<std::string> linker_args)
 {
