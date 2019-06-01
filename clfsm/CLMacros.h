@@ -107,6 +107,7 @@ namespace FSM
          @return index of the loaded machine, CLError on error
          */
         int loadAndAddMachine(const std::string machine, bool initiallySuspended = false);
+        bool abandonMachineAtIndex(int index);
         void *preloadMachine(const std::string machine);
         int scheduleMachine(void * context, bool initiallySuspended = false);
         bool unloadMachineAtIndex(int index);
