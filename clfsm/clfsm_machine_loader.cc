@@ -88,9 +88,10 @@ useconds_t CLFSMMachineLoader::idle_timeout = 10000;     ///< idle timeout
 /* ---- Global Access Methods ---- */
 
 
-bool FSM::abandonMachineAtIndex(int)
+bool FSM::abandonMachineAtIndex(int index)
 {
-    return false;
+    if (!loader_singleton) return false;
+    return loader_singleton->abandonMachineAtIndex(index);
 }
 
 /// Loads a machine into the vector given its name
@@ -163,6 +164,11 @@ CLFSMMachineLoader::~CLFSMMachineLoader()
 
     delete _vector_factory;
 
+}
+
+bool CLFSMMachineLoader::abandonMachineAtIndex(int)
+{
+    return false;
 }
 
 

@@ -108,6 +108,8 @@ namespace FSM
 
 		~CLFSMMachineLoader();
         
+        bool abandonMachineAtIndex(int index);
+        
         /// Creates the machine's MachineContext and preloads the shared object.
         MachineWrapper *loadMachineAtPath(const std::string machine,
             std::vector<std::string> compiler_args = std::vector<std::string>(),
