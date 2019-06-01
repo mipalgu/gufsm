@@ -127,6 +127,7 @@ namespace FSM
 #define machine_index() index_of_machine_named(machine_name())
 #define cs_machine_named(m,c)      control_machine_at_index(index_of_machine_named(m), (c))
 
+static inline bool abandon(const char *m) { return abandonMachineAtIndex(index_of_machine_named(m)); }
 static inline enum CLControlStatus suspend(const char *m) { return cs_machine_named(m, CLSuspend); }
 static inline enum CLControlStatus resume(const char *m)  { return cs_machine_named(m, CLResume); }
 static inline enum CLControlStatus restart(const char *m) { return cs_machine_named(m, CLRestart); }
@@ -154,6 +155,7 @@ static inline enum CLControlStatus status(const char *m)  { return cs_machine_na
 #define state_of(m)     (machine_at_index(unsigned(index_of_machine_named(m)))->machineContext()->currentState())
 #define state_name_of(m)        (state_of(m)->name())
 
+#define abandon_at(i)    (abandonMachineAtIndex(i))
 #define loadMachine(m)   (loadAndAddMachine(m))
 #define loadSuspended(m) (loadAndAddMachine(m, true))
 #define unloadMachine(i) (unloadMachineAtIndex(i))
