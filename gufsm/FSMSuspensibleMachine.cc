@@ -76,6 +76,12 @@ void SuspensibleMachine::setSuspendState(State *s, bool del)
         _deleteSuspendState = del;
 }
 
+void SuspensibleMachine::abandon()
+{
+        suspend();
+        executeOnce();
+}
+
 
 void SuspensibleMachine::suspend()
 {

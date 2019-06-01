@@ -104,6 +104,9 @@ namespace FSM
                 /** tell whether this machine is suspended */
                 bool isSuspended() const { return _suspendState && currentState() == _suspendState; }
 
+                /** abandon this state machine */
+                virtual void abandon();
+            
                 /** suspend this state machine */
                 virtual void suspend();
 
