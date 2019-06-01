@@ -166,9 +166,16 @@ CLFSMMachineLoader::~CLFSMMachineLoader()
 
 }
 
-bool CLFSMMachineLoader::abandonMachineAtIndex(int)
+bool CLFSMMachineLoader::abandonMachineAtIndex(int index)
 {
-    return false;
+    int numWrappers = int(_machineWrappers.size());
+    if (index < 0 || index >= numWrappers) return false;
+    CLMachine* clmachine = _vector_factory->machine_at_index(index);
+    Machine* machine = clmachine->machineContext();
+    SuspensibleMachine* suspensibleMachine = static_cast<SuspensibleMachine *>(machine);
+    if (!suspensibleMachine) return false;
+    suspensibleMachine->abandon();
+    return true;
 }
 
 
