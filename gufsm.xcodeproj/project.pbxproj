@@ -205,6 +205,9 @@
 		F1F2180C2025215D00620A5D /* Whiteboard.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1F2180A2025214000620A5D /* Whiteboard.cc */; };
 		F1F8EAC71480B732008AB889 /* FSMANTLRExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1F8EAC61480B732008AB889 /* FSMANTLRExpression.cc */; };
 		F1F8EAC81480B732008AB889 /* FSMANTLRExpression.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1F8EAC61480B732008AB889 /* FSMANTLRExpression.cc */; };
+		F231D15E22A49C9E00C290CC /* Schedule.cc in Sources */ = {isa = PBXBuildFile; fileRef = F231D13C22A49C9E00C290CC /* Schedule.cc */; };
+		F231D16122A49CAD00C290CC /* FileParser.cc in Sources */ = {isa = PBXBuildFile; fileRef = F231D15F22A49CAD00C290CC /* FileParser.cc */; };
+		F231D16422A49CD800C290CC /* TTCLFSMVectorFactory.cc in Sources */ = {isa = PBXBuildFile; fileRef = F231D16322A49CD800C290CC /* TTCLFSMVectorFactory.cc */; };
 		F5EE57F81487441C001F6C9C /* stringConstants.c in Sources */ = {isa = PBXBuildFile; fileRef = F5EE57F61487441C001F6C9C /* stringConstants.c */; };
 /* End PBXBuildFile section */
 
@@ -1127,6 +1130,12 @@
 		F1F8EAC31480B6BE008AB889 /* FSMANTLRExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMANTLRExpression.h; sourceTree = "<group>"; };
 		F1F8EAC61480B732008AB889 /* FSMANTLRExpression.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMANTLRExpression.cc; sourceTree = "<group>"; };
 		F1F8EAC91480B98E008AB889 /* FSMANTLRContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMANTLRContext.h; sourceTree = "<group>"; };
+		F231D13C22A49C9E00C290CC /* Schedule.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Schedule.cc; sourceTree = "<group>"; };
+		F231D15D22A49C9E00C290CC /* Schedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Schedule.h; sourceTree = "<group>"; };
+		F231D15F22A49CAD00C290CC /* FileParser.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileParser.cc; sourceTree = "<group>"; };
+		F231D16022A49CAD00C290CC /* FileParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileParser.h; sourceTree = "<group>"; };
+		F231D16222A49CD800C290CC /* TTCLFSMVectorFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTCLFSMVectorFactory.h; sourceTree = "<group>"; };
+		F231D16322A49CD800C290CC /* TTCLFSMVectorFactory.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TTCLFSMVectorFactory.cc; sourceTree = "<group>"; };
 		F5EE57F61487441C001F6C9C /* stringConstants.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stringConstants.c; sourceTree = "<group>"; };
 		F5EE57F71487441C001F6C9C /* stringConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stringConstants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2320,6 +2329,12 @@
 				3CFD061E1A1B684300C36E6C /* clfsm_visitors.cc */,
 				3CFD06211A1B684300C36E6C /* clfsm_visitorsupport.h */,
 				3CFD06201A1B684300C36E6C /* clfsm_visitorsupport.cc */,
+				F231D16022A49CAD00C290CC /* FileParser.h */,
+				F231D15F22A49CAD00C290CC /* FileParser.cc */,
+				F231D15D22A49C9E00C290CC /* Schedule.h */,
+				F231D13C22A49C9E00C290CC /* Schedule.cc */,
+				F231D16322A49CD800C290CC /* TTCLFSMVectorFactory.cc */,
+				F231D16222A49CD800C290CC /* TTCLFSMVectorFactory.h */,
 				F17650961B7983A2009CAC69 /* libclfsmTests.xcodeproj */,
 				F1A5180015C9278500348C25 /* examples */,
 				F1A517CF15C91BDC00348C25 /* clfsm+PingPong.cc */,
@@ -3170,9 +3185,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F231D15E22A49C9E00C290CC /* Schedule.cc in Sources */,
 				3CFD06221A1B684300C36E6C /* clfsm_visitors.cc in Sources */,
 				3CFD06231A1B684300C36E6C /* clfsm_visitorsupport.cc in Sources */,
+				F231D16422A49CD800C290CC /* TTCLFSMVectorFactory.cc in Sources */,
 				F12E5ED11627F36D00B95186 /* clfsm_main.cc in Sources */,
+				F231D16122A49CAD00C290CC /* FileParser.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
