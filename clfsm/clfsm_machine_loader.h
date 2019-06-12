@@ -116,7 +116,9 @@ namespace FSM
             std::vector<std::string> linker_args = std::vector<std::string>());
         
         int scheduleMachine(MachineWrapper *wrapper, bool initiallySuspended = false);
-
+        
+        bool unscheduleMachineAtIndex(int index);
+        
         /// Loads the machine's shared object and inserts it into the
         /// execution queue. Returns -1 on error
         int loadAndAddMachineAtPath(const std::string machine,
@@ -164,6 +166,8 @@ namespace FSM
         std::vector<std::string> linker_args = std::vector<std::string>());
     
     int scheduleMachine(void * context, bool initiallySuspended = false);
+    
+    bool unscheduleMachineAtIndex(int index);
     
     /// Unloads the machine at the given index. Returns true if successful.
 	bool unloadMachineAtIndex(int index);

@@ -130,6 +130,12 @@ int FSM::scheduleMachine(void * context, bool initiallySuspended)
         return loader_singleton->scheduleMachine(wrapper, initiallySuspended);
 }
 
+bool FSM::unscheduleMachineAtIndex(int index)
+{
+    if (!loader_singleton) return false;
+    return loader_singleton->unscheduleMachineAtIndex(index);
+}
+
 bool FSM::unloadMachineAtIndex(int index)
 {
     if (!loader_singleton) return false;
@@ -261,6 +267,16 @@ int CLFSMMachineLoader::scheduleMachine(MachineWrapper *wrapper, bool initiallyS
     else std::cerr << "Could not add machine " << id << ": '" << machine << "'" << std::endl;
     
     return -1;
+}
+
+bool CLFSMMachineLoader::unscheduleMachineAtIndex(int index)
+{
+    int numWrappers = int(_machineWrappers.size());
+    if (index >= 0 && index < numWrappers)
+    {
+        return _vector_factory->removeMachineAtIndex(index);
+    }
+    return false;
 }
 
 int CLFSMMachineLoader::loadAndAddMachineAtPath(const std::string machine,

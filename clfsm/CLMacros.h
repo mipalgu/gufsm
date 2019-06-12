@@ -110,6 +110,7 @@ namespace FSM
         bool abandonMachineAtIndex(int index);
         void *preloadMachine(const std::string machine);
         int scheduleMachine(void * context, bool initiallySuspended = false);
+        bool unscheduleMachineAtIndex(int index);
         bool unloadMachineAtIndex(int index);
 
 /*
