@@ -508,7 +508,6 @@ int main(int argc, char * const argv[])
         factory->fsms()->execute(visitor, &context, accept_action);
     } else {
         TTCLFSMVectorFactory* ttFactory = static_cast<TTCLFSMVectorFactory*>(factory);
-        cout << "Trying to Execute Schedule" << endl;
         ttFactory->executeTT(visitor, schedule, &context, accept_action);
     }
 #ifdef WANT_FSM_REFLECTION

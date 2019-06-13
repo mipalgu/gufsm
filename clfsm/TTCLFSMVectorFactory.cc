@@ -37,8 +37,10 @@ bool TTCLFSMVectorFactory::executeOnceTT(
         long long end = this->getTimeUS();
         this->_accepting = a && this->_accepting;
         if (end > scheduledEnd) {
+#ifdef DEBUG
             cerr << "Failed to execute machine " << m << " by timeslot t = " << scheduledEnd - this->start
                 << "us. Overran by " << end - scheduledEnd << "us." << endl;
+#endif
         }
         if (i == scheduledMachines.size() - 1) {
             this->start = scheduledTime + schedule->sleepTime();
