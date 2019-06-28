@@ -119,7 +119,7 @@ long long TTCLFSMVectorFactory::sleepTillTimeslot(long long scheduled) {
     if (scheduled <= now) {
         return now;
     }
-    usleep(static_cast<unsigned int>(scheduled - now));
+    protected_usleep(static_cast<unsigned int>(scheduled - now));
     return this->getTimeUS();
 }
 
