@@ -74,9 +74,7 @@ void TTCLFSMVectorFactory::executeTT(
 }
 
 long long TTCLFSMVectorFactory::getTimeUS() {
-    struct timespec spec;
-    clock_gettime(CLOCK_REALTIME, &spec);
-    return (spec.tv_sec * 1000000) + (spec.tv_nsec / 1000);
+    return get_utime();
 }
 
 /*
@@ -119,7 +117,12 @@ long long TTCLFSMVectorFactory::sleepTillTimeslot(long long scheduled) {
     if (scheduled <= now) {
         return now;
     }
-    protected_usleep(static_cast<unsigned int>(scheduled - now));
+    unsigned int t = static_cast<unsigned int>(scheduled - now);
+    if (t > 5000 || t == 0) {
+        std::cout << "\n\n\nt was: " << t << " @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n\n\n" << std::endl;
+        t = 5000;
+    }
+    protected_usleep(t);
     return this->getTimeUS();
 }
 
