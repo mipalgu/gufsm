@@ -114,6 +114,9 @@ vector<SuspensibleMachine*> TTCLFSMVectorFactory::fetchMachines(vector<int> ids)
 
 long long TTCLFSMVectorFactory::sleepTillTimeslot(long long scheduled) {
     long long now = this->getTimeUS();
+    if (now < 0LL) {
+        return 0LL;
+    }
     if (scheduled <= now) {
         return now;
     }
