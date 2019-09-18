@@ -2753,6 +2753,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = F16CC2EF142C0C01001F788B;
@@ -3390,6 +3391,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/..\"",
 					"\"$(SRCROOT)/../gusimplewhiteboard\"",
 					"\"$(SRCROOT)/../gusimplewhiteboard/OLD_WB\"",
 					"\"$(SRCROOT)/build.host\"",
@@ -3447,6 +3449,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/..\"",
 					"\"$(SRCROOT)/../gusimplewhiteboard\"",
 					"\"$(SRCROOT)/../gusimplewhiteboard/OLD_WB\"",
 					"\"$(SRCROOT)/build.host\"",
