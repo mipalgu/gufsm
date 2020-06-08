@@ -5,43 +5,67 @@
 \fB\fCclfsm\fR is a powerful scheduler for arrangements of compiled Objective\-C++ finite state machines.  It compiles (using clang) and schedules \fB\fC\&.machine\fR FSM bundles for deterministic low\-latency execution.
 .SH Usage
 .PP
-\fB\fCclfsm [\-c][\-d][\-fPIC]{\-I includedir}{\-L linkdir}{\-l lib}[\-n][\-P <machine>][\-s][\-S <machine>][\-v] {machines}\fR
+\fB\fCclfsm [\-c][\-d][\-fPIC]{\-I includedir}{\-L linkdir}{\-l lib}[\-n]{\-P <machine>}[\-s]{\-S <machine>}[\-v] {machines}\fR
 .PP
 \fB\fC\-c\fR
- – compile only flag, don't execute machine.
+ - compile only flag, don't execute machine.
 .PP
 \fB\fC\-fPIC\fR
- – specify to generate Position Independent Code, required by some machines.
+ - specify to generate Position Independent Code, required by some machines.
 .PP
 \fB\fC\-I\fR \fIincludedir\fP
- – include directory to add to the search path during compilation.
+ - include directory to add to the search path during compilation.
 .PP
 \fB\fC\-L\fR \fIlinkdir\fP
- – library directory to add to the search path during linking.
+ - library directory to add to the search path during linking.
 .PP
 \fB\fC\-l lib\fR
- – library to link against
+ - library to link against
 .PP
 \fB\fC\-n\fR
- – restart CLFSM after SIGABRT or SIGIOT signals.
+ - restart CLFSM after SIGABRT or SIGIOT signals.
 .PP
 \fB\fC\-P\fR
- - Preload a machine. Load a machine and place it in memory, but do not add it to the schedule. This flag speeds up loading machines that are dynamically loaded and unloaded using the dynamic loading function in CLMacros (`loadAndAddMachine`, `scheduleMachine`, `unscheduleMachineAtIndex`, `unloadMachineAtIndex`). This is also advantages when using parameterised machines that are dynamically loaded (when using `call_machine_at_path` for example).
+ - Preload a machine.
+Load a machine and place it in memory,
+but do not add it to the schedule.
+This flag speeds up loading machines that are dynamically loaded
+(and provides for more predictable timing when scheduling them).
+Preloaded machines can be loaded and unloaded
+using the dynamic loading function in CLMacros
+(`loadAndAddMachine`, `scheduleMachine`,
+`unscheduleMachineAtIndex`, `unloadMachineAtIndex`).
+This is also advantageous when using parameterised machines
+that are dynamically loaded
+(when using `call_machine_at_path` for example).
 .PP
 \fB\fC\-s\fR
- – turn on debugging output on suspend, resume, and restart of machines.
+ - turn on debugging output on suspend, resume, and restart of machines.
 .PP
 \fB\fC\-S\fR
- - Loads a machine suspended. This flag effectively sets the current state of the machine to the machines suspend state. All machines scheduled with -S are placed at the end of the schedule in the order that they are in when invoking clfsm. Note, that the entire ringlet of the suspend state executes the first time the machine runs, including the OnEntry action. This flag is necessary when using parameterised machines that are not dynamically loaded and which should exist in the schedule waiting to be called (when using `call_static_machine_at` for example).
+ - Loads a machine suspended.
+This flag effectively sets the current state of the machine
+to the machine's suspend state.
+Note, that the entire ringlet of the suspend state executes
+when the machine runs, including the OnEntry action in the
+initial ringlet.
+This flag is necessary when using parameterised machines
+that are not dynamically loaded and should exist in the
+schedule waiting to be called (when using
+`call_static_machine_at` for example).
+All machines scheduled with -S are currently placed at the
+end of the schedule in the order that they are in when
+invoking clfsm.
+This may change to a position-dependent schedule in the future.
 .PP
 \fB\fC\-v\fR
- – Verbose: output MachineID, State, and name of machine for every state change
+ - Verbose: output MachineID, State, and name of machine for every state change
 .PP
 \fB\fC\-d\fR
- – print additional debug information (requires \fB\fC\-v\fR switch to be set as well).
+ - print additional debug information (requires \fB\fC\-v\fR switch to be set as well).
 .PP
 \fImachines\fP
- – list of finite state machine bundles (with our without the \fB\fC\&.machine\fR extension) to compile and run.
+ - list of finite state machine bundles (with our without the \fB\fC\&.machine\fR extension) to compile and run.
 .SH Examples
 .PP
 The following example shows how to run \fB\fCclfsm\fR, its output, and the backtrace produced when aborting the program by pressing \fB\fC^C\fR (Control\-C):
