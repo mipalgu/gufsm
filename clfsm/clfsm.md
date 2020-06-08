@@ -25,9 +25,16 @@ Compiled Finite State Machine Scheduler {#mainpage}
 
 `-n`
  – restart CLFSM after SIGABRT or SIGIOT signals.
+
+`-P`
+ - Preload a machine. Load a machine and place it in memory, but do not add it to the schedule. This flag speeds up loading machines that are dynamically loaded and unloaded using the dynamic loading function in CLMacros (`loadAndAddMachine`, `scheduleMachine`, `unscheduleMachineAtIndex`, `unloadMachineAtIndex`). This is also advantages when using parameterised machines that are dynamically loaded (when using `call_machine_at_path` for example).
  
 `-s`
  – turn on debugging output on suspend, resume, and restart of machines.
+
+`-S`
+ - Loads a machine suspended. This flag effectively sets the current state of the machine to the machines suspend state. All machines scheduled with -S are placed at the end of the schedule in the order that they are in when invoking clfsm. Note, that the entire ringlet of the suspend state executes the first time the machine runs, including the OnEntry action. This flag is necessary when using parameterised machines that are not dynamically loaded and which should exist in the schedule waiting to be called (when using `call_static_machine_at` for example).
+
 
 `-v`
  – Verbose: output MachineID, State, and name of machine for every state change
