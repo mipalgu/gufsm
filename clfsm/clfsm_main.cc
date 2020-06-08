@@ -245,7 +245,7 @@ static void usage(const char *cmd)
     cerr << "[-n] = Restart CLFSM after SIGABRT or SIGIOT signals." << endl;
     cerr << "[-P <machine>] = Preload a machine." << endl;
     cerr << "[-s] = Outputs information about machine suspensions and resumes." << endl;
-    cerr << "[-S <machine>] = Load a machine suspended. This effectively sets the current state of the machine to the machines suspend state. The OnEntry of the suspend state executes." << endl;
+    cerr << "[-S <machine>] = Load a machine suspended. This effectively sets the current state of the machine to the machines suspend state." << endl;
     cerr << "[-t] = Time execution of machine states." << endl;
     cerr << "[-v] = Verbose; output MachineID, State, and name of machine. (multiple times to increase verbosity)" << endl;
     cerr << "[-d] = Output debug information (requires Verbose switch)." << endl;
