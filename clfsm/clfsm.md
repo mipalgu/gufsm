@@ -6,7 +6,7 @@ Compiled Finite State Machine Scheduler {#mainpage}
 
 # Usage #
 
-`clfsm [-c][-d][-fPIC]{-I includedir}{-L linkdir}{-l lib}[-n][-s][-v] {machines}`
+`clfsm [-c][-d][-fPIC]{-I includedir}{-L linkdir}{-l lib}[-n][-P <machine>][-s][-S <machine>][-v] {machines}`
 
 `-c`
  – compile only flag, don't execute machine.
