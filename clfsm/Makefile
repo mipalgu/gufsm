@@ -37,7 +37,7 @@ copy-stuff:
 	rm -rf ${BUILDDIR}/${BUILDDIR}
 	cp -p clfsm_hdrs.mk ${BUILDDIR}
 	cp -p ../gufsm/*.c*  ../gufsm/*.h ${BUILDDIR}
-	cp -p *.c* *.h ${BUILDDIR}
+	cp -p *.c* *.h *.1 ${BUILDDIR}
 	cp -p Makefile.in ${BUILDDIR}/Makefile
 	cd ${BUILDDIR} && ln -s . ${BUILDDIR}
 
