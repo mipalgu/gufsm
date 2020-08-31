@@ -57,7 +57,11 @@
  */
 #include "FSMANTLRContext.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wreserved-id-macro"
 #include <dispatch/dispatch.h>
+#pragma clang diagnostic pop
+
 #include <iostream>
 #include <gu_util.h>
 

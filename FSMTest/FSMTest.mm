@@ -57,7 +57,11 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wreserved-id-macro"
 #include <dispatch/dispatch.h>
+#pragma clang diagnostic pop
+
 #include "FSMWB.h"
 #include "Whiteboard.h"
 

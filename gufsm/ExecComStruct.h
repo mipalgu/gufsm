@@ -63,7 +63,12 @@
 #ifndef ExecCom_Do_h
 #define ExecCom_Do_h
 
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wreserved-id-macro"
 #include <dispatch/dispatch.h>
+#pragma clang diagnostic pop
+
 
 #ifdef bool
 #undef bool

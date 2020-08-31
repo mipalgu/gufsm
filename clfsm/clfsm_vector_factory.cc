@@ -58,8 +58,12 @@
 #include <iostream>
 
 #ifndef WITHOUT_LIBDISPATCH
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wreserved-id-macro"
 #include <dispatch/dispatch.h>
+#pragma clang diagnostic pop
 #endif
+
 
 #include "FSMachineVector.h"
 #include "FSMAsynchronousSuspensibleMachine.h"
