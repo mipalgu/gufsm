@@ -18,6 +18,11 @@ XCODE_USE_WORKSPACE=yes
 
 .include "../../../mk/c++11.mk"	# use C++11
 
+.ifdef WANT_FSM_REFLECTION
+SPECIFIC_LDFLAGS+=-lCLReflect
+SPECIFIC_CPPFLAGS+=-DWANT_FSM_REFLECTION
+.endif
+
 #CPPFLAGS+=-g -O0
 SPECIFIC_LDFLAGS+=-Wl,-rpath -Wl,/usr/local/lib
 
