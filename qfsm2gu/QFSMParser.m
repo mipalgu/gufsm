@@ -19,6 +19,7 @@
 #pragma clang diagnostic ignored "-Wselector"
 #pragma clang diagnostic ignored "-Wundeclared-selector"
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+#pragma clang diagnostic ignored "-Wobjc-messaging-id"
 
 @implementation QFSMParser
 
