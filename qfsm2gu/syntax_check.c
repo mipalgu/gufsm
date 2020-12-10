@@ -57,6 +57,7 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-macros"
 #pragma clang diagnostic ignored "-Wreserved-id-macro"
+#pragma clang diagnostic ignored "-Wstrict-prototypes"
 
 #undef __block
 #define __block antlr_block
