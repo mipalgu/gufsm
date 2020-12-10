@@ -23,6 +23,7 @@
 #pragma clang diagnostic ignored "-Wdirect-ivar-access"
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
 #pragma clang diagnostic ignored "-Wobjc-missing-property-synthesis"
+#pragma clang diagnostic ignored "-Wobjc-messaging-id"
 
 
 @interface QFSMKeyValue: NSObject
