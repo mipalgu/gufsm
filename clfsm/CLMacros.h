@@ -69,6 +69,10 @@
 
 #pragma GCC diagnostic push
 #pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wimplicit-int-float-conversion"
+
+#pragma GCC diagnostic push
+#pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
 
 #include <string>
