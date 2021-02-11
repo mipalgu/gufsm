@@ -3,7 +3,8 @@
  *  gufsm
  *
  *  Created by Rene Hexel on 1/08/12.
- *  Copyright (c) 2012, 2013, 2015, 2018, 2019 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2013, 2015, 2018, 2019, 2021 Rene Hexel.
+ *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -63,6 +64,8 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wweak-vtables"
 #pragma clang diagnostic ignored "-Wc++98-compat"
+#pragma clang diagnostic ignored "-Wsuggest-override"
+#pragma clang diagnostic ignored "-Wsuggest-destructor-override"
 
 namespace FSM
 {

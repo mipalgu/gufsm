@@ -2,7 +2,7 @@
  *  CLMacros.h
  *
  *  Created by René Hexel on 23/03/13.
- *  Copyright (c) 2013, 2015, 2016, 2017 Rene Hexel.
+ *  Copyright (c) 2013, 2015, 2016, 2017, 2021 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -70,6 +70,8 @@
 #pragma GCC diagnostic push
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wimplicit-int-float-conversion"
+#pragma clang diagnostic ignored "-Wsuggest-destructor-override"
+#pragma clang diagnostic ignored "-Wsuggest-override"
 
 #pragma GCC diagnostic push
 #pragma clang diagnostic push
