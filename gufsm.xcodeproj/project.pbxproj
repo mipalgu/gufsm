@@ -3376,6 +3376,7 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
@@ -3405,6 +3406,22 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-Weverything";
 				SDKROOT = macosx;
+				WARNING_CFLAGS = (
+					"-Weverything",
+					"-Wno-undef",
+					"-Wno-long-long",
+					"-Wno-c++98-compat-pedantic",
+					"-Wno-sign-conversion",
+					"-Wno-disabled-macro-expansion",
+					"-Wno-weak-vtables",
+					"-Wno-padded",
+					"-Wno-unknown-pragmas",
+					"-Wno-pedantic",
+					"-Wno-unknown-warning-option",
+					"-Wno-documentation-unknown-command",
+					"-Werror",
+					"-Wno-poison-system-directories",
+				);
 			};
 			name = Debug;
 		};
@@ -3434,6 +3451,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
@@ -3462,6 +3480,22 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_CFLAGS = "-Weverything";
 				SDKROOT = macosx;
+				WARNING_CFLAGS = (
+					"-Weverything",
+					"-Wno-undef",
+					"-Wno-long-long",
+					"-Wno-c++98-compat-pedantic",
+					"-Wno-sign-conversion",
+					"-Wno-disabled-macro-expansion",
+					"-Wno-weak-vtables",
+					"-Wno-padded",
+					"-Wno-unknown-pragmas",
+					"-Wno-pedantic",
+					"-Wno-unknown-warning-option",
+					"-Wno-documentation-unknown-command",
+					"-Werror",
+					"-Wno-poison-system-directories",
+				);
 			};
 			name = Release;
 		};

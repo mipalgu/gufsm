@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 7/09/12.
- *  Copyright (c) 2012, 2015, 2018 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2015, 2018, 2021 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -80,7 +80,7 @@ namespace FSM
                 CLTransitionExpression(CLMachine *machine = NULLPTR, CLState *state = NULLPTR, CLTransition *transition = NULLPTR): _clmachine(machine), _clstate(state), _cltransition(transition) {}
 
                 /// destructor
-                virtual ~CLTransitionExpression() {}
+                virtual ~CLTransitionExpression() OVERRIDE {}
 
                 /// machine getter
                 CLMachine *machine() const { return _clmachine; }
@@ -101,7 +101,7 @@ namespace FSM
                 void setTransition(CLTransition *t) { _cltransition = t; }
 
                 /// expression evaluation
-                virtual int evaluate(Machine *m = NULLPTR);
+                virtual int evaluate(Machine *m = NULLPTR) OVERRIDE;
         };
 }
 

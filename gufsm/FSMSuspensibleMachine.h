@@ -2,7 +2,7 @@
  *  FSMSuspensibleMachine.h
  *  
  *  Created by René Hexel on 24/09/11.
- *  Copyright (c) 2011, 2012, 2013, 2014, 2015, 2018 Rene Hexel.
+ *  Copyright (c) 2011, 2012, 2013, 2014, 2015, 2018, 2021 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -93,7 +93,7 @@ namespace FSM
                                 _resumeState(NULLPTR),
                                 _deleteSuspendState(del) {}
                 /** destructor */
-                virtual ~SuspensibleMachine();
+                virtual ~SuspensibleMachine() OVERRIDE;
 
                 /** suspend state getter method */
                 State *suspendState() const { return _suspendState; }
@@ -130,7 +130,7 @@ namespace FSM
                  * @param fired pointer to a boolean capturing fired condition
                  * @return true if the state machine should continue
                  */
-                virtual bool executeOnce(bool *fired=NULLPTR);
+                virtual bool executeOnce(bool *fired=NULLPTR) OVERRIDE;
         };
 }
 

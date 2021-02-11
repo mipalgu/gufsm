@@ -2,7 +2,7 @@
  *  FSMExpression.h
  *  
  *  Created by René Hexel on 23/09/11.
- *  Copyright (c) 2011, 2013-2014, 2018 Rene Hexel.
+ *  Copyright (c) 2011, 2013-2014, 2018, 2021 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -121,7 +121,7 @@ namespace FSM
                                 _name(p), _value(v), _negation(neg) {}
 
                 /** destructor */
-                virtual ~Predicate() {}
+                virtual ~Predicate() OVERRIDE {}
 
                 /** return the predicate name */
                 const std::string &name() { return _name; }
@@ -142,10 +142,10 @@ namespace FSM
                 void setNegation(bool n = true) { _negation = ( n != false ); }
 
                 /** return the value, negated if necessary */
-                virtual int evaluate(Machine *m = NULLPTR) { return _value ^ _negation; }
+                virtual int evaluate(Machine *m = NULLPTR) OVERRIDE { return _value ^ _negation; }
 
                 /** print abstract expression */
-                virtual std::string description();
+                virtual std::string description() OVERRIDE;
 
         };
 
@@ -157,7 +157,7 @@ namespace FSM
                 TimeoutPredicate(long t = 1000): _timeout(t) {}
 
                 /** destructor */
-                virtual ~TimeoutPredicate() {}
+                virtual ~TimeoutPredicate() OVERRIDE {}
 
                 /** getter */
                 long timeout() { return _timeout; }
@@ -166,13 +166,13 @@ namespace FSM
                 void setTimeout(long t=1000) { _timeout = t; }
 
                 /** return true if state timeout has been reached */
-                virtual int evaluate(Machine *m = NULLPTR);
+                virtual int evaluate(Machine *m = NULLPTR) OVERRIDE;
 
                 /** print abstract expression */
-                virtual std::string description();
+                virtual std::string description() OVERRIDE;
 
                 /** add a parameter (sets the time for the last parameter) */
-                virtual void add_parameter(int index, long long value)
+                virtual void add_parameter(int index, long long value) OVERRIDE
                 {
                         setTimeout(value);
                 }

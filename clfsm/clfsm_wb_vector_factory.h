@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 25/03/13.
- *  Copyright (c) 2013, 2015, 2018 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2013, 2015, 2018, 2021 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -162,7 +162,7 @@ namespace FSM
                  * @param context pointer to a user-defined context (such as a whiteboard context for the wb singleton)
                  * @return true if any transition fired on any machine
                  */
-                virtual bool executeOnce(visitor_f should_execute_machine, void *context);
+                virtual bool executeOnce(visitor_f should_execute_machine, void *context) OVERRIDE;
         };
 }
 #pragma clang diagnostic pop

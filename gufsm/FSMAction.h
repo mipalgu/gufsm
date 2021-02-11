@@ -2,7 +2,7 @@
  *  Action.h
  *
  *  Created by René Hexel on 23/09/11.
- *  Copyright (c) 2011, 2018, 2019 Rene Hexel.
+ *  Copyright (c) 2011, 2018, 2019, 2021 Rene Hexel.
  *  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -95,7 +95,7 @@ namespace FSM
         {
         public:
                 /** virtual destructor */
-                virtual ~Action() {}
+                virtual ~Action() OVERRIDE {}
 
                 /** perform the given action with a vector of parameters */
                 virtual void performv(Machine *, ActionStage, int, va_list) = 0;
@@ -110,10 +110,10 @@ namespace FSM
                 }
 
                 /** action description */
-                virtual std::string description();
+                virtual std::string description() OVERRIDE;
 
                 /** evaluation by default just performs, then returns 1 */
-                virtual int evaluate(Machine *m = NULLPTR) { perform(m); return true; }
+                virtual int evaluate(Machine *m = NULLPTR) OVERRIDE { perform(m); return true; }
         };
         
         
@@ -138,7 +138,7 @@ namespace FSM
                 virtual void setContent(const T &c) { _content = c; }
 
                 /** action description */
-                virtual std::string description()
+                virtual std::string description() OVERRIDE
                 {
                         std::stringstream ss;
 #ifdef COMPLEX_CONTENT_ACTION
@@ -161,13 +161,13 @@ namespace FSM
                 PrintingAction(T val): ContentAction<T>(val) {}
 
                 /** print the content of this action */
-                virtual void performv(Machine *, ActionStage, int, va_list)
+                virtual void performv(Machine *, ActionStage, int, va_list) OVERRIDE
                 {
                         std::cout << this->_content << std::endl;
                 }
                 
                 /** action description */
-                virtual std::string description()
+                virtual std::string description() OVERRIDE
                 {
                         std::stringstream ss;
                         ss << "Printing Action " << ContentAction<T>::content()
@@ -185,7 +185,7 @@ namespace FSM
                 PrintStringAction(std::string s = ""): PrintingAction<std::string>(s) {}
                 
                 /** setting any parameter sets the context */
-                virtual void add_parameter(int index, long long value)
+                virtual void add_parameter(int index, long long value) OVERRIDE
                 {
                         setContent(reinterpret_cast<const char *>(value));
                 }
@@ -198,7 +198,7 @@ namespace FSM
         {
         public:
                 /** print the content of this action */
-                virtual void performv(Machine *, ActionStage, int, va_list)
+                virtual void performv(Machine *, ActionStage, int, va_list) OVERRIDE
                 {
                         std::cout << _content;
                 }
@@ -215,7 +215,7 @@ namespace FSM
                 PrintIntAction(int val = 0): PrintingAction<int>(val) {}
 
                 /** setting any parameter sets the context */
-                virtual void add_parameter(int index, long long value)
+                virtual void add_parameter(int index, long long value) OVERRIDE
                 {
                         setContent(int(value));
                 }
@@ -231,10 +231,10 @@ namespace FSM
                 SleepAction(int val = 1000): ContentAction<int>(val) {}
                 
                 /** sleep for the given amount of milliseconds */
-                virtual void performv(Machine *, ActionStage, int, va_list);
+                virtual void performv(Machine *, ActionStage, int, va_list) OVERRIDE;
                 
                 /** action description */
-                virtual std::string description();
+                virtual std::string description() OVERRIDE;
         };
 }
 

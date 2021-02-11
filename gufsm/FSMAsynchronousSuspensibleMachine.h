@@ -3,7 +3,7 @@
  *  gufsm
  *
  *  Created by Rene Hexel on 25/03/13.
- *  Copyright (c) 2013, 2015, 2018 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2013, 2015, 2018, 2021 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -104,28 +104,28 @@ namespace FSM
                 //virtual ~AsynchronousSuspensibleMachine();
 
                 /** execute once */
-                virtual bool executeOnce(bool *fired=NULLPTR);
+                virtual bool executeOnce(bool *fired=NULLPTR) OVERRIDE;
                 
                 /** suspend this state machine */
-                virtual void suspend();
+                virtual void suspend() OVERRIDE;
                 
                 /** resume this state machine where it left off */
-                virtual void resume();
+                virtual void resume() OVERRIDE;
                 
                 /** restart this state machine from its initial state */
-                virtual State *restart(State *initialState = NULLPTR);
+                virtual State *restart(State *initialState = NULLPTR) OVERRIDE;
 
                 /** is this machine scheduled for suspend? */
-                virtual bool scheduledForSuspend() const { return _scheduledAction == SCHEDULE_SUSPEND_ACTION; }
+                virtual bool scheduledForSuspend() const OVERRIDE { return _scheduledAction == SCHEDULE_SUSPEND_ACTION; }
 
                 /** is this machine scheduled for resumption? */
-                virtual bool scheduledForResume() const { return _scheduledAction == SCHEDULE_RESUME_ACTION; }
+                virtual bool scheduledForResume() const OVERRIDE { return _scheduledAction == SCHEDULE_RESUME_ACTION; }
                 
                 /** is this machine scheduled for restart? */
-                virtual bool scheduledForRestart() const { return _scheduledAction == SCHEDULE_RESTART_ACTION; }
+                virtual bool scheduledForRestart() const OVERRIDE { return _scheduledAction == SCHEDULE_RESTART_ACTION; }
 
                 /** schedule suspend */
-                virtual void scheduleSuspend(bool s=true) { if (s) _scheduledAction = SCHEDULE_SUSPEND_ACTION; }
+                virtual void scheduleSuspend(bool s=true) OVERRIDE { if (s) _scheduledAction = SCHEDULE_SUSPEND_ACTION; }
                 
                 /** schedule resume */
                 virtual void scheduleResume(bool s=true) { if (s) _scheduledAction = SCHEDULE_RESUME_ACTION; }

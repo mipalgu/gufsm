@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 7/09/12.
- *  Copyright (c) 2012, 2014, 2015 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2014, 2015, 2021 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -89,8 +89,8 @@ namespace FSM
                 CLState         *_state;
         public:
                 CLActionAction(CLMachine *m, CLState *s, CLAction *a): _action(a), _machine(m), _state(s) {}
-                virtual ~CLActionAction() {}
-                virtual void performv(Machine *, ActionStage, int, va_list)
+                virtual ~CLActionAction() OVERRIDE {}
+                virtual void performv(Machine *, ActionStage, int, va_list) OVERRIDE
                 {
                         _action->perform(_machine, _state);
                 }

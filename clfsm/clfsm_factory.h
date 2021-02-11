@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 5/08/12.
- *  Copyright (c) 2012, 2015, 2016, 2018 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2015, 2016, 2018, 2021 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -93,7 +93,7 @@ namespace FSM
                 CLFSMFactory(Context *context, CLMachine *clm, int mid=0, bool del=true);
 
                 /** destructor */
-                virtual ~CLFSMFactory();
+                virtual ~CLFSMFactory() OVERRIDE;
 
                 /** machine creator */
                 virtual void createMachine(CLMachine *clm, Context *context = NULLPTR, State *initialState = NULLPTR, int mid = 0, const char *name = "");
