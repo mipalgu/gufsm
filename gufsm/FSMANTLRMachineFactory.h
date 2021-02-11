@@ -89,7 +89,7 @@ namespace FSM
                 ANTLRMachineFactory();
 
                 /** Destructor */
-                virtual ~ANTLRMachineFactory() {}
+                virtual ~ANTLRMachineFactory() OVERRIDE {}
 
                 /** getter */
                 WBSubMachine *machine() const { return static_cast<WBSubMachine*>(_machine); }

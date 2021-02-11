@@ -59,6 +59,7 @@
 #define gufsm_FSMWBMachine_h
 
 #include "FSMachine.h"
+#include <gu_util.h>
 
 #ifdef bool
 #undef bool
@@ -94,7 +95,7 @@ namespace FSM
                 WBContext(guWhiteboard::Whiteboard *wb = NULLPTR, bool deletewb = false);
 
                 /** destructor */
-                virtual ~WBContext();
+                virtual ~WBContext() OVERRIDE;
 
                 /** whiteboard getter */
                 guWhiteboard::Whiteboard *whiteboard() { return _wb; }

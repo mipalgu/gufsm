@@ -62,6 +62,8 @@
 #include "FSMWBPredicate.h"
 #include "FSMWBContext.h"
 
+#include <gu_util.h>
+
 #ifdef bool
 #undef bool
 #endif
@@ -112,13 +114,13 @@ namespace FSM
                  */
                 WBQueryPredicate(const std::string &p, bool neg, WBContext *wc);
 
-                virtual ~WBQueryPredicate() {}  /// destructor
+                virtual ~WBQueryPredicate() OVERRIDE {}  /// destructor
 
                 /** whiteboard setter (subscribes to message responses) */
                 void setWhiteboard(guWhiteboard::Whiteboard *wb);
 
                 /** return the value, negated if necessary */
-                virtual int evaluate(Machine *m = NULLPTR);
+                virtual int evaluate(Machine *m = NULLPTR) OVERRIDE;
         };
 }
 

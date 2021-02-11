@@ -62,6 +62,8 @@
 #include "FSMAsynchronousSuspensibleMachine.h"
 #include "ExecComStruct.h"
 
+#include <gu_util.h>
+
 namespace FSM
 {
         class WBContext;
@@ -82,10 +84,10 @@ namespace FSM
                              bool del = false);
 
                 /** destructor */
-                virtual ~WBSubMachine();
+                virtual ~WBSubMachine() OVERRIDE;
 
                 /** put the state machine into its initial state */
-                virtual void initialise();
+                virtual void initialise() OVERRIDE;
                 
                 /** name getter */
                 const std::string &name() { return _name; }
@@ -94,10 +96,10 @@ namespace FSM
                 void setName(const std::string &name) { _name = name; }
 
                 /** suspend this state machine */
-                virtual void suspend();
+                virtual void suspend() OVERRIDE;
 
                 /** resume this state machine where it left off */
-                virtual void resume();
+                virtual void resume() OVERRIDE;
 
                 ///** restart this state machine where it left off */
                 //virtual State *restart(State *initialState = NULLPTR);

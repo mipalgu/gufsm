@@ -69,6 +69,8 @@
 
 #include "FSMachineVector.h"
 
+#include <gu_util.h>
+
 const int BITS = 3;
 const unsigned long long PATERN_BITS = (1ULL << static_cast<const unsigned long long>(BITS))-1ULL; // BITS all set to 1
 
@@ -102,7 +104,7 @@ namespace FSM
                 /**
                  * print the Kripke structure in smv format
                  */
-                virtual std::string kripkeInSVMformat(bool verbose = false);
+                virtual std::string kripkeInSVMformat(bool verbose = false) OVERRIDE;
 
                 /**
                  * Serialise a Kripke Gobal vector in smv format

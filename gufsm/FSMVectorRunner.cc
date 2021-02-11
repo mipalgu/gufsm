@@ -99,12 +99,12 @@ static cdlbridge *gucdlbridge;
  */
 struct StringFunction: public ContentAction<string>
 {
-        virtual void performv(Machine *m, ActionStage, int, va_list)
+        virtual void performv(Machine *m, ActionStage, int, va_list) OVERRIDE
         {
                 evaluate(m);
         }
         /** setting any parameter sets the content */
-        virtual void add_parameter(int, long long value)
+        virtual void add_parameter(int, long long value) OVERRIDE
         {
                 setContent((const char *)value);
         }
@@ -114,7 +114,7 @@ struct StringFunction: public ContentAction<string>
 #ifdef NEED_SLEEP
 struct SleepFunction: public TimeoutPredicate
 {
-        virtual int evaluate(Machine *m = NULLPTR)
+        virtual int evaluate(Machine *m = NULLPTR) OVERRIDE
         {
                 protected_usleep(1000000LL * timeout());
                 return 0;
@@ -125,7 +125,7 @@ struct SleepFunction: public TimeoutPredicate
 struct PrintStatenameFunction: public PrintingAction<string>
 {
         PrintStatenameFunction(): PrintingAction<string>("") {}
-        virtual int evaluate(Machine *m = NULLPTR)
+        virtual int evaluate(Machine *m = NULLPTR) OVERRIDE
         {
                 stringstream ss;
                 ss << "Machine " << m->id() << " state " << m->currentState()->name();
@@ -137,16 +137,16 @@ struct PrintStatenameFunction: public PrintingAction<string>
 
 struct SystemFunction: public ContentAction<string>
 {
-        virtual void performv(Machine *m, ActionStage, int, va_list)
+        virtual void performv(Machine *m, ActionStage, int, va_list) OVERRIDE
         {
                 evaluate(m);
         }
-        virtual int evaluate(Machine * = NULLPTR)
+        virtual int evaluate(Machine * = NULLPTR) OVERRIDE
         {
                 return system(_content.c_str());
         }
         /** setting any parameter sets the content */
-        virtual void add_parameter(int, long long value)
+        virtual void add_parameter(int, long long value) OVERRIDE
         {
                 setContent((const char *)value);
         }
@@ -155,19 +155,19 @@ struct SystemFunction: public ContentAction<string>
 struct ReadIntFunction: public ContentAction<string>
 {
         /** read an integer from a file and throw it away */
-        virtual void performv(Machine *m, ActionStage, int, va_list)
+        virtual void performv(Machine *m, ActionStage, int, va_list) OVERRIDE
         {
                 evaluate(m);
         }
 
         /** read the file passed as a parameter and interpret the content as an int */
-        virtual int evaluate(Machine * = NULLPTR)
+        virtual int evaluate(Machine * = NULLPTR) OVERRIDE
         {
                 return int_from_file(_content.c_str());
         }
 
         /** setting any parameter sets the content */
-        virtual void add_parameter(int, long long value)
+        virtual void add_parameter(int, long long value) OVERRIDE
         {
                 setContent((const char *)value);
         }
@@ -190,14 +190,14 @@ public:
         StateMachineVector *fsms() const { return _fsms; }
 
         /** suspend all state machines except for the current one */
-        virtual void performv(Machine *m, ActionStage = STAGE_ON_ENTRY, int = 0, va_list = NULLPTR)
+        virtual void performv(Machine *m, ActionStage = STAGE_ON_ENTRY, int = 0, va_list = NULLPTR) OVERRIDE
         {
                 _fsms->suspend();
                 if (m) static_cast<SuspensibleMachine*>(m)->resume();
         }
 
         /** suspend machines and return number of machines suspended */
-        virtual int evaluate(Machine *m = NULLPTR)
+        virtual int evaluate(Machine *m = NULLPTR) OVERRIDE
         {
                 performv(m);
                 return _fsms->machines().size() - (m != NULLPTR);
@@ -219,7 +219,7 @@ public:
         WBPostIntVecAction(): WBPostAction<vector<int> >() {}
         
         /** set parameters (clears vector on first element) */
-        virtual void add_parameter(int index, long long value)
+        virtual void add_parameter(int index, long long value) OVERRIDE
         {
                 if (index--)
                 {
@@ -243,14 +243,14 @@ public:
         WBGetIntVecAction(): WBGetAction(), _index(0) {}
 
         /** set parameters (clears vector on first element) */
-        virtual void add_parameter(int i, long long value)
+        virtual void add_parameter(int i, long long value) OVERRIDE
         {
                 if (i) _index = value;
                 else WBGetAction::add_parameter(i, value);
         }
 
         /** read an int at given index from the whiteboard */
-        virtual int evaluate(Machine *m)
+        virtual int evaluate(Machine *m) OVERRIDE
         {
                 WBMsg msg = getMessage(m);
 
@@ -270,7 +270,7 @@ class WBSuspendFunction: public PostBoolFunction
 public:
         WBSuspendFunction(std::string name = "suspend"): PostBoolFunction(name, false) {}
         
-        virtual void add_parameter(int, long long value)
+        virtual void add_parameter(int, long long value) OVERRIDE
         {
                 _type = string("suspend_") + (const char *) value;
                 PostBoolFunction::add_parameter(1, true);
@@ -283,7 +283,7 @@ class WBResumeFunction: public WBSuspendFunction
 public:
         WBResumeFunction(): WBSuspendFunction("resume") {}
         
-        virtual void add_parameter(int, long long value)
+        virtual void add_parameter(int, long long value) OVERRIDE
         {
                 _type = string("suspend_") + (const char *) value;
                 PostBoolFunction::add_parameter(1, false);
@@ -296,7 +296,7 @@ class WBRestartFunction: public PostStringFunction
 public:
         WBRestartFunction(std::string name = "restart"): PostStringFunction(name, "") {}
         
-        virtual void add_parameter(int, long long value)
+        virtual void add_parameter(int, long long value) OVERRIDE
         {
                 PostStringFunction::add_parameter(1, value);
         }
@@ -307,7 +307,7 @@ class WBSayFunction: public PostStringFunction
 public:
         WBSayFunction(std::string name = "Say"): PostStringFunction(name, "") {}
         
-        virtual void add_parameter(int, long long value)
+        virtual void add_parameter(int, long long value) OVERRIDE
         {
                 PostStringFunction::add_parameter(1, value);
         }
@@ -318,7 +318,7 @@ class WBSpeechFunction: public PostStringFunction
 public:
         WBSpeechFunction(std::string name = "Speech"): PostStringFunction(name, "") {}
         
-        virtual void add_parameter(int, long long value)
+        virtual void add_parameter(int, long long value) OVERRIDE
         {
                 PostStringFunction::add_parameter(1, value);
         }
@@ -329,7 +329,7 @@ class WBSayStateFunction: public PostStringFunction
 public:
         WBSayStateFunction(std::string name = "Say"): PostStringFunction(name, "") {}
         
-        virtual void performv(Machine *m, ActionStage s, int i, va_list l)
+        virtual void performv(Machine *m, ActionStage s, int i, va_list l) OVERRIDE
         {
                 stringstream ss;
                 ss << _content << m->currentState()->name();
@@ -339,7 +339,7 @@ public:
                 setContent("");
         }
         
-        virtual void add_parameter(int, long long value)
+        virtual void add_parameter(int, long long value) OVERRIDE
         {
                 PostStringFunction::add_parameter(1, value);
         }
@@ -357,7 +357,7 @@ public:
  */
 struct ProofFunction: public StringFunction
 {
-        virtual int evaluate(Machine * = NULLPTR)
+        virtual int evaluate(Machine * = NULLPTR) OVERRIDE
         {
                 if (!gucdlbridge) return -3;
                 return gucdlbridge->update_proofs("", _content);
@@ -367,7 +367,7 @@ struct ProofFunction: public StringFunction
 
 struct LoadTheoryFunction: public StringFunction
 {
-        virtual int evaluate(Machine * = NULLPTR)
+        virtual int evaluate(Machine * = NULLPTR) OVERRIDE
         {
                 if (!gucdlbridge) return -3;
                 return gucdlbridge->load_theory_file(_content);

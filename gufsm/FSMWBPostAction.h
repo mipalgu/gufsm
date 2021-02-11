@@ -62,6 +62,7 @@
 #include "FSMAction.h"
 #include "FSMWBContext.h"
 #include <Whiteboard.h>
+#include <gu_util.h>
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wold-style-cast"
@@ -85,14 +86,14 @@ namespace FSM
                 WBPostAction(std::string type, const C &content): ContentAction<C>(content), _type(type) {}
 
                 /** setting any parameter sets the context */
-                virtual void add_parameter(int idx, long long value)
+                virtual void add_parameter(int idx, long long value) OVERRIDE
                 {
                         if (idx) ContentAction<C>::setContent((C) value);
                         else _type = (const char *) value;
                 }
 
                 /** post to the whiteboard */
-                virtual void performv(Machine *m, ActionStage, int, va_list)
+                virtual void performv(Machine *m, ActionStage, int, va_list) OVERRIDE
                 {
                         WBContext *c = (WBContext *) m->context();
                         c->whiteboard()->addMessage(_type, WBMsg(ContentAction<C>::content()));
@@ -106,7 +107,7 @@ namespace FSM
         {
         public:
                 /** setting any parameter sets the message content */
-                virtual void add_parameter(int, long long value)
+                virtual void add_parameter(int, long long value) OVERRIDE
                 {
                         setContent((const char *) value);
                 }
@@ -119,13 +120,13 @@ namespace FSM
                 }
 
                 /** read an int from the whiteboard */
-                virtual int evaluate(Machine *m)
+                virtual int evaluate(Machine *m) OVERRIDE
                 {
                         return getMessage(m).intValue();
                 }
 
                 /** get from the whiteboard and throw away */
-                virtual void performv(Machine *m, ActionStage, int, va_list)
+                virtual void performv(Machine *m, ActionStage, int, va_list) OVERRIDE
                 {
                         evaluate(m);
                 }

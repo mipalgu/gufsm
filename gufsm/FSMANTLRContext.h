@@ -254,7 +254,7 @@ namespace FSM
                 }
 
                 /** take a current snapshot from the whiteboard */
-                virtual void take_snapshot();
+                virtual void take_snapshot() OVERRIDE;
 
                 /*
                  * functions

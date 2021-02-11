@@ -75,6 +75,8 @@ extern "C"
 #include <string>
 #include "FSMAction.h"
 
+#include <gu_util.h>
+
 #pragma clang diagnostic pop
 
 namespace FSM
@@ -86,11 +88,11 @@ namespace FSM
                 pANTLR3_RECOGNIZER_SHARED_STATE _state; /// antlr context
         public:
                 ANTLRAction(pANTLR3_BASE_TREE block, pANTLR3_RECOGNIZER_SHARED_STATE context): _state(context) { _content = block; }
-                virtual void performv(Machine *, ActionStage, int x, va_list);
+                virtual void performv(Machine *, ActionStage, int x, va_list) OVERRIDE;
                 /** ANTLR context getter */
                 pANTLR3_RECOGNIZER_SHARED_STATE antlr_state() { return _state; }
                 /** ANTLR action description */
-                std::string description();
+                std::string description() OVERRIDE;
                 /** put external variables into ANTLR context */
                 void set_external_variables(Machine *fsm);
         };

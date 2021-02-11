@@ -60,6 +60,7 @@
 
 #include "FSMExpression.h"
 #include "FSMWBContext.h"
+#include <gu_util.h>
 
 #ifdef bool
 #undef bool
@@ -101,7 +102,7 @@ namespace FSM
                  */
                 WBExpression(WBContext *wc): _wb(wc->whiteboard()) {}
 
-                virtual ~WBExpression() {}      /// destructor
+                virtual ~WBExpression() OVERRIDE {}      /// destructor
 
                 /** whiteboard getter */
                 guWhiteboard::Whiteboard *whiteboard() { return _wb; }
@@ -145,10 +146,10 @@ namespace FSM
                  */
                 WBPredicate(const std::string &expr, bool neg, WBContext *wc): Predicate(expr, false, neg), WBExpression(wc) {}
 
-                virtual ~WBPredicate() {}       /// destructor
+                virtual ~WBPredicate() OVERRIDE {}       /// destructor
 
                 /** return the value, negated if necessary */
-                virtual int evaluate(Machine *m = NULLPTR);
+                virtual int evaluate(Machine *m = NULLPTR) OVERRIDE;
                 
                 /** return the value, negated if necessary */
                 virtual int evaluate(WBMsg &msg);

@@ -68,6 +68,8 @@
 #include <vector>
 #include "FSMAction.h"
 
+#include <gu_util.h>
+
 #ifdef bool
 #undef bool
 #endif
@@ -101,8 +103,8 @@ namespace FSM
                 ANTLRMaths(T cont): ContentAction<T>(cont) {}
 
                 virtual const char *name(void) = 0;
-                virtual int evaluate(Machine *m = NULLPTR) = 0;
-                virtual void performv(Machine *m, ActionStage, int, va_list)
+                virtual int evaluate(Machine *m = NULLPTR) OVERRIDE = 0;
+                virtual void performv(Machine *m, ActionStage, int, va_list) OVERRIDE
                 {
                         evaluate(m);
                 }
@@ -118,7 +120,7 @@ namespace FSM
                 ANTLRMathsSingle(): ANTLRMaths<int>(0) {}
 
                 /** setting any parameter sets the content */
-                virtual void add_parameter(int, long long value)
+                virtual void add_parameter(int, long long value) OVERRIDE
                 {
                         setContent(static_cast<int>(value));
                 }
@@ -130,8 +132,8 @@ namespace FSM
         class ANTLRMathsAbs: public ANTLRMathsSingle
         {
         public:
-                virtual const char *name(void) { return "abs"; }
-                virtual int evaluate(Machine * = NULLPTR)
+                virtual const char *name(void) OVERRIDE { return "abs"; }
+                virtual int evaluate(Machine * = NULLPTR) OVERRIDE
                 {
                         return abs(content());
                 }
@@ -143,8 +145,8 @@ namespace FSM
         class ANTLRMathsSign: public ANTLRMathsSingle
         {
         public:
-                virtual const char *name(void) { return "sign"; }
-                virtual int evaluate(Machine * = NULLPTR)
+                virtual const char *name(void) OVERRIDE { return "sign"; }
+                virtual int evaluate(Machine * = NULLPTR) OVERRIDE
                 {
                         int v = content();
                         return v == 0 ? 0 : ( v < 0 ? -1 : 1);
@@ -157,8 +159,8 @@ namespace FSM
         class ANTLRMathsRandom: public ANTLRMathsSingle
         {
         public:
-                virtual const char *name(void) { return "random"; }
-                virtual int evaluate(Machine * = NULLPTR)
+                virtual const char *name(void) OVERRIDE { return "random"; }
+                virtual int evaluate(Machine * = NULLPTR) OVERRIDE
                 {
                         return random();
                 }
@@ -170,8 +172,8 @@ namespace FSM
         class ANTLRMathsSRandom: public ANTLRMathsSingle
         {
         public:
-                virtual const char *name(void) { return "srandom"; }
-                virtual int evaluate(Machine * = NULLPTR)
+                virtual const char *name(void) OVERRIDE { return "srandom"; }
+                virtual int evaluate(Machine * = NULLPTR) OVERRIDE
                 {
                         srand(content());
                         return random();
@@ -184,8 +186,8 @@ namespace FSM
         class ANTLRMathsSin: public ANTLRMathsSingle
         {
         public:
-                virtual const char *name(void) { return "sin"; }
-                virtual int evaluate(Machine * = NULLPTR)
+                virtual const char *name(void) OVERRIDE { return "sin"; }
+                virtual int evaluate(Machine * = NULLPTR) OVERRIDE
                 {
                         float angle = float(content() * M_PI / 180.0);
                         return int(sinf(angle) * FIXED_FACTOR);
@@ -198,8 +200,8 @@ namespace FSM
         class ANTLRMathsCos: public ANTLRMathsSingle
         {
         public:
-                virtual const char *name(void) { return "cos"; }
-                virtual int evaluate(Machine * = NULLPTR)
+                virtual const char *name(void) OVERRIDE { return "cos"; }
+                virtual int evaluate(Machine * = NULLPTR) OVERRIDE
                 {
                         float angle = float(content() * M_PI / 180.0);
                         return int(cosf(angle) * FIXED_FACTOR);
@@ -212,8 +214,8 @@ namespace FSM
         class ANTLRMathsTan: public ANTLRMathsSingle
         {
         public:
-                virtual const char *name(void) { return "tan"; }
-                virtual int evaluate(Machine * = NULLPTR)
+                virtual const char *name(void) OVERRIDE { return "tan"; }
+                virtual int evaluate(Machine * = NULLPTR) OVERRIDE
                 {
                         float angle = float(content() * M_PI / 180.0);
                         return int(tanf(angle) * FIXED_FACTOR);
@@ -226,8 +228,8 @@ namespace FSM
         class ANTLRMathsCot: public ANTLRMathsSingle
         {
         public:
-                virtual const char *name(void) { return "cot"; }
-                virtual int evaluate(Machine * = NULLPTR)
+                virtual const char *name(void) OVERRIDE { return "cot"; }
+                virtual int evaluate(Machine * = NULLPTR) OVERRIDE
                 {
                         float angle = float(content() * M_PI / 180.0);
                         return int((1.0f / tanf(angle)) * FIXED_FACTOR);
@@ -240,8 +242,8 @@ namespace FSM
         class ANTLRMathsATan: public ANTLRMathsSingle
         {
         public:
-                virtual const char *name(void) { return "atan"; }
-                virtual int evaluate(Machine * = NULLPTR)
+                virtual const char *name(void) OVERRIDE { return "atan"; }
+                virtual int evaluate(Machine * = NULLPTR) OVERRIDE
                 {
                         float value = float(content()) / float(FIXED_FACTOR);
                         return int(atanf(value) * 180.0f / float(M_PI));
@@ -254,8 +256,8 @@ namespace FSM
         class ANTLRMathsASin: public ANTLRMathsSingle
         {
         public:
-                virtual const char *name(void) { return "asin"; }
-                virtual int evaluate(Machine * = NULLPTR)
+                virtual const char *name(void) OVERRIDE { return "asin"; }
+                virtual int evaluate(Machine * = NULLPTR) OVERRIDE
                 {
                     float value = float(content()) / float(FIXED_FACTOR);
                         return int(asinf(value) * 180.0f / float(M_PI));
@@ -268,8 +270,8 @@ namespace FSM
         class ANTLRMathsACos: public ANTLRMathsSingle
         {
         public:
-                virtual const char *name(void) { return "acos"; }
-                virtual int evaluate(Machine * = NULLPTR)
+                virtual const char *name(void) OVERRIDE { return "acos"; }
+                virtual int evaluate(Machine * = NULLPTR) OVERRIDE
                 {
                     float value = float(content()) / float(FIXED_FACTOR);
                         return int(acosf(value) * 180.0f / float(M_PI));
@@ -282,8 +284,8 @@ namespace FSM
         class ANTLRMathsLog: public ANTLRMathsSingle
         {
         public:
-                virtual const char *name(void) { return "log"; }
-                virtual int evaluate(Machine * = NULLPTR)
+                virtual const char *name(void) OVERRIDE { return "log"; }
+                virtual int evaluate(Machine * = NULLPTR) OVERRIDE
                 {
                     float value = float(content()) / float(FIXED_FACTOR);
                         return int(logf(value) * FIXED_FACTOR);
@@ -296,8 +298,8 @@ namespace FSM
         class ANTLRMathsLd: public ANTLRMathsSingle
         {
         public:
-                virtual const char *name(void) { return "ld"; }
-                virtual int evaluate(Machine * = NULLPTR)
+                virtual const char *name(void) OVERRIDE { return "ld"; }
+                virtual int evaluate(Machine * = NULLPTR) OVERRIDE
                 {
                     float value = float(content()) / float(FIXED_FACTOR);
                         return int(log2f(value) * FIXED_FACTOR);
@@ -310,8 +312,8 @@ namespace FSM
         class ANTLRMathsLg: public ANTLRMathsSingle
         {
         public:
-                virtual const char *name(void) { return "lg"; }
-                virtual int evaluate(Machine * = NULLPTR)
+                virtual const char *name(void) OVERRIDE { return "lg"; }
+                virtual int evaluate(Machine * = NULLPTR) OVERRIDE
                 {
                     float value = float(content()) / float(FIXED_FACTOR);
                         return int(log10f(value) * FIXED_FACTOR);
@@ -322,7 +324,7 @@ namespace FSM
         class PrintFixedAction: public PrintIntAction
         {
                 /** print the content of this action */
-                virtual void performv(Machine *, ActionStage, int, va_list)
+                virtual void performv(Machine *, ActionStage, int, va_list) OVERRIDE
                 {
                         double value = double(content()) / double(FIXED_FACTOR);
                         std::cout << value << std::endl;
@@ -339,7 +341,7 @@ namespace FSM
                 ANTLRMathsVector(): ANTLRMaths<std::vector<int> >() {}
                 
                 /** setting any parameter sets the content */
-                virtual void add_parameter(int idx, long long value)
+                virtual void add_parameter(int idx, long long value) OVERRIDE
                 {
                         if (idx >= static_cast<int>(_content.size()))
                                 _content.push_back(value);
@@ -354,8 +356,8 @@ namespace FSM
         class ANTLRMathsMin: public ANTLRMathsVector
         {
         public:
-                virtual const char *name(void) { return "min"; }
-                virtual int evaluate(Machine * = NULLPTR)
+                virtual const char *name(void) OVERRIDE { return "min"; }
+                virtual int evaluate(Machine * = NULLPTR) OVERRIDE
                 {
                         if (!content().size()) return 0;
                         std::vector<int>::const_iterator i = content().begin();
@@ -372,8 +374,8 @@ namespace FSM
         class ANTLRMathsMax: public ANTLRMathsVector
         {
         public:
-                virtual const char *name(void) { return "max"; }
-                virtual int evaluate(Machine * = NULLPTR)
+                virtual const char *name(void) OVERRIDE { return "max"; }
+                virtual int evaluate(Machine * = NULLPTR) OVERRIDE
                 {
                         if (!content().size()) return 0;
                         std::vector<int>::const_iterator i = content().begin();
@@ -400,8 +402,8 @@ namespace FSM
         class ANTLRMathsAvg: public ANTLRMathsVector
         {
         public:
-                virtual const char *name(void) { return "avg"; }
-                virtual int evaluate(Machine * = NULLPTR)
+                virtual const char *name(void) OVERRIDE { return "avg"; }
+                virtual int evaluate(Machine * = NULLPTR) OVERRIDE
                 {
                         return vec_average(content());
                 }
@@ -413,8 +415,8 @@ namespace FSM
         class ANTLRMathsFTA: public ANTLRMathsVector
         {
         public:
-                virtual const char *name(void) { return "fta"; }
-                virtual int evaluate(Machine * = NULLPTR)
+                virtual const char *name(void) OVERRIDE { return "fta"; }
+                virtual int evaluate(Machine * = NULLPTR) OVERRIDE
                 {
                         int n = content().size();
                         if (n < 3) return vec_average(content());
@@ -435,8 +437,8 @@ namespace FSM
         class ANTLRMathsGAvg: public ANTLRMathsVector
         {
         public:
-                virtual const char *name(void) { return "gavg"; }
-                virtual int evaluate(Machine * = NULLPTR)
+                virtual const char *name(void) OVERRIDE { return "gavg"; }
+                virtual int evaluate(Machine * = NULLPTR) OVERRIDE
                 {
                         if (!content().size()) return 0;
                         double total = 1.0;
@@ -452,8 +454,8 @@ namespace FSM
         class ANTLRMathsSqrt: public ANTLRMathsSingle
         {
         public:
-                virtual const char *name(void) { return "sqrt"; }
-                virtual int evaluate(Machine * = NULLPTR)
+                virtual const char *name(void) OVERRIDE { return "sqrt"; }
+                virtual int evaluate(Machine * = NULLPTR) OVERRIDE
                 {
                         return int(sqrt(content()));
                 }
