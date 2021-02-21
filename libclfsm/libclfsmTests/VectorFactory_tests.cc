@@ -15,7 +15,13 @@
 #pragma clang diagnostic ignored "-Wused-but-marked-unused"
 #pragma clang diagnostic ignored "-Wdeprecated"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wsuggest-override"
+#pragma clang diagnostic ignored "-Wsuggest-destructor-override"
+#pragma clang diagnostic ignored "-Wzero-as-null-pointer-constant"
 #include <gtest/gtest.h>
+#pragma clang diangostic pop
+
 #include "gu_util.h"
 #include "FSMState.h"
 #include "FSMSuspensibleMachine.h"
