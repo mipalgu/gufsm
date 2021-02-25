@@ -3,7 +3,7 @@
 #
 MODULE_BASE=clfsm
 
-DONT_COMPLAIN_ABOUT_TEST_TARGET=yes	## test target is defined elsewhere
+SKIP_TESTS=yes	## test target is defined elsewhere
 CI_SERVER_DOC_SUBDIR=utils
 WANT_FSM_REFLECTION=no
 

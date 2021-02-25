@@ -5,7 +5,7 @@
 #
 ALL_TARGETS=build-host analyse xc doc
 
-DONT_COMPLAIN_ABOUT_TEST_TARGET=yes	## test target is defined below
+SKIP_TESTS=yes	## test target is defined below
 TEST_MACHINES=SpeedTest			## machines to run for testing
 CI_SERVER_DOC_SUBDIR=utils
 XCODE_USE_WORKSPACE=yes
