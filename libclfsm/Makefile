@@ -6,7 +6,7 @@
 MODULE_BASE=clfsm
 XCTSCHEME=libclfsm
 CI_NAME=${XCTSCHEME}
-DEPENDS=gusimplewhiteboard
+DEPENDS=gusimplewhiteboard gu_util
 
 ALL_TARGETS=host-local robot-local analyse xc tests
 
