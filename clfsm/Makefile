@@ -4,11 +4,14 @@
 # clfsm Makefile
 #
 ALL_TARGETS=build-host analyse xc doc
+DEPENDS=libclfsm
 
 SKIP_TESTS=yes	## test target is defined below
 TEST_MACHINES=SpeedTest			## machines to run for testing
 CI_SERVER_DOC_SUBDIR=utils
 XCODE_USE_WORKSPACE=yes
+
+CMAKE_SUBDIR_NAMES=${BUILDDIR}
 
 all: all-real
 
@@ -31,6 +34,10 @@ HDRS+= CLWhiteboard.h
 
 .include "../../../mk/c++11.mk"         # use C++11
 .include "../../../mk/whiteboard.mk"	# not really, but for catkin
+
+cmake: pre-cmake
+pre-cmake: copy-stuff
+	cd ${BUILDDIR} && ${MAKE} cmake WANT_FSM_REFLECTION=${WANT_FSM_REFLECTION}
 
 copy-stuff:
 	mkdir -p ${BUILDDIR}
