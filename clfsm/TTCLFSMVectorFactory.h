@@ -59,7 +59,11 @@
 #ifndef TTCLFSMVECTORFACTORY_H
 #define TTCLFSMVECTORFACTORY_H
 
+#ifdef WITH_WHITEBOARD
 #include "clfsm_wb_vector_factory.h"
+#else
+#include "clfsm_vector_factory.h"
+#endif
 #include <time.h>
 #include <math.h>
 #include <inttypes.h>
@@ -71,10 +75,14 @@
 #include "Schedule.h"
 
 namespace FSM {
-    
+
     using namespace std;
 
+#ifdef WITH_WHITEBOARD
     class TTCLFSMVectorFactory : public CLFSMWBVectorFactory {
+#else
+    class TTCLFSMVectorFactory : public CLFSMVectorFactory {
+#endif
         private:
 
             long long getTimeUS();
@@ -96,7 +104,12 @@ namespace FSM {
 
         public:
             TTCLFSMVectorFactory(bool accepting, Context *context, bool del = true, useconds_t timeout = 10000L)
-                : CLFSMWBVectorFactory(context, del, timeout) {
+#ifdef WITH_WHITEBOARD
+                : CLFSMWBVectorFactory(context, del, timeout)
+#else
+                : CLFSMVectorFactory(context, del, timeout)
+#endif
+            {
                     this->_accepting = accepting;
                 }
 

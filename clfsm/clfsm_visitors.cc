@@ -66,8 +66,10 @@
 #include "FSMachineVector.h"
 #include "CLMachine.h"
 #include "clfsm_machine.h"
+#ifdef WITH_WHITEBOARD
 #include "clfsm_wb_vector_factory.h"
 #include "gugenericwhiteboardobject.h"
+#endif
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-parameter"

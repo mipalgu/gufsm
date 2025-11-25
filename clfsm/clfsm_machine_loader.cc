@@ -68,7 +68,11 @@
 #pragma clang diagnostic pop
 
 #include "clfsm_machine_loader.h"
+#ifdef WITH_WHITEBOARD
 #include "clfsm_wb_vector_factory.h"
+#else
+#include "clfsm_vector_factory.h"
+#endif
 #include "clfsm_machine.h"
 #include "CLMachine.h"
 
@@ -159,7 +163,11 @@ CLFSMMachineLoader* CLFSMMachineLoader::getMachineLoaderSingleton()
 CLFSMMachineLoader::CLFSMMachineLoader()
 {
     if (!loader_singleton) loader_singleton = this;
-    _vector_factory = new TTCLFSMVectorFactory(false, NULLPTR, false, idle_timeout);
+#ifdef WITH_WHITEBOARD
+    _vector_factory = new CLFSMWBVectorFactory(NULLPTR, false, idle_timeout);
+#else
+    _vector_factory = new CLFSMVectorFactory(NULLPTR, false, idle_timeout);
+#endif
 }
 
 CLFSMMachineLoader::~CLFSMMachineLoader()

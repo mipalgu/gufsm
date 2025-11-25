@@ -72,7 +72,13 @@
 
 namespace FSM
 {
+#ifdef WITH_WHITEBOARD
 	class CLFSMWBVectorFactory;
+	typedef CLFSMWBVectorFactory CLFSMVectorFactoryType;
+#else
+	class CLFSMVectorFactory;
+	typedef CLFSMVectorFactory CLFSMVectorFactoryType;
+#endif
 	class MachineWrapper;
 	class CLMachine;
 
@@ -83,7 +89,7 @@ namespace FSM
 	{
 	private:
 		/// The vectory factory
-		TTCLFSMVectorFactory *_vector_factory;
+		CLFSMVectorFactoryType *_vector_factory;
 
 		/// The vector of machine wrappers
 		std::vector<MachineWrapper *> _machineWrappers;
@@ -131,7 +137,7 @@ namespace FSM
 		bool unloadMachineAtIndex(int index);
 
         /// Vector factory getter
-		TTCLFSMVectorFactory *vector_factory() const { return _vector_factory; }
+		CLFSMVectorFactoryType *vector_factory() const { return _vector_factory; }
 
 		///Machine Wrapper getter
 		std::vector<MachineWrapper *> machineWrappers() const { return _machineWrappers; }

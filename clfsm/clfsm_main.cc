@@ -100,8 +100,12 @@
 #include "FSMachineVector.h"
 #include "CLMachine.h"
 #include "clfsm_machine.h"
+#ifdef WITH_WHITEBOARD
 #include "clfsm_wb_vector_factory.h"
 #include "gugenericwhiteboardobject.h"
+#else
+#include "clfsm_vector_factory.h"
+#endif
 #include "clfsm_machine_loader.h"
 
 // Visitors and Support Objects
@@ -109,7 +113,9 @@
 #include "clfsm_visitorsupport.h"
 
 // Reflection API
+#ifdef WANT_FSM_REFLECTION
 #include <CLReflect/CLReflectAPI.h>
+#endif
 
 //Time-Triggered Includes
 #include "FileParser.h"
@@ -132,7 +138,7 @@ struct clfsm_context {
     CLFSMMachineLoader* loader;
 };
 
-static CLFSMWBVectorFactory *createMachines(const vector<string> &machines, const vector<string> &compiler_args, const vector<string> &linker_args)
+static CLFSMVectorFactoryType *createMachines(const vector<string> &machines, const vector<string> &compiler_args, const vector<string> &linker_args)
 {
     CLFSMMachineLoader *loader = CLFSMMachineLoader::getMachineLoaderSingleton();
     for (vector<string>::const_iterator it = machines.begin(); it != machines.end(); it++)
@@ -140,16 +146,11 @@ static CLFSMWBVectorFactory *createMachines(const vector<string> &machines, cons
             const string &machine = *it;
             FSM::loadAndAddMachineAtPath(machine, false, compiler_args, linker_args);
     }
-    return static_cast<CLFSMWBVectorFactory*>(loader->vector_factory());
+    return loader->vector_factory();
 }
 
 static void __attribute((noreturn)) aborting_signal_handler(int signum)
 {
-#ifdef DEBUG
-    guWhiteboard::QSay_t say;
-#else
-    guWhiteboard::QSpeech_t say;
-#endif
     stringstream ss;
 
     if (signum == SIGTERM || signum == SIGQUIT || signum == SIGINT)
@@ -157,7 +158,14 @@ static void __attribute((noreturn)) aborting_signal_handler(int signum)
 
     ss << "Caught signal " << signum << ": " << (nonstop ? "restarting ... " : "aborting ...") << endl;
 
+#ifdef WITH_WHITEBOARD
+#ifdef DEBUG
+    guWhiteboard::QSay_t say;
+#else
+    guWhiteboard::QSpeech_t say;
+#endif
     say(ss.str());
+#endif
     cerr << ss.str();
 
     if (time_state_execution)
@@ -185,16 +193,20 @@ static void print_backtrace(int signum)
         fprintf(stderr, "*** Cannot open '%s': %s", tmpname, strerror(errno));
     }
 
+#ifdef WITH_WHITEBOARD
 #ifdef DEBUG
     guWhiteboard::QSay_t say;
 #else
     guWhiteboard::QSpeech_t say;
 #endif
+#endif
     for (int i = 0; i < frames; ++i)
     {
         char *function = strs[i];
         char *state = strstr(function, "State");
+#ifdef WITH_WHITEBOARD
         if (state) say(state);
+#endif
         if (logfile) fprintf(logfile,"%3.3d: %s\n", i, function);
         fprintf(stderr, "%3.3d: %s\n", i, function);
     }
@@ -459,9 +471,11 @@ int main(int argc, char * const argv[])
 #ifdef WANT_FSM_REFLECTION
     refl_initAPI(NULLPTR); //Init reflection system
 #endif
-    CLFSMWBVectorFactory *factory = createMachines(isTT ? std::vector<string>() : machines, compiler_args, linker_args);
+    CLFSMVectorFactoryType *factory = createMachines(isTT ? std::vector<string>() : machines, compiler_args, linker_args);
     struct clfsm_context context = { CLFSMMachineLoader::getMachineLoaderSingleton() };
+#ifdef WITH_WHITEBOARD
     factory->postMachineStatus();
+#endif
     debug_internal_states = debug;
     if (isTT) {
         for (unsigned long i = 0; i < schedule->paths().size(); i++) {
