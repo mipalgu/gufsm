@@ -40,3 +40,15 @@ endif()
 if(BUILD_CLFSM)
     add_subdirectory(clfsm)
 endif()
+
+# Export target - creates a self-contained snapshot
+string(TIMESTAMP EXPORT_TIMESTAMP "%Y-%m-%d %H:%M:%S")
+add_custom_target(export
+    COMMAND ${CMAKE_COMMAND}
+        -DEXPORT_DIR=${CMAKE_BINARY_DIR}/export
+        -DEXPORT_TIMESTAMP="${EXPORT_TIMESTAMP}"
+        -P ${CMAKE_SOURCE_DIR}/export.cmake
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    COMMENT "Creating self-contained gufsm export"
+    VERBATIM
+)
