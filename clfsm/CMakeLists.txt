@@ -64,6 +64,13 @@ endif()
 # Link with dl library (for dynamic loading)
 target_link_libraries(clfsm PRIVATE ${CMAKE_DL_LIBS})
 
+# Set RPATH for installed executable to find libclfsm
+set_target_properties(clfsm PROPERTIES
+    INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib"
+    BUILD_WITH_INSTALL_RPATH FALSE
+    INSTALL_RPATH_USE_LINK_PATH TRUE
+)
+
 # Installation rules
 install(TARGETS clfsm
     RUNTIME DESTINATION bin
