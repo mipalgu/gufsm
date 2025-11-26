@@ -32,6 +32,11 @@ endif()
 # Include project configuration
 include(project.cmake)
 
+# Enable testing if requested
+if(BUILD_TESTS)
+    enable_testing()
+endif()
+
 # Build subprojects
 if(BUILD_LIBCLFSM)
     add_subdirectory(libclfsm)
@@ -47,6 +52,7 @@ add_custom_target(export
     COMMAND ${CMAKE_COMMAND}
         -DEXPORT_DIR=${CMAKE_BINARY_DIR}/export
         -DEXPORT_TIMESTAMP="${EXPORT_TIMESTAMP}"
+        -DEXPORT_TESTS=${BUILD_TESTS}
         -P ${CMAKE_SOURCE_DIR}/export.cmake
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
     COMMENT "Creating self-contained gufsm export"

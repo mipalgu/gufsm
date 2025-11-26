@@ -103,3 +103,8 @@ install(FILES
     "${CMAKE_CURRENT_BINARY_DIR}/clfsmConfigVersion.cmake"
     DESTINATION lib/cmake/clfsm
 )
+
+# Add tests subdirectory
+if(BUILD_TESTS)
+    add_subdirectory(libclfsmTests)
+endif()

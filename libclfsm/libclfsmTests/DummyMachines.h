@@ -2,7 +2,9 @@
 #define DUMMYMACHINES_H
 
 #include "CLMachine.h"
+#ifdef LIBCLFSM_WITH_REFLECT
 #include "CLReflectAPI.h"
+#endif
 #include <iostream>
 
 class TestMachine: public FSM::CLMachine
@@ -11,6 +13,7 @@ class TestMachine: public FSM::CLMachine
     virtual int numberOfStates() const { return 0; }
 };
 
+#ifdef LIBCLFSM_WITH_REFLECT
 //! Function to create dummy meta-machine for PingPong
 refl_metaMachine createPingPong();
 
@@ -38,5 +41,6 @@ inline refl_metaMachine createPingPong()
     return m;
 
 }
+#endif // LIBCLFSM_WITH_REFLECT
 
 #endif /* end of include guard: DUMMYMACHINES_H */

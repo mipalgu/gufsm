@@ -319,6 +319,11 @@ install(FILES
     \"\${CMAKE_CURRENT_BINARY_DIR}/clfsmConfigVersion.cmake\"
     DESTINATION lib/cmake/clfsm
 )
+
+# Add tests subdirectory if BUILD_TESTS is enabled
+if(BUILD_TESTS)
+    add_subdirectory(libclfsmTests)
+endif()
 ")
 
 # Create updated clfsm/CMakeLists.txt
@@ -417,6 +422,11 @@ else()
     message(STATUS \"Building without whiteboard support\")
 endif()
 
+# Enable testing if requested
+if(BUILD_TESTS)
+    enable_testing()
+endif()
+
 # Build subprojects
 add_subdirectory(libclfsm)
 add_subdirectory(clfsm)
@@ -464,6 +474,19 @@ CMake version: ${CMAKE_VERSION}
 # Copy LICENSE if it exists
 copy_file_safe("${CMAKE_SOURCE_DIR}/LICENSE" "${EXPORT_DIR}/LICENSE")
 
+# ==============================================================================
+# TESTS (optional)
+# ==============================================================================
+if(EXPORT_TESTS)
+    message(STATUS "  Collecting test files...")
+    file(MAKE_DIRECTORY "${EXPORT_DIR}/libclfsm/libclfsmTests")
+
+    # Copy test files
+    copy_file_safe("${CMAKE_SOURCE_DIR}/libclfsm/libclfsmTests/VectorFactory_tests.cc" "${EXPORT_DIR}/libclfsm/libclfsmTests/VectorFactory_tests.cc")
+    copy_file_safe("${CMAKE_SOURCE_DIR}/libclfsm/libclfsmTests/DummyMachines.h" "${EXPORT_DIR}/libclfsm/libclfsmTests/DummyMachines.h")
+    copy_file_safe("${CMAKE_SOURCE_DIR}/libclfsm/libclfsmTests/CMakeLists.txt" "${EXPORT_DIR}/libclfsm/libclfsmTests/CMakeLists.txt")
+endif()
+
 message(STATUS "Export complete!")
 message(STATUS "")
 message(STATUS "Minimal self-contained gufsm exported to: ${EXPORT_DIR}")
@@ -473,3 +496,8 @@ message(STATUS "  cd ${EXPORT_DIR}")
 message(STATUS "  mkdir build && cd build")
 message(STATUS "  cmake -G Ninja ..")
 message(STATUS "  ninja")
+if(EXPORT_TESTS)
+    message(STATUS "")
+    message(STATUS "To run tests:")
+    message(STATUS "  ctest --output-on-failure")
+endif()
