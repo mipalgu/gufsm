@@ -247,6 +247,7 @@ static void __attribute((noreturn)) backtrace_signal_handler(int signum)
 
 static void usage(const char *cmd)
 {
+#ifdef COMPILE_MACHINES
     cerr << "Usage: " << cmd << "[-c][-d][-fPIC]{-I includedir}[-i idlesleep]{-L linkdir}{-l lib}[-n][-P <machine>][-s][-S <machine>][-t][-v][-T]" << endl;
     cerr << "[-c] = Compile only flag, don't execute machine." << endl;
     cerr << "[-f] = compiler specific flags (eg. 'PIC' To generate Position Independent Code)." << endl;
@@ -254,6 +255,10 @@ static void usage(const char *cmd)
     cerr << "{-i includedir} = Directory to include during compilation. Use repeatedly for multiple directories." << endl;
     cerr << "{-L linkdir} = Directory to include during linking. Use repeatedly for multiple directories." << endl;
     cerr << "{-l lib} = Library to include during linking. Use repeatedly for multiple libraries." << endl;
+#else
+    cerr << "Usage: " << cmd << "[-d][-i idlesleep][-n][-P <machine>][-s][-S <machine>][-t][-v][-T]" << endl;
+    cerr << "{-I idlesleep} = Number of microseconds to sleep when idle (default: 10000)" << endl;
+#endif
     cerr << "[-n] = Restart CLFSM after SIGABRT or SIGIOT signals." << endl;
     cerr << "[-P <machine>] = Preload a machine." << endl;
     cerr << "[-s] = Outputs information about machine suspensions and resumes." << endl;
@@ -318,8 +323,10 @@ int main(int argc, char * const argv[])
     fStateMsgOutput = stderr;
 
     vector<string> machines;
+#ifdef COMPILE_MACHINES
     vector<string> compiler_args;
     vector<string> linker_args;
+#endif
 
     command_argc = argc;
     command_argv = argv;
@@ -345,19 +352,26 @@ int main(int argc, char * const argv[])
     signal(SIGHUP,  print_backtrace);
 #endif
 
+#ifdef COMPILE_MACHINES
     compiler_args.push_back("-std=c++11");    /// XXX: fix this
+#endif
 
     int ch;
     int debug = 0, verbose = 0, noUnloadIfAccepting = 0;
     std::vector<std::string> preloads;
     std::vector<std::string> suspends;
+#ifdef COMPILE_MACHINES
     while ((ch = getopt(argc, argv, "dgf:I:i:L:l:nstuvTP:S:")) != -1)
+#else
+    while ((ch = getopt(argc, argv, "di:nstuvTP:S:")) != -1)
+#endif
     {
         switch (ch)
         {
             case 'd':
                 debug++;
                 break;
+#ifdef COMPILE_MACHINES
             case 'g':
                 compiler_args.push_back("-g");
                 linker_args.push_back("-g");
@@ -369,9 +383,11 @@ int main(int argc, char * const argv[])
                 compiler_args.push_back("-I");
                 compiler_args.push_back(optarg);
                 break;
+#endif
             case 'i':
                 FSM::CLFSMMachineLoader::idle_timeout = atol(optarg);
                 break;
+#ifdef COMPILE_MACHINES
             case 'L':
                 linker_args.push_back("-L");
                 linker_args.push_back(optarg);
@@ -380,6 +396,7 @@ int main(int argc, char * const argv[])
                 linker_args.push_back("-l");
                 linker_args.push_back(optarg);
                 break;
+#endif
             case 'n':
                 nonstop = true;
                 DBG(cerr << "nonstop mode: sleeping 1 second before (re)starting" << endl);
@@ -460,8 +477,10 @@ int main(int argc, char * const argv[])
         }
     }
 
+#ifdef COMPILE_MACHINES
     if (!compiler_args.size()) compiler_args = MachineWrapper::default_compiler_args();
     if (!linker_args.size())   linker_args   = MachineWrapper::default_linker_args();
+#endif
 
     visitor_f visitor = NULLPTR;
     visitor_f accept_action = NULLPTR; //Used to unload machines when in accepting state
@@ -471,7 +490,11 @@ int main(int argc, char * const argv[])
 #ifdef WANT_FSM_REFLECTION
     refl_initAPI(NULLPTR); //Init reflection system
 #endif
+#ifdef COMPILE_MACHINES
     CLFSMVectorFactoryType *factory = createMachines(isTT ? std::vector<string>() : machines, compiler_args, linker_args);
+#else
+    CLFSMVectorFactoryType *factory = createMachines(isTT ? std::vector<string>() : machines, std::vector<string>(), std::vector<string>());
+#endif
     struct clfsm_context context = { CLFSMMachineLoader::getMachineLoaderSingleton() };
 #ifdef WITH_WHITEBOARD
     factory->postMachineStatus();

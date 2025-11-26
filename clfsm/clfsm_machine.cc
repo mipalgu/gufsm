@@ -219,6 +219,12 @@ static void push_back_outfilename(void *p)
 
 bool MachineWrapper::compile(const vector<string> &compiler_args, const vector<string> &linker_args)
 {
+#ifndef COMPILE_MACHINES
+    (void)compiler_args;  // Suppress unused parameter warning
+    (void)linker_args;
+    cerr << "Machine compilation support disabled (built without COMPILE_MACHINES)" << endl;
+    return false;
+#else
     string binary_directory = binaryDirectory();
 
 #ifndef WITHOUT_LIBDISPATCH
@@ -302,6 +308,7 @@ if (success)    // link into shared object if compiler was successful
     }
 
     return success;
+#endif // COMPILE_MACHINES
 }
 
 void *MachineWrapper::preload()
@@ -313,18 +320,20 @@ void *MachineWrapper::preload()
         {
             const char *error = dlerror();
             if (error) cerr << error << endl;
-            
+
+#ifdef COMPILE_MACHINES
             const vector<string> *cmdline_compiler_args = _compiler_args;
             const vector<string> *linker_args = _linker_args;
             vector<string> compiler_args = cmdline_compiler_args ? *cmdline_compiler_args : default_compiler_args();
-            
+
             add_machine_includes(compiler_args);
-            
+
             if (!linker_args)   linker_args   = &default_linker_args();
-            
+
             compile(compiler_args, *linker_args);
-            
+
             if (!(_shared_object = dlopen(shared_path.c_str(), RTLD_NOW|RTLD_GLOBAL)))
+#endif
             {
                 if (!error)
                 {

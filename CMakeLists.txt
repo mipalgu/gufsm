@@ -32,6 +32,14 @@ endif()
 # Include project configuration
 include(project.cmake)
 
+# Enable machine compilation support if requested
+if(COMPILE_MACHINES)
+    add_compile_definitions(COMPILE_MACHINES)
+    message(STATUS "Building with machine compilation support")
+else()
+    message(STATUS "Building without machine compilation support")
+endif()
+
 # Enable testing if requested
 if(BUILD_TESTS)
     enable_testing()
