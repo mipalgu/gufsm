@@ -1,138 +1,438 @@
-# Export script to create a self-contained gufsm snapshot
-# This resolves all external dependencies (Common/gu_util) into the export
+# Export script to create a minimal self-contained gufsm snapshot
+# Only includes files needed to build libclfsm and clfsm
 
 if(NOT EXPORT_DIR)
     set(EXPORT_DIR "${CMAKE_BINARY_DIR}/export")
 endif()
 
-message(STATUS "Exporting self-contained gufsm to: ${EXPORT_DIR}")
+message(STATUS "Creating minimal self-contained gufsm export to: ${EXPORT_DIR}")
 
 # Clean and create export directory
 file(REMOVE_RECURSE "${EXPORT_DIR}")
 file(MAKE_DIRECTORY "${EXPORT_DIR}")
-file(MAKE_DIRECTORY "${EXPORT_DIR}/Common")
+file(MAKE_DIRECTORY "${EXPORT_DIR}/libclfsm")
+file(MAKE_DIRECTORY "${EXPORT_DIR}/clfsm")
 
-# List of required directories to copy
-set(REQUIRED_DIRS
-    "clfsm"
-    "libclfsm"
-    "gufsm"
-)
-
-# Function to copy a directory tree with filters
-function(copy_directory SOURCE DEST)
-    file(GLOB_RECURSE ALL_FILES
-        RELATIVE "${SOURCE}"
-        "${SOURCE}/*"
-    )
-
-    foreach(FILE ${ALL_FILES})
-        # Skip certain directories and files
-        if(FILE MATCHES "^\\." OR                          # Hidden files/dirs
-           FILE MATCHES "build/" OR                         # Build directories
-           FILE MATCHES "\\.xcodeproj/" OR                 # Xcode projects
-           FILE MATCHES "catkin_ws/" OR                    # Catkin workspace
-           FILE MATCHES "examples/" OR                     # Examples
-           FILE MATCHES "test/" OR                         # Tests
-           FILE MATCHES "test-suspend/" OR                 # Test directories
-           FILE MATCHES "\\.git/" OR                       # Git directories
-           FILE MATCHES "\\.o$" OR                         # Object files
-           FILE MATCHES "\\.a$" OR                         # Archives
-           FILE MATCHES "\\.dylib$" OR                     # Dynamic libraries
-           FILE MATCHES "\\.so$")                          # Shared objects
-            continue()
-        endif()
-
-        # Get source and destination paths
-        set(SRC "${SOURCE}/${FILE}")
-        set(DST "${DEST}/${FILE}")
-
-        # Create destination directory if needed
+# Helper function to copy a file and report errors
+# Resolves symlinks to ensure no symlinks in export
+function(copy_file_safe SRC DST)
+    if(EXISTS "${SRC}")
+        # Resolve symlinks to get the real file
+        get_filename_component(REAL_SRC "${SRC}" REALPATH)
         get_filename_component(DST_DIR "${DST}" DIRECTORY)
         file(MAKE_DIRECTORY "${DST_DIR}")
-
-        # Copy file (skip symlinks - they'll be handled separately or excluded)
-        if(NOT IS_DIRECTORY "${SRC}" AND NOT IS_SYMLINK "${SRC}")
-            execute_process(
-                COMMAND ${CMAKE_COMMAND} -E copy "${SRC}" "${DST}"
-                RESULT_VARIABLE RESULT
-            )
-            if(NOT RESULT EQUAL 0)
-                message(WARNING "Failed to copy ${FILE}")
-            endif()
-        endif()
-    endforeach()
+        # Use configure_file to copy the actual file content (not symlink)
+        configure_file("${REAL_SRC}" "${DST}" COPYONLY)
+    else()
+        message(WARNING "Source file not found: ${SRC}")
+    endif()
 endfunction()
 
-# Copy required directories to top level of export
-message(STATUS "  Copying required directories...")
-foreach(DIR ${REQUIRED_DIRS})
-    if(EXISTS "${CMAKE_SOURCE_DIR}/${DIR}")
-        message(STATUS "    - ${DIR}/")
-        copy_directory("${CMAKE_SOURCE_DIR}/${DIR}" "${EXPORT_DIR}/${DIR}")
-    endif()
-endforeach()
+# ==============================================================================
+# LIBCLFSM FILES
+# ==============================================================================
+message(STATUS "  Collecting libclfsm files...")
 
-# Copy top-level files
-message(STATUS "  Copying top-level files...")
-set(TOP_LEVEL_FILES
-    "CMakeLists.txt"
-    "project.cmake"
-    "export.cmake"
-    "LICENSE"
-    "README.md"
-    "Makefile"
+# libclfsm source files from ../gufsm/
+set(LIBCLFSM_GUFSM_SOURCES
+    stringConstants.c
+    FSMAction.cc
+    FSMActivity.cc
+    FSMExpression.cc
+    FSMFactory.cc
+    FSMState.cc
+    FSMSuspensibleMachine.cc
+    FSMTransition.cc
+    FSMAsynchronousSuspensibleMachine.cc
+    FSMachine.cc
+    FSMachineVector.cc
 )
 
-foreach(FILE ${TOP_LEVEL_FILES})
-    if(EXISTS "${CMAKE_SOURCE_DIR}/${FILE}")
-        file(COPY "${CMAKE_SOURCE_DIR}/${FILE}" DESTINATION "${EXPORT_DIR}")
-    endif()
+foreach(FILE ${LIBCLFSM_GUFSM_SOURCES})
+    copy_file_safe("${CMAKE_SOURCE_DIR}/gufsm/${FILE}" "${EXPORT_DIR}/libclfsm/${FILE}")
 endforeach()
 
-# Resolve and copy gu_util files from the actual source
-# The path is: Submodules/gufsm -> ../gu_util (symlink) -> ../../gu_util (actual)
-set(GU_UTIL_SOURCE_DIR "${CMAKE_SOURCE_DIR}/../gu_util")
+# libclfsm source files from ../clfsm/
+set(LIBCLFSM_CLFSM_SOURCES
+    CLActionAction.cc
+    CLTransitionExpression.cc
+    clfsm_factory.cc
+    clfsm_vector_factory.cc
+)
 
-# Resolve the real path in case it's a symlink
+foreach(FILE ${LIBCLFSM_CLFSM_SOURCES})
+    copy_file_safe("${CMAKE_SOURCE_DIR}/clfsm/${FILE}" "${EXPORT_DIR}/libclfsm/${FILE}")
+endforeach()
+
+# libclfsm headers from clfsm/ (resolve symlinks - these originate in clfsm but are used by libclfsm)
+set(LIBCLFSM_FROM_CLFSM_HEADERS
+    CLAction.h
+    CLActionAction.h
+    CLMachine.h
+    CLMacros.h
+    CLState.h
+    CLTransition.h
+    CLTransitionExpression.h
+    clfsm_factory.h
+    clfsm_vector_factory.h
+    clfsm_wb_vector_factory.h
+)
+
+foreach(FILE ${LIBCLFSM_FROM_CLFSM_HEADERS})
+    copy_file_safe("${CMAKE_SOURCE_DIR}/clfsm/${FILE}" "${EXPORT_DIR}/libclfsm/${FILE}")
+endforeach()
+
+# libclfsm headers from gufsm/
+set(LIBCLFSM_FROM_GUFSM_HEADERS
+    FSMachine.h
+    FSMachineVector.h
+    FSMAction.h
+    FSMActivity.h
+    FSMAsynchronousSuspensibleMachine.h
+    FSMExpression.h
+    FSMFactory.h
+    FSMState.h
+    FSMSuspensibleMachine.h
+    FSMTransition.h
+    stringConstants.h
+)
+
+foreach(FILE ${LIBCLFSM_FROM_GUFSM_HEADERS})
+    copy_file_safe("${CMAKE_SOURCE_DIR}/gufsm/${FILE}" "${EXPORT_DIR}/libclfsm/${FILE}")
+endforeach()
+
+# libclfsm source files that come from clfsm (resolve symlinks)
+copy_file_safe("${CMAKE_SOURCE_DIR}/clfsm/clfsm_wb_vector_factory.cc" "${EXPORT_DIR}/libclfsm/clfsm_wb_vector_factory.cc")
+
+# Copy gu_util files
+set(GU_UTIL_SOURCE_DIR "${CMAKE_SOURCE_DIR}/../gu_util")
 get_filename_component(GU_UTIL_REAL_DIR "${GU_UTIL_SOURCE_DIR}" REALPATH)
 
-if(EXISTS "${GU_UTIL_REAL_DIR}/gu_util.cpp" AND
-   EXISTS "${GU_UTIL_REAL_DIR}/gu_util.h")
-    message(STATUS "  Copying gu_util files from: ${GU_UTIL_REAL_DIR}")
-    file(COPY
-        "${GU_UTIL_REAL_DIR}/gu_util.cpp"
-        "${GU_UTIL_REAL_DIR}/gu_util.h"
-        DESTINATION "${EXPORT_DIR}/Common/"
-    )
+if(EXISTS "${GU_UTIL_REAL_DIR}/gu_util.cpp" AND EXISTS "${GU_UTIL_REAL_DIR}/gu_util.h")
+    copy_file_safe("${GU_UTIL_REAL_DIR}/gu_util.cpp" "${EXPORT_DIR}/libclfsm/gu_util.cpp")
+    copy_file_safe("${GU_UTIL_REAL_DIR}/gu_util.h" "${EXPORT_DIR}/libclfsm/gu_util.h")
 else()
-    message(FATAL_ERROR "Could not find gu_util source files at ${GU_UTIL_REAL_DIR}")
+    message(FATAL_ERROR "Could not find gu_util source files")
 endif()
 
-# Update project.cmake to use ./Common instead of ../../Common
-file(READ "${EXPORT_DIR}/libclfsm/project.cmake" PROJECT_CMAKE_CONTENT)
-string(REPLACE "../../Common/gu_util.cpp" "../Common/gu_util.cpp" PROJECT_CMAKE_CONTENT "${PROJECT_CMAKE_CONTENT}")
-file(WRITE "${EXPORT_DIR}/libclfsm/project.cmake" "${PROJECT_CMAKE_CONTENT}")
+# Copy libclfsm CMake files
+copy_file_safe("${CMAKE_SOURCE_DIR}/libclfsm/clfsmConfig.cmake.in" "${EXPORT_DIR}/libclfsm/clfsmConfig.cmake.in")
 
-# Update CMakeLists.txt to use ../Common instead of ../../Common
-file(READ "${EXPORT_DIR}/libclfsm/CMakeLists.txt" CMAKE_LISTS_CONTENT)
-string(REPLACE "../../Common" "../Common" CMAKE_LISTS_CONTENT "${CMAKE_LISTS_CONTENT}")
-file(WRITE "${EXPORT_DIR}/libclfsm/CMakeLists.txt" "${CMAKE_LISTS_CONTENT}")
+# ==============================================================================
+# CLFSM FILES
+# ==============================================================================
+message(STATUS "  Collecting clfsm files...")
 
-# Create a README for the export
-file(WRITE "${EXPORT_DIR}/README_EXPORT.md" "# Self-Contained gufsm Export
+# clfsm source files
+set(CLFSM_SOURCES
+    clfsm_main.cc
+    clfsm_machine.cc
+    clfsm_cc.cc
+    clfsm_machine_loader.cc
+    clfsm_visitors.cc
+    clfsm_visitorsupport.cc
+    FileParser.cc
+    Schedule.cc
+    TTCLFSMVectorFactory.cc
+)
 
-This directory contains a self-contained snapshot of the gufsm (Griffith University Finite State Machine) library and compiler.
+foreach(FILE ${CLFSM_SOURCES})
+    copy_file_safe("${CMAKE_SOURCE_DIR}/clfsm/${FILE}" "${EXPORT_DIR}/clfsm/${FILE}")
+endforeach()
+
+# clfsm header files (only those clfsm actually needs - per project.cmake + additional sources)
+# Note: clfsm_vector_factory.h and clfsm_wb_vector_factory.h are NOT needed by clfsm itself,
+# only by libclfsm, so they're excluded here and only exist in libclfsm/
+set(CLFSM_HEADERS_LIST
+    clfsm_cc.h
+    clfsm_cc_delegate.h
+    clfsm_machine.h
+    clfsm_machine_loader.h
+    clfsm_visitors.h
+    clfsm_visitorsupport.h
+    FileParser.h
+    Schedule.h
+    TTCLFSMVectorFactory.h
+)
+
+foreach(FILE ${CLFSM_HEADERS_LIST})
+    copy_file_safe("${CMAKE_SOURCE_DIR}/clfsm/${FILE}" "${EXPORT_DIR}/clfsm/${FILE}")
+endforeach()
+
+# Copy clfsm man page if it exists
+copy_file_safe("${CMAKE_SOURCE_DIR}/clfsm/clfsm.1" "${EXPORT_DIR}/clfsm/clfsm.1")
+
+# ==============================================================================
+# CREATE NEW PROJECT.CMAKE FILES FOR EXPORT
+# ==============================================================================
+message(STATUS "  Creating export CMake files...")
+
+# libclfsm/project.cmake for export
+file(WRITE "${EXPORT_DIR}/libclfsm/project.cmake" "# Sources for the libclfsm library.
+
+set(LIBCLFSM_SOURCES
+    \${CMAKE_CURRENT_SOURCE_DIR}/stringConstants.c
+    \${CMAKE_CURRENT_SOURCE_DIR}/CLActionAction.cc
+    \${CMAKE_CURRENT_SOURCE_DIR}/CLTransitionExpression.cc
+    \${CMAKE_CURRENT_SOURCE_DIR}/FSMAction.cc
+    \${CMAKE_CURRENT_SOURCE_DIR}/FSMActivity.cc
+    \${CMAKE_CURRENT_SOURCE_DIR}/FSMExpression.cc
+    \${CMAKE_CURRENT_SOURCE_DIR}/FSMFactory.cc
+    \${CMAKE_CURRENT_SOURCE_DIR}/FSMState.cc
+    \${CMAKE_CURRENT_SOURCE_DIR}/FSMSuspensibleMachine.cc
+    \${CMAKE_CURRENT_SOURCE_DIR}/FSMTransition.cc
+    \${CMAKE_CURRENT_SOURCE_DIR}/FSMAsynchronousSuspensibleMachine.cc
+    \${CMAKE_CURRENT_SOURCE_DIR}/FSMachine.cc
+    \${CMAKE_CURRENT_SOURCE_DIR}/FSMachineVector.cc
+    \${CMAKE_CURRENT_SOURCE_DIR}/clfsm_factory.cc
+    \${CMAKE_CURRENT_SOURCE_DIR}/clfsm_vector_factory.cc
+    \${CMAKE_CURRENT_SOURCE_DIR}/gu_util.cpp
+)
+
+# Headers to install
+set(LIBCLFSM_HEADERS
+    CLAction.h
+    CLActionAction.h
+    CLMachine.h
+    CLMacros.h
+    CLState.h
+    CLTransition.h
+    CLTransitionExpression.h
+    FSMachine.h
+    FSMachineVector.h
+    FSMAction.h
+    FSMActivity.h
+    FSMAsynchronousSuspensibleMachine.h
+    FSMExpression.h
+    FSMFactory.h
+    FSMState.h
+    FSMSuspensibleMachine.h
+    FSMTransition.h
+    clfsm_factory.h
+    clfsm_vector_factory.h
+    stringConstants.h
+)
+")
+
+# clfsm/project.cmake for export
+file(WRITE "${EXPORT_DIR}/clfsm/project.cmake" "# Sources for the clfsm compiler executable.
+
+set(CLFSM_SOURCES
+    clfsm_main.cc
+    clfsm_machine.cc
+    clfsm_cc.cc
+    clfsm_machine_loader.cc
+)
+
+# Headers for the clfsm compiler (only clfsm-specific ones)
+# Note: Shared headers (clfsm_vector_factory.h, etc.) are in libclfsm/
+set(CLFSM_HEADERS
+    clfsm_visitors.h
+    clfsm_visitorsupport.h
+    FileParser.h
+)
+
+# Additional sources needed for standalone build
+set(CLFSM_ADDITIONAL_SOURCES
+    clfsm_visitors.cc
+    clfsm_visitorsupport.cc
+    FileParser.cc
+    Schedule.cc
+    TTCLFSMVectorFactory.cc
+)
+")
+
+# Create updated libclfsm/CMakeLists.txt
+file(WRITE "${EXPORT_DIR}/libclfsm/CMakeLists.txt" "cmake_minimum_required(VERSION 3.21)
+
+project(libclfsm C CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS ON)
+
+set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+
+if(NOT CMAKE_BUILD_TYPE)
+   set(CMAKE_BUILD_TYPE Debug)
+endif()
+
+add_definitions(-DFSM_SUPPORT_SUSPEND)
+
+include(project.cmake)
+
+# Build both static and shared libraries
+add_library(libclfsm_static STATIC \${LIBCLFSM_SOURCES})
+add_library(libclfsm SHARED \${LIBCLFSM_SOURCES})
+
+set_target_properties(libclfsm_static PROPERTIES OUTPUT_NAME clfsm)
+set_target_properties(libclfsm PROPERTIES OUTPUT_NAME clfsm)
+
+add_library(libclfsm_default ALIAS libclfsm)
+
+# Include directories
+foreach(target libclfsm_static libclfsm)
+  target_include_directories(\${target} PUBLIC
+    \$<BUILD_INTERFACE:\${CMAKE_CURRENT_SOURCE_DIR}>
+    \$<INSTALL_INTERFACE:include/gufsm>
+  )
+endforeach()
+
+# Installation rules
+install(TARGETS libclfsm_static libclfsm
+    EXPORT clfsmTargets
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib
+    RUNTIME DESTINATION bin
+    INCLUDES DESTINATION include/gufsm
+)
+
+install(FILES \${LIBCLFSM_HEADERS}
+    DESTINATION include/gufsm
+)
+
+# Export targets
+install(EXPORT clfsmTargets
+    FILE clfsmTargets.cmake
+    NAMESPACE clfsm::
+    DESTINATION lib/cmake/clfsm
+)
+
+# Create package config file
+include(CMakePackageConfigHelpers)
+write_basic_package_version_file(
+    \"\${CMAKE_CURRENT_BINARY_DIR}/clfsmConfigVersion.cmake\"
+    VERSION 1.0.0
+    COMPATIBILITY AnyNewerVersion
+)
+
+configure_package_config_file(
+    \"\${CMAKE_CURRENT_SOURCE_DIR}/clfsmConfig.cmake.in\"
+    \"\${CMAKE_CURRENT_BINARY_DIR}/clfsmConfig.cmake\"
+    INSTALL_DESTINATION lib/cmake/clfsm
+    NO_CHECK_REQUIRED_COMPONENTS_MACRO
+)
+
+install(FILES
+    \"\${CMAKE_CURRENT_BINARY_DIR}/clfsmConfig.cmake\"
+    \"\${CMAKE_CURRENT_BINARY_DIR}/clfsmConfigVersion.cmake\"
+    DESTINATION lib/cmake/clfsm
+)
+")
+
+# Create updated clfsm/CMakeLists.txt
+file(WRITE "${EXPORT_DIR}/clfsm/CMakeLists.txt" "cmake_minimum_required(VERSION 3.21)
+
+project(clfsm CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS ON)
+
+if(NOT CMAKE_BUILD_TYPE)
+   set(CMAKE_BUILD_TYPE Debug)
+endif()
+
+add_definitions(-DFSM_SUPPORT_SUSPEND)
+
+include(project.cmake)
+
+# Try to find libclfsm
+if(NOT TARGET libclfsm)
+    find_package(clfsm QUIET)
+    if(NOT clfsm_FOUND)
+        if(EXISTS \"\${CMAKE_CURRENT_SOURCE_DIR}/../libclfsm/CMakeLists.txt\")
+            message(STATUS \"Building libclfsm from source\")
+            add_subdirectory(../libclfsm \${CMAKE_CURRENT_BINARY_DIR}/libclfsm)
+        else()
+            message(FATAL_ERROR \"libclfsm not found\")
+        endif()
+    endif()
+endif()
+
+# Build the clfsm compiler executable
+add_executable(clfsm
+    \${CLFSM_SOURCES}
+    \${CLFSM_ADDITIONAL_SOURCES}
+)
+
+# Include directories
+target_include_directories(clfsm PRIVATE
+  \${CMAKE_CURRENT_SOURCE_DIR}
+  \${CMAKE_CURRENT_SOURCE_DIR}/../libclfsm
+)
+
+# Link with libclfsm (shared library by default)
+if(TARGET libclfsm)
+    target_link_libraries(clfsm PRIVATE libclfsm)
+elseif(TARGET libclfsm_static)
+    target_link_libraries(clfsm PRIVATE libclfsm_static)
+else()
+    target_link_libraries(clfsm PRIVATE clfsm::clfsm)
+endif()
+
+# Link with dl library
+target_link_libraries(clfsm PRIVATE \${CMAKE_DL_LIBS})
+
+# Set RPATH for installed executable
+set_target_properties(clfsm PROPERTIES
+    INSTALL_RPATH \"\${CMAKE_INSTALL_PREFIX}/lib\"
+    BUILD_WITH_INSTALL_RPATH FALSE
+    INSTALL_RPATH_USE_LINK_PATH TRUE
+)
+
+# Installation rules
+install(TARGETS clfsm RUNTIME DESTINATION bin)
+
+if(EXISTS \"\${CMAKE_CURRENT_SOURCE_DIR}/clfsm.1\")
+    install(FILES clfsm.1 DESTINATION share/man/man1)
+endif()
+")
+
+# Create top-level CMakeLists.txt
+file(WRITE "${EXPORT_DIR}/CMakeLists.txt" "cmake_minimum_required(VERSION 3.21)
+
+project(gufsm CXX C)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS ON)
+
+set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+
+if(NOT CMAKE_BUILD_TYPE)
+   set(CMAKE_BUILD_TYPE Debug)
+endif()
+
+add_definitions(-DFSM_SUPPORT_SUSPEND)
+
+# Check for whiteboard and conditionally enable it
+find_package(gusimplewhiteboard QUIET)
+if(gusimplewhiteboard_FOUND)
+    add_compile_definitions(WITH_WHITEBOARD)
+    message(STATUS \"Building with whiteboard support\")
+else()
+    message(STATUS \"Building without whiteboard support\")
+endif()
+
+# Build subprojects
+add_subdirectory(libclfsm)
+add_subdirectory(clfsm)
+")
+
+# Create README
+file(WRITE "${EXPORT_DIR}/README.md" "# Self-Contained gufsm Export
+
+Minimal self-contained snapshot of the gufsm (Griffith University Finite State Machine) library and compiler.
 
 ## What's Included
 
-- **clfsm/** - FSM compiler source
-- **libclfsm/** - FSM runtime library source
-- **gufsm/** - Core FSM engine source
-- **Common/** - Required utility files (gu_util.cpp, gu_util.h)
-- Build system files (CMakeLists.txt, project.cmake)
+- **libclfsm/** - FSM runtime library (source + headers)
+- **clfsm/** - FSM compiler (source + headers)
 
-All external dependencies have been resolved and copied into this export.
+All dependencies have been resolved and included. No external dependencies required.
 
 ## Building
 
@@ -161,11 +461,14 @@ Export date: ${EXPORT_TIMESTAMP}
 CMake version: ${CMAKE_VERSION}
 ")
 
+# Copy LICENSE if it exists
+copy_file_safe("${CMAKE_SOURCE_DIR}/LICENSE" "${EXPORT_DIR}/LICENSE")
+
 message(STATUS "Export complete!")
 message(STATUS "")
-message(STATUS "Self-contained gufsm exported to: ${EXPORT_DIR}")
+message(STATUS "Minimal self-contained gufsm exported to: ${EXPORT_DIR}")
 message(STATUS "")
-message(STATUS "To build the exported version:")
+message(STATUS "To build:")
 message(STATUS "  cd ${EXPORT_DIR}")
 message(STATUS "  mkdir build && cd build")
 message(STATUS "  cmake -G Ninja ..")
