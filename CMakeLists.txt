@@ -61,6 +61,10 @@ add_custom_target(export
         -DEXPORT_DIR=${CMAKE_BINARY_DIR}/export
         -DEXPORT_TIMESTAMP="${EXPORT_TIMESTAMP}"
         -DEXPORT_TESTS=${BUILD_TESTS}
+        -DEXPORT_COMPILE_MACHINES=${COMPILE_MACHINES}
+        -DEXPORT_WITH_WHITEBOARD=${gusimplewhiteboard_FOUND}
+        -DEXPORT_WITH_REFLECTION=${LIBCLFSM_WITH_REFLECT}
+        -DEXPORT_DEVEL=${EXPORT_DEVEL}
         -P ${CMAKE_SOURCE_DIR}/export.cmake
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
     COMMENT "Creating self-contained gufsm export"

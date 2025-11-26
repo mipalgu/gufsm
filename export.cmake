@@ -475,6 +475,91 @@ CMake version: ${CMAKE_VERSION}
 copy_file_safe("${CMAKE_SOURCE_DIR}/LICENSE" "${EXPORT_DIR}/LICENSE")
 
 # ==============================================================================
+# README.md generation from conditional sections
+# ==============================================================================
+message(STATUS "  Generating README.md with conditional sections...")
+
+# Determine build configuration from passed parameters (with defaults)
+if(NOT DEFINED EXPORT_WITH_WHITEBOARD)
+    set(EXPORT_WITH_WHITEBOARD OFF)
+endif()
+
+if(NOT DEFINED EXPORT_WITH_REFLECTION)
+    set(EXPORT_WITH_REFLECTION OFF)
+endif()
+
+if(NOT DEFINED EXPORT_COMPILE_MACHINES)
+    set(EXPORT_COMPILE_MACHINES ON)
+endif()
+
+if(NOT DEFINED EXPORT_DEVEL)
+    set(EXPORT_DEVEL ON)  # Default to ON (include dev sections unless explicitly disabled)
+endif()
+
+# Build sed command to strip conditional sections
+set(SED_COMMANDS "")
+
+# Remove DEVEL sections if not exporting for developers
+if(NOT EXPORT_DEVEL)
+    set(SED_COMMANDS "${SED_COMMANDS} -e '/<!-- BEGIN:DEVEL -->/,/<!-- END:DEVEL -->/d'")
+else()
+    # Keep DEVEL sections, just remove markers
+    set(SED_COMMANDS "${SED_COMMANDS} -e '/<!-- BEGIN:DEVEL -->/d' -e '/<!-- END:DEVEL -->/d'")
+endif()
+
+# Handle test sections
+if(NOT EXPORT_TESTS)
+    set(SED_COMMANDS "${SED_COMMANDS} -e '/<!-- BEGIN:TESTS -->/,/<!-- END:TESTS -->/d'")
+else()
+    # Keep TESTS sections, remove markers
+    set(SED_COMMANDS "${SED_COMMANDS} -e '/<!-- BEGIN:TESTS -->/d' -e '/<!-- END:TESTS -->/d'")
+endif()
+
+# Handle whiteboard sections
+if(EXPORT_WITH_WHITEBOARD)
+    # Keep WHITEBOARD sections, remove NO_WHITEBOARD sections
+    set(SED_COMMANDS "${SED_COMMANDS} -e '/<!-- BEGIN:NO_WHITEBOARD -->/,/<!-- END:NO_WHITEBOARD -->/d'")
+    set(SED_COMMANDS "${SED_COMMANDS} -e '/<!-- BEGIN:WHITEBOARD -->/d' -e '/<!-- END:WHITEBOARD -->/d'")
+else()
+    # Keep NO_WHITEBOARD sections, remove WHITEBOARD sections
+    set(SED_COMMANDS "${SED_COMMANDS} -e '/<!-- BEGIN:WHITEBOARD -->/,/<!-- END:WHITEBOARD -->/d'")
+    set(SED_COMMANDS "${SED_COMMANDS} -e '/<!-- BEGIN:NO_WHITEBOARD -->/d' -e '/<!-- END:NO_WHITEBOARD -->/d'")
+endif()
+
+# Handle reflection sections
+if(EXPORT_WITH_REFLECTION)
+    # Keep REFLECTION sections, remove NO_REFLECTION sections
+    set(SED_COMMANDS "${SED_COMMANDS} -e '/<!-- BEGIN:NO_REFLECTION -->/,/<!-- END:NO_REFLECTION -->/d'")
+    set(SED_COMMANDS "${SED_COMMANDS} -e '/<!-- BEGIN:REFLECTION -->/d' -e '/<!-- END:REFLECTION -->/d'")
+else()
+    # Keep NO_REFLECTION sections, remove REFLECTION sections
+    set(SED_COMMANDS "${SED_COMMANDS} -e '/<!-- BEGIN:REFLECTION -->/,/<!-- END:REFLECTION -->/d'")
+    set(SED_COMMANDS "${SED_COMMANDS} -e '/<!-- BEGIN:NO_REFLECTION -->/d' -e '/<!-- END:NO_REFLECTION -->/d'")
+endif()
+
+# Handle compilation sections
+if(EXPORT_COMPILE_MACHINES)
+    # Keep COMPILE_MACHINES sections, remove NO_COMPILE_MACHINES sections
+    set(SED_COMMANDS "${SED_COMMANDS} -e '/<!-- BEGIN:NO_COMPILE_MACHINES -->/,/<!-- END:NO_COMPILE_MACHINES -->/d'")
+    set(SED_COMMANDS "${SED_COMMANDS} -e '/<!-- BEGIN:COMPILE_MACHINES -->/d' -e '/<!-- END:COMPILE_MACHINES -->/d'")
+else()
+    # Keep NO_COMPILE_MACHINES sections, remove COMPILE_MACHINES sections
+    set(SED_COMMANDS "${SED_COMMANDS} -e '/<!-- BEGIN:COMPILE_MACHINES -->/,/<!-- END:COMPILE_MACHINES -->/d'")
+    set(SED_COMMANDS "${SED_COMMANDS} -e '/<!-- BEGIN:NO_COMPILE_MACHINES -->/d' -e '/<!-- END:NO_COMPILE_MACHINES -->/d'")
+endif()
+
+# Apply sed to generate README.md
+execute_process(
+    COMMAND sh -c "sed ${SED_COMMANDS} '${CMAKE_SOURCE_DIR}/README.md' > '${EXPORT_DIR}/README.md'"
+    RESULT_VARIABLE SED_RESULT
+)
+
+if(NOT SED_RESULT EQUAL 0)
+    message(WARNING "Failed to generate README.md with sed, copying as-is")
+    copy_file_safe("${CMAKE_SOURCE_DIR}/README.md" "${EXPORT_DIR}/README.md")
+endif()
+
+# ==============================================================================
 # TESTS (optional)
 # ==============================================================================
 if(EXPORT_TESTS)
