@@ -496,6 +496,10 @@ if(NOT DEFINED EXPORT_DEVEL)
     set(EXPORT_DEVEL ON)  # Default to ON (include dev sections unless explicitly disabled)
 endif()
 
+if(NOT DEFINED EXPORT_EXPORTING)
+    set(EXPORT_EXPORTING OFF)  # Default to OFF (export instructions only for developers)
+endif()
+
 # Build sed command to strip conditional sections
 set(SED_COMMANDS "")
 
@@ -508,11 +512,22 @@ else()
 endif()
 
 # Handle test sections
-if(NOT EXPORT_TESTS)
-    set(SED_COMMANDS "${SED_COMMANDS} -e '/<!-- BEGIN:TESTS -->/,/<!-- END:TESTS -->/d'")
-else()
-    # Keep TESTS sections, remove markers
+if(EXPORT_TESTS)
+    # Keep TESTS sections, remove NO_TESTS sections
+    set(SED_COMMANDS "${SED_COMMANDS} -e '/<!-- BEGIN:NO_TESTS -->/,/<!-- END:NO_TESTS -->/d'")
     set(SED_COMMANDS "${SED_COMMANDS} -e '/<!-- BEGIN:TESTS -->/d' -e '/<!-- END:TESTS -->/d'")
+else()
+    # Keep NO_TESTS sections, remove TESTS sections
+    set(SED_COMMANDS "${SED_COMMANDS} -e '/<!-- BEGIN:TESTS -->/,/<!-- END:TESTS -->/d'")
+    set(SED_COMMANDS "${SED_COMMANDS} -e '/<!-- BEGIN:NO_TESTS -->/d' -e '/<!-- END:NO_TESTS -->/d'")
+endif()
+
+# Handle exporting sections
+if(NOT EXPORT_EXPORTING)
+    set(SED_COMMANDS "${SED_COMMANDS} -e '/<!-- BEGIN:EXPORTING -->/,/<!-- END:EXPORTING -->/d'")
+else()
+    # Keep EXPORTING sections, remove markers
+    set(SED_COMMANDS "${SED_COMMANDS} -e '/<!-- BEGIN:EXPORTING -->/d' -e '/<!-- END:EXPORTING -->/d'")
 endif()
 
 # Handle whiteboard sections

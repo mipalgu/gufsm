@@ -1,17 +1,19 @@
 Compiled Finite State Machine Scheduler
 =======================================
 
-`clfsm` is a powerful scheduler for arrangements of compiled Objective-C++ finite state machines. It compiles (using clang) and schedules `.machine` FSM bundles for deterministic low-latency execution.
+`clfsm` is a powerful scheduler for arrangements of compiled C++ (or Objective-C++)
+logic-labelled finite state machines (LLFSMs). It schedules`.machine` FSM bundles
+for deterministic low-latency execution.
 
 **libclfsm** is the runtime library that provides the FSM execution engine, state management, transitions, and scheduling infrastructure.
 
-## What's Included
+## Components
 
-- **libclfsm** - FSM runtime library
+- **libclfsm** - C++ LLFSM runtime library
   - Static library: `libclfsm.a`
   - Shared library: `libclfsm.dylib` (macOS) / `libclfsm.so` (Linux)
   - Headers for embedding FSMs in your applications
-- **clfsm** - FSM compiler and scheduler
+- **clfsm** - FSM scheduler
   - Compiles `.machine` directories into executable code
   - Executes and schedules finite state machines
   - Man page: `clfsm(1)`
@@ -163,7 +165,76 @@ cmake .. -DCMAKE_INSTALL_PREFIX=/path/to/install
 ninja install
 ```
 
-## Build Configuration
+<!-- BEGIN:EXPORTING -->
+## Creating a Self-Contained Export
+
+To create a self-contained snapshot that includes all dependencies (gu_util) and can be built independently of the GUNao infrastructure:
+
+```sh
+cd build
+ninja export
+```
+
+This creates `build/export/` containing:
+- **libclfsm/** - FSM runtime library (source files, headers, including resolved gu_util.cpp/h)
+- **clfsm/** - FSM compiler (source files, headers, man page)
+- **CMakeLists.txt** - Top-level build configuration
+- **README.md** - Build instructions for the export (conditionally generated)
+- **LICENSE** - Licence file
+
+The export is **truly minimal** with:
+- NO symlinks (all resolved to actual files)
+- NO gufsm/, Common/, or other GUNao infrastructure directories
+- NO examples or unnecessary files
+- Only files required to build and run libclfsm and clfsm
+- All dependencies embedded in their target directories
+
+The exported directory can be built completely independently of the GUNao repository.
+
+### Export Options
+
+The export can be customised using CMake options:
+
+**Include unit tests in export:**
+```sh
+cmake .. -DBUILD_TESTS=ON
+ninja export
+```
+
+**Include development sections in README** (Prerequisites, Build Options, ROS, bmake):
+```sh
+cmake .. -DEXPORT_DEVEL=ON
+ninja export
+```
+
+**Create end-user export** (minimal README without development information):
+```sh
+cmake .. -DEXPORT_DEVEL=OFF
+ninja export
+```
+
+**Control machine compilation support:**
+```sh
+# Enable runtime compilation (default)
+cmake .. -DCOMPILE_MACHINES=ON
+ninja export
+
+# Disable runtime compilation (precompiled machines only)
+cmake .. -DCOMPILE_MACHINES=OFF
+ninja export
+```
+
+**Combine options:**
+```sh
+# End-user export with tests, no compilation support, no dev sections
+cmake .. -DBUILD_TESTS=ON -DCOMPILE_MACHINES=OFF -DEXPORT_DEVEL=OFF
+ninja export
+```
+
+The exported README.md is automatically generated with only the relevant sections based on these build options.
+<!-- END:EXPORTING -->
+
+## Build Configuration and Defaults
 
 <!-- BEGIN:WHITEBOARD -->
 ### Whiteboard Support: **ENABLED**
@@ -209,50 +280,72 @@ clfsm can only load precompiled `.so` files. You must compile your machines sepa
 # Usage #
 
 <!-- BEGIN:COMPILE_MACHINES -->
-`clfsm [-c][-d][-fPIC]{-I includedir}{-L linkdir}{-l lib}[-n][-P <machine>][-s][-S <machine>][-v] {machines}`
-<!-- END:COMPILE_MACHINES -->
-<!-- BEGIN:NO_COMPILE_MACHINES -->
-`clfsm [-d][-i idlesleep][-n][-P <machine>][-s][-S <machine>][-t][-v] {machines}`
-<!-- END:NO_COMPILE_MACHINES -->
+```
+clfsm [-c][-d][-fPIC]{-I includedir}{-L linkdir}{-l lib}[-n][-P <machine>][-s][-S <machine>][-v] {machines}
 
-<!-- BEGIN:COMPILE_MACHINES -->
-`-c`
+-c
  – compile only flag, don't execute machine.
 
-`-fPIC`
+-fPIC
  – specify to generate Position Independent Code, required by some machines.
 
-`-I` *includedir*
+-I includedir
  – include directory to add to the search path during compilation.
 
-`-L` *linkdir*
+-L linkdir
  – library directory to add to the search path during linking.
 
-`-l lib`
+-l lib
  – library to link against
 
-<!-- END:COMPILE_MACHINES -->
-`-n`
+-n
  – restart CLFSM after SIGABRT or SIGIOT signals.
 
-`-P`
- - Preload a machine. Load a machine and place it in memory, but do not add it to the schedule. This flag speeds up loading machines that are dynamically loaded and unloaded using the dynamic loading function in CLMacros (`loadAndAddMachine`, `scheduleMachine`, `unscheduleMachineAtIndex`, `unloadMachineAtIndex`). This is also advantageous when using parameterised machines that are dynamically loaded (when using `call_machine_at_path` for example).
+-P
+ - Preload a machine. Load a machine and place it in memory, but do not add it to the schedule. This flag speeds up loading machines that are dynamically loaded and unloaded using the dynamic loading function in CLMacros (loadAndAddMachine, scheduleMachine, unscheduleMachineAtIndex, unloadMachineAtIndex). This is also advantageous when using parameterised machines that are dynamically loaded (when using call_machine_at_path for example).
 
-`-s`
+-s
  – turn on debugging output on suspend, resume, and restart of machines.
 
-`-S`
- - Loads a machine suspended. This flag effectively sets the current state of the machine to the machine's suspend state. All machines scheduled with -S are placed at the end of the schedule in the order that they are in when invoking clfsm. Note, that the entire ringlet of the suspend state executes the first time the machine runs, including the OnEntry action. This flag is necessary when using parameterised machines that are not dynamically loaded and which should exist in the schedule waiting to be called (when using `call_static_machine_at` for example).
+-S
+ - Loads a machine suspended. This flag effectively sets the current state of the machine to the machine's suspend state. All machines scheduled with -S are placed at the end of the schedule in the order that they are in when invoking clfsm. Note, that the entire ringlet of the suspend state executes the first time the machine runs, including the OnEntry action. This flag is necessary when using parameterised machines that are not dynamically loaded and which should exist in the schedule waiting to be called (when using call_static_machine_at for example).
 
-
-`-v`
+-v
  – Verbose: output MachineID, State, and name of machine for every state change
 
-`-d`
- – print additional debug information (requires `-v` switch to be set as well).
+-d
+ – print additional debug information (requires -v switch to be set as well).
 
-*machines*
- – list of finite state machine bundles (with or without the `.machine` extension) to compile and run.
+machines
+ – list of finite state machine bundles (with or without the .machine extension) to compile and run.
+```
+<!-- END:COMPILE_MACHINES -->
+<!-- BEGIN:NO_COMPILE_MACHINES -->
+```
+clfsm [-d][-i idlesleep][-n][-P <machine>][-s][-S <machine>][-t][-v] {machines}
+
+-n
+ – restart CLFSM after SIGABRT or SIGIOT signals.
+
+-P
+ - Preload a machine. Load a machine and place it in memory, but do not add it to the schedule. This flag speeds up loading machines that are dynamically loaded and unloaded using the dynamic loading function in CLMacros (loadAndAddMachine, scheduleMachine, unscheduleMachineAtIndex, unloadMachineAtIndex). This is also advantageous when using parameterised machines that are dynamically loaded (when using call_machine_at_path for example).
+
+-s
+ – turn on debugging output on suspend, resume, and restart of machines.
+
+-S
+ - Loads a machine suspended. This flag effectively sets the current state of the machine to the machine's suspend state. All machines scheduled with -S are placed at the end of the schedule in the order that they are in when invoking clfsm. Note, that the entire ringlet of the suspend state executes the first time the machine runs, including the OnEntry action. This flag is necessary when using parameterised machines that are not dynamically loaded and which should exist in the schedule waiting to be called (when using call_static_machine_at for example).
+
+-v
+ – Verbose: output MachineID, State, and name of machine for every state change
+
+-d
+ – print additional debug information (requires -v switch to be set as well).
+
+machines
+ – list of finite state machine bundles (with or without the .machine extension) to compile and run.
+```
+<!-- END:NO_COMPILE_MACHINES -->
 
 For complete usage information, see the man page:
 
@@ -625,6 +718,27 @@ Supported platforms:
 
 ## Directory Structure
 
+<!-- BEGIN:TESTS -->
+```
+.
+├── CMakeLists.txt          # Top-level build configuration
+├── project.cmake           # Build options
+├── README.md               # This file
+├── LICENSE                 # Licence information
+├── libclfsm/              # Runtime library
+│   ├── CMakeLists.txt
+│   ├── project.cmake
+│   ├── clfsmConfig.cmake.in
+│   ├── *.cc / *.h
+│   └── libclfsmTests/     # Unit tests
+└── clfsm/                # Compiler and scheduler
+    ├── CMakeLists.txt
+    ├── project.cmake
+    ├── clfsm.1            # Man page
+    └── *.cc / *.h
+```
+<!-- END:TESTS -->
+<!-- BEGIN:NO_TESTS -->
 ```
 .
 ├── CMakeLists.txt          # Top-level build configuration
@@ -636,15 +750,13 @@ Supported platforms:
 │   ├── project.cmake
 │   ├── clfsmConfig.cmake.in
 │   └── *.cc / *.h
-<!-- BEGIN:TESTS -->
-│   └── libclfsmTests/     # Unit tests
-<!-- END:TESTS -->
 └── clfsm/                # Compiler and scheduler
     ├── CMakeLists.txt
     ├── project.cmake
     ├── clfsm.1            # Man page
     └── *.cc / *.h
 ```
+<!-- END:NO_TESTS -->
 
 # Bugs #
 
