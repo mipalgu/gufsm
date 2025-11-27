@@ -3,8 +3,8 @@
 //
 // Automatically created through MiCASE -- do not change manually!
 //
-#ifndef __clfsm__PingPongCLFSM__
-#define __clfsm__PingPongCLFSM__
+#ifndef clfsm_machine_PingPongCLFSM_
+#define clfsm_machine_PingPongCLFSM_
 
 #include "CLMachine.h"
 
@@ -23,6 +23,7 @@ namespace FSM
             virtual CLState * const * states() const { return _states; }
             virtual int numberOfStates() const { return 2; }
 #           include "PingPongCLFSM_Variables.h"
+#           include "PingPongCLFSM_Methods.h"
         };
     }
 }
@@ -32,4 +33,4 @@ extern "C"
     FSM::CLM::PingPongCLFSM *CLM_Create_PingPongCLFSM(int mid, const char *name);
 }
 
-#endif // defined(__gufsm__PingPongCLFSM__)
+#endif // defined(clfsm_machine_PingPongCLFSM_)

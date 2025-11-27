@@ -6,6 +6,9 @@
 #ifndef clfsm_PingPongCLFSM_State_Pong_h
 #define clfsm_PingPongCLFSM_State_Pong_h
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat"
+
 #include "CLState.h"
 #include "CLAction.h"
 #include "CLTransition.h"
@@ -35,6 +38,16 @@ namespace FSM
                     virtual void perform(CLMachine *, CLState *) const;
                 };
 
+                class OnSuspend: public CLAction
+                {
+                    virtual void perform(CLMachine *, CLState *) const;
+                };
+
+                class OnResume: public CLAction
+                {
+                    virtual void perform(CLMachine *, CLState *) const;
+                };
+
                 class Transition_0: public CLTransition
                 {
                 public:
@@ -53,6 +66,7 @@ namespace FSM
                     virtual int numberOfTransitions() const { return 1; }
 
 #                   include "State_Pong_Variables.h"
+#                   include "State_Pong_Methods.h"
             };
         }
       }
