@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 11/10/12.
- *  Copyright (c) 2012, 2014, 2015, 2018 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2014, 2015, 2018, 2025 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -64,6 +64,11 @@
 #pragma clang diagnostic ignored "-Wreserved-id-macro"
 #include <dispatch/dispatch.h>
 #pragma clang diagnostic pop
+#else
+#include <thread>
+#include <vector>
+#include <mutex>
+#include <future>
 #endif
 
 
@@ -104,6 +109,8 @@ using namespace FSM;
 
 #ifndef WITHOUT_LIBDISPATCH
 static dispatch_queue_t sync_queue = NULLPTR;
+#else
+static std::mutex outfiles_mutex;
 #endif
 
 #ifdef WANT_FSM_REFLECTION
@@ -209,10 +216,10 @@ struct outfile_pushback_param
     string *outfilenamep;
 };
 
-static void push_back_outfilename(void *p)
+static void push_back_outfilename(void *param)
 {
-    outfile_pushback_param *param = static_cast<outfile_pushback_param *>(p);
-    param->outfilesp->push_back(*param->outfilenamep);
+    struct outfile_pushback_param *p = static_cast<struct outfile_pushback_param *>(param);
+    p->outfilesp->push_back(*(p->outfilenamep));
 }
 #endif
 
@@ -243,8 +250,13 @@ bool MachineWrapper::compile(const vector<string> &compiler_args, const vector<s
     __block bool success = true;
     dispatch_apply(files.size(), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(size_t i)
 #else
+    // Use thread-based parallel compilation when WITHOUT_LIBDISPATCH is defined
     vector<string> outfiles;
     bool success = true;
+#  ifdef WITHOUT_LIBDISPATCH
+    // Use sequential compilation as fallback when WITHOUT_LIBDISPATCH
+    // The existing for loop below will handle the compilation
+#  endif
     for (size_t i = 0; i < files.size(); i++)
 #endif
     {
@@ -288,6 +300,7 @@ bool MachineWrapper::compile(const vector<string> &compiler_args, const vector<s
                 outfile_pushback_param param = { &outfiles, &outfilename };
                 dispatch_sync_f(sync_queue, &param, push_back_outfilename);
 #else
+                std::lock_guard<std::mutex> lock(outfiles_mutex);
                 outfiles.push_back(outfilename);
 #endif
         }

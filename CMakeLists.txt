@@ -14,11 +14,52 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 
 # Set the default build type to Debug.
 if(NOT CMAKE_BUILD_TYPE)
-   set(CMAKE_BUILD_TYPE Debug)
+    set(CMAKE_BUILD_TYPE Debug)
 endif()
 
 # Define FSM_SUPPORT_SUSPEND for suspensible machines
 add_definitions(-DFSM_SUPPORT_SUSPEND)
+
+# libdispatch support option
+option(WITH_LIBDISPATCH "Enable libdispatch support for time-triggered operations and parallel processing" ON)
+
+# Check for libdispatch if enabled
+if(WITH_LIBDISPATCH)
+    # Try to find libdispatch
+    find_path(LIBDISPATCH_INCLUDE_DIR dispatch/dispatch.h)
+    if(APPLE)
+        # On macOS, libdispatch is part of the system
+        set(LIBDISPATCH_LIBRARIES "")
+        set(LIBDISPATCH_FOUND TRUE)
+    else()
+        # On other platforms, try to find the library
+        find_library(LIBDISPATCH_LIBRARIES dispatch)
+        if(LIBDISPATCH_LIBRARIES AND LIBDISPATCH_INCLUDE_DIR)
+            set(LIBDISPATCH_FOUND TRUE)
+        else()
+            set(LIBDISPATCH_FOUND FALSE)
+        endif()
+    endif()
+
+    if(LIBDISPATCH_FOUND)
+        message(STATUS "Building with libdispatch support")
+        # Check for blocks support
+        include(CheckCCompilerFlag)
+        check_c_compiler_flag("-fblocks" COMPILER_SUPPORTS_BLOCKS)
+        if(COMPILER_SUPPORTS_BLOCKS)
+            add_compile_options(-fblocks)
+            add_compile_definitions(__BLOCKS__)
+            message(STATUS "Enabling blocks support for libdispatch")
+        endif()
+    else()
+        set(WITH_LIBDISPATCH OFF)
+        add_compile_definitions(WITHOUT_LIBDISPATCH)
+        message(STATUS "libdispatch not found, building without libdispatch support")
+    endif()
+else()
+    add_compile_definitions(WITHOUT_LIBDISPATCH)
+    message(STATUS "Building without libdispatch support (disabled by option)")
+endif()
 
 # Check for whiteboard and conditionally enable it
 find_package(gusimplewhiteboard QUIET)

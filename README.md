@@ -98,6 +98,33 @@ cmake .. -DLIBCLFSM_WITH_REFLECT=ON
 ```
 
 This requires the CLReflect source files to be present in the repository and enables runtime introspection of state machines, including querying machine structure, states, transitions, and variables.
+
+<!-- BEGIN:LIBDISPATCH -->
+### libdispatch Support
+
+**Availability**: macOS (system), Linux (requires installation), Windows (not supported)
+
+libdispatch support enables advanced time-triggered operations and parallel processing capabilities. By default, the system attempts to enable libdispatch support automatically.
+
+**When ENABLED (default on macOS)**:
+- Time-triggered FSM operations use high-precision dispatch timers
+- Machine compilation uses parallel processing for faster builds  
+- Asynchronous FSM execution with dispatch queues
+- Enhanced test functionality with dispatch-based timing
+
+**When DISABLED**:
+- Time-triggered operations fall back to standard library timers
+- Sequential machine compilation (slower but more compatible)
+- Synchronous FSM execution
+- Basic test timing functionality
+
+To disable libdispatch support:
+```sh
+cmake .. -DWITH_LIBDISPATCH=OFF
+```
+
+**Note**: On platforms without libdispatch (e.g. Linux without Swift or libdispatch installed), the system automatically disables libdispatch support and uses fallback implementations. The FSM functionality remains fully compatible in both modes.
+<!-- END:LIBDISPATCH -->
 <!-- END:REFLECTION -->
 
 <!-- BEGIN:TESTS -->
@@ -696,6 +723,30 @@ otool -L MyMachine.machine/Darwin-x86_64/MyMachine.so
 ldd MyMachine.machine/Linux-x86_64/MyMachine.so
 ```
 <!-- END:NO_COMPILE_MACHINES -->
+
+### libdispatch Issues
+
+**Build fails with libdispatch errors on Linux:**
+
+Most Linux distributions don't include libdispatch by default. To build without libdispatch:
+```sh
+cmake .. -DWITH_LIBDISPATCH=OFF
+```
+
+**Time-triggered operations not working as expected:**
+
+If timeout() functions in FSMs aren't behaving correctly:
+1. Check if libdispatch is available: `ls /usr/include/dispatch/` (Linux) or built-in on macOS
+2. Verify build configuration shows "Building with libdispatch support"
+3. For debugging, rebuild with libdispatch disabled to use fallback timing
+
+**Parallel compilation too slow or hanging:**
+
+If machine compilation is slower than expected:
+```sh
+# Force sequential compilation
+cmake .. -DWITH_LIBDISPATCH=OFF
+```
 
 ### Header Files Not Found
 

@@ -67,6 +67,12 @@
 #pragma clang diagnostic ignored "-Wreserved-id-macro"
 #include <dispatch/dispatch.h>
 #pragma clang diagnostic pop
+#else
+#include <thread>
+#include <atomic>
+#include <queue>
+#include <mutex>
+#include <condition_variable>
 #endif
 
 #undef __block

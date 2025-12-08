@@ -14,7 +14,7 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 
 # Set the default build type to Debug.
 if(NOT CMAKE_BUILD_TYPE)
-   set(CMAKE_BUILD_TYPE Debug)
+    set(CMAKE_BUILD_TYPE Debug)
 endif()
 
 # Define FSM_SUPPORT_SUSPEND for suspensible machines
@@ -36,7 +36,7 @@ add_library(libclfsm_default ALIAS libclfsm)
 
 # Include directories (apply to both static and shared)
 foreach(target libclfsm_static libclfsm)
-  target_include_directories(${target} PUBLIC
+    target_include_directories(${target} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/..>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../gufsm>
@@ -45,6 +45,16 @@ foreach(target libclfsm_static libclfsm)
     $<INSTALL_INTERFACE:include/gufsm>
     $<INSTALL_INTERFACE:include>
   )
+
+    # Add libdispatch include directories if available
+    if(WITH_LIBDISPATCH AND LIBDISPATCH_INCLUDE_DIR)
+        target_include_directories(${target} PUBLIC ${LIBDISPATCH_INCLUDE_DIR})
+    endif()
+
+    # Link with libdispatch if available
+    if(WITH_LIBDISPATCH AND LIBDISPATCH_LIBRARIES)
+        target_link_libraries(${target} PUBLIC ${LIBDISPATCH_LIBRARIES})
+    endif()
 endforeach()
 
 # Optionally build with reflection API

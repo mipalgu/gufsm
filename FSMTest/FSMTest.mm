@@ -2,7 +2,7 @@
         <#code#>
 }/*
  *  FSMTest.mm
- *  
+ *
  *  Created by René Hexel on 23/09/11.
  *  Copyright (c) 2011, 2014 Rene Hexel.
  *  All rights reserved.
@@ -57,10 +57,15 @@
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
+#ifndef WITHOUT_LIBDISPATCH
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wreserved-id-macro"
 #include <dispatch/dispatch.h>
 #pragma clang diagnostic pop
+#else
+#include <thread>
+#include <chrono>
+#endif
 
 #include "FSMWB.h"
 #include "Whiteboard.h"
@@ -117,11 +122,11 @@ public:
         WBCallbackTest(Whiteboard *w, FSMTest *t): wb(w), self(t)
         {
                 Whiteboard::WBResult result = Whiteboard::METHOD_OK;
-                
+
                 wb->subscribeToMessage(kUpdateProof, WB_BIND(WBCallbackTest::wb_callback), result);
 
                 STAssertEquals(result, Whiteboard::METHOD_OK, @"Callback subscription unexpectedly failed");
-                
+
         }
 
         virtual ~WBCallbackTest()
@@ -184,7 +189,7 @@ public:
                 state[i]->setStateID(i+1);
                 fsm->addState(state[i]);
                 STAssertEquals((int) fsm->states().size(), i+1, @"Expected %d states", i);
-                
+
         }
 
         onEntry = new PrintStringAction("OnEntry");
@@ -290,7 +295,7 @@ public:
         STAssertFalse(timeoutPredicate->evaluate(fsm), @"suspend state should not have timed out yet");
         usleep(UTIMEOUT);
         STAssertTrue(timeoutPredicate->evaluate(fsm), @"suspend state should have timed out by now");
-        
+
         /*
          * resume
          */
@@ -315,7 +320,7 @@ public:
         STAssertEquals(fsm->currentState(), state[4], @"Unexpected current state");
         STAssertEquals(fsm->previousState(), state[3], @"Unexpected previous state");
         STAssertFalse(wbPredicate->evaluate(), @"WB Predicate should still be false now");
-        
+
         cont = fsm->executeOnce();
         STAssertFalse(cont, @"State machine should be done by now");
         /*
@@ -429,6 +434,7 @@ public:
  */
 - (void) testInterruptedSleep
 {
+#ifndef WITHOUT_LIBDISPATCH
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 50 * NSEC_PER_USEC);
         dispatch_after(popTime, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0),
         ^{
@@ -436,6 +442,14 @@ public:
                 usleep(1);
                 kill(getpid(), SIGUSR1);
         });
+#else
+        std::thread([this]() {
+                std::this_thread::sleep_for(std::chrono::microseconds(50));
+                kill(getpid(), SIGUSR1);
+                usleep(1);
+                kill(getpid(), SIGUSR1);
+        }).detach();
+#endif
         time_t t1 = time(NULL);
         sleepAction->perform(fsm, STAGE_INTERNAL, 0);
         time_t t2 = time(NULL);
@@ -464,11 +478,18 @@ public:
 
 - (void) setWBAfterOneSecondTo: (bool) trueOrFalse
 {
+#ifndef WITHOUT_LIBDISPATCH
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC);
         dispatch_after(popTime, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0),
                        ^{
                                static_cast<WBPredicate *>((WBExpression *)wbTransition->expression())->setValue(trueOrFalse);
                        });
+#else
+        std::thread([this, trueOrFalse]() {
+                std::this_thread::sleep_for(std::chrono::seconds(1));
+                static_cast<WBPredicate *>((WBExpression *)wbTransition->expression())->setValue(trueOrFalse);
+        }).detach();
+#endif
 }
 
 

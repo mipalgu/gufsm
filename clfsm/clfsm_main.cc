@@ -118,10 +118,12 @@
 #endif
 
 //Time-Triggered Includes
+#ifndef WITHOUT_LIBDISPATCH
 #include "FileParser.h"
 #include "TTCLFSMVectorFactory.h"
 #include <unistd.h>
 #include "Schedule.h"
+#endif
 
 static const char *command;
 static int command_argc;
@@ -248,7 +250,11 @@ static void __attribute((noreturn)) backtrace_signal_handler(int signum)
 static void usage(const char *cmd)
 {
 #ifdef COMPILE_MACHINES
+#ifndef WITHOUT_LIBDISPATCH
     cerr << "Usage: " << cmd << "[-c][-d][-fPIC]{-I includedir}[-i idlesleep]{-L linkdir}{-l lib}[-n][-P <machine>][-s][-S <machine>][-t][-v][-T]" << endl;
+#else
+    cerr << "Usage: " << cmd << "[-c][-d][-fPIC]{-I includedir}[-i idlesleep]{-L linkdir}{-l lib}[-n][-P <machine>][-s][-S <machine>][-t][-v]" << endl;
+#endif
     cerr << "[-c] = Compile only flag, don't execute machine." << endl;
     cerr << "[-f] = compiler specific flags (eg. 'PIC' To generate Position Independent Code)." << endl;
     cerr << "{-I idlesleep} = Number of microseconds to sleep when idle (default: 10000)" << endl;
@@ -256,7 +262,11 @@ static void usage(const char *cmd)
     cerr << "{-L linkdir} = Directory to include during linking. Use repeatedly for multiple directories." << endl;
     cerr << "{-l lib} = Library to include during linking. Use repeatedly for multiple libraries." << endl;
 #else
+#ifndef WITHOUT_LIBDISPATCH
     cerr << "Usage: " << cmd << "[-d][-i idlesleep][-n][-P <machine>][-s][-S <machine>][-t][-v][-T]" << endl;
+#else
+    cerr << "Usage: " << cmd << "[-d][-i idlesleep][-n][-P <machine>][-s][-S <machine>][-t][-v]" << endl;
+#endif
     cerr << "{-I idlesleep} = Number of microseconds to sleep when idle (default: 10000)" << endl;
 #endif
     cerr << "[-n] = Restart CLFSM after SIGABRT or SIGIOT signals." << endl;
@@ -266,7 +276,9 @@ static void usage(const char *cmd)
     cerr << "[-t] = Time execution of machine states." << endl;
     cerr << "[-v] = Verbose; output MachineID, State, and name of machine. (multiple times to increase verbosity)" << endl;
     cerr << "[-d] = Output debug information (requires Verbose switch)." << endl;
+#ifndef WITHOUT_LIBDISPATCH
     cerr << "[-T] = Time-Triggered execution of machine states" << endl;
+#endif
 }
 
 static bool debug_internal_states = false;
@@ -361,9 +373,17 @@ int main(int argc, char * const argv[])
     std::vector<std::string> preloads;
     std::vector<std::string> suspends;
 #ifdef COMPILE_MACHINES
+#ifndef WITHOUT_LIBDISPATCH
     while ((ch = getopt(argc, argv, "dgf:I:i:L:l:nstuvTP:S:")) != -1)
 #else
+    while ((ch = getopt(argc, argv, "dgf:I:i:L:l:nstuvP:S:")) != -1)
+#endif
+#else
+#ifndef WITHOUT_LIBDISPATCH
     while ((ch = getopt(argc, argv, "di:nstuvTP:S:")) != -1)
+#else
+    while ((ch = getopt(argc, argv, "di:nstuvP:S:")) != -1)
+#endif
 #endif
     {
         switch (ch)
@@ -430,9 +450,11 @@ int main(int argc, char * const argv[])
             case 't': // Timer Flag
                 time_state_execution = true;
                 break;
+#ifndef WITHOUT_LIBDISPATCH
             case 'T': // Time-Triggered Execution
                 isTT = true;
                 break;
+#endif
             case 'v':
                 verbose++;
                 break;
@@ -451,6 +473,7 @@ int main(int argc, char * const argv[])
     Schedule *schedule = nullptr;
 
     if (isTT) {
+#ifndef WITHOUT_LIBDISPATCH
         string tablePath(*argv);
         FileParser* parser = new FileParser(tablePath);
         schedule = parser->createSchedule();
@@ -458,7 +481,8 @@ int main(int argc, char * const argv[])
         preloads = schedule->preloads();
         suspends = schedule->suspends();
         delete(parser);
-    } else{
+#endif
+    } else {
         while (argc--)
         {
             struct stat s;
@@ -491,9 +515,17 @@ int main(int argc, char * const argv[])
     refl_initAPI(NULLPTR); //Init reflection system
 #endif
 #ifdef COMPILE_MACHINES
+#ifndef WITHOUT_LIBDISPATCH
     CLFSMVectorFactoryType *factory = createMachines(isTT ? std::vector<string>() : machines, compiler_args, linker_args);
 #else
+    CLFSMVectorFactoryType *factory = createMachines(machines, compiler_args, linker_args);
+#endif
+#else
+#ifndef WITHOUT_LIBDISPATCH
     CLFSMVectorFactoryType *factory = createMachines(isTT ? std::vector<string>() : machines, std::vector<string>(), std::vector<string>());
+#else
+    CLFSMVectorFactoryType *factory = createMachines(machines, std::vector<string>(), std::vector<string>());
+#endif
 #endif
     struct clfsm_context context = { CLFSMMachineLoader::getMachineLoaderSingleton() };
 #ifdef WITH_WHITEBOARD
@@ -501,6 +533,7 @@ int main(int argc, char * const argv[])
 #endif
     debug_internal_states = debug;
     if (isTT) {
+#ifndef WITHOUT_LIBDISPATCH
         for (unsigned long i = 0; i < schedule->paths().size(); i++) {
             bool isPreloaded = false;
             for (unsigned long k : schedule->preloadsIndexes()) {
@@ -522,8 +555,8 @@ int main(int argc, char * const argv[])
                 if (j > i) {
                     break;
                 }
-                isSuspended = i == j;
-                if (isSuspended) {
+                if (i == j) {
+                    isSuspended = true;
                     break;
                 }
             }
@@ -531,6 +564,7 @@ int main(int argc, char * const argv[])
             if (clfsmIndex < 0) return EXIT_FAILURE;
             schedule->scheduleMachine(clfsmIndex);
         }
+#endif
     } else {
         for (std::string path : preloads)
         {
@@ -541,12 +575,16 @@ int main(int argc, char * const argv[])
             if (FSM::loadAndAddMachineAtPath(path, true) < 0) return EXIT_FAILURE;
         }
     }
+#ifndef WITHOUT_LIBDISPATCH
     if (!isTT) {
         factory->fsms()->execute(visitor, &context, accept_action);
     } else {
         TTCLFSMVectorFactory* ttFactory = static_cast<TTCLFSMVectorFactory*>(factory);
         ttFactory->executeTT(visitor, schedule, &context, accept_action);
     }
+#else
+    factory->fsms()->execute(visitor, &context, accept_action);
+#endif
 #ifdef WANT_FSM_REFLECTION
     refl_destroyAPI(NULLPTR); // Destroy reflection system
 #endif

@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 19/09/12.
- *  Copyright (c) 2012, 2013-2015, 2018 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2013-2015, 2018, 2025 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -60,6 +60,8 @@
 #pragma clang diagnostic ignored "-Wreserved-id-macro"
 #include <dispatch/dispatch.h>
 #pragma clang diagnostic pop
+#else
+#include <mutex>
 #endif
 
 
@@ -104,6 +106,7 @@ using namespace FSM;
 void Cc::setup()
 {
 #ifdef USE_LIBCLANG_INTERNAL
+#ifndef WITHOUT_LIBDISPATCH
         static dispatch_once_t once;
 
         dispatch_once(&once,
@@ -113,6 +116,15 @@ void Cc::setup()
                 InitializeAllAsmPrinters();
                 InitializeAllAsmParsers();
         });
+#else
+        static std::once_flag once;
+        std::call_once(once, []() {
+                InitializeAllTargets();
+                InitializeAllTargetMCs();
+                InitializeAllAsmPrinters();
+                InitializeAllAsmParsers();
+        });
+#endif
 #endif
 }
 
@@ -120,12 +132,19 @@ void Cc::setup()
 void Cc::teardown()
 {
 #ifdef USE_LIBCLANG_INTERNAL
+#  ifndef WITHOUT_LIBDISPATCH
         static dispatch_once_t once;
-        
+
         dispatch_once(&once,
         ^{
                 llvm_shutdown();
         });
+#  else
+        static std::once_flag once;
+        std::call_once(once, []() {
+                llvm_shutdown();
+        });
+#  endif // WITHOUT_LIBDISPATCH
 #endif
 }
 

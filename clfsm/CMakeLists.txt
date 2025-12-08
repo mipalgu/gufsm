@@ -10,7 +10,7 @@ set(CMAKE_CXX_EXTENSIONS ON)
 
 # Set the default build type to Debug.
 if(NOT CMAKE_BUILD_TYPE)
-   set(CMAKE_BUILD_TYPE Debug)
+    set(CMAKE_BUILD_TYPE Debug)
 endif()
 
 # Define FSM_SUPPORT_SUSPEND for suspensible machines
@@ -52,6 +52,11 @@ target_include_directories(clfsm PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}/../gu_util
 )
 
+# Add libdispatch include directories if available
+if(LIBDISPATCH_FOUND AND LIBDISPATCH_INCLUDE_DIR)
+    target_include_directories(clfsm PRIVATE ${LIBDISPATCH_INCLUDE_DIR})
+endif()
+
 # Link with libclfsm (shared library by default)
 if(TARGET libclfsm)
     target_link_libraries(clfsm PRIVATE libclfsm)
@@ -63,6 +68,11 @@ endif()
 
 # Link with dl library (for dynamic loading)
 target_link_libraries(clfsm PRIVATE ${CMAKE_DL_LIBS})
+
+# Link with libdispatch if available
+if(WITH_LIBDISPATCH AND LIBDISPATCH_LIBRARIES)
+    target_link_libraries(clfsm PRIVATE ${LIBDISPATCH_LIBRARIES})
+endif()
 
 # Set RPATH for installed executable to find libclfsm
 set_target_properties(clfsm PROPERTIES
