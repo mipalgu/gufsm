@@ -3,7 +3,7 @@
  *  clfsm
  *
  *  Created by Rene Hexel on 12/10/12.
- *  Copyright (c) 2012, 2013, 2014, 2015, 2018 Rene Hexel. All rights reserved.
+ *  Copyright (c) 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2025 Rene Hexel. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -251,9 +251,9 @@ static void usage(const char *cmd)
 {
 #ifdef COMPILE_MACHINES
 #ifndef WITHOUT_LIBDISPATCH
-    cerr << "Usage: " << cmd << "[-c][-d][-fPIC]{-I includedir}[-i idlesleep]{-L linkdir}{-l lib}[-n][-P <machine>][-s][-S <machine>][-t][-v][-T]" << endl;
+    cerr << "Usage: " << cmd << "[-c][-d][-fPIC]{-I includedir}[-i idlesleep]{-L linkdir}{-l lib}[-n][-P <machine>][-q][-s][-S <machine>][-t][-v][-T]" << endl;
 #else
-    cerr << "Usage: " << cmd << "[-c][-d][-fPIC]{-I includedir}[-i idlesleep]{-L linkdir}{-l lib}[-n][-P <machine>][-s][-S <machine>][-t][-v]" << endl;
+    cerr << "Usage: " << cmd << "[-c][-d][-fPIC]{-I includedir}[-i idlesleep]{-L linkdir}{-l lib}[-n][-P <machine>][-q][-s][-S <machine>][-t][-v]" << endl;
 #endif
     cerr << "[-c] = Compile only flag, don't execute machine." << endl;
     cerr << "[-f] = compiler specific flags (eg. 'PIC' To generate Position Independent Code)." << endl;
@@ -263,14 +263,15 @@ static void usage(const char *cmd)
     cerr << "{-l lib} = Library to include during linking. Use repeatedly for multiple libraries." << endl;
 #else
 #ifndef WITHOUT_LIBDISPATCH
-    cerr << "Usage: " << cmd << "[-d][-i idlesleep][-n][-P <machine>][-s][-S <machine>][-t][-v][-T]" << endl;
+    cerr << "Usage: " << cmd << "[-d][-i idlesleep][-n][-P <machine>][-q][-s][-S <machine>][-t][-v][-T]" << endl;
 #else
-    cerr << "Usage: " << cmd << "[-d][-i idlesleep][-n][-P <machine>][-s][-S <machine>][-t][-v]" << endl;
+    cerr << "Usage: " << cmd << "[-d][-i idlesleep][-n][-P <machine>][-q][-s][-S <machine>][-t][-v]" << endl;
 #endif
     cerr << "{-I idlesleep} = Number of microseconds to sleep when idle (default: 10000)" << endl;
 #endif
     cerr << "[-n] = Restart CLFSM after SIGABRT or SIGIOT signals." << endl;
     cerr << "[-P <machine>] = Preload a machine." << endl;
+    cerr << "[-q] = Quiet mode; suppress startup header." << endl;
     cerr << "[-s] = Outputs information about machine suspensions and resumes." << endl;
     cerr << "[-S <machine>] = Load a machine suspended." << endl;
     cerr << "[-t] = Time execution of machine states." << endl;
@@ -369,20 +370,20 @@ int main(int argc, char * const argv[])
 #endif
 
     int ch;
-    int debug = 0, verbose = 0, noUnloadIfAccepting = 0;
+    int debug = 0, verbose = 0, noUnloadIfAccepting = 0, quiet = 0;
     std::vector<std::string> preloads;
     std::vector<std::string> suspends;
 #ifdef COMPILE_MACHINES
 #ifndef WITHOUT_LIBDISPATCH
-    while ((ch = getopt(argc, argv, "dgf:I:i:L:l:nstuvTP:S:")) != -1)
+    while ((ch = getopt(argc, argv, "dgf:I:i:L:l:nqstuvTP:S:")) != -1)
 #else
-    while ((ch = getopt(argc, argv, "dgf:I:i:L:l:nstuvP:S:")) != -1)
+    while ((ch = getopt(argc, argv, "dgf:I:i:L:l:nqstuvP:S:")) != -1)
 #endif
 #else
 #ifndef WITHOUT_LIBDISPATCH
-    while ((ch = getopt(argc, argv, "di:nstuvTP:S:")) != -1)
+    while ((ch = getopt(argc, argv, "di:nqstuvTP:S:")) != -1)
 #else
-    while ((ch = getopt(argc, argv, "di:nstuvP:S:")) != -1)
+    while ((ch = getopt(argc, argv, "di:nqstuvP:S:")) != -1)
 #endif
 #endif
     {
@@ -421,6 +422,9 @@ int main(int argc, char * const argv[])
                 nonstop = true;
                 DBG(cerr << "nonstop mode: sleeping 1 second before (re)starting" << endl);
                 protected_usleep(1000000ULL);
+                break;
+            case 'q':
+                quiet++;
                 break;
             case 'P':
             {
@@ -471,6 +475,13 @@ int main(int argc, char * const argv[])
     argc -= optind;
     argv += optind;
     Schedule *schedule = nullptr;
+
+    // Print header unless quiet option is specified
+    if (!quiet) {
+        fprintf(stderr, "Created by Rene Hexel.\n");
+        fprintf(stderr, "Copyright (c) 2011-2020, 2025 Rene Hexel.\n");
+        fprintf(stderr, "All rights reserved.\n");
+    }
 
     if (isTT) {
 #ifndef WITHOUT_LIBDISPATCH

@@ -260,6 +260,14 @@ endif()
 
 add_definitions(-DFSM_SUPPORT_SUSPEND)
 
+# Inherit compile definitions from parent scope if building as subdirectory
+get_directory_property(PARENT_COMPILE_DEFINITIONS PARENT_DIRECTORY COMPILE_DEFINITIONS)
+foreach(DEF \${PARENT_COMPILE_DEFINITIONS})
+    if(DEF MATCHES \"^(WITHOUT_LIBDISPATCH|COMPILE_MACHINES|__BLOCKS__)$\")
+        add_compile_definitions(\${DEF})
+    endif()
+endforeach()
+
 include(project.cmake)
 
 # Build both static and shared libraries
@@ -341,6 +349,14 @@ endif()
 
 add_definitions(-DFSM_SUPPORT_SUSPEND)
 
+# Inherit compile definitions from parent scope if building as subdirectory
+get_directory_property(PARENT_COMPILE_DEFINITIONS PARENT_DIRECTORY COMPILE_DEFINITIONS)
+foreach(DEF \${PARENT_COMPILE_DEFINITIONS})
+    if(DEF MATCHES \"^(WITHOUT_LIBDISPATCH|COMPILE_MACHINES|__BLOCKS__)$\")
+        add_compile_definitions(\${DEF})
+    endif()
+endforeach()
+
 include(project.cmake)
 
 # Try to find libclfsm
@@ -413,6 +429,56 @@ endif()
 
 add_definitions(-DFSM_SUPPORT_SUSPEND)
 
+# libdispatch support option
+option(WITH_LIBDISPATCH \"Enable libdispatch support for time-triggered operations and parallel processing\" ON)
+
+# Check for libdispatch if enabled
+if(WITH_LIBDISPATCH)
+    # Try to find libdispatch
+    find_path(LIBDISPATCH_INCLUDE_DIR dispatch/dispatch.h)
+    if(APPLE)
+        # On macOS, libdispatch is part of the system
+        set(LIBDISPATCH_LIBRARIES \"\")
+        set(LIBDISPATCH_FOUND TRUE)
+    else()
+        # On other platforms, try to find the library
+        find_library(LIBDISPATCH_LIBRARIES dispatch)
+        if(LIBDISPATCH_LIBRARIES AND LIBDISPATCH_INCLUDE_DIR)
+            set(LIBDISPATCH_FOUND TRUE)
+        else()
+            set(LIBDISPATCH_FOUND FALSE)
+        endif()
+    endif()
+
+    if(LIBDISPATCH_FOUND)
+        message(STATUS \"Building with libdispatch support\")
+        # Check for blocks support
+        include(CheckCCompilerFlag)
+        check_c_compiler_flag(\"-fblocks\" COMPILER_SUPPORTS_BLOCKS)
+        if(COMPILER_SUPPORTS_BLOCKS)
+            add_compile_options(-fblocks)
+            add_compile_definitions(__BLOCKS__)
+            message(STATUS \"Enabling blocks support for libdispatch\")
+        endif()
+    else()
+        set(WITH_LIBDISPATCH OFF)
+        add_compile_definitions(WITHOUT_LIBDISPATCH)
+        message(STATUS \"libdispatch not found, building without libdispatch support\")
+    endif()
+else()
+    add_compile_definitions(WITHOUT_LIBDISPATCH)
+    message(STATUS \"Building without libdispatch support (disabled by option)\")
+endif()
+
+# Enable machine compilation support
+option(COMPILE_MACHINES \"Enable machine compilation support\" ON)
+if(COMPILE_MACHINES)
+    add_compile_definitions(COMPILE_MACHINES)
+    message(STATUS \"Building with machine compilation support\")
+else()
+    message(STATUS \"Building without machine compilation support\")
+endif()
+
 # Check for whiteboard and conditionally enable it
 find_package(gusimplewhiteboard QUIET)
 if(gusimplewhiteboard_FOUND)
@@ -435,7 +501,7 @@ add_subdirectory(clfsm)
 # Create README
 file(WRITE "${EXPORT_DIR}/README.md" "# Self-Contained gufsm Export
 
-Minimal self-contained snapshot of the gufsm (Griffith University Finite State Machine) library and compiler.
+Minimal self-contained snapshot of the gufsm library and compiler.
 
 ## What's Included
 
